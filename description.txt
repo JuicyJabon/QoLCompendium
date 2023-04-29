@@ -20,7 +20,7 @@ Current Features:
  - Crazy fast mining & placing speeds
  - Items that disable enemy & event spawns
  - Item that increases spawn rates by 10x
- - Items that force biomes
+ - Item that forces biomes
  - Item that teleports you to your last death
  - Item magnet that sucks all items towards you
  - Items that instantly create structures

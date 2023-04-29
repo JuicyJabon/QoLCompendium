@@ -1072,5 +1072,7 @@ namespace QoLCompendium.Tweaks
         public bool headCounter;
 
         public int respawnFullHPTimer;
+
+        public int selectedBiome = 0;
     }
 }

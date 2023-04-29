@@ -50,8 +50,8 @@ namespace QoLCompendium
         public bool Magnet { get; set; }
 
         [DefaultValue(true)]
-        [Label("Biome Globes")]
-        [Tooltip("Toggles the Biome Globe items \nDefault value: True \nReload Required")]
+        [Label("World Globe")]
+        [Tooltip("Toggles the World Globe item \nDefault value: True \nReload Required")]
         [ReloadRequired]
         public bool Globes { get; set; }
 

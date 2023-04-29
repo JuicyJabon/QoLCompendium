@@ -15,6 +15,8 @@ namespace QoLCompendium
         private UserInterface bmInterface;
         internal ECNPCUI ecShopUI;
         private UserInterface ecInterface;
+        internal GlobeUI globeUI;
+        private UserInterface globeInterface;
         public override uint ExtraPlayerBuffSlots => ModContent.GetInstance<QoLCConfig>().ExtraBuffSlots;
 
         public override void Load()
@@ -30,6 +32,11 @@ namespace QoLCompendium
                 ecShopUI.Activate();
                 ecInterface = new UserInterface();
                 ecInterface.SetState(ecShopUI);
+
+                globeUI = new GlobeUI();
+                globeUI.Activate();
+                globeInterface = new UserInterface();
+                globeInterface.SetState(globeUI);
             }
 
             IL.Terraria.Chest.SetupShop += il =>
@@ -85,6 +92,8 @@ namespace QoLCompendium
         private UserInterface bmInterface;
         internal ECNPCUI ecShopUI;
         private UserInterface ecInterface;
+        internal GlobeUI globeUI;
+        private UserInterface globeInterface;
         public override void OnWorldLoad()
         {
             if (!Main.dedServ)
@@ -98,6 +107,11 @@ namespace QoLCompendium
                 ecShopUI.Activate();
                 ecInterface = new UserInterface();
                 ecInterface.SetState(ecShopUI);
+
+                globeUI = new GlobeUI();
+                globeUI.Activate();
+                globeInterface = new UserInterface();
+                globeInterface.SetState(globeUI);
             }
         }
 
@@ -134,6 +148,21 @@ namespace QoLCompendium
                     InterfaceScaleType.UI)
                 );
             }
+            if (MouseTextIndex != -1)
+            {
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "QoLC: Globe Selector",
+                    delegate
+                    {
+                        if (GlobeUI.visible)
+                        {
+                            globeUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+            }
         }
 
         public override void UpdateUI(GameTime gameTime)
@@ -146,6 +175,11 @@ namespace QoLCompendium
             if (ecInterface != null && ECNPCUI.visible)
             {
                 ecInterface.Update(gameTime);
+            }
+
+            if (globeInterface != null && GlobeUI.visible)
+            {
+                globeInterface.Update(gameTime);
             }
         }
     }

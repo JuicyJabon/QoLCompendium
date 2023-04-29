@@ -241,7 +241,7 @@ namespace QoLCompendium.UI
 
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
-            Vector2 MousePosition = new Vector2(Main.mouseX, Main.mouseY);
+            Vector2 MousePosition = new(Main.mouseX, Main.mouseY);
             if (ShopPanel.ContainsPoint(MousePosition))
             {
                 Main.LocalPlayer.mouseInterface = true;
