@@ -41,12 +41,13 @@ Current Features:
  - Non-consumable Boss & Event summons
  - 1 Town NPC who sells almost everything needed
  - 1 Town NPC who sells a ton of modded items
+ - Shop Expander
  - Friendly NPCs don't take damage
  - NPC happiness removal
  - Editable celestial tower shield health
 
 Warning on Mod Support:
-If you have more than one of the supported mods enabled there is a good chance that the NPC shops will overflow. If you want use Shop Expander.
+If you have more than one of the supported mods enabled there is a good chance that the NPC shops will overflow.
 
 Warning on Boss-dependent sales:
 You have to beat modded bosses with this mod enabled in order for the NPC to sell those items.
@@ -66,3 +67,6 @@ Current Mod Support:
  - Terrorborn: NPC Sales
  - Thorium: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
  - Vitality: Non-consumable Boss summons & NPC Sales
+
+CREDITS:
+ - ExterminatorX99 & DRKV333: Shop Expander
