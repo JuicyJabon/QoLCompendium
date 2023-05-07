@@ -1,9 +1,9 @@
-using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Golf;
 using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,6 +14,7 @@ namespace QoLCompendium.NPCs
     public class BMDealerNPC : ModNPC
     {
         public static int shopNum = 0;
+        public static string ShopName;
 
         public override bool IsLoadingEnabled(Mod mod)
         {
@@ -30,7 +31,7 @@ namespace QoLCompendium.NPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Black Market Dealer");
+            // DisplayName.SetDefault("Black Market Dealer");
             Main.npcFrameCount[NPC.type] = 26;
             NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
             NPCID.Sets.AttackFrameCount[NPC.type] = 5;
@@ -67,7 +68,7 @@ namespace QoLCompendium.NPCs
             AnimationType = 22;
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
             return true;
         }
@@ -137,55 +138,66 @@ namespace QoLCompendium.NPCs
             if (shopNum == 0)
             {
                 button = "Potions";
+                ShopName = "Potions";
             }
             else if (shopNum == 1)
             {
                 button = "Materials";
+                ShopName = "Materials";
             }
             else if (shopNum == 2)
             {
                 button = "Rare Materials";
+                ShopName = "Rare Materials";
             }
             else if (shopNum == 3)
             {
                 button = "Movement Accessories";
+                ShopName = "Movement Accessories";
             }
             else if (shopNum == 4)
             {
                 button = "Combat Accessories";
+                ShopName = "Combat Accessories";
             }
             else if (shopNum == 5)
             {
                 button = "Informative/Building Gear";
+                ShopName = "Informative/Building Gear";
             }
             else if (shopNum == 6)
             {
                 button = "Treasure Bags & Crates";
+                ShopName = "Treasure Bags & Crates";
             }
             else if (shopNum == 7)
             {
                 button = "Natural Blocks";
+                ShopName = "Natural Blocks";
             }
             else if (shopNum == 8)
             {
                 button = "Building Blocks";
+                ShopName = "Building Blocks";
             }
             else if (shopNum == 9)
             {
                 button = "Herbs & Plants";
+                ShopName = "Herbs & Plants";
             }
             else if (shopNum == 10)
             {
                 button = "Station Buffs & Foods";
+                ShopName = "Station Buffs & Foods";
             }
             button2 = "Shop Changer";
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        public override void OnChatButtonClicked(bool firstButton, ref string shop)
         {
             if (firstButton)
             {
-                shop = true;
+                shop = ShopName;
                 BMNPCUI.visible = false;
             }
             else
@@ -195,998 +207,398 @@ namespace QoLCompendium.NPCs
             }
         }
 
-        public override void SetupShop(Chest shop, ref int nextSlot)
+        public override void AddShops()
         {
-            if (shopNum == 0)
-            {
-                shop.item[nextSlot].SetDefaults(2344);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(303);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(300);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2325);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2324);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2356);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2329);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2346);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(295);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2354);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2327);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(291);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(305);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4479);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2323);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(304);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2348);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(297);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(292);
-                nextSlot++;
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(2345);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(294);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(293);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2322);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(299);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(288);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2347);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(289);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(298);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2355);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(296);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2328);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(290);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(301);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2326);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2359);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(302);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2349);
-                nextSlot++;
-            }
-            if (shopNum == 1)
-            {
-                shop.item[nextSlot].SetDefaults(323);
-                nextSlot++;
-                if (NPC.downedQueenBee)
-                {
-                    shop.item[nextSlot].SetDefaults(2431);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(1119);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(236);
-                nextSlot++;
-                if (NPC.downedBoss3)
-                {
-                    shop.item[nextSlot].SetDefaults(154);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(150);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1116);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(320);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(5070);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(23);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(118);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(331);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(259);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(38);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3111);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1118);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1115);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(68);
-                nextSlot++;
-                if (NPC.downedBoss2)
-                {
-                    shop.item[nextSlot].SetDefaults(86);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(319);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(225);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(209);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(362);
-                nextSlot++;
-                if (NPC.downedBoss2)
-                {
-                    shop.item[nextSlot].SetDefaults(1329);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(1330);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(210);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1117);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(69);
-                nextSlot++;
-            }
-            if (shopNum == 2)
-            {
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(3794);
-                    nextSlot++;
-                }
-                if (NPC.downedGolemBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(2218);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(4413);
-                nextSlot++;
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(1570);
-                    nextSlot++;
-                }
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(522);
-                    nextSlot++;
-                }
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(527);
-                    nextSlot++;
-                }
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(1508);
-                    nextSlot++;
-                }
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(3783);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(2161);
-                    nextSlot++;
-                }
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(1332);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(528);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(4414);
-                nextSlot++;
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(501);
-                    nextSlot++;
-                }
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(2766);
-                    nextSlot++;
-                }
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(2607);
-                    nextSlot++;
-                }
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(1328);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(526);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(4412);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(215);
-                nextSlot++;
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(575);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(520);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(521);
-                    nextSlot++;
-                }
-                if (NPC.downedMechBoss1)
-                {
-                    shop.item[nextSlot].SetDefaults(548);
-                    nextSlot++;
-                }
-                if (NPC.downedMechBoss2)
-                {
-                    shop.item[nextSlot].SetDefaults(549);
-                    nextSlot++;
-                }
-                if (NPC.downedMechBoss3)
-                {
-                    shop.item[nextSlot].SetDefaults(547);
-                    nextSlot++;
-                }
-                if (NPC.downedAncientCultist)
-                {
-                    shop.item[nextSlot].SetDefaults(3457);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3458);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3459);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3456);
-                    nextSlot++;
-                }
-            }
-            if (shopNum == 3)
-            {
-                shop.item[nextSlot].SetDefaults(285);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(212);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3225);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(987);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(953);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(53);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(268);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(187);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4978);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(934);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2423);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(54);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(950);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1303);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(906);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(158);
-                nextSlot++;
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(485);
-                    nextSlot++;
-                }
-                if (NPC.downedMechBossAny)
-                {
-                    shop.item[nextSlot].SetDefaults(497);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(857);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(159);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(975);
-                nextSlot++;
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(977);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(3201);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(863);
-                nextSlot++;
-            }
-            if (shopNum == 4)
-            {
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(1612);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(49);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(111);
-                nextSlot++;
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(963);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(2219);
-                nextSlot++;
-                if (NPC.downedBoss3)
-                {
-                    shop.item[nextSlot].SetDefaults(156);
-                    nextSlot++;
-                }
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(554);
-                    nextSlot++;
-                }
-                if (NPC.downedGolemBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(1248);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(211);
-                nextSlot++;
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(3016);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(1253);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(1921);
-                nextSlot++;
-                if (NPC.downedQueenBee)
-                {
-                    shop.item[nextSlot].SetDefaults(1132);
-                    nextSlot++;
-                }
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(1321);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(1322);
-                nextSlot++;
-                if (NPC.downedMechBossAny)
-                {
-                    shop.item[nextSlot].SetDefaults(900);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(223);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1323);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(193);
-                nextSlot++;
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(938);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(1290);
-                nextSlot++;
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(535);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3781);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3015);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(491);
-                    nextSlot++;
-                }
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(1300);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(216);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3212);
-                nextSlot++;
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(489);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(532);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(2998);
-                    nextSlot++;
-                }
-                if (NPC.downedGolemBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(899);
-                    nextSlot++;
-                }
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(536);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(490);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3809);
-                    nextSlot++;
-                }
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(1167);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(1845);
-                    nextSlot++;
-                }
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(3334);
-                    nextSlot++;
-                }
-            }
-            if (shopNum == 5)
-            {
-                shop.item[nextSlot].SetDefaults(407);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1923);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3061);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3624);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4056);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4341);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4008);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(410);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(411);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(5064);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2367);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2368);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2369);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2294);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3183);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2676);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3124);
-                nextSlot++;
-                if (NPC.downedBoss3)
-                {
-                    shop.item[nextSlot].SetDefaults(3611);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(5043);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3213);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4263);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4819);
-                nextSlot++;
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(1326);
-                    nextSlot++;
-                }
-            }
-            if (shopNum == 6)
-            {
-                if (NPC.downedSlimeKing)
-                {
-                    shop.item[nextSlot].SetDefaults(3318);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedBoss1)
-                {
-                    shop.item[nextSlot].SetDefaults(3319);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedBoss2)
-                {
-                    shop.item[nextSlot].SetDefaults(3320);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3321);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedQueenBee)
-                {
-                    shop.item[nextSlot].SetDefaults(3322);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedBoss3)
-                {
-                    shop.item[nextSlot].SetDefaults(3323);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedDeerclops)
-                {
-                    shop.item[nextSlot].SetDefaults(5111);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(3324);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedQueenSlime)
-                {
-                    shop.item[nextSlot].SetDefaults(4957);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedMechBoss1)
-                {
-                    shop.item[nextSlot].SetDefaults(3325);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedMechBoss2)
-                {
-                    shop.item[nextSlot].SetDefaults(3326);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedMechBoss3)
-                {
-                    shop.item[nextSlot].SetDefaults(3327);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(3328);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedGolemBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(3329);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3860);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedFishron)
-                {
-                    shop.item[nextSlot].SetDefaults(3330);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedEmpressOfLight)
-                {
-                    shop.item[nextSlot].SetDefaults(4782);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (NPC.downedMoonlord)
-                {
-                    shop.item[nextSlot].SetDefaults(3332);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 10, 0, 0));
-                    nextSlot++;
-                }
-                if (CheckDowned.downedDarkMage || CheckDowned.downedOgre || CheckDowned.downedBetsy)
-                {
-                    shop.item[nextSlot].SetDefaults(3817);
-                    shop.item[nextSlot].shopCustomPrice = new int?(Item.buyPrice(0, 2, 0, 0));
-                    nextSlot++;
-                }
-                if (!Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(2334);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(2335);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(2336);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3208);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3206);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3203);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3204);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3207);
-                    nextSlot++;
-                    if (NPC.downedBoss3)
-                    {
-                        shop.item[nextSlot].SetDefaults(3205);
-                        nextSlot++;
-                    }
-                    shop.item[nextSlot].SetDefaults(4405);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(4407);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(4877);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(5002);
-                    nextSlot++;
-                }
-                else
-                {
-                    shop.item[nextSlot].SetDefaults(3979);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3980);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3981);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3987);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3985);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3982);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3983);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(3986);
-                    nextSlot++;
-                    if (NPC.downedBoss3)
-                    {
-                        shop.item[nextSlot].SetDefaults(3984);
-                        nextSlot++;
-                    }
-                    shop.item[nextSlot].SetDefaults(4406);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(4408);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(4878);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(5003);
-                    nextSlot++;
-                }
-            }
-            if (shopNum == 7)
-            {
-                shop.item[nextSlot].SetDefaults(2);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3086);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3081);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(169);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3271);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3272);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3347);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(133);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(176);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(172);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(424);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(593);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(664);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1103);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(751);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(765);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(61);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(836);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(409);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1124);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1125);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1127);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(9);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2503);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2504);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(620);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(619);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(911);
-                nextSlot++;
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(621);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(2260);
-                nextSlot++;
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(1729);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(183);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1727);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(276);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1725);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4564);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(173);
-                nextSlot++;
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(502);
-                    nextSlot++;
-                }
-            }
-            if (shopNum == 8)
-            {
-                shop.item[nextSlot].SetDefaults(129);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(131);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(607);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(594);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(883);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(414);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(413);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(145);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2173);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(717);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2692);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3951);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3953);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(143);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(718);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(141);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(719);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(609);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4050);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(577);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2793);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3100);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(192);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(214);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(412);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(415);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1589);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(416);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1591);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(604);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1593);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2792);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3461);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(134);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(137);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(139);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1101);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2435);
-                nextSlot++;
-                if (NPC.downedGolemBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(2860);
-                    nextSlot++;
-                }
-            }
-            if (shopNum == 9)
-            {
-                shop.item[nextSlot].SetDefaults(3093);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(315);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(313);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(316);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(318);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(314);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2358);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(317);
-                nextSlot++;
-                if (NPC.downedBoss1)
-                {
-                    shop.item[nextSlot].SetDefaults(1828);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(1107);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1108);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1109);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1110);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1111);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1112);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1113);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1114);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(60);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2887);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(5);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4349);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4350);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4351);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4352);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4353);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4354);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4377);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4378);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4389);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(62);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(195);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(194);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(59);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(2171);
-                nextSlot++;
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(369);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(27);
-                nextSlot++;
-            }
+            var potShop = new NPCShop(Type, "Potions")
+                    .Add(2344)
+                    .Add(303)
+                    .Add(300)
+                    .Add(2325)
+                    .Add(2324)
+                    .Add(2356)
+                    .Add(2329)
+                    .Add(2346)
+                    .Add(295)
+                    .Add(2354)
+                    .Add(2327)
+                    .Add(291)
+                    .Add(305)
+                    .Add(4479)
+                    .Add(2323)
+                    .Add(304)
+                    .Add(2348)
+                    .Add(297)
+                    .Add(292)
+                    .Add(2345, Condition.Hardmode)
+                    .Add(294)
+                    .Add(293)
+                    .Add(2322)
+                    .Add(299)
+                    .Add(288)
+                    .Add(2347)
+                    .Add(289)
+                    .Add(298)
+                    .Add(2355)
+                    .Add(296)
+                    .Add(2328)
+                    .Add(290)
+                    .Add(301)
+                    .Add(2326)
+                    .Add(2359)
+                    .Add(302)
+                    .Add(2349);
+            potShop.Register();
 
-            if (shopNum == 10)
-            {
-                shop.item[nextSlot].SetDefaults(4624);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4403);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4022);
-                nextSlot++;
+            var matShop = new NPCShop(Type, "Materials")
+                    .Add(323)
+                    .Add(2431, Condition.DownedQueenBee)
+                    .Add(1119)
+                    .Add(236)
+                    .Add(154, Condition.DownedSkeletron)
+                    .Add(150)
+                    .Add(1116)
+                    .Add(320)
+                    .Add(5070)
+                    .Add(23)
+                    .Add(118)
+                    .Add(331)
+                    .Add(259)
+                    .Add(38)
+                    .Add(3111)
+                    .Add(1118)
+                    .Add(1115)
+                    .Add(68)
+                    .Add(86, Condition.DownedEowOrBoc)
+                    .Add(319)
+                    .Add(225)
+                    .Add(209)
+                    .Add(362)
+                    .Add(1329, Condition.DownedEowOrBoc)
+                    .Add(1330)
+                    .Add(210)
+                    .Add(1117)
+                    .Add(69);
+            matShop.Register();
 
-                shop.item[nextSlot].SetDefaults(63);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(966);
-                nextSlot++;
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(487);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(2177);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3198);
-                nextSlot++;
-                if (NPC.downedBoss3)
-                {
-                    shop.item[nextSlot].SetDefaults(2999);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(4276);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3750);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1431);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1859);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(4609);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(3117);
-                nextSlot++;
-                if (NPC.downedBoss3)
-                {
-                    shop.item[nextSlot].SetDefaults(148);
-                    nextSlot++;
-                }
-                shop.item[nextSlot].SetDefaults(206);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(207);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(1128);
-                nextSlot++;
-            }
+            var rMatShop = new NPCShop(Type, "Rare Materials")
+                    .Add(3794, Condition.Hardmode)
+                    .Add(2218, Condition.DownedGolem)
+                    .Add(4413)
+                    .Add(1570, Condition.DownedPlantera)
+                    .Add(522, Condition.Hardmode)
+                    .Add(527, Condition.Hardmode)
+                    .Add(1508, Condition.DownedPlantera)
+                    .Add(3783, Condition.Hardmode)
+                    .Add(2161, Condition.Hardmode)
+                    .Add(1332, Condition.Hardmode)
+                    .Add(528, Condition.Hardmode)
+                    .Add(4414)
+                    .Add(501, Condition.Hardmode)
+                    .Add(2766, Condition.DownedPlantera)
+                    .Add(2607, Condition.Hardmode)
+                    .Add(1328, Condition.Hardmode)
+                    .Add(526, Condition.Hardmode)
+                    .Add(4412)
+                    .Add(215)
+                    .Add(575, Condition.Hardmode)
+                    .Add(520, Condition.Hardmode)
+                    .Add(521, Condition.Hardmode)
+                    .Add(548, Condition.DownedDestroyer)
+                    .Add(549, Condition.DownedTwins)
+                    .Add(547, Condition.DownedSkeletronPrime)
+                    .Add(547, Condition.DownedSkeletronPrime)
+                    .Add(3457, Condition.DownedCultist)
+                    .Add(3458, Condition.DownedCultist)
+                    .Add(3459, Condition.DownedCultist)
+                    .Add(3456, Condition.DownedCultist);
+            rMatShop.Register();
+
+            var moveAccsShop = new NPCShop(Type, "Movement Accessories")
+                   .Add(285)
+                   .Add(212)
+                   .Add(3225)
+                   .Add(987)
+                   .Add(953)
+                   .Add(53)
+                   .Add(268)
+                   .Add(187)
+                   .Add(4978)
+                   .Add(934)
+                   .Add(2423)
+                   .Add(54)
+                   .Add(950)
+                   .Add(1303)
+                   .Add(906)
+                   .Add(158)
+                   .Add(485, Condition.Hardmode)
+                   .Add(497, Condition.DownedMechBossAny)
+                   .Add(857)
+                   .Add(159)
+                   .Add(975)
+                   .Add(977, Condition.DownedPlantera)
+                   .Add(3201)
+                   .Add(863);
+            moveAccsShop.Register();
+
+            var combatAccsShop = new NPCShop(Type, "Combat Accessories")
+                    .Add(1612, Condition.Hardmode)
+                    .Add(49)
+                    .Add(111)
+                    .Add(963, Condition.DownedPlantera)
+                    .Add(2219)
+                    .Add(156, Condition.DownedSkeletron)
+                    .Add(554, Condition.Hardmode)
+                    .Add(1248, Condition.DownedGolem)
+                    .Add(211)
+                    .Add(3016, Condition.Hardmode)
+                    .Add(1253, Condition.Hardmode)
+                    .Add(1921)
+                    .Add(1132, Condition.DownedQueenBee)
+                    .Add(1321, Condition.Hardmode)
+                    .Add(1322)
+                    .Add(900, Condition.DownedMechBossAny)
+                    .Add(223)
+                    .Add(1323)
+                    .Add(193)
+                    .Add(938, Condition.DownedPlantera)
+                    .Add(1290)
+                    .Add(535, Condition.Hardmode)
+                    .Add(3781, Condition.Hardmode)
+                    .Add(3015, Condition.Hardmode)
+                    .Add(491, Condition.Hardmode)
+                    .Add(1300, Condition.DownedPlantera)
+                    .Add(216)
+                    .Add(3212)
+                    .Add(489, Condition.Hardmode)
+                    .Add(532, Condition.Hardmode)
+                    .Add(2998, Condition.Hardmode)
+                    .Add(899, Condition.DownedGolem)
+                    .Add(536, Condition.Hardmode)
+                    .Add(490, Condition.Hardmode)
+                    .Add(3809, Condition.Hardmode)
+                    .Add(1167, Condition.DownedPlantera)
+                    .Add(1845, Condition.DownedPlantera)
+                    .Add(3334, Condition.Hardmode);
+            combatAccsShop.Register();
+
+            var infoShop = new NPCShop(Type, "Informative/Building Gear")
+                    .Add(407)
+                    .Add(1923)
+                    .Add(3061)
+                    .Add(3624)
+                    .Add(4056)
+                    .Add(4341)
+                    .Add(4008)
+                    .Add(410)
+                    .Add(411)
+                    .Add(5064)
+                    .Add(2367)
+                    .Add(2368)
+                    .Add(2369)
+                    .Add(2294)
+                    .Add(3183)
+                    .Add(2676)
+                    .Add(3124)
+                    .Add(3611, Condition.DownedSkeletron)
+                    .Add(5043)
+                    .Add(3213)
+                    .Add(4263)
+                    .Add(4819)
+                    .Add(1326, Condition.Hardmode);
+            infoShop.Register();
+
+            var bossShop = new NPCShop(Type, "Treasure Bags & Crates")
+                    .Add(3318, Condition.DownedKingSlime)
+                    .Add(3319, Condition.DownedEyeOfCthulhu)
+                    .Add(3320, Condition.DownedEowOrBoc)
+                    .Add(3321, Condition.DownedEowOrBoc)
+                    .Add(3322, Condition.DownedQueenBee)
+                    .Add(3323, Condition.DownedSkeletron)
+                    .Add(5111, Condition.DownedDeerclops)
+                    .Add(3324, Condition.Hardmode)
+                    .Add(4957, Condition.DownedQueenSlime)
+                    .Add(3325, Condition.DownedDestroyer)
+                    .Add(3326, Condition.DownedTwins)
+                    .Add(3327, Condition.DownedSkeletronPrime)
+                    .Add(3328, Condition.DownedPlantera)
+                    .Add(3329, Condition.DownedGolem)
+                    .Add(3860, Condition.DownedOldOnesArmyT3)
+                    .Add(3330, Condition.DownedDukeFishron)
+                    .Add(4782, Condition.DownedEmpressOfLight)
+                    .Add(3332, Condition.DownedMoonLord)
+                    .Add(3817, Condition.DownedOldOnesArmyAny)
+                    .Add(2334, Condition.PreHardmode)
+                    .Add(2335, Condition.PreHardmode)
+                    .Add(2336, Condition.PreHardmode)
+                    .Add(3208, Condition.PreHardmode)
+                    .Add(3206, Condition.PreHardmode)
+                    .Add(3203, Condition.PreHardmode)
+                    .Add(3204, Condition.PreHardmode)
+                    .Add(3207, Condition.PreHardmode)
+                    .Add(3205, Condition.PreHardmode, Condition.DownedSkeletron)
+                    .Add(4405, Condition.PreHardmode)
+                    .Add(4407, Condition.PreHardmode)
+                    .Add(4877, Condition.PreHardmode)
+                    .Add(5002, Condition.PreHardmode)
+                    .Add(3979, Condition.Hardmode)
+                    .Add(3980, Condition.Hardmode)
+                    .Add(3981, Condition.Hardmode)
+                    .Add(3987, Condition.Hardmode)
+                    .Add(3985, Condition.Hardmode)
+                    .Add(3982, Condition.Hardmode)
+                    .Add(3983, Condition.Hardmode)
+                    .Add(3986, Condition.Hardmode)
+                    .Add(3984, Condition.Hardmode, Condition.DownedSkeletron)
+                    .Add(4406, Condition.Hardmode)
+                    .Add(4408, Condition.Hardmode)
+                    .Add(4878, Condition.Hardmode)
+                    .Add(5003, Condition.Hardmode);
+            bossShop.Register();
+
+            var naturalBlockShop = new NPCShop(Type, "Natural Blocks")
+                    .Add(2)
+                    .Add(3)
+                    .Add(3086)
+                    .Add(3081)
+                    .Add(169)
+                    .Add(3271)
+                    .Add(3272)
+                    .Add(3347)
+                    .Add(133)
+                    .Add(176)
+                    .Add(172)
+                    .Add(424)
+                    .Add(593)
+                    .Add(664)
+                    .Add(1103)
+                    .Add(751)
+                    .Add(765)
+                    .Add(61)
+                    .Add(836)
+                    .Add(409)
+                    .Add(1124)
+                    .Add(1125)
+                    .Add(1127)
+                    .Add(9)
+                    .Add(2503)
+                    .Add(2504)
+                    .Add(620)
+                    .Add(619)
+                    .Add(911)
+                    .Add(621, Condition.Hardmode)
+                    .Add(2260)
+                    .Add(1729, Condition.DownedPlantera)
+                    .Add(183)
+                    .Add(1727)
+                    .Add(276)
+                    .Add(1725)
+                    .Add(4564)
+                    .Add(173)
+                    .Add(502, Condition.Hardmode);
+            naturalBlockShop.Register();
+
+            var buildingBlockShop = new NPCShop(Type, "Building Blocks")
+                    .Add(129)
+                    .Add(131)
+                    .Add(607)
+                    .Add(594)
+                    .Add(883)
+                    .Add(414)
+                    .Add(413)
+                    .Add(145)
+                    .Add(2173)
+                    .Add(717)
+                    .Add(2692)
+                    .Add(3951)
+                    .Add(3953)
+                    .Add(143)
+                    .Add(718)
+                    .Add(141)
+                    .Add(719)
+                    .Add(609)
+                    .Add(4050)
+                    .Add(577)
+                    .Add(2793)
+                    .Add(3100)
+                    .Add(192)
+                    .Add(214)
+                    .Add(412)
+                    .Add(415)
+                    .Add(1589)
+                    .Add(416)
+                    .Add(1591)
+                    .Add(604)
+                    .Add(1593)
+                    .Add(2792)
+                    .Add(3461)
+                    .Add(134)
+                    .Add(137)
+                    .Add(139)
+                    .Add(1101)
+                    .Add(2435)
+                    .Add(2860, Condition.DownedGolem);
+            buildingBlockShop.Register();
+
+            var plantShop = new NPCShop(Type, "Herbs & Plants")
+                    .Add(3093)
+                    .Add(315)
+                    .Add(313)
+                    .Add(316)
+                    .Add(318)
+                    .Add(314)
+                    .Add(2358)
+                    .Add(317)
+                    .Add(1828, Condition.DownedEyeOfCthulhu)
+                    .Add(1107)
+                    .Add(1108)
+                    .Add(1109)
+                    .Add(1110)
+                    .Add(1111)
+                    .Add(1112)
+                    .Add(1113)
+                    .Add(1114)
+                    .Add(60)
+                    .Add(2887)
+                    .Add(5)
+                    .Add(4349)
+                    .Add(4350)
+                    .Add(4351)
+                    .Add(4352)
+                    .Add(4353)
+                    .Add(4354)
+                    .Add(4377)
+                    .Add(4378)
+                    .Add(4389)
+                    .Add(62)
+                    .Add(195)
+                    .Add(194)
+                    .Add(59)
+                    .Add(2171)
+                    .Add(369, Condition.Hardmode)
+                    .Add(27);
+            plantShop.Register();
+
+            var stationShop = new NPCShop(Type, "Station Buffs & Foods")
+                    .Add(4624)
+                    .Add(4403)
+                    .Add(4022)
+                    .Add(63)
+                    .Add(966)
+                    .Add(487, Condition.Hardmode)
+                    .Add(2177)
+                    .Add(3198)
+                    .Add(2999, Condition.DownedSkeletron)
+                    .Add(4276)
+                    .Add(3750)
+                    .Add(1431)
+                    .Add(1859)
+                    .Add(4609)
+                    .Add(3117)
+                    .Add(148, Condition.DownedSkeletron)
+                    .Add(206)
+                    .Add(207)
+                    .Add(1128);
+            stationShop.Register();
         }
     }
 }

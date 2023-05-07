@@ -1,8 +1,7 @@
 using System.Linq;
 using Terraria;
-using Terraria.ModLoader;
-using tModPorter;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace QoLCompendium.Tweaks
 {

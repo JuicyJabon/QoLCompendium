@@ -3,8 +3,8 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace QoLCompendium.Tweaks
 {
@@ -14,8 +14,8 @@ namespace QoLCompendium.Tweaks
         {
             if (ModContent.GetInstance<QoLCConfig>().FastTools)
             {
-                IL.Terraria.Player.ItemCheck_UseMiningTools_ActuallyUseMiningTool += ActuallyUseMiningTool;
-                IL.Terraria.Player.ItemCheck_UseMiningTools_TryHittingWall += TryHittingWall;
+                Terraria.IL_Player.ItemCheck_UseMiningTools_ActuallyUseMiningTool += ActuallyUseMiningTool;
+                Terraria.IL_Player.ItemCheck_UseMiningTools_TryHittingWall += TryHittingWall;
             }
         }
 
@@ -36,7 +36,7 @@ namespace QoLCompendium.Tweaks
             }
         }
 
-        public override void ExtractinatorUse(int extractType, ref int resultType, ref int resultStack)
+        public override void ExtractinatorUse(int extractType, int extractinatorBlockType, ref int resultType, ref int resultStack)
         {
             if (ModContent.GetInstance<QoLCConfig>().FastExtractor)
             {

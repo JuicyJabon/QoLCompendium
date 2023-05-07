@@ -1,11 +1,10 @@
-using System;
-using Terraria;
-using Terraria.GameContent.Creative;
-using Terraria.ModLoader;
-using Terraria.ID;
 using QoLCompendium.Tweaks;
-using Terraria.Audio;
 using QoLCompendium.UI;
+using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent.Creative;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace QoLCompendium.Items
 {
@@ -18,7 +17,7 @@ namespace QoLCompendium.Items
 
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Favorite this item to always be in the selected biome");
+            // Tooltip.SetDefault("Favorite this item to always be in the selected biome");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

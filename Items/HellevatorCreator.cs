@@ -1,4 +1,3 @@
-using System;
 using QoLCompendium.Projectiles;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
@@ -17,7 +16,7 @@ namespace QoLCompendium.Items
 
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Creates a drill bomb that carves a hellevator \nWill destroy anything in it's path directly below the impact");
+            // Tooltip.SetDefault("Creates a drill bomb that carves a hellevator \nWill destroy anything in it's path directly below the impact");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

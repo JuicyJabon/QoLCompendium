@@ -6,27 +6,26 @@ using Terraria.ModLoader;
 
 namespace QoLCompendium.Items
 {
-    public class MoonPhaser : ModItem
+    public class TravelerArriver : ModItem
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ModContent.GetInstance<QoLCConfig>().MoonPhaser;
+            return ModContent.GetInstance<QoLCConfig>().TArriver;
         }
 
         public override void SetStaticDefaults()
         {
-            // Tooltip.SetDefault("Advances the moon's phase");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()
         {
-            Item.width = 12;
-            Item.height = 12;
+            Item.width = 18;
+            Item.height = 21;
             Item.maxStack = 1;
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.UseSound = new SoundStyle?(SoundID.MenuTick);
             Item.useAnimation = 20;
             Item.useTime = 20;
@@ -34,17 +33,13 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<MoonPhaser>(), 1).AddIngredient(ItemID.StoneBlock, 15).AddIngredient(ItemID.Diamond, 5).AddTile(TileID.Anvils).Register();
+            Recipe.Create(ModContent.ItemType<TravelerArriver>(), 1).AddIngredient(ItemID.GraniteBlock, 4).AddIngredient(ItemID.Ruby, 2).AddIngredient(ItemID.Feather, 1).AddTile(TileID.Anvils).Register();
         }
 
         public override bool? UseItem(Player player)
         {
-            Main.moonPhase++;
-            if (Main.moonPhase >= 8)
-            {
-                Main.moonPhase = 0;
-            }
-            return true;
+            NPC.SpawnOnPlayer(Main.myPlayer, NPCID.TravellingMerchant);
+            return NPC.CountNPCS(NPCID.TravellingMerchant) < 5;
         }
     }
 }

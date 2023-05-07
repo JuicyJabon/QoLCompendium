@@ -1,8 +1,6 @@
-using System;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Terraria.ID;
 
 namespace QoLCompendium.Tweaks
 {
@@ -64,7 +62,6 @@ namespace QoLCompendium.Tweaks
             }
         }
 
-        // Token: 0x0600004B RID: 75 RVA: 0x000025E8 File Offset: 0x000007E8
         public override void Load()
         {
             if (!calamityLoaded)
@@ -121,7 +118,6 @@ namespace QoLCompendium.Tweaks
             }
         }
 
-        // Token: 0x0600004C RID: 76 RVA: 0x00002684 File Offset: 0x00000884
         public override void PostSetupContent()
         {
             calamityLoaded = ModLoader.TryGetMod("CalamityMod", out Mod mod);
@@ -152,24 +148,18 @@ namespace QoLCompendium.Tweaks
             aqMod = mod13;
         }
 
-        // Token: 0x0600004D RID: 77 RVA: 0x00002795 File Offset: 0x00000995
         public override void OnWorldLoad()
         {
             ResetDowned();
         }
 
-        // Token: 0x0600004E RID: 78 RVA: 0x00002795 File Offset: 0x00000995
         public override void OnWorldUnload()
         {
             ResetDowned();
         }
 
-        // Token: 0x0600004F RID: 79 RVA: 0x0000279C File Offset: 0x0000099C
         public static void ResetDowned()
         {
-            downedBetsy = false;
-            downedOgre = false;
-            downedDarkMage = false;
             downedDesertScourge = false;
             downedCrabulon = false;
             downedHiveMind = false;
@@ -281,12 +271,8 @@ namespace QoLCompendium.Tweaks
             downedUltraStarite = false;
         }
 
-        // Token: 0x06000050 RID: 80 RVA: 0x00002A20 File Offset: 0x00000C20
         public override void SaveWorldData(TagCompound tag)
         {
-            tag.Add("betsy", downedBetsy);
-            tag.Add("darkMage", downedDarkMage);
-            tag.Add("ogre", downedOgre);
             tag.Add("desertScourge", downedDesertScourge);
             tag.Add("crabulon", downedCrabulon);
             tag.Add("hiveMind", downedHiveMind);
@@ -401,9 +387,6 @@ namespace QoLCompendium.Tweaks
         // Token: 0x06000051 RID: 81 RVA: 0x000032CC File Offset: 0x000014CC
         public override void LoadWorldData(TagCompound tag)
         {
-            downedBetsy = tag.Get<bool>("betsy");
-            downedDarkMage = tag.Get<bool>("darkMage");
-            downedOgre = tag.Get<bool>("ogre");
             downedDesertScourge = tag.Get<bool>("desertScourge");
             downedCrabulon = tag.Get<bool>("crabulon");
             downedHiveMind = tag.Get<bool>("hiveMind");
@@ -516,24 +499,11 @@ namespace QoLCompendium.Tweaks
             downedUltraStarite = tag.Get<bool>("ustarite");
         }
 
-        // Token: 0x06000052 RID: 82 RVA: 0x0000397C File Offset: 0x00001B7C
         public override void PreUpdateNPCs()
         {
             foreach (NPC npc2 in Main.npc)
             {
                 npc2.GetLifeStats(out int num, out int num2);
-                if (npc2.type == NPCID.DD2Betsy && num <= 0)
-                {
-                    downedBetsy = true;
-                }
-                if ((npc2.type == NPCID.DD2DarkMageT1 || npc2.type == NPCID.DD2DarkMageT3) && num <= 0)
-                {
-                    downedDarkMage = true;
-                }
-                if ((npc2.type == NPCID.DD2OgreT2 || npc2.type == NPCID.DD2OgreT3) && num <= 0)
-                {
-                    downedOgre = true;
-                }
                 if (calamityLoaded)
                 {
                     if (npc2.type == calamityMod.Find<ModNPC>("CragmawMire").Type && num <= 0)
@@ -1047,412 +1017,401 @@ namespace QoLCompendium.Tweaks
             }
         }
 
-        // Token: 0x0400001B RID: 27
-        internal static bool downedBetsy;
-
-        // Token: 0x0400001C RID: 28
-        internal static bool downedDarkMage;
-
-        // Token: 0x0400001D RID: 29
-        internal static bool downedOgre;
-
-        // Token: 0x0400001E RID: 30
         internal static bool downedDesertScourge;
+        public static Condition desertscourge = new("CheckDowned.downedDesertScourge", () => downedDesertScourge);
 
-        // Token: 0x0400001F RID: 31
         internal static bool downedCrabulon;
+        public static Condition crabulon = new("CheckDowned.downedCrabulon", () => downedCrabulon);
 
-        // Token: 0x04000020 RID: 32
         internal static bool downedHiveMind;
+        public static Condition hivemind = new("CheckDowned.downedHiveMind", () => downedHiveMind);
 
-        // Token: 0x04000021 RID: 33
         internal static bool downedPerforators;
+        public static Condition perforators = new("CheckDowned.downedPerforators", () => downedPerforators);
 
-        // Token: 0x04000022 RID: 34
         internal static bool downedSlimeGod;
+        public static Condition slimegod = new("CheckDowned.downedSlimeGod", () => downedSlimeGod);
 
-        // Token: 0x04000023 RID: 35
         internal static bool downedCryogen;
+        public static Condition cryogen = new("CheckDowned.downedCryogen", () => downedCryogen);
 
-        // Token: 0x04000024 RID: 36
         internal static bool downedAquaticScourge;
+        public static Condition aquaticscourge = new("CheckDowned.downedAquaticScourge", () => downedAquaticScourge);
 
-        // Token: 0x04000025 RID: 37
         internal static bool downedBrimstoneElemental;
+        public static Condition brimstoneelemental = new("CheckDowned.downedBrimstoneElemental", () => downedBrimstoneElemental);
 
-        // Token: 0x04000026 RID: 38
         internal static bool downedCalamitas;
+        public static Condition calamitas = new("CheckDowned.downedCalamitas", () => downedCalamitas);
 
-        // Token: 0x04000027 RID: 39
         internal static bool downedLeviathan;
+        public static Condition leviathan = new("CheckDowned.downedLeviathan", () => downedLeviathan);
 
-        // Token: 0x04000028 RID: 40
         internal static bool downedAureus;
+        public static Condition aureus = new("CheckDowned.downedAureus", () => downedAureus);
 
-        // Token: 0x04000029 RID: 41
         internal static bool downedPlaguebringer;
+        public static Condition plaguebringer = new("CheckDowned.downedPlaguebringer", () => downedPlaguebringer);
 
-        // Token: 0x0400002A RID: 42
         internal static bool downedRavager;
+        public static Condition ravager = new("CheckDowned.downedRavager", () => downedRavager);
 
-        // Token: 0x0400002B RID: 43
         internal static bool downedDeus;
+        public static Condition deus = new("CheckDowned.downedDeus", () => downedDeus);
 
-        // Token: 0x0400002C RID: 44
         internal static bool downedDragonfolly;
+        public static Condition dragonfolly = new("CheckDowned.downedDragonfolly", () => downedDragonfolly);
 
-        // Token: 0x0400002D RID: 45
         internal static bool downedProvidence;
+        public static Condition providence = new("CheckDowned.downedProvidence", () => downedProvidence);
 
-        // Token: 0x0400002E RID: 46
         internal static bool downedStormWeaver;
+        public static Condition stormweaver = new("CheckDowned.downedStormWeaver", () => downedStormWeaver);
 
-        // Token: 0x0400002F RID: 47
         internal static bool downedCeaselessVoid;
+        public static Condition ceaselessvoid = new("CheckDowned.downedCeaselessVoid", () => downedCeaselessVoid);
 
-        // Token: 0x04000030 RID: 48
         internal static bool downedSignus;
+        public static Condition signus = new("CheckDowned.downedSignus", () => downedSignus);
 
-        // Token: 0x04000031 RID: 49
         internal static bool downedPolterghast;
+        public static Condition polterghast = new("CheckDowned.downedPolterghast", () => downedPolterghast);
 
-        // Token: 0x04000032 RID: 50
         internal static bool downedOldDuke;
+        public static Condition oldduke = new("CheckDowned.downedOldDuke", () => downedOldDuke);
 
-        // Token: 0x04000033 RID: 51
         internal static bool downedDevourerOfGods;
+        public static Condition dog = new("CheckDowned.downedDevourerOfGods", () => downedDevourerOfGods);
 
-        // Token: 0x04000034 RID: 52
         internal static bool downedYharon;
+        public static Condition yharon = new("CheckDowned.downedYharon", () => downedYharon);
 
-        // Token: 0x04000035 RID: 53
         internal static bool downedExoMechs;
+        public static Condition exomechs = new("CheckDowned.downedExoMechs", () => downedExoMechs);
 
-        // Token: 0x04000036 RID: 54
         internal static bool downedSupremeCalamitas;
+        public static Condition scalamitas = new("CheckDowned.downedSupremeCalamitas", () => downedSupremeCalamitas);
 
-        // Token: 0x04000037 RID: 55
         internal static bool downedGiantClam;
+        public static Condition giantclam = new("CheckDowned.downedGiantClam", () => downedGiantClam);
 
-        // Token: 0x04000038 RID: 56
         internal static bool downedGreatSandShark;
+        public static Condition sandshark = new("CheckDowned.downedGreatSandShark", () => downedGreatSandShark);
 
-        // Token: 0x04000039 RID: 57
         internal static bool downedCragmawMire;
+        public static Condition cragmaw = new("CheckDowned.downedCragmawMire", () => downedCragmawMire);
 
-        // Token: 0x0400003A RID: 58
         internal static bool downedNuclearTerror;
+        public static Condition nuclearterror = new("CheckDowned.downedNuclearTerror", () => downedNuclearTerror);
 
-        // Token: 0x0400003B RID: 59
         internal static bool downedMauler;
+        public static Condition mauler = new("CheckDowned.downedMauler", () => downedMauler);
 
-        // Token: 0x0400003C RID: 60
         internal static bool downedProfanedGuardians;
+        public static Condition profguardians = new("CheckDowned.downedProfanedGuardians", () => downedProfanedGuardians);
 
-        // Token: 0x0400003D RID: 61
         internal static bool downedGrandBird;
+        public static Condition grandbird = new("CheckDowned.downedGrandBird", () => downedGrandBird);
 
-        // Token: 0x0400003E RID: 62
         internal static bool downedQueenJelly;
+        public static Condition queenjelly = new("CheckDowned.downedQueenJelly", () => downedQueenJelly);
 
-        // Token: 0x0400003F RID: 63
         internal static bool downedViscount;
+        public static Condition viscount = new("CheckDowned.downedViscount", () => downedViscount);
 
-        // Token: 0x04000040 RID: 64
         internal static bool downedEnergyStorm;
+        public static Condition energystorm = new("CheckDowned.downedEnergyStorm", () => downedEnergyStorm);
 
-        // Token: 0x04000041 RID: 65
         internal static bool downedBuriedChampion;
+        public static Condition buriedchampion = new("CheckDowned.downedBuriedChampion", () => downedBuriedChampion);
 
-        // Token: 0x04000042 RID: 66
         internal static bool downedScouter;
+        public static Condition scouter = new("CheckDowned.downedScouter", () => downedScouter);
 
-        // Token: 0x04000043 RID: 67
         internal static bool downedStrider;
+        public static Condition strider = new("CheckDowned.downedStrider", () => downedStrider);
 
-        // Token: 0x04000044 RID: 68
         internal static bool downedFallenBeholder;
+        public static Condition fallenbeholder = new("CheckDowned.downedFallenBeholder", () => downedFallenBeholder);
 
-        // Token: 0x04000045 RID: 69
         internal static bool downedLich;
+        public static Condition lich = new("CheckDowned.downedLich", () => downedLich);
 
-        // Token: 0x04000046 RID: 70
         internal static bool downedForgottenOne;
+        public static Condition forgottenone = new("CheckDowned.downedForgottenOne", () => downedForgottenOne);
 
-        // Token: 0x04000047 RID: 71
         internal static bool downedPrimordials;
+        public static Condition primordials = new("CheckDowned.downedPrimordials", () => downedPrimordials);
 
-        // Token: 0x04000048 RID: 72
         internal static bool downedPutridPinky;
+        public static Condition putridpinky = new("CheckDowned.downedPutridPinky", () => downedPutridPinky);
 
-        // Token: 0x04000049 RID: 73
         internal static bool downedPharaohsCurse;
+        public static Condition pharaohscurse = new("CheckDowned.downedPharaohsCurse", () => downedPharaohsCurse);
 
-        // Token: 0x0400004A RID: 74
         internal static bool downedAdvisor;
+        public static Condition advisor = new("CheckDowned.downedAdvisor", () => downedAdvisor);
 
-        // Token: 0x0400004B RID: 75
         internal static bool downedPolaris;
+        public static Condition polaris = new("CheckDowned.downedPolaris", () => downedPolaris);
 
-        // Token: 0x0400004C RID: 76
         internal static bool downedLux;
+        public static Condition lux = new("CheckDowned.downedLux", () => downedLux);
 
-        // Token: 0x0400004D RID: 77
         internal static bool downedSerpent;
+        public static Condition serpent = new("CheckDowned.downedSerpent", () => downedSerpent);
 
-        // Token: 0x0400004E RID: 78
         internal static bool downedStormCloud;
+        public static Condition stormcloud = new("CheckDowned.downedStormCloud", () => downedStormCloud);
 
-        // Token: 0x0400004F RID: 79
         internal static bool downedGrandAntlion;
+        public static Condition grandantlion = new("CheckDowned.downedGrandAntlion", () => downedGrandAntlion);
 
-        // Token: 0x04000050 RID: 80
         internal static bool downedGemstoneElemental;
+        public static Condition gemstone = new("CheckDowned.downedGemstoneElemental", () => downedGemstoneElemental);
 
-        // Token: 0x04000051 RID: 81
         internal static bool downedMoonlightDragonfly;
+        public static Condition dragonfly = new("CheckDowned.downedMoonlightDragonfly", () => downedMoonlightDragonfly);
 
-        // Token: 0x04000052 RID: 82
         internal static bool downedDreadnaught;
+        public static Condition dreadnaught = new("CheckDowned.downedDreadnaught", () => downedDreadnaught);
 
-        // Token: 0x04000053 RID: 83
         internal static bool downedAnarchulesBeetle;
+        public static Condition anarchulesbeetle = new("CheckDowned.downedAnarchulesBeetle", () => downedAnarchulesBeetle);
 
-        // Token: 0x04000054 RID: 84
         internal static bool downedChaosbringer;
+        public static Condition chaosbringer = new("CheckDowned.downedChaosbringer", () => downedChaosbringer);
 
-        // Token: 0x04000055 RID: 85
         internal static bool downedPaladinSpirit;
+        public static Condition paladin = new("CheckDowned.downedPaladinSpirit", () => downedPaladinSpirit);
 
-        // Token: 0x04000056 RID: 86
         internal static bool downedLepus;
+        public static Condition lepus = new("CheckDowned.downedLepus", () => downedLepus);
 
-        // Token: 0x04000057 RID: 87
         internal static bool downedTurkor;
-
-        // Token: 0x04000058 RID: 88
+        public static Condition turkor = new("CheckDowned.downedTurkor", () => downedTurkor);
+  
         internal static bool downedOcram;
+        public static Condition ocram = new("CheckDowned.downedOcram", () => downedOcram);
 
-        // Token: 0x04000059 RID: 89
         internal static bool downedGourd;
+        public static Condition gourd = new("CheckDowned.downedGourd", () => downedGourd);
 
-        // Token: 0x0400005A RID: 90
         internal static bool downedMoco;
+        public static Condition moco = new("CheckDowned.downedMoco", () => downedMoco);
 
-        // Token: 0x0400005B RID: 91
         internal static bool downedOrroBoro;
+        public static Condition orroboro = new("CheckDowned.downedOrroBoro", () => downedOrroBoro);
 
-        // Token: 0x0400005C RID: 92
         internal static bool downedBigBone;
+        public static Condition bigbone = new("CheckDowned.downedBigBone", () => downedBigBone);
 
-        // Token: 0x0400005D RID: 93
         internal static bool downedTrojanSquirrel;
+        public static Condition squirrel = new("CheckDowned.downedTrojanSquirrel", () => downedTrojanSquirrel);
 
-        // Token: 0x0400005E RID: 94
         internal static bool downedDeviant;
+        public static Condition devi = new("CheckDowned.downedDeviant", () => downedDeviant);
 
-        // Token: 0x0400005F RID: 95
         internal static bool downedLieflight;
+        public static Condition lieflight = new("CheckDowned.downedLieflight", () => downedLieflight);
 
-        // Token: 0x04000060 RID: 96
         internal static bool downedCosmosChampion;
+        public static Condition cosmoschamp = new("CheckDowned.downedCosmosChampion", () => downedCosmosChampion);
 
-        // Token: 0x04000061 RID: 97
         internal static bool downedAbomination;
+        public static Condition abom = new("CheckDowned.downedAbomination", () => downedAbomination);
 
-        // Token: 0x04000062 RID: 98
         internal static bool downedMutant;
+        public static Condition mutant = new("CheckDowned.downedMutant", () => downedMutant);
 
-        // Token: 0x04000063 RID: 99
         internal static bool downedCloudfish;
+        public static Condition cloudfish = new("CheckDowned.downedCloudfish", () => downedCloudfish);
 
-        // Token: 0x04000064 RID: 100
         internal static bool downedConstruct;
+        public static Condition construct = new("CheckDowned.downedConstruct", () => downedConstruct);
 
-        // Token: 0x04000065 RID: 101
         internal static bool downedGigabat;
+        public static Condition gigabat = new("CheckDowned.downedGigabat", () => downedGigabat);
 
-        // Token: 0x04000066 RID: 102
         internal static bool downedSunPixie;
+        public static Condition sunpixie = new("CheckDowned.downedSunPixie", () => downedSunPixie);
 
-        // Token: 0x04000067 RID: 103
         internal static bool downedEsophage;
+        public static Condition esophage = new("CheckDowned.downedEsophage", () => downedEsophage);
 
-        // Token: 0x04000068 RID: 104
         internal static bool downedWanderer;
+        public static Condition wanderer = new("CheckDowned.downedWanderer", () => downedWanderer);
 
-        // Token: 0x04000069 RID: 105
         internal static bool downedThorn;
+        public static Condition thorn = new("CheckDowned.downedThorn", () => downedThorn);
 
-        // Token: 0x0400006A RID: 106
         internal static bool downedErhan;
+        public static Condition erhan = new("CheckDowned.downedErhan", () => downedErhan);
 
-        // Token: 0x0400006B RID: 107
         internal static bool downedKeeper;
+        public static Condition keeper = new("CheckDowned.downedKeeper", () => downedKeeper);
 
-        // Token: 0x0400006C RID: 108
         internal static bool downedSeed;
+        public static Condition seed = new("CheckDowned.downedSeed", () => downedSeed);
 
-        // Token: 0x0400006D RID: 109
         internal static bool downedKS3;
+        public static Condition ks3 = new("CheckDowned.downedKS3", () => downedKS3);
 
-        // Token: 0x0400006E RID: 110
         internal static bool downedCleaver;
+        public static Condition cleaver = new("CheckDowned.downedCleaver", () => downedCleaver);
 
-        // Token: 0x0400006F RID: 111
         internal static bool downedGigapora;
+        public static Condition gigapora = new("CheckDowned.downedGigapora", () => downedGigapora);
 
-        // Token: 0x04000070 RID: 112
         internal static bool downedObliterator;
+        public static Condition obliterator = new("CheckDowned.downedObliterator", () => downedObliterator);
 
-        // Token: 0x04000071 RID: 113
         internal static bool downedZero;
+        public static Condition zero = new("CheckDowned.downedZero", () => downedZero);
 
-        // Token: 0x04000072 RID: 114
         internal static bool downedDuo;
+        public static Condition duo = new("CheckDowned.downedDuo", () => downedDuo);
 
-        // Token: 0x04000073 RID: 115
         internal static bool downedNebby;
+        public static Condition nebby = new("CheckDowned.downedNebby", () => downedNebby);
 
-        // Token: 0x04000074 RID: 116
         internal static bool downedIncarnate;
+        public static Condition incarnate = new("CheckDowned.downedIncarnate", () => downedIncarnate);
 
-        // Token: 0x04000075 RID: 117
         internal static bool downedTitan;
+        public static Condition titan = new("CheckDowned.downedTitan", () => downedTitan);
 
-        // Token: 0x04000076 RID: 118
         internal static bool downedDunestock;
+        public static Condition dunestock = new("CheckDowned.downedDunestock", () => downedDunestock);
 
-        // Token: 0x04000077 RID: 119
         internal static bool downedCrawler;
+        public static Condition crawler = new("CheckDowned.downedCrawler", () => downedCrawler);
 
-        // Token: 0x04000078 RID: 120
         internal static bool downedConstructor;
+        public static Condition constructor = new("CheckDowned.downedConstructor", () => downedConstructor);
 
-        // Token: 0x04000079 RID: 121
         internal static bool downedP1;
+        public static Condition p1 = new("CheckDowned.downedP1", () => downedP1);
 
-        // Token: 0x0400007A RID: 122
         internal static bool downedSquid;
+        public static Condition squid = new("CheckDowned.downedSquid", () => downedSquid);
 
-        // Token: 0x0400007B RID: 123
         internal static bool downedRod;
+        public static Condition rod = new("CheckDowned.downedRod", () => downedRod);
 
-        // Token: 0x0400007C RID: 124
         internal static bool downedDiver;
+        public static Condition diver = new("CheckDowned.downedDiver", () => downedDiver);
 
-        // Token: 0x0400007D RID: 125
         internal static bool downedMotherbrain;
+        public static Condition motherbrain = new("CheckDowned.downedMotherbrain", () => downedMotherbrain);
 
-        // Token: 0x0400007E RID: 126
         internal static bool downedWoS;
+        public static Condition wos = new("CheckDowned.downedWoS", () => downedWoS);
 
-        // Token: 0x0400007F RID: 127
         internal static bool downedSGod;
+        public static Condition sgod = new("CheckDowned.downedSGod", () => downedSGod);
 
-        // Token: 0x04000080 RID: 128
         internal static bool downedOverwatcher;
+        public static Condition overwatcher = new("CheckDowned.downedOverwatcher", () => downedOverwatcher);
 
-        // Token: 0x04000081 RID: 129
         internal static bool downedLifebringer;
+        public static Condition lifebringer = new("CheckDowned.downedLifebringer", () => downedLifebringer);
 
-        // Token: 0x04000082 RID: 130
         internal static bool downedMaterealizer;
+        public static Condition materealizer = new("CheckDowned.downedMaterealizer", () => downedMaterealizer);
 
-        // Token: 0x04000083 RID: 131
         internal static bool downedScarab;
+        public static Condition scarab = new("CheckDowned.downedScarab", () => downedScarab);
 
-        // Token: 0x04000084 RID: 132
         internal static bool downedWhale;
+        public static Condition whale = new("CheckDowned.downedWhale", () => downedWhale);
 
-        // Token: 0x04000085 RID: 133
         internal static bool downedSon;
+        public static Condition son = new("CheckDowned.downedSon", () => downedSon);
 
         internal static bool downedGeldon;
+        public static Condition geldon = new("CheckDowned.downedGeldon", () => downedGeldon);
 
         internal static bool downedCrabson;
+        public static Condition crabson = new("CheckDowned.downedCrabson", () => downedCrabson);
 
         internal static bool downedStarite;
+        public static Condition starite = new("CheckDowned.downedStarite", () => downedStarite);
 
         internal static bool downedDevil;
+        public static Condition devil = new("CheckDowned.downedDevil", () => downedDevil);
 
         internal static bool downedSprite;
+        public static Condition sprite = new("CheckDowned.downedSprite", () => downedSprite);
 
         internal static bool downedSpaceSquid;
+        public static Condition spacesquid = new("CheckDowned.downedSpaceSquid", () => downedSpaceSquid);
 
         internal static bool downedUltraStarite;
+        public static Condition ultrastarite = new("CheckDowned.downedUltraStarite", () => downedUltraStarite);
 
-        // Token: 0x04000086 RID: 134
         internal static bool calamityLoaded;
+        public static Condition calamityloaded = new("CheckDowned.calamityLoaded", () => calamityLoaded);
 
-        // Token: 0x04000087 RID: 135
         internal static Mod calamityMod;
 
-        // Token: 0x04000088 RID: 136
         internal static bool thoriumLoaded;
+        public static Condition thoriumloaded = new("CheckDowned.thoriumLoaded", () => thoriumLoaded);
 
-        // Token: 0x04000089 RID: 137
         internal static Mod thoriumMod;
 
-        // Token: 0x0400008A RID: 138
         internal static bool sotsLoaded;
+        public static Condition sotsloaded = new("CheckDowned.sotsLoaded", () => sotsLoaded);
 
-        // Token: 0x0400008B RID: 139
         internal static Mod sotsMod;
 
-        // Token: 0x0400008C RID: 140
         internal static bool vitalityLoaded;
+        public static Condition vitalityloaded = new("CheckDowned.vitalityLoaded", () => vitalityLoaded);
 
-        // Token: 0x0400008D RID: 141
         internal static Mod vitalityMod;
 
-        // Token: 0x0400008E RID: 142
         internal static bool consolariaLoaded;
+        public static Condition consolarialoaded = new("CheckDowned.consolariaLoaded", () => consolariaLoaded);
 
-        // Token: 0x0400008F RID: 143
         internal static Mod consolariaMod;
 
-        // Token: 0x04000090 RID: 144
         internal static bool spookyLoaded;
+        public static Condition spookyloaded = new("CheckDowned.spookyLoaded", () => spookyLoaded);
 
-        // Token: 0x04000091 RID: 145
         internal static Mod spookyMod;
 
-        // Token: 0x04000092 RID: 146
         internal static bool fargosSoulsLoaded;
+        public static Condition soulsloaded = new("CheckDowned.fargosSoulsLoaded", () => fargosSoulsLoaded);
 
-        // Token: 0x04000093 RID: 147
         internal static Mod fargosSoulsMod;
 
-        // Token: 0x04000094 RID: 148
         internal static bool polaritiesLoaded;
+        public static Condition polaritiesloaded = new("CheckDowned.polaritiesLoaded", () => polaritiesLoaded);
 
-        // Token: 0x04000095 RID: 149
         internal static Mod polaritiesMod;
 
-        // Token: 0x04000096 RID: 150
         internal static bool redemptionLoaded;
+        public static Condition redemptionloaded = new("CheckDowned.redemptionLoaded", () => redemptionLoaded);
 
-        // Token: 0x04000097 RID: 151
         internal static Mod redemptionMod;
 
-        // Token: 0x04000098 RID: 152
         internal static bool terrorbornLoaded;
+        public static Condition terrorbornloaded = new("CheckDowned.terrorbornLoaded", () => terrorbornLoaded);
 
-        // Token: 0x04000099 RID: 153
         internal static Mod terrorbornMod;
 
-        // Token: 0x0400009A RID: 154
         internal static bool homewardLoaded;
+        public static Condition homewardloaded = new("CheckDowned.homewardLoaded", () => homewardLoaded);
 
-        // Token: 0x0400009B RID: 155
         internal static Mod homewardMod;
 
         internal static bool catalystLoaded;
+        public static Condition catalystloaded = new("CheckDowned.catalystLoaded", () => catalystLoaded);
 
         internal static Mod catalystMod;
 
         internal static bool aqLoaded;
+        public static Condition aqloaded = new("CheckDowned.aqLoaded", () => aqLoaded);
 
         internal static Mod aqMod;
     }

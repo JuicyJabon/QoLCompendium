@@ -57,7 +57,7 @@ namespace QoLCompendium.Tweaks
             }
         }
 
-        public override void OnRespawn(Player player)
+        public override void OnRespawn()
         {
             if (ModContent.GetInstance<QoLCConfig>().FullHPRespawn)
             {
@@ -793,7 +793,7 @@ namespace QoLCompendium.Tweaks
         {
             if (itemType == 854 || itemType == 3035)
             {
-                Player.discount = true;
+                Player.discountAvailable = true;
                 return;
             }
             if (itemType == 3619 || itemType == 3611)

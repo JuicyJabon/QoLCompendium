@@ -1,0 +1,97 @@
+Mods: {
+	QoLCompendium: {
+		Items: {
+			AutoHouser: {
+				DisplayName: Auto Houser
+				Tooltip: Places an NPC house
+			}
+
+			CursedMirror: {
+				DisplayName: Cursed Mirror
+				Tooltip: Gaze into the mirror to materialize at your last death
+			}
+
+			EnemyAggressor: {
+				DisplayName: Enemy Aggressor
+				Tooltip: Favorite this item to increase enemy spawns by 10x
+			}
+
+			EnemyEraser: {
+				DisplayName: Enemy Eraser
+				Tooltip: Favorite this item to disable enemy spawns
+			}
+
+			EventEraser: {
+				DisplayName: Event Eraser
+				Tooltip:
+					'''
+					Favorite this item to disable events 
+					Lunar towers only cancel if you have beaten them before
+					'''
+			}
+
+			Forwarper: {
+				DisplayName: Forwarper
+				Tooltip: Switches the time from day to night, and vise-versa
+			}
+
+			HeadCounter: {
+				DisplayName: Head Counter
+				Tooltip: Displays available minion and sentry slots
+			}
+
+			HellevatorCreator: {
+				DisplayName: Hellevator Creator
+				Tooltip:
+					'''
+					Creates a drill bomb that carves a hellevator 
+					Will destroy anything in it's path directly below the impact
+					'''
+			}
+
+			Magnet: {
+				DisplayName: Magnet
+				Tooltip: Favorite this item to have infinite item grab range
+			}
+
+			MoonPhaser: {
+				DisplayName: Moon Phaser
+				Tooltip: Advances the moon's phase
+			}
+
+			TravelerArriver: {
+				DisplayName: Traveler Arriver
+				Tooltip: Summons a Traveling Merchant
+			}
+
+			WatchingEye: {
+				DisplayName: Watching Eye
+				Tooltip: Reveals the whole map
+			}
+
+			WorldGlobe: {
+				DisplayName: World Globe
+				Tooltip: Favorite this item to always be in the selected biome
+			}
+
+			ArrowLeft.DisplayName: Previous page
+			ArrowRight.DisplayName: Next page
+		}
+
+		NPCs: {
+			BMDealerNPC.DisplayName: Black Market Dealer
+			EtherealCollectorNPC.DisplayName: Ethereal Collector
+		}
+
+		Projectiles: {
+			AutoHouserProj.DisplayName: Auto Houser Proj
+			HellevatorCreatorProj.DisplayName: Hellevator Creator
+			LifeformLocator.DisplayName: Lifeform Locator
+		}
+
+		InfoDisplays: {
+			MinionInfoDisplay.DisplayName: Minion Slots
+			SentryInfoDisplay.DisplayName: Sentry Slots
+		}
+	}
+}

@@ -1,4 +1,3 @@
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
@@ -20,7 +19,7 @@ namespace QoLCompendium.Items
         // Token: 0x060000DC RID: 220 RVA: 0x0000FDB0 File Offset: 0x0000DFB0
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Switches the time from day to night, and vise-versa");
+            // Tooltip.SetDefault("Switches the time from day to night, and vise-versa");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

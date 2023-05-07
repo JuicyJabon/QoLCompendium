@@ -104,6 +104,12 @@ namespace QoLCompendium
         public bool AHouser { get; set; }
 
         [DefaultValue(true)]
+        [Label("Traveler Arriver")]
+        [Tooltip("Toggles the Travler Arriver item \nDefault value: True \nReload Required")]
+        [ReloadRequired]
+        public bool TArriver { get; set; }
+
+        [DefaultValue(true)]
         [Label("Boss Bags Don't Drop Dev Sets")]
         [Tooltip("Toggles if boss bags can drop dev sets \nDefault value: True")]
         [ReloadRequired]

@@ -28,6 +28,7 @@ Current Features:
  - Item that changes time
  - Item that advances the moon phase
  - Item that reveals the whole map
+ - Item that spawns travelling merchants
  - Weapon autoswing
  - Faster extractinator
  - Increased max stack size
@@ -41,7 +42,6 @@ Current Features:
  - Non-consumable Boss & Event summons
  - 1 Town NPC who sells almost everything needed
  - 1 Town NPC who sells a ton of modded items
- - Shop Expander
  - Friendly NPCs don't take damage
  - NPC happiness removal
  - Editable celestial tower shield health
@@ -67,6 +67,3 @@ Current Mod Support:
  - Terrorborn: NPC Sales
  - Thorium: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
  - Vitality: Non-consumable Boss summons & NPC Sales
-
-CREDITS:
- - ExterminatorX99 & DRKV333: Shop Expander

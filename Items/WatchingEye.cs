@@ -1,6 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using QoLCompendium.Tweaks;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
@@ -18,7 +16,7 @@ namespace QoLCompendium.Items
 
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Reveals the whole map");
+            // Tooltip.SetDefault("Reveals the whole map");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

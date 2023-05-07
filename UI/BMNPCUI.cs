@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.ModLoader;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 
@@ -27,8 +28,8 @@ namespace QoLCompendium.UI
             ShopPanel.Height.Set(340f, 0f);
             ShopPanel.BackgroundColor = new Color(73, 94, 171);
 
-            ShopPanel.OnMouseDown += new MouseEvent(DragStart);
-            ShopPanel.OnMouseUp += new MouseEvent(DragEnd);
+            ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
+            ShopPanel.OnLeftMouseUp += new MouseEvent(DragEnd);
 
             UIText text0 = new("Potions");
             text0.Left.Set(35, 0f);
@@ -113,77 +114,77 @@ namespace QoLCompendium.UI
             playButton0.Top.Set(10, 0f);
             playButton0.Width.Set(22, 0f);
             playButton0.Height.Set(22, 0f);
-            playButton0.OnClick += new MouseEvent(PlayButtonClicked0);
+            playButton0.OnLeftClick += new MouseEvent(PlayButtonClicked0);
             ShopPanel.Append(playButton0);
             UIImageButton playButton1 = new(buttonPlayTexture);
             playButton1.Left.Set(10, 0f);
             playButton1.Top.Set(40, 0f);
             playButton1.Width.Set(22, 0f);
             playButton1.Height.Set(22, 0f);
-            playButton1.OnClick += new MouseEvent(PlayButtonClicked1);
+            playButton1.OnLeftClick += new MouseEvent(PlayButtonClicked1);
             ShopPanel.Append(playButton1);
             UIImageButton playButton2 = new(buttonPlayTexture);
             playButton2.Left.Set(10, 0f);
             playButton2.Top.Set(70, 0f);
             playButton2.Width.Set(22, 0f);
             playButton2.Height.Set(22, 0f);
-            playButton2.OnClick += new MouseEvent(PlayButtonClicked2);
+            playButton2.OnLeftClick += new MouseEvent(PlayButtonClicked2);
             ShopPanel.Append(playButton2);
             UIImageButton playButton3 = new(buttonPlayTexture);
             playButton3.Left.Set(10, 0f);
             playButton3.Top.Set(100, 0f);
             playButton3.Width.Set(22, 0f);
             playButton3.Height.Set(22, 0f);
-            playButton3.OnClick += new MouseEvent(PlayButtonClicked3);
+            playButton3.OnLeftClick += new MouseEvent(PlayButtonClicked3);
             ShopPanel.Append(playButton3);
             UIImageButton playButton4 = new(buttonPlayTexture);
             playButton4.Left.Set(10, 0f);
             playButton4.Top.Set(130, 0f);
             playButton4.Width.Set(22, 0f);
             playButton4.Height.Set(22, 0f);
-            playButton4.OnClick += new MouseEvent(PlayButtonClicked4);
+            playButton4.OnLeftClick += new MouseEvent(PlayButtonClicked4);
             ShopPanel.Append(playButton4);
             UIImageButton playButton5 = new(buttonPlayTexture);
             playButton5.Left.Set(10, 0f);
             playButton5.Top.Set(160, 0f);
             playButton5.Width.Set(22, 0f);
             playButton5.Height.Set(22, 0f);
-            playButton5.OnClick += new MouseEvent(PlayButtonClicked5);
+            playButton5.OnLeftClick += new MouseEvent(PlayButtonClicked5);
             ShopPanel.Append(playButton5);
             UIImageButton playButton6 = new(buttonPlayTexture);
             playButton6.Left.Set(10, 0f);
             playButton6.Top.Set(190, 0f);
             playButton6.Width.Set(22, 0f);
             playButton6.Height.Set(22, 0f);
-            playButton6.OnClick += new MouseEvent(PlayButtonClicked6);
+            playButton6.OnLeftClick += new MouseEvent(PlayButtonClicked6);
             ShopPanel.Append(playButton6);
             UIImageButton playButton7 = new(buttonPlayTexture);
             playButton7.Left.Set(10, 0f);
             playButton7.Top.Set(220, 0f);
             playButton7.Width.Set(22, 0f);
             playButton7.Height.Set(22, 0f);
-            playButton7.OnClick += new MouseEvent(PlayButtonClicked7);
+            playButton7.OnLeftClick += new MouseEvent(PlayButtonClicked7);
             ShopPanel.Append(playButton7);
             UIImageButton playButton8 = new(buttonPlayTexture);
             playButton8.Left.Set(10, 0f);
             playButton8.Top.Set(250, 0f);
             playButton8.Width.Set(22, 0f);
             playButton8.Height.Set(22, 0f);
-            playButton8.OnClick += new MouseEvent(PlayButtonClicked8);
+            playButton8.OnLeftClick += new MouseEvent(PlayButtonClicked8);
             ShopPanel.Append(playButton8);
             UIImageButton playButton9 = new(buttonPlayTexture);
             playButton9.Left.Set(10, 0f);
             playButton9.Top.Set(280, 0f);
             playButton9.Width.Set(22, 0f);
             playButton9.Height.Set(22, 0f);
-            playButton9.OnClick += new MouseEvent(PlayButtonClicked9);
+            playButton9.OnLeftClick += new MouseEvent(PlayButtonClicked9);
             ShopPanel.Append(playButton9);
             UIImageButton playButton10 = new(buttonPlayTexture);
             playButton10.Left.Set(10, 0f);
             playButton10.Top.Set(310, 0f);
             playButton10.Width.Set(22, 0f);
             playButton10.Height.Set(22, 0f);
-            playButton10.OnClick += new MouseEvent(PlayButtonClicked10);
+            playButton10.OnLeftClick += new MouseEvent(PlayButtonClicked10);
             ShopPanel.Append(playButton10);
 
             Asset<Texture2D> buttonDeleteTexture = Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
@@ -192,7 +193,7 @@ namespace QoLCompendium.UI
             closeButton.Top.Set(10, 0f);
             closeButton.Width.Set(22, 0f);
             closeButton.Height.Set(22, 0f);
-            closeButton.OnClick += new MouseEvent(CloseButtonClicked);
+            closeButton.OnLeftClick += new MouseEvent(CloseButtonClicked);
             ShopPanel.Append(closeButton);
             Append(ShopPanel);
         }
@@ -202,12 +203,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 BMDealerNPC.shopNum = 0;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -216,12 +212,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 BMDealerNPC.shopNum = 1;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -230,12 +221,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 BMDealerNPC.shopNum = 2;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -244,12 +230,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 BMDealerNPC.shopNum = 3;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -258,12 +239,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 BMDealerNPC.shopNum = 4;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -272,12 +248,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 BMDealerNPC.shopNum = 5;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -286,12 +257,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 BMDealerNPC.shopNum = 6;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -300,12 +266,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 BMDealerNPC.shopNum = 7;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -314,12 +275,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 BMDealerNPC.shopNum = 8;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -328,12 +284,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 BMDealerNPC.shopNum = 9;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -342,12 +293,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 BMDealerNPC.shopNum = 10;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 

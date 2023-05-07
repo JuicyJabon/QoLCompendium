@@ -1,9 +1,8 @@
-using System;
 using QoLCompendium.Tweaks;
 using Terraria;
 using Terraria.GameContent.Creative;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace QoLCompendium.Items
 {
@@ -19,7 +18,7 @@ namespace QoLCompendium.Items
         // Token: 0x060000CA RID: 202 RVA: 0x0000F93A File Offset: 0x0000DB3A
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Favorite this item to increase enemy spawns by 10x");
+            // Tooltip.SetDefault("Favorite this item to increase enemy spawns by 10x");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

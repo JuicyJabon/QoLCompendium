@@ -27,8 +27,8 @@ namespace QoLCompendium.UI
             ShopPanel.Height.Set(190f, 0f);
             ShopPanel.BackgroundColor = new Color(73, 94, 171);
 
-            ShopPanel.OnMouseDown += new MouseEvent(DragStart);
-            ShopPanel.OnMouseUp += new MouseEvent(DragEnd);
+            ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
+            ShopPanel.OnLeftMouseUp += new MouseEvent(DragEnd);
 
             UIText text0 = new("Modded Potions");
             text0.Left.Set(35, 0f);
@@ -78,42 +78,42 @@ namespace QoLCompendium.UI
             playButton0.Top.Set(10, 0f);
             playButton0.Width.Set(22, 0f);
             playButton0.Height.Set(22, 0f);
-            playButton0.OnClick += new MouseEvent(PlayButtonClicked0);
+            playButton0.OnLeftClick += new MouseEvent(PlayButtonClicked0);
             ShopPanel.Append(playButton0);
             UIImageButton playButton1 = new(buttonPlayTexture);
             playButton1.Left.Set(10, 0f);
             playButton1.Top.Set(40, 0f);
             playButton1.Width.Set(22, 0f);
             playButton1.Height.Set(22, 0f);
-            playButton1.OnClick += new MouseEvent(PlayButtonClicked1);
+            playButton1.OnLeftClick += new MouseEvent(PlayButtonClicked1);
             ShopPanel.Append(playButton1);
             UIImageButton playButton2 = new(buttonPlayTexture);
             playButton2.Left.Set(10, 0f);
             playButton2.Top.Set(70, 0f);
             playButton2.Width.Set(22, 0f);
             playButton2.Height.Set(22, 0f);
-            playButton2.OnClick += new MouseEvent(PlayButtonClicked2);
+            playButton2.OnLeftClick += new MouseEvent(PlayButtonClicked2);
             ShopPanel.Append(playButton2);
             UIImageButton playButton3 = new(buttonPlayTexture);
             playButton3.Left.Set(10, 0f);
             playButton3.Top.Set(100, 0f);
             playButton3.Width.Set(22, 0f);
             playButton3.Height.Set(22, 0f);
-            playButton3.OnClick += new MouseEvent(PlayButtonClicked3);
+            playButton3.OnLeftClick += new MouseEvent(PlayButtonClicked3);
             ShopPanel.Append(playButton3);
             UIImageButton playButton4 = new(buttonPlayTexture);
             playButton4.Left.Set(10, 0f);
             playButton4.Top.Set(130, 0f);
             playButton4.Width.Set(22, 0f);
             playButton4.Height.Set(22, 0f);
-            playButton4.OnClick += new MouseEvent(PlayButtonClicked4);
+            playButton4.OnLeftClick += new MouseEvent(PlayButtonClicked4);
             ShopPanel.Append(playButton4);
             UIImageButton playButton5 = new(buttonPlayTexture);
             playButton5.Left.Set(10, 0f);
             playButton5.Top.Set(160, 0f);
             playButton5.Width.Set(22, 0f);
             playButton5.Height.Set(22, 0f);
-            playButton5.OnClick += new MouseEvent(PlayButtonClicked5);
+            playButton5.OnLeftClick += new MouseEvent(PlayButtonClicked5);
             ShopPanel.Append(playButton5);
 
             Asset<Texture2D> buttonDeleteTexture = Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
@@ -122,7 +122,7 @@ namespace QoLCompendium.UI
             closeButton.Top.Set(10, 0f);
             closeButton.Width.Set(22, 0f);
             closeButton.Height.Set(22, 0f);
-            closeButton.OnClick += new MouseEvent(CloseButtonClicked);
+            closeButton.OnLeftClick += new MouseEvent(CloseButtonClicked);
             ShopPanel.Append(closeButton);
             Append(ShopPanel);
         }
@@ -132,12 +132,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 EtherealCollectorNPC.shopNum = 0;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -146,12 +141,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 EtherealCollectorNPC.shopNum = 1;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -160,12 +150,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 EtherealCollectorNPC.shopNum = 2;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -174,12 +159,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 EtherealCollectorNPC.shopNum = 3;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -188,12 +168,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 EtherealCollectorNPC.shopNum = 4;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
@@ -202,12 +177,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 EtherealCollectorNPC.shopNum = 5;
-                NPC npc = Main.npc[Main.LocalPlayer.talkNPC];
                 visible = false;
-                Main.playerInventory = true;
-                Main.npcChatText = "";
-                Main.SetNPCShopIndex(Main.MaxShopIDs - 1);
-                Main.instance.shop[Main.npcShop].SetupShop(npc.type);
             }
         }
 
