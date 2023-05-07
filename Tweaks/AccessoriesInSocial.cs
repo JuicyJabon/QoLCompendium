@@ -1,7 +1,5 @@
-using System;
 using Terraria;
 using Terraria.ModLoader;
-using tModPorter;
 
 namespace QoLCompendium.Tweaks
 {
@@ -13,7 +11,7 @@ namespace QoLCompendium.Tweaks
         {
             if (item.accessory && ModContent.GetInstance<QoLCConfig>().VanityAccessories)
             {
-                item.canBePlacedInVanityRegardlessOfConditions = true;
+                item.hasVanityEffects = true;
             }
         }
     }

@@ -1,4 +1,3 @@
-using System;
 using Terraria;
 
 namespace QoLCompendium.Tweaks

@@ -1,4 +1,3 @@
-using System;
 using QoLCompendium.Tweaks;
 using Terraria;
 using Terraria.GameContent.Creative;
@@ -19,7 +18,7 @@ namespace QoLCompendium.Items
         // Token: 0x060000FF RID: 255 RVA: 0x000103AA File Offset: 0x0000E5AA
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Favorite this item to have infinite item grab range");
+            // Tooltip.SetDefault("Favorite this item to have infinite item grab range");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

@@ -1,4 +1,3 @@
-using System;
 using QoLCompendium.Tweaks;
 using Terraria;
 using Terraria.GameContent.Creative;
@@ -19,7 +18,7 @@ namespace QoLCompendium.Items
         // Token: 0x060000E8 RID: 232 RVA: 0x0000FFF6 File Offset: 0x0000E1F6
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Displays available minion and sentry slots");
+            // Tooltip.SetDefault("Displays available minion and sentry slots");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

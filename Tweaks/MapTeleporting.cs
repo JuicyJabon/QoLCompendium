@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace QoLCompendium.Tweaks
 {
@@ -45,7 +44,7 @@ namespace QoLCompendium.Tweaks
                     Main.LocalPlayer.position = vector2;
                     Main.LocalPlayer.velocity = Vector2.Zero;
                     Main.LocalPlayer.fallStart = (int)(Main.LocalPlayer.position.Y / 16f);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)Main.myPlayer, vector2.X, vector2.Y, 1, 0, 0);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Main.myPlayer, vector2.X, vector2.Y, 1, 0, 0);
                 }
             }
         }

@@ -1,9 +1,8 @@
-using System;
 using QoLCompendium.Tweaks;
 using Terraria;
 using Terraria.GameContent.Creative;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace QoLCompendium.Items
 {
@@ -19,7 +18,7 @@ namespace QoLCompendium.Items
         // Token: 0x060000D0 RID: 208 RVA: 0x0000FA1F File Offset: 0x0000DC1F
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Favorite this item to disable enemy spawns");
+            // Tooltip.SetDefault("Favorite this item to disable enemy spawns");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

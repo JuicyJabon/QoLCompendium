@@ -1,9 +1,8 @@
-using System;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.GameContent.Events;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace QoLCompendium.Items
 {
@@ -19,7 +18,7 @@ namespace QoLCompendium.Items
         // Token: 0x060000D6 RID: 214 RVA: 0x0000FAF5 File Offset: 0x0000DCF5
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Favorite this item to disable events \nLunar towers only cancel if you have beaten them before");
+            // Tooltip.SetDefault("Favorite this item to disable events \nLunar towers only cancel if you have beaten them before");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
@@ -103,7 +102,7 @@ namespace QoLCompendium.Items
                         if (Main.npc[i].active && (Main.npc[i].type == NPCID.LunarTowerNebula || Main.npc[i].type == NPCID.LunarTowerSolar || Main.npc[i].type == NPCID.LunarTowerStardust || Main.npc[i].type == NPCID.LunarTowerVortex))
                         {
                             Main.npc[i].dontTakeDamage = false;
-                            Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0, false, false, false);
+                            Main.npc[i].StrikeInstantKill();
                         }
                     }
                 }

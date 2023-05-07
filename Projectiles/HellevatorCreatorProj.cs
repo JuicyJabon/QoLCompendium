@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -13,7 +12,7 @@ namespace QoLCompendium.Projectiles
         // Token: 0x06000086 RID: 134 RVA: 0x00007F83 File Offset: 0x00006183
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hellevator Creator");
+            // DisplayName.SetDefault("Hellevator Creator");
         }
 
         // Token: 0x06000087 RID: 135 RVA: 0x00007F98 File Offset: 0x00006198

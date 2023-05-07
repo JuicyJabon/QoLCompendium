@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-using Terraria;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace QoLCompendium.Tweaks

@@ -1,9 +1,8 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Creative;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace QoLCompendium.Items
 {
@@ -19,7 +18,7 @@ namespace QoLCompendium.Items
         // Token: 0x060000BE RID: 190 RVA: 0x0000F5AA File Offset: 0x0000D7AA
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Gaze into the mirror to materialize at your last death");
+            // Tooltip.SetDefault("Gaze into the mirror to materialize at your last death");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
@@ -78,12 +77,12 @@ namespace QoLCompendium.Items
             Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient(ItemID.MagicMirror, 1);
             recipe.AddTile(TileID.WorkBenches);
-            recipe.AddCondition(Recipe.Condition.InGraveyardBiome);
+            recipe.AddCondition(Condition.InGraveyard);
             recipe.Register();
             Recipe recipe2 = CreateRecipe(1);
             recipe2.AddIngredient(ItemID.IceMirror, 1);
             recipe2.AddTile(TileID.WorkBenches);
-            recipe2.AddCondition(Recipe.Condition.InGraveyardBiome);
+            recipe2.AddCondition(Condition.InGraveyard);
             recipe2.Register();
         }
     }
