@@ -45,7 +45,7 @@ namespace QoLCompendium.Items
         {
             if (Item.favorited)
             {
-                player.GetModPlayer<QolCPlayer>().enemyAggressor = true;
+                player.GetModPlayer<QoLCPlayer>().enemyAggressor = true;
             }
         }
     }

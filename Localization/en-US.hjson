@@ -74,13 +74,56 @@ Mods: {
 				Tooltip: Favorite this item to always be in the selected biome
 			}
 
-			ArrowLeft.DisplayName: Previous page
-			ArrowRight.DisplayName: Next page
+			BannerBox: {
+				DisplayName: Banner Box
+				Tooltip: Favorite this item to recieve banner buffs for enemies with 50 kills logged
+			}
 		}
 
 		NPCs: {
-			BMDealerNPC.DisplayName: Black Market Dealer
-			EtherealCollectorNPC.DisplayName: Ethereal Collector
+			BMDealerNPC: {
+				DisplayName: Black Market Dealer
+
+				TownNPCMood: {
+					Content: I am content.
+					NoHome: I hate not having a home.
+					FarFromHome: I am too far from home.
+					LoveSpace: I love having so much space.
+					DislikeCrowded: I dislike how crowded I am.
+					HateCrowded: I hate how crowded I am.
+					LoveBiome: I love {BiomeName}.
+					LikeBiome: I like {BiomeName}.
+					DislikeBiome: I dislike {BiomeName}.
+					LoveNPC: I love {NPCName}.
+					LikeNPC: I like {NPCName}.
+					DislikeNPC: I dislike {NPCName}.
+					HateNPC: I hate {NPCName}.
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
+				}
+			}
+
+			EtherealCollectorNPC: {
+				DisplayName: Ethereal Collector
+
+				TownNPCMood: {
+					Content: I am content.
+					NoHome: I hate not having a home.
+					FarFromHome: I am too far from home.
+					LoveSpace: I love having so much space.
+					DislikeCrowded: I dislike how crowded I am.
+					HateCrowded: I hate how crowded I am.
+					LoveBiome: I love {BiomeName}.
+					LikeBiome: I like {BiomeName}.
+					DislikeBiome: I dislike {BiomeName}.
+					LoveNPC: I love {NPCName}.
+					LikeNPC: I like {NPCName}.
+					DislikeNPC: I dislike {NPCName}.
+					HateNPC: I hate {NPCName}.
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
+				}
+			}
 		}
 
 		Projectiles: {
@@ -92,6 +135,215 @@ Mods: {
 		InfoDisplays: {
 			MinionInfoDisplay.DisplayName: Minion Slots
 			SentryInfoDisplay.DisplayName: Sentry Slots
+		}
+
+		Configs: {
+			QoLCConfig: {
+				DisplayName: Compendium Config
+
+				EndlessBuffsAndHealing: {
+					Label: Endless Buffs And Healing
+					Tooltip:
+						'''
+						Toggles endless buffs & healing on stacks of 30 or greater
+						You only need 1 buff station for station buffs
+						'''
+				}
+
+				EndlessConsumables: {
+					Label: Endless Consumables
+					Tooltip:
+						'''
+						Toggles endless consumables on stacks of 999 or greater
+						Includes tiles, bait, weapons, ammo, and other misc items
+						Boss and event summons only require 1 item
+						'''
+				}
+
+				ExtraBuffSlots: {
+					Label: Extra Buff Slots
+					Tooltip: The amount of extra buff slots
+				}
+
+				InstantRespawn: {
+					Label: Instant Respawn
+					Tooltip:
+						'''
+						Toggles instant respawns, will despawn bosses on death if enabled
+						Turn off for multiplayer, has unintended effects with boss despawns
+						'''
+				}
+
+				FullHPRespawn: {
+					Label: Full HP Respawn
+					Tooltip: Toggles if you respawn with max health
+				}
+
+				NoSpawns: {
+					Label: No Spawns During Bosses
+					Tooltip: Toggles enemy spawns during bosses
+				}
+
+				Magnet: {
+					Label: Magnet
+					Tooltip: Toggles the Item Magnet item
+				}
+
+				Globes: {
+					Label: World Globe
+					Tooltip: Toggles the World Globe item
+				}
+
+				Erasers: {
+					Label: Erasers
+					Tooltip: Toggles the Eraser & Aggressor items
+				}
+
+				CursedMirror: {
+					Label: Cursed Mirror
+					Tooltip: Toggles the Cursed Mirror item
+				}
+
+				HeadCounter: {
+					Label: Head Counter
+					Tooltip: Toggles the Head Counter item
+				}
+
+				Forwarper: {
+					Label: Forwarper
+					Tooltip: Toggles the Forwarper item
+				}
+
+				MoonPhaser: {
+					Label: Moon Phaser
+					Tooltip: Toggles the Moon Phaser item
+				}
+
+				WatchingEye: {
+					Label: Watching Eye
+					Tooltip: Toggles the Watching Eye item
+				}
+
+				HCreator: {
+					Label: Hellevator Creator
+					Tooltip: Toggles the Hellevator Creator item
+				}
+
+				AHouser: {
+					Label: Auto Houser
+					Tooltip: Toggles the Auto Houser item
+				}
+
+				TArriver: {
+					Label: Traveller Arriver
+					Tooltip: Toggles the Travler Arriver item
+				}
+
+				BBox: {
+					Label: Banner Box
+					Tooltip: Toggles the Banner Box item
+				}
+
+				NoDevs: {
+					Label: No Devs From Boss Bags
+					Tooltip: Toggles if boss bags can drop dev sets
+				}
+
+				BMNPC: {
+					Label: Black Market Dealer
+					Tooltip: Toggles the Black Market Dealer NPC
+				}
+
+				ECNPC: {
+					Label: Ethereal Collector
+					Tooltip: Toggles the Ethereal Collector NPC
+				}
+
+				FriendliesDontDie: {
+					Label: Friendlies Dont Die
+					Tooltip: Toggles whether friendly NPCs take damage
+				}
+
+				ToggleHappiness: {
+					Label: Toggle Happiness
+					Tooltip: Toggles if NPCs should have happiness or not
+				}
+
+				TowerShield: {
+					Label: Tower Shield Health
+					Tooltip: Changes the shield health of the celestial towers
+				}
+
+				MoreCoins: {
+					Label: More Coins
+					Tooltip: Increases the amount of dropped coins
+				}
+
+				IncreasePlaceSpeed: {
+					Label: Fast Place Speed
+					Tooltip: Toggles faster placement speed & increased placement range
+				}
+
+				FastTools: {
+					Label: Fast Tools
+					Tooltip: Toggles faster tool use speed
+				}
+
+				FastExtractor: {
+					Label: Fast Extractor
+					Tooltip: Toggles faster extractinator use speed
+				}
+
+				AutoMoneyStack: {
+					Label: Auto Money Stack
+					Tooltip:
+						'''
+						Toggles money automatically going into the bank
+						Requires at least 1 copper in the bank to function
+						'''
+				}
+
+				LifeformPointer: {
+					Label: Lifeform Pointer
+					Tooltip: Toggles an arrow that points towards rare creatures when using a lifeform analyzer
+				}
+
+				InformationBanks: {
+					Label: Information In Banks
+					Tooltip: Toggles if informational, fishing, mining, and building accessories work in banks
+				}
+
+				MapPorting: {
+					Label: Map Teleporting
+					Tooltip: Toggles if you can right click on the map to teleport to that position
+				}
+
+				StalkerMoneyTrough: {
+					Label: Stalker Money Trough
+					Tooltip: Toggles if the Money Trough follows you
+				}
+
+				ExtraLures: {
+					Label: Extra Lures
+					Tooltip: Toggles if fishing rods fire extra lures
+				}
+
+				NoLittering: {
+					Label: No Block Littering
+					Tooltip: Toggles if certain projectiles don't place their tile
+				}
+			}
+		}
+
+		QoLCConfig: {
+			Headers: {
+				Endless: Endless Toggles
+				Spawn: Spawn Toggles
+				Items: Item Toggles
+				NPCs: NPC Toggles
+				Speed: Speed Toggles
+				Other: Other Toggles
+			}
 		}
 	}
 }

@@ -12,39 +12,26 @@ Current Features:
  - Endless Placeables (999+)
  - Endless Bait (999+)
  - Endless Ammo (999+)
+ - Non-consumable Boss & Event summons
  - Increased max buff slots
  - Faster respawns
  - Full HP on spawn
  - No enemy spawns during bosses
  - Lifeform Analyzer points towards rare creatures
  - Crazy fast mining & placing speeds
- - Items that disable enemy & event spawns
- - Item that increases spawn rates by 10x
- - Item that forces biomes
- - Item that teleports you to your last death
- - Item magnet that sucks all items towards you
- - Items that instantly create structures
- - Item that displays minion and sentry slots
- - Item that changes time
- - Item that advances the moon phase
- - Item that reveals the whole map
- - Item that spawns travelling merchants
- - Weapon autoswing
+ - Many items for easing the playing experience
  - Faster extractinator
- - Increased max stack size
  - Automatic coin quick-stacking
  - Increased coin drops
- - All accessories can be placed in vanity
  - Informational accessories work in banks
  - Boss bags don't drop vanities
  - Flying money trough follows the player
  - Extra fishing lures
- - Non-consumable Boss & Event summons
- - 1 Town NPC who sells almost everything needed
- - 1 Town NPC who sells a ton of modded items
- - Friendly NPCs don't take damage
+ - 2 Town NPCs who sell almost everything needed
+ - Friendly NPCs become invincible
  - NPC happiness removal
  - Editable celestial tower shield health
+ - Map teleporting
 
 Warning on Mod Support:
 If you have more than one of the supported mods enabled there is a good chance that the NPC shops will overflow.

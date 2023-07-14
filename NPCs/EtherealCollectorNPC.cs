@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
@@ -33,7 +32,6 @@ namespace QoLCompendium.NPCs
 
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Ethereal Collector");
             Main.npcFrameCount[NPC.type] = 26;
             NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
             NPCID.Sets.AttackFrameCount[NPC.type] = 5;
@@ -76,7 +74,7 @@ namespace QoLCompendium.NPCs
             Lighting.AddLight(NPC.Center, 1f, 1f, 1f);
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
+        public override bool CanTownNPCSpawn(int numTownNPCs)
         {
             return true;
         }
@@ -150,25 +148,30 @@ namespace QoLCompendium.NPCs
             }
             else if (shopNum == 1)
             {
-                button = "Modded Materials";
-                ShopName = "Modded Materials";
+                button = "Modded Materials 1";
+                ShopName = "Modded Materials 1";
             }
             else if (shopNum == 2)
             {
-                button = "Rare Modded Materials";
-                ShopName = "Rare Modded Materials";
+                button = "Modded Materials 2";
+                ShopName = "Modded Materials 2";
             }
             else if (shopNum == 3)
+            {
+                button = "Modded Materials 3";
+                ShopName = "Modded Materials 3";
+            }
+            else if (shopNum == 4)
             {
                 button = "Modded Treasure Bags 1";
                 ShopName = "Modded Treasure Bags 1";
             }
-            else if (shopNum == 4)
+            else if (shopNum == 5)
             {
                 button = "Modded Treasure Bags 2";
                 ShopName = "Modded Treasure Bags 2";
             }
-            else if (shopNum == 5)
+            else if (shopNum == 6)
             {
                 button = "Modded Treasure Bags 3";
                 ShopName = "Modded Treasure Bags 3";
@@ -190,7 +193,7 @@ namespace QoLCompendium.NPCs
             }
         }
 
-        public override void ModifyActiveShop(string shopName, Item[] items)
+        public override void AddShops()
         {
             var modPotShop = new NPCShop(Type, "Modded Potions");
             if (CheckDowned.calamityLoaded)
@@ -350,6 +353,21 @@ namespace QoLCompendium.NPCs
                     modPotShop.Add(WarmongerPotion.Type, Condition.DownedEowOrBoc);
                 }
             }
+            if (CheckDowned.redemptionLoaded)
+            {
+                if (CheckDowned.redemptionMod.TryFind("CharismaPotion", out ModItem CharismaPotion))
+                {
+                    modPotShop.Add(CharismaPotion.Type, CheckDowned.thorn);
+                }
+                if (CheckDowned.redemptionMod.TryFind("VendettaPotion", out ModItem VendettaPotion))
+                {
+                    modPotShop.Add(VendettaPotion.Type, CheckDowned.thorn);
+                }
+                if (CheckDowned.redemptionMod.TryFind("VigourousPotion", out ModItem VigourousPotion))
+                {
+                    modPotShop.Add(VigourousPotion.Type, CheckDowned.nebby);
+                }
+            }
             if (CheckDowned.sotsLoaded)
             {
                 if (CheckDowned.sotsMod.TryFind("AbyssalTonic", out ModItem AbyssalTonic))
@@ -425,82 +443,6 @@ namespace QoLCompendium.NPCs
                     modPotShop.Add(VibePotion.Type, Condition.DownedEowOrBoc);
                 }
             }
-            if (CheckDowned.redemptionLoaded)
-            {
-                if (CheckDowned.redemptionMod.TryFind("CharismaPotion", out ModItem CharismaPotion))
-                {
-                    modPotShop.Add(CharismaPotion.Type, CheckDowned.thorn);
-                }
-                if (CheckDowned.redemptionMod.TryFind("VendettaPotion", out ModItem VendettaPotion))
-                {
-                    modPotShop.Add(VendettaPotion.Type, CheckDowned.thorn);
-                }
-                if (CheckDowned.redemptionMod.TryFind("VigourousPotion", out ModItem VigourousPotion))
-                {
-                    modPotShop.Add(VigourousPotion.Type, CheckDowned.nebby);
-                }
-            }
-            if (CheckDowned.polaritiesLoaded)
-            {
-                if (CheckDowned.polaritiesMod.TryFind("PiercingPotion", out ModItem PiercingPotion))
-                {
-                    modPotShop.Add(PiercingPotion.Type);
-                }
-                if (CheckDowned.polaritiesMod.TryFind("TolerancePotion", out ModItem TolerancePotion))
-                {
-                    modPotShop.Add(TolerancePotion.Type);
-                }
-            }
-            if (CheckDowned.terrorbornLoaded)
-            {
-                if (CheckDowned.terrorbornMod.TryFind("AdrenalinePotion", out ModItem AdrenalinePotion))
-                {
-                    modPotShop.Add(AdrenalinePotion.Type);
-                }
-                if (CheckDowned.terrorbornMod.TryFind("AerodynamicPotion", out ModItem AerodynamicPotion))
-                {
-                    modPotShop.Add(AerodynamicPotion.Type);
-                }
-                if (CheckDowned.terrorbornMod.TryFind("BloodFlowPotion", out ModItem BloodFlowPotion))
-                {
-                    modPotShop.Add(BloodFlowPotion.Type);
-                }
-                if (CheckDowned.terrorbornMod.TryFind("SinducementPotion", out ModItem SinducementPotion))
-                {
-                    modPotShop.Add(SinducementPotion.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.terrorbornMod.TryFind("StarpowerPotion", out ModItem StarpowerPotion))
-                {
-                    modPotShop.Add(StarpowerPotion.Type);
-                }
-                if (CheckDowned.terrorbornMod.TryFind("VampirismPotion", out ModItem VampirismPotion))
-                {
-                    modPotShop.Add(VampirismPotion.Type);
-                }
-            }
-            if (CheckDowned.vitalityLoaded)
-            {
-                if (CheckDowned.vitalityMod.TryFind("ArmorPiercingPotion", out ModItem ArmorPiercingPotion))
-                {
-                    modPotShop.Add(ArmorPiercingPotion.Type);
-                }
-                if (CheckDowned.vitalityMod.TryFind("LeapingPotion", out ModItem LeapingPotion))
-                {
-                    modPotShop.Add(LeapingPotion.Type);
-                }
-                if (CheckDowned.vitalityMod.TryFind("TranquillityPotion", out ModItem TranquillityPotion))
-                {
-                    modPotShop.Add(TranquillityPotion.Type);
-                }
-                if (CheckDowned.vitalityMod.TryFind("TravelsensePotion", out ModItem TravelsensePotion))
-                {
-                    modPotShop.Add(TravelsensePotion.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.vitalityMod.TryFind("WarriorPotion", out ModItem WarriorPotion))
-                {
-                    modPotShop.Add(WarriorPotion.Type, Condition.DownedEowOrBoc);
-                }
-            }
             if (CheckDowned.aqLoaded)
             {
                 if (CheckDowned.aqMod.TryFind("BloodthirstPotion", out ModItem BloodthirstPotion))
@@ -536,14 +478,87 @@ namespace QoLCompendium.NPCs
                     modPotShop.Add(VeinminerPotion.Type);
                 }
             }
+            if (CheckDowned.polaritiesLoaded)
+            {
+                if (CheckDowned.polaritiesMod.TryFind("PiercingPotion", out ModItem PiercingPotion))
+                {
+                    modPotShop.Add(PiercingPotion.Type);
+                }
+                if (CheckDowned.polaritiesMod.TryFind("TolerancePotion", out ModItem TolerancePotion))
+                {
+                    modPotShop.Add(TolerancePotion.Type);
+                }
+            }
+            if (CheckDowned.vitalityLoaded)
+            {
+                if (CheckDowned.vitalityMod.TryFind("ArmorPiercingPotion", out ModItem ArmorPiercingPotion))
+                {
+                    modPotShop.Add(ArmorPiercingPotion.Type);
+                }
+                if (CheckDowned.vitalityMod.TryFind("LeapingPotion", out ModItem LeapingPotion))
+                {
+                    modPotShop.Add(LeapingPotion.Type);
+                }
+                if (CheckDowned.vitalityMod.TryFind("TranquillityPotion", out ModItem TranquillityPotion))
+                {
+                    modPotShop.Add(TranquillityPotion.Type);
+                }
+                if (CheckDowned.vitalityMod.TryFind("TravelsensePotion", out ModItem TravelsensePotion))
+                {
+                    modPotShop.Add(TravelsensePotion.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.vitalityMod.TryFind("WarriorPotion", out ModItem WarriorPotion))
+                {
+                    modPotShop.Add(WarriorPotion.Type, Condition.DownedEowOrBoc);
+                }
+            }
+            if (CheckDowned.terrorbornLoaded)
+            {
+                if (CheckDowned.terrorbornMod.TryFind("AdrenalinePotion", out ModItem AdrenalinePotion))
+                {
+                    modPotShop.Add(AdrenalinePotion.Type);
+                }
+                if (CheckDowned.terrorbornMod.TryFind("AerodynamicPotion", out ModItem AerodynamicPotion))
+                {
+                    modPotShop.Add(AerodynamicPotion.Type);
+                }
+                if (CheckDowned.terrorbornMod.TryFind("BloodFlowPotion", out ModItem BloodFlowPotion))
+                {
+                    modPotShop.Add(BloodFlowPotion.Type);
+                }
+                if (CheckDowned.terrorbornMod.TryFind("SinducementPotion", out ModItem SinducementPotion))
+                {
+                    modPotShop.Add(SinducementPotion.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.terrorbornMod.TryFind("StarpowerPotion", out ModItem StarpowerPotion))
+                {
+                    modPotShop.Add(StarpowerPotion.Type);
+                }
+                if (CheckDowned.terrorbornMod.TryFind("VampirismPotion", out ModItem VampirismPotion))
+                {
+                    modPotShop.Add(VampirismPotion.Type);
+                }
+            }
             modPotShop.Register();
 
-            var modMatShop = new NPCShop(Type, "Modded Materials");
+            var modMatShop = new NPCShop(Type, "Modded Materials 1");
             if (CheckDowned.calamityLoaded)
             {
                 if (CheckDowned.calamityMod.TryFind("AncientBoneDust", out ModItem AncientBoneDust))
                 {
                     modMatShop.Add(AncientBoneDust.Type);
+                }
+                if (CheckDowned.calamityMod.TryFind("ArmoredShell", out ModItem ArmoredShell))
+                {
+                    modMatShop.Add(ArmoredShell.Type, CheckDowned.stormweaver);
+                }
+                if (CheckDowned.calamityMod.TryFind("AshesofAnnihilation", out ModItem AshesofAnnihilation))
+                {
+                    modMatShop.Add(AshesofAnnihilation.Type, CheckDowned.scalamitas);
+                }
+                if (CheckDowned.calamityMod.TryFind("AshesofCalamity", out ModItem AshesofCalamity))
+                {
+                    modMatShop.Add(AshesofCalamity.Type, CheckDowned.calamitas);
                 }
                 if (CheckDowned.calamityMod.TryFind("BeetleJuice", out ModItem BeetleJuice))
                 {
@@ -561,6 +576,22 @@ namespace QoLCompendium.NPCs
                 {
                     modMatShop.Add(BloodSample.Type, CheckDowned.perforators);
                 }
+                if (CheckDowned.calamityMod.TryFind("Bloodstone", out ModItem Bloodstone))
+                {
+                    modMatShop.Add(Bloodstone.Type, CheckDowned.providence);
+                }
+                if (CheckDowned.calamityMod.TryFind("DarkPlasma", out ModItem DarkPlasma))
+                {
+                    modMatShop.Add(DarkPlasma.Type, CheckDowned.ceaselessvoid);
+                }
+                if (CheckDowned.calamityMod.TryFind("DarksunFragment", out ModItem DarksunFragment))
+                {
+                    modMatShop.Add(DarksunFragment.Type, CheckDowned.dog);
+                }
+                if (CheckDowned.calamityMod.TryFind("DepthCells", out ModItem DepthCells))
+                {
+                    modMatShop.Add(DepthCells.Type, CheckDowned.calamitas);
+                }
                 if (CheckDowned.calamityMod.TryFind("DemonicBoneAsh", out ModItem DemonicBoneAsh))
                 {
                     modMatShop.Add(DemonicBoneAsh.Type);
@@ -569,680 +600,636 @@ namespace QoLCompendium.NPCs
                 {
                     modMatShop.Add(DesertFeather.Type);
                 }
+                if (CheckDowned.calamityMod.TryFind("DivineGeode", out ModItem DivineGeode))
+                {
+                    modMatShop.Add(DivineGeode.Type, CheckDowned.providence);
+                }
+                if (CheckDowned.calamityMod.TryFind("DubiousPlating", out ModItem DubiousPlating))
+                {
+                    modMatShop.Add(DubiousPlating.Type);
+                }
+                if (CheckDowned.calamityMod.TryFind("EffulgentFeather", out ModItem EffulgentFeather))
+                {
+                    modMatShop.Add(EffulgentFeather.Type, CheckDowned.dragonfolly);
+                }
+                if (CheckDowned.calamityMod.TryFind("EndothermicEnergy", out ModItem EndothermicEnergy))
+                {
+                    modMatShop.Add(EndothermicEnergy.Type, CheckDowned.dog);
+                }
                 if (CheckDowned.calamityMod.TryFind("EnergyCore", out ModItem EnergyCore))
                 {
                     modMatShop.Add(EnergyCore.Type);
+                }
+                if (CheckDowned.calamityMod.TryFind("EssenceofChaos", out ModItem EssenceofChaos))
+                {
+                    modMatShop.Add(EssenceofChaos.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.calamityMod.TryFind("EssenceofEleum", out ModItem EssenceofEleum))
+                {
+                    modMatShop.Add(EssenceofEleum.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.calamityMod.TryFind("EssenceofSunlight", out ModItem EssenceofSunlight))
+                {
+                    modMatShop.Add(EssenceofSunlight.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.calamityMod.TryFind("ExoPrism", out ModItem ExoPrism))
+                {
+                    modMatShop.Add(ExoPrism.Type, CheckDowned.exomechs);
+                }
+                if (CheckDowned.calamityMod.TryFind("GrandScale", out ModItem GrandScale))
+                {
+                    modMatShop.Add(GrandScale.Type, CheckDowned.sandshark);
+                }
+                if (CheckDowned.calamityMod.TryFind("InfectedArmorPlating", out ModItem InfectedArmorPlating))
+                {
+                    modMatShop.Add(InfectedArmorPlating.Type, CheckDowned.plaguebringer);
+                }
+                if (CheckDowned.calamityMod.TryFind("LivingShard", out ModItem LivingShard))
+                {
+                    modMatShop.Add(LivingShard.Type, Condition.DownedPlantera);
+                }
+                if (CheckDowned.calamityMod.TryFind("Lumenyl", out ModItem Lumenyl))
+                {
+                    modMatShop.Add(Lumenyl.Type, CheckDowned.calamitas);
+                }
+                if (CheckDowned.calamityMod.TryFind("MeldBlob", out ModItem MeldBlob))
+                {
+                    modMatShop.Add(MeldBlob.Type, Condition.DownedCultist);
+                }
+                if (CheckDowned.calamityMod.TryFind("MolluskHusk", out ModItem MolluskHusk))
+                {
+                    modMatShop.Add(MolluskHusk.Type, Condition.Hardmode);
                 }
                 if (CheckDowned.calamityMod.TryFind("MurkyPaste", out ModItem MurkyPaste))
                 {
                     modMatShop.Add(MurkyPaste.Type);
                 }
+                if (CheckDowned.calamityMod.TryFind("MysteriousCircuitry", out ModItem MysteriousCircuitry))
+                {
+                    modMatShop.Add(MysteriousCircuitry.Type);
+                }
+                if (CheckDowned.calamityMod.TryFind("NightmareFuel", out ModItem NightmareFuel))
+                {
+                    modMatShop.Add(NightmareFuel.Type, CheckDowned.dog);
+                }
                 if (CheckDowned.calamityMod.TryFind("PearlShard", out ModItem PearlShard))
                 {
                     modMatShop.Add(PearlShard.Type, CheckDowned.desertscourge);
+                }
+                if (CheckDowned.calamityMod.TryFind("Phantoplasm", out ModItem Phantoplasm))
+                {
+                    modMatShop.Add(Phantoplasm.Type, Condition.DownedMoonLord);
+                }
+                if (CheckDowned.calamityMod.TryFind("PlagueCellCanister", out ModItem PlagueCellCanister))
+                {
+                    modMatShop.Add(PlagueCellCanister.Type, Condition.DownedGolem);
                 }
                 if (CheckDowned.calamityMod.TryFind("PurifiedGel", out ModItem PurifiedGel))
                 {
                     modMatShop.Add(PurifiedGel.Type, CheckDowned.slimegod);
                 }
+                if (CheckDowned.calamityMod.TryFind("ReaperTooth", out ModItem ReaperTooth))
+                {
+                    modMatShop.Add(ReaperTooth.Type, CheckDowned.polterghast);
+                }
                 if (CheckDowned.calamityMod.TryFind("RottenMatter", out ModItem RottenMatter))
                 {
                     modMatShop.Add(RottenMatter.Type, CheckDowned.hivemind);
+                }
+                if (CheckDowned.calamityMod.TryFind("RuinousSoul", out ModItem RuinousSoul))
+                {
+                    modMatShop.Add(RuinousSoul.Type, CheckDowned.polterghast);
+                }
+                if (CheckDowned.calamityMod.TryFind("SolarVeil", out ModItem SolarVeil))
+                {
+                    modMatShop.Add(SolarVeil.Type, Condition.DownedPlantera);
                 }
                 if (CheckDowned.calamityMod.TryFind("StormlionMandible", out ModItem StormlionMandible))
                 {
                     modMatShop.Add(StormlionMandible.Type);
                 }
+                if (CheckDowned.calamityMod.TryFind("Stardust", out ModItem Stardust))
+                {
+                    modMatShop.Add(Stardust.Type, Condition.Hardmode);
+                }
                 if (CheckDowned.calamityMod.TryFind("SulphuricScale", out ModItem SulphuricScale))
                 {
                     modMatShop.Add(SulphuricScale.Type, Condition.DownedEyeOfCthulhu);
+                }
+                if (CheckDowned.calamityMod.TryFind("TitanHeart", out ModItem TitanHeart))
+                {
+                    modMatShop.Add(TitanHeart.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.calamityMod.TryFind("TrapperBulb", out ModItem TrapperBulb))
+                {
+                    modMatShop.Add(TrapperBulb.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.calamityMod.TryFind("TwistingNether", out ModItem TwistingNether))
+                {
+                    modMatShop.Add(TwistingNether.Type, CheckDowned.signus);
+                }
+                if (CheckDowned.calamityMod.TryFind("UnholyEssence", out ModItem UnholyEssence))
+                {
+                    modMatShop.Add(UnholyEssence.Type, Condition.DownedMoonLord);
                 }
                 if (CheckDowned.calamityMod.TryFind("WulfrumMetalScrap", out ModItem WulfrumMetalScrap))
                 {
                     modMatShop.Add(WulfrumMetalScrap.Type);
                 }
+                if (CheckDowned.calamityMod.TryFind("YharonSoulFragment", out ModItem YharonSoulFragment))
+                {
+                    modMatShop.Add(YharonSoulFragment.Type, CheckDowned.yharon);
+                }
             }
             if (CheckDowned.thoriumLoaded)
             {
+                if (CheckDowned.thoriumMod.TryFind("AbyssalChitin", out ModItem AbyssalChitin))
+                {
+                    modMatShop.Add(AbyssalChitin.Type, Condition.Hardmode);
+                }
                 if (CheckDowned.thoriumMod.TryFind("ArcaneDust", out ModItem ArcaneDust))
                 {
                     modMatShop.Add(ArcaneDust.Type);
                 }
-                if (CheckDowned.thoriumMod.TryFind("LivingLeaf", out ModItem LivingLeaf))
+                if (CheckDowned.thoriumMod.TryFind("BioMatter", out ModItem BioMatter))
                 {
-                    modMatShop.Add(LivingLeaf.Type);
-                }
-                if (CheckDowned.thoriumMod.TryFind("IcyShard", out ModItem IcyShard))
-                {
-                    modMatShop.Add(IcyShard.Type);
-                }
-                if (CheckDowned.thoriumMod.TryFind("Petal", out ModItem Petal))
-                {
-                    modMatShop.Add(Petal.Type);
-                }
-                if (CheckDowned.thoriumMod.TryFind("Blood", out ModItem Blood))
-                {
-                    modMatShop.Add(Blood.Type);
+                    modMatShop.Add(BioMatter.Type, Condition.Hardmode);
                 }
                 if (CheckDowned.thoriumMod.TryFind("BirdTalon", out ModItem BirdTalon))
                 {
                     modMatShop.Add(BirdTalon.Type);
                 }
-                if (CheckDowned.thoriumMod.TryFind("UnholyShards", out ModItem UnholyShards))
+                if (CheckDowned.thoriumMod.TryFind("Blood", out ModItem Blood))
                 {
-                    modMatShop.Add(UnholyShards.Type);
+                    modMatShop.Add(Blood.Type);
                 }
-                if (CheckDowned.thoriumMod.TryFind("PurityShards", out ModItem PurityShards))
+                if (CheckDowned.thoriumMod.TryFind("BloomWeave", out ModItem BloomWeave))
                 {
-                    modMatShop.Add(PurityShards.Type);
+                    modMatShop.Add(BloomWeave.Type, Condition.DownedPlantera);
                 }
-                if (CheckDowned.thoriumMod.TryFind("MarineKelp", out ModItem MarineKelp))
+                if (CheckDowned.thoriumMod.TryFind("BrokenHeroFragment", out ModItem BrokenHeroFragment))
                 {
-                    modMatShop.Add(MarineKelp.Type);
-                }
-                if (CheckDowned.thoriumMod.TryFind("DepthScale", out ModItem DepthScale))
-                {
-                    modMatShop.Add(DepthScale.Type);
-                }
-                if (CheckDowned.thoriumMod.TryFind("StrangeAlienTech", out ModItem StrangeAlienTech))
-                {
-                    modMatShop.Add(StrangeAlienTech.Type, Condition.DownedEowOrBoc);
-                }
-                if (CheckDowned.thoriumMod.TryFind("YewWood", out ModItem YewWood))
-                {
-                    modMatShop.Add(YewWood.Type, Condition.DownedEowOrBoc);
-                }
-                if (CheckDowned.thoriumMod.TryFind("GraniteEnergyCore", out ModItem GraniteEnergyCore))
-                {
-                    modMatShop.Add(GraniteEnergyCore.Type, Condition.DownedSkeletron);
+                    modMatShop.Add(BrokenHeroFragment.Type, Condition.DownedPlantera);
                 }
                 if (CheckDowned.thoriumMod.TryFind("BronzeFragments", out ModItem BronzeFragments))
                 {
                     modMatShop.Add(BronzeFragments.Type, Condition.DownedSkeletron);
                 }
+                if (CheckDowned.thoriumMod.TryFind("CelestialFragment", out ModItem CelestialFragment))
+                {
+                    modMatShop.Add(CelestialFragment.Type, Condition.DownedCultist);
+                }
+                if (CheckDowned.thoriumMod.TryFind("CeruleanMorel", out ModItem CeruleanMorel))
+                {
+                    modMatShop.Add(CeruleanMorel.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.thoriumMod.TryFind("CursedCloth", out ModItem CursedCloth))
+                {
+                    modMatShop.Add(CursedCloth.Type, CheckDowned.lich);
+                }
+                if (CheckDowned.thoriumMod.TryFind("DarkMatter", out ModItem DarkMatter))
+                {
+                    modMatShop.Add(DarkMatter.Type, Condition.DownedPlantera);
+                }
+                if (CheckDowned.thoriumMod.TryFind("DeathEssence", out ModItem DeathEssence))
+                {
+                    modMatShop.Add(DeathEssence.Type, CheckDowned.primordials);
+                }
+                if (CheckDowned.thoriumMod.TryFind("DemonBloodShard", out ModItem DemonBloodShard))
+                {
+                    modMatShop.Add(DemonBloodShard.Type, Condition.DownedPlantera);
+                }
+                if (CheckDowned.thoriumMod.TryFind("DepthScale", out ModItem DepthScale))
+                {
+                    modMatShop.Add(DepthScale.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("DreadSoul", out ModItem DreadSoul))
+                {
+                    modMatShop.Add(DreadSoul.Type, Condition.DownedPlantera);
+                }
+                if (CheckDowned.thoriumMod.TryFind("Geode", out ModItem Geode))
+                {
+                    modMatShop.Add(Geode.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.thoriumMod.TryFind("GraniteEnergyCore", out ModItem GraniteEnergyCore))
+                {
+                    modMatShop.Add(GraniteEnergyCore.Type, Condition.DownedSkeletron);
+                }
+                if (CheckDowned.thoriumMod.TryFind("GreenDragonScale", out ModItem GreenDragonScale))
+                {
+                    modMatShop.Add(GreenDragonScale.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.thoriumMod.TryFind("HallowedCharm", out ModItem HallowedCharm))
+                {
+                    modMatShop.Add(HallowedCharm.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.thoriumMod.TryFind("HolyKnightsAlloy", out ModItem HolyKnightsAlloy))
+                {
+                    modMatShop.Add(HolyKnightsAlloy.Type, Condition.DownedPlantera);
+                }
+                if (CheckDowned.thoriumMod.TryFind("IcyShard", out ModItem IcyShard))
+                {
+                    modMatShop.Add(IcyShard.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("InfernoEssence", out ModItem InfernoEssence))
+                {
+                    modMatShop.Add(InfernoEssence.Type, CheckDowned.primordials);
+                }
+                if (CheckDowned.thoriumMod.TryFind("LifeCell", out ModItem LifeCell))
+                {
+                    modMatShop.Add(LifeCell.Type, Condition.DownedMechBossAny);
+                }
+                if (CheckDowned.thoriumMod.TryFind("LivingLeaf", out ModItem LivingLeaf))
+                {
+                    modMatShop.Add(LivingLeaf.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("MarineKelp", out ModItem MarineKelp))
+                {
+                    modMatShop.Add(MarineKelp.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("OceanEssence", out ModItem OceanEssence))
+                {
+                    modMatShop.Add(OceanEssence.Type, CheckDowned.primordials);
+                }
+                if (CheckDowned.thoriumMod.TryFind("Petal", out ModItem Petal))
+                {
+                    modMatShop.Add(Petal.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("PharaohsBreath", out ModItem PharaohsBreath))
+                {
+                    modMatShop.Add(PharaohsBreath.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.thoriumMod.TryFind("PurityShards", out ModItem PurityShards))
+                {
+                    modMatShop.Add(PurityShards.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("ShootingStarFragment", out ModItem ShootingStarFragment))
+                {
+                    modMatShop.Add(ShootingStarFragment.Type, Condition.DownedCultist);
+                }
+                if (CheckDowned.thoriumMod.TryFind("StrangeAlienTech", out ModItem StrangeAlienTech))
+                {
+                    modMatShop.Add(StrangeAlienTech.Type, Condition.DownedEowOrBoc);
+                }
+                if (CheckDowned.thoriumMod.TryFind("StrangePlating", out ModItem StrangePlating))
+                {
+                    modMatShop.Add(StrangePlating.Type, Condition.DownedMechBossAny);
+                }
+                if (CheckDowned.thoriumMod.TryFind("SolarPebble", out ModItem SolarPebble))
+                {
+                    modMatShop.Add(SolarPebble.Type, Condition.DownedPlantera);
+                }
+                if (CheckDowned.thoriumMod.TryFind("SoulofPlight", out ModItem SoulofPlight))
+                {
+                    modMatShop.Add(SoulofPlight.Type, Condition.Hardmode);
+                }
                 if (CheckDowned.thoriumMod.TryFind("SpiritDroplet", out ModItem SpiritDroplet))
                 {
                     modMatShop.Add(SpiritDroplet.Type, Condition.DownedSkeletron);
                 }
-            }
-            if (CheckDowned.sotsLoaded)
-            {
-                if (CheckDowned.sotsMod.TryFind("FragmentOfNature", out ModItem FragmentOfNature))
+                if (CheckDowned.thoriumMod.TryFind("TerrariumCore", out ModItem TerrariumCore))
                 {
-                    modMatShop.Add(FragmentOfNature.Type);
+                    modMatShop.Add(TerrariumCore.Type, Condition.DownedCultist);
                 }
-                if (CheckDowned.sotsMod.TryFind("FragmentOfEarth", out ModItem FragmentOfEarth))
+                if (CheckDowned.thoriumMod.TryFind("UnfathomableFlesh", out ModItem UnfathomableFlesh))
                 {
-                    modMatShop.Add(FragmentOfEarth.Type);
+                    modMatShop.Add(UnfathomableFlesh.Type, Condition.Hardmode);
                 }
-                if (CheckDowned.sotsMod.TryFind("FragmentOfPermafrost", out ModItem FragmentOfPermafrost))
+                if (CheckDowned.thoriumMod.TryFind("UnholyShards", out ModItem UnholyShards))
                 {
-                    modMatShop.Add(FragmentOfPermafrost.Type);
+                    modMatShop.Add(UnholyShards.Type);
                 }
-                if (CheckDowned.sotsMod.TryFind("FragmentOfTide", out ModItem FragmentOfTide))
+                if (CheckDowned.thoriumMod.TryFind("WhiteDwarfFragment", out ModItem WhiteDwarfFragment))
                 {
-                    modMatShop.Add(FragmentOfTide.Type);
+                    modMatShop.Add(WhiteDwarfFragment.Type, Condition.DownedCultist);
                 }
-                if (CheckDowned.sotsMod.TryFind("FragmentOfOtherworld", out ModItem FragmentOfOtherworld))
+                if (CheckDowned.thoriumMod.TryFind("YewWood", out ModItem YewWood))
                 {
-                    modMatShop.Add(FragmentOfOtherworld.Type);
-                }
-                if (CheckDowned.sotsMod.TryFind("FragmentOfEvil", out ModItem FragmentOfEvil))
-                {
-                    modMatShop.Add(FragmentOfEvil.Type);
-                }
-                if (CheckDowned.sotsMod.TryFind("FragmentOfChaos", out ModItem FragmentOfChaos))
-                {
-                    modMatShop.Add(FragmentOfChaos.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.sotsMod.TryFind("FragmentOfInferno", out ModItem FragmentOfInferno))
-                {
-                    modMatShop.Add(FragmentOfInferno.Type);
+                    modMatShop.Add(YewWood.Type, Condition.DownedEowOrBoc);
                 }
             }
+            modMatShop.Register();
+
+            var modMatShop2 = new NPCShop(Type, "Modded Materials 2");
             if (CheckDowned.redemptionLoaded)
             {
+                if (CheckDowned.redemptionMod.TryFind("AIChip", out ModItem AIChip))
+                {
+                    modMatShop2.Add(AIChip.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.redemptionMod.TryFind("CarbonMyofibre", out ModItem CarbonMyofibre))
+                {
+                    modMatShop2.Add(CarbonMyofibre.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.redemptionMod.TryFind("Capacitator", out ModItem Capacitator))
+                {
+                    modMatShop2.Add(Capacitator.Type, Condition.Hardmode);
+                }
                 if (CheckDowned.redemptionMod.TryFind("CoastScarabShell", out ModItem CoastScarabShell))
                 {
-                    modMatShop.Add(CoastScarabShell.Type);
+                    modMatShop2.Add(CoastScarabShell.Type);
+                }
+                if (CheckDowned.redemptionMod.TryFind("GildedStar", out ModItem GildedStar))
+                {
+                    modMatShop2.Add(GildedStar.Type, CheckDowned.duo);
                 }
                 if (CheckDowned.redemptionMod.TryFind("GraveSteelShards", out ModItem GraveSteelShards))
                 {
-                    modMatShop.Add(GraveSteelShards.Type);
+                    modMatShop2.Add(GraveSteelShards.Type);
                 }
                 if (CheckDowned.redemptionMod.TryFind("GrimShard", out ModItem GrimShard))
                 {
-                    modMatShop.Add(GrimShard.Type, CheckDowned.keeper);
+                    modMatShop2.Add(GrimShard.Type, CheckDowned.keeper);
+                }
+                if (CheckDowned.redemptionMod.TryFind("LifeFragment", out ModItem LifeFragment))
+                {
+                    modMatShop2.Add(LifeFragment.Type, CheckDowned.nebby);
                 }
                 if (CheckDowned.redemptionMod.TryFind("LivingTwig", out ModItem LivingTwig))
                 {
-                    modMatShop.Add(LivingTwig.Type);
+                    modMatShop2.Add(LivingTwig.Type);
                 }
                 if (CheckDowned.redemptionMod.TryFind("LostSoul", out ModItem LostSoul))
                 {
-                    modMatShop.Add(LostSoul.Type);
+                    modMatShop2.Add(LostSoul.Type);
+                }
+                if (CheckDowned.redemptionMod.TryFind("MoltenScrap", out ModItem MoltenScrap))
+                {
+                    modMatShop2.Add(MoltenScrap.Type, Condition.DownedMoonLord);
                 }
                 if (CheckDowned.redemptionMod.TryFind("MoonflareFragment", out ModItem MoonflareFragment))
                 {
-                    modMatShop.Add(MoonflareFragment.Type);
+                    modMatShop2.Add(MoonflareFragment.Type);
+                }
+                if (CheckDowned.redemptionMod.TryFind("Plating", out ModItem Plating))
+                {
+                    modMatShop2.Add(Plating.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.redemptionMod.TryFind("Plutonium", out ModItem Plutonium))
+                {
+                    modMatShop2.Add(Plutonium.Type, Condition.DownedMoonLord);
+                }
+                if (CheckDowned.redemptionMod.TryFind("RawXenium", out ModItem RawXenium))
+                {
+                    modMatShop2.Add(RawXenium.Type, Condition.DownedMoonLord);
+                }
+                if (CheckDowned.redemptionMod.TryFind("ToxicBile", out ModItem ToxicBile))
+                {
+                    modMatShop2.Add(ToxicBile.Type, Condition.Hardmode);
                 }
                 if (CheckDowned.redemptionMod.TryFind("TreeBugShell", out ModItem TreeBugShell))
                 {
-                    modMatShop.Add(TreeBugShell.Type);
+                    modMatShop2.Add(TreeBugShell.Type);
+                }
+                if (CheckDowned.redemptionMod.TryFind("CorruptedXenomite", out ModItem CorruptedXenomite))
+                {
+                    modMatShop2.Add(CorruptedXenomite.Type, CheckDowned.cleaver);
+                }
+                if (CheckDowned.redemptionMod.TryFind("Uranium", out ModItem Uranium))
+                {
+                    modMatShop2.Add(Uranium.Type, Condition.DownedGolem);
+                }
+                if (CheckDowned.redemptionMod.TryFind("Xenomite", out ModItem Xenomite))
+                {
+                    modMatShop2.Add(Xenomite.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.redemptionMod.TryFind("XeniumAlloy", out ModItem XeniumAlloy))
+                {
+                    modMatShop2.Add(XeniumAlloy.Type, Condition.DownedMoonLord);
                 }
                 if (CheckDowned.redemptionMod.TryFind("XenomiteShard", out ModItem XenomiteShard))
                 {
-                    modMatShop.Add(XenomiteShard.Type, CheckDowned.seed);
+                    modMatShop2.Add(XenomiteShard.Type, CheckDowned.seed);
                 }
             }
+            if (CheckDowned.sotsLoaded)
+            {
+                if (CheckDowned.sotsMod.TryFind("DissolvingAether", out ModItem DissolvingAether))
+                {
+                    modMatShop2.Add(DissolvingAether.Type, CheckDowned.advisor);
+                }
+                if (CheckDowned.sotsMod.TryFind("DissolvingAurora", out ModItem DissolvingAurora))
+                {
+                    modMatShop2.Add(DissolvingAurora.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("DissolvingBrilliance", out ModItem DissolvingBrilliance))
+                {
+                    modMatShop2.Add(DissolvingBrilliance.Type, CheckDowned.lux);
+                }
+                if (CheckDowned.sotsMod.TryFind("DissolvingDeluge", out ModItem DissolvingDeluge))
+                {
+                    modMatShop2.Add(DissolvingDeluge.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("DissolvingEarth", out ModItem DissolvingEarth))
+                {
+                    modMatShop2.Add(DissolvingEarth.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("DissolvingNature", out ModItem DissolvingNature))
+                {
+                    modMatShop2.Add(DissolvingNature.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("DissolvingNether", out ModItem DissolvingNether))
+                {
+                    modMatShop2.Add(DissolvingNether.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.sotsMod.TryFind("DissolvingUmbra", out ModItem DissolvingUmbra))
+                {
+                    modMatShop2.Add(DissolvingUmbra.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.sotsMod.TryFind("FragmentOfChaos", out ModItem FragmentOfChaos))
+                {
+                    modMatShop2.Add(FragmentOfChaos.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.sotsMod.TryFind("FragmentOfEarth", out ModItem FragmentOfEarth))
+                {
+                    modMatShop2.Add(FragmentOfEarth.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("FragmentOfEvil", out ModItem FragmentOfEvil))
+                {
+                    modMatShop2.Add(FragmentOfEvil.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("FragmentOfInferno", out ModItem FragmentOfInferno))
+                {
+                    modMatShop2.Add(FragmentOfInferno.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("FragmentOfNature", out ModItem FragmentOfNature))
+                {
+                    modMatShop2.Add(FragmentOfNature.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("FragmentOfOtherworld", out ModItem FragmentOfOtherworld))
+                {
+                    modMatShop2.Add(FragmentOfOtherworld.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("FragmentOfPermafrost", out ModItem FragmentOfPermafrost))
+                {
+                    modMatShop2.Add(FragmentOfPermafrost.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("FragmentOfTide", out ModItem FragmentOfTide))
+                {
+                    modMatShop2.Add(FragmentOfTide.Type);
+                }
+            }
+            if (CheckDowned.aqLoaded)
+            {
+                if (CheckDowned.aqMod.TryFind("AtmosphericEnergy", out ModItem AtmosphericEnergy) && (CheckDowned.downedSprite || CheckDowned.downedSpaceSquid || CheckDowned.downedDevil))
+                {
+                    modMatShop2.Add(AtmosphericEnergy.Type);
+                }
+                if (CheckDowned.aqMod.TryFind("AquaticEnergy", out ModItem AquaticEnergy))
+                {
+                    modMatShop2.Add(AquaticEnergy.Type);
+                }
+                if (CheckDowned.aqMod.TryFind("BloodyTearstone", out ModItem BloodyTearstone))
+                {
+                    modMatShop2.Add(BloodyTearstone.Type);
+                }
+                if (CheckDowned.aqMod.TryFind("CosmicEnergy", out ModItem CosmicEnergy))
+                {
+                    modMatShop2.Add(CosmicEnergy.Type, CheckDowned.omegastarite);
+                }
+                if (CheckDowned.aqMod.TryFind("DemonicEnergy", out ModItem DemonicEnergy))
+                {
+                    modMatShop2.Add(DemonicEnergy.Type);
+                }
+                if (CheckDowned.aqMod.TryFind("Fluorescence", out ModItem Fluorescence))
+                {
+                    modMatShop2.Add(Fluorescence.Type, CheckDowned.sprite);
+                }
+                if (CheckDowned.aqMod.TryFind("FrozenTear", out ModItem FrozenTear))
+                {
+                    modMatShop2.Add(FrozenTear.Type, CheckDowned.spacesquid);
+                }
+                if (CheckDowned.aqMod.TryFind("Hexoplasm", out ModItem Hexoplasm))
+                {
+                    modMatShop2.Add(Hexoplasm.Type, Condition.DownedPlantera);
+                }
+                if (CheckDowned.aqMod.TryFind("OrganicEnergy", out ModItem OrganicEnergy))
+                {
+                    modMatShop2.Add(OrganicEnergy.Type, Condition.DownedPlantera);
+                }
+                if (CheckDowned.aqMod.TryFind("UltimateEnergy", out ModItem UltimateEnergy))
+                {
+                    modMatShop2.Add(UltimateEnergy.Type, Condition.DownedPlantera);
+                }
+            }
+            modMatShop2.Register();
+
+            var modMatShop3 = new NPCShop(Type, "Modded Materials 3");
             if (CheckDowned.polaritiesLoaded)
             {
                 if (CheckDowned.polaritiesMod.TryFind("AlkalineFluid", out ModItem AlkalineFluid))
                 {
-                    modMatShop.Add(AlkalineFluid.Type);
+                    modMatShop3.Add(AlkalineFluid.Type);
+                }
+                if (CheckDowned.polaritiesMod.TryFind("CongealedBrine", out ModItem CongealedBrine))
+                {
+                    modMatShop3.Add(CongealedBrine.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.polaritiesMod.TryFind("EvilDNA", out ModItem EvilDNA))
+                {
+                    modMatShop3.Add(EvilDNA.Type, CheckDowned.esophage);
+                }
+                if (CheckDowned.polaritiesMod.TryFind("LimestoneCarapace", out ModItem LimestoneCarapace))
+                {
+                    modMatShop3.Add(LimestoneCarapace.Type, Condition.Hardmode);
                 }
                 if (CheckDowned.polaritiesMod.TryFind("Rattle", out ModItem Rattle))
                 {
-                    modMatShop.Add(Rattle.Type);
+                    modMatShop3.Add(Rattle.Type);
                 }
                 if (CheckDowned.polaritiesMod.TryFind("SaltCrystals", out ModItem SaltCrystals))
                 {
-                    modMatShop.Add(SaltCrystals.Type);
+                    modMatShop3.Add(SaltCrystals.Type);
+                }
+                if (CheckDowned.polaritiesMod.TryFind("SerpentScale", out ModItem SerpentScale))
+                {
+                    modMatShop3.Add(SerpentScale.Type, Condition.Hardmode);
                 }
                 if (CheckDowned.polaritiesMod.TryFind("StormChunk", out ModItem StormChunk))
                 {
-                    modMatShop.Add(StormChunk.Type, CheckDowned.cloudfish);
+                    modMatShop3.Add(StormChunk.Type, CheckDowned.cloudfish);
+                }
+                if (CheckDowned.polaritiesMod.TryFind("Tentacle", out ModItem Tentacle))
+                {
+                    modMatShop3.Add(Tentacle.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.polaritiesMod.TryFind("VenomGland", out ModItem VenomGland))
+                {
+                    modMatShop3.Add(VenomGland.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.polaritiesMod.TryFind("WandererPlating", out ModItem WandererPlating))
+                {
+                    modMatShop3.Add(WandererPlating.Type, CheckDowned.wanderer);
                 }
             }
             if (CheckDowned.vitalityLoaded)
             {
                 if (CheckDowned.vitalityMod.TryFind("AncientGoldShard", out ModItem AncientGoldShard))
                 {
-                    modMatShop.Add(AncientGoldShard.Type);
+                    modMatShop3.Add(AncientGoldShard.Type);
                 }
-                if (CheckDowned.vitalityMod.TryFind("Charcoal", out ModItem Charcoal))
-                {
-                    modMatShop.Add(Charcoal.Type);
-                }
-                if (CheckDowned.vitalityMod.TryFind("CloudVapor", out ModItem CloudVapor))
-                {
-                    modMatShop.Add(CloudVapor.Type, CheckDowned.stormcloud);
-                }
-                if (CheckDowned.vitalityMod.TryFind("GlacialChunk", out ModItem GlacialChunk))
-                {
-                    modMatShop.Add(GlacialChunk.Type);
-                }
-                if (CheckDowned.vitalityMod.TryFind("GlowingGranitePowder", out ModItem GlowingGranitePowder))
-                {
-                    modMatShop.Add(GlowingGranitePowder.Type);
-                }
-                if (CheckDowned.vitalityMod.TryFind("LivingStick", out ModItem LivingStick))
-                {
-                    modMatShop.Add(LivingStick.Type);
-                }
-                if (CheckDowned.vitalityMod.TryFind("PurifiedSpore", out ModItem PurifiedSpore))
-                {
-                    modMatShop.Add(PurifiedSpore.Type);
-                }
-            }
-            if (CheckDowned.aqLoaded)
-            {
-                if (CheckDowned.aqMod.TryFind("AquaticEnergy", out ModItem AquaticEnergy))
-                {
-                    modMatShop.Add(AquaticEnergy.Type);
-                }
-                if (CheckDowned.aqMod.TryFind("AtmosphericEnergy", out ModItem AtmosphericEnergy) && (CheckDowned.downedSprite || CheckDowned.downedSpaceSquid || CheckDowned.downedDevil))
-                {
-                    modMatShop.Add(AtmosphericEnergy.Type);
-                }
-                if (CheckDowned.aqMod.TryFind("CosmicEnergy", out ModItem CosmicEnergy))
-                {
-                    modMatShop.Add(CosmicEnergy.Type, CheckDowned.starite);
-                }
-                if (CheckDowned.aqMod.TryFind("DemonicEnergy", out ModItem DemonicEnergy))
-                {
-                    modMatShop.Add(DemonicEnergy.Type);
-                }
-                if (CheckDowned.aqMod.TryFind("OrganicEnergy", out ModItem OrganicEnergy))
-                {
-                    modMatShop.Add(OrganicEnergy.Type, Condition.DownedPlantera);
-                }
-                if (CheckDowned.aqMod.TryFind("UltimateEnergy", out ModItem UltimateEnergy))
-                {
-                    modMatShop.Add(UltimateEnergy.Type, Condition.DownedPlantera);
-                }
-                if (CheckDowned.aqMod.TryFind("BloodyTearstone", out ModItem BloodyTearstone))
-                {
-                    modMatShop.Add(BloodyTearstone.Type);
-                }
-                if (CheckDowned.aqMod.TryFind("Fluorescence", out ModItem Fluorescence))
-                {
-                    modMatShop.Add(Fluorescence.Type, CheckDowned.sprite);
-                }
-                if (CheckDowned.aqMod.TryFind("FrozenTear", out ModItem FrozenTear))
-                {
-                    modMatShop.Add(FrozenTear.Type, CheckDowned.spacesquid);
-                }
-                if (CheckDowned.aqMod.TryFind("Hexoplasm", out ModItem Hexoplasm))
-                {
-                    modMatShop.Add(Hexoplasm.Type, Condition.DownedPlantera);
-                }
-            }
-            modMatShop.Register();
-
-            var raremodMatShop = new NPCShop(Type, "Rare Modded Materials");
-            if (CheckDowned.calamityLoaded)
-            {
-                if (CheckDowned.calamityMod.TryFind("ArmoredShell", out ModItem ArmoredShell))
-                {
-                    raremodMatShop.Add(ArmoredShell.Type, CheckDowned.stormweaver);
-                }
-                if (CheckDowned.calamityMod.TryFind("AshesofAnnihilation", out ModItem AshesofAnnihilation))
-                {
-                    raremodMatShop.Add(AshesofAnnihilation.Type, CheckDowned.scalamitas);
-                }
-                if (CheckDowned.calamityMod.TryFind("AshesofCalamity", out ModItem AshesofCalamity))
-                {
-                    raremodMatShop.Add(AshesofCalamity.Type, CheckDowned.calamitas);
-                }
-                if (CheckDowned.calamityMod.TryFind("Bloodstone", out ModItem Bloodstone))
-                {
-                    raremodMatShop.Add(Bloodstone.Type, CheckDowned.providence);
-                }
-                if (CheckDowned.calamityMod.TryFind("DarkPlasma", out ModItem DarkPlasma))
-                {
-                    raremodMatShop.Add(DarkPlasma.Type, CheckDowned.ceaselessvoid);
-                }
-                if (CheckDowned.calamityMod.TryFind("DarksunFragment", out ModItem DarksunFragment))
-                {
-                    raremodMatShop.Add(DarksunFragment.Type, CheckDowned.dog);
-                }
-                if (CheckDowned.calamityMod.TryFind("DepthCells", out ModItem DepthCells))
-                {
-                    raremodMatShop.Add(DepthCells.Type, CheckDowned.calamitas);
-                }
-                if (CheckDowned.calamityMod.TryFind("DivineGeode", out ModItem DivineGeode))
-                {
-                    raremodMatShop.Add(DivineGeode.Type, CheckDowned.providence);
-                }
-                if (CheckDowned.calamityMod.TryFind("DubiousPlating", out ModItem DubiousPlating))
-                {
-                    raremodMatShop.Add(DubiousPlating.Type);
-                }
-                if (CheckDowned.calamityMod.TryFind("EffulgentFeather", out ModItem EffulgentFeather))
-                {
-                    raremodMatShop.Add(EffulgentFeather.Type, CheckDowned.dragonfolly);
-                }
-                if (CheckDowned.calamityMod.TryFind("EndothermicEnergy", out ModItem EndothermicEnergy))
-                {
-                    raremodMatShop.Add(EndothermicEnergy.Type, CheckDowned.dog);
-                }
-                if (CheckDowned.calamityMod.TryFind("EssenceofChaos", out ModItem EssenceofChaos))
-                {
-                    raremodMatShop.Add(EssenceofChaos.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.calamityMod.TryFind("EssenceofEleum", out ModItem EssenceofEleum))
-                {
-                    raremodMatShop.Add(EssenceofEleum.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.calamityMod.TryFind("EssenceofSunlight", out ModItem EssenceofSunlight))
-                {
-                    raremodMatShop.Add(EssenceofSunlight.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.calamityMod.TryFind("ExoPrism", out ModItem ExoPrism))
-                {
-                    raremodMatShop.Add(ExoPrism.Type, CheckDowned.exomechs);
-                }
-                if (CheckDowned.calamityMod.TryFind("GrandScale", out ModItem GrandScale))
-                {
-                    raremodMatShop.Add(GrandScale.Type, CheckDowned.sandshark);
-                }
-                if (CheckDowned.calamityMod.TryFind("InfectedArmorPlating", out ModItem InfectedArmorPlating))
-                {
-                    raremodMatShop.Add(InfectedArmorPlating.Type, CheckDowned.plaguebringer);
-                }
-                if (CheckDowned.calamityMod.TryFind("LivingShard", out ModItem LivingShard))
-                {
-                    raremodMatShop.Add(LivingShard.Type, Condition.DownedPlantera);
-                }
-                if (CheckDowned.calamityMod.TryFind("Lumenyl", out ModItem Lumenyl))
-                {
-                    raremodMatShop.Add(Lumenyl.Type, CheckDowned.calamitas);
-                }
-                if (CheckDowned.calamityMod.TryFind("MeldBlob", out ModItem MeldBlob))
-                {
-                    raremodMatShop.Add(MeldBlob.Type, Condition.DownedCultist);
-                }
-                if (CheckDowned.calamityMod.TryFind("MolluskHusk", out ModItem MolluskHusk))
-                {
-                    raremodMatShop.Add(MolluskHusk.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.calamityMod.TryFind("MysteriousCircuitry", out ModItem MysteriousCircuitry))
-                {
-                    raremodMatShop.Add(MysteriousCircuitry.Type);
-                }
-                if (CheckDowned.calamityMod.TryFind("NightmareFuel", out ModItem NightmareFuel))
-                {
-                    raremodMatShop.Add(NightmareFuel.Type, CheckDowned.dog);
-                }
-                if (CheckDowned.calamityMod.TryFind("Phantoplasm", out ModItem Phantoplasm))
-                {
-                    raremodMatShop.Add(Phantoplasm.Type, Condition.DownedMoonLord);
-                }
-                if (CheckDowned.calamityMod.TryFind("PlagueCellCanister", out ModItem PlagueCellCanister))
-                {
-                    raremodMatShop.Add(PlagueCellCanister.Type, Condition.DownedGolem);
-                }
-                if (CheckDowned.calamityMod.TryFind("ReaperTooth", out ModItem ReaperTooth))
-                {
-                    raremodMatShop.Add(ReaperTooth.Type, CheckDowned.polterghast);
-                }
-                if (CheckDowned.calamityMod.TryFind("RuinousSoul", out ModItem RuinousSoul))
-                {
-                    raremodMatShop.Add(RuinousSoul.Type, CheckDowned.polterghast);
-                }
-                if (CheckDowned.calamityMod.TryFind("SolarVeil", out ModItem SolarVeil))
-                {
-                    raremodMatShop.Add(SolarVeil.Type, Condition.DownedPlantera);
-                }
-                if (CheckDowned.calamityMod.TryFind("Stardust", out ModItem Stardust))
-                {
-                    raremodMatShop.Add(Stardust.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.calamityMod.TryFind("TitanHeart", out ModItem TitanHeart))
-                {
-                    raremodMatShop.Add(TitanHeart.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.calamityMod.TryFind("TrapperBulb", out ModItem TrapperBulb))
-                {
-                    raremodMatShop.Add(TrapperBulb.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.calamityMod.TryFind("TwistingNether", out ModItem TwistingNether))
-                {
-                    raremodMatShop.Add(TwistingNether.Type, CheckDowned.signus);
-                }
-                if (CheckDowned.calamityMod.TryFind("UnholyEssence", out ModItem UnholyEssence))
-                {
-                    raremodMatShop.Add(UnholyEssence.Type, Condition.DownedMoonLord);
-                }
-                if (CheckDowned.calamityMod.TryFind("YharonSoulFragment", out ModItem YharonSoulFragment))
-                {
-                    raremodMatShop.Add(YharonSoulFragment.Type, CheckDowned.yharon);
-                }
-            }
-            if (CheckDowned.thoriumLoaded)
-            {
-                if (CheckDowned.thoriumMod.TryFind("SoulofPlight", out ModItem SoulofPlight))
-                {
-                    raremodMatShop.Add(SoulofPlight.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.thoriumMod.TryFind("CeruleanMorel", out ModItem CeruleanMorel))
-                {
-                    raremodMatShop.Add(CeruleanMorel.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.thoriumMod.TryFind("PharaohsBreath", out ModItem PharaohsBreath))
-                {
-                    raremodMatShop.Add(PharaohsBreath.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.thoriumMod.TryFind("BioMatter", out ModItem BioMatter))
-                {
-                    raremodMatShop.Add(BioMatter.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.thoriumMod.TryFind("AbyssalChitin", out ModItem AbyssalChitin))
-                {
-                    raremodMatShop.Add(AbyssalChitin.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.thoriumMod.TryFind("HallowedCharm", out ModItem HallowedCharm))
-                {
-                    raremodMatShop.Add(HallowedCharm.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.thoriumMod.TryFind("Geode", out ModItem Geode))
-                {
-                    raremodMatShop.Add(Geode.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.thoriumMod.TryFind("GreenDragonScale", out ModItem GreenDragonScale))
-                {
-                    raremodMatShop.Add(GreenDragonScale.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.thoriumMod.TryFind("UnfathomableFlesh", out ModItem UnfathomableFlesh))
-                {
-                    raremodMatShop.Add(UnfathomableFlesh.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.thoriumMod.TryFind("StrangePlating", out ModItem StrangePlating))
-                {
-                    raremodMatShop.Add(StrangePlating.Type, Condition.DownedMechBossAny);
-                }
-                if (CheckDowned.thoriumMod.TryFind("LifeCell", out ModItem LifeCell))
-                {
-                    raremodMatShop.Add(LifeCell.Type, Condition.DownedMechBossAny);
-                }
-                if (CheckDowned.thoriumMod.TryFind("CursedCloth", out ModItem CursedCloth))
-                {
-                    raremodMatShop.Add(CursedCloth.Type, CheckDowned.lich);
-                }
-                if (CheckDowned.thoriumMod.TryFind("BloomWeave", out ModItem BloomWeave))
-                {
-                    raremodMatShop.Add(BloomWeave.Type, Condition.DownedPlantera);
-                }
-                if (CheckDowned.thoriumMod.TryFind("SolarPebble", out ModItem SolarPebble))
-                {
-                    raremodMatShop.Add(SolarPebble.Type, Condition.DownedPlantera);
-                }
-                if (CheckDowned.thoriumMod.TryFind("DreadSoul", out ModItem DreadSoul))
-                {
-                    raremodMatShop.Add(DreadSoul.Type, Condition.DownedPlantera);
-                }
-                if (CheckDowned.thoriumMod.TryFind("DemonBloodShard", out ModItem DemonBloodShard))
-                {
-                    raremodMatShop.Add(DemonBloodShard.Type, Condition.DownedPlantera);
-                }
-                if (CheckDowned.thoriumMod.TryFind("DarkMatter", out ModItem DarkMatter))
-                {
-                    raremodMatShop.Add(DarkMatter.Type, Condition.DownedPlantera);
-                }
-                if (CheckDowned.thoriumMod.TryFind("HolyKnightsAlloy", out ModItem HolyKnightsAlloy))
-                {
-                    raremodMatShop.Add(HolyKnightsAlloy.Type, Condition.DownedPlantera);
-                }
-                if (CheckDowned.thoriumMod.TryFind("BrokenHeroFragment", out ModItem BrokenHeroFragment))
-                {
-                    raremodMatShop.Add(BrokenHeroFragment.Type, Condition.DownedPlantera);
-                }
-                if (CheckDowned.thoriumMod.TryFind("TerrariumCore", out ModItem TerrariumCore))
-                {
-                    raremodMatShop.Add(TerrariumCore.Type, Condition.DownedCultist);
-                }
-                if (CheckDowned.thoriumMod.TryFind("WhiteDwarfFragment", out ModItem WhiteDwarfFragment))
-                {
-                    raremodMatShop.Add(WhiteDwarfFragment.Type, Condition.DownedCultist);
-                }
-                if (CheckDowned.thoriumMod.TryFind("CelestialFragment", out ModItem CelestialFragment))
-                {
-                    raremodMatShop.Add(CelestialFragment.Type, Condition.DownedCultist);
-                }
-                if (CheckDowned.thoriumMod.TryFind("ShootingStarFragment", out ModItem ShootingStarFragment))
-                {
-                    raremodMatShop.Add(ShootingStarFragment.Type, Condition.DownedCultist);
-
-                }
-                if (CheckDowned.thoriumMod.TryFind("InfernoEssence", out ModItem InfernoEssence))
-                {
-                    raremodMatShop.Add(InfernoEssence.Type, CheckDowned.primordials);
-                }
-                if (CheckDowned.thoriumMod.TryFind("DeathEssence", out ModItem DeathEssence))
-                {
-                    raremodMatShop.Add(DeathEssence.Type, CheckDowned.primordials);
-                }
-                if (CheckDowned.thoriumMod.TryFind("OceanEssence", out ModItem OceanEssence))
-                {
-                    raremodMatShop.Add(OceanEssence.Type, CheckDowned.primordials);
-                }
-            }
-            if (CheckDowned.sotsLoaded)
-            {
-                if (CheckDowned.sotsMod.TryFind("DissolvingNature", out ModItem DissolvingNature))
-                {
-                    raremodMatShop.Add(DissolvingNature.Type);
-                }
-                if (CheckDowned.sotsMod.TryFind("DissolvingEarth", out ModItem DissolvingEarth))
-                {
-                    raremodMatShop.Add(DissolvingEarth.Type);
-                }
-                if (CheckDowned.sotsMod.TryFind("DissolvingAurora", out ModItem DissolvingAurora))
-                {
-                    raremodMatShop.Add(DissolvingAurora.Type);
-                }
-                if (CheckDowned.sotsMod.TryFind("DissolvingDeluge", out ModItem DissolvingDeluge))
-                {
-                    raremodMatShop.Add(DissolvingDeluge.Type);
-                }
-                if (CheckDowned.sotsMod.TryFind("DissolvingAether", out ModItem DissolvingAether))
-                {
-                    raremodMatShop.Add(DissolvingAether.Type, CheckDowned.advisor);
-                }
-                if (CheckDowned.sotsMod.TryFind("DissolvingUmbra", out ModItem DissolvingUmbra))
-                {
-                    raremodMatShop.Add(DissolvingUmbra.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.sotsMod.TryFind("DissolvingNether", out ModItem DissolvingNether))
-                {
-                    raremodMatShop.Add(DissolvingNether.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.sotsMod.TryFind("DissolvingBrilliance", out ModItem DissolvingBrilliance))
-                {
-                    raremodMatShop.Add(DissolvingBrilliance.Type, CheckDowned.lux);
-                }
-            }
-            if (CheckDowned.redemptionLoaded)
-            {
-                if (CheckDowned.redemptionMod.TryFind("AIChip", out ModItem AIChip))
-                {
-                    raremodMatShop.Add(AIChip.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.redemptionMod.TryFind("CarbonMyofibre", out ModItem CarbonMyofibre))
-                {
-                    raremodMatShop.Add(CarbonMyofibre.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.redemptionMod.TryFind("Capacitator", out ModItem Capacitator))
-                {
-                    raremodMatShop.Add(Capacitator.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.redemptionMod.TryFind("GildedStar", out ModItem GildedStar))
-                {
-                    raremodMatShop.Add(GildedStar.Type, CheckDowned.duo);
-                }
-                if (CheckDowned.redemptionMod.TryFind("LifeFragment", out ModItem LifeFragment))
-                {
-                    raremodMatShop.Add(LifeFragment.Type, CheckDowned.nebby);
-                }
-                if (CheckDowned.redemptionMod.TryFind("MoltenScrap", out ModItem MoltenScrap))
-                {
-                    raremodMatShop.Add(MoltenScrap.Type, Condition.DownedMoonLord);
-                }
-                if (CheckDowned.redemptionMod.TryFind("Plating", out ModItem Plating))
-                {
-                    raremodMatShop.Add(Plating.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.redemptionMod.TryFind("Plutonium", out ModItem Plutonium))
-                {
-                    raremodMatShop.Add(Plutonium.Type, Condition.DownedMoonLord);
-                }
-                if (CheckDowned.redemptionMod.TryFind("RawXenium", out ModItem RawXenium))
-                {
-                    raremodMatShop.Add(RawXenium.Type, Condition.DownedMoonLord);
-                }
-                if (CheckDowned.redemptionMod.TryFind("ToxicBile", out ModItem ToxicBile))
-                {
-                    raremodMatShop.Add(ToxicBile.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.redemptionMod.TryFind("CorruptedXenomite", out ModItem CorruptedXenomite))
-                {
-                    raremodMatShop.Add(CorruptedXenomite.Type, CheckDowned.cleaver);
-                }
-                if (CheckDowned.redemptionMod.TryFind("Uranium", out ModItem Uranium))
-                {
-                    raremodMatShop.Add(Uranium.Type, Condition.DownedGolem);
-                }
-                if (CheckDowned.redemptionMod.TryFind("Xenomite", out ModItem Xenomite))
-                {
-                    raremodMatShop.Add(Xenomite.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.redemptionMod.TryFind("XeniumAlloy", out ModItem XeniumAlloy))
-                {
-                    raremodMatShop.Add(XeniumAlloy.Type, Condition.DownedMoonLord);
-                }
-            }
-            if (CheckDowned.polaritiesLoaded)
-            {
-                if (CheckDowned.polaritiesMod.TryFind("CongealedBrine", out ModItem CongealedBrine))
-                {
-                    raremodMatShop.Add(CongealedBrine.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.polaritiesMod.TryFind("EvilDNA", out ModItem EvilDNA))
-                {
-                    raremodMatShop.Add(EvilDNA.Type, CheckDowned.esophage);
-                }
-                if (CheckDowned.polaritiesMod.TryFind("LimestoneCarapace", out ModItem LimestoneCarapace))
-                {
-                    raremodMatShop.Add(LimestoneCarapace.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.polaritiesMod.TryFind("SerpentScale", out ModItem SerpentScale))
-                {
-                    raremodMatShop.Add(SerpentScale.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.polaritiesMod.TryFind("Tentacle", out ModItem Tentacle))
-                {
-                    raremodMatShop.Add(Tentacle.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.polaritiesMod.TryFind("VenomGland", out ModItem VenomGland))
-                {
-                    raremodMatShop.Add(VenomGland.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.polaritiesMod.TryFind("WandererPlating", out ModItem WandererPlating))
-                {
-                    raremodMatShop.Add(WandererPlating.Type, CheckDowned.wanderer);
-                }
-            }
-            if (CheckDowned.vitalityLoaded)
-            {
                 if (CheckDowned.vitalityMod.TryFind("ChaosCrystal", out ModItem ChaosCrystal))
                 {
-                    raremodMatShop.Add(ChaosCrystal.Type, Condition.Hardmode);
+                    modMatShop3.Add(ChaosCrystal.Type, Condition.Hardmode);
                 }
                 if (CheckDowned.vitalityMod.TryFind("ChaosDust", out ModItem ChaosDust))
                 {
-                    raremodMatShop.Add(ChaosDust.Type, Condition.Hardmode);
+                    modMatShop3.Add(ChaosDust.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.vitalityMod.TryFind("Charcoal", out ModItem Charcoal))
+                {
+                    modMatShop3.Add(Charcoal.Type);
+                }
+                if (CheckDowned.vitalityMod.TryFind("CloudVapor", out ModItem CloudVapor))
+                {
+                    modMatShop3.Add(CloudVapor.Type, CheckDowned.stormcloud);
                 }
                 if (CheckDowned.vitalityMod.TryFind("Ectosoul", out ModItem Ectosoul))
                 {
-                    raremodMatShop.Add(Ectosoul.Type, CheckDowned.paladin);
+                    modMatShop3.Add(Ectosoul.Type, CheckDowned.paladin);
                 }
                 if (CheckDowned.vitalityMod.TryFind("EquityCore", out ModItem EquityCore))
                 {
-                    raremodMatShop.Add(EquityCore.Type, CheckDowned.paladin);
+                    modMatShop3.Add(EquityCore.Type, CheckDowned.paladin);
                 }
                 if (CheckDowned.vitalityMod.TryFind("EssenceofFire", out ModItem EssenceofFire))
                 {
-                    raremodMatShop.Add(EssenceofFire.Type, Condition.Hardmode);
+                    modMatShop3.Add(EssenceofFire.Type, Condition.Hardmode);
                 }
                 if (CheckDowned.vitalityMod.TryFind("EssenceofFrost", out ModItem EssenceofFrost))
                 {
-                    raremodMatShop.Add(EssenceofFrost.Type, Condition.Hardmode);
+                    modMatShop3.Add(EssenceofFrost.Type, Condition.Hardmode);
                 }
                 if (CheckDowned.vitalityMod.TryFind("ForbiddenFeather", out ModItem ForbiddenFeather))
                 {
-                    raremodMatShop.Add(ForbiddenFeather.Type, Condition.Hardmode);
+                    modMatShop3.Add(ForbiddenFeather.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.vitalityMod.TryFind("GlacialChunk", out ModItem GlacialChunk))
+                {
+                    modMatShop3.Add(GlacialChunk.Type);
+                }
+                if (CheckDowned.vitalityMod.TryFind("GlowingGranitePowder", out ModItem GlowingGranitePowder))
+                {
+                    modMatShop3.Add(GlowingGranitePowder.Type);
+                }
+                if (CheckDowned.vitalityMod.TryFind("LivingStick", out ModItem LivingStick))
+                {
+                    modMatShop3.Add(LivingStick.Type);
+                }
+                if (CheckDowned.vitalityMod.TryFind("PurifiedSpore", out ModItem PurifiedSpore))
+                {
+                    modMatShop3.Add(PurifiedSpore.Type);
                 }
                 if (CheckDowned.vitalityMod.TryFind("ShiverFragment", out ModItem ShiverFragment))
                 {
-                    raremodMatShop.Add(ShiverFragment.Type, Condition.DownedPlantera);
+                    modMatShop3.Add(ShiverFragment.Type, Condition.DownedPlantera);
                 }
                 if (CheckDowned.vitalityMod.TryFind("SoulofVitality", out ModItem SoulofVitality))
                 {
-                    raremodMatShop.Add(SoulofVitality.Type, Condition.DownedPlantera);
+                    modMatShop3.Add(SoulofVitality.Type, Condition.DownedPlantera);
                 }
             }
-            raremodMatShop.Register();
+            modMatShop3.Register();
 
             var boss1Shop = new NPCShop(Type, "Modded Treasure Bags 1");
             if (CheckDowned.calamityLoaded)
@@ -1402,111 +1389,60 @@ namespace QoLCompendium.NPCs
                     boss1Shop.Add(RagBag.Type, CheckDowned.primordials);
                 }
             }
+            boss1Shop.Register();
+
+            var boss2Shop = new NPCShop(Type, "Modded Treasure Bags 2");
             if (CheckDowned.redemptionLoaded)
             {
                 if (CheckDowned.redemptionMod.TryFind("ThornBag", out ModItem ThornBag))
                 {
-                    boss1Shop.Add(ThornBag.Type, CheckDowned.thorn);
+                    boss2Shop.Add(ThornBag.Type, CheckDowned.thorn);
                 }
                 if (CheckDowned.redemptionMod.TryFind("ErhanBag", out ModItem ErhanBag))
                 {
-                    boss1Shop.Add(ErhanBag.Type, CheckDowned.erhan);
+                    boss2Shop.Add(ErhanBag.Type, CheckDowned.erhan);
                 }
                 if (CheckDowned.redemptionMod.TryFind("KeeperBag", out ModItem KeeperBag))
                 {
-                    boss1Shop.Add(KeeperBag.Type, CheckDowned.keeper);
+                    boss2Shop.Add(KeeperBag.Type, CheckDowned.keeper);
                 }
                 if (CheckDowned.redemptionMod.TryFind("SoIBag", out ModItem SoIBag))
                 {
-                    boss1Shop.Add(SoIBag.Type, CheckDowned.seed);
+                    boss2Shop.Add(SoIBag.Type, CheckDowned.seed);
                 }
                 if (CheckDowned.redemptionMod.TryFind("SlayerBag", out ModItem SlayerBag))
                 {
-                    boss1Shop.Add(SlayerBag.Type, CheckDowned.ks3);
+                    boss2Shop.Add(SlayerBag.Type, CheckDowned.ks3);
                 }
                 if (CheckDowned.redemptionMod.TryFind("OmegaCleaverBag", out ModItem OmegaCleaverBag))
                 {
-                    boss1Shop.Add(OmegaCleaverBag.Type, CheckDowned.cleaver);
+                    boss2Shop.Add(OmegaCleaverBag.Type, CheckDowned.cleaver);
                 }
                 if (CheckDowned.redemptionMod.TryFind("OmegaGigaporaBag", out ModItem OmegaGigaporaBag))
                 {
-                    boss1Shop.Add(OmegaGigaporaBag.Type, CheckDowned.gigapora);
+                    boss2Shop.Add(OmegaGigaporaBag.Type, CheckDowned.gigapora);
                 }
                 if (CheckDowned.redemptionMod.TryFind("OmegaOblitBag", out ModItem OmegaOblitBag))
                 {
-                    boss1Shop.Add(OmegaOblitBag.Type, CheckDowned.obliterator);
+                    boss2Shop.Add(OmegaOblitBag.Type, CheckDowned.obliterator);
                 }
                 if (CheckDowned.redemptionMod.TryFind("PZBag", out ModItem PZBag))
                 {
-                    boss1Shop.Add(PZBag.Type, CheckDowned.zero);
+                    boss2Shop.Add(PZBag.Type, CheckDowned.zero);
                 }
                 if (CheckDowned.redemptionMod.TryFind("AkkaBag", out ModItem AkkaBag))
                 {
-                    boss1Shop.Add(AkkaBag.Type, CheckDowned.duo);
+                    boss2Shop.Add(AkkaBag.Type, CheckDowned.duo);
                 }
                 if (CheckDowned.redemptionMod.TryFind("UkkoBag", out ModItem UkkoBag))
                 {
-                    boss1Shop.Add(UkkoBag.Type, CheckDowned.duo);
+                    boss2Shop.Add(UkkoBag.Type, CheckDowned.duo);
                 }
                 if (CheckDowned.redemptionMod.TryFind("NebBag", out ModItem NebBag))
                 {
-                    boss1Shop.Add(NebBag.Type, CheckDowned.nebby);
+                    boss2Shop.Add(NebBag.Type, CheckDowned.nebby);
                 }
-            }
-            if (CheckDowned.homewardLoaded)
-            {
-                if (CheckDowned.homewardMod.TryFind("MarquisMoonsquidTreasureBag", out ModItem MarquisMoonsquidTreasureBag))
-                {
-                    boss1Shop.Add(MarquisMoonsquidTreasureBag.Type, CheckDowned.squid);
-                }
-                if (CheckDowned.homewardMod.TryFind("PriestessRodTreasureBag", out ModItem PriestessRodTreasureBag))
-                {
-                    boss1Shop.Add(PriestessRodTreasureBag.Type, CheckDowned.rod);
-                }
-                if (CheckDowned.homewardMod.TryFind("DiverTreasureBag", out ModItem DiverTreasureBag))
-                {
-                    boss1Shop.Add(DiverTreasureBag.Type, CheckDowned.diver);
-                }
-                if (CheckDowned.homewardMod.TryFind("TheMotherbrainTreasureBag", out ModItem TheMotherbrainTreasureBag))
-                {
-                    boss1Shop.Add(TheMotherbrainTreasureBag.Type, CheckDowned.motherbrain);
-                }
-                if (CheckDowned.homewardMod.TryFind("WallofShadowTreasureBag", out ModItem WallofShadowTreasureBag))
-                {
-                    boss1Shop.Add(WallofShadowTreasureBag.Type, CheckDowned.wos);
-                }
-                if (CheckDowned.homewardMod.TryFind("SlimeGodTreasureBag", out ModItem SlimeGodTreasureBag))
-                {
-                    boss1Shop.Add(SlimeGodTreasureBag.Type, CheckDowned.sgod);
-                }
-                if (CheckDowned.homewardMod.TryFind("TheOverwatcherTreasureBag", out ModItem TheOverwatcherTreasureBag))
-                {
-                    boss1Shop.Add(TheOverwatcherTreasureBag.Type, CheckDowned.overwatcher);
-                }
-                if (CheckDowned.homewardMod.TryFind("TheLifebringerTreasureBag", out ModItem TheLifebringerTreasureBag))
-                {
-                    boss1Shop.Add(TheLifebringerTreasureBag.Type, CheckDowned.lifebringer);
-                }
-                if (CheckDowned.homewardMod.TryFind("TheMaterealizerTreasureBag", out ModItem TheMaterealizerTreasureBag))
-                {
-                    boss1Shop.Add(TheMaterealizerTreasureBag.Type, CheckDowned.materealizer);
-                }
-                if (CheckDowned.homewardMod.TryFind("ScarabBeliefTreasureBag", out ModItem ScarabBeliefTreasureBag))
-                {
-                    boss1Shop.Add(ScarabBeliefTreasureBag.Type, CheckDowned.scarab);
-                }
-                if (CheckDowned.homewardMod.TryFind("EverlastingFallingWhaleTreasureBag", out ModItem EverlastingFallingWhaleTreasureBag))
-                {
-                    boss1Shop.Add(EverlastingFallingWhaleTreasureBag.Type, CheckDowned.whale);
-                }
-                if (CheckDowned.homewardMod.TryFind("TheSonTreasureBag", out ModItem TheSonTreasureBag))
-                {
-                    boss1Shop.Add(TheSonTreasureBag.Type, CheckDowned.son);
-                }
-            }
-            boss1Shop.Register();
-
-            var boss2Shop = new NPCShop(Type, "Modded Treasure Bags 2");
+            }        
             if (CheckDowned.sotsLoaded)
             {
                 if (CheckDowned.sotsMod.TryFind("PinkyBag", out ModItem PinkyBag))
@@ -1534,81 +1470,97 @@ namespace QoLCompendium.NPCs
                     boss2Shop.Add(SubspaceBag.Type, CheckDowned.serpent);
                 }
             }
-            if (CheckDowned.terrorbornLoaded)
+            if (CheckDowned.fargosSoulsLoaded)
             {
-                if (CheckDowned.terrorbornMod.TryFind("II_TreasureBag", out ModItem II_TreasureBag))
+                if (CheckDowned.fargosSoulsMod.TryFind("TrojanSquirrelBag", out ModItem TrojanSquirrelBag))
                 {
-                    boss2Shop.Add(II_TreasureBag.Type, CheckDowned.incarnate);
+                    boss2Shop.Add(TrojanSquirrelBag.Type, CheckDowned.squirrel);
                 }
-                if (CheckDowned.terrorbornMod.TryFind("TT_TreasureBag", out ModItem TT_TreasureBag))
+                if (CheckDowned.fargosSoulsMod.TryFind("DeviBag", out ModItem DeviBag))
                 {
-                    boss2Shop.Add(TT_TreasureBag.Type, CheckDowned.titan);
+                    boss2Shop.Add(DeviBag.Type, CheckDowned.devi);
                 }
-                if (CheckDowned.terrorbornMod.TryFind("DS_TreasureBag", out ModItem DS_TreasureBag))
+                if (CheckDowned.fargosSoulsMod.TryFind("LifeChallengerBag", out ModItem LifeChallengerBag))
                 {
-                    boss2Shop.Add(DS_TreasureBag.Type, CheckDowned.dunestock);
+                    boss2Shop.Add(LifeChallengerBag.Type, CheckDowned.lieflight);
                 }
-                if (CheckDowned.terrorbornMod.TryFind("SC_TreasureBag", out ModItem SC_TreasureBag))
+                if (CheckDowned.fargosSoulsMod.TryFind("CosmosBag", out ModItem CosmosBag))
                 {
-                    boss2Shop.Add(SC_TreasureBag.Type, CheckDowned.crawler);
+                    boss2Shop.Add(CosmosBag.Type, CheckDowned.cosmoschamp);
                 }
-                if (CheckDowned.terrorbornMod.TryFind("HC_TreasureBag", out ModItem HC_TreasureBag))
+                if (CheckDowned.fargosSoulsMod.TryFind("AbomBag", out ModItem AbomBag))
                 {
-                    boss2Shop.Add(HC_TreasureBag.Type, CheckDowned.constructor);
+                    boss2Shop.Add(AbomBag.Type, CheckDowned.abom);
                 }
-                if (CheckDowned.terrorbornMod.TryFind("PI_TreasureBag", out ModItem PI_TreasureBag))
+                if (CheckDowned.fargosSoulsMod.TryFind("MutantBag", out ModItem MutantBag))
                 {
-                    boss2Shop.Add(PI_TreasureBag.Type, CheckDowned.p1);
+                    boss2Shop.Add(MutantBag.Type, CheckDowned.mutant);
                 }
             }
-            if (CheckDowned.vitalityLoaded)
+            if (CheckDowned.homewardLoaded)
             {
-                if (CheckDowned.vitalityMod.TryFind("StormCloudBossBag", out ModItem StormCloudBossBag))
+                if (CheckDowned.homewardMod.TryFind("MarquisMoonsquidTreasureBag", out ModItem MarquisMoonsquidTreasureBag))
                 {
-                    boss2Shop.Add(StormCloudBossBag.Type, CheckDowned.stormcloud);
+                    boss2Shop.Add(MarquisMoonsquidTreasureBag.Type, CheckDowned.squid);
                 }
-                if (CheckDowned.vitalityMod.TryFind("GrandAntlionBossBag", out ModItem GrandAntlionBossBag))
+                if (CheckDowned.homewardMod.TryFind("PriestessRodTreasureBag", out ModItem PriestessRodTreasureBag))
                 {
-                    boss2Shop.Add(GrandAntlionBossBag.Type, CheckDowned.grandantlion);
+                    boss2Shop.Add(PriestessRodTreasureBag.Type, CheckDowned.rod);
                 }
-                if (CheckDowned.vitalityMod.TryFind("GemstoneElementalBossBag", out ModItem GemstoneElementalBossBag))
+                if (CheckDowned.homewardMod.TryFind("DiverTreasureBag", out ModItem DiverTreasureBag))
                 {
-                    boss2Shop.Add(GemstoneElementalBossBag.Type, CheckDowned.gemstone);
+                    boss2Shop.Add(DiverTreasureBag.Type, CheckDowned.diver);
                 }
-                if (CheckDowned.vitalityMod.TryFind("MoonlightDragonflyBossBag", out ModItem MoonlightDragonflyBossBag))
+                if (CheckDowned.homewardMod.TryFind("TheMotherbrainTreasureBag", out ModItem TheMotherbrainTreasureBag))
                 {
-                    boss2Shop.Add(MoonlightDragonflyBossBag.Type, CheckDowned.dragonfly);
+                    boss2Shop.Add(TheMotherbrainTreasureBag.Type, CheckDowned.motherbrain);
                 }
-                if (CheckDowned.vitalityMod.TryFind("DreadnaughtBossBag", out ModItem DreadnaughtBossBag))
+                if (CheckDowned.homewardMod.TryFind("WallofShadowTreasureBag", out ModItem WallofShadowTreasureBag))
                 {
-                    boss2Shop.Add(DreadnaughtBossBag.Type, CheckDowned.dreadnaught);
+                    boss2Shop.Add(WallofShadowTreasureBag.Type, CheckDowned.wos);
                 }
-                if (CheckDowned.vitalityMod.TryFind("AnarchulesBeetleBossBag", out ModItem AnarchulesBeetleBossBag))
+                if (CheckDowned.homewardMod.TryFind("SlimeGodTreasureBag", out ModItem SlimeGodTreasureBag))
                 {
-                    boss2Shop.Add(AnarchulesBeetleBossBag.Type, CheckDowned.anarchulesbeetle);
+                    boss2Shop.Add(SlimeGodTreasureBag.Type, CheckDowned.sgod);
                 }
-                if (CheckDowned.vitalityMod.TryFind("ChaosbringerBossBag", out ModItem ChaosbringerBossBag))
+                if (CheckDowned.homewardMod.TryFind("TheOverwatcherTreasureBag", out ModItem TheOverwatcherTreasureBag))
                 {
-                    boss2Shop.Add(ChaosbringerBossBag.Type, CheckDowned.chaosbringer);
+                    boss2Shop.Add(TheOverwatcherTreasureBag.Type, CheckDowned.overwatcher);
                 }
-                if (CheckDowned.vitalityMod.TryFind("PaladinSpiritBossBag", out ModItem PaladinSpiritBossBag))
+                if (CheckDowned.homewardMod.TryFind("TheLifebringerTreasureBag", out ModItem TheLifebringerTreasureBag))
                 {
-                    boss2Shop.Add(PaladinSpiritBossBag.Type, CheckDowned.paladin);
+                    boss2Shop.Add(TheLifebringerTreasureBag.Type, CheckDowned.lifebringer);
+                }
+                if (CheckDowned.homewardMod.TryFind("TheMaterealizerTreasureBag", out ModItem TheMaterealizerTreasureBag))
+                {
+                    boss2Shop.Add(TheMaterealizerTreasureBag.Type, CheckDowned.materealizer);
+                }
+                if (CheckDowned.homewardMod.TryFind("ScarabBeliefTreasureBag", out ModItem ScarabBeliefTreasureBag))
+                {
+                    boss2Shop.Add(ScarabBeliefTreasureBag.Type, CheckDowned.scarab);
+                }
+                if (CheckDowned.homewardMod.TryFind("EverlastingFallingWhaleTreasureBag", out ModItem EverlastingFallingWhaleTreasureBag))
+                {
+                    boss2Shop.Add(EverlastingFallingWhaleTreasureBag.Type, CheckDowned.whale);
+                }
+                if (CheckDowned.homewardMod.TryFind("TheSonTreasureBag", out ModItem TheSonTreasureBag))
+                {
+                    boss2Shop.Add(TheSonTreasureBag.Type, CheckDowned.son);
                 }
             }
-            if (CheckDowned.consolariaLoaded)
+            if (CheckDowned.aqLoaded)
             {
-                if (CheckDowned.consolariaMod.TryFind("LepusBag", out ModItem LepusBag))
+                if (CheckDowned.aqMod.TryFind("CrabsonBag", out ModItem CrabsonBag))
                 {
-                    boss2Shop.Add(LepusBag.Type, CheckDowned.lepus);
+                    boss2Shop.Add(CrabsonBag.Type, CheckDowned.crabson);
                 }
-                if (CheckDowned.consolariaMod.TryFind("TurkorBag", out ModItem TurkorBag))
+                if (CheckDowned.aqMod.TryFind("OmegaStariteBag", out ModItem OmegaStariteBag))
                 {
-                    boss2Shop.Add(TurkorBag.Type, CheckDowned.turkor);
+                    boss2Shop.Add(OmegaStariteBag.Type, CheckDowned.omegastarite);
                 }
-                if (CheckDowned.consolariaMod.TryFind("OcramBag", out ModItem OcramBag))
+                if (CheckDowned.aqMod.TryFind("DustDevilBag", out ModItem DustDevilBag))
                 {
-                    boss2Shop.Add(OcramBag.Type, CheckDowned.ocram);
+                    boss2Shop.Add(DustDevilBag.Type, CheckDowned.devil);
                 }
             }
             boss2Shop.Register();
@@ -1633,31 +1585,19 @@ namespace QoLCompendium.NPCs
                     boss3Shop.Add(BossBagBigBone.Type, CheckDowned.bigbone);
                 }
             }
-            if (CheckDowned.fargosSoulsLoaded)
+            if (CheckDowned.consolariaLoaded)
             {
-                if (CheckDowned.fargosSoulsMod.TryFind("TrojanSquirrelBag", out ModItem TrojanSquirrelBag))
+                if (CheckDowned.consolariaMod.TryFind("LepusBag", out ModItem LepusBag))
                 {
-                    boss3Shop.Add(TrojanSquirrelBag.Type, CheckDowned.squirrel);
+                    boss3Shop.Add(LepusBag.Type, CheckDowned.lepus);
                 }
-                if (CheckDowned.fargosSoulsMod.TryFind("DeviBag", out ModItem DeviBag))
+                if (CheckDowned.consolariaMod.TryFind("TurkorBag", out ModItem TurkorBag))
                 {
-                    boss3Shop.Add(DeviBag.Type, CheckDowned.devi);
+                    boss3Shop.Add(TurkorBag.Type, CheckDowned.turkor);
                 }
-                if (CheckDowned.fargosSoulsMod.TryFind("LifeChallengerBag", out ModItem LifeChallengerBag))
+                if (CheckDowned.consolariaMod.TryFind("OcramBag", out ModItem OcramBag))
                 {
-                    boss3Shop.Add(LifeChallengerBag.Type, CheckDowned.lieflight);
-                }
-                if (CheckDowned.fargosSoulsMod.TryFind("CosmosBag", out ModItem CosmosBag))
-                {
-                    boss3Shop.Add(CosmosBag.Type, CheckDowned.cosmoschamp);
-                }
-                if (CheckDowned.fargosSoulsMod.TryFind("AbomBag", out ModItem AbomBag))
-                {
-                    boss3Shop.Add(AbomBag.Type, CheckDowned.abom);
-                }
-                if (CheckDowned.fargosSoulsMod.TryFind("MutantBag", out ModItem MutantBag))
-                {
-                    boss3Shop.Add(MutantBag.Type, CheckDowned.mutant);
+                    boss3Shop.Add(OcramBag.Type, CheckDowned.ocram);
                 }
             }
             if (CheckDowned.polaritiesLoaded)
@@ -1687,19 +1627,66 @@ namespace QoLCompendium.NPCs
                     boss3Shop.Add(ConvectiveWandererBag.Type, CheckDowned.wanderer);
                 }
             }
-            if (CheckDowned.aqLoaded)
+            if (CheckDowned.vitalityLoaded)
             {
-                if (CheckDowned.aqMod.TryFind("CrabsonBag", out ModItem CrabsonBag))
+                if (CheckDowned.vitalityMod.TryFind("StormCloudBossBag", out ModItem StormCloudBossBag))
                 {
-                    boss3Shop.Add(CrabsonBag.Type, CheckDowned.crabson);
+                    boss3Shop.Add(StormCloudBossBag.Type, CheckDowned.stormcloud);
                 }
-                if (CheckDowned.aqMod.TryFind("OmegaStariteBag", out ModItem OmegaStariteBag))
+                if (CheckDowned.vitalityMod.TryFind("GrandAntlionBossBag", out ModItem GrandAntlionBossBag))
                 {
-                    boss3Shop.Add(OmegaStariteBag.Type, CheckDowned.starite);
+                    boss3Shop.Add(GrandAntlionBossBag.Type, CheckDowned.grandantlion);
                 }
-                if (CheckDowned.aqMod.TryFind("DustDevilBag", out ModItem DustDevilBag))
+                if (CheckDowned.vitalityMod.TryFind("GemstoneElementalBossBag", out ModItem GemstoneElementalBossBag))
                 {
-                    boss3Shop.Add(DustDevilBag.Type, CheckDowned.devil);
+                    boss3Shop.Add(GemstoneElementalBossBag.Type, CheckDowned.gemstone);
+                }
+                if (CheckDowned.vitalityMod.TryFind("MoonlightDragonflyBossBag", out ModItem MoonlightDragonflyBossBag))
+                {
+                    boss3Shop.Add(MoonlightDragonflyBossBag.Type, CheckDowned.dragonfly);
+                }
+                if (CheckDowned.vitalityMod.TryFind("DreadnaughtBossBag", out ModItem DreadnaughtBossBag))
+                {
+                    boss3Shop.Add(DreadnaughtBossBag.Type, CheckDowned.dreadnaught);
+                }
+                if (CheckDowned.vitalityMod.TryFind("AnarchulesBeetleBossBag", out ModItem AnarchulesBeetleBossBag))
+                {
+                    boss3Shop.Add(AnarchulesBeetleBossBag.Type, CheckDowned.anarchulesbeetle);
+                }
+                if (CheckDowned.vitalityMod.TryFind("ChaosbringerBossBag", out ModItem ChaosbringerBossBag))
+                {
+                    boss3Shop.Add(ChaosbringerBossBag.Type, CheckDowned.chaosbringer);
+                }
+                if (CheckDowned.vitalityMod.TryFind("PaladinSpiritBossBag", out ModItem PaladinSpiritBossBag))
+                {
+                    boss3Shop.Add(PaladinSpiritBossBag.Type, CheckDowned.paladin);
+                }
+            }
+            if (CheckDowned.terrorbornLoaded)
+            {
+                if (CheckDowned.terrorbornMod.TryFind("II_TreasureBag", out ModItem II_TreasureBag))
+                {
+                    boss3Shop.Add(II_TreasureBag.Type, CheckDowned.incarnate);
+                }
+                if (CheckDowned.terrorbornMod.TryFind("TT_TreasureBag", out ModItem TT_TreasureBag))
+                {
+                    boss3Shop.Add(TT_TreasureBag.Type, CheckDowned.titan);
+                }
+                if (CheckDowned.terrorbornMod.TryFind("DS_TreasureBag", out ModItem DS_TreasureBag))
+                {
+                    boss3Shop.Add(DS_TreasureBag.Type, CheckDowned.dunestock);
+                }
+                if (CheckDowned.terrorbornMod.TryFind("SC_TreasureBag", out ModItem SC_TreasureBag))
+                {
+                    boss3Shop.Add(SC_TreasureBag.Type, CheckDowned.crawler);
+                }
+                if (CheckDowned.terrorbornMod.TryFind("HC_TreasureBag", out ModItem HC_TreasureBag))
+                {
+                    boss3Shop.Add(HC_TreasureBag.Type, CheckDowned.constructor);
+                }
+                if (CheckDowned.terrorbornMod.TryFind("PI_TreasureBag", out ModItem PI_TreasureBag))
+                {
+                    boss3Shop.Add(PI_TreasureBag.Type, CheckDowned.p1);
                 }
             }
             boss3Shop.Register();

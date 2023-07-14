@@ -21,15 +21,6 @@ namespace QoLCompendium.Tweaks
 
         public override void SetDefaults(Item item)
         {
-            if (ModContent.GetInstance<QoLCConfig>().IncreasedStackSize && item.maxStack > 10 && item.maxStack != 100)
-            {
-                item.maxStack = 9999;
-                if (item.type == ItemID.PlatinumCoin && item.maxStack > 2000)
-                {
-                    item.maxStack = 2000;
-                }
-            }
-
             if (ModContent.GetInstance<QoLCConfig>().NoDevs && ItemID.Sets.BossBag[item.type])
             {
                 ItemID.Sets.PreHardmodeLikeBossBag[item.type] = true;

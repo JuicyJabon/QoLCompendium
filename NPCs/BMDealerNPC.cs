@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
-using Terraria.GameContent.Golf;
 using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,7 +30,6 @@ namespace QoLCompendium.NPCs
 
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Black Market Dealer");
             Main.npcFrameCount[NPC.type] = 26;
             NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
             NPCID.Sets.AttackFrameCount[NPC.type] = 5;
@@ -68,7 +66,7 @@ namespace QoLCompendium.NPCs
             AnimationType = 22;
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
+        public override bool CanTownNPCSpawn(int numTownNPCs)
         {
             return true;
         }
@@ -81,6 +79,7 @@ namespace QoLCompendium.NPCs
                 "Ned",
                 "Jay",
                 "Jack",
+                "Nathan",
                 "Jabon"
             };
             return list;
@@ -213,6 +212,7 @@ namespace QoLCompendium.NPCs
                     .Add(2344)
                     .Add(303)
                     .Add(300)
+                    .Add(5211)
                     .Add(2325)
                     .Add(2324)
                     .Add(2356)
@@ -305,7 +305,6 @@ namespace QoLCompendium.NPCs
                     .Add(521, Condition.Hardmode)
                     .Add(548, Condition.DownedDestroyer)
                     .Add(549, Condition.DownedTwins)
-                    .Add(547, Condition.DownedSkeletronPrime)
                     .Add(547, Condition.DownedSkeletronPrime)
                     .Add(3457, Condition.DownedCultist)
                     .Add(3458, Condition.DownedCultist)
@@ -475,7 +474,7 @@ namespace QoLCompendium.NPCs
                     .Add(765)
                     .Add(61)
                     .Add(836)
-                    .Add(409)
+                    .Add(409, Condition.Hardmode)
                     .Add(1124)
                     .Add(1125)
                     .Add(1127)
@@ -494,49 +493,51 @@ namespace QoLCompendium.NPCs
                     .Add(1725)
                     .Add(4564)
                     .Add(173)
+                    .Add(5349)
                     .Add(502, Condition.Hardmode);
             naturalBlockShop.Register();
 
             var buildingBlockShop = new NPCShop(Type, "Building Blocks")
                     .Add(129)
+                    .Add(2119)
                     .Add(131)
                     .Add(607)
                     .Add(594)
                     .Add(883)
                     .Add(414)
                     .Add(413)
-                    .Add(145)
-                    .Add(2173)
-                    .Add(717)
-                    .Add(2692)
-                    .Add(3951)
-                    .Add(3953)
-                    .Add(143)
-                    .Add(718)
-                    .Add(141)
-                    .Add(719)
+                    .Add(192)
                     .Add(609)
                     .Add(4050)
-                    .Add(577)
-                    .Add(2793)
-                    .Add(3100)
-                    .Add(192)
-                    .Add(214)
-                    .Add(412)
-                    .Add(415)
-                    .Add(1589)
-                    .Add(416)
-                    .Add(1591)
-                    .Add(604)
-                    .Add(1593)
-                    .Add(2792)
-                    .Add(3461)
+                    .Add(412, Condition.Hardmode)
+                    .Add(662, Condition.Hardmode)
+                    .Add(5439)
+                    .Add(5441)
+                    .Add(5442)
+                    .Add(5440)
+                    .Add(5443)
+                    .Add(5444)
                     .Add(134)
                     .Add(137)
                     .Add(139)
-                    .Add(1101)
+                    .Add(824)
+                    .Add(5398)
+                    .Add(775)
                     .Add(2435)
-                    .Add(2860, Condition.DownedGolem);
+                    .Add(611)
+                    .Add(612)
+                    .Add(613)
+                    .Add(614)
+                    .Add(3087)
+                    .Add(3066)
+                    .Add(4139)
+                    .Add(586)
+                    .Add(591)
+                    .Add(4422)
+                    .Add(763)
+                    .Add(3955)
+                    .Add(2860, Condition.DownedMartians)
+                    .Add(1101, Condition.DownedGolem);
             buildingBlockShop.Register();
 
             var plantShop = new NPCShop(Type, "Herbs & Plants")

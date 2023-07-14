@@ -84,14 +84,14 @@ namespace QoLCompendium.UI
             text7.Height.Set(26, 0f);
             ShopPanel.Append(text7);
 
-            Asset<Texture2D> resetTexture = Request<Texture2D>("QoLCompendium/Items/Globe");
-            Asset<Texture2D> desertTexture = Request<Texture2D>("QoLCompendium/Items/DesertGlobe");
-            Asset<Texture2D> snowTexture = Request<Texture2D>("QoLCompendium/Items/IceGlobe");
-            Asset<Texture2D> jungleTexture = Request<Texture2D>("QoLCompendium/Items/JungleGlobe");
-            Asset<Texture2D> glowingMushroomTexture = Request<Texture2D>("QoLCompendium/Items/GlowingMushroomGlobe");
-            Asset<Texture2D> corruptionTexture = Request<Texture2D>("QoLCompendium/Items/CorruptionGlobe");
-            Asset<Texture2D> crimsonTexture = Request<Texture2D>("QoLCompendium/Items/CrimsonGlobe");
-            Asset<Texture2D> hallowTexture = Request<Texture2D>("QoLCompendium/Items/HallowGlobe");
+            Asset<Texture2D> resetTexture = Request<Texture2D>("QoLCompendium/Assets/Globe");
+            Asset<Texture2D> desertTexture = Request<Texture2D>("QoLCompendium/Assets/DesertGlobe");
+            Asset<Texture2D> snowTexture = Request<Texture2D>("QoLCompendium/Assets/IceGlobe");
+            Asset<Texture2D> jungleTexture = Request<Texture2D>("QoLCompendium/Assets/JungleGlobe");
+            Asset<Texture2D> glowingMushroomTexture = Request<Texture2D>("QoLCompendium/Assets/GlowingMushroomGlobe");
+            Asset<Texture2D> corruptionTexture = Request<Texture2D>("QoLCompendium/Assets/CorruptionGlobe");
+            Asset<Texture2D> crimsonTexture = Request<Texture2D>("QoLCompendium/Assets/CrimsonGlobe");
+            Asset<Texture2D> hallowTexture = Request<Texture2D>("QoLCompendium/Assets/HallowGlobe");
 
             UIImageButton playButton0 = new(resetTexture);
             playButton0.Left.Set(10, 0f);
@@ -157,7 +157,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QolCPlayer>().selectedBiome = 0;
+                p.GetModPlayer<QoLCPlayer>().selectedBiome = 0;
                 visible = false;
             }
         }
@@ -167,7 +167,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QolCPlayer>().selectedBiome = 1;
+                p.GetModPlayer<QoLCPlayer>().selectedBiome = 1;
                 visible = false;
             }
         }
@@ -177,7 +177,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QolCPlayer>().selectedBiome = 2;
+                p.GetModPlayer<QoLCPlayer>().selectedBiome = 2;
                 visible = false;
             }
         }
@@ -187,7 +187,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QolCPlayer>().selectedBiome = 3;
+                p.GetModPlayer<QoLCPlayer>().selectedBiome = 3;
                 visible = false;
             }
         }
@@ -197,7 +197,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QolCPlayer>().selectedBiome = 4;
+                p.GetModPlayer<QoLCPlayer>().selectedBiome = 4;
                 visible = false;
             }
         }
@@ -207,7 +207,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QolCPlayer>().selectedBiome = 5;
+                p.GetModPlayer<QoLCPlayer>().selectedBiome = 5;
                 visible = false;
             }
         }
@@ -217,7 +217,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QolCPlayer>().selectedBiome = 6;
+                p.GetModPlayer<QoLCPlayer>().selectedBiome = 6;
                 visible = false;
             }
         }
@@ -227,7 +227,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QolCPlayer>().selectedBiome = 7;
+                p.GetModPlayer<QoLCPlayer>().selectedBiome = 7;
                 visible = false;
             }
         }

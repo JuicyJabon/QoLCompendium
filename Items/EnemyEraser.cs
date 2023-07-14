@@ -46,7 +46,7 @@ namespace QoLCompendium.Items
         {
             if (Item.favorited)
             {
-                player.GetModPlayer<QolCPlayer>().enemyEraser = true;
+                player.GetModPlayer<QoLCPlayer>().enemyEraser = true;
             }
         }
     }

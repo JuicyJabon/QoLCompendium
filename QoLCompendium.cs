@@ -39,7 +39,7 @@ namespace QoLCompendium
                 globeInterface.SetState(globeUI);
             }
 
-            Terraria.IL_Chest.VanillaSetupShop += il =>
+            IL_Chest.VanillaSetupShop += il =>
             {
                 ILCursor c = new(il);
 
@@ -50,7 +50,7 @@ namespace QoLCompendium
                 c.EmitDelegate((bool flag) => flag || ModContent.GetInstance<QoLCConfig>().ToggleHappiness);
             };
 
-            Terraria.IL_Main.DrawNPCChatButtons += il =>
+            IL_Main.DrawNPCChatButtons += il =>
             {
                 ILCursor c = new(il);
 

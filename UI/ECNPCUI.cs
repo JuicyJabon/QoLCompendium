@@ -22,9 +22,9 @@ namespace QoLCompendium.UI
             ShopPanel = new UIPanel();
             ShopPanel.SetPadding(0);
             ShopPanel.Left.Set(575f, 0f);
-            ShopPanel.Top.Set(275f, 0f);
+            ShopPanel.Top.Set(300f, 0f);
             ShopPanel.Width.Set(385f, 0f);
-            ShopPanel.Height.Set(190f, 0f);
+            ShopPanel.Height.Set(220f, 0f);
             ShopPanel.BackgroundColor = new Color(73, 94, 171);
 
             ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
@@ -37,40 +37,47 @@ namespace QoLCompendium.UI
             text0.Height.Set(22, 0f);
             ShopPanel.Append(text0);
 
-            UIText text1 = new("Modded Materials");
+            UIText text1 = new("Modded Materials 1");
             text1.Left.Set(35, 0f);
             text1.Top.Set(40, 0f);
             text1.Width.Set(100, 0f);
             text1.Height.Set(22, 0f);
             ShopPanel.Append(text1);
 
-            UIText text2 = new("Rare Modded Materials");
+            UIText text2 = new("Modded Materials 2");
             text2.Left.Set(35, 0f);
             text2.Top.Set(70, 0f);
             text2.Width.Set(100, 0f);
             text2.Height.Set(22, 0f);
             ShopPanel.Append(text2);
 
-            UIText text3 = new("Modded Treasure Bags 1");
+            UIText text3 = new("Modded Materials 3");
             text3.Left.Set(35, 0f);
             text3.Top.Set(100, 0f);
             text3.Width.Set(100, 0f);
             text3.Height.Set(22, 0f);
             ShopPanel.Append(text3);
 
-            UIText text4 = new("Modded Treasure Bags 2");
+            UIText text4 = new("Modded Treasure Bags 1");
             text4.Left.Set(35, 0f);
             text4.Top.Set(130, 0f);
             text4.Width.Set(100, 0f);
             text4.Height.Set(22, 0f);
             ShopPanel.Append(text4);
 
-            UIText text5 = new("Modded Treasure Bags 3");
+            UIText text5 = new("Modded Treasure Bags 2");
             text5.Left.Set(35, 0f);
             text5.Top.Set(160, 0f);
             text5.Width.Set(100, 0f);
             text5.Height.Set(22, 0f);
             ShopPanel.Append(text5);
+
+            UIText text6 = new("Modded Treasure Bags 3");
+            text6.Left.Set(35, 0f);
+            text6.Top.Set(190, 0f);
+            text6.Width.Set(100, 0f);
+            text6.Height.Set(22, 0f);
+            ShopPanel.Append(text6);
 
             Asset<Texture2D> buttonPlayTexture = Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
             UIImageButton playButton0 = new(buttonPlayTexture);
@@ -115,6 +122,13 @@ namespace QoLCompendium.UI
             playButton5.Height.Set(22, 0f);
             playButton5.OnLeftClick += new MouseEvent(PlayButtonClicked5);
             ShopPanel.Append(playButton5);
+            UIImageButton playButton6 = new(buttonPlayTexture);
+            playButton6.Left.Set(10, 0f);
+            playButton6.Top.Set(190, 0f);
+            playButton6.Width.Set(22, 0f);
+            playButton6.Height.Set(22, 0f);
+            playButton6.OnLeftClick += new MouseEvent(PlayButtonClicked6);
+            ShopPanel.Append(playButton6);
 
             Asset<Texture2D> buttonDeleteTexture = Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
             UIImageButton closeButton = new(buttonDeleteTexture);
@@ -177,6 +191,15 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 EtherealCollectorNPC.shopNum = 5;
+                visible = false;
+            }
+        }
+
+        private void PlayButtonClicked6(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.GameUpdateCount - timeStart >= 10)
+            {
+                EtherealCollectorNPC.shopNum = 6;
                 visible = false;
             }
         }

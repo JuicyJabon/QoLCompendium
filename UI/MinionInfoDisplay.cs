@@ -18,7 +18,7 @@ namespace QoLCompendium.UI
         // Token: 0x0600003C RID: 60 RVA: 0x00002301 File Offset: 0x00000501
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QolCPlayer>().headCounter;
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().headCounter;
         }
 
         // Token: 0x0600003D RID: 61 RVA: 0x00002314 File Offset: 0x00000514

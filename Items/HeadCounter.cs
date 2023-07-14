@@ -42,13 +42,13 @@ namespace QoLCompendium.Items
         // Token: 0x060000EB RID: 235 RVA: 0x000100AF File Offset: 0x0000E2AF
         public override void UpdateInventory(Player player)
         {
-            player.GetModPlayer<QolCPlayer>().headCounter = true;
+            player.GetModPlayer<QoLCPlayer>().headCounter = true;
         }
 
         // Token: 0x060000EC RID: 236 RVA: 0x000100AF File Offset: 0x0000E2AF
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<QolCPlayer>().headCounter = true;
+            player.GetModPlayer<QoLCPlayer>().headCounter = true;
         }
     }
 }

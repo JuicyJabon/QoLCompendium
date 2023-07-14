@@ -51,36 +51,36 @@ namespace QoLCompendium.Items
         {
             if (Item.favorited)
             {
-                if (player.GetModPlayer<QolCPlayer>().selectedBiome == 1)
+                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 1)
                 {
                     player.ZoneDesert = true;
                 }
 
-                if (player.GetModPlayer<QolCPlayer>().selectedBiome == 2)
+                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 2)
                 {
                     player.ZoneSnow = true;
                 }
 
-                if (player.GetModPlayer<QolCPlayer>().selectedBiome == 3)
+                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 3)
                 {
                     player.ZoneJungle = true;
                 }
 
-                if (player.GetModPlayer<QolCPlayer>().selectedBiome == 4)
+                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 4)
                 {
                     player.ZoneGlowshroom = true;
                 }
 
-                if (player.GetModPlayer<QolCPlayer>().selectedBiome == 5)
+                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 5)
                 {
                     player.ZoneCorrupt = true;
                 }
 
-                if (player.GetModPlayer<QolCPlayer>().selectedBiome == 6)
+                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 6)
                 {
                     player.ZoneCrimson = true;
                 }
-                if (player.GetModPlayer<QolCPlayer>().selectedBiome == 7 && Main.hardMode)
+                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 7 && Main.hardMode)
                 {
                     player.ZoneHallow = true;
                 }

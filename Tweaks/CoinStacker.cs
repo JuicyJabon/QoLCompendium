@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace QoLCompendium.Tweaks
 {
-    // Token: 0x0200000B RID: 11
     public static class CoinStacker
     {
-        // Token: 0x06000054 RID: 84 RVA: 0x00004B94 File Offset: 0x00002D94
         public static int CoinType(int item)
         {
             if (item == 71)
@@ -29,7 +28,6 @@ namespace QoLCompendium.Tweaks
             return 0;
         }
 
-        // Token: 0x06000055 RID: 85 RVA: 0x00004BB4 File Offset: 0x00002DB4
         public static void Pig(Item[] pInv, Item[] cInv)
         {
             int[] array = new int[4];
@@ -185,8 +183,6 @@ namespace QoLCompendium.Tweaks
             }
         }
 
-        // Token: 0x06000056 RID: 86 RVA: 0x0000503C File Offset: 0x0000323C
-        // Note: this type is marked as 'beforefieldinit'.
         static CoinStacker()
         {
             HashSet<int> hashSet = new()
@@ -208,22 +204,22 @@ namespace QoLCompendium.Tweaks
             CoinValues = list;
         }
 
-        // Token: 0x0400009C RID: 156
         public static HashSet<int> CoinTypes;
-
-        // Token: 0x0400009D RID: 157
         public static List<int> CoinValues;
-
-        // Token: 0x0400009E RID: 158
         public const int Copper = 1;
-
-        // Token: 0x0400009F RID: 159
         public const int Silver = 100;
-
-        // Token: 0x040000A0 RID: 160
         public const int Gold = 10000;
-
-        // Token: 0x040000A1 RID: 161
         public const int Platinum = 1000000;
+    }
+
+    public class CoinGItem : GlobalItem
+    {
+        public override void UpdateInventory(Item item, Player player)
+        {
+            if (CoinStacker.CoinTypes.Contains(item.type) && ModContent.GetInstance<QoLCConfig>().AutoMoneyStack)
+            {
+                CoinStacker.Pig(player.inventory, player.bank.item);
+            }
+        }
     }
 }

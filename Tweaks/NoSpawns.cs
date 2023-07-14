@@ -14,11 +14,11 @@ namespace QoLCompendium.Tweaks
             {
                 maxSpawns = 0;
             }
-            if (player.GetModPlayer<QolCPlayer>().enemyEraser)
+            if (player.GetModPlayer<QoLCPlayer>().enemyEraser)
             {
                 maxSpawns = 0;
             }
-            if (player.GetModPlayer<QolCPlayer>().enemyAggressor)
+            if (player.GetModPlayer<QoLCPlayer>().enemyAggressor)
             {
                 spawnRate = (int)((double)spawnRate * 0.1);
                 maxSpawns = (int)((float)maxSpawns * 10f);
