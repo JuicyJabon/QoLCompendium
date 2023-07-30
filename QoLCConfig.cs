@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
@@ -81,6 +82,14 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         [ReloadRequired]
+        public bool BloodIdol { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool StarterBag { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
         public bool NoDevs { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.NPCs")]
@@ -99,6 +108,9 @@ namespace QoLCompendium
         [ReloadRequired]
         public bool ToggleHappiness { get; set; }
 
+        [DefaultValue(true)]
+        public bool SkipWave { get; set; }
+
         [Slider]
         [DefaultValue(15)]
         [Range(1, 100)]
@@ -110,6 +122,11 @@ namespace QoLCompendium
         [DefaultValue(3)]
         [Range(1, 25)]
         public int MoreCoins { get; set; }
+
+        [Slider]
+        [DefaultValue(5)]
+        [Range(1, 10)]
+        public int TownieSpawnRate { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Speed")]
         [DefaultValue(true)]
@@ -143,5 +160,16 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         public bool NoLittering { get; set; }
+
+        [DefaultValue(true)]
+        public bool DisableEvilSpread { get; set; }
+
+        public List<ItemDefinition> CustomItems { get; set; }
+
+        [Range(0, 999)]
+        public List<int> CustomItemQuantities { get; set; }
+
+        [DefaultValue(true)]
+        public bool RegrowthAutoReplant { get; set; }
     }
 }

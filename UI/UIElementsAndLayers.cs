@@ -9,10 +9,8 @@ using Terraria.UI;
 
 namespace QoLCompendium.UI
 {
-    // Token: 0x02000007 RID: 7
     public class UIElementsAndLayers : ModSystem
     {
-        // Token: 0x06000043 RID: 67 RVA: 0x000023B0 File Offset: 0x000005B0
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
         {
             int num = layers.FindIndex((GameInterfaceLayer layer) => layer.Name.Equals("Vanilla: Mouse Text"));
@@ -46,7 +44,6 @@ namespace QoLCompendium.UI
             }
         }
 
-        // Token: 0x06000044 RID: 68 RVA: 0x00002418 File Offset: 0x00000618
         internal static Dictionary<string, int> GetSentryNameToCount(out int totalCount, bool onlyCount = false)
         {
             totalCount = 0;

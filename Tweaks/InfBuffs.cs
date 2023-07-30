@@ -61,6 +61,8 @@ namespace QoLCompendium.Tweaks
 
         public int VoidVaultItemsStart;
 
+        public static float LuckPotionBoost = 0;
+
         public override void PreUpdateBuffs()
         {
             if (Main.GameUpdateCount % 1.5 == 0.0)
@@ -81,7 +83,6 @@ namespace QoLCompendium.Tweaks
             foreach ((Item, string) val in ItemsToCountForEndlessBuffs)
             {
                 (Item item, string key) = val;
-
                 if (item.buffType <= 0)
                     continue;
 
@@ -100,6 +101,12 @@ namespace QoLCompendium.Tweaks
             ApplyAvailableBuffs(Player.bank4.item);
         }
 
+        public override void ModifyLuck(ref float luck)
+        {
+            luck += LuckPotionBoost;
+            LuckPotionBoost = 0;
+        }
+
         private static void ApplyAvailableBuffs(IEnumerable<Item> items)
         {
             foreach (Item item in items)
@@ -107,6 +114,23 @@ namespace QoLCompendium.Tweaks
                 int buffType = BuffItem.GetItemBuffType(item);
                 if (item != null)
                 {
+                    if (item.type == ItemID.LuckPotionLesser)
+                    {
+                        LuckPotionBoost += 0.1f;
+                    }
+                    if (item.type == ItemID.LuckPotion)
+                    {
+                        LuckPotionBoost += 0.2f;
+                    }
+                    if (item.type == ItemID.LuckPotionGreater)
+                    {
+                        LuckPotionBoost += 0.3f;
+                    }
+                    if (item.type == ItemID.GardenGnome)
+                    {
+                        LuckPotionBoost += 0.2f;
+                    }
+
                     switch (buffType)
                     {
                         case -1:
@@ -183,7 +207,9 @@ namespace QoLCompendium.Tweaks
             new() { TileID.SliceOfCake, -1, BuffID.SugarRush },
             new() { TileID.SharpeningStation, -1, BuffID.Sharpened },
             new() { TileID.WaterCandle, -1, BuffID.WaterCandle },
-            new() { TileID.PeaceCandle, -1, BuffID.PeaceCandle }
+            new() { TileID.PeaceCandle, -1, BuffID.PeaceCandle },
+            new() { TileID.ShadowCandle, -1, BuffID.ShadowCandle },
+            new() { TileID.WarTable, -1, BuffID.WarTable }
         };
 
         public static bool IsBuffTileItem(Item item, out int buffType)
@@ -213,7 +239,6 @@ namespace QoLCompendium.Tweaks
             IsBuffTileItem(item, out int buffType);
             if (buffType is not -1)
                 return buffType;
-
             if (item.type == ItemID.HoneyBucket)
             {
                 return BuffID.Honey;

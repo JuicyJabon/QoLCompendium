@@ -72,7 +72,7 @@ namespace QoLCompendium.Tweaks
             {
                 return false;
             }
-            return true;
+            return base.CanBeConsumedAsAmmo(ammo, weapon, player);
         }
 
         public override bool? CanConsumeBait(Player player, Item bait)
@@ -81,7 +81,7 @@ namespace QoLCompendium.Tweaks
             {
                 return false;
             }
-            return true;
+            return base.CanConsumeBait(player, bait);
         }
 
         public static readonly int[] BossSummons = new int[]

@@ -6,16 +6,8 @@ using Terraria.ModLoader;
 
 namespace QoLCompendium.Projectiles
 {
-    // Token: 0x02000018 RID: 24
     public class HellevatorCreatorProj : ModProjectile
     {
-        // Token: 0x06000086 RID: 134 RVA: 0x00007F83 File Offset: 0x00006183
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Hellevator Creator");
-        }
-
-        // Token: 0x06000087 RID: 135 RVA: 0x00007F98 File Offset: 0x00006198
         public override void SetDefaults()
         {
             Projectile.width = 13;
@@ -26,27 +18,23 @@ namespace QoLCompendium.Projectiles
             Projectile.timeLeft = 170;
         }
 
-        // Token: 0x06000088 RID: 136 RVA: 0x00007FF4 File Offset: 0x000061F4
         public override bool? CanDamage()
         {
             return false;
         }
 
-        // Token: 0x06000089 RID: 137 RVA: 0x00007FFC File Offset: 0x000061FC
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
         {
             fallThrough = false;
             return base.TileCollideStyle(ref width, ref height, ref fallThrough, ref hitboxCenterFrac);
         }
 
-        // Token: 0x0600008A RID: 138 RVA: 0x0000800C File Offset: 0x0000620C
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Projectile.Kill();
             return true;
         }
 
-        // Token: 0x0600008B RID: 139 RVA: 0x0000801C File Offset: 0x0000621C
         public override void Kill(int timeLeft)
         {
             Vector2 position = Projectile.Center;

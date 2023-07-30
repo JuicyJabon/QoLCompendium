@@ -30,8 +30,15 @@ Current Features:
  - 2 Town NPCs who sell almost everything needed
  - Friendly NPCs become invincible
  - NPC happiness removal
+ - Faster Town NPC spawn rate
+ - Town NPCs can spawn at night
  - Editable celestial tower shield health
  - Map teleporting
+ - No world evil spread
+ - DD2 wave skipping
+ - Starter Bag
+ - Asphalt Platforms
+ - Staff of Regrowth auto-plant
 
 Warning on Mod Support:
 If you have more than one of the supported mods enabled there is a good chance that the NPC shops will overflow.
@@ -45,7 +52,7 @@ Current Mod Support:
  - Calamity: Endless Station Buffs & NPC Sales
  - Catalyst: NPC Sales
  - Consolaria: Non-consumable Boss summons & NPC Sales
- - Fargo's Souls: Non-consumable Boss summons & NPC Sales
+ - Fargo's Souls: Non-consumable Boss summons & NPC Salesg
  - Homeward Journey: Non-consumable Boss summons & NPC Sales
  - Polarities: NPC Sales
  - Redemption: NPC Sales

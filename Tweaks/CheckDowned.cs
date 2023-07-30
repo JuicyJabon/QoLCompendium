@@ -1237,7 +1237,7 @@ namespace QoLCompendium.Tweaks
                     {
                         downedMoco = true;
                     }
-                    if ((npc.type == spookyMod.Find<ModNPC>("OrroboroBody1").Type || npc.type == spookyMod.Find<ModNPC>("OrroboroBody2").Type || npc.type == spookyMod.Find<ModNPC>("OrroboroHead").Type || npc.type == spookyMod.Find<ModNPC>("OrroboroTail").Type) && life <= 0)
+                    if ((npc.type == spookyMod.Find<ModNPC>("BoroBody").Type || npc.type == spookyMod.Find<ModNPC>("OrroBody").Type || npc.type == spookyMod.Find<ModNPC>("BoroHead").Type || npc.type == spookyMod.Find<ModNPC>("OrroHead").Type || npc.type == spookyMod.Find<ModNPC>("BoroTail").Type || npc.type == spookyMod.Find<ModNPC>("OrroTail").Type) && life <= 0)
                     {
                         downedOrroBoro = true;
                     }

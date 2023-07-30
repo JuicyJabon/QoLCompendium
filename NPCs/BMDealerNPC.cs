@@ -397,12 +397,14 @@ namespace QoLCompendium.NPCs
                     .Add(2294)
                     .Add(3183)
                     .Add(2676)
-                    .Add(3124)
+                    .Add(5437)
                     .Add(3611, Condition.DownedSkeletron)
-                    .Add(5043)
                     .Add(3213)
-                    .Add(4263)
-                    .Add(4819)
+                    .Add(3068)
+                    .Add(4767)
+                    .Add(5309)
+                    .Add(5323)
+                    .Add(4409, Condition.DownedPlantera)
                     .Add(1326, Condition.Hardmode);
             infoShop.Register();
 
@@ -451,7 +453,9 @@ namespace QoLCompendium.NPCs
                     .Add(4406, Condition.Hardmode)
                     .Add(4408, Condition.Hardmode)
                     .Add(4878, Condition.Hardmode)
-                    .Add(5003, Condition.Hardmode);
+                    .Add(5003, Condition.Hardmode)
+                    .Add(1774)
+                    .Add(1869);
             bossShop.Register();
 
             var naturalBlockShop = new NPCShop(Type, "Natural Blocks")
@@ -469,7 +473,6 @@ namespace QoLCompendium.NPCs
                     .Add(424)
                     .Add(593)
                     .Add(664)
-                    .Add(1103)
                     .Add(751)
                     .Add(765)
                     .Add(61)
@@ -576,7 +579,9 @@ namespace QoLCompendium.NPCs
                     .Add(59)
                     .Add(2171)
                     .Add(369, Condition.Hardmode)
-                    .Add(27);
+                    .Add(27)
+                    .Add(4410)
+                    .Add(5438);
             plantShop.Register();
 
             var stationShop = new NPCShop(Type, "Station Buffs & Foods")
@@ -589,6 +594,7 @@ namespace QoLCompendium.NPCs
                     .Add(2177)
                     .Add(3198)
                     .Add(2999, Condition.DownedSkeletron)
+                    .Add(3814, Condition.DownedOldOnesArmyAny)
                     .Add(4276)
                     .Add(3750)
                     .Add(1431)
@@ -596,9 +602,24 @@ namespace QoLCompendium.NPCs
                     .Add(4609)
                     .Add(3117)
                     .Add(148, Condition.DownedSkeletron)
+                    .Add(5322)
                     .Add(206)
                     .Add(207)
-                    .Add(1128);
+                    .Add(1128)
+                    .Add(29)
+                    .Add(1291, Condition.DownedMechBossAny)
+                    .Add(109)
+                    .Add(4382)
+                    .Add(5326)
+                    .Add(5043)
+                    .Add(5337)
+                    .Add(5338, Condition.DownedMechBossAny)
+                    .Add(5339)
+                    .Add(5342)
+                    .Add(5341)
+                    .Add(5340)
+                    .Add(5336, Condition.Hardmode)
+                    .Add(5343);
             stationShop.Register();
         }
     }

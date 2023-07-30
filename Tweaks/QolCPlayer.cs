@@ -17,6 +17,7 @@ namespace QoLCompendium.Tweaks
             enemyEraser = false;
             enemyAggressor = false;
             headCounter = false;
+            bloodIdol = false;
 
             if (Main.netMode != NetmodeID.Server)
             {
@@ -34,6 +35,7 @@ namespace QoLCompendium.Tweaks
             enemyEraser = false;
             enemyAggressor = false;
             headCounter = false;
+            bloodIdol = false;
 
             if (Main.netMode != NetmodeID.Server)
             {
@@ -51,8 +53,8 @@ namespace QoLCompendium.Tweaks
             {
                 Player.tileSpeed -= 3f;
                 Player.wallSpeed -= 3f;
-                Player.tileRangeX += 5;
-                Player.tileRangeY += 4;
+                Player.tileRangeX += 10;
+                Player.tileRangeY += 9;
             }
         }
 
@@ -160,9 +162,15 @@ namespace QoLCompendium.Tweaks
                 Player.luck += 0.05f;
                 return;
             }
-            if (itemType == 3619 || itemType == 3611)
+            if (itemType == 3619)
             {
                 Player.InfoAccMechShowWires = true;
+                return;
+            }
+            if (itemType == 3611)
+            {
+                Player.InfoAccMechShowWires = true;
+                Player.rulerGrid = true;
                 return;
             }
             if (itemType == 2799)
@@ -449,6 +457,13 @@ namespace QoLCompendium.Tweaks
             }
         }
 
+        public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
+        {
+            return new[] {
+                new Item(ModContent.ItemType<StarterBag>())
+            };
+        }
+
         public bool magnetActive;
 
         public Dictionary<int, EndlessBuffSource> EndlessBuffSources = new();
@@ -472,5 +487,7 @@ namespace QoLCompendium.Tweaks
         public int respawnFullHPTimer;
 
         public int selectedBiome = 0;
+
+        public bool bloodIdol;
     }
 }

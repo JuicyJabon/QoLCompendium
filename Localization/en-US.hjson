@@ -78,6 +78,21 @@ Mods: {
 				DisplayName: Banner Box
 				Tooltip: Favorite this item to recieve banner buffs for enemies with 50 kills logged
 			}
+
+			StarterBag: {
+				DisplayName: Starter Bag
+				Tooltip: Right click to recieve your starting gear
+			}
+
+			BloodIdol: {
+				DisplayName: Blood Idol
+				Tooltip: Favorite this item to have a blood moon occur every night
+			}
+
+			AsphaltPlatform: {
+				Tooltip: ""
+				DisplayName: Asphalt Platform
+			}
 		}
 
 		NPCs: {
@@ -101,6 +116,8 @@ Mods: {
 					LikeNPC_Princess: I like {NPCName}.
 					Princess_LovesNPC: I like {NPCName}.
 				}
+
+				Census.SpawnCondition: No condition
 			}
 
 			EtherealCollectorNPC: {
@@ -123,6 +140,8 @@ Mods: {
 					LikeNPC_Princess: I like {NPCName}.
 					Princess_LovesNPC: I like {NPCName}.
 				}
+
+				Census.SpawnCondition: No condition
 			}
 		}
 
@@ -329,8 +348,52 @@ Mods: {
 				}
 
 				NoLittering: {
-					Label: No Block Littering
-					Tooltip: Toggles if certain projectiles don't place their tile
+					Label: No Littering or Larva Break
+					Tooltip: Toggles if certain projectiles don't place their tile & if the Queen's Larva is breakable with projectiles
+				}
+
+				StarterBag: {
+					Label: Starter Bag
+					Tooltip:
+						'''
+						Toggles the Starter Bag item
+						Make sure to set what items you want before opening!
+						'''
+				}
+
+				CustomItems: {
+					Label: Custom Items
+					Tooltip: Items added to this list will be given to the player when opening the Starter Bag
+				}
+
+				CustomItemQuantities: {
+					Label: Custom Item Quantities
+					Tooltip: Each number corrosponds to the amount of each item added. Items with an undefined count will be given as a quantity of 1
+				}
+
+				BloodIdol: {
+					Label: Blood Idol
+					Tooltip: Toggles the Blood Idol item
+				}
+
+				SkipWave: {
+					Label: Skip DD2 Wave
+					Tooltip: Toggles the ability to right click the DD2 Crystal Stand to advance waiting time
+				}
+
+				DisableEvilSpread: {
+					Label: Disable Evil Spread
+					Tooltip: Toggles world evil & hallow spread
+				}
+
+				TownieSpawnRate: {
+					Label: Town NPC Spawn Rate
+					Tooltip: Increases Town NPC spawn rate the higher the number
+				}
+
+				RegrowthAutoReplant: {
+					Label: Regrowth Auto-Plant
+					Tooltip: Allows staff of regrowth to replace the herbs it just harvested
 				}
 			}
 		}

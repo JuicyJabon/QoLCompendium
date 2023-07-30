@@ -4,10 +4,8 @@ using Terraria.ModLoader;
 
 namespace QoLCompendium.Projectiles
 {
-    // Token: 0x02000019 RID: 25
     internal class LifeformLocator : ModProjectile
     {
-        // Token: 0x0600008D RID: 141 RVA: 0x00008184 File Offset: 0x00006384
         public override void SetDefaults()
         {
             Projectile.width = 22;
@@ -20,7 +18,6 @@ namespace QoLCompendium.Projectiles
             Projectile.tileCollide = false;
         }
 
-        // Token: 0x0600008E RID: 142 RVA: 0x000081F8 File Offset: 0x000063F8
         public override void AI()
         {
             int NPCnumber = (int)Projectile.ai[0];
