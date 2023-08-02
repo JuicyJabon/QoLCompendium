@@ -173,9 +173,9 @@ namespace QoLCompendium.Tweaks
                 return;
             }
 
-            AddBuffIntegration(thoriumMod, "Altar", "SpiritualConnection", true);
-            AddBuffIntegration(thoriumMod, "ConductorsStand", "ConductorBuff", true);
-            AddBuffIntegration(thoriumMod, "Mistletoe", "SeasonsGreeting", true);
+            AddBuffIntegration(thoriumMod, "Altar", "AltarBuff", true);
+            AddBuffIntegration(thoriumMod, "ConductorsStand", "ConductorsStandBuff", true);
+            AddBuffIntegration(thoriumMod, "Mistletoe", "MistletoeBuff", true);
             AddBuffIntegration(thoriumMod, "NinjaRack", "NinjaBuff", true);
         }
 

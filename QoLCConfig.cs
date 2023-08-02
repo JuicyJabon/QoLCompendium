@@ -113,14 +113,14 @@ namespace QoLCompendium
 
         [Slider]
         [DefaultValue(15)]
-        [Range(1, 100)]
+        [Range(1, 150)]
         [Increment(5)]
         [ReloadRequired]
         public int TowerShield { get; set; }
 
         [Slider]
-        [DefaultValue(3)]
-        [Range(1, 25)]
+        [DefaultValue(5)]
+        [Range(0, 25)]
         public int MoreCoins { get; set; }
 
         [Slider]
@@ -132,9 +132,17 @@ namespace QoLCompendium
         [DefaultValue(true)]
         public bool IncreasePlaceSpeed { get; set; }
 
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool FastTools { get; set; }
+        [Slider]
+        [DefaultValue(6)]
+        [Range(0, 20)]
+        [Increment(2)]
+        public int IncreasePlaceRange { get; set; }
+
+        [DefaultValue(0d)]
+        [Range(0, 1f)]
+        [Slider]
+        [Increment(0.125f)]
+        public float FastTools { get; set; }
 
         [DefaultValue(true)]
         public bool FastExtractor { get; set; }
@@ -164,12 +172,12 @@ namespace QoLCompendium
         [DefaultValue(true)]
         public bool DisableEvilSpread { get; set; }
 
+        [DefaultValue(true)]
+        public bool RegrowthAutoReplant { get; set; }
+
         public List<ItemDefinition> CustomItems { get; set; }
 
         [Range(0, 999)]
         public List<int> CustomItemQuantities { get; set; }
-
-        [DefaultValue(true)]
-        public bool RegrowthAutoReplant { get; set; }
     }
 }

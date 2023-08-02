@@ -2,6 +2,7 @@ using QoLCompendium.Items;
 using QoLCompendium.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -53,9 +54,10 @@ namespace QoLCompendium.Tweaks
             {
                 Player.tileSpeed -= 3f;
                 Player.wallSpeed -= 3f;
-                Player.tileRangeX += 10;
-                Player.tileRangeY += 9;
             }
+
+            Player.tileRangeX += ModContent.GetInstance<QoLCConfig>().IncreasePlaceRange;
+            Player.tileRangeY += ModContent.GetInstance<QoLCConfig>().IncreasePlaceRange;
         }
 
         public override void OnRespawn()
@@ -459,9 +461,17 @@ namespace QoLCompendium.Tweaks
 
         public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
         {
-            return new[] {
+            if (ModContent.GetInstance<QoLCConfig>().StarterBag)
+            {
+                return new[] {
                 new Item(ModContent.ItemType<StarterBag>())
-            };
+                };
+            }
+            else
+            {
+                return Enumerable.Empty<Item>();
+            }
+            
         }
 
         public bool magnetActive;

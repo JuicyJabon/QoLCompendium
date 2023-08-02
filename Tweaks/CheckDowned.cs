@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -940,418 +941,729 @@ namespace QoLCompendium.Tweaks
                 }
                 if (calamityLoaded)
                 {
-                    if (npc.type == calamityMod.Find<ModNPC>("CragmawMire").Type && life <= 0)
+                    if (calamityMod.TryFind("CragmawMire", out ModNPC CragmawMire))
                     {
-                        downedCragmawMire = true;
+                        if (npc.type == CragmawMire.Type && CragmawMire.NPC.life <= 0)
+                        {
+                            downedCragmawMire = true;
+                        }
                     }
-                    if (npc.type == calamityMod.Find<ModNPC>("NuclearTerror").Type && life <= 0)
+                    if (calamityMod.TryFind("NuclearTerror", out ModNPC NuclearTerror))
                     {
-                        downedNuclearTerror = true;
+                        if (npc.type == NuclearTerror.Type && NuclearTerror.NPC.life <= 0)
+                        {
+                            downedNuclearTerror = true;
+                        }
                     }
-                    if (npc.type == calamityMod.Find<ModNPC>("Mauler").Type && life <= 0)
+                    if (calamityMod.TryFind("Mauler", out ModNPC Mauler))
                     {
-                        downedMauler = true;
+                        if (npc.type == Mauler.Type && Mauler.NPC.life <= 0)
+                        {
+                            downedMauler = true;
+                        }
                     }
                 }
 
-                if (catalystLoaded && npc.type == catalystMod.Find<ModNPC>("Astrageldon").Type && life <= 0)
+                if (catalystLoaded)
                 {
-                    downedGeldon = true;
+                    if (catalystMod.TryFind("Astrageldon", out ModNPC Astrageldon))
+                    {
+                        if (npc.type == Astrageldon.Type && Astrageldon.NPC.life <= 0)
+                        {
+                            downedGeldon = true;
+                        }
+                    }
                 }
 
                 if (thoriumLoaded)
                 {
-                    if (npc.type == thoriumMod.Find<ModNPC>("TheGrandThunderBirdv2").Type && life <= 0)
+                    if (thoriumMod.TryFind("TheGrandThunderBirdv2", out ModNPC TheGrandThunderBirdv2))
                     {
-                        downedGrandBird = true;
+                        if (npc.type == TheGrandThunderBirdv2.Type && TheGrandThunderBirdv2.NPC.life <= 0)
+                        {
+                            downedGrandBird = true;
+                        }
                     }
-                    if (npc.type == thoriumMod.Find<ModNPC>("QueenJelly").Type && life <= 0)
+                    if (thoriumMod.TryFind("QueenJelly", out ModNPC QueenJelly))
                     {
-                        downedQueenJelly = true;
+                        if (npc.type == QueenJelly.Type && QueenJelly.NPC.life <= 0)
+                        {
+                            downedQueenJelly = true;
+                        }
                     }
-                    if (npc.type == thoriumMod.Find<ModNPC>("Viscount").Type && life <= 0)
+                    if (thoriumMod.TryFind("Viscount", out ModNPC Viscount))
                     {
-                        downedViscount = true;
+                        if (npc.type == Viscount.Type && Viscount.NPC.life <= 0)
+                        {
+                            downedViscount = true;
+                        }
                     }
-                    if (npc.type == thoriumMod.Find<ModNPC>("GraniteEnergyStorm").Type && life <= 0)
+                    if (thoriumMod.TryFind("GraniteEnergyStorm", out ModNPC GraniteEnergyStorm))
                     {
-                        downedEnergyStorm = true;
+                        if (npc.type == GraniteEnergyStorm.Type && GraniteEnergyStorm.NPC.life <= 0)
+                        {
+                            downedEnergyStorm = true;
+                        }
                     }
-                    if (npc.type == thoriumMod.Find<ModNPC>("TheBuriedWarrior").Type && life <= 0)
+                    if (thoriumMod.TryFind("TheBuriedWarrior", out ModNPC TheBuriedWarrior))
                     {
-                        downedBuriedChampion = true;
+                        if (npc.type == TheBuriedWarrior.Type && TheBuriedWarrior.NPC.life <= 0)
+                        {
+                            downedBuriedChampion = true;
+                        }
                     }
-                    if (npc.type == thoriumMod.Find<ModNPC>("ThePrimeScouter").Type && life <= 0)
+                    if (thoriumMod.TryFind("ThePrimeScouter", out ModNPC ThePrimeScouter))
                     {
-                        downedScouter = true;
+                        if (npc.type == ThePrimeScouter.Type && ThePrimeScouter.NPC.life <= 0)
+                        {
+                            downedScouter = true;
+                        }
                     }
-                    if ((npc.type == thoriumMod.Find<ModNPC>("BoreanStrider").Type || npc.type == thoriumMod.Find<ModNPC>("BoreanStriderPopped").Type) && life <= 0)
+                    if (thoriumMod.TryFind("BoreanStriderPopped", out ModNPC BoreanStriderPopped))
                     {
-                        downedStrider = true;
+                        if (npc.type == BoreanStriderPopped.Type && BoreanStriderPopped.NPC.life <= 0)
+                        {
+                            downedStrider = true;
+                        }
                     }
-                    if ((npc.type == thoriumMod.Find<ModNPC>("FallenDeathBeholder").Type || npc.type == thoriumMod.Find<ModNPC>("FallenDeathBeholder2").Type) && life <= 0)
+                    if (thoriumMod.TryFind("FallenDeathBeholder2", out ModNPC FallenDeathBeholder2))
                     {
-                        downedFallenBeholder = true;
+                        if (npc.type == FallenDeathBeholder2.Type && FallenDeathBeholder2.NPC.life <= 0)
+                        {
+                            downedFallenBeholder = true;
+                        }
                     }
-                    if ((npc.type == thoriumMod.Find<ModNPC>("Lich").Type || npc.type == thoriumMod.Find<ModNPC>("LichHeadless").Type) && life <= 0)
+                    if (thoriumMod.TryFind("LichHeadless", out ModNPC LichHeadless))
                     {
-                        downedLich = true;
+                        if (npc.type == LichHeadless.Type && LichHeadless.NPC.life <= 0)
+                        {
+                            downedLich = true;
+                        }
                     }
-                    if ((npc.type == thoriumMod.Find<ModNPC>("Abyssion").Type || npc.type == thoriumMod.Find<ModNPC>("AbyssionCracked").Type || npc.type == thoriumMod.Find<ModNPC>("AbyssionReleased").Type) && life <= 0)
+                    if (thoriumMod.TryFind("AbyssionReleased", out ModNPC AbyssionReleased))
                     {
-                        downedForgottenOne = true;
+                        if (npc.type == AbyssionReleased.Type && AbyssionReleased.NPC.life <= 0)
+                        {
+                            downedForgottenOne = true;
+                        }
                     }
-                    if (npc.type == thoriumMod.Find<ModNPC>("RealityBreaker").Type && life <= 0)
+                    if (thoriumMod.TryFind("RealityBreaker", out ModNPC RealityBreaker))
                     {
-                        downedPrimordials = true;
+                        if (npc.type == RealityBreaker.Type && RealityBreaker.NPC.life <= 0)
+                        {
+                            downedPrimordials = true;
+                        }
                     }
                 }
 
                 if (spiritLoaded)
                 {
-                    if (npc.type == spiritMod.Find<ModNPC>("Scarabeus").Type && life <= 0)
+                    if (spiritMod.TryFind("Scarabeus", out ModNPC Scarabeus))
                     {
-                        downedScarabeus = true;
+                        if (npc.type == Scarabeus.Type && Scarabeus.NPC.life <= 0)
+                        {
+                            downedScarabeus = true;
+                        }
                     }
-                    if (npc.type == spiritMod.Find<ModNPC>("MoonWizard").Type && life <= 0)
+                    if (spiritMod.TryFind("MoonWizard", out ModNPC MoonWizard))
                     {
-                        downedMoonJelly = true;
+                        if (npc.type == MoonWizard.Type && MoonWizard.NPC.life <= 0)
+                        {
+                            downedMoonJelly = true;
+                        }
                     }
-                    if (npc.type == spiritMod.Find<ModNPC>("ReachBoss").Type && life <= 0)
+                    if (spiritMod.TryFind("ReachBoss", out ModNPC ReachBoss))
                     {
-                        downedVinewrath = true;
+                        if (npc.type == ReachBoss.Type && ReachBoss.NPC.life <= 0)
+                        {
+                            downedVinewrath = true;
+                        }
                     }
-                    if (npc.type == spiritMod.Find<ModNPC>("AncientFlyer").Type && life <= 0)
+                    if (spiritMod.TryFind("AncientFlyer", out ModNPC AncientFlyer))
                     {
-                        downedAvian = true;
+                        if (npc.type == AncientFlyer.Type && AncientFlyer.NPC.life <= 0)
+                        {
+                            downedAvian = true;
+                        }
                     }
-                    if (npc.type == spiritMod.Find<ModNPC>("SteamRaiderHead").Type && life <= 0)
+                    if (spiritMod.TryFind("SteamRaiderHead", out ModNPC SteamRaiderHead))
                     {
-                        downedStarVoyager = true;
+                        if (npc.type == SteamRaiderHead.Type && SteamRaiderHead.NPC.life <= 0)
+                        {
+                            downedStarVoyager = true;
+                        }
                     }
-                    if (npc.type == spiritMod.Find<ModNPC>("Infernon").Type && life <= 0)
+                    if (spiritMod.TryFind("Infernon", out ModNPC Infernon))
                     {
-                        downedInfernon = true;
+                        if (npc.type == Infernon.Type && Infernon.NPC.life <= 0)
+                        {
+                            downedInfernon = true;
+                        }
                     }
-                    if (npc.type == spiritMod.Find<ModNPC>("Dusking").Type && life <= 0)
+                    if (spiritMod.TryFind("Dusking", out ModNPC Dusking))
                     {
-                        downedDusking = true;
+                        if (npc.type == Dusking.Type && Dusking.NPC.life <= 0)
+                        {
+                            downedDusking = true;
+                        }
                     }
-                    if (npc.type == spiritMod.Find<ModNPC>("Atlas").Type && life <= 0)
+                    if (spiritMod.TryFind("Atlas", out ModNPC Atlas))
                     {
-                        downedAtlas = true;
+                        if (npc.type == Atlas.Type && Atlas.NPC.life <= 0)
+                        {
+                            downedAtlas = true;
+                        }
                     }
                 }
 
                 if (redemptionLoaded)
                 {
-                    if (npc.type == redemptionMod.Find<ModNPC>("Thorn").Type && life <= 0)
+                    if (redemptionMod.TryFind("Thorn", out ModNPC Thorn))
                     {
-                        downedThorn = true;
+                        if (npc.type == Thorn.Type && Thorn.NPC.life <= 0)
+                        {
+                            downedThorn = true;
+                        }
                     }
-                    if (npc.type == redemptionMod.Find<ModNPC>("Erhan").Type && life <= 0)
+                    if (redemptionMod.TryFind("Erhan", out ModNPC Erhan))
                     {
-                        downedErhan = true;
+                        if (npc.type == Erhan.Type && Erhan.NPC.life <= 0)
+                        {
+                            downedErhan = true;
+                        }
                     }
-                    if (npc.type == redemptionMod.Find<ModNPC>("Keeper").Type && life <= 0)
+                    if (redemptionMod.TryFind("Keeper", out ModNPC Keeper))
                     {
-                        downedKeeper = true;
+                        if (npc.type == Keeper.Type && Keeper.NPC.life <= 0)
+                        {
+                            downedKeeper = true;
+                        }
                     }
-                    if (npc.type == redemptionMod.Find<ModNPC>("SoI").Type && life <= 0)
+                    if (redemptionMod.TryFind("SoI", out ModNPC SoI))
                     {
-                        downedSeed = true;
+                        if (npc.type == SoI.Type && SoI.NPC.life <= 0)
+                        {
+                            downedSeed = true;
+                        }
                     }
-                    if (npc.type == redemptionMod.Find<ModNPC>("KS3").Type && life <= 0)
+                    if (redemptionMod.TryFind("KS3", out ModNPC KS3))
                     {
-                        downedKS3 = true;
+                        if (npc.type == KS3.Type && KS3.NPC.life <= 0)
+                        {
+                            downedKS3 = true;
+                        }
                     }
-                    if (npc.type == redemptionMod.Find<ModNPC>("OmegaCleaver").Type && life <= 0)
+                    if (redemptionMod.TryFind("OmegaCleaver", out ModNPC OmegaCleaver))
                     {
-                        downedCleaver = true;
+                        if (npc.type == OmegaCleaver.Type && OmegaCleaver.NPC.life <= 0)
+                        {
+                            downedCleaver = true;
+                        }
                     }
-                    if (npc.type == redemptionMod.Find<ModNPC>("Gigapora").Type && life <= 0)
+                    if (redemptionMod.TryFind("Gigapora", out ModNPC Gigapora))
                     {
-                        downedGigapora = true;
+                        if (npc.type == Gigapora.Type && Gigapora.NPC.life <= 0)
+                        {
+                            downedGigapora = true;
+                        }
                     }
-                    if (npc.type == redemptionMod.Find<ModNPC>("OO").Type && life <= 0)
+                    if (redemptionMod.TryFind("OO", out ModNPC OO))
                     {
-                        downedObliterator = true;
+                        if (npc.type == OO.Type && OO.NPC.life <= 0)
+                        {
+                            downedObliterator = true;
+                        }
                     }
-                    if (npc.type == redemptionMod.Find<ModNPC>("PZ").Type && life <= 0)
+                    if (redemptionMod.TryFind("PZ", out ModNPC PZ))
                     {
-                        downedZero = true;
+                        if (npc.type == PZ.Type && PZ.NPC.life <= 0)
+                        {
+                            downedZero = true;
+                        }
                     }
-                    if ((npc.type == redemptionMod.Find<ModNPC>("Akka").Type && life <= 0) || (npc.type == redemptionMod.Find<ModNPC>("Ukko").Type && life <= 0))
+                    if (redemptionMod.TryFind("Akka", out ModNPC Akka))
                     {
-                        downedDuo = true;
+                        if (npc.type == Akka.Type && Akka.NPC.life <= 0)
+                        {
+                            downedDuo = true;
+                        }
                     }
-                    if ((npc.type == redemptionMod.Find<ModNPC>("Nebuleus").Type && life <= 0) || (npc.type == redemptionMod.Find<ModNPC>("Nebuleus2").Type && life <= 0))
+                    if (redemptionMod.TryFind("Ukko", out ModNPC Ukko))
                     {
-                        downedNebby = true;
+                        if (npc.type == Ukko.Type && Ukko.NPC.life <= 0)
+                        {
+                            downedDuo = true;
+                        }
+                    }
+                    if (redemptionMod.TryFind("Nebuleus", out ModNPC Nebuleus))
+                    {
+                        if (npc.type == Nebuleus.Type && Nebuleus.NPC.life <= 0)
+                        {
+                            downedNebby = true;
+                        }
+                    }
+                    if (redemptionMod.TryFind("Nebuleus2", out ModNPC Nebuleus2))
+                    {
+                        if (npc.type == Nebuleus2.Type && Nebuleus2.NPC.life <= 0)
+                        {
+                            downedNebby = true;
+                        }
                     }
                 }
 
                 if (sotsLoaded)
                 {
-                    if (npc.type == sotsMod.Find<ModNPC>("PutridPinkyPhase2").Type && life <= 0)
+                    if (sotsMod.TryFind("PutridPinkyPhase2", out ModNPC PutridPinkyPhase2))
                     {
-                        downedPutridPinky = true;
+                        if (npc.type == PutridPinkyPhase2.Type && PutridPinkyPhase2.NPC.life <= 0)
+                        {
+                            downedPutridPinky = true;
+                        }
                     }
-                    if (npc.type == sotsMod.Find<ModNPC>("PharaohsCurse").Type && life <= 0)
+                    if (sotsMod.TryFind("PharaohsCurse", out ModNPC PharaohsCurse))
                     {
-                        downedPharaohsCurse = true;
+                        if (npc.type == PharaohsCurse.Type && PharaohsCurse.NPC.life <= 0)
+                        {
+                            downedPharaohsCurse = true;
+                        }
                     }
-                    if (npc.type == sotsMod.Find<ModNPC>("TheAdvisorHead").Type && life <= 0)
+                    if (sotsMod.TryFind("TheAdvisorHead", out ModNPC TheAdvisorHead))
                     {
-                        downedAdvisor = true;
+                        if (npc.type == TheAdvisorHead.Type && TheAdvisorHead.NPC.life <= 0)
+                        {
+                            downedAdvisor = true;
+                        }
                     }
-                    if (npc.type == sotsMod.Find<ModNPC>("Polaris").Type && life <= 0)
+                    if (sotsMod.TryFind("Polaris", out ModNPC Polaris))
                     {
-                        downedPolaris = true;
+                        if (npc.type == Polaris.Type && Polaris.NPC.life <= 0)
+                        {
+                            downedPolaris = true;
+                        }
                     }
-                    if (npc.type == sotsMod.Find<ModNPC>("Lux").Type && life <= 0)
+                    if (sotsMod.TryFind("Lux", out ModNPC Lux))
                     {
-                        downedLux = true;
+                        if (npc.type == Lux.Type && Lux.NPC.life <= 0)
+                        {
+                            downedLux = true;
+                        }
                     }
-                    if ((npc.type == sotsMod.Find<ModNPC>("SubspaceSerpentHead").Type || npc.type == sotsMod.Find<ModNPC>("SubspaceSerpentBody").Type || npc.type == sotsMod.Find<ModNPC>("SubspaceSerpentTail").Type) && life <= 0)
+                    if (sotsMod.TryFind("SubspaceSerpentHead", out ModNPC SubspaceSerpentHead))
                     {
-                        downedSerpent = true;
+                        if (npc.type == SubspaceSerpentHead.Type && SubspaceSerpentHead.NPC.life <= 0)
+                        {
+                            downedSerpent = true;
+                        }
                     }
                 }
 
                 if (fargosSoulsLoaded)
                 {
-                    if ((npc.type == fargosSoulsMod.Find<ModNPC>("TrojanSquirrel").Type || npc.type == fargosSoulsMod.Find<ModNPC>("TrojanSquirrelPart").Type) && life <= 0)
+                    if (fargosSoulsMod.TryFind("TrojanSquirrel", out ModNPC TrojanSquirrel))
                     {
-                        downedTrojanSquirrel = true;
+                        if (npc.type == TrojanSquirrel.Type && TrojanSquirrel.NPC.life <= 0)
+                        {
+                            downedTrojanSquirrel = true;
+                        }
                     }
-                    if (npc.type == fargosSoulsMod.Find<ModNPC>("DeviBoss").Type && life <= 0)
+                    if (fargosSoulsMod.TryFind("TrojanSquirrelPart", out ModNPC TrojanSquirrelPart))
                     {
-                        downedDeviant = true;
+                        if (npc.type == TrojanSquirrelPart.Type && TrojanSquirrelPart.NPC.life <= 0)
+                        {
+                            downedTrojanSquirrel = true;
+                        }
                     }
-                    if (npc.type == fargosSoulsMod.Find<ModNPC>("CosmosChampion").Type && life <= 0)
+                    if (fargosSoulsMod.TryFind("DeviBoss", out ModNPC DeviBoss))
                     {
-                        downedCosmosChampion = true;
+                        if (npc.type == DeviBoss.Type && DeviBoss.NPC.life <= 0)
+                        {
+                            downedDeviant = true;
+                        }
                     }
-                    if (npc.type == fargosSoulsMod.Find<ModNPC>("AbomBoss").Type && life <= 0)
+                    if (fargosSoulsMod.TryFind("CosmosChampion", out ModNPC CosmosChampion))
                     {
-                        downedAbomination = true;
+                        if (npc.type == CosmosChampion.Type && CosmosChampion.NPC.life <= 0)
+                        {
+                            downedCosmosChampion = true;
+                        }
                     }
-                    if ((npc.type == fargosSoulsMod.Find<ModNPC>("MutantBoss").Type || npc.type == fargosSoulsMod.Find<ModNPC>("MutantIllusion").Type) && life <= 0)
+                    if (fargosSoulsMod.TryFind("AbomBoss", out ModNPC AbomBoss))
                     {
-                        downedMutant = true;
+                        if (npc.type == AbomBoss.Type && AbomBoss.NPC.life <= 0)
+                        {
+                            downedAbomination = true;
+                        }
+                    }
+                    if (fargosSoulsMod.TryFind("MutantBoss", out ModNPC MutantBoss))
+                    {
+                        if (npc.type == MutantBoss.Type && MutantBoss.NPC.life <= 0)
+                        {
+                            downedMutant = true;
+                        }
+                    }
+                    if (fargosSoulsMod.TryFind("MutantIllusion", out ModNPC MutantIllusion))
+                    {
+                        if (npc.type == MutantIllusion.Type && MutantIllusion.NPC.life <= 0)
+                        {
+                            downedMutant = true;
+                        }
                     }
                 }
 
                 if (homewardLoaded)
                 {
-                    if (npc.type == homewardMod.Find<ModNPC>("MarquisMoonsquid").Type && life <= 0)
+                    if (homewardMod.TryFind("MarquisMoonsquid", out ModNPC MarquisMoonsquid))
                     {
-                        downedSquid = true;
+                        if (npc.type == MarquisMoonsquid.Type && MarquisMoonsquid.NPC.life <= 0)
+                        {
+                            downedSquid = true;
+                        }
                     }
-                    if (npc.type == homewardMod.Find<ModNPC>("PriestessRod").Type && life <= 0)
+                    if (homewardMod.TryFind("PriestessRod", out ModNPC PriestessRod))
                     {
-                        downedRod = true;
+                        if (npc.type == PriestessRod.Type && PriestessRod.NPC.life <= 0)
+                        {
+                            downedRod = true;
+                        }
                     }
-                    if (npc.type == homewardMod.Find<ModNPC>("Diver").Type && life <= 0)
+                    if (homewardMod.TryFind("Diver", out ModNPC Diver))
                     {
-                        downedDiver = true;
+                        if (npc.type == Diver.Type && Diver.NPC.life <= 0)
+                        {
+                            downedDiver = true;
+                        }
                     }
-                    if (npc.type == homewardMod.Find<ModNPC>("TheMotherbrain").Type && life <= 0)
+                    if (homewardMod.TryFind("TheMotherbrain", out ModNPC TheMotherbrain))
                     {
-                        downedMotherbrain = true;
+                        if (npc.type == TheMotherbrain.Type && TheMotherbrain.NPC.life <= 0)
+                        {
+                            downedMotherbrain = true;
+                        }
                     }
-                    if (npc.type == homewardMod.Find<ModNPC>("WallofShadow").Type && life <= 0)
+                    if (homewardMod.TryFind("WallofShadow", out ModNPC WallofShadow))
                     {
-                        downedWoS = true;
+                        if (npc.type == WallofShadow.Type && WallofShadow.NPC.life <= 0)
+                        {
+                            downedWoS = true;
+                        }
                     }
-                    if (npc.type == homewardMod.Find<ModNPC>("SlimeGod").Type && life <= 0)
+                    if (homewardMod.TryFind("SlimeGod", out ModNPC SlimeGod))
                     {
-                        downedSGod = true;
+                        if (npc.type == SlimeGod.Type && SlimeGod.NPC.life <= 0)
+                        {
+                            downedSGod = true;
+                        }
                     }
-                    if (npc.type == homewardMod.Find<ModNPC>("TheOverwatcher").Type && life <= 0)
+                    if (homewardMod.TryFind("TheOverwatcher", out ModNPC TheOverwatcher))
                     {
-                        downedOverwatcher = true;
+                        if (npc.type == TheOverwatcher.Type && TheOverwatcher.NPC.life <= 0)
+                        {
+                            downedOverwatcher = true;
+                        }
                     }
-                    if (npc.type == homewardMod.Find<ModNPC>("TheLifebringerHead").Type && life <= 0)
+                    if (homewardMod.TryFind("TheLifebringerHead", out ModNPC TheLifebringerHead))
                     {
-                        downedLifebringer = true;
+                        if (npc.type == TheLifebringerHead.Type && TheLifebringerHead.NPC.life <= 0)
+                        {
+                            downedLifebringer = true;
+                        }
                     }
-                    if (npc.type == homewardMod.Find<ModNPC>("TheMaterealizer").Type && life <= 0)
+                    if (homewardMod.TryFind("TheMaterealizer", out ModNPC TheMaterealizer))
                     {
-                        downedMaterealizer = true;
+                        if (npc.type == TheMaterealizer.Type && TheMaterealizer.NPC.life <= 0)
+                        {
+                            downedMaterealizer = true;
+                        }
                     }
-                    if (npc.type == homewardMod.Find<ModNPC>("ScarabBelief").Type && life <= 0)
+                    if (homewardMod.TryFind("ScarabBelief", out ModNPC ScarabBelief))
                     {
-                        downedScarab = true;
+                        if (npc.type == ScarabBelief.Type && ScarabBelief.NPC.life <= 0)
+                        {
+                            downedScarab = true;
+                        }
                     }
-                    if (npc.type == homewardMod.Find<ModNPC>("WorldsEndEverlastingFallingWhale").Type && life <= 0)
+                    if (homewardMod.TryFind("WorldsEndEverlastingFallingWhale", out ModNPC WorldsEndEverlastingFallingWhale))
                     {
-                        downedWhale = true;
+                        if (npc.type == WorldsEndEverlastingFallingWhale.Type && WorldsEndEverlastingFallingWhale.NPC.life <= 0)
+                        {
+                            downedWhale = true;
+                        }
                     }
-                    if (npc.type == homewardMod.Find<ModNPC>("TheSon").Type && life <= 0)
+                    if (homewardMod.TryFind("TheSon", out ModNPC TheSon))
                     {
-                        downedSon = true;
+                        if (npc.type == TheSon.Type && TheSon.NPC.life <= 0)
+                        {
+                            downedSon = true;
+                        }
                     }
                 }
 
                 if (aqLoaded)
                 {
-                    if (npc.type == aqMod.Find<ModNPC>("Crabson").Type && life <= 0)
+                    if (aqMod.TryFind("Crabson", out ModNPC Crabson))
                     {
-                        downedCrabson = true;
+                        if (npc.type == Crabson.Type && Crabson.NPC.life <= 0)
+                        {
+                            downedCrabson = true;
+                        }
                     }
-                    if (npc.type == aqMod.Find<ModNPC>("OmegaStarite").Type && life <= 0)
+                    if (aqMod.TryFind("OmegaStarite", out ModNPC OmegaStarite))
                     {
-                        downedOmegaStarite = true;
+                        if (npc.type == OmegaStarite.Type && OmegaStarite.NPC.life <= 0)
+                        {
+                            downedOmegaStarite = true;
+                        }
                     }
-                    if (npc.type == aqMod.Find<ModNPC>("DustDevil").Type && life <= 0)
+                    if (aqMod.TryFind("DustDevil", out ModNPC DustDevil))
                     {
-                        downedDevil = true;
+                        if (npc.type == DustDevil.Type && DustDevil.NPC.life <= 0)
+                        {
+                            downedDevil = true;
+                        }
                     }
-                    if (npc.type == aqMod.Find<ModNPC>("RedSprite").Type && life <= 0)
+                    if (aqMod.TryFind("RedSprite", out ModNPC RedSprite))
                     {
-                        downedSprite = true;
+                        if (npc.type == RedSprite.Type && RedSprite.NPC.life <= 0)
+                        {
+                            downedSprite = true;
+                        }
                     }
-                    if (npc.type == aqMod.Find<ModNPC>("SpaceSquid").Type && life <= 0)
+                    if (aqMod.TryFind("SpaceSquid", out ModNPC SpaceSquid))
                     {
-                        downedSpaceSquid = true;
+                        if (npc.type == SpaceSquid.Type && SpaceSquid.NPC.life <= 0)
+                        {
+                            downedSpaceSquid = true;
+                        }
                     }
-                    if (npc.type == aqMod.Find<ModNPC>("UltraStarite").Type && life <= 0)
+                    if (aqMod.TryFind("UltraStarite", out ModNPC UltraStarite))
                     {
-                        downedUltraStarite = true;
+                        if (npc.type == UltraStarite.Type && UltraStarite.NPC.life <= 0)
+                        {
+                            downedUltraStarite = true;
+                        }
                     }
                 }
 
                 if (spookyLoaded)
                 {
-                    if (npc.type == spookyMod.Find<ModNPC>("SpookySpirit").Type && life <= 0)
+                    if (spookyMod.TryFind("SpookySpirit", out ModNPC SpookySpirit))
                     {
-                        downedSpookySpirit = true;
+                        if (npc.type == SpookySpirit.Type && SpookySpirit.NPC.life <= 0)
+                        {
+                            downedSpookySpirit = true;
+                        }
                     }
-                    if (npc.type == spookyMod.Find<ModNPC>("RotGourd").Type && life <= 0)
+                    if (spookyMod.TryFind("RotGourd", out ModNPC RotGourd))
                     {
-                        downedGourd = true;
+                        if (npc.type == RotGourd.Type && RotGourd.NPC.life <= 0)
+                        {
+                           downedGourd = true;
+                        }
                     }
-                    if (npc.type == spookyMod.Find<ModNPC>("Moco").Type && life <= 0)
+                    if (spookyMod.TryFind("Moco", out ModNPC Moco))
                     {
-                        downedMoco = true;
+                        if (npc.type == Moco.Type && Moco.NPC.life <= 0)
+                        {
+                            downedMoco = true;
+                        }
                     }
-                    if ((npc.type == spookyMod.Find<ModNPC>("BoroBody").Type || npc.type == spookyMod.Find<ModNPC>("OrroBody").Type || npc.type == spookyMod.Find<ModNPC>("BoroHead").Type || npc.type == spookyMod.Find<ModNPC>("OrroHead").Type || npc.type == spookyMod.Find<ModNPC>("BoroTail").Type || npc.type == spookyMod.Find<ModNPC>("OrroTail").Type) && life <= 0)
+                    if (spookyMod.TryFind("OrroHead", out ModNPC OrroHead))
                     {
-                        downedOrroBoro = true;
+                        if (npc.type == OrroHead.Type && OrroHead.NPC.life <= 0)
+                        {
+                            downedOrroBoro = true;
+                        }
                     }
-                    if (npc.type == spookyMod.Find<ModNPC>("BigBone").Type && life <= 0)
+                    if (spookyMod.TryFind("BoroHead", out ModNPC BoroHead))
                     {
-                        downedBigBone = true;
+                        if (npc.type == BoroHead.Type && BoroHead.NPC.life <= 0)
+                        {
+                            downedOrroBoro = true;
+                        }
+                    }
+                    if (spookyMod.TryFind("BigBone", out ModNPC BigBone))
+                    {
+                        if (npc.type == BigBone.Type && BigBone.NPC.life <= 0)
+                        {
+                            downedBigBone = true;
+                        }
                     }
                 }
 
                 if (consolariaLoaded)
                 {
-                    if (npc.type == consolariaMod.Find<ModNPC>("Lepus").Type && life <= 0)
+                    if (consolariaMod.TryFind("Lepus", out ModNPC Lepus))
                     {
-                        downedLepus = true;
+                        if (npc.type == Lepus.Type && Lepus.NPC.life <= 0)
+                        {
+                            downedLepus = true;
+                        }
                     }
-                    if (npc.type == consolariaMod.Find<ModNPC>("TurkortheUngrateful").Type && life <= 0)
+                    if (consolariaMod.TryFind("TurkortheUngrateful", out ModNPC TurkortheUngrateful))
                     {
-                        downedTurkor = true;
+                        if (npc.type == TurkortheUngrateful.Type && TurkortheUngrateful.NPC.life <= 0)
+                        {
+                            downedTurkor = true;
+                        }
                     }
-                    if (npc.type == consolariaMod.Find<ModNPC>("Ocram").Type && life <= 0)
+                    if (consolariaMod.TryFind("Ocram", out ModNPC Ocram))
                     {
-                        downedOcram = true;
+                        if (npc.type == Ocram.Type && Ocram.NPC.life <= 0)
+                        {
+                            downedOcram = true;
+                        }
                     }
                 }
 
                 if (polaritiesLoaded)
                 {
-                    if (npc.type == polaritiesMod.Find<ModNPC>("StormCloudfish").Type && life <= 0)
+                    if (polaritiesMod.TryFind("StormCloudfish", out ModNPC StormCloudfish))
                     {
-                        downedCloudfish = true;
+                        if (npc.type == StormCloudfish.Type && StormCloudfish.NPC.life <= 0)
+                        {
+                            downedCloudfish = true;
+                        }
                     }
-                    if (npc.type == polaritiesMod.Find<ModNPC>("StarConstruct").Type && life <= 0)
+                    if (polaritiesMod.TryFind("StarConstruct", out ModNPC StarConstruct))
                     {
-                        downedConstruct = true;
+                        if (npc.type == StarConstruct.Type && StarConstruct.NPC.life <= 0)
+                        {
+                            downedConstruct = true;
+                        }
                     }
-                    if (npc.type == polaritiesMod.Find<ModNPC>("Gigabat").Type && life <= 0)
+                    if (polaritiesMod.TryFind("Gigabat", out ModNPC Gigabat))
                     {
-                        downedGigabat = true;
+                        if (npc.type == Gigabat.Type && Gigabat.NPC.life <= 0)
+                        {
+                            downedGigabat = true;
+                        }
                     }
-                    if (npc.type == polaritiesMod.Find<ModNPC>("SunPixie").Type && life <= 0)
+                    if (polaritiesMod.TryFind("SunPixie", out ModNPC SunPixie))
                     {
-                        downedSunPixie = true;
+                        if (npc.type == SunPixie.Type && SunPixie.NPC.life <= 0)
+                        {
+                            downedSunPixie = true;
+                        }
                     }
-                    if (npc.type == polaritiesMod.Find<ModNPC>("Esophage").Type && life <= 0)
+                    if (polaritiesMod.TryFind("Esophage", out ModNPC Esophage))
                     {
-                        downedEsophage = true;
+                        if (npc.type == Esophage.Type && Esophage.NPC.life <= 0)
+                        {
+                            downedEsophage = true;
+                        }
                     }
-                    if (npc.type == polaritiesMod.Find<ModNPC>("ConvectiveWanderer").Type && life <= 0)
+                    if (polaritiesMod.TryFind("ConvectiveWanderer", out ModNPC ConvectiveWanderer))
                     {
-                        downedWanderer = true;
+                        if (npc.type == ConvectiveWanderer.Type && ConvectiveWanderer.NPC.life <= 0)
+                        {
+                            downedWanderer = true;
+                        }
                     }
                 }
 
                 if (vitalityLoaded)
                 {
-                    if (npc.type == vitalityMod.Find<ModNPC>("StormCloudBoss").Type && life <= 0)
+                    if (vitalityMod.TryFind("StormCloudBoss", out ModNPC StormCloudBoss))
                     {
-                        downedStormCloud = true;
+                        if (npc.type == StormCloudBoss.Type && StormCloudBoss.NPC.life <= 0)
+                        {
+                            downedStormCloud = true;
+                        }
                     }
-                    if (npc.type == vitalityMod.Find<ModNPC>("GrandAntlionBoss").Type && life <= 0)
+                    if (vitalityMod.TryFind("GrandAntlionBoss", out ModNPC GrandAntlionBoss))
                     {
-                        downedGrandAntlion = true;
+                        if (npc.type == GrandAntlionBoss.Type && GrandAntlionBoss.NPC.life <= 0)
+                        {
+                            downedGrandAntlion = true;
+                        }
                     }
-                    if (npc.type == vitalityMod.Find<ModNPC>("GemstoneElementalBoss").Type && life <= 0)
+                    if (vitalityMod.TryFind("GemstoneElementalBoss", out ModNPC GemstoneElementalBoss))
                     {
-                        downedGemstoneElemental = true;
+                        if (npc.type == GemstoneElementalBoss.Type && GemstoneElementalBoss.NPC.life <= 0)
+                        {
+                            downedGemstoneElemental = true;
+                        }
                     }
-                    if (npc.type == vitalityMod.Find<ModNPC>("MoonlightDragonflyBoss").Type && life <= 0)
+                    if (vitalityMod.TryFind("MoonlightDragonflyBoss", out ModNPC MoonlightDragonflyBoss))
                     {
-                        downedMoonlightDragonfly = true;
+                        if (npc.type == MoonlightDragonflyBoss.Type && MoonlightDragonflyBoss.NPC.life <= 0)
+                        {
+                            downedMoonlightDragonfly = true;
+                        }
                     }
-                    if (npc.type == vitalityMod.Find<ModNPC>("DreadnaughtBoss").Type && life <= 0)
+                    if (vitalityMod.TryFind("DreadnaughtBoss", out ModNPC DreadnaughtBoss))
                     {
-                        downedDreadnaught = true;
+                        if (npc.type == DreadnaughtBoss.Type && DreadnaughtBoss.NPC.life <= 0)
+                        {
+                            downedDreadnaught = true;
+                        }
                     }
-                    if (npc.type == vitalityMod.Find<ModNPC>("AnarchulesBeetleBoss").Type && life <= 0)
+                    if (vitalityMod.TryFind("AnarchulesBeetleBoss", out ModNPC AnarchulesBeetleBoss))
                     {
-                        downedAnarchulesBeetle = true;
+                        if (npc.type == AnarchulesBeetleBoss.Type && AnarchulesBeetleBoss.NPC.life <= 0)
+                        {
+                            downedAnarchulesBeetle = true;
+                        }
                     }
-                    if (npc.type == vitalityMod.Find<ModNPC>("ChaosbringerBoss").Type && life <= 0)
+                    if (vitalityMod.TryFind("ChaosbringerBoss", out ModNPC ChaosbringerBoss))
                     {
-                        downedChaosbringer = true;
+                        if (npc.type == ChaosbringerBoss.Type && ChaosbringerBoss.NPC.life <= 0)
+                        {
+                            downedChaosbringer = true;
+                        }
                     }
-                    if (npc.type == vitalityMod.Find<ModNPC>("PaladinSpiritBoss").Type && life <= 0)
+                    if (vitalityMod.TryFind("PaladinSpiritBoss", out ModNPC PaladinSpiritBoss))
                     {
-                        downedPaladinSpirit = true;
+                        if (npc.type == PaladinSpiritBoss.Type && PaladinSpiritBoss.NPC.life <= 0)
+                        {
+                            downedPaladinSpirit = true;
+                        }
                     }
                 }
 
                 if (terrorbornLoaded)
                 {
-                    if (npc.type == terrorbornMod.Find<ModNPC>("InfectedIncarnate").Type && life <= 0)
+                    if (terrorbornMod.TryFind("InfectedIncarnate", out ModNPC InfectedIncarnate))
                     {
-                        downedIncarnate = true;
+                        if (npc.type == InfectedIncarnate.Type && InfectedIncarnate.NPC.life <= 0)
+                        {
+                            downedIncarnate = true;
+                        }
                     }
-                    if (npc.type == terrorbornMod.Find<ModNPC>("TidalTitan").Type && life <= 0)
+                    if (terrorbornMod.TryFind("TidalTitan", out ModNPC TidalTitan))
                     {
-                        downedTitan = true;
+                        if (npc.type == TidalTitan.Type && TidalTitan.NPC.life <= 0)
+                        {
+                            downedTitan = true;
+                        }
                     }
-                    if (npc.type == terrorbornMod.Find<ModNPC>("Dunestock").Type && life <= 0)
+                    if (terrorbornMod.TryFind("Dunestock", out ModNPC Dunestock))
                     {
-                        downedDunestock = true;
+                        if (npc.type == Dunestock.Type && Dunestock.NPC.life <= 0)
+                        {
+                            downedDunestock = true;
+                        }
                     }
-                    if (npc.type == terrorbornMod.Find<ModNPC>("Shadowcrawler").Type && life <= 0)
+                    if (terrorbornMod.TryFind("Shadowcrawler", out ModNPC Shadowcrawler))
                     {
-                        downedCrawler = true;
+                        if (npc.type == Shadowcrawler.Type && Shadowcrawler.NPC.life <= 0)
+                        {
+                            downedCrawler = true;
+                        }
                     }
-                    if (npc.type == terrorbornMod.Find<ModNPC>("HexedConstructor").Type && life <= 0)
+                    if (terrorbornMod.TryFind("HexedConstructor", out ModNPC HexedConstructor))
                     {
-                        downedConstructor = true;
+                        if (npc.type == HexedConstructor.Type && HexedConstructor.NPC.life <= 0)
+                        {
+                            downedConstructor = true;
+                        }
                     }
-                    if (npc.type == terrorbornMod.Find<ModNPC>("PrototypeI").Type && life <= 0)
+                    if (terrorbornMod.TryFind("PrototypeI", out ModNPC PrototypeI))
                     {
-                        downedP1 = true;
+                        if (npc.type == PrototypeI.Type && PrototypeI.NPC.life <= 0)
+                        {
+                            downedP1 = true;
+                        }
                     }
                 }
             }

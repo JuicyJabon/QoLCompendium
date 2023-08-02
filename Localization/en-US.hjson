@@ -300,12 +300,17 @@ Mods: {
 
 				IncreasePlaceSpeed: {
 					Label: Fast Place Speed
-					Tooltip: Toggles faster placement speed & increased placement range
+					Tooltip: Toggles faster placement speed
+				}
+
+				IncreasePlaceRange: {
+					Label: Increase Place Range
+					Tooltip: Increases placement range
 				}
 
 				FastTools: {
 					Label: Fast Tools
-					Tooltip: Toggles faster tool use speed
+					Tooltip: Changes how fast tools are used
 				}
 
 				FastExtractor: {

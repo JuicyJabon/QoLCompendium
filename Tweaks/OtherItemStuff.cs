@@ -5,20 +5,12 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using tModPorter;
 
 namespace QoLCompendium.Tweaks
 {
     public class OtherItemStuff : GlobalItem
     {
-        public override void Load()
-        {
-            if (ModContent.GetInstance<QoLCConfig>().FastTools)
-            {
-                Terraria.IL_Player.ItemCheck_UseMiningTools_ActuallyUseMiningTool += ActuallyUseMiningTool;
-                Terraria.IL_Player.ItemCheck_UseMiningTools_TryHittingWall += TryHittingWall;
-            }
-        }
-
         public override void SetDefaults(Item item)
         {
             if (ModContent.GetInstance<QoLCConfig>().NoDevs && ItemID.Sets.BossBag[item.type])
@@ -37,33 +29,11 @@ namespace QoLCompendium.Tweaks
             }
         }
 
-        private void ActuallyUseMiningTool(ILContext il)
+        public override float UseTimeMultiplier(Item item, Player player)
         {
-            var c = new ILCursor(il);
-            if (!c.TryGotoNext(MoveType.After,
-                    i => i.Match(OpCodes.Ldarg_0),
-                    i => i.Match(OpCodes.Ldarg_1),
-                    i => i.Match(OpCodes.Ldloc_0)))
-                return;
-            c.Emit(OpCodes.Ldarg_0);
-            c.EmitDelegate<Action<Player>>((player) =>
-            {
-                player.SetItemTime((int)MathHelper.Max(1, MathF.Round(player.itemTime * (1f - 8f))));
-            });
-        }
-
-        private void TryHittingWall(ILContext il)
-        {
-            var c = new ILCursor(il);
-            if (!c.TryGotoNext(MoveType.After,
-                    i => i.Match(OpCodes.Div),
-                    i => i.Match(OpCodes.Stfld)))
-                return;
-            c.Emit(OpCodes.Ldarg_0);
-            c.EmitDelegate<Action<Player>>((player) =>
-            {
-                player.SetItemTime((int)MathHelper.Max(1, MathF.Round(player.itemTime * (1f - 8f))));
-            });
+            if (item.pick > 0 || item.hammer > 0 || item.axe > 0)
+                return 1f - ModContent.GetInstance<QoLCConfig>().FastTools;
+            return 1f;
         }
     }
 }

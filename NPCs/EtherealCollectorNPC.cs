@@ -568,10 +568,6 @@ namespace QoLCompendium.NPCs
                 {
                     modMatShop.Add(BlightedGel.Type);
                 }
-                if (CheckDowned.calamityMod.TryFind("BloodOrb", out ModItem BloodOrb))
-                {
-                    modMatShop.Add(BloodOrb.Type);
-                }
                 if (CheckDowned.calamityMod.TryFind("BloodSample", out ModItem BloodSample))
                 {
                     modMatShop.Add(BloodSample.Type, CheckDowned.perforators);
@@ -595,10 +591,6 @@ namespace QoLCompendium.NPCs
                 if (CheckDowned.calamityMod.TryFind("DemonicBoneAsh", out ModItem DemonicBoneAsh))
                 {
                     modMatShop.Add(DemonicBoneAsh.Type);
-                }
-                if (CheckDowned.calamityMod.TryFind("DesertFeather", out ModItem DesertFeather))
-                {
-                    modMatShop.Add(DesertFeather.Type);
                 }
                 if (CheckDowned.calamityMod.TryFind("DivineGeode", out ModItem DivineGeode))
                 {
@@ -715,10 +707,6 @@ namespace QoLCompendium.NPCs
                 if (CheckDowned.calamityMod.TryFind("SulphuricScale", out ModItem SulphuricScale))
                 {
                     modMatShop.Add(SulphuricScale.Type, Condition.DownedEyeOfCthulhu);
-                }
-                if (CheckDowned.calamityMod.TryFind("TitanHeart", out ModItem TitanHeart))
-                {
-                    modMatShop.Add(TitanHeart.Type, Condition.Hardmode);
                 }
                 if (CheckDowned.calamityMod.TryFind("TrapperBulb", out ModItem TrapperBulb))
                 {
