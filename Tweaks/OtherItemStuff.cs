@@ -1,11 +1,6 @@
-using Microsoft.Xna.Framework;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
-using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using tModPorter;
 
 namespace QoLCompendium.Tweaks
 {
