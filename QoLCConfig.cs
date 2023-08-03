@@ -123,10 +123,8 @@ namespace QoLCompendium
         [Range(0, 25)]
         public int MoreCoins { get; set; }
 
-        [Slider]
-        [DefaultValue(5)]
-        [Range(1, 10)]
-        public int TownieSpawnRate { get; set; }
+        [DefaultValue(true)]
+        public bool TownieSpawn { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Speed")]
         [DefaultValue(true)]

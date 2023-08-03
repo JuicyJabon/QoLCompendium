@@ -30,8 +30,6 @@ Current Features:
  - 2 Town NPCs who sell almost everything needed
  - Friendly NPCs become invincible
  - NPC happiness removal
- - Faster Town NPC spawn rate
- - Town NPCs can spawn at night
  - Editable celestial tower shield health
  - Map teleporting
  - No world evil spread

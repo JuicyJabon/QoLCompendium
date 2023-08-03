@@ -391,9 +391,9 @@ Mods: {
 					Tooltip: Toggles world evil & hallow spread
 				}
 
-				TownieSpawnRate: {
-					Label: Town NPC Spawn Rate
-					Tooltip: Increases Town NPC spawn rate the higher the number
+				TownieSpawn: {
+					Label: Town NPC Spawn Improvement
+					Tooltip: Allows NPCs such as the Stylist or Tinkerer to spawn without being saved
 				}
 
 				RegrowthAutoReplant: {
