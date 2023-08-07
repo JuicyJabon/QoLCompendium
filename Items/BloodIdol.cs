@@ -10,7 +10,7 @@ namespace QoLCompendium.Items
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ModContent.GetInstance<QoLCConfig>().BloodIdol;
+            return ModContent.GetInstance<ItemConfig>().BloodIdol;
         }
 
         public override void SetStaticDefaults()

@@ -15,11 +15,6 @@ namespace QoLCompendium.NPCs
         public static int shopNum = 0;
         public static string ShopName;
 
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<QoLCConfig>().BMNPC;
-        }
-
         public override string Texture
         {
             get
@@ -68,7 +63,14 @@ namespace QoLCompendium.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs)
         {
-            return true;
+            if (ModContent.GetInstance<QoLCConfig>().BMNPC)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override List<string> SetNPCNameList()
@@ -391,6 +393,7 @@ namespace QoLCompendium.NPCs
                     .Add(410)
                     .Add(411)
                     .Add(5064)
+                    .Add(5139)
                     .Add(2367)
                     .Add(2368)
                     .Add(2369)
@@ -490,10 +493,7 @@ namespace QoLCompendium.NPCs
                     .Add(621, Condition.Hardmode)
                     .Add(2260)
                     .Add(1729, Condition.DownedPlantera)
-                    .Add(183)
-                    .Add(1727)
-                    .Add(276)
-                    .Add(1725)
+                    .Add(5215)
                     .Add(4564)
                     .Add(173)
                     .Add(5349)
@@ -514,18 +514,13 @@ namespace QoLCompendium.NPCs
                     .Add(4050)
                     .Add(412, Condition.Hardmode)
                     .Add(662, Condition.Hardmode)
-                    .Add(5439)
-                    .Add(5441)
-                    .Add(5442)
-                    .Add(5440)
-                    .Add(5443)
-                    .Add(5444)
-                    .Add(134)
-                    .Add(137)
-                    .Add(139)
+                    .Add(1589, Condition.Hardmode)
+                    .Add(134, Condition.DownedSkeletron)
+                    .Add(137, Condition.DownedSkeletron)
+                    .Add(139, Condition.DownedSkeletron)
                     .Add(824)
                     .Add(5398)
-                    .Add(775)
+                    .Add(775, Condition.DownedMechBossAny)
                     .Add(2435)
                     .Add(611)
                     .Add(612)
@@ -533,12 +528,9 @@ namespace QoLCompendium.NPCs
                     .Add(614)
                     .Add(3087)
                     .Add(3066)
-                    .Add(4139)
                     .Add(586)
                     .Add(591)
                     .Add(4422)
-                    .Add(763)
-                    .Add(3955)
                     .Add(2860, Condition.DownedMartians)
                     .Add(1101, Condition.DownedGolem);
             buildingBlockShop.Register();
@@ -564,24 +556,18 @@ namespace QoLCompendium.NPCs
                     .Add(60)
                     .Add(2887)
                     .Add(5)
-                    .Add(4349)
-                    .Add(4350)
-                    .Add(4351)
-                    .Add(4352)
-                    .Add(4353)
-                    .Add(4354)
-                    .Add(4377)
-                    .Add(4378)
-                    .Add(4389)
+                    .Add(183)
                     .Add(62)
                     .Add(195)
                     .Add(194)
                     .Add(59)
                     .Add(2171)
                     .Add(369, Condition.Hardmode)
+                    .Add(276)
+                    .Add(1725)
                     .Add(27)
-                    .Add(4410)
-                    .Add(5438);
+                    .Add(5438)
+                    .Add(1727);
             plantShop.Register();
 
             var stationShop = new NPCShop(Type, "Station Buffs & Foods")

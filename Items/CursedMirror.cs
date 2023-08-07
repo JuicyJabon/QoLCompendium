@@ -6,29 +6,23 @@ using Terraria.ModLoader;
 
 namespace QoLCompendium.Items
 {
-    // Token: 0x0200001E RID: 30
     public class CursedMirror : ModItem
     {
-        // Token: 0x060000BD RID: 189 RVA: 0x0000F59E File Offset: 0x0000D79E
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ModContent.GetInstance<QoLCConfig>().CursedMirror;
+            return ModContent.GetInstance<ItemConfig>().CursedMirror;
         }
 
-        // Token: 0x060000BE RID: 190 RVA: 0x0000F5AA File Offset: 0x0000D7AA
         public override void SetStaticDefaults()
         {
-            // Tooltip.SetDefault("Gaze into the mirror to materialize at your last death");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
-        // Token: 0x060000BF RID: 191 RVA: 0x0000F5D2 File Offset: 0x0000D7D2
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.MagicMirror);
         }
 
-        // Token: 0x060000C0 RID: 192 RVA: 0x0000F5E4 File Offset: 0x0000D7E4
         public override void UseStyle(Player player, Rectangle heldItemFrame)
         {
             if (Utils.NextBool(Main.rand))
@@ -71,7 +65,6 @@ namespace QoLCompendium.Items
             }
         }
 
-        // Token: 0x060000C1 RID: 193 RVA: 0x0000F7E8 File Offset: 0x0000D9E8
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(1);

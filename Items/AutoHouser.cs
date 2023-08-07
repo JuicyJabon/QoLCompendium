@@ -9,7 +9,7 @@ namespace QoLCompendium.Items
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ModContent.GetInstance<QoLCConfig>().AHouser;
+            return ModContent.GetInstance<ItemConfig>().AHouser;
         }
 
         public override void SetStaticDefaults()

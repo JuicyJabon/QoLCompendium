@@ -128,7 +128,7 @@ namespace QoLCompendium.Tweaks
                     }
                     if (Main.netMode == NetmodeID.MultiplayerClient && Main.player[Main.myPlayer].chest > -1)
                     {
-                        NetMessage.SendData(MessageID.SyncChestItem, -1, -1, null, Main.player[Main.myPlayer].chest, (float)num5, 0f, 0f, 0, 0, 0);
+                        NetMessage.SendData(MessageID.SyncChestItem, -1, -1, null, Main.player[Main.myPlayer].chest, num5, 0f, 0f, 0, 0, 0);
                     }
                     list2.Remove(num5);
                 }
@@ -157,7 +157,7 @@ namespace QoLCompendium.Tweaks
                 }
                 if (Main.netMode == NetmodeID.MultiplayerClient && Main.player[Main.myPlayer].chest > -1)
                 {
-                    NetMessage.SendData(MessageID.SyncChestItem, -1, -1, null, Main.player[Main.myPlayer].chest, (float)list2[0], 0f, 0f, 0, 0, 0);
+                    NetMessage.SendData(MessageID.SyncChestItem, -1, -1, null, Main.player[Main.myPlayer].chest, list2[0], 0f, 0f, 0, 0, 0);
                 }
                 list2.RemoveAt(0);
             }

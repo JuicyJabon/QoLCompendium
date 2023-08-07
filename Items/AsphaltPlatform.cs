@@ -33,8 +33,8 @@ namespace QoLCompendium.Items
                 .AddIngredient(ItemID.AsphaltBlock, 1)
                 .Register();
 
-            CreateRecipe(ItemID.AsphaltBlock)
-                .AddIngredient(this, 2)
+            Recipe.Create(ItemID.AsphaltBlock, 1)
+                .AddIngredient(ModContent.ItemType<AsphaltPlatform>(), 2)
                 .Register();
         }
     }

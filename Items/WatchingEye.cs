@@ -11,12 +11,11 @@ namespace QoLCompendium.Items
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ModContent.GetInstance<QoLCConfig>().WatchingEye;
+            return ModContent.GetInstance<ItemConfig>().WatchingEye;
         }
 
         public override void SetStaticDefaults()
         {
-            // Tooltip.SetDefault("Reveals the whole map");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

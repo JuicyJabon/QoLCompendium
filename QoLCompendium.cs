@@ -168,19 +168,16 @@ namespace QoLCompendium
 
         public override void PostSetupContent()
         {
-            if (ModLoader.TryGetMod("Census", out Mod mod) && ModContent.GetInstance<QoLCConfig>().BMNPC)
+            if (ModLoader.TryGetMod("Census", out Mod census))
             {
-                mod.Call(new object[]
+                census.Call(new object[]
                 {
                     "TownNPCCondition",
                     ModContent.NPCType<BMDealerNPC>(),
                     "No condition"
                 });
-            }
 
-            if (ModLoader.TryGetMod("Census", out Mod mod2) && ModContent.GetInstance<QoLCConfig>().ECNPC)
-            {
-                mod2.Call(new object[]
+                census.Call(new object[]
                 {
                     "TownNPCCondition",
                     ModContent.NPCType<EtherealCollectorNPC>(),

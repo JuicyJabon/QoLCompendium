@@ -10,12 +10,11 @@ namespace QoLCompendium.Items
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ModContent.GetInstance<QoLCConfig>().MoonPhaser;
+            return ModContent.GetInstance<ItemConfig>().MoonPhaser;
         }
 
         public override void SetStaticDefaults()
         {
-            // Tooltip.SetDefault("Advances the moon's phase");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
@@ -34,7 +33,7 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<MoonPhaser>(), 1).AddIngredient(ItemID.StoneBlock, 15).AddIngredient(ItemID.Diamond, 5).AddTile(TileID.Anvils).Register();
+            Recipe.Create(ModContent.ItemType<MoonPhaser>(), 1).AddIngredient(ItemID.StoneBlock, 5).AddIngredient(ItemID.Diamond, 2).AddTile(TileID.Anvils).Register();
         }
 
         public override bool? UseItem(Player player)

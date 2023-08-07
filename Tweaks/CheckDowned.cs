@@ -18,6 +18,7 @@ namespace QoLCompendium.Tweaks
         public static Condition hivemind = new("CheckDowned.downedHiveMind", () => downedHiveMind);
         internal static bool downedPerforators;
         public static Condition perforators = new("CheckDowned.downedPerforators", () => downedPerforators);
+        public static Condition perfOrHive = new("CheckDowned.downedPerfOrHive", () => downedPerforators || downedHiveMind);
         internal static bool downedSlimeGod;
         public static Condition slimegod = new("CheckDowned.downedSlimeGod", () => downedSlimeGod);
         internal static bool downedCryogen;
@@ -79,6 +80,13 @@ namespace QoLCompendium.Tweaks
         internal static Mod catalystMod;
         internal static bool downedGeldon;
         public static Condition geldon = new("CheckDowned.downedGeldon", () => downedGeldon);
+
+
+        //INFERNUM
+        internal static bool infernumLoaded;
+        internal static Mod infernumMod;
+        internal static bool downedVassal;
+        public static Condition vassal = new("CheckDowned.downedVassal", () => downedVassal);
 
 
         //THORIUM
@@ -326,6 +334,10 @@ namespace QoLCompendium.Tweaks
             {
                 catalystMod = null;
             }
+            if (!infernumLoaded)
+            {
+                infernumMod = null;
+            }
             if (!thoriumLoaded)
             {
                 thoriumMod = null;
@@ -386,6 +398,10 @@ namespace QoLCompendium.Tweaks
             {
                 catalystMod = null;
             }
+            if (!infernumLoaded)
+            {
+                infernumMod = null;
+            }
             if (!thoriumLoaded)
             {
                 thoriumMod = null;
@@ -443,6 +459,9 @@ namespace QoLCompendium.Tweaks
 
             catalystLoaded = ModLoader.TryGetMod("CatalystMod", out Mod catalyst);
             catalystMod = catalyst;
+
+            infernumLoaded = ModLoader.TryGetMod("InfernumMode", out Mod infernum);
+            infernumMod = infernum;
 
             thoriumLoaded = ModLoader.TryGetMod("ThoriumMod", out Mod thorium);
             thoriumMod = thorium;
@@ -528,6 +547,9 @@ namespace QoLCompendium.Tweaks
 
             //CATALYST
             tag.Add("downedGeldon", downedGeldon);
+
+            //INFERNUM
+            tag.Add("downedVassal", downedVassal);
 
             //THORIUM
             tag.Add("downedGrandBird", downedGrandBird);
@@ -677,6 +699,9 @@ namespace QoLCompendium.Tweaks
 
             //CATALYST
             downedGeldon = tag.Get<bool>("downedGeldon");
+
+            //INFERNUM
+            downedVassal = tag.Get<bool>("downedVassal");
 
             //THORIUM
             downedGrandBird = tag.Get<bool>("downedGrandBird");
@@ -971,6 +996,17 @@ namespace QoLCompendium.Tweaks
                         if (npc.type == Astrageldon.Type && Astrageldon.NPC.life <= 0)
                         {
                             downedGeldon = true;
+                        }
+                    }
+                }
+
+                if (infernumLoaded)
+                {
+                    if (infernumMod.TryFind("BereftVassal", out ModNPC BereftVassal))
+                    {
+                        if (npc.type == BereftVassal.Type && BereftVassal.NPC.life <= 0)
+                        {
+                            downedVassal = true;
                         }
                     }
                 }
@@ -1706,6 +1742,9 @@ namespace QoLCompendium.Tweaks
 
             //CATALYST
             downedGeldon = false;
+
+            //INFERNUM
+            downedVassal = false;
 
             //THORIUM
             downedGrandBird = false;

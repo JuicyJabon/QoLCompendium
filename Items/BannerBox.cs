@@ -10,7 +10,7 @@ namespace QoLCompendium.Items
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ModContent.GetInstance<QoLCConfig>().BBox;
+            return ModContent.GetInstance<ItemConfig>().BBox;
         }
 
         public override void SetStaticDefaults()
@@ -36,7 +36,7 @@ namespace QoLCompendium.Items
         {
             if (Item.favorited)
             {
-                for (int i = 0; i < NPCID.Count; i++)
+                for (int i = 0; i < NPCLoader.NPCCount; i++)
                 {
                     int bItem = ContentSamples.NpcsByNetId[i].BannerID();
 

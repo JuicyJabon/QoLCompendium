@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
 using System.Collections.Generic;
@@ -16,11 +15,6 @@ namespace QoLCompendium.NPCs
     {
         public static int shopNum = 0;
         public static string ShopName;
-
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<QoLCConfig>().ECNPC;
-        }
 
         public override string Texture
         {
@@ -69,14 +63,17 @@ namespace QoLCompendium.NPCs
             AnimationType = 22;
         }
 
-        public override void DrawEffects(ref Color drawColor)
-        {
-            Lighting.AddLight(NPC.Center, 1f, 1f, 1f);
-        }
-
         public override bool CanTownNPCSpawn(int numTownNPCs)
         {
-            return true;
+            if (ModContent.GetInstance<QoLCConfig>().ECNPC)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
         public override List<string> SetNPCNameList()
@@ -175,6 +172,16 @@ namespace QoLCompendium.NPCs
             {
                 button = "Modded Treasure Bags 3";
                 ShopName = "Modded Treasure Bags 3";
+            }
+            else if (shopNum == 7)
+            {
+                button = "Modded Crates & Grab Bags";
+                ShopName = "Modded Crates & Grab Bags";
+            }
+            else if (shopNum == 8)
+            {
+                button = "Modded Ores & Bars";
+                ShopName = "Modded Ores & Bars";
             }
             button2 = "Shop Changer";
         }
@@ -568,6 +575,10 @@ namespace QoLCompendium.NPCs
                 {
                     modMatShop.Add(BlightedGel.Type);
                 }
+                if (CheckDowned.calamityMod.TryFind("BloodOrb", out ModItem BloodOrb))
+                {
+                    modMatShop.Add(BloodOrb.Type);
+                }
                 if (CheckDowned.calamityMod.TryFind("BloodSample", out ModItem BloodSample))
                 {
                     modMatShop.Add(BloodSample.Type, CheckDowned.perforators);
@@ -668,9 +679,9 @@ namespace QoLCompendium.NPCs
                 {
                     modMatShop.Add(PearlShard.Type, CheckDowned.desertscourge);
                 }
-                if (CheckDowned.calamityMod.TryFind("Phantoplasm", out ModItem Phantoplasm))
+                if (CheckDowned.calamityMod.TryFind("Polterplasm", out ModItem Polterplasm))
                 {
-                    modMatShop.Add(Phantoplasm.Type, Condition.DownedMoonLord);
+                    modMatShop.Add(Polterplasm.Type, Condition.DownedMoonLord);
                 }
                 if (CheckDowned.calamityMod.TryFind("PlagueCellCanister", out ModItem PlagueCellCanister))
                 {
@@ -734,10 +745,6 @@ namespace QoLCompendium.NPCs
                 if (CheckDowned.thoriumMod.TryFind("AbyssalChitin", out ModItem AbyssalChitin))
                 {
                     modMatShop.Add(AbyssalChitin.Type, Condition.Hardmode);
-                }
-                if (CheckDowned.thoriumMod.TryFind("ArcaneDust", out ModItem ArcaneDust))
-                {
-                    modMatShop.Add(ArcaneDust.Type);
                 }
                 if (CheckDowned.thoriumMod.TryFind("BioMatter", out ModItem BioMatter))
                 {
@@ -1330,6 +1337,13 @@ namespace QoLCompendium.NPCs
                     boss1Shop.Add(AstrageldonBag.Type, CheckDowned.geldon);
                 }
             }
+            if (CheckDowned.infernumLoaded)
+            {
+                if (CheckDowned.infernumMod.TryFind("BereftVassalBossBag", out ModItem BereftVassalBossBag))
+                {
+                    boss1Shop.Add(BereftVassalBossBag.Type, CheckDowned.vassal);
+                }
+            }
             if (CheckDowned.thoriumLoaded)
             {
                 if (CheckDowned.thoriumMod.TryFind("ThunderBirdBag", out ModItem ThunderBirdBag))
@@ -1678,6 +1692,134 @@ namespace QoLCompendium.NPCs
                 }
             }
             boss3Shop.Register();
+
+            var modCratesShop = new NPCShop(Type, "Modded Crates & Grab Bags");
+            if (CheckDowned.calamityLoaded)
+            {
+                if (CheckDowned.calamityMod.TryFind("AstralCrate", out ModItem AstralCrate))
+                {
+                    modCratesShop.Add(AstralCrate.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.calamityMod.TryFind("BrimstoneCrate", out ModItem BrimstoneCrate))
+                {
+                    modCratesShop.Add(BrimstoneCrate.Type);
+                }
+                if (CheckDowned.calamityMod.TryFind("SulphurousCrate", out ModItem SulphurousCrate))
+                {
+                    modCratesShop.Add(SulphurousCrate.Type);
+                }
+                if (CheckDowned.calamityMod.TryFind("SunkenCrate", out ModItem SunkenCrate))
+                {
+                    modCratesShop.Add(SunkenCrate.Type);
+                }
+                if (CheckDowned.calamityMod.TryFind("AbyssalTreasure", out ModItem AbyssalTreasure))
+                {
+                    modCratesShop.Add(AbyssalTreasure.Type);
+                }
+                if (CheckDowned.calamityMod.TryFind("FleshyGeode", out ModItem FleshyGeode))
+                {
+                    modCratesShop.Add(FleshyGeode.Type, CheckDowned.ravager);
+                }
+                if (CheckDowned.calamityMod.TryFind("NecromanticGeode", out ModItem NecromanticGeode))
+                {
+                    modCratesShop.Add(NecromanticGeode.Type, CheckDowned.providence);
+                }
+                if (CheckDowned.calamityMod.TryFind("SulphuricTreasure", out ModItem SulphuricTreasure))
+                {
+                    modCratesShop.Add(SulphuricTreasure.Type);
+                }
+            }
+            modCratesShop.Register();
+
+            var modOreShop = new NPCShop(Type, "Modded Ores & Bars");
+            if (CheckDowned.calamityLoaded)
+            {
+                if (CheckDowned.calamityMod.TryFind("AerialiteOre", out ModItem AerialiteOre))
+                {
+                    modOreShop.Add(AerialiteOre.Type, CheckDowned.perfOrHive);
+                }
+                if (CheckDowned.calamityMod.TryFind("AstralOre", out ModItem AstralOre))
+                {
+                    modOreShop.Add(AstralOre.Type, CheckDowned.deus);
+                }
+                if (CheckDowned.calamityMod.TryFind("AuricOre", out ModItem AuricOre))
+                {
+                    modOreShop.Add(AuricOre.Type, CheckDowned.yharon);
+                }
+                if (CheckDowned.calamityMod.TryFind("CryonicOre", out ModItem CryonicOre))
+                {
+                    modOreShop.Add(CryonicOre.Type, CheckDowned.cryogen);
+                }
+                if (CheckDowned.calamityMod.TryFind("ExodiumCluster", out ModItem ExodiumCluster))
+                {
+                    modOreShop.Add(ExodiumCluster.Type, Condition.DownedMoonLord);
+                }
+                if (CheckDowned.calamityMod.TryFind("HallowedOre", out ModItem HallowedOre))
+                {
+                    modOreShop.Add(HallowedOre.Type, Condition.DownedMechBossAll);
+                }
+                if (CheckDowned.calamityMod.TryFind("InfernalSuevite", out ModItem InfernalSuevite))
+                {
+                    modOreShop.Add(InfernalSuevite.Type, Condition.DownedMechBossAny);
+                }
+                if (CheckDowned.calamityMod.TryFind("PerennialOre", out ModItem PerennialOre))
+                {
+                    modOreShop.Add(PerennialOre.Type, Condition.DownedPlantera);
+                }
+                if (CheckDowned.calamityMod.TryFind("PrismShard", out ModItem PrismShard))
+                {
+                    modOreShop.Add(PrismShard.Type);
+                }
+                if (CheckDowned.calamityMod.TryFind("ScoriaOre", out ModItem ScoriaOre))
+                {
+                    modOreShop.Add(ScoriaOre.Type, Condition.DownedGolem);
+                }
+                if (CheckDowned.calamityMod.TryFind("SeaPrism", out ModItem SeaPrism))
+                {
+                    modOreShop.Add(SeaPrism.Type);
+                }
+                if (CheckDowned.calamityMod.TryFind("UelibloomOre", out ModItem UelibloomOre))
+                {
+                    modOreShop.Add(UelibloomOre.Type, CheckDowned.providence);
+                }
+                if (CheckDowned.calamityMod.TryFind("AerialiteBar", out ModItem AerialiteBar))
+                {
+                    modOreShop.Add(AerialiteBar.Type, CheckDowned.perfOrHive);
+                }
+                if (CheckDowned.calamityMod.TryFind("AstralBar", out ModItem AstralBar))
+                {
+                    modOreShop.Add(AstralBar.Type, CheckDowned.deus);
+                }
+                if (CheckDowned.calamityMod.TryFind("AuricBar", out ModItem AuricBar))
+                {
+                    modOreShop.Add(AuricBar.Type, CheckDowned.yharon);
+                }
+                if (CheckDowned.calamityMod.TryFind("CosmiliteBar", out ModItem CosmiliteBar))
+                {
+                    modOreShop.Add(CosmiliteBar.Type, CheckDowned.dog);
+                }
+                if (CheckDowned.calamityMod.TryFind("CryonicBar", out ModItem CryonicBar))
+                {
+                    modOreShop.Add(CryonicBar.Type, CheckDowned.cryogen);
+                }
+                if (CheckDowned.calamityMod.TryFind("PerennialBar", out ModItem PerennialBar))
+                {
+                    modOreShop.Add(PerennialBar.Type, Condition.DownedPlantera);
+                }
+                if (CheckDowned.calamityMod.TryFind("ScoriaBar", out ModItem ScoriaBar))
+                {
+                    modOreShop.Add(ScoriaBar.Type, Condition.DownedGolem);
+                }
+                if (CheckDowned.calamityMod.TryFind("ShadowspecBar", out ModItem ShadowspecBar))
+                {
+                    modOreShop.Add(ShadowspecBar.Type, CheckDowned.scalamitas);
+                }
+                if (CheckDowned.calamityMod.TryFind("UelibloomBar", out ModItem UelibloomBar))
+                {
+                    modOreShop.Add(UelibloomBar.Type, CheckDowned.providence);
+                }
+            }
+            modOreShop.Register();
         }
     }
 }

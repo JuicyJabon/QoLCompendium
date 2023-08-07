@@ -67,8 +67,7 @@ namespace QoLCompendium.Tweaks
         }
         public override bool CanBeConsumedAsAmmo(Item ammo, Item weapon, Player player)
         {
-            ModLoader.TryGetMod("ThoriumMod", out Mod mod);
-            if ((mod != null && ammo.type == mod.Find<ModItem>("StormFlare").Type) || (ammo.ammo > 0 && ammo.stack >= 999) && ModContent.GetInstance<QoLCConfig>().EndlessConsumables)
+            if (ammo.ammo > 0 && ammo.stack >= 999 && ModContent.GetInstance<QoLCConfig>().EndlessConsumables)
             {
                 return false;
             }

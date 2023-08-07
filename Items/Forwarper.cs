@@ -11,7 +11,7 @@ namespace QoLCompendium.Items
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ModContent.GetInstance<QoLCConfig>().Forwarper;
+            return ModContent.GetInstance<ItemConfig>().Forwarper;
         }
 
         public override void SetStaticDefaults()
@@ -21,7 +21,7 @@ namespace QoLCompendium.Items
 
         public override void SetDefaults()
         {
-            Item.width = 12;
+            Item.width = 13;
             Item.height = 12;
             Item.maxStack = 1;
             Item.consumable = false;
@@ -34,7 +34,7 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<Forwarper>(), 1).AddIngredient(ItemID.Obsidian, 4).AddIngredient(ItemID.Sapphire, 4).AddIngredient(ItemID.Amber, 4).AddTile(TileID.Anvils).Register();
+            Recipe.Create(ModContent.ItemType<Forwarper>(), 1).AddIngredient(ItemID.Obsidian, 4).AddIngredient(ItemID.Sapphire, 2).AddIngredient(ItemID.Amber, 2).AddTile(TileID.Anvils).Register();
         }
 
         public override bool? UseItem(Player player)

@@ -6,23 +6,18 @@ using Terraria.ModLoader;
 
 namespace QoLCompendium.Items
 {
-    // Token: 0x02000022 RID: 34
     public class EventEraser : ModItem
     {
-        // Token: 0x060000D5 RID: 213 RVA: 0x0000F92E File Offset: 0x0000DB2E
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ModContent.GetInstance<QoLCConfig>().Erasers;
+            return ModContent.GetInstance<ItemConfig>().Erasers;
         }
 
-        // Token: 0x060000D6 RID: 214 RVA: 0x0000FAF5 File Offset: 0x0000DCF5
         public override void SetStaticDefaults()
         {
-            // Tooltip.SetDefault("Favorite this item to disable events \nLunar towers only cancel if you have beaten them before");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
-        // Token: 0x060000D7 RID: 215 RVA: 0x0000FB20 File Offset: 0x0000DD20
         public override void SetDefaults()
         {
             Item.width = 22;
@@ -34,13 +29,11 @@ namespace QoLCompendium.Items
             Item.rare = ItemRarityID.Blue;
         }
 
-        // Token: 0x060000D8 RID: 216 RVA: 0x0000FB84 File Offset: 0x0000DD84
         public override void AddRecipes()
         {
             Recipe.Create(ModContent.ItemType<EventEraser>(), 1).AddIngredient(ItemID.SharkFin, 1).AddIngredient(ItemID.RubyGemsparkBlock, 20).AddTile(TileID.Anvils).Register();
         }
 
-        // Token: 0x060000D9 RID: 217 RVA: 0x0000FBB8 File Offset: 0x0000DDB8
         public override void UpdateInventory(Player player)
         {
             if (Item.favorited)

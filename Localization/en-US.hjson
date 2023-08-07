@@ -203,66 +203,6 @@ Mods: {
 					Tooltip: Toggles enemy spawns during bosses
 				}
 
-				Magnet: {
-					Label: Magnet
-					Tooltip: Toggles the Item Magnet item
-				}
-
-				Globes: {
-					Label: World Globe
-					Tooltip: Toggles the World Globe item
-				}
-
-				Erasers: {
-					Label: Erasers
-					Tooltip: Toggles the Eraser & Aggressor items
-				}
-
-				CursedMirror: {
-					Label: Cursed Mirror
-					Tooltip: Toggles the Cursed Mirror item
-				}
-
-				HeadCounter: {
-					Label: Head Counter
-					Tooltip: Toggles the Head Counter item
-				}
-
-				Forwarper: {
-					Label: Forwarper
-					Tooltip: Toggles the Forwarper item
-				}
-
-				MoonPhaser: {
-					Label: Moon Phaser
-					Tooltip: Toggles the Moon Phaser item
-				}
-
-				WatchingEye: {
-					Label: Watching Eye
-					Tooltip: Toggles the Watching Eye item
-				}
-
-				HCreator: {
-					Label: Hellevator Creator
-					Tooltip: Toggles the Hellevator Creator item
-				}
-
-				AHouser: {
-					Label: Auto Houser
-					Tooltip: Toggles the Auto Houser item
-				}
-
-				TArriver: {
-					Label: Traveller Arriver
-					Tooltip: Toggles the Travler Arriver item
-				}
-
-				BBox: {
-					Label: Banner Box
-					Tooltip: Toggles the Banner Box item
-				}
-
 				NoDevs: {
 					Label: No Devs From Boss Bags
 					Tooltip: Toggles if boss bags can drop dev sets
@@ -357,15 +297,6 @@ Mods: {
 					Tooltip: Toggles if certain projectiles don't place their tile & if the Queen's Larva is breakable with projectiles
 				}
 
-				StarterBag: {
-					Label: Starter Bag
-					Tooltip:
-						'''
-						Toggles the Starter Bag item
-						Make sure to set what items you want before opening!
-						'''
-				}
-
 				CustomItems: {
 					Label: Custom Items
 					Tooltip: Items added to this list will be given to the player when opening the Starter Bag
@@ -374,16 +305,6 @@ Mods: {
 				CustomItemQuantities: {
 					Label: Custom Item Quantities
 					Tooltip: Each number corrosponds to the amount of each item added. Items with an undefined count will be given as a quantity of 1
-				}
-
-				BloodIdol: {
-					Label: Blood Idol
-					Tooltip: Toggles the Blood Idol item
-				}
-
-				SkipWave: {
-					Label: Skip DD2 Wave
-					Tooltip: Toggles the ability to right click the DD2 Crystal Stand to advance waiting time
 				}
 
 				DisableEvilSpread: {
@@ -400,6 +321,94 @@ Mods: {
 					Label: Regrowth Auto-Plant
 					Tooltip: Allows staff of regrowth to replace the herbs it just harvested
 				}
+
+				Halloween: {
+					Tooltip: Toggles the Halloween seasonal event
+					Label: Toggle Halloween
+				}
+
+				Christmas: {
+					Tooltip: Toggles the Christmas seasonal event
+					Label: Toggle Christmas
+				}
+			}
+
+			ItemConfig: {
+				Magnet: {
+					Label: Magnet
+					Tooltip: Toggles the Item Magnet item
+				}
+
+				Globes: {
+					Label: World Globe
+					Tooltip: Toggles the World Globe item
+				}
+
+				Erasers: {
+					Label: Erasers
+					Tooltip: Toggles the Eraser & Aggressor items
+				}
+
+				CursedMirror: {
+					Label: Cursed Mirror
+					Tooltip: Toggles the Cursed Mirror item
+				}
+
+				HeadCounter: {
+					Label: Head Counter
+					Tooltip: Toggles the Head Counter item
+				}
+
+				Forwarper: {
+					Label: Forwarper
+					Tooltip: Toggles the Forwarper item
+				}
+
+				MoonPhaser: {
+					Label: Moon Phaser
+					Tooltip: Toggles the Moon Phaser item
+				}
+
+				WatchingEye: {
+					Label: Watching Eye
+					Tooltip: Toggles the Watching Eye item
+				}
+
+				HCreator: {
+					Label: Hellevator Creator
+					Tooltip: Toggles the Hellevator Creator item
+				}
+
+				AHouser: {
+					Label: Auto Houser
+					Tooltip: Toggles the Auto Houser item
+				}
+
+				TArriver: {
+					Label: Traveller Arriver
+					Tooltip: Toggles the Traveller Arriver item
+				}
+
+				BBox: {
+					Label: Banner Box
+					Tooltip: Toggles the Banner Box item
+				}
+
+				StarterBag: {
+					Label: Starter Bag
+					Tooltip:
+						'''
+						Toggles the Starter Bag item
+						Make sure to set what items you want before opening!
+						'''
+				}
+
+				BloodIdol: {
+					Label: Blood Idol
+					Tooltip: Toggles the Blood Idol item
+				}
+
+				DisplayName: Item Config
 			}
 		}
 

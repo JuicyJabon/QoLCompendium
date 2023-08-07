@@ -6,13 +6,7 @@ namespace QoLCompendium.Tweaks
 {
     public class InvincibleTownies : GlobalNPC
     {
-        public override bool InstancePerEntity
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool InstancePerEntity => true;
 
         public override void SetDefaults(NPC npc)
         {

@@ -2,6 +2,8 @@ Another QoL mod... but this one is a little different.
 
 This mod aims to condense most of the other 1-off QoL mods into one.
 
+USE SHOP EXPANDER WITH THIS MOD!
+
 All features are configurable.
 
 Current Features:
@@ -33,13 +35,9 @@ Current Features:
  - Editable celestial tower shield health
  - Map teleporting
  - No world evil spread
- - DD2 wave skipping
  - Starter Bag
  - Asphalt Platforms
  - Staff of Regrowth auto-plant
-
-Warning on Mod Support:
-If you have more than one of the supported mods enabled there is a good chance that the NPC shops will overflow.
 
 Warning on Boss-dependent sales:
 You have to beat modded bosses with this mod enabled in order for the NPC to sell those items.
@@ -50,11 +48,11 @@ Current Mod Support:
  - Calamity: Endless Station Buffs & NPC Sales
  - Catalyst: NPC Sales
  - Consolaria: Non-consumable Boss summons & NPC Sales
- - Fargo's Souls: Non-consumable Boss summons & NPC Salesg
+ - Fargo's Souls: Non-consumable Boss summons & NPC Sales
  - Homeward Journey: Non-consumable Boss summons & NPC Sales
  - Polarities: NPC Sales
  - Redemption: NPC Sales
- - SOTS: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
+ - Secrets of the Shadows: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
  - Spooky Mod: Non-consumable Boss summons & NPC Sales
  - Terrorborn: NPC Sales
  - Thorium: Endless Station Buffs, Non-consumable Boss summons & NPC Sales

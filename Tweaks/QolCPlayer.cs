@@ -461,7 +461,7 @@ namespace QoLCompendium.Tweaks
 
         public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
         {
-            if (ModContent.GetInstance<QoLCConfig>().StarterBag)
+            if (ModContent.GetInstance<ItemConfig>().StarterBag)
             {
                 return new[] {
                 new Item(ModContent.ItemType<StarterBag>())
