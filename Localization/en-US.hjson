@@ -408,6 +408,11 @@ Mods: {
 					Tooltip: Toggles the Blood Idol item
 				}
 
+				AsphaltPlatform: {
+					Label: Asphalt Platform
+					Tooltip: Toggles the Asphalt Platform item
+				}
+
 				DisplayName: Item Config
 			}
 		}

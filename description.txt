@@ -35,7 +35,7 @@ Current Features:
  - Editable celestial tower shield health
  - Map teleporting
  - No world evil spread
- - Starter Bag
+ - Starter Bag (Make sure to set items in config)
  - Asphalt Platforms
  - Staff of Regrowth auto-plant
 

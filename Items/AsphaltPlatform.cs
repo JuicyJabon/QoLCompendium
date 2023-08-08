@@ -8,6 +8,11 @@ namespace QoLCompendium.Items
 {
     public class AsphaltPlatform : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModContent.GetInstance<ItemConfig>().AsphaltPlatform;
+        }
+
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 200;

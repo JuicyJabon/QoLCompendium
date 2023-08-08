@@ -11,17 +11,20 @@ namespace QoLCompendium.Tweaks
     {
         public override bool ConsumeItem(Item item, Player player)
         {
-            if (item.buffTime > 0 && item.stack >= 30)
+            if (ModContent.GetInstance<QoLCConfig>().EndlessBuffsAndHealing)
             {
-                return false;
-            }
-            else if ((item.type == ItemID.RecallPotion || item.type == ItemID.TeleportationPotion || item.type == ItemID.WormholePotion || item.type == ItemID.PotionOfReturn) && item.stack >= 30)
-            {
-                return false;
-            }
-            else if ((item.healLife > 0 || item.healMana > 0) && item.stack >= 30)
-            {
-                return false;
+                if (item.buffTime > 0 && item.stack >= 30)
+                {
+                    return false;
+                }
+                else if ((item.type == ItemID.RecallPotion || item.type == ItemID.TeleportationPotion || item.type == ItemID.WormholePotion || item.type == ItemID.PotionOfReturn) && item.stack >= 30)
+                {
+                    return false;
+                }
+                else if ((item.healLife > 0 || item.healMana > 0) && item.stack >= 30)
+                {
+                    return false;
+                }
             }
             return true;
         }
@@ -65,40 +68,43 @@ namespace QoLCompendium.Tweaks
 
         public override void PreUpdateBuffs()
         {
-            if (Main.GameUpdateCount % 1.5 == 0.0)
+            if (ModContent.GetInstance<QoLCConfig>().EndlessBuffsAndHealing)
             {
-                ItemsToCountForEndlessBuffs.Clear();
-                ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.inventory, "Inventory"));
-                InventoryItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
-                ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.bank.item, "PiggyBank"));
-                PiggyBankItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
-                ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.bank2.item, "Safe"));
-                SafeItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
-                ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.bank3.item, "DefendersForge"));
-                DefendersForgeItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
-                ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.bank4.item, "VoidVault"));
-                VoidVaultItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
-            }
-            EndlessBuffSources.Clear();
-            foreach ((Item, string) val in ItemsToCountForEndlessBuffs)
-            {
-                (Item item, string key) = val;
-                if (item.buffType <= 0)
-                    continue;
-
-                if (item.stack >= 30)
+                if (Main.GameUpdateCount % 1.5 == 0.0)
                 {
-                    EndlessBuffSources.Add(item.buffType, new EndlessBuffSource(item, key));
-                    Player.AddBuff(item.buffType, 20);
-                    Main.buffNoTimeDisplay[item.buffType] = true;
+                    ItemsToCountForEndlessBuffs.Clear();
+                    ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.inventory, "Inventory"));
+                    InventoryItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
+                    ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.bank.item, "PiggyBank"));
+                    PiggyBankItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
+                    ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.bank2.item, "Safe"));
+                    SafeItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
+                    ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.bank3.item, "DefendersForge"));
+                    DefendersForgeItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
+                    ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.bank4.item, "VoidVault"));
+                    VoidVaultItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
                 }
-            }
+                EndlessBuffSources.Clear();
+                foreach ((Item, string) val in ItemsToCountForEndlessBuffs)
+                {
+                    (Item item, string key) = val;
+                    if (item.buffType <= 0)
+                        continue;
 
-            ApplyAvailableBuffs(Player.inventory);
-            ApplyAvailableBuffs(Player.bank.item);
-            ApplyAvailableBuffs(Player.bank2.item);
-            ApplyAvailableBuffs(Player.bank3.item);
-            ApplyAvailableBuffs(Player.bank4.item);
+                    if (item.stack >= 30)
+                    {
+                        EndlessBuffSources.Add(item.buffType, new EndlessBuffSource(item, key));
+                        Player.AddBuff(item.buffType, 20);
+                        Main.buffNoTimeDisplay[item.buffType] = true;
+                    }
+                }
+
+                ApplyAvailableBuffs(Player.inventory);
+                ApplyAvailableBuffs(Player.bank.item);
+                ApplyAvailableBuffs(Player.bank2.item);
+                ApplyAvailableBuffs(Player.bank3.item);
+                ApplyAvailableBuffs(Player.bank4.item);
+            }
         }
 
         public override void ModifyLuck(ref float luck)
@@ -179,6 +185,16 @@ namespace QoLCompendium.Tweaks
             AddBuffIntegration(thoriumMod, "NinjaRack", "NinjaBuff", true);
         }
 
+        private static void DoSOTSIntegration()
+        {
+            if (!ModLoader.TryGetMod("SOTS", out Mod sots))
+            {
+                return;
+            }
+
+            AddBuffIntegration(sots, "DigitalDisplay", "CyberneticEnhancements", true);
+        }
+
         public static void AddBuffIntegration(Mod mod, string itemName, string buffName, bool isPlaceable)
         {
             if (isPlaceable)
@@ -189,6 +205,7 @@ namespace QoLCompendium.Tweaks
         {
             DoCalamityModIntegration();
             DoThoriumIntegration();
+            DoSOTSIntegration();
         }
     }
 

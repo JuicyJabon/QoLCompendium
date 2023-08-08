@@ -18,8 +18,8 @@ namespace QoLCompendium.Tweaks
             }
             if (player.GetModPlayer<QoLCPlayer>().enemyAggressor)
             {
-                spawnRate = (int)((double)spawnRate * 0.1);
-                maxSpawns = (int)((float)maxSpawns * 10f);
+                spawnRate = (int)(spawnRate * 0.1);
+                maxSpawns = (int)(maxSpawns * 10f);
             }
         }
 

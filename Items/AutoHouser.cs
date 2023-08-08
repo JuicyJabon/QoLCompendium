@@ -14,7 +14,6 @@ namespace QoLCompendium.Items
 
         public override void SetStaticDefaults()
         {
-            // Tooltip.SetDefault("Places an NPC house");
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

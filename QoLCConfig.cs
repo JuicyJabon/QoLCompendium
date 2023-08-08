@@ -127,49 +127,14 @@ namespace QoLCompendium
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Items")]
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool Magnet { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
-        public bool Globes { get; set; }
-
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool Erasers { get; set; }
-
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool CursedMirror { get; set; }
-
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool HeadCounter { get; set; }
-
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool Forwarper { get; set; }
-
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool MoonPhaser { get; set; }
-
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool WatchingEye { get; set; }
-
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool HCreator { get; set; }
+        public bool AsphaltPlatform { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
         public bool AHouser { get; set; }
-
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool TArriver { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
@@ -181,6 +146,46 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         [ReloadRequired]
+        public bool CursedMirror { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool Erasers { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool Forwarper { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool Globes { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool HeadCounter { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool HCreator { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool Magnet { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool MoonPhaser { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
         public bool StarterBag { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool TArriver { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool WatchingEye { get; set; }
     }
 }
