@@ -30,68 +30,136 @@ namespace QoLCompendium.UI
             ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
             ShopPanel.OnLeftMouseUp += new MouseEvent(DragEnd);
 
-            UIText text0 = new("Modded Potions");
-            text0.Left.Set(35, 0f);
-            text0.Top.Set(10, 0f);
-            text0.Width.Set(100, 0f);
-            text0.Height.Set(22, 0f);
-            ShopPanel.Append(text0);
+            if (GetInstance<QoLCConfig>().CheatyNPCs)
+            {
+                UIText text0 = new("Modded Potions");
+                text0.Left.Set(35, 0f);
+                text0.Top.Set(10, 0f);
+                text0.Width.Set(100, 0f);
+                text0.Height.Set(22, 0f);
+                ShopPanel.Append(text0);
 
-            UIText text1 = new("Modded Materials 1");
-            text1.Left.Set(35, 0f);
-            text1.Top.Set(40, 0f);
-            text1.Width.Set(100, 0f);
-            text1.Height.Set(22, 0f);
-            ShopPanel.Append(text1);
+                UIText text1 = new("Modded Materials 1");
+                text1.Left.Set(35, 0f);
+                text1.Top.Set(40, 0f);
+                text1.Width.Set(100, 0f);
+                text1.Height.Set(22, 0f);
+                ShopPanel.Append(text1);
 
-            UIText text2 = new("Modded Materials 2");
-            text2.Left.Set(35, 0f);
-            text2.Top.Set(70, 0f);
-            text2.Width.Set(100, 0f);
-            text2.Height.Set(22, 0f);
-            ShopPanel.Append(text2);
+                UIText text2 = new("Modded Materials 2");
+                text2.Left.Set(35, 0f);
+                text2.Top.Set(70, 0f);
+                text2.Width.Set(100, 0f);
+                text2.Height.Set(22, 0f);
+                ShopPanel.Append(text2);
 
-            UIText text3 = new("Modded Materials 3");
-            text3.Left.Set(35, 0f);
-            text3.Top.Set(100, 0f);
-            text3.Width.Set(100, 0f);
-            text3.Height.Set(22, 0f);
-            ShopPanel.Append(text3);
+                UIText text3 = new("Modded Materials 3");
+                text3.Left.Set(35, 0f);
+                text3.Top.Set(100, 0f);
+                text3.Width.Set(100, 0f);
+                text3.Height.Set(22, 0f);
+                ShopPanel.Append(text3);
 
-            UIText text4 = new("Modded Treasure Bags 1");
-            text4.Left.Set(35, 0f);
-            text4.Top.Set(130, 0f);
-            text4.Width.Set(100, 0f);
-            text4.Height.Set(22, 0f);
-            ShopPanel.Append(text4);
+                UIText text4 = new("Modded Treasure Bags 1");
+                text4.Left.Set(35, 0f);
+                text4.Top.Set(130, 0f);
+                text4.Width.Set(100, 0f);
+                text4.Height.Set(22, 0f);
+                ShopPanel.Append(text4);
 
-            UIText text5 = new("Modded Treasure Bags 2");
-            text5.Left.Set(35, 0f);
-            text5.Top.Set(160, 0f);
-            text5.Width.Set(100, 0f);
-            text5.Height.Set(22, 0f);
-            ShopPanel.Append(text5);
+                UIText text5 = new("Modded Treasure Bags 2");
+                text5.Left.Set(35, 0f);
+                text5.Top.Set(160, 0f);
+                text5.Width.Set(100, 0f);
+                text5.Height.Set(22, 0f);
+                ShopPanel.Append(text5);
 
-            UIText text6 = new("Modded Treasure Bags 3");
-            text6.Left.Set(35, 0f);
-            text6.Top.Set(190, 0f);
-            text6.Width.Set(100, 0f);
-            text6.Height.Set(22, 0f);
-            ShopPanel.Append(text6);
+                UIText text6 = new("Modded Treasure Bags 3");
+                text6.Left.Set(35, 0f);
+                text6.Top.Set(190, 0f);
+                text6.Width.Set(100, 0f);
+                text6.Height.Set(22, 0f);
+                ShopPanel.Append(text6);
 
-            UIText text7 = new("Modded Crates & Grab Bags");
-            text7.Left.Set(35, 0f);
-            text7.Top.Set(220, 0f);
-            text7.Width.Set(100, 0f);
-            text7.Height.Set(22, 0f);
-            ShopPanel.Append(text7);
+                UIText text7 = new("Modded Crates & Grab Bags");
+                text7.Left.Set(35, 0f);
+                text7.Top.Set(220, 0f);
+                text7.Width.Set(100, 0f);
+                text7.Height.Set(22, 0f);
+                ShopPanel.Append(text7);
 
-            UIText text8 = new("Modded Ores & Bars");
-            text8.Left.Set(35, 0f);
-            text8.Top.Set(250, 0f);
-            text8.Width.Set(100, 0f);
-            text8.Height.Set(22, 0f);
-            ShopPanel.Append(text8);
+                UIText text8 = new("Modded Ores & Bars");
+                text8.Left.Set(35, 0f);
+                text8.Top.Set(250, 0f);
+                text8.Width.Set(100, 0f);
+                text8.Height.Set(22, 0f);
+                ShopPanel.Append(text8);
+            }
+            else
+            {
+                UIText text0 = new("Modded Potions");
+                text0.Left.Set(35, 0f);
+                text0.Top.Set(10, 0f);
+                text0.Width.Set(100, 0f);
+                text0.Height.Set(22, 0f);
+                ShopPanel.Append(text0);
+
+                UIText text1 = new("Modded Materials 1 (Disabled)");
+                text1.Left.Set(35, 0f);
+                text1.Top.Set(40, 0f);
+                text1.Width.Set(100, 0f);
+                text1.Height.Set(22, 0f);
+                ShopPanel.Append(text1);
+
+                UIText text2 = new("Modded Materials 2 (Disabled)");
+                text2.Left.Set(35, 0f);
+                text2.Top.Set(70, 0f);
+                text2.Width.Set(100, 0f);
+                text2.Height.Set(22, 0f);
+                ShopPanel.Append(text2);
+
+                UIText text3 = new("Modded Materials 3 (Disabled)");
+                text3.Left.Set(35, 0f);
+                text3.Top.Set(100, 0f);
+                text3.Width.Set(100, 0f);
+                text3.Height.Set(22, 0f);
+                ShopPanel.Append(text3);
+
+                UIText text4 = new("Modded Treasure Bags 1");
+                text4.Left.Set(35, 0f);
+                text4.Top.Set(130, 0f);
+                text4.Width.Set(100, 0f);
+                text4.Height.Set(22, 0f);
+                ShopPanel.Append(text4);
+
+                UIText text5 = new("Modded Treasure Bags 2");
+                text5.Left.Set(35, 0f);
+                text5.Top.Set(160, 0f);
+                text5.Width.Set(100, 0f);
+                text5.Height.Set(22, 0f);
+                ShopPanel.Append(text5);
+
+                UIText text6 = new("Modded Treasure Bags 3");
+                text6.Left.Set(35, 0f);
+                text6.Top.Set(190, 0f);
+                text6.Width.Set(100, 0f);
+                text6.Height.Set(22, 0f);
+                ShopPanel.Append(text6);
+
+                UIText text7 = new("Modded Crates & Grab Bags (Disabled)");
+                text7.Left.Set(35, 0f);
+                text7.Top.Set(220, 0f);
+                text7.Width.Set(100, 0f);
+                text7.Height.Set(22, 0f);
+                ShopPanel.Append(text7);
+
+                UIText text8 = new("Modded Ores & Bars (Disabled)");
+                text8.Left.Set(35, 0f);
+                text8.Top.Set(250, 0f);
+                text8.Width.Set(100, 0f);
+                text8.Height.Set(22, 0f);
+                ShopPanel.Append(text8);
+            }
 
             Asset<Texture2D> buttonPlayTexture = Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
             UIImageButton playButton0 = new(buttonPlayTexture);
@@ -180,7 +248,7 @@ namespace QoLCompendium.UI
 
         private void PlayButtonClicked1(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<QoLCConfig>().CheatyNPCs)
             {
                 EtherealCollectorNPC.shopNum = 1;
                 visible = false;
@@ -189,7 +257,7 @@ namespace QoLCompendium.UI
 
         private void PlayButtonClicked2(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<QoLCConfig>().CheatyNPCs)
             {
                 EtherealCollectorNPC.shopNum = 2;
                 visible = false;
@@ -198,7 +266,7 @@ namespace QoLCompendium.UI
 
         private void PlayButtonClicked3(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<QoLCConfig>().CheatyNPCs)
             {
                 EtherealCollectorNPC.shopNum = 3;
                 visible = false;
@@ -234,7 +302,7 @@ namespace QoLCompendium.UI
 
         private void PlayButtonClicked7(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<QoLCConfig>().CheatyNPCs)
             {
                 EtherealCollectorNPC.shopNum = 7;
                 visible = false;
@@ -243,7 +311,7 @@ namespace QoLCompendium.UI
 
         private void PlayButtonClicked8(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<QoLCConfig>().CheatyNPCs)
             {
                 EtherealCollectorNPC.shopNum = 8;
                 visible = false;

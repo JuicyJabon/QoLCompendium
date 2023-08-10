@@ -16,8 +16,8 @@ Current Features:
  - Endless Ammo (999+)
  - Non-consumable Boss & Event summons
  - Increased max buff slots
- - Faster respawns
- - Full HP on spawn
+ - Instant respawn (Only Singleplayer)
+ - Full HP on respawn
  - No enemy spawns during bosses
  - Lifeform Analyzer points towards rare creatures
  - Crazy fast mining & placing speeds

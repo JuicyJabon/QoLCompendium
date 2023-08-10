@@ -39,6 +39,10 @@ namespace QoLCompendium
         public bool ECNPC { get; set; }
 
         [DefaultValue(true)]
+        [ReloadRequired]
+        public bool CheatyNPCs { get; set; }
+
+        [DefaultValue(true)]
         public bool FriendliesDontDie { get; set; }
 
         [DefaultValue(true)]
@@ -49,8 +53,8 @@ namespace QoLCompendium
         public bool TownieSpawn { get; set; }
 
         [Slider]
-        [DefaultValue(15)]
-        [Range(1, 150)]
+        [DefaultValue(10)]
+        [Range(1, 100)]
         [Increment(5)]
         public int TowerShield { get; set; }
 

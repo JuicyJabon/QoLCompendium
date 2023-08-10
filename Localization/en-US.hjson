@@ -85,7 +85,7 @@ Mods: {
 			}
 
 			BloodIdol: {
-				DisplayName: Blood Idol
+				DisplayName: Bloodied Moon Charm
 				Tooltip: Favorite this item to have a blood moon occur every night
 			}
 
@@ -331,6 +331,11 @@ Mods: {
 					Tooltip: Toggles the Christmas seasonal event
 					Label: Toggle Christmas
 				}
+
+				CheatyNPCs: {
+					Tooltip: Toggles if the 2 mod NPCs sell (almost) everything
+					Label: Mod NPCs Sell Everything
+				}
 			}
 
 			ItemConfig: {
@@ -404,8 +409,8 @@ Mods: {
 				}
 
 				BloodIdol: {
-					Label: Blood Idol
-					Tooltip: Toggles the Blood Idol item
+					Label: Bloodied Moon Charm
+					Tooltip: Toggles the Bloodied Moon Charm item
 				}
 
 				AsphaltPlatform: {

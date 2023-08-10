@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework.Graphics;
 using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
 using System.Collections.Generic;
@@ -1231,164 +1232,164 @@ namespace QoLCompendium.NPCs
             {
                 if (CheckDowned.calamityMod.TryFind("DesertScourgeBag", out ModItem DesertScourgeBag))
                 {
-                    boss1Shop.Add(DesertScourgeBag.Type, CheckDowned.desertscourge);
+                    boss1Shop.Add(new Item(DesertScourgeBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.desertscourge);
                 }
                 if (CheckDowned.calamityMod.TryFind("CrabulonBag", out ModItem CrabulonBag))
                 {
-                    boss1Shop.Add(CrabulonBag.Type, CheckDowned.crabulon);
+                    boss1Shop.Add(new Item(CrabulonBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.crabulon);
                 }
                 if (CheckDowned.calamityMod.TryFind("HiveMindBag", out ModItem HiveMindBag))
                 {
-                    boss1Shop.Add(HiveMindBag.Type, CheckDowned.hivemind);
+                    boss1Shop.Add(new Item(HiveMindBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.hivemind);
                 }
                 if (CheckDowned.calamityMod.TryFind("PerforatorBag", out ModItem PerforatorBag))
                 {
-                    boss1Shop.Add(PerforatorBag.Type, CheckDowned.perforators);
+                    boss1Shop.Add(new Item(PerforatorBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.perforators);
                 }
                 if (CheckDowned.calamityMod.TryFind("SlimeGodBag", out ModItem SlimeGodBag))
                 {
-                    boss1Shop.Add(SlimeGodBag.Type, CheckDowned.slimegod);
+                    boss1Shop.Add(new Item(SlimeGodBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.slimegod);
                 }
                 if (CheckDowned.calamityMod.TryFind("CryogenBag", out ModItem CryogenBag))
                 {
-                    boss1Shop.Add(CryogenBag.Type, CheckDowned.cryogen);
+                    boss1Shop.Add(new Item(CryogenBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.cryogen);
                 }
                 if (CheckDowned.calamityMod.TryFind("AquaticScourgeBag", out ModItem AquaticScourgeBag))
                 {
-                    boss1Shop.Add(AquaticScourgeBag.Type, CheckDowned.aquaticscourge);
+                    boss1Shop.Add(new Item(AquaticScourgeBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.aquaticscourge);
                 }
                 if (CheckDowned.calamityMod.TryFind("BrimstoneWaifuBag", out ModItem BrimstoneWaifuBag))
                 {
-                    boss1Shop.Add(BrimstoneWaifuBag.Type, CheckDowned.brimstoneelemental);
+                    boss1Shop.Add(new Item(BrimstoneWaifuBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.brimstoneelemental);
                 }
                 if (CheckDowned.calamityMod.TryFind("CalamitasCloneBag", out ModItem CalamitasCloneBag))
                 {
-                    boss1Shop.Add(CalamitasCloneBag.Type, CheckDowned.calamitas);
+                    boss1Shop.Add(new Item(CalamitasCloneBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.calamitas);
                 }
                 if (CheckDowned.calamityMod.TryFind("LeviathanBag", out ModItem LeviathanBag))
                 {
-                    boss1Shop.Add(LeviathanBag.Type, CheckDowned.leviathan);
+                    boss1Shop.Add(new Item(LeviathanBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.leviathan);
                 }
                 if (CheckDowned.calamityMod.TryFind("AstrumAureusBag", out ModItem AstrumAureusBag))
                 {
-                    boss1Shop.Add(AstrumAureusBag.Type, CheckDowned.aureus);
+                    boss1Shop.Add(new Item(AstrumAureusBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.aureus);
                 }
                 if (CheckDowned.calamityMod.TryFind("PlaguebringerGoliathBag", out ModItem PlaguebringerGoliathBag))
                 {
-                    boss1Shop.Add(PlaguebringerGoliathBag.Type, CheckDowned.plaguebringer);
+                    boss1Shop.Add(new Item(PlaguebringerGoliathBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.plaguebringer);
                 }
                 if (CheckDowned.calamityMod.TryFind("RavagerBag", out ModItem RavagerBag))
                 {
-                    boss1Shop.Add(RavagerBag.Type, CheckDowned.ravager);
+                    boss1Shop.Add(new Item(RavagerBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.ravager);
                 }
                 if (CheckDowned.calamityMod.TryFind("AstrumDeusBag", out ModItem AstrumDeusBag))
                 {
-                    boss1Shop.Add(AstrumDeusBag.Type, CheckDowned.deus);
+                    boss1Shop.Add(new Item(AstrumDeusBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.deus);
                 }
                 if (CheckDowned.calamityMod.TryFind("DragonfollyBag", out ModItem DragonfollyBag))
                 {
-                    boss1Shop.Add(DragonfollyBag.Type, CheckDowned.dragonfolly);
+                    boss1Shop.Add(new Item(DragonfollyBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.dragonfolly);
                 }
                 if (CheckDowned.calamityMod.TryFind("ProvidenceBag", out ModItem ProvidenceBag))
                 {
-                    boss1Shop.Add(ProvidenceBag.Type, CheckDowned.providence);
+                    boss1Shop.Add(new Item(ProvidenceBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.providence);
                 }
                 if (CheckDowned.calamityMod.TryFind("PolterghastBag", out ModItem PolterghastBag))
                 {
-                    boss1Shop.Add(PolterghastBag.Type, CheckDowned.polterghast);
+                    boss1Shop.Add(new Item(PolterghastBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.polterghast);
                 }
                 if (CheckDowned.calamityMod.TryFind("CeaselessVoidBag", out ModItem CeaselessVoidBag))
                 {
-                    boss1Shop.Add(CeaselessVoidBag.Type, CheckDowned.ceaselessvoid);
+                    boss1Shop.Add(new Item(CeaselessVoidBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.ceaselessvoid);
                 }
                 if (CheckDowned.calamityMod.TryFind("StormWeaverBag", out ModItem StormWeaverBag))
                 {
-                    boss1Shop.Add(StormWeaverBag.Type, CheckDowned.stormweaver);
+                    boss1Shop.Add(new Item(StormWeaverBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.stormweaver);
                 }
                 if (CheckDowned.calamityMod.TryFind("SignusBag", out ModItem SignusBag))
                 {
-                    boss1Shop.Add(SignusBag.Type, CheckDowned.signus);
+                    boss1Shop.Add(new Item(SignusBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.signus);
                 }
                 if (CheckDowned.calamityMod.TryFind("OldDukeBag", out ModItem OldDukeBag))
                 {
-                    boss1Shop.Add(OldDukeBag.Type, CheckDowned.oldduke);
+                    boss1Shop.Add(new Item(OldDukeBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.oldduke);
                 }
                 if (CheckDowned.calamityMod.TryFind("DevourerofGodsBag", out ModItem DevourerofGodsBag))
                 {
-                    boss1Shop.Add(DevourerofGodsBag.Type, CheckDowned.dog);
+                    boss1Shop.Add(new Item(DevourerofGodsBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.dog);
                 }
                 if (CheckDowned.calamityMod.TryFind("YharonBag", out ModItem YharonBag))
                 {
-                    boss1Shop.Add(YharonBag.Type, CheckDowned.yharon);
+                    boss1Shop.Add(new Item(YharonBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.yharon);
                 }
                 if (CheckDowned.calamityMod.TryFind("DraedonBag", out ModItem DraedonBag))
                 {
-                    boss1Shop.Add(DraedonBag.Type, CheckDowned.exomechs);
+                    boss1Shop.Add(new Item(DraedonBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.exomechs);
                 }
                 if (CheckDowned.calamityMod.TryFind("CalamitasCoffer", out ModItem CalamitasCoffer))
                 {
-                    boss1Shop.Add(CalamitasCoffer.Type, CheckDowned.scalamitas);
+                    boss1Shop.Add(new Item(CalamitasCoffer.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.scalamitas);
                 }
             }
             if (CheckDowned.catalystLoaded)
             {
                 if (CheckDowned.catalystMod.TryFind("AstrageldonBag", out ModItem AstrageldonBag))
                 {
-                    boss1Shop.Add(AstrageldonBag.Type, CheckDowned.geldon);
+                    boss1Shop.Add(new Item(AstrageldonBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.geldon);
                 }
             }
             if (CheckDowned.infernumLoaded)
             {
                 if (CheckDowned.infernumMod.TryFind("BereftVassalBossBag", out ModItem BereftVassalBossBag))
                 {
-                    boss1Shop.Add(BereftVassalBossBag.Type, CheckDowned.vassal);
+                    boss1Shop.Add(new Item(BereftVassalBossBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.vassal);
                 }
             }
             if (CheckDowned.thoriumLoaded)
             {
                 if (CheckDowned.thoriumMod.TryFind("ThunderBirdBag", out ModItem ThunderBirdBag))
                 {
-                    boss1Shop.Add(ThunderBirdBag.Type, CheckDowned.grandbird);
+                    boss1Shop.Add(new Item(ThunderBirdBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.grandbird);
                 }
                 if (CheckDowned.thoriumMod.TryFind("JellyFishBag", out ModItem JellyFishBag))
                 {
-                    boss1Shop.Add(JellyFishBag.Type, CheckDowned.queenjelly);
+                    boss1Shop.Add(new Item(JellyFishBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.queenjelly);
                 }
                 if (CheckDowned.thoriumMod.TryFind("CountBag", out ModItem CountBag))
                 {
-                    boss1Shop.Add(CountBag.Type, CheckDowned.viscount);
+                    boss1Shop.Add(new Item(CountBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.viscount);
                 }
                 if (CheckDowned.thoriumMod.TryFind("GraniteBag", out ModItem GraniteBag))
                 {
-                    boss1Shop.Add(GraniteBag.Type, CheckDowned.energystorm);
+                    boss1Shop.Add(new Item(GraniteBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.energystorm);
                 }
                 if (CheckDowned.thoriumMod.TryFind("HeroBag", out ModItem HeroBag))
                 {
-                    boss1Shop.Add(HeroBag.Type, CheckDowned.buriedchampion);
+                    boss1Shop.Add(new Item(HeroBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.buriedchampion);
                 }
                 if (CheckDowned.thoriumMod.TryFind("ScouterBag", out ModItem ScouterBag))
                 {
-                    boss1Shop.Add(ScouterBag.Type, CheckDowned.scouter);
+                    boss1Shop.Add(new Item(ScouterBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.scouter);
                 }
                 if (CheckDowned.thoriumMod.TryFind("BoreanBag", out ModItem BoreanBag))
                 {
-                    boss1Shop.Add(BoreanBag.Type, CheckDowned.strider);
+                    boss1Shop.Add(new Item(BoreanBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.strider);
                 }
                 if (CheckDowned.thoriumMod.TryFind("BeholderBag", out ModItem BeholderBag))
                 {
-                    boss1Shop.Add(BeholderBag.Type, CheckDowned.fallenbeholder);
+                    boss1Shop.Add(new Item(BeholderBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.fallenbeholder);
                 }
                 if (CheckDowned.thoriumMod.TryFind("LichBag", out ModItem LichBag))
                 {
-                    boss1Shop.Add(LichBag.Type, CheckDowned.lich);
+                    boss1Shop.Add(new Item(LichBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.lich);
                 }
                 if (CheckDowned.thoriumMod.TryFind("AbyssionBag", out ModItem AbyssionBag))
                 {
-                    boss1Shop.Add(AbyssionBag.Type, CheckDowned.forgottenone);
+                    boss1Shop.Add(new Item(AbyssionBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.forgottenone);
                 }
                 if (CheckDowned.thoriumMod.TryFind("RagBag", out ModItem RagBag))
                 {
-                    boss1Shop.Add(RagBag.Type, CheckDowned.primordials);
+                    boss1Shop.Add(new Item(RagBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.primordials);
                 }
             }
             boss1Shop.Register();
@@ -1398,171 +1399,171 @@ namespace QoLCompendium.NPCs
             {
                 if (CheckDowned.redemptionMod.TryFind("ThornBag", out ModItem ThornBag))
                 {
-                    boss2Shop.Add(ThornBag.Type, CheckDowned.thorn);
+                    boss2Shop.Add(new Item(ThornBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.thorn);
                 }
                 if (CheckDowned.redemptionMod.TryFind("ErhanBag", out ModItem ErhanBag))
                 {
-                    boss2Shop.Add(ErhanBag.Type, CheckDowned.erhan);
+                    boss2Shop.Add(new Item(ErhanBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.erhan);
                 }
                 if (CheckDowned.redemptionMod.TryFind("KeeperBag", out ModItem KeeperBag))
                 {
-                    boss2Shop.Add(KeeperBag.Type, CheckDowned.keeper);
+                    boss2Shop.Add(new Item(KeeperBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.keeper);
                 }
                 if (CheckDowned.redemptionMod.TryFind("SoIBag", out ModItem SoIBag))
                 {
-                    boss2Shop.Add(SoIBag.Type, CheckDowned.seed);
+                    boss2Shop.Add(new Item(SoIBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.seed);
                 }
                 if (CheckDowned.redemptionMod.TryFind("SlayerBag", out ModItem SlayerBag))
                 {
-                    boss2Shop.Add(SlayerBag.Type, CheckDowned.ks3);
+                    boss2Shop.Add(new Item(SlayerBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.ks3);
                 }
                 if (CheckDowned.redemptionMod.TryFind("OmegaCleaverBag", out ModItem OmegaCleaverBag))
                 {
-                    boss2Shop.Add(OmegaCleaverBag.Type, CheckDowned.cleaver);
+                    boss2Shop.Add(new Item(OmegaCleaverBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.cleaver);
                 }
                 if (CheckDowned.redemptionMod.TryFind("OmegaGigaporaBag", out ModItem OmegaGigaporaBag))
                 {
-                    boss2Shop.Add(OmegaGigaporaBag.Type, CheckDowned.gigapora);
+                    boss2Shop.Add(new Item(OmegaGigaporaBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.gigapora);
                 }
                 if (CheckDowned.redemptionMod.TryFind("OmegaOblitBag", out ModItem OmegaOblitBag))
                 {
-                    boss2Shop.Add(OmegaOblitBag.Type, CheckDowned.obliterator);
+                    boss2Shop.Add(new Item(OmegaOblitBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.obliterator);
                 }
                 if (CheckDowned.redemptionMod.TryFind("PZBag", out ModItem PZBag))
                 {
-                    boss2Shop.Add(PZBag.Type, CheckDowned.zero);
+                    boss2Shop.Add(new Item(PZBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.zero);
                 }
                 if (CheckDowned.redemptionMod.TryFind("AkkaBag", out ModItem AkkaBag))
                 {
-                    boss2Shop.Add(AkkaBag.Type, CheckDowned.duo);
+                    boss2Shop.Add(new Item(AkkaBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.duo);
                 }
                 if (CheckDowned.redemptionMod.TryFind("UkkoBag", out ModItem UkkoBag))
                 {
-                    boss2Shop.Add(UkkoBag.Type, CheckDowned.duo);
+                    boss2Shop.Add(new Item(UkkoBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.duo);
                 }
                 if (CheckDowned.redemptionMod.TryFind("NebBag", out ModItem NebBag))
                 {
-                    boss2Shop.Add(NebBag.Type, CheckDowned.nebby);
+                    boss2Shop.Add(new Item(NebBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.nebby);
                 }
             }        
             if (CheckDowned.sotsLoaded)
             {
                 if (CheckDowned.sotsMod.TryFind("PinkyBag", out ModItem PinkyBag))
                 {
-                    boss2Shop.Add(PinkyBag.Type, CheckDowned.putridpinky);
+                    boss2Shop.Add(new Item(PinkyBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.putridpinky);
                 }
                 if (CheckDowned.sotsMod.TryFind("CurseBag", out ModItem CurseBag))
                 {
-                    boss2Shop.Add(CurseBag.Type, CheckDowned.pharaohscurse);
+                    boss2Shop.Add(new Item(CurseBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.pharaohscurse);
                 }
                 if (CheckDowned.sotsMod.TryFind("TheAdvisorBossBag", out ModItem TheAdvisorBossBag))
                 {
-                    boss2Shop.Add(TheAdvisorBossBag.Type, CheckDowned.advisor);
+                    boss2Shop.Add(new Item(TheAdvisorBossBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.advisor);
                 }
                 if (CheckDowned.sotsMod.TryFind("PolarisBossBag", out ModItem PolarisBossBag))
                 {
-                    boss2Shop.Add(PolarisBossBag.Type, CheckDowned.polaris);
+                    boss2Shop.Add(new Item(PolarisBossBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.polaris);
                 }
                 if (CheckDowned.sotsMod.TryFind("LuxBag", out ModItem LuxBag))
                 {
-                    boss2Shop.Add(LuxBag.Type, CheckDowned.lux);
+                    boss2Shop.Add(new Item(LuxBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.lux);
                 }
                 if (CheckDowned.sotsMod.TryFind("SubspaceBag", out ModItem SubspaceBag))
                 {
-                    boss2Shop.Add(SubspaceBag.Type, CheckDowned.serpent);
+                    boss2Shop.Add(new Item(SubspaceBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.serpent);
                 }
             }
             if (CheckDowned.fargosSoulsLoaded)
             {
                 if (CheckDowned.fargosSoulsMod.TryFind("TrojanSquirrelBag", out ModItem TrojanSquirrelBag))
                 {
-                    boss2Shop.Add(TrojanSquirrelBag.Type, CheckDowned.squirrel);
+                    boss2Shop.Add(new Item(TrojanSquirrelBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.squirrel);
                 }
                 if (CheckDowned.fargosSoulsMod.TryFind("DeviBag", out ModItem DeviBag))
                 {
-                    boss2Shop.Add(DeviBag.Type, CheckDowned.devi);
+                    boss2Shop.Add(new Item(DeviBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.devi);
                 }
                 if (CheckDowned.fargosSoulsMod.TryFind("LifeChallengerBag", out ModItem LifeChallengerBag))
                 {
-                    boss2Shop.Add(LifeChallengerBag.Type, CheckDowned.lieflight);
+                    boss2Shop.Add(new Item(LifeChallengerBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.lieflight);
                 }
                 if (CheckDowned.fargosSoulsMod.TryFind("CosmosBag", out ModItem CosmosBag))
                 {
-                    boss2Shop.Add(CosmosBag.Type, CheckDowned.cosmoschamp);
+                    boss2Shop.Add(new Item(CosmosBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.cosmoschamp);
                 }
                 if (CheckDowned.fargosSoulsMod.TryFind("AbomBag", out ModItem AbomBag))
                 {
-                    boss2Shop.Add(AbomBag.Type, CheckDowned.abom);
+                    boss2Shop.Add(new Item(AbomBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.abom);
                 }
                 if (CheckDowned.fargosSoulsMod.TryFind("MutantBag", out ModItem MutantBag))
                 {
-                    boss2Shop.Add(MutantBag.Type, CheckDowned.mutant);
+                    boss2Shop.Add(new Item(MutantBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.mutant);
                 }
             }
             if (CheckDowned.homewardLoaded)
             {
                 if (CheckDowned.homewardMod.TryFind("MarquisMoonsquidTreasureBag", out ModItem MarquisMoonsquidTreasureBag))
                 {
-                    boss2Shop.Add(MarquisMoonsquidTreasureBag.Type, CheckDowned.squid);
+                    boss2Shop.Add(new Item(MarquisMoonsquidTreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.squid);
                 }
                 if (CheckDowned.homewardMod.TryFind("PriestessRodTreasureBag", out ModItem PriestessRodTreasureBag))
                 {
-                    boss2Shop.Add(PriestessRodTreasureBag.Type, CheckDowned.rod);
+                    boss2Shop.Add(new Item(PriestessRodTreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.rod);
                 }
                 if (CheckDowned.homewardMod.TryFind("DiverTreasureBag", out ModItem DiverTreasureBag))
                 {
-                    boss2Shop.Add(DiverTreasureBag.Type, CheckDowned.diver);
+                    boss2Shop.Add(new Item(DiverTreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.diver);
                 }
                 if (CheckDowned.homewardMod.TryFind("TheMotherbrainTreasureBag", out ModItem TheMotherbrainTreasureBag))
                 {
-                    boss2Shop.Add(TheMotherbrainTreasureBag.Type, CheckDowned.motherbrain);
+                    boss2Shop.Add(new Item(TheMotherbrainTreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.motherbrain);
                 }
                 if (CheckDowned.homewardMod.TryFind("WallofShadowTreasureBag", out ModItem WallofShadowTreasureBag))
                 {
-                    boss2Shop.Add(WallofShadowTreasureBag.Type, CheckDowned.wos);
+                    boss2Shop.Add(new Item(WallofShadowTreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.wos);
                 }
                 if (CheckDowned.homewardMod.TryFind("SlimeGodTreasureBag", out ModItem SlimeGodTreasureBag))
                 {
-                    boss2Shop.Add(SlimeGodTreasureBag.Type, CheckDowned.sgod);
+                    boss2Shop.Add(new Item(SlimeGodTreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.sgod);
                 }
                 if (CheckDowned.homewardMod.TryFind("TheOverwatcherTreasureBag", out ModItem TheOverwatcherTreasureBag))
                 {
-                    boss2Shop.Add(TheOverwatcherTreasureBag.Type, CheckDowned.overwatcher);
+                    boss2Shop.Add(new Item(TheOverwatcherTreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.overwatcher);
                 }
                 if (CheckDowned.homewardMod.TryFind("TheLifebringerTreasureBag", out ModItem TheLifebringerTreasureBag))
                 {
-                    boss2Shop.Add(TheLifebringerTreasureBag.Type, CheckDowned.lifebringer);
+                    boss2Shop.Add(new Item(TheLifebringerTreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.lifebringer);
                 }
                 if (CheckDowned.homewardMod.TryFind("TheMaterealizerTreasureBag", out ModItem TheMaterealizerTreasureBag))
                 {
-                    boss2Shop.Add(TheMaterealizerTreasureBag.Type, CheckDowned.materealizer);
+                    boss2Shop.Add(new Item(TheMaterealizerTreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.materealizer);
                 }
                 if (CheckDowned.homewardMod.TryFind("ScarabBeliefTreasureBag", out ModItem ScarabBeliefTreasureBag))
                 {
-                    boss2Shop.Add(ScarabBeliefTreasureBag.Type, CheckDowned.scarab);
+                    boss2Shop.Add(new Item(ScarabBeliefTreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.scarab);
                 }
                 if (CheckDowned.homewardMod.TryFind("EverlastingFallingWhaleTreasureBag", out ModItem EverlastingFallingWhaleTreasureBag))
                 {
-                    boss2Shop.Add(EverlastingFallingWhaleTreasureBag.Type, CheckDowned.whale);
+                    boss2Shop.Add(new Item(EverlastingFallingWhaleTreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.whale);
                 }
                 if (CheckDowned.homewardMod.TryFind("TheSonTreasureBag", out ModItem TheSonTreasureBag))
                 {
-                    boss2Shop.Add(TheSonTreasureBag.Type, CheckDowned.son);
+                    boss2Shop.Add(new Item(TheSonTreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.son);
                 }
             }
             if (CheckDowned.aqLoaded)
             {
                 if (CheckDowned.aqMod.TryFind("CrabsonBag", out ModItem CrabsonBag))
                 {
-                    boss2Shop.Add(CrabsonBag.Type, CheckDowned.crabson);
+                    boss2Shop.Add(new Item(CrabsonBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.crabson);
                 }
                 if (CheckDowned.aqMod.TryFind("OmegaStariteBag", out ModItem OmegaStariteBag))
                 {
-                    boss2Shop.Add(OmegaStariteBag.Type, CheckDowned.omegastarite);
+                    boss2Shop.Add(new Item(OmegaStariteBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.omegastarite);
                 }
                 if (CheckDowned.aqMod.TryFind("DustDevilBag", out ModItem DustDevilBag))
                 {
-                    boss2Shop.Add(DustDevilBag.Type, CheckDowned.devil);
+                    boss2Shop.Add(new Item(DustDevilBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.devil);
                 }
             }
             boss2Shop.Register();
@@ -1572,123 +1573,123 @@ namespace QoLCompendium.NPCs
             {
                 if (CheckDowned.spookyMod.TryFind("BossBagRotGourd", out ModItem BossBagRotGourd))
                 {
-                    boss3Shop.Add(BossBagRotGourd.Type, CheckDowned.gourd);
+                    boss3Shop.Add(new Item(BossBagRotGourd.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.gourd);
                 }
                 if (CheckDowned.spookyMod.TryFind("BossBagMoco", out ModItem BossBagMoco))
                 {
-                    boss3Shop.Add(BossBagMoco.Type, CheckDowned.moco);
+                    boss3Shop.Add(new Item(BossBagMoco.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.moco);
                 }
                 if (CheckDowned.spookyMod.TryFind("BossBagOrroboro", out ModItem BossBagOrroboro))
                 {
-                    boss3Shop.Add(BossBagOrroboro.Type, CheckDowned.orroboro);
+                    boss3Shop.Add(new Item(BossBagOrroboro.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.orroboro);
                 }
                 if (CheckDowned.spookyMod.TryFind("BossBagBigBone", out ModItem BossBagBigBone))
                 {
-                    boss3Shop.Add(BossBagBigBone.Type, CheckDowned.bigbone);
+                    boss3Shop.Add(new Item(BossBagBigBone.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.bigbone);
                 }
             }
             if (CheckDowned.consolariaLoaded)
             {
                 if (CheckDowned.consolariaMod.TryFind("LepusBag", out ModItem LepusBag))
                 {
-                    boss3Shop.Add(LepusBag.Type, CheckDowned.lepus);
+                    boss3Shop.Add(new Item(LepusBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.lepus);
                 }
                 if (CheckDowned.consolariaMod.TryFind("TurkorBag", out ModItem TurkorBag))
                 {
-                    boss3Shop.Add(TurkorBag.Type, CheckDowned.turkor);
+                    boss3Shop.Add(new Item(TurkorBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.turkor);
                 }
                 if (CheckDowned.consolariaMod.TryFind("OcramBag", out ModItem OcramBag))
                 {
-                    boss3Shop.Add(OcramBag.Type, CheckDowned.ocram);
+                    boss3Shop.Add(new Item(OcramBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.ocram);
                 }
             }
             if (CheckDowned.polaritiesLoaded)
             {
                 if (CheckDowned.polaritiesMod.TryFind("StormCloudfishBag", out ModItem StormCloudfishBag))
                 {
-                    boss3Shop.Add(StormCloudfishBag.Type, CheckDowned.cloudfish);
+                    boss3Shop.Add(new Item(StormCloudfishBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.cloudfish);
                 }
                 if (CheckDowned.polaritiesMod.TryFind("StarConstructBag", out ModItem StarConstructBag))
                 {
-                    boss3Shop.Add(StarConstructBag.Type, CheckDowned.construct);
+                    boss3Shop.Add(new Item(StarConstructBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.construct);
                 }
                 if (CheckDowned.polaritiesMod.TryFind("GigabatBag", out ModItem GigabatBag))
                 {
-                    boss3Shop.Add(GigabatBag.Type, CheckDowned.gigabat);
+                    boss3Shop.Add(new Item(GigabatBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.gigabat);
                 }
                 if (CheckDowned.polaritiesMod.TryFind("SunPixieBag", out ModItem SunPixieBag))
                 {
-                    boss3Shop.Add(SunPixieBag.Type, CheckDowned.sunpixie);
+                    boss3Shop.Add(new Item(SunPixieBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.sunpixie);
                 }
                 if (CheckDowned.polaritiesMod.TryFind("EsophageBag", out ModItem EsophageBag))
                 {
-                    boss3Shop.Add(EsophageBag.Type, CheckDowned.esophage);
+                    boss3Shop.Add(new Item(EsophageBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.esophage);
                 }
                 if (CheckDowned.polaritiesMod.TryFind("ConvectiveWandererBag", out ModItem ConvectiveWandererBag))
                 {
-                    boss3Shop.Add(ConvectiveWandererBag.Type, CheckDowned.wanderer);
+                    boss3Shop.Add(new Item(ConvectiveWandererBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.wanderer);
                 }
             }
             if (CheckDowned.vitalityLoaded)
             {
                 if (CheckDowned.vitalityMod.TryFind("StormCloudBossBag", out ModItem StormCloudBossBag))
                 {
-                    boss3Shop.Add(StormCloudBossBag.Type, CheckDowned.stormcloud);
+                    boss3Shop.Add(new Item(StormCloudBossBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.stormcloud);
                 }
                 if (CheckDowned.vitalityMod.TryFind("GrandAntlionBossBag", out ModItem GrandAntlionBossBag))
                 {
-                    boss3Shop.Add(GrandAntlionBossBag.Type, CheckDowned.grandantlion);
+                    boss3Shop.Add(new Item(GrandAntlionBossBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.grandantlion);
                 }
                 if (CheckDowned.vitalityMod.TryFind("GemstoneElementalBossBag", out ModItem GemstoneElementalBossBag))
                 {
-                    boss3Shop.Add(GemstoneElementalBossBag.Type, CheckDowned.gemstone);
+                    boss3Shop.Add(new Item(GemstoneElementalBossBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.gemstone);
                 }
                 if (CheckDowned.vitalityMod.TryFind("MoonlightDragonflyBossBag", out ModItem MoonlightDragonflyBossBag))
                 {
-                    boss3Shop.Add(MoonlightDragonflyBossBag.Type, CheckDowned.dragonfly);
+                    boss3Shop.Add(new Item(MoonlightDragonflyBossBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.dragonfly);
                 }
                 if (CheckDowned.vitalityMod.TryFind("DreadnaughtBossBag", out ModItem DreadnaughtBossBag))
                 {
-                    boss3Shop.Add(DreadnaughtBossBag.Type, CheckDowned.dreadnaught);
+                    boss3Shop.Add(new Item(DreadnaughtBossBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.dreadnaught);
                 }
                 if (CheckDowned.vitalityMod.TryFind("AnarchulesBeetleBossBag", out ModItem AnarchulesBeetleBossBag))
                 {
-                    boss3Shop.Add(AnarchulesBeetleBossBag.Type, CheckDowned.anarchulesbeetle);
+                    boss3Shop.Add(new Item(AnarchulesBeetleBossBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.anarchulesbeetle);
                 }
                 if (CheckDowned.vitalityMod.TryFind("ChaosbringerBossBag", out ModItem ChaosbringerBossBag))
                 {
-                    boss3Shop.Add(ChaosbringerBossBag.Type, CheckDowned.chaosbringer);
+                    boss3Shop.Add(new Item(ChaosbringerBossBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.chaosbringer);
                 }
                 if (CheckDowned.vitalityMod.TryFind("PaladinSpiritBossBag", out ModItem PaladinSpiritBossBag))
                 {
-                    boss3Shop.Add(PaladinSpiritBossBag.Type, CheckDowned.paladin);
+                    boss3Shop.Add(new Item(PaladinSpiritBossBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.paladin);
                 }
             }
             if (CheckDowned.terrorbornLoaded)
             {
                 if (CheckDowned.terrorbornMod.TryFind("II_TreasureBag", out ModItem II_TreasureBag))
                 {
-                    boss3Shop.Add(II_TreasureBag.Type, CheckDowned.incarnate);
+                    boss3Shop.Add(new Item(II_TreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.incarnate);
                 }
                 if (CheckDowned.terrorbornMod.TryFind("TT_TreasureBag", out ModItem TT_TreasureBag))
                 {
-                    boss3Shop.Add(TT_TreasureBag.Type, CheckDowned.titan);
+                    boss3Shop.Add(new Item(TT_TreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.titan);
                 }
                 if (CheckDowned.terrorbornMod.TryFind("DS_TreasureBag", out ModItem DS_TreasureBag))
                 {
-                    boss3Shop.Add(DS_TreasureBag.Type, CheckDowned.dunestock);
+                    boss3Shop.Add(new Item(DS_TreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.dunestock);
                 }
                 if (CheckDowned.terrorbornMod.TryFind("SC_TreasureBag", out ModItem SC_TreasureBag))
                 {
-                    boss3Shop.Add(SC_TreasureBag.Type, CheckDowned.crawler);
+                    boss3Shop.Add(new Item(SC_TreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.crawler);
                 }
                 if (CheckDowned.terrorbornMod.TryFind("HC_TreasureBag", out ModItem HC_TreasureBag))
                 {
-                    boss3Shop.Add(HC_TreasureBag.Type, CheckDowned.constructor);
+                    boss3Shop.Add(new Item(HC_TreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.constructor);
                 }
                 if (CheckDowned.terrorbornMod.TryFind("PI_TreasureBag", out ModItem PI_TreasureBag))
                 {
-                    boss3Shop.Add(PI_TreasureBag.Type, CheckDowned.p1);
+                    boss3Shop.Add(new Item(PI_TreasureBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.p1);
                 }
             }
             boss3Shop.Register();
@@ -1727,6 +1728,34 @@ namespace QoLCompendium.NPCs
                 if (CheckDowned.calamityMod.TryFind("SulphuricTreasure", out ModItem SulphuricTreasure))
                 {
                     modCratesShop.Add(SulphuricTreasure.Type);
+                }
+            }
+
+            if (CheckDowned.thoriumLoaded)
+            {
+                if (CheckDowned.thoriumMod.TryFind("AquaticDepthsCrate", out ModItem AquaticDepthsCrate))
+                {
+                    modCratesShop.Add(AquaticDepthsCrate.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("AbyssalCrate", out ModItem AbyssalCrate))
+                {
+                    modCratesShop.Add(AbyssalCrate.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.thoriumMod.TryFind("ScarletCrate", out ModItem ScarletCrate))
+                {
+                    modCratesShop.Add(ScarletCrate.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("SinisterCrate", out ModItem SinisterCrate))
+                {
+                    modCratesShop.Add(SinisterCrate.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.thoriumMod.TryFind("StrangeCrate", out ModItem StrangeCrate))
+                {
+                    modCratesShop.Add(StrangeCrate.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("WondrousCrate", out ModItem WondrousCrate))
+                {
+                    modCratesShop.Add(WondrousCrate.Type, Condition.Hardmode);
                 }
             }
             modCratesShop.Register();
@@ -1817,6 +1846,70 @@ namespace QoLCompendium.NPCs
                 if (CheckDowned.calamityMod.TryFind("UelibloomBar", out ModItem UelibloomBar))
                 {
                     modOreShop.Add(UelibloomBar.Type, CheckDowned.providence);
+                }
+            }
+
+            if (CheckDowned.thoriumLoaded)
+            {
+                if (CheckDowned.thoriumMod.TryFind("SmoothCoal", out ModItem SmoothCoal))
+                {
+                    modOreShop.Add(SmoothCoal.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("ThoriumOre", out ModItem ThoriumOre))
+                {
+                    modOreShop.Add(ThoriumOre.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("LifeQuartz", out ModItem LifeQuartz))
+                {
+                    modOreShop.Add(LifeQuartz.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("Aquaite", out ModItem Aquaite))
+                {
+                    modOreShop.Add(Aquaite.Type, Condition.DownedEowOrBoc);
+                }
+                if (CheckDowned.thoriumMod.TryFind("LodeStoneChunk", out ModItem LodeStoneChunk))
+                {
+                    modOreShop.Add(LodeStoneChunk.Type, CheckDowned.fallenbeholder);
+                }
+                if (CheckDowned.thoriumMod.TryFind("ValadiumChunk", out ModItem ValadiumChunk))
+                {
+                    modOreShop.Add(ValadiumChunk.Type, CheckDowned.fallenbeholder);
+                }
+                if (CheckDowned.thoriumMod.TryFind("IllumiteChunk", out ModItem IllumiteChunk))
+                {
+                    modOreShop.Add(IllumiteChunk.Type, Condition.DownedPlantera);
+                }
+                if (CheckDowned.thoriumMod.TryFind("ThoriumBar", out ModItem ThoriumBar))
+                {
+                    modOreShop.Add(ThoriumBar.Type);
+                }
+                if (CheckDowned.thoriumMod.TryFind("SandstoneIngot", out ModItem SandstoneIngot))
+                {
+                    modOreShop.Add(SandstoneIngot.Type, CheckDowned.grandbird);
+                }
+                if (CheckDowned.thoriumMod.TryFind("AquaiteBar", out ModItem AquaiteBar))
+                {
+                    modOreShop.Add(AquaiteBar.Type, Condition.DownedEowOrBoc);
+                }
+                if (CheckDowned.thoriumMod.TryFind("aDarksteelAlloy", out ModItem aDarksteelAlloy))
+                {
+                    modOreShop.Add(aDarksteelAlloy.Type, Condition.DownedSkeletron);
+                }
+                if (CheckDowned.thoriumMod.TryFind("LodeStoneIngot", out ModItem LodeStoneIngot))
+                {
+                    modOreShop.Add(LodeStoneIngot.Type, CheckDowned.fallenbeholder);
+                }
+                if (CheckDowned.thoriumMod.TryFind("ValadiumIngot", out ModItem ValadiumIngot))
+                {
+                    modOreShop.Add(ValadiumIngot.Type, CheckDowned.fallenbeholder);
+                }
+                if (CheckDowned.thoriumMod.TryFind("TitanicBar", out ModItem TitanicBar))
+                {
+                    modOreShop.Add(TitanicBar.Type, Condition.DownedMechBossAll);
+                }
+                if (CheckDowned.thoriumMod.TryFind("IllumiteIngot", out ModItem IllumiteIngot))
+                {
+                    modOreShop.Add(IllumiteIngot.Type, Condition.DownedPlantera);
                 }
             }
             modOreShop.Register();

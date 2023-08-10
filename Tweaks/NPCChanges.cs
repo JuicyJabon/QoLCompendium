@@ -4,6 +4,36 @@ using Terraria.ModLoader;
 
 namespace QoLCompendium.Tweaks
 {
+    public class InvincibleTownies : GlobalNPC
+    {
+        public override bool InstancePerEntity => true;
+
+        public override void SetDefaults(NPC npc)
+        {
+            bool dontTakeDamageFromHostiles = npc.dontTakeDamageFromHostiles;
+            if (npc.type == NPCID.DD2EterniaCrystal && ModContent.GetInstance<QoLCConfig>().FriendliesDontDie)
+            {
+                npc.dontTakeDamageFromHostiles = false;
+                return;
+            }
+            npc.dontTakeDamageFromHostiles = dontTakeDamageFromHostiles;
+            if (npc.friendly && ModContent.GetInstance<QoLCConfig>().FriendliesDontDie)
+            {
+                npc.dontTakeDamageFromHostiles = true;
+                return;
+            }
+            npc.dontTakeDamageFromHostiles = dontTakeDamageFromHostiles;
+        }
+    }
+
+    public class IncreasedCoinDrop : GlobalNPC
+    {
+        public override void SetDefaults(NPC npc)
+        {
+            npc.value *= ModContent.GetInstance<QoLCConfig>().MoreCoins;
+        }
+    }
+
     public class NoSpawns : GlobalNPC
     {
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)

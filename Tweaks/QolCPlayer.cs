@@ -12,6 +12,32 @@ namespace QoLCompendium.Tweaks
 {
     public class QoLCPlayer : ModPlayer
     {
+        public bool magnetActive;
+
+        public Dictionary<int, EndlessBuffSource> EndlessBuffSources = new();
+
+        public List<ValueTuple<Item, string>> ItemsToCountForEndlessBuffs = new();
+
+        public int InventoryItemsStart;
+
+        public int PiggyBankItemsStart;
+
+        public int SafeItemsStart;
+
+        public int DefendersForgeItemsStart;
+
+        public bool enemyEraser;
+
+        public bool enemyAggressor;
+
+        public bool headCounter;
+
+        public int respawnFullHPTimer;
+
+        public int selectedBiome = 0;
+
+        public bool bloodIdol;
+
         public override void ResetEffects()
         {
             magnetActive = false;
@@ -84,7 +110,7 @@ namespace QoLCompendium.Tweaks
 
         public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
         {
-            if (ModContent.GetInstance<QoLCConfig>().InstantRespawn)
+            if (ModContent.GetInstance<QoLCConfig>().InstantRespawn && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 for (int i = 0; i < Main.npc.Length; i++)
                 {
@@ -471,33 +497,6 @@ namespace QoLCompendium.Tweaks
             {
                 return Enumerable.Empty<Item>();
             }
-            
         }
-
-        public bool magnetActive;
-
-        public Dictionary<int, EndlessBuffSource> EndlessBuffSources = new();
-
-        public List<ValueTuple<Item, string>> ItemsToCountForEndlessBuffs = new();
-
-        public int InventoryItemsStart;
-
-        public int PiggyBankItemsStart;
-
-        public int SafeItemsStart;
-
-        public int DefendersForgeItemsStart;
-
-        public bool enemyEraser;
-
-        public bool enemyAggressor;
-
-        public bool headCounter;
-
-        public int respawnFullHPTimer;
-
-        public int selectedBiome = 0;
-
-        public bool bloodIdol;
     }
 }
