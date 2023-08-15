@@ -48,10 +48,10 @@ Current Mod Support:
  - Calamity: Endless Station Buffs & NPC Sales
  - Catalyst: NPC Sales
  - Consolaria: Non-consumable Boss summons & NPC Sales
- - Fargo's Souls: Non-consumable Boss summons & NPC Sales
+ - Fargo's Souls: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
  - Homeward Journey: Non-consumable Boss summons & NPC Sales
  - Polarities: NPC Sales
- - Redemption: NPC Sales
+ - Redemption: Endless Station Buffs & NPC Sales
  - Secrets of the Shadows: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
  - Spooky Mod: Non-consumable Boss summons & NPC Sales
  - Terrorborn: NPC Sales

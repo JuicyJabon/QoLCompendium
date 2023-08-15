@@ -89,6 +89,11 @@ Mods: {
 				Tooltip: Favorite this item to have a blood moon occur every night
 			}
 
+			EclipseIdol: {
+				DisplayName: Eclipsed Sun Charm
+				Tooltip: Favorite this item to have an eclipse occur every morning
+			}
+
 			AsphaltPlatform: {
 				Tooltip: ""
 				DisplayName: Asphalt Platform
@@ -164,19 +169,38 @@ Mods: {
 					Label: Endless Buffs And Healing
 					Tooltip:
 						'''
-						Toggles endless buffs & healing on stacks of 30 or greater
+						Toggles endless buffs & healing
 						You only need 1 buff station for station buffs
 						'''
+				}
+
+				EndlessAmmo: {
+					Label: Endless Ammo
+					Tooltip: Toggles endless ammo
+				}
+
+				EndlessBait: {
+					Label: Endless Bait
+					Tooltip: Toggles endless bait
+				}
+
+				EndlessBossSummons: {
+					Label: Endless Boss Summons
+					Tooltip: Toggles endless boss summons
 				}
 
 				EndlessConsumables: {
 					Label: Endless Consumables
 					Tooltip:
 						'''
-						Toggles endless consumables on stacks of 999 or greater
-						Includes tiles, bait, weapons, ammo, and other misc items
-						Boss and event summons only require 1 item
+						Toggles endless consumables
+						Includes tiles, walls, weapons and other misc items
 						'''
+				}
+
+				EndlessAmount: {
+					Label: Endless Amount
+					Tooltip: Change the amount needed for all endless toggles
 				}
 
 				ExtraBuffSlots: {
@@ -336,6 +360,11 @@ Mods: {
 					Tooltip: Toggles if the 2 mod NPCs sell (almost) everything
 					Label: Mod NPCs Sell Everything
 				}
+
+				EndlessBuffAmount: {
+					Label: Endless Potion Amount
+					Tooltip: Change the amount needed for endless potions
+				}
 			}
 
 			ItemConfig: {
@@ -416,6 +445,11 @@ Mods: {
 				AsphaltPlatform: {
 					Label: Asphalt Platform
 					Tooltip: Toggles the Asphalt Platform item
+				}
+
+				EclipseIdol: {
+					Label: Eclipsed Sun Charm
+					Tooltip: Toggles the Eclipsed Sun Charm item
 				}
 
 				DisplayName: Item Config

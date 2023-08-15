@@ -1065,11 +1065,161 @@ namespace QoLCompendium.NPCs
                     modMatShop2.Add(FragmentOfTide.Type);
                 }
             }
+            if (CheckDowned.fargosSoulsLoaded)
+            {
+                if (CheckDowned.fargosSoulsMod.TryFind("AbomEnergy", out ModItem AbomEnergy))
+                {
+                    modMatShop2.Add(AbomEnergy.Type, CheckDowned.abom);
+                }
+                if (CheckDowned.fargosSoulsMod.TryFind("DeviatingEnergy", out ModItem DeviatingEnergy))
+                {
+                    modMatShop2.Add(DeviatingEnergy.Type, CheckDowned.devi);
+                }
+                if (CheckDowned.fargosSoulsMod.TryFind("Eridanium", out ModItem Eridanium))
+                {
+                    modMatShop2.Add(Eridanium.Type, CheckDowned.cosmoschamp);
+                }
+                if (CheckDowned.fargosSoulsMod.TryFind("EternalEnergy", out ModItem EternalEnergy))
+                {
+                    modMatShop2.Add(EternalEnergy.Type, CheckDowned.mutant);
+                }
+            }
+            if (CheckDowned.homewardLoaded)
+            {
+                if (CheckDowned.homewardMod.TryFind("AbyssFragment", out ModItem AbyssFragment))
+                {
+                    modMatShop2.Add(AbyssFragment.Type, CheckDowned.diver);
+                }
+                if (CheckDowned.homewardMod.TryFind("AnglerCoin", out ModItem AnglerCoin))
+                {
+                    modMatShop2.Add(AnglerCoin.Type);
+                }
+                if (CheckDowned.homewardMod.TryFind("AnglerGoldCoin", out ModItem AnglerGoldCoin))
+                {
+                    modMatShop2.Add(AnglerGoldCoin.Type, Condition.Hardmode);
+                }
+                if (CheckDowned.homewardMod.TryFind("Blood", out ModItem Blood))
+                {
+                    modMatShop2.Add(Blood.Type);
+                }
+                if (CheckDowned.homewardMod.TryFind("DenseIcicle", out ModItem DenseIcicle))
+                {
+                    modMatShop2.Add(DenseIcicle.Type, CheckDowned.wos);
+                }
+                if (CheckDowned.homewardMod.TryFind("DivineShard", out ModItem DivineShard))
+                {
+                    modMatShop2.Add(DivineShard.Type, CheckDowned.wos);
+                }
+                if (CheckDowned.homewardMod.TryFind("EssenceofBright", out ModItem EssenceofBright))
+                {
+                    modMatShop2.Add(EssenceofBright.Type, CheckDowned.son);
+                }
+                if (CheckDowned.homewardMod.TryFind("EssenceofLife", out ModItem EssenceofLife))
+                {
+                    modMatShop2.Add(EssenceofLife.Type, CheckDowned.lifebringer);
+                }
+                if (CheckDowned.homewardMod.TryFind("EssenceofMatter", out ModItem EssenceofMatter))
+                {
+                    modMatShop2.Add(EssenceofMatter.Type, CheckDowned.materealizer);
+                }
+                if (CheckDowned.homewardMod.TryFind("EssenceofNothingness", out ModItem EssenceofNothingness))
+                {
+                    modMatShop2.Add(EssenceofNothingness.Type, CheckDowned.scarab);
+                }
+                if (CheckDowned.homewardMod.TryFind("EssenceofTime", out ModItem EssenceofTime))
+                {
+                    modMatShop2.Add(EssenceofTime.Type, CheckDowned.overwatcher);
+                }
+                if (CheckDowned.homewardMod.TryFind("EssenceofDeath", out ModItem EssenceofDeath))
+                {
+                    modMatShop2.Add(EssenceofDeath.Type, CheckDowned.whale);
+                }
+                if (CheckDowned.homewardMod.TryFind("JungleDewdrop", out ModItem JungleDewdrop))
+                {
+                    modMatShop2.Add(JungleDewdrop.Type, Condition.DownedPlantera);
+                }
+                if (CheckDowned.homewardMod.TryFind("SolarFlareScoria", out ModItem SolarFlareScoria))
+                {
+                    modMatShop2.Add(SolarFlareScoria.Type, CheckDowned.sgod);
+                }
+                if (CheckDowned.homewardMod.TryFind("SoulofBlight", out ModItem SoulofBlight))
+                {
+                    modMatShop2.Add(SoulofBlight.Type, CheckDowned.motherbrain);
+                }
+                if (CheckDowned.homewardMod.TryFind("SpiralTissue", out ModItem SpiralTissue))
+                {
+                    modMatShop2.Add(SpiralTissue.Type, CheckDowned.wos);
+                }
+                if (CheckDowned.homewardMod.TryFind("SteelFeather", out ModItem SteelFeather))
+                {
+                    modMatShop2.Add(SteelFeather.Type, CheckDowned.wos);
+                }
+                if (CheckDowned.homewardMod.TryFind("SunlightGel", out ModItem SunlightGel))
+                {
+                    modMatShop2.Add(SunlightGel.Type, CheckDowned.wos);
+                }
+                if (CheckDowned.homewardMod.TryFind("TankOfThePastCave", out ModItem TankOfThePastCave))
+                {
+                    modMatShop2.Add(TankOfThePastCave.Type, CheckDowned.caveOrdeal);
+                }
+                if (CheckDowned.homewardMod.TryFind("TankOfThePastCorruption", out ModItem TankOfThePastCorruption))
+                {
+                    modMatShop2.Add(TankOfThePastCorruption.Type, CheckDowned.corruptOrdeal);
+                }
+                if (CheckDowned.homewardMod.TryFind("TankOfThePastCrimson", out ModItem TankOfThePastCrimson))
+                {
+                    modMatShop2.Add(TankOfThePastCrimson.Type, CheckDowned.crimsonOrdeal);
+                }
+                if (CheckDowned.homewardMod.TryFind("TankOfThePastDesert", out ModItem TankOfThePastDesert))
+                {
+                    modMatShop2.Add(TankOfThePastDesert.Type, CheckDowned.desertOrdeal);
+                }
+                if (CheckDowned.homewardMod.TryFind("TankOfThePastForest", out ModItem TankOfThePastForest))
+                {
+                    modMatShop2.Add(TankOfThePastForest.Type, CheckDowned.forestOrdeal);
+                }
+                if (CheckDowned.homewardMod.TryFind("TankOfThePastHallow", out ModItem TankOfThePastHallow))
+                {
+                    modMatShop2.Add(TankOfThePastHallow.Type, CheckDowned.hallowOrdeal);
+                }
+                if (CheckDowned.homewardMod.TryFind("TankOfThePastJungle", out ModItem TankOfThePastJungle))
+                {
+                    modMatShop2.Add(TankOfThePastJungle.Type, CheckDowned.jungleOrdeal);
+                }
+                if (CheckDowned.homewardMod.TryFind("TankOfThePastSky", out ModItem TankOfThePastSky))
+                {
+                    modMatShop2.Add(TankOfThePastSky.Type, CheckDowned.skyOrdeal);
+                }
+                if (CheckDowned.homewardMod.TryFind("TankOfThePastSnowland", out ModItem TankOfThePastSnowland))
+                {
+                    modMatShop2.Add(TankOfThePastSnowland.Type, CheckDowned.snowOrdeal);
+                }
+                if (CheckDowned.homewardMod.TryFind("TankOfThePastUnderworld", out ModItem TankOfThePastUnderworld))
+                {
+                    modMatShop2.Add(TankOfThePastUnderworld.Type, CheckDowned.underworldOrdeal);
+                }
+                if (CheckDowned.homewardMod.TryFind("TrueJungleSpore", out ModItem TrueJungleSpore))
+                {
+                    modMatShop2.Add(TrueJungleSpore.Type, CheckDowned.wos);
+                }
+                if (CheckDowned.homewardMod.TryFind("WillToCorrode", out ModItem WillToCorrode))
+                {
+                    modMatShop2.Add(WillToCorrode.Type, CheckDowned.sgod, CheckDowned.materealizer, CheckDowned.lifebringer);
+                }
+                if (CheckDowned.homewardMod.TryFind("WillToCrown", out ModItem WillToCrown))
+                {
+                    modMatShop2.Add(WillToCrown.Type, CheckDowned.sgod, CheckDowned.materealizer, CheckDowned.lifebringer);
+                }
+                if (CheckDowned.homewardMod.TryFind("WillToGrow", out ModItem WillToGrow))
+                {
+                    modMatShop2.Add(WillToGrow.Type, CheckDowned.sgod, CheckDowned.materealizer, CheckDowned.lifebringer);
+                }
+            }
             if (CheckDowned.aqLoaded)
             {
-                if (CheckDowned.aqMod.TryFind("AtmosphericEnergy", out ModItem AtmosphericEnergy) && (CheckDowned.downedSprite || CheckDowned.downedSpaceSquid || CheckDowned.downedDevil))
+                if (CheckDowned.aqMod.TryFind("AtmosphericEnergy", out ModItem AtmosphericEnergy))
                 {
-                    modMatShop2.Add(AtmosphericEnergy.Type);
+                    modMatShop2.Add(AtmosphericEnergy.Type, CheckDowned.sprite, CheckDowned.spacesquid, CheckDowned.devil);
                 }
                 if (CheckDowned.aqMod.TryFind("AquaticEnergy", out ModItem AquaticEnergy))
                 {
@@ -1571,6 +1721,10 @@ namespace QoLCompendium.NPCs
             var boss3Shop = new NPCShop(Type, "Modded Treasure Bags 3");
             if (CheckDowned.spookyLoaded)
             {
+                if (CheckDowned.spookyMod.TryFind("BossBagSpookySpirit", out ModItem BossBagSpookySpirit))
+                {
+                    boss3Shop.Add(new Item(BossBagSpookySpirit.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.spookyspirit);
+                }
                 if (CheckDowned.spookyMod.TryFind("BossBagRotGourd", out ModItem BossBagRotGourd))
                 {
                     boss3Shop.Add(new Item(BossBagRotGourd.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.gourd);

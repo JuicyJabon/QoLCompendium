@@ -13,15 +13,15 @@ namespace QoLCompendium.Tweaks
         {
             if (ModContent.GetInstance<QoLCConfig>().EndlessBuffsAndHealing)
             {
-                if (item.buffTime > 0 && item.stack >= 30)
+                if (item.buffTime > 0 && item.stack >= ModContent.GetInstance<QoLCConfig>().EndlessBuffAmount)
                 {
                     return false;
                 }
-                else if ((item.type == ItemID.RecallPotion || item.type == ItemID.TeleportationPotion || item.type == ItemID.WormholePotion || item.type == ItemID.PotionOfReturn) && item.stack >= 30)
+                else if ((item.type == ItemID.RecallPotion || item.type == ItemID.TeleportationPotion || item.type == ItemID.WormholePotion || item.type == ItemID.PotionOfReturn) && item.stack >= ModContent.GetInstance<QoLCConfig>().EndlessBuffAmount)
                 {
                     return false;
                 }
-                else if ((item.healLife > 0 || item.healMana > 0) && item.stack >= 30)
+                else if ((item.healLife > 0 || item.healMana > 0) && item.stack >= ModContent.GetInstance<QoLCConfig>().EndlessBuffAmount)
                 {
                     return false;
                 }
@@ -185,6 +185,28 @@ namespace QoLCompendium.Tweaks
             AddBuffIntegration(thoriumMod, "NinjaRack", "NinjaBuff", true);
         }
 
+        private static void DoSpiritIntegration()
+        {
+            if (!ModLoader.TryGetMod("SpiritMod", out Mod spirit))
+            {
+                return;
+            }
+
+            AddBuffIntegration(spirit, "SunPot", "SunPotBuff", true);
+            AddBuffIntegration(spirit, "CoilEnergizerItem", "OverDrive", true);
+            AddBuffIntegration(spirit, "TheCouch", "CouchPotato", true);
+        }
+
+        private static void DoRedemptionIntegration()
+        {
+            if (!ModLoader.TryGetMod("Redemption", out Mod redemption))
+            {
+                return;
+            }
+
+            AddBuffIntegration(redemption, "EnergyStation", "EnergyStationBuff", true);
+        }
+
         private static void DoSOTSIntegration()
         {
             if (!ModLoader.TryGetMod("SOTS", out Mod sots))
@@ -193,6 +215,18 @@ namespace QoLCompendium.Tweaks
             }
 
             AddBuffIntegration(sots, "DigitalDisplay", "CyberneticEnhancements", true);
+        }
+
+        private static void DoFargosIntegration()
+        {
+            if (!ModLoader.TryGetMod("Fargowiltas", out Mod fargos))
+            {
+                return;
+            }
+
+            AddBuffIntegration(fargos, "Semistation", "Semistation", true);
+            AddBuffIntegration(fargos, "Omnistation", "Omnistation", true);
+            AddBuffIntegration(fargos, "Omnistation2", "Omnistation", true);
         }
 
         public static void AddBuffIntegration(Mod mod, string itemName, string buffName, bool isPlaceable)
@@ -205,7 +239,10 @@ namespace QoLCompendium.Tweaks
         {
             DoCalamityModIntegration();
             DoThoriumIntegration();
+            DoSpiritIntegration();
+            DoRedemptionIntegration();
             DoSOTSIntegration();
+            DoFargosIntegration();
         }
     }
 

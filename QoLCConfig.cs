@@ -14,7 +14,27 @@ namespace QoLCompendium
         public bool EndlessBuffsAndHealing { get; set; }
 
         [DefaultValue(true)]
+        public bool EndlessAmmo { get; set; }
+
+        [DefaultValue(true)]
+        public bool EndlessBait { get; set; }
+
+        [DefaultValue(true)]
+        public bool EndlessBossSummons { get; set; }
+
+        [DefaultValue(true)]
         public bool EndlessConsumables { get; set; }
+
+        [Slider]
+        [DefaultValue(30)]
+        [Range(1, 60)]
+        public int EndlessBuffAmount { get; set; }
+
+        [Slider]
+        [DefaultValue(999)]
+        [Increment(50)]
+        [Range(1, 999)]
+        public int EndlessAmount { get; set; }
 
         [Slider]
         [DefaultValue(44)]
@@ -155,6 +175,10 @@ namespace QoLCompendium
         [DefaultValue(true)]
         [ReloadRequired]
         public bool Erasers { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool EclipseIdol { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]

@@ -202,7 +202,12 @@ namespace QoLCompendium.Tweaks
                 }
             }
 
-            if ((item.consumable == true && item.stack >= 999 && ModContent.GetInstance<QoLCConfig>().EndlessConsumables) || (ModContent.GetInstance<QoLCConfig>().EndlessConsumables && (BossSummons.Contains(item.type) || EventSummons.Contains(item.type))))
+            if ((BossSummons.Contains(item.type) || EventSummons.Contains(item.type)) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons)
+            {
+                return false;
+            }
+
+            if (item.consumable == true && item.stack >= ModContent.GetInstance<QoLCConfig>().EndlessAmount && ModContent.GetInstance<QoLCConfig>().EndlessConsumables)
             {
                 return false;
             }
@@ -212,7 +217,7 @@ namespace QoLCompendium.Tweaks
 
         public override bool CanBeConsumedAsAmmo(Item ammo, Item weapon, Player player)
         {
-            if (ammo.ammo > 0 && ammo.stack >= 999 && ModContent.GetInstance<QoLCConfig>().EndlessConsumables)
+            if (ammo.ammo > 0 && ammo.stack >= ModContent.GetInstance<QoLCConfig>().EndlessAmount && ModContent.GetInstance<QoLCConfig>().EndlessAmmo)
             {
                 return false;
             }
@@ -221,7 +226,7 @@ namespace QoLCompendium.Tweaks
 
         public override bool? CanConsumeBait(Player player, Item bait)
         {
-            if (bait.bait > 0 && bait.stack >= 999 && ModContent.GetInstance<QoLCConfig>().EndlessConsumables)
+            if (bait.bait > 0 && bait.stack >= ModContent.GetInstance<QoLCConfig>().EndlessAmount && ModContent.GetInstance<QoLCConfig>().EndlessBait)
             {
                 return false;
             }

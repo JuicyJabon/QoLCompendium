@@ -38,6 +38,8 @@ namespace QoLCompendium.Tweaks
 
         public bool bloodIdol;
 
+        public bool eclipseIdol;
+
         public override void ResetEffects()
         {
             magnetActive = false;
@@ -45,6 +47,7 @@ namespace QoLCompendium.Tweaks
             enemyAggressor = false;
             headCounter = false;
             bloodIdol = false;
+            eclipseIdol = false;
 
             if (Main.netMode != NetmodeID.Server)
             {
@@ -63,6 +66,7 @@ namespace QoLCompendium.Tweaks
             enemyAggressor = false;
             headCounter = false;
             bloodIdol = false;
+            eclipseIdol = false;
 
             if (Main.netMode != NetmodeID.Server)
             {

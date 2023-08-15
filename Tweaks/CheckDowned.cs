@@ -219,6 +219,26 @@ namespace QoLCompendium.Tweaks
         public static Condition lifebringer = new("CheckDowned.downedLifebringer", () => downedLifebringer);
         internal static bool downedMaterealizer;
         public static Condition materealizer = new("CheckDowned.downedMaterealizer", () => downedMaterealizer);
+        internal static bool downedCaveOrdeal;
+        public static Condition caveOrdeal = new("CheckDowned.downedCaveOrdeal", () => downedCaveOrdeal);
+        internal static bool downedCorruptOrdeal;
+        public static Condition corruptOrdeal = new("CheckDowned.downedCorruptOrdeal", () => downedCorruptOrdeal);
+        internal static bool downedCrimsonOrdeal;
+        public static Condition crimsonOrdeal = new("CheckDowned.downedCrimsonOrdeal", () => downedCrimsonOrdeal);
+        internal static bool downedDesertOrdeal;
+        public static Condition desertOrdeal = new("CheckDowned.downedDesertOrdeal", () => downedDesertOrdeal);
+        internal static bool downedForestOrdeal;
+        public static Condition forestOrdeal = new("CheckDowned.downedForestOrdeal", () => downedForestOrdeal);
+        internal static bool downedHallowOrdeal;
+        public static Condition hallowOrdeal = new("CheckDowned.downedHallowOrdeal", () => downedHallowOrdeal);
+        internal static bool downedJungleOrdeal;
+        public static Condition jungleOrdeal = new("CheckDowned.downedJungleOrdeal", () => downedJungleOrdeal);
+        internal static bool downedSkyOrdeal;
+        public static Condition skyOrdeal = new("CheckDowned.downedSkyOrdeal", () => downedSkyOrdeal);
+        internal static bool downedSnowOrdeal;
+        public static Condition snowOrdeal = new("CheckDowned.downedSnowOrdeal", () => downedSnowOrdeal);
+        internal static bool downedUnderworldOrdeal;
+        public static Condition underworldOrdeal = new("CheckDowned.downedUnderworldOrdeal", () => downedUnderworldOrdeal);
         internal static bool downedScarab;
         public static Condition scarab = new("CheckDowned.downedScarab", () => downedScarab);
         internal static bool downedWhale;
@@ -611,9 +631,20 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedOverwatcher", downedOverwatcher);
             tag.Add("downedLifebringer", downedLifebringer);
             tag.Add("downedMaterealizer", downedMaterealizer);
+            tag.Add("downedCaveOrdeal", downedCaveOrdeal);
+            tag.Add("downedCorruptOrdeal", downedCorruptOrdeal);
+            tag.Add("downedCrimsonOrdeal", downedCrimsonOrdeal);
+            tag.Add("downedDesertOrdeal", downedDesertOrdeal);
+            tag.Add("downedForestOrdeal", downedForestOrdeal);
+            tag.Add("downedHallowOrdeal", downedHallowOrdeal);
+            tag.Add("downedJungleOrdeal", downedJungleOrdeal);
+            tag.Add("downedSkyOrdeal", downedSkyOrdeal);
+            tag.Add("downedSnowOrdeal", downedSnowOrdeal);
+            tag.Add("downedUnderworldOrdeal", downedUnderworldOrdeal);
             tag.Add("downedScarab", downedScarab);
             tag.Add("downedWhale", downedWhale);
             tag.Add("downedSon", downedSon);
+
 
             //AEQUUS
             tag.Add("downedCrabson", downedCrabson);
@@ -764,6 +795,16 @@ namespace QoLCompendium.Tweaks
             downedOverwatcher = tag.Get<bool>("downedOverwatcher");
             downedLifebringer = tag.Get<bool>("downedLifebringer");
             downedMaterealizer = tag.Get<bool>("downedMaterealizer");
+            downedCaveOrdeal = tag.Get<bool>("downedCaveOrdeal");
+            downedCorruptOrdeal = tag.Get<bool>("downedCorruptOrdeal");
+            downedCrimsonOrdeal = tag.Get<bool>("downedCrimsonOrdeal");
+            downedDesertOrdeal = tag.Get<bool>("downedDesertOrdeal");
+            downedForestOrdeal = tag.Get<bool>("downedForestOrdeal");
+            downedHallowOrdeal = tag.Get<bool>("downedHallowOrdeal");
+            downedJungleOrdeal = tag.Get<bool>("downedJungleOrdeal");
+            downedSkyOrdeal = tag.Get<bool>("downedSkyOrdeal");
+            downedSnowOrdeal = tag.Get<bool>("downedSnowOrdeal");
+            downedUnderworldOrdeal = tag.Get<bool>("downedUnderworldOrdeal");
             downedScarab = tag.Get<bool>("downedScarab");
             downedWhale = tag.Get<bool>("downedWhale");
             downedSon = tag.Get<bool>("downedSon");
@@ -1411,6 +1452,76 @@ namespace QoLCompendium.Tweaks
                             downedMaterealizer = true;
                         }
                     }
+                    if (homewardMod.TryFind("Trial_Cave", out ModNPC Trial_Cave))
+                    {
+                        if (npc.type == Trial_Cave.Type && Trial_Cave.NPC.life <= 0)
+                        {
+                            downedCaveOrdeal = true;
+                        }
+                    }
+                    if (homewardMod.TryFind("Trial_Corruption", out ModNPC Trial_Corruption))
+                    {
+                        if (npc.type == Trial_Corruption.Type && Trial_Corruption.NPC.life <= 0)
+                        {
+                            downedCorruptOrdeal = true;
+                        }
+                    }
+                    if (homewardMod.TryFind("Trial_Crimson", out ModNPC Trial_Crimson))
+                    {
+                        if (npc.type == Trial_Crimson.Type && Trial_Crimson.NPC.life <= 0)
+                        {
+                            downedCrimsonOrdeal = true;
+                        }
+                    }
+                    if (homewardMod.TryFind("Trial_Desert", out ModNPC Trial_Desert))
+                    {
+                        if (npc.type == Trial_Desert.Type && Trial_Desert.NPC.life <= 0)
+                        {
+                            downedDesertOrdeal = true;
+                        }
+                    }
+                    if (homewardMod.TryFind("Trial_Forest", out ModNPC Trial_Forest))
+                    {
+                        if (npc.type == Trial_Forest.Type && Trial_Forest.NPC.life <= 0)
+                        {
+                            downedForestOrdeal = true;
+                        }
+                    }
+                    if (homewardMod.TryFind("Trial_Hallow", out ModNPC Trial_Hallow))
+                    {
+                        if (npc.type == Trial_Hallow.Type && Trial_Hallow.NPC.life <= 0)
+                        {
+                            downedHallowOrdeal = true;
+                        }
+                    }
+                    if (homewardMod.TryFind("Trial_Jungle", out ModNPC Trial_Jungle))
+                    {
+                        if (npc.type == Trial_Jungle.Type && Trial_Jungle.NPC.life <= 0)
+                        {
+                            downedJungleOrdeal = true;
+                        }
+                    }
+                    if (homewardMod.TryFind("Trial_Pure", out ModNPC Trial_Pure))
+                    {
+                        if (npc.type == Trial_Pure.Type && Trial_Pure.NPC.life <= 0)
+                        {
+                            downedSkyOrdeal = true;
+                        }
+                    }
+                    if (homewardMod.TryFind("Trial_Snow", out ModNPC Trial_Snow))
+                    {
+                        if (npc.type == Trial_Snow.Type && Trial_Snow.NPC.life <= 0)
+                        {
+                            downedSnowOrdeal = true;
+                        }
+                    }
+                    if (homewardMod.TryFind("Trial_Underworld", out ModNPC Trial_Underworld))
+                    {
+                        if (npc.type == Trial_Underworld.Type && Trial_Underworld.NPC.life <= 0)
+                        {
+                            downedUnderworldOrdeal = true;
+                        }
+                    }
                     if (homewardMod.TryFind("ScarabBelief", out ModNPC ScarabBelief))
                     {
                         if (npc.type == ScarabBelief.Type && ScarabBelief.NPC.life <= 0)
@@ -1806,6 +1917,16 @@ namespace QoLCompendium.Tweaks
             downedOverwatcher = false;
             downedLifebringer = false;
             downedMaterealizer = false;
+            downedCaveOrdeal = false;
+            downedCorruptOrdeal = false;
+            downedCrimsonOrdeal = false;
+            downedDesertOrdeal = false;
+            downedForestOrdeal = false;
+            downedHallowOrdeal = false;
+            downedJungleOrdeal = false;
+            downedSkyOrdeal = false;
+            downedSnowOrdeal = false;
+            downedUnderworldOrdeal = false;
             downedScarab = false;
             downedWhale = false;
             downedSon = false;

@@ -17,6 +17,11 @@ namespace QoLCompendium.Tweaks
             {
                 Main.bloodMoon = true;
             }
+
+            if (Main.dayTime && p.GetModPlayer<QoLCPlayer>().eclipseIdol == true)
+            {
+                Main.eclipse = true;
+            }
         }
     }
 
