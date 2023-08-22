@@ -12,7 +12,7 @@ namespace QoLCompendium.Tweaks
 {
     public class QoLCPlayer : ModPlayer
     {
-        public bool magnetActive;
+        public bool magnetActive = false;
 
         public Dictionary<int, EndlessBuffSource> EndlessBuffSources = new();
 
@@ -26,19 +26,19 @@ namespace QoLCompendium.Tweaks
 
         public int DefendersForgeItemsStart;
 
-        public bool enemyEraser;
+        public bool enemyEraser = false;
 
-        public bool enemyAggressor;
+        public bool enemyAggressor = false;
 
-        public bool headCounter;
+        public bool headCounter = false;
 
         public int respawnFullHPTimer;
 
         public int selectedBiome = 0;
 
-        public bool bloodIdol;
+        public bool bloodIdol = false;
 
-        public bool eclipseIdol;
+        public bool eclipseIdol = false;
 
         public override void ResetEffects()
         {

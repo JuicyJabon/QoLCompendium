@@ -1000,6 +1000,10 @@ namespace QoLCompendium.NPCs
             }
             if (CheckDowned.sotsLoaded)
             {
+                if (CheckDowned.sotsMod.TryFind("CursedMatter", out ModItem CursedMatter))
+                {
+                    modMatShop2.Add(CursedMatter.Type, CheckDowned.pharaohscurse);
+                }
                 if (CheckDowned.sotsMod.TryFind("DissolvingAether", out ModItem DissolvingAether))
                 {
                     modMatShop2.Add(DissolvingAether.Type, CheckDowned.advisor);
@@ -1063,6 +1067,34 @@ namespace QoLCompendium.NPCs
                 if (CheckDowned.sotsMod.TryFind("FragmentOfTide", out ModItem FragmentOfTide))
                 {
                     modMatShop2.Add(FragmentOfTide.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("Peanut", out ModItem Peanut))
+                {
+                    modMatShop2.Add(Peanut.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("SanguiteBar", out ModItem SanguiteBar))
+                {
+                    modMatShop2.Add(SanguiteBar.Type, CheckDowned.serpent);
+                }
+                if (CheckDowned.sotsMod.TryFind("Snakeskin", out ModItem Snakeskin))
+                {
+                    modMatShop2.Add(Snakeskin.Type, Condition.DownedEowOrBoc);
+                }
+                if (CheckDowned.sotsMod.TryFind("SoulResidue", out ModItem SoulResidue))
+                {
+                    modMatShop2.Add(SoulResidue.Type, Condition.DownedEowOrBoc);
+                }
+                if (CheckDowned.sotsMod.TryFind("TwilightGel", out ModItem TwilightGel))
+                {
+                    modMatShop2.Add(TwilightGel.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("TwilightShard", out ModItem TwilightShard))
+                {
+                    modMatShop2.Add(TwilightShard.Type, CheckDowned.advisor);
+                }
+                if (CheckDowned.sotsMod.TryFind("VialofAcid", out ModItem VialofAcid))
+                {
+                    modMatShop2.Add(VialofAcid.Type, CheckDowned.putridpinky);
                 }
             }
             if (CheckDowned.fargosSoulsLoaded)
@@ -1598,6 +1630,10 @@ namespace QoLCompendium.NPCs
             }        
             if (CheckDowned.sotsLoaded)
             {
+                if (CheckDowned.sotsMod.TryFind("GlowmothBag", out ModItem GlowmothBag))
+                {
+                    boss2Shop.Add(new Item(GlowmothBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.glowmoth);
+                }
                 if (CheckDowned.sotsMod.TryFind("PinkyBag", out ModItem PinkyBag))
                 {
                     boss2Shop.Add(new Item(PinkyBag.Type) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CheckDowned.putridpinky);
@@ -1912,6 +1948,14 @@ namespace QoLCompendium.NPCs
                     modCratesShop.Add(WondrousCrate.Type, Condition.Hardmode);
                 }
             }
+
+            if (CheckDowned.sotsLoaded)
+            {
+                if (CheckDowned.sotsMod.TryFind("PyramidCrate", out ModItem PyramidCrate))
+                {
+                    modCratesShop.Add(PyramidCrate.Type, Condition.DownedEowOrBoc);
+                }
+            }
             modCratesShop.Register();
 
             var modOreShop = new NPCShop(Type, "Modded Ores & Bars");
@@ -2064,6 +2108,54 @@ namespace QoLCompendium.NPCs
                 if (CheckDowned.thoriumMod.TryFind("IllumiteIngot", out ModItem IllumiteIngot))
                 {
                     modOreShop.Add(IllumiteIngot.Type, Condition.DownedPlantera);
+                }
+            }
+
+            if (CheckDowned.sotsLoaded)
+            {
+                if (CheckDowned.sotsMod.TryFind("FrigidIce", out ModItem FrigidIce))
+                {
+                    modOreShop.Add(FrigidIce.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("PhaseOre", out ModItem PhaseOre))
+                {
+                    modOreShop.Add(PhaseOre.Type, CheckDowned.lux);
+                }
+                if (CheckDowned.sotsMod.TryFind("VibrantOre", out ModItem VibrantOre))
+                {
+                    modOreShop.Add(VibrantOre.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("AbsoluteBar", out ModItem AbsoluteBar))
+                {
+                    modOreShop.Add(AbsoluteBar.Type, CheckDowned.polaris);
+                }
+                if (CheckDowned.sotsMod.TryFind("AncientSteelBar", out ModItem AncientSteelBar))
+                {
+                    modOreShop.Add(AncientSteelBar.Type, Condition.DownedGoblinArmy);
+                }
+                if (CheckDowned.sotsMod.TryFind("FrigidBar", out ModItem FrigidBar))
+                {
+                    modOreShop.Add(FrigidBar.Type);
+                }
+                if (CheckDowned.sotsMod.TryFind("HardlightAlloy", out ModItem HardlightAlloy))
+                {
+                    modOreShop.Add(HardlightAlloy.Type, CheckDowned.advisor);
+                }
+                if (CheckDowned.sotsMod.TryFind("PhaseBar", out ModItem PhaseBar))
+                {
+                    modOreShop.Add(PhaseBar.Type, CheckDowned.lux);
+                }
+                if (CheckDowned.sotsMod.TryFind("StarlightAlloy", out ModItem StarlightAlloy))
+                {
+                    modOreShop.Add(StarlightAlloy.Type, CheckDowned.advisor);
+                }
+                if (CheckDowned.sotsMod.TryFind("OtherworldlyAlloy", out ModItem OtherworldlyAlloy))
+                {
+                    modOreShop.Add(OtherworldlyAlloy.Type, CheckDowned.advisor);
+                }
+                if (CheckDowned.sotsMod.TryFind("VibrantBar", out ModItem VibrantBar))
+                {
+                    modOreShop.Add(VibrantBar.Type);
                 }
             }
             modOreShop.Register();

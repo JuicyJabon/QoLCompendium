@@ -169,6 +169,8 @@ namespace QoLCompendium.Tweaks
         internal static Mod sotsMod;
         internal static bool downedPutridPinky;
         public static Condition putridpinky = new("CheckDowned.downedPutridPinky", () => downedPutridPinky);
+        internal static bool downedGlowmoth;
+        public static Condition glowmoth = new("CheckDowned.downedGlowmoth", () => downedGlowmoth);
         internal static bool downedPharaohsCurse;
         public static Condition pharaohscurse = new("CheckDowned.downedPharaohsCurse", () => downedPharaohsCurse);
         internal static bool downedAdvisor;
@@ -607,6 +609,7 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedNebby", downedNebby);
 
             //SOTS
+            tag.Add("downedGlowmoth", downedGlowmoth);
             tag.Add("downedPutridPinky", downedPutridPinky);
             tag.Add("downedPharaohsCurse", downedPharaohsCurse);
             tag.Add("downedAdvisor", downedAdvisor);
@@ -771,6 +774,7 @@ namespace QoLCompendium.Tweaks
             downedNebby = tag.Get<bool>("downedNebby");
 
             //SOTS
+            downedGlowmoth = tag.Get<bool>("downedGlowmoth");
             downedPutridPinky = tag.Get<bool>("downedPutridPinky");
             downedPharaohsCurse = tag.Get<bool>("downedPharaohsCurse");
             downedAdvisor = tag.Get<bool>("downedAdvisor");
@@ -854,6 +858,20 @@ namespace QoLCompendium.Tweaks
             downedCrawler = tag.Get<bool>("downedCrawler");
             downedConstructor = tag.Get<bool>("downedConstructor");
             downedP1 = tag.Get<bool>("downedP1");
+        }
+
+        public override void PostUpdatePlayers()
+        {
+            if (sotsLoaded)
+            {
+                if (sotsMod.TryFind("TheAdvisorBossBag", out ModItem TheAdvisorBossBag))
+                {
+                    if (Main.LocalPlayer.HasItem(TheAdvisorBossBag.Type))
+                    {
+                        downedAdvisor = true;
+                    }
+                }
+            }
         }
 
         public override void PreUpdateNPCs()
@@ -1290,6 +1308,13 @@ namespace QoLCompendium.Tweaks
 
                 if (sotsLoaded)
                 {
+                    if (sotsMod.TryFind("Glowmoth", out ModNPC Glowmoth))
+                    {
+                        if (npc.type == Glowmoth.Type && Glowmoth.NPC.life <= 0)
+                        {
+                            downedGlowmoth = true;
+                        }
+                    }
                     if (sotsMod.TryFind("PutridPinkyPhase2", out ModNPC PutridPinkyPhase2))
                     {
                         if (npc.type == PutridPinkyPhase2.Type && PutridPinkyPhase2.NPC.life <= 0)
@@ -1304,6 +1329,7 @@ namespace QoLCompendium.Tweaks
                             downedPharaohsCurse = true;
                         }
                     }
+                    /*
                     if (sotsMod.TryFind("TheAdvisorHead", out ModNPC TheAdvisorHead))
                     {
                         if (npc.type == TheAdvisorHead.Type && TheAdvisorHead.NPC.life <= 0)
@@ -1311,6 +1337,7 @@ namespace QoLCompendium.Tweaks
                             downedAdvisor = true;
                         }
                     }
+                    */
                     if (sotsMod.TryFind("Polaris", out ModNPC Polaris))
                     {
                         if (npc.type == Polaris.Type && Polaris.NPC.life <= 0)
@@ -1893,6 +1920,7 @@ namespace QoLCompendium.Tweaks
             downedNebby = false;
 
             //SOTS
+            downedGlowmoth = false;
             downedPutridPinky = false;
             downedPharaohsCurse = false;
             downedAdvisor = false;

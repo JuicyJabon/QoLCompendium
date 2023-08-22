@@ -42,6 +42,9 @@ Current Features:
 Warning on Boss-dependent sales:
 You have to beat modded bosses with this mod enabled in order for the NPC to sell those items.
 
+Warning for Secrets of the Shadows:
+You have to pick up the Advisor's boss bag for the kill to count, this is because the boss stays idle in the world and can falsely toggle the down check in this mod.
+
 Current Mod Support:
  - All Mods: Endless Potion Buffs & Healing
  - Aequus: NPC Sales

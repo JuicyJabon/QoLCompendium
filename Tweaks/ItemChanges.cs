@@ -94,10 +94,11 @@ namespace QoLCompendium.Tweaks
             if (sots != null)
             {
                 sots.TryFind("ElectromagneticLure", out ModItem ElectromagneticLure);
+                sots.TryFind("SuspiciousLookingCandle", out ModItem SuspiciousLookingCandle);
                 sots.TryFind("JarOfPeanuts", out ModItem JarOfPeanuts);
                 sots.TryFind("CatalystBomb", out ModItem CatalystBomb);
 
-                List<ModItem> sotsItems = new() { ElectromagneticLure, JarOfPeanuts, CatalystBomb };
+                List<ModItem> sotsItems = new() { ElectromagneticLure, SuspiciousLookingCandle, JarOfPeanuts, CatalystBomb };
 
                 for (int i = 0; i < sotsItems.Count; i++)
                 {

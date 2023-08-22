@@ -9,7 +9,7 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().headCounter;
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().headCounter && ModContent.GetInstance<ItemConfig>().HeadCounter;
         }
 
         public override string DisplayValue(ref Color displayColor)
