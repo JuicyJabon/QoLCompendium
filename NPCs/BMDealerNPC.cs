@@ -148,8 +148,8 @@ namespace QoLCompendium.NPCs
             }
             else if (shopNum == 2)
             {
-                button = "Rare Materials";
-                ShopName = "Rare Materials";
+                button = "Hardmode Materials";
+                ShopName = "Hardmode Materials";
             }
             else if (shopNum == 3)
             {
@@ -282,7 +282,7 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.WormTooth);
             matShop.Register();
 
-            var rMatShop = new NPCShop(Type, "Rare Materials")
+            var rMatShop = new NPCShop(Type, "Hardmode Materials")
                     .Add(ItemID.AncientCloth, Condition.Hardmode)
                     .Add(ItemID.BeetleHusk, Condition.DownedGolem)
                     .Add(ItemID.BlackPearl)

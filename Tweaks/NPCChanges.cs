@@ -1,3 +1,6 @@
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -78,5 +81,30 @@ namespace QoLCompendium.Tweaks
         }
 
         public static int boss = -1;
+    }
+
+    public class NoLavaFromSlimes : ModSystem
+    {
+        public override void Load()
+        {
+            IL_NPC.VanillaHitEffect += LavalessLavaSlime;
+        }
+
+        private void LavalessLavaSlime(ILContext il)
+        {
+            var c = new ILCursor(il);
+
+            if (!c.TryGotoNext(
+                    MoveType.After,
+                    i => i.MatchCall(typeof(Main), "get_expertMode"),
+                    i => i.Match(OpCodes.Brfalse),
+                    i => i.Match(OpCodes.Ldarg_0),
+                    i => i.MatchLdfld(typeof(NPC), nameof(NPC.type)),
+                    i => i.Match(OpCodes.Ldc_I4_S, (sbyte)NPCID.LavaSlime)
+                ))
+                return;
+
+            c.EmitDelegate<Func<int, int>>(returnValue => ModContent.GetInstance<QoLCConfig>().LavaSlimeNoLava ? NPCLoader.NPCCount : returnValue);
+        }
     }
 }

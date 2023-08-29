@@ -1,4 +1,4 @@
-using System.ComponentModel;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -7,6 +7,13 @@ namespace QoLCompendium.Tweaks
 {
     public class CheckDowned : ModSystem
     {
+        //VANILLA
+        internal static bool downedBloodMoon;
+        public static Condition bloodMoon = new("CheckDowned.downedBloodMoon", () => downedBloodMoon);
+        internal static bool downedEclipse;
+        public static Condition eclipse = new("CheckDowned.downedEclipse", () => downedEclipse);
+
+
         //CALAMITY
         internal static bool calamityLoaded;
         internal static Mod calamityMod;
@@ -73,6 +80,10 @@ namespace QoLCompendium.Tweaks
         public static Condition nuclearterror = new("CheckDowned.downedNuclearTerror", () => downedNuclearTerror);
         internal static bool downedMauler;
         public static Condition mauler = new("CheckDowned.downedMauler", () => downedMauler);
+        internal static bool downedAcidRain1;
+        public static Condition acidRain1 = new("CheckDowned.downedAcidRain1", () => downedAcidRain1);
+        internal static bool downedAcidRain2;
+        public static Condition acidRain2 = new("CheckDowned.downedAcidRain2", () => downedAcidRain2);
 
 
         //CATALYST
@@ -135,11 +146,19 @@ namespace QoLCompendium.Tweaks
         public static Condition dusking = new("CheckDowned.downedDusking", () => downedDusking);
         internal static bool downedAtlas;
         public static Condition atlas = new("CheckDowned.downedAtlas", () => downedAtlas);
+        internal static bool downedJellyDeluge;
+        public static Condition jellyDeluge = new("CheckDowned.downedJellyDeluge", () => downedJellyDeluge);
+        internal static bool downedTide;
+        public static Condition tide = new("CheckDowned.downedTide", () => downedTide);
+        internal static bool downedMysticMoon;
+        public static Condition mysticMoon = new("CheckDowned.downedMysticMoon", () => downedMysticMoon);
 
 
         //REDEMPTION
         internal static bool redemptionLoaded;
         internal static Mod redemptionMod;
+        internal static bool downedFowlEmperor;
+        public static Condition fowlEmperor = new("CheckDowned.downedFowlEmperor", () => downedFowlEmperor);
         internal static bool downedThorn;
         public static Condition thorn = new("CheckDowned.downedThorn", () => downedThorn);
         internal static bool downedErhan;
@@ -162,6 +181,10 @@ namespace QoLCompendium.Tweaks
         public static Condition duo = new("CheckDowned.downedDuo", () => downedDuo);
         internal static bool downedNebby;
         public static Condition nebby = new("CheckDowned.downedNebby", () => downedNebby);
+        internal static bool downedFowlMorning;
+        public static Condition fowlMorning = new("CheckDowned.downedFowlMorning", () => downedFowlMorning);
+        internal static bool downedRaveyard;
+        public static Condition raveyard = new("CheckDowned.downedRaveyard", () => downedRaveyard);
 
 
         //SECRETS OF THE SHADOWS
@@ -181,6 +204,38 @@ namespace QoLCompendium.Tweaks
         public static Condition lux = new("CheckDowned.downedLux", () => downedLux);
         internal static bool downedSerpent;
         public static Condition serpent = new("CheckDowned.downedSerpent", () => downedSerpent);
+        internal static bool downedNatureConstruct;
+        public static Condition natureConstruct = new("CheckDowned.downedNatureConstruct", () => downedNatureConstruct);
+        internal static bool downedEarthenConstruct;
+        public static Condition earthenConstruct = new("CheckDowned.downedEarthenConstruct", () => downedEarthenConstruct);
+        internal static bool downedPermafrostConstruct;
+        public static Condition permafrostConstruct = new("CheckDowned.downedPermafrostConstruct", () => downedPermafrostConstruct);
+        internal static bool downedTidalConstruct;
+        public static Condition tidalConstruct = new("CheckDowned.downedTidalConstruct", () => downedTidalConstruct);
+        internal static bool downedOtherworldlyConstruct;
+        public static Condition otherworldlyConstruct = new("CheckDowned.downedOtherworldlyConstruct", () => downedOtherworldlyConstruct);
+        internal static bool downedEvilConstruct;
+        public static Condition evilConstruct = new("CheckDowned.downedEvilConstruct", () => downedEvilConstruct);
+        internal static bool downedInfernoConstruct;
+        public static Condition infernoConstruct = new("CheckDowned.downedInfernoConstruct", () => downedInfernoConstruct);
+        internal static bool downedChaosConstruct;
+        public static Condition chaosConstruct = new("CheckDowned.downedChaosConstruct", () => downedChaosConstruct);
+        internal static bool downedNatureSpirit;
+        public static Condition natureSpirit = new("CheckDowned.downedNatureSpirit", () => downedNatureSpirit);
+        internal static bool downedEarthenSpirit;
+        public static Condition earthenSpirit = new("CheckDowned.downedEarthenSpirit", () => downedEarthenSpirit);
+        internal static bool downedPermafrostSpirit;
+        public static Condition permafrostSpirit = new("CheckDowned.downedPermafrostSpirit", () => downedPermafrostSpirit);
+        internal static bool downedTidalSpirit;
+        public static Condition tidalSpirit = new("CheckDowned.downedTidalSpirit", () => downedTidalSpirit);
+        internal static bool downedOtherworldlySpirit;
+        public static Condition otherworldlySpirit = new("CheckDowned.downedOtherworldlySpirit", () => downedOtherworldlySpirit);
+        internal static bool downedEvilSpirit;
+        public static Condition evilSpirit = new("CheckDowned.downedEvilSpirit", () => downedEvilSpirit);
+        internal static bool downedInfernoSpirit;
+        public static Condition infernoSpirit = new("CheckDowned.downedInfernoSpirit", () => downedInfernoSpirit);
+        internal static bool downedChaosSpirit;
+        public static Condition chaosSpirit = new("CheckDowned.downedChaosSpirit", () => downedChaosSpirit);
 
 
         //FARGOS SOULS
@@ -262,8 +317,16 @@ namespace QoLCompendium.Tweaks
         public static Condition sprite = new("CheckDowned.downedSprite", () => downedSprite);
         internal static bool downedSpaceSquid;
         public static Condition spacesquid = new("CheckDowned.downedSpaceSquid", () => downedSpaceSquid);
+        internal static bool downedHyperStarite;
+        public static Condition hyperStarite = new("CheckDowned.downedHyperStarite", () => downedHyperStarite);
         internal static bool downedUltraStarite;
         public static Condition ultrastarite = new("CheckDowned.downedUltraStarite", () => downedUltraStarite);
+        internal static bool downedDemonSiege;
+        public static Condition demonSiege = new("CheckDowned.downedDemonSiege", () => downedDemonSiege);
+        internal static bool downedGlimmer;
+        public static Condition glimmer = new("CheckDowned.downedGlimmer", () => downedGlimmer);
+        internal static bool downedGaleStreams;
+        public static Condition galeStreams = new("CheckDowned.downedGaleStreams", () => downedGaleStreams);
 
 
         //SPOOKY
@@ -276,6 +339,8 @@ namespace QoLCompendium.Tweaks
         internal static bool downedMoco;
         public static Condition moco = new("CheckDowned.downedMoco", () => downedMoco);
         internal static bool downedOrroBoro;
+        internal static bool downedOrro;
+        internal static bool downedBoro;
         public static Condition orroboro = new("CheckDowned.downedOrroBoro", () => downedOrroBoro);
         internal static bool downedBigBone;
         public static Condition bigbone = new("CheckDowned.downedBigBone", () => downedBigBone);
@@ -346,6 +411,61 @@ namespace QoLCompendium.Tweaks
         internal static bool downedP1;
         public static Condition p1 = new("CheckDowned.downedP1", () => downedP1);
 
+
+        //ECHOES OF THE ANCIENTS
+        internal static bool echoesLoaded;
+        internal static Mod echoesMod;
+        internal static bool downedGalahis;
+        public static Condition galahis = new("CheckDowned.downedGalahis", () => downedGalahis);
+        internal static bool downedCreation;
+        public static Condition creation = new("CheckDowned.downedCreation", () => downedCreation);
+        internal static bool downedDestruction;
+        public static Condition destruction = new("CheckDowned.downedDestruction", () => downedDestruction);
+
+
+        //STORM DIVERS MOD
+        internal static bool stormLoaded;
+        internal static Mod stormMod;
+        internal static bool downedArid;
+        public static Condition arid = new("CheckDowned.downedArid", () => downedArid);
+        internal static bool downedStorm;
+        public static Condition storm = new("CheckDowned.downedArid", () => downedStorm);
+        internal static bool downedPainbringer;
+        public static Condition painbringer = new("CheckDowned.downedPainbringer", () => downedPainbringer);
+
+
+        //QWERTY
+        internal static bool qwertyLoaded;
+        internal static Mod qwertyMod;
+        internal static bool downedPolarBear;
+        public static Condition polarBear = new("CheckDowned.downedPolarBear", () => downedPolarBear);
+        internal static bool downedDivineLight;
+        public static Condition divineLight = new("CheckDowned.downedDivineLight", () => downedDivineLight);
+        internal static bool downedAncientMachine;
+        public static Condition ancientMachine = new("CheckDowned.downedAncientMachine", () => downedAncientMachine);
+        internal static bool downedNoehtnap;
+        public static Condition noehtnap = new("CheckDowned.downedNoehtnap", () => downedNoehtnap);
+        internal static bool downedHydra;
+        public static Condition hydra = new("CheckDowned.downedHydra", () => downedHydra);
+        internal static bool downedImperious;
+        public static Condition imperious = new("CheckDowned.downedImperious", () => downedImperious);
+        internal static bool downedRuneGhost;
+        public static Condition runeGhost = new("CheckDowned.downedRuneGhost", () => downedRuneGhost);
+        internal static bool downedOLORD;
+        public static Condition olord = new("CheckDowned.downedOLORD", () => downedOLORD);
+
+        //GMR
+        internal static bool gmrLoaded;
+        internal static Mod gmrMod;
+        internal static bool downedTrerios;
+        public static Condition trerios = new("CheckDowned.downedTrerios", () => downedTrerios);
+        internal static bool downedMagmaEye;
+        public static Condition magmaEye = new("CheckDowned.downedMagmaEye", () => downedMagmaEye);
+        internal static bool downedJack;
+        public static Condition jack = new("CheckDowned.downedJack", () => downedJack);
+        internal static bool downedAcheron;
+        public static Condition acheron = new("CheckDowned.downedAcheron", () => downedAcheron);
+
         public override void Unload()
         {
             if (!calamityLoaded)
@@ -407,6 +527,22 @@ namespace QoLCompendium.Tweaks
             if (!terrorbornLoaded)
             {
                 terrorbornMod = null;
+            }
+            if (!echoesLoaded)
+            {
+                echoesMod = null;
+            }
+            if (!stormLoaded)
+            {
+                stormMod = null;
+            }
+            if (!qwertyLoaded)
+            {
+                qwertyMod = null;
+            }
+            if (!gmrLoaded)
+            {
+                gmrMod = null;
             }
         }
 
@@ -472,6 +608,22 @@ namespace QoLCompendium.Tweaks
             {
                 terrorbornMod = null;
             }
+            if (!echoesLoaded)
+            {
+                echoesMod = null;
+            }
+            if (!stormLoaded)
+            {
+                stormMod = null;
+            }
+            if (!qwertyLoaded)
+            {
+                qwertyMod = null;
+            }
+            if (!gmrLoaded)
+            {
+                gmrMod = null;
+            }
         }
 
         public override void PostSetupContent()
@@ -520,6 +672,18 @@ namespace QoLCompendium.Tweaks
 
             terrorbornLoaded = ModLoader.TryGetMod("TerrorbornMod", out Mod terrorborn);
             terrorbornMod = terrorborn;
+
+            echoesLoaded = ModLoader.TryGetMod("EchoesoftheAncients", out Mod echoes);
+            echoesMod = echoes;
+
+            stormLoaded = ModLoader.TryGetMod("StormDiversMod", out Mod storm);
+            stormMod = storm;
+
+            qwertyLoaded = ModLoader.TryGetMod("QwertyMod", out Mod qwerty);
+            qwertyMod = qwerty;
+
+            gmrLoaded = ModLoader.TryGetMod("GMR", out Mod gmr);
+            gmrMod = gmr;
         }
 
         public override void OnWorldLoad()
@@ -534,6 +698,10 @@ namespace QoLCompendium.Tweaks
 
         public override void SaveWorldData(TagCompound tag)
         {
+            //VANILLA
+            tag.Add("downedBloodMoon", downedBloodMoon);
+            tag.Add("downedEclipse", downedEclipse);
+
             //CALAMITY
             tag.Add("downedDesertScourge", downedDesertScourge);
             tag.Add("downedCrabulon", downedCrabulon);
@@ -566,6 +734,8 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedCragmawMire", downedCragmawMire);
             tag.Add("downedNuclearTerror", downedNuclearTerror);
             tag.Add("downedMauler", downedMauler);
+            tag.Add("downedAcidRain1", downedAcidRain1);
+            tag.Add("downedAcidRain2", downedAcidRain2);
 
             //CATALYST
             tag.Add("downedGeldon", downedGeldon);
@@ -594,8 +764,12 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedInfernon", downedInfernon);
             tag.Add("downedDusking", downedDusking);
             tag.Add("downedAtlas", downedAtlas);
+            tag.Add("downedJellyDeluge", downedJellyDeluge);
+            tag.Add("downedTide", downedTide);
+            tag.Add("downedMysticMoon", downedMysticMoon);
 
             //REDEMPTION
+            tag.Add("downedFowlEmperor", downedFowlEmperor);
             tag.Add("downedThorn", downedThorn);
             tag.Add("downedErhan", downedErhan);
             tag.Add("downedKeeper", downedKeeper);
@@ -607,6 +781,8 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedZero", downedZero);
             tag.Add("downedDuo", downedDuo);
             tag.Add("downedNebby", downedNebby);
+            tag.Add("downedFowlMorning", downedFowlMorning);
+            tag.Add("downedRaveyard", downedRaveyard);
 
             //SOTS
             tag.Add("downedGlowmoth", downedGlowmoth);
@@ -616,10 +792,27 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedPolaris", downedPolaris);
             tag.Add("downedLux", downedLux);
             tag.Add("downedSerpent", downedSerpent);
+            tag.Add("downedNatureConstruct", downedNatureConstruct);
+            tag.Add("downedEarthenConstruct", downedEarthenConstruct);
+            tag.Add("downedPermafrostConstruct", downedPermafrostConstruct);
+            tag.Add("downedTidalConstruct", downedTidalConstruct);
+            tag.Add("downedOtherworldlyConstruct", downedOtherworldlyConstruct);
+            tag.Add("downedEvilConstruct", downedEvilConstruct);
+            tag.Add("downedInfernoConstruct", downedInfernoConstruct);
+            tag.Add("downedChaosConstruct", downedChaosConstruct);
+            tag.Add("downedNatureSpirit", downedNatureSpirit);
+            tag.Add("downedEarthenSpirit", downedEarthenSpirit);
+            tag.Add("downedPermafrostSpirit", downedPermafrostSpirit);
+            tag.Add("downedTidalSpirit", downedTidalSpirit);
+            tag.Add("downedOtherworldlySpirit", downedOtherworldlySpirit);
+            tag.Add("downedEvilSpirit", downedEvilSpirit);
+            tag.Add("downedInfernoSpirit", downedInfernoSpirit);
+            tag.Add("downedChaosSpirit", downedChaosSpirit);
 
             //SOULS
             tag.Add("downedTrojanSquirrel", downedTrojanSquirrel);
             tag.Add("downedDeviant", downedDeviant);
+            tag.Add("downedLieflight", downedLieflight);
             tag.Add("downedCosmosChampion", downedCosmosChampion);
             tag.Add("downedAbomination", downedAbomination);
             tag.Add("downedMutant", downedMutant);
@@ -655,7 +848,11 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedDevil", downedDevil);
             tag.Add("downedSprite", downedSprite);
             tag.Add("downedSpaceSquid", downedSpaceSquid);
+            tag.Add("downedHyperStarite", downedHyperStarite);
             tag.Add("downedUltraStarite", downedUltraStarite);
+            tag.Add("downedDemonSiege", downedDemonSiege);
+            tag.Add("downedGlimmer", downedGlimmer);
+            tag.Add("downedGaleStreams", downedGaleStreams);
 
             //SPOOKY
             tag.Add("downedSpookySpirit", downedSpookySpirit);
@@ -694,10 +891,40 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedCrawler", downedCrawler);
             tag.Add("downedConstructor", downedConstructor);
             tag.Add("downedP1", downedP1);
+
+            //ECHOES OF THE ANCIENTS
+            tag.Add("downedGalahis", downedGalahis);
+            tag.Add("downedCreation", downedCreation);
+            tag.Add("downedDestruction", downedDestruction);
+
+            //STORM DIVERS MOD
+            tag.Add("downedArid", downedArid);
+            tag.Add("downedStorm", downedStorm);
+            tag.Add("downedPainbringer", downedPainbringer);
+
+            //QWERTY
+            tag.Add("downedPolarBear", downedPolarBear);
+            tag.Add("downedDivineLight", downedDivineLight);
+            tag.Add("downedAncientMachine", downedAncientMachine);
+            tag.Add("downedNoehtnap", downedNoehtnap);
+            tag.Add("downedHydra", downedHydra);
+            tag.Add("downedImperious", downedImperious);
+            tag.Add("downedRuneGhost", downedRuneGhost);
+            tag.Add("downedOLORD", downedOLORD);
+
+            //GMR
+            tag.Add("downedTrerios", downedTrerios);
+            tag.Add("downedMagmaEye", downedMagmaEye);
+            tag.Add("downedJack", downedJack);
+            tag.Add("downedAcheron", downedAcheron);
         }
 
         public override void LoadWorldData(TagCompound tag)
         {
+            //VANILLA
+            downedBloodMoon = tag.Get<bool>("downedBloodMoon");
+            downedEclipse = tag.Get<bool>("downedEclipse");
+
             //CALAMITY
             downedDesertScourge = tag.Get<bool>("downedDesertScourge");
             downedCrabulon = tag.Get<bool>("downedCrabulon");
@@ -730,6 +957,8 @@ namespace QoLCompendium.Tweaks
             downedCragmawMire = tag.Get<bool>("downedCragmawMire");
             downedNuclearTerror = tag.Get<bool>("downedNuclearTerror");
             downedMauler = tag.Get<bool>("downedMauler");
+            downedAcidRain1 = tag.Get<bool>("downedAcidRain1");
+            downedAcidRain2 = tag.Get<bool>("downedAcidRain2");
 
             //CATALYST
             downedGeldon = tag.Get<bool>("downedGeldon");
@@ -758,9 +987,12 @@ namespace QoLCompendium.Tweaks
             downedInfernon = tag.Get<bool>("downedInfernon");
             downedDusking = tag.Get<bool>("downedDusking");
             downedAtlas = tag.Get<bool>("downedAtlas");
-            downedAtlas = tag.Get<bool>("downedAtlas");
+            downedJellyDeluge = tag.Get<bool>("downedJellyDeluge");
+            downedTide = tag.Get<bool>("downedTide");
+            downedMysticMoon = tag.Get<bool>("downedMysticMoon");
 
             //REDEMPTION
+            downedFowlEmperor = tag.Get<bool>("downedFowlEmperor");
             downedThorn = tag.Get<bool>("downedThorn");
             downedErhan = tag.Get<bool>("downedErhan");
             downedKeeper = tag.Get<bool>("downedKeeper");
@@ -772,6 +1004,8 @@ namespace QoLCompendium.Tweaks
             downedZero = tag.Get<bool>("downedZero");
             downedDuo = tag.Get<bool>("downedDuo");
             downedNebby = tag.Get<bool>("downedNebby");
+            downedFowlMorning = tag.Get<bool>("downedFowlMorning");
+            downedRaveyard = tag.Get<bool>("downedRaveyard");
 
             //SOTS
             downedGlowmoth = tag.Get<bool>("downedGlowmoth");
@@ -781,10 +1015,27 @@ namespace QoLCompendium.Tweaks
             downedPolaris = tag.Get<bool>("downedPolaris");
             downedLux = tag.Get<bool>("downedLux");
             downedSerpent = tag.Get<bool>("downedSerpent");
+            downedNatureConstruct = tag.Get<bool>("downedNatureConstruct");
+            downedEarthenConstruct = tag.Get<bool>("downedEarthenConstruct");
+            downedPermafrostConstruct = tag.Get<bool>("downedPermafrostConstruct");
+            downedTidalConstruct = tag.Get<bool>("downedTidalConstruct");
+            downedOtherworldlyConstruct = tag.Get<bool>("downedOtherworldlyConstruct");
+            downedEvilConstruct = tag.Get<bool>("downedEvilConstruct");
+            downedInfernoConstruct = tag.Get<bool>("downedInfernoConstruct");
+            downedChaosConstruct = tag.Get<bool>("downedChaosConstruct");
+            downedNatureSpirit = tag.Get<bool>("downedNatureSpirit");
+            downedEarthenSpirit = tag.Get<bool>("downedEarthenSpirit");
+            downedPermafrostSpirit = tag.Get<bool>("downedPermafrostSpirit");
+            downedTidalSpirit = tag.Get<bool>("downedTidalSpirit");
+            downedOtherworldlySpirit = tag.Get<bool>("downedOtherworldlySpirit");
+            downedEvilSpirit = tag.Get<bool>("downedEvilSpirit");
+            downedInfernoSpirit = tag.Get<bool>("downedInfernoSpirit");
+            downedChaosSpirit = tag.Get<bool>("downedChaosSpirit");
 
             //SOULS
             downedTrojanSquirrel = tag.Get<bool>("downedTrojanSquirrel");
             downedDeviant = tag.Get<bool>("downedDeviant");
+            downedLieflight = tag.Get<bool>("downedLieflight");
             downedCosmosChampion = tag.Get<bool>("downedCosmosChampion");
             downedAbomination = tag.Get<bool>("downedAbomination");
             downedMutant = tag.Get<bool>("downedMutant");
@@ -819,7 +1070,11 @@ namespace QoLCompendium.Tweaks
             downedDevil = tag.Get<bool>("downedDevil");
             downedSprite = tag.Get<bool>("downedSprite");
             downedSpaceSquid = tag.Get<bool>("downedSpaceSquid");
+            downedHyperStarite = tag.Get<bool>("downedHyperStarite");
             downedUltraStarite = tag.Get<bool>("downedUltraStarite");
+            downedDemonSiege = tag.Get<bool>("downedDemonSiege");
+            downedGlimmer = tag.Get<bool>("downedGlimmer");
+            downedGaleStreams = tag.Get<bool>("downedGaleStreams");
 
             //SPOOKY
             downedSpookySpirit = tag.Get<bool>("downedSpookySpirit");
@@ -858,6 +1113,32 @@ namespace QoLCompendium.Tweaks
             downedCrawler = tag.Get<bool>("downedCrawler");
             downedConstructor = tag.Get<bool>("downedConstructor");
             downedP1 = tag.Get<bool>("downedP1");
+
+            //ECHOES OF THE ANCIENTS
+            downedGalahis = tag.Get<bool>("downedGalahis");
+            downedCreation = tag.Get<bool>("downedCreation");
+            downedDestruction = tag.Get<bool>("downedDestruction");
+
+            //STORM DIVERS MOD
+            downedArid = tag.Get<bool>("downedArid");
+            downedStorm = tag.Get<bool>("downedStorm");
+            downedPainbringer = tag.Get<bool>("downedPainbringer");
+
+            //QWERTY
+            downedPolarBear = tag.Get<bool>("downedPolarBear");
+            downedDivineLight = tag.Get<bool>("downedDivineLight");
+            downedAncientMachine = tag.Get<bool>("downedAncientMachine");
+            downedNoehtnap = tag.Get<bool>("downedNoehtnap");
+            downedHydra = tag.Get<bool>("downedHydra");
+            downedImperious = tag.Get<bool>("downedImperious");
+            downedRuneGhost = tag.Get<bool>("downedRuneGhost");
+            downedOLORD = tag.Get<bool>("downedOLORD");
+
+            //GMR
+            downedTrerios = tag.Get<bool>("downedTrerios");
+            downedMagmaEye = tag.Get<bool>("downedMagmaEye");
+            downedJack = tag.Get<bool>("downedJack");
+            downedAcheron = tag.Get<bool>("downedAcheron");
         }
 
         public override void PostUpdatePlayers()
@@ -871,6 +1152,61 @@ namespace QoLCompendium.Tweaks
                         downedAdvisor = true;
                     }
                 }
+            }
+
+            if (spookyLoaded)
+            {
+                if (downedOrro && downedBoro)
+                {
+                    downedOrroBoro = true;
+                }
+            }
+
+            if (sotsLoaded)
+            {
+                if (downedAdvisor)
+                {
+                    downedOtherworldlySpirit = true;
+                }
+
+                if (downedLux)
+                {
+                    downedChaosSpirit = true;
+                }
+            }
+
+            if (qwertyLoaded)
+            {
+                if (qwertyMod.TryFind("HydraBag", out ModItem HydraBag))
+                {
+                    if (Main.LocalPlayer.HasItem(HydraBag.Type))
+                    {
+                        downedHydra = true;
+                    }
+                }
+            }
+
+            if (infernumLoaded)
+            {
+                if (infernumMod.TryFind("BereftVassalBossBag", out ModItem BereftVassalBossBag))
+                {
+                    if (Main.LocalPlayer.HasItem(BereftVassalBossBag.Type))
+                    {
+                        downedVassal = true;
+                    }
+                }
+            }
+        }
+
+        public override void PreUpdateWorld()
+        {
+            if (Main.bloodMoon)
+            {
+                downedBloodMoon = true;
+            }
+            if (Main.eclipse)
+            {
+                downedEclipse = true;
             }
         }
 
@@ -1022,9 +1358,17 @@ namespace QoLCompendium.Tweaks
                     "GetBossDowned",
                     "GreatSandShark"
                     });
-                }
-                if (calamityLoaded)
-                {
+                    downedAcidRain1 = (bool)calamityMod.Call(new object[]
+                    {
+                    "GetBossDowned",
+                    "acidraineoc"
+                    });
+                    downedAcidRain2 = (bool)calamityMod.Call(new object[]
+                    {
+                    "GetBossDowned",
+                    "acidrainscourge"
+                    });
+
                     if (calamityMod.TryFind("CragmawMire", out ModNPC CragmawMire))
                     {
                         if (npc.type == CragmawMire.Type && CragmawMire.NPC.life <= 0)
@@ -1209,10 +1553,61 @@ namespace QoLCompendium.Tweaks
                             downedAtlas = true;
                         }
                     }
+                    spiritMod.TryFind("MoonlightPreserver", out ModNPC MoonlightPreserver);
+                    spiritMod.TryFind("ExplodingMoonjelly", out ModNPC ExplodingMoonjelly);
+                    spiritMod.TryFind("MoonjellyGiant", out ModNPC MoonjellyGiant);
+                    if (MoonlightPreserver != null || 
+                        ExplodingMoonjelly != null || 
+                        MoonjellyGiant != null)
+                    {
+                        if ((npc.type == MoonlightPreserver.Type && MoonlightPreserver.NPC.life <= 0) 
+                            || (npc.type == ExplodingMoonjelly.Type && ExplodingMoonjelly.NPC.life <= 0) 
+                            || (npc.type == MoonjellyGiant.Type && MoonjellyGiant.NPC.life <= 0))
+                        {
+                            downedJellyDeluge = true;
+                        }
+                    }
+                    if (spiritMod.TryFind("Rylheian", out ModNPC Rylheian))
+                    {
+                        if (npc.type == Rylheian.Type && Rylheian.NPC.life <= 0)
+                        {
+                            downedTide = true;
+                        }
+                    }
+                    spiritMod.TryFind("Bloomshroom", out ModNPC Bloomshroom);
+                    spiritMod.TryFind("Glitterfly", out ModNPC Glitterfly);
+                    spiritMod.TryFind("GlowToad", out ModNPC GlowToad);
+                    spiritMod.TryFind("Lumantis", out ModNPC Lumantis);
+                    spiritMod.TryFind("LunarSlime", out ModNPC LunarSlime);
+                    spiritMod.TryFind("MadHatter", out ModNPC MadHatter);
+                    if (Bloomshroom != null || 
+                        Glitterfly != null || 
+                        GlowToad != null || 
+                        Lumantis != null || 
+                        LunarSlime != null || 
+                        MadHatter != null)
+                    {
+                        if ((npc.type == Bloomshroom.Type && Bloomshroom.NPC.life <= 0) 
+                            || (npc.type == Glitterfly.Type && Glitterfly.NPC.life <= 0) 
+                            || (npc.type == GlowToad.Type && GlowToad.NPC.life <= 0) 
+                            || (npc.type == Lumantis.Type && Lumantis.NPC.life <= 0) 
+                            || (npc.type == LunarSlime.Type && LunarSlime.NPC.life <= 0) 
+                            || (npc.type == MadHatter.Type && MadHatter.NPC.life <= 0))
+                        {
+                            downedMysticMoon = true;
+                        }
+                    }
                 }
 
                 if (redemptionLoaded)
                 {
+                    if (redemptionMod.TryFind("FowlEmperor", out ModNPC FowlEmperor))
+                    {
+                        if (npc.type == FowlEmperor.Type && FowlEmperor.NPC.life <= 0)
+                        {
+                            downedFowlEmperor = true;
+                        }
+                    }
                     if (redemptionMod.TryFind("Thorn", out ModNPC Thorn))
                     {
                         if (npc.type == Thorn.Type && Thorn.NPC.life <= 0)
@@ -1304,6 +1699,51 @@ namespace QoLCompendium.Tweaks
                             downedNebby = true;
                         }
                     }
+                    if (redemptionMod.TryFind("Basan", out ModNPC Basan))
+                    {
+                        if (npc.type == Basan.Type && Basan.NPC.life <= 0)
+                        {
+                            downedFowlMorning = true;
+                        }
+                    }
+                    redemptionMod.TryFind("CorpseWalkerPriest", out ModNPC CorpseWalkerPriest);
+                    redemptionMod.TryFind("DancingSkeleton", out ModNPC DancingSkeleton);
+                    redemptionMod.TryFind("EpidotrianSkeleton", out ModNPC EpidotrianSkeleton);
+                    redemptionMod.TryFind("JollyMadman", out ModNPC JollyMadman);
+                    redemptionMod.TryFind("RaveyardSkeleton", out ModNPC RaveyardSkeleton);
+                    redemptionMod.TryFind("SkeletonAssassin", out ModNPC SkeletonAssassin);
+                    redemptionMod.TryFind("SkeletonDuelist", out ModNPC SkeletonDuelist);
+                    redemptionMod.TryFind("SkeletonFlagbearer", out ModNPC SkeletonFlagbearer);
+                    redemptionMod.TryFind("SkeletonNoble", out ModNPC SkeletonNoble);
+                    redemptionMod.TryFind("SkeletonWanderer", out ModNPC SkeletonWanderer);
+                    redemptionMod.TryFind("SkeletonWarden", out ModNPC SkeletonWarden);
+                    if (CorpseWalkerPriest != null || 
+                        DancingSkeleton != null || 
+                        EpidotrianSkeleton != null || 
+                        JollyMadman != null || 
+                        RaveyardSkeleton != null || 
+                        SkeletonAssassin != null ||
+                        SkeletonDuelist != null ||
+                        SkeletonFlagbearer != null ||
+                        SkeletonNoble != null ||
+                        SkeletonWanderer != null ||
+                        SkeletonWarden != null)
+                    {
+                        if ((npc.type == CorpseWalkerPriest.Type && CorpseWalkerPriest.NPC.life <= 0)
+                            || (npc.type == DancingSkeleton.Type && DancingSkeleton.NPC.life <= 0) 
+                            || (npc.type == EpidotrianSkeleton.Type && EpidotrianSkeleton.NPC.life <= 0)
+                            || (npc.type == JollyMadman.Type && JollyMadman.NPC.life <= 0)
+                            || (npc.type == RaveyardSkeleton.Type && RaveyardSkeleton.NPC.life <= 0)
+                            || (npc.type == SkeletonAssassin.Type && SkeletonAssassin.NPC.life <= 0)
+                            || (npc.type == SkeletonDuelist.Type && SkeletonDuelist.NPC.life <= 0)
+                            || (npc.type == SkeletonFlagbearer.Type && SkeletonFlagbearer.NPC.life <= 0)
+                            || (npc.type == SkeletonNoble.Type && SkeletonNoble.NPC.life <= 0)
+                            || (npc.type == SkeletonWanderer.Type && SkeletonWanderer.NPC.life <= 0)
+                            || (npc.type == SkeletonWarden.Type && SkeletonWarden.NPC.life <= 0))
+                        {
+                            downedRaveyard = true;
+                        }
+                    }
                 }
 
                 if (sotsLoaded)
@@ -1359,6 +1799,111 @@ namespace QoLCompendium.Tweaks
                             downedSerpent = true;
                         }
                     }
+                    if (sotsMod.TryFind("NatureConstruct", out ModNPC NatureConstruct))
+                    {
+                        if (npc.type == NatureConstruct.Type && NatureConstruct.NPC.life <= 0)
+                        {
+                            downedNatureConstruct = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("EarthenConstruct", out ModNPC EarthenConstruct))
+                    {
+                        if (npc.type == EarthenConstruct.Type && EarthenConstruct.NPC.life <= 0)
+                        {
+                            downedEarthenConstruct = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("PermafrostConstruct", out ModNPC PermafrostConstruct))
+                    {
+                        if (npc.type == PermafrostConstruct.Type && PermafrostConstruct.NPC.life <= 0)
+                        {
+                            downedPermafrostConstruct = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("TidalConstruct", out ModNPC TidalConstruct))
+                    {
+                        if (npc.type == TidalConstruct.Type && TidalConstruct.NPC.life <= 0)
+                        {
+                            downedTidalConstruct = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("OtherworldlyConstructHead", out ModNPC OtherworldlyConstructHead))
+                    {
+                        if (npc.type == OtherworldlyConstructHead.Type && OtherworldlyConstructHead.NPC.life <= 0)
+                        {
+                            downedOtherworldlyConstruct = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("OtherworldlyConstructHead2", out ModNPC OtherworldlyConstructHead2))
+                    {
+                        if (npc.type == OtherworldlyConstructHead2.Type && OtherworldlyConstructHead2.NPC.life <= 0)
+                        {
+                            downedOtherworldlyConstruct = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("EvilConstruct", out ModNPC EvilConstruct))
+                    {
+                        if (npc.type == EvilConstruct.Type && EvilConstruct.NPC.life <= 0)
+                        {
+                            downedEvilConstruct = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("InfernoConstruct", out ModNPC InfernoConstruct))
+                    {
+                        if (npc.type == InfernoConstruct.Type && InfernoConstruct.NPC.life <= 0)
+                        {
+                            downedInfernoConstruct = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("ChaosConstruct", out ModNPC ChaosConstruct))
+                    {
+                        if (npc.type == ChaosConstruct.Type && ChaosConstruct.NPC.life <= 0)
+                        {
+                            downedChaosConstruct = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("NatureSpirit", out ModNPC NatureSpirit))
+                    {
+                        if (npc.type == NatureSpirit.Type && NatureSpirit.NPC.life <= 0)
+                        {
+                            downedNatureSpirit = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("EarthenSpirit", out ModNPC EarthenSpirit))
+                    {
+                        if (npc.type == EarthenSpirit.Type && EarthenSpirit.NPC.life <= 0)
+                        {
+                            downedEarthenSpirit = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("PermafrostSpirit", out ModNPC PermafrostSpirit))
+                    {
+                        if (npc.type == PermafrostSpirit.Type && PermafrostSpirit.NPC.life <= 0)
+                        {
+                            downedPermafrostSpirit = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("TidalSpirit", out ModNPC TidalSpirit))
+                    {
+                        if (npc.type == TidalSpirit.Type && TidalSpirit.NPC.life <= 0)
+                        {
+                            downedTidalSpirit = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("EvilSpirit", out ModNPC EvilSpirit))
+                    {
+                        if (npc.type == EvilSpirit.Type && EvilSpirit.NPC.life <= 0)
+                        {
+                            downedEvilSpirit = true;
+                        }
+                    }
+                    if (sotsMod.TryFind("InfernoSpirit", out ModNPC InfernoSpirit))
+                    {
+                        if (npc.type == InfernoSpirit.Type && InfernoSpirit.NPC.life <= 0)
+                        {
+                            downedInfernoSpirit = true;
+                        }
+                    }
                 }
 
                 if (fargosSoulsLoaded)
@@ -1384,6 +1929,13 @@ namespace QoLCompendium.Tweaks
                             downedDeviant = true;
                         }
                     }
+                    if (fargosSoulsMod.TryFind("LifeChallenger", out ModNPC LifeChallenger))
+                    {
+                        if (npc.type == LifeChallenger.Type && LifeChallenger.NPC.life <= 0)
+                        {
+                            downedLieflight = true;
+                        }
+                    }
                     if (fargosSoulsMod.TryFind("CosmosChampion", out ModNPC CosmosChampion))
                     {
                         if (npc.type == CosmosChampion.Type && CosmosChampion.NPC.life <= 0)
@@ -1401,13 +1953,6 @@ namespace QoLCompendium.Tweaks
                     if (fargosSoulsMod.TryFind("MutantBoss", out ModNPC MutantBoss))
                     {
                         if (npc.type == MutantBoss.Type && MutantBoss.NPC.life <= 0)
-                        {
-                            downedMutant = true;
-                        }
-                    }
-                    if (fargosSoulsMod.TryFind("MutantIllusion", out ModNPC MutantIllusion))
-                    {
-                        if (npc.type == MutantIllusion.Type && MutantIllusion.NPC.life <= 0)
                         {
                             downedMutant = true;
                         }
@@ -1574,6 +2119,18 @@ namespace QoLCompendium.Tweaks
 
                 if (aqLoaded)
                 {
+                    downedCrabson = (bool)aqMod.Call("downedCrabson", Mod);
+                    downedOmegaStarite = (bool)aqMod.Call("downedOmegaStarite", Mod);
+                    downedDevil = (bool)aqMod.Call("downedDustDevil", Mod);
+                    downedSprite = (bool)aqMod.Call("downedRedSprite", Mod);
+                    downedSpaceSquid = (bool)aqMod.Call("downedSpaceSquid", Mod);
+                    downedHyperStarite = (bool)aqMod.Call("downedHyperStarite", Mod);
+                    downedUltraStarite = (bool)aqMod.Call("downedUltraStarite", Mod);
+                    downedDemonSiege = (bool)aqMod.Call("downedEventDemon", Mod);
+                    downedGlimmer = (bool)aqMod.Call("downedEventCosmic", Mod);
+                    downedGaleStreams = (bool)aqMod.Call("downedEventAtmosphere", Mod);
+
+                    /*
                     if (aqMod.TryFind("Crabson", out ModNPC Crabson))
                     {
                         if (npc.type == Crabson.Type && Crabson.NPC.life <= 0)
@@ -1616,6 +2173,7 @@ namespace QoLCompendium.Tweaks
                             downedUltraStarite = true;
                         }
                     }
+                    */
                 }
 
                 if (spookyLoaded)
@@ -1645,14 +2203,14 @@ namespace QoLCompendium.Tweaks
                     {
                         if (npc.type == OrroHead.Type && OrroHead.NPC.life <= 0)
                         {
-                            downedOrroBoro = true;
+                            downedOrro = true;
                         }
                     }
                     if (spookyMod.TryFind("BoroHead", out ModNPC BoroHead))
                     {
                         if (npc.type == BoroHead.Type && BoroHead.NPC.life <= 0)
                         {
-                            downedOrroBoro = true;
+                            downedBoro = true;
                         }
                     }
                     if (spookyMod.TryFind("BigBone", out ModNPC BigBone))
@@ -1840,11 +2398,157 @@ namespace QoLCompendium.Tweaks
                         }
                     }
                 }
+
+                if (echoesLoaded)
+                {
+                    if (echoesMod.TryFind("Galahis", out ModNPC Galahis))
+                    {
+                        if (npc.type == Galahis.Type && Galahis.NPC.life <= 0)
+                        {
+                            downedGalahis = true;
+                        }
+                    }
+                    if (echoesMod.TryFind("AquaWormHead", out ModNPC AquaWormHead))
+                    {
+                        if (npc.type == AquaWormHead.Type && AquaWormHead.NPC.life <= 0)
+                        {
+                            downedCreation = true;
+                        }
+                    }
+                    if (echoesMod.TryFind("PumpkinWormHead", out ModNPC PumpkinWormHead))
+                    {
+                        if (npc.type == PumpkinWormHead.Type && PumpkinWormHead.NPC.life <= 0)
+                        {
+                            downedDestruction = true;
+                        }
+                    }
+                }
+
+                if (stormLoaded)
+                {
+                    if (stormMod.TryFind("AridBoss", out ModNPC AridBoss))
+                    {
+                        if (npc.type == AridBoss.Type && AridBoss.NPC.life <= 0)
+                        {
+                            downedArid = true;
+                        }
+                    }
+                    if (stormMod.TryFind("StormBoss", out ModNPC StormBoss))
+                    {
+                        if (npc.type == StormBoss.Type && StormBoss.NPC.life <= 0)
+                        {
+                            downedStorm = true;
+                        }
+                    }
+                    if (stormMod.TryFind("TheUltimateBoss", out ModNPC TheUltimateBoss))
+                    {
+                        if (npc.type == TheUltimateBoss.Type && TheUltimateBoss.NPC.life <= 0)
+                        {
+                            downedPainbringer = true;
+                        }
+                    }
+                }
+
+                if (qwertyLoaded)
+                {
+                    if (qwertyMod.TryFind("PolarBear", out ModNPC PolarBear))
+                    {
+                        if (npc.type == PolarBear.Type && PolarBear.NPC.life <= 0)
+                        {
+                            downedPolarBear = true;
+                        }
+                    }
+                    if (qwertyMod.TryFind("FortressBoss", out ModNPC FortressBoss))
+                    {
+                        if (npc.type == FortressBoss.Type && FortressBoss.NPC.life <= 0)
+                        {
+                            downedDivineLight = true;
+                        }
+                    }
+                    if (qwertyMod.TryFind("AncientMachine", out ModNPC AncientMachine))
+                    {
+                        if (npc.type == AncientMachine.Type && AncientMachine.NPC.life <= 0)
+                        {
+                            downedAncientMachine = true;
+                        }
+                    }
+                    if (qwertyMod.TryFind("CloakedDarkBoss", out ModNPC CloakedDarkBoss))
+                    {
+                        if (npc.type == CloakedDarkBoss.Type && CloakedDarkBoss.NPC.life <= 0)
+                        {
+                            downedNoehtnap = true;
+                        }
+                    }
+                    if (qwertyMod.TryFind("Hydra", out ModNPC Hydra))
+                    {
+                        if (npc.type == Hydra.Type && Hydra.NPC.life <= 0)
+                        {
+                            downedHydra = true;
+                        }
+                    }
+                    if (qwertyMod.TryFind("Imperious", out ModNPC Imperious))
+                    {
+                        if (npc.type == Imperious.Type && Imperious.NPC.life <= 0)
+                        {
+                            downedImperious = true;
+                        }
+                    }
+                    if (qwertyMod.TryFind("RuneGhost", out ModNPC RuneGhost))
+                    {
+                        if (npc.type == RuneGhost.Type && RuneGhost.NPC.life <= 0)
+                        {
+                            downedRuneGhost = true;
+                        }
+                    }
+                    if (qwertyMod.TryFind("OLORDv2", out ModNPC OLORDv2))
+                    {
+                        if (npc.type == OLORDv2.Type && OLORDv2.NPC.life <= 0)
+                        {
+                            downedOLORD = true;
+                        }
+                    }
+                }
+
+                if (gmrLoaded)
+                {
+                    if (gmrMod.TryFind("Trerios", out ModNPC Trerios))
+                    {
+                        if (npc.type == Trerios.Type && Trerios.NPC.life <= 0)
+                        {
+                            downedTrerios = true;
+                        }
+                    }
+                    if (gmrMod.TryFind("MagmaEye", out ModNPC MagmaEye))
+                    {
+                        if (npc.type == MagmaEye.Type && MagmaEye.NPC.life <= 0)
+                        {
+                            downedMagmaEye = true;
+                        }
+                    }
+                    if (gmrMod.TryFind("Jack", out ModNPC Jack))
+                    {
+                        if (npc.type == Jack.Type && Jack.NPC.life <= 0)
+                        {
+                            downedJack = true;
+                        }
+                    }
+                    if (gmrMod.TryFind("Acheron", out ModNPC Acheron))
+                    {
+                        if (npc.type == Acheron.Type && Acheron.NPC.life <= 0)
+                        {
+                            downedAcheron = true;
+                        }
+                    }
+                }
             }
         }
 
         public static void ResetDowned()
         {
+            //VANILLA
+            downedBloodMoon = false;
+            downedEclipse = false;
+
             //CALAMITY
             downedDesertScourge = false;
             downedCrabulon = false;
@@ -1877,6 +2581,8 @@ namespace QoLCompendium.Tweaks
             downedCragmawMire = false;
             downedNuclearTerror = false;
             downedMauler = false;
+            downedAcidRain1 = false;
+            downedAcidRain2 = false;
 
             //CATALYST
             downedGeldon = false;
@@ -1905,8 +2611,12 @@ namespace QoLCompendium.Tweaks
             downedInfernon = false;
             downedDusking = false;
             downedAtlas = false;
+            downedJellyDeluge = false;
+            downedTide = false;
+            downedMysticMoon = false;
 
             //REDEMPTION
+            downedFowlEmperor = false;
             downedThorn = false;
             downedErhan = false;
             downedKeeper = false;
@@ -1918,6 +2628,8 @@ namespace QoLCompendium.Tweaks
             downedZero = false;
             downedDuo = false;
             downedNebby = false;
+            downedFowlMorning = false;
+            downedRaveyard = false;
 
             //SOTS
             downedGlowmoth = false;
@@ -1927,6 +2639,22 @@ namespace QoLCompendium.Tweaks
             downedPolaris = false;
             downedLux = false;
             downedSerpent = false;
+            downedNatureConstruct = false;
+            downedEarthenConstruct = false;
+            downedPermafrostConstruct = false;
+            downedTidalConstruct = false;
+            downedOtherworldlyConstruct = false;
+            downedEvilConstruct = false;
+            downedInfernoConstruct = false;
+            downedChaosConstruct = false;
+            downedNatureSpirit = false;
+            downedEarthenSpirit = false;
+            downedPermafrostSpirit = false;
+            downedTidalSpirit = false;
+            downedOtherworldlySpirit = false;
+            downedEvilSpirit = false;
+            downedInfernoSpirit = false;
+            downedChaosSpirit = false;
 
             //SOULS
             downedTrojanSquirrel = false;
@@ -1965,13 +2693,19 @@ namespace QoLCompendium.Tweaks
             downedDevil = false;
             downedSprite = false;
             downedSpaceSquid = false;
+            downedHyperStarite = false;
             downedUltraStarite = false;
+            downedDemonSiege = false;
+            downedGlimmer = false;
+            downedGaleStreams = false;
 
             //SPOOKY
             downedSpookySpirit = false;
             downedGourd = false;
             downedMoco = false;
             downedOrroBoro = false;
+            downedOrro = false;
+            downedBoro = false;
             downedBigBone = false;
 
             //CONSOLARIA
@@ -2004,6 +2738,32 @@ namespace QoLCompendium.Tweaks
             downedCrawler = false;
             downedConstructor = false;
             downedP1 = false;
+
+            //ECHOES OF THE ANCIENTS
+            downedGalahis = false;
+            downedCreation = false;
+            downedDestruction = false;
+
+            //STORM DIVERS MOD
+            downedArid = false;
+            downedStorm = false;
+            downedPainbringer = false;
+
+            //QWERTY
+            downedPolarBear = false;
+            downedDivineLight = false;
+            downedAncientMachine = false;
+            downedNoehtnap = false;
+            downedHydra = false;
+            downedImperious = false;
+            downedRuneGhost = false;
+            downedOLORD = false;
+
+            //GMR
+            downedTrerios = false;
+            downedMagmaEye = false;
+            downedJack = false;
+            downedAcheron = false;
         }
     }
 }

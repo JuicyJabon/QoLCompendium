@@ -98,6 +98,11 @@ Mods: {
 				Tooltip: ""
 				DisplayName: Asphalt Platform
 			}
+
+			WIP: {
+				DisplayName: Work In Progress
+				Tooltip: Shop is being built, please come back later!
+			}
 		}
 
 		NPCs: {
@@ -159,6 +164,11 @@ Mods: {
 		InfoDisplays: {
 			MinionInfoDisplay.DisplayName: Minion Slots
 			SentryInfoDisplay.DisplayName: Sentry Slots
+		}
+
+		WingSlot: {
+			Wings: Wings
+			SocialWings: Social Wings
 		}
 
 		Configs: {
@@ -248,7 +258,7 @@ Mods: {
 				}
 
 				ToggleHappiness: {
-					Label: Toggle Happiness
+					Label: Disable NPC Happiness
 					Tooltip: Toggles if NPCs should have happiness or not
 				}
 
@@ -365,6 +375,16 @@ Mods: {
 					Label: Endless Potion Amount
 					Tooltip: Change the amount needed for endless potions
 				}
+
+				WingSlot: {
+					Label: Wing Slot
+					Tooltip: Toggles wing slot
+				}
+
+				LavaSlimeNoLava: {
+					Label: Lava Slime No Lava
+					Tooltip: ""
+				}
 			}
 
 			ItemConfig: {
@@ -454,6 +474,105 @@ Mods: {
 
 				DisplayName: Item Config
 			}
+
+			ShopConfig: {
+				DisplayName: Shop Config
+
+				BMPotionShop: {
+					Label: Potion Shop
+					Tooltip: ""
+				}
+
+				BMStationShop: {
+					Label: Station Shop
+					Tooltip: ""
+				}
+
+				BMMaterialShop: {
+					Label: Material Shop
+					Tooltip: ""
+				}
+
+				BMHardmodeMaterialShop: {
+					Label: Hardmode Material Shop
+					Tooltip: ""
+				}
+
+				BMMovementAccessoryShop: {
+					Label: Movement Accessory Shop
+					Tooltip: ""
+				}
+
+				BMCombatAccessoryShop: {
+					Label: Combat Accessory Shop
+					Tooltip: ""
+				}
+
+				BMInformationShop: {
+					Label: Information Shop
+					Tooltip: ""
+				}
+
+				BMBagShop: {
+					Label: Bag Shop
+					Tooltip: ""
+				}
+
+				BMNaturalBlockShop: {
+					Label: Natural Block Shop
+					Tooltip: ""
+				}
+
+				BMBuildingBlockShop: {
+					Label: Building Block Shop
+					Tooltip: ""
+				}
+
+				BMHerbShop: {
+					Label: Herb Shop
+					Tooltip: ""
+				}
+
+				ECPotionShop: {
+					Label: Potion Shop
+					Tooltip: ""
+				}
+
+				ECStationShop: {
+					Label: Station Shop
+					Tooltip: ""
+				}
+
+				ECMaterialShop: {
+					Label: Material Shop
+					Tooltip: ""
+				}
+
+				ECBagShop: {
+					Label: Bag Shop
+					Tooltip: ""
+				}
+
+				ECCrateShop: {
+					Label: Crate Shop
+					Tooltip: ""
+				}
+
+				ECOreShop: {
+					Label: Ore Shop
+					Tooltip: ""
+				}
+
+				ECNaturalBlocksShop: {
+					Label: Natural Blocks Shop
+					Tooltip: ""
+				}
+
+				ECBuildingBlocksShop: {
+					Label: Building Blocks Shop
+					Tooltip: ""
+				}
+			}
 		}
 
 		QoLCConfig: {
@@ -464,6 +583,8 @@ Mods: {
 				NPCs: NPC Toggles
 				Speed: Speed Toggles
 				Other: Other Toggles
+				BMShop: Dealer Shop Toggles
+				ECShop: Collector Shop Toggles
 			}
 		}
 	}

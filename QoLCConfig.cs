@@ -59,10 +59,6 @@ namespace QoLCompendium
         public bool ECNPC { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
-        public bool CheatyNPCs { get; set; }
-
-        [DefaultValue(true)]
         public bool FriendliesDontDie { get; set; }
 
         [DefaultValue(true)]
@@ -88,6 +84,10 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         public bool StalkerMoneyTrough { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool LavaSlimeNoLava { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Speed")]
         [DefaultValue(true)]
@@ -139,6 +139,10 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         public bool Halloween { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool WingSlot { get; set; }
 
         public List<ItemDefinition> CustomItems { get; set; }
 
@@ -215,5 +219,90 @@ namespace QoLCompendium
         [DefaultValue(true)]
         [ReloadRequired]
         public bool WatchingEye { get; set; }
+    }
+
+    public class ShopConfig : ModConfig
+    {
+        public override ConfigScope Mode => ConfigScope.ServerSide;
+
+        [Header("$Mods.QoLCompendium.QoLCConfig.Headers.BMShop")]
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool BMPotionShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool BMStationShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool BMMaterialShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool BMHardmodeMaterialShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool BMMovementAccessoryShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool BMCombatAccessoryShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool BMInformationShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool BMBagShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool BMNaturalBlockShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool BMBuildingBlockShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool BMHerbShop { get; set; }
+
+        [Header("$Mods.QoLCompendium.QoLCConfig.Headers.ECShop")]
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool ECPotionShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool ECStationShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool ECMaterialShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool ECBagShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool ECCrateShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool ECOreShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool ECNaturalBlocksShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool ECBuildingBlocksShop { get; set; }
     }
 }

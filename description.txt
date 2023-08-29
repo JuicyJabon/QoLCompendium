@@ -38,12 +38,20 @@ Current Features:
  - Starter Bag (Make sure to set items in config)
  - Asphalt Platforms
  - Staff of Regrowth auto-plant
+ - Wing Slot
+ - No lava slime lava
 
 Warning on Boss-dependent sales:
-You have to beat modded bosses with this mod enabled in order for the NPC to sell those items.
+You have to beat modded bosses with this mod enabled in order for the NPC to sell related items.
+
+Warning for Infernum Mode:
+You have to pick up the Bereft Vassal's boss bag for the kill to count.
+
+Warning for Qwerty's Mod:
+You have to pick up the Hydra's boss bag for the kill to count.
 
 Warning for Secrets of the Shadows:
-You have to pick up the Advisor's boss bag for the kill to count, this is because the boss stays idle in the world and can falsely toggle the down check in this mod.
+You have to pick up the Advisor's boss bag for the kill to count.
 
 Current Mod Support:
  - All Mods: Endless Potion Buffs & Healing
@@ -51,12 +59,18 @@ Current Mod Support:
  - Calamity: Endless Station Buffs & NPC Sales
  - Catalyst: NPC Sales
  - Consolaria: Non-consumable Boss summons & NPC Sales
+ - Echoes of the Ancients: NPC Sales
  - Fargo's Souls: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
+ - Gerd's Lab: Non-consumable Boss summons & NPC Sales
  - Homeward Journey: Non-consumable Boss summons & NPC Sales
+ - Infernum Mode: NPC Sales
  - Polarities: NPC Sales
+ - Qwerty's Mod: Non-consumable Boss summons & NPC Sales
  - Redemption: Endless Station Buffs & NPC Sales
  - Secrets of the Shadows: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
+ - Spirit Mod: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
  - Spooky Mod: Non-consumable Boss summons & NPC Sales
+ - Storm's Additions: Non-consumable Boss summons & NPC Sales
  - Terrorborn: NPC Sales
  - Thorium: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
  - Vitality: Non-consumable Boss summons & NPC Sales

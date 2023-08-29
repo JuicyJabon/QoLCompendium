@@ -68,8 +68,12 @@ namespace QoLCompendium.Tweaks
             ModLoader.TryGetMod("Spooky", out Mod spooky);
             ModLoader.TryGetMod("FargowiltasSouls", out Mod souls);
             ModLoader.TryGetMod("ContinentOfJourney", out Mod hj);
+            ModLoader.TryGetMod("GMR", out Mod gmr);
+            ModLoader.TryGetMod("QwertyMod", out Mod qwerty);
+            ModLoader.TryGetMod("StormDiversMod", out Mod storm);
+            ModLoader.TryGetMod("SpiritMod", out Mod spirit);
 
-            if (thor != null)
+            if (thor != null && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons)
             {
                 thor.TryFind("JellyfishResonator", out ModItem JellyfishResonator);
                 thor.TryFind("UnstableCore", out ModItem UnstableCore);
@@ -91,7 +95,7 @@ namespace QoLCompendium.Tweaks
                 }
             }
 
-            if (sots != null)
+            if (sots != null && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons)
             {
                 sots.TryFind("ElectromagneticLure", out ModItem ElectromagneticLure);
                 sots.TryFind("SuspiciousLookingCandle", out ModItem SuspiciousLookingCandle);
@@ -109,7 +113,7 @@ namespace QoLCompendium.Tweaks
                 }
             }
 
-            if (vitality != null)
+            if (vitality != null && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons)
             {
                 vitality.TryFind("CloudCore", out ModItem CloudCore);
                 vitality.TryFind("AncientCrown", out ModItem AncientCrown);
@@ -131,7 +135,7 @@ namespace QoLCompendium.Tweaks
                 }
             }
 
-            if (consolaria != null)
+            if (consolaria != null && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons)
             {
                 consolaria.TryFind("SuspiciousLookingEgg", out ModItem SuspiciousLookingEgg);
                 consolaria.TryFind("CursedStuffing", out ModItem CursedStuffing);
@@ -149,7 +153,7 @@ namespace QoLCompendium.Tweaks
                 }
             }
 
-            if (spooky != null)
+            if (spooky != null && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons)
             {
                 spooky.TryFind("RottenSeed", out ModItem RottenSeed);
                 spooky.TryFind("Fertalizer", out ModItem Fertalizer);
@@ -165,7 +169,7 @@ namespace QoLCompendium.Tweaks
                 }
             }
 
-            if (souls != null)
+            if (souls != null && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons)
             {
                 souls.TryFind("SquirrelCoatofArms", out ModItem SquirrelCoatofArms);
                 souls.TryFind("DevisCurse", out ModItem DevisCurse);
@@ -184,7 +188,7 @@ namespace QoLCompendium.Tweaks
                 }
             }
 
-            if (hj != null)
+            if (hj != null && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons)
             {
                 hj.TryFind("CannedSoulofFlight", out ModItem CannedSoulofFlight);
                 hj.TryFind("SouthernPotting", out ModItem SouthernPotting);
@@ -197,6 +201,86 @@ namespace QoLCompendium.Tweaks
                 for (int i = 0; i < hjItems.Count; i++)
                 {
                     if (hjItems[i].Item.type == item.type)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            if (gmr != null && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons)
+            {
+                gmr.TryFind("JackDroneOld", out ModItem JackDroneOld);
+
+                List<ModItem> gmrItems = new() { JackDroneOld };
+
+                for (int i = 0; i < gmrItems.Count; i++)
+                {
+                    if (gmrItems[i].Item.type == item.type)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            if (qwerty != null && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons)
+            {
+                qwerty.TryFind("AncientEmblem", out ModItem AncientEmblem);
+                qwerty.TryFind("B4Summon", out ModItem B4Summon);
+                qwerty.TryFind("BladeBossSummon", out ModItem BladeBossSummon);
+                qwerty.TryFind("DinoEgg", out ModItem DinoEgg);
+                qwerty.TryFind("FortressBossSummon", out ModItem FortressBossSummon);
+                qwerty.TryFind("GodSealKeycard", out ModItem GodSealKeycard);
+                qwerty.TryFind("HydraSummon", out ModItem HydraSummon);
+                qwerty.TryFind("RitualInterupter", out ModItem RitualInterupter);
+                qwerty.TryFind("SummoningRune", out ModItem SummoningRune);
+
+                List<ModItem> qwertyItems = new() { AncientEmblem, B4Summon, BladeBossSummon, DinoEgg, FortressBossSummon, GodSealKeycard, HydraSummon, RitualInterupter, SummoningRune };
+
+                for (int i = 0; i < qwertyItems.Count; i++)
+                {
+                    if (qwertyItems[i].Item.type == item.type)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            if (storm != null && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons)
+            {
+                storm.TryFind("AridBossSummon", out ModItem AridBossSummon);
+                storm.TryFind("MoonlingSummoner", out ModItem MoonlingSummoner);
+                storm.TryFind("StormBossSummoner", out ModItem StormBossSummoner);
+                storm.TryFind("UltimateBossSummoner", out ModItem UltimateBossSummoner);
+
+                List<ModItem> stormItems = new() { AridBossSummon, MoonlingSummoner, StormBossSummoner, UltimateBossSummoner };
+
+                for (int i = 0; i < stormItems.Count; i++)
+                {
+                    if (stormItems[i].Item.type == item.type)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            if (spirit != null && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons)
+            {
+                spirit.TryFind("DistressJellyItem", out ModItem DistressJellyItem);
+                spirit.TryFind("GladeWreath", out ModItem GladeWreath);
+                spirit.TryFind("ReachBossSummon", out ModItem ReachBossSummon);
+                spirit.TryFind("JewelCrown", out ModItem JewelCrown);
+                spirit.TryFind("BlackPearl", out ModItem BlackPearl);
+                spirit.TryFind("BlueMoonSpawn", out ModItem BlueMoonSpawn);
+                spirit.TryFind("DuskCrown", out ModItem DuskCrown);
+                spirit.TryFind("CursedCloth", out ModItem CursedCloth);
+                spirit.TryFind("StoneSkin", out ModItem StoneSkin);
+                spirit.TryFind("MartianTransmitter", out ModItem MartianTransmitter);
+
+                List<ModItem> spiritItems = new() { DistressJellyItem, ReachBossSummon, GladeWreath, JewelCrown, BlackPearl, BlueMoonSpawn, DuskCrown, CursedCloth, StoneSkin, MartianTransmitter };
+
+                for (int i = 0; i < spiritItems.Count; i++)
+                {
+                    if (spiritItems[i].Item.type == item.type)
                     {
                         return false;
                     }
