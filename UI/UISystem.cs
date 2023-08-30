@@ -14,6 +14,8 @@ namespace QoLCompendium.UI
         private UserInterface ecInterface;
         internal GlobeUI globeUI;
         private UserInterface globeInterface;
+        internal EMUI emUI;
+        private UserInterface emInterface;
         public override void OnWorldLoad()
         {
             if (!Main.dedServ)
@@ -32,6 +34,11 @@ namespace QoLCompendium.UI
                 globeUI.Activate();
                 globeInterface = new UserInterface();
                 globeInterface.SetState(globeUI);
+
+                emUI = new EMUI();
+                emUI.Activate();
+                emInterface = new UserInterface();
+                emInterface.SetState(emUI);
             }
         }
 
@@ -83,6 +90,21 @@ namespace QoLCompendium.UI
                     InterfaceScaleType.UI)
                 );
             }
+            if (MouseTextIndex != -1)
+            {
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "QoLC: Spawn Selector",
+                    delegate
+                    {
+                        if (EMUI.visible)
+                        {
+                            emUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+            }
         }
 
         public override void UpdateUI(GameTime gameTime)
@@ -100,6 +122,11 @@ namespace QoLCompendium.UI
             if (globeInterface != null && GlobeUI.visible)
             {
                 globeInterface.Update(gameTime);
+            }
+
+            if (emInterface != null && EMUI.visible)
+            {
+                emInterface.Update(gameTime);
             }
         }
     }

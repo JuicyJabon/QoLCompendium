@@ -43,7 +43,11 @@ namespace QoLCompendium.UI
 
         public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
         {
-            return modded;
+            if (ModContent.GetInstance<QoLCConfig>().WingSlot)
+            {
+                return modded;
+            }
+            return base.CanEquipAccessory(item, player, slot, modded);
         }
     }
 }

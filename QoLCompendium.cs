@@ -17,6 +17,8 @@ namespace QoLCompendium
         private UserInterface ecInterface;
         internal GlobeUI globeUI;
         private UserInterface globeInterface;
+        internal EMUI emUI;
+        private UserInterface emInterface;
 
         private static bool oldBreak;
 
@@ -52,6 +54,11 @@ namespace QoLCompendium
                 globeUI.Activate();
                 globeInterface = new UserInterface();
                 globeInterface.SetState(globeUI);
+
+                emUI = new EMUI();
+                emUI.Activate();
+                emInterface = new UserInterface();
+                emInterface.SetState(emUI);
             }
 
             IL_Chest.VanillaSetupShop += il =>

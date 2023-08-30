@@ -54,6 +54,11 @@ namespace QoLCompendium.Tweaks
                 spawnRate = (int)(spawnRate * 0.1);
                 maxSpawns = (int)(maxSpawns * 10f);
             }
+            if (player.GetModPlayer<QoLCPlayer>().enemyCalmer)
+            {
+                spawnRate = (int)(spawnRate * 5f);
+                maxSpawns = (int)(maxSpawns * 1f);
+            }
         }
 
         public override bool PreAI(NPC npc)

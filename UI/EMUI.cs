@@ -11,7 +11,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace QoLCompendium.UI
 {
-    class GlobeUI : UIState
+    class EMUI : UIState
     {
         public UIPanel ShopPanel;
         public static bool visible = false;
@@ -24,135 +24,106 @@ namespace QoLCompendium.UI
             ShopPanel.Left.Set(575f, 0f);
             ShopPanel.Top.Set(275f, 0f);
             ShopPanel.Width.Set(290f, 0f);
-            ShopPanel.Height.Set(260f, 0f);
+            ShopPanel.Height.Set(200f, 0f);
             ShopPanel.BackgroundColor = new Color(73, 94, 171);
 
             ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
             ShopPanel.OnLeftMouseUp += new MouseEvent(DragEnd);
 
-            UIText text0 = new("Reset Biome");
+            UIText text0 = new("Increase Spawns");
             text0.Left.Set(45, 0f);
             text0.Top.Set(16, 0f);
             text0.Width.Set(100, 0f);
             text0.Height.Set(26, 0f);
             ShopPanel.Append(text0);
 
-            UIText text1 = new("Desert");
+            UIText text1 = new("Decrease Spawns");
             text1.Left.Set(45, 0f);
             text1.Top.Set(46, 0f);
             text1.Width.Set(50, 0f);
             text1.Height.Set(26, 0f);
             ShopPanel.Append(text1);
 
-            UIText text2 = new("Snow");
+            UIText text2 = new("Cancel Spawns");
             text2.Left.Set(45, 0f);
             text2.Top.Set(76, 0f);
             text2.Width.Set(40, 0f);
             text2.Height.Set(26, 0f);
             ShopPanel.Append(text2);
 
-            UIText text3 = new("Jungle");
+            UIText text3 = new("Cancel Events");
             text3.Left.Set(45, 0f);
             text3.Top.Set(106, 0f);
-            text3.Width.Set(60, 0f);
+            text3.Width.Set(40, 0f);
             text3.Height.Set(26, 0f);
             ShopPanel.Append(text3);
 
-            UIText text4 = new("Glowing Mushroom");
+            UIText text4 = new("Cancel Events & Spawns");
             text4.Left.Set(45, 0f);
             text4.Top.Set(136, 0f);
-            text4.Width.Set(100, 0f);
+            text4.Width.Set(40, 0f);
             text4.Height.Set(26, 0f);
             ShopPanel.Append(text4);
 
-            UIText text5 = new("Corruption");
+            UIText text5 = new("Revert Changes");
             text5.Left.Set(45, 0f);
             text5.Top.Set(166, 0f);
-            text5.Width.Set(70, 0f);
+            text5.Width.Set(40, 0f);
             text5.Height.Set(26, 0f);
             ShopPanel.Append(text5);
 
-            UIText text6 = new("Crimson");
-            text6.Left.Set(45, 0f);
-            text6.Top.Set(196, 0f);
-            text6.Width.Set(70, 0f);
-            text6.Height.Set(26, 0f);
-            ShopPanel.Append(text6);
-
-            UIText text7 = new("Hallow - Requires Hardmode");
-            text7.Left.Set(45, 0f);
-            text7.Top.Set(226, 0f);
-            text7.Width.Set(100, 0f);
-            text7.Height.Set(26, 0f);
-            ShopPanel.Append(text7);
-
-            Asset<Texture2D> resetTexture = Request<Texture2D>("QoLCompendium/Assets/Globe");
-            Asset<Texture2D> desertTexture = Request<Texture2D>("QoLCompendium/Assets/DesertGlobe");
-            Asset<Texture2D> snowTexture = Request<Texture2D>("QoLCompendium/Assets/IceGlobe");
-            Asset<Texture2D> jungleTexture = Request<Texture2D>("QoLCompendium/Assets/JungleGlobe");
-            Asset<Texture2D> glowingMushroomTexture = Request<Texture2D>("QoLCompendium/Assets/GlowingMushroomGlobe");
-            Asset<Texture2D> corruptionTexture = Request<Texture2D>("QoLCompendium/Assets/CorruptionGlobe");
-            Asset<Texture2D> crimsonTexture = Request<Texture2D>("QoLCompendium/Assets/CrimsonGlobe");
-            Asset<Texture2D> hallowTexture = Request<Texture2D>("QoLCompendium/Assets/HallowGlobe");
+            Asset<Texture2D> decreaseTexture = Request<Texture2D>("QoLCompendium/Assets/Decrease");
+            Asset<Texture2D> increaseTexture = Request<Texture2D>("QoLCompendium/Assets/Increase");
+            Asset<Texture2D> cancelTexture = Request<Texture2D>("QoLCompendium/Assets/Cancel");
             Asset<Texture2D> buttonDeleteTexture = Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
 
-            UIImageButton playButton0 = new(resetTexture);
+            UIImageButton playButton0 = new(increaseTexture);
             playButton0.Left.Set(10, 0f);
             playButton0.Top.Set(10, 0f);
             playButton0.Width.Set(32, 0f);
             playButton0.Height.Set(32, 0f);
             playButton0.OnLeftClick += new MouseEvent(PlayButtonClicked0);
             ShopPanel.Append(playButton0);
-            UIImageButton playButton1 = new(desertTexture);
+
+            UIImageButton playButton1 = new(decreaseTexture);
             playButton1.Left.Set(10, 0f);
             playButton1.Top.Set(40, 0f);
             playButton1.Width.Set(32, 0f);
             playButton1.Height.Set(32, 0f);
             playButton1.OnLeftClick += new MouseEvent(PlayButtonClicked1);
             ShopPanel.Append(playButton1);
-            UIImageButton playButton2 = new(snowTexture);
+
+            UIImageButton playButton2 = new(cancelTexture);
             playButton2.Left.Set(10, 0f);
             playButton2.Top.Set(70, 0f);
             playButton2.Width.Set(32, 0f);
             playButton2.Height.Set(32, 0f);
             playButton2.OnLeftClick += new MouseEvent(PlayButtonClicked2);
             ShopPanel.Append(playButton2);
-            UIImageButton playButton3 = new(jungleTexture);
+
+            UIImageButton playButton3 = new(cancelTexture);
             playButton3.Left.Set(10, 0f);
             playButton3.Top.Set(100, 0f);
             playButton3.Width.Set(32, 0f);
             playButton3.Height.Set(32, 0f);
             playButton3.OnLeftClick += new MouseEvent(PlayButtonClicked3);
             ShopPanel.Append(playButton3);
-            UIImageButton playButton4 = new(glowingMushroomTexture);
+
+            UIImageButton playButton4 = new(cancelTexture);
             playButton4.Left.Set(10, 0f);
             playButton4.Top.Set(130, 0f);
             playButton4.Width.Set(32, 0f);
             playButton4.Height.Set(32, 0f);
             playButton4.OnLeftClick += new MouseEvent(PlayButtonClicked4);
             ShopPanel.Append(playButton4);
-            UIImageButton playButton5 = new(corruptionTexture);
+
+            UIImageButton playButton5 = new(cancelTexture);
             playButton5.Left.Set(10, 0f);
             playButton5.Top.Set(160, 0f);
             playButton5.Width.Set(32, 0f);
             playButton5.Height.Set(32, 0f);
             playButton5.OnLeftClick += new MouseEvent(PlayButtonClicked5);
             ShopPanel.Append(playButton5);
-            UIImageButton playButton6 = new(crimsonTexture);
-            playButton6.Left.Set(10, 0f);
-            playButton6.Top.Set(190, 0f);
-            playButton6.Width.Set(32, 0f);
-            playButton6.Height.Set(32, 0f);
-            playButton6.OnLeftClick += new MouseEvent(PlayButtonClicked6);
-            ShopPanel.Append(playButton6);
-            UIImageButton playButton7 = new(hallowTexture);
-            playButton7.Left.Set(10, 0f);
-            playButton7.Top.Set(220, 0f);
-            playButton7.Width.Set(32, 0f);
-            playButton7.Height.Set(32, 0f);
-            playButton7.OnLeftClick += new MouseEvent(PlayButtonClicked7);
-            ShopPanel.Append(playButton7);
-            Append(ShopPanel);
 
             UIImageButton closeButton = new(buttonDeleteTexture);
             closeButton.Left.Set(260, 0f);
@@ -169,7 +140,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedBiome = 0;
+                p.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = 0;
                 visible = false;
             }
         }
@@ -179,7 +150,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedBiome = 1;
+                p.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = 1;
                 visible = false;
             }
         }
@@ -189,7 +160,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedBiome = 2;
+                p.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = 2;
                 visible = false;
             }
         }
@@ -199,7 +170,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedBiome = 3;
+                p.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = 3;
                 visible = false;
             }
         }
@@ -209,7 +180,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedBiome = 4;
+                p.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = 4;
                 visible = false;
             }
         }
@@ -219,27 +190,7 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedBiome = 5;
-                visible = false;
-            }
-        }
-
-        private void PlayButtonClicked6(UIMouseEvent evt, UIElement listeningElement)
-        {
-            if (Main.GameUpdateCount - timeStart >= 10)
-            {
-                Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedBiome = 6;
-                visible = false;
-            }
-        }
-
-        private void PlayButtonClicked7(UIMouseEvent evt, UIElement listeningElement)
-        {
-            if (Main.GameUpdateCount - timeStart >= 10)
-            {
-                Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedBiome = 7;
+                p.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = 5;
                 visible = false;
             }
         }

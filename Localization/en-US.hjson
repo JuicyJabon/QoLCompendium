@@ -103,6 +103,11 @@ Mods: {
 				DisplayName: Work In Progress
 				Tooltip: Shop is being built, please come back later!
 			}
+
+			EntityManipulator: {
+				DisplayName: Entity Manipulator
+				Tooltip: Favorite this item to activate the selected spawn rate modifier
+			}
 		}
 
 		NPCs: {
@@ -399,8 +404,8 @@ Mods: {
 				}
 
 				Erasers: {
-					Label: Erasers
-					Tooltip: Toggles the Eraser & Aggressor items
+					Label: Entity Manipulator
+					Tooltip: Toggles the Entity Manipulator item
 				}
 
 				CursedMirror: {

@@ -30,11 +30,15 @@ namespace QoLCompendium.Tweaks
 
         public bool enemyAggressor = false;
 
+        public bool enemyCalmer = false;
+
         public bool headCounter = false;
 
         public int respawnFullHPTimer;
 
         public int selectedBiome = 0;
+
+        public int selectedSpawnModifier = 5;
 
         public bool bloodIdol = false;
 
@@ -45,6 +49,7 @@ namespace QoLCompendium.Tweaks
             magnetActive = false;
             enemyEraser = false;
             enemyAggressor = false;
+            enemyCalmer = false;
             headCounter = false;
             bloodIdol = false;
             eclipseIdol = false;
@@ -64,6 +69,7 @@ namespace QoLCompendium.Tweaks
             magnetActive = false;
             enemyEraser = false;
             enemyAggressor = false;
+            enemyCalmer = false;
             headCounter = false;
             bloodIdol = false;
             eclipseIdol = false;

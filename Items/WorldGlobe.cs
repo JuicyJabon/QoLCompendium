@@ -17,7 +17,6 @@ namespace QoLCompendium.Items
 
         public override void SetStaticDefaults()
         {
-            // Tooltip.SetDefault("Favorite this item to always be in the selected biome");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
@@ -80,6 +79,7 @@ namespace QoLCompendium.Items
                 {
                     player.ZoneCrimson = true;
                 }
+
                 if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 7 && Main.hardMode)
                 {
                     player.ZoneHallow = true;
