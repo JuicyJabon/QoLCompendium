@@ -25,6 +25,7 @@ namespace QoLCompendium.Items
             Item.maxStack = 1;
             Item.consumable = false;
             Item.rare = ItemRarityID.Orange;
+            Item.value = Item.sellPrice(silver: 90);
         }
 
         public override void AddRecipes()

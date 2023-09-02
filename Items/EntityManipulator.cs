@@ -32,6 +32,7 @@ namespace QoLCompendium.Items
             Item.UseSound = new SoundStyle?(SoundID.MenuTick);
             Item.useAnimation = 20;
             Item.useTime = 20;
+            Item.value = Item.sellPrice(silver: 50);
         }
 
         public override bool? UseItem(Player player)

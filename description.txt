@@ -71,6 +71,5 @@ Current Mod Support:
  - Spirit Mod: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
  - Spooky Mod: Non-consumable Boss summons & NPC Sales
  - Storm's Additions: Non-consumable Boss summons & NPC Sales
- - Terrorborn: NPC Sales
  - Thorium: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
  - Vitality: Non-consumable Boss summons & NPC Sales

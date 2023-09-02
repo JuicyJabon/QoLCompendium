@@ -194,7 +194,7 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         [ReloadRequired]
-        public bool HeadCounter { get; set; }
+        public bool InformationAccessories { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]

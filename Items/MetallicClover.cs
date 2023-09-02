@@ -1,4 +1,4 @@
-using QoLCompendium.Tweaks;
+﻿using QoLCompendium.Tweaks;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace QoLCompendium.Items
 {
-    public class HeadCounter : ModItem
+    public class MetallicClover : ModItem
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
@@ -20,8 +20,8 @@ namespace QoLCompendium.Items
 
         public override void SetDefaults()
         {
-            Item.width = 18;
-            Item.height = 16;
+            Item.width = 15;
+            Item.height = 15;
             Item.maxStack = 1;
             Item.rare = ItemRarityID.Blue;
             Item.accessory = true;
@@ -30,17 +30,17 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<HeadCounter>(), 1).AddIngredient(ItemID.Glass, 5).AddRecipeGroup(RecipeGroupID.IronBar, 5).AddTile(TileID.Anvils).Register();
+            Recipe.Create(ModContent.ItemType<HeadCounter>(), 1).AddIngredient(ItemID.Vine, 2).AddIngredient(ItemID.TatteredCloth, 1).AddRecipeGroup(RecipeGroupID.IronBar, 5).AddTile(TileID.Anvils).Register();
         }
 
         public override void UpdateInventory(Player player)
         {
-            player.GetModPlayer<QoLCPlayer>().headCounter = true;
+            player.GetModPlayer<QoLCPlayer>().metallicClover = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<QoLCPlayer>().headCounter = true;
+            player.GetModPlayer<QoLCPlayer>().metallicClover = true;
         }
     }
 }

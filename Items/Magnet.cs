@@ -27,6 +27,7 @@ namespace QoLCompendium.Items
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.HiddenAnimation;
             Item.rare = ItemRarityID.Green;
+            Item.value = Item.sellPrice(gold: 1);
         }
 
         public override void AddRecipes()

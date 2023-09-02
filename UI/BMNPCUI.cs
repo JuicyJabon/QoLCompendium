@@ -37,7 +37,7 @@ namespace QoLCompendium.UI
             text0.Height.Set(22, 0f);
             ShopPanel.Append(text0);
 
-            UIText text10 = new("Station Buffs & Foods");
+            UIText text10 = new("Flasks, Stations & Foods");
             text10.Left.Set(35, 0f);
             text10.Top.Set(40, 0f);
             text10.Width.Set(100, 0f);
@@ -51,7 +51,7 @@ namespace QoLCompendium.UI
             text1.Height.Set(22, 0f);
             ShopPanel.Append(text1);
 
-            UIText text2 = new("Rare Materials");
+            UIText text2 = new("Hardmode Materials");
             text2.Left.Set(35, 0f);
             text2.Top.Set(100, 0f);
             text2.Width.Set(100, 0f);

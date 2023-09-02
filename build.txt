@@ -1,6 +1,6 @@
 displayName = Quality of Life Compendium
 author = Jabon
-version = 2.0.13
+version = 2.0.15
 homepage = https://discord.gg/KdDjFdCnny
 hideCode = true
 hideResources = true

@@ -108,6 +108,11 @@ Mods: {
 				DisplayName: Entity Manipulator
 				Tooltip: Favorite this item to activate the selected spawn rate modifier
 			}
+
+			MetallicClover: {
+				DisplayName: Metallic Clover
+				Tooltip: Displays luck
+			}
 		}
 
 		NPCs: {
@@ -413,9 +418,9 @@ Mods: {
 					Tooltip: Toggles the Cursed Mirror item
 				}
 
-				HeadCounter: {
-					Label: Head Counter
-					Tooltip: Toggles the Head Counter item
+				InformationAccessories: {
+					Label: Information Accessories
+					Tooltip: Toggles Information items
 				}
 
 				Forwarper: {

@@ -195,8 +195,9 @@ namespace QoLCompendium.Tweaks
                 hj.TryFind("SunlightCrown", out ModItem SunlightCrown);
                 hj.TryFind("MetalSpine", out ModItem MetalSpine);
                 hj.TryFind("UnstableGlobe", out ModItem UnstableGlobe);
+                hj.TryFind("UltimateTorch", out ModItem UltimateTorch);
 
-                List<ModItem> hjItems = new() { CannedSoulofFlight, SouthernPotting, SunlightCrown, MetalSpine, UnstableGlobe };
+                List<ModItem> hjItems = new() { CannedSoulofFlight, SouthernPotting, SunlightCrown, MetalSpine, UnstableGlobe, UltimateTorch };
 
                 for (int i = 0; i < hjItems.Count; i++)
                 {

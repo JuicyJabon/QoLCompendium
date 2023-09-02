@@ -28,6 +28,7 @@ namespace QoLCompendium.Items
             Item.useAnimation = 20;
             Item.useTime = 20;
             Item.createTile = ModContent.TileType<AutoHouserTile>();
+            Item.value = Item.sellPrice(copper: 50);
         }
 
         public override void AddRecipes()

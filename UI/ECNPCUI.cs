@@ -24,7 +24,7 @@ namespace QoLCompendium.UI
             ShopPanel.Left.Set(575f, 0f);
             ShopPanel.Top.Set(300f, 0f);
             ShopPanel.Width.Set(385f, 0f);
-            ShopPanel.Height.Set(250f, 0f);
+            ShopPanel.Height.Set(280f, 0f);
             ShopPanel.BackgroundColor = new Color(73, 94, 171);
 
             ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
@@ -86,14 +86,12 @@ namespace QoLCompendium.UI
             text7.Height.Set(22, 0f);
             ShopPanel.Append(text7);
 
-            /*
             UIText text8 = new("Modded Herbs & Plants");
             text8.Left.Set(35, 0f);
             text8.Top.Set(250, 0f);
             text8.Width.Set(100, 0f);
             text8.Height.Set(22, 0f);
             ShopPanel.Append(text8);
-            */
 
             Asset<Texture2D> buttonPlayTexture = Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
             Asset<Texture2D> buttonDeleteTexture = Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
@@ -194,7 +192,6 @@ namespace QoLCompendium.UI
             playButton7.OnLeftClick += new MouseEvent(PlayButtonClicked7);
             ShopPanel.Append(playButton7);
 
-            /*
             UIImageButton playButton8 = new(buttonPlayTexture);
             playButton8.Left.Set(10, 0f);
             playButton8.Top.Set(250, 0f);
@@ -202,7 +199,6 @@ namespace QoLCompendium.UI
             playButton8.Height.Set(22, 0f);
             playButton8.OnLeftClick += new MouseEvent(PlayButtonClicked8);
             ShopPanel.Append(playButton8);
-            */
 
             UIImageButton closeButton = new(buttonDeleteTexture);
             closeButton.Left.Set(350, 0f);

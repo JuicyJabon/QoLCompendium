@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,81 +29,19 @@ namespace QoLCompendium.Tweaks
         }
     }
 
-    public struct EndlessBuffSource
-    {
-        public EndlessBuffSource(Item item, string key)
-        {
-            Item = item;
-            Key = key;
-        }
-
-        public Item Item;
-
-        public string Key;
-    }
-
-    public static class BuffHelper
-    {
-        public static List<(T, string)> FromArray<T>(T[] items, string key) => items.Select(t => (t, key)).ToList();
-    }
-
     public class BuffPlayer : ModPlayer
     {
-        public Dictionary<int, EndlessBuffSource> EndlessBuffSources = new();
-
-        public List<ValueTuple<Item, string>> ItemsToCountForEndlessBuffs = new();
-
-        public int InventoryItemsStart;
-
-        public int PiggyBankItemsStart;
-
-        public int SafeItemsStart;
-
-        public int DefendersForgeItemsStart;
-
-        public int VoidVaultItemsStart;
-
         public static float LuckPotionBoost = 0;
-
-        public override void PreUpdateBuffs()
+        public override void PostUpdateBuffs()
         {
-            if (ModContent.GetInstance<QoLCConfig>().EndlessBuffsAndHealing)
-            {
-                if (Main.GameUpdateCount % 1.5 == 0.0)
-                {
-                    ItemsToCountForEndlessBuffs.Clear();
-                    ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.inventory, "Inventory"));
-                    InventoryItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
-                    ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.bank.item, "PiggyBank"));
-                    PiggyBankItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
-                    ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.bank2.item, "Safe"));
-                    SafeItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
-                    ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.bank3.item, "DefendersForge"));
-                    DefendersForgeItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
-                    ItemsToCountForEndlessBuffs.AddRange(BuffHelper.FromArray(Player.bank4.item, "VoidVault"));
-                    VoidVaultItemsStart = ItemsToCountForEndlessBuffs.Count - 1;
-                }
-                EndlessBuffSources.Clear();
-                foreach ((Item, string) val in ItemsToCountForEndlessBuffs)
-                {
-                    (Item item, string key) = val;
-                    if (item.buffType <= 0)
-                        continue;
+            if (Player.whoAmI != Main.myPlayer || Main.netMode == NetmodeID.Server)
+                return;
 
-                    if (item.stack >= 30)
-                    {
-                        EndlessBuffSources.Add(item.buffType, new EndlessBuffSource(item, key));
-                        Player.AddBuff(item.buffType, 20);
-                        Main.buffNoTimeDisplay[item.buffType] = true;
-                    }
-                }
-
-                ApplyAvailableBuffs(Player.inventory);
-                ApplyAvailableBuffs(Player.bank.item);
-                ApplyAvailableBuffs(Player.bank2.item);
-                ApplyAvailableBuffs(Player.bank3.item);
-                ApplyAvailableBuffs(Player.bank4.item);
-            }
+            ApplyAvailableBuffs(Player.inventory);
+            ApplyAvailableBuffs(Player.bank.item);
+            ApplyAvailableBuffs(Player.bank2.item);
+            ApplyAvailableBuffs(Player.bank3.item);
+            ApplyAvailableBuffs(Player.bank4.item);
         }
 
         public override void ModifyLuck(ref float luck)
@@ -117,34 +54,33 @@ namespace QoLCompendium.Tweaks
         {
             foreach (Item item in items)
             {
-                int buffType = BuffItem.GetItemBuffType(item);
-                if (item != null)
+                if (item.createTile is TileID.GardenGnome)
                 {
-                    if (item.type == ItemID.LuckPotionLesser)
-                    {
-                        LuckPotionBoost += 0.1f;
-                    }
-                    if (item.type == ItemID.LuckPotion)
-                    {
-                        LuckPotionBoost += 0.2f;
-                    }
-                    if (item.type == ItemID.LuckPotionGreater)
-                    {
-                        LuckPotionBoost += 0.3f;
-                    }
-                    if (item.type == ItemID.GardenGnome)
-                    {
-                        LuckPotionBoost += 0.2f;
-                    }
+                    LuckPotionBoost += 0.2f;
+                }
 
-                    switch (buffType)
-                    {
-                        case -1:
-                            break;
-                        default:
-                            Main.LocalPlayer.AddBuff(buffType, 2);
-                            break;
-                    }
+                int buffType = BuffItem.GetItemBuffType(item);
+
+                bool wellFed3Enabled = Main.LocalPlayer.FindBuffIndex(BuffID.WellFed3) != -1;
+                bool wellFed2Enabled = Main.LocalPlayer.FindBuffIndex(BuffID.WellFed2) != -1;
+
+                switch (buffType)
+                {
+                    case BuffID.WellFed when wellFed2Enabled || wellFed3Enabled:
+                    case BuffID.WellFed2 when wellFed3Enabled:
+                        continue;
+                    case -1:
+                        break;
+                    default:
+                        Main.LocalPlayer.AddBuff(buffType, 2);
+                        LuckPotionBoost = item.type switch
+                        {
+                            ItemID.LuckPotionLesser => Math.Max(LuckPotionBoost, 0.1f),
+                            ItemID.LuckPotion => Math.Max(LuckPotionBoost, 0.2f),
+                            ItemID.LuckPotionGreater => Math.Max(LuckPotionBoost, 0.3f),
+                            _ => LuckPotionBoost
+                        };
+                        break;
                 }
             }
         }
@@ -290,9 +226,19 @@ namespace QoLCompendium.Tweaks
 
         public static int GetItemBuffType(Item item)
         {
+            if (ModContent.GetInstance<QoLCConfig>().EndlessBuffsAndHealing)
+            {
+                if (item.stack >= ModContent.GetInstance<QoLCConfig>().EndlessBuffAmount && item.active)
+                {
+                    if (item.buffType > 0)
+                        return item.buffType;
+                }
+            }
+
             IsBuffTileItem(item, out int buffType);
             if (buffType is not -1)
                 return buffType;
+
             if (item.type == ItemID.HoneyBucket)
             {
                 return BuffID.Honey;

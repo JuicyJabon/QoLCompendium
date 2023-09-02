@@ -1152,18 +1152,15 @@ namespace QoLCompendium.Tweaks
                         downedAdvisor = true;
                     }
                 }
-            }
 
-            if (spookyLoaded)
-            {
-                if (downedOrro && downedBoro)
+                if (sotsMod.TryFind("DissolvingAether", out ModItem DissolvingAether))
                 {
-                    downedOrroBoro = true;
+                    if (Main.LocalPlayer.HasItem(DissolvingAether.Type))
+                    {
+                        downedAdvisor = true;
+                    }
                 }
-            }
 
-            if (sotsLoaded)
-            {
                 if (downedAdvisor)
                 {
                     downedOtherworldlySpirit = true;
@@ -1175,11 +1172,27 @@ namespace QoLCompendium.Tweaks
                 }
             }
 
+            if (spookyLoaded)
+            {
+                if (downedOrro && downedBoro)
+                {
+                    downedOrroBoro = true;
+                }
+            }
+
             if (qwertyLoaded)
             {
                 if (qwertyMod.TryFind("HydraBag", out ModItem HydraBag))
                 {
                     if (Main.LocalPlayer.HasItem(HydraBag.Type))
+                    {
+                        downedHydra = true;
+                    }
+                }
+
+                if (qwertyMod.TryFind("HydraScale", out ModItem HydraScale))
+                {
+                    if (Main.LocalPlayer.HasItem(HydraScale.Type))
                     {
                         downedHydra = true;
                     }

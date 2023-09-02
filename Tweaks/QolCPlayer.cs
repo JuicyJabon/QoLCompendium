@@ -14,18 +14,6 @@ namespace QoLCompendium.Tweaks
     {
         public bool magnetActive = false;
 
-        public Dictionary<int, EndlessBuffSource> EndlessBuffSources = new();
-
-        public List<ValueTuple<Item, string>> ItemsToCountForEndlessBuffs = new();
-
-        public int InventoryItemsStart;
-
-        public int PiggyBankItemsStart;
-
-        public int SafeItemsStart;
-
-        public int DefendersForgeItemsStart;
-
         public bool enemyEraser = false;
 
         public bool enemyAggressor = false;
@@ -34,15 +22,17 @@ namespace QoLCompendium.Tweaks
 
         public bool headCounter = false;
 
+        public bool metallicClover = false;
+
+        public bool bloodIdol = false;
+
+        public bool eclipseIdol = false;
+
         public int respawnFullHPTimer;
 
         public int selectedBiome = 0;
 
         public int selectedSpawnModifier = 5;
-
-        public bool bloodIdol = false;
-
-        public bool eclipseIdol = false;
 
         public override void ResetEffects()
         {
@@ -51,6 +41,7 @@ namespace QoLCompendium.Tweaks
             enemyAggressor = false;
             enemyCalmer = false;
             headCounter = false;
+            metallicClover = false;
             bloodIdol = false;
             eclipseIdol = false;
 
@@ -71,6 +62,7 @@ namespace QoLCompendium.Tweaks
             enemyAggressor = false;
             enemyCalmer = false;
             headCounter = false;
+            metallicClover = false;
             bloodIdol = false;
             eclipseIdol = false;
 
@@ -491,6 +483,11 @@ namespace QoLCompendium.Tweaks
             if (itemType == ModContent.ItemType<HeadCounter>())
             {
                 headCounter = true;
+                return;
+            }
+            if (itemType == ModContent.ItemType<MetallicClover>())
+            {
+                metallicClover = true;
                 return;
             }
         }

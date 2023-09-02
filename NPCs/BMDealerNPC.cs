@@ -188,8 +188,8 @@ namespace QoLCompendium.NPCs
             }
             else if (shopNum == 10)
             {
-                button = "Station Buffs & Foods";
-                ShopName = "Station Buffs & Foods";
+                button = "Flasks, Stations & Foods";
+                ShopName = "Flasks, Stations & Foods";
             }
             button2 = "Shop Changer";
         }
@@ -256,6 +256,7 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.BeeWax, Condition.DownedQueenBee)
                     .Add(ItemID.BlackInk)
                     .Add(ItemID.BlackLens)
+                    .Add(ItemID.BlackPearl)
                     .Add(ItemID.Bone, Condition.DownedSkeletron)
                     .Add(ItemID.Cobweb)
                     .Add(ItemID.CyanHusk)
@@ -267,6 +268,7 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.Leather)
                     .Add(ItemID.Lens)
                     .Add(ItemID.PinkGel)
+                    .Add(ItemID.PinkPearl)
                     .Add(ItemID.PurpleMucos)
                     .Add(ItemID.RedHusk)
                     .Add(ItemID.RottenChunk)
@@ -279,13 +281,14 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.Vertebrae)
                     .Add(ItemID.Vine)
                     .Add(ItemID.VioletHusk)
+                    .Add(ItemID.WhitePearl)
+                    .Add(ItemID.WhoopieCushion)
                     .Add(ItemID.WormTooth);
             matShop.Register();
 
             var rMatShop = new NPCShop(Type, "Hardmode Materials")
                     .Add(ItemID.AncientCloth, Condition.Hardmode)
                     .Add(ItemID.BeetleHusk, Condition.DownedGolem)
-                    .Add(ItemID.BlackPearl)
                     .Add(ItemID.BrokenHeroSword, Condition.DownedPlantera)
                     .Add(ItemID.CrystalShard, Condition.Hardmode)
                     .Add(ItemID.CursedFlame, Condition.Hardmode)
@@ -295,14 +298,11 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.FrostCore, Condition.Hardmode)
                     .Add(ItemID.Ichor, Condition.Hardmode)
                     .Add(ItemID.LightShard, Condition.Hardmode)
-                    .Add(ItemID.PinkPearl)
                     .Add(ItemID.PixieDust, Condition.Hardmode)
                     .Add(ItemID.LunarTabletFragment, Condition.DownedPlantera)
                     .Add(ItemID.SpiderFang, Condition.Hardmode)
                     .Add(ItemID.TurtleShell, Condition.Hardmode)
                     .Add(ItemID.UnicornHorn, Condition.Hardmode)
-                    .Add(ItemID.WhitePearl)
-                    .Add(ItemID.WhoopieCushion)
                     .Add(ItemID.SoulofFlight, Condition.Hardmode)
                     .Add(ItemID.SoulofLight, Condition.Hardmode)
                     .Add(ItemID.SoulofNight, Condition.Hardmode)
@@ -402,6 +402,7 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.MoneyTrough)
                     .Add(ItemID.CordageGuide)
                     .Add(ItemID.DontHurtComboBook)
+                    .Add(ItemID.TorchGodsFavor)
                     .Add(ItemID.RodofDiscord, Condition.Hardmode)
                     .Add(ItemID.RodOfHarmony, Condition.DownedMoonLord);
             infoShop.Register();
@@ -561,10 +562,24 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.Fertilizer);
             plantShop.Register();
 
-            var stationShop = new NPCShop(Type, "Station Buffs & Foods")
+            var stationShop = new NPCShop(Type, "Flasks, Stations & Foods")
                     .Add(ItemID.FruitJuice)
                     .Add(ItemID.LobsterTail)
                     .Add(ItemID.GoldenDelight)
+                    .Add(ItemID.FlaskofCursedFlames, Condition.Hardmode)
+                    .Add(ItemID.FlaskofFire, Condition.DownedQueenBee)
+                    .Add(ItemID.FlaskofGold, Condition.Hardmode)
+                    .Add(ItemID.FlaskofIchor, Condition.Hardmode)
+                    .Add(ItemID.FlaskofNanites, Condition.DownedPlantera)
+                    .Add(ItemID.FlaskofParty, Condition.DownedQueenBee)
+                    .Add(ItemID.FlaskofPoison, Condition.DownedQueenBee)
+                    .Add(ItemID.FlaskofVenom, Condition.DownedPlantera)
+                    .Add(ItemID.GenderChangePotion)
+                    .Add(ItemID.PotionOfReturn, Condition.DownedEowOrBoc)
+                    .Add(ItemID.RecallPotion)
+                    .Add(ItemID.TeleportationPotion, Condition.Hardmode)
+                    .Add(ItemID.WormholePotion)
+                    .Add(ItemID.RedPotion, Condition.ForTheWorthyWorld)
                     .Add(ItemID.Sunflower)
                     .Add(ItemID.Campfire)
                     .Add(ItemID.CrystalBall, Condition.Hardmode)
@@ -585,18 +600,7 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.HoneyBucket)
                     .Add(ItemID.LifeCrystal)
                     .Add(ItemID.LifeFruit, Condition.DownedMechBossAny)
-                    .Add(ItemID.ManaCrystal)
-                    .Add(ItemID.CombatBook)
-                    .Add(ItemID.ArtisanLoaf)
-                    .Add(ItemID.TorchGodsFavor)
-                    .Add(ItemID.AegisCrystal)
-                    .Add(ItemID.AegisFruit, Condition.DownedMechBossAny)
-                    .Add(ItemID.ArcaneCrystal)
-                    .Add(ItemID.Ambrosia)
-                    .Add(ItemID.GummyWorm)
-                    .Add(ItemID.GalaxyPearl)
-                    .Add(ItemID.CombatBookVolumeTwo, Condition.Hardmode)
-                    .Add(ItemID.PeddlersSatchel);
+                    .Add(ItemID.ManaCrystal);
             stationShop.Register();
         }
     }
