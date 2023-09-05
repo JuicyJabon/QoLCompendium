@@ -3,6 +3,7 @@ Another QoL mod... but this one is a little different.
 This mod aims to condense most of the other 1-off QoL mods into one.
 
 USE SHOP EXPANDER WITH THIS MOD!
+BOSS BAGS ARE NO LONGER SOLD IN NORMAL MODE!
 
 All features are configurable.
 
@@ -19,30 +20,26 @@ Current Features:
  - Instant respawn (Only Singleplayer)
  - Full HP on respawn
  - No enemy spawns during bosses
+ - No lava slime lava
  - Lifeform Analyzer points towards rare creatures
- - Crazy fast mining & placing speeds
- - Many items for easing the playing experience
+ - Editable celestial tower shield health
+ - Increased coin drops
+ - Increased mining & placing speeds
  - Faster extractinator
  - Automatic coin quick-stacking
- - Increased coin drops
  - Informational accessories work in banks
  - Boss bags don't drop vanities
  - Flying money trough follows the player
  - Extra fishing lures
- - 2 Town NPCs who sell almost everything needed
  - Friendly NPCs become invincible
  - NPC happiness removal
- - Editable celestial tower shield health
- - Map teleporting
  - No world evil spread
- - Starter Bag (Make sure to set items in config)
- - Asphalt Platforms
  - Staff of Regrowth auto-plant
  - Wing Slot
- - No lava slime lava
-
-Warning on Boss-dependent sales:
-You have to beat modded bosses with this mod enabled in order for the NPC to sell related items.
+ - Map teleporting
+ - Starter Bag (Make sure to set items in config)
+ - Many items for easing the playing experience
+ - 2 Town NPCs who sell almost everything needed
 
 Warning for Infernum Mode:
 You have to pick up the Bereft Vassal's boss bag for the kill to count.
@@ -56,20 +53,25 @@ You have to pick up the Advisor's boss bag for the kill to count.
 Current Mod Support:
  - All Mods: Endless Potion Buffs & Healing
  - Aequus: NPC Sales
+ - Arbour: NPC Sales
  - Calamity: Endless Station Buffs & NPC Sales
+ - Calamity's Vanities: NPC Sales
  - Catalyst: NPC Sales
- - Consolaria: Non-consumable Boss summons & NPC Sales
+ - Consolaria: Non-consumable Boss & Event summons & NPC Sales
  - Echoes of the Ancients: NPC Sales
- - Fargo's Souls: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
- - Gerd's Lab: Non-consumable Boss summons & NPC Sales
- - Homeward Journey: Non-consumable Boss summons & NPC Sales
+ - Exalt: NPC Sales
+ - Fargo's Souls: Endless Station Buffs, Non-consumable Boss & Event summons & NPC Sales
+ - Gerd's Lab: Non-consumable Boss & Event summons & NPC Sales
+ - Homeward Journey: Non-consumable Boss & Event summons & NPC Sales
+ - Hunt of the Old God: NPC Sales
  - Infernum Mode: NPC Sales
  - Polarities: NPC Sales
- - Qwerty's Mod: Non-consumable Boss summons & NPC Sales
+ - Qwerty's Mod: Non-consumable Boss & Event summons & NPC Sales
  - Redemption: Endless Station Buffs & NPC Sales
- - Secrets of the Shadows: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
- - Spirit Mod: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
- - Spooky Mod: Non-consumable Boss summons & NPC Sales
- - Storm's Additions: Non-consumable Boss summons & NPC Sales
- - Thorium: Endless Station Buffs, Non-consumable Boss summons & NPC Sales
- - Vitality: Non-consumable Boss summons & NPC Sales
+ - Secrets of the Shadows: Endless Station Buffs, Non-consumable Boss & Event summons & NPC Sales
+ - Spirit Mod: Endless Station Buffs,Non-consumable Boss & Event summons & NPC Sales
+ - Spooky Mod: Non-consumable Boss & Event summons & NPC Sales
+ - Storm's Additions: Non-consumable Boss & Event summons & NPC Sales
+ - Thorium: Endless Station Buffs, Non-consumable Boss & Event summons & NPC Sales
+ - Verdant: NPC Sales
+ - Vitality: Non-consumable Boss & Event summons & NPC Sales

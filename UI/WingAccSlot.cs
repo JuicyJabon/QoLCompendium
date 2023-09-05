@@ -11,8 +11,6 @@ namespace QoLCompendium.UI
     {
         public override AccessorySlotsUI UI => WingSlotSystem.UI;
         public override string FunctionalTexture => "Terraria/Images/Item_" + ItemID.CreativeWings;
-        public override string VanityTexture => "Terraria/Images/Item_" + ItemID.AngelWings;
-
         public override bool IsLoadingEnabled(Mod mod)
         {
             return ModContent.GetInstance<QoLCConfig>().WingSlot;

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace QoLCompendium.Items
 {
-    public class MetallicClover : ModItem
+    public class TrackingDevice : ModItem
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
@@ -20,8 +20,8 @@ namespace QoLCompendium.Items
 
         public override void SetDefaults()
         {
-            Item.width = 15;
-            Item.height = 15;
+            Item.width = 13;
+            Item.height = 13;
             Item.maxStack = 1;
             Item.rare = ItemRarityID.Blue;
             Item.accessory = true;
@@ -30,17 +30,17 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<MetallicClover>(), 1).AddIngredient(ItemID.Vine, 2).AddIngredient(ItemID.TatteredCloth, 1).AddRecipeGroup(RecipeGroupID.IronBar, 5).AddTile(TileID.Anvils).Register();
+            Recipe.Create(ModContent.ItemType<TrackingDevice>(), 1).AddIngredient(ItemID.Ruby, 1).AddRecipeGroup(RecipeGroupID.IronBar, 5).AddTile(TileID.Anvils).Register();
         }
 
         public override void UpdateInventory(Player player)
         {
-            player.GetModPlayer<QoLCPlayer>().metallicClover = true;
+            player.GetModPlayer<QoLCPlayer>().trackingDevice = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<QoLCPlayer>().metallicClover = true;
+            player.GetModPlayer<QoLCPlayer>().trackingDevice = true;
         }
     }
 }

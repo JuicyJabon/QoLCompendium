@@ -1,8 +1,8 @@
 using QoLCompendium.Items;
 using QoLCompendium.UI;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -20,60 +20,53 @@ namespace QoLCompendium.Tweaks
 
         public bool enemyCalmer = false;
 
-        public bool headCounter = false;
-
-        public bool metallicClover = false;
-
         public bool bloodIdol = false;
 
         public bool eclipseIdol = false;
 
-        public int respawnFullHPTimer;
+        public bool headCounter = false;
+
+        public bool metallicClover = false;
+
+        public bool trackingDevice = false;
+
+        public bool battalionLog = false;
+
+        public int respawnFullHPTimer = 0;
 
         public int selectedBiome = 0;
 
         public int selectedSpawnModifier = 5;
 
-        public override void ResetEffects()
-        {
-            magnetActive = false;
-            enemyEraser = false;
-            enemyAggressor = false;
-            enemyCalmer = false;
-            headCounter = false;
-            metallicClover = false;
-            bloodIdol = false;
-            eclipseIdol = false;
+        public int spawnRateUpdateTimer;
+        public int spawnRate;
+        static FieldInfo spawnRateFieldInfo;
 
-            if (Main.netMode != NetmodeID.Server)
+        public override void PreUpdate()
+        {
+            if (spawnRateUpdateTimer > 0)
             {
-                if (Main.player[Main.myPlayer].talkNPC == -1)
-                {
-                    BMNPCUI.visible = false;
-                    ECNPCUI.visible = false;
-                }
+                spawnRateUpdateTimer--;
             }
         }
 
-        public override void UpdateDead()
+        public override void PreUpdateBuffs()
         {
-            magnetActive = false;
-            enemyEraser = false;
-            enemyAggressor = false;
-            enemyCalmer = false;
-            headCounter = false;
-            metallicClover = false;
-            bloodIdol = false;
-            eclipseIdol = false;
-
-            if (Main.netMode != NetmodeID.Server)
+            if (ModContent.GetInstance<QoLCConfig>().ToggleHappiness)
             {
-                if (Main.player[Main.myPlayer].talkNPC == -1)
-                {
-                    BMNPCUI.visible = false;
-                    ECNPCUI.visible = false;
-                }
+                Player.currentShoppingSettings.PriceAdjustment = ModContent.GetInstance<QoLCConfig>().HappinessPriceChange;
             }
+        }
+
+        public override void PostUpdate()
+        {
+            if (ModContent.GetInstance<QoLCConfig>().FullHPRespawn && respawnFullHPTimer == 0)
+            {
+                respawnFullHPTimer = -1;
+                Player.statLife = Player.statLifeMax2;
+                Player.statMana = Player.statManaMax2;
+            }
+            respawnFullHPTimer--;
         }
 
         public override void PostUpdateMiscEffects()
@@ -86,27 +79,14 @@ namespace QoLCompendium.Tweaks
 
             Player.tileRangeX += ModContent.GetInstance<QoLCConfig>().IncreasePlaceRange;
             Player.tileRangeY += ModContent.GetInstance<QoLCConfig>().IncreasePlaceRange;
-        }
 
-        public override void OnRespawn()
-        {
-            if (ModContent.GetInstance<QoLCConfig>().FullHPRespawn)
+            if (spawnRateUpdateTimer <= 0)
             {
-                respawnFullHPTimer = 1;
-            }
-        }
+                spawnRateUpdateTimer = 60;
 
-        public override void PostUpdate()
-        {
-            if (ModContent.GetInstance<QoLCConfig>().FullHPRespawn)
-            {
-                if (respawnFullHPTimer == 0)
-                {
-                    respawnFullHPTimer = -1;
-                    Player.statLife = Player.statLifeMax2;
-                    Player.statMana = Player.statManaMax2;
-                }
-                respawnFullHPTimer--;
+                spawnRateFieldInfo = typeof(NPC).GetField("spawnRate", BindingFlags.Static | BindingFlags.NonPublic);
+
+                spawnRate = (int)spawnRateFieldInfo.GetValue(null);
             }
         }
 
@@ -125,11 +105,11 @@ namespace QoLCompendium.Tweaks
             }
         }
 
-        public override void PreUpdateBuffs()
+        public override void OnRespawn()
         {
-            if (ModContent.GetInstance<QoLCConfig>().ToggleHappiness)
+            if (ModContent.GetInstance<QoLCConfig>().FullHPRespawn)
             {
-                Player.currentShoppingSettings.PriceAdjustment = 0.75;
+                respawnFullHPTimer = 1;
             }
         }
 
@@ -162,29 +142,29 @@ namespace QoLCompendium.Tweaks
 
         private void CheckTrinkets(int itemType)
         {
-            if (itemType == 854)
+            if (itemType == ItemID.DiscountCard)
             {
                 Player.discountAvailable = true;
                 return;
             }
-            if (itemType == 855)
+            if (itemType == ItemID.LuckyCoin)
             {
                 Player.hasLuckyCoin = true;
                 return;
             }
-            if (itemType == 3033)
+            if (itemType == ItemID.GoldRing)
             {
                 Player.goldRing = true;
                 return;
             }
-            if (itemType == 3034)
+            if (itemType == ItemID.CoinRing)
             {
                 Player.discountAvailable = true;
                 Player.hasLuckyCoin = true;
                 Player.luck += 0.05f;
                 return;
             }
-            if (itemType == 3035)
+            if (itemType == ItemID.GreedyRing)
             {
                 Player.discountAvailable = true;
                 Player.hasLuckyCoin = true;
@@ -192,33 +172,23 @@ namespace QoLCompendium.Tweaks
                 Player.luck += 0.05f;
                 return;
             }
-            if (itemType == 3619)
+            if (itemType == ItemID.MechanicalLens)
             {
                 Player.InfoAccMechShowWires = true;
                 return;
             }
-            if (itemType == 3611)
+            if (itemType == ItemID.LaserRuler)
+            {
+                Player.rulerGrid = true;
+                return;
+            }
+            if (itemType == ItemID.WireKite)
             {
                 Player.InfoAccMechShowWires = true;
                 Player.rulerGrid = true;
                 return;
             }
-            if (itemType == 2799)
-            {
-                Player.rulerGrid = true;
-                return;
-            }
-            if (itemType == 3624)
-            {
-                Player.autoActuator = true;
-                return;
-            }
-            if (itemType == 2216 || itemType == 3061)
-            {
-                Player.autoPaint = true;
-                return;
-            }
-            if (itemType == 3123 || itemType == 3124 || itemType == 5437 || itemType == 5358 || itemType == 5359 || itemType == 5360 || itemType == 5361)
+            if (itemType == ItemID.PDA || itemType == ItemID.CellPhone || itemType == ItemID.ShellphoneDummy || itemType == ItemID.Shellphone || itemType == ItemID.ShellphoneSpawn || itemType == ItemID.ShellphoneOcean || itemType == ItemID.ShellphoneHell)
             {
                 Player.accWatch = 3;
                 Player.accDepthMeter = 1;
@@ -234,134 +204,144 @@ namespace QoLCompendium.Tweaks
                 Player.accCalendar = true;
                 return;
             }
-            if (itemType == 395)
+            if (itemType == ItemID.GPS)
             {
                 Player.accWatch = 3;
                 Player.accDepthMeter = 1;
                 Player.accCompass = 1;
                 return;
             }
-            if (itemType == 3122)
+            if (itemType == ItemID.REK)
             {
                 Player.accThirdEye = true;
                 Player.accCritterGuide = true;
                 Player.accJarOfSouls = true;
                 return;
             }
-            if (itemType == 3121)
+            if (itemType == ItemID.GoblinTech)
             {
                 Player.accOreFinder = true;
                 Player.accStopwatch = true;
                 Player.accDreamCatcher = true;
                 return;
             }
-            if (itemType == 3036)
+            if (itemType == ItemID.FishFinder)
             {
                 Player.accFishFinder = true;
                 Player.accWeatherRadio = true;
                 Player.accCalendar = true;
                 return;
             }
-            if ((itemType == 15 || itemType == 707) && Player.accWatch < 1)
+            if ((itemType == ItemID.CopperWatch || itemType == ItemID.TinWatch) && Player.accWatch < 1)
             {
                 Player.accWatch = 1;
                 return;
             }
-            if ((itemType == 16 || itemType == 708) && Player.accWatch < 2)
+            if ((itemType == ItemID.SilverWatch || itemType == ItemID.TungstenWatch) && Player.accWatch < 2)
             {
                 Player.accWatch = 2;
                 return;
             }
-            if (itemType == 17 || itemType == 709)
+            if (itemType == ItemID.GoldWatch || itemType == ItemID.PlatinumWatch)
             {
                 Player.accWatch = 3;
                 return;
             }
-            if (itemType == 18)
+            if (itemType == ItemID.DepthMeter)
             {
                 Player.accDepthMeter = 1;
                 return;
             }
-            if (itemType == 393)
+            if (itemType == ItemID.Compass)
             {
                 Player.accCompass = 1;
                 return;
             }
-            if (itemType == 3084)
+            if (itemType == ItemID.Radar)
             {
                 Player.accThirdEye = true;
                 return;
             }
-            if (itemType == 3118)
+            if (itemType == ItemID.LifeformAnalyzer)
             {
                 Player.accCritterGuide = true;
                 return;
             }
-            if (itemType == 3095)
+            if (itemType == ItemID.TallyCounter)
             {
                 Player.accJarOfSouls = true;
                 return;
             }
-            if (itemType == 3102)
+            if (itemType == ItemID.MetalDetector)
             {
                 Player.accOreFinder = true;
                 return;
             }
-            if (itemType == 3099)
+            if (itemType == ItemID.Stopwatch)
             {
                 Player.accStopwatch = true;
                 return;
             }
-            if (itemType == 3119)
+            if (itemType == ItemID.DPSMeter)
             {
                 Player.accDreamCatcher = true;
                 return;
             }
-            if (itemType == 3120)
+            if (itemType == ItemID.FishermansGuide)
             {
                 Player.accFishFinder = true;
                 return;
             }
-            if (itemType == 3037)
+            if (itemType == ItemID.WeatherRadio)
             {
                 Player.accWeatherRadio = true;
                 return;
             }
-            if (itemType == 3096)
+            if (itemType == ItemID.Sextant)
             {
                 Player.accCalendar = true;
                 return;
             }
-            if (itemType == 407)
+            if (itemType == ItemID.AncientChisel)
+            {
+                Player.pickSpeed -= 0.25f;
+                return;
+            }
+            if (itemType == ItemID.Toolbelt)
             {
                 Player.blockRange += 1;
                 return;
             }
-            if (itemType == 1923)
+            if (itemType == ItemID.Toolbox)
             {
                 Player.blockRange += 1;
                 Player.tileRangeX += 1;
                 Player.tileRangeY += 1;
                 return;
             }
-            if (itemType == 2215)
+            if (itemType == ItemID.ExtendoGrip)
             {
                 Player.blockRange += 3;
                 Player.tileRangeX += 3;
                 Player.tileRangeY += 3;
                 return;
             }
-            if (itemType == 2217)
+            if (itemType == ItemID.PortableCementMixer)
             {
                 Player.wallSpeed -= 0.5f;
                 return;
             }
-            if (itemType == 2214)
+            if (itemType == ItemID.PaintSprayer)
+            {
+                Player.autoPaint = true;
+                return;
+            }
+            if (itemType == ItemID.BrickLayer)
             {
                 Player.tileSpeed -= 0.5f;
                 return;
             }
-            if (itemType == 3061)
+            if (itemType == ItemID.ArchitectGizmoPack)
             {
                 Player.autoPaint = true;
                 Player.wallSpeed -= 0.5f;
@@ -371,7 +351,7 @@ namespace QoLCompendium.Tweaks
                 Player.tileRangeY += 3;
                 return;
             }
-            if (itemType == 5126)
+            if (itemType == ItemID.HandOfCreation)
             {
                 Player.autoPaint = true;
                 Player.wallSpeed -= 0.5f;
@@ -383,39 +363,39 @@ namespace QoLCompendium.Tweaks
                 Player.treasureMagnet = true;
                 return;
             }
-            if (itemType == 4056)
+            if (itemType == ItemID.ActuationAccessory)
             {
-                Player.pickSpeed -= 0.25f;
+                Player.autoActuator = true;
                 return;
             }
-            if (itemType == 2373)
+            if (itemType == ItemID.HighTestFishingLine)
             {
                 Player.accFishingLine = true;
                 return;
             }
-            if (itemType == 2374)
+            if (itemType == ItemID.AnglerEarring)
             {
                 Player.fishingSkill += 10;
                 return;
             }
-            if (itemType == 2375)
+            if (itemType == ItemID.TackleBox)
             {
                 Player.accTackleBox = true;
                 return;
             }
-            if (itemType == 4881)
+            if (itemType == ItemID.LavaFishingHook)
             {
                 Player.accLavaFishing = true;
                 return;
             }
-            if (itemType == 3721)
+            if (itemType == ItemID.AnglerTackleBag)
             {
                 Player.accFishingLine = true;
                 Player.fishingSkill += 10;
                 Player.accTackleBox = true;
                 return;
             }
-            if (itemType == 5064)
+            if (itemType == ItemID.LavaproofTackleBag)
             {
                 Player.accLavaFishing = true;
                 Player.accFishingLine = true;
@@ -423,17 +403,17 @@ namespace QoLCompendium.Tweaks
                 Player.accTackleBox = true;
                 return;
             }
-            if (itemType == 5139 || itemType == 5140 || itemType == 5141 || itemType == 5142 || itemType == 5143 || itemType == 5144 || itemType == 5145 || itemType == 5146)
+            if (itemType == ItemID.FishingBobber || itemType == ItemID.FishingBobberGlowingStar || itemType == ItemID.FishingBobberGlowingLava || itemType == ItemID.FishingBobberGlowingKrypton || itemType == ItemID.FishingBobberGlowingXenon || itemType == ItemID.FishingBobberGlowingArgon || itemType == ItemID.FishingBobberGlowingViolet || itemType == ItemID.FishingBobberGlowingRainbow)
             {
                 Player.fishingSkill += 10;
                 return;
             }
-            if (itemType == 5010)
+            if (itemType == ItemID.TreasureMagnet)
             {
                 Player.treasureMagnet = true;
                 return;
             }
-            if (itemType == 3090)
+            if (itemType == ItemID.RoyalGel)
             {
                 Player.npcTypeNoAggro[1] = true;
                 Player.npcTypeNoAggro[16] = true;
@@ -458,24 +438,24 @@ namespace QoLCompendium.Tweaks
                 Player.npcTypeNoAggro[537] = true;
                 return;
             }
-            if (itemType == 4409)
+            if (itemType == ItemID.SpectreGoggles)
             {
                 Player.CanSeeInvisibleBlocks = true;
                 return;
             }
-            if (itemType == 3068)
+            if (itemType == ItemID.CordageGuide)
             {
                 Player.cordage = true;
             }
-            if (itemType == 4767)
+            if (itemType == ItemID.DontHurtCrittersBook)
             {
                 Player.dontHurtCritters = true;
             }
-            if (itemType == 5309)
+            if (itemType == ItemID.DontHurtNatureBook)
             {
                 Player.dontHurtNature = true;
             }
-            if (itemType == 5323)
+            if (itemType == ItemID.DontHurtComboBook)
             {
                 Player.dontHurtCritters = true;
                 Player.dontHurtNature = true;
@@ -488,6 +468,16 @@ namespace QoLCompendium.Tweaks
             if (itemType == ModContent.ItemType<MetallicClover>())
             {
                 metallicClover = true;
+                return;
+            }
+            if (itemType == ModContent.ItemType<TrackingDevice>())
+            {
+                trackingDevice = true;
+                return;
+            }
+            if (itemType == ModContent.ItemType<BattalionLog>())
+            {
+                battalionLog = true;
                 return;
             }
         }
@@ -503,6 +493,39 @@ namespace QoLCompendium.Tweaks
             else
             {
                 return Enumerable.Empty<Item>();
+            }
+        }
+
+        public override void ResetEffects()
+        {
+            Reset();
+        }
+
+        public override void UpdateDead()
+        {
+            Reset();
+        }
+
+        public void Reset()
+        {
+            magnetActive = false;
+            enemyEraser = false;
+            enemyAggressor = false;
+            enemyCalmer = false;
+            bloodIdol = false;
+            eclipseIdol = false;
+            headCounter = false;
+            metallicClover = false;
+            trackingDevice = false;
+            battalionLog = false;
+
+            if (Main.netMode != NetmodeID.Server)
+            {
+                if (Main.player[Main.myPlayer].talkNPC == -1)
+                {
+                    BMNPCUI.visible = false;
+                    ECNPCUI.visible = false;
+                }
             }
         }
     }

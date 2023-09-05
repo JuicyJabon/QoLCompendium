@@ -13,8 +13,10 @@ namespace QoLCompendium.NPCs
     [AutoloadHead]
     public class EtherealCollectorNPC : ModNPC
     {
+        #pragma warning disable CA2211
         public static int shopNum = 0;
         public static string ShopName;
+        #pragma warning restore CA2211
 
         public override string Texture
         {
@@ -34,7 +36,7 @@ namespace QoLCompendium.NPCs
             NPCID.Sets.AttackTime[NPC.type] = 90;
             NPCID.Sets.AttackAverageChance[NPC.type] = 30;
             NPCID.Sets.HatOffsetY[NPC.type] = 4;
-            NPC.Happiness.SetBiomeAffection<SnowBiome>((AffectionLevel)Item.buyPrice(silver: 1)).SetBiomeAffection<OceanBiome>((AffectionLevel)50).SetBiomeAffection<DesertBiome>((AffectionLevel)(-50)).SetNPCAffection(19, (AffectionLevel)Item.buyPrice(silver: 1)).SetNPCAffection(17, (AffectionLevel)50).SetNPCAffection(108, (AffectionLevel)(-50)).SetNPCAffection(441, (AffectionLevel)(-Item.buyPrice(silver: 1)));
+            NPC.Happiness.SetBiomeAffection<SnowBiome>((AffectionLevel)100).SetBiomeAffection<OceanBiome>((AffectionLevel)50).SetBiomeAffection<DesertBiome>((AffectionLevel)(-50)).SetNPCAffection(19, (AffectionLevel)100).SetNPCAffection(17, (AffectionLevel)50).SetNPCAffection(108, (AffectionLevel)(-50)).SetNPCAffection(441, (AffectionLevel)(100));
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -230,6 +232,8 @@ namespace QoLCompendium.NPCs
             //Catalyst
                 .AddModItemToShop(CheckDowned.catalystMod, "AstraJelly", Item.buyPrice(gold: 1), Condition.Hardmode)
                 .AddModItemToShop(CheckDowned.catalystMod, "Lean", Item.buyPrice(gold: 1), CheckDowned.aureus)
+            //Consolaria
+                .AddModItemToShop(CheckDowned.consolariaMod, "Wiesnbrau", Item.buyPrice(gold: 1))
             //Fargos
                 .AddModItemToShop(CheckDowned.fargosSoulsMod, "RabiesShot", Item.buyPrice(gold: 1), CheckDowned.abom)
             //Homeward
@@ -332,9 +336,9 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.calamityMod, "WeightlessCandle", Item.buyPrice(platinum: 1), Condition.Hardmode)
                 .AddModItemToShop(CheckDowned.calamityMod, "VigorousCandle", Item.buyPrice(platinum: 1), Condition.Hardmode)
             //Fargos
-                .AddModItemToShop(CheckDowned.fargosSoulsMod, "Omnistation", Item.buyPrice(platinum: 1), Condition.Hardmode)
-                .AddModItemToShop(CheckDowned.fargosSoulsMod, "Omnistation2", Item.buyPrice(platinum: 1), Condition.Hardmode)
-                .AddModItemToShop(CheckDowned.fargosSoulsMod, "Semistation", Item.buyPrice(platinum: 1))
+                .AddModItemToShop(CheckDowned.fargosMod, "Omnistation", Item.buyPrice(platinum: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.fargosMod, "Omnistation2", Item.buyPrice(platinum: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.fargosMod, "Semistation", Item.buyPrice(platinum: 1))
             //Redemption
                 .AddModItemToShop(CheckDowned.redemptionMod, "EvilJelly", Item.buyPrice(gold: 1), CheckDowned.keeper)
                 .AddModItemToShop(CheckDowned.redemptionMod, "BileFlask", Item.buyPrice(gold: 1), Condition.Hardmode)
@@ -469,6 +473,15 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.echoesMod, "Underground_Stone", Item.buyPrice(gold: 1), Condition.DownedMoonLord)
                 .AddModItemToShop(CheckDowned.echoesMod, "Water_Stone", Item.buyPrice(gold: 1), Condition.DownedMoonLord)
                 .AddModItemToShop(CheckDowned.echoesMod, "Wyvernscale", Item.buyPrice(gold: 1), Condition.Hardmode)
+            //Exalt
+                .AddModItemToShop(CheckDowned.exaltMod, "DragonScale", Item.buyPrice(gold: 1), Condition.DownedMoonLord)
+                .AddModItemToShop(CheckDowned.exaltMod, "IceCrystal", Item.buyPrice(gold: 1), Condition.DownedMoonLord)
+                .AddModItemToShop(CheckDowned.exaltMod, "Leaf", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.exaltMod, "Membrane", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.exaltMod, "Paper", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.exaltMod, "Remnant", Item.buyPrice(gold: 1), CheckDowned.iceLich)
+                .AddModItemToShop(CheckDowned.exaltMod, "TwistedFlesh", Item.buyPrice(gold: 1), CheckDowned.bloodMoon, Condition.DownedSkeletron)
+                .AddModItemToShop(CheckDowned.exaltMod, "Vescon", Item.buyPrice(gold: 1), Condition.DownedCultist)
             //Fargos
                 .AddModItemToShop(CheckDowned.fargosSoulsMod, "AbomEnergy", Item.buyPrice(gold: 1), CheckDowned.abom)
                 .AddModItemToShop(CheckDowned.fargosSoulsMod, "DeviatingEnergy", Item.buyPrice(gold: 1), CheckDowned.devi)
@@ -486,6 +499,8 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.homewardMod, "AnglerCoin", Item.buyPrice(gold: 1))
                 .AddModItemToShop(CheckDowned.homewardMod, "AnglerGoldCoin", Item.buyPrice(gold: 1), Condition.Hardmode)
                 .AddModItemToShop(CheckDowned.homewardMod, "Blood", Item.buyPrice(gold: 1), CheckDowned.bloodMoon)
+                .AddModItemToShop(CheckDowned.homewardMod, "CoffeeBean_1", Item.buyPrice(gold: 1), CheckDowned.overwatcher, CheckDowned.materealizer, CheckDowned.lifebringer)
+                .AddModItemToShop(CheckDowned.homewardMod, "CoffeeBean_2", Item.buyPrice(gold: 1), CheckDowned.overwatcher, CheckDowned.materealizer, CheckDowned.lifebringer)
                 .AddModItemToShop(CheckDowned.homewardMod, "DenseIcicle", Item.buyPrice(gold: 1), CheckDowned.wos)
                 .AddModItemToShop(CheckDowned.homewardMod, "DivineShard", Item.buyPrice(gold: 1), CheckDowned.wos)
                 .AddModItemToShop(CheckDowned.homewardMod, "EssenceofBright", Item.buyPrice(gold: 1), CheckDowned.son)
@@ -495,11 +510,13 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.homewardMod, "EssenceofTime", Item.buyPrice(gold: 1), CheckDowned.overwatcher)
                 .AddModItemToShop(CheckDowned.homewardMod, "EssenceofDeath", Item.buyPrice(gold: 1), CheckDowned.whale)
                 .AddModItemToShop(CheckDowned.homewardMod, "JungleDewdrop", Item.buyPrice(gold: 1), Condition.DownedPlantera)
+                .AddModItemToShop(CheckDowned.homewardMod, "NetherStar", Item.buyPrice(gold: 1), Condition.Hardmode)
                 .AddModItemToShop(CheckDowned.homewardMod, "SolarFlareScoria", Item.buyPrice(gold: 1), CheckDowned.sgod)
                 .AddModItemToShop(CheckDowned.homewardMod, "SoulofBlight", Item.buyPrice(gold: 1), CheckDowned.motherbrain)
                 .AddModItemToShop(CheckDowned.homewardMod, "SpiralTissue", Item.buyPrice(gold: 1), CheckDowned.wos)
                 .AddModItemToShop(CheckDowned.homewardMod, "SteelFeather", Item.buyPrice(gold: 1), CheckDowned.wos)
                 .AddModItemToShop(CheckDowned.homewardMod, "SunlightGel", Item.buyPrice(gold: 1), CheckDowned.wos)
+                .AddModItemToShop(CheckDowned.homewardMod, "CoffeeBean_3", Item.buyPrice(gold: 1), CheckDowned.overwatcher, CheckDowned.materealizer, CheckDowned.lifebringer)
                 .AddModItemToShop(CheckDowned.homewardMod, "TankOfThePastCave", Item.buyPrice(gold: 1), CheckDowned.caveOrdeal)
                 .AddModItemToShop(CheckDowned.homewardMod, "TankOfThePastCorruption", Item.buyPrice(gold: 1), CheckDowned.corruptOrdeal)
                 .AddModItemToShop(CheckDowned.homewardMod, "TankOfThePastCrimson", Item.buyPrice(gold: 1), CheckDowned.crimsonOrdeal)
@@ -511,9 +528,12 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.homewardMod, "TankOfThePastSnowland", Item.buyPrice(gold: 1), CheckDowned.snowOrdeal)
                 .AddModItemToShop(CheckDowned.homewardMod, "TankOfThePastUnderworld", Item.buyPrice(gold: 1), CheckDowned.underworldOrdeal)
                 .AddModItemToShop(CheckDowned.homewardMod, "TrueJungleSpore", Item.buyPrice(gold: 1), CheckDowned.wos)
-                .AddModItemToShop(CheckDowned.homewardMod, "WillToCorrode", Item.buyPrice(gold: 1), CheckDowned.sgod, CheckDowned.materealizer, CheckDowned.lifebringer)
-                .AddModItemToShop(CheckDowned.homewardMod, "WillToCrown", Item.buyPrice(gold: 1), CheckDowned.sgod, CheckDowned.materealizer, CheckDowned.lifebringer)
-                .AddModItemToShop(CheckDowned.homewardMod, "WillToGrow", Item.buyPrice(gold: 1), CheckDowned.sgod, CheckDowned.materealizer, CheckDowned.lifebringer)
+                .AddModItemToShop(CheckDowned.homewardMod, "CoffeeBean_4", Item.buyPrice(gold: 1), CheckDowned.overwatcher, CheckDowned.materealizer, CheckDowned.lifebringer)
+                .AddModItemToShop(CheckDowned.homewardMod, "WillToCorrode", Item.buyPrice(gold: 1), CheckDowned.overwatcher, CheckDowned.materealizer, CheckDowned.lifebringer)
+                .AddModItemToShop(CheckDowned.homewardMod, "WillToCrown", Item.buyPrice(gold: 1), CheckDowned.overwatcher, CheckDowned.materealizer, CheckDowned.lifebringer)
+                .AddModItemToShop(CheckDowned.homewardMod, "WillToGrow", Item.buyPrice(gold: 1), CheckDowned.overwatcher, CheckDowned.materealizer, CheckDowned.lifebringer)
+            //Hunt of the Old God
+                .AddModItemToShop(CheckDowned.huntMod, "ChromaticMass", Item.buyPrice(gold: 1), CheckDowned.goozma)
             //Polarities
                 .AddModItemToShop(CheckDowned.polaritiesMod, "AlkalineFluid", Item.buyPrice(gold: 1))
                 .AddModItemToShop(CheckDowned.polaritiesMod, "CongealedBrine", Item.buyPrice(gold: 1), Condition.Hardmode)
@@ -638,6 +658,16 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.thoriumMod, "UnfathomableFlesh", Item.buyPrice(gold: 1), Condition.Hardmode)
                 .AddModItemToShop(CheckDowned.thoriumMod, "UnholyShards", Item.buyPrice(gold: 1), CheckDowned.bloodMoon)
                 .AddModItemToShop(CheckDowned.thoriumMod, "WhiteDwarfFragment", Item.buyPrice(gold: 1), Condition.DownedCultist)
+            //VERDANT
+                .AddModItemToShop(CheckDowned.verdantMod, "ApotheoticSoul", Item.buyPrice(gold: 1), Condition.DownedMechBossAll)
+                .AddModItemToShop(CheckDowned.verdantMod, "Lightbulb", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "LushLeaf", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "MysteriaClump", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "PinkPetal", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "PuffMaterial", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "RedPetal", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "WisplantItem", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "YellowBulb", Item.buyPrice(gold: 1))
             //Vitality
                 .AddModItemToShop(CheckDowned.vitalityMod, "AncientGoldShard", Item.buyPrice(gold: 1))
                 .AddModItemToShop(CheckDowned.vitalityMod, "ChaosCrystal", Item.buyPrice(gold: 1), Condition.Hardmode)
@@ -659,144 +689,150 @@ namespace QoLCompendium.NPCs
 
             var modBossBagShop = new NPCShop(Type, "Modded Treasure Bags")
             //Aequus
-                .AddModItemToShop(CheckDowned.aqMod, "CrabsonBag", Item.buyPrice(platinum: 2), CheckDowned.crabson)
-                .AddModItemToShop(CheckDowned.aqMod, "OmegaStariteBag", Item.buyPrice(platinum: 2), CheckDowned.omegastarite)
-                .AddModItemToShop(CheckDowned.aqMod, "DustDevilBag", Item.buyPrice(platinum: 2), CheckDowned.devil)
+                .AddModItemToShop(CheckDowned.aqMod, "CrabsonBag", Item.buyPrice(platinum: 2), CheckDowned.crabson, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.aqMod, "OmegaStariteBag", Item.buyPrice(platinum: 2), CheckDowned.omegastarite, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.aqMod, "DustDevilBag", Item.buyPrice(platinum: 2), CheckDowned.devil, CheckDowned.expertOrMaster)
             //Calamity
-                .AddModItemToShop(CheckDowned.calamityMod, "DesertScourgeBag", Item.buyPrice(platinum: 2), CheckDowned.desertscourge)
-                .AddModItemToShop(CheckDowned.calamityMod, "CrabulonBag", Item.buyPrice(platinum: 2), CheckDowned.crabulon)
-                .AddModItemToShop(CheckDowned.calamityMod, "HiveMindBag", Item.buyPrice(platinum: 2), CheckDowned.hivemind)
-                .AddModItemToShop(CheckDowned.calamityMod, "PerforatorBag", Item.buyPrice(platinum: 2), CheckDowned.perforators)
-                .AddModItemToShop(CheckDowned.calamityMod, "SlimeGodBag", Item.buyPrice(platinum: 2), CheckDowned.slimegod)
-                .AddModItemToShop(CheckDowned.calamityMod, "CryogenBag", Item.buyPrice(platinum: 2), CheckDowned.cryogen)
-                .AddModItemToShop(CheckDowned.calamityMod, "AquaticScourgeBag", Item.buyPrice(platinum: 2), CheckDowned.aquaticscourge)
-                .AddModItemToShop(CheckDowned.calamityMod, "BrimstoneWaifuBag", Item.buyPrice(platinum: 2), CheckDowned.brimstoneelemental)
-                .AddModItemToShop(CheckDowned.calamityMod, "CalamitasCloneBag", Item.buyPrice(platinum: 2), CheckDowned.calamitas)
-                .AddModItemToShop(CheckDowned.calamityMod, "LeviathanBag", Item.buyPrice(platinum: 2), CheckDowned.leviathan)
-                .AddModItemToShop(CheckDowned.calamityMod, "AstrumAureusBag", Item.buyPrice(platinum: 2), CheckDowned.aureus)
-                .AddModItemToShop(CheckDowned.calamityMod, "PlaguebringerGoliathBag", Item.buyPrice(platinum: 2), CheckDowned.plaguebringer)
-                .AddModItemToShop(CheckDowned.calamityMod, "RavagerBag", Item.buyPrice(platinum: 2), CheckDowned.ravager)
-                .AddModItemToShop(CheckDowned.calamityMod, "AstrumDeusBag", Item.buyPrice(platinum: 2), CheckDowned.deus)
-                .AddModItemToShop(CheckDowned.calamityMod, "DragonfollyBag", Item.buyPrice(platinum: 2), CheckDowned.dragonfolly)
-                .AddModItemToShop(CheckDowned.calamityMod, "ProvidenceBag", Item.buyPrice(platinum: 2), CheckDowned.providence)
-                .AddModItemToShop(CheckDowned.calamityMod, "PolterghastBag", Item.buyPrice(platinum: 2), CheckDowned.polterghast)
-                .AddModItemToShop(CheckDowned.calamityMod, "CeaselessVoidBag", Item.buyPrice(platinum: 2), CheckDowned.ceaselessvoid)
-                .AddModItemToShop(CheckDowned.calamityMod, "StormWeaverBag", Item.buyPrice(platinum: 2), CheckDowned.stormweaver)
-                .AddModItemToShop(CheckDowned.calamityMod, "SignusBag", Item.buyPrice(platinum: 2), CheckDowned.signus)
-                .AddModItemToShop(CheckDowned.calamityMod, "OldDukeBag", Item.buyPrice(platinum: 2), CheckDowned.oldduke)
-                .AddModItemToShop(CheckDowned.calamityMod, "DevourerofGodsBag", Item.buyPrice(platinum: 2), CheckDowned.dog)
-                .AddModItemToShop(CheckDowned.calamityMod, "YharonBag", Item.buyPrice(platinum: 2), CheckDowned.yharon)
-                .AddModItemToShop(CheckDowned.calamityMod, "DraedonBag", Item.buyPrice(platinum: 2), CheckDowned.exomechs)
-                .AddModItemToShop(CheckDowned.calamityMod, "CalamitasCoffer", Item.buyPrice(platinum: 2), CheckDowned.scalamitas)
+                .AddModItemToShop(CheckDowned.calamityMod, "DesertScourgeBag", Item.buyPrice(platinum: 2), CheckDowned.desertscourge, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "CrabulonBag", Item.buyPrice(platinum: 2), CheckDowned.crabulon, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "HiveMindBag", Item.buyPrice(platinum: 2), CheckDowned.hivemind, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "PerforatorBag", Item.buyPrice(platinum: 2), CheckDowned.perforators, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "SlimeGodBag", Item.buyPrice(platinum: 2), CheckDowned.slimegod, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "CryogenBag", Item.buyPrice(platinum: 2), CheckDowned.cryogen, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "AquaticScourgeBag", Item.buyPrice(platinum: 2), CheckDowned.aquaticscourge, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "BrimstoneWaifuBag", Item.buyPrice(platinum: 2), CheckDowned.brimstoneelemental, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "CalamitasCloneBag", Item.buyPrice(platinum: 2), CheckDowned.calamitas, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "LeviathanBag", Item.buyPrice(platinum: 2), CheckDowned.leviathan, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "AstrumAureusBag", Item.buyPrice(platinum: 2), CheckDowned.aureus, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "PlaguebringerGoliathBag", Item.buyPrice(platinum: 2), CheckDowned.plaguebringer, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "RavagerBag", Item.buyPrice(platinum: 2), CheckDowned.ravager, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "AstrumDeusBag", Item.buyPrice(platinum: 2), CheckDowned.deus, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "DragonfollyBag", Item.buyPrice(platinum: 2), CheckDowned.dragonfolly, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "ProvidenceBag", Item.buyPrice(platinum: 2), CheckDowned.providence, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "PolterghastBag", Item.buyPrice(platinum: 2), CheckDowned.polterghast, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "CeaselessVoidBag", Item.buyPrice(platinum: 2), CheckDowned.ceaselessvoid, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "StormWeaverBag", Item.buyPrice(platinum: 2), CheckDowned.stormweaver, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "SignusBag", Item.buyPrice(platinum: 2), CheckDowned.signus, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "OldDukeBag", Item.buyPrice(platinum: 2), CheckDowned.oldduke, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "DevourerofGodsBag", Item.buyPrice(platinum: 2), CheckDowned.dog, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "YharonBag", Item.buyPrice(platinum: 2), CheckDowned.yharon, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "DraedonBag", Item.buyPrice(platinum: 2), CheckDowned.exomechs, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.calamityMod, "CalamitasCoffer", Item.buyPrice(platinum: 2), CheckDowned.scalamitas, CheckDowned.expertOrMaster)
             //Catalyst
-                .AddModItemToShop(CheckDowned.catalystMod, "AstrageldonBag", Item.buyPrice(platinum: 2), CheckDowned.geldon)
+                .AddModItemToShop(CheckDowned.catalystMod, "AstrageldonBag", Item.buyPrice(platinum: 2), CheckDowned.geldon, CheckDowned.expertOrMaster)
             //Consolaria
-                .AddModItemToShop(CheckDowned.consolariaMod, "LepusBag", Item.buyPrice(platinum: 2), CheckDowned.lepus)
-                .AddModItemToShop(CheckDowned.consolariaMod, "TurkorBag", Item.buyPrice(platinum: 2), CheckDowned.turkor)
-                .AddModItemToShop(CheckDowned.consolariaMod, "OcramBag", Item.buyPrice(platinum: 2), CheckDowned.ocram)
+                .AddModItemToShop(CheckDowned.consolariaMod, "LepusBag", Item.buyPrice(platinum: 2), CheckDowned.lepus, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.consolariaMod, "TurkorBag", Item.buyPrice(platinum: 2), CheckDowned.turkor, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.consolariaMod, "OcramBag", Item.buyPrice(platinum: 2), CheckDowned.ocram, CheckDowned.expertOrMaster)
             //Echoes
-                .AddModItemToShop(CheckDowned.echoesMod, "GalahisBag", Item.buyPrice(platinum: 2), CheckDowned.galahis)
-                .AddModItemToShop(CheckDowned.echoesMod, "CreationBag", Item.buyPrice(platinum: 2), CheckDowned.creation)
-                .AddModItemToShop(CheckDowned.echoesMod, "DestructionBag", Item.buyPrice(platinum: 2), CheckDowned.destruction)
+                .AddModItemToShop(CheckDowned.echoesMod, "GalahisBag", Item.buyPrice(platinum: 2), CheckDowned.galahis, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.echoesMod, "CreationBag", Item.buyPrice(platinum: 2), CheckDowned.creation, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.echoesMod, "DestructionBag", Item.buyPrice(platinum: 2), CheckDowned.destruction, CheckDowned.expertOrMaster)
+            //Exalt
+                .AddModItemToShop(CheckDowned.exaltMod, "EffulgenceBossBag", Item.buyPrice(platinum: 2), CheckDowned.effulgence, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.exaltMod, "IceLichBossBag", Item.buyPrice(platinum: 2), CheckDowned.iceLich, CheckDowned.expertOrMaster)
             //Fargos
-                .AddModItemToShop(CheckDowned.fargosSoulsMod, "TrojanSquirrelBag", Item.buyPrice(platinum: 2), CheckDowned.squirrel)
-                .AddModItemToShop(CheckDowned.fargosSoulsMod, "DeviBag", Item.buyPrice(platinum: 2), CheckDowned.devi)
-                .AddModItemToShop(CheckDowned.fargosSoulsMod, "LifeChallengerBag", Item.buyPrice(platinum: 2), CheckDowned.lieflight)
-                .AddModItemToShop(CheckDowned.fargosSoulsMod, "CosmosBag", Item.buyPrice(platinum: 2), CheckDowned.cosmoschamp)
-                .AddModItemToShop(CheckDowned.fargosSoulsMod, "AbomBag", Item.buyPrice(platinum: 2), CheckDowned.abom)
-                .AddModItemToShop(CheckDowned.fargosSoulsMod, "MutantBag", Item.buyPrice(platinum: 2), CheckDowned.mutant)
+                .AddModItemToShop(CheckDowned.fargosSoulsMod, "TrojanSquirrelBag", Item.buyPrice(platinum: 2), CheckDowned.squirrel, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.fargosSoulsMod, "DeviBag", Item.buyPrice(platinum: 2), CheckDowned.devi, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.fargosSoulsMod, "LifeChallengerBag", Item.buyPrice(platinum: 2), CheckDowned.lieflight, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.fargosSoulsMod, "CosmosBag", Item.buyPrice(platinum: 2), CheckDowned.cosmoschamp, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.fargosSoulsMod, "AbomBag", Item.buyPrice(platinum: 2), CheckDowned.abom, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.fargosSoulsMod, "MutantBag", Item.buyPrice(platinum: 2), CheckDowned.mutant, CheckDowned.expertOrMaster)
             //Homeward
-                .AddModItemToShop(CheckDowned.homewardMod, "MarquisMoonsquidTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.squid)
-                .AddModItemToShop(CheckDowned.homewardMod, "PriestessRodTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.rod)
-                .AddModItemToShop(CheckDowned.homewardMod, "DiverTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.diver)
-                .AddModItemToShop(CheckDowned.homewardMod, "TheMotherbrainTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.motherbrain)
-                .AddModItemToShop(CheckDowned.homewardMod, "WallofShadowTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.wos)
-                .AddModItemToShop(CheckDowned.homewardMod, "SlimeGodTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.sgod)
-                .AddModItemToShop(CheckDowned.homewardMod, "TheOverwatcherTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.overwatcher)
-                .AddModItemToShop(CheckDowned.homewardMod, "TheLifebringerTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.lifebringer)
-                .AddModItemToShop(CheckDowned.homewardMod, "TheMaterealizerTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.materealizer)
-                .AddModItemToShop(CheckDowned.homewardMod, "ScarabBeliefTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.scarab)
-                .AddModItemToShop(CheckDowned.homewardMod, "EverlastingFallingWhaleTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.whale)
-                .AddModItemToShop(CheckDowned.homewardMod, "TheSonTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.son)
+                .AddModItemToShop(CheckDowned.homewardMod, "MarquisMoonsquidTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.squid, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.homewardMod, "PriestessRodTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.rod, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.homewardMod, "DiverTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.diver, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.homewardMod, "TheMotherbrainTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.motherbrain, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.homewardMod, "WallofShadowTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.wos, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.homewardMod, "SlimeGodTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.sgod, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.homewardMod, "TheOverwatcherTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.overwatcher, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.homewardMod, "TheLifebringerTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.lifebringer, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.homewardMod, "TheMaterealizerTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.materealizer, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.homewardMod, "ScarabBeliefTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.scarab, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.homewardMod, "EverlastingFallingWhaleTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.whale, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.homewardMod, "TheSonTreasureBag", Item.buyPrice(platinum: 2), CheckDowned.son, CheckDowned.expertOrMaster)
+            //Hunt of the Old God
+                .AddModItemToShop(CheckDowned.huntMod, "TreasureBucket", Item.buyPrice(platinum: 2), CheckDowned.goozma, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.huntMod, "TreasureTrunk", Item.buyPrice(platinum: 2), CheckDowned.goozma, CheckDowned.expertOrMaster)
             //Infernum
-                .AddModItemToShop(CheckDowned.infernumMod, "BereftVassalBossBag", Item.buyPrice(platinum: 2), CheckDowned.vassal)
+                .AddModItemToShop(CheckDowned.infernumMod, "BereftVassalBossBag", Item.buyPrice(platinum: 2), CheckDowned.vassal, CheckDowned.expertOrMaster)
             //Polarities
-                .AddModItemToShop(CheckDowned.polaritiesMod, "StormCloudfishBag", Item.buyPrice(platinum: 2), CheckDowned.cloudfish)
-                .AddModItemToShop(CheckDowned.polaritiesMod, "StarConstructBag", Item.buyPrice(platinum: 2), CheckDowned.construct)
-                .AddModItemToShop(CheckDowned.polaritiesMod, "GigabatBag", Item.buyPrice(platinum: 2), CheckDowned.gigabat)
-                .AddModItemToShop(CheckDowned.polaritiesMod, "SunPixieBag", Item.buyPrice(platinum: 2), CheckDowned.sunpixie)
-                .AddModItemToShop(CheckDowned.polaritiesMod, "EsophageBag", Item.buyPrice(platinum: 2), CheckDowned.esophage)
-                .AddModItemToShop(CheckDowned.polaritiesMod, "ConvectiveWandererBag", Item.buyPrice(platinum: 2), CheckDowned.wanderer)
+                .AddModItemToShop(CheckDowned.polaritiesMod, "StormCloudfishBag", Item.buyPrice(platinum: 2), CheckDowned.cloudfish, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.polaritiesMod, "StarConstructBag", Item.buyPrice(platinum: 2), CheckDowned.construct, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.polaritiesMod, "GigabatBag", Item.buyPrice(platinum: 2), CheckDowned.gigabat, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.polaritiesMod, "SunPixieBag", Item.buyPrice(platinum: 2), CheckDowned.sunpixie, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.polaritiesMod, "EsophageBag", Item.buyPrice(platinum: 2), CheckDowned.esophage, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.polaritiesMod, "ConvectiveWandererBag", Item.buyPrice(platinum: 2), CheckDowned.wanderer, CheckDowned.expertOrMaster)
             //Qwertys
-                .AddModItemToShop(CheckDowned.qwertyMod, "TundraBossBag", Item.buyPrice(platinum: 2), CheckDowned.polarBear)
-                .AddModItemToShop(CheckDowned.qwertyMod, "FortressBossBag", Item.buyPrice(platinum: 2), CheckDowned.divineLight)
-                .AddModItemToShop(CheckDowned.qwertyMod, "AncientMachineBag", Item.buyPrice(platinum: 2), CheckDowned.ancientMachine)
-                .AddModItemToShop(CheckDowned.qwertyMod, "NoehtnapBag", Item.buyPrice(platinum: 2), CheckDowned.noehtnap)
-                .AddModItemToShop(CheckDowned.qwertyMod, "Hydrabag", Item.buyPrice(platinum: 2), CheckDowned.hydra)
-                .AddModItemToShop(CheckDowned.qwertyMod, "BladeBossBag", Item.buyPrice(platinum: 2), CheckDowned.imperious)
-                .AddModItemToShop(CheckDowned.qwertyMod, "RuneGhostBag", Item.buyPrice(platinum: 2), CheckDowned.runeGhost)
-                .AddModItemToShop(CheckDowned.qwertyMod, "B4Bag", Item.buyPrice(platinum: 2), CheckDowned.olord)
+                .AddModItemToShop(CheckDowned.qwertyMod, "TundraBossBag", Item.buyPrice(platinum: 2), CheckDowned.polarBear, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.qwertyMod, "FortressBossBag", Item.buyPrice(platinum: 2), CheckDowned.divineLight, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.qwertyMod, "AncientMachineBag", Item.buyPrice(platinum: 2), CheckDowned.ancientMachine, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.qwertyMod, "NoehtnapBag", Item.buyPrice(platinum: 2), CheckDowned.noehtnap, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.qwertyMod, "Hydrabag", Item.buyPrice(platinum: 2), CheckDowned.hydra, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.qwertyMod, "BladeBossBag", Item.buyPrice(platinum: 2), CheckDowned.imperious, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.qwertyMod, "RuneGhostBag", Item.buyPrice(platinum: 2), CheckDowned.runeGhost, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.qwertyMod, "B4Bag", Item.buyPrice(platinum: 2), CheckDowned.olord, CheckDowned.expertOrMaster)
             //Redemption
-                .AddModItemToShop(CheckDowned.redemptionMod, "ThornBag", Item.buyPrice(platinum: 2), CheckDowned.thorn)
-                .AddModItemToShop(CheckDowned.redemptionMod, "ErhanBag", Item.buyPrice(platinum: 2), CheckDowned.erhan)
-                .AddModItemToShop(CheckDowned.redemptionMod, "KeeperBag", Item.buyPrice(platinum: 2), CheckDowned.keeper)
-                .AddModItemToShop(CheckDowned.redemptionMod, "SoIBag", Item.buyPrice(platinum: 2), CheckDowned.seed)
-                .AddModItemToShop(CheckDowned.redemptionMod, "SlayerBag", Item.buyPrice(platinum: 2), CheckDowned.ks3)
-                .AddModItemToShop(CheckDowned.redemptionMod, "OmegaCleaverBag", Item.buyPrice(platinum: 2), CheckDowned.cleaver)
-                .AddModItemToShop(CheckDowned.redemptionMod, "OmegaGigaporaBag", Item.buyPrice(platinum: 2), CheckDowned.gigapora)
-                .AddModItemToShop(CheckDowned.redemptionMod, "OmegaOblitBag", Item.buyPrice(platinum: 2), CheckDowned.obliterator)
-                .AddModItemToShop(CheckDowned.redemptionMod, "PZBag", Item.buyPrice(platinum: 2), CheckDowned.zero)
-                .AddModItemToShop(CheckDowned.redemptionMod, "AkkaBag", Item.buyPrice(platinum: 2), CheckDowned.duo)
-                .AddModItemToShop(CheckDowned.redemptionMod, "UkkoBag", Item.buyPrice(platinum: 2), CheckDowned.duo)
-                .AddModItemToShop(CheckDowned.redemptionMod, "NebBag", Item.buyPrice(platinum: 2), CheckDowned.nebby)
+                .AddModItemToShop(CheckDowned.redemptionMod, "ThornBag", Item.buyPrice(platinum: 2), CheckDowned.thorn, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.redemptionMod, "ErhanBag", Item.buyPrice(platinum: 2), CheckDowned.erhan, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.redemptionMod, "KeeperBag", Item.buyPrice(platinum: 2), CheckDowned.keeper, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.redemptionMod, "SoIBag", Item.buyPrice(platinum: 2), CheckDowned.seed, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.redemptionMod, "SlayerBag", Item.buyPrice(platinum: 2), CheckDowned.ks3, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.redemptionMod, "OmegaCleaverBag", Item.buyPrice(platinum: 2), CheckDowned.cleaver, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.redemptionMod, "OmegaGigaporaBag", Item.buyPrice(platinum: 2), CheckDowned.gigapora, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.redemptionMod, "OmegaOblitBag", Item.buyPrice(platinum: 2), CheckDowned.obliterator, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.redemptionMod, "PZBag", Item.buyPrice(platinum: 2), CheckDowned.zero, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.redemptionMod, "AkkaBag", Item.buyPrice(platinum: 2), CheckDowned.duo, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.redemptionMod, "UkkoBag", Item.buyPrice(platinum: 2), CheckDowned.duo, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.redemptionMod, "NebBag", Item.buyPrice(platinum: 2), CheckDowned.nebby, CheckDowned.expertOrMaster)
             //SOTS
-                .AddModItemToShop(CheckDowned.sotsMod, "GlowmothBag", Item.buyPrice(platinum: 2), CheckDowned.glowmoth)
-                .AddModItemToShop(CheckDowned.sotsMod, "PinkyBag", Item.buyPrice(platinum: 2), CheckDowned.putridpinky)
-                .AddModItemToShop(CheckDowned.sotsMod, "CurseBag", Item.buyPrice(platinum: 2), CheckDowned.pharaohscurse)
-                .AddModItemToShop(CheckDowned.sotsMod, "TheAdvisorBossBag", Item.buyPrice(platinum: 2), CheckDowned.advisor)
-                .AddModItemToShop(CheckDowned.sotsMod, "PolarisBossBag", Item.buyPrice(platinum: 2), CheckDowned.polaris)
-                .AddModItemToShop(CheckDowned.sotsMod, "LuxBag", Item.buyPrice(platinum: 2), CheckDowned.lux)
-                .AddModItemToShop(CheckDowned.sotsMod, "SubspaceBag", Item.buyPrice(platinum: 2), CheckDowned.serpent)
+                .AddModItemToShop(CheckDowned.sotsMod, "GlowmothBag", Item.buyPrice(platinum: 2), CheckDowned.glowmoth, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.sotsMod, "PinkyBag", Item.buyPrice(platinum: 2), CheckDowned.putridpinky, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.sotsMod, "CurseBag", Item.buyPrice(platinum: 2), CheckDowned.pharaohscurse, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.sotsMod, "TheAdvisorBossBag", Item.buyPrice(platinum: 2), CheckDowned.advisor, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.sotsMod, "PolarisBossBag", Item.buyPrice(platinum: 2), CheckDowned.polaris, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.sotsMod, "LuxBag", Item.buyPrice(platinum: 2), CheckDowned.lux, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.sotsMod, "SubspaceBag", Item.buyPrice(platinum: 2), CheckDowned.serpent, CheckDowned.expertOrMaster)
             //Spirit
-                .AddModItemToShop(CheckDowned.spiritMod, "BagOScarabs", Item.buyPrice(platinum: 2), CheckDowned.scarabeus)
-                .AddModItemToShop(CheckDowned.spiritMod, "MJWBag", Item.buyPrice(platinum: 2), CheckDowned.moonjelly)
-                .AddModItemToShop(CheckDowned.spiritMod, "ReachBossBag", Item.buyPrice(platinum: 2), CheckDowned.vinewrath)
-                .AddModItemToShop(CheckDowned.spiritMod, "FlyerBag", Item.buyPrice(platinum: 2), CheckDowned.avian)
-                .AddModItemToShop(CheckDowned.spiritMod, "SteamRaiderBag", Item.buyPrice(platinum: 2), CheckDowned.starvoyager)
-                .AddModItemToShop(CheckDowned.spiritMod, "InfernonBag", Item.buyPrice(platinum: 2), CheckDowned.infernon)
-                .AddModItemToShop(CheckDowned.spiritMod, "DuskingBag", Item.buyPrice(platinum: 2), CheckDowned.dusking)
-                .AddModItemToShop(CheckDowned.spiritMod, "AtlasBag", Item.buyPrice(platinum: 2), CheckDowned.atlas)
+                .AddModItemToShop(CheckDowned.spiritMod, "BagOScarabs", Item.buyPrice(platinum: 2), CheckDowned.scarabeus, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.spiritMod, "MJWBag", Item.buyPrice(platinum: 2), CheckDowned.moonjelly, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.spiritMod, "ReachBossBag", Item.buyPrice(platinum: 2), CheckDowned.vinewrath, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.spiritMod, "FlyerBag", Item.buyPrice(platinum: 2), CheckDowned.avian, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.spiritMod, "SteamRaiderBag", Item.buyPrice(platinum: 2), CheckDowned.starvoyager, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.spiritMod, "InfernonBag", Item.buyPrice(platinum: 2), CheckDowned.infernon, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.spiritMod, "DuskingBag", Item.buyPrice(platinum: 2), CheckDowned.dusking, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.spiritMod, "AtlasBag", Item.buyPrice(platinum: 2), CheckDowned.atlas, CheckDowned.expertOrMaster)
             //Spooky
-                .AddModItemToShop(CheckDowned.spookyMod, "BossBagSpookySpirit", Item.buyPrice(platinum: 2), CheckDowned.spookyspirit)
-                .AddModItemToShop(CheckDowned.spookyMod, "BossBagRotGourd", Item.buyPrice(platinum: 2), CheckDowned.gourd)
-                .AddModItemToShop(CheckDowned.spookyMod, "BossBagMoco", Item.buyPrice(platinum: 2), CheckDowned.moco)
-                .AddModItemToShop(CheckDowned.spookyMod, "BossBagOrroboro", Item.buyPrice(platinum: 2), CheckDowned.orroboro)
-                .AddModItemToShop(CheckDowned.spookyMod, "BossBagBigBone", Item.buyPrice(platinum: 2), CheckDowned.bigbone)
+                .AddModItemToShop(CheckDowned.spookyMod, "BossBagSpookySpirit", Item.buyPrice(platinum: 2), CheckDowned.spookyspirit, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.spookyMod, "BossBagRotGourd", Item.buyPrice(platinum: 2), CheckDowned.gourd, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.spookyMod, "BossBagMoco", Item.buyPrice(platinum: 2), CheckDowned.moco, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.spookyMod, "BossBagOrroboro", Item.buyPrice(platinum: 2), CheckDowned.orroboro, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.spookyMod, "BossBagBigBone", Item.buyPrice(platinum: 2), CheckDowned.bigbone, CheckDowned.expertOrMaster)
             //Storms
-                .AddModItemToShop(CheckDowned.stormMod, "AridBossBag", Item.buyPrice(platinum: 2), CheckDowned.arid)
-                .AddModItemToShop(CheckDowned.stormMod, "StormBossBag", Item.buyPrice(platinum: 2), CheckDowned.storm)
-                .AddModItemToShop(CheckDowned.stormMod, "UltimateBossBag", Item.buyPrice(platinum: 2), CheckDowned.painbringer)
+                .AddModItemToShop(CheckDowned.stormMod, "AridBossBag", Item.buyPrice(platinum: 2), CheckDowned.arid, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.stormMod, "StormBossBag", Item.buyPrice(platinum: 2), CheckDowned.storm, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.stormMod, "UltimateBossBag", Item.buyPrice(platinum: 2), CheckDowned.painbringer, CheckDowned.expertOrMaster)
             //Thorium
-                .AddModItemToShop(CheckDowned.thoriumMod, "ThunderBirdBag", Item.buyPrice(platinum: 2), CheckDowned.grandbird)
-                .AddModItemToShop(CheckDowned.thoriumMod, "JellyFishBag", Item.buyPrice(platinum: 2), CheckDowned.queenjelly)
-                .AddModItemToShop(CheckDowned.thoriumMod, "CountBag", Item.buyPrice(platinum: 2), CheckDowned.viscount)
-                .AddModItemToShop(CheckDowned.thoriumMod, "GraniteBag", Item.buyPrice(platinum: 2), CheckDowned.energystorm)
-                .AddModItemToShop(CheckDowned.thoriumMod, "HeroBag", Item.buyPrice(platinum: 2), CheckDowned.buriedchampion)
-                .AddModItemToShop(CheckDowned.thoriumMod, "ScouterBag", Item.buyPrice(platinum: 2), CheckDowned.scouter)
-                .AddModItemToShop(CheckDowned.thoriumMod, "BoreanBag", Item.buyPrice(platinum: 2), CheckDowned.strider)
-                .AddModItemToShop(CheckDowned.thoriumMod, "BeholderBag", Item.buyPrice(platinum: 2), CheckDowned.fallenbeholder)
-                .AddModItemToShop(CheckDowned.thoriumMod, "LichBag", Item.buyPrice(platinum: 2), CheckDowned.lich)
-                .AddModItemToShop(CheckDowned.thoriumMod, "AbyssionBag", Item.buyPrice(platinum: 2), CheckDowned.forgottenone)
-                .AddModItemToShop(CheckDowned.thoriumMod, "RagBag", Item.buyPrice(platinum: 2), CheckDowned.primordials)
+                .AddModItemToShop(CheckDowned.thoriumMod, "ThunderBirdBag", Item.buyPrice(platinum: 2), CheckDowned.grandbird, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.thoriumMod, "JellyFishBag", Item.buyPrice(platinum: 2), CheckDowned.queenjelly, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.thoriumMod, "CountBag", Item.buyPrice(platinum: 2), CheckDowned.viscount, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.thoriumMod, "GraniteBag", Item.buyPrice(platinum: 2), CheckDowned.energystorm, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.thoriumMod, "HeroBag", Item.buyPrice(platinum: 2), CheckDowned.buriedchampion, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.thoriumMod, "ScouterBag", Item.buyPrice(platinum: 2), CheckDowned.scouter, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.thoriumMod, "BoreanBag", Item.buyPrice(platinum: 2), CheckDowned.strider, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.thoriumMod, "BeholderBag", Item.buyPrice(platinum: 2), CheckDowned.fallenbeholder, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.thoriumMod, "LichBag", Item.buyPrice(platinum: 2), CheckDowned.lich, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.thoriumMod, "AbyssionBag", Item.buyPrice(platinum: 2), CheckDowned.forgottenone, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.thoriumMod, "RagBag", Item.buyPrice(platinum: 2), CheckDowned.primordials, CheckDowned.expertOrMaster)
             //Vitality
-                .AddModItemToShop(CheckDowned.vitalityMod, "StormCloudBossBag", Item.buyPrice(platinum: 2), CheckDowned.stormcloud)
-                .AddModItemToShop(CheckDowned.vitalityMod, "GrandAntlionBossBag", Item.buyPrice(platinum: 2), CheckDowned.grandantlion)
-                .AddModItemToShop(CheckDowned.vitalityMod, "GemstoneElementalBossBag", Item.buyPrice(platinum: 2), CheckDowned.gemstone)
-                .AddModItemToShop(CheckDowned.vitalityMod, "MoonlightDragonflyBossBag", Item.buyPrice(platinum: 2), CheckDowned.dragonfly)
-                .AddModItemToShop(CheckDowned.vitalityMod, "DreadnaughtBossBag", Item.buyPrice(platinum: 2), CheckDowned.dreadnaught)
-                .AddModItemToShop(CheckDowned.vitalityMod, "AnarchulesBeetleBossBag", Item.buyPrice(platinum: 2), CheckDowned.anarchulesbeetle)
-                .AddModItemToShop(CheckDowned.vitalityMod, "ChaosbringerBossBag", Item.buyPrice(platinum: 2), CheckDowned.chaosbringer)
-                .AddModItemToShop(CheckDowned.vitalityMod, "PaladinSpiritBossBag", Item.buyPrice(platinum: 2), CheckDowned.paladin);
+                .AddModItemToShop(CheckDowned.vitalityMod, "StormCloudBossBag", Item.buyPrice(platinum: 2), CheckDowned.stormcloud, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.vitalityMod, "GrandAntlionBossBag", Item.buyPrice(platinum: 2), CheckDowned.grandantlion, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.vitalityMod, "GemstoneElementalBossBag", Item.buyPrice(platinum: 2), CheckDowned.gemstone, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.vitalityMod, "MoonlightDragonflyBossBag", Item.buyPrice(platinum: 2), CheckDowned.dragonfly, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.vitalityMod, "DreadnaughtBossBag", Item.buyPrice(platinum: 2), CheckDowned.dreadnaught, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.vitalityMod, "AnarchulesBeetleBossBag", Item.buyPrice(platinum: 2), CheckDowned.anarchulesbeetle, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.vitalityMod, "ChaosbringerBossBag", Item.buyPrice(platinum: 2), CheckDowned.chaosbringer, CheckDowned.expertOrMaster)
+                .AddModItemToShop(CheckDowned.vitalityMod, "PaladinSpiritBossBag", Item.buyPrice(platinum: 2), CheckDowned.paladin, CheckDowned.expertOrMaster);
             modBossBagShop.Register();
 
             var modCratesShop = new NPCShop(Type, "Modded Crates & Grab Bags")
@@ -832,7 +868,10 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.thoriumMod, "ScarletCrate", Item.buyPrice(platinum: 1))
                 .AddModItemToShop(CheckDowned.thoriumMod, "SinisterCrate", Item.buyPrice(platinum: 1), Condition.Hardmode)
                 .AddModItemToShop(CheckDowned.thoriumMod, "StrangeCrate", Item.buyPrice(platinum: 1))
-                .AddModItemToShop(CheckDowned.thoriumMod, "WondrousCrate", Item.buyPrice(platinum: 1), Condition.Hardmode);
+                .AddModItemToShop(CheckDowned.thoriumMod, "WondrousCrate", Item.buyPrice(platinum: 1), Condition.Hardmode)
+            //VERDANT
+                .AddModItemToShop(CheckDowned.verdantMod, "LushWoodCrateItem", Item.buyPrice(platinum: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "MysteriaCrateItem", Item.buyPrice(platinum: 1), Condition.Hardmode);
             modCratesShop.Register();
 
             var modOreShop = new NPCShop(Type, "Modded Ores & Bars")
@@ -872,6 +911,9 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.echoesMod, "SkystoneBar", Item.buyPrice(gold: 1), Condition.DownedGolem)
                 .AddModItemToShop(CheckDowned.echoesMod, "Ashen_Bar", Item.buyPrice(gold: 1), Condition.DownedGolem)
                 .AddModItemToShop(CheckDowned.echoesMod, "UniversiumBar", Item.buyPrice(gold: 1), Condition.DownedCultist)
+            //Exalt
+                .AddModItemToShop(CheckDowned.exaltMod, "TitanicOre", Item.buyPrice(gold: 1), Condition.DownedPlantera)
+                .AddModItemToShop(CheckDowned.exaltMod, "TitanicBar", Item.buyPrice(gold: 1), Condition.DownedPlantera)
             //Homeward
                 .AddModItemToShop(CheckDowned.homewardMod, "Onyx", Item.buyPrice(gold: 1), Condition.DownedGolem)
                 .AddModItemToShop(CheckDowned.homewardMod, "CubistOre", Item.buyPrice(gold: 1), CheckDowned.wos)
@@ -957,6 +999,9 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.thoriumMod, "ThoriumBar", Item.buyPrice(gold: 1))
                 .AddModItemToShop(CheckDowned.thoriumMod, "TitanicBar", Item.buyPrice(gold: 1), Condition.DownedMechBossAll)
                 .AddModItemToShop(CheckDowned.thoriumMod, "ValadiumIngot", Item.buyPrice(gold: 1), CheckDowned.fallenbeholder)
+            //Verdant
+                .AddModItemToShop(CheckDowned.verdantMod, "AquamarineItem", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "GreenCrystalItem", Item.buyPrice(gold: 1), Condition.DownedEyeOfCthulhu)
             //Vitality
                 .AddModItemToShop(CheckDowned.vitalityMod, "ArcticOre", Item.buyPrice(gold: 1), Condition.DownedMechBossAny)
                 .AddModItemToShop(CheckDowned.vitalityMod, "GeraniumOre", Item.buyPrice(gold: 1), Condition.DownedSkeletron)
@@ -973,6 +1018,8 @@ namespace QoLCompendium.NPCs
             modOreShop.Register();
 
             var modNaturalBlocksShop = new NPCShop(Type, "Modded Natural Blocks")
+            //Arbour
+                .AddModItemToShop(CheckDowned.arbourMod, "BirchWoodBlock", Item.buyPrice(silver: 1))
             //Aequus
                 .AddModItemToShop(CheckDowned.aqMod, "SedimentaryRockItem", Item.buyPrice(silver: 1))
             //Calamity
@@ -1003,6 +1050,18 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.calamityMod, "SulphurousShale", Item.buyPrice(silver: 1))
                 .AddModItemToShop(CheckDowned.calamityMod, "VernalSoil", Item.buyPrice(silver: 1))
                 .AddModItemToShop(CheckDowned.calamityMod, "Voidstone", Item.buyPrice(silver: 1), Condition.DownedMechBossAll)
+            //Calamity Vanities
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AstralClay", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AstralDirt", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AstralIce", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AstralSand", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AstralSandstone", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AstralSnow", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AstralHardenedSand", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AstralTreeWood", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "Xenostone", Item.buyPrice(silver: 1), Condition.Hardmode)
+            //Exalt
+                .AddModItemToShop(CheckDowned.exaltMod, "Basalt", Item.buyPrice(gold: 1), Condition.DownedEowOrBoc)
             //Homeward
                 .AddModItemToShop(CheckDowned.homewardMod, "AbyssStone", Item.buyPrice(silver: 1), Condition.DownedMechBossAll)
             //Polarities
@@ -1068,7 +1127,17 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.thoriumMod, "MossyMarineBlock", Item.buyPrice(silver: 1), Condition.DownedEowOrBoc)
                 .AddModItemToShop(CheckDowned.thoriumMod, "Permafrost", Item.buyPrice(silver: 1), Condition.DownedEverscream, Condition.DownedSantaNK1, Condition.DownedIceQueen)
                 .AddModItemToShop(CheckDowned.thoriumMod, "SugarCookieBlock", Item.buyPrice(silver: 1), Condition.DownedEverscream, Condition.DownedSantaNK1, Condition.DownedIceQueen)
-                .AddModItemToShop(CheckDowned.thoriumMod, "YewWood", Item.buyPrice(silver: 1), Condition.DownedGoblinArmy);
+                .AddModItemToShop(CheckDowned.thoriumMod, "YewWood", Item.buyPrice(silver: 1), Condition.DownedGoblinArmy)
+            //Verdant
+                .AddModItemToShop(CheckDowned.verdantMod, "BackslateTileItem", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "LushSoilBlock", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "LushWoodPlankBlock", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "MysteriaFluffItem", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "MysteriaWood", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "PuffBlockItem", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "SnailShellBlockItem", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "ThornBlock", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "VerdantWoodBlock", Item.buyPrice(silver: 1));
             modNaturalBlocksShop.Register();
 
             var modBuildingBlocksShop = new NPCShop(Type, "Modded Building Blocks")
@@ -1114,9 +1183,33 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.calamityMod, "UelibloomBrick", Item.buyPrice(silver: 1), CheckDowned.providence)
                 .AddModItemToShop(CheckDowned.calamityMod, "VoidstoneSlab", Item.buyPrice(silver: 1), Condition.DownedMechBossAll)
                 .AddModItemToShop(CheckDowned.calamityMod, "WulfrumPlating", Item.buyPrice(silver: 1))
+            //Calamity Vanities
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AstralBrick", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AstralPearlBlock", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AstralPlating", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AuricBrick", Item.buyPrice(silver: 1), CheckDowned.yharon)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AzufreSludge", Item.buyPrice(silver: 1), CheckDowned.oldduke)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "BlightedEggBlock", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "Bloodstone", Item.buyPrice(silver: 1), CheckDowned.providence)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "BloodstoneBrick", Item.buyPrice(silver: 1), CheckDowned.providence)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "ChiseledBloodstone", Item.buyPrice(silver: 1), CheckDowned.providence)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "EidolicSlab", Item.buyPrice(silver: 1), CheckDowned.polterghast)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "FrostflakeBrick", Item.buyPrice(silver: 1), CheckDowned.cryogen)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "HallowedBrick", Item.buyPrice(silver: 1), Condition.DownedMechBossAny)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "MeldBlock", Item.buyPrice(silver: 1), Condition.DownedCultist)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "Necrostone", Item.buyPrice(silver: 1), CheckDowned.ravager)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "PhantowaxBlock", Item.buyPrice(silver: 1), CheckDowned.polterghast)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "PolishedAstralMonolith", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "PolishedXenomonolith", Item.buyPrice(silver: 1), Condition.Hardmode)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "ShadowBrick", Item.buyPrice(silver: 1), CheckDowned.exomechs, CheckDowned.scalamitas)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "ThanatosPlating", Item.buyPrice(silver: 1), CheckDowned.exomechs)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "ThanatosPlatingVent", Item.buyPrice(silver: 1), CheckDowned.exomechs)
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "WulfrumPlating", Item.buyPrice(silver: 1))
             //Catalyst
                 .AddModItemToShop(CheckDowned.catalystMod, "Astrogel", Item.buyPrice(silver: 1), CheckDowned.geldon)
                 .AddModItemToShop(CheckDowned.catalystMod, "MetanovaBrick", Item.buyPrice(silver: 1), CheckDowned.geldon)
+            //Exalt
+                .AddModItemToShop(CheckDowned.exaltMod, "BasaltBrick", Item.buyPrice(gold: 1), Condition.DownedEowOrBoc)
             //Homeward
                 .AddModItemToShop(CheckDowned.homewardMod, "AbyssBrick", Item.buyPrice(silver: 1), Condition.DownedMechBossAll)
             //Polarities
@@ -1209,6 +1302,8 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(CheckDowned.thoriumMod, "ValadiumPlating", Item.buyPrice(silver: 1), CheckDowned.fallenbeholder)
                 .AddModItemToShop(CheckDowned.thoriumMod, "WhiteDwarfBrick", Item.buyPrice(silver: 1), Condition.DownedCultist)
                 .AddModItemToShop(CheckDowned.thoriumMod, "WhiteDwarfFragmentBlock", Item.buyPrice(silver: 1), Condition.DownedCultist)
+            //Verdant
+                .AddModItemToShop(CheckDowned.verdantMod, "OvergrownBrickItem", Item.buyPrice(silver: 1))
             //Vitality
                 .AddModItemToShop(CheckDowned.vitalityMod, "ArcticBrick", Item.buyPrice(silver: 1), Condition.DownedMechBossAny)
                 .AddModItemToShop(CheckDowned.vitalityMod, "BronzeBrick", Item.buyPrice(silver: 1))
@@ -1216,30 +1311,39 @@ namespace QoLCompendium.NPCs
             modBuildingBlocksShop.Register();
 
             var modPlantShop = new NPCShop(Type, "Modded Herbs & Plants")
+            //Arbour
+                .AddModItemToShop(CheckDowned.arbourMod, "ArborGrassSeeds", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.arbourMod, "MicrobirchAcorn", Item.buyPrice(silver: 1))
             //Aequus
-                .AddModItemToShop(CheckDowned.aqMod, "ManaclePollen", Item.buyPrice(gold: 1), CheckDowned.demonSiege)
-                .AddModItemToShop(CheckDowned.aqMod, "MistralPollen", Item.buyPrice(gold: 1), CheckDowned.devil)
-                .AddModItemToShop(CheckDowned.aqMod, "MoonflowerPollen", Item.buyPrice(gold: 1), CheckDowned.omegastarite)
-                .AddModItemToShop(CheckDowned.aqMod, "MorayPollen", Item.buyPrice(gold: 1), CheckDowned.crabson)
+                .AddModItemToShop(CheckDowned.aqMod, "ManaclePollen", Item.buyPrice(silver: 1), CheckDowned.demonSiege)
+                .AddModItemToShop(CheckDowned.aqMod, "MistralPollen", Item.buyPrice(silver: 1), CheckDowned.devil)
+                .AddModItemToShop(CheckDowned.aqMod, "MoonflowerPollen", Item.buyPrice(silver: 1), CheckDowned.omegastarite)
+                .AddModItemToShop(CheckDowned.aqMod, "MorayPollen", Item.buyPrice(silver: 1), CheckDowned.crabson)
             //Calamity
-                .AddModItemToShop(CheckDowned.calamityMod, "CinderBlossomSeeds", Item.buyPrice(gold: 1), Condition.DownedEowOrBoc)
-                .AddModItemToShop(CheckDowned.calamityMod, "SpineSapling", Item.buyPrice(gold: 1), Condition.DownedEowOrBoc)
+                .AddModItemToShop(CheckDowned.calamityMod, "CinderBlossomSeeds", Item.buyPrice(silver: 1), Condition.DownedEowOrBoc)
+                .AddModItemToShop(CheckDowned.calamityMod, "SpineSapling", Item.buyPrice(silver: 1), Condition.DownedEowOrBoc)
+            //Calamity Vanities
+                .AddModItemToShop(CheckDowned.calamityVanitiesMod, "AstralGrass", Item.buyPrice(silver: 1), Condition.Hardmode)
             //Redemption
-                .AddModItemToShop(CheckDowned.redemptionMod, "AnglonicMysticBlossom", Item.buyPrice(gold: 1))
-                .AddModItemToShop(CheckDowned.redemptionMod, "LivingTwig", Item.buyPrice(gold: 1))
-                .AddModItemToShop(CheckDowned.redemptionMod, "Nightshade", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.redemptionMod, "AnglonicMysticBlossom", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.redemptionMod, "LivingTwig", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.redemptionMod, "Nightshade", Item.buyPrice(silver: 1))
             //Spirit
-                .AddModItemToShop(CheckDowned.spiritMod, "CloudstalkItem", Item.buyPrice(gold: 1))
-                .AddModItemToShop(CheckDowned.spiritMod, "EnchantedLeaf", Item.buyPrice(gold: 1))
-                .AddModItemToShop(CheckDowned.spiritMod, "GlowRoot", Item.buyPrice(gold: 1))
-                .AddModItemToShop(CheckDowned.spiritMod, "Kelp", Item.buyPrice(gold: 1))
-                .AddModItemToShop(CheckDowned.spiritMod, "SoulBloom", Item.buyPrice(gold: 1), Condition.DownedMechBossAny)
-                .AddModItemToShop(CheckDowned.spiritMod, "BriarGrassSeeds", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.spiritMod, "CloudstalkItem", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.spiritMod, "EnchantedLeaf", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.spiritMod, "GlowRoot", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.spiritMod, "Kelp", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.spiritMod, "SoulBloom", Item.buyPrice(silver: 1), Condition.DownedMechBossAny)
+                .AddModItemToShop(CheckDowned.spiritMod, "BriarGrassSeeds", Item.buyPrice(silver: 1))
             //Spooky
-                .AddModItemToShop(CheckDowned.spookyMod, "SpookySeedsGreen", Item.buyPrice(gold: 1))
-                .AddModItemToShop(CheckDowned.spookyMod, "SpookySeedsOrange", Item.buyPrice(gold: 1))
+                .AddModItemToShop(CheckDowned.spookyMod, "SpookySeedsGreen", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.spookyMod, "SpookySeedsOrange", Item.buyPrice(silver: 1))
             //Thorium
-                .AddModItemToShop(CheckDowned.thoriumMod, "MarineKelp", Item.buyPrice(gold: 1));
+                .AddModItemToShop(CheckDowned.thoriumMod, "MarineKelp", Item.buyPrice(silver: 1))
+            //Verdant
+                .AddModItemToShop(CheckDowned.verdantMod, "LightbulbSeeds", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "MysteriaAcorn", Item.buyPrice(silver: 1))
+                .AddModItemToShop(CheckDowned.verdantMod, "WisplantSeeds", Item.buyPrice(silver: 1));
             modPlantShop.Register();
         }
     }

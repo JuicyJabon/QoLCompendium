@@ -4,12 +4,13 @@
   <PropertyGroup>
     <AssemblyName>QoLCompendium</AssemblyName>
     <TargetFramework>net6.0</TargetFramework>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Localization\en-US_Mods.QoLCompendium.hjson" />
     <None Remove="UI\LuckInfoDisplay.png" />
+    <None Remove="UI\SpawnInfoDisplay.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />

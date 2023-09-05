@@ -21,8 +21,8 @@ namespace QoLCompendium.Items
 
         public override void SetDefaults()
         {
-            Item.width = 12;
-            Item.height = 12;
+            Item.width = 9;
+            Item.height = 14;
             Item.maxStack = 1;
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.HoldUp;

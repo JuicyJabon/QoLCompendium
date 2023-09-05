@@ -1,3 +1,4 @@
+using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
 using System.Collections.Generic;
 using Terraria;
@@ -12,8 +13,10 @@ namespace QoLCompendium.NPCs
     [AutoloadHead]
     public class BMDealerNPC : ModNPC
     {
+        #pragma warning disable CA2211
         public static int shopNum = 0;
         public static string ShopName;
+        #pragma warning restore CA2211
 
         public override string Texture
         {
@@ -143,53 +146,63 @@ namespace QoLCompendium.NPCs
             }
             else if (shopNum == 1)
             {
+                button = "Flasks, Stations & Foods";
+                ShopName = "Flasks, Stations & Foods";
+            }
+            else if (shopNum == 2)
+            {
                 button = "Materials";
                 ShopName = "Materials";
             }
-            else if (shopNum == 2)
+            else if (shopNum == 3)
             {
                 button = "Hardmode Materials";
                 ShopName = "Hardmode Materials";
             }
-            else if (shopNum == 3)
+            else if (shopNum == 4)
             {
                 button = "Movement Accessories";
                 ShopName = "Movement Accessories";
             }
-            else if (shopNum == 4)
+            else if (shopNum == 5)
             {
                 button = "Combat Accessories";
                 ShopName = "Combat Accessories";
             }
-            else if (shopNum == 5)
+            else if (shopNum == 6)
             {
                 button = "Informative/Building Gear";
                 ShopName = "Informative/Building Gear";
             }
-            else if (shopNum == 6)
-            {
-                button = "Treasure Bags & Crates";
-                ShopName = "Treasure Bags & Crates";
-            }
             else if (shopNum == 7)
+            {
+                button = "Treasure Bags";
+                ShopName = "Treasure Bags";
+            }
+            else if (shopNum == 8)
+            {
+                button = "Crates & Grab Bags";
+                ShopName = "Crates & Grab Bags";
+            }
+            else if (shopNum == 9)
+            {
+                button = "Ores & Bars";
+                ShopName = "Ores & Bars";
+            }
+            else if (shopNum == 10)
             {
                 button = "Natural Blocks";
                 ShopName = "Natural Blocks";
             }
-            else if (shopNum == 8)
+            else if (shopNum == 11)
             {
                 button = "Building Blocks";
                 ShopName = "Building Blocks";
             }
-            else if (shopNum == 9)
+            else if (shopNum == 12)
             {
                 button = "Herbs & Plants";
                 ShopName = "Herbs & Plants";
-            }
-            else if (shopNum == 10)
-            {
-                button = "Flasks, Stations & Foods";
-                ShopName = "Flasks, Stations & Foods";
             }
             button2 = "Shop Changer";
         }
@@ -214,7 +227,7 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.AmmoReservationPotion)
                     .Add(ItemID.ArcheryPotion)
                     .Add(ItemID.BattlePotion)
-                    .Add(ItemID.BiomeSightPotion)
+                    .Add(ItemID.BiomeSightPotion, Condition.DownedEyeOfCthulhu)
                     .Add(ItemID.BuilderPotion)
                     .Add(ItemID.CalmingPotion)
                     .Add(ItemID.CratePotion)
@@ -251,6 +264,47 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.WrathPotion);
             potShop.Register();
 
+            var flaskShop = new NPCShop(Type, "Flasks, Stations & Foods")
+                    .Add(ItemID.FruitJuice)
+                    .Add(ItemID.LobsterTail)
+                    .Add(ItemID.GoldenDelight)
+                    .Add(ItemID.FlaskofCursedFlames, Condition.Hardmode, Condition.DownedQueenBee)
+                    .Add(ItemID.FlaskofFire, Condition.DownedQueenBee)
+                    .Add(ItemID.FlaskofGold, Condition.Hardmode, Condition.DownedQueenBee)
+                    .Add(ItemID.FlaskofIchor, Condition.Hardmode, Condition.DownedQueenBee)
+                    .Add(ItemID.FlaskofNanites, Condition.DownedPlantera, Condition.DownedQueenBee)
+                    .Add(ItemID.FlaskofParty, Condition.DownedQueenBee)
+                    .Add(ItemID.FlaskofPoison, Condition.DownedQueenBee)
+                    .Add(ItemID.FlaskofVenom, Condition.DownedPlantera, Condition.DownedQueenBee)
+                    .Add(ItemID.GenderChangePotion)
+                    .Add(ItemID.PotionOfReturn, Condition.DownedEowOrBoc)
+                    .Add(ItemID.RecallPotion)
+                    .Add(ItemID.TeleportationPotion, Condition.Hardmode)
+                    .Add(ItemID.WormholePotion)
+                    .Add(ItemID.RedPotion, Condition.ForTheWorthyWorld)
+                    .Add(ItemID.Sunflower)
+                    .Add(ItemID.Campfire)
+                    .Add(ItemID.CrystalBall, Condition.Hardmode)
+                    .Add(ItemID.AmmoBox)
+                    .Add(ItemID.SharpeningStation)
+                    .Add(ItemID.BewitchingTable, Condition.DownedSkeletron)
+                    .Add(ItemID.WarTable, Condition.DownedOldOnesArmyAny)
+                    .Add(ItemID.CatBast)
+                    .Add(ItemID.SliceOfCake)
+                    .Add(ItemID.StarinaBottle)
+                    .Add(ItemID.HeartLantern)
+                    .Add(ItemID.GardenGnome)
+                    .Add(ItemID.PeaceCandle)
+                    .Add(ItemID.WaterCandle, Condition.DownedSkeletron)
+                    .Add(ItemID.ShadowCandle)
+                    .Add(ItemID.WaterBucket)
+                    .Add(ItemID.LavaBucket)
+                    .Add(ItemID.HoneyBucket)
+                    .Add(ItemID.LifeCrystal)
+                    .Add(ItemID.LifeFruit, Condition.DownedMechBossAny)
+                    .Add(ItemID.ManaCrystal);
+            flaskShop.Register();
+
             var matShop = new NPCShop(Type, "Materials")
                     .Add(ItemID.AntlionMandible)
                     .Add(ItemID.BeeWax, Condition.DownedQueenBee)
@@ -258,7 +312,6 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.BlackLens)
                     .Add(ItemID.BlackPearl)
                     .Add(ItemID.Bone, Condition.DownedSkeletron)
-                    .Add(ItemID.Cobweb)
                     .Add(ItemID.CyanHusk)
                     .Add(ItemID.Feather)
                     .Add(ItemID.FlinxFur)
@@ -286,7 +339,7 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.WormTooth);
             matShop.Register();
 
-            var rMatShop = new NPCShop(Type, "Hardmode Materials")
+            var hmMatShop = new NPCShop(Type, "Hardmode Materials")
                     .Add(ItemID.AncientCloth, Condition.Hardmode)
                     .Add(ItemID.BeetleHusk, Condition.DownedGolem)
                     .Add(ItemID.BrokenHeroSword, Condition.DownedPlantera)
@@ -313,7 +366,7 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.FragmentSolar, Condition.DownedCultist)
                     .Add(ItemID.FragmentStardust, Condition.DownedCultist)
                     .Add(ItemID.FragmentVortex, Condition.DownedCultist);
-            rMatShop.Register();
+            hmMatShop.Register();
 
             var moveAccsShop = new NPCShop(Type, "Movement Accessories")
                    .Add(ItemID.Aglet)
@@ -370,7 +423,7 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.RangerEmblem, Condition.Hardmode)
                     .Add(ItemID.RifleScope, Condition.DownedPlantera)
                     .Add(ItemID.Shackle)
-                    .Add(ItemID.SharkToothNecklace)
+                    .Add(ItemID.SharkToothNecklace, CheckDowned.bloodMoon)
                     .Add(ItemID.SorcererEmblem, Condition.Hardmode)
                     .Add(ItemID.StarCloak, Condition.Hardmode)
                     .Add(ItemID.SummonerEmblem, Condition.Hardmode)
@@ -383,63 +436,100 @@ namespace QoLCompendium.NPCs
             var infoShop = new NPCShop(Type, "Informative/Building Gear")
                     .Add(ItemID.Toolbelt)
                     .Add(ItemID.Toolbox)
-                    .Add(ItemID.HandOfCreation)
-                    .Add(ItemID.ActuationAccessory)
+                    .Add(ItemID.ArchitectGizmoPack, Condition.NotDownedSkeletron)
+                    .Add(ItemID.AncientChisel, Condition.NotDownedSkeletron)
+                    .Add(ItemID.HandOfCreation, Condition.DownedSkeletron)
+                    .Add(ItemID.ActuationAccessory, Condition.DownedSkeletron)
+                    .Add(ItemID.Paintbrush, Condition.NotDownedPlantera)
+                    .Add(ItemID.PaintRoller, Condition.NotDownedPlantera)
+                    .Add(ItemID.PaintScraper, Condition.NotDownedPlantera)
+                    .Add(ItemID.SpectrePaintbrush, Condition.DownedPlantera)
+                    .Add(ItemID.SpectrePaintRoller, Condition.DownedPlantera)
+                    .Add(ItemID.SpectrePaintScraper, Condition.DownedPlantera)
                     .Add(ItemID.UltrabrightHelmet)
                     .Add(ItemID.MiningShirt)
                     .Add(ItemID.MiningPants)
+                    .Add(ItemID.AnglerTackleBag, Condition.NotDownedEowOrBoc, Condition.AnglerQuestsFinishedOver(1))
+                    .Add(ItemID.LavaproofTackleBag, Condition.DownedEowOrBoc, Condition.AnglerQuestsFinishedOver(1))
+                    .Add(ItemID.FishingBobber, Condition.AnglerQuestsFinishedOver(1))
+                    .Add(ItemID.AnglerHat, Condition.AnglerQuestsFinishedOver(1))
+                    .Add(ItemID.AnglerVest, Condition.AnglerQuestsFinishedOver(1))
+                    .Add(ItemID.AnglerPants, Condition.AnglerQuestsFinishedOver(1))
+                    .Add(ItemID.GoldenFishingRod, Condition.AnglerQuestsFinishedOver(1))
+                    .Add(ItemID.GoldenBugNet, Condition.AnglerQuestsFinishedOver(1))
+                    .Add(ItemID.MasterBait, Condition.AnglerQuestsFinishedOver(1))
+                    .Add(ItemID.PlatinumWatch)
+                    .Add(ItemID.DepthMeter)
+                    .Add(ItemID.Compass)
+                    .Add(ItemID.Radar)
+                    .Add(ItemID.TallyCounter, Condition.DownedSkeletron)
+                    .Add(ItemID.MetalDetector)
+                    .Add(ItemID.Stopwatch)
+                    .Add(ItemID.DPSMeter)
+                    .Add(ItemID.FishermansGuide)
+                    .Add(ItemID.WeatherRadio)
+                    .Add(ItemID.Sextant)
+                    .Add(ItemID.MagicMirror)
+                    .Add(ItemID.MagicConch)
+                    .Add(ItemID.DemonConch, Condition.DownedEowOrBoc)
+                    .Add(ItemID.Shellphone, Condition.Hardmode)
                     .Add(ItemID.ArcticDivingGear)
-                    .Add(ItemID.LavaproofTackleBag)
-                    .Add(ItemID.FishingBobber)
-                    .Add(ItemID.AnglerHat)
-                    .Add(ItemID.AnglerVest)
-                    .Add(ItemID.AnglerPants)
-                    .Add(ItemID.GoldenFishingRod)
-                    .Add(ItemID.GoldenBugNet)
-                    .Add(ItemID.MasterBait)
-                    .Add(ItemID.Shellphone)
+                    .Add(ItemID.DiscountCard, Condition.DownedPirates)
+                    .Add(ItemID.LuckyCoin, Condition.DownedPirates)
+                    .Add(ItemID.GoldRing, Condition.DownedPirates)
                     .Add(ItemID.WireKite, Condition.DownedSkeletron)
                     .Add(ItemID.MoneyTrough)
                     .Add(ItemID.CordageGuide)
                     .Add(ItemID.DontHurtComboBook)
+                    .Add(ItemID.RoyalGel, Condition.DownedKingSlime)
                     .Add(ItemID.TorchGodsFavor)
-                    .Add(ItemID.RodofDiscord, Condition.Hardmode)
-                    .Add(ItemID.RodOfHarmony, Condition.DownedMoonLord);
+                    .Add(ItemID.RodofDiscord, Condition.Hardmode);
+            if (CheckDowned.calamityLoaded)
+            {
+                infoShop.Add(ItemID.RodOfHarmony, CheckDowned.scalamitas, CheckDowned.exomechs);
+            }
+            else
+            {
+                infoShop.Add(ItemID.RodOfHarmony, Condition.DownedMoonLord);
+            }
             infoShop.Register();
 
-            var bossShop = new NPCShop(Type, "Treasure Bags & Crates")
-                    .Add(new Item(ItemID.KingSlimeBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedKingSlime)
-                    .Add(new Item(ItemID.EyeOfCthulhuBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedEyeOfCthulhu)
-                    .Add(new Item(ItemID.EaterOfWorldsBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedEowOrBoc)
-                    .Add(new Item(ItemID.BrainOfCthulhuBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedEowOrBoc)
-                    .Add(new Item(ItemID.QueenBeeBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedQueenBee)
-                    .Add(new Item(ItemID.SkeletronBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedSkeletron)
-                    .Add(new Item(ItemID.DeerclopsBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedDeerclops)
-                    .Add(new Item(ItemID.WallOfFleshBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.Hardmode)
-                    .Add(new Item(ItemID.QueenSlimeBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedQueenSlime)
-                    .Add(new Item(ItemID.DestroyerBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedDestroyer)
-                    .Add(new Item(ItemID.TwinsBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedTwins)
-                    .Add(new Item(ItemID.SkeletronPrimeBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedSkeletronPrime)
-                    .Add(new Item(ItemID.PlanteraBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedPlantera)
-                    .Add(new Item(ItemID.GolemBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedGolem)
-                    .Add(new Item(ItemID.BossBagBetsy) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedOldOnesArmyT3)
-                    .Add(new Item(ItemID.FishronBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedDukeFishron)
-                    .Add(new Item(ItemID.FairyQueenBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedEmpressOfLight)
-                    .Add(new Item(ItemID.MoonLordBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedMoonLord)
-                    .Add(ItemID.DefenderMedal, Condition.DownedOldOnesArmyAny)
-                    .Add(ItemID.WoodenCrate, Condition.PreHardmode)
-                    .Add(ItemID.IronCrate, Condition.PreHardmode)
-                    .Add(ItemID.GoldenCrate, Condition.PreHardmode)
-                    .Add(ItemID.JungleFishingCrate, Condition.PreHardmode)
-                    .Add(ItemID.FloatingIslandFishingCrate, Condition.PreHardmode)
-                    .Add(ItemID.CorruptFishingCrate, Condition.PreHardmode)
-                    .Add(ItemID.CrimsonFishingCrate, Condition.PreHardmode)
-                    .Add(ItemID.HallowedFishingCrate, Condition.PreHardmode)
-                    .Add(ItemID.DungeonFishingCrate, Condition.PreHardmode, Condition.DownedSkeletron)
-                    .Add(ItemID.FrozenCrate, Condition.PreHardmode)
-                    .Add(ItemID.OasisCrate, Condition.PreHardmode)
-                    .Add(ItemID.LavaCrate, Condition.PreHardmode)
-                    .Add(ItemID.OceanCrate, Condition.PreHardmode)
+            var bossShop = new NPCShop(Type, "Treasure Bags")
+                    .Add(new Item(ItemID.KingSlimeBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedKingSlime, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.EyeOfCthulhuBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedEyeOfCthulhu, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.EaterOfWorldsBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedEowOrBoc, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.BrainOfCthulhuBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedEowOrBoc, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.QueenBeeBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedQueenBee, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.SkeletronBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedSkeletron, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.DeerclopsBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedDeerclops, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.WallOfFleshBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.Hardmode, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.QueenSlimeBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedQueenSlime, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.DestroyerBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedDestroyer, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.TwinsBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedTwins, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.SkeletronPrimeBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedSkeletronPrime, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.PlanteraBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedPlantera, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.GolemBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedGolem, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.BossBagBetsy) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedOldOnesArmyT3, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.FishronBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedDukeFishron, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.FairyQueenBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedEmpressOfLight, CheckDowned.expertOrMaster)
+                    .Add(new Item(ItemID.MoonLordBossBag) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.DownedMoonLord, CheckDowned.expertOrMaster)
+                    .Add(ItemID.DefenderMedal, Condition.DownedOldOnesArmyAny);
+            bossShop.Register();
+
+            var crateShop = new NPCShop(Type, "Crates & Grab Bags")
+                    .Add(ItemID.WoodenCrate)
+                    .Add(ItemID.IronCrate)
+                    .Add(ItemID.GoldenCrate)
+                    .Add(ItemID.JungleFishingCrate)
+                    .Add(ItemID.FloatingIslandFishingCrate)
+                    .Add(ItemID.CorruptFishingCrate)
+                    .Add(ItemID.CrimsonFishingCrate)
+                    .Add(ItemID.HallowedFishingCrate)
+                    .Add(ItemID.DungeonFishingCrate, Condition.DownedSkeletron)
+                    .Add(ItemID.FrozenCrate)
+                    .Add(ItemID.OasisCrate)
+                    .Add(ItemID.LavaCrate)
+                    .Add(ItemID.OceanCrate)
                     .Add(ItemID.WoodenCrateHard, Condition.Hardmode)
                     .Add(ItemID.IronCrateHard, Condition.Hardmode)
                     .Add(ItemID.GoldenCrateHard, Condition.Hardmode)
@@ -455,7 +545,58 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.OceanCrateHard, Condition.Hardmode)
                     .Add(ItemID.GoodieBag)
                     .Add(ItemID.Present);
-            bossShop.Register();
+            crateShop.Register();
+
+            var oreShop = new NPCShop(Type, "Ores & Bars")
+                    .Add(ItemID.CopperOre)
+                    .Add(ItemID.TinOre)
+                    .Add(ItemID.IronOre)
+                    .Add(ItemID.LeadOre)
+                    .Add(ItemID.SilverOre)
+                    .Add(ItemID.TungstenOre)
+                    .Add(ItemID.GoldOre)
+                    .Add(ItemID.PlatinumOre)
+                    .Add(ItemID.Meteorite, Condition.DownedEowOrBoc)
+                    .Add(ItemID.DemoniteOre, Condition.DownedEowOrBoc)
+                    .Add(ItemID.CrimtaneOre, Condition.DownedEowOrBoc)
+                    .Add(ItemID.Hellstone, Condition.DownedEowOrBoc)
+                    .Add(ItemID.CobaltOre, Condition.Hardmode)
+                    .Add(ItemID.PalladiumOre, Condition.Hardmode)
+                    .Add(ItemID.MythrilOre, Condition.Hardmode)
+                    .Add(ItemID.OrichalcumOre, Condition.Hardmode)
+                    .Add(ItemID.AdamantiteOre, Condition.Hardmode)
+                    .Add(ItemID.TitaniumOre, Condition.Hardmode)
+                    .Add(ItemID.ChlorophyteOre, Condition.DownedMechBossAll)
+                    .Add(ItemID.LunarOre, Condition.DownedMoonLord)
+                    .Add(ItemID.CopperBar)
+                    .Add(ItemID.TinBar)
+                    .Add(ItemID.IronBar)
+                    .Add(ItemID.LeadBar)
+                    .Add(ItemID.SilverBar)
+                    .Add(ItemID.TungstenBar)
+                    .Add(ItemID.GoldBar)
+                    .Add(ItemID.PlatinumBar)
+                    .Add(ItemID.MeteoriteBar, Condition.DownedEowOrBoc)
+                    .Add(ItemID.DemoniteBar, Condition.DownedEowOrBoc)
+                    .Add(ItemID.CrimtaneBar, Condition.DownedEowOrBoc)
+                    .Add(ItemID.HellstoneBar, Condition.DownedEowOrBoc)
+                    .Add(ItemID.CobaltBar, Condition.Hardmode)
+                    .Add(ItemID.PalladiumBar, Condition.Hardmode)
+                    .Add(ItemID.MythrilBar, Condition.Hardmode)
+                    .Add(ItemID.OrichalcumBar, Condition.Hardmode)
+                    .Add(ItemID.AdamantiteBar, Condition.Hardmode)
+                    .Add(ItemID.TitaniumBar, Condition.Hardmode)
+                    .Add(ItemID.HallowedBar, Condition.DownedMechBossAny)
+                    .Add(ItemID.ChlorophyteBar, Condition.DownedMechBossAll)
+                    .Add(ItemID.LunarBar, Condition.DownedMoonLord)
+                    .Add(ItemID.Amber)
+                    .Add(ItemID.Amethyst)
+                    .Add(ItemID.Diamond)
+                    .Add(ItemID.Emerald)
+                    .Add(ItemID.Ruby)
+                    .Add(ItemID.Sapphire)
+                    .Add(ItemID.Topaz);
+            oreShop.Register();
 
             var naturalBlockShop = new NPCShop(Type, "Natural Blocks")
                     .Add(ItemID.Wood)
@@ -466,36 +607,53 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.Shadewood)
                     .Add(ItemID.AshWood)
                     .Add(ItemID.Pearlwood, Condition.Hardmode)
-                    .Add(ItemID.DynastyWood)
                     .Add(ItemID.SpookyWood, Condition.DownedPlantera)
+                    .Add(ItemID.DynastyWood)
                     .Add(ItemID.BambooBlock)
+                    .Add(ItemID.LargeBambooBlock)
                     .Add(ItemID.Cactus)
                     .Add(ItemID.Pumpkin)
+                    .Add(ItemID.PineTreeBlock)
                     .Add(ItemID.DirtBlock)
                     .Add(ItemID.ClayBlock)
                     .Add(ItemID.MudBlock)
                     .Add(ItemID.AshBlock)
                     .Add(ItemID.SiltBlock)
+                    .Add(ItemID.SlushBlock)
                     .Add(ItemID.SnowBlock)
                     .Add(ItemID.SandBlock)
+                    .Add(ItemID.EbonsandBlock)
+                    .Add(ItemID.CrimsandBlock)
+                    .Add(ItemID.PearlsandBlock, Condition.Hardmode)
                     .Add(ItemID.StoneBlock)
                     .Add(ItemID.EbonstoneBlock)
                     .Add(ItemID.CrimstoneBlock)
                     .Add(ItemID.PearlstoneBlock, Condition.Hardmode)
                     .Add(ItemID.IceBlock)
+                    .Add(ItemID.PurpleIceBlock)
+                    .Add(ItemID.RedIceBlock)
+                    .Add(ItemID.PinkIceBlock, Condition.Hardmode)
                     .Add(ItemID.Granite)
                     .Add(ItemID.Marble)
                     .Add(ItemID.Obsidian)
                     .Add(ItemID.ShimmerBlock)
                     .Add(ItemID.HardenedSand)
+                    .Add(ItemID.CorruptHardenedSand)
+                    .Add(ItemID.CrimsonHardenedSand)
+                    .Add(ItemID.HallowHardenedSand, Condition.Hardmode)
                     .Add(ItemID.Sandstone)
+                    .Add(ItemID.CorruptSandstone)
+                    .Add(ItemID.CrimsonSandstone)
+                    .Add(ItemID.HallowSandstone, Condition.Hardmode)
                     .Add(ItemID.DesertFossil)
+                    .Add(ItemID.ShellPileBlock)
                     .Add(ItemID.Cloud)
                     .Add(ItemID.RainCloud)
                     .Add(ItemID.Hive)
                     .Add(ItemID.HoneyBlock)
                     .Add(ItemID.CrispyHoneyBlock)
-                    .Add(ItemID.Hay);
+                    .Add(ItemID.Hay)
+                    .Add(ItemID.Cobweb);
             naturalBlockShop.Register();
 
             var buildingBlockShop = new NPCShop(Type, "Building Blocks")
@@ -512,33 +670,96 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.CrimstoneBrick)
                     .Add(ItemID.PearlstoneBrick, Condition.Hardmode)
                     .Add(ItemID.RainbowBrick, Condition.Hardmode)
+                    .Add(ItemID.CopperBrick)
+                    .Add(ItemID.TinBrick)
+                    .Add(ItemID.IronBrick)
+                    .Add(ItemID.LeadBrick)
+                    .Add(ItemID.SilverBrick)
+                    .Add(ItemID.TungstenBrick)
+                    .Add(ItemID.GoldBrick)
+                    .Add(ItemID.PlatinumBrick)
+                    .Add(ItemID.DemoniteBrick, Condition.DownedEyeOfCthulhu)
+                    .Add(ItemID.CrimtaneBrick, Condition.DownedEyeOfCthulhu)
+                    .Add(ItemID.MeteoriteBrick, Condition.DownedEowOrBoc)
+                    .Add(ItemID.HellstoneBrick, Condition.DownedEowOrBoc)
+                    .Add(ItemID.CobaltBrick, Condition.Hardmode)
                     .Add(ItemID.PalladiumColumn, Condition.Hardmode)
+                    .Add(ItemID.MythrilBrick, Condition.Hardmode)
+                    .Add(ItemID.BubblegumBlock, Condition.Hardmode)
+                    .Add(ItemID.AdamantiteBeam, Condition.Hardmode)
+                    .Add(ItemID.TitanstoneBlock, Condition.Hardmode)
+                    .Add(ItemID.ChlorophyteBrick, Condition.DownedMechBossAll)
+                    .Add(ItemID.ShroomitePlating, Condition.DownedPlantera)
+                    .Add(ItemID.LunarBrick, Condition.DownedMoonLord)
+                    .Add(ItemID.ShimmerBrick)
+                    .Add(ItemID.LavaMossBlock)
+                    .Add(ItemID.KryptonMossBlock)
+                    .Add(ItemID.XenonMossBlock)
+                    .Add(ItemID.ArgonMossBlock)
+                    .Add(ItemID.VioletMossBlock)
+                    .Add(ItemID.RainbowMossBlock)
                     .Add(ItemID.BlueBrick, Condition.DownedSkeletron)
                     .Add(ItemID.GreenBrick, Condition.DownedSkeletron)
                     .Add(ItemID.PinkBrick, Condition.DownedSkeletron)
-                    .Add(ItemID.SunplateBlock)
-                    .Add(ItemID.ShimmerBrick)
-                    .Add(ItemID.AsphaltBlock, Condition.DownedMechBossAny)
-                    .Add(ItemID.CoralstoneBlock)
+                    .Add(ItemID.LihzahrdBrick, Condition.DownedGolem)
+                    .Add(ItemID.SolarBrick, Condition.DownedCultist)
+                    .Add(ItemID.NebulaBrick, Condition.DownedCultist)
+                    .Add(ItemID.StardustBrick, Condition.DownedCultist)
+                    .Add(ItemID.VortexBrick, Condition.DownedCultist)
                     .Add(ItemID.GrayStucco)
                     .Add(ItemID.GreenStucco)
                     .Add(ItemID.RedStucco)
                     .Add(ItemID.YellowStucco)
                     .Add(ItemID.GraniteBlock)
                     .Add(ItemID.MarbleBlock)
+                    .Add(ItemID.SunplateBlock)
                     .Add(ItemID.MartianConduitPlating, Condition.DownedMartians)
-                    .Add(ItemID.LihzahrdBrick, Condition.DownedGolem);
+                    .Add(ItemID.AmberGemsparkBlock)
+                    .Add(ItemID.AmethystGemsparkBlock)
+                    .Add(ItemID.DiamondGemsparkBlock)
+                    .Add(ItemID.EmeraldGemsparkBlock)
+                    .Add(ItemID.RubyGemsparkBlock)
+                    .Add(ItemID.SapphireGemsparkBlock)
+                    .Add(ItemID.TopazGemsparkBlock)
+                    .Add(ItemID.TeamBlockRed)
+                    .Add(ItemID.TeamBlockGreen)
+                    .Add(ItemID.TeamBlockBlue)
+                    .Add(ItemID.TeamBlockYellow)
+                    .Add(ItemID.TeamBlockPink)
+                    .Add(ItemID.TeamBlockWhite)
+                    .Add(ItemID.LunarBlockSolar)
+                    .Add(ItemID.LunarBlockNebula)
+                    .Add(ItemID.LunarBlockStardust)
+                    .Add(ItemID.LunarBlockVortex)
+                    .Add(ItemID.RedDynastyShingles)
+                    .Add(ItemID.BlueDynastyShingles)
+                    .Add(ItemID.CandyCaneBlock)
+                    .Add(ItemID.GreenCandyCaneBlock)
+                    .Add(ItemID.AsphaltBlock, Condition.DownedMechBossAny)
+                    .Add(ItemID.CoralstoneBlock)
+                    .Add(ItemID.FleshBlock, Condition.Hardmode)
+                    .Add(ItemID.LesionBlock, Condition.Hardmode)
+                    .Add(ItemID.SpiderBlock, Condition.Hardmode)
+                    .Add(ItemID.SlimeBlock, Condition.DownedKingSlime)
+                    .Add(ItemID.PinkSlimeBlock, Condition.DownedKingSlime);
             buildingBlockShop.Register();
 
             var plantShop = new NPCShop(Type, "Herbs & Plants")
                     .Add(ItemID.HerbBag)
                     .Add(ItemID.Blinkroot)
+                    .Add(ItemID.BlinkrootSeeds)
                     .Add(ItemID.Daybloom)
+                    .Add(ItemID.DaybloomSeeds)
                     .Add(ItemID.Deathweed)
+                    .Add(ItemID.DeathweedSeeds)
                     .Add(ItemID.Fireblossom)
+                    .Add(ItemID.FireblossomSeeds)
                     .Add(ItemID.Moonglow)
+                    .Add(ItemID.MoonglowSeeds)
                     .Add(ItemID.Shiverthorn)
+                    .Add(ItemID.ShiverthornSeeds)
                     .Add(ItemID.Waterleaf)
+                    .Add(ItemID.WaterleafSeeds)
                     .Add(ItemID.PumpkinSeed, Condition.DownedEyeOfCthulhu)
                     .Add(ItemID.TealMushroom)
                     .Add(ItemID.GreenMushroom)
@@ -557,51 +778,11 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.MushroomGrassSeeds)
                     .Add(ItemID.CorruptSeeds)
                     .Add(ItemID.CrimsonSeeds)
+                    .Add(ItemID.AshGrassSeeds)
                     .Add(ItemID.HallowedSeeds, Condition.Hardmode)
                     .Add(ItemID.Acorn)
                     .Add(ItemID.Fertilizer);
             plantShop.Register();
-
-            var stationShop = new NPCShop(Type, "Flasks, Stations & Foods")
-                    .Add(ItemID.FruitJuice)
-                    .Add(ItemID.LobsterTail)
-                    .Add(ItemID.GoldenDelight)
-                    .Add(ItemID.FlaskofCursedFlames, Condition.Hardmode)
-                    .Add(ItemID.FlaskofFire, Condition.DownedQueenBee)
-                    .Add(ItemID.FlaskofGold, Condition.Hardmode)
-                    .Add(ItemID.FlaskofIchor, Condition.Hardmode)
-                    .Add(ItemID.FlaskofNanites, Condition.DownedPlantera)
-                    .Add(ItemID.FlaskofParty, Condition.DownedQueenBee)
-                    .Add(ItemID.FlaskofPoison, Condition.DownedQueenBee)
-                    .Add(ItemID.FlaskofVenom, Condition.DownedPlantera)
-                    .Add(ItemID.GenderChangePotion)
-                    .Add(ItemID.PotionOfReturn, Condition.DownedEowOrBoc)
-                    .Add(ItemID.RecallPotion)
-                    .Add(ItemID.TeleportationPotion, Condition.Hardmode)
-                    .Add(ItemID.WormholePotion)
-                    .Add(ItemID.RedPotion, Condition.ForTheWorthyWorld)
-                    .Add(ItemID.Sunflower)
-                    .Add(ItemID.Campfire)
-                    .Add(ItemID.CrystalBall, Condition.Hardmode)
-                    .Add(ItemID.AmmoBox)
-                    .Add(ItemID.SharpeningStation)
-                    .Add(ItemID.BewitchingTable, Condition.DownedSkeletron)
-                    .Add(ItemID.WarTable, Condition.DownedOldOnesArmyAny)
-                    .Add(ItemID.CatBast)
-                    .Add(ItemID.SliceOfCake)
-                    .Add(ItemID.StarinaBottle)
-                    .Add(ItemID.HeartLantern)
-                    .Add(ItemID.GardenGnome)
-                    .Add(ItemID.PeaceCandle)
-                    .Add(ItemID.WaterCandle, Condition.DownedSkeletron)
-                    .Add(ItemID.ShadowCandle)
-                    .Add(ItemID.WaterBucket)
-                    .Add(ItemID.LavaBucket)
-                    .Add(ItemID.HoneyBucket)
-                    .Add(ItemID.LifeCrystal)
-                    .Add(ItemID.LifeFruit, Condition.DownedMechBossAny)
-                    .Add(ItemID.ManaCrystal);
-            stationShop.Register();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace QoLCompendium
         public bool EndlessBait { get; set; }
 
         [DefaultValue(true)]
+        [ReloadRequired]
         public bool EndlessBossSummons { get; set; }
 
         [DefaultValue(true)]
@@ -64,6 +65,12 @@ namespace QoLCompendium
         [DefaultValue(true)]
         [ReloadRequired]
         public bool ToggleHappiness { get; set; }
+
+        [Slider]
+        [DefaultValue(0.75f)]
+        [Increment(0.01f)]
+        [Range(0, 1)]
+        public float HappinessPriceChange { get; set; }
 
         [DefaultValue(true)]
         public bool TownieSpawn { get; set; }
@@ -112,6 +119,9 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         public bool NoDevs { get; set; }
+
+        [DefaultValue(true)]
+        public bool IncreaseMaxStack { get; set; }
 
         [DefaultValue(true)]
         public bool ExtraLures { get; set; }
@@ -194,11 +204,11 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         [ReloadRequired]
-        public bool InformationAccessories { get; set; }
+        public bool HCreator { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
-        public bool HCreator { get; set; }
+        public bool InformationAccessories { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
@@ -261,6 +271,14 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         [ReloadRequired]
+        public bool BMCrateShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool BMOreShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
         public bool BMNaturalBlockShop { get; set; }
 
         [DefaultValue(true)]
@@ -304,5 +322,9 @@ namespace QoLCompendium
         [DefaultValue(true)]
         [ReloadRequired]
         public bool ECBuildingBlocksShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool ECHerbShop { get; set; }
     }
 }

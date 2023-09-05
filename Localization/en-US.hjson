@@ -37,7 +37,7 @@ Mods: {
 
 			HeadCounter: {
 				DisplayName: Head Counter
-				Tooltip: Displays available minion and sentry slots
+				Tooltip: Displays spawn rate
 			}
 
 			HellevatorCreator: {
@@ -113,6 +113,21 @@ Mods: {
 				DisplayName: Metallic Clover
 				Tooltip: Displays luck
 			}
+
+			TrackingDevice: {
+				DisplayName: Tracking Device
+				Tooltip: Displays minion slots
+			}
+
+			BattalionLog: {
+				DisplayName: Battalion Log
+				Tooltip: Displays sentry slots
+			}
+
+			HeartbeatSensor: {
+				DisplayName: Heartbeat Sensor
+				Tooltip: Displays minion slots, sentry slots, and spawn rate
+			}
 		}
 
 		NPCs: {
@@ -174,6 +189,8 @@ Mods: {
 		InfoDisplays: {
 			MinionInfoDisplay.DisplayName: Minion Slots
 			SentryInfoDisplay.DisplayName: Sentry Slots
+			LuckInfoDisplay.DisplayName: Luck
+			SpawnInfoDisplay.DisplayName: Spawn Rate
 		}
 
 		WingSlot: {
@@ -186,7 +203,7 @@ Mods: {
 				DisplayName: Compendium Config
 
 				EndlessBuffsAndHealing: {
-					Label: Endless Buffs And Healing
+					Label: "[i:188] Endless Buffs And Healing"
 					Tooltip:
 						'''
 						Toggles endless buffs & healing
@@ -195,22 +212,22 @@ Mods: {
 				}
 
 				EndlessAmmo: {
-					Label: Endless Ammo
+					Label: "[i:2177] Endless Ammo"
 					Tooltip: Toggles endless ammo
 				}
 
 				EndlessBait: {
-					Label: Endless Bait
+					Label: "[i:2676] Endless Bait"
 					Tooltip: Toggles endless bait
 				}
 
 				EndlessBossSummons: {
-					Label: Endless Boss Summons
+					Label: "[i:43] Endless Boss Summons"
 					Tooltip: Toggles endless boss summons
 				}
 
 				EndlessConsumables: {
-					Label: Endless Consumables
+					Label: "[i:42] Endless Consumables"
 					Tooltip:
 						'''
 						Toggles endless consumables
@@ -219,17 +236,17 @@ Mods: {
 				}
 
 				EndlessAmount: {
-					Label: Endless Amount
+					Label: "[i:3119] Endless Item Amount"
 					Tooltip: Change the amount needed for all endless toggles
 				}
 
 				ExtraBuffSlots: {
-					Label: Extra Buff Slots
+					Label: "[i:296] Extra Buff Slots"
 					Tooltip: The amount of extra buff slots
 				}
 
 				InstantRespawn: {
-					Label: Instant Respawn
+					Label: "[i:583] Instant Respawn"
 					Tooltip:
 						'''
 						Toggles instant respawns, will despawn bosses on death if enabled
@@ -238,228 +255,243 @@ Mods: {
 				}
 
 				FullHPRespawn: {
-					Label: Full HP Respawn
+					Label: "[i:29] Full HP Respawn"
 					Tooltip: Toggles if you respawn with max health
 				}
 
 				NoSpawns: {
-					Label: No Spawns During Bosses
+					Label: "[i:2324] No Spawns During Bosses"
 					Tooltip: Toggles enemy spawns during bosses
 				}
 
 				NoDevs: {
-					Label: No Devs From Boss Bags
+					Label: "[i:3287] No Devs From Boss Bags"
 					Tooltip: Toggles if boss bags can drop dev sets
 				}
 
 				BMNPC: {
-					Label: Black Market Dealer
+					Label: "[i:4413] Black Market Dealer"
 					Tooltip: Toggles the Black Market Dealer NPC
 				}
 
 				ECNPC: {
-					Label: Ethereal Collector
+					Label: "[i:4412] Ethereal Collector"
 					Tooltip: Toggles the Ethereal Collector NPC
 				}
 
 				FriendliesDontDie: {
-					Label: Friendlies Dont Die
+					Label: "[i:1175] Friendlies Don't Die"
 					Tooltip: Toggles whether friendly NPCs take damage
 				}
 
 				ToggleHappiness: {
-					Label: Disable NPC Happiness
+					Label: "[i:4876] Disable NPC Happiness"
 					Tooltip: Toggles if NPCs should have happiness or not
 				}
 
+				HappinessPriceChange: {
+					Label: "[i:74] Happiness Price Change"
+					Tooltip:
+						'''
+						Change the price multiplier for NPCs
+						Lower number is happier
+						Only Active if Happiness is disabled
+						'''
+				}
+
 				TowerShield: {
-					Label: Tower Shield Health
+					Label: "[i:3539] Tower Shield Health"
 					Tooltip: Changes the shield health of the celestial towers
 				}
 
 				MoreCoins: {
-					Label: More Coins
+					Label: "[i:855] More Coins"
 					Tooltip: Increases the amount of dropped coins
 				}
 
 				IncreasePlaceSpeed: {
-					Label: Fast Place Speed
+					Label: "[i:2214] Fast Place Speed"
 					Tooltip: Toggles faster placement speed
 				}
 
 				IncreasePlaceRange: {
-					Label: Increase Place Range
+					Label: "[i:2215] Increase Place Range"
 					Tooltip: Increases placement range
 				}
 
 				FastTools: {
-					Label: Fast Tools
+					Label: "[i:1] Fast Tools"
 					Tooltip: Changes how fast tools are used
 				}
 
 				FastExtractor: {
-					Label: Fast Extractor
+					Label: "[i:997] Fast Extractor"
 					Tooltip: Toggles faster extractinator use speed
 				}
 
 				AutoMoneyStack: {
-					Label: Auto Money Stack
+					Label: "[i:87] Auto Money Stack"
 					Tooltip:
 						'''
-						Toggles money automatically going into the bank
-						Requires at least 1 copper in the bank to function
+						Toggles money automatically going into the piggy bank
+						Requires at least 1 copper in the piggy bank to function
 						'''
 				}
 
 				LifeformPointer: {
-					Label: Lifeform Pointer
+					Label: "[i:3118] Lifeform Pointer"
 					Tooltip: Toggles an arrow that points towards rare creatures when using a lifeform analyzer
 				}
 
 				InformationBanks: {
-					Label: Information In Banks
+					Label: "[i:3124] Information In Banks"
 					Tooltip: Toggles if informational, fishing, mining, and building accessories work in banks
 				}
 
 				MapPorting: {
-					Label: Map Teleporting
+					Label: "[i:2351] Map Teleporting"
 					Tooltip: Toggles if you can right click on the map to teleport to that position
 				}
 
+				IncreaseMaxStack: {
+					Label: "[i:2] Increase Max Item Stacks"
+					Tooltip: Toggles if stackable items can be stacked to 9999
+				}
+
 				StalkerMoneyTrough: {
-					Label: Stalker Money Trough
+					Label: "[i:3213] Stalker Money Trough"
 					Tooltip: Toggles if the Money Trough follows you
 				}
 
 				ExtraLures: {
-					Label: Extra Lures
+					Label: "[i:5139] Extra Lures"
 					Tooltip: Toggles if fishing rods fire extra lures
 				}
 
 				NoLittering: {
-					Label: No Littering or Larva Break
+					Label: "[i:169] No Littering or Larva Break"
 					Tooltip: Toggles if certain projectiles don't place their tile & if the Queen's Larva is breakable with projectiles
 				}
 
 				CustomItems: {
-					Label: Custom Items
+					Label: "[i:QoLCompendium/StarterBag] Custom Items"
 					Tooltip: Items added to this list will be given to the player when opening the Starter Bag
 				}
 
 				CustomItemQuantities: {
-					Label: Custom Item Quantities
+					Label: "[i:3119] Custom Item Quantities"
 					Tooltip: Each number corrosponds to the amount of each item added. Items with an undefined count will be given as a quantity of 1
 				}
 
 				DisableEvilSpread: {
-					Label: Disable Evil Spread
+					Label: "[i:59] Disable Evil Spread"
 					Tooltip: Toggles world evil & hallow spread
 				}
 
 				TownieSpawn: {
-					Label: Town NPC Spawn Improvement
+					Label: "[i:985] Town NPC Spawn Improvement"
 					Tooltip: Allows NPCs such as the Stylist or Tinkerer to spawn without being saved
 				}
 
 				RegrowthAutoReplant: {
-					Label: Regrowth Auto-Plant
+					Label: "[i:213] Regrowth Auto-Plant"
 					Tooltip: Allows staff of regrowth to replace the herbs it just harvested
 				}
 
 				Halloween: {
 					Tooltip: Toggles the Halloween seasonal event
-					Label: Toggle Halloween
+					Label: "[i:1844] Toggle Halloween"
 				}
 
 				Christmas: {
 					Tooltip: Toggles the Christmas seasonal event
-					Label: Toggle Christmas
+					Label: "[i:1958] Toggle Christmas"
 				}
 
 				CheatyNPCs: {
 					Tooltip: Toggles if the 2 mod NPCs sell (almost) everything
-					Label: Mod NPCs Sell Everything
+					Label: "[i:1869] Mod NPCs Sell Everything"
 				}
 
 				EndlessBuffAmount: {
-					Label: Endless Potion Amount
+					Label: "[i:3119] Endless Potion Amount"
 					Tooltip: Change the amount needed for endless potions
 				}
 
 				WingSlot: {
-					Label: Wing Slot
+					Label: "[i:4978] Wing Slot"
 					Tooltip: Toggles wing slot
 				}
 
 				LavaSlimeNoLava: {
-					Label: Lava Slime No Lava
-					Tooltip: ""
+					Label: "[i:207] Lava Slime No Lava"
+					Tooltip: Toggles if lava slimes drop lava in Expert+
 				}
 			}
 
 			ItemConfig: {
 				Magnet: {
-					Label: Magnet
+					Label: "[i:QoLCompendium/Magnet] Magnet"
 					Tooltip: Toggles the Item Magnet item
 				}
 
 				Globes: {
-					Label: World Globe
+					Label: "[i:QoLCompendium/WorldGlobe] World Globe"
 					Tooltip: Toggles the World Globe item
 				}
 
 				Erasers: {
-					Label: Entity Manipulator
+					Label: "[i:QoLCompendium/EntityManipulator] Entity Manipulator"
 					Tooltip: Toggles the Entity Manipulator item
 				}
 
 				CursedMirror: {
-					Label: Cursed Mirror
+					Label: "[i:QoLCompendium/CursedMirror] Cursed Mirror"
 					Tooltip: Toggles the Cursed Mirror item
 				}
 
 				InformationAccessories: {
-					Label: Information Accessories
+					Label: "[i:QoLCompendium/HeartbeatSensor] Information Accessories"
 					Tooltip: Toggles Information items
 				}
 
 				Forwarper: {
-					Label: Forwarper
+					Label: "[i:QoLCompendium/Forwarper] Forwarper"
 					Tooltip: Toggles the Forwarper item
 				}
 
 				MoonPhaser: {
-					Label: Moon Phaser
+					Label: "[i:QoLCompendium/MoonPhaser] Moon Phaser"
 					Tooltip: Toggles the Moon Phaser item
 				}
 
 				WatchingEye: {
-					Label: Watching Eye
+					Label: "[i:QoLCompendium/WatchingEye] Watching Eye"
 					Tooltip: Toggles the Watching Eye item
 				}
 
 				HCreator: {
-					Label: Hellevator Creator
+					Label: "[i:QoLCompendium/HellevatorCreator] Hellevator Creator"
 					Tooltip: Toggles the Hellevator Creator item
 				}
 
 				AHouser: {
-					Label: Auto Houser
+					Label: "[i:QoLCompendium/AutoHouser] Auto Houser"
 					Tooltip: Toggles the Auto Houser item
 				}
 
 				TArriver: {
-					Label: Traveller Arriver
+					Label: "[i:QoLCompendium/TravelerArriver] Traveler Arriver"
 					Tooltip: Toggles the Traveller Arriver item
 				}
 
 				BBox: {
-					Label: Banner Box
+					Label: "[i:QoLCompendium/BannerBox] Banner Box"
 					Tooltip: Toggles the Banner Box item
 				}
 
 				StarterBag: {
-					Label: Starter Bag
+					Label: "[i:QoLCompendium/StarterBag] Starter Bag"
 					Tooltip:
 						'''
 						Toggles the Starter Bag item
@@ -468,17 +500,17 @@ Mods: {
 				}
 
 				BloodIdol: {
-					Label: Bloodied Moon Charm
+					Label: "[i:QoLCompendium/BloodIdol] Bloodied Moon Charm"
 					Tooltip: Toggles the Bloodied Moon Charm item
 				}
 
 				AsphaltPlatform: {
-					Label: Asphalt Platform
+					Label: "[i:QoLCompendium/AsphaltPlatform] Asphalt Platform"
 					Tooltip: Toggles the Asphalt Platform item
 				}
 
 				EclipseIdol: {
-					Label: Eclipsed Sun Charm
+					Label: "[i:QoLCompendium/EclipseIdol] Eclipsed Sun Charm"
 					Tooltip: Toggles the Eclipsed Sun Charm item
 				}
 
@@ -489,97 +521,112 @@ Mods: {
 				DisplayName: Shop Config
 
 				BMPotionShop: {
-					Label: Potion Shop
+					Label: "[i:28] Potion Shop"
 					Tooltip: ""
 				}
 
 				BMStationShop: {
-					Label: Station Shop
+					Label: "[i:3198] Station Shop"
 					Tooltip: ""
 				}
 
 				BMMaterialShop: {
-					Label: Material Shop
+					Label: "[i:23] Material Shop"
 					Tooltip: ""
 				}
 
 				BMHardmodeMaterialShop: {
-					Label: Hardmode Material Shop
+					Label: "[i:521] Hardmode Material Shop"
 					Tooltip: ""
 				}
 
 				BMMovementAccessoryShop: {
-					Label: Movement Accessory Shop
+					Label: "[i:54] Movement Accessory Shop"
 					Tooltip: ""
 				}
 
 				BMCombatAccessoryShop: {
-					Label: Combat Accessory Shop
+					Label: "[i:3212] Combat Accessory Shop"
 					Tooltip: ""
 				}
 
 				BMInformationShop: {
-					Label: Information Shop
+					Label: "[i:3123] Information Shop"
 					Tooltip: ""
 				}
 
 				BMBagShop: {
-					Label: Bag Shop
+					Label: "[i:3332] Bag Shop"
 					Tooltip: ""
 				}
 
 				BMNaturalBlockShop: {
-					Label: Natural Block Shop
+					Label: "[i:3] Natural Block Shop"
 					Tooltip: ""
 				}
 
 				BMBuildingBlockShop: {
-					Label: Building Block Shop
+					Label: "[i:129] Building Block Shop"
 					Tooltip: ""
 				}
 
 				BMHerbShop: {
-					Label: Herb Shop
+					Label: "[i:313] Herb Shop"
 					Tooltip: ""
 				}
 
 				ECPotionShop: {
-					Label: Potion Shop
+					Label: "[i:28] Potion Shop"
 					Tooltip: ""
 				}
 
 				ECStationShop: {
-					Label: Station Shop
+					Label: "[i:3198] Station Shop"
 					Tooltip: ""
 				}
 
 				ECMaterialShop: {
-					Label: Material Shop
+					Label: "[i:23] Material Shop"
 					Tooltip: ""
 				}
 
 				ECBagShop: {
-					Label: Bag Shop
+					Label: "[i:3332] Bag Shop"
 					Tooltip: ""
 				}
 
 				ECCrateShop: {
-					Label: Crate Shop
+					Label: "[i:2334] Crate Shop"
 					Tooltip: ""
 				}
 
 				ECOreShop: {
-					Label: Ore Shop
+					Label: "[i:11] Ore Shop"
 					Tooltip: ""
 				}
 
 				ECNaturalBlocksShop: {
-					Label: Natural Blocks Shop
+					Label: "[i:3] Natural Block Shop"
 					Tooltip: ""
 				}
 
 				ECBuildingBlocksShop: {
-					Label: Building Blocks Shop
+					Label: "[i:129] Building Block Shop"
+					Tooltip: ""
+				}
+
+				ECHerbShop: {
+					Label: "[i:313] Herb Shop"
+					Tooltip: ""
+				}
+
+				BMCrateShop: {
+					Label: "[i:2334] Crate Shop"
+					Tooltip: ""
+				}
+
+				BMOreShop: {
+					Label: "[i:11] Ore Shop"
 					Tooltip: ""
 				}
 			}

@@ -24,223 +24,261 @@ namespace QoLCompendium.UI
             ShopPanel.Left.Set(575f, 0f);
             ShopPanel.Top.Set(275f, 0f);
             ShopPanel.Width.Set(385f, 0f);
-            ShopPanel.Height.Set(340f, 0f);
+            ShopPanel.Height.Set(400f, 0f);
             ShopPanel.BackgroundColor = new Color(73, 94, 171);
 
             ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
             ShopPanel.OnLeftMouseUp += new MouseEvent(DragEnd);
 
-            UIText text0 = new("Potions");
-            text0.Left.Set(35, 0f);
-            text0.Top.Set(10, 0f);
-            text0.Width.Set(60, 0f);
-            text0.Height.Set(22, 0f);
-            ShopPanel.Append(text0);
+            UIText potionText = new("Potions");
+            potionText.Left.Set(35, 0f);
+            potionText.Top.Set(10, 0f);
+            potionText.Width.Set(60, 0f);
+            potionText.Height.Set(22, 0f);
+            ShopPanel.Append(potionText);
 
-            UIText text10 = new("Flasks, Stations & Foods");
-            text10.Left.Set(35, 0f);
-            text10.Top.Set(40, 0f);
-            text10.Width.Set(100, 0f);
-            text10.Height.Set(22, 0f);
-            ShopPanel.Append(text10);
+            UIText stationText = new("Flasks, Stations & Foods");
+            stationText.Left.Set(35, 0f);
+            stationText.Top.Set(40, 0f);
+            stationText.Width.Set(60, 0f);
+            stationText.Height.Set(22, 0f);
+            ShopPanel.Append(stationText);
 
-            UIText text1 = new("Materials");
-            text1.Left.Set(35, 0f);
-            text1.Top.Set(70, 0f);
-            text1.Width.Set(70, 0f);
-            text1.Height.Set(22, 0f);
-            ShopPanel.Append(text1);
+            UIText materialText = new("Materials");
+            materialText.Left.Set(35, 0f);
+            materialText.Top.Set(70, 0f);
+            materialText.Width.Set(60, 0f);
+            materialText.Height.Set(22, 0f);
+            ShopPanel.Append(materialText);
 
-            UIText text2 = new("Hardmode Materials");
-            text2.Left.Set(35, 0f);
-            text2.Top.Set(100, 0f);
-            text2.Width.Set(100, 0f);
-            text2.Height.Set(22, 0f);
-            ShopPanel.Append(text2);
+            UIText hardmodeMaterialText = new("Hardmode Materials");
+            hardmodeMaterialText.Left.Set(35, 0f);
+            hardmodeMaterialText.Top.Set(100, 0f);
+            hardmodeMaterialText.Width.Set(60, 0f);
+            hardmodeMaterialText.Height.Set(22, 0f);
+            ShopPanel.Append(hardmodeMaterialText);
 
-            UIText text3 = new("Movement Accessories");
-            text3.Left.Set(35, 0f);
-            text3.Top.Set(130, 0f);
-            text3.Width.Set(70, 0f);
-            text3.Height.Set(22, 0f);
-            ShopPanel.Append(text3);
+            UIText movementText = new("Movement Accessories");
+            movementText.Left.Set(35, 0f);
+            movementText.Top.Set(130, 0f);
+            movementText.Width.Set(60, 0f);
+            movementText.Height.Set(22, 0f);
+            ShopPanel.Append(movementText);
 
-            UIText text4 = new("Combat Accessories");
-            text4.Left.Set(35, 0f);
-            text4.Top.Set(160, 0f);
-            text4.Width.Set(150, 0f);
-            text4.Height.Set(22, 0f);
-            ShopPanel.Append(text4);
+            UIText combatText = new("Combat Accessories");
+            combatText.Left.Set(35, 0f);
+            combatText.Top.Set(160, 0f);
+            combatText.Width.Set(60, 0f);
+            combatText.Height.Set(22, 0f);
+            ShopPanel.Append(combatText);
 
-            UIText text5 = new("Informative/Building Gear");
-            text5.Left.Set(35, 0f);
-            text5.Top.Set(190, 0f);
-            text5.Width.Set(200, 0f);
-            text5.Height.Set(22, 0f);
-            ShopPanel.Append(text5);
+            UIText infoText = new("Informative/Building Gear");
+            infoText.Left.Set(35, 0f);
+            infoText.Top.Set(190, 0f);
+            infoText.Width.Set(60, 0f);
+            infoText.Height.Set(22, 0f);
+            ShopPanel.Append(infoText);
 
-            UIText text6 = new("Treasure Bags & Crates");
-            text6.Left.Set(35, 0f);
-            text6.Top.Set(220, 0f);
-            text6.Width.Set(180, 0f);
-            text6.Height.Set(22, 0f);
-            ShopPanel.Append(text6);
+            UIText bagText = new("Treasure Bags");
+            bagText.Left.Set(35, 0f);
+            bagText.Top.Set(220, 0f);
+            bagText.Width.Set(60, 0f);
+            bagText.Height.Set(22, 0f);
+            ShopPanel.Append(bagText);
 
-            UIText text7 = new("Natural Blocks");
-            text7.Left.Set(35, 0f);
-            text7.Top.Set(250, 0f);
-            text7.Width.Set(100, 0f);
-            text7.Height.Set(22, 0f);
-            ShopPanel.Append(text7);
+            UIText crateText = new("Crates & Grab Bags");
+            crateText.Left.Set(35, 0f);
+            crateText.Top.Set(250, 0f);
+            crateText.Width.Set(60, 0f);
+            crateText.Height.Set(22, 0f);
+            ShopPanel.Append(crateText);
 
-            UIText text8 = new("Building Blocks");
-            text8.Left.Set(35, 0f);
-            text8.Top.Set(280, 0f);
-            text8.Width.Set(100, 0f);
-            text8.Height.Set(22, 0f);
-            ShopPanel.Append(text8);
+            UIText oreText = new("Ores & Bars");
+            oreText.Left.Set(35, 0f);
+            oreText.Top.Set(280, 0f);
+            oreText.Width.Set(60, 0f);
+            oreText.Height.Set(22, 0f);
+            ShopPanel.Append(oreText);
 
-            UIText text9 = new("Herbs & Plants");
-            text9.Left.Set(35, 0f);
-            text9.Top.Set(310, 0f);
-            text9.Width.Set(100, 0f);
-            text9.Height.Set(22, 0f);
-            ShopPanel.Append(text9);
+            UIText naturalText = new("Natural Blocks");
+            naturalText.Left.Set(35, 0f);
+            naturalText.Top.Set(310, 0f);
+            naturalText.Width.Set(60, 0f);
+            naturalText.Height.Set(22, 0f);
+            ShopPanel.Append(naturalText);
+
+            UIText buildingText = new("Building Blocks");
+            buildingText.Left.Set(35, 0f);
+            buildingText.Top.Set(340, 0f);
+            buildingText.Width.Set(60, 0f);
+            buildingText.Height.Set(22, 0f);
+            ShopPanel.Append(buildingText);
+
+            UIText herbText = new("Herbs & Plants");
+            herbText.Left.Set(35, 0f);
+            herbText.Top.Set(370, 0f);
+            herbText.Width.Set(60, 0f);
+            herbText.Height.Set(22, 0f);
+            ShopPanel.Append(herbText);
 
             Asset<Texture2D> buttonPlayTexture = Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
             Asset<Texture2D> buttonDeleteTexture = Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
 
-            UIImageButton playButton0 = new(buttonPlayTexture);
+            UIImageButton potionButton = new(buttonPlayTexture);
             if (GetInstance<ShopConfig>().BMPotionShop == false)
             {
-                playButton0 = new(buttonDeleteTexture);
+                potionButton = new(buttonDeleteTexture);
             }
-            playButton0.Left.Set(10, 0f);
-            playButton0.Top.Set(10, 0f);
-            playButton0.Width.Set(22, 0f);
-            playButton0.Height.Set(22, 0f);
-            playButton0.OnLeftClick += new MouseEvent(PlayButtonClicked0);
-            ShopPanel.Append(playButton0);
+            potionButton.Left.Set(10, 0f);
+            potionButton.Top.Set(10, 0f);
+            potionButton.Width.Set(22, 0f);
+            potionButton.Height.Set(22, 0f);
+            potionButton.OnLeftClick += new MouseEvent(PotionShopClicked);
+            ShopPanel.Append(potionButton);
 
-            UIImageButton playButton10 = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMStationShop == false)
-            {
-                playButton10 = new(buttonDeleteTexture);
-            }
-            playButton10.Left.Set(10, 0f);
-            playButton10.Top.Set(40, 0f);
-            playButton10.Width.Set(22, 0f);
-            playButton10.Height.Set(22, 0f);
-            playButton10.OnLeftClick += new MouseEvent(PlayButtonClicked10);
-            ShopPanel.Append(playButton10);
-
-            UIImageButton playButton1 = new(buttonPlayTexture);
+            UIImageButton stationButton = new(buttonPlayTexture);
             if (GetInstance<ShopConfig>().BMMaterialShop == false)
             {
-                playButton1 = new(buttonDeleteTexture);
+                stationButton = new(buttonDeleteTexture);
             }
-            playButton1.Left.Set(10, 0f);
-            playButton1.Top.Set(70, 0f);
-            playButton1.Width.Set(22, 0f);
-            playButton1.Height.Set(22, 0f);
-            playButton1.OnLeftClick += new MouseEvent(PlayButtonClicked1);
-            ShopPanel.Append(playButton1);
+            stationButton.Left.Set(10, 0f);
+            stationButton.Top.Set(40, 0f);
+            stationButton.Width.Set(22, 0f);
+            stationButton.Height.Set(22, 0f);
+            stationButton.OnLeftClick += new MouseEvent(StationShopClicked);
+            ShopPanel.Append(stationButton);
 
-            UIImageButton playButton2 = new(buttonPlayTexture);
+            UIImageButton materialButton = new(buttonPlayTexture);
             if (GetInstance<ShopConfig>().BMHardmodeMaterialShop == false)
             {
-                playButton2 = new(buttonDeleteTexture);
+                materialButton = new(buttonDeleteTexture);
             }
-            playButton2.Left.Set(10, 0f);
-            playButton2.Top.Set(100, 0f);
-            playButton2.Width.Set(22, 0f);
-            playButton2.Height.Set(22, 0f);
-            playButton2.OnLeftClick += new MouseEvent(PlayButtonClicked2);
-            ShopPanel.Append(playButton2);
+            materialButton.Left.Set(10, 0f);
+            materialButton.Top.Set(70, 0f);
+            materialButton.Width.Set(22, 0f);
+            materialButton.Height.Set(22, 0f);
+            materialButton.OnLeftClick += new MouseEvent(MaterialShopClicked);
+            ShopPanel.Append(materialButton);
 
-            UIImageButton playButton3 = new(buttonPlayTexture);
+            UIImageButton hardmodeMaterialButton = new(buttonPlayTexture);
             if (GetInstance<ShopConfig>().BMMovementAccessoryShop == false)
             {
-                playButton3 = new(buttonDeleteTexture);
+                hardmodeMaterialButton = new(buttonDeleteTexture);
             }
-            playButton3.Left.Set(10, 0f);
-            playButton3.Top.Set(130, 0f);
-            playButton3.Width.Set(22, 0f);
-            playButton3.Height.Set(22, 0f);
-            playButton3.OnLeftClick += new MouseEvent(PlayButtonClicked3);
-            ShopPanel.Append(playButton3);
+            hardmodeMaterialButton.Left.Set(10, 0f);
+            hardmodeMaterialButton.Top.Set(100, 0f);
+            hardmodeMaterialButton.Width.Set(22, 0f);
+            hardmodeMaterialButton.Height.Set(22, 0f);
+            hardmodeMaterialButton.OnLeftClick += new MouseEvent(HardmodeMaterialShopClicked);
+            ShopPanel.Append(hardmodeMaterialButton);
 
-            UIImageButton playButton4 = new(buttonPlayTexture);
+            UIImageButton movementButton = new(buttonPlayTexture);
             if (GetInstance<ShopConfig>().BMCombatAccessoryShop == false)
             {
-                playButton4 = new(buttonDeleteTexture);
+                movementButton = new(buttonDeleteTexture);
             }
-            playButton4.Left.Set(10, 0f);
-            playButton4.Top.Set(160, 0f);
-            playButton4.Width.Set(22, 0f);
-            playButton4.Height.Set(22, 0f);
-            playButton4.OnLeftClick += new MouseEvent(PlayButtonClicked4);
-            ShopPanel.Append(playButton4);
+            movementButton.Left.Set(10, 0f);
+            movementButton.Top.Set(130, 0f);
+            movementButton.Width.Set(22, 0f);
+            movementButton.Height.Set(22, 0f);
+            movementButton.OnLeftClick += new MouseEvent(MovementShopClicked);
+            ShopPanel.Append(movementButton);
 
-            UIImageButton playButton5 = new(buttonPlayTexture);
+            UIImageButton combatButton = new(buttonPlayTexture);
             if (GetInstance<ShopConfig>().BMInformationShop == false)
             {
-                playButton5 = new(buttonDeleteTexture);
+                combatButton = new(buttonDeleteTexture);
             }
-            playButton5.Left.Set(10, 0f);
-            playButton5.Top.Set(190, 0f);
-            playButton5.Width.Set(22, 0f);
-            playButton5.Height.Set(22, 0f);
-            playButton5.OnLeftClick += new MouseEvent(PlayButtonClicked5);
-            ShopPanel.Append(playButton5);
+            combatButton.Left.Set(10, 0f);
+            combatButton.Top.Set(160, 0f);
+            combatButton.Width.Set(22, 0f);
+            combatButton.Height.Set(22, 0f);
+            combatButton.OnLeftClick += new MouseEvent(CombatShopClicked);
+            ShopPanel.Append(combatButton);
 
-            UIImageButton playButton6 = new(buttonPlayTexture);
+            UIImageButton infoButton = new(buttonPlayTexture);
             if (GetInstance<ShopConfig>().BMBagShop == false)
             {
-                playButton6 = new(buttonDeleteTexture);
+                infoButton = new(buttonDeleteTexture);
             }
-            playButton6.Left.Set(10, 0f);
-            playButton6.Top.Set(220, 0f);
-            playButton6.Width.Set(22, 0f);
-            playButton6.Height.Set(22, 0f);
-            playButton6.OnLeftClick += new MouseEvent(PlayButtonClicked6);
-            ShopPanel.Append(playButton6);
+            infoButton.Left.Set(10, 0f);
+            infoButton.Top.Set(190, 0f);
+            infoButton.Width.Set(22, 0f);
+            infoButton.Height.Set(22, 0f);
+            infoButton.OnLeftClick += new MouseEvent(InfoShopClicked);
+            ShopPanel.Append(infoButton);
 
-            UIImageButton playButton7 = new(buttonPlayTexture);
+            UIImageButton bagButton = new(buttonPlayTexture);
             if (GetInstance<ShopConfig>().BMNaturalBlockShop == false)
             {
-                playButton7 = new(buttonDeleteTexture);
+                bagButton = new(buttonDeleteTexture);
             }
-            playButton7.Left.Set(10, 0f);
-            playButton7.Top.Set(250, 0f);
-            playButton7.Width.Set(22, 0f);
-            playButton7.Height.Set(22, 0f);
-            playButton7.OnLeftClick += new MouseEvent(PlayButtonClicked7);
-            ShopPanel.Append(playButton7);
+            bagButton.Left.Set(10, 0f);
+            bagButton.Top.Set(220, 0f);
+            bagButton.Width.Set(22, 0f);
+            bagButton.Height.Set(22, 0f);
+            bagButton.OnLeftClick += new MouseEvent(BagShopClicked);
+            ShopPanel.Append(bagButton);
 
-            UIImageButton playButton8 = new(buttonPlayTexture);
+            UIImageButton crateButton = new(buttonPlayTexture);
             if (GetInstance<ShopConfig>().BMBuildingBlockShop == false)
             {
-                playButton8 = new(buttonDeleteTexture);
+                crateButton = new(buttonDeleteTexture);
             }
-            playButton8.Left.Set(10, 0f);
-            playButton8.Top.Set(280, 0f);
-            playButton8.Width.Set(22, 0f);
-            playButton8.Height.Set(22, 0f);
-            playButton8.OnLeftClick += new MouseEvent(PlayButtonClicked8);
-            ShopPanel.Append(playButton8);
+            crateButton.Left.Set(10, 0f);
+            crateButton.Top.Set(250, 0f);
+            crateButton.Width.Set(22, 0f);
+            crateButton.Height.Set(22, 0f);
+            crateButton.OnLeftClick += new MouseEvent(CrateShopClicked);
+            ShopPanel.Append(crateButton);
 
-            UIImageButton playButton9 = new(buttonPlayTexture);
+            UIImageButton oreButton = new(buttonPlayTexture);
             if (GetInstance<ShopConfig>().BMHerbShop == false)
             {
-                playButton9 = new(buttonDeleteTexture);
+                oreButton = new(buttonDeleteTexture);
             }
-            playButton9.Left.Set(10, 0f);
-            playButton9.Top.Set(310, 0f);
-            playButton9.Width.Set(22, 0f);
-            playButton9.Height.Set(22, 0f);
-            playButton9.OnLeftClick += new MouseEvent(PlayButtonClicked9);
-            ShopPanel.Append(playButton9);
+            oreButton.Left.Set(10, 0f);
+            oreButton.Top.Set(280, 0f);
+            oreButton.Width.Set(22, 0f);
+            oreButton.Height.Set(22, 0f);
+            oreButton.OnLeftClick += new MouseEvent(OreShopClicked);
+            ShopPanel.Append(oreButton);
+
+            UIImageButton naturalButton = new(buttonPlayTexture);
+            if (GetInstance<ShopConfig>().BMStationShop == false)
+            {
+                naturalButton = new(buttonDeleteTexture);
+            }
+            naturalButton.Left.Set(10, 0f);
+            naturalButton.Top.Set(310, 0f);
+            naturalButton.Width.Set(22, 0f);
+            naturalButton.Height.Set(22, 0f);
+            naturalButton.OnLeftClick += new MouseEvent(NaturalShopClicked);
+            ShopPanel.Append(naturalButton);
+
+            UIImageButton buildingButton = new(buttonPlayTexture);
+            if (GetInstance<ShopConfig>().BMHerbShop == false)
+            {
+                buildingButton = new(buttonDeleteTexture);
+            }
+            buildingButton.Left.Set(10, 0f);
+            buildingButton.Top.Set(340, 0f);
+            buildingButton.Width.Set(22, 0f);
+            buildingButton.Height.Set(22, 0f);
+            buildingButton.OnLeftClick += new MouseEvent(BuildingShopClicked);
+            ShopPanel.Append(buildingButton);
+
+            UIImageButton herbButton = new(buttonPlayTexture);
+            if (GetInstance<ShopConfig>().BMHerbShop == false)
+            {
+                herbButton = new(buttonDeleteTexture);
+            }
+            herbButton.Left.Set(10, 0f);
+            herbButton.Top.Set(370, 0f);
+            herbButton.Width.Set(22, 0f);
+            herbButton.Height.Set(22, 0f);
+            herbButton.OnLeftClick += new MouseEvent(HerbShopClicked);
+            ShopPanel.Append(herbButton);
 
             UIImageButton closeButton = new(buttonDeleteTexture);
             closeButton.Left.Set(350, 0f);
@@ -252,7 +290,7 @@ namespace QoLCompendium.UI
             Append(ShopPanel);
         }
 
-        private void PlayButtonClicked0(UIMouseEvent evt, UIElement listeningElement)
+        private void PotionShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMPotionShop)
             {
@@ -261,92 +299,110 @@ namespace QoLCompendium.UI
             }
         }
 
-        private void PlayButtonClicked1(UIMouseEvent evt, UIElement listeningElement)
+        private void StationShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMMaterialShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMStationShop)
             {
                 BMDealerNPC.shopNum = 1;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked2(UIMouseEvent evt, UIElement listeningElement)
+        private void MaterialShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMHardmodeMaterialShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMMaterialShop)
             {
                 BMDealerNPC.shopNum = 2;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked3(UIMouseEvent evt, UIElement listeningElement)
+        private void HardmodeMaterialShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMMovementAccessoryShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMHardmodeMaterialShop)
             {
                 BMDealerNPC.shopNum = 3;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked4(UIMouseEvent evt, UIElement listeningElement)
+        private void MovementShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMCombatAccessoryShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMMovementAccessoryShop)
             {
                 BMDealerNPC.shopNum = 4;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked5(UIMouseEvent evt, UIElement listeningElement)
+        private void CombatShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMInformationShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMCombatAccessoryShop)
             {
                 BMDealerNPC.shopNum = 5;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked6(UIMouseEvent evt, UIElement listeningElement)
+        private void InfoShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMBagShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMInformationShop)
             {
                 BMDealerNPC.shopNum = 6;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked7(UIMouseEvent evt, UIElement listeningElement)
+        private void BagShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMNaturalBlockShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMBagShop)
             {
                 BMDealerNPC.shopNum = 7;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked8(UIMouseEvent evt, UIElement listeningElement)
+        private void CrateShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMBuildingBlockShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMCrateShop)
             {
                 BMDealerNPC.shopNum = 8;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked9(UIMouseEvent evt, UIElement listeningElement)
+        private void OreShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMHerbShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMOreShop)
             {
                 BMDealerNPC.shopNum = 9;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked10(UIMouseEvent evt, UIElement listeningElement)
+        private void NaturalShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMStationShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMBuildingBlockShop)
             {
                 BMDealerNPC.shopNum = 10;
+                visible = false;
+            }
+        }
+
+        private void BuildingShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMHerbShop)
+            {
+                BMDealerNPC.shopNum = 11;
+                visible = false;
+            }
+        }
+
+        private void HerbShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMHerbShop)
+            {
+                BMDealerNPC.shopNum = 12;
                 visible = false;
             }
         }
