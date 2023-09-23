@@ -8,7 +8,7 @@ namespace CustomSlot {
         public Rectangle Rectangle { get; set; }
         public Color Color { get; set; }
 
-        public static readonly CroppedTexture2D Empty = new CroppedTexture2D();
+        public static readonly CroppedTexture2D Empty = new();
 
         public CroppedTexture2D(Texture2D texture) : this(texture, Color.White, texture.Bounds) { }
 

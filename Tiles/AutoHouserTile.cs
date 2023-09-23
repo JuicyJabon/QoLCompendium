@@ -10,11 +10,6 @@ namespace QoLCompendium.Tiles
 {
     public class AutoHouserTile : ModTile
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().AHouser;
-        }
-
         public override void SetStaticDefaults()
         {
             Main.tileSolid[Type] = true;

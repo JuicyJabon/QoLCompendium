@@ -8,11 +8,6 @@ namespace QoLCompendium.Items
 {
     public class BattalionLog : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().InformationAccessories;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -30,10 +25,18 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<BattalionLog>(), 1).AddIngredient(ItemID.BambooBlock, 4).AddIngredient(ItemID.Wood, 2).AddRecipeGroup(RecipeGroupID.IronBar, 2).AddTile(TileID.Anvils).Register();
+            if (ModContent.GetInstance<ItemConfig>().InformationAccessories)
+            {
+                CreateRecipe()
+                .AddIngredient(ItemID.BambooBlock, 4)
+                .AddIngredient(ItemID.Wood, 2)
+                .AddIngredient(ItemID.IronBar, 2)
+                .AddTile(TileID.Loom)
+                .Register();
+            }
         }
 
-        public override void UpdateInventory(Player player)
+        public override void UpdateInfoAccessory(Player player)
         {
             player.GetModPlayer<QoLCPlayer>().battalionLog = true;
         }

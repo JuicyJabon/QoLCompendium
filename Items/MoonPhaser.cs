@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using QoLCompendium.UI;
+using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -8,11 +9,6 @@ namespace QoLCompendium.Items
 {
     public class MoonPhaser : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().MoonPhaser;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -20,8 +16,8 @@ namespace QoLCompendium.Items
 
         public override void SetDefaults()
         {
-            Item.width = 12;
-            Item.height = 12;
+            Item.width = 8;
+            Item.height = 23;
             Item.maxStack = 1;
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.HoldUp;
@@ -34,17 +30,22 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<MoonPhaser>(), 1).AddIngredient(ItemID.StoneBlock, 5).AddIngredient(ItemID.Diamond, 2).AddTile(TileID.Anvils).Register();
+            if (ModContent.GetInstance<ItemConfig>().MoonPedestals)
+            {
+                CreateRecipe()
+                .AddIngredient(ItemID.StoneBlock, 5)
+                .AddIngredient(ItemID.Diamond, 2)
+                .AddTile(TileID.Anvils)
+                .Register();
+            }
         }
 
         public override bool? UseItem(Player player)
         {
-            Main.moonPhase++;
-            if (Main.moonPhase >= 8)
-            {
-                Main.moonPhase = 0;
-            }
-            return true;
+            if (!MoonChangeUI.visible) MoonChangeUI.timeStart = Main.GameUpdateCount;
+            MoonChangeUI.visible = true;
+
+            return base.UseItem(player);
         }
     }
 }

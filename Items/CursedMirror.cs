@@ -8,11 +8,6 @@ namespace QoLCompendium.Items
 {
     public class CursedMirror : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().CursedMirror;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -67,16 +62,18 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient(ItemID.MagicMirror, 1);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.AddCondition(Condition.InGraveyard);
-            recipe.Register();
-            Recipe recipe2 = CreateRecipe(1);
-            recipe2.AddIngredient(ItemID.IceMirror, 1);
-            recipe2.AddTile(TileID.WorkBenches);
-            recipe2.AddCondition(Condition.InGraveyard);
-            recipe2.Register();
+            if (ModContent.GetInstance<ItemConfig>().CursedMirror)
+            {
+                CreateRecipe()
+                .AddIngredient(ItemID.MagicMirror, 1)
+                .AddTile(TileID.Tombstones)
+                .Register();
+
+                CreateRecipe()
+                .AddIngredient(ItemID.IceMirror, 1)
+                .AddTile(TileID.Tombstones)
+                .Register();
+            }
         }
     }
 }

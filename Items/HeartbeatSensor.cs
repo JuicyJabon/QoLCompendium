@@ -8,11 +8,6 @@ namespace QoLCompendium.Items
 {
     public class HeartbeatSensor : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().InformationAccessories;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -23,17 +18,25 @@ namespace QoLCompendium.Items
             Item.width = 18;
             Item.height = 12;
             Item.maxStack = 1;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Orange;
             Item.accessory = true;
             Item.value = Item.sellPrice(gold: 6);
         }
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<HeartbeatSensor>(), 1).AddIngredient(ModContent.ItemType<BattalionLog>()).AddIngredient(ModContent.ItemType<HeadCounter>()).AddIngredient(ModContent.ItemType<TrackingDevice>()).AddTile(TileID.TinkerersWorkbench).Register();
+            if (ModContent.GetInstance<ItemConfig>().InformationAccessories)
+            {
+                CreateRecipe()
+                .AddIngredient(ModContent.ItemType<BattalionLog>(), 1)
+                .AddIngredient(ModContent.ItemType<HeadCounter>(), 1)
+                .AddIngredient(ModContent.ItemType<TrackingDevice>(), 1)
+                .AddTile(TileID.TinkerersWorkbench)
+                .Register();
+            }
         }
 
-        public override void UpdateInventory(Player player)
+        public override void UpdateInfoAccessory(Player player)
         {
             player.GetModPlayer<QoLCPlayer>().battalionLog = true;
             player.GetModPlayer<QoLCPlayer>().headCounter = true;

@@ -8,11 +8,6 @@ namespace QoLCompendium.Items
 {
     public class TrackingDevice : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().InformationAccessories;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -30,10 +25,17 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<TrackingDevice>(), 1).AddIngredient(ItemID.Ruby, 1).AddRecipeGroup(RecipeGroupID.IronBar, 5).AddTile(TileID.Anvils).Register();
+            if (ModContent.GetInstance<ItemConfig>().InformationAccessories)
+            {
+                CreateRecipe()
+                .AddIngredient(ItemID.Ruby, 1)
+                .AddIngredient(ItemID.IronBar, 5)
+                .AddTile(TileID.Anvils)
+                .Register();
+            }
         }
 
-        public override void UpdateInventory(Player player)
+        public override void UpdateInfoAccessory(Player player)
         {
             player.GetModPlayer<QoLCPlayer>().trackingDevice = true;
         }

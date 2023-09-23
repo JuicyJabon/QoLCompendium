@@ -6,8 +6,8 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.ModLoader;
 using Terraria.UI;
-using static Terraria.ModLoader.ModContent;
 
 namespace QoLCompendium.UI
 {
@@ -121,11 +121,11 @@ namespace QoLCompendium.UI
             herbText.Height.Set(22, 0f);
             ShopPanel.Append(herbText);
 
-            Asset<Texture2D> buttonPlayTexture = Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
-            Asset<Texture2D> buttonDeleteTexture = Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
+            Asset<Texture2D> buttonPlayTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
+            Asset<Texture2D> buttonDeleteTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
 
             UIImageButton potionButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMPotionShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMPotionShop == false)
             {
                 potionButton = new(buttonDeleteTexture);
             }
@@ -137,7 +137,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(potionButton);
 
             UIImageButton stationButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMMaterialShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMMaterialShop == false)
             {
                 stationButton = new(buttonDeleteTexture);
             }
@@ -149,7 +149,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(stationButton);
 
             UIImageButton materialButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMHardmodeMaterialShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMMaterialShop == false)
             {
                 materialButton = new(buttonDeleteTexture);
             }
@@ -161,7 +161,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(materialButton);
 
             UIImageButton hardmodeMaterialButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMMovementAccessoryShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMHardmodeMaterialShop == false)
             {
                 hardmodeMaterialButton = new(buttonDeleteTexture);
             }
@@ -173,7 +173,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(hardmodeMaterialButton);
 
             UIImageButton movementButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMCombatAccessoryShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMMovementAccessoryShop == false)
             {
                 movementButton = new(buttonDeleteTexture);
             }
@@ -185,7 +185,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(movementButton);
 
             UIImageButton combatButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMInformationShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMCombatAccessoryShop == false)
             {
                 combatButton = new(buttonDeleteTexture);
             }
@@ -197,7 +197,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(combatButton);
 
             UIImageButton infoButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMBagShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMInformationShop == false)
             {
                 infoButton = new(buttonDeleteTexture);
             }
@@ -209,7 +209,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(infoButton);
 
             UIImageButton bagButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMNaturalBlockShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMBagShop == false)
             {
                 bagButton = new(buttonDeleteTexture);
             }
@@ -221,7 +221,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(bagButton);
 
             UIImageButton crateButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMBuildingBlockShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMCrateShop == false)
             {
                 crateButton = new(buttonDeleteTexture);
             }
@@ -233,7 +233,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(crateButton);
 
             UIImageButton oreButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMHerbShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMOreShop == false)
             {
                 oreButton = new(buttonDeleteTexture);
             }
@@ -245,7 +245,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(oreButton);
 
             UIImageButton naturalButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMStationShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMNaturalBlockShop == false)
             {
                 naturalButton = new(buttonDeleteTexture);
             }
@@ -257,7 +257,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(naturalButton);
 
             UIImageButton buildingButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMHerbShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMBuildingBlockShop == false)
             {
                 buildingButton = new(buttonDeleteTexture);
             }
@@ -269,7 +269,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(buildingButton);
 
             UIImageButton herbButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMHerbShop == false)
+            if (ModContent.GetInstance<ShopConfig>().BMHerbShop == false)
             {
                 herbButton = new(buttonDeleteTexture);
             }
@@ -292,7 +292,7 @@ namespace QoLCompendium.UI
 
         private void PotionShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMPotionShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMPotionShop)
             {
                 BMDealerNPC.shopNum = 0;
                 visible = false;
@@ -301,7 +301,7 @@ namespace QoLCompendium.UI
 
         private void StationShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMStationShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMStationShop)
             {
                 BMDealerNPC.shopNum = 1;
                 visible = false;
@@ -310,7 +310,7 @@ namespace QoLCompendium.UI
 
         private void MaterialShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMMaterialShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMMaterialShop)
             {
                 BMDealerNPC.shopNum = 2;
                 visible = false;
@@ -319,7 +319,7 @@ namespace QoLCompendium.UI
 
         private void HardmodeMaterialShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMHardmodeMaterialShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMHardmodeMaterialShop)
             {
                 BMDealerNPC.shopNum = 3;
                 visible = false;
@@ -328,7 +328,7 @@ namespace QoLCompendium.UI
 
         private void MovementShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMMovementAccessoryShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMMovementAccessoryShop)
             {
                 BMDealerNPC.shopNum = 4;
                 visible = false;
@@ -337,7 +337,7 @@ namespace QoLCompendium.UI
 
         private void CombatShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMCombatAccessoryShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMCombatAccessoryShop)
             {
                 BMDealerNPC.shopNum = 5;
                 visible = false;
@@ -346,7 +346,7 @@ namespace QoLCompendium.UI
 
         private void InfoShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMInformationShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMInformationShop)
             {
                 BMDealerNPC.shopNum = 6;
                 visible = false;
@@ -355,7 +355,7 @@ namespace QoLCompendium.UI
 
         private void BagShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMBagShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMBagShop)
             {
                 BMDealerNPC.shopNum = 7;
                 visible = false;
@@ -364,7 +364,7 @@ namespace QoLCompendium.UI
 
         private void CrateShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMCrateShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMCrateShop)
             {
                 BMDealerNPC.shopNum = 8;
                 visible = false;
@@ -373,7 +373,7 @@ namespace QoLCompendium.UI
 
         private void OreShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMOreShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMOreShop)
             {
                 BMDealerNPC.shopNum = 9;
                 visible = false;
@@ -382,7 +382,7 @@ namespace QoLCompendium.UI
 
         private void NaturalShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMBuildingBlockShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMNaturalBlockShop)
             {
                 BMDealerNPC.shopNum = 10;
                 visible = false;
@@ -391,7 +391,7 @@ namespace QoLCompendium.UI
 
         private void BuildingShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMHerbShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMBuildingBlockShop)
             {
                 BMDealerNPC.shopNum = 11;
                 visible = false;
@@ -400,7 +400,7 @@ namespace QoLCompendium.UI
 
         private void HerbShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().BMHerbShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMHerbShop)
             {
                 BMDealerNPC.shopNum = 12;
                 visible = false;

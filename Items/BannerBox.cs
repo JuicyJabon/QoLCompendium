@@ -1,4 +1,3 @@
-using QoLCompendium.Tweaks;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -8,11 +7,6 @@ namespace QoLCompendium.Items
 {
     public class BannerBox : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().BBox;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -20,8 +14,8 @@ namespace QoLCompendium.Items
 
         public override void SetDefaults()
         {
-            Item.width = 17;
-            Item.height = 15;
+            Item.width = 19;
+            Item.height = 11;
             Item.maxStack = 1;
             Item.consumable = false;
             Item.rare = ItemRarityID.Blue;
@@ -30,7 +24,14 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<BannerBox>(), 1).AddIngredient(ItemID.Wood, 12).AddIngredient(ItemID.Cobweb, 4).AddTile(TileID.WorkBenches).Register();
+            if (ModContent.GetInstance<ItemConfig>().BannerBox)
+            {
+                CreateRecipe()
+                .AddIngredient(ItemID.Wood, 12)
+                .AddIngredient(ItemID.Silk, 2)
+                .AddTile(TileID.Loom)
+                .Register();
+            }
         }
 
         public override void UpdateInventory(Player player)

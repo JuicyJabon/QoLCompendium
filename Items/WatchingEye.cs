@@ -9,11 +9,6 @@ namespace QoLCompendium.Items
 {
     public class WatchingEye : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().WatchingEye;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -35,7 +30,14 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<WatchingEye>(), 1).AddIngredient(ItemID.SuspiciousLookingEye, 1).AddIngredient(ItemID.Emerald, 3).AddTile(TileID.Anvils).Register();
+            if (ModContent.GetInstance<ItemConfig>().WatchingEye)
+            {
+                CreateRecipe()
+                .AddIngredient(ItemID.Lens, 4)
+                .AddIngredient(ItemID.Emerald, 1)
+                .AddTile(TileID.Anvils)
+                .Register();
+            }
         }
 
         public override bool? UseItem(Player player)

@@ -1,9 +1,59 @@
 Mods: {
 	QoLCompendium: {
+		CommonItemTooltips.NotConsumable: Not Consumable
+
 		Items: {
+			AllInOneAccess: {
+				DisplayName: All In One Access
+				Tooltip: Summons all flying storages to store your items
+			}
+
+			AsphaltPlatform: {
+				DisplayName: Asphalt Platform
+				Tooltip: ""
+			}
+
 			AutoHouser: {
 				DisplayName: Auto Houser
 				Tooltip: Places an NPC house
+			}
+
+			BannerBox: {
+				DisplayName: Banner Box
+				Tooltip: Favorite this item to recieve banner buffs for enemies with 50 kills logged
+			}
+
+			BattalionLog: {
+				DisplayName: Battalion Log
+				Tooltip: Displays sentry slots
+			}
+
+			BloodIdol: {
+				DisplayName: Blood Moon Pedestal
+				Tooltip: Favorite this item to have a blood moon occur every night
+			}
+
+			Burger: {
+				DisplayName: Burger
+				Tooltip: Looks like you found the blade!
+			}
+
+			ClamSummon: {
+				DisplayName: Odd Shell
+				Tooltip:
+					'''
+					If you listen closely, you can hear the desert winds
+					Summons a Giant Clam when used in the desert
+					'''
+			}
+
+			CultistSummon: {
+				DisplayName: Sacrificial Sigil
+				Tooltip:
+					'''
+					Using this seems like it could be a mistake
+					Summons Lunatic Cultist
+					'''
 			}
 
 			CursedMirror: {
@@ -11,22 +61,40 @@ Mods: {
 				Tooltip: Gaze into the mirror to materialize at your last death
 			}
 
-			EnemyAggressor: {
-				DisplayName: Enemy Aggressor
-				Tooltip: Favorite this item to increase enemy spawns by 10x
+			DefendersCatalyst: {
+				DisplayName: Defender's Catalyst
+				Tooltip: Summons a flying defender's forge to store your items
 			}
 
-			EnemyEraser: {
-				DisplayName: Enemy Eraser
-				Tooltip: Favorite this item to disable enemy spawns
-			}
-
-			EventEraser: {
-				DisplayName: Event Eraser
+			DukeSummon: {
+				DisplayName: Truffle Worm Cage
 				Tooltip:
 					'''
-					Favorite this item to disable events 
-					Lunar towers only cancel if you have beaten them before
+					Just don't let it out!
+					Summons Duke Fishron when used at the ocean
+					'''
+			}
+
+			EclipseIdol: {
+				DisplayName: Eclipse Pedestal
+				Tooltip: Favorite this item to have an eclipse occur every morning
+			}
+
+			EmpressSummon: {
+				DisplayName: Prismatic Lacewing Cage
+				Tooltip:
+					'''
+					This butterfly sure is agitated!
+					Summons Empress of Light
+					'''
+			}
+
+			EntityManipulator: {
+				DisplayName: Entity Manipulator
+				Tooltip:
+					'''
+					Use to select a spawn rate modifier
+					Favorite this item to activate the selected spawn rate modifier
 					'''
 			}
 
@@ -35,9 +103,28 @@ Mods: {
 				Tooltip: Switches the time from day to night, and vise-versa
 			}
 
+			GolemSummon: {
+				DisplayName: Overgrown Power Cell
+				Tooltip:
+					'''
+					That flower is a little too bright...
+					Summons Golem
+					'''
+			}
+
+			HallowedMagnet: {
+				DisplayName: Hallowed Magnet
+				Tooltip: Favorite this item to increase grab range by 2100 tiles
+			}
+
 			HeadCounter: {
 				DisplayName: Head Counter
 				Tooltip: Displays spawn rate
+			}
+
+			HeartbeatSensor: {
+				DisplayName: Heartbeat Sensor
+				Tooltip: Displays minion slots, sentry slots, and spawn rate
 			}
 
 			HellevatorCreator: {
@@ -49,64 +136,24 @@ Mods: {
 					'''
 			}
 
+			HellMagnet: {
+				DisplayName: Hell Magnet
+				Tooltip: Favorite this item to increase grab range by 1050 tiles
+			}
+
+			LunarMagnet: {
+				DisplayName: Lunar Magnet
+				Tooltip: Favorite this item to increase grab range by 16800 tiles
+			}
+
 			Magnet: {
 				DisplayName: Magnet
-				Tooltip: Favorite this item to have infinite item grab range
+				Tooltip: Favorite this item to increase grab range by 525 tiles
 			}
 
-			MoonPhaser: {
-				DisplayName: Moon Phaser
-				Tooltip: Advances the moon's phase
-			}
-
-			TravelerArriver: {
-				DisplayName: Traveler Arriver
-				Tooltip: Summons a Traveling Merchant
-			}
-
-			WatchingEye: {
-				DisplayName: Watching Eye
-				Tooltip: Reveals the whole map
-			}
-
-			WorldGlobe: {
-				DisplayName: World Globe
-				Tooltip: Favorite this item to always be in the selected biome
-			}
-
-			BannerBox: {
-				DisplayName: Banner Box
-				Tooltip: Favorite this item to recieve banner buffs for enemies with 50 kills logged
-			}
-
-			StarterBag: {
-				DisplayName: Starter Bag
-				Tooltip: Right click to recieve your starting gear
-			}
-
-			BloodIdol: {
-				DisplayName: Bloodied Moon Charm
-				Tooltip: Favorite this item to have a blood moon occur every night
-			}
-
-			EclipseIdol: {
-				DisplayName: Eclipsed Sun Charm
-				Tooltip: Favorite this item to have an eclipse occur every morning
-			}
-
-			AsphaltPlatform: {
-				Tooltip: ""
-				DisplayName: Asphalt Platform
-			}
-
-			WIP: {
-				DisplayName: Work In Progress
-				Tooltip: Shop is being built, please come back later!
-			}
-
-			EntityManipulator: {
-				DisplayName: Entity Manipulator
-				Tooltip: Favorite this item to activate the selected spawn rate modifier
+			MartianSummon: {
+				DisplayName: Mini U.F.O.
+				Tooltip: Summons the Martian Madness
 			}
 
 			MetallicClover: {
@@ -114,19 +161,153 @@ Mods: {
 				Tooltip: Displays luck
 			}
 
+			MoonPhaser: {
+				DisplayName: Moon Pedestal
+				Tooltip: Use to select the moon's phase
+			}
+
+			PartySummon: {
+				DisplayName: Party Time
+				Tooltip:
+					'''
+					Summons a party
+					Requires at least 2 NPCs
+					'''
+			}
+
+			PlanteraSummon: {
+				DisplayName: Strange Flower
+				Tooltip:
+					'''
+					This flower seems to yearn for the jungle's depths
+					Summons Plantera when used in the jungle
+					'''
+			}
+
+			RainSummon: {
+				DisplayName: Gray Cloud
+				Tooltip: Summons the rain
+			}
+
+			Regenerator: {
+				DisplayName: Regenerator
+				Tooltip: Displays life regen
+			}
+
+			Replenisher: {
+				DisplayName: Replenisher
+				Tooltip: Displays mana regen
+			}
+
+			SandstormSummon: {
+				DisplayName: Sandy Tornado
+				Tooltip: Summons a sandstorm
+			}
+
+			SillySlapper: {
+				DisplayName: Silly Slapper
+				Tooltip:
+					'''
+					Slap them silly!
+					Doubles damage done but you die in one hit
+					'''
+			}
+
+			SkeletronSummon: {
+				DisplayName: Unusual Skull
+				Tooltip:
+					'''
+					The dungeon beckons you
+					Summons Skeletron when used at night
+					'''
+			}
+
+			SlimeRainSummon: {
+				DisplayName: Slimestone
+				Tooltip: Summons the slime rain
+			}
+
+			SpookyMagnet: {
+				DisplayName: Spooky Magnet
+				Tooltip: Favorite this item to increase grab range by 4200 tiles
+			}
+
+			StarterBag: {
+				DisplayName: Starter Bag
+				Tooltip: Right click to recieve your starting gear
+			}
+
 			TrackingDevice: {
 				DisplayName: Tracking Device
 				Tooltip: Displays minion slots
 			}
 
-			BattalionLog: {
-				DisplayName: Battalion Log
-				Tooltip: Displays sentry slots
+			TravelerArriver: {
+				DisplayName: Traveller's Mannequin
+				Tooltip: Summons a Travelling Merchant
 			}
 
-			HeartbeatSensor: {
-				DisplayName: Heartbeat Sensor
-				Tooltip: Displays minion slots, sentry slots, and spawn rate
+			VitalDisplay: {
+				DisplayName: Vital Display
+				Tooltip: Displays luck, life regen, and mana regen
+			}
+
+			WallOfFleshSummon: {
+				DisplayName: Fleshy Tongue
+				Tooltip:
+					'''
+					It's trying to move
+					Summons Wall of Flesh when used in the underworld
+					'''
+			}
+
+			WatchingEye: {
+				DisplayName: Watching Eye
+				Tooltip: Reveals the whole map
+			}
+
+			WeightlessSafe: {
+				DisplayName: Weightless Safe
+				Tooltip: Summons a flying safe to store your items
+			}
+
+			WindSummon: {
+				DisplayName: Hidden Sun
+				Tooltip: Summons the wind
+			}
+
+			WingTimer: {
+				DisplayName: Wing Timer
+				Tooltip: Displays wing time
+			}
+
+			WIP: {
+				DisplayName: Work In Progress
+				Tooltip: Shop is being built, please come back later!
+			}
+
+			WorldGlobe: {
+				DisplayName: World Globe
+				Tooltip:
+					'''
+					Use to select a biome to be in
+					Favorite this item to always be in the selected biome
+					'''
+			}
+
+			HarmInducer: {
+				DisplayName: Harm Inducer
+				Tooltip: Displays the damage multiplier for your held weapon
+			}
+
+			LuckyDie: {
+				DisplayName: Lucky Die
+				Tooltip: Displays crit chance for your held weapon
+			}
+
+			PlateCracker: {
+				DisplayName: Plate Cracker
+				Tooltip: Displays the armor penetration for your held weapon
 			}
 		}
 
@@ -135,21 +316,21 @@ Mods: {
 				DisplayName: Black Market Dealer
 
 				TownNPCMood: {
-					Content: I am content.
-					NoHome: I hate not having a home.
-					FarFromHome: I am too far from home.
-					LoveSpace: I love having so much space.
-					DislikeCrowded: I dislike how crowded I am.
-					HateCrowded: I hate how crowded I am.
-					LoveBiome: I love {BiomeName}.
+					Content: This place is pretty alright.
+					NoHome: Can you please make me a house?
+					FarFromHome: How did I get here?
+					LoveSpace: This is the best place to be for sure.
+					DislikeCrowded: Too many people.
+					HateCrowded: Please move some of these people out.
+					LoveBiome: This {BiomeName} is pretty chill.
 					LikeBiome: I like {BiomeName}.
-					DislikeBiome: I dislike {BiomeName}.
-					LoveNPC: I love {NPCName}.
-					LikeNPC: I like {NPCName}.
-					DislikeNPC: I dislike {NPCName}.
-					HateNPC: I hate {NPCName}.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
+					DislikeBiome: This {BiomeName} is too dry.
+					LoveNPC: I love when {NPCName} hands out shots.
+					LikeNPC: My friend {NPCName} has a lot of cool stuff.
+					DislikeNPC: That girl {NPCName} is too loud.
+					HateNPC: The Tax Collector, {NPCName}, gets in the way of profit.
+					LikeNPC_Princess: The Princess is cool.
+					Princess_LovesNPC: "{NPCName} is awesome!"
 				}
 
 				Census.SpawnCondition: No condition
@@ -181,16 +362,24 @@ Mods: {
 		}
 
 		Projectiles: {
-			AutoHouserProj.DisplayName: Auto Houser Proj
-			HellevatorCreatorProj.DisplayName: Hellevator Creator
+			AutoHouserProj.DisplayName: Auto Houser Projectile
+			DefendersCatalystProj.DisplayName: Defenders Catalyst Projectile
+			HellevatorCreatorProj.DisplayName: Hellevator Creator Projectile
 			LifeformLocator.DisplayName: Lifeform Locator
+			WeightlessSafeProj.DisplayName: Weightless Safe Projectile
 		}
 
 		InfoDisplays: {
-			MinionInfoDisplay.DisplayName: Minion Slots
-			SentryInfoDisplay.DisplayName: Sentry Slots
+			ArmorPenetrationInfoDisplay.DisplayName: Armor Penetration
+			CritInfoDisplay.DisplayName: Crit Chance
+			DamageInfoDisplay.DisplayName: Damage Multiplier
 			LuckInfoDisplay.DisplayName: Luck
+			ManaRegenInfoDisplay.DisplayName: Mana Regen
+			MinionInfoDisplay.DisplayName: Minion Slots
+			RegenInfoDisplay.DisplayName: Life Regen
+			SentryInfoDisplay.DisplayName: Sentry Slots
 			SpawnInfoDisplay.DisplayName: Spawn Rate
+			WingInfoDisplay.DisplayName: Wing Time
 		}
 
 		WingSlot: {
@@ -306,7 +495,7 @@ Mods: {
 
 				MoreCoins: {
 					Label: "[i:855] More Coins"
-					Tooltip: Increases the amount of dropped coins
+					Tooltip: Multiplies the amount of dropped coins
 				}
 
 				IncreasePlaceSpeed: {
@@ -344,7 +533,7 @@ Mods: {
 				}
 
 				InformationBanks: {
-					Label: "[i:3124] Information In Banks"
+					Label: "[i:3084] Information In Banks"
 					Tooltip: Toggles if informational, fishing, mining, and building accessories work in banks
 				}
 
@@ -356,11 +545,6 @@ Mods: {
 				IncreaseMaxStack: {
 					Label: "[i:2] Increase Max Item Stacks"
 					Tooltip: Toggles if stackable items can be stacked to 9999
-				}
-
-				StalkerMoneyTrough: {
-					Label: "[i:3213] Stalker Money Trough"
-					Tooltip: Toggles if the Money Trough follows you
 				}
 
 				ExtraLures: {
@@ -408,11 +592,6 @@ Mods: {
 					Label: "[i:1958] Toggle Christmas"
 				}
 
-				CheatyNPCs: {
-					Tooltip: Toggles if the 2 mod NPCs sell (almost) everything
-					Label: "[i:1869] Mod NPCs Sell Everything"
-				}
-
 				EndlessBuffAmount: {
 					Label: "[i:3119] Endless Potion Amount"
 					Tooltip: Change the amount needed for endless potions
@@ -427,22 +606,59 @@ Mods: {
 					Label: "[i:207] Lava Slime No Lava"
 					Tooltip: Toggles if lava slimes drop lava in Expert+
 				}
+
+				StopOpeningDoors: {
+					Label: "[i:25] Stop Opening Doors"
+					Tooltip: Toggles if enemies can open doors
+				}
+
+				FastTownieSpawns: {
+					Label: "[i:17] Fast Town NPC Spawns"
+					Tooltip: Toggles if Town NPCs spawn faster
+				}
+
+				ExtraPhoneInfo: {
+					Label: "[i:3124] Extra Phone Info"
+					Tooltip: Toggles if the Cell Phone has this mod's info items in it's recipe and effects
+				}
+
+				FastTrees: {
+					Label: "[i:27] Fast Tree Growth"
+					Tooltip: Toggles if trees grow faster
+				}
+
+				FastHerbs: {
+					Label: "[i:313] Fast Herb Growth"
+					Tooltip: Toggles if herbs grow faster
+				}
+
+				DebugMode: {
+					Label: "[i:3084] Debug Mode"
+					Tooltip: Enter the correct digits into the list to activate debug mode
+				}
 			}
 
 			ItemConfig: {
-				Magnet: {
-					Label: "[i:QoLCompendium/Magnet] Magnet"
-					Tooltip: Toggles the Item Magnet item
+				DisplayName: Item Config
+
+				AsphaltPlatform: {
+					Label: "[i:QoLCompendium/AsphaltPlatform] Asphalt Platform"
+					Tooltip: Toggles the Asphalt Platform item
 				}
 
-				Globes: {
-					Label: "[i:QoLCompendium/WorldGlobe] World Globe"
-					Tooltip: Toggles the World Globe item
+				AutoStructures: {
+					Label: "[i:QoLCompendium/HellevatorCreator] AutoStructures"
+					Tooltip: Toggles Auto Structure related items
 				}
 
-				Erasers: {
-					Label: "[i:QoLCompendium/EntityManipulator] Entity Manipulator"
-					Tooltip: Toggles the Entity Manipulator item
+				BannerBox: {
+					Label: "[i:QoLCompendium/BannerBox] Banner Box"
+					Tooltip: Toggles the Banner Box item
+				}
+
+				BossSummoners: {
+					Label: "[i:QoLCompendium/GolemSummon] Boss & Event Summons"
+					Tooltip: Toggles Boss & Event Summon related items
 				}
 
 				CursedMirror: {
@@ -450,9 +666,14 @@ Mods: {
 					Tooltip: Toggles the Cursed Mirror item
 				}
 
-				InformationAccessories: {
-					Label: "[i:QoLCompendium/HeartbeatSensor] Information Accessories"
-					Tooltip: Toggles Information items
+				DedicatedItems: {
+					Label: "[i:QoLCompendium/SillySlapper][i:QoLCompendium/Burger] Dedicated Items"
+					Tooltip: Toggles Dedicated items
+				}
+
+				EntityManipulator: {
+					Label: "[i:QoLCompendium/EntityManipulator] Entity Manipulator"
+					Tooltip: Toggles the Entity Manipulator item
 				}
 
 				Forwarper: {
@@ -460,34 +681,24 @@ Mods: {
 					Tooltip: Toggles the Forwarper item
 				}
 
-				MoonPhaser: {
-					Label: "[i:QoLCompendium/MoonPhaser] Moon Phaser"
-					Tooltip: Toggles the Moon Phaser item
+				InformationAccessories: {
+					Label: "[i:QoLCompendium/HeartbeatSensor] Information Accessories"
+					Tooltip: Toggles Information related items
 				}
 
-				WatchingEye: {
-					Label: "[i:QoLCompendium/WatchingEye] Watching Eye"
-					Tooltip: Toggles the Watching Eye item
+				Magnets: {
+					Label: "[i:QoLCompendium/Magnet] Magnets"
+					Tooltip: Toggles Magnet related items
 				}
 
-				HCreator: {
-					Label: "[i:QoLCompendium/HellevatorCreator] Hellevator Creator"
-					Tooltip: Toggles the Hellevator Creator item
+				MobileStorages: {
+					Label: "[i:QoLCompendium/AllInOneAccess] Mobile Storages"
+					Tooltip: Toggles Mobile Storage related items
 				}
 
-				AHouser: {
-					Label: "[i:QoLCompendium/AutoHouser] Auto Houser"
-					Tooltip: Toggles the Auto Houser item
-				}
-
-				TArriver: {
-					Label: "[i:QoLCompendium/TravelerArriver] Traveler Arriver"
-					Tooltip: Toggles the Traveller Arriver item
-				}
-
-				BBox: {
-					Label: "[i:QoLCompendium/BannerBox] Banner Box"
-					Tooltip: Toggles the Banner Box item
+				MoonPedestals: {
+					Label: "[i:QoLCompendium/MoonPhaser] Moon Pedestals"
+					Tooltip: Toggles Moon Pedestal related items
 				}
 
 				StarterBag: {
@@ -499,22 +710,15 @@ Mods: {
 						'''
 				}
 
-				BloodIdol: {
-					Label: "[i:QoLCompendium/BloodIdol] Bloodied Moon Charm"
-					Tooltip: Toggles the Bloodied Moon Charm item
+				WatchingEye: {
+					Label: "[i:QoLCompendium/WatchingEye] Watching Eye"
+					Tooltip: Toggles the Watching Eye item
 				}
 
-				AsphaltPlatform: {
-					Label: "[i:QoLCompendium/AsphaltPlatform] Asphalt Platform"
-					Tooltip: Toggles the Asphalt Platform item
+				WorldGlobe: {
+					Label: "[i:QoLCompendium/WorldGlobe] World Globe"
+					Tooltip: Toggles the World Globe item
 				}
-
-				EclipseIdol: {
-					Label: "[i:QoLCompendium/EclipseIdol] Eclipsed Sun Charm"
-					Tooltip: Toggles the Eclipsed Sun Charm item
-				}
-
-				DisplayName: Item Config
 			}
 
 			ShopConfig: {
@@ -557,6 +761,16 @@ Mods: {
 
 				BMBagShop: {
 					Label: "[i:3332] Bag Shop"
+					Tooltip: ""
+				}
+
+				BMCrateShop: {
+					Label: "[i:2334] Crate Shop"
+					Tooltip: ""
+				}
+
+				BMOreShop: {
+					Label: "[i:11] Ore Shop"
 					Tooltip: ""
 				}
 
@@ -619,27 +833,21 @@ Mods: {
 					Label: "[i:313] Herb Shop"
 					Tooltip: ""
 				}
-
-				BMCrateShop: {
-					Label: "[i:2334] Crate Shop"
-					Tooltip: ""
-				}
-
-				BMOreShop: {
-					Label: "[i:11] Ore Shop"
-					Tooltip: ""
-				}
 			}
 		}
 
 		QoLCConfig: {
 			Headers: {
+				Debug: Debug
 				Endless: Endless Toggles
-				Spawn: Spawn Toggles
+				Spawn: Spawn Change Toggles
 				Items: Item Toggles
-				NPCs: NPC Toggles
-				Speed: Speed Toggles
-				Other: Other Toggles
+				Items2: Item Change Toggles
+				NPCs: NPC Change Toggles
+				Projectiles: Projectile Change Toggles
+				Player: Player Change Toggles
+				Speed: Speed Change Toggles
+				World: World Change Toggles
 				BMShop: Dealer Shop Toggles
 				ECShop: Collector Shop Toggles
 			}

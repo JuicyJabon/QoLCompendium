@@ -8,11 +8,6 @@ namespace QoLCompendium.Items
 {
     public class AsphaltPlatform : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().AsphaltPlatform;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 200;
@@ -34,13 +29,16 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            CreateRecipe(2)
+            if (ModContent.GetInstance<ItemConfig>().AsphaltPlatform)
+            {
+                CreateRecipe(2)
                 .AddIngredient(ItemID.AsphaltBlock, 1)
                 .Register();
 
-            Recipe.Create(ItemID.AsphaltBlock, 1)
-                .AddIngredient(ModContent.ItemType<AsphaltPlatform>(), 2)
-                .Register();
+                Recipe.Create(ItemID.AsphaltBlock, 1)
+                    .AddIngredient(ModContent.ItemType<AsphaltPlatform>(), 2)
+                    .Register();
+            }
         }
     }
 }

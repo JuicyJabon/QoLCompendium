@@ -11,11 +11,6 @@ namespace QoLCompendium.Items
         public int curItem;
         public bool loadCount;
 
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().StarterBag;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -37,27 +32,30 @@ namespace QoLCompendium.Items
 
         public override void RightClick(Player player)
         {
-            if (ModContent.GetInstance<QoLCConfig>().CustomItemQuantities != null)
+            if (ModContent.GetInstance<QoLCConfig>().CustomItems != null || ModContent.GetInstance<QoLCConfig>().CustomItems.Count > 0)
             {
-                loadCount = true;
-            }
-            for (int i = 0; i < ModContent.GetInstance<QoLCConfig>().CustomItems.Count; i++)
-            {
-                type = ModContent.GetInstance<QoLCConfig>().CustomItems[i].Type;
-                if (loadCount)
+                if (ModContent.GetInstance<QoLCConfig>().CustomItemQuantities != null)
                 {
-                    if (i <= ModContent.GetInstance<QoLCConfig>().CustomItemQuantities.Count - 1)
+                    loadCount = true;
+                }
+                for (int i = 0; i < ModContent.GetInstance<QoLCConfig>().CustomItems.Count; i++)
+                {
+                    type = ModContent.GetInstance<QoLCConfig>().CustomItems[i].Type;
+                    if (loadCount)
                     {
-                        player.QuickSpawnItem(null, type, ModContent.GetInstance<QoLCConfig>().CustomItemQuantities[i]);
+                        if (i <= ModContent.GetInstance<QoLCConfig>().CustomItemQuantities.Count - 1)
+                        {
+                            player.QuickSpawnItem(null, type, ModContent.GetInstance<QoLCConfig>().CustomItemQuantities[i]);
+                        }
+                        else
+                        {
+                            player.QuickSpawnItem(null, type, 1);
+                        }
                     }
                     else
                     {
                         player.QuickSpawnItem(null, type, 1);
                     }
-                }
-                else
-                {
-                    player.QuickSpawnItem(null, type, 1);
                 }
             }
         }

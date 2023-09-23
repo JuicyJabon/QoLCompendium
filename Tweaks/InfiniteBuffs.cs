@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -32,16 +34,41 @@ namespace QoLCompendium.Tweaks
     public class BuffPlayer : ModPlayer
     {
         public static float LuckPotionBoost = 0;
+
+        public static readonly List<int> AvailableRedPotionBuffs = new() {
+            BuffID.ObsidianSkin,
+            BuffID.Regeneration,
+            BuffID.Swiftness,
+            BuffID.Ironskin,
+            BuffID.ManaRegeneration,
+            BuffID.MagicPower,
+            BuffID.Featherfall,
+            BuffID.Spelunker,
+            BuffID.Archery,
+            BuffID.Heartreach,
+            BuffID.Hunter,
+            BuffID.Endurance,
+            BuffID.Lifeforce,
+            BuffID.Inferno,
+            BuffID.Mining,
+            BuffID.Rage,
+            BuffID.Wrath,
+            BuffID.Dangersense
+        };
+
         public override void PostUpdateBuffs()
         {
-            if (Player.whoAmI != Main.myPlayer || Main.netMode == NetmodeID.Server)
+            if (Player.whoAmI != Main.myPlayer)
                 return;
 
-            ApplyAvailableBuffs(Player.inventory);
-            ApplyAvailableBuffs(Player.bank.item);
-            ApplyAvailableBuffs(Player.bank2.item);
-            ApplyAvailableBuffs(Player.bank3.item);
-            ApplyAvailableBuffs(Player.bank4.item);
+            if (ModContent.GetInstance<QoLCConfig>().EndlessBuffsAndHealing)
+            {
+                ApplyAvailableBuffs(Player.inventory);
+                ApplyAvailableBuffs(Player.bank.item);
+                ApplyAvailableBuffs(Player.bank2.item);
+                ApplyAvailableBuffs(Player.bank3.item);
+                ApplyAvailableBuffs(Player.bank4.item);
+            }
         }
 
         public override void ModifyLuck(ref float luck)
@@ -57,6 +84,14 @@ namespace QoLCompendium.Tweaks
                 if (item.createTile is TileID.GardenGnome)
                 {
                     LuckPotionBoost += 0.2f;
+                }
+
+                if (item.type == ItemID.RedPotion && Main.getGoodWorld)
+                {
+                    for (int i = 0; i < AvailableRedPotionBuffs.Count; i++)
+                    {
+                        Main.LocalPlayer.AddBuff(AvailableRedPotionBuffs[i], 2);
+                    }
                 }
 
                 int buffType = BuffItem.GetItemBuffType(item);
@@ -233,15 +268,15 @@ namespace QoLCompendium.Tweaks
                     if (item.buffType > 0)
                         return item.buffType;
                 }
-            }
 
-            IsBuffTileItem(item, out int buffType);
-            if (buffType is not -1)
-                return buffType;
+                IsBuffTileItem(item, out int buffType);
+                if (buffType is not -1)
+                    return buffType;
 
-            if (item.type == ItemID.HoneyBucket)
-            {
-                return BuffID.Honey;
+                if (item.type == ItemID.HoneyBucket)
+                {
+                    return BuffID.Honey;
+                }
             }
             return -1;
         }

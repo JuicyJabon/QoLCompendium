@@ -3,7 +3,6 @@ Another QoL mod... but this one is a little different.
 This mod aims to condense most of the other 1-off QoL mods into one.
 
 USE SHOP EXPANDER WITH THIS MOD!
-BOSS BAGS ARE NO LONGER SOLD IN NORMAL MODE!
 
 All features are configurable.
 
@@ -17,10 +16,11 @@ Current Features:
  - Endless Ammo (999+)
  - Non-consumable Boss & Event summons
  - Increased max buff slots
- - Instant respawn (Only Singleplayer)
+ - Instant respawn (Buggy in Multiplayer)
  - Full HP on respawn
  - No enemy spawns during bosses
  - No lava slime lava
+ - No door breaking
  - Lifeform Analyzer points towards rare creatures
  - Editable celestial tower shield health
  - Increased coin drops
@@ -29,49 +29,96 @@ Current Features:
  - Automatic coin quick-stacking
  - Informational accessories work in banks
  - Boss bags don't drop vanities
- - Flying money trough follows the player
  - Extra fishing lures
  - Friendly NPCs become invincible
  - NPC happiness removal
  - No world evil spread
  - Staff of Regrowth auto-plant
  - Wing Slot
- - Map teleporting
  - Starter Bag (Make sure to set items in config)
  - Many items for easing the playing experience
  - 2 Town NPCs who sell almost everything needed
 
 Warning for Infernum Mode:
-You have to pick up the Bereft Vassal's boss bag for the kill to count.
-
-Warning for Qwerty's Mod:
-You have to pick up the Hydra's boss bag for the kill to count.
-
-Warning for Secrets of the Shadows:
-You have to pick up the Advisor's boss bag for the kill to count.
+You have to pick up/have the Bereft Vassal's Boss Bag in the main world for the kill to count.
 
 Current Mod Support:
  - All Mods: Endless Potion Buffs & Healing
  - Aequus: NPC Sales
+ - AFKPets: Non-consumable Boss & Event summons & NPC Sales
+ - Amulet Of Many Minions: NPC Sales
  - Arbour: NPC Sales
+ - Assorted Crazy Things: NPC Sales
+ - Bombus Apis: NPC Sales
+ - Buffaria: NPC Sales
  - Calamity: Endless Station Buffs & NPC Sales
  - Calamity's Vanities: NPC Sales
  - Catalyst: NPC Sales
+ - Clamity Addon: NPC Sales
+ - Clicker Class: NPC Sales
+ - Confection Rebaked: NPC Sales
  - Consolaria: Non-consumable Boss & Event summons & NPC Sales
+ - Depths (Hell Alternative): NPC Sales
  - Echoes of the Ancients: NPC Sales
+ - Edorbis: Non-consumable Boss & Event summons & NPC Sales
+ - Enchanted Moons: Non-consumable Boss & Event summons
  - Exalt: NPC Sales
- - Fargo's Souls: Endless Station Buffs, Non-consumable Boss & Event summons & NPC Sales
+ - Fargo's Mods: Endless Station Buffs, Non-consumable Boss & Event summons & NPC Sales
+ - Furniture, Food, And Fun: NPC Sales
+ - GaMeTerraria: NPC Sales
+ - Gensokyo: Non-consumable Boss & Event summons & NPC Sales
  - Gerd's Lab: Non-consumable Boss & Event summons & NPC Sales
+ - Heartbeataria: NPC Sales
  - Homeward Journey: Non-consumable Boss & Event summons & NPC Sales
  - Hunt of the Old God: NPC Sales
  - Infernum Mode: NPC Sales
+ - Magic Storage: NPC Sales
+ - Mech Boss Rework: NPC Sales
  - Polarities: NPC Sales
  - Qwerty's Mod: Non-consumable Boss & Event summons & NPC Sales
  - Redemption: Endless Station Buffs & NPC Sales
  - Secrets of the Shadows: Endless Station Buffs, Non-consumable Boss & Event summons & NPC Sales
  - Spirit Mod: Endless Station Buffs,Non-consumable Boss & Event summons & NPC Sales
  - Spooky Mod: Non-consumable Boss & Event summons & NPC Sales
+ - Starlight River: NPC Sales
+ - Stars Above: NPC Sales
  - Storm's Additions: Non-consumable Boss & Event summons & NPC Sales
+ - Supernova: Non-consumable Boss & Event summons & NPC Sales
+ - Terrorborn: NPC Sales
  - Thorium: Endless Station Buffs, Non-consumable Boss & Event summons & NPC Sales
+ - TRAE: NPC Sales
+ - Valhalla Mod: Non-consumable Boss & Event summons & NPC Sales
  - Verdant: NPC Sales
  - Vitality: Non-consumable Boss & Event summons & NPC Sales
+
+CHANGELOG v2.1.0:
+WARNING: A lot of internal changes have been made, and a lot of NPC sale conditions and boss checks might have to be redone!
+1. Added Boss Summons for vanilla bosses without existing summon items.
+2. Added Event Summons for vanilla events without existing summon items.
+1a & 2a: These summons are consumable by default, but are affected by the non-consumable summons config.
+3. Added Mobile Storage items for Defenders Forge and Safe, as well as a combo of all of them.
+4. Changed the Moon Phaser to have a UI to select moon phase, and renamed to "Moon Pedestal".
+5. Lots of resprites.
+6. A couple renames.
+7. Added new information accessories for luck, life regen, mana regen, sentry slots, and summon slots.
+7a. These are added to the PDA's recipe, but can be turned off. (Effects apply to upgrades of the PDA)
+8. Reworked Head Counter to show spawn rate.
+9. Fixed Magnet picking up hearts and mana stars.
+10. Traveller Arriver is now considered a "boss" summon and sorted with other summons, as well as being affected by non-consumable summons.
+11. Changed a few recipes.
+12. Reworked how items are unlocked for the NPC's shops.
+12a. Items now require visiting a biome related to the item, a boss or event kill, or both.
+13. Added a config for faster Town NPC spawns.
+14. Added a config for stopping enemies for opening doors.
+15. Changed how non-consumable summons are implemented, and gave them a tooltip.
+16. Removed Stalker Money Trough config due to issues with the other mobile storages.
+17. Added a recipe for Money Trough.
+18. Added recipes for two Qwerty's Mod summons that don't work with non-consumable summons yet.
+19. Reorganized a lot of misplaced code to be more neat. (And hopefully function better)
+20. Added support for a bunch of mods.
+21. Red Potion applies all it's buffs in For The Worthy or GetFixedBoi worlds.
+22. Added a config for faster herb and tree growth.
+23. Fixed this mod's NPCs happiness issues.
+24. Fixed Starter Bag erroring when opened with no items set.
+25. Removed Map Teleporting.
+26. Added some dedicated items.

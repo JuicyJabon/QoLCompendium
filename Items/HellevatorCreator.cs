@@ -8,11 +8,6 @@ namespace QoLCompendium.Items
 {
     public class HellevatorCreator : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().HCreator;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -37,7 +32,15 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            CreateRecipe(1).AddIngredient(ItemID.Dynamite, 25).AddIngredient(ItemID.Diamond, 5).AddRecipeGroup(RecipeGroupID.IronBar, 5).AddTile(TileID.Anvils).Register();
+            if (ModContent.GetInstance<ItemConfig>().AutoStructures)
+            {
+                CreateRecipe()
+                .AddIngredient(ItemID.Dynamite, 25)
+                .AddIngredient(ItemID.Diamond, 5)
+                .AddIngredient(ItemID.IronBar, 2)
+                .AddTile(TileID.Anvils)
+                .Register();
+            }
         }
     }
 }

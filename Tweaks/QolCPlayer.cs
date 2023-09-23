@@ -1,4 +1,5 @@
 using QoLCompendium.Items;
+using QoLCompendium.Projectiles;
 using QoLCompendium.UI;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,25 +13,37 @@ namespace QoLCompendium.Tweaks
 {
     public class QoLCPlayer : ModPlayer
     {
-        public bool magnetActive = false;
-
-        public bool enemyEraser = false;
-
-        public bool enemyAggressor = false;
-
-        public bool enemyCalmer = false;
+        public bool battalionLog = false;
 
         public bool bloodIdol = false;
 
         public bool eclipseIdol = false;
 
+        public bool enemyAggressor = false;
+
+        public bool enemyCalmer = false;
+
+        public bool enemyEraser = false;
+
+        //public bool harmInducer = false;
+
         public bool headCounter = false;
+
+        //public bool luckyDie = false;
 
         public bool metallicClover = false;
 
+        //public bool plateCracker = false;
+
+        public bool regenerator = false;
+
+        public bool replenisher = false;
+
+        public bool sillySlapper = false;
+
         public bool trackingDevice = false;
 
-        public bool battalionLog = false;
+        //public bool wingTimer = false;
 
         public int respawnFullHPTimer = 0;
 
@@ -38,9 +51,23 @@ namespace QoLCompendium.Tweaks
 
         public int selectedSpawnModifier = 5;
 
-        public int spawnRateUpdateTimer;
         public int spawnRate;
+        public int spawnRateUpdateTimer;
         static FieldInfo spawnRateFieldInfo;
+
+        internal bool chests;
+        internal int safe = -1;
+        internal int defenders = -1;
+
+        public override void ResetEffects()
+        {
+            Reset();
+        }
+
+        public override void UpdateDead()
+        {
+            Reset();
+        }
 
         public override void PreUpdate()
         {
@@ -92,16 +119,42 @@ namespace QoLCompendium.Tweaks
 
         public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
         {
-            if (ModContent.GetInstance<QoLCConfig>().InstantRespawn && Main.netMode != NetmodeID.MultiplayerClient)
+            if (ModContent.GetInstance<QoLCConfig>().InstantRespawn)
             {
-                for (int i = 0; i < Main.npc.Length; i++)
+                for (int k = 0; k < Main.maxNPCs; k++)
                 {
-                    if (Main.npc[i].active && Main.npc[i].boss)
+                    if (Main.npc[k].boss && Main.npc[k].active)
                     {
-                        Main.npc[i].active = false;
+                        DespawnNPC(k);
                     }
+                    Player.respawnTimer = 60;
                 }
-                Player.respawnTimer = 60;
+            }
+        }
+
+        public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
+        {
+            if (sillySlapper)
+            {
+                Player.KillMe(PlayerDeathReason.ByNPC(npc.type), 666666, 0);
+            }
+        }
+
+        public override void OnHitByProjectile(Projectile proj, Player.HurtInfo hurtInfo)
+        {
+            if (sillySlapper)
+            {
+                Player.KillMe(PlayerDeathReason.ByProjectile(Main.LocalPlayer.whoAmI, proj.type), 666666, 0);
+            }
+        }
+
+        public static void DespawnNPC(int npc)
+        {
+            Main.npc[npc].life = 0;
+            Main.npc[npc].active = false;
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npc, 0f, 0f, 0f, 0, 0, 0);
             }
         }
 
@@ -110,6 +163,32 @@ namespace QoLCompendium.Tweaks
             if (ModContent.GetInstance<QoLCConfig>().FullHPRespawn)
             {
                 respawnFullHPTimer = 1;
+            }
+        }
+
+        public override void SetControls()
+        {
+            if (Player.whoAmI == Main.myPlayer && chests)
+            {
+                Main.SmartCursorShowing = false;
+                Player.tileRangeX = 9999;
+                Player.tileRangeY = 5000;
+                if (Player.chest >= -1)
+                {
+                    safe = -1;
+                    defenders = -1;
+                    chests = false;
+                }
+                if (safe != -1 && Main.projectile[safe].type != ModContent.ProjectileType<WeightlessSafeProj>())
+                {
+                    safe = -1;
+                    chests = false;
+                }
+                if (defenders != -1 && Main.projectile[defenders].type != ModContent.ProjectileType<DefendersCatalystProj>())
+                {
+                    defenders = -1;
+                    chests = false;
+                }
             }
         }
 
@@ -460,6 +539,11 @@ namespace QoLCompendium.Tweaks
                 Player.dontHurtCritters = true;
                 Player.dontHurtNature = true;
             }
+            if (itemType == ModContent.ItemType<BattalionLog>())
+            {
+                battalionLog = true;
+                return;
+            }
             if (itemType == ModContent.ItemType<HeadCounter>())
             {
                 headCounter = true;
@@ -470,14 +554,33 @@ namespace QoLCompendium.Tweaks
                 metallicClover = true;
                 return;
             }
+            if (itemType == ModContent.ItemType<Regenerator>())
+            {
+                regenerator = true;
+                return;
+            }
+            if (itemType == ModContent.ItemType<Replenisher>())
+            {
+                replenisher = true;
+                return;
+            }
             if (itemType == ModContent.ItemType<TrackingDevice>())
             {
                 trackingDevice = true;
                 return;
             }
-            if (itemType == ModContent.ItemType<BattalionLog>())
+            if (itemType == ModContent.ItemType<HeartbeatSensor>())
             {
                 battalionLog = true;
+                headCounter = true;
+                trackingDevice = true;
+                return;
+            }
+            if (itemType == ModContent.ItemType<VitalDisplay>())
+            {
+                metallicClover = true;
+                regenerator = true;
+                replenisher = true;
                 return;
             }
         }
@@ -496,28 +599,24 @@ namespace QoLCompendium.Tweaks
             }
         }
 
-        public override void ResetEffects()
-        {
-            Reset();
-        }
-
-        public override void UpdateDead()
-        {
-            Reset();
-        }
-
         public void Reset()
         {
-            magnetActive = false;
-            enemyEraser = false;
-            enemyAggressor = false;
-            enemyCalmer = false;
+            battalionLog = false;
             bloodIdol = false;
             eclipseIdol = false;
+            enemyAggressor = false;
+            enemyCalmer = false;
+            enemyEraser = false;
+            //harmInducer = false;
             headCounter = false;
+            //luckyDie = false;
             metallicClover = false;
+            //plateCracker = false;
+            regenerator = false;
+            replenisher = false;
+            sillySlapper = false;
             trackingDevice = false;
-            battalionLog = false;
+            //wingTimer = false;
 
             if (Main.netMode != NetmodeID.Server)
             {

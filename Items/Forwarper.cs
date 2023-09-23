@@ -9,11 +9,6 @@ namespace QoLCompendium.Items
 {
     public class Forwarper : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().Forwarper;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -35,7 +30,15 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<Forwarper>(), 1).AddIngredient(ItemID.Obsidian, 4).AddIngredient(ItemID.Sapphire, 2).AddIngredient(ItemID.Amber, 2).AddTile(TileID.Anvils).Register();
+            if (ModContent.GetInstance<ItemConfig>().Forwarper)
+            {
+                CreateRecipe()
+                .AddIngredient(ItemID.Obsidian, 4)
+                .AddIngredient(ItemID.Sapphire, 2)
+                .AddIngredient(ItemID.Amber, 2)
+                .AddTile(TileID.Anvils)
+                .Register();
+            }
         }
 
         public override bool? UseItem(Player player)

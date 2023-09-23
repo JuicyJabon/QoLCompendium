@@ -6,8 +6,8 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.ModLoader;
 using Terraria.UI;
-using static Terraria.ModLoader.ModContent;
 
 namespace QoLCompendium.UI
 {
@@ -93,11 +93,11 @@ namespace QoLCompendium.UI
             herbText.Height.Set(22, 0f);
             ShopPanel.Append(herbText);
 
-            Asset<Texture2D> buttonPlayTexture = Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
-            Asset<Texture2D> buttonDeleteTexture = Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
+            Asset<Texture2D> buttonPlayTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
+            Asset<Texture2D> buttonDeleteTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
 
             UIImageButton potionButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMPotionShop == false)
+            if (ModContent.GetInstance<ShopConfig>().ECPotionShop == false)
             {
                 potionButton = new(buttonDeleteTexture);
             }
@@ -109,7 +109,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(potionButton);
 
             UIImageButton stationButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMMaterialShop == false)
+            if (ModContent.GetInstance<ShopConfig>().ECStationShop == false)
             {
                 stationButton = new(buttonDeleteTexture);
             }
@@ -121,7 +121,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(stationButton);
 
             UIImageButton materialButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMHardmodeMaterialShop == false)
+            if (ModContent.GetInstance<ShopConfig>().ECMaterialShop == false)
             {
                 materialButton = new(buttonDeleteTexture);
             }
@@ -133,7 +133,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(materialButton);
 
             UIImageButton bagButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMNaturalBlockShop == false)
+            if (ModContent.GetInstance<ShopConfig>().ECBagShop == false)
             {
                 bagButton = new(buttonDeleteTexture);
             }
@@ -145,7 +145,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(bagButton);
 
             UIImageButton crateButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMBuildingBlockShop == false)
+            if (ModContent.GetInstance<ShopConfig>().ECCrateShop == false)
             {
                 crateButton = new(buttonDeleteTexture);
             }
@@ -157,7 +157,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(crateButton);
 
             UIImageButton oreButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMHerbShop == false)
+            if (ModContent.GetInstance<ShopConfig>().ECOreShop == false)
             {
                 oreButton = new(buttonDeleteTexture);
             }
@@ -169,7 +169,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(oreButton);
 
             UIImageButton naturalButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMStationShop == false)
+            if (ModContent.GetInstance<ShopConfig>().ECNaturalBlocksShop == false)
             {
                 naturalButton = new(buttonDeleteTexture);
             }
@@ -181,7 +181,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(naturalButton);
 
             UIImageButton buildingButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMHerbShop == false)
+            if (ModContent.GetInstance<ShopConfig>().ECBuildingBlocksShop == false)
             {
                 buildingButton = new(buttonDeleteTexture);
             }
@@ -193,7 +193,7 @@ namespace QoLCompendium.UI
             ShopPanel.Append(buildingButton);
 
             UIImageButton herbButton = new(buttonPlayTexture);
-            if (GetInstance<ShopConfig>().BMHerbShop == false)
+            if (ModContent.GetInstance<ShopConfig>().ECHerbShop == false)
             {
                 herbButton = new(buttonDeleteTexture);
             }
@@ -216,7 +216,7 @@ namespace QoLCompendium.UI
 
         private void PotionShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().ECPotionShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().ECPotionShop)
             {
                 EtherealCollectorNPC.shopNum = 0;
                 visible = false;
@@ -225,7 +225,7 @@ namespace QoLCompendium.UI
 
         private void StationShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().ECStationShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().ECStationShop)
             {
                 EtherealCollectorNPC.shopNum = 1;
                 visible = false;
@@ -234,7 +234,7 @@ namespace QoLCompendium.UI
 
         private void MaterialShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().ECMaterialShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().ECMaterialShop)
             {
                 EtherealCollectorNPC.shopNum = 2;
                 visible = false;
@@ -243,7 +243,7 @@ namespace QoLCompendium.UI
 
         private void BagShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().ECBagShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().ECBagShop)
             {
                 EtherealCollectorNPC.shopNum = 3;
                 visible = false;
@@ -252,7 +252,7 @@ namespace QoLCompendium.UI
 
         private void CrateShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().ECCrateShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().ECCrateShop)
             {
                 EtherealCollectorNPC.shopNum = 4;
                 visible = false;
@@ -261,7 +261,7 @@ namespace QoLCompendium.UI
 
         private void OreShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().ECOreShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().ECOreShop)
             {
                 EtherealCollectorNPC.shopNum = 5;
                 visible = false;
@@ -270,7 +270,7 @@ namespace QoLCompendium.UI
 
         private void NaturalShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().ECNaturalBlocksShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().ECNaturalBlocksShop)
             {
                 EtherealCollectorNPC.shopNum = 6;
                 visible = false;
@@ -279,7 +279,7 @@ namespace QoLCompendium.UI
 
         private void BuildingShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().ECBuildingBlocksShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().ECBuildingBlocksShop)
             {
                 EtherealCollectorNPC.shopNum = 7;
                 visible = false;
@@ -288,7 +288,7 @@ namespace QoLCompendium.UI
 
         private void HerbShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && GetInstance<ShopConfig>().ECHerbShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().ECHerbShop)
             {
                 EtherealCollectorNPC.shopNum = 8;
                 visible = false;

@@ -16,6 +16,9 @@ namespace QoLCompendium.UI
         private UserInterface globeInterface;
         internal EMUI emUI;
         private UserInterface emInterface;
+        internal MoonChangeUI moonChangeUI;
+        private UserInterface moonInterface;
+
         public override void OnWorldLoad()
         {
             if (!Main.dedServ)
@@ -39,6 +42,11 @@ namespace QoLCompendium.UI
                 emUI.Activate();
                 emInterface = new UserInterface();
                 emInterface.SetState(emUI);
+
+                moonChangeUI = new MoonChangeUI();
+                moonChangeUI.Activate();
+                moonInterface = new UserInterface();
+                moonInterface.SetState(moonChangeUI);
             }
         }
 
@@ -105,6 +113,21 @@ namespace QoLCompendium.UI
                     InterfaceScaleType.UI)
                 );
             }
+            if (MouseTextIndex != -1)
+            {
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "QoLC: Moon Selector",
+                    delegate
+                    {
+                        if (MoonChangeUI.visible)
+                        {
+                            moonChangeUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+            }
         }
 
         public override void UpdateUI(GameTime gameTime)
@@ -127,6 +150,11 @@ namespace QoLCompendium.UI
             if (emInterface != null && EMUI.visible)
             {
                 emInterface.Update(gameTime);
+            }
+
+            if (moonInterface != null && MoonChangeUI.visible)
+            {
+                moonInterface.Update(gameTime);
             }
         }
     }

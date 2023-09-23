@@ -12,7 +12,7 @@ namespace CustomSlot.UI {
         /// <summary>
         /// The current panel coordinates.
         /// </summary>
-        public Vector2 PanelCoordinates => new Vector2(Panel.Left.Pixels, Panel.Top.Pixels);
+        public Vector2 PanelCoordinates => new(Panel.Left.Pixels, Panel.Top.Pixels);
         /// <summary>
         /// The default location of the panel.
         /// </summary>

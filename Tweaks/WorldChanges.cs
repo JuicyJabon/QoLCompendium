@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace QoLCompendium.Tweaks
 {
-    public class AlwaysBloodMoonSystem : ModSystem
+    public class AlwaysEventSystem : ModSystem
     {
         public override void PreUpdateWorld()
         {
@@ -25,7 +25,7 @@ namespace QoLCompendium.Tweaks
         }
     }
 
-    public class DisableEvilSpread : ModSystem
+    public class DisableEvilSpreadSystem : ModSystem
     {
         public override void Load()
         {
@@ -71,62 +71,6 @@ namespace QoLCompendium.Tweaks
             if (ModContent.GetInstance<QoLCConfig>().Christmas)
             {
                 Main.xMas = true;
-            }
-        }
-    }
-
-    public class TownieSpawns : ModSystem
-    {
-        public override void PreUpdateWorld()
-        {
-            if (ModContent.GetInstance<QoLCConfig>().TownieSpawn)
-            {
-                NPC.savedStylist = true;
-                NPC.savedAngler = true;
-                NPC.savedGolfer = true;
-                if (NPC.downedGoblins)
-                {
-                    NPC.savedGoblin = true;
-                }
-                if (NPC.downedBoss2)
-                {
-                    NPC.savedBartender = true;
-                }
-                if (NPC.downedBoss3)
-                {
-                    NPC.savedMech = true;
-                }
-                if (Main.hardMode)
-                {
-                    NPC.savedWizard = true;
-                    NPC.savedTaxCollector = true;
-                }
-            }
-        }
-    }
-
-    public class TowerShieldHealth : ModSystem
-    {
-        public override void PreUpdateWorld()
-        {
-            if (NPC.ShieldStrengthTowerVortex > ModContent.GetInstance<QoLCConfig>().TowerShield)
-            {
-                NPC.ShieldStrengthTowerVortex = ModContent.GetInstance<QoLCConfig>().TowerShield;
-            }
-
-            if (NPC.ShieldStrengthTowerSolar > ModContent.GetInstance<QoLCConfig>().TowerShield)
-            {
-                NPC.ShieldStrengthTowerSolar = ModContent.GetInstance<QoLCConfig>().TowerShield;
-            }
-
-            if (NPC.ShieldStrengthTowerNebula > ModContent.GetInstance<QoLCConfig>().TowerShield)
-            {
-                NPC.ShieldStrengthTowerNebula = ModContent.GetInstance<QoLCConfig>().TowerShield;
-            }
-
-            if (NPC.ShieldStrengthTowerStardust > ModContent.GetInstance<QoLCConfig>().TowerShield)
-            {
-                NPC.ShieldStrengthTowerStardust = ModContent.GetInstance<QoLCConfig>().TowerShield;
             }
         }
     }
@@ -177,12 +121,10 @@ namespace QoLCompendium.Tweaks
 
         public override void PostDrawFullscreenMap(ref string mouseText)
         {
-            if (MapTeleport && ModContent.GetInstance<QoLCConfig>().MapPorting)
+            if (ModContent.GetInstance<QoLCConfig>().DebugMode.Contains(15) && ModContent.GetInstance<QoLCConfig>().DebugMode.Contains(20) && ModContent.GetInstance<QoLCConfig>().DebugMode.Contains(23) && ModContent.GetInstance<QoLCConfig>().DebugMode.Contains(50))
             {
                 TryToTeleportPlayerOnMap();
             }
         }
-
-        internal static bool MapTeleport = true;
     }
 }

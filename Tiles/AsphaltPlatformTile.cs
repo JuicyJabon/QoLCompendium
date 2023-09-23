@@ -8,11 +8,6 @@ namespace QoLCompendium.Tiles
 {
     public class AsphaltPlatformTile : ModTile
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().AsphaltPlatform;
-        }
-
         public override void SetStaticDefaults()
         {
             Main.tileLighted[Type] = true;

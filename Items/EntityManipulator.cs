@@ -11,11 +11,6 @@ namespace QoLCompendium.Items
 {
     internal class EntityManipulator : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().Erasers;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -45,7 +40,15 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<EntityManipulator>(), 1).AddIngredient(ItemID.FlinxFur, 2).AddIngredient(ItemID.Hay, 4).AddIngredient(ItemID.RubyGemsparkBlock, 20).AddTile(TileID.Anvils).Register();
+            if (ModContent.GetInstance<ItemConfig>().EntityManipulator)
+            {
+                CreateRecipe()
+                .AddIngredient(ItemID.RubyGemsparkBlock, 20)
+                .AddIngredient(ItemID.Hay, 4)
+                .AddIngredient(ItemID.FlinxFur, 2)
+                .AddTile(TileID.Anvils)
+                .Register();
+            }
         }
 
         public override void UpdateInventory(Player player)

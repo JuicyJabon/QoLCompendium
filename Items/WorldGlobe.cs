@@ -10,11 +10,6 @@ namespace QoLCompendium.Items
 {
     public class WorldGlobe : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().Globes;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -44,7 +39,16 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<WorldGlobe>(), 1).AddIngredient(ItemID.Glass, 15).AddIngredient(ItemID.DirtBlock, 5).AddIngredient(ItemID.GrassSeeds, 5).AddTile(TileID.Anvils).AddIngredient(ItemID.WaterBucket, 1).Register();
+            if (ModContent.GetInstance<ItemConfig>().WorldGlobe)
+            {
+                CreateRecipe()
+                .AddIngredient(ItemID.Glass, 15)
+                .AddIngredient(ItemID.DirtBlock, 5)
+                .AddIngredient(ItemID.GrassSeeds, 5)
+                .AddIngredient(ItemID.WaterBucket, 1)
+                .AddTile(TileID.Anvils)
+                .Register();
+            }
         }
 
         public override void UpdateInventory(Player player)

@@ -8,11 +8,6 @@ namespace QoLCompendium.Items
 {
     public class BloodIdol : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().BloodIdol;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -20,8 +15,8 @@ namespace QoLCompendium.Items
 
         public override void SetDefaults()
         {
-            Item.width = 12;
-            Item.height = 12;
+            Item.width = 8;
+            Item.height = 23;
             Item.maxStack = 1;
             Item.consumable = false;
             Item.rare = ItemRarityID.Orange;
@@ -30,7 +25,14 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<BloodIdol>(), 1).AddIngredient(ItemID.StoneBlock, 5).AddIngredient(ItemID.Ruby, 2).AddTile(TileID.WorkBenches).Register();
+            if (ModContent.GetInstance<ItemConfig>().MoonPedestals)
+            {
+                CreateRecipe()
+                .AddIngredient(ItemID.StoneBlock, 5)
+                .AddIngredient(ItemID.Ruby, 2)
+                .AddTile(TileID.Anvils)
+                .Register();
+            }
         }
 
         public override void UpdateInventory(Player player)

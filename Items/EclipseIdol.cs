@@ -8,11 +8,6 @@ namespace QoLCompendium.Items
 {
     public class EclipseIdol : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<ItemConfig>().EclipseIdol;
-        }
-
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -21,7 +16,7 @@ namespace QoLCompendium.Items
         public override void SetDefaults()
         {
             Item.width = 12;
-            Item.height = 12;
+            Item.height = 23;
             Item.maxStack = 1;
             Item.consumable = false;
             Item.rare = ItemRarityID.Pink;
@@ -30,7 +25,14 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<EclipseIdol>(), 1).AddIngredient(ItemID.HallowedBar, 5).AddIngredient(ItemID.Amber, 2).AddTile(TileID.WorkBenches).Register();
+            if (ModContent.GetInstance<ItemConfig>().MoonPedestals)
+            {
+                CreateRecipe()
+                .AddIngredient(ItemID.HallowedBar, 4)
+                .AddIngredient(ItemID.Amber, 2)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
+            }
         }
 
         public override void UpdateInventory(Player player)

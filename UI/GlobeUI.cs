@@ -13,78 +13,78 @@ namespace QoLCompendium.UI
 {
     class GlobeUI : UIState
     {
-        public UIPanel ShopPanel;
+        public UIPanel GlobePanel;
         public static bool visible = false;
         public static uint timeStart;
 
         public override void OnInitialize()
         {
-            ShopPanel = new UIPanel();
-            ShopPanel.SetPadding(0);
-            ShopPanel.Left.Set(575f, 0f);
-            ShopPanel.Top.Set(275f, 0f);
-            ShopPanel.Width.Set(290f, 0f);
-            ShopPanel.Height.Set(260f, 0f);
-            ShopPanel.BackgroundColor = new Color(73, 94, 171);
+            GlobePanel = new UIPanel();
+            GlobePanel.SetPadding(0);
+            GlobePanel.Left.Set(575f, 0f);
+            GlobePanel.Top.Set(275f, 0f);
+            GlobePanel.Width.Set(290f, 0f);
+            GlobePanel.Height.Set(260f, 0f);
+            GlobePanel.BackgroundColor = new Color(73, 94, 171);
 
-            ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
-            ShopPanel.OnLeftMouseUp += new MouseEvent(DragEnd);
+            GlobePanel.OnLeftMouseDown += new MouseEvent(DragStart);
+            GlobePanel.OnLeftMouseUp += new MouseEvent(DragEnd);
 
             UIText text0 = new("Reset Biome");
             text0.Left.Set(45, 0f);
             text0.Top.Set(16, 0f);
             text0.Width.Set(100, 0f);
             text0.Height.Set(26, 0f);
-            ShopPanel.Append(text0);
+            GlobePanel.Append(text0);
 
             UIText text1 = new("Desert");
             text1.Left.Set(45, 0f);
             text1.Top.Set(46, 0f);
             text1.Width.Set(50, 0f);
             text1.Height.Set(26, 0f);
-            ShopPanel.Append(text1);
+            GlobePanel.Append(text1);
 
             UIText text2 = new("Snow");
             text2.Left.Set(45, 0f);
             text2.Top.Set(76, 0f);
             text2.Width.Set(40, 0f);
             text2.Height.Set(26, 0f);
-            ShopPanel.Append(text2);
+            GlobePanel.Append(text2);
 
             UIText text3 = new("Jungle");
             text3.Left.Set(45, 0f);
             text3.Top.Set(106, 0f);
             text3.Width.Set(60, 0f);
             text3.Height.Set(26, 0f);
-            ShopPanel.Append(text3);
+            GlobePanel.Append(text3);
 
             UIText text4 = new("Glowing Mushroom");
             text4.Left.Set(45, 0f);
             text4.Top.Set(136, 0f);
             text4.Width.Set(100, 0f);
             text4.Height.Set(26, 0f);
-            ShopPanel.Append(text4);
+            GlobePanel.Append(text4);
 
             UIText text5 = new("Corruption");
             text5.Left.Set(45, 0f);
             text5.Top.Set(166, 0f);
             text5.Width.Set(70, 0f);
             text5.Height.Set(26, 0f);
-            ShopPanel.Append(text5);
+            GlobePanel.Append(text5);
 
             UIText text6 = new("Crimson");
             text6.Left.Set(45, 0f);
             text6.Top.Set(196, 0f);
             text6.Width.Set(70, 0f);
             text6.Height.Set(26, 0f);
-            ShopPanel.Append(text6);
+            GlobePanel.Append(text6);
 
             UIText text7 = new("Hallow - Requires Hardmode");
             text7.Left.Set(45, 0f);
             text7.Top.Set(226, 0f);
             text7.Width.Set(100, 0f);
             text7.Height.Set(26, 0f);
-            ShopPanel.Append(text7);
+            GlobePanel.Append(text7);
 
             Asset<Texture2D> resetTexture = Request<Texture2D>("QoLCompendium/Assets/Globe");
             Asset<Texture2D> desertTexture = Request<Texture2D>("QoLCompendium/Assets/DesertGlobe");
@@ -102,57 +102,57 @@ namespace QoLCompendium.UI
             playButton0.Width.Set(32, 0f);
             playButton0.Height.Set(32, 0f);
             playButton0.OnLeftClick += new MouseEvent(PlayButtonClicked0);
-            ShopPanel.Append(playButton0);
+            GlobePanel.Append(playButton0);
             UIImageButton playButton1 = new(desertTexture);
             playButton1.Left.Set(10, 0f);
             playButton1.Top.Set(40, 0f);
             playButton1.Width.Set(32, 0f);
             playButton1.Height.Set(32, 0f);
             playButton1.OnLeftClick += new MouseEvent(PlayButtonClicked1);
-            ShopPanel.Append(playButton1);
+            GlobePanel.Append(playButton1);
             UIImageButton playButton2 = new(snowTexture);
             playButton2.Left.Set(10, 0f);
             playButton2.Top.Set(70, 0f);
             playButton2.Width.Set(32, 0f);
             playButton2.Height.Set(32, 0f);
             playButton2.OnLeftClick += new MouseEvent(PlayButtonClicked2);
-            ShopPanel.Append(playButton2);
+            GlobePanel.Append(playButton2);
             UIImageButton playButton3 = new(jungleTexture);
             playButton3.Left.Set(10, 0f);
             playButton3.Top.Set(100, 0f);
             playButton3.Width.Set(32, 0f);
             playButton3.Height.Set(32, 0f);
             playButton3.OnLeftClick += new MouseEvent(PlayButtonClicked3);
-            ShopPanel.Append(playButton3);
+            GlobePanel.Append(playButton3);
             UIImageButton playButton4 = new(glowingMushroomTexture);
             playButton4.Left.Set(10, 0f);
             playButton4.Top.Set(130, 0f);
             playButton4.Width.Set(32, 0f);
             playButton4.Height.Set(32, 0f);
             playButton4.OnLeftClick += new MouseEvent(PlayButtonClicked4);
-            ShopPanel.Append(playButton4);
+            GlobePanel.Append(playButton4);
             UIImageButton playButton5 = new(corruptionTexture);
             playButton5.Left.Set(10, 0f);
             playButton5.Top.Set(160, 0f);
             playButton5.Width.Set(32, 0f);
             playButton5.Height.Set(32, 0f);
             playButton5.OnLeftClick += new MouseEvent(PlayButtonClicked5);
-            ShopPanel.Append(playButton5);
+            GlobePanel.Append(playButton5);
             UIImageButton playButton6 = new(crimsonTexture);
             playButton6.Left.Set(10, 0f);
             playButton6.Top.Set(190, 0f);
             playButton6.Width.Set(32, 0f);
             playButton6.Height.Set(32, 0f);
             playButton6.OnLeftClick += new MouseEvent(PlayButtonClicked6);
-            ShopPanel.Append(playButton6);
+            GlobePanel.Append(playButton6);
             UIImageButton playButton7 = new(hallowTexture);
             playButton7.Left.Set(10, 0f);
             playButton7.Top.Set(220, 0f);
             playButton7.Width.Set(32, 0f);
             playButton7.Height.Set(32, 0f);
             playButton7.OnLeftClick += new MouseEvent(PlayButtonClicked7);
-            ShopPanel.Append(playButton7);
-            Append(ShopPanel);
+            GlobePanel.Append(playButton7);
+            Append(GlobePanel);
 
             UIImageButton closeButton = new(buttonDeleteTexture);
             closeButton.Left.Set(260, 0f);
@@ -160,8 +160,8 @@ namespace QoLCompendium.UI
             closeButton.Width.Set(22, 0f);
             closeButton.Height.Set(22, 0f);
             closeButton.OnLeftClick += new MouseEvent(CloseButtonClicked);
-            ShopPanel.Append(closeButton);
-            Append(ShopPanel);
+            GlobePanel.Append(closeButton);
+            Append(GlobePanel);
         }
 
         private void PlayButtonClicked0(UIMouseEvent evt, UIElement listeningElement)
@@ -257,7 +257,7 @@ namespace QoLCompendium.UI
         public bool dragging = false;
         private void DragStart(UIMouseEvent evt, UIElement listeningElement)
         {
-            offset = new Vector2(evt.MousePosition.X - ShopPanel.Left.Pixels, evt.MousePosition.Y - ShopPanel.Top.Pixels);
+            offset = new Vector2(evt.MousePosition.X - GlobePanel.Left.Pixels, evt.MousePosition.Y - GlobePanel.Top.Pixels);
             dragging = true;
         }
 
@@ -266,8 +266,8 @@ namespace QoLCompendium.UI
             Vector2 end = evt.MousePosition;
             dragging = false;
 
-            ShopPanel.Left.Set(end.X - offset.X, 0f);
-            ShopPanel.Top.Set(end.Y - offset.Y, 0f);
+            GlobePanel.Left.Set(end.X - offset.X, 0f);
+            GlobePanel.Top.Set(end.Y - offset.Y, 0f);
 
             Recalculate();
         }
@@ -275,14 +275,14 @@ namespace QoLCompendium.UI
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
             Vector2 MousePosition = new(Main.mouseX, Main.mouseY);
-            if (ShopPanel.ContainsPoint(MousePosition))
+            if (GlobePanel.ContainsPoint(MousePosition))
             {
                 Main.LocalPlayer.mouseInterface = true;
             }
             if (dragging)
             {
-                ShopPanel.Left.Set(MousePosition.X - offset.X, 0f);
-                ShopPanel.Top.Set(MousePosition.Y - offset.Y, 0f);
+                GlobePanel.Left.Set(MousePosition.X - offset.X, 0f);
+                GlobePanel.Top.Set(MousePosition.Y - offset.Y, 0f);
                 Recalculate();
             }
         }
