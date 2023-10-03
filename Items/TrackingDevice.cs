@@ -25,11 +25,11 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().InformationAccessories)
+            if (QoLCompendium.itemConfig.InformationAccessories)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.Ruby, 1)
-                .AddIngredient(ItemID.IronBar, 5)
+                .AddRecipeGroup(RecipeGroupID.IronBar, 6)
                 .AddTile(TileID.Anvils)
                 .Register();
             }

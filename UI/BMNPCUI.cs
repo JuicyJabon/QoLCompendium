@@ -24,267 +24,248 @@ namespace QoLCompendium.UI
             ShopPanel.Left.Set(575f, 0f);
             ShopPanel.Top.Set(275f, 0f);
             ShopPanel.Width.Set(385f, 0f);
-            ShopPanel.Height.Set(400f, 0f);
+            ShopPanel.Height.Set(370f, 0f);
             ShopPanel.BackgroundColor = new Color(73, 94, 171);
 
             ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
             ShopPanel.OnLeftMouseUp += new MouseEvent(DragEnd);
 
             UIText potionText = new("Potions");
-            potionText.Left.Set(35, 0f);
-            potionText.Top.Set(10, 0f);
-            potionText.Width.Set(60, 0f);
-            potionText.Height.Set(22, 0f);
+            potionText.Left.Set(35f, 0f);
+            potionText.Top.Set(10f, 0f);
+            potionText.Width.Set(60f, 0f);
+            potionText.Height.Set(22f, 0f);
             ShopPanel.Append(potionText);
 
             UIText stationText = new("Flasks, Stations & Foods");
-            stationText.Left.Set(35, 0f);
-            stationText.Top.Set(40, 0f);
-            stationText.Width.Set(60, 0f);
-            stationText.Height.Set(22, 0f);
+            stationText.Left.Set(35f, 0f);
+            stationText.Top.Set(40f, 0f);
+            stationText.Width.Set(60f, 0f);
+            stationText.Height.Set(22f, 0f);
             ShopPanel.Append(stationText);
 
             UIText materialText = new("Materials");
-            materialText.Left.Set(35, 0f);
-            materialText.Top.Set(70, 0f);
-            materialText.Width.Set(60, 0f);
-            materialText.Height.Set(22, 0f);
+            materialText.Left.Set(35f, 0f);
+            materialText.Top.Set(70f, 0f);
+            materialText.Width.Set(60f, 0f);
+            materialText.Height.Set(22f, 0f);
             ShopPanel.Append(materialText);
 
-            UIText hardmodeMaterialText = new("Hardmode Materials");
-            hardmodeMaterialText.Left.Set(35, 0f);
-            hardmodeMaterialText.Top.Set(100, 0f);
-            hardmodeMaterialText.Width.Set(60, 0f);
-            hardmodeMaterialText.Height.Set(22, 0f);
-            ShopPanel.Append(hardmodeMaterialText);
-
             UIText movementText = new("Movement Accessories");
-            movementText.Left.Set(35, 0f);
-            movementText.Top.Set(130, 0f);
-            movementText.Width.Set(60, 0f);
-            movementText.Height.Set(22, 0f);
+            movementText.Left.Set(35f, 0f);
+            movementText.Top.Set(100f, 0f);
+            movementText.Width.Set(60f, 0f);
+            movementText.Height.Set(22f, 0f);
             ShopPanel.Append(movementText);
 
             UIText combatText = new("Combat Accessories");
-            combatText.Left.Set(35, 0f);
-            combatText.Top.Set(160, 0f);
-            combatText.Width.Set(60, 0f);
-            combatText.Height.Set(22, 0f);
+            combatText.Left.Set(35f, 0f);
+            combatText.Top.Set(130f, 0f);
+            combatText.Width.Set(60f, 0f);
+            combatText.Height.Set(22f, 0f);
             ShopPanel.Append(combatText);
 
             UIText infoText = new("Informative/Building Gear");
-            infoText.Left.Set(35, 0f);
-            infoText.Top.Set(190, 0f);
-            infoText.Width.Set(60, 0f);
-            infoText.Height.Set(22, 0f);
+            infoText.Left.Set(35f, 0f);
+            infoText.Top.Set(160f, 0f);
+            infoText.Width.Set(60f, 0f);
+            infoText.Height.Set(22f, 0f);
             ShopPanel.Append(infoText);
 
             UIText bagText = new("Treasure Bags");
-            bagText.Left.Set(35, 0f);
-            bagText.Top.Set(220, 0f);
-            bagText.Width.Set(60, 0f);
-            bagText.Height.Set(22, 0f);
+            bagText.Left.Set(35f, 0f);
+            bagText.Top.Set(190f, 0f);
+            bagText.Width.Set(60f, 0f);
+            bagText.Height.Set(22f, 0f);
             ShopPanel.Append(bagText);
 
             UIText crateText = new("Crates & Grab Bags");
-            crateText.Left.Set(35, 0f);
-            crateText.Top.Set(250, 0f);
-            crateText.Width.Set(60, 0f);
-            crateText.Height.Set(22, 0f);
+            crateText.Left.Set(35f, 0f);
+            crateText.Top.Set(220f, 0f);
+            crateText.Width.Set(60f, 0f);
+            crateText.Height.Set(22f, 0f);
             ShopPanel.Append(crateText);
 
             UIText oreText = new("Ores & Bars");
-            oreText.Left.Set(35, 0f);
-            oreText.Top.Set(280, 0f);
-            oreText.Width.Set(60, 0f);
-            oreText.Height.Set(22, 0f);
+            oreText.Left.Set(35f, 0f);
+            oreText.Top.Set(250f, 0f);
+            oreText.Width.Set(60f, 0f);
+            oreText.Height.Set(22f, 0f);
             ShopPanel.Append(oreText);
 
             UIText naturalText = new("Natural Blocks");
-            naturalText.Left.Set(35, 0f);
-            naturalText.Top.Set(310, 0f);
-            naturalText.Width.Set(60, 0f);
-            naturalText.Height.Set(22, 0f);
+            naturalText.Left.Set(35f, 0f);
+            naturalText.Top.Set(280f, 0f);
+            naturalText.Width.Set(60f, 0f);
+            naturalText.Height.Set(22f, 0f);
             ShopPanel.Append(naturalText);
 
             UIText buildingText = new("Building Blocks");
-            buildingText.Left.Set(35, 0f);
-            buildingText.Top.Set(340, 0f);
-            buildingText.Width.Set(60, 0f);
-            buildingText.Height.Set(22, 0f);
+            buildingText.Left.Set(35f, 0f);
+            buildingText.Top.Set(310f, 0f);
+            buildingText.Width.Set(60f, 0f);
+            buildingText.Height.Set(22f, 0f);
             ShopPanel.Append(buildingText);
 
             UIText herbText = new("Herbs & Plants");
-            herbText.Left.Set(35, 0f);
-            herbText.Top.Set(370, 0f);
-            herbText.Width.Set(60, 0f);
-            herbText.Height.Set(22, 0f);
+            herbText.Left.Set(35f, 0f);
+            herbText.Top.Set(340f, 0f);
+            herbText.Width.Set(60f, 0f);
+            herbText.Height.Set(22f, 0f);
             ShopPanel.Append(herbText);
 
             Asset<Texture2D> buttonPlayTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
             Asset<Texture2D> buttonDeleteTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
 
             UIImageButton potionButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMPotionShop == false)
+            if (QoLCompendium.shopConfig.BMPotionShop == false)
             {
                 potionButton = new(buttonDeleteTexture);
             }
-            potionButton.Left.Set(10, 0f);
-            potionButton.Top.Set(10, 0f);
-            potionButton.Width.Set(22, 0f);
-            potionButton.Height.Set(22, 0f);
+            potionButton.Left.Set(10f, 0f);
+            potionButton.Top.Set(10f, 0f);
+            potionButton.Width.Set(22f, 0f);
+            potionButton.Height.Set(22f, 0f);
             potionButton.OnLeftClick += new MouseEvent(PotionShopClicked);
             ShopPanel.Append(potionButton);
 
             UIImageButton stationButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMMaterialShop == false)
+            if (QoLCompendium.shopConfig.BMMaterialShop == false)
             {
                 stationButton = new(buttonDeleteTexture);
             }
-            stationButton.Left.Set(10, 0f);
-            stationButton.Top.Set(40, 0f);
-            stationButton.Width.Set(22, 0f);
-            stationButton.Height.Set(22, 0f);
+            stationButton.Left.Set(10f, 0f);
+            stationButton.Top.Set(40f, 0f);
+            stationButton.Width.Set(22f, 0f);
+            stationButton.Height.Set(22f, 0f);
             stationButton.OnLeftClick += new MouseEvent(StationShopClicked);
             ShopPanel.Append(stationButton);
 
             UIImageButton materialButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMMaterialShop == false)
+            if (QoLCompendium.shopConfig.BMMaterialShop == false)
             {
                 materialButton = new(buttonDeleteTexture);
             }
-            materialButton.Left.Set(10, 0f);
-            materialButton.Top.Set(70, 0f);
-            materialButton.Width.Set(22, 0f);
-            materialButton.Height.Set(22, 0f);
+            materialButton.Left.Set(10f, 0f);
+            materialButton.Top.Set(70f, 0f);
+            materialButton.Width.Set(22f, 0f);
+            materialButton.Height.Set(22f, 0f);
             materialButton.OnLeftClick += new MouseEvent(MaterialShopClicked);
             ShopPanel.Append(materialButton);
 
-            UIImageButton hardmodeMaterialButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMHardmodeMaterialShop == false)
-            {
-                hardmodeMaterialButton = new(buttonDeleteTexture);
-            }
-            hardmodeMaterialButton.Left.Set(10, 0f);
-            hardmodeMaterialButton.Top.Set(100, 0f);
-            hardmodeMaterialButton.Width.Set(22, 0f);
-            hardmodeMaterialButton.Height.Set(22, 0f);
-            hardmodeMaterialButton.OnLeftClick += new MouseEvent(HardmodeMaterialShopClicked);
-            ShopPanel.Append(hardmodeMaterialButton);
-
             UIImageButton movementButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMMovementAccessoryShop == false)
+            if (QoLCompendium.shopConfig.BMMovementAccessoryShop == false)
             {
                 movementButton = new(buttonDeleteTexture);
             }
-            movementButton.Left.Set(10, 0f);
-            movementButton.Top.Set(130, 0f);
-            movementButton.Width.Set(22, 0f);
-            movementButton.Height.Set(22, 0f);
+            movementButton.Left.Set(10f, 0f);
+            movementButton.Top.Set(100f, 0f);
+            movementButton.Width.Set(22f, 0f);
+            movementButton.Height.Set(22f, 0f);
             movementButton.OnLeftClick += new MouseEvent(MovementShopClicked);
             ShopPanel.Append(movementButton);
 
             UIImageButton combatButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMCombatAccessoryShop == false)
+            if (QoLCompendium.shopConfig.BMCombatAccessoryShop == false)
             {
                 combatButton = new(buttonDeleteTexture);
             }
-            combatButton.Left.Set(10, 0f);
-            combatButton.Top.Set(160, 0f);
-            combatButton.Width.Set(22, 0f);
-            combatButton.Height.Set(22, 0f);
+            combatButton.Left.Set(10f, 0f);
+            combatButton.Top.Set(130f, 0f);
+            combatButton.Width.Set(22f, 0f);
+            combatButton.Height.Set(22f, 0f);
             combatButton.OnLeftClick += new MouseEvent(CombatShopClicked);
             ShopPanel.Append(combatButton);
 
             UIImageButton infoButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMInformationShop == false)
+            if (QoLCompendium.shopConfig.BMInformationShop == false)
             {
                 infoButton = new(buttonDeleteTexture);
             }
-            infoButton.Left.Set(10, 0f);
-            infoButton.Top.Set(190, 0f);
-            infoButton.Width.Set(22, 0f);
-            infoButton.Height.Set(22, 0f);
+            infoButton.Left.Set(10f, 0f);
+            infoButton.Top.Set(160f, 0f);
+            infoButton.Width.Set(22f, 0f);
+            infoButton.Height.Set(22f, 0f);
             infoButton.OnLeftClick += new MouseEvent(InfoShopClicked);
             ShopPanel.Append(infoButton);
 
             UIImageButton bagButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMBagShop == false)
+            if (QoLCompendium.shopConfig.BMBagShop == false)
             {
                 bagButton = new(buttonDeleteTexture);
             }
-            bagButton.Left.Set(10, 0f);
-            bagButton.Top.Set(220, 0f);
-            bagButton.Width.Set(22, 0f);
-            bagButton.Height.Set(22, 0f);
+            bagButton.Left.Set(10f, 0f);
+            bagButton.Top.Set(190f, 0f);
+            bagButton.Width.Set(22f, 0f);
+            bagButton.Height.Set(22f, 0f);
             bagButton.OnLeftClick += new MouseEvent(BagShopClicked);
             ShopPanel.Append(bagButton);
 
             UIImageButton crateButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMCrateShop == false)
+            if (QoLCompendium.shopConfig.BMCrateShop == false)
             {
                 crateButton = new(buttonDeleteTexture);
             }
-            crateButton.Left.Set(10, 0f);
-            crateButton.Top.Set(250, 0f);
-            crateButton.Width.Set(22, 0f);
-            crateButton.Height.Set(22, 0f);
+            crateButton.Left.Set(10f, 0f);
+            crateButton.Top.Set(220f, 0f);
+            crateButton.Width.Set(22f, 0f);
+            crateButton.Height.Set(22f, 0f);
             crateButton.OnLeftClick += new MouseEvent(CrateShopClicked);
             ShopPanel.Append(crateButton);
 
             UIImageButton oreButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMOreShop == false)
+            if (QoLCompendium.shopConfig.BMOreShop == false)
             {
                 oreButton = new(buttonDeleteTexture);
             }
-            oreButton.Left.Set(10, 0f);
-            oreButton.Top.Set(280, 0f);
-            oreButton.Width.Set(22, 0f);
-            oreButton.Height.Set(22, 0f);
+            oreButton.Left.Set(10f, 0f);
+            oreButton.Top.Set(250f, 0f);
+            oreButton.Width.Set(22f, 0f);
+            oreButton.Height.Set(22f, 0f);
             oreButton.OnLeftClick += new MouseEvent(OreShopClicked);
             ShopPanel.Append(oreButton);
 
             UIImageButton naturalButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMNaturalBlockShop == false)
+            if (QoLCompendium.shopConfig.BMNaturalBlockShop == false)
             {
                 naturalButton = new(buttonDeleteTexture);
             }
-            naturalButton.Left.Set(10, 0f);
-            naturalButton.Top.Set(310, 0f);
-            naturalButton.Width.Set(22, 0f);
-            naturalButton.Height.Set(22, 0f);
+            naturalButton.Left.Set(10f, 0f);
+            naturalButton.Top.Set(280f, 0f);
+            naturalButton.Width.Set(22f, 0f);
+            naturalButton.Height.Set(22f, 0f);
             naturalButton.OnLeftClick += new MouseEvent(NaturalShopClicked);
             ShopPanel.Append(naturalButton);
 
             UIImageButton buildingButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMBuildingBlockShop == false)
+            if (QoLCompendium.shopConfig.BMBuildingBlockShop == false)
             {
                 buildingButton = new(buttonDeleteTexture);
             }
-            buildingButton.Left.Set(10, 0f);
-            buildingButton.Top.Set(340, 0f);
-            buildingButton.Width.Set(22, 0f);
-            buildingButton.Height.Set(22, 0f);
+            buildingButton.Left.Set(10f, 0f);
+            buildingButton.Top.Set(310f, 0f);
+            buildingButton.Width.Set(22f, 0f);
+            buildingButton.Height.Set(22f, 0f);
             buildingButton.OnLeftClick += new MouseEvent(BuildingShopClicked);
             ShopPanel.Append(buildingButton);
 
             UIImageButton herbButton = new(buttonPlayTexture);
-            if (ModContent.GetInstance<ShopConfig>().BMHerbShop == false)
+            if (QoLCompendium.shopConfig.BMHerbShop == false)
             {
                 herbButton = new(buttonDeleteTexture);
             }
-            herbButton.Left.Set(10, 0f);
-            herbButton.Top.Set(370, 0f);
-            herbButton.Width.Set(22, 0f);
-            herbButton.Height.Set(22, 0f);
+            herbButton.Left.Set(10f, 0f);
+            herbButton.Top.Set(340f, 0f);
+            herbButton.Width.Set(22f, 0f);
+            herbButton.Height.Set(22f, 0f);
             herbButton.OnLeftClick += new MouseEvent(HerbShopClicked);
             ShopPanel.Append(herbButton);
 
             UIImageButton closeButton = new(buttonDeleteTexture);
-            closeButton.Left.Set(350, 0f);
-            closeButton.Top.Set(10, 0f);
-            closeButton.Width.Set(22, 0f);
-            closeButton.Height.Set(22, 0f);
+            closeButton.Left.Set(350f, 0f);
+            closeButton.Top.Set(10f, 0f);
+            closeButton.Width.Set(22f, 0f);
+            closeButton.Height.Set(22f, 0f);
             closeButton.OnLeftClick += new MouseEvent(CloseButtonClicked);
             ShopPanel.Append(closeButton);
             Append(ShopPanel);
@@ -292,7 +273,7 @@ namespace QoLCompendium.UI
 
         private void PotionShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMPotionShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMPotionShop)
             {
                 BMDealerNPC.shopNum = 0;
                 visible = false;
@@ -301,7 +282,7 @@ namespace QoLCompendium.UI
 
         private void StationShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMStationShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMStationShop)
             {
                 BMDealerNPC.shopNum = 1;
                 visible = false;
@@ -310,99 +291,90 @@ namespace QoLCompendium.UI
 
         private void MaterialShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMMaterialShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMMaterialShop)
             {
                 BMDealerNPC.shopNum = 2;
                 visible = false;
             }
         }
 
-        private void HardmodeMaterialShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        private void MovementShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMHardmodeMaterialShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMMovementAccessoryShop)
             {
                 BMDealerNPC.shopNum = 3;
                 visible = false;
             }
         }
 
-        private void MovementShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        private void CombatShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMMovementAccessoryShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMCombatAccessoryShop)
             {
                 BMDealerNPC.shopNum = 4;
                 visible = false;
             }
         }
 
-        private void CombatShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        private void InfoShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMCombatAccessoryShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMInformationShop)
             {
                 BMDealerNPC.shopNum = 5;
                 visible = false;
             }
         }
 
-        private void InfoShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        private void BagShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMInformationShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMBagShop)
             {
                 BMDealerNPC.shopNum = 6;
                 visible = false;
             }
         }
 
-        private void BagShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        private void CrateShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMBagShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMCrateShop)
             {
                 BMDealerNPC.shopNum = 7;
                 visible = false;
             }
         }
 
-        private void CrateShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        private void OreShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMCrateShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMOreShop)
             {
                 BMDealerNPC.shopNum = 8;
                 visible = false;
             }
         }
 
-        private void OreShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        private void NaturalShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMOreShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMNaturalBlockShop)
             {
                 BMDealerNPC.shopNum = 9;
                 visible = false;
             }
         }
 
-        private void NaturalShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        private void BuildingShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMNaturalBlockShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMBuildingBlockShop)
             {
                 BMDealerNPC.shopNum = 10;
                 visible = false;
             }
         }
 
-        private void BuildingShopClicked(UIMouseEvent evt, UIElement listeningElement)
-        {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMBuildingBlockShop)
-            {
-                BMDealerNPC.shopNum = 11;
-                visible = false;
-            }
-        }
-
         private void HerbShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (Main.GameUpdateCount - timeStart >= 10 && ModContent.GetInstance<ShopConfig>().BMHerbShop)
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMHerbShop)
             {
-                BMDealerNPC.shopNum = 12;
+                BMDealerNPC.shopNum = 11;
                 visible = false;
             }
         }

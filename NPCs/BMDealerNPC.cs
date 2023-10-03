@@ -72,7 +72,7 @@ namespace QoLCompendium.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs)
         {
-            if (ModContent.GetInstance<QoLCConfig>().BMNPC)
+            if (QoLCompendium.mainConfig.BMNPC)
             {
                 return true;
             }
@@ -162,50 +162,45 @@ namespace QoLCompendium.NPCs
             }
             else if (shopNum == 3)
             {
-                button = "Hardmode Materials";
-                ShopName = "Hardmode Materials";
-            }
-            else if (shopNum == 4)
-            {
                 button = "Movement Accessories";
                 ShopName = "Movement Accessories";
             }
-            else if (shopNum == 5)
+            else if (shopNum == 4)
             {
                 button = "Combat Accessories";
                 ShopName = "Combat Accessories";
             }
-            else if (shopNum == 6)
+            else if (shopNum == 5)
             {
                 button = "Informative/Building Gear";
                 ShopName = "Informative/Building Gear";
             }
-            else if (shopNum == 7)
+            else if (shopNum == 6)
             {
                 button = "Treasure Bags";
                 ShopName = "Treasure Bags";
             }
-            else if (shopNum == 8)
+            else if (shopNum == 7)
             {
                 button = "Crates & Grab Bags";
                 ShopName = "Crates & Grab Bags";
             }
-            else if (shopNum == 9)
+            else if (shopNum == 8)
             {
                 button = "Ores & Bars";
                 ShopName = "Ores & Bars";
             }
-            else if (shopNum == 10)
+            else if (shopNum == 9)
             {
                 button = "Natural Blocks";
                 ShopName = "Natural Blocks";
             }
-            else if (shopNum == 11)
+            else if (shopNum == 10)
             {
                 button = "Building Blocks";
                 ShopName = "Building Blocks";
             }
-            else if (shopNum == 12)
+            else if (shopNum == 11)
             {
                 button = "Herbs & Plants";
                 ShopName = "Herbs & Plants";
@@ -308,70 +303,97 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.HoneyBucket, ModConditions.HasBeenToJungle)
                     .Add(ItemID.LifeCrystal, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(ItemID.LifeFruit, Condition.DownedMechBossAny, ModConditions.HasBeenToJungle)
-                    .Add(ItemID.ManaCrystal, ModConditions.HasBeenThroughNight);
+                    .Add(ItemID.ManaCrystal, ModConditions.HasBeenThroughNight)
+                    .Add(ItemID.AegisCrystal, ModConditions.HasBeenToAether)
+                    .Add(ItemID.ArcaneCrystal, ModConditions.HasBeenToAether)
+                    .Add(ItemID.AegisFruit, Condition.DownedMechBossAny, ModConditions.HasBeenToAether)
+                    .Add(ItemID.Ambrosia, ModConditions.HasBeenToAether)
+                    .Add(ItemID.GummyWorm, ModConditions.HasBeenToAether)
+                    .Add(ItemID.GalaxyPearl, ModConditions.HasBeenToAether)
+                    .Add(ItemID.PeddlersSatchel, ModConditions.HasBeenToAether)
+                    .Add(ItemID.CombatBook, ModConditions.DownedBloodMoon)
+                    .Add(ItemID.CombatBookVolumeTwo, Condition.Hardmode, ModConditions.HasBeenToAether);
             flaskShop.Register();
 
             var matShop = new NPCShop(Type, "Materials")
+                    .Add(ItemID.AncientCloth, Condition.Hardmode, ModConditions.HasBeenToDesert)
                     .Add(ItemID.AntlionMandible, ModConditions.HasBeenToDesert)
+                    .Add(ItemID.BeetleHusk, Condition.DownedGolem, ModConditions.HasBeenToTemple)
                     .Add(ItemID.BeeWax, Condition.DownedQueenBee, ModConditions.HasBeenToJungle)
+                    .Add(ItemID.BlackFairyDust, Condition.DownedPumpking)
                     .Add(ItemID.BlackInk, ModConditions.HasBeenToOcean)
                     .Add(ItemID.BlackLens, ModConditions.HasBeenThroughNight)
                     .Add(ItemID.BlackPearl, ModConditions.HasBeenToDesert)
+                    .Add(ItemID.BlackThread, Condition.DownedSkeletron)
                     .Add(ItemID.Bone, Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
+                    .Add(ItemID.BoneFeather, Condition.DownedPlantera, ModConditions.HasBeenToDungeon)
+                    .Add(ItemID.BrokenBatWing, Condition.Hardmode, ModConditions.DownedEclipse)
+                    .Add(ItemID.BrokenHeroSword, Condition.DownedPlantera, ModConditions.DownedEclipse)
+                    .Add(ItemID.ButterflyDust, Condition.Hardmode, ModConditions.HasBeenToJungle)
+                    .Add(ItemID.CursedFlame, Condition.Hardmode, ModConditions.HasBeenToEvil)
                     .Add(ItemID.CyanHusk, ModConditions.HasBeenToSnow)
+                    .Add(ItemID.DarkShard, Condition.Hardmode, ModConditions.HasBeenToEvil, ModConditions.HasBeenToDesert)
+                    .Add(ItemID.Ectoplasm, Condition.DownedPlantera, ModConditions.HasBeenToDungeon)
+                    .Add(ItemID.ExplosivePowder, Condition.Hardmode)
+                    .Add(ItemID.FallenStar, ModConditions.HasBeenThroughNight)
                     .Add(ItemID.Feather, ModConditions.HasBeenToSky)
+                    .Add(ItemID.FireFeather, Condition.DownedMechBossAny, ModConditions.HasBeenToUnderworld)
                     .Add(ItemID.FlinxFur, ModConditions.HasBeenToSnow)
+                    .Add(ItemID.AncientBattleArmorMaterial, Condition.Hardmode, ModConditions.HasBeenToDesert)
+                    .Add(ItemID.FrostCore, Condition.Hardmode, ModConditions.HasBeenToSnow)
                     .Add(ItemID.Gel, ModConditions.HasBeenToPurity)
+                    .Add(ItemID.GiantHarpyFeather, Condition.Hardmode, ModConditions.HasBeenToSky)
+                    .Add(ItemID.GoldDust, Condition.Hardmode)
+                    .Add(ItemID.GreenThread, ModConditions.HasBeenToJungle)
                     .Add(ItemID.Hook, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(ItemID.IceFeather, Condition.Hardmode, ModConditions.HasBeenToSnow)
+                    .Add(ItemID.Ichor, Condition.Hardmode, ModConditions.HasBeenToEvil)
+                    .Add(ItemID.IllegalGunParts, ModConditions.HasBeenThroughNight)
                     .Add(ItemID.JungleSpores, ModConditions.HasBeenToJungle)
                     .Add(ItemID.Leather, ModConditions.HasBeenToEvil)
                     .Add(ItemID.Lens, ModConditions.HasBeenThroughNight)
+                    .Add(ItemID.LightShard, Condition.Hardmode, ModConditions.HasBeenToHallow, ModConditions.HasBeenToDesert)
+                    .Add(ItemID.MechanicalBatteryPiece, Condition.DownedSkeletronPrime)
+                    .Add(ItemID.MechanicalWagonPiece, Condition.DownedDestroyer)
+                    .Add(ItemID.MechanicalWheelPiece, Condition.DownedTwins)
+                    .Add(ItemID.Nanites, Condition.DownedPlantera)
+                    .Add(ItemID.FragmentNebula, Condition.DownedNebulaPillar)
                     .Add(ItemID.PinkGel, ModConditions.HasBeenToPurity)
                     .Add(ItemID.PinkPearl, ModConditions.HasBeenToDesert)
+                    .Add(ItemID.PinkThread, Condition.DownedSkeletron)
+                    .Add(ItemID.PixieDust, Condition.Hardmode, ModConditions.HasBeenToHallow)
                     .Add(ItemID.PurpleMucos, ModConditions.HasBeenToOcean)
                     .Add(ItemID.RedHusk, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(ItemID.RottenChunk, ModConditions.HasBeenToEvil)
                     .Add(ItemID.ShadowScale, Condition.DownedEowOrBoc, ModConditions.HasBeenToEvil)
                     .Add(ItemID.SharkFin, ModConditions.HasBeenToOcean)
                     .Add(ItemID.Silk, ModConditions.HasBeenToCavernsOrUnderground)
-                    .Add(ItemID.Stinger, ModConditions.HasBeenToJungle)
-                    .Add(ItemID.TatteredCloth, ModConditions.HasBeenToOcean)
-                    .Add(ItemID.TissueSample, Condition.DownedEowOrBoc, ModConditions.HasBeenToEvil)
-                    .Add(ItemID.Vertebrae, ModConditions.HasBeenToEvil)
-                    .Add(ItemID.Vine, ModConditions.HasBeenToJungle)
-                    .Add(ItemID.VioletHusk, ModConditions.HasBeenToJungle)
-                    .Add(ItemID.WhitePearl, ModConditions.HasBeenToDesert)
-                    .Add(ItemID.WhoopieCushion, ModConditions.HasBeenToCavernsOrUnderground)
-                    .Add(ItemID.WormTooth, ModConditions.HasBeenToEvil);
-            matShop.Register();
-
-            var hmMatShop = new NPCShop(Type, "Hardmode Materials")
-                    .Add(ItemID.AncientCloth, Condition.Hardmode, ModConditions.HasBeenToDesert)
-                    .Add(ItemID.BeetleHusk, Condition.DownedGolem, ModConditions.HasBeenToTemple)
-                    .Add(ItemID.BrokenHeroSword, Condition.DownedPlantera, ModConditions.DownedEclipse)
-                    .Add(ItemID.CursedFlame, Condition.Hardmode, ModConditions.HasBeenToEvil)
-                    .Add(ItemID.DarkShard, Condition.Hardmode, ModConditions.HasBeenToEvil, ModConditions.HasBeenToDesert)
-                    .Add(ItemID.Ectoplasm, Condition.DownedPlantera, ModConditions.HasBeenToDungeon)
-                    .Add(ItemID.AncientBattleArmorMaterial, Condition.Hardmode, ModConditions.HasBeenToDesert)
-                    .Add(ItemID.FrostCore, Condition.Hardmode, ModConditions.HasBeenToSnow)
-                    .Add(ItemID.Ichor, Condition.Hardmode, ModConditions.HasBeenToEvil)
-                    .Add(ItemID.LightShard, Condition.Hardmode, ModConditions.HasBeenToHallow, ModConditions.HasBeenToDesert)
-                    .Add(ItemID.PixieDust, Condition.Hardmode, ModConditions.HasBeenToHallow)
                     .Add(ItemID.LunarTabletFragment, Condition.DownedPlantera, ModConditions.HasBeenToTemple)
-                    .Add(ItemID.SpiderFang, Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground)
-                    .Add(ItemID.TurtleShell, Condition.Hardmode, ModConditions.HasBeenToJungle)
-                    .Add(ItemID.UnicornHorn, Condition.Hardmode, ModConditions.HasBeenToHallow)
+                    .Add(ItemID.FragmentSolar, Condition.DownedSolarPillar)
                     .Add(ItemID.SoulofFlight, Condition.Hardmode, ModConditions.HasBeenToSky)
                     .Add(ItemID.SoulofLight, Condition.Hardmode, ModConditions.HasBeenToHallow, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(ItemID.SoulofNight, Condition.Hardmode, ModConditions.HasBeenToEvil, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(ItemID.SoulofMight, Condition.DownedDestroyer)
                     .Add(ItemID.SoulofSight, Condition.DownedTwins)
                     .Add(ItemID.SoulofFright, Condition.DownedSkeletronPrime)
-                    .Add(ItemID.FragmentNebula, Condition.DownedNebulaPillar)
-                    .Add(ItemID.FragmentSolar, Condition.DownedSolarPillar)
+                    .Add(ItemID.SpiderFang, Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(ItemID.SpookyTwig, Condition.DownedMourningWood)
                     .Add(ItemID.FragmentStardust, Condition.DownedStardustPillar)
-                    .Add(ItemID.FragmentVortex, Condition.DownedVortexPillar);
-            hmMatShop.Register();
+                    .Add(ItemID.Stinger, ModConditions.HasBeenToJungle)
+                    .Add(ItemID.TatteredBeeWing, Condition.DownedMechBossAny, ModConditions.HasBeenToJungle)
+                    .Add(ItemID.TatteredCloth, ModConditions.HasBeenToOcean)
+                    .Add(ItemID.TissueSample, Condition.DownedEowOrBoc, ModConditions.HasBeenToEvil)
+                    .Add(ItemID.TurtleShell, Condition.Hardmode, ModConditions.HasBeenToJungle)
+                    .Add(ItemID.UnicornHorn, Condition.Hardmode, ModConditions.HasBeenToHallow)
+                    .Add(ItemID.Vertebrae, ModConditions.HasBeenToEvil)
+                    .Add(ItemID.VialofVenom, Condition.DownedPlantera)
+                    .Add(ItemID.Vine, ModConditions.HasBeenToJungle)
+                    .Add(ItemID.VioletHusk, ModConditions.HasBeenToJungle)
+                    .Add(ItemID.FragmentVortex, Condition.DownedVortexPillar)
+                    .Add(ItemID.WhitePearl, ModConditions.HasBeenToDesert)
+                    .Add(ItemID.WhoopieCushion, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(ItemID.WormTooth, ModConditions.HasBeenToEvil);
+            matShop.Register();
 
             var moveAccsShop = new NPCShop(Type, "Movement Accessories")
                    .Add(ItemID.Aglet, ModConditions.HasBeenToPurity)
@@ -382,14 +404,19 @@ namespace QoLCompendium.NPCs
                    .Add(ItemID.CloudinaBottle, ModConditions.HasBeenToCavernsOrUnderground)
                    .Add(ItemID.Flipper, ModConditions.HasBeenToOcean)
                    .Add(ItemID.CreativeWings, ModConditions.HasBeenToSky)
+                   .Add(ItemID.FlowerBoots, ModConditions.HasBeenToJungle)
                    .Add(ItemID.FlyingCarpet, ModConditions.HasBeenToDesert)
                    .Add(ItemID.FrogLeg, ModConditions.HasBeenToOcean)
                    .Add(ItemID.HermesBoots, ModConditions.HasBeenToCavernsOrUnderground)
                    .Add(ItemID.IceSkates, ModConditions.HasBeenToSnow)
+                   .Add(ItemID.FloatingTube, ModConditions.HasBeenToOcean)
+                   .Add(ItemID.JellyfishNecklace, ModConditions.HasBeenToOcean)
                    .Add(ItemID.LavaCharm, ModConditions.HasBeenToUnderworld)
                    .Add(ItemID.LuckyHorseshoe, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(ItemID.Magiluminescence, ModConditions.HasBeenToEvil)
                    .Add(ItemID.MoonCharm, Condition.Hardmode, ModConditions.DownedBloodMoon)
                    .Add(ItemID.NeptunesShell, Condition.DownedMechBossAny, ModConditions.DownedEclipse)
+                   .Add(ItemID.RocketBoots, Condition.DownedGoblinArmy)
                    .Add(ItemID.SandstorminaBottle, ModConditions.HasBeenToDesert)
                    .Add(ItemID.ShinyRedBalloon, ModConditions.HasBeenToSky)
                    .Add(ItemID.ShoeSpikes, ModConditions.HasBeenToCavernsOrUnderground)
@@ -399,42 +426,59 @@ namespace QoLCompendium.NPCs
             moveAccsShop.Register();
 
             var combatAccsShop = new NPCShop(Type, "Combat Accessories")
-                    .Add(ItemID.AnkhCharm, Condition.Hardmode)
-                    .Add(ItemID.ApprenticeScarf, Condition.Hardmode)
+                    .Add(ItemID.AdhesiveBandage, Condition.Hardmode)
+                    .Add(ItemID.ApprenticeScarf, Condition.DownedOldOnesArmyAny)
+                    .Add(ItemID.ArmorPolish, Condition.Hardmode)
+                    .Add(ItemID.AvengerEmblem, Condition.DownedMechBossAll)
                     .Add(ItemID.BandofRegeneration, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(ItemID.BandofStarpower, ModConditions.HasBeenToEvil)
+                    .Add(ItemID.Bezoar, ModConditions.HasBeenToJungle)
                     .Add(ItemID.BlackBelt, Condition.DownedPlantera, ModConditions.HasBeenToDungeon)
+                    .Add(ItemID.BlackCounterweight)
+                    .Add(ItemID.Blindfold, Condition.Hardmode)
                     .Add(ItemID.CelestialMagnet, ModConditions.HasBeenToSky)
                     .Add(ItemID.CobaltShield, Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
                     .Add(ItemID.CrossNecklace, Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(ItemID.DestroyerEmblem, Condition.DownedGolem)
                     .Add(ItemID.EyeoftheGolem, Condition.DownedGolem, ModConditions.HasBeenToTemple)
+                    .Add(ItemID.FastClock, Condition.Hardmode)
                     .Add(ItemID.FeralClaws, ModConditions.HasBeenToJungle)
                     .Add(ItemID.FleshKnuckles, Condition.Hardmode, ModConditions.HasBeenToEvil)
                     .Add(ItemID.FrozenTurtleShell, Condition.Hardmode, ModConditions.HasBeenToSnow)
                     .Add(ItemID.HandWarmer, ModConditions.HasBeenToSnow)
                     .Add(ItemID.HerculesBeetle, Condition.DownedPlantera, ModConditions.HasBeenToJungle)
                     .Add(ItemID.HoneyComb, Condition.DownedQueenBee, ModConditions.HasBeenToJungle)
+                    .Add(ItemID.HuntressBuckler, Condition.DownedOldOnesArmyT2)
                     .Add(ItemID.MagicQuiver, Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(ItemID.MagmaStone, ModConditions.HasBeenToUnderworld)
+                    .Add(ItemID.Megaphone, Condition.Hardmode)
+                    .Add(ItemID.MonkBelt, Condition.DownedOldOnesArmyT2)
                     .Add(ItemID.MoonStone, Condition.DownedMechBossAny, ModConditions.DownedEclipse)
                     .Add(ItemID.NaturesGift, ModConditions.HasBeenToJungle)
+                    .Add(ItemID.Nazar, Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
                     .Add(ItemID.NecromanticScroll, Condition.DownedPlantera)
                     .Add(ItemID.ObsidianRose, ModConditions.HasBeenToUnderworld)
                     .Add(ItemID.ObsidianSkull, ModConditions.HasBeenToUnderworld)
                     .Add(ItemID.PaladinsShield, Condition.DownedPlantera, ModConditions.HasBeenToDungeon)
                     .Add(ItemID.PanicNecklace, ModConditions.HasBeenToEvil)
                     .Add(ItemID.PhilosophersStone, Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(ItemID.PocketMirror, Condition.Hardmode)
                     .Add(ItemID.PutridScent, Condition.Hardmode, ModConditions.HasBeenToEvil)
+                    .Add(ItemID.PygmyNecklace, Condition.DownedQueenBee)
                     .Add(ItemID.RangerEmblem, Condition.Hardmode, ModConditions.HasBeenToUnderworld)
                     .Add(ItemID.RifleScope, Condition.DownedPlantera, ModConditions.HasBeenToDungeon)
                     .Add(ItemID.Shackle, ModConditions.HasBeenThroughNight)
                     .Add(ItemID.SharkToothNecklace, ModConditions.DownedBloodMoon, ModConditions.HasBeenToOcean)
                     .Add(ItemID.SorcererEmblem, Condition.Hardmode, ModConditions.HasBeenToUnderworld)
+                    .Add(ItemID.SquireShield, Condition.DownedOldOnesArmyAny)
                     .Add(ItemID.StarCloak, Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(ItemID.SummonerEmblem, Condition.Hardmode, ModConditions.HasBeenToUnderworld)
                     .Add(ItemID.SunStone, Condition.DownedGolem, ModConditions.HasBeenToTemple)
                     .Add(ItemID.TitanGlove, Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(ItemID.TrifoldMap, Condition.Hardmode)
+                    .Add(ItemID.Vitamins, Condition.Hardmode)
                     .Add(ItemID.WarriorEmblem, Condition.Hardmode, ModConditions.HasBeenToUnderworld)
+                    .Add(ItemID.WhiteString, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(ItemID.YoYoGlove, Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground);
             combatAccsShop.Register();
 
@@ -489,14 +533,24 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.DontHurtComboBook)
                     .Add(ItemID.RoyalGel, Condition.DownedKingSlime)
                     .Add(ItemID.TorchGodsFavor, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(ItemID.BottomlessBucket, Condition.AnglerQuestsFinishedOver(0))
+                    .Add(ItemID.BottomlessHoneyBucket, Condition.AnglerQuestsFinishedOver(0))
+                    .Add(ItemID.BottomlessLavaBucket, Condition.AnglerQuestsFinishedOver(0))
+                    .Add(ItemID.BottomlessShimmerBucket, Condition.AnglerQuestsFinishedOver(0), Condition.DownedMoonLord)
+                    .Add(ItemID.SuperAbsorbantSponge, Condition.AnglerQuestsFinishedOver(0))
+                    .Add(ItemID.HoneyAbsorbantSponge, Condition.AnglerQuestsFinishedOver(0))
+                    .Add(ItemID.LavaAbsorbantSponge, Condition.AnglerQuestsFinishedOver(0))
+                    .Add(ItemID.Binoculars, Condition.DownedEyeOfCthulhu)
+                    .Add(ItemID.EncumberingStone, ModConditions.HasBeenToDesert)
+                    .Add(ItemID.PortalGun, Condition.DownedMoonLord)
                     .Add(ItemID.RodofDiscord, Condition.Hardmode, ModConditions.HasBeenToHallow);
             if (ModConditions.calamityLoaded)
             {
-                infoShop.Add(ItemID.RodOfHarmony, ModConditions.DownedSupremeCalamitas, ModConditions.DownedExoMechs);
+                infoShop.Add(ItemID.RodOfHarmony, ModConditions.DownedSupremeCalamitas, ModConditions.DownedExoMechs, ModConditions.HasBeenToAether);
             }
             else
             {
-                infoShop.Add(ItemID.RodOfHarmony, Condition.DownedMoonLord);
+                infoShop.Add(ItemID.RodOfHarmony, Condition.DownedMoonLord, ModConditions.HasBeenToAether);
             }
             infoShop.Register();
 

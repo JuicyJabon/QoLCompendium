@@ -63,7 +63,7 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModConditions.calamityLoaded && ModContent.GetInstance<ItemConfig>().BossSummoners)
+            if (ModConditions.calamityLoaded && QoLCompendium.itemConfig.BossSummoners)
             {
                 ModConditions.calamityMod.TryFind("SeaPrism", out ModItem SeaPrism);
                 ModConditions.calamityMod.TryFind("Navystone", out ModItem Navystone);

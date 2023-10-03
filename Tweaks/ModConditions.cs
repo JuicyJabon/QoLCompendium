@@ -1,3 +1,4 @@
+using Microsoft.CodeAnalysis.Operations;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -56,6 +57,8 @@ namespace QoLCompendium.Tweaks
         public static Condition HasBeenToTemple = new("ModConditions.beenToTemple", () => beenToTemple);
         internal static bool beenToDungeon;
         public static Condition HasBeenToDungeon = new("ModConditions.beenToDungeon", () => beenToDungeon);
+        internal static bool beenToAether;
+        public static Condition HasBeenToAether = new("ModConditions.beenToAether", () => beenToAether);
 
 
         //AEQUUS
@@ -318,6 +321,11 @@ namespace QoLCompendium.Tweaks
         public static Condition HasBeenToDepthsOrUnderworld = new("ModConditions.beenToDepthsOrUnderworld", () => beenToDepths || beenToUnderworld);
 
 
+        //DBZMOD
+        internal static bool dragonBallTerrariaLoaded;
+        internal static Mod dragonBallTerrariaMod;
+
+
         //ECHOES OF THE ANCIENTS
         internal static bool echoesOfTheAncientsLoaded;
         internal static Mod echoesOfTheAncientsMod;
@@ -387,6 +395,19 @@ namespace QoLCompendium.Tweaks
         //FARGOS SOULS DLC
         internal static bool fargosSoulsDLCLoaded;
         internal static Mod fargosSoulsDLCMod;
+
+
+        //FRACTURES OF PENUMBRA
+        internal static bool fracturesOfPenumbraLoaded;
+        internal static Mod fracturesOfPenumbraMod;
+        //BOSSES
+        internal static bool downedAlphaFrostjaw;
+        public static Condition DownedAlphaFrostjaw = new("ModConditions.downedAlphaFrostjaw", () => downedAlphaFrostjaw);
+        internal static bool downedSanguineElemental;
+        public static Condition DownedSanguineElemental = new("ModConditions.downedSanguineElemental", () => downedSanguineElemental);
+        //BIOMES
+        internal static bool beenToDread;
+        public static Condition HasBeenToDread = new("ModConditions.beenToDread", () => beenToDread);
 
 
         //FURNITURE FOOD & FUN
@@ -566,6 +587,26 @@ namespace QoLCompendium.Tweaks
         public static Condition DownedSiegeEngine = new("ModConditions.downedSiegeEngine", () => downedSiegeEngine);
 
 
+        //METROID MOD
+        internal static bool metroidLoaded;
+        internal static Mod metroidMod;
+        //BOSSES
+        internal static bool downedTorizo;
+        public static Condition DownedTorizo = new("ModConditions.downedTorizo", () => downedTorizo);
+        internal static bool downedSerris;
+        public static Condition DownedSerris = new("ModConditions.downedSerris", () => downedSerris);
+        internal static bool downedKraid;
+        public static Condition DownedKraid = new("ModConditions.downedKraid", () => downedKraid);
+        internal static bool downedPhantoon;
+        public static Condition DownedPhantoon = new("ModConditions.downedPhantoon", () => downedPhantoon);
+        internal static bool downedOmegaPirate;
+        public static Condition DownedOmegaPirate = new("ModConditions.downedOmegaPirate", () => downedOmegaPirate);
+        internal static bool downedNightmare;
+        public static Condition DownedNightmare = new("ModConditions.downedNightmare", () => downedNightmare);
+        internal static bool downedGoldenTorizo;
+        public static Condition DownedGoldenTorizo = new("ModConditions.downedGoldenTorizo", () => downedGoldenTorizo);
+
+
         //POLARITIES
         internal static bool polaritiesLoaded;
         internal static Mod polaritiesMod;
@@ -664,6 +705,16 @@ namespace QoLCompendium.Tweaks
         public static Condition HasBeenToLab = new("ModConditions.beenToLab", () => beenToLab);
         internal static bool beenToWasteland;
         public static Condition HasBeenToWasteland = new("ModConditions.beenToWasteland", () => beenToWasteland);
+
+
+        //REFORGED
+        internal static bool reforgedLoaded;
+        internal static Mod reforgedMod;
+
+
+        //REMNANTS
+        internal static bool remnantsLoaded;
+        internal static Mod remnantsMod;
 
 
         //SECRETS OF THE SHADOWS
@@ -958,9 +1009,16 @@ namespace QoLCompendium.Tweaks
         public static Condition DownedChaosbringer = new("ModConditions.downedChaosbringer", () => downedChaosbringer);
         internal static bool downedPaladinSpirit;
         public static Condition DownedPaladinSpirit = new("ModConditions.downedPaladinSpirit", () => downedPaladinSpirit);
-        #endregion
 
-        #pragma warning restore CA2211
+
+        //WAYFAIR CONTENT
+        internal static bool wayfairContentLoaded;
+        internal static Mod wayfairContentMod;
+        //BOSSES
+        internal static bool downedManaflora;
+        public static Condition DownedManaflora = new("ModConditions.downedManaflora", () => downedManaflora);
+        #endregion
+#pragma warning restore CA2211
 
         public override void Unload()
         {
@@ -1024,6 +1082,10 @@ namespace QoLCompendium.Tweaks
             {
                 depthsMod = null;
             }
+            if (!dragonBallTerrariaLoaded)
+            {
+                dragonBallTerrariaMod = null;
+            }
             if (!echoesOfTheAncientsLoaded)
             {
                 echoesOfTheAncientsMod = null;
@@ -1051,6 +1113,10 @@ namespace QoLCompendium.Tweaks
             if (!fargosSoulsDLCLoaded)
             {
                 fargosSoulsDLCMod = null;
+            }
+            if (!fracturesOfPenumbraLoaded)
+            {
+                fracturesOfPenumbraMod = null;
             }
             if (!furnitureFoodAndFunLoaded)
             {
@@ -1092,6 +1158,10 @@ namespace QoLCompendium.Tweaks
             {
                 mechReworkMod = null;
             }
+            if (!metroidLoaded)
+            {
+                metroidMod = null;
+            }
             if (!polaritiesLoaded)
             {
                 polaritiesMod = null;
@@ -1103,6 +1173,14 @@ namespace QoLCompendium.Tweaks
             if (!redemptionLoaded)
             {
                 redemptionMod = null;
+            }
+            if (!reforgedLoaded)
+            {
+                reforgedMod = null;
+            }
+            if (!remnantsLoaded)
+            {
+                remnantsMod = null;
             }
             if (!secretsOfTheShadowsLoaded)
             {
@@ -1155,6 +1233,10 @@ namespace QoLCompendium.Tweaks
             if (!vitalityLoaded)
             {
                 vitalityMod = null;
+            }
+            if (!wayfairContentLoaded)
+            {
+                wayfairContentMod = null;
             }
         }
 
@@ -1220,6 +1302,10 @@ namespace QoLCompendium.Tweaks
             {
                 depthsMod = null;
             }
+            if (!dragonBallTerrariaLoaded)
+            {
+                dragonBallTerrariaMod = null;
+            }
             if (!echoesOfTheAncientsLoaded)
             {
                 echoesOfTheAncientsMod = null;
@@ -1247,6 +1333,10 @@ namespace QoLCompendium.Tweaks
             if (!fargosSoulsDLCLoaded)
             {
                 fargosSoulsDLCMod = null;
+            }
+            if (!fracturesOfPenumbraLoaded)
+            {
+                fracturesOfPenumbraMod = null;
             }
             if (!furnitureFoodAndFunLoaded)
             {
@@ -1288,6 +1378,10 @@ namespace QoLCompendium.Tweaks
             {
                 mechReworkMod = null;
             }
+            if (!metroidLoaded)
+            {
+                metroidMod = null;
+            }
             if (!polaritiesLoaded)
             {
                 polaritiesMod = null;
@@ -1299,6 +1393,14 @@ namespace QoLCompendium.Tweaks
             if (!redemptionLoaded)
             {
                 redemptionMod = null;
+            }
+            if (!reforgedLoaded)
+            {
+                reforgedMod = null;
+            }
+            if (!remnantsLoaded)
+            {
+                remnantsMod = null;
             }
             if (!secretsOfTheShadowsLoaded)
             {
@@ -1352,6 +1454,10 @@ namespace QoLCompendium.Tweaks
             {
                 vitalityMod = null;
             }
+            if (!wayfairContentLoaded)
+            {
+                wayfairContentMod = null;
+            }
         }
 
         public override void PostSetupContent()
@@ -1400,6 +1506,9 @@ namespace QoLCompendium.Tweaks
 
             depthsLoaded = ModLoader.TryGetMod("TheDepths", out Mod TheDepths);
             depthsMod = TheDepths;
+            
+            dragonBallTerrariaLoaded = ModLoader.TryGetMod("DBZMODPORT", out Mod DBZMODPORT);
+            dragonBallTerrariaMod = DBZMODPORT;
 
             echoesOfTheAncientsLoaded = ModLoader.TryGetMod("EchoesoftheAncients", out Mod EchoesoftheAncients);
             echoesOfTheAncientsMod = EchoesoftheAncients;
@@ -1421,6 +1530,9 @@ namespace QoLCompendium.Tweaks
 
             fargosSoulsDLCLoaded = ModLoader.TryGetMod("FargowiltasSoulsDLC", out Mod FargowiltasSoulsDLC);
             fargosSoulsDLCMod = FargowiltasSoulsDLC;
+
+            fracturesOfPenumbraLoaded = ModLoader.TryGetMod("FPenumbra", out Mod FPenumbra);
+            fracturesOfPenumbraMod = FPenumbra;
 
             furnitureFoodAndFunLoaded = ModLoader.TryGetMod("CosmeticVariety", out Mod CosmeticVariety);
             furnitureFoodAndFunMod = CosmeticVariety;
@@ -1452,6 +1564,9 @@ namespace QoLCompendium.Tweaks
             mechReworkLoaded = ModLoader.TryGetMod("PrimeRework", out Mod PrimeRework);
             mechReworkMod = PrimeRework;
 
+            metroidLoaded = ModLoader.TryGetMod("MetroidMod", out Mod MetroidMod);
+            metroidMod = MetroidMod;
+
             polaritiesLoaded = ModLoader.TryGetMod("Polarities", out Mod Polarities);
             polaritiesMod = Polarities;
 
@@ -1460,6 +1575,12 @@ namespace QoLCompendium.Tweaks
 
             redemptionLoaded = ModLoader.TryGetMod("Redemption", out Mod Redemption);
             redemptionMod = Redemption;
+
+            reforgedLoaded = ModLoader.TryGetMod("ReforgeOverhaul", out Mod ReforgeOverhaul);
+            reforgedMod = ReforgeOverhaul;
+
+            remnantsLoaded = ModLoader.TryGetMod("Remnants", out Mod Remnants);
+            remnantsMod = Remnants;
 
             secretsOfTheShadowsLoaded = ModLoader.TryGetMod("SOTS", out Mod SOTS);
             secretsOfTheShadowsMod = SOTS;
@@ -1499,6 +1620,9 @@ namespace QoLCompendium.Tweaks
 
             vitalityLoaded = ModLoader.TryGetMod("VitalityMod", out Mod VitalityMod);
             vitalityMod = VitalityMod;
+
+            wayfairContentLoaded = ModLoader.TryGetMod("WAYFAIRContent", out Mod WAYFAIRContent);
+            wayfairContentMod = WAYFAIRContent;
         }
 
         public override void OnWorldLoad()
@@ -1537,6 +1661,7 @@ namespace QoLCompendium.Tweaks
             tag.Add("beenToHallow", beenToHallow);
             tag.Add("beenToTemple", beenToTemple);
             tag.Add("beenToDungeon", beenToDungeon);
+            tag.Add("beenToAether", beenToAether);
 
             //AEQUUS
             tag.Add("downedCrabson", downedCrabson);
@@ -1656,6 +1781,12 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedAbominationn", downedAbominationn);
             tag.Add("downedMutant", downedMutant);
 
+            //FRACTURES OF PENUMBRA
+            tag.Add("downedAlphaFrostjaw", downedAlphaFrostjaw);
+            tag.Add("downedSanguineElemental", downedSanguineElemental);
+            //BIOMES
+            tag.Add("beenToDread", beenToDread);
+
             //GAMETERRARIA
             tag.Add("downedLad", downedLad);
             tag.Add("downedHornlitz", downedHornlitz);
@@ -1731,6 +1862,15 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedTerminator", downedTerminator);
             tag.Add("downedCaretaker", downedCaretaker);
             tag.Add("downedSiegeEngine", downedSiegeEngine);
+
+            //METROID
+            tag.Add("downedTorizo", downedTorizo);
+            tag.Add("downedSerris", downedSerris);
+            tag.Add("downedKraid", downedKraid);
+            tag.Add("downedPhantoon", downedPhantoon);
+            tag.Add("downedOmegaPirate", downedOmegaPirate);
+            tag.Add("downedNightmare", downedNightmare);
+            tag.Add("downedGoldenTorizo", downedGoldenTorizo);
 
             //POLARITIES
             tag.Add("downedStormCloudfish", downedStormCloudfish);
@@ -1914,6 +2054,9 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedAnarchulesBeetle", downedAnarchulesBeetle);
             tag.Add("downedChaosbringer", downedChaosbringer);
             tag.Add("downedPaladinSpirit", downedPaladinSpirit);
+
+            //WAYFAIR
+            tag.Add("downedManaflora", downedManaflora);
         }
 
         public override void LoadWorldData(TagCompound tag)
@@ -1942,6 +2085,7 @@ namespace QoLCompendium.Tweaks
             beenToHallow = tag.Get<bool>("beenToHallow");
             beenToTemple = tag.Get<bool>("beenToTemple");
             beenToDungeon = tag.Get<bool>("beenToDungeon");
+            beenToAether = tag.Get<bool>("beenToAether");
 
             //AEQUUS
             downedCrabson = tag.Get<bool>("downedCrabson");
@@ -2060,6 +2204,12 @@ namespace QoLCompendium.Tweaks
             downedAbominationn = tag.Get<bool>("downedAbominationn");
             downedMutant = tag.Get<bool>("downedMutant");
 
+            //FRACTURES OF PENUMBRA
+            downedAlphaFrostjaw = tag.Get<bool>("downedAlphaFrostjaw");
+            downedSanguineElemental = tag.Get<bool>("downedSanguineElemental");
+            //BIOMES
+            beenToDread = tag.Get<bool>("beenToDread");
+
             //GAMETERRARIA
             downedLad = tag.Get<bool>("downedLad");
             downedHornlitz = tag.Get<bool>("downedHornlitz");
@@ -2135,6 +2285,15 @@ namespace QoLCompendium.Tweaks
             downedTerminator = tag.Get<bool>("downedTerminator");
             downedCaretaker = tag.Get<bool>("downedCaretaker");
             downedSiegeEngine = tag.Get<bool>("downedSiegeEngine");
+
+            //METROID
+            downedTorizo = tag.Get<bool>("downedTorizo");
+            downedSerris = tag.Get<bool>("downedSerris");
+            downedKraid = tag.Get<bool>("downedKraid");
+            downedPhantoon = tag.Get<bool>("downedPhantoon");
+            downedOmegaPirate = tag.Get<bool>("downedOmegaPirate");
+            downedNightmare = tag.Get<bool>("downedNightmare");
+            downedGoldenTorizo = tag.Get<bool>("downedGoldenTorizo");
 
             //POLARITIES
             downedStormCloudfish = tag.Get<bool>("downedStormCloudfish");
@@ -2318,6 +2477,9 @@ namespace QoLCompendium.Tweaks
             downedAnarchulesBeetle = tag.Get<bool>("downedAnarchulesBeetle");
             downedChaosbringer = tag.Get<bool>("downedChaosbringer");
             downedPaladinSpirit = tag.Get<bool>("downedPaladinSpirit");
+
+            //WAYFAIR
+            downedManaflora = tag.Get<bool>("downedManaflora");
         }
 
         public override void PreUpdatePlayers()
@@ -2397,6 +2559,10 @@ namespace QoLCompendium.Tweaks
             if (Main.LocalPlayer.ZoneDungeon)
             {
                 beenToDungeon = true;
+            }
+            if (Main.LocalPlayer.ZoneShimmer)
+            {
+                beenToAether = true;
             }
             #endregion
 
@@ -2650,6 +2816,15 @@ namespace QoLCompendium.Tweaks
                 }
             }
 
+            if (fracturesOfPenumbraLoaded)
+            {
+                if ((fracturesOfPenumbraMod.TryFind("DreadSurfaceBiome", out ModBiome DreadSurfaceBiome) && Main.LocalPlayer.InModBiome(DreadSurfaceBiome)) 
+                    || (fracturesOfPenumbraMod.TryFind("DreadUndergroundBiome", out ModBiome DreadUndergroundBiome) && Main.LocalPlayer.InModBiome(DreadUndergroundBiome)))
+                {
+                    beenToDread = true;
+                }
+            }
+
             if (homewardJourneyLoaded)
             {
                 if (homewardJourneyMod.TryFind("AbyssUndergroundBiome", out ModBiome AbyssUndergroundBiome) && Main.LocalPlayer.InModBiome(AbyssUndergroundBiome))
@@ -2663,10 +2838,6 @@ namespace QoLCompendium.Tweaks
                 if (infernumMod.TryFind("ProfanedTempleBiome", out ModBiome ProfanedTempleBiome) && Main.LocalPlayer.InModBiome(ProfanedTempleBiome))
                 {
                     beenToProfanedGardens = true;
-                }
-                if (infernumMod.TryFind("BereftVassalBossBag", out ModItem BereftVassalBossBag) && Main.LocalPlayer.HasItem(BereftVassalBossBag.Type))
-                {
-                    downedBereftVassal = true;
                 }
             }
 
@@ -2904,6 +3075,7 @@ namespace QoLCompendium.Tweaks
             beenToHallow = false;
             beenToTemple = false;
             beenToDungeon = false;
+            beenToAether = false;
 
             //AEQUUS
             downedCrabson = false;
@@ -3034,6 +3206,12 @@ namespace QoLCompendium.Tweaks
             downedAbominationn = false;
             downedMutant = false;
 
+            //FRACTURES OF PENUMBRA
+            downedAlphaFrostjaw = false;
+            downedSanguineElemental = false;
+            //BIOMES
+            beenToDread = false;
+
             //GAMETERRARIA
             downedLad = false;
             downedHornlitz = false;
@@ -3109,6 +3287,15 @@ namespace QoLCompendium.Tweaks
             downedTerminator = false;
             downedCaretaker = false;
             downedSiegeEngine = false;
+
+            //METROID
+            downedTorizo = false;
+            downedSerris = false;
+            downedKraid = false;
+            downedPhantoon = false;
+            downedOmegaPirate = false;
+            downedNightmare = false;
+            downedGoldenTorizo = false;
 
             //POLARITIES
             downedStormCloudfish = false;
@@ -3295,6 +3482,9 @@ namespace QoLCompendium.Tweaks
             downedDreadnaught = false;
             downedAnarchulesBeetle = false;
             downedChaosbringer = false;
+            downedPaladinSpirit = false;
+
+            //WAYFAIR
             downedPaladinSpirit = false;
         }
     }

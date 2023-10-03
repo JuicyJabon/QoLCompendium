@@ -4,6 +4,7 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Social.WeGame;
 
 namespace QoLCompendium.UI
 {
@@ -11,10 +12,10 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().regenerator && ModContent.GetInstance<ItemConfig>().InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().regenerator && QoLCompendium.itemConfig.InformationAccessories;
         }
 
-        public override string DisplayValue(ref Color displayColor)
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
             float lifeRegen = Main.LocalPlayer.lifeRegen;
             lifeRegen *= 0.5f;
@@ -23,7 +24,7 @@ namespace QoLCompendium.UI
             if (Main.LocalPlayer.statLife >= Main.LocalPlayer.statLifeMax2)
             {
                 return "Full Health";
-            } 
+            }
             else
             {
                 return lifeRegen + " Regen/Sec";
@@ -35,10 +36,10 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().replenisher && ModContent.GetInstance<ItemConfig>().InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().replenisher && QoLCompendium.itemConfig.InformationAccessories;
         }
 
-        public override string DisplayValue(ref Color displayColor)
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
             if (Main.LocalPlayer.statMana >= Main.LocalPlayer.statManaMax2)
             {
@@ -55,10 +56,10 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().metallicClover && ModContent.GetInstance<ItemConfig>().InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().metallicClover && QoLCompendium.itemConfig.InformationAccessories;
         }
 
-        public override string DisplayValue(ref Color displayColor)
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
             return Math.Round(Main.LocalPlayer.luck, 3) + " Luck";
         }
@@ -68,10 +69,10 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().headCounter && ModContent.GetInstance<ItemConfig>().InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().headCounter && QoLCompendium.itemConfig.InformationAccessories;
         }
 
-        public override string DisplayValue(ref Color displayColor)
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
             int spawnRateRaw = Main.LocalPlayer.GetModPlayer<QoLCPlayer>().spawnRate;
 
@@ -95,10 +96,10 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().trackingDevice && ModContent.GetInstance<ItemConfig>().InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().trackingDevice && QoLCompendium.itemConfig.InformationAccessories;
         }
 
-        public override string DisplayValue(ref Color displayColor)
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
             return Math.Round(Main.LocalPlayer.slotsMinions, 2).ToString() + " / " + Main.LocalPlayer.maxMinions.ToString() + " Minion Slots";
         }
@@ -108,25 +109,24 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().battalionLog && ModContent.GetInstance<ItemConfig>().InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().battalionLog && QoLCompendium.itemConfig.InformationAccessories;
         }
 
-        public override string DisplayValue(ref Color displayColor)
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
             UIElementsAndLayers.GetSentryNameToCount(out int num, true);
             return num.ToString() + " / " + Main.LocalPlayer.maxTurrets.ToString() + " Sentry Slots";
         }
     }
 
-    /*
-    public class WingInfoDisplay : InfoDisplay
+    public class WingTimeInfoDisplay : InfoDisplay
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().wingTimer && ModContent.GetInstance<ItemConfig>().InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().wingTimer && QoLCompendium.itemConfig.InformationAccessories;
         }
 
-        public override string DisplayValue(ref Color displayColor)
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
             float num = Main.LocalPlayer.wingTime / 60f;
 
@@ -134,13 +134,9 @@ namespace QoLCompendium.UI
             {
                 if (Main.LocalPlayer.armor[i].netID == ItemID.EmpressFlightBooster && !ModConditions.calamityLoaded)
                 {
-                    if (!Main.LocalPlayer.armor[i].social)
+                    if (i < 13)
                     {
                         return "Infinite Wing Time";
-                    }
-                    else
-                    {
-                        return num.ToString("0.00") + "s Wing Time";
                     }
                 }
             }
@@ -149,14 +145,40 @@ namespace QoLCompendium.UI
         }
     }
 
+    public class EnduranceInfoDisplay : InfoDisplay
+    {
+        public override bool Active()
+        {
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().reinforcedPanel && QoLCompendium.itemConfig.InformationAccessories;
+        }
+
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
+        {
+            return (100f * Main.LocalPlayer.endurance).ToString("N0") + "% Endurance";
+        }
+    }
+
+    public class MiningSpeedInfoDisplay : InfoDisplay
+    {
+        public override bool Active()
+        {
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().kettlebell && QoLCompendium.itemConfig.InformationAccessories;
+        }
+
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
+        {
+            return ((1f - Main.LocalPlayer.pickSpeed) * 100f).ToString("N0") + "% Mining Speed";
+        }
+    }
+
     public class DamageInfoDisplay : InfoDisplay
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().harmInducer && ModContent.GetInstance<ItemConfig>().InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().harmInducer && QoLCompendium.itemConfig.InformationAccessories;
         }
 
-        public override string DisplayValue(ref Color displayColor)
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
             DamageClass damageType = Main.LocalPlayer.HeldItem.DamageType;
             StatModifier totalDamage = Main.LocalPlayer.GetTotalDamage(damageType);
@@ -197,10 +219,10 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().luckyDie && ModContent.GetInstance<ItemConfig>().InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().luckyDie && QoLCompendium.itemConfig.InformationAccessories;
         }
 
-        public override string DisplayValue(ref Color displayColor)
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
             return "+" +Main.LocalPlayer.GetCritChance(DamageClass.Generic).ToString() + "% Crit";
         }
@@ -210,13 +232,12 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().plateCracker && ModContent.GetInstance<ItemConfig>().InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().plateCracker && QoLCompendium.itemConfig.InformationAccessories;
         }
 
-        public override string DisplayValue(ref Color displayColor)
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
             return Main.LocalPlayer.GetArmorPenetration(DamageClass.Generic).ToString() + " Armor Penetration";
         }
     }
-    */
 }

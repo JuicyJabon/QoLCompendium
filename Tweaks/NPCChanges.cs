@@ -17,13 +17,13 @@ namespace QoLCompendium.Tweaks
         public override void SetDefaults(NPC npc)
         {
             bool dontTakeDamageFromHostiles = npc.dontTakeDamageFromHostiles;
-            if (npc.type == NPCID.DD2EterniaCrystal && ModContent.GetInstance<QoLCConfig>().FriendliesDontDie)
+            if (npc.type == NPCID.DD2EterniaCrystal && QoLCompendium.mainConfig.FriendliesDontDie)
             {
                 npc.dontTakeDamageFromHostiles = false;
                 return;
             }
             npc.dontTakeDamageFromHostiles = dontTakeDamageFromHostiles;
-            if (npc.friendly && ModContent.GetInstance<QoLCConfig>().FriendliesDontDie)
+            if (npc.friendly && QoLCompendium.mainConfig.FriendliesDontDie)
             {
                 npc.dontTakeDamageFromHostiles = true;
                 return;
@@ -40,7 +40,7 @@ namespace QoLCompendium.Tweaks
             Player player = Main.LocalPlayer;
             if (player.active)
             {
-                if (!player.dead && ModContent.GetInstance<QoLCConfig>().FastTownieSpawns)
+                if (!player.dead && QoLCompendium.mainConfig.FastTownieSpawns)
                 {
                     rate = true;
                 }
@@ -57,7 +57,7 @@ namespace QoLCompendium.Tweaks
     {
         public override void PreUpdateWorld()
         {
-            if (ModContent.GetInstance<QoLCConfig>().TownieSpawn)
+            if (QoLCompendium.mainConfig.TownieSpawn)
             {
                 NPC.savedStylist = true;
                 NPC.savedAngler = true;
@@ -95,7 +95,7 @@ namespace QoLCompendium.Tweaks
                 {
                     return;
                 }
-                c.EmitDelegate((bool flag) => flag || ModContent.GetInstance<QoLCConfig>().ToggleHappiness);
+                c.EmitDelegate((bool flag) => flag || QoLCompendium.mainConfig.ToggleHappiness);
             };
 
             IL_Main.DrawNPCChatButtons += il =>
@@ -106,7 +106,7 @@ namespace QoLCompendium.Tweaks
                 {
                     return;
                 }
-                c.EmitDelegate((string text) => !ModContent.GetInstance<QoLCConfig>().ToggleHappiness ? text : "");
+                c.EmitDelegate((string text) => !QoLCompendium.mainConfig.ToggleHappiness ? text : "");
             };
         }
     }
@@ -138,7 +138,7 @@ namespace QoLCompendium.Tweaks
     {
         public override void SetDefaults(NPC npc)
         {
-            npc.value *= ModContent.GetInstance<QoLCConfig>().MoreCoins;
+            npc.value *= QoLCompendium.mainConfig.MoreCoins;
         }
     }
 
@@ -146,7 +146,7 @@ namespace QoLCompendium.Tweaks
     {
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
         {
-            if (AnyBossAlive() && player.Distance(Main.npc[boss].Center) < 6000f && ModContent.GetInstance<QoLCConfig>().NoSpawns)
+            if (AnyBossAlive() && player.Distance(Main.npc[boss].Center) < 6000f && QoLCompendium.mainConfig.NoSpawns)
             {
                 maxSpawns = 0;
             }
@@ -161,8 +161,8 @@ namespace QoLCompendium.Tweaks
             }
             if (player.GetModPlayer<QoLCPlayer>().enemyCalmer)
             {
-                spawnRate = (int)(spawnRate * 5f);
-                maxSpawns = (int)(maxSpawns * 1f);
+                spawnRate = (int)(spawnRate * 2.5);
+                maxSpawns = (int)(maxSpawns * 0.3f);
             }
         }
 
@@ -189,32 +189,33 @@ namespace QoLCompendium.Tweaks
             boss = -1;
             return false;
         }
-
+        #pragma warning disable CA2211
         public static int boss = -1;
+        #pragma warning restore CA2211
     }
 
     public class TowerShieldHealth : ModSystem
     {
         public override void PreUpdateWorld()
         {
-            if (NPC.ShieldStrengthTowerVortex > ModContent.GetInstance<QoLCConfig>().TowerShield)
+            if (NPC.ShieldStrengthTowerVortex > QoLCompendium.mainConfig.TowerShield)
             {
-                NPC.ShieldStrengthTowerVortex = ModContent.GetInstance<QoLCConfig>().TowerShield;
+                NPC.ShieldStrengthTowerVortex = QoLCompendium.mainConfig.TowerShield;
             }
 
-            if (NPC.ShieldStrengthTowerSolar > ModContent.GetInstance<QoLCConfig>().TowerShield)
+            if (NPC.ShieldStrengthTowerSolar > QoLCompendium.mainConfig.TowerShield)
             {
-                NPC.ShieldStrengthTowerSolar = ModContent.GetInstance<QoLCConfig>().TowerShield;
+                NPC.ShieldStrengthTowerSolar = QoLCompendium.mainConfig.TowerShield;
             }
 
-            if (NPC.ShieldStrengthTowerNebula > ModContent.GetInstance<QoLCConfig>().TowerShield)
+            if (NPC.ShieldStrengthTowerNebula > QoLCompendium.mainConfig.TowerShield)
             {
-                NPC.ShieldStrengthTowerNebula = ModContent.GetInstance<QoLCConfig>().TowerShield;
+                NPC.ShieldStrengthTowerNebula = QoLCompendium.mainConfig.TowerShield;
             }
 
-            if (NPC.ShieldStrengthTowerStardust > ModContent.GetInstance<QoLCConfig>().TowerShield)
+            if (NPC.ShieldStrengthTowerStardust > QoLCompendium.mainConfig.TowerShield)
             {
-                NPC.ShieldStrengthTowerStardust = ModContent.GetInstance<QoLCConfig>().TowerShield;
+                NPC.ShieldStrengthTowerStardust = QoLCompendium.mainConfig.TowerShield;
             }
         }
     }
@@ -223,7 +224,7 @@ namespace QoLCompendium.Tweaks
     {
         public override void Load()
         {
-            if (ModContent.GetInstance<QoLCConfig>().LavaSlimeNoLava)
+            if (QoLCompendium.mainConfig.LavaSlimeNoLava)
             {
                 IL_NPC.VanillaHitEffect += delegate (ILContext il)
                 {
@@ -311,7 +312,10 @@ namespace QoLCompendium.Tweaks
             } 
             else
             {
-                IL_NPC.AI_003_Fighters += new ILContext.Manipulator(PreventDoorInteractions);
+                if (QoLCompendium.mainConfig.StopOpeningDoors)
+                {
+                    IL_NPC.AI_003_Fighters += new ILContext.Manipulator(PreventDoorInteractions);
+                }
             }
         }
 
@@ -324,6 +328,18 @@ namespace QoLCompendium.Tweaks
         {
             ILCursor c = new(il);
 
+            #region Opening Door Change
+
+            // Match (C#):
+            //	if (type == 460) { flag = true; }
+            // Match (IL):
+            //	ldarg.0
+            //	ldfld int32 Terraria.NPC::'type'
+            //	ldc.i4 460
+            //	bne.un.s LABEL
+            //	ldc.i4.1
+            //	stloc LOCAL
+            // Need LOCAL for code below.
             int localIndex = -1;
             if (!c.TryGotoNext(MoveType.Before,
                 i => i.MatchLdarg(0),
@@ -337,19 +353,40 @@ namespace QoLCompendium.Tweaks
                 throw new Exception("Unable to patch Terraria.NPC.AI_003_Fighters: Could not match IL (Finding Local Index).");
             }
 
-            if (!c.TryGotoNext(MoveType.Before,
-                    i => i.MatchLdloc(localIndex),
-                    i => i.MatchNop(),
-                    i => i.MatchNop(),
-                    i => i.MatchAnd(),
-                    i => i.MatchBrfalse(out _)
-                    ))
+            // Match (C#):
+            //	WorldGen.KillTile(num194, num195 - 1, fail: true);
+            // Change to:
+            //	WorldGen.KillTile(num194, num195 - 1, fail: true);
+            //	LOCAL &= !ModContent.GetInstance<DoorOptionsConfig>().StopOpeningDoors;
+            // LOCAL is whether any NPC should try hitting doors. By and-ing the config option, NPCs won't hit doors if they're disallwoed by this mod.
+            if (!c.TryGotoNext(MoveType.After,
+                // Match the five params for KillTile
+                i => true,
+                i => true,
+                i => true,
+                i => true,
+                i => true,
+                i => i.MatchCall<WorldGen>(nameof(WorldGen.KillTile))
+            ))
             {
-                throw new Exception("Unable to patch Terraria.NPC.AI_003_Fighters: Could not match IL (Opening Door Change).");
+                throw new Exception("Unable to patch Terraria.NPC.AI_003_Fighters: Could not match IL (Finding Local Index).");
             }
-            c.Index += 4;
-            c.EmitDelegate(() => !ModContent.GetInstance<QoLCConfig>().StopOpeningDoors);
+
+            c.Emit(OpCodes.Ldloc, localIndex);
+            c.EmitDelegate(() => false);
             c.Emit(OpCodes.And);
+            c.Emit(OpCodes.Stloc, localIndex);
+
+            #endregion Opening Door Change
+
+            #region Peon Change
+
+            /// Match the following IL:
+            ///		IL_B6B4: ldarg.0
+            ///		IL_B6B5: ldfld     int32 Terraria.NPC::'type'
+            ///		IL_B6BA: ldc.i4.s  26
+            ///		IL_B6BC: bne.un.s  IL_B707
+            /// This places the cursor on ldarg.0.
 
             if (!c.TryGotoNext(MoveType.Before,
                     i => i.MatchLdarg(0),
@@ -360,10 +397,16 @@ namespace QoLCompendium.Tweaks
                 throw new Exception("Unable to patch Terraria.NPC.AI_003_Fighters: Could not match IL (Peon Change).");
             }
 
+            // Move the cursor to the instruction loading the Goblin Peon's ID (26).
             c.Index += 2;
 
-            c.Remove();
-            c.Emit(OpCodes.Ldc_I4, int.MinValue);
+            // Replace 26 with NPCID.None. The code now checks if npc.type == NPCID.None.
+            // The OpCode here is ldc.i4.s, so I'm constrained to the range of an sbyte.
+            c.Next.Operand = NPCID.None;
+
+            #endregion Peon Change
+
+            MonoModHooks.DumpIL(Mod, il);
         }
     }
 
@@ -633,6 +676,18 @@ namespace QoLCompendium.Tweaks
                 }
             }
 
+            if (ModConditions.fracturesOfPenumbraLoaded)
+            {
+                if (ModConditions.fracturesOfPenumbraMod.TryFind("AlphaFrostjawHead", out ModNPC AlphaFrostjawHead) && npc.type == AlphaFrostjawHead.Type)
+                {
+                    ModConditions.downedAlphaFrostjaw = true;
+                }
+                if (ModConditions.fracturesOfPenumbraMod.TryFind("SanguineElemental", out ModNPC SanguineElemental) && npc.type == SanguineElemental.Type)
+                {
+                    ModConditions.downedSanguineElemental = true;
+                }
+            }
+
             if (ModConditions.gameTerrariaLoaded)
             {
                 if (ModConditions.gameTerrariaMod.TryFind("Lad", out ModNPC Lad) && npc.type == Lad.Type)
@@ -861,7 +916,7 @@ namespace QoLCompendium.Tweaks
             {
                 if (ModConditions.infernumMod.TryFind("BereftVassal", out ModNPC BereftVassal) && npc.type == BereftVassal.Type)
                 {
-                    ModConditions.downedBereftVassal = true;
+                    SubworldModConditions.downedBereftVassal = true;
                 }
             }
 
@@ -882,6 +937,38 @@ namespace QoLCompendium.Tweaks
                 if (ModConditions.mechReworkMod.TryFind("SiegeEngine", out ModNPC SiegeEngine) && npc.type == SiegeEngine.Type)
                 {
                     ModConditions.downedSiegeEngine = true;
+                }
+            }
+
+            if (ModConditions.metroidLoaded)
+            {
+                if (ModConditions.metroidMod.TryFind("Torizo", out ModNPC Torizo) && npc.type == Torizo.Type)
+                {
+                    ModConditions.downedTorizo = true;
+                }
+                if (ModConditions.metroidMod.TryFind("Serris_Head", out ModNPC Serris_Head) && npc.type == Serris_Head.Type)
+                {
+                    ModConditions.downedSerris = true;
+                }
+                if (ModConditions.metroidMod.TryFind("Kraid_Head", out ModNPC Kraid_Head) && npc.type == Kraid_Head.Type)
+                {
+                    ModConditions.downedKraid = true;
+                }
+                if (ModConditions.metroidMod.TryFind("Phantoon", out ModNPC Phantoon) && npc.type == Phantoon.Type)
+                {
+                    ModConditions.downedPhantoon = true;
+                }
+                if (ModConditions.metroidMod.TryFind("OmegaPirate", out ModNPC OmegaPirate) && npc.type == OmegaPirate.Type)
+                {
+                    ModConditions.downedOmegaPirate = true;
+                }
+                if (ModConditions.metroidMod.TryFind("Nightmare", out ModNPC Nightmare) && npc.type == Nightmare.Type)
+                {
+                    ModConditions.downedNightmare = true;
+                }
+                if (ModConditions.metroidMod.TryFind("GoldenTorizo", out ModNPC GoldenTorizo) && npc.type == GoldenTorizo.Type)
+                {
+                    ModConditions.downedGoldenTorizo = true;
                 }
             }
 
@@ -1400,6 +1487,14 @@ namespace QoLCompendium.Tweaks
                 if (ModConditions.vitalityMod.TryFind("PaladinSpiritBoss", out ModNPC PaladinSpiritBoss) && npc.type == PaladinSpiritBoss.Type)
                 {
                     ModConditions.downedPaladinSpirit = true;
+                }
+            }
+
+            if (ModConditions.wayfairContentLoaded)
+            {
+                if (ModConditions.wayfairContentMod.TryFind("Lifebloom", out ModNPC Lifebloom) && npc.type == Lifebloom.Type)
+                {
+                    ModConditions.downedManaflora = true;
                 }
             }
         }

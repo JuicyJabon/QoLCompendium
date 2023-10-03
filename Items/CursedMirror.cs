@@ -62,15 +62,12 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().CursedMirror)
+            if (QoLCompendium.itemConfig.Mirrors)
             {
                 CreateRecipe()
-                .AddIngredient(ItemID.MagicMirror, 1)
-                .AddTile(TileID.Tombstones)
-                .Register();
-
-                CreateRecipe()
-                .AddIngredient(ItemID.IceMirror, 1)
+                .AddIngredient(ItemID.Glass, 3)
+                .AddRecipeGroup(nameof(ItemID.Tombstone), 1)
+                .AddRecipeGroup(RecipeGroupID.IronBar, 4)
                 .AddTile(TileID.Tombstones)
                 .Register();
             }

@@ -89,7 +89,7 @@ namespace QoLCompendium.Tweaks
                 || entity.type == TinyMeatIdol.Type 
                 || entity.type == TradeDeal.Type 
                 || entity.type == UnstableRainbowCookie.Type 
-                || entity.type == UntoldBurial.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == UntoldBurial.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -119,7 +119,7 @@ namespace QoLCompendium.Tweaks
                 && (entity.type == SuspiciousLookingEgg.Type
                 || entity.type == CursedStuffing.Type
                 || entity.type == SuspiciousLookingSkull.Type
-                || entity.type == Wishbone.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == Wishbone.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -151,7 +151,7 @@ namespace QoLCompendium.Tweaks
                 || entity.type == CursedSoul.Type 
                 || entity.type == KelviniteRadar.Type 
                 || entity.type == SlayerTrophy.Type 
-                || entity.type == ThePrettiestFlower.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == ThePrettiestFlower.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -177,9 +177,11 @@ namespace QoLCompendium.Tweaks
                 ModConditions.enchantedMoonsMod.TryFind("BlueMedallion", out ModItem BlueMedallion)
                 && ModConditions.enchantedMoonsMod.TryFind("CherryAmulet", out ModItem CherryAmulet)
                 && ModConditions.enchantedMoonsMod.TryFind("HarvestLantern", out ModItem HarvestLantern)
+                && ModConditions.enchantedMoonsMod.TryFind("MintRing", out ModItem MintRing)
                 && (entity.type == BlueMedallion.Type
                 || entity.type == CherryAmulet.Type
-                || entity.type == HarvestLantern.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == HarvestLantern.Type
+                || entity.type == MintRing.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -355,7 +357,7 @@ namespace QoLCompendium.Tweaks
                 || entity.type == MutantVoodoo.Type
                 || entity.type == PlanterasFruit.Type
                 || entity.type == PrismaticPrimrose.Type
-                || entity.type == SuspiciousSkull.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == SuspiciousSkull.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -387,7 +389,7 @@ namespace QoLCompendium.Tweaks
                 || entity.type == DevisCurse.Type
                 || entity.type == FragilePixieLamp.Type
                 || entity.type == AbomsCurse.Type
-                || entity.type == MutantsCurse.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == MutantsCurse.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -411,7 +413,7 @@ namespace QoLCompendium.Tweaks
         {
             return ModConditions.fargosSoulsDLCLoaded &&
                 ModConditions.fargosSoulsDLCMod.TryFind("PandorasBox", out ModItem PandorasBox)
-                && entity.type == PandorasBox.Type && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                && entity.type == PandorasBox.Type && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -471,7 +473,7 @@ namespace QoLCompendium.Tweaks
                 || entity.type == SekibankiSpawner.Type
                 || entity.type == TenshiHinanawiSpawner.Type
                 || entity.type == ToyosatomimiNoMikoSpawner.Type
-                || entity.type == UtsuhoReiujiSpawner.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == UtsuhoReiujiSpawner.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -495,7 +497,7 @@ namespace QoLCompendium.Tweaks
         {
             return ModConditions.gerdsLabLoaded &&
                 ModConditions.gerdsLabMod.TryFind("JackDroneOld", out ModItem JackDroneOld)
-                && entity.type == JackDroneOld.Type && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                && entity.type == JackDroneOld.Type && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -529,7 +531,43 @@ namespace QoLCompendium.Tweaks
                 || entity.type == SunlightCrown.Type
                 || entity.type == MetalSpine.Type
                 || entity.type == UnstableGlobe.Type
-                || entity.type == UltimateTorch.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == UltimateTorch.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
+        }
+
+        public override void SetDefaults(Item item)
+        {
+            item.consumable = false;
+            item.maxStack = 1;
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
+            {
+                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
+            });
+        }
+    }
+
+    public class DontConsumeMetroidSummons : GlobalItem
+    {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
+        {
+            return ModConditions.metroidLoaded &&
+                ModConditions.metroidMod.TryFind("GoldenTorizoSummon", out ModItem GoldenTorizoSummon)
+                && ModConditions.metroidMod.TryFind("KraidSummon", out ModItem KraidSummon)
+                && ModConditions.metroidMod.TryFind("NightmareSummon", out ModItem NightmareSummon)
+                && ModConditions.metroidMod.TryFind("OmegaPirateSummon", out ModItem OmegaPirateSummon)
+                && ModConditions.metroidMod.TryFind("PhantoonSummon", out ModItem PhantoonSummon)
+                && ModConditions.metroidMod.TryFind("SerrisSummon", out ModItem SerrisSummon)
+                && ModConditions.metroidMod.TryFind("TorizoSummon", out ModItem TorizoSummon)
+                && (entity.type == GoldenTorizoSummon.Type
+                || entity.type == KraidSummon.Type
+                || entity.type == NightmareSummon.Type
+                || entity.type == OmegaPirateSummon.Type
+                || entity.type == PhantoonSummon.Type
+                || entity.type == SerrisSummon.Type
+                || entity.type == TorizoSummon.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -569,7 +607,7 @@ namespace QoLCompendium.Tweaks
                 || entity.type == DinoEgg.Type
                 || entity.type == HydraSummon.Type
                 || entity.type == RitualInterupter.Type
-                || entity.type == SummoningRune.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == SummoningRune.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -599,7 +637,7 @@ namespace QoLCompendium.Tweaks
                 && (entity.type == ElectromagneticLure.Type
                 || entity.type == SuspiciousLookingCandle.Type
                 || entity.type == JarOfPeanuts.Type
-                || entity.type == CatalystBomb.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == CatalystBomb.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -641,7 +679,7 @@ namespace QoLCompendium.Tweaks
                 || entity.type == DuskCrown.Type
                 || entity.type == CursedCloth.Type
                 || entity.type == StoneSkin.Type
-                || entity.type == MartianTransmitter.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == MartianTransmitter.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -667,7 +705,7 @@ namespace QoLCompendium.Tweaks
                 ModConditions.spookyMod.TryFind("Fertilizer", out ModItem Fertilizer)
                 && ModConditions.spookyMod.TryFind("RottenSeed", out ModItem RottenSeed)
                 && (entity.type == Fertilizer.Type
-                || entity.type == RottenSeed.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == RottenSeed.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -697,7 +735,7 @@ namespace QoLCompendium.Tweaks
                 && (entity.type == AridBossSummon.Type
                 || entity.type == MoonlingSummoner.Type
                 || entity.type == StormBossSummoner.Type
-                || entity.type == UltimateBossSummoner.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == UltimateBossSummoner.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -723,7 +761,7 @@ namespace QoLCompendium.Tweaks
                 ModConditions.supernovaMod.TryFind("HorridChunk", out ModItem HorridChunk)
                 && ModConditions.supernovaMod.TryFind("MantaFood", out ModItem MantaFood)
                 && (entity.type == HorridChunk.Type
-                || entity.type == MantaFood.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == MantaFood.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -765,7 +803,7 @@ namespace QoLCompendium.Tweaks
                 || entity.type == VoidLens.Type
                 || entity.type == AromaticBulb.Type
                 || entity.type == AbyssalShadow2.Type
-                || entity.type == DoomSayersCoin.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == DoomSayersCoin.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -791,7 +829,7 @@ namespace QoLCompendium.Tweaks
                 ModConditions.valhallaMod.TryFind("HeavensSeal", out ModItem HeavensSeal)
                 && ModConditions.valhallaMod.TryFind("HellishRadish", out ModItem HellishRadish)
                 && (entity.type == HeavensSeal.Type
-                || entity.type == HellishRadish.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == HellishRadish.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -829,7 +867,31 @@ namespace QoLCompendium.Tweaks
                 || entity.type == Dreadcandle.Type
                 || entity.type == AnarchyCrystal.Type
                 || entity.type == TotemofChaos.Type
-                || entity.type == SpiritBox.Type) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == SpiritBox.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
+        }
+
+        public override void SetDefaults(Item item)
+        {
+            item.consumable = false;
+            item.maxStack = 1;
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
+            {
+                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
+            });
+        }
+    }
+
+    public class DontConsumeWayfairSummons : GlobalItem
+    {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
+        {
+            return ModConditions.wayfairContentLoaded &&
+                ModConditions.wayfairContentMod.TryFind("MagicFertilizer", out ModItem MagicFertilizer)
+                && entity.type == MagicFertilizer.Type && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -851,7 +913,7 @@ namespace QoLCompendium.Tweaks
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return ModContent.GetInstance<ItemConfig>().BossSummoners && 
+            return QoLCompendium.itemConfig.BossSummoners && 
                 (entity.type == ModContent.ItemType<ClamSummon>() || entity.type == ModContent.ItemType<CultistSummon>()
                 || entity.type == ModContent.ItemType<DukeSummon>() || entity.type == ModContent.ItemType<EmpressSummon>()
                 || entity.type == ModContent.ItemType<GolemSummon>() || entity.type == ModContent.ItemType<PlanteraSummon>()
@@ -859,7 +921,7 @@ namespace QoLCompendium.Tweaks
                 || entity.type == ModContent.ItemType<MartianSummon>() || entity.type == ModContent.ItemType<PartySummon>()
                 || entity.type == ModContent.ItemType<RainSummon>() || entity.type == ModContent.ItemType<SandstormSummon>()
                 || entity.type == ModContent.ItemType<SlimeRainSummon>() || entity.type == ModContent.ItemType<WindSummon>() 
-                || entity.type == ModContent.ItemType<TravelerArriver>()) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == ModContent.ItemType<TravelerArriver>()) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -892,7 +954,7 @@ namespace QoLCompendium.Tweaks
                 || entity.type == ItemID.GoblinBattleStandard || entity.type == ItemID.PirateMap
                 || entity.type == ItemID.SolarTablet || entity.type == ItemID.SnowGlobe
                 || entity.type == ItemID.PumpkinMoonMedallion || entity.type == ItemID.NaughtyPresent
-                || entity.type == ItemID.DD2ElderCrystal) && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+                || entity.type == ItemID.DD2ElderCrystal) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -910,11 +972,11 @@ namespace QoLCompendium.Tweaks
         }
     }
 
-    public class DontConsumeEterniaCrystal : GlobalItem
+    public class DontConsumeVanillaRightClickSummons : GlobalItem
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return entity.type == ItemID.DD2ElderCrystal && ModContent.GetInstance<QoLCConfig>().EndlessBossSummons;
+            return (entity.type == ItemID.DD2ElderCrystal || entity.type == ItemID.LihzahrdPowerCell) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override bool ConsumeItem(Item item, Player player)
@@ -943,17 +1005,23 @@ namespace QoLCompendium.Tweaks
 
         public override void UpdateInfoAccessory(Item item, Player player)
         {
-            if (!ModContent.GetInstance<QoLCConfig>().ExtraPhoneInfo)
+            if (!QoLCompendium.mainConfig.ExtraPhoneInfo)
             {
                 return;
             }
 
             player.GetModPlayer<QoLCPlayer>().battalionLog = true;
+            player.GetModPlayer<QoLCPlayer>().harmInducer = true;
             player.GetModPlayer<QoLCPlayer>().headCounter = true;
+            player.GetModPlayer<QoLCPlayer>().kettlebell = true;
+            player.GetModPlayer<QoLCPlayer>().luckyDie = true;
             player.GetModPlayer<QoLCPlayer>().metallicClover = true;
+            player.GetModPlayer<QoLCPlayer>().plateCracker = true;
             player.GetModPlayer<QoLCPlayer>().regenerator = true;
+            player.GetModPlayer<QoLCPlayer>().reinforcedPanel = true;
             player.GetModPlayer<QoLCPlayer>().replenisher = true;
             player.GetModPlayer<QoLCPlayer>().trackingDevice = true;
+            player.GetModPlayer<QoLCPlayer>().wingTimer = true;
         }
     }
 
@@ -961,12 +1029,12 @@ namespace QoLCompendium.Tweaks
     {
         public override void SetDefaults(Item item)
         {
-            if (ModContent.GetInstance<QoLCConfig>().NoDevs && ItemID.Sets.BossBag[item.type])
+            if (QoLCompendium.mainConfig.NoDevs && ItemID.Sets.BossBag[item.type])
             {
                 ItemID.Sets.PreHardmodeLikeBossBag[item.type] = true;
             }
 
-            if (ModContent.GetInstance<QoLCConfig>().IncreaseMaxStack)
+            if (QoLCompendium.mainConfig.IncreaseMaxStack)
             {
                 if (item.maxStack > 10 && (item.maxStack != 100) && !(item.type >= ItemID.CopperCoin && item.type <= ItemID.PlatinumCoin))
                 {
@@ -977,7 +1045,7 @@ namespace QoLCompendium.Tweaks
 
         public override void ExtractinatorUse(int extractType, int extractinatorBlockType, ref int resultType, ref int resultStack)
         {
-            if (ModContent.GetInstance<QoLCConfig>().FastExtractor)
+            if (QoLCompendium.mainConfig.FastExtractor)
             {
                 Main.LocalPlayer.itemAnimation = 1;
                 Main.LocalPlayer.itemTime = 1;
@@ -988,13 +1056,13 @@ namespace QoLCompendium.Tweaks
         public override float UseTimeMultiplier(Item item, Player player)
         {
             if (item.pick > 0 || item.hammer > 0 || item.axe > 0)
-                return 1f - ModContent.GetInstance<QoLCConfig>().FastTools;
+                return 1f - QoLCompendium.mainConfig.FastTools;
             return 1f;
         }
 
         public override bool ConsumeItem(Item item, Player player)
         {
-            if (item.consumable == true && item.stack >= ModContent.GetInstance<QoLCConfig>().EndlessAmount && ModContent.GetInstance<QoLCConfig>().EndlessConsumables)
+            if (item.consumable == true && item.stack >= QoLCompendium.mainConfig.EndlessAmount && QoLCompendium.mainConfig.EndlessConsumables)
             {
                 return false;
             }
@@ -1004,7 +1072,7 @@ namespace QoLCompendium.Tweaks
 
         public override bool CanBeConsumedAsAmmo(Item ammo, Item weapon, Player player)
         {
-            if (ammo.ammo > 0 && ammo.stack >= ModContent.GetInstance<QoLCConfig>().EndlessAmount && ModContent.GetInstance<QoLCConfig>().EndlessAmmo)
+            if (ammo.ammo > 0 && ammo.stack >= QoLCompendium.mainConfig.EndlessAmount && QoLCompendium.mainConfig.EndlessAmmo)
             {
                 return false;
             }
@@ -1013,7 +1081,7 @@ namespace QoLCompendium.Tweaks
 
         public override bool? CanConsumeBait(Player player, Item bait)
         {
-            if (bait.bait > 0 && bait.stack >= ModContent.GetInstance<QoLCConfig>().EndlessAmount && ModContent.GetInstance<QoLCConfig>().EndlessBait)
+            if (bait.bait > 0 && bait.stack >= QoLCompendium.mainConfig.EndlessAmount && QoLCompendium.mainConfig.EndlessBait)
             {
                 return false;
             }

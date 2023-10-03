@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace QoLCompendium.Tweaks
@@ -37,6 +38,18 @@ namespace QoLCompendium.Tweaks
                     godKeycard.Register();
                 }
             }
+        }
+
+        public override void AddRecipeGroups()
+        {
+            RecipeGroup group = new(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.Tombstone)}", 
+                ItemID.Tombstone, ItemID.GraveMarker, 
+                ItemID.CrossGraveMarker, ItemID.Headstone, 
+                ItemID.Gravestone, ItemID.Obelisk, 
+                ItemID.RichGravestone1, ItemID.RichGravestone2, 
+                ItemID.RichGravestone3, ItemID.RichGravestone4, 
+                ItemID.RichGravestone5);
+            RecipeGroup.RegisterGroup(nameof(ItemID.Tombstone), group);
         }
     }
 }

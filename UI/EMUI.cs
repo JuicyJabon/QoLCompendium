@@ -24,7 +24,7 @@ namespace QoLCompendium.UI
             ManipulatorPanel.Left.Set(575f, 0f);
             ManipulatorPanel.Top.Set(275f, 0f);
             ManipulatorPanel.Width.Set(290f, 0f);
-            ManipulatorPanel.Height.Set(200f, 0f);
+            ManipulatorPanel.Height.Set(250f, 0f);
             ManipulatorPanel.BackgroundColor = new Color(73, 94, 171);
 
             ManipulatorPanel.OnLeftMouseDown += new MouseEvent(DragStart);
@@ -39,35 +39,35 @@ namespace QoLCompendium.UI
 
             UIText text1 = new("Decrease Spawns");
             text1.Left.Set(45, 0f);
-            text1.Top.Set(46, 0f);
+            text1.Top.Set(56, 0f);
             text1.Width.Set(50, 0f);
             text1.Height.Set(26, 0f);
             ManipulatorPanel.Append(text1);
 
             UIText text2 = new("Cancel Spawns");
             text2.Left.Set(45, 0f);
-            text2.Top.Set(76, 0f);
+            text2.Top.Set(96, 0f);
             text2.Width.Set(40, 0f);
             text2.Height.Set(26, 0f);
             ManipulatorPanel.Append(text2);
 
             UIText text3 = new("Cancel Events");
             text3.Left.Set(45, 0f);
-            text3.Top.Set(106, 0f);
+            text3.Top.Set(136, 0f);
             text3.Width.Set(40, 0f);
             text3.Height.Set(26, 0f);
             ManipulatorPanel.Append(text3);
 
             UIText text4 = new("Cancel Events & Spawns");
             text4.Left.Set(45, 0f);
-            text4.Top.Set(136, 0f);
+            text4.Top.Set(176, 0f);
             text4.Width.Set(40, 0f);
             text4.Height.Set(26, 0f);
             ManipulatorPanel.Append(text4);
 
             UIText text5 = new("Revert Changes");
             text5.Left.Set(45, 0f);
-            text5.Top.Set(166, 0f);
+            text5.Top.Set(216, 0f);
             text5.Width.Set(40, 0f);
             text5.Height.Set(26, 0f);
             ManipulatorPanel.Append(text5);
@@ -87,7 +87,7 @@ namespace QoLCompendium.UI
 
             UIImageButton playButton1 = new(decreaseTexture);
             playButton1.Left.Set(10, 0f);
-            playButton1.Top.Set(40, 0f);
+            playButton1.Top.Set(50, 0f);
             playButton1.Width.Set(32, 0f);
             playButton1.Height.Set(32, 0f);
             playButton1.OnLeftClick += new MouseEvent(PlayButtonClicked1);
@@ -95,7 +95,7 @@ namespace QoLCompendium.UI
 
             UIImageButton playButton2 = new(cancelTexture);
             playButton2.Left.Set(10, 0f);
-            playButton2.Top.Set(70, 0f);
+            playButton2.Top.Set(90, 0f);
             playButton2.Width.Set(32, 0f);
             playButton2.Height.Set(32, 0f);
             playButton2.OnLeftClick += new MouseEvent(PlayButtonClicked2);
@@ -103,7 +103,7 @@ namespace QoLCompendium.UI
 
             UIImageButton playButton3 = new(cancelTexture);
             playButton3.Left.Set(10, 0f);
-            playButton3.Top.Set(100, 0f);
+            playButton3.Top.Set(130, 0f);
             playButton3.Width.Set(32, 0f);
             playButton3.Height.Set(32, 0f);
             playButton3.OnLeftClick += new MouseEvent(PlayButtonClicked3);
@@ -111,7 +111,7 @@ namespace QoLCompendium.UI
 
             UIImageButton playButton4 = new(cancelTexture);
             playButton4.Left.Set(10, 0f);
-            playButton4.Top.Set(130, 0f);
+            playButton4.Top.Set(170, 0f);
             playButton4.Width.Set(32, 0f);
             playButton4.Height.Set(32, 0f);
             playButton4.OnLeftClick += new MouseEvent(PlayButtonClicked4);
@@ -119,7 +119,7 @@ namespace QoLCompendium.UI
 
             UIImageButton playButton5 = new(cancelTexture);
             playButton5.Left.Set(10, 0f);
-            playButton5.Top.Set(160, 0f);
+            playButton5.Top.Set(210, 0f);
             playButton5.Width.Set(32, 0f);
             playButton5.Height.Set(32, 0f);
             playButton5.OnLeftClick += new MouseEvent(PlayButtonClicked5);

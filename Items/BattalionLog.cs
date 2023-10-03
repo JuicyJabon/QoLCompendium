@@ -25,12 +25,12 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().InformationAccessories)
+            if (QoLCompendium.itemConfig.InformationAccessories)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.BambooBlock, 4)
                 .AddIngredient(ItemID.Wood, 2)
-                .AddIngredient(ItemID.IronBar, 2)
+                .AddRecipeGroup(RecipeGroupID.IronBar, 2)
                 .AddTile(TileID.Loom)
                 .Register();
             }

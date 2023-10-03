@@ -204,19 +204,21 @@ namespace QoLCompendium.Tweaks
             CoinValues = list;
         }
 
+        #pragma warning disable CA2211
         public static HashSet<int> CoinTypes;
         public static List<int> CoinValues;
         public const int Copper = 1;
         public const int Silver = 100;
         public const int Gold = 10000;
         public const int Platinum = 1000000;
+        #pragma warning restore CA2211
     }
 
     public class CoinGItem : GlobalItem
     {
         public override void UpdateInventory(Item item, Player player)
         {
-            if (CoinStacker.CoinTypes.Contains(item.type) && ModContent.GetInstance<QoLCConfig>().AutoMoneyStack)
+            if (CoinStacker.CoinTypes.Contains(item.type) && QoLCompendium.mainConfig.AutoMoneyStack)
             {
                 CoinStacker.Pig(player.inventory, player.bank.item);
             }

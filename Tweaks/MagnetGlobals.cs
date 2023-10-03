@@ -16,8 +16,13 @@ namespace QoLCompendium.Tweaks
         {
             MagnetPlayer mPlayer = Main.LocalPlayer.GetModPlayer<MagnetPlayer>();
 
-            if ((item.active && item.playerIndexTheItemIsReservedFor == Main.LocalPlayer.whoAmI) || item.type != ItemID.Heart || item.type != ItemID.CandyApple || item.type != ItemID.CandyCane || item.type != ItemID.Star || item.type != ItemID.SoulCake || item.type != ItemID.SugarPlum || item.type != ItemID.NebulaPickup1 || item.type != ItemID.NebulaPickup2 || item.type != ItemID.NebulaPickup3)
+            if (item.active && item.playerIndexTheItemIsReservedFor == Main.LocalPlayer.whoAmI)
             {
+                if (item.type == ItemID.Heart || item.type == ItemID.CandyApple || item.type == ItemID.CandyCane || item.type == ItemID.Star || item.type == ItemID.SoulCake || item.type == ItemID.SugarPlum || item.type == ItemID.NebulaPickup1 || item.type == ItemID.NebulaPickup2 || item.type == ItemID.NebulaPickup3)
+                {
+                    return;
+                }
+
                 if (Main.LocalPlayer.Distance(item.Center) <= BaseMagnetRange && mPlayer.BaseMagnet)
                 {
                     item.noGrabDelay = 0;
@@ -84,6 +89,15 @@ namespace QoLCompendium.Tweaks
         }
 
         public override void ResetEffects()
+        {
+            BaseMagnet = false;
+            HellMagnet = false;
+            HallowedMagnet = false;
+            SpookyMagnet = false;
+            LunarMagnet = false;
+        }
+
+        public override void UpdateDead()
         {
             BaseMagnet = false;
             HellMagnet = false;

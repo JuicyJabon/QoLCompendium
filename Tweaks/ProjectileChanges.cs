@@ -13,7 +13,7 @@ namespace QoLCompendium.Tweaks
     {
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            if (projectile.bobber && projectile.owner == Main.myPlayer && ModContent.GetInstance<QoLCConfig>().ExtraLures && source is EntitySource_ItemUse)
+            if (projectile.bobber && projectile.owner == Main.myPlayer && QoLCompendium.mainConfig.ExtraLures && source is EntitySource_ItemUse)
             {
                 int split = 1;
 
@@ -88,7 +88,7 @@ namespace QoLCompendium.Tweaks
 
         public override bool PreKill(Projectile projectile, int timeLeft)
         {
-            if (!projectile.friendly && ModContent.GetInstance<QoLCConfig>().NoLittering)
+            if (!projectile.friendly && QoLCompendium.mainConfig.NoLittering)
             {
                 projectile.noDropItem = true;
             }
@@ -96,14 +96,14 @@ namespace QoLCompendium.Tweaks
             return base.PreKill(projectile, timeLeft);
         }
 
-        public override void Kill(Projectile projectile, int timeLeft)
+        public override void OnKill(Projectile projectile, int timeLeft)
         {
             if (projectile.friendly)
             {
                 return;
             }
 
-            if (!ModContent.GetInstance<QoLCConfig>().NoLittering)
+            if (!QoLCompendium.mainConfig.NoLittering)
             {
                 return;
             }
@@ -132,7 +132,7 @@ namespace QoLCompendium.Tweaks
 
         public override void SetDefaults(Projectile projectile)
         {
-            if (!ModContent.GetInstance<QoLCConfig>().NoLittering)
+            if (!QoLCompendium.mainConfig.NoLittering)
             {
                 return;
             }
@@ -140,9 +140,9 @@ namespace QoLCompendium.Tweaks
             projectile.noDropItem = true;
         }
 
-        public override void Kill(Projectile projectile, int timeLeft)
+        public override void OnKill(Projectile projectile, int timeLeft)
         {
-            if (!ModContent.GetInstance<QoLCConfig>().NoLittering)
+            if (!QoLCompendium.mainConfig.NoLittering)
             {
                 return;
             }
@@ -179,7 +179,7 @@ namespace QoLCompendium.Tweaks
 
         public override bool PreKill(Projectile projectile, int timeLeft)
         {
-            if (!ModContent.GetInstance<QoLCConfig>().NoLittering)
+            if (!QoLCompendium.mainConfig.NoLittering)
             {
                 return base.PreKill(projectile, timeLeft);
             }
@@ -223,7 +223,7 @@ namespace QoLCompendium.Tweaks
         public override bool PreAI(Projectile projectile)
         {
 
-            if (!ModContent.GetInstance<QoLCConfig>().NoLittering)
+            if (!QoLCompendium.mainConfig.NoLittering)
             {
                 return base.PreAI(projectile);
             }

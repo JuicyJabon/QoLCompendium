@@ -40,12 +40,14 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().EntityManipulator)
+            if (QoLCompendium.itemConfig.EntityManipulator)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.RubyGemsparkBlock, 20)
-                .AddIngredient(ItemID.Hay, 4)
-                .AddIngredient(ItemID.FlinxFur, 2)
+                .AddIngredient(ItemID.BattlePotion, 5)
+                .AddIngredient(ItemID.WaterCandle, 1)
+                .AddIngredient(ItemID.CalmingPotion, 5)
+                .AddIngredient(ItemID.PeaceCandle, 1)
                 .AddTile(TileID.Anvils)
                 .Register();
             }

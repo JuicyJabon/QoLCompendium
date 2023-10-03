@@ -24,7 +24,7 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().BannerBox)
+            if (QoLCompendium.itemConfig.BannerBox)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.Wood, 12)

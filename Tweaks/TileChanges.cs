@@ -11,7 +11,7 @@ namespace QoLCompendium.Tweaks
     {
         public override void Load()
         {
-            if (ModContent.GetInstance<QoLCConfig>().RegrowthAutoReplant)
+            if (QoLCompendium.mainConfig.RegrowthAutoReplant)
             {
                 On_Player.PlaceThing_Tiles_BlockPlacementForAssortedThings += new On_Player.hook_PlaceThing_Tiles_BlockPlacementForAssortedThings(Player_PlaceThing_Tiles_BlockPlacementForAssortedThings);
                 On_WorldGen.KillTile_GetItemDrops += new On_WorldGen.hook_KillTile_GetItemDrops(WorldGen_KillTile_GetItemDrops);
@@ -109,7 +109,7 @@ namespace QoLCompendium.Tweaks
         public override void Load()
         {
             oldBreak = Main.tileCut[231];
-            if (ModContent.GetInstance<QoLCConfig>().NoLittering)
+            if (QoLCompendium.mainConfig.NoLarvaBreak)
             {
                 Main.tileCut[231] = false;
             }
@@ -125,7 +125,7 @@ namespace QoLCompendium.Tweaks
     {
         public override void RandomUpdate(int i, int j, int type)
         {
-            if (!ModContent.GetInstance<QoLCConfig>().FastTrees || !Main.tile[i, j].HasTile)
+            if (!QoLCompendium.mainConfig.FastTrees || !Main.tile[i, j].HasTile)
             {
                 return;
             }
@@ -165,7 +165,7 @@ namespace QoLCompendium.Tweaks
     {
         public override void Load()
         {
-            if (ModContent.GetInstance<QoLCConfig>().FastHerbs)
+            if (QoLCompendium.mainConfig.FastHerbs)
             {
                 On_TileDrawing.IsAlchemyPlantHarvestable += TileDrawing_IsAlchemyPlantHarvestable;
                 On_WorldGen.IsHarvestableHerbWithSeed += WorldGen_IsHarvestableHerbWithSeed;
@@ -174,7 +174,7 @@ namespace QoLCompendium.Tweaks
 
         private bool TileDrawing_IsAlchemyPlantHarvestable(On_TileDrawing.orig_IsAlchemyPlantHarvestable orig, TileDrawing self, int style)
         {
-            if (ModContent.GetInstance<QoLCConfig>().FastHerbs)
+            if (QoLCompendium.mainConfig.FastHerbs)
             {
                 return true;
             }
@@ -186,7 +186,7 @@ namespace QoLCompendium.Tweaks
 
         private bool WorldGen_IsHarvestableHerbWithSeed(On_WorldGen.orig_IsHarvestableHerbWithSeed orig, int type, int style)
         {
-            if (ModContent.GetInstance<QoLCConfig>().FastHerbs)
+            if (QoLCompendium.mainConfig.FastHerbs)
             {
                 return true;
             }

@@ -30,7 +30,7 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().WatchingEye)
+            if (QoLCompendium.itemConfig.WatchingEye)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.Lens, 4)

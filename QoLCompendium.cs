@@ -1,5 +1,7 @@
 global using static QoLCompendium.QoLCConfig;
+using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
+using System.IO;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.UI;
@@ -19,10 +21,19 @@ namespace QoLCompendium
         internal MoonChangeUI moonChangeUI;
         private UserInterface moonInterface;
 
-        public override uint ExtraPlayerBuffSlots => ModContent.GetInstance<QoLCConfig>().ExtraBuffSlots;
+        public static Mod Instance;
+        internal static QoLCompendium instance;
+        internal static QoLCConfig mainConfig;
+        internal static ItemConfig itemConfig;
+        internal static ShopConfig shopConfig;
+
+        public override uint ExtraPlayerBuffSlots => mainConfig.ExtraBuffSlots;
 
         public override void Load()
         {
+            instance = this;
+            Instance = this;
+
             if (!Main.dedServ)
             {
                 bmShopUI = new BMNPCUI();
@@ -50,6 +61,34 @@ namespace QoLCompendium
                 moonInterface = new UserInterface();
                 moonInterface.SetState(moonChangeUI);
             }
+        }
+
+        public override void Unload()
+        {
+            instance = null;
+            Instance = null;
+            mainConfig = null;
+            itemConfig = null;
+            shopConfig = null;
+        }
+
+        public override void HandlePacket(BinaryReader reader, int whoAmI)
+        {
+            QoLCMessageType msgType = (QoLCMessageType)reader.ReadByte();
+            switch (msgType)
+            {
+                case QoLCMessageType.TeleportPlayer:
+                    TeleportClass.HandleTeleport(reader.ReadInt32(), true, whoAmI);
+                    break;
+                default:
+                    Logger.Error("QoLCompendium: Unknown Message type: " + msgType);
+                    break;
+            }
+        }
+
+        public enum QoLCMessageType : byte
+        {
+            TeleportPlayer
         }
     }
 }

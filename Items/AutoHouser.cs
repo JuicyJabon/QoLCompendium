@@ -17,20 +17,20 @@ namespace QoLCompendium.Items
         {
             Item.width = 17;
             Item.height = 19;
-            Item.maxStack = 9999;
+            Item.maxStack = 1;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item1;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.consumable = true;
+            Item.consumable = false;
             Item.createTile = ModContent.TileType<AutoHouserTile>();
             Item.value = Item.sellPrice(copper: 50);
         }
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().AutoStructures)
+            if (QoLCompendium.itemConfig.AutoStructures)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.GrayBrick, 25)

@@ -11,7 +11,7 @@ namespace QoLCompendium.Items
     {
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipLine line = new(Mod, "Dedicated", "Dedicated")
+            TooltipLine line = new(Mod, "Dedicated", "Dedicated - BladeBurger")
             {
                 OverrideColor = new Color(255, 0, 0)
             };

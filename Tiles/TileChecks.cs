@@ -117,7 +117,7 @@ namespace QoLCompendium.Tiles
             return !TileNull(x, y) && tile.HasTile && Main.tileSolid[tile.TileType] && !Main.tileSolidTop[tile.TileType] && !tile.IsHalfBlock && tile.Slope == SlopeType.Solid && !tile.IsActuated;
         }
 
-        internal static bool SearchBelow(Player player, Func<int, int, bool> toSearch, Color color, string located, int gap)
+        internal static bool SearchBelow(Player player, Func<int, int, bool> toSearch, int gap)
         {
             int num = PlayerCenterTileX(player);
             int num2 = PlayerCenterTileY(player);

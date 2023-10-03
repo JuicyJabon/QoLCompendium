@@ -23,7 +23,7 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().MobileStorages)
+            if (QoLCompendium.itemConfig.MobileStorages)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.DefendersForge, 1)

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,17 +10,21 @@ namespace QoLCompendium.Tweaks
     {
         public override bool ConsumeItem(Item item, Player player)
         {
-            if (ModContent.GetInstance<QoLCConfig>().EndlessBuffsAndHealing)
+            if (QoLCompendium.mainConfig.EndlessBuffs)
             {
-                if (item.buffTime > 0 && item.stack >= ModContent.GetInstance<QoLCConfig>().EndlessBuffAmount)
+                if (item.buffTime > 0 && item.stack >= QoLCompendium.mainConfig.EndlessBuffAmount)
                 {
                     return false;
                 }
-                else if ((item.type == ItemID.RecallPotion || item.type == ItemID.TeleportationPotion || item.type == ItemID.WormholePotion || item.type == ItemID.PotionOfReturn) && item.stack >= ModContent.GetInstance<QoLCConfig>().EndlessBuffAmount)
+                else if ((item.type == ItemID.RecallPotion || item.type == ItemID.TeleportationPotion || item.type == ItemID.WormholePotion || item.type == ItemID.PotionOfReturn || item.type == ItemID.GenderChangePotion || item.type == ItemID.RedPotion) && item.stack >= QoLCompendium.mainConfig.EndlessBuffAmount)
                 {
                     return false;
                 }
-                else if ((item.healLife > 0 || item.healMana > 0) && item.stack >= ModContent.GetInstance<QoLCConfig>().EndlessBuffAmount)
+            }
+
+            if (QoLCompendium.mainConfig.EndlessHealing)
+            {
+                if ((item.healLife > 0 || item.healMana > 0) && item.stack >= QoLCompendium.mainConfig.EndlessHealingAmount)
                 {
                     return false;
                 }
@@ -33,7 +35,9 @@ namespace QoLCompendium.Tweaks
 
     public class BuffPlayer : ModPlayer
     {
+        #pragma warning disable CA2211
         public static float LuckPotionBoost = 0;
+        #pragma warning restore CA2211
 
         public static readonly List<int> AvailableRedPotionBuffs = new() {
             BuffID.ObsidianSkin,
@@ -61,7 +65,7 @@ namespace QoLCompendium.Tweaks
             if (Player.whoAmI != Main.myPlayer)
                 return;
 
-            if (ModContent.GetInstance<QoLCConfig>().EndlessBuffsAndHealing)
+            if (QoLCompendium.mainConfig.EndlessBuffs)
             {
                 ApplyAvailableBuffs(Player.inventory);
                 ApplyAvailableBuffs(Player.bank.item);
@@ -261,9 +265,9 @@ namespace QoLCompendium.Tweaks
 
         public static int GetItemBuffType(Item item)
         {
-            if (ModContent.GetInstance<QoLCConfig>().EndlessBuffsAndHealing)
+            if (QoLCompendium.mainConfig.EndlessBuffs)
             {
-                if (item.stack >= ModContent.GetInstance<QoLCConfig>().EndlessBuffAmount && item.active)
+                if (item.stack >= QoLCompendium.mainConfig.EndlessBuffAmount && item.active)
                 {
                     if (item.buffType > 0)
                         return item.buffType;

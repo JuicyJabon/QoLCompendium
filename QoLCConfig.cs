@@ -11,7 +11,10 @@ namespace QoLCompendium
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Endless")]
         [DefaultValue(true)]
-        public bool EndlessBuffsAndHealing { get; set; }
+        public bool EndlessBuffs { get; set; }
+
+        [DefaultValue(true)]
+        public bool EndlessHealing { get; set; }
 
         [DefaultValue(true)]
         public  bool EndlessAmmo { get; set; }
@@ -30,6 +33,11 @@ namespace QoLCompendium
         [DefaultValue(30)]
         [Range(1, 60)]
         public  int EndlessBuffAmount { get; set; }
+
+        [Slider]
+        [DefaultValue(30)]
+        [Range(1, 60)]
+        public int EndlessHealingAmount { get; set; }
 
         [Slider]
         [DefaultValue(999)]
@@ -121,6 +129,9 @@ namespace QoLCompendium
         [DefaultValue(true)]
         public  bool NoLittering { get; set; }
 
+        [DefaultValue(true)]
+        public bool NoLarvaBreak { get; set; }
+
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Speed")]
         [DefaultValue(true)]
         public  bool IncreasePlaceSpeed { get; set; }
@@ -153,8 +164,10 @@ namespace QoLCompendium
         public  bool LifeformPointer { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public  bool WingSlot { get; set; }
+
+        [DefaultValue(true)]
+        public bool MapPorting { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.World")]
         [DefaultValue(true)]
@@ -174,9 +187,10 @@ namespace QoLCompendium
         [DefaultValue(true)]
         public  bool Halloween { get; set; }
 
-        [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Debug")]
-        [Range(0, 999)]
-        public List<int> DebugMode { get; set; }
+        public override void OnLoaded()
+        {
+            QoLCompendium.mainConfig = this;
+        }
 
         [SeparatePage]
         public class ItemConfig : ModConfig
@@ -203,10 +217,6 @@ namespace QoLCompendium
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool CursedMirror { get; set; }
-
-            [DefaultValue(true)]
-            [ReloadRequired]
             public  bool EntityManipulator { get; set; }
 
             [DefaultValue(true)]
@@ -223,11 +233,19 @@ namespace QoLCompendium
 
             [DefaultValue(true)]
             [ReloadRequired]
+            public bool Mirrors { get; set; }
+
+            [DefaultValue(true)]
+            [ReloadRequired]
             public  bool MobileStorages { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
             public  bool MoonPedestals { get; set; }
+
+            [DefaultValue(true)]
+            [ReloadRequired]
+            public bool Paperweight { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
@@ -244,6 +262,11 @@ namespace QoLCompendium
             [DefaultValue(true)]
             [ReloadRequired]
             public bool DedicatedItems { get; set; }
+
+            public override void OnLoaded()
+            {
+                QoLCompendium.itemConfig = this;
+            }
         }
 
         [SeparatePage]
@@ -342,6 +365,11 @@ namespace QoLCompendium
             [DefaultValue(true)]
             [ReloadRequired]
             public  bool ECHerbShop { get; set; }
+
+            public override void OnLoaded()
+            {
+                QoLCompendium.shopConfig = this;
+            }
         }
     }
 }

@@ -32,12 +32,12 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().AutoStructures)
+            if (QoLCompendium.itemConfig.AutoStructures)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.Dynamite, 25)
                 .AddIngredient(ItemID.Diamond, 5)
-                .AddIngredient(ItemID.IronBar, 2)
+                .AddRecipeGroup(RecipeGroupID.IronBar, 3)
                 .AddTile(TileID.Anvils)
                 .Register();
             }

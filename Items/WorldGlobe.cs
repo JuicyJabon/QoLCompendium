@@ -23,7 +23,7 @@ namespace QoLCompendium.Items
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.rare = ItemRarityID.Green;
-            Item.UseSound = new SoundStyle?(SoundID.MenuTick);
+            Item.UseSound = new SoundStyle?(SoundID.MenuOpen);
             Item.useAnimation = 20;
             Item.useTime = 20;
             Item.value = Item.sellPrice(gold: 2);
@@ -31,15 +31,27 @@ namespace QoLCompendium.Items
 
         public override bool? UseItem(Player player)
         {
-            if (!GlobeUI.visible) GlobeUI.timeStart = Main.GameUpdateCount;
+            if (!GlobeUI.visible)
             GlobeUI.visible = true;
 
             return base.UseItem(player);
         }
 
+        public override bool CanUseItem(Player player)
+        {
+            if (GlobeUI.visible)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().WorldGlobe)
+            if (QoLCompendium.itemConfig.WorldGlobe)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.Glass, 15)
@@ -88,6 +100,11 @@ namespace QoLCompendium.Items
                 if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 7 && Main.hardMode)
                 {
                     player.ZoneHallow = true;
+                }
+
+                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 8)
+                {
+                    player.ZonePurity = true;
                 }
             }
         }

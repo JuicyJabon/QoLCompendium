@@ -32,20 +32,20 @@ namespace QoLCompendium.Items
 
         public override void RightClick(Player player)
         {
-            if (ModContent.GetInstance<QoLCConfig>().CustomItems != null || ModContent.GetInstance<QoLCConfig>().CustomItems.Count > 0)
+            if (QoLCompendium.mainConfig.CustomItems != null || QoLCompendium.mainConfig.CustomItems.Count > 0)
             {
-                if (ModContent.GetInstance<QoLCConfig>().CustomItemQuantities != null)
+                if (QoLCompendium.mainConfig.CustomItemQuantities != null)
                 {
                     loadCount = true;
                 }
-                for (int i = 0; i < ModContent.GetInstance<QoLCConfig>().CustomItems.Count; i++)
+                for (int i = 0; i < QoLCompendium.mainConfig.CustomItems.Count; i++)
                 {
-                    type = ModContent.GetInstance<QoLCConfig>().CustomItems[i].Type;
+                    type = QoLCompendium.mainConfig.CustomItems[i].Type;
                     if (loadCount)
                     {
-                        if (i <= ModContent.GetInstance<QoLCConfig>().CustomItemQuantities.Count - 1)
+                        if (i <= QoLCompendium.mainConfig.CustomItemQuantities.Count - 1)
                         {
-                            player.QuickSpawnItem(null, type, ModContent.GetInstance<QoLCConfig>().CustomItemQuantities[i]);
+                            player.QuickSpawnItem(null, type, QoLCompendium.mainConfig.CustomItemQuantities[i]);
                         }
                         else
                         {

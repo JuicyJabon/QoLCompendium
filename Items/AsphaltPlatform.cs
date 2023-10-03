@@ -29,7 +29,7 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().AsphaltPlatform)
+            if (QoLCompendium.itemConfig.AsphaltPlatform)
             {
                 CreateRecipe(2)
                 .AddIngredient(ItemID.AsphaltBlock, 1)

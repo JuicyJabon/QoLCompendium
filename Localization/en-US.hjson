@@ -10,7 +10,7 @@ Mods: {
 
 			AsphaltPlatform: {
 				DisplayName: Asphalt Platform
-				Tooltip: ""
+				Tooltip: Increases running speed
 			}
 
 			AutoHouser: {
@@ -75,6 +75,11 @@ Mods: {
 					'''
 			}
 
+			DungeonMirror: {
+				DisplayName: Dungeon Mirror
+				Tooltip: Gaze into the mirror to materialize at the Dungeon
+			}
+
 			EclipseIdol: {
 				DisplayName: Eclipse Pedestal
 				Tooltip: Favorite this item to have an eclipse occur every morning
@@ -98,6 +103,11 @@ Mods: {
 					'''
 			}
 
+			Fitbit: {
+				DisplayName: Fitbit
+				Tooltip: Displays endurance, pickaxe speed, and wing time
+			}
+
 			Forwarper: {
 				DisplayName: Forwarper
 				Tooltip: Switches the time from day to night, and vise-versa
@@ -115,6 +125,11 @@ Mods: {
 			HallowedMagnet: {
 				DisplayName: Hallowed Magnet
 				Tooltip: Favorite this item to increase grab range by 2100 tiles
+			}
+
+			HarmInducer: {
+				DisplayName: Harm Inducer
+				Tooltip: Displays the damage multiplier for your held weapon
 			}
 
 			HeadCounter: {
@@ -141,6 +156,16 @@ Mods: {
 				Tooltip: Favorite this item to increase grab range by 1050 tiles
 			}
 
+			Kettlebell: {
+				DisplayName: Kettlebell
+				Tooltip: Displays pickaxe speed
+			}
+
+			LuckyDie: {
+				DisplayName: Lucky Die
+				Tooltip: Displays crit chance
+			}
+
 			LunarMagnet: {
 				DisplayName: Lunar Magnet
 				Tooltip: Favorite this item to increase grab range by 16800 tiles
@@ -161,9 +186,23 @@ Mods: {
 				Tooltip: Displays luck
 			}
 
+			MirrorOfReturn: {
+				DisplayName: Mirror Of Return
+				Tooltip: Gaze into the mirror to materialize at home with a return portal
+			}
+
 			MoonPhaser: {
 				DisplayName: Moon Pedestal
 				Tooltip: Use to select the moon's phase
+			}
+
+			Paperweight: {
+				DisplayName: Paperweight
+				Tooltip:
+					'''
+					Auto-uses your held item when favorited
+					Disabled when inventory is open
+					'''
 			}
 
 			PartySummon: {
@@ -184,14 +223,33 @@ Mods: {
 					'''
 			}
 
+			PlateCracker: {
+				DisplayName: Plate Cracker
+				Tooltip: Displays armor penetration
+			}
+
 			RainSummon: {
 				DisplayName: Gray Cloud
 				Tooltip: Summons the rain
 			}
 
+			RangedAbsolution: {
+				DisplayName: Ranged Absolution
+				Tooltip:
+					'''
+					Costs bullets to swing
+					'Pure anarchy'
+					'''
+			}
+
 			Regenerator: {
 				DisplayName: Regenerator
 				Tooltip: Displays life regen
+			}
+
+			ReinforcedPanel: {
+				DisplayName: Reinforced Panel
+				Tooltip: Displays endurance
 			}
 
 			Replenisher: {
@@ -210,6 +268,7 @@ Mods: {
 					'''
 					Slap them silly!
 					Doubles damage done but you die in one hit
+					Works in accessory and vanity slots, and while held or used
 					'''
 			}
 
@@ -234,7 +293,21 @@ Mods: {
 
 			StarterBag: {
 				DisplayName: Starter Bag
-				Tooltip: Right click to recieve your starting gear
+				Tooltip:
+					'''
+					Right click to recieve your starting gear
+					Make sure to set starting items in the config!
+					'''
+			}
+
+			TempleMirror: {
+				DisplayName: Temple Mirror
+				Tooltip: Gaze into the mirror to materialize at the Temple
+			}
+
+			ToleranceDetector: {
+				DisplayName: Tolerance Detector
+				Tooltip: Displays armor penetration, crit chance, and the damage multiplier for your held weapon
 			}
 
 			TrackingDevice: {
@@ -294,21 +367,6 @@ Mods: {
 					Favorite this item to always be in the selected biome
 					'''
 			}
-
-			HarmInducer: {
-				DisplayName: Harm Inducer
-				Tooltip: Displays the damage multiplier for your held weapon
-			}
-
-			LuckyDie: {
-				DisplayName: Lucky Die
-				Tooltip: Displays crit chance for your held weapon
-			}
-
-			PlateCracker: {
-				DisplayName: Plate Cracker
-				Tooltip: Displays the armor penetration for your held weapon
-			}
 		}
 
 		NPCs: {
@@ -367,6 +425,8 @@ Mods: {
 			HellevatorCreatorProj.DisplayName: Hellevator Creator Projectile
 			LifeformLocator.DisplayName: Lifeform Locator
 			WeightlessSafeProj.DisplayName: Weightless Safe Projectile
+			SillySlapperWhip.DisplayName: Silly Slapper Whip
+			RangedAbsolutionProj.DisplayName: Ranged Absolution Projectile
 		}
 
 		InfoDisplays: {
@@ -379,7 +439,7 @@ Mods: {
 			RegenInfoDisplay.DisplayName: Life Regen
 			SentryInfoDisplay.DisplayName: Sentry Slots
 			SpawnInfoDisplay.DisplayName: Spawn Rate
-			WingInfoDisplay.DisplayName: Wing Time
+			WingTimeInfoDisplay.DisplayName: Wing Time
 		}
 
 		WingSlot: {
@@ -391,13 +451,18 @@ Mods: {
 			QoLCConfig: {
 				DisplayName: Compendium Config
 
-				EndlessBuffsAndHealing: {
-					Label: "[i:188] Endless Buffs And Healing"
+				EndlessBuffs: {
+					Label: "[i:292][i:3198] Endless Buffs"
 					Tooltip:
 						'''
-						Toggles endless buffs & healing
+						Toggles endless buffs
 						You only need 1 buff station for station buffs
 						'''
+				}
+
+				EndlessHealing: {
+					Label: "[i:188] Endless Healing"
+					Tooltip: Toggles endless healing items
 				}
 
 				EndlessAmmo: {
@@ -553,8 +618,13 @@ Mods: {
 				}
 
 				NoLittering: {
-					Label: "[i:169] No Littering or Larva Break"
-					Tooltip: Toggles if certain projectiles don't place their tile & if the Queen's Larva is breakable with projectiles
+					Label: "[i:169] No Littering"
+					Tooltip: Toggles if certain projectiles don't place their tile
+				}
+
+				NoLarvaBreak: {
+					Label: "[i:1133] No Larva Break"
+					Tooltip: Toggles if the Queen's Larva is breakable with projectiles
 				}
 
 				CustomItems: {
@@ -597,6 +667,11 @@ Mods: {
 					Tooltip: Change the amount needed for endless potions
 				}
 
+				EndlessHealingAmount: {
+					Label: "[i:3119] Endless Healing Amount"
+					Tooltip: Change the amount needed for endless healing
+				}
+
 				WingSlot: {
 					Label: "[i:4978] Wing Slot"
 					Tooltip: Toggles wing slot
@@ -631,11 +706,6 @@ Mods: {
 					Label: "[i:313] Fast Herb Growth"
 					Tooltip: Toggles if herbs grow faster
 				}
-
-				DebugMode: {
-					Label: "[i:3084] Debug Mode"
-					Tooltip: Enter the correct digits into the list to activate debug mode
-				}
 			}
 
 			ItemConfig: {
@@ -647,7 +717,7 @@ Mods: {
 				}
 
 				AutoStructures: {
-					Label: "[i:QoLCompendium/HellevatorCreator] AutoStructures"
+					Label: "[i:QoLCompendium/HellevatorCreator] Auto Structures"
 					Tooltip: Toggles Auto Structure related items
 				}
 
@@ -661,13 +731,13 @@ Mods: {
 					Tooltip: Toggles Boss & Event Summon related items
 				}
 
-				CursedMirror: {
-					Label: "[i:QoLCompendium/CursedMirror] Cursed Mirror"
-					Tooltip: Toggles the Cursed Mirror item
+				Mirrors: {
+					Label: "[i:QoLCompendium/CursedMirror] Mirrors"
+					Tooltip: Toggles Mirror related items
 				}
 
 				DedicatedItems: {
-					Label: "[i:QoLCompendium/SillySlapper][i:QoLCompendium/Burger] Dedicated Items"
+					Label: "[i:QoLCompendium/SillySlapper][i:QoLCompendium/Burger][i:QoLCompendium/RangedAbsolution] Dedicated Items"
 					Tooltip: Toggles Dedicated items
 				}
 
@@ -699,6 +769,11 @@ Mods: {
 				MoonPedestals: {
 					Label: "[i:QoLCompendium/MoonPhaser] Moon Pedestals"
 					Tooltip: Toggles Moon Pedestal related items
+				}
+
+				Paperweight: {
+					Label: "[i:QoLCompendium/Paperweight] Paperweight"
+					Tooltip: Toggles the Paperweight item
 				}
 
 				StarterBag: {
@@ -838,7 +913,6 @@ Mods: {
 
 		QoLCConfig: {
 			Headers: {
-				Debug: Debug
 				Endless: Endless Toggles
 				Spawn: Spawn Change Toggles
 				Items: Item Toggles

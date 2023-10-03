@@ -15,19 +15,16 @@ namespace QoLCompendium.Items
 
         public override void SetDefaults()
         {
-            Item.width = 12;
-            Item.height = 12;
-            Item.noUseGraphic = true;
+            Item.width = 13;
+            Item.height = 13;
             Item.maxStack = 1;
-            Item.consumable = false;
-            Item.useStyle = ItemUseStyleID.HiddenAnimation;
             Item.rare = ItemRarityID.Pink;
             Item.value = Item.sellPrice(gold: 3);
         }
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().Magnets)
+            if (QoLCompendium.itemConfig.Magnets)
             {
                 CreateRecipe()
                 .AddIngredient(ModContent.ItemType<HellMagnet>())

@@ -1,53 +1,46 @@
-﻿using CustomSlot;
-using CustomSlot.UI;
-using Terraria;
+﻿using Terraria;
+using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Default;
 
 namespace QoLCompendium.UI
 {
-    public class WingSlotPlayer : ModAccessorySlotPlayer
+    public class WingSlot : ModAccessorySlot
     {
-        private PlayerData<float> panelX = new("panelX", 0f);
-        private PlayerData<float> panelY = new("panelY", 0f);
+        public override string FunctionalTexture => "Terraria/Images/Item_" + ItemID.CreativeWings;
 
-        public override void OnEnterWorld()
+        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
         {
-            WingSlotSystem.UI.Panel.Left.Set(panelX.Value, 0);
-            WingSlotSystem.UI.Panel.Top.Set(panelY.Value, 0);
+            if (checkItem.wingSlot > 0) return true;
+            return false;
         }
-    }
-
-    public class WingSlotSystem : ModSystem
-    {
-        public static AccessorySlotsUI UI;
-
-        public override void Load()
+        public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo)
         {
-            if (!Main.dedServ)
+            if (item.wingSlot > 0) return true;
+            return false;
+        }
+
+        public override bool IsEnabled()
+        {
+            if (QoLCompendium.mainConfig.WingSlot) return true;
+            return false;
+        }
+        public override bool IsVisibleWhenNotEnabled()
+        {
+            return false;
+        }
+
+        public override void OnMouseHover(AccessorySlotType context)
+        {
+            switch (context)
             {
-                UI = new AccessorySlotsUI();
-                UI.Activate();
+                case AccessorySlotType.FunctionalSlot:
+                    Main.hoverItemName = Language.GetTextValue("Mods.QoLCompendium.WingSlot.Wings");
+                    break;
+                case AccessorySlotType.VanitySlot:
+                    Main.hoverItemName = Language.GetTextValue("Mods.QoLCompendium.WingSlot.SocialWings");
+                    break;
             }
-        }
-
-        public override void Unload()
-        {
-            UI = null;
-        }
-    }
-
-    internal class GlobalWingsItem : GlobalItem
-    {
-        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.wingSlot > 0;
-
-        public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
-        {
-            if (ModContent.GetInstance<QoLCConfig>().WingSlot)
-            {
-                return modded;
-            }
-            return base.CanEquipAccessory(item, player, slot, modded);
         }
     }
 }

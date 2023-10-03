@@ -25,7 +25,7 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().MoonPedestals)
+            if (QoLCompendium.itemConfig.MoonPedestals)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.HallowedBar, 4)

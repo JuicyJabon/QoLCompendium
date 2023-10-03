@@ -25,7 +25,7 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().InformationAccessories)
+            if (QoLCompendium.itemConfig.InformationAccessories)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.Vine, 2)

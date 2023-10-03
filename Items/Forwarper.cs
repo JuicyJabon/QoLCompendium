@@ -30,7 +30,7 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().Forwarper)
+            if (QoLCompendium.itemConfig.Forwarper)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.Obsidian, 4)

@@ -53,22 +53,24 @@ namespace QoLCompendium.Tweaks
 
         public override void ClearWorld()
         {
-            CorruptionSpreadDisabled = ModContent.GetInstance<QoLCConfig>().DisableEvilSpread;
+            CorruptionSpreadDisabled = QoLCompendium.mainConfig.DisableEvilSpread;
         }
 
+        #pragma warning disable CA2211
         public static bool CorruptionSpreadDisabled;
+        #pragma warning restore CA2211
     }
 
     public class SeasonalActivation : ModSystem
     {
         public override void PostUpdateWorld()
         {
-            if (ModContent.GetInstance<QoLCConfig>().Halloween)
+            if (QoLCompendium.mainConfig.Halloween)
             {
                 Main.halloween = true;
             }
 
-            if (ModContent.GetInstance<QoLCConfig>().Christmas)
+            if (QoLCompendium.mainConfig.Christmas)
             {
                 Main.xMas = true;
             }
@@ -121,7 +123,7 @@ namespace QoLCompendium.Tweaks
 
         public override void PostDrawFullscreenMap(ref string mouseText)
         {
-            if (ModContent.GetInstance<QoLCConfig>().DebugMode.Contains(15) && ModContent.GetInstance<QoLCConfig>().DebugMode.Contains(20) && ModContent.GetInstance<QoLCConfig>().DebugMode.Contains(23) && ModContent.GetInstance<QoLCConfig>().DebugMode.Contains(50))
+            if (QoLCompendium.mainConfig.MapPorting)
             {
                 TryToTeleportPlayerOnMap();
             }

@@ -39,7 +39,7 @@ namespace QoLCompendium.Items
 
         public override void AddRecipes()
         {
-            if (ModContent.GetInstance<ItemConfig>().BossSummoners)
+            if (QoLCompendium.itemConfig.BossSummoners)
             {
                 CreateRecipe()
                 .AddIngredient(ItemID.LihzahrdBrick, 3)

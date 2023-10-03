@@ -9,7 +9,7 @@ namespace QoLCompendium.Tweaks
     {
         public override void PostAddRecipes()
         {
-            if (!ModContent.GetInstance<QoLCConfig>().ExtraPhoneInfo)
+            if (!QoLCompendium.mainConfig.ExtraPhoneInfo)
             {
                 return;
             }
@@ -20,7 +20,7 @@ namespace QoLCompendium.Tweaks
 
                 if (recipe.HasIngredient(ItemID.GPS) && recipe.HasIngredient(ItemID.FishFinder)
                     && recipe.HasIngredient(ItemID.GoblinTech) && recipe.HasIngredient(ItemID.REK)
-                    && (!recipe.HasIngredient<HeartbeatSensor>() || !recipe.HasIngredient<VitalDisplay>())
+                    && (!recipe.HasIngredient<Fitbit>() || !recipe.HasIngredient<HeartbeatSensor>() || !recipe.HasIngredient<ToleranceDetector>() || !recipe.HasIngredient<VitalDisplay>())
                     && recipe.HasTile(TileID.TinkerersWorkbench)
                     && recipe.HasResult(ItemID.PDA))
                 {
@@ -31,7 +31,7 @@ namespace QoLCompendium.Tweaks
 
         public override void AddRecipes()
         {
-            if (!ModContent.GetInstance<QoLCConfig>().ExtraPhoneInfo)
+            if (!QoLCompendium.mainConfig.ExtraPhoneInfo)
             {
                 return;
             }
@@ -42,7 +42,9 @@ namespace QoLCompendium.Tweaks
             pda.AddIngredient(ItemID.FishFinder);
             pda.AddIngredient(ItemID.GoblinTech);
             pda.AddIngredient(ItemID.REK);
+            pda.AddIngredient<Fitbit>();
             pda.AddIngredient<HeartbeatSensor>();
+            pda.AddIngredient<ToleranceDetector>();
             pda.AddIngredient<VitalDisplay>();
             pda.AddTile(TileID.TinkerersWorkbench);
             pda.Register();

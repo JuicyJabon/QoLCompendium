@@ -20,6 +20,7 @@ namespace QoLCompendium.Tiles
 
         public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
+            noItem = true;
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 int p = Player.FindClosest(new Vector2(i * 16 + 8, j * 16 + 8), 0, 0);
