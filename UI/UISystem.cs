@@ -12,10 +12,10 @@ namespace QoLCompendium.UI
         private UserInterface bmInterface;
         internal ECNPCUI ecShopUI;
         private UserInterface ecInterface;
-        internal GlobeUI globeUI;
-        private UserInterface globeInterface;
-        internal EMUI emUI;
-        private UserInterface emInterface;
+        internal WorldGlobeUI worldGlobeUI;
+        private UserInterface worldGlobeInterface;
+        internal EntityManipulatorUI entityManipulatorUI;
+        private UserInterface entityManipulatorInterface;
         internal MoonChangeUI moonChangeUI;
         private UserInterface moonInterface;
 
@@ -33,15 +33,15 @@ namespace QoLCompendium.UI
                 ecInterface = new UserInterface();
                 ecInterface.SetState(ecShopUI);
 
-                globeUI = new GlobeUI();
-                globeUI.Activate();
-                globeInterface = new UserInterface();
-                globeInterface.SetState(globeUI);
+                worldGlobeUI = new WorldGlobeUI();
+                worldGlobeUI.Activate();
+                worldGlobeInterface = new UserInterface();
+                worldGlobeInterface.SetState(worldGlobeUI);
 
-                emUI = new EMUI();
-                emUI.Activate();
-                emInterface = new UserInterface();
-                emInterface.SetState(emUI);
+                entityManipulatorUI = new EntityManipulatorUI();
+                entityManipulatorUI.Activate();
+                entityManipulatorInterface = new UserInterface();
+                entityManipulatorInterface.SetState(entityManipulatorUI);
 
                 moonChangeUI = new MoonChangeUI();
                 moonChangeUI.Activate();
@@ -89,9 +89,9 @@ namespace QoLCompendium.UI
                     "QoLC: Globe Selector",
                     delegate
                     {
-                        if (GlobeUI.visible)
+                        if (WorldGlobeUI.visible)
                         {
-                            globeUI.Draw(Main.spriteBatch);
+                            worldGlobeUI.Draw(Main.spriteBatch);
                         }
                         return true;
                     },
@@ -104,9 +104,9 @@ namespace QoLCompendium.UI
                     "QoLC: Spawn Selector",
                     delegate
                     {
-                        if (EMUI.visible)
+                        if (EntityManipulatorUI.visible)
                         {
-                            emUI.Draw(Main.spriteBatch);
+                            entityManipulatorUI.Draw(Main.spriteBatch);
                         }
                         return true;
                     },
@@ -142,14 +142,14 @@ namespace QoLCompendium.UI
                 ecInterface.Update(gameTime);
             }
 
-            if (globeInterface != null && GlobeUI.visible)
+            if (worldGlobeInterface != null && WorldGlobeUI.visible)
             {
-                globeInterface.Update(gameTime);
+                worldGlobeInterface.Update(gameTime);
             }
 
-            if (emInterface != null && EMUI.visible)
+            if (entityManipulatorInterface != null && EntityManipulatorUI.visible)
             {
-                emInterface.Update(gameTime);
+                entityManipulatorInterface.Update(gameTime);
             }
 
             if (moonInterface != null && MoonChangeUI.visible)

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using QoLCompendium.Tweaks;
 using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;

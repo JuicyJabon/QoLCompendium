@@ -1,6 +1,17 @@
 Mods: {
 	QoLCompendium: {
 		CommonItemTooltips.NotConsumable: Not Consumable
+		NPCStuff.GoHome: NPCs have been teleported home!
+
+		ItemNames: {
+			MosaicMirror: {
+				CursedMirror: Mosaic Mirror (Cursed)
+				MirrorOfReturn: Mosaic Mirror (Return)
+				TeleportationMirror: Mosaic Mirror (Teleportation)
+				DungeonMirror: Mosaic Mirror (Dungeon)
+				TempleMirror: Mosaic Mirror (Temple)
+			}
+		}
 
 		Items: {
 			AllInOneAccess: {
@@ -156,6 +167,15 @@ Mods: {
 				Tooltip: Favorite this item to increase grab range by 1050 tiles
 			}
 
+			IAH: {
+				DisplayName: IAH
+				Tooltip:
+					'''
+					Displays all modded information
+					'Information Accessory Hotline'
+					'''
+			}
+
 			Kettlebell: {
 				DisplayName: Kettlebell
 				Tooltip: Displays pickaxe speed
@@ -177,7 +197,7 @@ Mods: {
 			}
 
 			MartianSummon: {
-				DisplayName: Mini U.F.O.
+				DisplayName: Martian Core
 				Tooltip: Summons the Martian Madness
 			}
 
@@ -194,6 +214,15 @@ Mods: {
 			MoonPhaser: {
 				DisplayName: Moon Pedestal
 				Tooltip: Use to select the moon's phase
+			}
+
+			MosaicMirror: {
+				DisplayName: Mosaic Mirror
+				Tooltip:
+					'''
+					Right click to toggle destination
+					Displays all modded information
+					'''
 			}
 
 			Paperweight: {
@@ -300,6 +329,11 @@ Mods: {
 					'''
 			}
 
+			TeleportationMirror: {
+				DisplayName: Teleportation Mirror
+				Tooltip: Gaze into the mirror to materialize at a random location
+			}
+
 			TempleMirror: {
 				DisplayName: Temple Mirror
 				Tooltip: Gaze into the mirror to materialize at the Temple
@@ -366,6 +400,56 @@ Mods: {
 					Use to select a biome to be in
 					Favorite this item to always be in the selected biome
 					'''
+			}
+
+			BetsySummon: {
+				DisplayName: Betsy Claw
+				Tooltip: Summons Betsy
+			}
+
+			DarkMageSummon: {
+				DisplayName: Dark Mage's Tome
+				Tooltip: Summons Dark Mage
+			}
+
+			DreadnautilusSummon: {
+				DisplayName: Dreadnautilus Tendrils
+				Tooltip: Summons Dreadnautilus
+			}
+
+			DutchmanSummon: {
+				DisplayName: Skull Bandana
+				Tooltip: Summons the Flying Dutchman
+			}
+
+			GoblinWarlockSummon: {
+				DisplayName: Goblin Warlock Head
+				Tooltip: Summons a Goblin Warlock
+			}
+
+			IceGolemSummon: {
+				DisplayName: Ice Golem Skull
+				Tooltip: Summons an Ice Golem
+			}
+
+			MartianSaucerSummon: {
+				DisplayName: Mini U.F.O.
+				Tooltip: Summons the Martian Saucer
+			}
+
+			MothronSummon: {
+				DisplayName: Broken Mothron Wing
+				Tooltip: Summons a Mothron
+			}
+
+			OgreSummon: {
+				DisplayName: Ogre's Head
+				Tooltip: Summons Ogre
+			}
+
+			SandElementalSummon: {
+				DisplayName: Sand Artifact
+				Tooltip: Summons a Sand Elemental
 			}
 		}
 
@@ -564,8 +648,8 @@ Mods: {
 				}
 
 				IncreasePlaceSpeed: {
-					Label: "[i:2214] Fast Place Speed"
-					Tooltip: Toggles faster placement speed
+					Label: "[i:2214] Increase Place Speed"
+					Tooltip: Increases placement speed
 				}
 
 				IncreasePlaceRange: {
@@ -705,6 +789,45 @@ Mods: {
 				FastHerbs: {
 					Label: "[i:313] Fast Herb Growth"
 					Tooltip: Toggles if herbs grow faster
+				}
+
+				NoChilled: {
+					Label: "[i:664] No Chilled"
+					Tooltip: Makes you immune to expert+ ice biome water
+				}
+
+				NoTownSlimes: {
+					Label: "[i:23] No Town Slimes"
+					Tooltip: Prevents town slimes from moving in
+				}
+
+				AutoTeams: {
+					Label: "[i:3621] Auto Join Team"
+					Tooltip:
+						'''
+						Automatically joins the selected team when connecting to multiplayer
+						0 = Disabled
+						1 = Red
+						2 = Green
+						3 = Blue
+						4 = Yellow
+						5 = Pink
+						'''
+				}
+
+				NoFavoriteTooltip: {
+					Label: "[i:75] No Favorite Tooltip"
+					Tooltip: Removes the favorite tooltip
+				}
+
+				NoTombs: {
+					Label: "[i:321] No Tombstones"
+					Tooltip: Disables tombstones from spawning
+				}
+
+				GoHomeNPCs: {
+					Label: "[i:25] Teleport NPCs Home"
+					Tooltip: Allows teleporting NPCs home with a bindable key
 				}
 			}
 
@@ -926,5 +1049,7 @@ Mods: {
 				ECShop: Collector Shop Toggles
 			}
 		}
+
+		Keybinds.HomeBind.DisplayName: Teleport NPCs Home
 	}
 }

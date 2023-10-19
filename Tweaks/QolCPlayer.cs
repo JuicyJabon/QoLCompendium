@@ -1,5 +1,7 @@
-using Mono.Cecil.Cil;
-using QoLCompendium.Items;
+using QoLCompendium.Items.Dedicated;
+using QoLCompendium.Items.InformationAccessories;
+using QoLCompendium.Items.Mirrors;
+using QoLCompendium.Items.Tools;
 using QoLCompendium.Projectiles;
 using QoLCompendium.UI;
 using System.Collections.Generic;
@@ -9,6 +11,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Tweaks
 {
@@ -64,6 +67,8 @@ namespace QoLCompendium.Tweaks
         internal int safe = -1;
         internal int defenders = -1;
 
+        public bool joinedTeam = false;
+
         public override void ResetEffects()
         {
             Reset();
@@ -72,6 +77,18 @@ namespace QoLCompendium.Tweaks
         public override void UpdateDead()
         {
             Reset();
+        }
+
+        public override void SaveData(TagCompound tag)
+        {
+            tag.Add("SelectedBiome", selectedBiome);
+            tag.Add("SelectedSpawnModifier", selectedSpawnModifier);
+        }
+
+        public override void LoadData(TagCompound tag)
+        {
+            selectedBiome = tag.GetInt("SelectedBiome");
+            selectedSpawnModifier = tag.GetInt("SelectedSpawnModifier");
         }
 
         public override void PreUpdate()
@@ -98,9 +115,9 @@ namespace QoLCompendium.Tweaks
 
         public override void PostUpdate()
         {
-            if (ModConditions.reforgedLoaded && WingSlot.Player.equippedWings.social != true)
+            if (ModConditions.reforgedLoaded && ModAccessorySlot.Player.equippedWings.social != true)
             {
-                ModConditions.reforgedMod.Call("PostUpdateModPlayer", Main.LocalPlayer.whoAmI, WingSlot.Player.equippedWings);
+                ModConditions.reforgedMod.Call("PostUpdateModPlayer", Main.LocalPlayer.whoAmI, ModAccessorySlot.Player.equippedWings);
             }
 
             if (QoLCompendium.mainConfig.FullHPRespawn && respawnFullHPTimer == 0)
@@ -112,13 +129,18 @@ namespace QoLCompendium.Tweaks
             respawnFullHPTimer--;
         }
 
+        public override void PostUpdateEquips()
+        {
+            if (ModContent.GetInstance<QoLCConfig>().NoChilled && Player.wet && Player.ZoneSnow && Main.expertMode)
+            {
+                Player.buffImmune[BuffID.Chilled] = true;
+            }
+        }
+
         public override void PostUpdateMiscEffects()
         {
-            if (QoLCompendium.mainConfig.IncreasePlaceSpeed)
-            {
-                Player.tileSpeed -= 3f;
-                Player.wallSpeed -= 3f;
-            }
+            Player.tileSpeed -= QoLCompendium.mainConfig.IncreasePlaceSpeed;
+            Player.wallSpeed -= QoLCompendium.mainConfig.IncreasePlaceSpeed;
 
             Player.tileRangeX += QoLCompendium.mainConfig.IncreasePlaceRange;
             Player.tileRangeY += QoLCompendium.mainConfig.IncreasePlaceRange;
@@ -197,6 +219,21 @@ namespace QoLCompendium.Tweaks
                     defenders = -1;
                     chests = false;
                 }
+            }
+        }
+
+        public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+        {
+            if (Player != Main.player[Main.myPlayer])
+            {
+                return;
+            }
+
+            if (QoLCompendium.mainConfig.AutoTeams > 0 && joinedTeam == false)
+            {
+                Main.player[Main.myPlayer].team = QoLCompendium.mainConfig.AutoTeams;
+                joinedTeam = true;
+                NetMessage.SendData(MessageID.PlayerTeam, -1, -1, null, Main.myPlayer, QoLCompendium.mainConfig.AutoTeams, 0f, 0f, 0, 0, 0);
             }
         }
 
@@ -384,7 +421,7 @@ namespace QoLCompendium.Tweaks
             }
             if (itemType == ItemID.PortableCementMixer)
             {
-                Player.wallSpeed -= 0.5f;
+                Player.wallSpeed += 0.5f;
             }
             if (itemType == ItemID.PaintSprayer)
             {
@@ -392,13 +429,13 @@ namespace QoLCompendium.Tweaks
             }
             if (itemType == ItemID.BrickLayer)
             {
-                Player.tileSpeed -= 0.5f;
+                Player.tileSpeed += 0.5f;
             }
             if (itemType == ItemID.ArchitectGizmoPack)
             {
                 Player.autoPaint = true;
-                Player.wallSpeed -= 0.5f;
-                Player.tileSpeed -= 0.5f;
+                Player.wallSpeed += 0.5f;
+                Player.tileSpeed += 0.5f;
                 Player.blockRange += 3;
                 Player.tileRangeX += 3;
                 Player.tileRangeY += 3;
@@ -406,8 +443,8 @@ namespace QoLCompendium.Tweaks
             if (itemType == ItemID.HandOfCreation)
             {
                 Player.autoPaint = true;
-                Player.wallSpeed -= 0.5f;
-                Player.tileSpeed -= 0.5f;
+                Player.wallSpeed += 0.5f;
+                Player.tileSpeed += 0.5f;
                 Player.blockRange += 3;
                 Player.tileRangeX += 3;
                 Player.tileRangeY += 3;
@@ -504,17 +541,37 @@ namespace QoLCompendium.Tweaks
             {
                 battalionLog = true;
             }
+            if (itemType == ModContent.ItemType<HarmInducer>())
+            {
+                harmInducer = true;
+            }
             if (itemType == ModContent.ItemType<HeadCounter>())
             {
                 headCounter = true;
+            }
+            if (itemType == ModContent.ItemType<Kettlebell>())
+            {
+                kettlebell = true;
+            }
+            if (itemType == ModContent.ItemType<LuckyDie>())
+            {
+                luckyDie = true;
             }
             if (itemType == ModContent.ItemType<MetallicClover>())
             {
                 metallicClover = true;
             }
+            if (itemType == ModContent.ItemType<PlateCracker>())
+            {
+                plateCracker = true;
+            }
             if (itemType == ModContent.ItemType<Regenerator>())
             {
                 regenerator = true;
+            }
+            if (itemType == ModContent.ItemType<ReinforcedPanel>())
+            {
+                reinforcedPanel = true;
             }
             if (itemType == ModContent.ItemType<Replenisher>())
             {
@@ -524,17 +581,48 @@ namespace QoLCompendium.Tweaks
             {
                 trackingDevice = true;
             }
+            if (itemType == ModContent.ItemType<WingTimer>())
+            {
+                wingTimer = true;
+            }
+            if (itemType == ModContent.ItemType<Fitbit>())
+            {
+                kettlebell = true;
+                reinforcedPanel = true;
+                wingTimer = true;
+            }
             if (itemType == ModContent.ItemType<HeartbeatSensor>())
             {
                 battalionLog = true;
                 headCounter = true;
                 trackingDevice = true;
             }
+            if (itemType == ModContent.ItemType<ToleranceDetector>())
+            {
+                harmInducer = true;
+                luckyDie = true;
+                plateCracker = true;
+            }
             if (itemType == ModContent.ItemType<VitalDisplay>())
             {
                 metallicClover = true;
                 regenerator = true;
                 replenisher = true;
+            }
+            if (itemType == ModContent.ItemType<IAH>() || itemType == ModContent.ItemType<MosaicMirror>())
+            {
+                battalionLog = true;
+                harmInducer = true;
+                headCounter = true;
+                kettlebell = true;
+                luckyDie = true;
+                metallicClover = true;
+                plateCracker = true;
+                regenerator = true;
+                reinforcedPanel = true;
+                replenisher = true;
+                trackingDevice = true;
+                wingTimer = true;
             }
         }
 
@@ -577,6 +665,13 @@ namespace QoLCompendium.Tweaks
             {
                 if (Main.player[Main.myPlayer].talkNPC == -1)
                 {
+                    if (ModLoader.TryGetMod("terraguardians", out Mod terraguardians))
+                    {
+                        if (!(bool)terraguardians.Call("IsPC", Main.LocalPlayer))
+                        {
+                            return;
+                        }
+                    }
                     BMNPCUI.visible = false;
                     ECNPCUI.visible = false;
                 }

@@ -1,4 +1,3 @@
-using Microsoft.CodeAnalysis.Operations;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -971,6 +970,24 @@ namespace QoLCompendium.Tweaks
         public static Condition DownedBeholder = new("ModConditions.downedBeholder", () => downedBeholder);
 
 
+        //UHTRIC
+        internal static bool uhtricLoaded;
+        internal static Mod uhtricMod;
+        internal static bool downedDredger;
+        public static Condition DownedDredger = new("ModConditions.downedDredger", () => downedDredger);
+        internal static bool downedCharcoolSnowman;
+        public static Condition DownedCharcoolSnowman = new("ModConditions.downedCharcoolSnowman", () => downedCharcoolSnowman);
+        internal static bool downedCosmicMenace;
+        public static Condition DownedCosmicMenace = new("ModConditions.downedCosmicMenace", () => downedCosmicMenace);
+
+
+        //UNIVERSE OF SWORDS
+        internal static bool universeOfSwordsLoaded;
+        internal static Mod universeOfSwordsMod;
+        internal static bool downedEvilFlyingBlade;
+        public static Condition DownedEvilFlyingBlade = new("ModConditions.downedEvilFlyingBlade", () => downedEvilFlyingBlade);
+
+
         //VALHALLA
         internal static bool valhallaLoaded;
         internal static Mod valhallaMod;
@@ -1222,6 +1239,14 @@ namespace QoLCompendium.Tweaks
             {
                 traeMod = null;
             }
+            if (!uhtricLoaded)
+            {
+                uhtricMod = null;
+            }
+            if (!universeOfSwordsLoaded)
+            {
+                universeOfSwordsMod = null;
+            }
             if (!valhallaLoaded)
             {
                 valhallaMod = null;
@@ -1442,6 +1467,14 @@ namespace QoLCompendium.Tweaks
             {
                 traeMod = null;
             }
+            if (!uhtricLoaded)
+            {
+                uhtricMod = null;
+            }
+            if (!universeOfSwordsLoaded)
+            {
+                universeOfSwordsMod = null;
+            }
             if (!valhallaLoaded)
             {
                 valhallaMod = null;
@@ -1611,6 +1644,12 @@ namespace QoLCompendium.Tweaks
 
             traeLoaded = ModLoader.TryGetMod("TRAEProject", out Mod TRAEProject);
             traeMod = TRAEProject;
+
+            uhtricLoaded = ModLoader.TryGetMod("Uhtric", out Mod Uhtric);
+            uhtricMod = Uhtric;
+
+            universeOfSwordsLoaded = ModLoader.TryGetMod("UniverseOfSwordsMod", out Mod UniverseOfSwordsMod);
+            universeOfSwordsMod = UniverseOfSwordsMod;
 
             valhallaLoaded = ModLoader.TryGetMod("ValhallaMod", out Mod ValhallaMod);
             valhallaMod = ValhallaMod;
@@ -2038,6 +2077,14 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedGraniteOvergrowth", downedGraniteOvergrowth);
             tag.Add("downedBeholder", downedBeholder);
 
+            //UHTRIC
+            tag.Add("downedDredger", downedDredger);
+            tag.Add("downedCharcoolSnowman", downedCharcoolSnowman);
+            tag.Add("downedCosmicMenace", downedCosmicMenace);
+
+            //UNIVERSE OF SWORDS
+            tag.Add("downedEvilFlyingBlade", downedEvilFlyingBlade);
+
             //VALHALLA
             tag.Add("downedColossalCarnage", downedColossalCarnage);
             tag.Add("downedYurnero", downedYurnero);
@@ -2460,6 +2507,14 @@ namespace QoLCompendium.Tweaks
             //TRAE
             downedGraniteOvergrowth = tag.Get<bool>("downedGraniteOvergrowth");
             downedBeholder = tag.Get<bool>("downedBeholder");
+
+            //UHTRIC
+            downedDredger = tag.Get<bool>("downedDredger");
+            downedCharcoolSnowman = tag.Get<bool>("downedCharcoolSnowman");
+            downedCosmicMenace = tag.Get<bool>("downedCosmicMenace");
+
+            //UNIVERSE OF SWORDS
+            downedEvilFlyingBlade = tag.Get<bool>("downedEvilFlyingBlade");
 
             //VALHALLA
             downedColossalCarnage = tag.Get<bool>("downedColossalCarnage");
@@ -3466,6 +3521,14 @@ namespace QoLCompendium.Tweaks
             //TRAE
             downedGraniteOvergrowth = false;
             downedBeholder = false;
+
+            //UHTRIC
+            downedDredger = false;
+            downedCharcoolSnowman = false;
+            downedCosmicMenace = false;
+
+            //UNIVERSE OF SWORDS
+            downedEvilFlyingBlade = false;
 
             //VALHALLA
             downedColossalCarnage = false;

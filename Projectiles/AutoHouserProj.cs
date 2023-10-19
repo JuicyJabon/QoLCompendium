@@ -15,7 +15,7 @@ namespace QoLCompendium.Projectiles
             Projectile.height = 1;
             Projectile.timeLeft = 1;
         }
-
+        #pragma warning disable IDE0060
         public static void PlaceHouse(int x, int y, Vector2 position, int side, Player player)
         {
             int xPosition = (int)((side * -1) + x + position.X / 16.0f);
@@ -205,5 +205,6 @@ namespace QoLCompendium.Projectiles
                 }
             }
         }
+        #pragma warning restore IDE0060
     }
 }

@@ -1,10 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.Chat;
 using Terraria.ID;
 using Terraria.Localization;
-using Terraria.ModLoader;
 
 namespace QoLCompendium.UI
 {

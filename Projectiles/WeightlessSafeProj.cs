@@ -1,8 +1,7 @@
-﻿using QoLCompendium.Items;
+﻿using QoLCompendium.Items.MobileStorages;
 using QoLCompendium.Tweaks;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 

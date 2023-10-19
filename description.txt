@@ -15,9 +15,11 @@ Current Features:
  - Endless Bait (999+)
  - Endless Ammo (999+)
  - Non-consumable Boss & Event summons
- - Increased max buff slots
+ - No favorite tooltip
+ - Extra buff slots
  - Instant respawn (Singleplayer Only)
  - Full HP on respawn
+ - Auto-join multiplayer teams
  - No enemy spawns during bosses
  - No lava slime lava
  - No door breaking
@@ -25,18 +27,30 @@ Current Features:
  - Editable celestial tower shield health
  - Increased coin drops
  - Increased mining & placing speeds
+ - Increased placing range
+ - Increased max stacks
  - Faster extractinator
  - Automatic coin quick-stacking
  - Informational accessories work in banks
  - Boss bags don't drop vanities
  - Extra fishing lures
+ - Fast herb & tree growth
  - Friendly NPCs become invincible
  - NPC happiness removal
+ - Fast town NPC spawns
+ - Improved town NPC spawns
+ - Teleport NPCs home (Make sure to set a keybind)
+ - No town slimes
  - No world evil spread
+ - No chilled in ice water
  - Seasonal events always
  - Staff of Regrowth auto-plant
  - Wing Slot
  - Map Teleporting
+ - No tombstones
+ - No sand, snow, or tombstone litter
+ - No Queen Bee larva break
+ - Seasonal events always
  - Starter Bag (Make sure to set items in config)
  - Many items for easing the playing experience
  - 2 Town NPCs who sell almost everything needed
@@ -91,6 +105,8 @@ Current Mod Support:
  - Terrorborn: NPC Sales
  - Thorium: Endless Station Buffs, Non-consumable Boss & Event summons & NPC Sales
  - TRAE: NPC Sales
+ - Uhtric: Non-consumable Boss & Event summons & NPC Sales
+ - Universe Of Swords: Non-consumable Boss & Event summons & NPC Sales
  - Valhalla Mod: Non-consumable Boss & Event summons & NPC Sales
  - Verdant: NPC Sales
  - Vitality: Non-consumable Boss & Event summons & NPC Sales

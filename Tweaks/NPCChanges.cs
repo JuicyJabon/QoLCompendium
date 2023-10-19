@@ -1,10 +1,16 @@
 using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using QoLCompendium.Items.InformationAccessories;
 using QoLCompendium.NPCs;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -414,9 +420,9 @@ namespace QoLCompendium.Tweaks
     {
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            if (npc.type == NPCID.WyvernHead)
+            if (npc.type == NPCID.Harpy && QoLCompendium.itemConfig.InformationAccessories)
             {
-                //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WingTimer>(), 5));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WingTimer>(), 5));
             }
         }
     }
@@ -438,6 +444,81 @@ namespace QoLCompendium.Tweaks
                 {
                     NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: bossType);
                 }
+            }
+        }
+    }
+
+    public class NoTownSlimes : GlobalNPC
+    {
+        public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+        {
+            if (QoLCompendium.mainConfig.NoTownSlimes)
+            {
+                pool.Remove(NPCID.TownSlimeBlue);
+                pool.Remove(NPCID.TownSlimeGreen);
+                pool.Remove(NPCID.TownSlimeOld);
+                pool.Remove(NPCID.TownSlimePurple);
+                pool.Remove(NPCID.TownSlimeRainbow);
+                pool.Remove(NPCID.TownSlimeRed);
+                pool.Remove(NPCID.TownSlimeYellow);
+                pool.Remove(NPCID.TownSlimeCopper);
+                pool.Remove(NPCID.BoundTownSlimeOld);
+                pool.Remove(NPCID.BoundTownSlimePurple);
+                pool.Remove(NPCID.BoundTownSlimeYellow);
+            }
+        }
+
+        public override void AI(NPC npc)
+        {
+            if (QoLCompendium.mainConfig.NoTownSlimes)
+            {
+                if (npc.type == NPCID.TownSlimeBlue)
+                {
+                    npc.timeLeft = 0;
+                    npc.active = false;
+                }
+                if (npc.type == NPCID.BoundTownSlimeOld)
+                {
+                    npc.timeLeft = 0;
+                    npc.active = false;
+                }
+                if (npc.type == NPCID.BoundTownSlimePurple)
+                {
+                    npc.timeLeft = 0;
+                    npc.active = false;
+                }
+                if (npc.type == NPCID.BoundTownSlimeYellow)
+                {
+                    npc.timeLeft = 0;
+                    npc.active = false;
+                }
+            }
+        }
+    }
+
+    public class NoTownSlimesSystem : ModSystem
+    {
+        public override void PreUpdateWorld()
+        {
+            if (QoLCompendium.mainConfig.NoTownSlimes)
+            {
+                NPC.unlockedSlimeBlueSpawn = false;
+                NPC.unlockedSlimeCopperSpawn = false;
+                NPC.unlockedSlimeGreenSpawn = false;
+                NPC.unlockedSlimeOldSpawn = false;
+                NPC.unlockedSlimePurpleSpawn = false;
+                NPC.unlockedSlimeRainbowSpawn = false;
+                NPC.unlockedSlimeRedSpawn = false;
+                NPC.unlockedSlimeYellowSpawn = false;
+
+                Main.townNPCCanSpawn[NPCID.TownSlimeBlue] = false;
+                Main.townNPCCanSpawn[NPCID.TownSlimeGreen] = false;
+                Main.townNPCCanSpawn[NPCID.TownSlimeOld] = false;
+                Main.townNPCCanSpawn[NPCID.TownSlimePurple] = false;
+                Main.townNPCCanSpawn[NPCID.TownSlimeRainbow] = false;
+                Main.townNPCCanSpawn[NPCID.TownSlimeRed] = false;
+                Main.townNPCCanSpawn[NPCID.TownSlimeYellow] = false;
+                Main.townNPCCanSpawn[NPCID.TownSlimeCopper] = false;
             }
         }
     }
@@ -1439,6 +1520,30 @@ namespace QoLCompendium.Tweaks
                 if (ModConditions.traeMod.TryFind("BeholderNPC", out ModNPC BeholderNPC) && npc.type == BeholderNPC.Type)
                 {
                     ModConditions.downedBeholder = true;
+                }
+            }
+
+            if (ModConditions.uhtricLoaded)
+            {
+                if (ModConditions.uhtricMod.TryFind("Dredger", out ModNPC Dredger) && npc.type == Dredger.Type)
+                {
+                    ModConditions.downedDredger = true;
+                }
+                if (ModConditions.uhtricMod.TryFind("CharcoolSnowman", out ModNPC CharcoolSnowman) && npc.type == CharcoolSnowman.Type)
+                {
+                    ModConditions.downedCharcoolSnowman = true;
+                }
+                if (ModConditions.uhtricMod.TryFind("CosmicMenace", out ModNPC CosmicMenace) && npc.type == CosmicMenace.Type)
+                {
+                    ModConditions.downedCosmicMenace = true;
+                }
+            }
+
+            if (ModConditions.universeOfSwordsLoaded)
+            {
+                if (ModConditions.universeOfSwordsMod.TryFind("SwordBossNPC", out ModNPC SwordBossNPC) && npc.type == SwordBossNPC.Type)
+                {
+                    ModConditions.downedEvilFlyingBlade = true;
                 }
             }
 

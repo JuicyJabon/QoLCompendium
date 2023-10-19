@@ -775,6 +775,7 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.MarbleBlock)
                     .Add(ItemID.SunplateBlock)
                     .Add(ItemID.MartianConduitPlating, Condition.DownedMartians)
+                    .Add(ItemID.Glass, ModConditions.HasBeenToDesert)
                     .Add(ItemID.AmberGemsparkBlock)
                     .Add(ItemID.AmethystGemsparkBlock)
                     .Add(ItemID.DiamondGemsparkBlock)
@@ -841,6 +842,12 @@ namespace QoLCompendium.NPCs
                     .Add(ItemID.CrimsonSeeds, Condition.DownedEyeOfCthulhu, ModConditions.HasBeenToEvil, ModConditions.DownedBloodMoon)
                     .Add(ItemID.AshGrassSeeds, ModConditions.HasBeenToUnderworld)
                     .Add(ItemID.HallowedSeeds, Condition.Hardmode, ModConditions.HasBeenToHallow)
+                    .Add(ItemID.Coral, ModConditions.HasBeenToOcean)
+                    .Add(ItemID.Starfish, ModConditions.HasBeenToOcean)
+                    .Add(ItemID.Seashell, ModConditions.HasBeenToOcean)
+                    .Add(ItemID.JunoniaShell, ModConditions.HasBeenToOcean)
+                    .Add(ItemID.LightningWhelkShell, ModConditions.HasBeenToOcean)
+                    .Add(ItemID.TulipShell, ModConditions.HasBeenToOcean)
                     .Add(ItemID.Acorn)
                     .Add(ItemID.Fertilizer, Condition.DownedSkeletron);
             plantShop.Register();

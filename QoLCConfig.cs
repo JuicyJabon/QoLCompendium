@@ -74,8 +74,7 @@ namespace QoLCompendium
         public  bool AutoMoneyStack { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
-        public  bool ExtraPhoneInfo { get; set; }
+        public bool NoFavoriteTooltip { get; set; }
 
         public  List<ItemDefinition> CustomItems { get; set; }
 
@@ -97,6 +96,12 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         public  bool TownieSpawn { get; set; }
+
+        [DefaultValue(true)]
+        public bool GoHomeNPCs { get; set; }
+
+        [DefaultValue(true)]
+        public bool NoTownSlimes { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
@@ -133,8 +138,11 @@ namespace QoLCompendium
         public bool NoLarvaBreak { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Speed")]
-        [DefaultValue(true)]
-        public  bool IncreasePlaceSpeed { get; set; }
+        [Slider]
+        [DefaultValue(3f)]
+        [Range(0f, 4f)]
+        [Increment(1f)]
+        public float IncreasePlaceSpeed { get; set; }
 
         [Slider]
         [DefaultValue(6)]
@@ -165,6 +173,18 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         public  bool WingSlot { get; set; }
+
+        [DefaultValue(true)]
+        public bool NoChilled { get; set; }
+
+        [Slider]
+        [DefaultValue(1)]
+        [Range(0, 5)]
+        [Increment(1)]
+        public int AutoTeams { get; set; }
+
+        [DefaultValue(true)]
+        public bool NoTombs { get; set; }
 
         [DefaultValue(true)]
         public bool MapPorting { get; set; }

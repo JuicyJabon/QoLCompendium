@@ -1,4 +1,4 @@
-using QoLCompendium.Items;
+using QoLCompendium.Items.BossAndEventSummons;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -821,6 +821,58 @@ namespace QoLCompendium.Tweaks
         }
     }
 
+    public class DontConsumeUhtricSummons : GlobalItem
+    {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
+        {
+            return ModConditions.uhtricLoaded &&
+                ModConditions.uhtricMod.TryFind("RareGeode", out ModItem RareGeode)
+                && ModConditions.uhtricMod.TryFind("SnowyCharcoal", out ModItem SnowyCharcoal)
+                && ModConditions.uhtricMod.TryFind("CosmicLure", out ModItem CosmicLure)
+                && (entity.type == RareGeode.Type
+                || entity.type == SnowyCharcoal.Type
+                || entity.type == CosmicLure.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
+        }
+
+        public override void SetDefaults(Item item)
+        {
+            item.consumable = false;
+            item.maxStack = 1;
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
+            {
+                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
+            });
+        }
+    }
+
+    public class DontConsumeUniverseOfSwordsSummons : GlobalItem
+    {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
+        {
+            return ModConditions.universeOfSwordsLoaded &&
+                ModConditions.universeOfSwordsMod.TryFind("SwordBossSummon", out ModItem SwordBossSummon)
+                && (entity.type == SwordBossSummon.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
+        }
+
+        public override void SetDefaults(Item item)
+        {
+            item.consumable = false;
+            item.maxStack = 1;
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
+            {
+                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
+            });
+        }
+    }
+
     public class DontConsumeValhallaSummons : GlobalItem
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
@@ -921,6 +973,11 @@ namespace QoLCompendium.Tweaks
                 || entity.type == ModContent.ItemType<MartianSummon>() || entity.type == ModContent.ItemType<PartySummon>()
                 || entity.type == ModContent.ItemType<RainSummon>() || entity.type == ModContent.ItemType<SandstormSummon>()
                 || entity.type == ModContent.ItemType<SlimeRainSummon>() || entity.type == ModContent.ItemType<WindSummon>() 
+                || entity.type == ModContent.ItemType<BetsySummon>() || entity.type == ModContent.ItemType<DarkMageSummon>() 
+                || entity.type == ModContent.ItemType<DreadnautilusSummon>() || entity.type == ModContent.ItemType<DutchmanSummon>() 
+                || entity.type == ModContent.ItemType<GoblinWarlockSummon>() || entity.type == ModContent.ItemType<IceGolemSummon>() 
+                || entity.type == ModContent.ItemType<MartianSaucerSummon>() || entity.type == ModContent.ItemType<MothronSummon>() 
+                || entity.type == ModContent.ItemType<OgreSummon>() || entity.type == ModContent.ItemType<SandElementalSummon>() 
                 || entity.type == ModContent.ItemType<TravelerArriver>()) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
@@ -943,8 +1000,7 @@ namespace QoLCompendium.Tweaks
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return !ModConditions.calamityLoaded && 
-                (entity.type == ItemID.SlimeCrown || entity.type == ItemID.SuspiciousLookingEye 
+            return (entity.type == ItemID.SlimeCrown || entity.type == ItemID.SuspiciousLookingEye 
                 || entity.type == ItemID.WormFood || entity.type == ItemID.BloodySpine
                 || entity.type == ItemID.Abeemination || entity.type == ItemID.DeerThing
                 || entity.type == ItemID.QueenSlimeCrystal || entity.type == ItemID.MechanicalWorm
@@ -982,46 +1038,6 @@ namespace QoLCompendium.Tweaks
         public override bool ConsumeItem(Item item, Player player)
         {
             return false;
-        }
-    }
-
-    public class PhoneInfo : GlobalItem
-    {
-        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
-        {
-            bool vanillaItem = entity.type == ItemID.PDA || entity.type == ItemID.CellPhone ||
-                entity.type == ItemID.Shellphone || entity.type == ItemID.ShellphoneSpawn
-                || entity.type == ItemID.ShellphoneHell || entity.type == ItemID.ShellphoneOcean;
-
-            bool thoriumItem = false;
-
-            if (ModConditions.thoriumLoaded && ModConditions.thoriumMod.TryFind("WishingGlass", out ModItem wishingGlass))
-            {
-                thoriumItem = entity.type == wishingGlass.Type;
-            }
-
-            return vanillaItem || thoriumItem;
-        }
-
-        public override void UpdateInfoAccessory(Item item, Player player)
-        {
-            if (!QoLCompendium.mainConfig.ExtraPhoneInfo)
-            {
-                return;
-            }
-
-            player.GetModPlayer<QoLCPlayer>().battalionLog = true;
-            player.GetModPlayer<QoLCPlayer>().harmInducer = true;
-            player.GetModPlayer<QoLCPlayer>().headCounter = true;
-            player.GetModPlayer<QoLCPlayer>().kettlebell = true;
-            player.GetModPlayer<QoLCPlayer>().luckyDie = true;
-            player.GetModPlayer<QoLCPlayer>().metallicClover = true;
-            player.GetModPlayer<QoLCPlayer>().plateCracker = true;
-            player.GetModPlayer<QoLCPlayer>().regenerator = true;
-            player.GetModPlayer<QoLCPlayer>().reinforcedPanel = true;
-            player.GetModPlayer<QoLCPlayer>().replenisher = true;
-            player.GetModPlayer<QoLCPlayer>().trackingDevice = true;
-            player.GetModPlayer<QoLCPlayer>().wingTimer = true;
         }
     }
 

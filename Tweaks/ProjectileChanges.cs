@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using QoLCompendium.Projectiles;
 using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
+using tModPorter;
 
 namespace QoLCompendium.Tweaks
 {
@@ -243,6 +243,30 @@ namespace QoLCompendium.Tweaks
             projectile.Kill();
 
             return false;
+        }
+    }
+
+    public class RemoveTombstones : ModSystem
+    {
+        public override void Load()
+        {
+            if (QoLCompendium.mainConfig.NoTombs)
+            {
+                On_Player.DropTombstone += NoTombstones;
+            }
+        }
+
+        public override void Unload()
+        {
+            On_Player.DropTombstone -= NoTombstones;
+        }
+
+        private void NoTombstones(On_Player.orig_DropTombstone orig, Player self, long coinsOwned, NetworkText deathText, int hitDirection)
+        {
+            if (!QoLCompendium.mainConfig.NoTombs)
+            {
+                orig(self, coinsOwned, deathText, hitDirection);
+            }
         }
     }
 }
