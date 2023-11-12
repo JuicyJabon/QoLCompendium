@@ -5,14 +5,12 @@ using QoLCompendium.Items.InformationAccessories;
 using QoLCompendium.NPCs;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using tModPorter;
 
 namespace QoLCompendium.Tweaks
 {
@@ -230,78 +228,24 @@ namespace QoLCompendium.Tweaks
     {
         public override void Load()
         {
-            if (QoLCompendium.mainConfig.LavaSlimeNoLava)
-            {
-                IL_NPC.VanillaHitEffect += delegate (ILContext il)
-                {
-                    ILCursor ilcursor = new(il);
-                    ILCursor ilcursor2 = ilcursor;
-                    MoveType moveType = (MoveType)2;
-                    Func<Instruction, bool>[] array = new Func<Instruction, bool>[5];
-                    array[0] = (Instruction i) => ILPatternMatchingExt.MatchCall(i, typeof(Main), "get_expertMode");
-                    array[1] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Brfalse);
-                    array[2] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Ldarg_0);
-                    array[3] = (Instruction i) => ILPatternMatchingExt.MatchLdfld(i, typeof(NPC), "type");
-                    array[4] = (Instruction i) => ILPatternMatchingExt.Match<sbyte>(i, OpCodes.Ldc_I4_S, 59);
-                    if (!ilcursor2.TryGotoNext(moveType, array))
-                    {
-                        return;
-                    }
-                    ilcursor.EmitDelegate((int _) => NPCLoader.NPCCount);
-                    ILCursor ilcursor3 = ilcursor;
-                    MoveType moveType2 = (MoveType)2;
-                    Func<Instruction, bool>[] array2 = new Func<Instruction, bool>[9];
-                    array2[0] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Ldarg_0);
-                    array2[1] = (Instruction i) => ILPatternMatchingExt.MatchLdfld(i, typeof(NPC), "type");
-                    array2[2] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Ldc_I4, 151);
-                    array2[3] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Beq_S);
-                    array2[4] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Ldarg_0);
-                    array2[5] = (Instruction i) => ILPatternMatchingExt.MatchLdfld(i, typeof(NPC), "type");
-                    array2[6] = (Instruction i) => ILPatternMatchingExt.Match<sbyte>(i, OpCodes.Ldc_I4_S, 60);
-                    array2[7] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Bne_Un_S);
-                    array2[8] = (Instruction i) => ILPatternMatchingExt.MatchLdsfld(i, typeof(Main), "netMode");
-                    if (!ilcursor3.TryGotoNext(moveType2, array2))
-                    {
-                        return;
-                    }
-                    ilcursor.EmitDelegate((int _) => 1);
-                };
+            IL_NPC.VanillaHitEffect += LavalessLavaSlime;
+        }
 
-                IL_NPC.VanillaHitEffect += delegate (ILContext il)
-                {
-                    ILCursor ilcursor = new(il);
-                    ILCursor ilcursor2 = ilcursor;
-                    MoveType moveType = (MoveType)2;
-                    Func<Instruction, bool>[] array = new Func<Instruction, bool>[5];
-                    array[0] = (Instruction i) => ILPatternMatchingExt.MatchCall(i, typeof(Main), "get_masterMode");
-                    array[1] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Brfalse);
-                    array[2] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Ldarg_0);
-                    array[3] = (Instruction i) => ILPatternMatchingExt.MatchLdfld(i, typeof(NPC), "type");
-                    array[4] = (Instruction i) => ILPatternMatchingExt.Match<sbyte>(i, OpCodes.Ldc_I4_S, 59);
-                    if (!ilcursor2.TryGotoNext(moveType, array))
-                    {
-                        return;
-                    }
-                    ilcursor.EmitDelegate((int _) => NPCLoader.NPCCount);
-                    ILCursor ilcursor3 = ilcursor;
-                    MoveType moveType2 = (MoveType)2;
-                    Func<Instruction, bool>[] array2 = new Func<Instruction, bool>[9];
-                    array2[0] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Ldarg_0);
-                    array2[1] = (Instruction i) => ILPatternMatchingExt.MatchLdfld(i, typeof(NPC), "type");
-                    array2[2] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Ldc_I4, 151);
-                    array2[3] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Beq_S);
-                    array2[4] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Ldarg_0);
-                    array2[5] = (Instruction i) => ILPatternMatchingExt.MatchLdfld(i, typeof(NPC), "type");
-                    array2[6] = (Instruction i) => ILPatternMatchingExt.Match<sbyte>(i, OpCodes.Ldc_I4_S, 60);
-                    array2[7] = (Instruction i) => ILPatternMatchingExt.Match(i, OpCodes.Bne_Un_S);
-                    array2[8] = (Instruction i) => ILPatternMatchingExt.MatchLdsfld(i, typeof(Main), "netMode");
-                    if (!ilcursor3.TryGotoNext(moveType2, array2))
-                    {
-                        return;
-                    }
-                    ilcursor.EmitDelegate((int _) => 1);
-                };
-            }
+        private void LavalessLavaSlime(ILContext il)
+        {
+            var c = new ILCursor(il);
+
+            if (!c.TryGotoNext(
+                    MoveType.After,
+                    i => i.MatchCall(typeof(Main), "get_expertMode"),
+                    i => i.Match(OpCodes.Brfalse),
+                    i => i.Match(OpCodes.Ldarg_0),
+                    i => i.MatchLdfld(typeof(NPC), nameof(NPC.type)),
+                    i => i.Match(OpCodes.Ldc_I4_S, (sbyte)NPCID.LavaSlime)
+                ))
+                return;
+
+            c.EmitDelegate<Func<int, int>>(returnValue => QoLCompendium.mainConfig.LavaSlimeNoLava ? NPCLoader.NPCCount : returnValue);
         }
     }
 
@@ -309,27 +253,25 @@ namespace QoLCompendium.Tweaks
     {
         public override void Load()
         {
-            if (ModLoader.TryGetMod("NoBreakingDoors", out Mod NoBreakingDoors))
-            {
-                if (NoBreakingDoors != null)
-                {
-                    IL_NPC.AI_003_Fighters -= new ILContext.Manipulator(PreventDoorInteractions);
-                }
-            } 
-            else
-            {
-                if (QoLCompendium.mainConfig.StopOpeningDoors)
-                {
-                    IL_NPC.AI_003_Fighters += new ILContext.Manipulator(PreventDoorInteractions);
-                }
-            }
+            IL_NPC.AI_003_Fighters += PreventDoorInteractions;
         }
 
-        public override void Unload()
-        {
-            IL_NPC.AI_003_Fighters -= new ILContext.Manipulator(PreventDoorInteractions);
-        }
-
+        /// <summary>
+        /// Changes the following check in NPC.AI_003_Fighters:
+        ///
+        /// WorldGen.KillTile(num178, num179 - 1, fail: true);
+        /// if ((Main.netMode != 1 || !flag23) && flag23 && Main.netMode != 1) {
+        /// 	if (type == 26) {
+        ///			WorldGen.KillTile(num178, num179 - 1);
+        ///
+        /// to:
+        ///
+        /// WorldGen.KillTile(num178, num179 - 1, fail: true);
+        /// if ((Main.netMode != 1 || !flag23) && flag23 && !ModContent.GetInstance<DoorOptionsConfig>().StopOpeningDoors && Main.netMode != 1) {
+        /// 	if (type == int.MinValue) {
+        ///			WorldGen.KillTile(num178, num179 - 1);
+        ///
+        /// </summary>
         private void PreventDoorInteractions(ILContext il)
         {
             ILCursor c = new(il);
@@ -379,7 +321,7 @@ namespace QoLCompendium.Tweaks
             }
 
             c.Emit(OpCodes.Ldloc, localIndex);
-            c.EmitDelegate(() => false);
+            c.EmitDelegate(() => QoLCompendium.mainConfig.StopOpeningDoors);
             c.Emit(OpCodes.And);
             c.Emit(OpCodes.Stloc, localIndex);
 
@@ -477,6 +419,11 @@ namespace QoLCompendium.Tweaks
                     npc.timeLeft = 0;
                     npc.active = false;
                 }
+                if (npc.type == NPCID.TownSlimeRed)
+                {
+                    npc.timeLeft = 0;
+                    npc.active = false;
+                }
                 if (npc.type == NPCID.BoundTownSlimeOld)
                 {
                     npc.timeLeft = 0;
@@ -519,6 +466,278 @@ namespace QoLCompendium.Tweaks
                 Main.townNPCCanSpawn[NPCID.TownSlimeRed] = false;
                 Main.townNPCCanSpawn[NPCID.TownSlimeYellow] = false;
                 Main.townNPCCanSpawn[NPCID.TownSlimeCopper] = false;
+            }
+        }
+    }
+
+    public class ModifyShopPrices : GlobalNPC
+    {
+        public override bool InstancePerEntity => true;
+
+        public override void ModifyActiveShop(NPC npc, string shopName, Item[] items)
+        {
+            Player player = Main.LocalPlayer;
+            if (npc.type == ModContent.NPCType<BMDealerNPC>() && player.active && player == Main.player[Main.myPlayer])
+            {
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Potions")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.PotionPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Flasks, Stations & Foods")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        if (item.buffType > 0)
+                        {
+                            item.shopCustomPrice *= QoLCompendium.shopConfig.PotionPriceMultiplier;
+                        }
+                        else
+                        {
+                            item.shopCustomPrice *= QoLCompendium.shopConfig.StationPriceMultiplier;
+                        }
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Materials")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.MaterialPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Movement Accessories")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.AccessoryPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Combat Accessories")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.AccessoryPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Informative/Building Gear")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.AccessoryPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Treasure Bags")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        if (NPC.downedBoss1 && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        if (NPC.downedBoss2 && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        if (NPC.downedBoss3 && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        if (Main.hardMode && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 50000;
+                        }
+                        if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        if (NPC.downedPlantBoss && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        if (NPC.downedGolemBoss && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        if (NPC.downedMoonlord && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.BagPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Crates & Grab Bags")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.CratePriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Ores & Bars")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.OrePriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Natural Blocks")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.NaturalBlockPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Building Blocks")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.BuildingBlockPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Herbs & Plants")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.HerbPriceMultiplier;
+                    }
+                }
+            }
+
+            if (npc.type == ModContent.NPCType<EtherealCollectorNPC>() && player.active && player == Main.player[Main.myPlayer])
+            {
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Potions")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.PotionPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Flasks, Stations & Foods")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        if (item.buffType > 0)
+                        {
+                            item.shopCustomPrice *= QoLCompendium.shopConfig.PotionPriceMultiplier;
+                        }
+                        else
+                        {
+                            item.shopCustomPrice *= QoLCompendium.shopConfig.StationPriceMultiplier;
+                        }
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Materials")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.MaterialPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Treasure Bags")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        if (NPC.downedBoss1 && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        if (NPC.downedBoss2 && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        if (NPC.downedBoss3 && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        if (Main.hardMode && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 50000;
+                        }
+                        if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        if (NPC.downedPlantBoss && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        if (NPC.downedGolemBoss && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        if (NPC.downedMoonlord && QoLCompendium.shopConfig.BossScaling)
+                        {
+                            item.shopCustomPrice += 25000;
+                        }
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.BagPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Crates & Grab Bags")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.CratePriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Ores & Bars")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.OrePriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Natural Blocks")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.NaturalBlockPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Building Blocks")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.BuildingBlockPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Herbs & Plants")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.HerbPriceMultiplier;
+                    }
+                }
+            }
+
+            if ((npc.type == ModContent.NPCType<BMDealerNPC>() || npc.type == ModContent.NPCType<EtherealCollectorNPC>()) && player.active && player == Main.player[Main.myPlayer])
+            {
+                foreach (Item item in items)
+                {
+                    if (item == null || item.type == ItemID.None) continue;
+                    item.shopCustomPrice *= QoLCompendium.shopConfig.GlobalPriceMultiplier;
+                }
             }
         }
     }
@@ -998,6 +1217,43 @@ namespace QoLCompendium.Tweaks
                 if (ModConditions.infernumMod.TryFind("BereftVassal", out ModNPC BereftVassal) && npc.type == BereftVassal.Type)
                 {
                     SubworldModConditions.downedBereftVassal = true;
+                }
+            }
+
+            if (ModConditions.lunarVeilLoaded)
+            {
+                if (ModConditions.lunarVeilMod.TryFind("CommanderGintzia", out ModNPC CommanderGintzia) && npc.type == CommanderGintzia.Type)
+                {
+                    ModConditions.downedCommanderGintzia = true;
+                    ModConditions.downedGintzeArmy = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("SunStalker", out ModNPC SunStalker) && npc.type == SunStalker.Type)
+                {
+                    ModConditions.downedSunStalker = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("Jack", out ModNPC Jack) && npc.type == Jack.Type)
+                {
+                    ModConditions.downedPumpkinJack = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("Daedus", out ModNPC Daedus) && npc.type == Daedus.Type)
+                {
+                    ModConditions.downedForgottenPuppetDaedus = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("DreadMire", out ModNPC DreadMire) && npc.type == DreadMire.Type)
+                {
+                    ModConditions.downedDreadMire = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("SingularityFragment", out ModNPC SingularityFragment) && npc.type == SingularityFragment.Type)
+                {
+                    ModConditions.downedSingularityFragment = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("VerliaB", out ModNPC VerliaB) && npc.type == VerliaB.Type)
+                {
+                    ModConditions.downedVerliaB = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("Gothiviab", out ModNPC Gothiviab) && npc.type == Gothiviab.Type)
+                {
+                    ModConditions.downedGothivia = true;
                 }
             }
 

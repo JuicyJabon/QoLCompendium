@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -272,6 +273,11 @@ namespace QoLCompendium.Tweaks
         //BOSSES
         internal static bool downedAstrageldon;
         public static Condition DownedAstrageldon = new("ModConditions.downedAstrageldon", () => downedAstrageldon);
+
+
+        //CEREBRAL
+        internal static bool cerebralLoaded;
+        internal static Mod cerebralMod;
 
 
         //CLAMITY
@@ -565,6 +571,48 @@ namespace QoLCompendium.Tweaks
         //BIOMES
         internal static bool beenToProfanedGardens;
         public static Condition HasBeenToProfanedGardens = new("ModConditions.beenToProfanedGardens", () => beenToProfanedGardens);
+
+
+        //LUNAR VEIL
+        internal static bool lunarVeilLoaded;
+        internal static Mod lunarVeilMod;
+        //BOSSES
+        internal static bool downedCommanderGintzia;
+        public static Condition DownedCommanderGintzia = new("ModConditions.downedCommanderGintzia", () => downedCommanderGintzia);
+        internal static bool downedSunStalker;
+        public static Condition DownedSunStalker = new("ModConditions.downedSunStalker", () => downedSunStalker);
+        internal static bool downedPumpkinJack;
+        public static Condition DownedPumpkinJack = new("ModConditions.downedPumpkinJack", () => downedPumpkinJack);
+        internal static bool downedForgottenPuppetDaedus;
+        public static Condition DownedForgottenPuppetDaedus = new("ModConditions.downedForgottenPuppetDaedus", () => downedForgottenPuppetDaedus);
+        internal static bool downedDreadMire;
+        public static Condition DownedDreadMire = new("ModConditions.downedDreadMire", () => downedDreadMire);
+        internal static bool downedSingularityFragment;
+        public static Condition DownedSingularityFragment = new("ModConditions.downedSingularityFragment", () => downedSingularityFragment);
+        internal static bool downedVerliaB;
+        public static Condition DownedVerliaB = new("ModConditions.downedVerliaB", () => downedVerliaB);
+        internal static bool downedGothivia;
+        public static Condition DownedGothivia = new("ModConditions.downedGothivia", () => downedGothivia);
+        //EVENTS
+        internal static bool downedGintzeArmy;
+        public static Condition DownedGintzeArmy = new("ModConditions.downedGintzeArmy", () => downedGintzeArmy);
+        //BIOMES
+        internal static bool beenToLunarVeilAbyss;
+        public static Condition HasBeenToLunarVeilAbyss = new("ModConditions.beenToLunarVeilAbyss", () => beenToLunarVeilAbyss);
+        internal static bool beenToAcid;
+        public static Condition HasBeenToAcid = new("ModConditions.beenToAcid", () => beenToAcid);
+        internal static bool beenToAurelus;
+        public static Condition HasBeenToAurelus = new("ModConditions.beenToAurelus", () => beenToAurelus);
+        internal static bool beenToFable;
+        public static Condition HasBeenToFable = new("ModConditions.beenToFable", () => beenToFable);
+        internal static bool beenToGovheilCastle;
+        public static Condition HasBeenToGovheilCastle = new("ModConditions.beenToGovheilCastle", () => beenToGovheilCastle);
+        internal static bool beenToCathedral;
+        public static Condition HasBeenToCathedral = new("ModConditions.beenToCathedral", () => beenToCathedral);
+        internal static bool beenToMarrowSurface;
+        public static Condition HasBeenToMarrowSurface = new("ModConditions.beenToMarrowSurface", () => beenToMarrowSurface);
+        internal static bool beenToMorrowUnderground;
+        public static Condition HasBeenToMorrowUnderground = new("ModConditions.beenToMorrowUnderground", () => beenToMorrowUnderground);
 
 
         //MAGIC STORAGE
@@ -1035,7 +1083,7 @@ namespace QoLCompendium.Tweaks
         internal static bool downedManaflora;
         public static Condition DownedManaflora = new("ModConditions.downedManaflora", () => downedManaflora);
         #endregion
-#pragma warning restore CA2211
+        #pragma warning restore CA2211
 
         public override void Unload()
         {
@@ -1078,6 +1126,10 @@ namespace QoLCompendium.Tweaks
             if (!catalystLoaded)
             {
                 catalystMod = null;
+            }
+            if (!cerebralLoaded)
+            {
+                cerebralMod = null;
             }
             if (!clamityAddonLoaded)
             {
@@ -1166,6 +1218,10 @@ namespace QoLCompendium.Tweaks
             if (!infernumLoaded)
             {
                 infernumMod = null;
+            }
+            if (!lunarVeilLoaded)
+            {
+                lunarVeilMod = null;
             }
             if (!magicStorageLoaded)
             {
@@ -1307,6 +1363,10 @@ namespace QoLCompendium.Tweaks
             {
                 catalystMod = null;
             }
+            if (!cerebralLoaded)
+            {
+                cerebralMod = null;
+            }
             if (!clamityAddonLoaded)
             {
                 clamityAddonMod = null;
@@ -1394,6 +1454,10 @@ namespace QoLCompendium.Tweaks
             if (!infernumLoaded)
             {
                 infernumMod = null;
+            }
+            if (!lunarVeilLoaded)
+            {
+                lunarVeilMod = null;
             }
             if (!magicStorageLoaded)
             {
@@ -1525,6 +1589,9 @@ namespace QoLCompendium.Tweaks
             catalystLoaded = ModLoader.TryGetMod("CatalystMod", out Mod CatalystMod);
             catalystMod = CatalystMod;
 
+            cerebralLoaded = ModLoader.TryGetMod("CerebralMod", out Mod CerebralMod);
+            cerebralMod = CerebralMod;
+
             clamityAddonLoaded = ModLoader.TryGetMod("Clamity", out Mod Clamity);
             clamityAddonMod = Clamity;
 
@@ -1590,6 +1657,9 @@ namespace QoLCompendium.Tweaks
 
             infernumLoaded = ModLoader.TryGetMod("InfernumMode", out Mod InfernumMode);
             infernumMod = InfernumMode;
+
+            lunarVeilLoaded = ModLoader.TryGetMod("Stellamod", out Mod Stellamod);
+            lunarVeilMod = Stellamod;
 
             magicStorageLoaded = ModLoader.TryGetMod("MagicStorage", out Mod MagicStorage);
             magicStorageMod = MagicStorage;
@@ -1667,6 +1737,121 @@ namespace QoLCompendium.Tweaks
         public override void OnWorldLoad()
         {
             Resetdowned();
+
+            if (Main.netMode == NetmodeID.MultiplayerClient || Main.netMode == NetmodeID.Server)
+            {
+                //VANILLA
+                //EVENTS
+                beenThroughNight = true;
+                //BIOMES
+                beenToPurity = true;
+                beenToCavernsOrUnderground = true;
+                beenToUnderworld = true;
+                beenToSky = true;
+                beenToSnow = true;
+                beenToDesert = true;
+                beenToOcean = true;
+                beenToJungle = true;
+                beenToMushroom = true;
+                beenToCorruption = true;
+                beenToCrimson = true;
+                beenToHallow = true;
+                beenToTemple = true;
+                beenToDungeon = true;
+                beenToAether = true;
+
+                //AEQUUS
+                //BIOMES
+                beenToCrabCrevice = true;
+
+                //CAlAMITY
+                //BIOMES
+                beenToCrags = true;
+                beenToAstral = true;
+                beenToSunkenSea = true;
+                beenToSulphurSea = true;
+                beenToAbyss = true;
+                beenToAbyssLayer1 = true;
+                beenToAbyssLayer2 = true;
+                beenToAbyssLayer3 = true;
+                beenToAbyssLayer4 = true;
+
+                //CALAMITY VANITIES
+                //BIOMES
+                beenToAstralBlight = true;
+
+                //CONFECTION
+                //BIOMES
+                beenToConfection = true;
+
+                //DEPTHS
+                //BIOMES
+                beenToDepths = true;
+
+                //FRACTURES OF PENUMBRA
+                //BIOMES
+                beenToDread = true;
+
+                //HOMEWARD JOURNEY
+                //BIOMES
+                beenToHomewardAbyss = true;
+
+                //INFERNUM
+                //BIOMES
+                beenToProfanedGardens = true;
+
+                //LUNAR VEIL
+                //BIOMES
+                beenToLunarVeilAbyss = true;
+                beenToAcid = true;
+                beenToAurelus = true;
+                beenToFable = true;
+                beenToGovheilCastle = true;
+                beenToCathedral = true;
+                beenToMarrowSurface = true;
+                beenToMorrowUnderground = true;
+
+                //QWERTY
+                //BIOMES
+                beenToSkyFortress = true;
+
+                //REDEMPTION
+                //BIOMES
+                beenToLab = true;
+                beenToWasteland = true;
+
+                //SOTS
+                //BIOMES
+                beenToPyramid = true;
+                beenToPlanetarium = true;
+
+                //SPIRIT
+                //BIOMES
+                beenToBriar = true;
+                beenToSpirit = true;
+
+                //SPOOKY
+                //BIOMES
+                beenToSpookyForest = true;
+                beenToSpookyUnderground = true;
+                beenToEyeValley = true;
+                beenToCatacombs = true;
+                beenToCemetery = true;
+
+                //STARLIGHT RIVER
+                //BIOMES
+                beenToAuroracleTemple = true;
+                beenToVitricDesert = true;
+                beenToVitricTemple = true;
+
+                //THORIUM
+                //BIOMES
+                beenToAquaticDepths = true;
+
+                //VERDANT
+                //BIOMES
+                beenToVerdant = true;
+            }
         }
 
         public override void OnWorldUnload()
@@ -1895,6 +2080,27 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedBereftVassal", downedBereftVassal);
             //BIOMES
             tag.Add("beenToProfanedGardens", beenToProfanedGardens);
+
+            //LUNAR VEIL
+            tag.Add("downedCommanderGintzia", downedCommanderGintzia);
+            tag.Add("downedSunStalker", downedSunStalker);
+            tag.Add("downedPumpkinJack", downedPumpkinJack);
+            tag.Add("downedForgottenPuppetDaedus", downedForgottenPuppetDaedus);
+            tag.Add("downedDreadMire", downedDreadMire);
+            tag.Add("downedSingularityFragment", downedSingularityFragment);
+            tag.Add("downedVerliaB", downedVerliaB);
+            tag.Add("downedGothivia", downedGothivia);
+            //EVENT
+            tag.Add("downedGintzeArmy", downedGintzeArmy);
+            //BIOMES
+            tag.Add("beenToLunarVeilAbyss", beenToLunarVeilAbyss);
+            tag.Add("beenToAcid", beenToAcid);
+            tag.Add("beenToAurelus", beenToAurelus);
+            tag.Add("beenToFable", beenToFable);
+            tag.Add("beenToGovheilCastle", beenToGovheilCastle);
+            tag.Add("beenToCathedral", beenToCathedral);
+            tag.Add("beenToMarrowSurface", beenToMarrowSurface);
+            tag.Add("beenToMorrowUnderground", beenToMorrowUnderground);
 
             //MECH REWORK
             tag.Add("downedSt4sys", downedSt4sys);
@@ -2326,6 +2532,27 @@ namespace QoLCompendium.Tweaks
             downedBereftVassal = tag.Get<bool>("downedBereftVassal");
             //BIOMES
             beenToProfanedGardens = tag.Get<bool>("beenToProfanedGardens");
+
+            //LUNAR VEIL
+            downedCommanderGintzia = tag.Get<bool>("downedCommanderGintzia");
+            downedSunStalker = tag.Get<bool>("downedSunStalker");
+            downedPumpkinJack = tag.Get<bool>("downedPumpkinJack");
+            downedForgottenPuppetDaedus = tag.Get<bool>("downedForgottenPuppetDaedus");
+            downedDreadMire = tag.Get<bool>("downedDreadMire");
+            downedSingularityFragment = tag.Get<bool>("downedSingularityFragment");
+            downedVerliaB = tag.Get<bool>("downedVerliaB");
+            downedGothivia = tag.Get<bool>("downedGothivia");
+            //EVENT
+            downedGintzeArmy = tag.Get<bool>("downedGintzeArmy");
+            //BIOMES
+            beenToLunarVeilAbyss = tag.Get<bool>("beenToLunarVeilAbyss");
+            beenToAcid = tag.Get<bool>("beenToAcid");
+            beenToAurelus = tag.Get<bool>("beenToAurelus");
+            beenToFable = tag.Get<bool>("beenToFable");
+            beenToGovheilCastle = tag.Get<bool>("beenToGovheilCastle");
+            beenToCathedral = tag.Get<bool>("beenToCathedral");
+            beenToMarrowSurface = tag.Get<bool>("beenToMarrowSurface");
+            beenToMorrowUnderground = tag.Get<bool>("beenToMorrowUnderground");
 
             //MECH REWORK
             downedSt4sys = tag.Get<bool>("downedSt4sys");
@@ -2896,6 +3123,42 @@ namespace QoLCompendium.Tweaks
                 }
             }
 
+            if (lunarVeilLoaded)
+            {
+                if (lunarVeilMod.TryFind("AbyssBiome", out ModBiome AbyssBiome) && Main.LocalPlayer.InModBiome(AbyssBiome))
+                {
+                    beenToLunarVeilAbyss = true;
+                }
+                if (lunarVeilMod.TryFind("AcidBiome", out ModBiome AcidBiome) && Main.LocalPlayer.InModBiome(AcidBiome))
+                {
+                    beenToAcid = true;
+                }
+                if (lunarVeilMod.TryFind("AurelusBiome", out ModBiome AurelusBiome) && Main.LocalPlayer.InModBiome(AurelusBiome))
+                {
+                    beenToAurelus = true;
+                }
+                if (lunarVeilMod.TryFind("FableBiome", out ModBiome FableBiome) && Main.LocalPlayer.InModBiome(FableBiome))
+                {
+                    beenToFable = true;
+                }
+                if (lunarVeilMod.TryFind("GovheilCastle", out ModBiome GovheilCastle) && Main.LocalPlayer.InModBiome(GovheilCastle))
+                {
+                    beenToGovheilCastle = true;
+                }
+                if (lunarVeilMod.TryFind("CathedralBiome", out ModBiome CathedralBiome) && Main.LocalPlayer.InModBiome(CathedralBiome))
+                {
+                    beenToCathedral = true;
+                }
+                if (lunarVeilMod.TryFind("MarrowSurfaceBiome", out ModBiome MarrowSurfaceBiome) && Main.LocalPlayer.InModBiome(MarrowSurfaceBiome))
+                {
+                    beenToMarrowSurface = true;
+                }
+                if (lunarVeilMod.TryFind("MorrowUndergroundBiome", out ModBiome MorrowUndergroundBiome) && Main.LocalPlayer.InModBiome(MorrowUndergroundBiome))
+                {
+                    beenToMorrowUnderground = true;
+                }
+            }
+
             if (qwertyLoaded)
             {
                 if (qwertyMod.TryFind("FortressBiome", out ModBiome FortressBiome) && Main.LocalPlayer.InModBiome(FortressBiome))
@@ -3337,6 +3600,27 @@ namespace QoLCompendium.Tweaks
             //BIOMES
             beenToProfanedGardens = false;
 
+            //LUNAR VEIL
+            downedCommanderGintzia = false;
+            downedSunStalker = false;
+            downedPumpkinJack = false;
+            downedForgottenPuppetDaedus = false;
+            downedDreadMire = false;
+            downedSingularityFragment = false;
+            downedVerliaB = false;
+            downedGothivia = false;
+            //EVENT
+            downedGintzeArmy = false;
+            //BIOMES
+            beenToLunarVeilAbyss = false;
+            beenToAcid = false;
+            beenToAurelus = false;
+            beenToFable = false;
+            beenToGovheilCastle = false;
+            beenToCathedral = false;
+            beenToMarrowSurface = false;
+            beenToMorrowUnderground = false;
+
             //MECH REWORK
             downedSt4sys = false;
             downedTerminator = false;
@@ -3548,7 +3832,7 @@ namespace QoLCompendium.Tweaks
             downedPaladinSpirit = false;
 
             //WAYFAIR
-            downedPaladinSpirit = false;
+            downedManaflora = false;
         }
     }
 }

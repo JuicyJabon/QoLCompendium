@@ -17,8 +17,6 @@ namespace QoLCompendium.Tweaks
 {
     public class QoLCPlayer : ModPlayer
     {
-        public bool battalionLog = false;
-
         public bool bloodIdol = false;
 
         public bool eclipseIdol = false;
@@ -29,29 +27,7 @@ namespace QoLCompendium.Tweaks
 
         public bool enemyEraser = false;
 
-        public bool harmInducer = false;
-
-        public bool headCounter = false;
-
-        public bool kettlebell = false;
-
-        public bool luckyDie = false;
-
-        public bool metallicClover = false;
-
-        public bool plateCracker = false;
-
-        public bool regenerator = false;
-
-        public bool reinforcedPanel = false;
-
-        public bool replenisher = false;
-
         public bool sillySlapper = false;
-
-        public bool trackingDevice = false;
-
-        public bool wingTimer = false;
 
         public int respawnFullHPTimer = 0;
 
@@ -68,6 +44,11 @@ namespace QoLCompendium.Tweaks
         internal int defenders = -1;
 
         public bool joinedTeam = false;
+
+        public int bossToSpawn = 0;
+        public bool bossSpawn = false;
+        public int eventToSpawn = 0;
+        public bool eventSpawn = false;
 
         public override void ResetEffects()
         {
@@ -539,90 +520,90 @@ namespace QoLCompendium.Tweaks
             }
             if (itemType == ModContent.ItemType<BattalionLog>())
             {
-                battalionLog = true;
+               Player.GetModPlayer<InfoPlayer>().battalionLog = true;
             }
             if (itemType == ModContent.ItemType<HarmInducer>())
             {
-                harmInducer = true;
+                Player.GetModPlayer<InfoPlayer>().harmInducer = true;
             }
             if (itemType == ModContent.ItemType<HeadCounter>())
             {
-                headCounter = true;
+                Player.GetModPlayer<InfoPlayer>().headCounter = true;
             }
             if (itemType == ModContent.ItemType<Kettlebell>())
             {
-                kettlebell = true;
+                Player.GetModPlayer<InfoPlayer>().kettlebell = true;
             }
             if (itemType == ModContent.ItemType<LuckyDie>())
             {
-                luckyDie = true;
+                Player.GetModPlayer<InfoPlayer>().luckyDie = true;
             }
             if (itemType == ModContent.ItemType<MetallicClover>())
             {
-                metallicClover = true;
+                Player.GetModPlayer<InfoPlayer>().metallicClover = true;
             }
             if (itemType == ModContent.ItemType<PlateCracker>())
             {
-                plateCracker = true;
+                Player.GetModPlayer<InfoPlayer>().plateCracker = true;
             }
             if (itemType == ModContent.ItemType<Regenerator>())
             {
-                regenerator = true;
+                Player.GetModPlayer<InfoPlayer>().regenerator = true;
             }
             if (itemType == ModContent.ItemType<ReinforcedPanel>())
             {
-                reinforcedPanel = true;
+                Player.GetModPlayer<InfoPlayer>().reinforcedPanel = true;
             }
             if (itemType == ModContent.ItemType<Replenisher>())
             {
-                replenisher = true;
+                Player.GetModPlayer<InfoPlayer>().replenisher = true;
             }
             if (itemType == ModContent.ItemType<TrackingDevice>())
             {
-                trackingDevice = true;
+                Player.GetModPlayer<InfoPlayer>().trackingDevice = true;
             }
             if (itemType == ModContent.ItemType<WingTimer>())
             {
-                wingTimer = true;
+                Player.GetModPlayer<InfoPlayer>().wingTimer = true;
             }
             if (itemType == ModContent.ItemType<Fitbit>())
             {
-                kettlebell = true;
-                reinforcedPanel = true;
-                wingTimer = true;
+                Player.GetModPlayer<InfoPlayer>().kettlebell = true;
+                Player.GetModPlayer<InfoPlayer>().reinforcedPanel = true;
+                Player.GetModPlayer<InfoPlayer>().wingTimer = true;
             }
             if (itemType == ModContent.ItemType<HeartbeatSensor>())
             {
-                battalionLog = true;
-                headCounter = true;
-                trackingDevice = true;
+                Player.GetModPlayer<InfoPlayer>().battalionLog = true;
+                Player.GetModPlayer<InfoPlayer>().headCounter = true;
+                Player.GetModPlayer<InfoPlayer>().trackingDevice = true;
             }
             if (itemType == ModContent.ItemType<ToleranceDetector>())
             {
-                harmInducer = true;
-                luckyDie = true;
-                plateCracker = true;
+                Player.GetModPlayer<InfoPlayer>().harmInducer = true;
+                Player.GetModPlayer<InfoPlayer>().luckyDie = true;
+                Player.GetModPlayer<InfoPlayer>().plateCracker = true;
             }
             if (itemType == ModContent.ItemType<VitalDisplay>())
             {
-                metallicClover = true;
-                regenerator = true;
-                replenisher = true;
+                Player.GetModPlayer<InfoPlayer>().metallicClover = true;
+                Player.GetModPlayer<InfoPlayer>().regenerator = true;
+                Player.GetModPlayer<InfoPlayer>().replenisher = true;
             }
             if (itemType == ModContent.ItemType<IAH>() || itemType == ModContent.ItemType<MosaicMirror>())
             {
-                battalionLog = true;
-                harmInducer = true;
-                headCounter = true;
-                kettlebell = true;
-                luckyDie = true;
-                metallicClover = true;
-                plateCracker = true;
-                regenerator = true;
-                reinforcedPanel = true;
-                replenisher = true;
-                trackingDevice = true;
-                wingTimer = true;
+                Player.GetModPlayer<InfoPlayer>().battalionLog = true;
+                Player.GetModPlayer<InfoPlayer>().harmInducer = true;
+                Player.GetModPlayer<InfoPlayer>().headCounter = true;
+                Player.GetModPlayer<InfoPlayer>().kettlebell = true;
+                Player.GetModPlayer<InfoPlayer>().luckyDie = true;
+                Player.GetModPlayer<InfoPlayer>().metallicClover = true;
+                Player.GetModPlayer<InfoPlayer>().plateCracker = true;
+                Player.GetModPlayer<InfoPlayer>().regenerator = true;
+                Player.GetModPlayer<InfoPlayer>().reinforcedPanel = true;
+                Player.GetModPlayer<InfoPlayer>().replenisher = true;
+                Player.GetModPlayer<InfoPlayer>().trackingDevice = true;
+                Player.GetModPlayer<InfoPlayer>().wingTimer = true;
             }
         }
 
@@ -642,24 +623,12 @@ namespace QoLCompendium.Tweaks
 
         public void Reset()
         {
-            battalionLog = false;
             bloodIdol = false;
             eclipseIdol = false;
             enemyAggressor = false;
             enemyCalmer = false;
             enemyEraser = false;
-            harmInducer = false;
-            headCounter = false;
-            kettlebell = false;
-            luckyDie = false;
-            metallicClover = false;
-            plateCracker = false;
-            regenerator = false;
-            reinforcedPanel = false;
-            replenisher = false;
             sillySlapper = false;
-            trackingDevice = false;
-            wingTimer = false;
 
             if (Main.netMode != NetmodeID.Server)
             {

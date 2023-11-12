@@ -24,7 +24,7 @@ namespace QoLCompendium.UI
             ShopPanel.Left.Set(575f, 0f);
             ShopPanel.Top.Set(275f, 0f);
             ShopPanel.Width.Set(385f, 0f);
-            ShopPanel.Height.Set(370f, 0f);
+            ShopPanel.Height.Set(400f, 0f);
             ShopPanel.BackgroundColor = new Color(73, 94, 171);
 
             ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
@@ -113,6 +113,13 @@ namespace QoLCompendium.UI
             herbText.Width.Set(60f, 0f);
             herbText.Height.Set(22f, 0f);
             ShopPanel.Append(herbText);
+
+            UIText fishText = new("Fish & Fishing Gear");
+            fishText.Left.Set(35f, 0f);
+            fishText.Top.Set(370f, 0f);
+            fishText.Width.Set(60f, 0f);
+            fishText.Height.Set(22f, 0f);
+            ShopPanel.Append(fishText);
 
             Asset<Texture2D> buttonPlayTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
             Asset<Texture2D> buttonDeleteTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
@@ -261,6 +268,18 @@ namespace QoLCompendium.UI
             herbButton.OnLeftClick += new MouseEvent(HerbShopClicked);
             ShopPanel.Append(herbButton);
 
+            UIImageButton fishButton = new(buttonPlayTexture);
+            if (QoLCompendium.shopConfig.BMFishShop == false)
+            {
+                fishButton = new(buttonDeleteTexture);
+            }
+            fishButton.Left.Set(10f, 0f);
+            fishButton.Top.Set(370f, 0f);
+            fishButton.Width.Set(22f, 0f);
+            fishButton.Height.Set(22f, 0f);
+            fishButton.OnLeftClick += new MouseEvent(FishShopClicked);
+            ShopPanel.Append(fishButton);
+
             UIImageButton closeButton = new(buttonDeleteTexture);
             closeButton.Left.Set(350f, 0f);
             closeButton.Top.Set(10f, 0f);
@@ -375,6 +394,15 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMHerbShop)
             {
                 BMDealerNPC.shopNum = 11;
+                visible = false;
+            }
+        }
+
+        private void FishShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMFishShop)
+            {
+                BMDealerNPC.shopNum = 12;
                 visible = false;
             }
         }

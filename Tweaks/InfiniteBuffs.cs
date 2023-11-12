@@ -1,8 +1,12 @@
-﻿using System;
+﻿using QoLCompendium.Items.FavoriteEffectItems;
+using QoLCompendium.Items.Tools;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Default;
+using Terraria.Social.Base;
 
 namespace QoLCompendium.Tweaks
 {
@@ -95,6 +99,27 @@ namespace QoLCompendium.Tweaks
                     for (int i = 0; i < AvailableRedPotionBuffs.Count; i++)
                     {
                         Main.LocalPlayer.AddBuff(AvailableRedPotionBuffs[i], 2);
+                    }
+                }
+
+                if (item.type == ModContent.ItemType<PotionCrate>())
+                {
+                    for (int i = 0; i < PotionCrate.BuffIDList.Count; i++)
+                    {
+                        Main.LocalPlayer.AddBuff(PotionCrate.BuffIDList[i], 2);
+
+                        if (PotionCrate.ItemIDList.Contains(ItemID.LuckPotionLesser))
+                        {
+                            Math.Max(LuckPotionBoost, 0.1f);
+                        }
+                        if (PotionCrate.ItemIDList.Contains(ItemID.LuckPotion))
+                        {
+                            Math.Max(LuckPotionBoost, 0.2f);
+                        }
+                        if (PotionCrate.ItemIDList.Contains(ItemID.LuckPotionGreater))
+                        {
+                            Math.Max(LuckPotionBoost, 0.3f);
+                        }
                     }
                 }
 

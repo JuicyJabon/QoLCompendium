@@ -20,16 +20,20 @@ namespace QoLCompendium.Projectiles
             bool noChloro = tile.TileType == TileID.Chlorophyte && !(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3);
             bool noLihzahrd = (tile.TileType == TileID.LihzahrdBrick || tile.WallType == WallID.LihzahrdBrickUnsafe) && !NPC.downedGolemBoss;
 
-            if (noDungeon || noHMOre || noChloro || noLihzahrd || TileBelongsToMagicStorage(tile))
+            if (noDungeon || noHMOre || noChloro || noLihzahrd || TileBelongsToMod(tile))
                 return false;
 
             return true;
         }
 
-        public static bool TileBelongsToMagicStorage(Tile tile)
+        public static bool TileIsLiterallyAir(Tile tile)
         {
-            ModLoader.TryGetMod("MagicStorage", out Mod mod);
-            return mod != null && TileLoader.GetTile(tile.TileType)?.Mod == ModLoader.GetMod("MagicStorage");
+            return tile.TileType == 0 && tile.WallType == 0 && tile.LiquidAmount == 0 && tile.TileFrameX == 0 && tile.TileFrameY == 0;
+        }
+
+        public static bool TileBelongsToMod(Tile tile)
+        {
+            return tile.TileType > TileID.Count || tile.WallType > WallID.Count;
         }
     }
 

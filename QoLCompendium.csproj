@@ -8,19 +8,13 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Items\HeadCounter - Copy (2).png" />
-    <None Remove="Items\HeadCounter - Copy.png" />
-    <None Remove="Localization\en-US_Mods.QoLCompendium.hjson" />
-    <None Remove="Tiles\BurgerTile.png" />
-    <None Remove="UI\LuckInfoDisplay.png" />
-    <None Remove="UI\ManaRegenInfoDisplay.png" />
-    <None Remove="UI\RegenInfoDisplay.png" />
-    <None Remove="UI\SpawnInfoDisplay.png" />
+    <None Remove="Items\Placeables\HellBridger.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Folder Include="Assets\Bosses\" />
+    <Folder Include="Assets\Minibosses\" />
   </ItemGroup>
 </Project>

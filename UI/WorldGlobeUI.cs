@@ -24,7 +24,7 @@ namespace QoLCompendium.UI
             GlobePanel.Height.Set(132f, 0f);
             GlobePanel.BackgroundColor = new Color(50, 168, 82);
 
-            UIImageButton resetBiome = new(Request<Texture2D>("QoLCompendium/Assets/Cancel"));
+            UIImageButton resetBiome = new(Request<Texture2D>("QoLCompendium/Assets/UI/Cancel"));
             resetBiome.Left.Set(36f, 0f);
             resetBiome.Top.Set(0f, 0f);
             resetBiome.Width.Set(32, 0f);
@@ -32,7 +32,7 @@ namespace QoLCompendium.UI
             resetBiome.OnLeftClick += new MouseEvent(ResetBiomeClicked);
             GlobePanel.Append(resetBiome);
 
-            UIImageButton desertSelect = new(Request<Texture2D>("QoLCompendium/Assets/Desert"));
+            UIImageButton desertSelect = new(Request<Texture2D>("QoLCompendium/Assets/Biomes/Desert"));
             desertSelect.Left.Set(0, 0f);
             desertSelect.Top.Set(0f, 0f);
             desertSelect.Width.Set(32, 0f);
@@ -40,7 +40,7 @@ namespace QoLCompendium.UI
             desertSelect.OnLeftClick += new MouseEvent(DesertClicked);
             GlobePanel.Append(desertSelect);
 
-            UIImageButton iceSelect = new(Request<Texture2D>("QoLCompendium/Assets/Ice"));
+            UIImageButton iceSelect = new(Request<Texture2D>("QoLCompendium/Assets/Biomes/Ice"));
             iceSelect.Left.Set(0f, 0f);
             iceSelect.Top.Set(42f, 0f);
             iceSelect.Width.Set(32, 0f);
@@ -48,7 +48,7 @@ namespace QoLCompendium.UI
             iceSelect.OnLeftClick += new MouseEvent(IceClicked);
             GlobePanel.Append(iceSelect);
 
-            UIImageButton jungleSelect = new(Request<Texture2D>("QoLCompendium/Assets/Jungle"));
+            UIImageButton jungleSelect = new(Request<Texture2D>("QoLCompendium/Assets/Biomes/Jungle"));
             jungleSelect.Left.Set(0f, 0f);
             jungleSelect.Top.Set(84f, 0f);
             jungleSelect.Width.Set(32, 0f);
@@ -56,7 +56,7 @@ namespace QoLCompendium.UI
             jungleSelect.OnLeftClick += new MouseEvent(JungleClicked);
             GlobePanel.Append(jungleSelect);
 
-            UIImageButton mushroomSelect = new(Request<Texture2D>("QoLCompendium/Assets/GlowingMushroom"));
+            UIImageButton mushroomSelect = new(Request<Texture2D>("QoLCompendium/Assets/Biomes/GlowingMushroom"));
             mushroomSelect.Left.Set(84f, 0f);
             mushroomSelect.Top.Set(0f, 0f);
             mushroomSelect.Width.Set(32, 0f);
@@ -64,7 +64,7 @@ namespace QoLCompendium.UI
             mushroomSelect.OnLeftClick += new MouseEvent(MushroomClicked);
             GlobePanel.Append(mushroomSelect);
 
-            UIImageButton corruptionSelect = new(Request<Texture2D>("QoLCompendium/Assets/Corruption"));
+            UIImageButton corruptionSelect = new(Request<Texture2D>("QoLCompendium/Assets/Biomes/Corruption"));
             corruptionSelect.Left.Set(42f, 0f);
             corruptionSelect.Top.Set(84f, 0f);
             corruptionSelect.Width.Set(32, 0f);
@@ -72,7 +72,7 @@ namespace QoLCompendium.UI
             corruptionSelect.OnLeftClick += new MouseEvent(CorruptionClicked);
             GlobePanel.Append(corruptionSelect);
 
-            UIImageButton crimsonSelect = new(Request<Texture2D>("QoLCompendium/Assets/Crimson"));
+            UIImageButton crimsonSelect = new(Request<Texture2D>("QoLCompendium/Assets/Biomes/Crimson"));
             crimsonSelect.Left.Set(84f, 0f);
             crimsonSelect.Top.Set(42f, 0f);
             crimsonSelect.Width.Set(32, 0f);
@@ -80,7 +80,7 @@ namespace QoLCompendium.UI
             crimsonSelect.OnLeftClick += new MouseEvent(CrimsonClicked);
             GlobePanel.Append(crimsonSelect);
 
-            UIImageButton hallowSelect = new(Request<Texture2D>("QoLCompendium/Assets/Hallow"));
+            UIImageButton hallowSelect = new(Request<Texture2D>("QoLCompendium/Assets/Biomes/Hallow"));
             hallowSelect.Left.Set(84f, 0f);
             hallowSelect.Top.Set(84f, 0f);
             hallowSelect.Width.Set(32f, 0f);
@@ -88,7 +88,7 @@ namespace QoLCompendium.UI
             hallowSelect.OnLeftClick += new MouseEvent(HallowClicked);
             GlobePanel.Append(hallowSelect);
 
-            UIImageButton forestSelect = new(Request<Texture2D>("QoLCompendium/Assets/Forest"));
+            UIImageButton forestSelect = new(Request<Texture2D>("QoLCompendium/Assets/Biomes/Forest"));
             forestSelect.Left.Set(42f, 0f);
             forestSelect.Top.Set(42f, 0f);
             forestSelect.Width.Set(32f, 0f);

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using QoLCompendium.Items.InformationAccessories;
 using QoLCompendium.Tweaks;
+using QoLCompendium.UI;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -264,18 +265,18 @@ namespace QoLCompendium.Items.Mirrors
 
         public override void UpdateInfoAccessory(Player player)
         {
-            player.GetModPlayer<QoLCPlayer>().battalionLog = true;
-            player.GetModPlayer<QoLCPlayer>().harmInducer = true;
-            player.GetModPlayer<QoLCPlayer>().headCounter = true;
-            player.GetModPlayer<QoLCPlayer>().kettlebell = true;
-            player.GetModPlayer<QoLCPlayer>().luckyDie = true;
-            player.GetModPlayer<QoLCPlayer>().metallicClover = true;
-            player.GetModPlayer<QoLCPlayer>().plateCracker = true;
-            player.GetModPlayer<QoLCPlayer>().regenerator = true;
-            player.GetModPlayer<QoLCPlayer>().reinforcedPanel = true;
-            player.GetModPlayer<QoLCPlayer>().replenisher = true;
-            player.GetModPlayer<QoLCPlayer>().trackingDevice = true;
-            player.GetModPlayer<QoLCPlayer>().wingTimer = true;
+            player.GetModPlayer<InfoPlayer>().battalionLog = true;
+            player.GetModPlayer<InfoPlayer>().harmInducer = true;
+            player.GetModPlayer<InfoPlayer>().headCounter = true;
+            player.GetModPlayer<InfoPlayer>().kettlebell = true;
+            player.GetModPlayer<InfoPlayer>().luckyDie = true;
+            player.GetModPlayer<InfoPlayer>().metallicClover = true;
+            player.GetModPlayer<InfoPlayer>().plateCracker = true;
+            player.GetModPlayer<InfoPlayer>().regenerator = true;
+            player.GetModPlayer<InfoPlayer>().reinforcedPanel = true;
+            player.GetModPlayer<InfoPlayer>().replenisher = true;
+            player.GetModPlayer<InfoPlayer>().trackingDevice = true;
+            player.GetModPlayer<InfoPlayer>().wingTimer = true;
         }
 
         public override void AddRecipes()

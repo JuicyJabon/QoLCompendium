@@ -1,10 +1,13 @@
 global using static QoLCompendium.QoLCConfig;
+using QoLCompendium.Items.FavoriteEffectItems;
 using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -22,6 +25,8 @@ namespace QoLCompendium
         private UserInterface entityManipulatorInterface;
         internal MoonChangeUI moonChangeUI;
         private UserInterface moonInterface;
+        internal BossUI bossUI;
+        private UserInterface bossInterface;
 
 
         #pragma warning disable CA2211
@@ -70,6 +75,11 @@ namespace QoLCompendium
                 moonChangeUI.Activate();
                 moonInterface = new UserInterface();
                 moonInterface.SetState(moonChangeUI);
+
+                bossUI = new BossUI();
+                bossUI.Activate();
+                bossInterface = new UserInterface();
+                bossInterface.SetState(bossUI);
             }
         }
 
@@ -80,6 +90,7 @@ namespace QoLCompendium
             mainConfig = null;
             itemConfig = null;
             shopConfig = null;
+            BannerBox.itemToBanner.Clear();
         }
 
         public override void HandlePacket(BinaryReader reader, int whoAmI)
@@ -119,6 +130,37 @@ namespace QoLCompendium
                 BindingFlags.Instance | BindingFlags.NonPublic,
                 new[] { typeof(int), typeof(int) })?
                 .Invoke(npc, new object[] { homeFloorX, homeFloorY });
+        }
+
+        public override void PostSetupContent()
+        {
+            // This code was previously in AddRecipeGroups because "I'm using this as a PostPostSetupContent so all mods are loaded before I access bannerToItem". I don't think this is right, it should be fine here.
+            BannerBox.itemToBanner.Clear();
+            FieldInfo bannerToItemField = typeof(NPCLoader).GetField("bannerToItem", BindingFlags.NonPublic | BindingFlags.Static);
+            Dictionary<int, int> bannerToItem = (Dictionary<int, int>)bannerToItemField.GetValue(null);
+            foreach (var item in bannerToItem)
+            {
+                if (!BannerBox.itemToBanner.ContainsKey(item.Value))
+                {
+                    BannerBox.itemToBanner.Add(item.Value, item.Key);
+                }
+            }
+
+            for (int i = -10; i < NPCID.Count; i++)
+            {
+                int vanillaBannerID = Item.NPCtoBanner(i);
+                if (vanillaBannerID > 0 && !NPCID.Sets.PositiveNPCTypesExcludedFromDeathTally[NPCID.FromNetId(i)])
+                {
+                    int vanillaBannerItemID = Item.BannerToItem(vanillaBannerID);
+                    if (ItemID.Sets.BannerStrength[vanillaBannerItemID].Enabled)
+                    {
+                        if (!BannerBox.itemToBanner.ContainsKey(vanillaBannerItemID))
+                        {
+                            BannerBox.itemToBanner.Add(vanillaBannerItemID, vanillaBannerID);
+                        }
+                    }
+                }
+            }
         }
     }
 }

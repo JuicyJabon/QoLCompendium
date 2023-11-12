@@ -67,6 +67,7 @@ Current Mod Support:
  - Calamity: Endless Station Buffs & NPC Sales
  - Calamity's Vanities: NPC Sales
  - Catalyst: NPC Sales
+ - Cerebral Mod: NPC Sales
  - Clamity Addon: NPC Sales
  - Clicker Class: NPC Sales
  - Confection Rebaked: NPC Sales

@@ -72,9 +72,9 @@ namespace QoLCompendium.UI
             text5.Height.Set(26, 0f);
             ManipulatorPanel.Append(text5);
 
-            Asset<Texture2D> decreaseTexture = Request<Texture2D>("QoLCompendium/Assets/Decrease");
-            Asset<Texture2D> increaseTexture = Request<Texture2D>("QoLCompendium/Assets/Increase");
-            Asset<Texture2D> cancelTexture = Request<Texture2D>("QoLCompendium/Assets/Cancel");
+            Asset<Texture2D> decreaseTexture = Request<Texture2D>("QoLCompendium/Assets/UI/Decrease");
+            Asset<Texture2D> increaseTexture = Request<Texture2D>("QoLCompendium/Assets/UI/Increase");
+            Asset<Texture2D> cancelTexture = Request<Texture2D>("QoLCompendium/Assets/UI/Cancel");
             Asset<Texture2D> buttonDeleteTexture = Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
 
             UIImageButton playButton0 = new(increaseTexture);

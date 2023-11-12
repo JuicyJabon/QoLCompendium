@@ -31,7 +31,13 @@ Mods: {
 
 			BannerBox: {
 				DisplayName: Banner Box
-				Tooltip: Favorite this item to recieve banner buffs for enemies with 50 kills logged
+				Tooltip:
+					'''
+					Used to store banners
+					Right click while holding a banner to store
+					Right click with an empty hand to retrieve deposited banners
+					Works only while favorited in the inventory
+					'''
 			}
 
 			BattalionLog: {
@@ -451,6 +457,36 @@ Mods: {
 				DisplayName: Sand Artifact
 				Tooltip: Summons a Sand Elemental
 			}
+
+			PotionCrate: {
+				DisplayName: Potion Crate
+				Tooltip:
+					'''
+					Used to store potions and apply buffs
+					Right click while holding a stack of 30 potions to deposit them
+					Right click with an empty hand to retrieve deposited potions
+					Applies buffs from any storage
+					'''
+			}
+
+			SummoningRemote: {
+				DisplayName: Summoning Remote
+				Tooltip:
+					'''
+					Right click while holding to open the selector UI
+					Left click to summon the selected boss or event
+					Restrictions apply based on progression
+					'''
+			}
+
+			Hellbridger: {
+				DisplayName: Hellbridger
+				Tooltip:
+					'''
+					Creates a drill bomb that carves a hellbridge across the entire world
+					Will not destroy modded structures
+					'''
+			}
 		}
 
 		NPCs: {
@@ -511,14 +547,17 @@ Mods: {
 			WeightlessSafeProj.DisplayName: Weightless Safe Projectile
 			SillySlapperWhip.DisplayName: Silly Slapper Whip
 			RangedAbsolutionProj.DisplayName: Ranged Absolution Projectile
+			HellbridgerProj.DisplayName: Hellbridger Projectile
 		}
 
 		InfoDisplays: {
 			ArmorPenetrationInfoDisplay.DisplayName: Armor Penetration
 			CritInfoDisplay.DisplayName: Crit Chance
 			DamageInfoDisplay.DisplayName: Damage Multiplier
+			EnduranceInfoDisplay.DisplayName: Endurance
 			LuckInfoDisplay.DisplayName: Luck
 			ManaRegenInfoDisplay.DisplayName: Mana Regen
+			MiningSpeedInfoDisplay.DisplayName: Mining Speed
 			MinionInfoDisplay.DisplayName: Minion Slots
 			RegenInfoDisplay.DisplayName: Life Regen
 			SentryInfoDisplay.DisplayName: Sentry Slots
@@ -849,9 +888,9 @@ Mods: {
 					Tooltip: Toggles the Banner Box item
 				}
 
-				BossSummoners: {
-					Label: "[i:QoLCompendium/GolemSummon] Boss & Event Summons"
-					Tooltip: Toggles Boss & Event Summon related items
+				SummoningRemote: {
+					Label: "[i:QoLCompendium/SummoningRemote] Summoning Remote"
+					Tooltip: Toggles the Summoning Remote item
 				}
 
 				Mirrors: {
@@ -916,6 +955,11 @@ Mods: {
 				WorldGlobe: {
 					Label: "[i:QoLCompendium/WorldGlobe] World Globe"
 					Tooltip: Toggles the World Globe item
+				}
+
+				PotionCrate: {
+					Label: "[i:QoLCompendium/PotionCrate] Potion Crate"
+					Tooltip: Toggles the Potion Crate item
 				}
 			}
 
@@ -1031,6 +1075,71 @@ Mods: {
 					Label: "[i:313] Herb Shop"
 					Tooltip: ""
 				}
+
+				GlobalPriceMultiplier: {
+					Label: "[i:161] Global Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
+				PotionPriceMultiplier: {
+					Label: "[i:161] Potion Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
+				StationPriceMultiplier: {
+					Label: "[i:161] Station Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
+				MaterialPriceMultiplier: {
+					Label: "[i:161] Material Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
+				AccessoryPriceMultiplier: {
+					Label: "[i:161] Accessory Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
+				BagPriceMultiplier: {
+					Label: "[i:161] Bag Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
+				CratePriceMultiplier: {
+					Label: "[i:161] Crate Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
+				OrePriceMultiplier: {
+					Label: "[i:161] Ore Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
+				NaturalBlockPriceMultiplier: {
+					Label: "[i:161] Natural Block Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
+				BuildingBlockPriceMultiplier: {
+					Label: "[i:161] Building Block Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
+				HerbPriceMultiplier: {
+					Label: "[i:161] Herb Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
+				BossScaling: {
+					Label: "[i:560] Boss Scaling"
+					Tooltip: Bags will increase in price following vanilla progression
+				}
+
+				BMFishShop: {
+					Tooltip: ""
+					Label: B M Fish Shop
+				}
 			}
 		}
 
@@ -1047,6 +1156,7 @@ Mods: {
 				World: World Change Toggles
 				BMShop: Dealer Shop Toggles
 				ECShop: Collector Shop Toggles
+				Prices: Price Modifiers
 			}
 		}
 

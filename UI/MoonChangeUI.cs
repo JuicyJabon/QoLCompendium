@@ -85,14 +85,14 @@ namespace QoLCompendium.UI
             text7.Height.Set(25, 0f);
             MoonPanel.Append(text7);
 
-            Asset<Texture2D> moonFullTexture = Request<Texture2D>("QoLCompendium/Assets/MoonFull");
-            Asset<Texture2D> moonWaningGibbousTexture = Request<Texture2D>("QoLCompendium/Assets/MoonWaningGibbous");
-            Asset<Texture2D> moonThirdQuarterTexture = Request<Texture2D>("QoLCompendium/Assets/MoonThirdQuarter");
-            Asset<Texture2D> moonWaningCrescentTexture = Request<Texture2D>("QoLCompendium/Assets/MoonWaningCrescent");
-            Asset<Texture2D> moonNewTexture = Request<Texture2D>("QoLCompendium/Assets/MoonNew");
-            Asset<Texture2D> moonWaxingCrescentTexture = Request<Texture2D>("QoLCompendium/Assets/MoonWaxingCrescent");
-            Asset<Texture2D> moonFirstQuarterTexture = Request<Texture2D>("QoLCompendium/Assets/MoonFirstQuarter");
-            Asset<Texture2D> moonWaxingGibbousTexture = Request<Texture2D>("QoLCompendium/Assets/MoonWaxingGibbous");
+            Asset<Texture2D> moonFullTexture = Request<Texture2D>("QoLCompendium/Assets/Moons/MoonFull");
+            Asset<Texture2D> moonWaningGibbousTexture = Request<Texture2D>("QoLCompendium/Assets/Moons/MoonWaningGibbous");
+            Asset<Texture2D> moonThirdQuarterTexture = Request<Texture2D>("QoLCompendium/Assets/Moons/MoonThirdQuarter");
+            Asset<Texture2D> moonWaningCrescentTexture = Request<Texture2D>("QoLCompendium/Assets/Moons/MoonWaningCrescent");
+            Asset<Texture2D> moonNewTexture = Request<Texture2D>("QoLCompendium/Assets/Moons/MoonNew");
+            Asset<Texture2D> moonWaxingCrescentTexture = Request<Texture2D>("QoLCompendium/Assets/Moons/MoonWaxingCrescent");
+            Asset<Texture2D> moonFirstQuarterTexture = Request<Texture2D>("QoLCompendium/Assets/Moons/MoonFirstQuarter");
+            Asset<Texture2D> moonWaxingGibbousTexture = Request<Texture2D>("QoLCompendium/Assets/Moons/MoonWaxingGibbous");
             Asset<Texture2D> buttonDeleteTexture = Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
 
             UIImageButton playButton0 = new(moonFullTexture);

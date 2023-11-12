@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using QoLCompendium.Tweaks;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +12,7 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().regenerator && QoLCompendium.itemConfig.InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().regenerator && QoLCompendium.itemConfig.InformationAccessories;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -35,7 +36,7 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().replenisher && QoLCompendium.itemConfig.InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().replenisher && QoLCompendium.itemConfig.InformationAccessories;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -55,7 +56,7 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().metallicClover && QoLCompendium.itemConfig.InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().metallicClover && QoLCompendium.itemConfig.InformationAccessories;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -68,7 +69,7 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().headCounter && QoLCompendium.itemConfig.InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().headCounter && QoLCompendium.itemConfig.InformationAccessories;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -95,7 +96,7 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().trackingDevice && QoLCompendium.itemConfig.InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().trackingDevice && QoLCompendium.itemConfig.InformationAccessories;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -108,7 +109,7 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().battalionLog && QoLCompendium.itemConfig.InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().battalionLog && QoLCompendium.itemConfig.InformationAccessories;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -122,7 +123,7 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().wingTimer && QoLCompendium.itemConfig.InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().wingTimer && QoLCompendium.itemConfig.InformationAccessories;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -148,7 +149,7 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().reinforcedPanel && QoLCompendium.itemConfig.InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().reinforcedPanel && QoLCompendium.itemConfig.InformationAccessories;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -161,7 +162,7 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().kettlebell && QoLCompendium.itemConfig.InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().kettlebell && QoLCompendium.itemConfig.InformationAccessories;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -174,43 +175,13 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().harmInducer && QoLCompendium.itemConfig.InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().harmInducer && QoLCompendium.itemConfig.InformationAccessories;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
-            DamageClass damageType = Main.LocalPlayer.HeldItem.DamageType;
-            StatModifier totalDamage = Main.LocalPlayer.GetTotalDamage(damageType);
-
-            if (damageType == DamageClass.Magic)
-            {
-                return Math.Round(totalDamage.Additive, 3).ToString() + "x Magic Damage";
-            }
-            else if (damageType == DamageClass.Melee)
-            {
-                return Math.Round(totalDamage.Additive, 3).ToString() + "x Melee Damage";
-            }
-            else if (damageType == DamageClass.MeleeNoSpeed)
-            {
-                return Math.Round(totalDamage.Additive, 3).ToString() + "x Melee Damage";
-            }
-            else if (damageType == DamageClass.Ranged)
-            {
-                return Math.Round(totalDamage.Additive, 3).ToString() + "x Ranged Damage";
-            }
-            else if (damageType == DamageClass.Summon)
-            {
-                return Math.Round(totalDamage.Additive, 3).ToString() + "x Summon Damage";
-            }
-            else if (damageType == DamageClass.SummonMeleeSpeed)
-            {
-                return Math.Round(totalDamage.Additive, 3).ToString() + "x Summon Damage";
-            }
-            else
-            {
-                
-                return Math.Round(totalDamage.Additive, 3).ToString() + "x Damage";
-            }
+            float damageStat = Main.LocalPlayer.GetModPlayer<InfoPlayer>().damageStat;
+            return damageStat.ToString("N2") + "x Damage";
         }
     }
 
@@ -218,12 +189,13 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().luckyDie && QoLCompendium.itemConfig.InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().luckyDie && QoLCompendium.itemConfig.InformationAccessories;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
-            return "+" +Main.LocalPlayer.GetCritChance(DamageClass.Generic).ToString() + "% Crit";
+            float critChanceStat = Main.LocalPlayer.GetModPlayer<InfoPlayer>().critChanceStat;
+            return $"{critChanceStat}% Critical Strike Chance";
         }
     }
 
@@ -231,12 +203,87 @@ namespace QoLCompendium.UI
     {
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<QoLCPlayer>().plateCracker && QoLCompendium.itemConfig.InformationAccessories;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().plateCracker && QoLCompendium.itemConfig.InformationAccessories;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
-            return Main.LocalPlayer.GetArmorPenetration(DamageClass.Generic).ToString() + " Armor Penetration";
+            float armorPenetrationStat = Main.LocalPlayer.GetModPlayer<InfoPlayer>().armorPenetrationStat;
+            return $"{armorPenetrationStat} Armor Penetration";
+        }
+    }
+
+
+    public class InfoPlayer : ModPlayer
+    {
+        public bool battalionLog = false;
+        public bool harmInducer = false;
+        public bool headCounter = false;
+        public bool kettlebell = false;
+        public bool luckyDie = false;
+        public bool metallicClover = false;
+        public bool plateCracker = false;
+        public bool regenerator = false;
+        public bool reinforcedPanel = false;
+        public bool replenisher = false;
+        public bool trackingDevice = false;
+        public bool wingTimer = false;
+
+        public float armorPenetrationStat;
+        public float critChanceStat;
+        public float damageStat;
+
+        private List<string> classString = new() { "Automatic" };
+        public int classIndex;
+
+        public override void ResetEffects()
+        {
+            Reset();
+        }
+
+        public override void UpdateDead()
+        {
+            Reset();
+        }
+
+        public override void Initialize()
+        {
+            for (int i = 1; i < DamageClassLoader.DamageClassCount; i++)
+            {
+                string[] array = $"{DamageClassLoader.GetDamageClass(i)}".Split(".");
+                classString.Add(array[^1].Replace("DamageClass", "") + ((array[0] != "Terraria") ? ("(" + array[0] + ")") : ""));
+            }
+        }
+
+        public override void PostUpdate()
+        {
+            armorPenetrationStat = Player.GetArmorPenetration(DamageClass.Generic);
+            critChanceStat = Player.GetCritChance(DamageClass.Generic);
+            damageStat = Player.GetDamage(DamageClass.Generic).ApplyTo(1f);
+            if (classIndex == 0 || classIndex != 1)
+            {
+                int num = ((classIndex == 0) ? Player.HeldItem.DamageType.Type : classIndex);
+                num -= ((num == 3 || num == 7) ? 1 : 0);
+                damageStat += Player.GetDamage(DamageClassLoader.GetDamageClass(num)).ApplyTo(1f) - 1f;
+                critChanceStat += Player.GetCritChance(DamageClassLoader.GetDamageClass(num));
+                armorPenetrationStat += Player.GetArmorPenetration(DamageClassLoader.GetDamageClass(num));
+            }
+        }
+
+        public void Reset()
+        {
+            battalionLog = false;
+            harmInducer = false;
+            headCounter = false;
+            kettlebell = false;
+            luckyDie = false;
+            metallicClover = false;
+            plateCracker = false;
+            regenerator = false;
+            reinforcedPanel = false;
+            replenisher = false;
+            trackingDevice = false;
+            wingTimer = false;
         }
     }
 }

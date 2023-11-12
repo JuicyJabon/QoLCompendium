@@ -18,6 +18,8 @@ namespace QoLCompendium.UI
         private UserInterface entityManipulatorInterface;
         internal MoonChangeUI moonChangeUI;
         private UserInterface moonInterface;
+        internal BossUI bossUI;
+        private UserInterface bossInterface;
 
         public override void OnWorldLoad()
         {
@@ -47,6 +49,11 @@ namespace QoLCompendium.UI
                 moonChangeUI.Activate();
                 moonInterface = new UserInterface();
                 moonInterface.SetState(moonChangeUI);
+
+                bossUI = new BossUI();
+                bossUI.Activate();
+                bossInterface = new UserInterface();
+                bossInterface.SetState(bossUI);
             }
         }
 
@@ -128,6 +135,21 @@ namespace QoLCompendium.UI
                     InterfaceScaleType.UI)
                 );
             }
+            if (MouseTextIndex != -1)
+            {
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "QoLC: Moon Selector",
+                    delegate
+                    {
+                        if (BossUI.visible)
+                        {
+                            bossUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+            }
         }
 
         public override void UpdateUI(GameTime gameTime)
@@ -155,6 +177,11 @@ namespace QoLCompendium.UI
             if (moonInterface != null && MoonChangeUI.visible)
             {
                 moonInterface.Update(gameTime);
+            }
+
+            if (bossInterface != null && BossUI.visible)
+            {
+                bossInterface.Update(gameTime);
             }
         }
     }

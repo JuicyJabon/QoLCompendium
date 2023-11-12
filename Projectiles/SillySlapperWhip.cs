@@ -25,7 +25,7 @@ namespace QoLCompendium.Projectiles
             dustAmount = 0;
             swingDust = 0;
             tagDuration = 0;
-            whipCrackSound = new SoundStyle($"{nameof(QoLCompendium)}/Assets/SillySlapperSFX");
+            whipCrackSound = new SoundStyle($"{nameof(QoLCompendium)}/Assets/Sounds/SillySlapperSFX");
             multihitModifier = 1f;
         }
     }

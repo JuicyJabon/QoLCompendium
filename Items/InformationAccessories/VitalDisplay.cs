@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Tweaks;
+using QoLCompendium.UI;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -37,16 +38,16 @@ namespace QoLCompendium.Items.InformationAccessories
 
         public override void UpdateInfoAccessory(Player player)
         {
-            player.GetModPlayer<QoLCPlayer>().metallicClover = true;
-            player.GetModPlayer<QoLCPlayer>().regenerator = true;
-            player.GetModPlayer<QoLCPlayer>().replenisher = true;
+            player.GetModPlayer<InfoPlayer>().metallicClover = true;
+            player.GetModPlayer<InfoPlayer>().regenerator = true;
+            player.GetModPlayer<InfoPlayer>().replenisher = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<QoLCPlayer>().metallicClover = true;
-            player.GetModPlayer<QoLCPlayer>().regenerator = true;
-            player.GetModPlayer<QoLCPlayer>().replenisher = true;
+            player.GetModPlayer<InfoPlayer>().metallicClover = true;
+            player.GetModPlayer<InfoPlayer>().regenerator = true;
+            player.GetModPlayer<InfoPlayer>().replenisher = true;
         }
     }
 }

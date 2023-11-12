@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Tweaks;
+using QoLCompendium.UI;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -37,16 +38,16 @@ namespace QoLCompendium.Items.InformationAccessories
 
         public override void UpdateInfoAccessory(Player player)
         {
-            player.GetModPlayer<QoLCPlayer>().battalionLog = true;
-            player.GetModPlayer<QoLCPlayer>().headCounter = true;
-            player.GetModPlayer<QoLCPlayer>().trackingDevice = true;
+            player.GetModPlayer<InfoPlayer>().battalionLog = true;
+            player.GetModPlayer<InfoPlayer>().headCounter = true;
+            player.GetModPlayer<InfoPlayer>().trackingDevice = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<QoLCPlayer>().battalionLog = true;
-            player.GetModPlayer<QoLCPlayer>().headCounter = true;
-            player.GetModPlayer<QoLCPlayer>().trackingDevice = true;
+            player.GetModPlayer<InfoPlayer>().battalionLog = true;
+            player.GetModPlayer<InfoPlayer>().headCounter = true;
+            player.GetModPlayer<InfoPlayer>().trackingDevice = true;
         }
     }
 }

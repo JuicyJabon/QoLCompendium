@@ -1,4 +1,3 @@
-using QoLCompendium.Items.BossAndEventSummons;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -100,10 +99,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -130,10 +128,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -162,10 +159,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -192,10 +188,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -368,10 +363,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -400,10 +394,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -424,10 +417,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -484,10 +476,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -508,10 +499,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -542,10 +532,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -578,10 +567,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -618,10 +606,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -648,10 +635,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -690,10 +676,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -716,10 +701,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -746,10 +730,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -772,10 +755,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -814,10 +796,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -842,10 +823,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -866,10 +846,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -892,10 +871,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -930,10 +908,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -954,45 +931,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
-        }
-    }
-
-    public class DontConsumeCompendiumSummons : GlobalItem
-    {
-        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
-        {
-            return QoLCompendium.itemConfig.BossSummoners && 
-                (entity.type == ModContent.ItemType<ClamSummon>() || entity.type == ModContent.ItemType<CultistSummon>()
-                || entity.type == ModContent.ItemType<DukeSummon>() || entity.type == ModContent.ItemType<EmpressSummon>()
-                || entity.type == ModContent.ItemType<GolemSummon>() || entity.type == ModContent.ItemType<PlanteraSummon>()
-                || entity.type == ModContent.ItemType<SkeletronSummon>() || entity.type == ModContent.ItemType<WallOfFleshSummon>()
-                || entity.type == ModContent.ItemType<MartianSummon>() || entity.type == ModContent.ItemType<PartySummon>()
-                || entity.type == ModContent.ItemType<RainSummon>() || entity.type == ModContent.ItemType<SandstormSummon>()
-                || entity.type == ModContent.ItemType<SlimeRainSummon>() || entity.type == ModContent.ItemType<WindSummon>() 
-                || entity.type == ModContent.ItemType<BetsySummon>() || entity.type == ModContent.ItemType<DarkMageSummon>() 
-                || entity.type == ModContent.ItemType<DreadnautilusSummon>() || entity.type == ModContent.ItemType<DutchmanSummon>() 
-                || entity.type == ModContent.ItemType<GoblinWarlockSummon>() || entity.type == ModContent.ItemType<IceGolemSummon>() 
-                || entity.type == ModContent.ItemType<MartianSaucerSummon>() || entity.type == ModContent.ItemType<MothronSummon>() 
-                || entity.type == ModContent.ItemType<OgreSummon>() || entity.type == ModContent.ItemType<SandElementalSummon>() 
-                || entity.type == ModContent.ItemType<TravelerArriver>()) && QoLCompendium.mainConfig.EndlessBossSummons;
-        }
-
-        public override void SetDefaults(Item item)
-        {
-            item.consumable = false;
-            item.maxStack = 1;
-        }
-
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -1005,12 +946,11 @@ namespace QoLCompendium.Tweaks
                 || entity.type == ItemID.Abeemination || entity.type == ItemID.DeerThing
                 || entity.type == ItemID.QueenSlimeCrystal || entity.type == ItemID.MechanicalWorm
                 || entity.type == ItemID.MechanicalEye || entity.type == ItemID.MechanicalSkull
-                || entity.type == ItemID.MechdusaSummon || entity.type == ItemID.LihzahrdPowerCell 
-                || entity.type == ItemID.CelestialSigil || entity.type == ItemID.BloodMoonStarter 
-                || entity.type == ItemID.GoblinBattleStandard || entity.type == ItemID.PirateMap
-                || entity.type == ItemID.SolarTablet || entity.type == ItemID.SnowGlobe
-                || entity.type == ItemID.PumpkinMoonMedallion || entity.type == ItemID.NaughtyPresent
-                || entity.type == ItemID.DD2ElderCrystal) && QoLCompendium.mainConfig.EndlessBossSummons;
+                || entity.type == ItemID.MechdusaSummon || entity.type == ItemID.CelestialSigil 
+                || entity.type == ItemID.BloodMoonStarter || entity.type == ItemID.GoblinBattleStandard 
+                || entity.type == ItemID.PirateMap || entity.type == ItemID.SolarTablet 
+                || entity.type == ItemID.SnowGlobe || entity.type == ItemID.PumpkinMoonMedallion 
+                || entity.type == ItemID.NaughtyPresent) && QoLCompendium.mainConfig.EndlessBossSummons && !ModConditions.calamityLoaded;
         }
 
         public override void SetDefaults(Item item)
@@ -1021,10 +961,9 @@ namespace QoLCompendium.Tweaks
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            tooltips.Add(new TooltipLine(Mod, "NotConsumable", "Not Consumable")
-            {
-                Text = Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable")
-            });
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 
@@ -1035,9 +974,21 @@ namespace QoLCompendium.Tweaks
             return (entity.type == ItemID.DD2ElderCrystal || entity.type == ItemID.LihzahrdPowerCell) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
+        public override void SetDefaults(Item item)
+        {
+            item.consumable = false;
+            item.maxStack = 1;
+        }
+
         public override bool ConsumeItem(Item item, Player player)
         {
             return false;
+        }
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
         }
     }
 

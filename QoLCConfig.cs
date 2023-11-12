@@ -233,10 +233,6 @@ namespace QoLCompendium
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BossSummoners { get; set; }
-
-            [DefaultValue(true)]
-            [ReloadRequired]
             public  bool EntityManipulator { get; set; }
 
             [DefaultValue(true)]
@@ -269,7 +265,15 @@ namespace QoLCompendium
 
             [DefaultValue(true)]
             [ReloadRequired]
+            public bool PotionCrate { get; set; }
+
+            [DefaultValue(true)]
+            [ReloadRequired]
             public  bool StarterBag { get; set; }
+
+            [DefaultValue(true)]
+            [ReloadRequired]
+            public bool SummoningRemote { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
@@ -348,6 +352,10 @@ namespace QoLCompendium
             [ReloadRequired]
             public  bool BMHerbShop { get; set; }
 
+            [DefaultValue(true)]
+            [ReloadRequired]
+            public bool BMFishShop { get; set; }
+
             [Header("$Mods.QoLCompendium.QoLCConfig.Headers.ECShop")]
 
             [DefaultValue(true)]
@@ -385,6 +393,66 @@ namespace QoLCompendium
             [DefaultValue(true)]
             [ReloadRequired]
             public  bool ECHerbShop { get; set; }
+
+            [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Prices")]
+
+            [DefaultValue(true)]
+            public bool BossScaling { get; set; }
+
+            [DefaultValue(1)]
+            [Increment(1)]
+            [Range(1, 1000)]
+            public int GlobalPriceMultiplier { get; set; }
+
+            [DefaultValue(1)]
+            [Increment(1)]
+            [Range(1, 1000)]
+            public int PotionPriceMultiplier { get; set; }
+
+            [DefaultValue(1)]
+            [Increment(1)]
+            [Range(1, 1000)]
+            public int StationPriceMultiplier { get; set; }
+
+            [DefaultValue(1)]
+            [Increment(1)]
+            [Range(1, 1000)]
+            public int MaterialPriceMultiplier { get; set; }
+
+            [DefaultValue(1)]
+            [Increment(1)]
+            [Range(1, 1000)]
+            public int AccessoryPriceMultiplier { get; set; }
+
+            [DefaultValue(1)]
+            [Increment(1)]
+            [Range(1, 1000)]
+            public int BagPriceMultiplier { get; set; }
+
+            [DefaultValue(1)]
+            [Increment(1)]
+            [Range(1, 1000)]
+            public int CratePriceMultiplier { get; set; }
+
+            [DefaultValue(1)]
+            [Increment(1)]
+            [Range(1, 1000)]
+            public int OrePriceMultiplier { get; set; }
+
+            [DefaultValue(1)]
+            [Increment(1)]
+            [Range(1, 1000)]
+            public int NaturalBlockPriceMultiplier { get; set; }
+
+            [DefaultValue(1)]
+            [Increment(1)]
+            [Range(1, 1000)]
+            public int BuildingBlockPriceMultiplier { get; set; }
+
+            [DefaultValue(1)]
+            [Increment(1)]
+            [Range(1, 1000)]
+            public int HerbPriceMultiplier { get; set; }
 
             public override void OnLoaded()
             {

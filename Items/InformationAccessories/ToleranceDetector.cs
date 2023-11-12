@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Tweaks;
+using QoLCompendium.UI;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,8 +15,8 @@ namespace QoLCompendium.Items.InformationAccessories
 
         public override void SetDefaults()
         {
-            Item.width = 13;
-            Item.height = 21;
+            Item.width = 14;
+            Item.height = 10;
             Item.maxStack = 1;
             Item.rare = ItemRarityID.Orange;
             Item.accessory = true;
@@ -37,16 +38,16 @@ namespace QoLCompendium.Items.InformationAccessories
 
         public override void UpdateInfoAccessory(Player player)
         {
-            player.GetModPlayer<QoLCPlayer>().harmInducer = true;
-            player.GetModPlayer<QoLCPlayer>().luckyDie = true;
-            player.GetModPlayer<QoLCPlayer>().plateCracker = true;
+            player.GetModPlayer<InfoPlayer>().harmInducer = true;
+            player.GetModPlayer<InfoPlayer>().luckyDie = true;
+            player.GetModPlayer<InfoPlayer>().plateCracker = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<QoLCPlayer>().harmInducer = true;
-            player.GetModPlayer<QoLCPlayer>().luckyDie = true;
-            player.GetModPlayer<QoLCPlayer>().plateCracker = true;
+            player.GetModPlayer<InfoPlayer>().harmInducer = true;
+            player.GetModPlayer<InfoPlayer>().luckyDie = true;
+            player.GetModPlayer<InfoPlayer>().plateCracker = true;
         }
     }
 }
