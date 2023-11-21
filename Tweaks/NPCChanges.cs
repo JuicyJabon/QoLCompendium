@@ -119,21 +119,10 @@ namespace QoLCompendium.Tweaks
     {
         public override void PostSetupContent()
         {
-            if (ModLoader.TryGetMod("Census", out Mod census))
+            if (ModLoader.TryGetMod("Census", out Mod Census))
             {
-                census.Call(new object[]
-                {
-                    "TownNPCCondition",
-                    ModContent.NPCType<BMDealerNPC>(),
-                    "No condition"
-                });
-
-                census.Call(new object[]
-                {
-                    "TownNPCCondition",
-                    ModContent.NPCType<EtherealCollectorNPC>(),
-                    "No condition"
-                });
+                Census.Call("TownNPCCondition", ModContent.NPCType<BMDealerNPC>(), ModContent.GetInstance<BMDealerNPC>().GetLocalization("Census.SpawnCondition"));
+                Census.Call("TownNPCCondition", ModContent.NPCType<EtherealCollectorNPC>(), ModContent.GetInstance<EtherealCollectorNPC>().GetLocalization("Census.SpawnCondition"));
             }
         }
     }
@@ -612,6 +601,14 @@ namespace QoLCompendium.Tweaks
                     {
                         if (item == null || item.type == ItemID.None) continue;
                         item.shopCustomPrice *= QoLCompendium.shopConfig.HerbPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Fish & Fishing Gear")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.FishPriceMultiplier;
                     }
                 }
             }

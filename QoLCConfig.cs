@@ -454,6 +454,11 @@ namespace QoLCompendium
             [Range(1, 1000)]
             public int HerbPriceMultiplier { get; set; }
 
+            [DefaultValue(1)]
+            [Increment(1)]
+            [Range(1, 1000)]
+            public int FishPriceMultiplier { get; set; }
+
             public override void OnLoaded()
             {
                 QoLCompendium.shopConfig = this;

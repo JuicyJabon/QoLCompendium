@@ -1,10 +1,4 @@
-v2.1.14
-1. Resprited a couple items
-2. Reorganized some items from a couple mods in shops
-3. Reworked Banner Box
-4. Added Potion Crate
-5. Added Hellbridger
-6. Added Summoning Remote
-7. Removed all boss & event summons
-8. Fixed 2 info displays not having the correct display name
-9. Added a fish shop to Black Market Dealer
+v2.1.15
+1. Fixed Census localization error
+2. Localized mod conditions
+3. Fixed a couple shop localization issues in the config
