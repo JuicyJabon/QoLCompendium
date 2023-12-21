@@ -1,11 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using QoLCompendium.Tweaks;
+﻿using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
-using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent.Events;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace QoLCompendium.Items.Tools
 {

@@ -1,7 +1,4 @@
 using QoLCompendium.Tweaks;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace QoLCompendium.Items.Magnets
 {

@@ -1,11 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using QoLCompendium.Items.InformationAccessories;
+﻿using QoLCompendium.Items.InformationAccessories;
 using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Items.Mirrors

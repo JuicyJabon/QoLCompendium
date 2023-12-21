@@ -1,9 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
-namespace QoLCompendium.Items.Mirrors
+﻿namespace QoLCompendium.Items.Mirrors
 {
     public class TeleportationMirror : ModItem
     {

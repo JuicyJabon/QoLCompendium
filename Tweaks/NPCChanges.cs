@@ -1,16 +1,8 @@
-using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using QoLCompendium.Items.InformationAccessories;
 using QoLCompendium.NPCs;
-using System;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
-using Terraria.ID;
-using Terraria.ModLoader;
-using tModPorter;
 
 namespace QoLCompendium.Tweaks
 {
@@ -739,6 +731,27 @@ namespace QoLCompendium.Tweaks
         }
     }
 
+    public class AnglerReset : GlobalNPC
+    {
+        public override void OnChatButtonClicked(NPC npc, bool firstButton)
+        {
+            if (QoLCompendium.mainConfig.AnglerQuestInstantReset && Main.anglerQuestFinished)
+            {
+                if (Main.netMode == NetmodeID.SinglePlayer)
+                {
+                    Main.AnglerQuestSwap();
+                }
+                else if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    // Broadcast swap request to server
+                    var netMessage = Mod.GetPacket();
+                    netMessage.Write((byte)3);
+                    netMessage.Send();
+                }
+            }
+        }
+    }
+
     public class CheckIfNPCIsDead : GlobalNPC
     {
         public override void OnKill(NPC npc)
@@ -955,9 +968,13 @@ namespace QoLCompendium.Tweaks
                 {
                     ModConditions.downedDeviantt = true;
                 }
+                if (ModConditions.fargosSoulsMod.TryFind("BanishedBaron", out ModNPC BanishedBaron) && npc.type == BanishedBaron.Type)
+                {
+                    ModConditions.downedBanishedBaron = true;
+                }
                 if (ModConditions.fargosSoulsMod.TryFind("LifeChallenger", out ModNPC LifeChallenger) && npc.type == LifeChallenger.Type)
                 {
-                    ModConditions.downedLieflight = true;
+                    ModConditions.downedLifelight = true;
                 }
                 if (ModConditions.fargosSoulsMod.TryFind("CosmosChampion", out ModNPC CosmosChampion) && npc.type == CosmosChampion.Type)
                 {

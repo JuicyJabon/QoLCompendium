@@ -1,6 +1,4 @@
-﻿using Terraria.ModLoader;
-
-namespace QoLCompendium.Tweaks
+﻿namespace QoLCompendium.Tweaks
 {
     public static class SubworldModConditions
     {

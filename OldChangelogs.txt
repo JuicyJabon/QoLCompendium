@@ -1,3 +1,26 @@
+v2.1.18
+1. Separated thrown weapons into their own endless config
+2. Added a config option for allowing infinite buffs only from the Potion Crate
+3. Added a config option to further increase item stacks to 99999
+4. Added a config option for instant angler quest refresh
+5. Added a config option for increased fruit and gem drops from trees
+6. Added a config option to affect axes, hammers, and drills with mining speed bonuses
+7. Added a config option to remove shimmer sinking
+8. Added a config option to keep buffs after death
+9. Added a config option to keep debuffs after death
+
+v2.1.17
+1. Fixed Starter Bag error
+2. Added Ethereal Collector Fish Shop
+
+v2.1.16
+1. Added support for new fargo's updates
+
+v2.1.15
+1. Fixed Census localization error
+2. Localized mod conditions
+3. Fixed a couple shop localization issues in the config
+
 v2.1.14
 1. Resprited a couple items
 2. Reorganized some items from a couple mods in shops

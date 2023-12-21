@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using Terraria;
-using Terraria.GameInput;
-using Terraria.Localization;
-using Terraria.ModLoader;
+﻿using Terraria.GameInput;
 
 namespace QoLCompendium.Tweaks
 {

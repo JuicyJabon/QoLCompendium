@@ -1,7 +1,3 @@
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Tweaks
@@ -388,8 +384,10 @@ namespace QoLCompendium.Tweaks
         public static Condition DownedTrojanSquirrel = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTrojanSquirrel"), () => downedTrojanSquirrel);
         internal static bool downedDeviantt;
         public static Condition DownedDeviantt = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDeviantt"), () => downedDeviantt);
-        internal static bool downedLieflight;
-        public static Condition DownedLieflight = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLieflight"), () => downedLieflight);
+        internal static bool downedLifelight;
+        public static Condition DownedLifelight = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLifelight"), () => downedLifelight);
+        internal static bool downedBanishedBaron;
+        public static Condition DownedBanishedBaron = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBanishedBaron"), () => downedBanishedBaron);
         internal static bool downedEridanus;
         public static Condition DownedEridanus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEridanus"), () => downedEridanus);
         internal static bool downedAbominationn;
@@ -2001,7 +1999,8 @@ namespace QoLCompendium.Tweaks
             //FARGOS SOULS
             tag.Add("downedTrojanSquirrel", downedTrojanSquirrel);
             tag.Add("downedDeviantt", downedDeviantt);
-            tag.Add("downedLieflight", downedLieflight);
+            tag.Add("downedBanishedBaron", downedBanishedBaron);
+            tag.Add("downedLifelight", downedLifelight);
             tag.Add("downedEridanus", downedEridanus);
             tag.Add("downedAbominationn", downedAbominationn);
             tag.Add("downedMutant", downedMutant);
@@ -2453,7 +2452,8 @@ namespace QoLCompendium.Tweaks
             //FARGOS SOULS
             downedTrojanSquirrel = tag.Get<bool>("downedTrojanSquirrel");
             downedDeviantt = tag.Get<bool>("downedDeviantt");
-            downedLieflight = tag.Get<bool>("downedLieflight");
+            downedBanishedBaron = tag.Get<bool>("downedBanishedBaron");
+            downedLifelight = tag.Get<bool>("downedLifelight");
             downedEridanus = tag.Get<bool>("downedEridanus");
             downedAbominationn = tag.Get<bool>("downedAbominationn");
             downedMutant = tag.Get<bool>("downedMutant");
@@ -3521,6 +3521,8 @@ namespace QoLCompendium.Tweaks
             //FARGOS SOULS
             downedTrojanSquirrel = false;
             downedDeviantt = false;
+            downedBanishedBaron = false;
+            downedLifelight = false;
             downedEridanus = false;
             downedAbominationn = false;
             downedMutant = false;

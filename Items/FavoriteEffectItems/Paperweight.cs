@@ -1,8 +1,4 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
-namespace QoLCompendium.Items.FavoriteEffectItems
+﻿namespace QoLCompendium.Items.FavoriteEffectItems
 {
     public class Paperweight : ModItem
     {

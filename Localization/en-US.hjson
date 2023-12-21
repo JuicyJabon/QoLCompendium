@@ -448,11 +448,11 @@ Mods: {
 				}
 
 				EndlessConsumables: {
-					Label: "[i:42] Endless Consumables"
+					Label: "[i:3] Endless Consumables"
 					Tooltip:
 						'''
 						Toggles endless consumables
-						Includes tiles, walls, weapons and other misc items
+						Includes tiles, walls, and other misc items
 						'''
 				}
 
@@ -712,6 +712,56 @@ Mods: {
 					Label: "[i:25] Teleport NPCs Home"
 					Tooltip: Allows teleporting NPCs home with a bindable key
 				}
+
+				EndlessWeapons: {
+					Label: "[i:42] Endless Weapons"
+					Tooltip: Toggles endless weapons
+				}
+
+				EndlessBuffsOnlyFromCrate: {
+					Label: "[i:292] Endless Buffs Only Work From Potion Crate"
+					Tooltip: Toggles if endless buffs only work when put into the Potion Crate
+				}
+
+				SuperIncreaseMaxStack: {
+					Label: "[i:2] Super Increased Max Item Stacks"
+					Tooltip: Toggles if stackable items can be stacked to 99999
+				}
+
+				StackableQuestItems: {
+					Label: "[i:2452] Stackable Quest Items"
+					Tooltip: Toggles if quest items can be stacked to 9999 or 99999
+				}
+
+				AnglerQuestInstantReset: {
+					Label: "[i:2374] Angler Quest Instant Reset"
+					Tooltip: Toggles if the Angler's quests will instantly reset on completion
+				}
+
+				TreesDropMore: {
+					Label: "[i:4856] Trees Drop More"
+					Tooltip: Toggles if trees drop more fruits and gems
+				}
+
+				NoShimmerSink: {
+					Tooltip: Toggles if you can sink through blocks when in shimmer
+					Label: "[i:5364] No Shimmer Sink"
+				}
+
+				KeepDebuffsOnDeath: {
+					Tooltip: Toggles if debuffs are persistent through death
+					Label: "[i:4870] Keep Debuffs On Death"
+				}
+
+				KeepBuffsOnDeath: {
+					Tooltip: Toggles if buffs are persistent through death
+					Label: "[i:4870] Keep Buffs On Death"
+				}
+
+				MiningSpeedForHammersAndAxesAndDrills: {
+					Tooltip: Toggles if mining speed benefits affect hammers, axes, and drills
+					Label: "[i:579] Mining Speed Benefits Hammers, Axes, & Drills"
+				}
 			}
 
 			ItemConfig: {
@@ -925,6 +975,11 @@ Mods: {
 					Tooltip: ""
 				}
 
+				ECFishShop: {
+					Label: "[i:2290] Fish Shop"
+					Tooltip: ""
+				}
+
 				GlobalPriceMultiplier: {
 					Label: "[i:161] Global Price Multiplier"
 					Tooltip: Ranges from 1 to 1000
@@ -1133,7 +1188,8 @@ Mods: {
 			downedIceLich: Downed Ice Lich
 			downedTrojanSquirrel: Downed Trojan Squirrel
 			downedDeviantt: Downed Deviantt
-			downedLieflight: Downed Lieflight
+			downedBanishedBaron: Downed Banished Baron
+			downedLifelight: Downed Lifelight
 			downedEridanus: Downed Eridanus
 			downedAbominationn: Downed Abominationn
 			downedMutant: Downed Mutant

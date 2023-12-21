@@ -1,12 +1,7 @@
 using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace QoLCompendium.NPCs
 {

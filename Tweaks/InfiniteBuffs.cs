@@ -1,12 +1,4 @@
-﻿using QoLCompendium.Items.FavoriteEffectItems;
-using QoLCompendium.Items.Tools;
-using System;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.ModLoader.Default;
-using Terraria.Social.Base;
+﻿using QoLCompendium.Items.Tools;
 
 namespace QoLCompendium.Tweaks
 {
@@ -94,7 +86,7 @@ namespace QoLCompendium.Tweaks
                     LuckPotionBoost += 0.2f;
                 }
 
-                if (item.type == ItemID.RedPotion && Main.getGoodWorld)
+                if (item.type == ItemID.RedPotion && Main.getGoodWorld && !QoLCompendium.mainConfig.EndlessBuffsOnlyFromCrate)
                 {
                     for (int i = 0; i < AvailableRedPotionBuffs.Count; i++)
                     {
@@ -136,14 +128,17 @@ namespace QoLCompendium.Tweaks
                     case -1:
                         break;
                     default:
-                        Main.LocalPlayer.AddBuff(buffType, 2);
-                        LuckPotionBoost = item.type switch
+                        if (!QoLCompendium.mainConfig.EndlessBuffsOnlyFromCrate)
                         {
-                            ItemID.LuckPotionLesser => Math.Max(LuckPotionBoost, 0.1f),
-                            ItemID.LuckPotion => Math.Max(LuckPotionBoost, 0.2f),
-                            ItemID.LuckPotionGreater => Math.Max(LuckPotionBoost, 0.3f),
-                            _ => LuckPotionBoost
-                        };
+                            Main.LocalPlayer.AddBuff(buffType, 2);
+                            LuckPotionBoost = item.type switch
+                            {
+                                ItemID.LuckPotionLesser => Math.Max(LuckPotionBoost, 0.1f),
+                                ItemID.LuckPotion => Math.Max(LuckPotionBoost, 0.2f),
+                                ItemID.LuckPotionGreater => Math.Max(LuckPotionBoost, 0.3f),
+                                _ => LuckPotionBoost
+                            };
+                        }
                         break;
                 }
             }

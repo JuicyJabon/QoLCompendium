@@ -1,9 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
-namespace QoLCompendium.Tiles
+﻿namespace QoLCompendium.Tiles
 {
     public class BurgerTile : ModTile
     {

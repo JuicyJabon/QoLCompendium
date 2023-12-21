@@ -1,10 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using QoLCompendium.Projectiles;
-using Terraria;
+﻿using QoLCompendium.Projectiles;
 using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace QoLCompendium.Tiles
 {

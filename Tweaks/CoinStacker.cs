@@ -1,8 +1,3 @@
-using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
 namespace QoLCompendium.Tweaks
 {
     public static class CoinStacker

@@ -1,9 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-
-namespace QoLCompendium.Tweaks
+﻿namespace QoLCompendium.Tweaks
 {
     public class TeleportClass : GlobalItem
     {

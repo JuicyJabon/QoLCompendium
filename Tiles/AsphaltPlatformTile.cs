@@ -1,8 +1,4 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.ObjectData;
+﻿using Terraria.ObjectData;
 
 namespace QoLCompendium.Tiles
 {

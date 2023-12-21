@@ -1,13 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using QoLCompendium.NPCs;
-using ReLogic.Content;
-using Terraria;
-using Terraria.Audio;
-using Terraria.GameContent.UI.Elements;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.UI;
+﻿using QoLCompendium.NPCs;
 
 namespace QoLCompendium.UI
 {

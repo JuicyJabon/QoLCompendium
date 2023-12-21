@@ -1,9 +1,4 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
-
-namespace QoLCompendium.Tweaks
+﻿namespace QoLCompendium.Tweaks
 {
     public class RecipeAdditions : ModSystem
     {

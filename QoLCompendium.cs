@@ -1,15 +1,23 @@
 global using static QoLCompendium.QoLCConfig;
+global using Microsoft.Xna.Framework;
+global using Microsoft.Xna.Framework.Graphics;
+global using ReLogic.Content;
+global using System;
+global using System.Collections.Generic;
+global using System.IO;
+global using System.Linq;
+global using Terraria;
+global using Terraria.Audio;
+global using Terraria.GameContent;
+global using Terraria.GameContent.UI.Elements;
+global using Terraria.ID;
+global using Terraria.Localization;
+global using Terraria.ModLoader;
+global using Terraria.UI;
 using QoLCompendium.Items.FavoriteEffectItems;
 using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Reflection;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.UI;
 
 namespace QoLCompendium
 {
@@ -134,7 +142,6 @@ namespace QoLCompendium
 
         public override void PostSetupContent()
         {
-            // This code was previously in AddRecipeGroups because "I'm using this as a PostPostSetupContent so all mods are loaded before I access bannerToItem". I don't think this is right, it should be fine here.
             BannerBox.itemToBanner.Clear();
             FieldInfo bannerToItemField = typeof(NPCLoader).GetField("bannerToItem", BindingFlags.NonPublic | BindingFlags.Static);
             Dictionary<int, int> bannerToItem = (Dictionary<int, int>)bannerToItemField.GetValue(null);

@@ -1,10 +1,4 @@
-using Microsoft.Xna.Framework;
 using QoLCompendium.Tweaks;
-using System;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace QoLCompendium.UI
 {

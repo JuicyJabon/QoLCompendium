@@ -1,11 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using Terraria;
-using Terraria.Audio;
-using Terraria.ID;
-using Terraria.ModLoader;
-
-namespace QoLCompendium.Projectiles
+﻿namespace QoLCompendium.Projectiles
 {
     public class AutoHouserProj : ModProjectile
     {

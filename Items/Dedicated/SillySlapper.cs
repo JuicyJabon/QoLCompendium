@@ -1,10 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using QoLCompendium.Projectiles;
+﻿using QoLCompendium.Projectiles;
 using QoLCompendium.Tweaks;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace QoLCompendium.Items.Dedicated
 {

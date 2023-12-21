@@ -1,9 +1,3 @@
-using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
-
 namespace QoLCompendium.Tweaks
 {
     public class DontConsumeAFKPetsSummons : GlobalItem
@@ -376,12 +370,16 @@ namespace QoLCompendium.Tweaks
             return ModConditions.fargosSoulsLoaded &&
                 ModConditions.fargosSoulsMod.TryFind("SquirrelCoatofArms", out ModItem SquirrelCoatofArms)
                 && ModConditions.fargosSoulsMod.TryFind("DevisCurse", out ModItem DevisCurse)
+                && ModConditions.fargosSoulsMod.TryFind("MechLure", out ModItem MechLure)
                 && ModConditions.fargosSoulsMod.TryFind("FragilePixieLamp", out ModItem FragilePixieLamp)
+                && ModConditions.fargosSoulsMod.TryFind("ChampionySigil", out ModItem ChampionySigil)
                 && ModConditions.fargosSoulsMod.TryFind("AbomsCurse", out ModItem AbomsCurse)
                 && ModConditions.fargosSoulsMod.TryFind("MutantsCurse", out ModItem MutantsCurse)
                 && (entity.type == SquirrelCoatofArms.Type
                 || entity.type == DevisCurse.Type
+                || entity.type == MechLure.Type
                 || entity.type == FragilePixieLamp.Type
+                || entity.type == ChampionySigil.Type
                 || entity.type == AbomsCurse.Type
                 || entity.type == MutantsCurse.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
@@ -1008,6 +1006,30 @@ namespace QoLCompendium.Tweaks
                     item.maxStack = 9999;
                 }
             }
+
+            if (QoLCompendium.mainConfig.SuperIncreaseMaxStack)
+            {
+                if (item.maxStack > 10 && (item.maxStack != 100) && !(item.type >= ItemID.CopperCoin && item.type <= ItemID.PlatinumCoin))
+                {
+                    item.maxStack = 99999;
+                }
+            }
+
+            if (QoLCompendium.mainConfig.StackableQuestItems)
+            {
+                if (item.maxStack == 1 && item.questItem == true)
+                {
+                    if (QoLCompendium.mainConfig.IncreaseMaxStack)
+                    {
+                        item.maxStack = 9999;
+                    }
+
+                    if (QoLCompendium.mainConfig.SuperIncreaseMaxStack)
+                    {
+                        item.maxStack = 99999;
+                    }
+                }
+            }
         }
 
         public override void ExtractinatorUse(int extractType, int extractinatorBlockType, ref int resultType, ref int resultStack)
@@ -1029,7 +1051,12 @@ namespace QoLCompendium.Tweaks
 
         public override bool ConsumeItem(Item item, Player player)
         {
-            if (item.consumable == true && item.stack >= QoLCompendium.mainConfig.EndlessAmount && QoLCompendium.mainConfig.EndlessConsumables)
+            if (item.consumable == true && item.damage == -1 && item.stack >= QoLCompendium.mainConfig.EndlessAmount && QoLCompendium.mainConfig.EndlessConsumables)
+            {
+                return false;
+            }
+
+            if (item.consumable == true && item.damage > 0 && item.stack >= QoLCompendium.mainConfig.EndlessAmount && QoLCompendium.mainConfig.EndlessWeapons)
             {
                 return false;
             }
@@ -1053,6 +1080,50 @@ namespace QoLCompendium.Tweaks
                 return false;
             }
             return base.CanConsumeBait(player, bait);
+        }
+    }
+
+    public class MiningSpeedBenefits : GlobalItem
+    {
+        private int basedrillspeed;
+
+        private int minetime;
+
+        private int walltime;
+
+        public override bool InstancePerEntity => true;
+
+        public override void SetDefaults(Item item)
+        {
+            if (QoLCompendium.mainConfig.MiningSpeedForHammersAndAxesAndDrills && (item.pick >= 1 || item.axe >= 1 || item.hammer >= 1) && item.channel)
+            {
+                basedrillspeed = item.useTime;
+            }
+            if (QoLCompendium.mainConfig.MiningSpeedForHammersAndAxesAndDrills && (item.axe >= 1 || item.hammer >= 1) && !item.channel)
+            {
+                basedrillspeed = item.useTime;
+            }
+        }
+
+        public override void HoldItem(Item item, Player player)
+        {
+            int num3 = (int)(player.pickSpeed * 100f);
+            if (QoLCompendium.mainConfig.MiningSpeedForHammersAndAxesAndDrills && (item.pick >= 1 || item.axe >= 1 || item.hammer >= 1) && item.channel)
+            {
+                item.useTime = basedrillspeed * num3 / 100;
+                if (item.useTime == 0)
+                {
+                    item.useTime = 1;
+                }
+            }
+            if (QoLCompendium.mainConfig.MiningSpeedForHammersAndAxesAndDrills && (item.axe >= 1 || item.hammer >= 1) && !item.channel && item.pick == 0)
+            {
+                item.useTime = basedrillspeed * num3 / 100;
+                if (item.useTime == 0)
+                {
+                    item.useTime = 1;
+                }
+            }
         }
     }
 }

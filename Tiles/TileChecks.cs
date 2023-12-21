@@ -1,7 +1,4 @@
-﻿using System;
-using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
+﻿using Terraria.DataStructures;
 
 namespace QoLCompendium.Tiles
 {

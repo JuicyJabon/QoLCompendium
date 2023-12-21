@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using Terraria;
-using Terraria.ModLoader;
-
-namespace QoLCompendium.Tweaks
+﻿namespace QoLCompendium.Tweaks
 {
     public class TooltipChanges : GlobalItem
     {

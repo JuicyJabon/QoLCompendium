@@ -1,9 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using QoLCompendium.Projectiles;
-using Terraria;
+﻿using QoLCompendium.Projectiles;
 using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace QoLCompendium.Items.MobileStorages
 {

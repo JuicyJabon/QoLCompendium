@@ -1,8 +1,4 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
-namespace QoLCompendium.Items.Tools
+﻿namespace QoLCompendium.Items.Tools
 {
     public class StarterBag : ModItem
     {
@@ -26,12 +22,19 @@ namespace QoLCompendium.Items.Tools
 
         public override bool CanRightClick()
         {
-            return true;
+            if (QoLCompendium.mainConfig.CustomItems != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override void RightClick(Player player)
         {
-            if (QoLCompendium.mainConfig.CustomItems != null || QoLCompendium.mainConfig.CustomItems.Count > 0)
+            if (QoLCompendium.mainConfig.CustomItems != null)
             {
                 if (QoLCompendium.mainConfig.CustomItemQuantities != null)
                 {

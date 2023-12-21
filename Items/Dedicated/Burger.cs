@@ -1,9 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using QoLCompendium.Tiles;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using QoLCompendium.Tiles;
 
 namespace QoLCompendium.Items.Dedicated
 {

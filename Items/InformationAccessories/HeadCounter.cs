@@ -1,8 +1,4 @@
-using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace QoLCompendium.Items.InformationAccessories
 {

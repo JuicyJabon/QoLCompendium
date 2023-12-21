@@ -1,13 +1,8 @@
 using QoLCompendium.Items.Dedicated;
 using QoLCompendium.Tweaks;
 using QoLCompendium.UI;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace QoLCompendium.NPCs
 {
@@ -196,6 +191,11 @@ namespace QoLCompendium.NPCs
             {
                 button = "Modded Herbs & Plants";
                 ShopName = "Modded Herbs & Plants";
+            }
+            else if (shopNum == 9)
+            {
+                button = "Modded Fish & Fishing Gear";
+                ShopName = "Modded Fish & Fishing Gear";
             }
             if (Main.LocalPlayer.HasItem(ItemID.SilverShortsword) && QoLCompendium.itemConfig.DedicatedItems)
             {
@@ -489,8 +489,9 @@ namespace QoLCompendium.NPCs
 
             var modFlasksShop = new NPCShop(Type, "Modded Flasks, Stations & Foods")
             //Aequus
-                .AddModItemToShop(ModConditions.aequusMod, "Baguette", Item.buyPrice(silver: 75), Condition.AnglerQuestsFinishedOver(0))
+                .AddModItemToShop(ModConditions.aequusMod, "Baguette", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.aequusMod, "SpicyEel", Item.buyPrice(silver: 75), ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(ModConditions.aequusMod, "PalePufferfish", Item.buyPrice(silver: 75), ModConditions.DownedBloodMoon)
             //AFKPets
                 .AddModItemToShop(ModConditions.afkpetsMod, "FlaskofBlood", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.DownedBloodMoon)
                 .AddModItemToShop(ModConditions.afkpetsMod, "FlaskofNature", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedMechBossAll, ModConditions.HasBeenToJungle)
@@ -1294,7 +1295,8 @@ namespace QoLCompendium.NPCs
             //Fargos
                 .AddModItemToShop(ModConditions.fargosSoulsMod, "TrojanSquirrelBag", Item.buyPrice(gold: 25), ModConditions.DownedTrojanSquirrel, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.fargosSoulsMod, "DeviBag", Item.buyPrice(gold: 25), ModConditions.DownedDeviantt, ModConditions.expertOrMaster)
-                .AddModItemToShop(ModConditions.fargosSoulsMod, "LifeChallengerBag", Item.buyPrice(gold: 25), ModConditions.DownedLieflight, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.fargosSoulsMod, "BanishedBaronBag", Item.buyPrice(gold: 25), ModConditions.DownedBanishedBaron, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.fargosSoulsMod, "LifelightBag", Item.buyPrice(gold: 25), ModConditions.DownedLifelight, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.fargosSoulsMod, "CosmosBag", Item.buyPrice(gold: 25), ModConditions.DownedEridanus, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.fargosSoulsMod, "AbomBag", Item.buyPrice(gold: 25), ModConditions.DownedAbominationn, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.fargosSoulsMod, "MutantBag", Item.buyPrice(gold: 25), ModConditions.DownedMutant, ModConditions.expertOrMaster)
@@ -2385,6 +2387,98 @@ namespace QoLCompendium.NPCs
             //Wayfair
                 .AddModItemToShop(ModConditions.wayfairContentMod, "Dirtroot", Item.buyPrice(copper: 10));
             modPlantShop.Register();
+
+            var modFishShop = new NPCShop(Type, "Modded Fish & Fishing Gear")
+            //Aequus
+                .AddModItemToShop(ModConditions.aequusMod, "AnglerBroadcaster", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.aequusMod, "ArgonFish", Item.buyPrice(silver: 10), ModConditions.HasBeenToCavernsOrUnderground)
+                .AddModItemToShop(ModConditions.aequusMod, "Blobfish", Item.buyPrice(silver: 10), ModConditions.DownedGlimmer)
+                .AddModItemToShop(ModConditions.aequusMod, "CrabDaughter", Item.buyPrice(silver: 10), ModConditions.HasBeenToCrabCrevice)
+                .AddModItemToShop(ModConditions.aequusMod, "Depthscale", Item.buyPrice(silver: 10), ModConditions.HasBeenToEvil)
+                .AddModItemToShop(ModConditions.aequusMod, "GoreFish", Item.buyPrice(silver: 10), ModConditions.DownedDemonSiege)
+                .AddModItemToShop(ModConditions.aequusMod, "IcebergFish", Item.buyPrice(silver: 10), ModConditions.HasBeenToSnow)
+                .AddModItemToShop(ModConditions.aequusMod, "KryptonFish", Item.buyPrice(silver: 10), ModConditions.HasBeenToCavernsOrUnderground)
+                .AddModItemToShop(ModConditions.aequusMod, "Leecheel", Item.buyPrice(silver: 10), ModConditions.HasBeenToEvil)
+                .AddModItemToShop(ModConditions.aequusMod, "RadonFish", Item.buyPrice(silver: 10), ModConditions.HasBeenToCavernsOrUnderground)
+                .AddModItemToShop(ModConditions.aequusMod, "ShimmerFish", Item.buyPrice(silver: 10), ModConditions.HasBeenToCavernsOrUnderground)
+                .AddModItemToShop(ModConditions.aequusMod, "HeatFish", Item.buyPrice(silver: 10), ModConditions.HasBeenToDesert)
+                .AddModItemToShop(ModConditions.aequusMod, "XenonFish", Item.buyPrice(silver: 10), ModConditions.HasBeenToCavernsOrUnderground)
+                .AddModItemToShop(ModConditions.aequusMod, "CrateBait", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.aequusMod, "CursedPopper", Item.buyPrice(gold: 2), Condition.Hardmode, ModConditions.HasBeenToEvil)
+                .AddModItemToShop(ModConditions.aequusMod, "IchorPopper", Item.buyPrice(gold: 2), Condition.Hardmode, ModConditions.HasBeenToEvil)
+                .AddModItemToShop(ModConditions.aequusMod, "LegendberryBait", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.aequusMod, "MysticPopper", Item.buyPrice(gold: 2), Condition.Hardmode, ModConditions.HasBeenToHallow)
+                .AddModItemToShop(ModConditions.aequusMod, "Omnibait", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.aequusMod, "XenonBait", Item.buyPrice(gold: 2), ModConditions.HasBeenToEvil)
+            //AFKPets
+                .AddModItemToShop(ModConditions.afkpetsMod, "FishermansPride", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.afkpetsMod, "PortableSonar", Item.buyPrice(gold: 2), Condition.DownedSkeletron)
+                .AddModItemToShop(ModConditions.afkpetsMod, "ArcherFish", Item.buyPrice(silver: 10), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.afkpetsMod, "Barkfin", Item.buyPrice(silver: 10))
+                .AddModItemToShop(ModConditions.afkpetsMod, "DragonShrimp", Item.buyPrice(silver: 10), Condition.Hardmode, ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(ModConditions.afkpetsMod, "HorseshoeScarab", Item.buyPrice(silver: 10), Condition.Hardmode, ModConditions.HasBeenToDesert)
+                .AddModItemToShop(ModConditions.afkpetsMod, "MushoWar", Item.buyPrice(silver: 10), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.afkpetsMod, "Stargazer", Item.buyPrice(silver: 10), ModConditions.HasBeenToSky)
+                .AddModItemToShop(ModConditions.afkpetsMod, "Sunfish", Item.buyPrice(silver: 10), ModConditions.HasBeenToDesert)
+                .AddModItemToShop(ModConditions.afkpetsMod, "UraeEel", Item.buyPrice(silver: 10), Condition.Hardmode, ModConditions.HasBeenToDesert)
+                .AddModItemToShop(ModConditions.afkpetsMod, "HoneyBee", Item.buyPrice(gold: 2), ModConditions.HasBeenToJungle)
+                .AddModItemToShop(ModConditions.afkpetsMod, "IceFairy", Item.buyPrice(gold: 2), Condition.Hardmode, ModConditions.HasBeenToSnow)
+            //Calamity
+                .AddModItemToShop(ModConditions.calamityMod, "AlluringBait", Item.buyPrice(gold: 2), ModConditions.HasBeenToSulphurSea)
+                .AddModItemToShop(ModConditions.calamityMod, "EnchantedPearl", Item.buyPrice(gold: 2), ModConditions.DownedDesertScourge, ModConditions.HasBeenToSunkenSea)
+                .AddModItemToShop(ModConditions.calamityMod, "SupremeBaitTackleBoxFishingStation", Item.buyPrice(gold: 2), Condition.Hardmode, ModConditions.HasBeenToSunkenSea)
+                .AddModItemToShop(ModConditions.calamityMod, "AldebaranAlewife", Item.buyPrice(silver: 10), Condition.Hardmode, ModConditions.HasBeenToAstral)
+                .AddModItemToShop(ModConditions.calamityMod, "Bloodfin", Item.buyPrice(silver: 10), ModConditions.DownedProvidence, ModConditions.HasBeenToCrags)
+                .AddModItemToShop(ModConditions.calamityMod, "CharredLasher", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToCrags)
+                .AddModItemToShop(ModConditions.calamityMod, "CoastalDemonfish", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToCrags)
+                .AddModItemToShop(ModConditions.calamityMod, "CragBullhead", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToCrags)
+                .AddModItemToShop(ModConditions.calamityMod, "EnchantedStarfish", Item.buyPrice(silver: 10))
+                .AddModItemToShop(ModConditions.calamityMod, "FishofEleum", Item.buyPrice(silver: 10), Condition.Hardmode, ModConditions.HasBeenToSnow)
+                .AddModItemToShop(ModConditions.calamityMod, "FishofFlight", Item.buyPrice(silver: 10), Condition.Hardmode, ModConditions.HasBeenToSky)
+                .AddModItemToShop(ModConditions.calamityMod, "FishofLight", Item.buyPrice(silver: 10), Condition.Hardmode, ModConditions.HasBeenToHallow)
+                .AddModItemToShop(ModConditions.calamityMod, "FishofNight", Item.buyPrice(silver: 10), Condition.Hardmode, ModConditions.HasBeenToEvil)
+                .AddModItemToShop(ModConditions.calamityMod, "GlimmeringGemfish", Item.buyPrice(silver: 10), ModConditions.HasBeenToCavernsOrUnderground)
+                .AddModItemToShop(ModConditions.calamityMod, "Gorecodile", Item.buyPrice(silver: 10), ModConditions.DownedBloodMoon)
+                .AddModItemToShop(ModConditions.calamityMod, "GreenwaveLoach", Item.buyPrice(silver: 10), ModConditions.HasBeenToSunkenSea)
+                .AddModItemToShop(ModConditions.calamityMod, "Havocfish", Item.buyPrice(silver: 10), Condition.Hardmode, ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(ModConditions.calamityMod, "PrismaticGuppy", Item.buyPrice(silver: 10), ModConditions.HasBeenToSunkenSea)
+                .AddModItemToShop(ModConditions.calamityMod, "ProcyonidPrawn", Item.buyPrice(silver: 10), Condition.Hardmode, ModConditions.HasBeenToAstral)
+                .AddModItemToShop(ModConditions.calamityMod, "Shadowfish", Item.buyPrice(silver: 10), ModConditions.HasBeenThroughNight, ModConditions.HasBeenToCrags)
+                .AddModItemToShop(ModConditions.calamityMod, "StuffedFish", Item.buyPrice(silver: 10))
+                .AddModItemToShop(ModConditions.calamityMod, "SunbeamFish", Item.buyPrice(silver: 10), Condition.Hardmode, ModConditions.HasBeenToSky)
+                .AddModItemToShop(ModConditions.calamityMod, "SunkenSailfish", Item.buyPrice(silver: 10), ModConditions.HasBeenToSunkenSea)
+                .AddModItemToShop(ModConditions.calamityMod, "TwinklingPollox", Item.buyPrice(silver: 10), Condition.Hardmode, ModConditions.HasBeenToAstral)
+                .AddModItemToShop(ModConditions.calamityMod, "ArcturusAstroidean", Item.buyPrice(gold: 2), Condition.Hardmode, ModConditions.HasBeenToAstral)
+                .AddModItemToShop(ModConditions.calamityMod, "BabyGhostBellItem", Item.buyPrice(gold: 2), ModConditions.HasBeenToSunkenSea)
+                .AddModItemToShop(ModConditions.calamityMod, "BloodwormItem", Item.buyPrice(gold: 2), ModConditions.DownedPolterghast, ModConditions.HasBeenToSulphurSea)
+                .AddModItemToShop(ModConditions.calamityMod, "GrandMarquisBait", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.calamityMod, "SeaMinnowItem", Item.buyPrice(gold: 2), ModConditions.HasBeenToSunkenSea)
+                .AddModItemToShop(ModConditions.calamityMod, "TwinklerItem", Item.buyPrice(gold: 2), Condition.Hardmode, ModConditions.HasBeenToAstral)
+            //Redemption
+                .AddModItemToShop(ModConditions.redemptionMod, "CoastScarabItem", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.redemptionMod, "FlyBait", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.redemptionMod, "GrandLarvaBait", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.redemptionMod, "JohnSnailItem", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.redemptionMod, "KabucraItem", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.redemptionMod, "SandskinSpiderItem", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.redemptionMod, "SpiderSwarmerItem", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.redemptionMod, "TreeBugItem", Item.buyPrice(gold: 2))
+            //SOTS
+                .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "Curgeon", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToPyramid)
+                .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "PhantomFish", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToPyramid)
+                .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "TinyPlanetFish", Item.buyPrice(silver: 10), ModConditions.HasBeenToSky)
+                .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "SeaSnake", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToPyramid)
+            //Spirit
+                .AddModItemToShop(ModConditions.spiritMod, "FisheyeGem", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.spiritMod, "KoiTotem", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.spiritMod, "MimicRepellent", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.spiritMod, "ReachFishingCatch", Item.buyPrice(silver: 10))
+                .AddModItemToShop(ModConditions.spiritMod, "SpiritKoi", Item.buyPrice(silver: 10))
+            //Thorium
+                .AddModItemToShop(ModConditions.thoriumMod, "HightechSonarDevice", Item.buyPrice(gold: 2))
+                .AddModItemToShop(ModConditions.thoriumMod, "FlamingCrackGut", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(ModConditions.thoriumMod, "MagmaGill", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld);
+            modFishShop.Register();
         }
     }
 }

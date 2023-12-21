@@ -4,13 +4,8 @@ using QoLCompendium.Items.Mirrors;
 using QoLCompendium.Items.Tools;
 using QoLCompendium.Projectiles;
 using QoLCompendium.UI;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using Terraria;
 using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Tweaks
@@ -49,6 +44,8 @@ namespace QoLCompendium.Tweaks
         public bool bossSpawn = false;
         public int eventToSpawn = 0;
         public bool eventSpawn = false;
+
+        private (int type, int time)[] buffCache;
 
         public override void ResetEffects()
         {
@@ -116,6 +113,11 @@ namespace QoLCompendium.Tweaks
             {
                 Player.buffImmune[BuffID.Chilled] = true;
             }
+
+            if (ModContent.GetInstance<QoLCConfig>().NoShimmerSink && Player.wet)
+            {
+                Player.buffImmune[BuffID.Shimmer] = true;
+            }
         }
 
         public override void PostUpdateMiscEffects()
@@ -149,6 +151,18 @@ namespace QoLCompendium.Tweaks
                     Player.respawnTimer = 60;
                 }
             }
+
+            if (QoLCompendium.mainConfig.KeepBuffsOnDeath)
+            {
+                if (buffCache == null)
+                {
+                    buffCache = new (int, int)[Player.MaxBuffs];
+                }
+                for (int i = 0; i < Player.MaxBuffs; i++)
+                {
+                    buffCache[i] = (Player.buffType[i], Player.buffTime[i]);
+                }
+            }
         }
 
         public override void OnHurt(Player.HurtInfo info)
@@ -174,6 +188,20 @@ namespace QoLCompendium.Tweaks
             if (QoLCompendium.mainConfig.FullHPRespawn)
             {
                 respawnFullHPTimer = 1;
+            }
+
+            if (QoLCompendium.mainConfig.KeepBuffsOnDeath)
+            {
+                (int, int)[] array = buffCache;
+                for (int i = 0; i < array.Length; i++)
+                {
+                    var (num, num2) = array[i];
+                    if ((QoLCompendium.mainConfig.KeepDebuffsOnDeath || !Main.debuff[num]) && num > 0 && !Main.persistentBuff[num] && num2 > 2)
+                    {
+                        int num3 = (int)(float)num2;
+                        Player.AddBuff(num, num3, false, false);
+                    }
+                }
             }
         }
 

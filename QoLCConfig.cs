@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
@@ -29,6 +27,9 @@ namespace QoLCompendium
         [DefaultValue(true)]
         public  bool EndlessConsumables { get; set; }
 
+        [DefaultValue(true)]
+        public bool EndlessWeapons { get; set; }
+
         [Slider]
         [DefaultValue(30)]
         [Range(1, 60)]
@@ -44,6 +45,9 @@ namespace QoLCompendium
         [Increment(50)]
         [Range(1, 999)]
         public  int EndlessAmount { get; set; }
+
+        [DefaultValue(false)]
+        public bool EndlessBuffsOnlyFromCrate { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Spawn")]
         [DefaultValue(true)]
@@ -62,8 +66,14 @@ namespace QoLCompendium
         [DefaultValue(true)]
         public  bool IncreaseMaxStack { get; set; }
 
+        [DefaultValue(false)]
+        public bool SuperIncreaseMaxStack { get; set; }
+
         [DefaultValue(true)]
         public  bool InformationBanks { get; set; }
+
+        [DefaultValue(true)]
+        public bool StackableQuestItems { get; set; }
 
         [Slider]
         [DefaultValue(5)]
@@ -113,6 +123,9 @@ namespace QoLCompendium
         [Range(0, 1)]
         public  float HappinessPriceChange { get; set; }
 
+        [DefaultValue(true)]
+        public bool AnglerQuestInstantReset { get; set; }
+
         [Slider]
         [DefaultValue(10)]
         [Range(1, 100)]
@@ -157,6 +170,9 @@ namespace QoLCompendium
         public  float FastTools { get; set; }
 
         [DefaultValue(true)]
+        public bool MiningSpeedForHammersAndAxesAndDrills { get; set; }
+
+        [DefaultValue(true)]
         public  bool FastExtractor { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Player")]
@@ -164,6 +180,12 @@ namespace QoLCompendium
         [DefaultValue(44)]
         [Range(0, 88)]
         public  uint ExtraBuffSlots { get; set; }
+
+        [DefaultValue(true)]
+        public bool KeepBuffsOnDeath { get; set; }
+
+        [DefaultValue(false)]
+        public bool KeepDebuffsOnDeath { get; set; }
 
         [DefaultValue(true)]
         public  bool RegrowthAutoReplant { get; set; }
@@ -176,6 +198,9 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         public bool NoChilled { get; set; }
+
+        [DefaultValue(true)]
+        public bool NoShimmerSink { get; set; }
 
         [Slider]
         [DefaultValue(1)]
@@ -200,6 +225,10 @@ namespace QoLCompendium
         [DefaultValue(true)]
         [ReloadRequired]
         public  bool FastHerbs { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool TreesDropMore { get; set; }
 
         [DefaultValue(true)]
         public  bool Christmas { get; set; }
@@ -393,6 +422,10 @@ namespace QoLCompendium
             [DefaultValue(true)]
             [ReloadRequired]
             public  bool ECHerbShop { get; set; }
+
+            [DefaultValue(true)]
+            [ReloadRequired]
+            public bool ECFishShop { get; set; }
 
             [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Prices")]
 

@@ -1,13 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using QoLCompendium.NPCs;
-using ReLogic.Content;
-using Terraria;
-using Terraria.Audio;
-using Terraria.GameContent.UI.Elements;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.UI;
+﻿using QoLCompendium.NPCs;
 
 namespace QoLCompendium.UI
 {
@@ -24,7 +15,7 @@ namespace QoLCompendium.UI
             ShopPanel.Left.Set(575f, 0f);
             ShopPanel.Top.Set(300f, 0f);
             ShopPanel.Width.Set(385f, 0f);
-            ShopPanel.Height.Set(280f, 0f);
+            ShopPanel.Height.Set(310f, 0f);
             ShopPanel.BackgroundColor = new Color(73, 94, 171);
 
             ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
@@ -92,6 +83,13 @@ namespace QoLCompendium.UI
             herbText.Width.Set(60, 0f);
             herbText.Height.Set(22, 0f);
             ShopPanel.Append(herbText);
+
+            UIText fishText = new("Modded Fish & Fishing Gear");
+            fishText.Left.Set(35, 0f);
+            fishText.Top.Set(280, 0f);
+            fishText.Width.Set(60, 0f);
+            fishText.Height.Set(22, 0f);
+            ShopPanel.Append(fishText);
 
             Asset<Texture2D> buttonPlayTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
             Asset<Texture2D> buttonDeleteTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
@@ -204,6 +202,18 @@ namespace QoLCompendium.UI
             herbButton.OnLeftClick += new MouseEvent(HerbShopClicked);
             ShopPanel.Append(herbButton);
 
+            UIImageButton fishButton = new(buttonPlayTexture);
+            if (QoLCompendium.shopConfig.ECFishShop == false)
+            {
+                herbButton = new(buttonDeleteTexture);
+            }
+            fishButton.Left.Set(10, 0f);
+            fishButton.Top.Set(280, 0f);
+            fishButton.Width.Set(22, 0f);
+            fishButton.Height.Set(22, 0f);
+            fishButton.OnLeftClick += new MouseEvent(FishShopClicked);
+            ShopPanel.Append(fishButton);
+
             UIImageButton closeButton = new(buttonDeleteTexture);
             closeButton.Left.Set(350, 0f);
             closeButton.Top.Set(10, 0f);
@@ -291,6 +301,15 @@ namespace QoLCompendium.UI
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECHerbShop)
             {
                 EtherealCollectorNPC.shopNum = 8;
+                visible = false;
+            }
+        }
+        
+        private void FishShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECFishShop)
+            {
+                EtherealCollectorNPC.shopNum = 9;
                 visible = false;
             }
         }

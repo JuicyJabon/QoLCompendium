@@ -1,7 +1,3 @@
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
-
 namespace QoLCompendium.Projectiles
 {
     internal class LifeformLocator : ModProjectile

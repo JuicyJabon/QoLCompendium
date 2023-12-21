@@ -1,10 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.UI;
-
-namespace QoLCompendium.UI
+﻿namespace QoLCompendium.UI
 {
     public class UISystem : ModSystem
     {

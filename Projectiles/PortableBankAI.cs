@@ -1,10 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using QoLCompendium.Tiles;
+﻿using QoLCompendium.Tiles;
 using QoLCompendium.Tweaks;
-using Terraria;
-using Terraria.Audio;
 using Terraria.GameInput;
-using Terraria.ID;
 
 namespace QoLCompendium.Projectiles
 {
