@@ -99,6 +99,7 @@ namespace QoLCompendium
             itemConfig = null;
             shopConfig = null;
             BannerBox.itemToBanner.Clear();
+            On_WorldGen.moveRoom -= WorldGen_moveRoom;
         }
 
         public override void HandlePacket(BinaryReader reader, int whoAmI)

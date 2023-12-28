@@ -27,6 +27,11 @@ namespace QoLCompendium.Tweaks
             IL_WorldGen.UpdateWorld_Inner += new ILContext.Manipulator(WorldGen_UpdateWorld_Inner);
         }
 
+        public override void Unload()
+        {
+            IL_WorldGen.UpdateWorld_Inner -= WorldGen_UpdateWorld_Inner;
+        }
+
         private void WorldGen_UpdateWorld_Inner(ILContext il)
         {
             ILCursor ilcursor = new(il);

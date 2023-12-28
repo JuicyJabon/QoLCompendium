@@ -576,6 +576,8 @@ namespace QoLCompendium.Tweaks
         internal static bool lunarVeilLoaded;
         internal static Mod lunarVeilMod;
         //BOSSES
+        internal static bool downedStoneGuardian;
+        public static Condition DownedStoneGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStoneGuardian"), () => downedStoneGuardian);
         internal static bool downedCommanderGintzia;
         public static Condition DownedCommanderGintzia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCommanderGintzia"), () => downedCommanderGintzia);
         internal static bool downedSunStalker;
@@ -588,10 +590,32 @@ namespace QoLCompendium.Tweaks
         public static Condition DownedDreadMire = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDreadMire"), () => downedDreadMire);
         internal static bool downedSingularityFragment;
         public static Condition DownedSingularityFragment = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSingularityFragment"), () => downedSingularityFragment);
-        internal static bool downedVerliaB;
-        public static Condition DownedVerliaB = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedVerliaB"), () => downedVerliaB);
-        internal static bool downedGothivia;
-        public static Condition DownedGothivia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGothivia"), () => downedGothivia);
+        internal static bool downedVerlia;
+        public static Condition DownedVerlia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedVerlia"), () => downedVerlia);
+        internal static bool downedIrradia;
+        public static Condition DownedIrradia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedIrradia"), () => downedIrradia);
+        internal static bool downedSylia;
+        public static Condition DownedSylia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSylia"), () => downedSylia);
+        internal static bool downedFenix;
+        public static Condition DownedFenix = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFenix"), () => downedFenix);
+        //MINIBOSSES
+        internal static bool downedBlazingSerpent;
+        public static Condition DownedBlazingSerpent = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBlazingSerpent"), () => downedBlazingSerpent);
+        internal static bool downedCogwork;
+        public static Condition DownedCogwork = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCogwork"), () => downedCogwork);
+        internal static bool downedWaterCogwork;
+        public static Condition DownedWaterCogwork = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWaterCogwork"), () => downedWaterCogwork);
+        internal static bool downedWaterJellyfish;
+        public static Condition DownedWaterJellyfish = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWaterJellyfish"), () => downedWaterJellyfish);
+        internal static bool downedSparn;
+        public static Condition DownedSparn = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSparn"), () => downedSparn);
+        internal static bool downedPandorasFlamebox;
+        public static Condition DownedPandorasFlamebox = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPandorasFlamebox"), () => downedPandorasFlamebox);
+        internal static bool downedSTARBOMBER;
+        public static Condition DownedSTARBOMBER = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSTARBOMBER"), () => downedSTARBOMBER);
+        public static Condition DownedWaterJellyfishOrWaterCogwork = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWaterJellyfishOrWaterCogwork"), () => downedWaterCogwork || downedWaterJellyfish);
+        public static Condition DownedCogworkOrSparn = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCogworkOrSparn"), () => downedCogwork || downedSparn);
+        public static Condition DownedBlazingSerpentOrPandorasFlamebox = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBlazingSerpentOrPandorasFlamebox"), () => downedBlazingSerpent || downedPandorasFlamebox);
         //EVENTS
         internal static bool downedGintzeArmy;
         public static Condition DownedGintzeArmy = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGintzeArmy"), () => downedGintzeArmy);
@@ -2082,14 +2106,25 @@ namespace QoLCompendium.Tweaks
             tag.Add("beenToProfanedGardens", beenToProfanedGardens);
 
             //LUNAR VEIL
+            tag.Add("downedStoneGuardian", downedStoneGuardian);
             tag.Add("downedCommanderGintzia", downedCommanderGintzia);
             tag.Add("downedSunStalker", downedSunStalker);
             tag.Add("downedPumpkinJack", downedPumpkinJack);
             tag.Add("downedForgottenPuppetDaedus", downedForgottenPuppetDaedus);
             tag.Add("downedDreadMire", downedDreadMire);
             tag.Add("downedSingularityFragment", downedSingularityFragment);
-            tag.Add("downedVerliaB", downedVerliaB);
-            tag.Add("downedGothivia", downedGothivia);
+            tag.Add("downedVerlia", downedVerlia);
+            tag.Add("downedIrradia", downedIrradia);
+            tag.Add("downedSylia", downedSylia);
+            tag.Add("downedFenix", downedFenix);
+            //MINIBOSSSES
+            tag.Add("downedBlazingSerpent", downedBlazingSerpent);
+            tag.Add("downedCogwork", downedCogwork);
+            tag.Add("downedWaterCogwork", downedWaterCogwork);
+            tag.Add("downedWaterJellyfish", downedWaterJellyfish);
+            tag.Add("downedSparn", downedSparn);
+            tag.Add("downedPandorasFlamebox", downedPandorasFlamebox);
+            tag.Add("downedSTARBOMBER", downedSTARBOMBER);
             //EVENT
             tag.Add("downedGintzeArmy", downedGintzeArmy);
             //BIOMES
@@ -2535,14 +2570,25 @@ namespace QoLCompendium.Tweaks
             beenToProfanedGardens = tag.Get<bool>("beenToProfanedGardens");
 
             //LUNAR VEIL
+            downedStoneGuardian = tag.Get<bool>("downedStoneGuardian");
             downedCommanderGintzia = tag.Get<bool>("downedCommanderGintzia");
             downedSunStalker = tag.Get<bool>("downedSunStalker");
             downedPumpkinJack = tag.Get<bool>("downedPumpkinJack");
             downedForgottenPuppetDaedus = tag.Get<bool>("downedForgottenPuppetDaedus");
             downedDreadMire = tag.Get<bool>("downedDreadMire");
             downedSingularityFragment = tag.Get<bool>("downedSingularityFragment");
-            downedVerliaB = tag.Get<bool>("downedVerliaB");
-            downedGothivia = tag.Get<bool>("downedGothivia");
+            downedVerlia = tag.Get<bool>("downedVerlia");
+            downedIrradia = tag.Get<bool>("downedIrradia");
+            downedSylia = tag.Get<bool>("downedSylia");
+            downedFenix = tag.Get<bool>("downedFenix");
+            //MINIBOSSSES
+            downedBlazingSerpent = tag.Get<bool>("downedBlazingSerpent");
+            downedCogwork = tag.Get<bool>("downedCogwork");
+            downedWaterCogwork = tag.Get<bool>("downedWaterCogwork");
+            downedWaterJellyfish = tag.Get<bool>("downedWaterJellyfish");
+            downedSparn = tag.Get<bool>("downedSparn");
+            downedPandorasFlamebox = tag.Get<bool>("downedPandorasFlamebox");
+            downedSTARBOMBER = tag.Get<bool>("downedSTARBOMBER");
             //EVENT
             downedGintzeArmy = tag.Get<bool>("downedGintzeArmy");
             //BIOMES
@@ -3604,14 +3650,25 @@ namespace QoLCompendium.Tweaks
             beenToProfanedGardens = false;
 
             //LUNAR VEIL
+            downedStoneGuardian = false;
             downedCommanderGintzia = false;
             downedSunStalker = false;
             downedPumpkinJack = false;
             downedForgottenPuppetDaedus = false;
             downedDreadMire = false;
             downedSingularityFragment = false;
-            downedVerliaB = false;
-            downedGothivia = false;
+            downedVerlia = false;
+            downedIrradia = false;
+            downedSylia = false;
+            downedFenix = false;
+            //MINIBOSSSES
+            downedBlazingSerpent = false;
+            downedCogwork = false;
+            downedWaterCogwork = false;
+            downedWaterJellyfish = false;
+            downedSparn = false;
+            downedPandorasFlamebox = false;
+            downedSTARBOMBER = false;
             //EVENT
             downedGintzeArmy = false;
             //BIOMES

@@ -2,7 +2,8 @@ Another QoL mod... but this one is a little different.
 
 This mod aims to condense most of the other 1-off QoL mods into one.
 
-REQUIRES SHOP EXPANDER!
+Check out a more vanilla friendly QoL mod:
+https://steamcommunity.com/sharedfiles/filedetails/?id=3086919933
 
 All features are configurable.
 
@@ -17,12 +18,12 @@ Current Features:
  - Non-consumable Boss & Event summons
  - No favorite tooltip
  - Extra buff slots
+ - Keep buffs on death
  - Instant respawn (Singleplayer Only)
  - Full HP on respawn
  - Auto-join multiplayer teams
  - No enemy spawns during bosses
  - No lava slime lava
- - No door breaking
  - Lifeform Analyzer points towards rare creatures
  - Editable celestial tower shield health
  - Increased coin drops
@@ -32,6 +33,7 @@ Current Features:
  - Faster extractinator
  - Automatic coin quick-stacking
  - Informational accessories work in banks
+ - Mining speed affects all tools
  - Boss bags don't drop vanities
  - Extra fishing lures
  - Fast herb & tree growth
@@ -39,14 +41,20 @@ Current Features:
  - NPC happiness removal
  - Fast town NPC spawns
  - Improved town NPC spawns
+ - NPCs can live in evil biomes
  - Teleport NPCs home (Make sure to set a keybind)
+ - Shop Expander (Thanks Pannoniae!)
+ - Angler instant quest reset
  - No town slimes
  - No world evil spread
  - No chilled in ice water
+ - No sinking in shimmer
  - Seasonal events always
  - Staff of Regrowth auto-plant
+ - More drops from trees
  - Wing Slot
  - Map Teleporting
+ - All hairstyles unlocked
  - No tombstones
  - No sand, snow, or tombstone litter
  - No Queen Bee larva break
@@ -88,6 +96,7 @@ Current Mod Support:
  - Homeward Journey: Non-consumable Boss & Event summons & NPC Sales
  - Hunt of the Old God: NPC Sales
  - Infernum Mode: NPC Sales
+ - Lunar Veil: NPC Sales
  - Magic Storage: NPC Sales
  - Mech Boss Rework: NPC Sales
  - Metroid Mod: Non-consumable Boss & Event summons & NPC Sales

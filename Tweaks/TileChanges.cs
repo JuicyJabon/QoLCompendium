@@ -84,6 +84,14 @@ namespace QoLCompendium.Tweaks
             }
         }
 
+        public override void Unload()
+        {
+            IL_WorldGen.GrowAlch -= WorldGen_GrowAlch;
+            On_TileDrawing.IsAlchemyPlantHarvestable -= TileDrawing_IsAlchemyPlantHarvestable;
+            IL_Player.PlaceThing_Tiles_BlockPlacementForAssortedThings -= Player_PlaceThing_Tiles_BlockPlacementForAssortedThings;
+            On_WorldGen.IsHarvestableHerbWithSeed -= WorldGen_IsHarvestableHerbWithSeed;
+        }
+
         private void WorldGen_GrowAlch(ILContext il)
         {
             var c = new ILCursor(il);
@@ -189,6 +197,11 @@ namespace QoLCompendium.Tweaks
         {
             On_WorldGen.SetGemTreeDrops += GemAlways;
             ShakeTreeTweak.Load();
+        }
+
+        public override void Unload()
+        {
+            On_WorldGen.SetGemTreeDrops -= GemAlways;
         }
 
         private void GemAlways(On_WorldGen.orig_SetGemTreeDrops orig, int gemType, int seedType, Tile tileCache, ref int dropItem, ref int secondaryItem)

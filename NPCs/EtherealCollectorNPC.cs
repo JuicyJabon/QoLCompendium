@@ -912,30 +912,44 @@ namespace QoLCompendium.NPCs
             //Hunt of the Old God
                 .AddModItemToShop(ModConditions.huntOfTheOldGodMod, "ChromaticMass", Item.buyPrice(silver: 25), ModConditions.DownedGoozma)
             //Lunar Veil
-            /*
-                .AddModItemToShop(ModConditions.lunarVeilMod, "AlcadizScrap", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "BlankRune", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "BrokenTech", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "AlcadizMetal", Item.buyPrice(silver: 25), ModConditions.DownedCommanderGintzia)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "AlcaricMush", Item.buyPrice(silver: 25), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "AuroreanStarI", Item.buyPrice(silver: 25), ModConditions.DownedSTARBOMBER)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "BlankRune", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "BasicGunParts", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "BrokenTech", Item.buyPrice(silver: 25), ModConditions.HasBeenToGovheilCastle)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "CondensedDirt", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "GraftedSoul", Item.buyPrice(silver: 25), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.lunarVeilMod, "ConvulgingMater", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "DarkEssence", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "DreadFoil", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "DriveConstruct", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "DarkEssence", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "DreadFoil", Item.buyPrice(silver: 25), ModConditions.DownedDreadMire)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "Bagitem", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "DustedSilk", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "EldritchSoul", Item.buyPrice(silver: 25), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.lunarVeilMod, "EmptyMoonflameLantern", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "AlcadizScrap", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "FlowerBatch", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "Ivythorn", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "MeleeDrive", Item.buyPrice(silver: 25))
+                //.AddModItemToShop(ModConditions.lunarVeilMod, "MeleeDrive", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "MetallicOmniSource", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "PearlescentScrap", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "RippedFabric", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "Starrdew", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "StarSilk", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "SummonerDrive", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "TerrorFragments", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "MiracleThread", Item.buyPrice(silver: 25), ModConditions.DownedSylia)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "MorrowVine", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "Morrowshroom", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "Mushroom", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "PearlescentScrap", Item.buyPrice(silver: 25), ModConditions.DownedVerlia)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "RippedFabric", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "Cinderscrap", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "STARCORE", Item.buyPrice(silver: 25), ModConditions.DownedSTARBOMBER)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "Starrdew", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "StarSilk", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "Stick", Item.buyPrice(silver: 25))
+                //.AddModItemToShop(ModConditions.lunarVeilMod, "SummonerDrive", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "TerrorFragments", Item.buyPrice(silver: 25), ModConditions.DownedBloodMoon)
                 .AddModItemToShop(ModConditions.lunarVeilMod, "UnknownCircuitry", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "VirulentPlating", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "WanderingFlame", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "VirulentPlating", Item.buyPrice(silver: 25), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "VoidLantern", Item.buyPrice(silver: 25), ModConditions.DownedSingularityFragment)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "WanderingFlame", Item.buyPrice(silver: 25), ModConditions.DownedPumpkinJack)
                 .AddModItemToShop(ModConditions.lunarVeilMod, "WinterbornShard", Item.buyPrice(silver: 25))
-            */
             //Magic Storage
                 .AddModItemToShop(ModConditions.magicStorageMod, "ShadowDiamond", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu)
                 .AddModItemToShop(ModConditions.magicStorageMod, "RadiantJewel", Item.buyPrice(silver: 25), Condition.DownedMoonLord)
@@ -1345,16 +1359,19 @@ namespace QoLCompendium.NPCs
             //Infernum
                 .AddModItemToShop(ModConditions.infernumMod, "BereftVassalBossBag", Item.buyPrice(gold: 25), ModConditions.DownedBereftVassal, ModConditions.expertOrMaster)
             //Lunar Veil
-            /*
                 .AddModItemToShop(ModConditions.lunarVeilMod, "GintziaBossBag", Item.buyPrice(gold: 25), ModConditions.DownedCommanderGintzia, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.lunarVeilMod, "SunStalkerBag", Item.buyPrice(gold: 25), ModConditions.DownedSunStalker, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.lunarVeilMod, "JackoBag", Item.buyPrice(gold: 25), ModConditions.DownedPumpkinJack, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.lunarVeilMod, "DaedusBag", Item.buyPrice(gold: 25), ModConditions.DownedForgottenPuppetDaedus, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.lunarVeilMod, "DreadmireBag", Item.buyPrice(gold: 25), ModConditions.DownedDreadMire, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.lunarVeilMod, "SingularityBag", Item.buyPrice(gold: 25), ModConditions.DownedSingularityFragment, ModConditions.expertOrMaster)
-                .AddModItemToShop(ModConditions.lunarVeilMod, "VerliaBossBag", Item.buyPrice(gold: 25), ModConditions.DownedVerliaB, ModConditions.expertOrMaster)
-                .AddModItemToShop(ModConditions.lunarVeilMod, "GothiviaBag", Item.buyPrice(gold: 25), ModConditions.DownedGothivia, ModConditions.expertOrMaster)
-            */
+                .AddModItemToShop(ModConditions.lunarVeilMod, "VerliaBossBag", Item.buyPrice(gold: 25), ModConditions.DownedVerlia, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "GothiviaBag", Item.buyPrice(gold: 25), ModConditions.DownedIrradia, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "SyliaBag", Item.buyPrice(gold: 25), ModConditions.DownedSylia, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "FenixBag", Item.buyPrice(gold: 25), ModConditions.DownedFenix, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "TreasureBoxWater", Item.buyPrice(gold: 25), ModConditions.DownedWaterJellyfishOrWaterCogwork, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "TreasureBoxTrap", Item.buyPrice(gold: 25), ModConditions.DownedCogworkOrSparn, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "TreasureBoxFire", Item.buyPrice(gold: 25), ModConditions.DownedBlazingSerpentOrPandorasFlamebox, ModConditions.expertOrMaster)
             //Mech Rework
                 .AddModItemToShop(ModConditions.mechReworkMod, "MechclopsBossBag", Item.buyPrice(gold: 25), ModConditions.DownedSt4sys, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.mechReworkMod, "TerminatorBossBag", Item.buyPrice(gold: 25), ModConditions.DownedTerminator, ModConditions.expertOrMaster)
@@ -1624,16 +1641,20 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(ModConditions.homewardJourneyMod, "LivingBar", Item.buyPrice(silver: 50), ModConditions.DownedWallOfShadow, ModConditions.HasBeenToJungle)
                 .AddModItemToShop(ModConditions.homewardJourneyMod, "AbyssalChunk", Item.buyPrice(silver: 50), ModConditions.DownedDiver, ModConditions.HasBeenToHomewardAbyss)
             //Lunar Veil
-            /*
                 .AddModItemToShop(ModConditions.lunarVeilMod, "ArncharChunk", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "FrileOre", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "KaleidoscopicInk", Item.buyPrice(silver: 25), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.lunarVeilMod, "LostScrap", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "VerianOre", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "OldWeddingRing", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "VerianOre", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu)
                 .AddModItemToShop(ModConditions.lunarVeilMod, "ArnchaliteBar", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "ArtisanBar", Item.buyPrice(silver: 25), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.lunarVeilMod, "FrileBar", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "GintzlMetal", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.lunarVeilMod, "VerianBar", Item.buyPrice(silver: 25))
-            */
+                .AddModItemToShop(ModConditions.lunarVeilMod, "GintzlMetal", Item.buyPrice(silver: 25), ModConditions.DownedGintzeArmy)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "GrailBar", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "SingulariumBar", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "SpacialDistortionFragments", Item.buyPrice(silver: 25), ModConditions.DownedSingularityFragment)
+                .AddModItemToShop(ModConditions.lunarVeilMod, "VerianBar", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu)
             //Metroid
                 .AddModItemToShop(ModConditions.metroidMod, "ChoziteOre", Item.buyPrice(silver: 25), ModConditions.DownedTorizo)
                 .AddModItemToShop(ModConditions.metroidMod, "Phazon", Item.buyPrice(silver: 25), Condition.DownedPlantera)
@@ -1876,14 +1897,13 @@ namespace QoLCompendium.NPCs
             //Homeward
                 .AddModItemToShop(ModConditions.homewardJourneyMod, "AbyssStone", Item.buyPrice(copper: 10), Condition.DownedMechBossAll)
             //Lunar Veil
-            /*
                 .AddModItemToShop(ModConditions.lunarVeilMod, "AcidicalDirtBlock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "CathediteGrassBlock", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.lunarVeilMod, "CarianWood", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "OvermorrowDirt", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "OvermorrowWood", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "StarbloomDirtBlock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "VerianWood", Item.buyPrice(copper: 10))
-            */
             //Metroid
                 .AddModItemToShop(ModConditions.metroidMod, "BrinstoneTile", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.metroidMod, "GreenBrinstarRootsTile", Item.buyPrice(copper: 10))
@@ -2182,7 +2202,6 @@ namespace QoLCompendium.NPCs
             //Homeward
                 .AddModItemToShop(ModConditions.homewardJourneyMod, "AbyssBrick", Item.buyPrice(copper: 10), Condition.DownedMechBossAll)
             //Lunar Veil
-            /*
                 .AddModItemToShop(ModConditions.lunarVeilMod, "CathediteBlock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "GovheilBlock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "GovheilCastleBlock", Item.buyPrice(copper: 10))
@@ -2190,7 +2209,6 @@ namespace QoLCompendium.NPCs
                 .AddModItemToShop(ModConditions.lunarVeilMod, "StarbloomBlock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "Stelleanbrick", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.lunarVeilMod, "VerianRuneBlock", Item.buyPrice(copper: 10))
-            */
             //Metroid
                 .AddModItemToShop(ModConditions.metroidMod, "ArcticPlating", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.metroidMod, "ChozoBrick", Item.buyPrice(copper: 10))

@@ -3,6 +3,7 @@ using MonoMod.Cil;
 using QoLCompendium.Items.InformationAccessories;
 using QoLCompendium.NPCs;
 using Terraria.GameContent.ItemDropRules;
+using tModPorter;
 
 namespace QoLCompendium.Tweaks
 {
@@ -78,7 +79,42 @@ namespace QoLCompendium.Tweaks
             }
         }
     }
-    
+
+    public class LiveInEvil : ModSystem
+    {
+        public override void Load()
+        {
+            ModLoader.TryGetMod("VanillaQoL", out Mod VanillaQoL);
+            if (VanillaQoL == null)
+            {
+                if (QoLCompendium.mainConfig.TowniesLiveInEvil)
+                {
+                    IL_WorldGen.ScoreRoom += LiveInCorrupt;
+                }
+            }
+        }
+
+        public override void Unload()
+        {
+            IL_WorldGen.ScoreRoom -= LiveInCorrupt;
+        }
+
+        private void LiveInCorrupt(ILContext il)
+        {
+            var c = new ILCursor(il);
+            if (!c.TryGotoNext(
+                    MoveType.After,
+                    i => i.MatchCall(typeof(WorldGen).GetMethod("GetTileTypeCountByCategory")),
+                    i => i.Match(OpCodes.Neg),
+                    i => i.Match(OpCodes.Stloc_S),
+                    i => i.Match(OpCodes.Ldloc_S),
+                    i => i.Match(OpCodes.Ldc_I4_S)))
+                return;
+            c.EmitDelegate<Func<int, int>>((returnValue) => true ? 114514 : returnValue);
+        }
+
+    }
+
     public class HappinessOverride : ModSystem
     {
         public override void Load()
@@ -209,7 +245,15 @@ namespace QoLCompendium.Tweaks
     {
         public override void Load()
         {
-            IL_NPC.VanillaHitEffect += LavalessLavaSlime;
+            if (QoLCompendium.mainConfig.LavaSlimeNoLava)
+            {
+                IL_NPC.VanillaHitEffect += LavalessLavaSlime;
+            }
+        }
+
+        public override void Unload()
+        {
+            IL_NPC.VanillaHitEffect -= LavalessLavaSlime;
         }
 
         private void LavalessLavaSlime(ILContext il)
@@ -226,116 +270,7 @@ namespace QoLCompendium.Tweaks
                 ))
                 return;
 
-            c.EmitDelegate<Func<int, int>>(returnValue => QoLCompendium.mainConfig.LavaSlimeNoLava ? NPCLoader.NPCCount : returnValue);
-        }
-    }
-
-    public sealed class NoBreakDoors : ModSystem
-    {
-        public override void Load()
-        {
-            IL_NPC.AI_003_Fighters += PreventDoorInteractions;
-        }
-
-        /// <summary>
-        /// Changes the following check in NPC.AI_003_Fighters:
-        ///
-        /// WorldGen.KillTile(num178, num179 - 1, fail: true);
-        /// if ((Main.netMode != 1 || !flag23) && flag23 && Main.netMode != 1) {
-        /// 	if (type == 26) {
-        ///			WorldGen.KillTile(num178, num179 - 1);
-        ///
-        /// to:
-        ///
-        /// WorldGen.KillTile(num178, num179 - 1, fail: true);
-        /// if ((Main.netMode != 1 || !flag23) && flag23 && !ModContent.GetInstance<DoorOptionsConfig>().StopOpeningDoors && Main.netMode != 1) {
-        /// 	if (type == int.MinValue) {
-        ///			WorldGen.KillTile(num178, num179 - 1);
-        ///
-        /// </summary>
-        private void PreventDoorInteractions(ILContext il)
-        {
-            ILCursor c = new(il);
-
-            #region Opening Door Change
-
-            // Match (C#):
-            //	if (type == 460) { flag = true; }
-            // Match (IL):
-            //	ldarg.0
-            //	ldfld int32 Terraria.NPC::'type'
-            //	ldc.i4 460
-            //	bne.un.s LABEL
-            //	ldc.i4.1
-            //	stloc LOCAL
-            // Need LOCAL for code below.
-            int localIndex = -1;
-            if (!c.TryGotoNext(MoveType.Before,
-                i => i.MatchLdarg(0),
-                i => i.MatchLdfld<NPC>(nameof(NPC.type)),
-                i => i.MatchLdcI4(NPCID.Butcher),
-                i => i.MatchBneUn(out _),
-                i => i.MatchLdcI4(1), // true
-                i => i.MatchStloc(out localIndex)
-                ))
-            {
-                throw new Exception("Unable to patch Terraria.NPC.AI_003_Fighters: Could not match IL (Finding Local Index).");
-            }
-
-            // Match (C#):
-            //	WorldGen.KillTile(num194, num195 - 1, fail: true);
-            // Change to:
-            //	WorldGen.KillTile(num194, num195 - 1, fail: true);
-            //	LOCAL &= !ModContent.GetInstance<DoorOptionsConfig>().StopOpeningDoors;
-            // LOCAL is whether any NPC should try hitting doors. By and-ing the config option, NPCs won't hit doors if they're disallwoed by this mod.
-            if (!c.TryGotoNext(MoveType.After,
-                // Match the five params for KillTile
-                i => true,
-                i => true,
-                i => true,
-                i => true,
-                i => true,
-                i => i.MatchCall<WorldGen>(nameof(WorldGen.KillTile))
-            ))
-            {
-                throw new Exception("Unable to patch Terraria.NPC.AI_003_Fighters: Could not match IL (Finding Local Index).");
-            }
-
-            c.Emit(OpCodes.Ldloc, localIndex);
-            c.EmitDelegate(() => QoLCompendium.mainConfig.StopOpeningDoors);
-            c.Emit(OpCodes.And);
-            c.Emit(OpCodes.Stloc, localIndex);
-
-            #endregion Opening Door Change
-
-            #region Peon Change
-
-            /// Match the following IL:
-            ///		IL_B6B4: ldarg.0
-            ///		IL_B6B5: ldfld     int32 Terraria.NPC::'type'
-            ///		IL_B6BA: ldc.i4.s  26
-            ///		IL_B6BC: bne.un.s  IL_B707
-            /// This places the cursor on ldarg.0.
-
-            if (!c.TryGotoNext(MoveType.Before,
-                    i => i.MatchLdarg(0),
-                    i => i.MatchLdfld<NPC>(nameof(NPC.type)),
-                    i => i.MatchLdcI4(NPCID.GoblinPeon)
-                ))
-            {
-                throw new Exception("Unable to patch Terraria.NPC.AI_003_Fighters: Could not match IL (Peon Change).");
-            }
-
-            // Move the cursor to the instruction loading the Goblin Peon's ID (26).
-            c.Index += 2;
-
-            // Replace 26 with NPCID.None. The code now checks if npc.type == NPCID.None.
-            // The OpCode here is ldc.i4.s, so I'm constrained to the range of an sbyte.
-            c.Next.Operand = NPCID.None;
-
-            #endregion Peon Change
-
-            MonoModHooks.DumpIL(Mod, il);
+            c.EmitDelegate<Func<int, int>>(returnValue => true ? NPCLoader.NPCCount : returnValue);
         }
     }
 
@@ -1236,6 +1171,10 @@ namespace QoLCompendium.Tweaks
 
             if (ModConditions.lunarVeilLoaded)
             {
+                if (ModConditions.lunarVeilMod.TryFind("StarrVeriplant", out ModNPC StarrVeriplant) && npc.type == StarrVeriplant.Type)
+                {
+                    ModConditions.downedStoneGuardian = true;
+                }
                 if (ModConditions.lunarVeilMod.TryFind("CommanderGintzia", out ModNPC CommanderGintzia) && npc.type == CommanderGintzia.Type)
                 {
                     ModConditions.downedCommanderGintzia = true;
@@ -1249,7 +1188,7 @@ namespace QoLCompendium.Tweaks
                 {
                     ModConditions.downedPumpkinJack = true;
                 }
-                if (ModConditions.lunarVeilMod.TryFind("Daedus", out ModNPC Daedus) && npc.type == Daedus.Type)
+                if (ModConditions.lunarVeilMod.TryFind("DaedusR", out ModNPC DaedusR) && npc.type == DaedusR.Type)
                 {
                     ModConditions.downedForgottenPuppetDaedus = true;
                 }
@@ -1263,11 +1202,47 @@ namespace QoLCompendium.Tweaks
                 }
                 if (ModConditions.lunarVeilMod.TryFind("VerliaB", out ModNPC VerliaB) && npc.type == VerliaB.Type)
                 {
-                    ModConditions.downedVerliaB = true;
+                    ModConditions.downedVerlia = true;
                 }
                 if (ModConditions.lunarVeilMod.TryFind("Gothiviab", out ModNPC Gothiviab) && npc.type == Gothiviab.Type)
                 {
-                    ModConditions.downedGothivia = true;
+                    ModConditions.downedIrradia = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("Sylia", out ModNPC Sylia) && npc.type == Sylia.Type)
+                {
+                    ModConditions.downedSylia = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("Fenix", out ModNPC Fenix) && npc.type == Fenix.Type)
+                {
+                    ModConditions.downedFenix = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("BlazingSerpentHead", out ModNPC BlazingSerpentHead) && npc.type == BlazingSerpentHead.Type)
+                {
+                    ModConditions.downedBlazingSerpent = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("Cogwork", out ModNPC Cogwork) && npc.type == Cogwork.Type)
+                {
+                    ModConditions.downedCogwork = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("WaterCogwork", out ModNPC WaterCogwork) && npc.type == WaterCogwork.Type)
+                {
+                    ModConditions.downedWaterCogwork = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("WaterJellyfish", out ModNPC WaterJellyfish) && npc.type == WaterJellyfish.Type)
+                {
+                    ModConditions.downedWaterJellyfish = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("Sparn", out ModNPC Sparn) && npc.type == Sparn.Type)
+                {
+                    ModConditions.downedSparn = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("PandorasFlamebox", out ModNPC PandorasFlamebox) && npc.type == PandorasFlamebox.Type)
+                {
+                    ModConditions.downedPandorasFlamebox = true;
+                }
+                if (ModConditions.lunarVeilMod.TryFind("STARBOMBER", out ModNPC STARBOMBER) && npc.type == STARBOMBER.Type)
+                {
+                    ModConditions.downedSTARBOMBER = true;
                 }
             }
 

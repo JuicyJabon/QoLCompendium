@@ -88,7 +88,7 @@ namespace QoLCompendium
 
         public  List<ItemDefinition> CustomItems { get; set; }
 
-        [Range(0, 999)]
+        [Range(0, 9999)]
         public  List<int> CustomItemQuantities { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.NPCs")]
@@ -115,6 +115,10 @@ namespace QoLCompendium
 
         [DefaultValue(true)]
         [ReloadRequired]
+        public bool TowniesLiveInEvil { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
         public  bool ToggleHappiness { get; set; }
 
         [Slider]
@@ -135,10 +139,6 @@ namespace QoLCompendium
         [DefaultValue(true)]
         [ReloadRequired]
         public  bool LavaSlimeNoLava { get; set; }
-
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public  bool StopOpeningDoors { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Projectiles")]
         [DefaultValue(true)]
@@ -209,6 +209,10 @@ namespace QoLCompendium
         public int AutoTeams { get; set; }
 
         [DefaultValue(true)]
+        [ReloadRequired]
+        public bool AllHairsAvailable { get; set; }
+
+        [DefaultValue(true)]
         public bool NoTombs { get; set; }
 
         [DefaultValue(true)]
@@ -259,6 +263,10 @@ namespace QoLCompendium
             [DefaultValue(true)]
             [ReloadRequired]
             public  bool BannerBox { get; set; }
+
+            [DefaultValue(true)]
+            [ReloadRequired]
+            public bool CraftingStations { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]

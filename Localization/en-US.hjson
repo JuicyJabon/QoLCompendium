@@ -331,6 +331,45 @@ Mods: {
 					Favorite this item to always be in the selected biome
 					'''
 			}
+
+			Skybridger: {
+				DisplayName: Skybridger
+				Tooltip:
+					'''
+					Creates a drill bomb that creates a skybridge across the entire world
+					Will destroy everything in it's way
+					'''
+			}
+
+			AdvancedCraftingMonolith: {
+				DisplayName: Advanced Crafting Monolith
+				Tooltip: Functions as many advanced crafting stations
+			}
+
+			BasicCraftingMonolith: {
+				DisplayName: Basic Crafting Monolith
+				Tooltip: Functions as many basic crafting stations
+			}
+
+			HardmodeCraftingMonolith: {
+				DisplayName: Hardmode Crafting Monolith
+				Tooltip: Functions as many hardmode crafting stations
+			}
+
+			LunarCraftingMonolith: {
+				DisplayName: Lunar Crafting Monolith
+				Tooltip: Functions as every crafting station
+			}
+
+			DemonAltar: {
+				Tooltip: Functions as a demon altar
+				DisplayName: Demon Altar
+			}
+
+			CrimsonAltar: {
+				Tooltip: Functions as a crimson altar
+				DisplayName: Crimson Altar
+			}
 		}
 
 		NPCs: {
@@ -392,6 +431,7 @@ Mods: {
 			SillySlapperWhip.DisplayName: Silly Slapper Whip
 			RangedAbsolutionProj.DisplayName: Ranged Absolution Projectile
 			HellbridgerProj.DisplayName: Hellbridger Projectile
+			SkybridgerProj.DisplayName: Skybridger Projectile
 		}
 
 		InfoDisplays: {
@@ -762,6 +802,16 @@ Mods: {
 					Tooltip: Toggles if mining speed benefits affect hammers, axes, and drills
 					Label: "[i:579] Mining Speed Benefits Hammers, Axes, & Drills"
 				}
+
+				TowniesLiveInEvil: {
+					Label: "[i:61] NPCs Can Live In Evil Biomes"
+					Tooltip: Toggles if NPCs can live in the corruption or crimson biomes
+				}
+
+				AllHairsAvailable: {
+					Label: "[i:1990] All Hairstyles Available"
+					Tooltip: Toggles if all hairstyles are available on character creation
+				}
 			}
 
 			ItemConfig: {
@@ -854,6 +904,11 @@ Mods: {
 				PotionCrate: {
 					Label: "[i:QoLCompendium/PotionCrate] Potion Crate"
 					Tooltip: Toggles the Potion Crate item
+				}
+
+				CraftingStations: {
+					Tooltip: Toggles crafting station related items
+					Label: "[i:QoLCompendium/BasicCraftingMonolith] Crafting Stations"
 				}
 			}
 
@@ -1423,6 +1478,30 @@ Mods: {
 			downedChaosbringer: Downed Chaosbringer
 			downedPaladinSpirit: Downed Paladin Spirit
 			downedManaflora: Downed Manaflora
+			downedStoneGuardian: Downed StoneGuardian
+			downedVerlia: Downed Verlia
+			downedIrradia: Downed Irradia
+			downedSylia: Downed Sylia
+			downedFenix: Downed Fenix
+			downedBlazingSerpent: Downed Blazing Serpent
+			downedCogwork: Downed Cogwork
+			downedWaterCogwork: Downed Water Cogwork
+			downedWaterJellyfish: Downed Water Jellyfish
+			downedSparn: Downed Sparn
+			downedPandorasFlamebox: Downed Pandoras Flamebox
+			downedSTARBOMBER: Downed STARBOMBER
+			downedWaterJellyfishOrWaterCogwork: Downed Water Jellyfish or Water Cogwork
+			downedCogworkOrSparn: Downed Cogwork or Sparn
+			downedBlazingSerpentOrPandorasFlamebox: Downed Blazing Serpent or Pandoras Flamebox
+		}
+
+		Tiles: {
+			AdvancedCraftingMonolithTile.MapEntry: Advanced Crafting Monolith
+			BasicCraftingMonolithTile.MapEntry: Basic Crafting Monolith
+			HardmodeCraftingMonolithTile.MapEntry: Hardmode Crafting Monolith
+			LunarCraftingMonolithTile.MapEntry: Lunar Crafting Monolith
+			DemonAltarTile.MapEntry: Demon Altar
+			CrimsonAltarTile.MapEntry: Crimson Altar
 		}
 	}
 }

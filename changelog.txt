@@ -1,10 +1,6 @@
-v2.1.18
-1. Separated thrown weapons into their own endless config
-2. Added a config option for allowing infinite buffs only from the Potion Crate
-3. Added a config option to further increase item stacks to 99999
-4. Added a config option for instant angler quest refresh
-5. Added a config option for increased fruit and gem drops from trees
-6. Added a config option to affect axes, hammers, and drills with mining speed bonuses
-7. Added a config option to remove shimmer sinking
-8. Added a config option to keep buffs after death
-9. Added a config option to keep debuffs after death
+v2.1.20
+1. Added support for Lunar Veil
+2. Added a bunch of new crafting station combinations
+3. Added a craftable demon altar/crimson altar
+4. Added a config to allow NPCs to live in evil biomes
+5. Added a config to unlock all hairstyles

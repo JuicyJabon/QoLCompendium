@@ -1,3 +1,10 @@
+v2.1.19
+1. Updated description
+2. Increased item stack size limit for the custom Starter Bag to 9999
+3. Added Skybridger
+4. Implemented Pannoniae's shop expander from Vanilla+ QoL into this mod because shop expander is broken
+5. Removed door breaking config since it breaks with other mods
+
 v2.1.18
 1. Separated thrown weapons into their own endless config
 2. Added a config option for allowing infinite buffs only from the Potion Crate

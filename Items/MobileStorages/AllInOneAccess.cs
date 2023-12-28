@@ -13,19 +13,9 @@ namespace QoLCompendium.Items.MobileStorages
 
         public override void SetDefaults()
         {
-            /*
+            Item.CloneDefaults(ItemID.MoneyTrough);
             Item.width = 16;
             Item.height = 22;
-            Item.maxStack = 1;
-            Item.consumable = false;
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.rare = ItemRarityID.Orange;
-            Item.UseSound = new SoundStyle?(SoundID.MenuTick);
-            Item.useAnimation = 20;
-            Item.useTime = 20;
-            Item.value = Item.sellPrice(gold: 1);
-            */
-            Item.CloneDefaults(ItemID.MoneyTrough);
             Item.shoot = ModContent.ProjectileType<WeightlessSafeProj>();
         }
 
