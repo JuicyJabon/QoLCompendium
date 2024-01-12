@@ -149,79 +149,90 @@ namespace QoLCompendium.Tweaks
     {
         internal static Dictionary<int, int> ModdedPlaceableItemBuffs = new();
 
-        private static void DoCalamityModIntegration()
+        public static void DoCalamityModIntegration()
         {
-            if (!ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            if (!ModConditions.calamityLoaded)
             {
                 return;
             }
 
-            AddBuffIntegration(calamityMod, "WeightlessCandle", "CirrusBlueCandleBuff", true);
-            AddBuffIntegration(calamityMod, "VigorousCandle", "CirrusPinkCandleBuff", true);
-            AddBuffIntegration(calamityMod, "SpitefulCandle", "CirrusYellowCandleBuff", true);
-            AddBuffIntegration(calamityMod, "ResilientCandle", "CirrusPurpleCandleBuff", true);
-            AddBuffIntegration(calamityMod, "ChaosCandle", "ChaosCandleBuff", true);
-            AddBuffIntegration(calamityMod, "TranquilityCandle", "TranquilityCandleBuff", true);
-            AddBuffIntegration(calamityMod, "EffigyOfDecay", "EffigyOfDecayBuff", true);
-            AddBuffIntegration(calamityMod, "CrimsonEffigy", "CrimsonEffigyBuff", true);
-            AddBuffIntegration(calamityMod, "CorruptionEffigy", "CorruptionEffigyBuff", true);
+            AddBuffIntegration(ModConditions.calamityMod, "WeightlessCandle", "CirrusBlueCandleBuff", true);
+            AddBuffIntegration(ModConditions.calamityMod, "VigorousCandle", "CirrusPinkCandleBuff", true);
+            AddBuffIntegration(ModConditions.calamityMod, "SpitefulCandle", "CirrusYellowCandleBuff", true);
+            AddBuffIntegration(ModConditions.calamityMod, "ResilientCandle", "CirrusPurpleCandleBuff", true);
+            AddBuffIntegration(ModConditions.calamityMod, "ChaosCandle", "ChaosCandleBuff", true);
+            AddBuffIntegration(ModConditions.calamityMod, "TranquilityCandle", "TranquilityCandleBuff", true);
+            AddBuffIntegration(ModConditions.calamityMod, "EffigyOfDecay", "EffigyOfDecayBuff", true);
+            AddBuffIntegration(ModConditions.calamityMod, "CrimsonEffigy", "CrimsonEffigyBuff", true);
+            AddBuffIntegration(ModConditions.calamityMod, "CorruptionEffigy", "CorruptionEffigyBuff", true);
         }
 
-        private static void DoThoriumIntegration()
+        public static void DoCalamityRemixModIntegration()
         {
-            if (!ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+            if (!ModConditions.calamityCommunityRemixLoaded)
             {
                 return;
             }
 
-            AddBuffIntegration(thoriumMod, "Altar", "AltarBuff", true);
-            AddBuffIntegration(thoriumMod, "ConductorsStand", "ConductorsStandBuff", true);
-            AddBuffIntegration(thoriumMod, "Mistletoe", "MistletoeBuff", true);
-            AddBuffIntegration(thoriumMod, "NinjaRack", "NinjaBuff", true);
+            AddBuffIntegration(ModConditions.calamityCommunityRemixMod, "AstralEffigy", "AstralEffigyBuff", true);
+            AddBuffIntegration(ModConditions.calamityCommunityRemixMod, "HallowEffigy", "HallowEffigyBuff", true);
         }
 
-        private static void DoSpiritIntegration()
+        public static void DoThoriumIntegration()
         {
-            if (!ModLoader.TryGetMod("SpiritMod", out Mod spirit))
+            if (!ModConditions.thoriumLoaded)
             {
                 return;
             }
 
-            AddBuffIntegration(spirit, "SunPot", "SunPotBuff", true);
-            AddBuffIntegration(spirit, "CoilEnergizerItem", "OverDrive", true);
-            AddBuffIntegration(spirit, "TheCouch", "CouchPotato", true);
+            AddBuffIntegration(ModConditions.thoriumMod, "Altar", "AltarBuff", true);
+            AddBuffIntegration(ModConditions.thoriumMod, "ConductorsStand", "ConductorsStandBuff", true);
+            AddBuffIntegration(ModConditions.thoriumMod, "Mistletoe", "MistletoeBuff", true);
+            AddBuffIntegration(ModConditions.thoriumMod, "NinjaRack", "NinjaBuff", true);
         }
 
-        private static void DoRedemptionIntegration()
+        public static void DoSpiritIntegration()
         {
-            if (!ModLoader.TryGetMod("Redemption", out Mod redemption))
+            if (!ModConditions.spiritLoaded)
             {
                 return;
             }
 
-            AddBuffIntegration(redemption, "EnergyStation", "EnergyStationBuff", true);
+            AddBuffIntegration(ModConditions.spiritMod, "SunPot", "SunPotBuff", true);
+            AddBuffIntegration(ModConditions.spiritMod, "CoilEnergizerItem", "OverDrive", true);
+            AddBuffIntegration(ModConditions.spiritMod, "TheCouch", "CouchPotato", true);
         }
 
-        private static void DoSOTSIntegration()
+        public static void DoRedemptionIntegration()
         {
-            if (!ModLoader.TryGetMod("SOTS", out Mod sots))
+            if (!ModConditions.redemptionLoaded)
             {
                 return;
             }
 
-            AddBuffIntegration(sots, "DigitalDisplay", "CyberneticEnhancements", true);
+            AddBuffIntegration(ModConditions.redemptionMod, "EnergyStation", "EnergyStationBuff", true);
         }
 
-        private static void DoFargosIntegration()
+        public static void DoSOTSIntegration()
         {
-            if (!ModLoader.TryGetMod("Fargowiltas", out Mod fargos))
+            if (!ModConditions.secretsOfTheShadowsLoaded)
             {
                 return;
             }
 
-            AddBuffIntegration(fargos, "Semistation", "Semistation", true);
-            AddBuffIntegration(fargos, "Omnistation", "Omnistation", true);
-            AddBuffIntegration(fargos, "Omnistation2", "Omnistation", true);
+            AddBuffIntegration(ModConditions.secretsOfTheShadowsMod, "DigitalDisplay", "CyberneticEnhancements", true);
+        }
+
+        public static void DoFargosIntegration()
+        {
+            if (!ModConditions.fargosMutantLoaded)
+            {
+                return;
+            }
+
+            AddBuffIntegration(ModConditions.fargosMutantMod, "Semistation", "Semistation", true);
+            AddBuffIntegration(ModConditions.fargosMutantMod, "Omnistation", "Omnistation", true);
+            AddBuffIntegration(ModConditions.fargosMutantMod, "Omnistation2", "Omnistation", true);
         }
 
         public static void AddBuffIntegration(Mod mod, string itemName, string buffName, bool isPlaceable)
@@ -230,15 +241,18 @@ namespace QoLCompendium.Tweaks
                 ModdedPlaceableItemBuffs[mod.Find<ModItem>(itemName).Type] = mod.Find<ModBuff>(buffName).Type;
         }
 
+        /*
         public override void PostSetupContent()
         {
             DoCalamityModIntegration();
+            DoCalamityRemixModIntegration();
             DoThoriumIntegration();
             DoSpiritIntegration();
             DoRedemptionIntegration();
             DoSOTSIntegration();
             DoFargosIntegration();
         }
+        */
     }
 
     public class BuffItem : GlobalItem

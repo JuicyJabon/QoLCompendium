@@ -228,6 +228,8 @@ namespace QoLCompendium.Tweaks
         public static Condition DownedNuclearTerror = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNuclearTerror"), () => downedNuclearTerror);
         internal static bool downedMauler;
         public static Condition DownedMauler = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMauler"), () => downedMauler);
+        internal static bool downedEidolonWyrm;
+        public static Condition DownedEidolonWyrm = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEidolonWyrm"), () => downedEidolonWyrm);
         //EVENTS
         internal static bool downedAcidRain1;
         public static Condition DownedAcidRain1 = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAcidRain1"), () => downedAcidRain1);
@@ -254,6 +256,14 @@ namespace QoLCompendium.Tweaks
         public static Condition HasBeenToAbyssLayer3 = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAbyssLayer3"), () => beenToAbyssLayer3);
         internal static bool beenToAbyssLayer4;
         public static Condition HasBeenToAbyssLayer4 = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAbyssLayer4"), () => beenToAbyssLayer4);
+
+
+        //CALAMITY COMMUNITY REMIX
+        internal static bool calamityCommunityRemixLoaded;
+        internal static Mod calamityCommunityRemixMod;
+        //BOSSES
+        internal static bool downedWulfrumExcavator;
+        public static Condition DownedWulfrumExcavator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWulfrumExcavator"), () => downedWulfrumExcavator);
 
 
         //CALAMITY VANITIES
@@ -974,6 +984,9 @@ namespace QoLCompendium.Tweaks
         public static Condition DownedFlyingTerror = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFlyingTerror"), () => downedFlyingTerror);
         internal static bool downedStoneMantaRay;
         public static Condition DownedStoneMantaRay = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStoneMantaRay"), () => downedStoneMantaRay);
+        //MINIBOSSES
+        internal static bool downedBloodweaver;
+        public static Condition DownedBloodweaver = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBloodweaver"), () => downedBloodweaver);
 
 
         //TERRORBORN
@@ -1141,6 +1154,10 @@ namespace QoLCompendium.Tweaks
             if (!calamityLoaded)
             {
                 calamityMod = null;
+            }
+            if (!calamityCommunityRemixLoaded)
+            {
+                calamityCommunityRemixMod = null;
             }
             if (!calamityVanitiesLoaded)
             {
@@ -1378,6 +1395,10 @@ namespace QoLCompendium.Tweaks
             {
                 calamityMod = null;
             }
+            if (!calamityCommunityRemixLoaded)
+            {
+                calamityCommunityRemixMod = null;
+            }
             if (!calamityVanitiesLoaded)
             {
                 calamityVanitiesMod = null;
@@ -1606,6 +1627,9 @@ namespace QoLCompendium.Tweaks
             calamityLoaded = ModLoader.TryGetMod("CalamityMod", out Mod CalamityMod);
             calamityMod = CalamityMod;
 
+            calamityCommunityRemixLoaded = ModLoader.TryGetMod("CalRemix", out Mod CalRemix);
+            calamityCommunityRemixMod = CalRemix;
+
             calamityVanitiesLoaded = ModLoader.TryGetMod("CalValEX", out Mod CalValEX);
             calamityVanitiesMod = CalValEX;
 
@@ -1755,6 +1779,15 @@ namespace QoLCompendium.Tweaks
 
             wayfairContentLoaded = ModLoader.TryGetMod("WAYFAIRContent", out Mod WAYFAIRContent);
             wayfairContentMod = WAYFAIRContent;
+
+
+            BuffSystem.DoCalamityModIntegration();
+            BuffSystem.DoCalamityRemixModIntegration();
+            BuffSystem.DoThoriumIntegration();
+            BuffSystem.DoSpiritIntegration();
+            BuffSystem.DoRedemptionIntegration();
+            BuffSystem.DoSOTSIntegration();
+            BuffSystem.DoFargosIntegration();
         }
 
         public override void OnWorldLoad()
@@ -1982,6 +2015,7 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedGreatSandShark", downedGreatSandShark);
             tag.Add("downedNuclearTerror", downedNuclearTerror);
             tag.Add("downedMauler", downedMauler);
+            tag.Add("downedEidolonWyrm", downedEidolonWyrm);
             //EVENTS
             tag.Add("downedAcidRain1", downedAcidRain1);
             tag.Add("downedAcidRain2", downedAcidRain2);
@@ -1996,6 +2030,9 @@ namespace QoLCompendium.Tweaks
             tag.Add("beenToAbyssLayer2", beenToAbyssLayer2);
             tag.Add("beenToAbyssLayer3", beenToAbyssLayer3);
             tag.Add("beenToAbyssLayer4", beenToAbyssLayer4);
+
+            //CALAMITY COMMUNITY REMIX
+            tag.Add("downedWulfrumExcavator", downedWulfrumExcavator);
 
             //CALAMITY VANITIES
             tag.Add("beenToAstralBlight", beenToAstralBlight);
@@ -2288,6 +2325,8 @@ namespace QoLCompendium.Tweaks
             tag.Add("downedHarbingerOfAnnihilation", downedHarbingerOfAnnihilation);
             tag.Add("downedFlyingTerror", downedFlyingTerror);
             tag.Add("downedStoneMantaRay", downedStoneMantaRay);
+            //MINIBOSSES
+            tag.Add("downedBloodweaver", downedBloodweaver);
 
             //TERRORBORN
             tag.Add("downedInfectedIncarnate", downedInfectedIncarnate);
@@ -2446,6 +2485,7 @@ namespace QoLCompendium.Tweaks
             downedGreatSandShark = tag.Get<bool>("downedGreatSandShark");
             downedNuclearTerror = tag.Get<bool>("downedNuclearTerror");
             downedMauler = tag.Get<bool>("downedMauler");
+            downedEidolonWyrm = tag.Get<bool>("downedEidolonWyrm");
             //EVENTS
             downedAcidRain1 = tag.Get<bool>("downedAcidRain1");
             downedAcidRain2 = tag.Get<bool>("downedAcidRain2");
@@ -2460,6 +2500,9 @@ namespace QoLCompendium.Tweaks
             beenToAbyssLayer2 = tag.Get<bool>("beenToAbyssLayer2");
             beenToAbyssLayer3 = tag.Get<bool>("beenToAbyssLayer3");
             beenToAbyssLayer4 = tag.Get<bool>("beenToAbyssLayer4");
+
+            //CALAMITY COMMUNITY REMIX
+            downedWulfrumExcavator = tag.Get<bool>("downedWulfrumExcavator");
 
             //CALAMITY VANITIES
             beenToAstralBlight = tag.Get<bool>("beenToAstralBlight");
@@ -2752,6 +2795,8 @@ namespace QoLCompendium.Tweaks
             downedHarbingerOfAnnihilation = tag.Get<bool>("downedHarbingerOfAnnihilation");
             downedFlyingTerror = tag.Get<bool>("downedFlyingTerror");
             downedStoneMantaRay = tag.Get<bool>("downedStoneMantaRay");
+            //MINIBOSSES
+            downedBloodweaver = tag.Get<bool>("downedBloodweaver");
 
             //TERRORBORN
             downedInfectedIncarnate = tag.Get<bool>("downedInfectedIncarnate");
@@ -3053,6 +3098,11 @@ namespace QoLCompendium.Tweaks
                 {
                     "GetBossDowned",
                     "GreatSandShark"
+                });
+                downedEidolonWyrm = (bool)calamityMod.Call(new object[]
+                {
+                    "GetBossDowned",
+                    "primordialwyrm"
                 });
                 downedAcidRain1 = (bool)calamityMod.Call(new object[]
                 {
@@ -3513,6 +3563,7 @@ namespace QoLCompendium.Tweaks
             downedCragmawMire = false;
             downedNuclearTerror = false;
             downedMauler = false;
+            downedEidolonWyrm = false;
             //EVENTS
             downedAcidRain1 = false;
             downedAcidRain2 = false;
@@ -3527,6 +3578,9 @@ namespace QoLCompendium.Tweaks
             beenToAbyssLayer2 = false;
             beenToAbyssLayer3 = false;
             beenToAbyssLayer4 = false;
+
+            //CALAMITY COMMUNITY REMIX
+            downedWulfrumExcavator = false;
 
             //CALAMITY VANITIES
             beenToAstralBlight = false;
@@ -3835,6 +3889,8 @@ namespace QoLCompendium.Tweaks
             downedHarbingerOfAnnihilation = false;
             downedFlyingTerror = false;
             downedStoneMantaRay = false;
+            //MINIBOSSES
+            downedBloodweaver = false;
 
             //TERRORBORN
             downedInfectedIncarnate = false;

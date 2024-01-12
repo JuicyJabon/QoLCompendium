@@ -370,6 +370,18 @@ Mods: {
 				Tooltip: Functions as a crimson altar
 				DisplayName: Crimson Altar
 			}
+
+			SuperDummy: {
+				Tooltip:
+					'''
+					Summons a floating super dummy at your cursor
+					Minions and homing projectiles will detect and attack it
+					On hit effects get triggered as well
+					Right click to remove all active super dummies
+					Can spawn up to 100 super dummies at once
+					'''
+				DisplayName: Super Dummy
+			}
 		}
 
 		NPCs: {
@@ -420,6 +432,8 @@ Mods: {
 
 				Census.SpawnCondition: No condition
 			}
+
+			SuperDummy.DisplayName: Super Dummy
 		}
 
 		Projectiles: {
@@ -811,6 +825,11 @@ Mods: {
 				AllHairsAvailable: {
 					Label: "[i:1990] All Hairstyles Available"
 					Tooltip: Toggles if all hairstyles are available on character creation
+				}
+
+				BossItemTransmutation: {
+					Label: "[i:5349] Boss Item Transmutation"
+					Tooltip: Toggles if boss items can be transmutated with shimmer
 				}
 			}
 
@@ -1493,6 +1512,9 @@ Mods: {
 			downedWaterJellyfishOrWaterCogwork: Downed Water Jellyfish or Water Cogwork
 			downedCogworkOrSparn: Downed Cogwork or Sparn
 			downedBlazingSerpentOrPandorasFlamebox: Downed Blazing Serpent or Pandoras Flamebox
+			downedWulfrumExcavator: Downed Wulfrum Excavator
+			downedEidolonWyrm: Downed Eidolon Wyrm
+			downedBloodweaver: Downed Bloodweaver
 		}
 
 		Tiles: {

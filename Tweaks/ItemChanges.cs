@@ -1,3 +1,6 @@
+using System.Configuration;
+using Terraria.ID;
+
 namespace QoLCompendium.Tweaks
 {
     public class DontConsumeAFKPetsSummons : GlobalItem
@@ -739,10 +742,10 @@ namespace QoLCompendium.Tweaks
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
             return ModConditions.supernovaLoaded &&
-                ModConditions.supernovaMod.TryFind("HorridChunk", out ModItem HorridChunk)
-                && ModConditions.supernovaMod.TryFind("MantaFood", out ModItem MantaFood)
-                && (entity.type == HorridChunk.Type
-                || entity.type == MantaFood.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
+                ModConditions.supernovaMod.TryFind("BugOnAStick", out ModItem BugOnAStick)
+                && ModConditions.supernovaMod.TryFind("EerieCrystal", out ModItem EerieCrystal)
+                && (entity.type == BugOnAStick.Type
+                || entity.type == EerieCrystal.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -1028,6 +1031,366 @@ namespace QoLCompendium.Tweaks
                     {
                         item.maxStack = 99999;
                     }
+                }
+            }
+
+            if (QoLCompendium.mainConfig.BossItemTransmutation)
+            {
+                if (item.type == ItemID.NinjaHood)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 257;
+                }
+                if (item.type == ItemID.NinjaShirt)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 258;
+                }
+                if (item.type == ItemID.NinjaPants)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 256;
+                }
+                if (item.type == ItemID.BeeKeeper)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2888;
+                }
+                if (item.type == ItemID.BeesKnees)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1121;
+                }
+                if (item.type == ItemID.BeeGun)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1132;
+                }
+                if (item.type == ItemID.HoneyComb)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1123;
+                }
+                if (item.type == ItemID.LucyTheAxe)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 5117;
+                }
+                if (item.type == ItemID.PewMaticHorn)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 5118;
+                }
+                if (item.type == ItemID.WeatherPain)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 5119;
+                }
+                if (item.type == ItemID.HoundiusShootius)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 5095;
+                }
+                if (item.type == ItemID.BreakerBlade)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 434;
+                }
+                if (item.type == ItemID.ClockworkAssaultRifle)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 514;
+                }
+                if (item.type == ItemID.LaserRifle)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4912;
+                }
+                if (item.type == ItemID.FireWhip)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 426;
+                }
+                if (item.type == ItemID.CrystalNinjaHelmet)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4983;
+                }
+                if (item.type == ItemID.CrystalNinjaChestplate)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4984;
+                }
+                if (item.type == ItemID.CrystalNinjaLeggings)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4982;
+                }
+                if (item.type == ItemID.Seedler)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1259;
+                }
+                if (item.type == ItemID.FlowerPow)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 758;
+                }
+                if (item.type == ItemID.GrenadeLauncher)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1255;
+                }
+                if (item.type == ItemID.VenusMagnum)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 788;
+                }
+                if (item.type == ItemID.NettleBurst)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1178;
+                }
+                if (item.type == ItemID.LeafBlower)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1155;
+                }
+                if (item.type == ItemID.WaspGun)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3018;
+                }
+                if (item.type == ItemID.GolemFist)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1122;
+                }
+                if (item.type == ItemID.PossessedHatchet)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1258;
+                }
+                if (item.type == ItemID.Stynger)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1295;
+                }
+                if (item.type == ItemID.HeatRay)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1296;
+                }
+                if (item.type == ItemID.StaffofEarth)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 899;
+                }
+                if (item.type == ItemID.SunStone)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1248;
+                }
+                if (item.type == ItemID.EyeoftheGolem)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1297;
+                }
+                if (item.type == ItemID.Flairon)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2624;
+                }
+                if (item.type == ItemID.Tsunami)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2622;
+                }
+                if (item.type == ItemID.RazorbladeTyphoon)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2623;
+                }
+                if (item.type == ItemID.BubbleGun)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2621;
+                }
+                if (item.type == ItemID.TempestStaff)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2611;
+                }
+                if (item.type == ItemID.PiercingStarlight)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4953;
+                }
+                if (item.type == ItemID.FairyQueenRangedItem)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4952;
+                }
+                if (item.type == ItemID.FairyQueenMagicItem)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4914;
+                }
+                if (item.type == ItemID.RainbowWhip)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4923;
+                }
+                if (item.type == ItemID.Terrarian)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3063;
+                }
+                if (item.type == ItemID.Meowmere)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3065;
+                }
+                if (item.type == ItemID.StarWrath)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3930;
+                }
+                if (item.type == ItemID.Celeb2)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1553;
+                }
+                if (item.type == ItemID.SDMG)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3541;
+                }
+                if (item.type == ItemID.LastPrism)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3570;
+                }
+                if (item.type == ItemID.LunarFlareBook)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3571;
+                }
+                if (item.type == ItemID.RainbowCrystalStaff)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3569;
+                }
+                if (item.type == ItemID.MoonlordTurretStaff)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3389;
+                }
+                if (item.type == ItemID.DD2SquireDemonSword)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3835;
+                }
+                if (item.type == ItemID.MonkStaffT1)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3836;
+                }
+                if (item.type == ItemID.MonkStaffT2)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3854;
+                }
+                if (item.type == ItemID.DD2PhoenixBow)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3852;
+                }
+                if (item.type == ItemID.BookStaff)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3823;
+                }
+                if (item.type == ItemID.DD2SquireBetsySword)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3858;
+                }
+                if (item.type == ItemID.MonkStaffT3)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3859;
+                }
+                if (item.type == ItemID.DD2BetsyBow)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3870;
+                }
+                if (item.type == ItemID.ApprenticeStaffT3)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3827;
+                }
+                if (item.type == ItemID.StakeLauncher)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1845;
+                }
+                if (item.type == ItemID.NecromanticScroll)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1835;
+                }
+                if (item.type == ItemID.TheHorsemansBlade)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1782;
+                }
+                if (item.type == ItemID.CandyCornRifle)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1784;
+                }
+                if (item.type == ItemID.JackOLanternLauncher)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1801;
+                }
+                if (item.type == ItemID.BatScepter)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1802;
+                }
+                if (item.type == ItemID.RavenStaff)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4680;
+                }
+                if (item.type == ItemID.ScytheWhip)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1826;
+                }
+                if (item.type == ItemID.ChristmasTreeSword)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1930;
+                }
+                if (item.type == ItemID.Razorpine)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1928;
+                }
+                if (item.type == ItemID.ElfMelter)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1929;
+                }
+                if (item.type == ItemID.ChainGun)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1910;
+                }
+                if (item.type == ItemID.NorthPole)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1946;
+                }
+                if (item.type == ItemID.SnowmanCannon)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1931;
+                }
+                if (item.type == ItemID.BlizzardStaff)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1947;
+                }
+                if (item.type == ItemID.InfluxWaver)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2797;
+                }
+                if (item.type == ItemID.Xenopopper)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2796;
+                }
+                if (item.type == ItemID.ElectrosphereLauncher)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2795;
+                }
+                if (item.type == ItemID.LaserMachinegun)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2749;
+                }
+                if (item.type == ItemID.XenoStaff)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2769;
+                }
+                if (item.type == ItemID.CosmicCarKey)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2880;
+                }
+                if (item.type == ItemID.BloodRainBow)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4273;
+                }
+                if (item.type == ItemID.VampireFrogStaff)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4381;
+                }
+                if (item.type == ItemID.SharpTears)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4272;
+                }
+                if (item.type == ItemID.DripplerFlail)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4270;
+                }
+                if (item.type == ItemID.ShadowFlameKnife)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3052;
+                }
+                if (item.type == ItemID.ShadowFlameBow)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3053;
+                }
+                if (item.type == ItemID.ShadowFlameHexDoll)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3054;
+                }
+                if (item.type == ItemID.VampireKnives)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1571;
+                }
+                if (item.type == ItemID.ScourgeoftheCorruptor)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1569;
                 }
             }
         }

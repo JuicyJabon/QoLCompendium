@@ -1,4 +1,5 @@
-﻿using Terraria.DataStructures;
+﻿using QoLCompendium.Items.Dedicated;
+using Terraria.DataStructures;
 
 namespace QoLCompendium.Projectiles
 {
@@ -214,6 +215,7 @@ namespace QoLCompendium.Projectiles
                 if (Timer >= ExecTime)
                 {
                     CurrentStage = AttackStage.Unwind;
+                    //ShootWave();
                 }
             }
         }
@@ -229,6 +231,16 @@ namespace QoLCompendium.Projectiles
                 {
                     Projectile.Kill();
                 }
+            }
+        }
+
+        private void ShootWave()
+        {
+            Player p = Main.LocalPlayer;
+            int numProj = 8;
+            for (int i = 0; i < numProj; i++)
+            {
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), new Vector2(p.Center.X, p.Center.Y - (i * 2)), new Vector2(10f * p.direction, 0), ProjectileID.Bullet, Projectile.damage, 0f, Main.myPlayer);
             }
         }
     }

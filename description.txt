@@ -35,6 +35,7 @@ Current Features:
  - Informational accessories work in banks
  - Mining speed affects all tools
  - Boss bags don't drop vanities
+ - Boss loot shimmer conversions
  - Extra fishing lures
  - Fast herb & tree growth
  - Friendly NPCs become invincible
@@ -73,6 +74,7 @@ Current Mod Support:
  - Bombus Apis: NPC Sales
  - Buffaria: NPC Sales
  - Calamity: Endless Station Buffs & NPC Sales
+ - Calamity Community Remix: Endless Station Buffs & NPC Sales
  - Calamity's Vanities: NPC Sales
  - Catalyst: NPC Sales
  - Cerebral Mod: NPC Sales

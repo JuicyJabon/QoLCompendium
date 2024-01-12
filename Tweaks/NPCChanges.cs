@@ -801,6 +801,14 @@ namespace QoLCompendium.Tweaks
                 }
             }
 
+            if (ModConditions.calamityCommunityRemixLoaded)
+            {
+                if (ModConditions.calamityCommunityRemixMod.TryFind("WulfwyrmHead", out ModNPC WulfwyrmHead) && npc.type == WulfwyrmHead.Type)
+                {
+                    ModConditions.downedWulfrumExcavator = true;
+                }
+            }
+
             if (ModConditions.catalystLoaded)
             {
                 if (ModConditions.catalystMod.TryFind("Astrageldon", out ModNPC Astrageldon) && npc.type == Astrageldon.Type)
@@ -1725,6 +1733,10 @@ namespace QoLCompendium.Tweaks
                 if (ModConditions.supernovaMod.TryFind("StoneMantaRay", out ModNPC StoneMantaRay) && npc.type == StoneMantaRay.Type)
                 {
                     ModConditions.downedStoneMantaRay = true;
+                }
+                if (ModConditions.supernovaMod.TryFind("Bloodweaver", out ModNPC Bloodweaver) && npc.type == Bloodweaver.Type)
+                {
+                    ModConditions.downedBloodweaver = true;
                 }
             }
 

@@ -75,6 +75,9 @@ namespace QoLCompendium
         [DefaultValue(true)]
         public bool StackableQuestItems { get; set; }
 
+        [DefaultValue(true)]
+        public bool BossItemTransmutation { get; set; }
+
         [Slider]
         [DefaultValue(5)]
         [Range(1, 25)]
