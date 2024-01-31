@@ -14,28 +14,30 @@ namespace QoLCompendium.Items.Dedicated
             tooltips.Add(line);
         }
 
+        public override void SetStaticDefaults()
+        {
+            Item.staff[Item.type] = true;
+        }
+
         public override void SetDefaults()
         {
             Item.width = 26;
             Item.height = 26;
-            Item.useTime = 40;
-            Item.useAnimation = 40;
-            Item.useStyle = ItemUseStyleID.Shoot;
-            Item.knockBack = 7;
-            Item.autoReuse = true;
-            Item.damage = 30;
-            Item.DamageType = DamageClass.Ranged;
-            Item.noMelee = true;
-            Item.noUseGraphic = true;
-            Item.shoot = ModContent.ProjectileType<RangedAbsolutionProj>();
-            Item.useAmmo = AmmoID.Bullet;
             Item.rare = ItemRarityID.Orange;
-        }
 
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<RangedAbsolutionProj>(), damage, knockback, Main.myPlayer, 0);
-            return false;
+            Item.useTime = 8;
+            Item.useAnimation = 8;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.autoReuse = true;
+            Item.UseSound = SoundID.Item11;
+
+            Item.knockBack = 7;
+            Item.damage = 26;
+            Item.DamageType = DamageClass.Ranged;
+
+            Item.shoot = ProjectileID.PurificationPowder;
+            Item.useAmmo = AmmoID.Bullet;
+            Item.shootSpeed = 16f;
         }
 
         public override bool RangedPrefix()

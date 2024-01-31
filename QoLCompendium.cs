@@ -43,6 +43,7 @@ namespace QoLCompendium
         internal static QoLCConfig mainConfig;
         internal static ItemConfig itemConfig;
         internal static ShopConfig shopConfig;
+        internal static TooltipConfig tooltipConfig;
         #pragma warning restore CA2211
 
         public override uint ExtraPlayerBuffSlots => mainConfig.ExtraBuffSlots;
@@ -98,6 +99,7 @@ namespace QoLCompendium
             mainConfig = null;
             itemConfig = null;
             shopConfig = null;
+            tooltipConfig = null;
             BannerBox.itemToBanner.Clear();
             On_WorldGen.moveRoom -= WorldGen_moveRoom;
         }

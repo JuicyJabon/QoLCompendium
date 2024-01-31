@@ -1,3 +1,10 @@
+v2.1.21
+1. Added a config to allow boss item swapping using shimmer
+2. Added support for Calamity Community Remix
+3. Fixed a couple things regarding new Supernova Mod update
+4. Fixed a couple things regarding new Spirit Mod update
+5. Added Super Dummy
+
 v2.1.20
 1. Added support for Lunar Veil
 2. Added a bunch of new crafting station combinations

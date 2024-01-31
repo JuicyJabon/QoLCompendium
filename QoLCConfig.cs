@@ -30,20 +30,16 @@ namespace QoLCompendium
         [DefaultValue(true)]
         public bool EndlessWeapons { get; set; }
 
-        [Slider]
         [DefaultValue(30)]
-        [Range(1, 60)]
+        [Range(1, 9999)]
         public  int EndlessBuffAmount { get; set; }
 
-        [Slider]
         [DefaultValue(30)]
-        [Range(1, 60)]
+        [Range(1, 9999)]
         public int EndlessHealingAmount { get; set; }
 
-        [Slider]
         [DefaultValue(999)]
-        [Increment(50)]
-        [Range(1, 999)]
+        [Range(1, 9999)]
         public  int EndlessAmount { get; set; }
 
         [DefaultValue(false)]
@@ -86,12 +82,9 @@ namespace QoLCompendium
         [DefaultValue(true)]
         public  bool AutoMoneyStack { get; set; }
 
-        [DefaultValue(true)]
-        public bool NoFavoriteTooltip { get; set; }
-
         public  List<ItemDefinition> CustomItems { get; set; }
 
-        [Range(0, 9999)]
+        [Range(1, 9999)]
         public  List<int> CustomItemQuantities { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.NPCs")]
@@ -236,6 +229,11 @@ namespace QoLCompendium
         [DefaultValue(true)]
         [ReloadRequired]
         public bool TreesDropMore { get; set; }
+
+        [DefaultValue(2)]
+        [Range(1, 500)]
+        [Increment(1)]
+        public int MoreStars { get; set; }
 
         [DefaultValue(true)]
         public  bool Christmas { get; set; }
@@ -506,6 +504,27 @@ namespace QoLCompendium
             public override void OnLoaded()
             {
                 QoLCompendium.shopConfig = this;
+            }
+        }
+
+        [SeparatePage]
+        public class TooltipConfig : ModConfig
+        {
+            public override ConfigScope Mode => ConfigScope.ClientSide;
+
+            [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Tooltips")]
+
+            [DefaultValue(true)]
+            [ReloadRequired]
+            public bool NoFavoriteTooltip { get; set; }
+            
+            [DefaultValue(true)]
+            [ReloadRequired]
+            public bool ShimmerableTooltip { get; set; }
+
+            public override void OnLoaded()
+            {
+                QoLCompendium.tooltipConfig = this;
             }
         }
     }

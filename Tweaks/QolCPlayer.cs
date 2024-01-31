@@ -238,7 +238,7 @@ namespace QoLCompendium.Tweaks
                 return;
             }
 
-            if (QoLCompendium.mainConfig.AutoTeams > 0 && joinedTeam == false)
+            if (QoLCompendium.mainConfig.AutoTeams > 0 && joinedTeam == false && Main.netMode == NetmodeID.MultiplayerClient)
             {
                 Main.player[Main.myPlayer].team = QoLCompendium.mainConfig.AutoTeams;
                 joinedTeam = true;

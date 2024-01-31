@@ -1,6 +1,10 @@
 Mods: {
 	QoLCompendium: {
-		CommonItemTooltips.NotConsumable: Not Consumable
+		CommonItemTooltips: {
+			NotConsumable: Not Consumable
+			Shimmerable: Shimmerable
+		}
+
 		NPCStuff.GoHome: NPCs have been teleported home!
 
 		ItemNames: {
@@ -752,11 +756,6 @@ Mods: {
 						'''
 				}
 
-				NoFavoriteTooltip: {
-					Label: "[i:75] No Favorite Tooltip"
-					Tooltip: Removes the favorite tooltip
-				}
-
 				NoTombs: {
 					Label: "[i:321] No Tombstones"
 					Tooltip: Disables tombstones from spawning
@@ -830,6 +829,15 @@ Mods: {
 				BossItemTransmutation: {
 					Label: "[i:5349] Boss Item Transmutation"
 					Tooltip: Toggles if boss items can be transmutated with shimmer
+				}
+
+				MoreStars: {
+					Label: "[i:75] More Stars"
+					Tooltip:
+						'''
+						Increase the amount of fallen stars
+						Ranges from 1 to 500, with 1 being the normal rate
+						'''
 				}
 			}
 
@@ -1119,6 +1127,20 @@ Mods: {
 					Tooltip: Bags will increase in price following vanilla progression
 				}
 			}
+
+			TooltipConfig: {
+				DisplayName: Tooltip Config
+
+				ShimmerableTooltip: {
+					Tooltip: Adds a tooltip to indicate if an item is shimmerable
+					Label: "[i:5342] Shimmerable Tooltip"
+				}
+
+				NoFavoriteTooltip: {
+					Label: "[i:75] No Favorite Tooltip"
+					Tooltip: Removes the favorite tooltip
+				}
+			}
 		}
 
 		QoLCConfig: {
@@ -1135,6 +1157,7 @@ Mods: {
 				BMShop: Dealer Shop Toggles
 				ECShop: Collector Shop Toggles
 				Prices: Price Modifiers
+				Tooltips: Tooltip Toggles
 			}
 		}
 

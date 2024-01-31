@@ -280,7 +280,7 @@ namespace QoLCompendium.Tweaks
         {
             if (npc.type == NPCID.Harpy && QoLCompendium.itemConfig.InformationAccessories)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WingTimer>(), 5));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WingTimer>(), 20));
             }
         }
     }

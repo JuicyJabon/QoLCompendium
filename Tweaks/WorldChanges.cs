@@ -129,4 +129,12 @@ namespace QoLCompendium.Tweaks
             }
         }
     }
+
+    public class StarFallSystem : ModSystem
+    {
+        public override void PostUpdateWorld()
+        {
+            Star.starfallBoost = QoLCompendium.mainConfig.MoreStars;
+        }
+    }
 }

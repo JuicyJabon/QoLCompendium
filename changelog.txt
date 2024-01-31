@@ -1,6 +1,7 @@
-v2.1.21
-1. Added a config to allow boss item swapping using shimmer
-2. Added support for Calamity Community Remix
-3. Fixed a couple things regarding new Supernova Mod update
-4. Fixed a couple things regarding new Spirit Mod update
-5. Added Super Dummy
+v2.1.22
+1. Added a new config page to store tooltip changes
+2. Added a config to indicate if an item is shimmerable via tooltip
+3. Changed endless amount configs to be a number input and raised maximum to 9999
+4. Added multiple items to Black Market Dealer's shop
+5. Made Wing Timer less common
+6. Added a config to change Fallen Star spawn rate

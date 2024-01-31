@@ -7,7 +7,7 @@ namespace QoLCompendium.Tweaks
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return ModConditions.afkpetsLoaded && 
+            return ModConditions.afkpetsLoaded &&
                 ModConditions.afkpetsMod.TryFind("AncientSand", out ModItem AncientSand)
                 && ModConditions.afkpetsMod.TryFind("BlackenedHeart", out ModItem BlackenedHeart)
                 && ModConditions.afkpetsMod.TryFind("BrokenDelftPlate", out ModItem BrokenDelftPlate)
@@ -47,44 +47,44 @@ namespace QoLCompendium.Tweaks
                 && ModConditions.afkpetsMod.TryFind("TradeDeal", out ModItem TradeDeal)
                 && ModConditions.afkpetsMod.TryFind("UnstableRainbowCookie", out ModItem UnstableRainbowCookie)
                 && ModConditions.afkpetsMod.TryFind("UntoldBurial", out ModItem UntoldBurial)
-                && (entity.type == AncientSand.Type 
-                || entity.type == BlackenedHeart.Type 
-                || entity.type == BrokenDelftPlate.Type 
-                || entity.type == CookingBook.Type 
-                || entity.type == CorruptedServer.Type 
-                || entity.type == DemonicAnalysis.Type 
-                || entity.type == DesertMirror.Type 
-                || entity.type == DuckWhistle.Type 
-                || entity.type == FallingSlimeReplica.Type 
-                || entity.type == FrozenSkull.Type 
-                || entity.type == GoldenKingSlimeIdol.Type 
-                || entity.type == GoldenSkull.Type 
-                || entity.type == HaniwaIdol.Type 
-                || entity.type == HolographicSlimeReplica.Type 
-                || entity.type == IceBossCrystal.Type 
-                || entity.type == MagicWand.Type 
-                || entity.type == NightmareFuel.Type 
-                || entity.type == PinkDiamond.Type 
-                || entity.type == PlantAshContainer.Type 
-                || entity.type == PreyTrackingChip.Type 
-                || entity.type == RoastChickenPlate.Type 
-                || entity.type == SeveredClothierHead.Type 
-                || entity.type == SeveredDryadHead.Type 
-                || entity.type == SeveredHarpyHead.Type 
-                || entity.type == ShogunSlimesHelmet.Type 
-                || entity.type == SlimeinaGlassCube.Type 
-                || entity.type == SlimyWarBanner.Type 
-                || entity.type == SoulofAgonyinaBottle.Type 
-                || entity.type == SpineWormFood.Type 
-                || entity.type == SpiritofFunPot.Type 
-                || entity.type == SpiritualHeart.Type 
-                || entity.type == StoryBook.Type 
-                || entity.type == SuspiciousLookingChest.Type 
-                || entity.type == SwissChocolate.Type 
-                || entity.type == TiedBunny.Type 
-                || entity.type == TinyMeatIdol.Type 
-                || entity.type == TradeDeal.Type 
-                || entity.type == UnstableRainbowCookie.Type 
+                && (entity.type == AncientSand.Type
+                || entity.type == BlackenedHeart.Type
+                || entity.type == BrokenDelftPlate.Type
+                || entity.type == CookingBook.Type
+                || entity.type == CorruptedServer.Type
+                || entity.type == DemonicAnalysis.Type
+                || entity.type == DesertMirror.Type
+                || entity.type == DuckWhistle.Type
+                || entity.type == FallingSlimeReplica.Type
+                || entity.type == FrozenSkull.Type
+                || entity.type == GoldenKingSlimeIdol.Type
+                || entity.type == GoldenSkull.Type
+                || entity.type == HaniwaIdol.Type
+                || entity.type == HolographicSlimeReplica.Type
+                || entity.type == IceBossCrystal.Type
+                || entity.type == MagicWand.Type
+                || entity.type == NightmareFuel.Type
+                || entity.type == PinkDiamond.Type
+                || entity.type == PlantAshContainer.Type
+                || entity.type == PreyTrackingChip.Type
+                || entity.type == RoastChickenPlate.Type
+                || entity.type == SeveredClothierHead.Type
+                || entity.type == SeveredDryadHead.Type
+                || entity.type == SeveredHarpyHead.Type
+                || entity.type == ShogunSlimesHelmet.Type
+                || entity.type == SlimeinaGlassCube.Type
+                || entity.type == SlimyWarBanner.Type
+                || entity.type == SoulofAgonyinaBottle.Type
+                || entity.type == SpineWormFood.Type
+                || entity.type == SpiritofFunPot.Type
+                || entity.type == SpiritualHeart.Type
+                || entity.type == StoryBook.Type
+                || entity.type == SuspiciousLookingChest.Type
+                || entity.type == SwissChocolate.Type
+                || entity.type == TiedBunny.Type
+                || entity.type == TinyMeatIdol.Type
+                || entity.type == TradeDeal.Type
+                || entity.type == UnstableRainbowCookie.Type
                 || entity.type == UntoldBurial.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
@@ -135,16 +135,16 @@ namespace QoLCompendium.Tweaks
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return ModConditions.edorbisLoaded && 
+            return ModConditions.edorbisLoaded &&
                 ModConditions.edorbisMod.TryFind("BiomechanicalMatter", out ModItem BiomechanicalMatter)
                 && ModConditions.edorbisMod.TryFind("CursedSoul", out ModItem CursedSoul)
                 && ModConditions.edorbisMod.TryFind("KelviniteRadar", out ModItem KelviniteRadar)
                 && ModConditions.edorbisMod.TryFind("SlayerTrophy", out ModItem SlayerTrophy)
-                && ModConditions.edorbisMod.TryFind("ThePrettiestFlower", out ModItem ThePrettiestFlower) 
-                && (entity.type == BiomechanicalMatter.Type 
-                || entity.type == CursedSoul.Type 
-                || entity.type == KelviniteRadar.Type 
-                || entity.type == SlayerTrophy.Type 
+                && ModConditions.edorbisMod.TryFind("ThePrettiestFlower", out ModItem ThePrettiestFlower)
+                && (entity.type == BiomechanicalMatter.Type
+                || entity.type == CursedSoul.Type
+                || entity.type == KelviniteRadar.Type
+                || entity.type == SlayerTrophy.Type
                 || entity.type == ThePrettiestFlower.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
@@ -942,15 +942,15 @@ namespace QoLCompendium.Tweaks
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return (entity.type == ItemID.SlimeCrown || entity.type == ItemID.SuspiciousLookingEye 
+            return (entity.type == ItemID.SlimeCrown || entity.type == ItemID.SuspiciousLookingEye
                 || entity.type == ItemID.WormFood || entity.type == ItemID.BloodySpine
                 || entity.type == ItemID.Abeemination || entity.type == ItemID.DeerThing
                 || entity.type == ItemID.QueenSlimeCrystal || entity.type == ItemID.MechanicalWorm
                 || entity.type == ItemID.MechanicalEye || entity.type == ItemID.MechanicalSkull
-                || entity.type == ItemID.MechdusaSummon || entity.type == ItemID.CelestialSigil 
-                || entity.type == ItemID.BloodMoonStarter || entity.type == ItemID.GoblinBattleStandard 
-                || entity.type == ItemID.PirateMap || entity.type == ItemID.SolarTablet 
-                || entity.type == ItemID.SnowGlobe || entity.type == ItemID.PumpkinMoonMedallion 
+                || entity.type == ItemID.MechdusaSummon || entity.type == ItemID.CelestialSigil
+                || entity.type == ItemID.BloodMoonStarter || entity.type == ItemID.GoblinBattleStandard
+                || entity.type == ItemID.PirateMap || entity.type == ItemID.SolarTablet
+                || entity.type == ItemID.SnowGlobe || entity.type == ItemID.PumpkinMoonMedallion
                 || entity.type == ItemID.NaughtyPresent) && QoLCompendium.mainConfig.EndlessBossSummons && !ModConditions.calamityLoaded;
         }
 

@@ -1,6 +1,6 @@
 displayName = Quality of Life Compendium
 author = Jabon
-version = 2.1.21
+version = 2.1.22
 hideCode = true
 hideResources = true
 buildIgnore = *.csproj, *.user, *.sln, *.gitignore, *.editorconfig, *.md, *.ase, obj\*, bin\*, .vs\*, .cache\*

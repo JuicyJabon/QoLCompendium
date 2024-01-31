@@ -1,11 +1,10 @@
 ﻿using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using System.Reflection;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent.Drawing;
 using Terraria.Utilities;
-using System.Reflection;
-using System.Collections;
 
 namespace QoLCompendium.Tweaks
 {
