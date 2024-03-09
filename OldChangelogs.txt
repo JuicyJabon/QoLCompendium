@@ -1,3 +1,10 @@
+v2.2.1
+1. Added support for new Vitality Mod content
+2. Added support for new Stars Above Mod content
+3. Added a config for wing stats tooltips
+4. Added a config for hook stats tooltips
+5. Added the ability to shimmer Mod of Redemption's Special Keycard into the normal Keycard
+
 v2.2.0
 1. Added Omnistaff
 2. Added Lakemaker

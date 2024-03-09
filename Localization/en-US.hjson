@@ -1498,7 +1498,11 @@ Mods: {
 
 				VeinMinerSpeed: {
 					Label: "[i:3509] Vein Miner Speed"
-					Tooltip: Sets the speed at which tiles are broken when vein mined
+					Tooltip: 
+					'''
+					Sets the speed at which tiles are broken when vein mined
+					Smaller numbers means faster
+					'''
 				}
 
 				VeinMinerWhitelist: {

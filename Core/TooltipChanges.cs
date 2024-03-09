@@ -144,6 +144,10 @@ namespace QoLCompendium.Core
                 ItemID.FishingBobberGlowingViolet,
                 ItemID.FishingBobberGlowingRainbow,
                 ItemID.TreasureMagnet,
+                ItemID.DivingHelmet,
+                ItemID.DivingGear,
+                ItemID.JellyfishDivingGear,
+                ItemID.ArcticDivingGear,
                 ItemID.RoyalGel,
                 ItemID.SpectreGoggles,
                 ItemID.CordageGuide,
@@ -187,6 +191,45 @@ namespace QoLCompendium.Core
             {
                 if (ModConditions.calamityLoaded && item.type <= ItemID.Count)
                     return;
+
+                //Don't do cal wing stats
+                if (ModConditions.calamityLoaded)
+                {
+                    ModConditions.calamityMod.TryFind("AureateBooster", out ModItem AureateBooster);
+                    ModConditions.calamityMod.TryFind("DrewsWings", out ModItem DrewsWings);
+                    ModConditions.calamityMod.TryFind("ElysianWings", out ModItem ElysianWings);
+                    ModConditions.calamityMod.TryFind("ExodusWings", out ModItem ExodusWings);
+                    ModConditions.calamityMod.TryFind("HadalMantle", out ModItem HadalMantle);
+                    ModConditions.calamityMod.TryFind("HadarianWings", out ModItem HadarianWings);
+                    ModConditions.calamityMod.TryFind("MOAB", out ModItem MOAB);
+                    ModConditions.calamityMod.TryFind("SilvaWings", out ModItem SilvaWings);
+                    ModConditions.calamityMod.TryFind("SkylineWings", out ModItem SkylineWings);
+                    ModConditions.calamityMod.TryFind("SoulofCryogen", out ModItem SoulofCryogen);
+                    ModConditions.calamityMod.TryFind("StarlightWings", out ModItem StarlightWings);
+                    ModConditions.calamityMod.TryFind("TarragonWings", out ModItem TarragonWings);
+                    ModConditions.calamityMod.TryFind("TracersCelestial", out ModItem TracersCelestial);
+                    ModConditions.calamityMod.TryFind("TracersElysian", out ModItem TracersElysian);
+                    ModConditions.calamityMod.TryFind("TracersSeraph", out ModItem TracersSeraph);
+
+                    if ((AureateBooster != null && AureateBooster.Type == item.type) 
+                        || (DrewsWings != null && DrewsWings.Type == item.type)
+                        || (ElysianWings != null && ElysianWings.Type == item.type)
+                        || (ExodusWings != null && ExodusWings.Type == item.type)
+                        || (HadalMantle != null && HadalMantle.Type == item.type)
+                        || (HadarianWings != null && HadarianWings.Type == item.type)
+                        || (MOAB != null && MOAB.Type == item.type)
+                        || (SilvaWings != null && SilvaWings.Type == item.type)
+                        || (SkylineWings != null && SkylineWings.Type == item.type)
+                        || (SoulofCryogen != null && SoulofCryogen.Type == item.type)
+                        || (StarlightWings != null && StarlightWings.Type == item.type)
+                        || (TarragonWings != null && TarragonWings.Type == item.type)
+                        || (TracersCelestial != null && TracersCelestial.Type == item.type)
+                        || (TracersElysian != null && TracersElysian.Type == item.type)
+                        || (TracersSeraph != null && TracersSeraph.Type == item.type))
+                    {
+                        return;
+                    }
+                }
 
                 WingStats wingStats = ArmorIDs.Wing.Sets.Stats[wingsID];
                 float flyTime = wingStats.FlyTime / 60f;
@@ -329,7 +372,7 @@ namespace QoLCompendium.Core
                 ModConditions.calamityMod.TryFind("SerpentsBite", out ModItem SerpentsBite);
                 ModConditions.calamityMod.TryFind("BobbitHook", out ModItem BobbitHook);
 
-                if (SerpentsBite != null || BobbitHook != null)
+                if ((SerpentsBite != null && SerpentsBite.Type == item.type) || (BobbitHook != null && BobbitHook.Type == item.type))
                 {
                     return;
                 }
@@ -341,8 +384,8 @@ namespace QoLCompendium.Core
 
                 TooltipLine equip = tooltips.Find(l => l.Name == "Equipable");
 
-                TooltipLine reach = new(Mod, "FlightTime", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HookReach", hookReach));
-                TooltipLine pullSpeed = new(Mod, "HorizontalSpeed", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HookPullSpeed", hookSpeed));
+                TooltipLine reach = new(Mod, "HookReach", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HookReach", hookReach));
+                TooltipLine pullSpeed = new(Mod, "HookPullSpeed", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HookPullSpeed", hookSpeed));
 
                 tooltips.Insert(tooltips.IndexOf(equip), reach);
                 tooltips.Insert(tooltips.IndexOf(reach), pullSpeed);
@@ -353,11 +396,23 @@ namespace QoLCompendium.Core
         {
             TooltipLine equip = tooltips.Find(l => l.Name == "Equipable");
 
-            TooltipLine reach = new(Mod, "FlightTime", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HookReach", hookReach));
-            TooltipLine pullSpeed = new(Mod, "HorizontalSpeed", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HookPullSpeed", hookSpeed));
+            TooltipLine reach = new(Mod, "HookReach", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HookReach", hookReach));
+            TooltipLine pullSpeed = new(Mod, "HookPullSpeed", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HookPullSpeed", hookSpeed));
 
             tooltips.Insert(tooltips.IndexOf(equip), reach);
             tooltips.Insert(tooltips.IndexOf(reach), pullSpeed);
+        }
+
+        private int ModItemForBanks(Mod mod, string itemName)
+        {
+            if (mod != null)
+            {
+                if (mod.TryFind(itemName, out ModItem currItem) && currItem != null)
+                {
+                    return currItem.Type;
+                }
+            }
+            return ItemID.None;
         }
     }
 

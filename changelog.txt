@@ -1,6 +1,3 @@
-v2.2.1
-1. Added support for new Vitality Mod content
-2. Added support for new Stars Above Mod content
-3. Added a config for wing stats tooltips
-4. Added a config for hook stats tooltips
-5. Added the ability to shimmer Mod of Redemption's Special Keycard into the normal Keycard
+v2.2.2
+1. Made Calamity wings not receive stats tooltips from this mod
+2. Added vanilla diving gear accessories to the works in banks item list

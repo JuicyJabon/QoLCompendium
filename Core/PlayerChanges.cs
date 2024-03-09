@@ -676,9 +676,42 @@ namespace QoLCompendium.Core
             {
                 Player.fishingSkill += 10;
             }
-            if (itemType == ItemID.TreasureMagnet)
+            if (itemType == ItemID.DivingHelmet)
             {
-                Player.treasureMagnet = true;
+                Player.accDivingHelm = true;
+            }
+            if (itemType == ItemID.DivingGear)
+            {
+                Player.accDivingHelm = true;
+                Player.accFlipper = true;
+            }
+            if (itemType == ItemID.JellyfishDivingGear)
+            {
+                Player.accDivingHelm = true;
+                Player.accFlipper = true;
+                if (!Player.wet)
+                {
+                    Lighting.AddLight((int)Player.Center.X / 16, (int)Player.Center.Y / 16, 0.225f, 0.05f, 0.15f);
+                }
+                if (Player.wet)
+                {
+                    Lighting.AddLight((int)Player.Center.X / 16, (int)Player.Center.Y / 16, 1.8f, 0.4f, 1.2f);
+                }
+            }
+            if (itemType == ItemID.ArcticDivingGear)
+            {
+                Player.arcticDivingGear = true;
+                Player.accFlipper = true;
+                Player.accDivingHelm = true;
+                Player.iceSkate = true;
+                if (!Player.wet)
+                {
+                    Lighting.AddLight((int)Player.Center.X / 16, (int)Player.Center.Y / 16, 0.05f, 0.15f, 0.225f);
+                }
+                if (Player.wet)
+                {
+                    Lighting.AddLight((int)Player.Center.X / 16, (int)Player.Center.Y / 16, 0.4f, 1.2f, 1.8f);
+                }
             }
             if (itemType == ItemID.RoyalGel)
             {
@@ -812,6 +845,18 @@ namespace QoLCompendium.Core
                 Player.GetModPlayer<InfoPlayer>().trackingDevice = true;
                 Player.GetModPlayer<InfoPlayer>().wingTimer = true;
             }
+        }
+
+        private int ModItemForBanks(Mod mod, string itemName)
+        {
+            if (mod != null)
+            {
+                if (mod.TryFind(itemName, out ModItem currItem) && currItem != null)
+                {
+                    return currItem.Type;
+                }
+            }
+            return ItemID.None;
         }
     }
 
