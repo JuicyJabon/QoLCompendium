@@ -1,4 +1,4 @@
-global using static QoLCompendium.QoLCConfig;
+global using static QoLCompendium.Core.QoLCConfig;
 global using Microsoft.Xna.Framework;
 global using Microsoft.Xna.Framework.Graphics;
 global using ReLogic.Content;
@@ -14,9 +14,8 @@ global using Terraria.ID;
 global using Terraria.Localization;
 global using Terraria.ModLoader;
 global using Terraria.UI;
-using QoLCompendium.Items.FavoriteEffectItems;
-using QoLCompendium.Tweaks;
-using QoLCompendium.UI;
+using QoLCompendium.Core;
+using QoLCompendium.Core.UI;
 using System.Reflection;
 
 namespace QoLCompendium
@@ -100,32 +99,16 @@ namespace QoLCompendium
             itemConfig = null;
             shopConfig = null;
             tooltipConfig = null;
-            BannerBox.itemToBanner.Clear();
+            //BannerBox.itemToBanner.Clear();
             On_WorldGen.moveRoom -= WorldGen_moveRoom;
         }
 
         public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
-            QoLCMessageType msgType = (QoLCMessageType)reader.ReadByte();
-            switch (msgType)
-            {
-                case QoLCMessageType.TeleportPlayer:
-                    TeleportClass.HandleTeleport(reader.ReadInt32(), true, whoAmI);
-                    break;
-                default:
-                    Logger.Error("QoLCompendium: Unknown Message type: " + msgType);
-                    break;
-            }
-
             foreach (var npc in from n in Main.npc where n is not null && n.active && n.townNPC && !n.homeless select n)
             {
                 TownEntitiesTeleportToHome(npc, npc.homeTileX, npc.homeTileY);
             }
-        }
-
-        public enum QoLCMessageType : byte
-        {
-            TeleportPlayer
         }
 
         private void WorldGen_moveRoom(On_WorldGen.orig_moveRoom orig, int x, int y, int n)
@@ -145,6 +128,7 @@ namespace QoLCompendium
 
         public override void PostSetupContent()
         {
+            /*
             BannerBox.itemToBanner.Clear();
             FieldInfo bannerToItemField = typeof(NPCLoader).GetField("bannerToItem", BindingFlags.NonPublic | BindingFlags.Static);
             Dictionary<int, int> bannerToItem = (Dictionary<int, int>)bannerToItemField.GetValue(null);
@@ -171,6 +155,7 @@ namespace QoLCompendium
                     }
                 }
             }
+            */
         }
     }
 }

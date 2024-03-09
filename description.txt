@@ -25,7 +25,8 @@ Current Features:
  - No enemy spawns during bosses
  - No lava slime lava
  - Lifeform Analyzer points towards rare creatures
- - Editable celestial tower shield health
+ - Editable Lunar Pillar shield health
+ - Lunar Pillars drop more fragments
  - Increased coin drops
  - Increased mining & placing speeds
  - Increased placing range
@@ -33,9 +34,16 @@ Current Features:
  - Faster extractinator
  - Automatic coin quick-stacking
  - Informational accessories work in banks
+ - Portable crafting stations
+ - Auto fishing
+ - Vein Miner (With Whitelist)
  - Mining speed affects all tools
+ - Auto research favorited items
  - Boss bags don't drop vanities
  - Boss loot shimmer conversions
+ - No natural boss spawns
+ - Shimmerable tooltip
+ - Bestiary entry unlocks with 1 kill
  - Extra fishing lures
  - Fast herb & tree growth
  - Friendly NPCs become invincible
@@ -43,6 +51,8 @@ Current Features:
  - Fast town NPC spawns
  - Improved town NPC spawns
  - NPCs can live in evil biomes
+ - NPCs always sell pylons
+ - No pylon teleportation restrictions
  - Teleport NPCs home (Make sure to set a keybind)
  - Shop Expander (Thanks Pannoniae!)
  - Angler instant quest reset
@@ -59,67 +69,11 @@ Current Features:
  - No tombstones
  - No sand, snow, or tombstone litter
  - No Queen Bee larva break
+ - No falling block damage
  - Seasonal events always
  - Starter Bag (Make sure to set items in config)
  - Many items for easing the playing experience
  - 2 Town NPCs who sell almost everything needed
 
-Current Mod Support:
- - All Mods: Endless Potion Buffs & Healing
- - Aequus: NPC Sales
- - AFKPets: Non-consumable Boss & Event summons & NPC Sales
- - Amulet Of Many Minions: NPC Sales
- - Arbour: NPC Sales
- - Assorted Crazy Things: NPC Sales
- - Bombus Apis: NPC Sales
- - Buffaria: NPC Sales
- - Calamity: Endless Station Buffs & NPC Sales
- - Calamity Community Remix: Endless Station Buffs & NPC Sales
- - Calamity's Vanities: NPC Sales
- - Catalyst: NPC Sales
- - Cerebral Mod: NPC Sales
- - Clamity Addon: NPC Sales
- - Clicker Class: NPC Sales
- - Confection Rebaked: NPC Sales
- - Consolaria: Non-consumable Boss & Event summons & NPC Sales
- - Depths (Hell Alternative): NPC Sales
- - Dragon Ball Terraria: NPC Sales
- - Echoes of the Ancients: NPC Sales
- - Edorbis: Non-consumable Boss & Event summons & NPC Sales
- - Enchanted Moons: Non-consumable Boss & Event summons
- - Exalt: NPC Sales
- - Fargo's Mods: Endless Station Buffs, Non-consumable Boss & Event summons & NPC Sales
- - Fractures of Penumbra: NPC Sales
- - Furniture, Food, And Fun: NPC Sales
- - GaMeTerraria: NPC Sales
- - Gensokyo: Non-consumable Boss & Event summons & NPC Sales
- - Gerd's Lab: Non-consumable Boss & Event summons & NPC Sales
- - Heartbeataria: NPC Sales
- - Homeward Journey: Non-consumable Boss & Event summons & NPC Sales
- - Hunt of the Old God: NPC Sales
- - Infernum Mode: NPC Sales
- - Lunar Veil: NPC Sales
- - Magic Storage: NPC Sales
- - Mech Boss Rework: NPC Sales
- - Metroid Mod: Non-consumable Boss & Event summons & NPC Sales
- - Polarities: NPC Sales
- - Qwerty's Mod: Non-consumable Boss & Event summons & NPC Sales
- - Redemption: Endless Station Buffs & NPC Sales
- - Reforged - A Durability Mod: Wing Slot compatibility
- - Remnants: NPC Sales
- - Secrets of the Shadows: Endless Station Buffs, Non-consumable Boss & Event summons & NPC Sales
- - Spirit Mod: Endless Station Buffs,Non-consumable Boss & Event summons & NPC Sales
- - Spooky Mod: Non-consumable Boss & Event summons & NPC Sales
- - Starlight River: NPC Sales
- - Stars Above: NPC Sales
- - Storm's Additions: Non-consumable Boss & Event summons & NPC Sales
- - Supernova: Non-consumable Boss & Event summons & NPC Sales
- - Terrorborn: NPC Sales
- - Thorium: Endless Station Buffs, Non-consumable Boss & Event summons & NPC Sales
- - TRAE: NPC Sales
- - Uhtric: Non-consumable Boss & Event summons & NPC Sales
- - Universe Of Swords: Non-consumable Boss & Event summons & NPC Sales
- - Valhalla Mod: Non-consumable Boss & Event summons & NPC Sales
- - Verdant: NPC Sales
- - Vitality: Non-consumable Boss & Event summons & NPC Sales
- - WAYFAIR Content Pack: Non-consumable Boss & Event summons & NPC Sales
+Current Mod Support Document:
+https://docs.google.com/document/d/1yVZoVjiHJ2TJPdBJND9mIV5th3AOI6StFgr2YY1Evuk/edit?usp=sharing

@@ -1,3 +1,114 @@
+v2.2.0
+1. Added Omnistaff
+2. Added Lakemaker
+3. Added Superbomber
+4. Added a config for auto fishing
+5. Added new Clamity Addon content to shops
+6. Added new Homeward Journey content to shops
+7. Added Corruption Pylon
+8. Added Crimson Pylon
+9. Added Dungeon Pylon
+10. Added Hell Pylon
+11. Added Sky Pylon
+12. Added Temple Pylon
+13. Added Aether Pylon
+14. Added new Spooky Mod content to shops
+15. Added Aether Altar
+16. Removed Dungeon Mirror
+17. Removed Temple Mirror
+18. Reverted Banner Box to its original state
+19. Added a config for portable crafting stations
+20. Added a config for auto researching favorited items
+21. Added Little Egg
+22. Fixed Regrowth Staves research values
+23. Added a config for unlocking bestiary entries  with 1 kill
+24. Added The Final List
+25. Added Ultimate Checklist
+26. Restructured the entire mod
+27. Added Staff Of Overgrown Cysting
+28. Added Staff Of Overgrown Hemorrhaging
+29. Added a config for adding a tooltip to items that work in banks
+30. Added support for Martain's Order Mod
+31. Added a config for NPCs to always sell pylons
+32. Added Asphalt Autohighway
+33. Added vanilla mounts and hooks shop to Black Market Dealer's shop selection
+34. Added vanilla ammo shop to Black Market Dealer's shop selection
+35. Added a config for removing pylon restrictions
+36. Fixed Extra Fishing Lures config not working with new vanilla fishing bobber accessories
+37. Added a config for increasing Lunar Pillar fragment drops
+38. Moved Starter Bag item list to the Item Config page
+39. Resprited Weightless Safe and renamed to "Flying Safe"
+40. Resprited Defender's Catalyst and renamed to "Etherian Construct"
+41. Added Sun Pedestal
+42. Reworked Moon Pedestal
+43. Resprited all Pedestal items
+44. Added Phase Interrupter
+45. Added a config for disabling natural boss spawns
+46. Added two config options for enabling/disabling the new shops
+47. Added two config multipliers for the new shop's prices
+48. Fixed Ethereal Collector's fish shop not being affected by the fish price multiplier
+49. Fixed Ethereal Collector's shops in multiplayer
+50. Added non-consumable boss summon support for Mod of Redemption
+51. Added new Mod of Redemption content to shops
+52. Fixed Remnants mod materials not being sold
+53. Made Money Trough recipe dependant on Mobile Storage item config
+54. Added a recipe for the Universal Pylon that depends on the Pylons item config
+55. Added Restock Notice
+56. Added Traveler's Mannequin
+57. Slightly modified Entity Manipulator's recipe
+58. Slightly modified Cursed Mirror's recipe
+59. Slightly modified Mirror Of Return's recipe
+60. Slightly modified Teleportation Mirror's recipe
+61. Renamed Hell Magnet to "Hellstone Magnet"
+62. Renamed Hallowed Magnet to "Chlorophyte Magnet"
+63. Renamed Spooky Magnet to "Spectre Magnet"
+64. Resprited all magnets
+65. Changed all magnet recipes
+66. Recolored Teleportation Mirror
+67. Recolored World Globe
+68. Renamed Forwarper to "Mini Sundial" and changed recipe, function, and sprite
+69. Added Lamp
+70. Added Owl Nest
+71. Added support for Awful Garbage Mod
+72. Added endless versions of all vanilla arrows
+73. Added endless versions of all vanilla bullets
+74. Added endless versions of all vanilla darts
+75. Added endless versions of all vanilla flares
+76. Added endless versions of all vanilla other ammos
+77. Added endless versions of all vanilla rockets
+78. Added endless versions of all vanilla solutions
+79. Added a config for vein mining
+80. Added a config for vein mining speed
+81. Added a config and keybinds for whitelisting tiles for vein mining
+82. Fixed some Town Slimes not despawning if already spawned when the config is turned on
+83. Added non-consumable boss summon support for Aequus Mod
+84. Added support for Medial Rift
+85. Added support for Exxo Avalon Origins
+
+v2.1.24
+1. Added new Gerd's Lab content to shops
+2. Added Staff of Regrowth to Info Shop
+3. Added a config to disable biome visit requirements for shops
+4. Added Staff Of Ashing
+5. Added Staff Of Cysting
+6. Added Staff Of Hallowing
+7. Added Staff Of Hemorrhaging
+8. Added Staff Of Overgrowth
+9. Added Staff Of Shrooming
+
+v2.1.23
+1. Added a config for stopping falling sand from damaging players
+2. Added Draedon Power Cells to materials shop
+3. Lots of resprites
+
+v2.1.22
+1. Added a new config page to store tooltip changes
+2. Added a config to indicate if an item is shimmerable via tooltip
+3. Changed endless amount configs to be a number input and raised maximum to 9999
+4. Added multiple items to Black Market Dealer's shop
+5. Made Wing Timer less common
+6. Added a config to change Fallen Star spawn rate
+
 v2.1.21
 1. Added a config to allow boss item swapping using shimmer
 2. Added support for Calamity Community Remix

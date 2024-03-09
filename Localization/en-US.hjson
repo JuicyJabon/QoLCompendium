@@ -3,9 +3,29 @@ Mods: {
 		CommonItemTooltips: {
 			NotConsumable: Not Consumable
 			Shimmerable: Shimmerable
+			WorksInBanks: Works from inside banks
+			StaffOfAshingPlaceable: Creates ash grass on ash
+			StaffOfCystingPlaceable: Creates corrupt grass on dirt
+			StaffOfHallowingPlaceable: Creates hallowed grass on dirt
+			StaffOfHemorrhagingPlaceable: Creates crimson grass on dirt
+			StaffOfOvergrownCystingPlaceable: Creates corrupt grass on mud
+			StaffOfOvergrownHemorrhagingPlaceable: Creates crimson grass on mud
+			StaffOfOvergrowthPlaceable: Creates jungle grass on mud
+			StaffOfShroomingPlaceable: Creates mushroom grass on mud
+			OmnistaffPlaceable: Creates grasses on dirt, mud, or ash
+			FlightTime: Flight Time: {0}
+			HorizontalSpeed: Horizontal Speed: {0}
+			VerticalSpeedMul: Vertical Speed Multiplier: {0}
+			HookReach: Reach: {0}
+			HookPullSpeed: Pull Speed: {0}
 		}
 
 		NPCStuff.GoHome: NPCs have been teleported home!
+
+		TileStuff: {
+			Whitelisted: Whitelisted:
+			Removed: Removed from Whitelist:
+		}
 
 		ItemNames: {
 			MosaicMirror: {
@@ -15,12 +35,28 @@ Mods: {
 				DungeonMirror: Mosaic Mirror (Dungeon)
 				TempleMirror: Mosaic Mirror (Temple)
 			}
+
+			Omnistaff: {
+				StaffOfAshing: Omnistaff (Ash Grass)
+				StaffOfCysting: Omnistaff (Corrupt Grass)
+				StaffOfHallowing: Omnistaff (Hallowed Grass)
+				StaffOfHemorrhaging: Omnistaff (Crimson Grass)
+				StaffOfOvergrowth: Omnistaff (Jungle Grass)
+				StaffOfOvergrownCysting: Omnistaff (Corrupt Jungle Grass)
+				StaffOfOvergrownHemorrhaging: Omnistaff (Crimson Jungle Grass)
+				StaffOfRegrowth: Omnistaff (Grass)
+				StaffOfShrooming: Omnistaff (Mushroom Grass)
+			}
 		}
 
 		Items: {
 			AllInOneAccess: {
 				DisplayName: All In One Access
-				Tooltip: Summons all flying storages to store your items
+				Tooltip:
+					'''
+					Summons all floating storages to store your items
+					Works as all portable storages
+					'''
 			}
 
 			AsphaltPlatform: {
@@ -37,10 +73,8 @@ Mods: {
 				DisplayName: Banner Box
 				Tooltip:
 					'''
-					Used to store banners
-					Right click while holding a banner to store
-					Right click with an empty hand to retrieve deposited banners
-					Works only while favorited in the inventory
+					Automatically recieve banner buffs for enemies with 50 kills logged
+					Works from any storage
 					'''
 			}
 
@@ -49,7 +83,7 @@ Mods: {
 				Tooltip: Displays sentry slots
 			}
 
-			BloodIdol: {
+			BloodMoonPedestal: {
 				DisplayName: Blood Moon Pedestal
 				Tooltip: Favorite this item to have a blood moon occur every night
 			}
@@ -64,9 +98,13 @@ Mods: {
 				Tooltip: Gaze into the mirror to materialize at your last death
 			}
 
-			DefendersCatalyst: {
-				DisplayName: Defender's Catalyst
-				Tooltip: Summons a flying defender's forge to store your items
+			EtherianConstruct: {
+				DisplayName: Etherian Construct
+				Tooltip:
+					'''
+					Summons a floating etherian construct to store your items
+					Works as a portable Defender's Forge
+					'''
 			}
 
 			DungeonMirror: {
@@ -74,7 +112,7 @@ Mods: {
 				Tooltip: Gaze into the mirror to materialize at the Dungeon
 			}
 
-			EclipseIdol: {
+			EclipsePedestal: {
 				DisplayName: Eclipse Pedestal
 				Tooltip: Favorite this item to have an eclipse occur every morning
 			}
@@ -93,13 +131,18 @@ Mods: {
 				Tooltip: Displays endurance, pickaxe speed, and wing time
 			}
 
-			Forwarper: {
-				DisplayName: Forwarper
-				Tooltip: Switches the time from day to night, and vise-versa
+			MiniSundial: {
+				DisplayName: Mini Sundial
+				Tooltip:
+					'''
+					Use to change time
+					Cycles between dawn, noon, dusk, and midnight
+					Right click to fast forward time
+					'''
 			}
 
-			HallowedMagnet: {
-				DisplayName: Hallowed Magnet
+			ChlorophyteMagnet: {
+				DisplayName: Chlorophyte Magnet
 				Tooltip: Favorite this item to increase grab range by 2100 tiles
 			}
 
@@ -136,8 +179,8 @@ Mods: {
 					'''
 			}
 
-			HellMagnet: {
-				DisplayName: Hell Magnet
+			HellstoneMagnet: {
+				DisplayName: Hellstone Magnet
 				Tooltip: Favorite this item to increase grab range by 1050 tiles
 			}
 
@@ -180,9 +223,9 @@ Mods: {
 				Tooltip: Gaze into the mirror to materialize at home with a return portal
 			}
 
-			MoonPhaser: {
+			MoonPedestal: {
 				DisplayName: Moon Pedestal
-				Tooltip: Use to select the moon's phase
+				Tooltip: Favorite this item to have it always be night
 			}
 
 			MosaicMirror: {
@@ -253,8 +296,8 @@ Mods: {
 					'''
 			}
 
-			SpookyMagnet: {
-				DisplayName: Spooky Magnet
+			SpectreMagnet: {
+				DisplayName: Spectre Magnet
 				Tooltip: Favorite this item to increase grab range by 4200 tiles
 			}
 
@@ -297,9 +340,9 @@ Mods: {
 				Tooltip: Displays minion slots
 			}
 
-			TravelerArriver: {
-				DisplayName: Traveller's Mannequin
-				Tooltip: Summons a Travelling Merchant
+			TravelersMannequin: {
+				DisplayName: Traveler's Mannequin
+				Tooltip: Summons a Traveling Merchant
 			}
 
 			VitalDisplay: {
@@ -312,9 +355,13 @@ Mods: {
 				Tooltip: Reveals the whole map
 			}
 
-			WeightlessSafe: {
-				DisplayName: Weightless Safe
-				Tooltip: Summons a flying safe to store your items
+			FlyingSafe: {
+				DisplayName: Flying Safe
+				Tooltip:
+					'''
+					Summons a floating safe to store your items
+					Works as a portable Safe
+					'''
 			}
 
 			WingTimer: {
@@ -386,6 +433,550 @@ Mods: {
 					'''
 				DisplayName: Super Dummy
 			}
+
+			StaffOfShrooming: {
+				DisplayName: Staff Of Shrooming
+				Tooltip: ""
+			}
+
+			StaffOfHallowing: {
+				DisplayName: Staff Of Hallowing
+				Tooltip: ""
+			}
+
+			StaffOfAshing: {
+				DisplayName: Staff Of Ashing
+				Tooltip: ""
+			}
+
+			StaffOfCysting: {
+				DisplayName: Staff Of Cysting
+				Tooltip: ""
+			}
+
+			StaffOfHemorrhaging: {
+				DisplayName: Staff Of Hemorrhaging
+				Tooltip: ""
+			}
+
+			StaffOfOvergrowth: {
+				DisplayName: Staff Of Overgrowth
+				Tooltip: ""
+			}
+
+			Omnistaff: {
+				DisplayName: Omnistaff
+				Tooltip: Right Click to cycle grass type
+			}
+
+			Lakemaker: {
+				DisplayName: Lakemaker
+				Tooltip:
+					'''
+					Creates a bomb that creates a 50x50 body of water below it
+					Will destroy everything below
+					'''
+			}
+
+			Superbomber: {
+				DisplayName: Superbomber
+				Tooltip:
+					'''
+					Destroys a large square area
+					Doesn't remove background walls
+					Will destroy everything above the impact
+					'''
+			}
+
+			SkyPylon: {
+				Tooltip:
+					'''
+					Allows teleporting without requiring villagers
+					You can only place one per type and in the matching biome
+					'''
+				DisplayName: Sky Pylon
+			}
+
+			HellPylon: {
+				Tooltip:
+					'''
+					Allows teleporting without requiring villagers
+					You can only place one per type and in the matching biome
+					'''
+				DisplayName: Hell Pylon
+			}
+
+			DungeonPylon: {
+				Tooltip:
+					'''
+					Allows teleporting without requiring villagers
+					You can only place one per type and in the matching biome
+					'''
+				DisplayName: Dungeon Pylon
+			}
+
+			CrimsonPylon: {
+				Tooltip:
+					'''
+					Allows teleporting without requiring villagers
+					You can only place one per type and in the matching biome
+					'''
+				DisplayName: Crimson Pylon
+			}
+
+			CorruptionPylon: {
+				Tooltip:
+					'''
+					Allows teleporting without requiring villagers
+					You can only place one per type and in the matching biome
+					'''
+				DisplayName: Corruption Pylon
+			}
+
+			TemplePylon: {
+				Tooltip:
+					'''
+					Allows teleporting without requiring villagers
+					You can only place one per type and in the matching biome
+					'''
+				DisplayName: Temple Pylon
+			}
+
+			AetherPylon: {
+				Tooltip:
+					'''
+					Allows teleporting without requiring villagers
+					You can only place one per type and in the matching biome
+					'''
+				DisplayName: Aether Pylon
+			}
+
+			AetherAltar: {
+				DisplayName: Aether Altar
+				Tooltip: Allows crafting shimmerable items into their results
+			}
+
+			LittleEgg: {
+				DisplayName: Little Egg
+				Tooltip: Summons a Yagi
+			}
+
+			TheFinalList: {
+				DisplayName: The Final List
+				Tooltip:
+					'''
+					Unlocks the entire bestiary
+					Cannot be undone
+					'''
+			}
+
+			UltimateChecklist: {
+				DisplayName: Ultimate Checklist
+				Tooltip:
+					'''
+					Unlocks the entire research duplication menu
+					Cannot be undone
+					'''
+			}
+
+			StaffOfOvergrownCysting: {
+				DisplayName: Staff Of Overgrown Cysting
+				Tooltip: ""
+			}
+
+			StaffOfOvergrownHemorrhaging: {
+				DisplayName: Staff Of Overgrown Hemorrhaging
+				Tooltip: ""
+			}
+
+			AsphaltAutohighway: {
+				DisplayName: Asphalt Autohighway
+				Tooltip:
+					'''
+					Creates an asphalt platform highway across the entire world
+					Will not destroy modded structures
+					'''
+			}
+
+			PhaseInterrupter: {
+				DisplayName: Phase Interrupter
+				Tooltip: Use to select the Moon's phase
+			}
+
+			SunPedestal: {
+				DisplayName: Sun Pedestal
+				Tooltip: Favorite this item to have it always be day
+			}
+
+			RestockNotice: {
+				DisplayName: Restock Notice
+				Tooltip: Refreshes the Traveling Merchant's shop
+			}
+
+			Lamp: {
+				DisplayName: Lamp
+				Tooltip: Summons a Moth
+			}
+
+			OwlNest: {
+				DisplayName: Owl Nest
+				Tooltip: Summons an Owl
+			}
+
+			EndlessChlorophytePouch: {
+				DisplayName: Endless Chlorophyte Pouch
+				Tooltip: ""
+			}
+
+			EndlessCrystalPouch: {
+				DisplayName: Endless Crystal Pouch
+				Tooltip: ""
+			}
+
+			EndlessCursedPouch: {
+				DisplayName: Endless Cursed Pouch
+				Tooltip: ""
+			}
+
+			EndlessExplodingPouch: {
+				DisplayName: Endless Exploding Pouch
+				Tooltip: ""
+			}
+
+			EndlessGoldenPouch: {
+				DisplayName: Endless Golden Pouch
+				Tooltip: ""
+			}
+
+			EndlessHighVelocityPouch: {
+				DisplayName: Endless High Velocity Pouch
+				Tooltip: ""
+			}
+
+			EndlessIchorPouch: {
+				DisplayName: Endless Ichor Pouch
+				Tooltip: ""
+			}
+
+			EndlessLuminitePouch: {
+				DisplayName: Endless Luminite Pouch
+				Tooltip: ""
+			}
+
+			EndlessMeteorPouch: {
+				DisplayName: Endless Meteor Pouch
+				Tooltip: ""
+			}
+
+			EndlessNanoPouch: {
+				DisplayName: Endless Nano Pouch
+				Tooltip: ""
+			}
+
+			EndlessPartyPouch: {
+				DisplayName: Endless Party Pouch
+				Tooltip: ""
+			}
+
+			EndlessSilverPouch: {
+				DisplayName: Endless Silver Pouch
+				Tooltip: ""
+			}
+
+			EndlessTungstenPouch: {
+				DisplayName: Endless Tungsten Pouch
+				Tooltip: ""
+			}
+
+			EndlessVenomPouch: {
+				DisplayName: Endless Venom Pouch
+				Tooltip: ""
+			}
+
+			EndlessBlueFlarePouch: {
+				DisplayName: Endless Blue Flare Pouch
+				Tooltip: ""
+			}
+
+			EndlessCursedFlarePouch: {
+				DisplayName: Endless Cursed Flare Pouch
+				Tooltip: ""
+			}
+
+			EndlessFlarePouch: {
+				DisplayName: Endless Flare Pouch
+				Tooltip: ""
+			}
+
+			EndlessRainbowFlarePouch: {
+				DisplayName: Endless Rainbow Flare Pouch
+				Tooltip: ""
+			}
+
+			EndlessShimmerFlarePouch: {
+				DisplayName: Endless Shimmer Flare Pouch
+				Tooltip: ""
+			}
+
+			EndlessSpelunkerFlarePouch: {
+				DisplayName: Endless Spelunker Flare Pouch
+				Tooltip: ""
+			}
+
+			EndlessYellowSolutionBottle: {
+				Tooltip: ""
+				DisplayName: Endless Yellow Solution Bottle
+			}
+
+			EndlessWhiteSolutionBottle: {
+				Tooltip: ""
+				DisplayName: Endless White Solution Bottle
+			}
+
+			EndlessRedSolutionBottle: {
+				Tooltip: ""
+				DisplayName: Endless Red Solution Bottle
+			}
+
+			EndlessPurpleSolutionBottle: {
+				Tooltip: ""
+				DisplayName: Endless Purple Solution Bottle
+			}
+
+			EndlessGreenSolutionBottle: {
+				Tooltip: ""
+				DisplayName: Endless Green Solution Bottle
+			}
+
+			EndlessDarkBlueSolutionBottle: {
+				Tooltip: ""
+				DisplayName: Endless Dark Blue Solution Bottle
+			}
+
+			EndlessBrownSolutionBottle: {
+				Tooltip: ""
+				DisplayName: Endless Brown Solution Bottle
+			}
+
+			EndlessBlueSolutionBottle: {
+				Tooltip: ""
+				DisplayName: Endless Blue Solution Bottle
+			}
+
+			EndlessWetRocketPouch: {
+				Tooltip: ""
+				DisplayName: Endless Wet Rocket Pouch
+			}
+
+			EndlessRocketIVPouch: {
+				Tooltip: ""
+				DisplayName: Endless Rocket IV Pouch
+			}
+
+			EndlessRocketIPouch: {
+				Tooltip: ""
+				DisplayName: Endless Rocket I Pouch
+			}
+
+			EndlessRocketIIPouch: {
+				Tooltip: ""
+				DisplayName: Endless Rocket II Pouch
+			}
+
+			EndlessRocketIIIPouch: {
+				Tooltip: ""
+				DisplayName: Endless Rocket III Pouch
+			}
+
+			EndlessMiniNukeIPouch: {
+				Tooltip: ""
+				DisplayName: Endless Mini Nuke I Pouch
+			}
+
+			EndlessMiniNukeIIPouch: {
+				Tooltip: ""
+				DisplayName: Endless Mini Nuke II Pouch
+			}
+
+			EndlessLavaRocketPouch: {
+				Tooltip: ""
+				DisplayName: Endless Lava Rocket Pouch
+			}
+
+			EndlessHoneyRocketPouch: {
+				Tooltip: ""
+				DisplayName: Endless Honey Rocket Pouch
+			}
+
+			EndlessDryRocketPouch: {
+				Tooltip: ""
+				DisplayName: Endless Dry Rocket Pouch
+			}
+
+			EndlessClusterRocketIPouch: {
+				Tooltip: ""
+				DisplayName: Endless Cluster Rocket I Pouch
+			}
+
+			EndlessClusterRocketIIPouch: {
+				Tooltip: ""
+				DisplayName: Endless Cluster Rocket II Pouch
+			}
+
+			EndlessStyngerBoltQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Stynger Bolt Quiver
+			}
+
+			EndlessStarPouch: {
+				Tooltip: ""
+				DisplayName: Endless Star Pouch
+			}
+
+			EndlessStakePouch: {
+				Tooltip: ""
+				DisplayName: Endless Stake Pouch
+			}
+
+			EndlessSnowballPouch: {
+				Tooltip: ""
+				DisplayName: Endless Snowball Pouch
+			}
+
+			EndlessSilverCoinPouch: {
+				Tooltip: ""
+				DisplayName: Endless Silver Coin Pouch
+			}
+
+			EndlessSandPouch: {
+				Tooltip: ""
+				DisplayName: Endless Sand Pouch
+			}
+
+			EndlessPlatinumCoinPouch: {
+				Tooltip: ""
+				DisplayName: Endless Platinum Coin Pouch
+			}
+
+			EndlessNailPouch: {
+				Tooltip: ""
+				DisplayName: Endless Nail Pouch
+			}
+
+			EndlessGoldCoinPouch: {
+				Tooltip: ""
+				DisplayName: Endless Gold Coin Pouch
+			}
+
+			EndlessGelBottle: {
+				Tooltip: ""
+				DisplayName: Endless Gel Bottle
+			}
+
+			EndlessExplosiveJackOLanternPouch: {
+				Tooltip: ""
+				DisplayName: Endless Explosive Jack 'O Lantern Pouch
+			}
+
+			EndlessCopperCoinPouch: {
+				Tooltip: ""
+				DisplayName: Endless Copper Coin Pouch
+			}
+
+			EndlessCandyCornPouch: {
+				Tooltip: ""
+				DisplayName: Endless Candy Corn Pouch
+			}
+
+			EndlessBonePouch: {
+				Tooltip: ""
+				DisplayName: Endless Bone Pouch
+			}
+
+			EndlessSeedPouch: {
+				Tooltip: ""
+				DisplayName: Endless Seed Pouch
+			}
+
+			EndlessPoisonDartPouch: {
+				Tooltip: ""
+				DisplayName: Endless Poison Dart Pouch
+			}
+
+			EndlessIchorDartPouch: {
+				Tooltip: ""
+				DisplayName: Endless Ichor Dart Pouch
+			}
+
+			EndlessCursedDartPouch: {
+				Tooltip: ""
+				DisplayName: Endless Cursed Dart Pouch
+			}
+
+			EndlessCrystalDartPouch: {
+				Tooltip: ""
+				DisplayName: Endless Crystal Dart Pouch
+			}
+
+			EndlessVenomQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Venom Quiver
+			}
+
+			EndlessUnholyQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Unholy Quiver
+			}
+
+			EndlessLuminiteQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Luminite Quiver
+			}
+
+			EndlessJestersQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Jesters Quiver
+			}
+
+			EndlessIchorQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Ichor Quiver
+			}
+
+			EndlessHolyQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Holy Quiver
+			}
+
+			EndlessHellfireQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Hellfire Quiver
+			}
+
+			EndlessFrostburnQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Frostburn Quiver
+			}
+
+			EndlessFlamingQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Flaming Quiver
+			}
+
+			EndlessCursedQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Cursed Quiver
+			}
+
+			EndlessChlorophyteQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Chlorophyte Quiver
+			}
+
+			EndlessBoneQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Bone Quiver
+			}
 		}
 
 		NPCs: {
@@ -442,14 +1033,20 @@ Mods: {
 
 		Projectiles: {
 			AutoHouserProj.DisplayName: Auto Houser Projectile
-			DefendersCatalystProj.DisplayName: Defenders Catalyst Projectile
+			EtherianConstructProj.DisplayName: Etherian Construct Projectile
 			HellevatorCreatorProj.DisplayName: Hellevator Creator Projectile
-			LifeformLocator.DisplayName: Lifeform Locator
-			WeightlessSafeProj.DisplayName: Weightless Safe Projectile
+			LifeformLocator.DisplayName: Lifeform Locator Projectile
+			FlyingSafeProj.DisplayName: Flying Safe Projectile
 			SillySlapperWhip.DisplayName: Silly Slapper Whip
 			RangedAbsolutionProj.DisplayName: Ranged Absolution Projectile
 			HellbridgerProj.DisplayName: Hellbridger Projectile
 			SkybridgerProj.DisplayName: Skybridger Projectile
+			LakemakerProj.DisplayName: Lakemaker Projectile
+			SuperbomberProj.DisplayName: Superbomber Projectile
+			LittleYagi.DisplayName: Little Yagi
+			AsphaltAutohighwayProj.DisplayName: Asphalt Autohighway Projectile
+			Moth.DisplayName: Moth
+			Owl.DisplayName: Owl
 		}
 
 		InfoDisplays: {
@@ -564,7 +1161,7 @@ Mods: {
 				}
 
 				ToggleHappiness: {
-					Label: "[i:4876] Disable NPC Happiness"
+					Label: "[i:58] Disable NPC Happiness"
 					Tooltip: Toggles if NPCs should have happiness or not
 				}
 
@@ -650,16 +1247,6 @@ Mods: {
 				NoLarvaBreak: {
 					Label: "[i:1133] No Larva Break"
 					Tooltip: Toggles if the Queen's Larva is breakable with projectiles
-				}
-
-				CustomItems: {
-					Label: "[i:QoLCompendium/StarterBag] Custom Items"
-					Tooltip: Items added to this list will be given to the player when opening the Starter Bag
-				}
-
-				CustomItemQuantities: {
-					Label: "[i:3119] Custom Item Quantities"
-					Tooltip: Each number corrosponds to the amount of each item added. Items with an undefined count will be given as a quantity of 1
 				}
 
 				DisableEvilSpread: {
@@ -839,6 +1426,85 @@ Mods: {
 						Ranges from 1 to 500, with 1 being the normal rate
 						'''
 				}
+
+				NoFallingSandDamage: {
+					Label: "[i:169] No Falling Block Damage"
+					Tooltip: Toggles if falling blocks can hurt the player
+				}
+
+				RemoveBiomeRequirements: {
+					Label: "[i:4766] Remove Biome Requirements For Shops"
+					Tooltip:
+						'''
+						Toggles if shop items require visiting a biome to unlock
+						This is permanent when turned on for a world
+						'''
+				}
+
+				AutoFishing: {
+					Label: "[i:2294] Auto Fishing"
+					Tooltip: Toggles auto fishing
+				}
+
+				PortableCrafting: {
+					Tooltip: Toggles if crafting stations work from the inventory
+					Label: "[i:36] Portable Crafting"
+				}
+
+				FavoriteResearching: {
+					Tooltip: Toggles if favorited items are auto-researched if they meet the stack requirements
+					Label: "[i:75] Auto Research Favorited Items"
+				}
+
+				OneKillForBestiary: {
+					Label: "[i:583] One Kill For Bestiary"
+					Tooltip: Toggles if one kill unlocks the entire bestiary entry for that enemy
+				}
+
+				OverridePylon: {
+					Label: "[i:4876] Override Pylon Sales"
+					Tooltip: Toggles if NPCs always sell pylons
+				}
+
+				NoPylonRestriction: {
+					Label: "[i:4951] No Pylon Restrictions"
+					Tooltip: Toggles if there are pylon restrictions
+				}
+
+				MoreFragments: {
+					Label: "[i:3458] More Lunar Fragments"
+					Tooltip: Toggles if the Lunar Pillars drop way more fragments
+				}
+
+				NoNaturalBossSpawns: {
+					Label: "[i:560] No Natural Boss Spawns"
+					Tooltip:
+						'''
+						Toggles if bosses can spawn naturally
+						Disables natural spawns for:
+						 - King Slime
+						 - Eye of Cthulhu
+						 - Deerclops
+						 - The Twins
+						 - The Destroyer
+						 - Skeletron Prime
+						'''
+				}
+
+				VeinMiner: {
+					Label: "[i:3509] Vein Mining"
+					Tooltip: Toggles the ability to vein mine
+				}
+
+				VeinMinerSpeed: {
+					Label: "[i:3509] Vein Miner Speed"
+					Tooltip: Sets the speed at which tiles are broken when vein mined
+				}
+
+				VeinMinerWhitelist: {
+					Label: "[i:3509] Vein Miner Whitelist"
+					Tooltip: Sets which tiles can be vein mined
+				}
 			}
 
 			ItemConfig: {
@@ -879,9 +1545,9 @@ Mods: {
 					Tooltip: Toggles the Entity Manipulator item
 				}
 
-				Forwarper: {
-					Label: "[i:QoLCompendium/Forwarper] Forwarper"
-					Tooltip: Toggles the Forwarper item
+				MiniSundial: {
+					Label: "[i:QoLCompendium/MiniSundial] Mini Sundial"
+					Tooltip: Toggles the Mini Sundial item
 				}
 
 				InformationAccessories: {
@@ -895,12 +1561,12 @@ Mods: {
 				}
 
 				MobileStorages: {
-					Label: "[i:QoLCompendium/AllInOneAccess] Mobile Storages"
+					Label: "[i:QoLCompendium/FlyingSafe] Mobile Storages"
 					Tooltip: Toggles Mobile Storage related items
 				}
 
 				MoonPedestals: {
-					Label: "[i:QoLCompendium/MoonPhaser] Moon Pedestals"
+					Label: "[i:QoLCompendium/MoonPedestal] Moon Pedestals"
 					Tooltip: Toggles Moon Pedestal related items
 				}
 
@@ -937,6 +1603,61 @@ Mods: {
 					Tooltip: Toggles crafting station related items
 					Label: "[i:QoLCompendium/BasicCraftingMonolith] Crafting Stations"
 				}
+
+				RegrowthStaves: {
+					Label: "[i:QoLCompendium/Omnistaff] Regrowth Staves"
+					Tooltip: Toggles Regrowth Staff related items
+				}
+
+				Pylons: {
+					Label: "[i:QoLCompendium/CorruptionPylon] Pylons"
+					Tooltip: Toggles Pylon related items
+				}
+
+				TheFinalList: {
+					Label: "[i:QoLCompendium/TheFinalList] The Final List"
+					Tooltip: Toggles the Final List item
+				}
+
+				UltimateChecklist: {
+					Label: "[i:QoLCompendium/UltimateChecklist] Ultimate Checklist"
+					Tooltip: Toggles the Ultimate Checklist item
+				}
+
+				CustomItems: {
+					Label: "[i:QoLCompendium/StarterBag] Custom Items"
+					Tooltip: Items added to this list will be given to the player when opening the Starter Bag
+				}
+
+				CustomItemQuantities: {
+					Label: "[i:3119] Custom Item Quantities"
+					Tooltip: Each number corrosponds to the amount of each item added. Items with an undefined count will be given as a quantity of 1
+				}
+
+				PhaseInterrupter: {
+					Label: "[i:QoLCompendium/PhaseInterrupter] Phase Interrupter"
+					Tooltip: Toggles the Phase Interrupter item
+				}
+
+				SuperDummy: {
+					Label: "[i:QoLCompendium/SuperDummy] Super Dummy"
+					Tooltip: Toggles the Super Dummy item
+				}
+
+				RestockNotice: {
+					Label: "[i:QoLCompendium/RestockNotice] Restock Notice"
+					Tooltip: Toggles the Restock Notice item
+				}
+
+				TravelersMannequin: {
+					Label: "[i:QoLCompendium/TravelersMannequin] Traveler's Mannequin"
+					Tooltip: Toggles the Traveler's Mannequin item
+				}
+
+				EndlessAmmo: {
+					Label: "[i:QoLCompendium/EndlessFlarePouch] Endless Ammo"
+					Tooltip: Toggles Endless Ammo related items
+				}
 			}
 
 			ShopConfig: {
@@ -954,11 +1675,6 @@ Mods: {
 
 				BMMaterialShop: {
 					Label: "[i:23] Material Shop"
-					Tooltip: ""
-				}
-
-				BMHardmodeMaterialShop: {
-					Label: "[i:521] Hardmode Material Shop"
 					Tooltip: ""
 				}
 
@@ -1009,6 +1725,16 @@ Mods: {
 
 				BMFishShop: {
 					Label: "[i:2290] Fish Shop"
+					Tooltip: ""
+				}
+
+				BMMountShop: {
+					Label: "[i:2430] Mount Shop"
+					Tooltip: ""
+				}
+
+				BMAmmoShop: {
+					Label: "[i:3104] Ammo Shop"
 					Tooltip: ""
 				}
 
@@ -1122,6 +1848,16 @@ Mods: {
 					Tooltip: Ranges from 1 to 1000
 				}
 
+				MountPriceMultiplier: {
+					Label: "[i:161] Mount Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
+				AmmoPriceMultiplier: {
+					Label: "[i:161] Ammo Price Multiplier"
+					Tooltip: Ranges from 1 to 1000
+				}
+
 				BossScaling: {
 					Label: "[i:560] Boss Scaling"
 					Tooltip: Bags will increase in price following vanilla progression
@@ -1140,6 +1876,25 @@ Mods: {
 					Label: "[i:75] No Favorite Tooltip"
 					Tooltip: Removes the favorite tooltip
 				}
+
+				WorksInBanksTooltip: {
+					Tooltip:
+						'''
+						Adds a tooltip to indicate if an item works from banks
+						Requires "Information In Banks" to be turned on to work
+						'''
+					Label: "[i:87] Works In Banks Tooltip"
+				}
+
+				WingStatsTooltips: {
+					Label: "[i:493] Wing Stats Tooltips"
+					Tooltip: Adds 3 tooltips to display wing stats
+				}
+
+				HookStatsTooltips: {
+					Label: "[i:84] Hook Stats Tooltips"
+					Tooltip: Adds 2 tooltips to display hook stats
+				}
 			}
 		}
 
@@ -1154,14 +1909,18 @@ Mods: {
 				Player: Player Change Toggles
 				Speed: Speed Change Toggles
 				World: World Change Toggles
-				BMShop: Dealer Shop Toggles
-				ECShop: Collector Shop Toggles
+				BMShop: Black Market Dealer Shop Toggles
+				ECShop: Ethereal Collector Shop Toggles
 				Prices: Price Modifiers
 				Tooltips: Tooltip Toggles
 			}
 		}
 
-		Keybinds.HomeBind.DisplayName: Teleport NPCs Home
+		Keybinds: {
+			HomeBind.DisplayName: Teleport NPCs Home
+			WhitelistTileBind.DisplayName: Whitelist Tile
+			RemoveWhitelistedTileBind.DisplayName: Remove Whitelisted Tile Bind
+		}
 
 		ModConditions: {
 			beenThroughNight: Nighttime occurred at least once
@@ -1189,7 +1948,7 @@ Mods: {
 			beenToDungeon: Been to the Dungeon
 			beenToAether: Been to the aether biome
 			downedCrabson: Downed Crabson
-			downedStarite: Downed Starite
+			downedOmegaStarite: Downed Omega Starite
 			downedDustDevil: Downed Dust Devil
 			downedHyperStarite: Downed Hyper Starite
 			downedUltraStarite: Downed Ultra Starite
@@ -1459,7 +2218,7 @@ Mods: {
 			downedBigBone: Downed Big Bone
 			beenToSpookyForest: Been to the Spooky Forest biome
 			beenToSpookyUnderground: Been to the Spooky Underground biome
-			beenToEyeValley: Been to the EyeValley biome
+			beenToEyeValley: Been to the Eye Valley biome
 			beenToCatacombs: Been to the Catacombs biome
 			beenToCemetery: Been to the Cemetery biome
 			downedAuroracle: Downed Auroracle
@@ -1538,6 +2297,31 @@ Mods: {
 			downedWulfrumExcavator: Downed Wulfrum Excavator
 			downedEidolonWyrm: Downed Eidolon Wyrm
 			downedBloodweaver: Downed Bloodweaver
+			downedWallOfBronze: Downed Wall Of Bronze
+			downedPyrogen: Downed Pyrogen
+			beenToSpiderCave: Been to the Spider Grotto biome
+			downedJungleDefenders: Downed Jungle Defenders
+			downedTriplets: Downed Triplets
+			downedPrinceSlime: Downed Prince Slime
+			downedVoidDigger: Downed Void Digger
+			downedCarnagePillar: Downed Carnage Pillar
+			downedTheAlchemist: Downed Alchemist
+			downedBritzz: Downed Britzz
+			downedFrigidius: Downed Frigidius
+			downedEyeOfTheStorm: Downed Eye Of The Storm
+			downedSeseKitsugai: Downed Sese Kitsugai
+			downedTreeToad: Downed Tree Toad
+			downedSuperVoltaicMotherSlime: Downed Super Voltaic Mother Slime
+			beenToAvalonEvilBiomes: Been to any evil biome
+			beenToContagion: Been to the Contagion biome
+			downedPhantasm: Downed Phantasm
+			downedMechasting: Downed Mechasting
+			downedKingSting: Downed King Sting
+			downedDesertBeak: Downed Desert Beak
+			downedAvalonEvilBosses: Downed any evil boss
+			downedBacteriumPrime: Downed Bacterium Prime
+			downedThespian: Mods.QoLCompendium.ModConditions.downedThespian
+			downedStarfarers: Mods.QoLCompendium.ModConditions.downedStarfarers
 		}
 
 		Tiles: {
@@ -1547,6 +2331,31 @@ Mods: {
 			LunarCraftingMonolithTile.MapEntry: Lunar Crafting Monolith
 			DemonAltarTile.MapEntry: Demon Altar
 			CrimsonAltarTile.MapEntry: Crimson Altar
+			SkyPylonTile.MapEntry: Sky Pylon
+			HellPylonTile.MapEntry: Hell Pylon
+			DungeonPylonTile.MapEntry: Dungeon Pylon
+			CrimsonPylonTile.MapEntry: Crimson Pylon
+			CorruptionPylonTile.MapEntry: Corruption Pylon
+			AetherAltarTile.MapEntry: Aether Altar
+			AetherPylonTile.MapEntry: Aether Pylon
+			TemplePylonTile.MapEntry: Temple Pylon
+		}
+
+		Buffs: {
+			LittleYagiBuff: {
+				Description: She so eepy
+				DisplayName: Little Yagi
+			}
+
+			MothBuff: {
+				DisplayName: Moth
+				Description: Permanently increases all stats?
+			}
+
+			OwlBuff: {
+				DisplayName: Owl
+				Description: Hooter
+			}
 		}
 	}
 }

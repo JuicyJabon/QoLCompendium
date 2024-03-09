@@ -1,7 +1,6 @@
-v2.1.22
-1. Added a new config page to store tooltip changes
-2. Added a config to indicate if an item is shimmerable via tooltip
-3. Changed endless amount configs to be a number input and raised maximum to 9999
-4. Added multiple items to Black Market Dealer's shop
-5. Made Wing Timer less common
-6. Added a config to change Fallen Star spawn rate
+v2.2.1
+1. Added support for new Vitality Mod content
+2. Added support for new Stars Above Mod content
+3. Added a config for wing stats tooltips
+4. Added a config for hook stats tooltips
+5. Added the ability to shimmer Mod of Redemption's Special Keycard into the normal Keycard
