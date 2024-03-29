@@ -1,3 +1,34 @@
+v2.2.2
+1. Made Calamity wings not receive stats tooltips from this mod
+2. Added a config for Old One's Army minibosses dropping extra Defender Medals
+3. Added a config for changing vein miner max tile breaking limit
+4. Added the Solar Eclipse to the Summoning Remote, since it was somehow missed
+5. Added text prompts to events being spawned from the Summoning Remote
+6. Resprited Eclipse Pedestal
+7. Resprited Sun Pedestal
+8. Added Pause Pedestal
+9. Added new Buffaria Mod content to shops
+10. Added "Information In Banks" support for Aequus Mod
+11. Added "Information In Banks" support for Calamity Mod
+12. Added "Information In Banks" support for Spirit Mod
+13. Added "Information In Banks" support for Thorium Mod
+ - More mods will be supported in the future
+14. Added new Clicker Class Mod content to shops
+15. Added a keybind to quick recall home
+16. Added new Depths Mod content to shops
+17. Added a lot of mod's healing potions to flasks & stations shop
+18. New Icon and Small Icon
+19. Item toggles no longer require a reload
+20. Added support for Project Zero Mod
+21. Added support for Coralite Mod
+22. Added support for Block's Arsenal Mod
+23. Added support for Block's Artificer Mod
+24. Added support for Block's Core Boss Mod
+25. Added support for Block's Info Accessories Mod
+ - "Information In Banks" support
+26. Added support for Block's Thrower Mod
+27. Added bar and world evil item conversion recipes
+
 v2.2.1
 1. Added support for new Vitality Mod content
 2. Added support for new Stars Above Mod content

@@ -1,3 +1,5 @@
+using QoLCompendium.Core;
+
 namespace QoLCompendium.Content.Items.Magnets
 {
     public class HellstoneMagnet : ModItem
@@ -18,14 +20,11 @@ namespace QoLCompendium.Content.Items.Magnets
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.Magnets)
-            {
-                CreateRecipe()
-                .AddIngredient(ModContent.ItemType<Magnet>())
-                .AddIngredient(ItemID.HellstoneBar, 10)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Magnets, Type);
+            r.AddIngredient(ModContent.ItemType<Magnet>());
+            r.AddIngredient(ItemID.HellstoneBar, 10);
+            r.Register();
+            r.AddTile(TileID.Anvils);
         }
 
         public override void UpdateInventory(Player player)

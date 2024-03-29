@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Tiles.CraftingStations;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 {
@@ -26,28 +27,25 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.CraftingStations)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.BoneWelder)
-                .AddIngredient(ItemID.GlassKiln)
-                .AddIngredient(ItemID.HoneyDispenser)
-                .AddIngredient(ItemID.IceMachine)
-                .AddIngredient(ItemID.LivingLoom)
-                .AddIngredient(ItemID.SkyMill)
-                .AddIngredient(ItemID.Solidifier)
-                .AddIngredient(ItemID.TeaKettle)
-                .AddIngredient(ItemID.AlchemyTable)
-                .AddIngredient(ItemID.TinkerersWorkshop)
-                .AddIngredient(ItemID.ImbuingStation)
-                .AddIngredient(ItemID.DyeVat)
-                .AddIngredient(ItemID.Hellforge)
-                .AddIngredient(ItemID.LavaBucket)
-                .AddIngredient(ItemID.HoneyBucket)
-                .AddRecipeGroup(nameof(ItemID.Tombstone))
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type);
+            r.AddIngredient(ItemID.BoneWelder);
+            r.AddIngredient(ItemID.GlassKiln);
+            r.AddIngredient(ItemID.HoneyDispenser);
+            r.AddIngredient(ItemID.IceMachine);
+            r.AddIngredient(ItemID.LivingLoom);
+            r.AddIngredient(ItemID.SkyMill);
+            r.AddIngredient(ItemID.Solidifier);
+            r.AddIngredient(ItemID.TeaKettle);
+            r.AddIngredient(ItemID.AlchemyTable);
+            r.AddIngredient(ItemID.TinkerersWorkshop);
+            r.AddIngredient(ItemID.ImbuingStation);
+            r.AddIngredient(ItemID.DyeVat);
+            r.AddIngredient(ItemID.Hellforge);
+            r.AddIngredient(ItemID.LavaBucket);
+            r.AddIngredient(ItemID.HoneyBucket);
+            r.AddRecipeGroup(nameof(ItemID.Tombstone));
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

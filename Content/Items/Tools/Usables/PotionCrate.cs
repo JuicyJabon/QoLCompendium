@@ -1,4 +1,5 @@
-﻿using Terraria.ModLoader.IO;
+﻿using QoLCompendium.Core;
+using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
@@ -65,14 +66,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.PotionCrate)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Wood, 12)
-                .AddRecipeGroup(RecipeGroupID.IronBar, 4)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PotionCrate, Type);
+            r.AddIngredient(ItemID.Wood, 12);
+            r.AddRecipeGroup(RecipeGroupID.IronBar, 4);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

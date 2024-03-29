@@ -1,3 +1,4 @@
+using QoLCompendium.Core;
 using Terraria.GameContent.Events;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
@@ -25,14 +26,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.MiniSundial)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Obsidian, 12)
-                .AddIngredient(ItemID.SunplateBlock, 12)
-                .AddTile(TileID.SkyMill)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MiniSundial, Type);
+            r.AddIngredient(ItemID.Obsidian, 12);
+            r.AddIngredient(ItemID.SunplateBlock, 12);
+            r.AddTile(TileID.SkyMill);
+            r.Register();
         }
 
         public override bool AltFunctionUse(Player player)

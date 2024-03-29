@@ -1,4 +1,5 @@
-﻿using QoLCompendium.Core.UI;
+﻿using QoLCompendium.Core;
+using QoLCompendium.Core.UI;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
@@ -25,15 +26,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.PhaseInterrupter)
-            {
-                CreateRecipe()
-                .AddRecipeGroup(RecipeGroupID.IronBar, 7)
-                .AddIngredient(ItemID.Diamond, 3)
-                .AddIngredient(ItemID.BlackLens, 1)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PhaseInterrupter, Type);
+            r.AddRecipeGroup(RecipeGroupID.IronBar, 7);
+            r.AddIngredient(ItemID.Diamond, 3);
+            r.AddIngredient(ItemID.BlackLens, 1);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
 
         public override bool? UseItem(Player player)

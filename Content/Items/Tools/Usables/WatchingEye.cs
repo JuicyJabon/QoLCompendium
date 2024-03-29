@@ -1,4 +1,6 @@
-﻿namespace QoLCompendium.Content.Items.Tools.Usables
+﻿using QoLCompendium.Core;
+
+namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class WatchingEye : ModItem
     {
@@ -23,14 +25,11 @@
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.WatchingEye)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Lens, 4)
-                .AddIngredient(ItemID.Emerald, 1)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.WatchingEye, Type);
+            r.AddIngredient(ItemID.Lens, 4);
+            r.AddIngredient(ItemID.Emerald, 2);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
 
         public override bool? UseItem(Player player)

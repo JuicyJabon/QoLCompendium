@@ -1,8 +1,9 @@
+using QoLCompendium.Content.Items.Dedicated;
 using Terraria.GameContent.Creative;
 
 namespace QoLCompendium.Core
 {
-    public class DontConsumeAequusdSummons : GlobalItem
+    public class DontConsumeAequusSummons : GlobalItem
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
@@ -133,6 +134,31 @@ namespace QoLCompendium.Core
                 && ModConditions.awfulGarbageMod.TryFind("PileOfFakeBones", out ModItem PileOfFakeBones)
                 && (entity.type == InsectOnAStick.Type
                 || entity.type == PileOfFakeBones.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
+        }
+
+        public override void SetDefaults(Item item)
+        {
+            item.consumable = false;
+            item.maxStack = 1;
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
+        }
+    }
+
+    public class DontConsumeBlocksCoreBossSummons : GlobalItem
+    {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
+        {
+            return ModConditions.blocksCoreBossLoaded &&
+                ModConditions.blocksCoreBossMod.TryFind("ChargedOrb", out ModItem ChargedOrb)
+                && ModConditions.blocksCoreBossMod.TryFind("ChargedOrbCrim", out ModItem ChargedOrbCrim)
+                && (entity.type == ChargedOrb.Type
+                || entity.type == ChargedOrbCrim.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -1188,6 +1214,11 @@ namespace QoLCompendium.Core
                 }
             }
 
+            if (QoLCompendium.itemConfig.DedicatedItems)
+            {
+                ItemID.Sets.ShimmerTransformToItem[ItemID.RottenEgg] = ModContent.ItemType<LittleEgg>();
+            }
+
             if (QoLCompendium.mainConfig.BossItemTransmutation)
             {
                 if (item.type == ItemID.NinjaHood)
@@ -1648,7 +1679,7 @@ namespace QoLCompendium.Core
     {
         public override void UpdateInventory(Item item, Player player)
         {
-            if (item.favorited && item.stack >= CreativeUI.GetSacrificeCount(item.type, out bool researched) && CreativeItemSacrificesCatalog.Instance.TryGetSacrificeCountCapToUnlockInfiniteItems(item.type, out int numResearch) && !researched && player.difficulty == PlayerDifficultyID.Creative && QoLCompendium.mainConfig.FavoriteResearching)
+            if (item.favorited && item.stack >= CreativeUI.GetSacrificeCount(item.type, out bool researched) && CreativeItemSacrificesCatalog.Instance.TryGetSacrificeCountCapToUnlockInfiniteItems(item.type, out int numResearch) && !researched && player.difficulty == PlayerDifficultyID.Creative && item.stack >= numResearch && QoLCompendium.mainConfig.FavoriteResearching)
             {
                 if (item.type == ItemID.ShellphoneDummy || item.type == ItemID.ShellphoneHell || item.type == ItemID.ShellphoneOcean || item.type == ItemID.ShellphoneSpawn || item.type == ItemID.Shellphone)
                 {

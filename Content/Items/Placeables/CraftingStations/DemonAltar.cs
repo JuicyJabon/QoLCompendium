@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Tiles.CraftingStations;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 {
@@ -27,14 +28,11 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.CraftingStations)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.DemoniteBar, 5)
-                .AddIngredient(ItemID.EbonstoneBlock, 12)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type);
+            r.AddIngredient(ItemID.DemoniteBar, 5);
+            r.AddIngredient(ItemID.EbonstoneBlock, 12);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

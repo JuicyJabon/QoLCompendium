@@ -1,14 +1,16 @@
-﻿namespace QoLCompendium.Content.Items.Dedicated
+﻿using QoLCompendium.Core;
+
+namespace QoLCompendium.Content.Items.Dedicated
 {
     public class RangedAbsolution : ModItem
     {
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipLine line = new(Mod, "Dedicated", "Dedicated - Nobisyu")
+            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - Nobisyu")
             {
-                OverrideColor = new Color(255, 0, 0)
+                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
             };
-            tooltips.Add(line);
+            tooltips.Add(dedicated);
         }
 
         public override void SetStaticDefaults()
@@ -45,14 +47,11 @@
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.DedicatedItems)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.CrimtaneBar, 10)
-                .AddIngredient(ItemID.Obsidian, 5)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type);
+            r.AddIngredient(ItemID.CrimtaneBar, 10);
+            r.AddIngredient(ItemID.Obsidian, 5);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace QoLCompendium.Content.Items.Tools.Usables
+﻿using QoLCompendium.Core;
+
+namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class RestockNotice : ModItem
     {
@@ -38,15 +40,12 @@
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.RestockNotice)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Silk, 8)
-                .AddIngredient(ItemID.BlackInk, 1)
-                .AddIngredient(ItemID.Feather, 1)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.RestockNotice, Type);
+            r.AddIngredient(ItemID.Silk, 8);
+            r.AddIngredient(ItemID.BlackInk, 1);
+            r.AddIngredient(ItemID.Feather, 1);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

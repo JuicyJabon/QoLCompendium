@@ -5,18 +5,18 @@ namespace QoLCompendium.Content.Items.Dedicated
 {
     public class SillySlapper : ModItem
     {
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - Quinn")
+            {
+                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
+            };
+            tooltips.Add(dedicated);
+        }
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-            TooltipLine line = new(Mod, "Dedicated", "Dedicated - Quinn")
-            {
-                OverrideColor = new Color(255, 0, 0)
-            };
-            tooltips.Add(line);
         }
 
         public override void SetDefaults()
@@ -42,14 +42,11 @@ namespace QoLCompendium.Content.Items.Dedicated
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.DedicatedItems)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Gel, 100)
-                .AddIngredient(ItemID.FallenStar, 50)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type);
+            r.AddIngredient(ItemID.Gel, 100);
+            r.AddIngredient(ItemID.FallenStar, 50);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

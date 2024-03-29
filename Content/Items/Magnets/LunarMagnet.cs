@@ -1,3 +1,5 @@
+using QoLCompendium.Core;
+
 namespace QoLCompendium.Content.Items.Magnets
 {
     public class LunarMagnet : ModItem
@@ -18,14 +20,11 @@ namespace QoLCompendium.Content.Items.Magnets
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.Magnets)
-            {
-                CreateRecipe()
-                .AddIngredient(ModContent.ItemType<SpectreMagnet>())
-                .AddIngredient(ItemID.LunarBar, 10)
-                .AddTile(TileID.LunarCraftingStation)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Magnets, Type);
+            r.AddIngredient(ModContent.ItemType<SpectreMagnet>());
+            r.AddIngredient(ItemID.LunarBar, 10);
+            r.Register();
+            r.AddTile(TileID.LunarCraftingStation);
         }
 
         public override void UpdateInventory(Player player)

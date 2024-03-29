@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Tiles.CraftingStations;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 {
@@ -26,19 +27,17 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.CraftingStations)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.LunarCraftingStation)
-                .AddIngredient(ItemID.Autohammer)
-                .AddIngredient(ItemID.LihzahrdFurnace)
-                .AddRecipeGroup("Altars")
-                .AddIngredient(ModContent.ItemType<AetherAltar>())
-                .AddIngredient(ModContent.ItemType<BasicCraftingMonolith>())
-                .AddIngredient(ModContent.ItemType<AdvancedCraftingMonolith>())
-                .AddIngredient(ModContent.ItemType<HardmodeCraftingMonolith>())
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type);
+            r.AddIngredient(ItemID.LunarCraftingStation);
+            r.AddIngredient(ItemID.Autohammer);
+            r.AddIngredient(ItemID.LihzahrdFurnace);
+            r.AddRecipeGroup("Altars");
+            r.AddIngredient(ModContent.ItemType<AetherAltar>());
+            r.AddIngredient(ModContent.ItemType<BasicCraftingMonolith>());
+            r.AddIngredient(ModContent.ItemType<AdvancedCraftingMonolith>());
+            r.AddIngredient(ModContent.ItemType<HardmodeCraftingMonolith>());
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

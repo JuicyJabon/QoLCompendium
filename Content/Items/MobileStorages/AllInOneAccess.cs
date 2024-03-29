@@ -1,4 +1,6 @@
-﻿using QoLCompendium.Content.Projectiles.MobileStorages;
+﻿using QoLCompendium.Content.Items.Mirrors;
+using QoLCompendium.Content.Projectiles.MobileStorages;
+using QoLCompendium.Core;
 using Terraria.DataStructures;
 
 namespace QoLCompendium.Content.Items.MobileStorages
@@ -35,16 +37,13 @@ namespace QoLCompendium.Content.Items.MobileStorages
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.MobileStorages)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.MoneyTrough, 1)
-                .AddIngredient<EtherianConstruct>(1)
-                .AddIngredient<FlyingSafe>(1)
-                .AddIngredient(ItemID.VoidLens, 1)
-                .AddTile(TileID.TinkerersWorkbench)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MobileStorages, Type);
+            r.AddIngredient(ItemID.MoneyTrough);
+            r.AddIngredient(ModContent.ItemType<EtherianConstruct>());
+            r.AddIngredient(ModContent.ItemType<FlyingSafe>());
+            r.AddIngredient(ItemID.VoidLens);
+            r.AddTile(TileID.TinkerersWorkbench);
+            r.Register();
         }
     }
 }

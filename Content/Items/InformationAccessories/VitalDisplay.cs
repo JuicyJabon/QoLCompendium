@@ -1,4 +1,5 @@
-﻿using QoLCompendium.Core.UI;
+﻿using QoLCompendium.Core;
+using QoLCompendium.Core.UI;
 
 namespace QoLCompendium.Content.Items.InformationAccessories
 {
@@ -21,15 +22,12 @@ namespace QoLCompendium.Content.Items.InformationAccessories
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.InformationAccessories)
-            {
-                CreateRecipe()
-                .AddIngredient(ModContent.ItemType<MetallicClover>(), 1)
-                .AddIngredient(ModContent.ItemType<Regenerator>(), 1)
-                .AddIngredient(ModContent.ItemType<Replenisher>(), 1)
-                .AddTile(TileID.TinkerersWorkbench)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type);
+            r.AddIngredient(ModContent.ItemType<MetallicClover>());
+            r.AddIngredient(ModContent.ItemType<Regenerator>());
+            r.AddIngredient(ModContent.ItemType<Replenisher>());
+            r.AddTile(TileID.TinkerersWorkbench);
+            r.Register();
         }
 
         public override void UpdateInfoAccessory(Player player)

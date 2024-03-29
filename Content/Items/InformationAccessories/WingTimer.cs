@@ -1,4 +1,5 @@
-﻿using QoLCompendium.Core.UI;
+﻿using QoLCompendium.Core;
+using QoLCompendium.Core.UI;
 
 namespace QoLCompendium.Content.Items.InformationAccessories
 {
@@ -17,6 +18,16 @@ namespace QoLCompendium.Content.Items.InformationAccessories
             Item.rare = ItemRarityID.Blue;
             Item.accessory = true;
             Item.value = Item.sellPrice(gold: 3);
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type);
+            r.AddIngredient(ItemID.Feather, 3);
+            r.AddRecipeGroup(RecipeGroupID.IronBar, 2);
+            r.AddIngredient(ItemID.Wire, 6);
+            r.Register();
+            r.AddTile(TileID.Anvils);
         }
 
         public override void UpdateInfoAccessory(Player player)

@@ -83,7 +83,7 @@ namespace QoLCompendium.Content.Tiles.Pylons
 
         public override void SpecialDraw(int i, int j, SpriteBatch spriteBatch)
         {
-            DefaultDrawPylonCrystal(spriteBatch, i, j, crystalTexture, crystalHighlightTexture, new Vector2(0f, -12f), Color.White * 0.1f, ColorUtils.ColorSwap(Color.IndianRed, Color.OrangeRed, 1.5f), 4, CrystalVerticalFrameCount);
+            DefaultDrawPylonCrystal(spriteBatch, i, j, crystalTexture, crystalHighlightTexture, new Vector2(0f, -12f), Color.White * 0.1f, Common.ColorSwap(Color.IndianRed, Color.OrangeRed, 1.5f), 4, CrystalVerticalFrameCount);
         }
 
         public override void DrawMapIcon(ref MapOverlayDrawContext context, ref string mouseOverText, TeleportPylonInfo pylonInfo, bool isNearPylon, Color drawColor, float deselectedScale, float selectedScale)

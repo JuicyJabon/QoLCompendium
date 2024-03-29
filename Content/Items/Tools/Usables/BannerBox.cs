@@ -1,3 +1,5 @@
+using QoLCompendium.Core;
+
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class BannerBox : ModItem
@@ -90,14 +92,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.BannerBox)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Wood, 12)
-                .AddIngredient(ItemID.Silk, 2)
-                .AddTile(TileID.Loom)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.BannerBox, Type);
+            r.AddIngredient(ItemID.Wood, 12);
+            r.AddIngredient(ItemID.Silk, 2);
+            r.AddTile(TileID.Loom);
+            r.Register();
         }
     }
 }

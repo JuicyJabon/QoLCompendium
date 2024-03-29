@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Projectiles.MobileStorages;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.MobileStorages
 {
@@ -17,13 +18,10 @@ namespace QoLCompendium.Content.Items.MobileStorages
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.MobileStorages)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Safe, 1)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MobileStorages, Type);
+            r.AddIngredient(ItemID.Safe);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

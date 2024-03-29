@@ -209,6 +209,7 @@ namespace QoLCompendium.Core.UI
             Asset<Texture2D> GoblinArmyTexture = Request<Texture2D>("QoLCompendium/Assets/Events/GoblinArmy");
             Asset<Texture2D> FrostLegionTexture = Request<Texture2D>("QoLCompendium/Assets/Events/FrostLegion");
             Asset<Texture2D> PiratesTexture = Request<Texture2D>("QoLCompendium/Assets/Events/Pirates");
+            Asset<Texture2D> EclipseTexture = Request<Texture2D>("QoLCompendium/Assets/Events/Eclipse");
             Asset<Texture2D> PumpkinMoonTexture = Request<Texture2D>("QoLCompendium/Assets/Events/PumpkinMoon");
             Asset<Texture2D> FrostMoonTexture = Request<Texture2D>("QoLCompendium/Assets/Events/FrostMoon");
             Asset<Texture2D> MartiansTexture = Request<Texture2D>("QoLCompendium/Assets/Events/Martians");
@@ -288,9 +289,17 @@ namespace QoLCompendium.Core.UI
             Pirates.Height.Set(24, 0f);
             Pirates.OnLeftClick += new MouseEvent(PiratesClicked);
             BossPanel.Append(Pirates);
+            
+            UIImageButton Eclipse = new(EclipseTexture);
+            Eclipse.Left.Set(110, 0f);
+            Eclipse.Top.Set(280, 0f);
+            Eclipse.Width.Set(24, 0f);
+            Eclipse.Height.Set(24, 0f);
+            Eclipse.OnLeftClick += new MouseEvent(EclipseClicked);
+            BossPanel.Append(Eclipse);
 
             UIImageButton PumpkinMoon = new(PumpkinMoonTexture);
-            PumpkinMoon.Left.Set(110, 0f);
+            PumpkinMoon.Left.Set(160, 0f);
             PumpkinMoon.Top.Set(280, 0f);
             PumpkinMoon.Width.Set(22, 0f);
             PumpkinMoon.Height.Set(22, 0f);
@@ -298,7 +307,7 @@ namespace QoLCompendium.Core.UI
             BossPanel.Append(PumpkinMoon);
 
             UIImageButton FrostMoon = new(FrostMoonTexture);
-            FrostMoon.Left.Set(160, 0f);
+            FrostMoon.Left.Set(210, 0f);
             FrostMoon.Top.Set(280, 0f);
             FrostMoon.Width.Set(22, 0f);
             FrostMoon.Height.Set(22, 0f);
@@ -306,7 +315,7 @@ namespace QoLCompendium.Core.UI
             BossPanel.Append(FrostMoon);
 
             UIImageButton Martians = new(MartiansTexture);
-            Martians.Left.Set(210, 0f);
+            Martians.Left.Set(260, 0f);
             Martians.Top.Set(280, 0f);
             Martians.Width.Set(26, 0f);
             Martians.Height.Set(24, 0f);
@@ -314,7 +323,7 @@ namespace QoLCompendium.Core.UI
             BossPanel.Append(Martians);
 
             UIImageButton NebulaPillar = new(NebulaPillarTexture);
-            NebulaPillar.Left.Set(260, 0f);
+            NebulaPillar.Left.Set(310, 0f);
             NebulaPillar.Top.Set(280, 0f);
             NebulaPillar.Width.Set(24, 0f);
             NebulaPillar.Height.Set(26, 0f);
@@ -322,15 +331,15 @@ namespace QoLCompendium.Core.UI
             BossPanel.Append(NebulaPillar);
 
             UIImageButton SolarPillar = new(SolarPillarTexture);
-            SolarPillar.Left.Set(310, 0f);
-            SolarPillar.Top.Set(280, 0f);
+            SolarPillar.Left.Set(10, 0f);
+            SolarPillar.Top.Set(330, 0f);
             SolarPillar.Width.Set(24, 0f);
             SolarPillar.Height.Set(26, 0f);
             SolarPillar.OnLeftClick += new MouseEvent(SolarPillarClicked);
             BossPanel.Append(SolarPillar);
 
             UIImageButton StardustPillar = new(StardustPillarTexture);
-            StardustPillar.Left.Set(10, 0f);
+            StardustPillar.Left.Set(60, 0f);
             StardustPillar.Top.Set(330, 0f);
             StardustPillar.Width.Set(24, 0f);
             StardustPillar.Height.Set(26, 0f);
@@ -338,7 +347,7 @@ namespace QoLCompendium.Core.UI
             BossPanel.Append(StardustPillar);
 
             UIImageButton VortexPillar = new(VortexPillarTexture);
-            VortexPillar.Left.Set(60, 0f);
+            VortexPillar.Left.Set(110, 0f);
             VortexPillar.Top.Set(330, 0f);
             VortexPillar.Width.Set(24, 0f);
             VortexPillar.Height.Set(26, 0f);
@@ -968,11 +977,11 @@ namespace QoLCompendium.Core.UI
             }
         }
 
-        private void PumpkinMoonClicked(UIMouseEvent evt, UIElement listeningElement)
+        private void EclipseClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                if (NPC.downedPlantBoss)
+                if (NPC.downedMechBossAny)
                 {
                     Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 10;
                     Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
@@ -982,7 +991,7 @@ namespace QoLCompendium.Core.UI
             }
         }
 
-        private void FrostMoonClicked(UIMouseEvent evt, UIElement listeningElement)
+        private void PumpkinMoonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
@@ -996,13 +1005,27 @@ namespace QoLCompendium.Core.UI
             }
         }
 
+        private void FrostMoonClicked(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.GameUpdateCount - timeStart >= 10)
+            {
+                if (NPC.downedPlantBoss)
+                {
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 12;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
+                    visible = false;
+                }
+            }
+        }
+
         private void MartiansClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 if (NPC.downedGolemBoss)
                 {
-                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 12;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 13;
                     Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
                     Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
@@ -1016,7 +1039,7 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedAncientCultist)
                 {
-                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 13;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 14;
                     Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
                     Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
@@ -1030,7 +1053,7 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedAncientCultist)
                 {
-                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 14;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 15;
                     Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
                     Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
@@ -1044,7 +1067,7 @@ namespace QoLCompendium.Core.UI
             {
                 if(NPC.downedAncientCultist)
                 {
-                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 15;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 16;
                     Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
                     Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
@@ -1058,7 +1081,7 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedAncientCultist)
                 {
-                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 16;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 17;
                     Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
                     Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;

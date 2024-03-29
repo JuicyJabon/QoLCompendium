@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Tiles.CraftingStations;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 {
@@ -26,23 +27,21 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.CraftingStations)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.WorkBench)
-                .AddIngredient(ItemID.Furnace)
-                .AddRecipeGroup(nameof(ItemID.IronAnvil))
-                .AddRecipeGroup(nameof(ItemID.WoodenTable))
-                .AddRecipeGroup(nameof(ItemID.WoodenChair))
-                .AddIngredient(ItemID.CookingPot)
-                .AddIngredient(ItemID.HeavyWorkBench)
-                .AddIngredient(ItemID.Sawmill)
-                .AddIngredient(ItemID.Loom)
-                .AddIngredient(ItemID.Keg)
-                .AddRecipeGroup(nameof(ItemID.WoodenSink))
-                .AddIngredient(ItemID.Bottle)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type);
+            r.AddIngredient(ItemID.WorkBench);
+            r.AddIngredient(ItemID.Furnace);
+            r.AddRecipeGroup(nameof(ItemID.IronAnvil));
+            r.AddRecipeGroup(nameof(ItemID.WoodenTable));
+            r.AddRecipeGroup(nameof(ItemID.WoodenChair));
+            r.AddIngredient(ItemID.CookingPot);
+            r.AddIngredient(ItemID.HeavyWorkBench);
+            r.AddIngredient(ItemID.Sawmill);
+            r.AddIngredient(ItemID.Loom);
+            r.AddIngredient(ItemID.Keg);
+            r.AddRecipeGroup(nameof(ItemID.WoodenSink));
+            r.AddIngredient(ItemID.Bottle);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

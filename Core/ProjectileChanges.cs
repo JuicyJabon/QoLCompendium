@@ -38,6 +38,12 @@ namespace QoLCompendium.Core
                         break;
                 }
 
+                if (projectile.type == Common.GetModProjectile(ModConditions.aequusMod, "RadonFishingBobberProj") 
+                    || projectile.type == Common.GetModProjectile(ModConditions.depthsMod, "MercuryMossFishingBobber"))
+                {
+                    split = 5;
+                }
+
                 if (Main.player[projectile.owner].HasBuff(BuffID.Fishing))
                     split++;
 

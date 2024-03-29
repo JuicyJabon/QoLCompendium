@@ -41,6 +41,7 @@ Current Features:
  - Auto research favorited items
  - Boss bags don't drop vanities
  - Boss loot shimmer conversions
+ - Defender Medal drops
  - No natural boss spawns
  - Shimmerable tooltip
  - Bestiary entry unlocks with 1 kill
@@ -54,6 +55,7 @@ Current Features:
  - NPCs always sell pylons
  - No pylon teleportation restrictions
  - Teleport NPCs home (Make sure to set a keybind)
+ - Quick recall (Make sure to set a keybind)
  - Shop Expander (Thanks Pannoniae!)
  - Angler instant quest reset
  - No town slimes

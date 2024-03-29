@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Projectiles.Explosives;
+using QoLCompendium.Core;
 using Terraria.DataStructures;
 
 namespace QoLCompendium.Content.Items.Tools.Explosives
@@ -38,16 +39,13 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.AutoStructures)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.AsphaltBlock, 25)
-                .AddIngredient(ItemID.Dynamite, 25)
-                .AddIngredient(ItemID.Diamond, 5)
-                .AddRecipeGroup(RecipeGroupID.IronBar, 3)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AutoStructures && QoLCompendium.itemConfig.AsphaltPlatform, Type);
+            r.AddIngredient(ItemID.AsphaltBlock, 25);
+            r.AddIngredient(ItemID.Dynamite, 25);
+            r.AddIngredient(ItemID.Diamond, 5);
+            r.AddRecipeGroup(RecipeGroupID.IronBar, 3);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

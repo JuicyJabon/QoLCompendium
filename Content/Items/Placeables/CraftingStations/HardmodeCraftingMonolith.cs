@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Tiles.CraftingStations;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 {
@@ -26,21 +27,18 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.CraftingStations)
-            {
-                CreateRecipe()
-                .AddRecipeGroup(nameof(ItemID.MythrilAnvil))
-                .AddRecipeGroup(nameof(ItemID.AdamantiteForge))
-                .AddRecipeGroup(nameof(ItemID.Bookcase))
-                .AddIngredient(ItemID.CrystalBall)
-                .AddIngredient(ItemID.FleshCloningVaat)
-                .AddIngredient(ItemID.LesionStation)
-                .AddIngredient(ItemID.SteampunkBoiler)
-                .AddIngredient(ItemID.BlendOMatic)
-                .AddIngredient(ItemID.MeatGrinder)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type);
+            r.AddRecipeGroup(nameof(ItemID.MythrilAnvil));
+            r.AddRecipeGroup(nameof(ItemID.AdamantiteForge));
+            r.AddRecipeGroup(nameof(ItemID.Bookcase));
+            r.AddIngredient(ItemID.CrystalBall);
+            r.AddIngredient(ItemID.FleshCloningVaat);
+            r.AddIngredient(ItemID.LesionStation);
+            r.AddIngredient(ItemID.SteampunkBoiler);
+            r.AddIngredient(ItemID.BlendOMatic);
+            r.AddIngredient(ItemID.MeatGrinder);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

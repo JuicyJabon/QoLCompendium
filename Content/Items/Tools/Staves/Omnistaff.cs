@@ -1,4 +1,6 @@
-﻿using Terraria.Enums;
+﻿using QoLCompendium.Content.Items.InformationAccessories;
+using QoLCompendium.Core;
+using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Tools.Staves
@@ -115,21 +117,18 @@ namespace QoLCompendium.Content.Items.Tools.Staves
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.RegrowthStaves)
-            {
-                CreateRecipe()
-                .AddIngredient(ModContent.ItemType<StaffOfAshing>())
-                .AddIngredient(ModContent.ItemType<StaffOfCysting>())
-                .AddIngredient(ModContent.ItemType<StaffOfHallowing>())
-                .AddIngredient(ModContent.ItemType<StaffOfHemorrhaging>())
-                .AddIngredient(ModContent.ItemType<StaffOfOvergrownCysting>())
-                .AddIngredient(ModContent.ItemType<StaffOfOvergrownHemorrhaging>())
-                .AddIngredient(ModContent.ItemType<StaffOfOvergrowth>())
-                .AddIngredient(ItemID.StaffofRegrowth)
-                .AddIngredient(ModContent.ItemType<StaffOfShrooming>())
-                .AddTile(TileID.HeavyWorkBench)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.RegrowthStaves, Type);
+            r.AddIngredient(ModContent.ItemType<StaffOfAshing>());
+            r.AddIngredient(ModContent.ItemType<StaffOfCysting>());
+            r.AddIngredient(ModContent.ItemType<StaffOfHallowing>());
+            r.AddIngredient(ModContent.ItemType<StaffOfHemorrhaging>());
+            r.AddIngredient(ModContent.ItemType<StaffOfOvergrownCysting>());
+            r.AddIngredient(ModContent.ItemType<StaffOfOvergrownHemorrhaging>());
+            r.AddIngredient(ModContent.ItemType<StaffOfOvergrowth>());
+            r.AddIngredient(ItemID.StaffofRegrowth);
+            r.AddIngredient(ModContent.ItemType<StaffOfShrooming>());
+            r.AddTile(TileID.HeavyWorkBench);
+            r.Register();
         }
     }
 }

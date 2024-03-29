@@ -1,4 +1,6 @@
-﻿namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
+﻿using QoLCompendium.Core;
+
+namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 {
     public abstract class CoinBag : BaseAmmo
     {
@@ -54,13 +56,10 @@
 
             public override void AddRecipes()
             {
-                if (QoLCompendium.itemConfig.EndlessAmmo)
-                {
-                    CreateRecipe()
-                    .AddIngredient(ItemID.Bone, 3996)
-                    .AddTile(TileID.CrystalBall)
-                    .Register();
-                }
+                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type);
+                r.AddIngredient(ItemID.Bone, 3996);
+                r.AddTile(TileID.CrystalBall);
+                r.Register();
             }
         }
 
@@ -106,13 +105,10 @@
 
             public override void AddRecipes()
             {
-                if (QoLCompendium.itemConfig.EndlessAmmo)
-                {
-                    CreateRecipe()
-                    .AddIngredient(ItemID.SandBlock, 3996)
-                    .AddTile(TileID.CrystalBall)
-                    .Register();
-                }
+                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type);
+                r.AddIngredient(ItemID.SandBlock, 3996);
+                r.AddTile(TileID.CrystalBall);
+                r.Register();
             }
         }
 
@@ -137,13 +133,10 @@
 
             public override void AddRecipes()
             {
-                if (QoLCompendium.itemConfig.EndlessAmmo)
-                {
-                    CreateRecipe()
-                    .AddIngredient(ItemID.Snowball, 3996)
-                    .AddTile(TileID.CrystalBall)
-                    .Register();
-                }
+                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type);
+                r.AddIngredient(ItemID.Snowball, 3996);
+                r.AddTile(TileID.CrystalBall);
+                r.Register();
             }
         }
 

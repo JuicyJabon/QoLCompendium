@@ -1,4 +1,5 @@
-﻿using QoLCompendium.Core.UI;
+﻿using QoLCompendium.Core;
+using QoLCompendium.Core.UI;
 
 namespace QoLCompendium.Content.Items.InformationAccessories
 {
@@ -21,16 +22,13 @@ namespace QoLCompendium.Content.Items.InformationAccessories
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.InformationAccessories)
-            {
-                CreateRecipe()
-                .AddIngredient(ModContent.ItemType<Fitbit>(), 1)
-                .AddIngredient(ModContent.ItemType<HeartbeatSensor>(), 1)
-                .AddIngredient(ModContent.ItemType<ToleranceDetector>(), 1)
-                .AddIngredient(ModContent.ItemType<VitalDisplay>(), 1)
-                .AddTile(TileID.TinkerersWorkbench)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type);
+            r.AddIngredient(ModContent.ItemType<Fitbit>());
+            r.AddIngredient(ModContent.ItemType<HeartbeatSensor>());
+            r.AddIngredient(ModContent.ItemType<ToleranceDetector>());
+            r.AddIngredient(ModContent.ItemType<VitalDisplay>());
+            r.AddTile(TileID.TinkerersWorkbench);
+            r.Register();
         }
 
         public override void UpdateInfoAccessory(Player player)

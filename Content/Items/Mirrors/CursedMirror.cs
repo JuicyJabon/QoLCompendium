@@ -1,3 +1,6 @@
+using QoLCompendium.Content.Items.Magnets;
+using QoLCompendium.Core;
+
 namespace QoLCompendium.Content.Items.Mirrors
 {
     public class CursedMirror : ModItem
@@ -56,15 +59,12 @@ namespace QoLCompendium.Content.Items.Mirrors
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.Mirrors)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Glass, 10)
-                .AddRecipeGroup(RecipeGroupID.IronBar, 8)
-                .AddRecipeGroup(nameof(ItemID.Tombstone), 3)
-                .AddTile(TileID.Furnaces)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors, Type);
+            r.AddIngredient(ItemID.Glass, 10);
+            r.AddRecipeGroup(RecipeGroupID.IronBar, 8);
+            r.AddRecipeGroup(nameof(ItemID.Tombstone), 3);
+            r.AddTile(TileID.Furnaces);
+            r.Register();
         }
     }
 }

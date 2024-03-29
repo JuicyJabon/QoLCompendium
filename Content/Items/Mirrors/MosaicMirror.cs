@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Items.InformationAccessories;
+using QoLCompendium.Core;
 using QoLCompendium.Core.UI;
 using Terraria.ModLoader.IO;
 
@@ -219,16 +220,13 @@ namespace QoLCompendium.Content.Items.Mirrors
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.Mirrors && QoLCompendium.itemConfig.InformationAccessories)
-            {
-                CreateRecipe()
-                .AddIngredient(ModContent.ItemType<IAH>())
-                .AddIngredient(ModContent.ItemType<CursedMirror>())
-                .AddIngredient(ModContent.ItemType<MirrorOfReturn>())
-                .AddIngredient(ModContent.ItemType<TeleportationMirror>())
-                .AddTile(TileID.TinkerersWorkbench)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors && QoLCompendium.itemConfig.InformationAccessories, Type);
+            r.AddIngredient(ModContent.ItemType<IAH>());
+            r.AddIngredient(ModContent.ItemType<CursedMirror>());
+            r.AddIngredient(ModContent.ItemType<MirrorOfReturn>());
+            r.AddIngredient(ModContent.ItemType<TeleportationMirror>());
+            r.AddTile(TileID.TinkerersWorkbench);
+            r.Register();
         }
     }
 }

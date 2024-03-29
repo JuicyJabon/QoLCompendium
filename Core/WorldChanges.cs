@@ -5,6 +5,15 @@ namespace QoLCompendium.Core
 {
     public class AlwaysEventSystem : ModSystem
     {
+        public override void ModifyTimeRate(ref double timeRate, ref double tileUpdateRate, ref double eventUpdateRate)
+        {
+            Player p = Main.LocalPlayer;
+            if (p.TryGetModPlayer(out QoLCPlayer mPlayer) && mPlayer.pausePedestal && p.active && !Main.dedServ && !Main.gameMenu)
+            {
+                timeRate = 0.0;
+            }
+        }
+
         public override void PreUpdateTime()
         {
             Player p = Main.LocalPlayer;

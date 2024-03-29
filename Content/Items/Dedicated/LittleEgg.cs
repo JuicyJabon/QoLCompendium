@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Content.Buffs;
 using QoLCompendium.Content.Projectiles.Dedicated;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Dedicated
 {
@@ -7,19 +8,15 @@ namespace QoLCompendium.Content.Items.Dedicated
     {
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipLine line = new(Mod, "Dedicated", "Dedicated - Jay")
+            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - Jay")
             {
-                OverrideColor = new Color(255, 0, 0)
+                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
             };
-            tooltips.Add(line);
+            tooltips.Add(dedicated);
         }
 
         public override void SetStaticDefaults()
         {
-            if (QoLCompendium.itemConfig.DedicatedItems)
-            {
-                ItemID.Sets.ShimmerTransformToItem[ItemID.RottenEgg] = Item.type;
-            }
             Item.ResearchUnlockCount = 1;
         }
 

@@ -11,8 +11,8 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void SetDefaults()
         {
-            Item.width = 10;
-            Item.height = 18;
+            Item.width = 12;
+            Item.height = 20;
             Item.maxStack = 1;
             Item.consumable = false;
             Item.rare = ItemRarityID.Green;
@@ -21,14 +21,11 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.MoonPedestals)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.GrayBrick, 10)
-                .AddIngredient(ItemID.SunplateBlock, 8)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MoonPedestals, Type);
+            r.AddIngredient(ItemID.GrayBrick, 10);
+            r.AddIngredient(ItemID.SunplateBlock, 8);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
 
         public override void UpdateInventory(Player player)

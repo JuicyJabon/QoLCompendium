@@ -11,16 +11,20 @@
         public override void Update(Item item, ref float gravity, ref float maxFallSpeed)
         {
             MagnetPlayer mPlayer = Main.LocalPlayer.GetModPlayer<MagnetPlayer>();
-            if (item.active && item.playerIndexTheItemIsReservedFor == Main.myPlayer)
+            if (item.active && Main.LocalPlayer.whoAmI == Main.myPlayer)
             {
                 if (item.type == ItemID.Heart || item.type == ItemID.CandyApple || item.type == ItemID.CandyCane || item.type == ItemID.Star || item.type == ItemID.SoulCake || item.type == ItemID.SugarPlum || item.type == ItemID.NebulaPickup1 || item.type == ItemID.NebulaPickup2 || item.type == ItemID.NebulaPickup3)
                 {
                     return;
                 }
 
+                if (item.noGrabDelay != 0 || item.playerIndexTheItemIsReservedFor != Main.LocalPlayer.whoAmI)
+                {
+                    return;
+                }
+
                 if (Main.LocalPlayer.Distance(item.Center) <= BaseMagnetRange && mPlayer.BaseMagnet)
                 {
-                    item.noGrabDelay = 0;
                     item.beingGrabbed = true;
                     item.Center = Main.LocalPlayer.Center;
 
@@ -30,7 +34,6 @@
 
                 if (Main.LocalPlayer.Distance(item.Center) <= HellstoneMagnetRange && mPlayer.HellstoneMagnet)
                 {
-                    item.noGrabDelay = 0;
                     item.beingGrabbed = true;
                     item.Center = Main.LocalPlayer.Center;
 
@@ -40,7 +43,6 @@
 
                 if (Main.LocalPlayer.Distance(item.Center) <= ChlorophyteMagnetRange && mPlayer.ChlorophyteMagnet)
                 {
-                    item.noGrabDelay = 0;
                     item.beingGrabbed = true;
                     item.Center = Main.LocalPlayer.Center;
 
@@ -50,7 +52,6 @@
 
                 if (Main.LocalPlayer.Distance(item.Center) <= SpectreMagnetRange && mPlayer.SpectreMagnet)
                 {
-                    item.noGrabDelay = 0;
                     item.beingGrabbed = true;
                     item.Center = Main.LocalPlayer.Center;
 
@@ -60,7 +61,6 @@
 
                 if (Main.LocalPlayer.Distance(item.Center) <= LunarMagnetRange && mPlayer.LunarMagnet)
                 {
-                    item.noGrabDelay = 0;
                     item.beingGrabbed = true;
                     item.Center = Main.LocalPlayer.Center;
 

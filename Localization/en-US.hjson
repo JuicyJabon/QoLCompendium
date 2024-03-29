@@ -264,11 +264,7 @@ Mods: {
 
 			RangedAbsolution: {
 				DisplayName: Ranged Absolution
-				Tooltip:
-					'''
-					Costs bullets to swing
-					'Pure anarchy'
-					'''
+				Tooltip: "'Pure anarchy'"
 			}
 
 			Regenerator: {
@@ -977,6 +973,11 @@ Mods: {
 				Tooltip: ""
 				DisplayName: Endless Bone Quiver
 			}
+
+			PausePedestal: {
+				DisplayName: Pause Pedestal
+				Tooltip: Favorite this item to pause time
+			}
 		}
 
 		NPCs: {
@@ -1071,7 +1072,7 @@ Mods: {
 
 		Configs: {
 			QoLCConfig: {
-				DisplayName: Compendium Config
+				DisplayName: Central Config
 
 				EndlessBuffs: {
 					Label: "[i:292][i:3198] Endless Buffs"
@@ -1498,16 +1499,36 @@ Mods: {
 
 				VeinMinerSpeed: {
 					Label: "[i:3509] Vein Miner Speed"
-					Tooltip: 
-					'''
-					Sets the speed at which tiles are broken when vein mined
-					Smaller numbers means faster
-					'''
+					Tooltip:
+						'''
+						Sets the speed at which tiles are broken when vein mined
+						Smaller numbers means faster
+						'''
 				}
 
 				VeinMinerWhitelist: {
 					Label: "[i:3509] Vein Miner Whitelist"
 					Tooltip: Sets which tiles can be vein mined
+				}
+
+				VeinMinerTileLimit: {
+					Tooltip: Sets how many tiles can be vein mined at a time
+					Label: "[i:3509] Vein Miner Tile Limit"
+				}
+
+				DefenderMedalDrops: {
+					Tooltip: Toggles if Old One's Army minibosses drop extra defender medals
+					Label: "[i:3817] Defender Medal Drops"
+				}
+
+				NoReforgeRNG: {
+					Label: "[i:7] No Reforge RNG"
+					Tooltip: Removes reforge RNG
+				}
+
+				ItemConversions: {
+					Label: "[i:86] Item Conversions"
+					Tooltip: Toggles if recipes are added for world specific items
 				}
 			}
 
@@ -1923,7 +1944,8 @@ Mods: {
 		Keybinds: {
 			HomeBind.DisplayName: Teleport NPCs Home
 			WhitelistTileBind.DisplayName: Whitelist Tile
-			RemoveWhitelistedTileBind.DisplayName: Remove Whitelisted Tile Bind
+			RemoveWhitelistedTileBind.DisplayName: Remove Whitelisted Tile
+			RecallBind.DisplayName: Quick Recall
 		}
 
 		ModConditions: {
@@ -1963,7 +1985,7 @@ Mods: {
 			downedGaleStreams: Downed the Gale Streams
 			beenToCrabCrevice: Been to the Crab Crevice biome
 			downedSlayerOfEvil: Downed Slayer Of Evil
-			downedSATLA: Downed SATLA
+			downedSATLA: Downed SATLA-001
 			downedDrFetus: Downed Dr. Fetus
 			downedSlimesHope: Downed Slimes Last Hope
 			downedPoliticianSlime: Downed Politician Slime
@@ -1972,7 +1994,7 @@ Mods: {
 			downedAntony: Downed Antony, the Novice Necromancer
 			downedBunnyZeppelin: Downed Bunny Zeppelin
 			downedOkiku: Downed Okiku
-			downedHarpyAirforce: Downed Harpy Airforce
+			downedHarpyAirforce: Downed Royal Harpy Airforce
 			downedIsaac: Downed Isaac
 			downedAncientGuardian: Downed the Ancient Guardian
 			downedHeroicSlime: Downed Heroic Slime
@@ -2324,8 +2346,22 @@ Mods: {
 			downedDesertBeak: Downed Desert Beak
 			downedAvalonEvilBosses: Downed any evil boss
 			downedBacteriumPrime: Downed Bacterium Prime
-			downedThespian: Mods.QoLCompendium.ModConditions.downedThespian
-			downedStarfarers: Mods.QoLCompendium.ModConditions.downedStarfarers
+			downedThespian: Downed Thespian, the Act of Alchemy
+			downedStarfarers: Downed Asphodene and Eridani
+			enabledInConfig: Enabled in Item Config
+			downedArmagem: Downed Armagem
+			downedVoid: Downed Void
+			downedTheGuardianOfHell: Downed The Guardian Of Hell
+			downedPrimordialWorm: Downed Primordial Worm
+			downedCryoGuardian: Downed Cryo Guardian
+			downedForestGuardian: Downed Forest Guardian
+			downedNightmarePlantera: Downed Nightmare Plantera
+			downedThunderveinDragon: Downed Thundervein Dragon
+			downedBloodiancie: Downed Bloodiancie
+			downedSlimeEmperor: Downed Slime Emperor
+			downedBabyIceDragon: Downed Baby Ice Dragon
+			downedRediancie: Downed Rediancie
+			downedCoreBoss: Downed Corrupt or Crimson Core
 		}
 
 		Tiles: {

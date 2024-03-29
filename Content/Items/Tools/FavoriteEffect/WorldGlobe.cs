@@ -46,16 +46,13 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.WorldGlobe)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Glass, 15)
-                .AddIngredient(ItemID.DirtBlock, 5)
-                .AddIngredient(ItemID.GrassSeeds, 5)
-                .AddIngredient(ItemID.WaterBucket, 1)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.WorldGlobe, Type);
+            r.AddIngredient(ItemID.Glass, 15);
+            r.AddIngredient(ItemID.DirtBlock, 5);
+            r.AddIngredient(ItemID.GrassSeeds, 5);
+            r.AddIngredient(ItemID.WaterBucket, 1);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
 
         public override void UpdateInventory(Player player)

@@ -1,3 +1,5 @@
+using QoLCompendium.Core;
+
 namespace QoLCompendium.Content.Items.Magnets
 {
     public class SpectreMagnet : ModItem
@@ -18,14 +20,11 @@ namespace QoLCompendium.Content.Items.Magnets
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.Magnets)
-            {
-                CreateRecipe()
-                .AddIngredient(ModContent.ItemType<ChlorophyteMagnet>())
-                .AddIngredient(ItemID.SpectreBar, 10)
-                .AddTile(TileID.MythrilAnvil)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Magnets, Type);
+            r.AddIngredient(ModContent.ItemType<ChlorophyteMagnet>());
+            r.AddIngredient(ItemID.SpectreBar, 10);
+            r.Register();
+            r.AddTile(TileID.MythrilAnvil);
         }
 
         public override void UpdateInventory(Player player)

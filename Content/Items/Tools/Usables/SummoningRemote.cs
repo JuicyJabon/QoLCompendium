@@ -25,6 +25,8 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override bool? UseItem(Player player)
         {
+            //new Color(175, 75, 255) - PURPLE
+            //new Color(50, 255, 130) - GREEN
             if (player.altFunctionUse == 2)
             {
                 if (!BossUI.visible) BossUI.timeStart = Main.GameUpdateCount;
@@ -60,7 +62,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                             NetMessage.SendData(MessageID.WorldData);
                             Main.SyncRain();
                         }
-                        TextHelper.PrintText("The skies darken", new Color(175, 75, 255));
+                        TextHelper.PrintText("The skies darken", new Color(50, 255, 130));
                         SoundEngine.PlaySound(SoundID.Roar, player.position);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 2)
@@ -69,15 +71,16 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.WorldData);
-                        TextHelper.PrintText("The wind has been stirred", new Color(175, 75, 255));
+                        TextHelper.PrintText("The wind has been stirred", new Color(50, 255, 130));
                         SoundEngine.PlaySound(SoundID.Roar, player.position);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 3)
                     {
                         Sandstorm.StartSandstorm();
 
-                        NetMessage.SendData(MessageID.WorldData);
-                        TextHelper.PrintText("The desert winds are howling", new Color(175, 75, 255));
+                        if (Main.netMode == NetmodeID.Server)
+                            NetMessage.SendData(MessageID.WorldData);
+                        TextHelper.PrintText("The desert winds are howling", new Color(50, 255, 130));
                         SoundEngine.PlaySound(SoundID.Roar, player.position);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 4)
@@ -103,51 +106,89 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                         Main.slimeWarningDelay = 1;
                         Main.slimeWarningTime = 1;
                         SoundEngine.PlaySound(SoundID.Roar, player.position);
+
+                        if (Main.netMode == NetmodeID.Server)
+                            NetMessage.SendData(MessageID.WorldData);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 6)
                     {
                         if (!Main.dayTime)
                         {
                             Main.bloodMoon = true;
+                            SoundEngine.PlaySound(SoundID.Roar, player.position);
+                            TextHelper.PrintText("The Blood Moon is rising...", new Color(50, 255, 130));
+                            if (Main.netMode == NetmodeID.Server)
+                                NetMessage.SendData(MessageID.WorldData);
                         }
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 7)
                     {
                         Main.StartInvasion(InvasionID.GoblinArmy);
+                        if (Main.netMode == NetmodeID.Server)
+                            NetMessage.SendData(MessageID.WorldData);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 8)
                     {
                         Main.StartInvasion(InvasionID.SnowLegion);
+                        if (Main.netMode == NetmodeID.Server)
+                            NetMessage.SendData(MessageID.WorldData);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 9)
                     {
                         Main.StartInvasion(InvasionID.PirateInvasion);
+                        if (Main.netMode == NetmodeID.Server)
+                            NetMessage.SendData(MessageID.WorldData);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 10)
                     {
-                        Main.startPumpkinMoon();
+                        if (Main.dayTime)
+                        {
+                            Main.eclipse = true;
+                            SoundEngine.PlaySound(SoundID.Roar, player.position);
+                            TextHelper.PrintText("A solar eclipse is happening!", new Color(50, 255, 130));
+                            if (Main.netMode == NetmodeID.Server)
+                                NetMessage.SendData(MessageID.WorldData);
+                        }
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 11)
                     {
-                        Main.startSnowMoon();
+                        if (!Main.dayTime)
+                        {
+                            Main.startPumpkinMoon();
+                            TextHelper.PrintText("The Pumpkin Moon is rising...", new Color(50, 255, 130));
+                            if (Main.netMode == NetmodeID.Server)
+                                NetMessage.SendData(MessageID.WorldData);
+                        }
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 12)
                     {
-                        Main.StartInvasion(InvasionID.MartianMadness);
+                        if (!Main.dayTime)
+                        {
+                            Main.startSnowMoon();
+                            TextHelper.PrintText("The Frost Moon is rising...", new Color(50, 255, 130));
+                            if (Main.netMode == NetmodeID.Server)
+                                NetMessage.SendData(MessageID.WorldData);
+                        }
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 13)
                     {
-                        NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerNebula);
+                        Main.StartInvasion(InvasionID.MartianMadness);
+                        if (Main.netMode == NetmodeID.Server)
+                            NetMessage.SendData(MessageID.WorldData);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 14)
                     {
-                        NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerSolar);
+                        NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerNebula);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 15)
                     {
-                        NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerStardust);
+                        NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerSolar);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 16)
+                    {
+                        NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerStardust);
+                    }
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 17)
                     {
                         NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerVortex);
                     }
@@ -163,15 +204,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.SummoningRemote)
-            {
-                CreateRecipe()
-                .AddRecipeGroup(RecipeGroupID.IronBar, 7)
-                .AddIngredient(ItemID.Ruby, 2)
-                .AddIngredient(ItemID.Lens, 3)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.SummoningRemote, Type);
+            r.AddRecipeGroup(RecipeGroupID.IronBar, 7);
+            r.AddIngredient(ItemID.Ruby, 2);
+            r.AddIngredient(ItemID.Lens, 3);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

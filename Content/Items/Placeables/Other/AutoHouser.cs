@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Tiles.AutoStructures;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Placeables.Other
 {
@@ -26,14 +27,11 @@ namespace QoLCompendium.Content.Items.Placeables.Other
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.AutoStructures)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.GrayBrick, 25)
-                .AddIngredient(ItemID.Torch)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AutoStructures, Type);
+            r.AddIngredient(ItemID.GrayBrick, 25);
+            r.AddIngredient(ItemID.Torch);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

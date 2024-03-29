@@ -1,5 +1,7 @@
 ﻿using QoLCompendium.Content.Buffs;
 using QoLCompendium.Content.Projectiles.Dedicated;
+using QoLCompendium.Core;
+using Terraria.ID;
 
 namespace QoLCompendium.Content.Items.Dedicated
 {
@@ -7,11 +9,11 @@ namespace QoLCompendium.Content.Items.Dedicated
     {
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipLine line = new(Mod, "Dedicated", "Dedicated - Jack")
+            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - Jack")
             {
-                OverrideColor = new Color(255, 0, 0)
+                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
             };
-            tooltips.Add(line);
+            tooltips.Add(dedicated);
         }
 
         public override void SetStaticDefaults()
@@ -37,14 +39,11 @@ namespace QoLCompendium.Content.Items.Dedicated
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.DedicatedItems)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.PurpleMucos)
-                .AddIngredient(ItemID.Wire, 17)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type);
+            r.AddIngredient(ItemID.PurpleMucos);
+            r.AddIngredient(ItemID.Wire, 17);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

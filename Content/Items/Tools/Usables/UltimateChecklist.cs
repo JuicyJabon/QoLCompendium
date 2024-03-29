@@ -1,4 +1,5 @@
-﻿using Terraria.GameContent.Creative;
+﻿using QoLCompendium.Core;
+using Terraria.GameContent.Creative;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
@@ -34,15 +35,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.UltimateChecklist)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.LunarBar, 12)
-                .AddIngredient(ItemID.Silk, 6)
-                .AddIngredient(ItemID.BlackInk, 1)
-                .AddTile(TileID.LunarCraftingStation)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.UltimateChecklist, Type);
+            r.AddIngredient(ItemID.LunarBar, 12);
+            r.AddIngredient(ItemID.Silk, 6);
+            r.AddIngredient(ItemID.BlackInk, 1);
+            r.AddTile(TileID.LunarCraftingStation);
+            r.Register();
         }
     }
 }

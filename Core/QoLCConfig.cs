@@ -78,6 +78,9 @@ namespace QoLCompendium.Core
         public bool BossItemTransmutation { get; set; }
 
         [DefaultValue(true)]
+        public bool ItemConversions { get; set; }
+
+        [DefaultValue(true)]
         public bool FavoriteResearching { get; set; }
 
         [Slider]
@@ -152,6 +155,9 @@ namespace QoLCompendium.Core
         [DefaultValue(true)]
         [ReloadRequired]
         public  bool LavaSlimeNoLava { get; set; }
+
+        [DefaultValue(true)]
+        public bool DefenderMedalDrops { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Projectiles")]
         [DefaultValue(true)]
@@ -276,6 +282,11 @@ namespace QoLCompendium.Core
         [ReloadRequired]
         public int VeinMinerSpeed { get; set; }
 
+        [DefaultValue(120)]
+        [Range(1, 500)]
+        [ReloadRequired]
+        public int VeinMinerTileLimit { get; set; }
+
         public List<TileDefinition> VeinMinerWhitelist = new()
         {
             new TileDefinition(TileID.Copper),
@@ -320,114 +331,85 @@ namespace QoLCompendium.Core
         {
             public override ConfigScope Mode => ConfigScope.ServerSide;
 
-            [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Items")]
-
             [DefaultValue(true)]
-            [ReloadRequired]
             public  bool AsphaltPlatform { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public  bool AutoStructures { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public  bool BannerBox { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool CraftingStations { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool EndlessAmmo { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public  bool EntityManipulator { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public  bool InformationAccessories { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public  bool Magnets { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool MiniSundial { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool Mirrors { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public  bool MobileStorages { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public  bool MoonPedestals { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool Paperweight { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool PhaseInterrupter { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool PotionCrate { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool Pylons { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool RegrowthStaves { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool RestockNotice { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public  bool StarterBag { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool SummoningRemote { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool SuperDummy { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool TheFinalList { get; set; }
             
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool TravelersMannequin { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool UltimateChecklist { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public  bool WatchingEye { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public  bool WorldGlobe { get; set; }
 
             [DefaultValue(true)]
-            [ReloadRequired]
             public bool DedicatedItems { get; set; }
 
             public List<ItemDefinition> CustomItems { get; set; }

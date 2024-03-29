@@ -22,6 +22,69 @@ namespace QoLCompendium.Core
                 }
             }
 
+            if (QoLCompendium.mainConfig.ItemConversions)
+            {
+                ConversionRecipe(ItemID.CopperBar, ItemID.TinBar);
+                ConversionRecipe(ItemID.TinBar, ItemID.CopperBar);
+
+                ConversionRecipe(ItemID.IronBar, ItemID.LeadBar);
+                ConversionRecipe(ItemID.LeadBar, ItemID.IronBar);
+
+                ConversionRecipe(ItemID.SilverBar, ItemID.TungstenBar);
+                ConversionRecipe(ItemID.TungstenBar, ItemID.SilverBar);
+
+                ConversionRecipe(ItemID.GoldBar, ItemID.PlatinumBar);
+                ConversionRecipe(ItemID.PlatinumBar, ItemID.GoldBar);
+
+                ConversionRecipe(ItemID.DemoniteBar, ItemID.CrimtaneBar);
+                ConversionRecipe(ItemID.CrimtaneBar, ItemID.DemoniteBar);
+
+                ConversionRecipe(ItemID.CobaltBar, ItemID.PalladiumBar);
+                ConversionRecipe(ItemID.PalladiumBar, ItemID.CobaltBar);
+
+                ConversionRecipe(ItemID.MythrilBar, ItemID.OrichalcumBar);
+                ConversionRecipe(ItemID.OrichalcumBar, ItemID.MythrilBar);
+
+                ConversionRecipe(ItemID.AdamantiteBar, ItemID.TitaniumBar);
+                ConversionRecipe(ItemID.TitaniumBar, ItemID.AdamantiteBar);
+
+                ConversionRecipe(ItemID.ShadowScale, ItemID.TissueSample);
+                ConversionRecipe(ItemID.TissueSample, ItemID.ShadowScale);
+
+                ConversionRecipe(ItemID.CursedFlame, ItemID.Ichor);
+                ConversionRecipe(ItemID.Ichor, ItemID.CursedFlame);
+
+                ConversionRecipe(ItemID.EbonstoneBlock, ItemID.CrimstoneBlock);
+                ConversionRecipe(ItemID.CrimstoneBlock, ItemID.EbonstoneBlock);
+
+                ConversionRecipe(ItemID.EbonsandBlock, ItemID.CrimsandBlock);
+                ConversionRecipe(ItemID.CrimsandBlock, ItemID.EbonsandBlock);
+
+                ConversionRecipe(ItemID.CorruptSandstone, ItemID.CrimsonSandstone);
+                ConversionRecipe(ItemID.CrimsonSandstone, ItemID.CorruptSandstone);
+
+                ConversionRecipe(ItemID.CorruptHardenedSand, ItemID.CrimsonHardenedSand);
+                ConversionRecipe(ItemID.CrimsonHardenedSand, ItemID.CorruptHardenedSand);
+
+                ConversionRecipe(ItemID.PurpleIceBlock, ItemID.RedIceBlock);
+                ConversionRecipe(ItemID.RedIceBlock, ItemID.PurpleIceBlock);
+
+                ConversionRecipe(ItemID.CorruptSeeds, ItemID.CrimsonSeeds);
+                ConversionRecipe(ItemID.CrimsonSeeds, ItemID.CorruptSeeds);
+
+                ConversionRecipe(ItemID.VileMushroom, ItemID.ViciousMushroom);
+                ConversionRecipe(ItemID.ViciousMushroom, ItemID.VileMushroom);
+
+                ConversionRecipe(ItemID.CorruptionKey, ItemID.CrimsonKey);
+                ConversionRecipe(ItemID.CrimsonKey, ItemID.CorruptionKey);
+
+                ConversionRecipe(ItemID.CorruptFishingCrate, ItemID.CrimsonFishingCrate);
+                ConversionRecipe(ItemID.CrimsonFishingCrate, ItemID.CorruptFishingCrate);
+
+                ConversionRecipe(ItemID.CorruptFishingCrateHard, ItemID.CrimsonFishingCrateHard);
+                ConversionRecipe(ItemID.CrimsonFishingCrateHard, ItemID.CorruptFishingCrateHard);
+            }
+
             if (QoLCompendium.itemConfig.MobileStorages)
             {
                 Recipe moneyTrough = Recipe.Create(ItemID.MoneyTrough);
@@ -51,6 +114,14 @@ namespace QoLCompendium.Core
                 universalPylon.AddTile(TileID.HeavyWorkBench);
                 universalPylon.Register();
             }
+        }
+
+        private static void ConversionRecipe(int ingredient, int result)
+        {
+            Recipe conversion = Recipe.Create(result);
+            conversion.AddIngredient(ingredient);
+            conversion.AddTile(TileID.Anvils);
+            conversion.Register();
         }
     }
 

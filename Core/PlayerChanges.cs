@@ -343,10 +343,7 @@ namespace QoLCompendium.Core
 
             if (QoLCompendium.mainConfig.KeepBuffsOnDeath)
             {
-                if (buffCache == null)
-                {
-                    buffCache = new (int, int)[Player.MaxBuffs];
-                }
+                buffCache ??= new (int, int)[Player.MaxBuffs];
                 for (int i = 0; i < Player.MaxBuffs; i++)
                 {
                     buffCache[i] = (Player.buffType[i], Player.buffTime[i]);
@@ -429,70 +426,71 @@ namespace QoLCompendium.Core
                 }
             }
         }
+
         public override void UpdateEquips()
         {
             if (QoLCompendium.mainConfig.InformationBanks)
             {
                 for (int i = 0; i < Player.bank.item.Length; i++)
                 {
-                    CheckTrinkets(Player.bank.item[i].type);
+                    CheckTrinkets(Player.bank.item[i]);
                 }
                 for (int j = 0; j < Player.bank2.item.Length; j++)
                 {
-                    CheckTrinkets(Player.bank2.item[j].type);
+                    CheckTrinkets(Player.bank2.item[j]);
                 }
                 for (int k = 0; k < Player.bank3.item.Length; k++)
                 {
-                    CheckTrinkets(Player.bank3.item[k].type);
+                    CheckTrinkets(Player.bank3.item[k]);
                 }
                 for (int l = 0; l < Player.bank4.item.Length; l++)
                 {
-                    CheckTrinkets(Player.bank4.item[l].type);
+                    CheckTrinkets(Player.bank4.item[l]);
                 }
             }
         }
 
-        private void CheckTrinkets(int itemType)
+        private void CheckTrinkets(Item item)
         {
-            if (itemType == ItemID.DiscountCard)
+            if (item.type == ItemID.DiscountCard)
             {
                 Player.discountAvailable = true;
             }
-            if (itemType == ItemID.LuckyCoin)
+            if (item.type == ItemID.LuckyCoin)
             {
                 Player.hasLuckyCoin = true;
             }
-            if (itemType == ItemID.GoldRing)
+            if (item.type == ItemID.GoldRing)
             {
                 Player.goldRing = true;
             }
-            if (itemType == ItemID.CoinRing)
+            if (item.type == ItemID.CoinRing)
             {
                 Player.discountAvailable = true;
                 Player.hasLuckyCoin = true;
                 Player.luck += 0.05f;
             }
-            if (itemType == ItemID.GreedyRing)
+            if (item.type == ItemID.GreedyRing)
             {
                 Player.discountAvailable = true;
                 Player.hasLuckyCoin = true;
                 Player.goldRing = true;
                 Player.luck += 0.05f;
             }
-            if (itemType == ItemID.MechanicalLens)
+            if (item.type == ItemID.MechanicalLens)
             {
                 Player.InfoAccMechShowWires = true;
             }
-            if (itemType == ItemID.LaserRuler)
+            if (item.type == ItemID.LaserRuler)
             {
                 Player.rulerGrid = true;
             }
-            if (itemType == ItemID.WireKite)
+            if (item.type == ItemID.WireKite)
             {
                 Player.InfoAccMechShowWires = true;
                 Player.rulerGrid = true;
             }
-            if (itemType == ItemID.PDA || itemType == ItemID.CellPhone || itemType == ItemID.ShellphoneDummy || itemType == ItemID.Shellphone || itemType == ItemID.ShellphoneSpawn || itemType == ItemID.ShellphoneOcean || itemType == ItemID.ShellphoneHell)
+            if (item.type == ItemID.PDA || item.type == ItemID.CellPhone || item.type == ItemID.ShellphoneDummy || item.type == ItemID.Shellphone || item.type == ItemID.ShellphoneSpawn || item.type == ItemID.ShellphoneOcean || item.type == ItemID.ShellphoneHell)
             {
                 Player.accWatch = 3;
                 Player.accDepthMeter = 1;
@@ -507,213 +505,172 @@ namespace QoLCompendium.Core
                 Player.accWeatherRadio = true;
                 Player.accCalendar = true;
             }
-            if (itemType == ItemID.GPS)
+            if (item.type == ItemID.GPS)
             {
                 Player.accWatch = 3;
                 Player.accDepthMeter = 1;
                 Player.accCompass = 1;
             }
-            if (itemType == ItemID.REK)
+            if (item.type == ItemID.REK)
             {
                 Player.accThirdEye = true;
                 Player.accCritterGuide = true;
                 Player.accJarOfSouls = true;
             }
-            if (itemType == ItemID.GoblinTech)
+            if (item.type == ItemID.GoblinTech)
             {
                 Player.accOreFinder = true;
                 Player.accStopwatch = true;
                 Player.accDreamCatcher = true;
             }
-            if (itemType == ItemID.FishFinder)
+            if (item.type == ItemID.FishFinder)
             {
                 Player.accFishFinder = true;
                 Player.accWeatherRadio = true;
                 Player.accCalendar = true;
             }
-            if ((itemType == ItemID.CopperWatch || itemType == ItemID.TinWatch) && Player.accWatch < 1)
+            if ((item.type == ItemID.CopperWatch || item.type == ItemID.TinWatch) && Player.accWatch < 1)
             {
                 Player.accWatch = 1;
             }
-            if ((itemType == ItemID.SilverWatch || itemType == ItemID.TungstenWatch) && Player.accWatch < 2)
+            if ((item.type == ItemID.SilverWatch || item.type == ItemID.TungstenWatch) && Player.accWatch < 2)
             {
                 Player.accWatch = 2;
             }
-            if (itemType == ItemID.GoldWatch || itemType == ItemID.PlatinumWatch)
+            if (item.type == ItemID.GoldWatch || item.type == ItemID.PlatinumWatch)
             {
                 Player.accWatch = 3;
             }
-            if (itemType == ItemID.DepthMeter)
+            if (item.type == ItemID.DepthMeter)
             {
                 Player.accDepthMeter = 1;
             }
-            if (itemType == ItemID.Compass)
+            if (item.type == ItemID.Compass)
             {
                 Player.accCompass = 1;
             }
-            if (itemType == ItemID.Radar)
+            if (item.type == ItemID.Radar)
             {
                 Player.accThirdEye = true;
             }
-            if (itemType == ItemID.LifeformAnalyzer)
+            if (item.type == ItemID.LifeformAnalyzer)
             {
                 Player.accCritterGuide = true;
             }
-            if (itemType == ItemID.TallyCounter)
+            if (item.type == ItemID.TallyCounter)
             {
                 Player.accJarOfSouls = true;
             }
-            if (itemType == ItemID.MetalDetector)
+            if (item.type == ItemID.MetalDetector)
             {
                 Player.accOreFinder = true;
             }
-            if (itemType == ItemID.Stopwatch)
+            if (item.type == ItemID.Stopwatch)
             {
                 Player.accStopwatch = true;
             }
-            if (itemType == ItemID.DPSMeter)
+            if (item.type == ItemID.DPSMeter)
             {
                 Player.accDreamCatcher = true;
             }
-            if (itemType == ItemID.FishermansGuide)
+            if (item.type == ItemID.FishermansGuide)
             {
                 Player.accFishFinder = true;
             }
-            if (itemType == ItemID.WeatherRadio)
+            if (item.type == ItemID.WeatherRadio)
             {
                 Player.accWeatherRadio = true;
             }
-            if (itemType == ItemID.Sextant)
+            if (item.type == ItemID.Sextant)
             {
                 Player.accCalendar = true;
             }
-            if (itemType == ItemID.AncientChisel)
+            if (item.type == ItemID.AncientChisel)
             {
                 Player.pickSpeed -= 0.25f;
             }
-            if (itemType == ItemID.Toolbelt)
+            if (item.type == ItemID.Toolbelt)
             {
                 Player.blockRange += 1;
             }
-            if (itemType == ItemID.Toolbox)
+            if (item.type == ItemID.Toolbox)
             {
-                Player.blockRange += 1;
                 Player.tileRangeX += 1;
                 Player.tileRangeY += 1;
             }
-            if (itemType == ItemID.ExtendoGrip)
+            if (item.type == ItemID.ExtendoGrip)
             {
-                Player.blockRange += 3;
                 Player.tileRangeX += 3;
-                Player.tileRangeY += 3;
+                Player.tileRangeY += 2;
             }
-            if (itemType == ItemID.PortableCementMixer)
+            if (item.type == ItemID.PortableCementMixer)
             {
                 Player.wallSpeed += 0.5f;
             }
-            if (itemType == ItemID.PaintSprayer)
+            if (item.type == ItemID.PaintSprayer)
             {
                 Player.autoPaint = true;
             }
-            if (itemType == ItemID.BrickLayer)
+            if (item.type == ItemID.BrickLayer)
             {
                 Player.tileSpeed += 0.5f;
             }
-            if (itemType == ItemID.ArchitectGizmoPack)
-            {
-                Player.autoPaint = true;
-                Player.wallSpeed += 0.5f;
-                Player.tileSpeed += 0.5f;
-                Player.blockRange += 3;
-                Player.tileRangeX += 3;
-                Player.tileRangeY += 3;
-            }
-            if (itemType == ItemID.HandOfCreation)
+            if (item.type == ItemID.ArchitectGizmoPack)
             {
                 Player.autoPaint = true;
                 Player.wallSpeed += 0.5f;
                 Player.tileSpeed += 0.5f;
-                Player.blockRange += 3;
                 Player.tileRangeX += 3;
-                Player.tileRangeY += 3;
+                Player.tileRangeY += 2;
+            }
+            if (item.type == ItemID.HandOfCreation)
+            {
+                Player.autoPaint = true;
+                Player.wallSpeed += 0.5f;
+                Player.tileSpeed += 0.5f;
+                Player.tileRangeX += 3;
+                Player.tileRangeY += 2;
                 Player.pickSpeed -= 0.25f;
                 Player.treasureMagnet = true;
             }
-            if (itemType == ItemID.ActuationAccessory)
+            if (item.type == ItemID.ActuationAccessory)
             {
                 Player.autoActuator = true;
             }
-            if (itemType == ItemID.HighTestFishingLine)
+            if (item.type == ItemID.HighTestFishingLine)
             {
                 Player.accFishingLine = true;
             }
-            if (itemType == ItemID.AnglerEarring)
+            if (item.type == ItemID.AnglerEarring)
             {
                 Player.fishingSkill += 10;
             }
-            if (itemType == ItemID.TackleBox)
+            if (item.type == ItemID.TackleBox)
             {
                 Player.accTackleBox = true;
             }
-            if (itemType == ItemID.LavaFishingHook)
+            if (item.type == ItemID.LavaFishingHook)
             {
                 Player.accLavaFishing = true;
             }
-            if (itemType == ItemID.AnglerTackleBag)
+            if (item.type == ItemID.AnglerTackleBag)
             {
                 Player.accFishingLine = true;
                 Player.fishingSkill += 10;
                 Player.accTackleBox = true;
             }
-            if (itemType == ItemID.LavaproofTackleBag)
+            if (item.type == ItemID.LavaproofTackleBag)
             {
                 Player.accLavaFishing = true;
                 Player.accFishingLine = true;
                 Player.fishingSkill += 10;
                 Player.accTackleBox = true;
             }
-            if (itemType == ItemID.FishingBobber || itemType == ItemID.FishingBobberGlowingStar || itemType == ItemID.FishingBobberGlowingLava || itemType == ItemID.FishingBobberGlowingKrypton || itemType == ItemID.FishingBobberGlowingXenon || itemType == ItemID.FishingBobberGlowingArgon || itemType == ItemID.FishingBobberGlowingViolet || itemType == ItemID.FishingBobberGlowingRainbow)
+            if (item.type == ItemID.FishingBobber || item.type == ItemID.FishingBobberGlowingStar || item.type == ItemID.FishingBobberGlowingLava || item.type == ItemID.FishingBobberGlowingKrypton || item.type == ItemID.FishingBobberGlowingXenon || item.type == ItemID.FishingBobberGlowingArgon || item.type == ItemID.FishingBobberGlowingViolet || item.type == ItemID.FishingBobberGlowingRainbow)
             {
                 Player.fishingSkill += 10;
             }
-            if (itemType == ItemID.DivingHelmet)
-            {
-                Player.accDivingHelm = true;
-            }
-            if (itemType == ItemID.DivingGear)
-            {
-                Player.accDivingHelm = true;
-                Player.accFlipper = true;
-            }
-            if (itemType == ItemID.JellyfishDivingGear)
-            {
-                Player.accDivingHelm = true;
-                Player.accFlipper = true;
-                if (!Player.wet)
-                {
-                    Lighting.AddLight((int)Player.Center.X / 16, (int)Player.Center.Y / 16, 0.225f, 0.05f, 0.15f);
-                }
-                if (Player.wet)
-                {
-                    Lighting.AddLight((int)Player.Center.X / 16, (int)Player.Center.Y / 16, 1.8f, 0.4f, 1.2f);
-                }
-            }
-            if (itemType == ItemID.ArcticDivingGear)
-            {
-                Player.arcticDivingGear = true;
-                Player.accFlipper = true;
-                Player.accDivingHelm = true;
-                Player.iceSkate = true;
-                if (!Player.wet)
-                {
-                    Lighting.AddLight((int)Player.Center.X / 16, (int)Player.Center.Y / 16, 0.05f, 0.15f, 0.225f);
-                }
-                if (Player.wet)
-                {
-                    Lighting.AddLight((int)Player.Center.X / 16, (int)Player.Center.Y / 16, 0.4f, 1.2f, 1.8f);
-                }
-            }
-            if (itemType == ItemID.RoyalGel)
+            if (item.type == ItemID.RoyalGel)
             {
                 Player.npcTypeNoAggro[1] = true;
                 Player.npcTypeNoAggro[16] = true;
@@ -737,100 +694,96 @@ namespace QoLCompendium.Core
                 Player.npcTypeNoAggro[336] = true;
                 Player.npcTypeNoAggro[537] = true;
             }
-            if (itemType == ItemID.SpectreGoggles)
+            if (item.type == ItemID.SpectreGoggles)
             {
                 Player.CanSeeInvisibleBlocks = true;
             }
-            if (itemType == ItemID.CordageGuide)
-            {
-                Player.cordage = true;
-            }
-            if (itemType == ItemID.DontHurtCrittersBook)
+            if (item.type == ItemID.DontHurtCrittersBook)
             {
                 Player.dontHurtCritters = true;
             }
-            if (itemType == ItemID.DontHurtNatureBook)
+            if (item.type == ItemID.DontHurtNatureBook)
             {
                 Player.dontHurtNature = true;
             }
-            if (itemType == ItemID.DontHurtComboBook)
+            if (item.type == ItemID.DontHurtComboBook)
             {
                 Player.dontHurtCritters = true;
                 Player.dontHurtNature = true;
             }
-            if (itemType == ModContent.ItemType<BattalionLog>())
+            if (item.type == ModContent.ItemType<BattalionLog>())
             {
                 Player.GetModPlayer<InfoPlayer>().battalionLog = true;
             }
-            if (itemType == ModContent.ItemType<HarmInducer>())
+            if (item.type == ModContent.ItemType<HarmInducer>())
             {
                 Player.GetModPlayer<InfoPlayer>().harmInducer = true;
             }
-            if (itemType == ModContent.ItemType<HeadCounter>())
+            if (item.type == ModContent.ItemType<HeadCounter>())
             {
                 Player.GetModPlayer<InfoPlayer>().headCounter = true;
             }
-            if (itemType == ModContent.ItemType<Kettlebell>())
+            if (item.type == ModContent.ItemType<Kettlebell>())
             {
                 Player.GetModPlayer<InfoPlayer>().kettlebell = true;
             }
-            if (itemType == ModContent.ItemType<LuckyDie>())
+            if (item.type == ModContent.ItemType<LuckyDie>())
             {
                 Player.GetModPlayer<InfoPlayer>().luckyDie = true;
             }
-            if (itemType == ModContent.ItemType<MetallicClover>())
+            if (item.type == ModContent.ItemType<MetallicClover>())
             {
                 Player.GetModPlayer<InfoPlayer>().metallicClover = true;
             }
-            if (itemType == ModContent.ItemType<PlateCracker>())
+            if (item.type == ModContent.ItemType<PlateCracker>())
             {
                 Player.GetModPlayer<InfoPlayer>().plateCracker = true;
             }
-            if (itemType == ModContent.ItemType<Regenerator>())
+            if (item.type == ModContent.ItemType<Regenerator>())
             {
                 Player.GetModPlayer<InfoPlayer>().regenerator = true;
             }
-            if (itemType == ModContent.ItemType<ReinforcedPanel>())
+            if (item.type == ModContent.ItemType<ReinforcedPanel>())
             {
                 Player.GetModPlayer<InfoPlayer>().reinforcedPanel = true;
             }
-            if (itemType == ModContent.ItemType<Replenisher>())
+            if (item.type == ModContent.ItemType<Replenisher>())
             {
                 Player.GetModPlayer<InfoPlayer>().replenisher = true;
             }
-            if (itemType == ModContent.ItemType<TrackingDevice>())
+            if (item.type == ModContent.ItemType<TrackingDevice>())
             {
                 Player.GetModPlayer<InfoPlayer>().trackingDevice = true;
             }
-            if (itemType == ModContent.ItemType<WingTimer>())
+            if (item.type == ModContent.ItemType<WingTimer>())
             {
                 Player.GetModPlayer<InfoPlayer>().wingTimer = true;
             }
-            if (itemType == ModContent.ItemType<Fitbit>())
+            if (item.type == ModContent.ItemType<Fitbit>())
             {
                 Player.GetModPlayer<InfoPlayer>().kettlebell = true;
                 Player.GetModPlayer<InfoPlayer>().reinforcedPanel = true;
                 Player.GetModPlayer<InfoPlayer>().wingTimer = true;
             }
-            if (itemType == ModContent.ItemType<HeartbeatSensor>())
+            if (item.type == ModContent.ItemType<HeartbeatSensor>())
             {
                 Player.GetModPlayer<InfoPlayer>().battalionLog = true;
                 Player.GetModPlayer<InfoPlayer>().headCounter = true;
                 Player.GetModPlayer<InfoPlayer>().trackingDevice = true;
             }
-            if (itemType == ModContent.ItemType<ToleranceDetector>())
+            if (item.type == ModContent.ItemType<ToleranceDetector>())
             {
                 Player.GetModPlayer<InfoPlayer>().harmInducer = true;
                 Player.GetModPlayer<InfoPlayer>().luckyDie = true;
                 Player.GetModPlayer<InfoPlayer>().plateCracker = true;
             }
-            if (itemType == ModContent.ItemType<VitalDisplay>())
+            if (item.type == ModContent.ItemType<VitalDisplay>())
             {
                 Player.GetModPlayer<InfoPlayer>().metallicClover = true;
                 Player.GetModPlayer<InfoPlayer>().regenerator = true;
                 Player.GetModPlayer<InfoPlayer>().replenisher = true;
             }
-            if (itemType == ModContent.ItemType<IAH>() || itemType == ModContent.ItemType<MosaicMirror>())
+            if (item.type == ModContent.ItemType<IAH>() || item.type == ModContent.ItemType<MosaicMirror>())
             {
                 Player.GetModPlayer<InfoPlayer>().battalionLog = true;
                 Player.GetModPlayer<InfoPlayer>().harmInducer = true;
@@ -844,19 +797,245 @@ namespace QoLCompendium.Core
                 Player.GetModPlayer<InfoPlayer>().replenisher = true;
                 Player.GetModPlayer<InfoPlayer>().trackingDevice = true;
                 Player.GetModPlayer<InfoPlayer>().wingTimer = true;
+            }
+
+            //Aequus
+            if (ModConditions.aequusLoaded)
+            {
+                #region Info
+                if (item.type == Common.GetModItem(ModConditions.aequusMod, "AnglerBroadcaster"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.aequusMod, "HoloLens"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.aequusMod, "RichMansMonocle"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                #endregion
+
+                #region Fishing
+                if (item.type == Common.GetModItem(ModConditions.aequusMod, "DevilsTongue"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.aequusMod, "NeonGenesis"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.aequusMod, "RadonFishingBobber"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.aequusMod, "Ramishroom"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                #endregion
+
+                #region Money
+                if (item.type == Common.GetModItem(ModConditions.aequusMod, "BusinessCard"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.aequusMod, "FaultyCoin"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                #endregion
+
+                #region Magnet
+                if (item.type == Common.GetModItem(ModConditions.aequusMod, "HaltingMachine"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.aequusMod, "HaltingMagnet"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                #endregion
+            }
+
+            //Blocks Info Accessories
+            if (ModConditions.blocksInfoAccessoriesLoaded)
+            {
+                #region Info
+                if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "AttendanceLog"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "EngiRegistry"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "FortuneMirror"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "HitMarker"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "RSH"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "SafteyScanner"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "ScryingMirror"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "SmartHeart"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                #endregion
+            }
+
+            //Calamity
+            if (ModConditions.calamityLoaded)
+            {
+                RemoveCalamityDefensePrefix(Player, item);
+
+                #region Fishing
+                if (item.type == Common.GetModItem(ModConditions.calamityMod, "AlluringBait"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.calamityMod, "EnchantedPearl"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.calamityMod, "SupremeBaitTackleBoxFishingStation"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                #endregion
+
+                #region Mining
+                if (item.type == Common.GetModItem(ModConditions.calamityMod, "AncientFossil"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.calamityMod, "ArchaicPowder"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.calamityMod, "OceanCrest"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.calamityMod, "SpelunkersAmulet"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                #endregion
+            }
+
+            //Spirit
+            if (ModConditions.spiritLoaded)
+            {
+                #region Mining
+                if (item.type == Common.GetModItem(ModConditions.spiritMod, "MetalBand"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                #endregion
+
+                #region Fishing
+                if (item.type == Common.GetModItem(ModConditions.spiritMod, "MimicRepellent"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                #endregion
+            }
+
+            //Thorium
+            if (ModConditions.thoriumLoaded)
+            {
+                #region Fishing
+                if (item.type == Common.GetModItem(ModConditions.thoriumMod, "HightechSonarDevice"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                #endregion
             }
         }
 
-        private int ModItemForBanks(Mod mod, string itemName)
+        public static void RemoveCalamityDefensePrefix(Player player, Item item)
         {
-            if (mod != null)
+            #region Checks
+            if (item.prefix == 62)
             {
-                if (mod.TryFind(itemName, out ModItem currItem) && currItem != null)
+                if (ModConditions.downedDevourerOfGods)
                 {
-                    return currItem.Type;
+                    player.statDefense -= 3;
                 }
+                else if (NPC.downedMoonlord)
+                {
+                    player.statDefense -= 2;
+                }
+                else if (Main.hardMode)
+                {
+                    player.statDefense -= 1;
+                }
+                player.endurance -= 0.0025f;
             }
-            return ItemID.None;
+            if (item.prefix == 63)
+            {
+                if (ModConditions.downedDevourerOfGods)
+                {
+                    player.statDefense -= 4;
+                }
+                else if (NPC.downedMoonlord)
+                {
+                    player.statDefense -= 2;
+                }
+                else if (Main.hardMode)
+                {
+                    player.statDefense -= 1;
+                }
+                player.endurance -= 0.005f;
+            }
+            if (item.prefix == 64)
+            {
+                if (ModConditions.downedDevourerOfGods)
+                {
+                    player.statDefense -= 5;
+                }
+                else if (NPC.downedMoonlord)
+                {
+                    player.statDefense -= 3;
+                }
+                else if (Main.hardMode)
+                {
+                    player.statDefense -= 2;
+                }
+                player.endurance -= 0.0075f;
+            }
+            if (item.prefix == 65)
+            {
+                if (ModConditions.downedDevourerOfGods)
+                {
+                    player.statDefense -= 6;
+                }
+                else if (NPC.downedMoonlord)
+                {
+                    player.statDefense -= 4;
+                }
+                else if (Main.hardMode)
+                {
+                    player.statDefense -= 2;
+                }
+                player.endurance -= 0.01f;
+            }
+            #endregion
         }
     }
 
@@ -917,19 +1096,18 @@ namespace QoLCompendium.Core
         private int cd;
         private int mcd;
 
-        public static int miningSpeed => QoLCompendium.mainConfig.VeinMinerSpeed;
+        public static int MiningSpeed => QoLCompendium.mainConfig.VeinMinerSpeed;
 
         private PriorityQueue<Point16, double> picks = new();
 
-        // to stop cheating :P
         public int pickPower;
 
         public override void Initialize()
         {
-            canMine = true;
+            CanMine = true;
         }
 
-        public bool canMine
+        public bool CanMine
         {
             get => _canMine;
             set
@@ -942,14 +1120,13 @@ namespace QoLCompendium.Core
 
         public override void PreUpdate()
         {
-            // reflection
             var GetPickaxeDamage =
                 typeof(Player).GetMethod("GetPickaxeDamage", BindingFlags.Instance | BindingFlags.NonPublic)!;
             cd--;
             mcd--;
             if (cd == 0)
             {
-                canMine = true;
+                CanMine = true;
             }
 
             if (mcd <= 0)
@@ -974,7 +1151,7 @@ namespace QoLCompendium.Core
                             NetMessage.SendData(MessageID.TileManipulation, number2: tile.X, number3: tile.Y);
                         }
 
-                        mcd = miningSpeed;
+                        mcd = MiningSpeed;
                     }
                 }
             }
@@ -999,7 +1176,9 @@ namespace QoLCompendium.Core
 
     public class VeinMiningSystem : ModSystem
     {
-        public static int threshold = 120;
+        #pragma warning disable 
+        public static int threshold = QoLCompendium.mainConfig.VeinMinerTileLimit;
+        #pragma warning restore
 
         public override bool IsLoadingEnabled(Mod mod)
         {
@@ -1009,22 +1188,15 @@ namespace QoLCompendium.Core
 
         public override void Load()
         {
-            IL_Player.PickTile += pickTilePatch;
+            IL_Player.PickTile += PickTilePatch;
         }
 
         public override void Unload()
         {
-            IL_Player.PickTile -= pickTilePatch;
+            IL_Player.PickTile -= PickTilePatch;
         }
 
-        // [38928 9 - 38928 32]
-        // IL_02be: ldarg.1      // x
-        // IL_02bf: ldarg.2      // y
-        // IL_02c0: ldc.i4.0
-        // IL_02c1: ldc.i4.0
-        // IL_02c2: ldc.i4.0
-        // IL_02c3: call         void Terraria.WorldGen::KillTile(int32, int32, bool, bool, bool)
-        public void pickTilePatch(ILContext il)
+        public void PickTilePatch(ILContext il)
         {
             var ilCursor = new ILCursor(il);
             if (!ilCursor.TryGotoNext(MoveType.Before, i => i.MatchLdarg1(),
@@ -1048,22 +1220,19 @@ namespace QoLCompendium.Core
 
         public static void ClearCD(Player player)
         {
-            // we reset counter *before* mining. Could do with additional parameter to veinMine functional-style
-            // but eh, injecting another call is way easier
             var modPlayer = player.GetModPlayer<VeinMiningPlayer>();
             modPlayer.ctr = 0;
         }
 
         public static void VeinMine(Player player, int x, int y, int pickPower)
         {
-            // if this is ore, don't even bother so we won't fall into recursion
             var tile = Framing.GetTileSafely(x, y);
             var modPlayer = player.GetModPlayer<VeinMiningPlayer>();
 
-            if (tile.HasTile && CanVeinMine(tile) && modPlayer.canMine)
+            if (tile.HasTile && CanVeinMine(tile) && modPlayer.CanMine)
             {
                 modPlayer.pickPower = pickPower;
-                foreach (var coords in tileRot(x, y))
+                foreach (var coords in TileRot(x, y))
                 {
                     var tile2 = Framing.GetTileSafely(coords.x, coords.y);
 
@@ -1071,17 +1240,14 @@ namespace QoLCompendium.Core
 
                     if (tile2.HasTile && CanVeinMine(tile2) && notInQueue)
                     {
-                        // handle limits
                         modPlayer.ctr++;
                         if (modPlayer.ctr > threshold)
                         {
                             modPlayer.ctr = 0;
-                            modPlayer.canMine = false;
+                            modPlayer.CanMine = false;
                         }
 
-                        // queue it first
                         modPlayer.QueueTile(coords.x, coords.y);
-                        // recursion!
                         VeinMine(player, coords.x, coords.y, pickPower);
                     }
                 }
@@ -1104,8 +1270,7 @@ namespace QoLCompendium.Core
             return false;
         }
 
-        // the other kind of rot
-        public static IEnumerable<(int x, int y)> tileRot(int x, int y)
+        public static IEnumerable<(int x, int y)> TileRot(int x, int y)
         {
             for (int i = x - 1; i <= x + 1; ++i)
             {

@@ -17,6 +17,8 @@ namespace QoLCompendium.Core
 
         public bool eclipsePedestal = false;
 
+        public bool pausePedestal = false;
+
         public bool enemyAggressor = false;
 
         public bool enemyCalmer = false;
@@ -125,6 +127,7 @@ namespace QoLCompendium.Core
             moonPedestal = false;
             bloodMoonPedestal = false;
             eclipsePedestal = false;
+            pausePedestal = false;
             enemyAggressor = false;
             enemyCalmer = false;
             enemyEraser = false;

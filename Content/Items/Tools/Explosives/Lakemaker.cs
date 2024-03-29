@@ -1,4 +1,5 @@
 using QoLCompendium.Content.Projectiles.Explosives;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Tools.Explosives
 {
@@ -28,16 +29,13 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.AutoStructures)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Dynamite, 25)
-                .AddIngredient(ItemID.WaterBucket, 10)
-                .AddIngredient(ItemID.Diamond, 5)
-                .AddRecipeGroup(RecipeGroupID.IronBar, 3)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AutoStructures, Type);
+            r.AddIngredient(ItemID.WaterBucket, 10);
+            r.AddIngredient(ItemID.Dynamite, 25);
+            r.AddIngredient(ItemID.Diamond, 5);
+            r.AddRecipeGroup(RecipeGroupID.IronBar, 3);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

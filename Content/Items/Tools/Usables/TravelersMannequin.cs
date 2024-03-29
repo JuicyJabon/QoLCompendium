@@ -25,15 +25,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.TravelersMannequin)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Silk, 6)
-                .AddIngredient(ItemID.Ruby, 2)
-                .AddIngredient(ItemID.Feather, 1)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.TravelersMannequin, Type);
+            r.AddIngredient(ItemID.Silk, 6);
+            r.AddIngredient(ItemID.Ruby, 2);
+            r.AddIngredient(ItemID.Feather);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
 
         public override bool? UseItem(Player player)

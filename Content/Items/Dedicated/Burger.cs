@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Tiles.Dedicated;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Dedicated
 {
@@ -6,11 +7,11 @@ namespace QoLCompendium.Content.Items.Dedicated
     {
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipLine line = new(Mod, "Dedicated", "Dedicated - BladeBurger")
+            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - BladeBurger")
             {
-                OverrideColor = new Color(255, 0, 0)
+                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
             };
-            tooltips.Add(line);
+            tooltips.Add(dedicated);
         }
 
         public override void SetStaticDefaults()

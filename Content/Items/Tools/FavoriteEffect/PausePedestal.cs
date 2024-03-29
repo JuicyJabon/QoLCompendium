@@ -2,7 +2,7 @@
 
 namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 {
-    public class Paperweight : ModItem
+    public class PausePedestal : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -11,27 +11,28 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void SetDefaults()
         {
-            Item.width = 13;
-            Item.height = 11;
+            Item.width = 10;
+            Item.height = 18;
             Item.maxStack = 1;
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Item.sellPrice(gold: 1);
+            Item.consumable = false;
+            Item.rare = ItemRarityID.Green;
+            Item.value = Item.sellPrice(silver: 90);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Paperweight, Type);
-            r.AddRecipeGroup(RecipeGroupID.IronBar, 3);
-            r.AddIngredient(ItemID.Glass, 5);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MoonPedestals, Type);
+            r.AddIngredient(ItemID.GrayBrick, 10);
+            r.AddIngredient(ItemID.Ruby, 4);
             r.AddTile(TileID.Anvils);
             r.Register();
         }
 
         public override void UpdateInventory(Player player)
         {
-            if (Item.favorited && !Main.playerInventory)
+            if (Item.favorited)
             {
-                player.controlUseItem = true;
+                player.GetModPlayer<QoLCPlayer>().pausePedestal = true;
             }
         }
     }

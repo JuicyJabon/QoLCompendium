@@ -1,3 +1,4 @@
+using QoLCompendium.Core;
 using QoLCompendium.Core.UI;
 
 namespace QoLCompendium.Content.Items.InformationAccessories
@@ -21,15 +22,12 @@ namespace QoLCompendium.Content.Items.InformationAccessories
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.InformationAccessories)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Glass, 2)
-                .AddRecipeGroup(RecipeGroupID.IronBar, 3)
-                .AddIngredient(ItemID.GoldBar, 1)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type);
+            r.AddIngredient(ItemID.Glass, 2);
+            r.AddRecipeGroup(RecipeGroupID.IronBar, 4);
+            r.AddIngredient(ItemID.Lens, 2);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
 
         public override void UpdateInfoAccessory(Player player)

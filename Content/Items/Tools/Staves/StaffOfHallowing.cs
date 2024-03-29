@@ -1,4 +1,5 @@
-﻿using Terraria.Enums;
+﻿using QoLCompendium.Core;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Staves
 {
@@ -37,15 +38,12 @@ namespace QoLCompendium.Content.Items.Tools.Staves
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.RegrowthStaves)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Pearlwood, 12)
-                .AddIngredient(ItemID.PixieDust, 3)
-                .AddIngredient(ItemID.HallowedSeeds, 1)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.RegrowthStaves, Type);
+            r.AddIngredient(ItemID.Pearlwood, 12);
+            r.AddIngredient(ItemID.PixieDust, 3);
+            r.AddIngredient(ItemID.HallowedSeeds, 1);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

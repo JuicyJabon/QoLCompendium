@@ -1,4 +1,6 @@
-﻿namespace QoLCompendium.Content.Items.Tools.Usables
+﻿using QoLCompendium.Core;
+
+namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class TheFinalList : ModItem
     {
@@ -34,27 +36,24 @@
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.TheFinalList)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Wood, 12)
-                .AddIngredient(ItemID.RichMahogany, 12)
-                .AddIngredient(ItemID.Ebonwood, 12)
-                .AddIngredient(ItemID.Shadewood, 12)
-                .AddIngredient(ItemID.Pearlwood, 12)
-                .AddIngredient(ItemID.BorealWood, 12)
-                .AddIngredient(ItemID.PalmWood, 12)
-                .AddIngredient(ItemID.DynastyWood, 12)
-                .AddIngredient(ItemID.AshWood, 12)
-                .AddIngredient(ItemID.StoneBlock, 12)
-                .AddIngredient(ItemID.Granite, 12)
-                .AddIngredient(ItemID.Marble, 12)
-                .AddIngredient(ItemID.Cloud, 12)
-                .AddIngredient(ItemID.Silk, 6)
-                .AddIngredient(ItemID.BlackInk, 1)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.TheFinalList, Type);
+            r.AddIngredient(ItemID.Wood, 12);
+            r.AddIngredient(ItemID.RichMahogany, 12);
+            r.AddIngredient(ItemID.Ebonwood, 12);
+            r.AddIngredient(ItemID.Shadewood, 12);
+            r.AddIngredient(ItemID.Pearlwood, 12);
+            r.AddIngredient(ItemID.BorealWood, 12);
+            r.AddIngredient(ItemID.PalmWood, 12);
+            r.AddIngredient(ItemID.DynastyWood, 12);
+            r.AddIngredient(ItemID.AshWood, 12);
+            r.AddIngredient(ItemID.StoneBlock, 12);
+            r.AddIngredient(ItemID.Granite, 12);
+            r.AddIngredient(ItemID.Marble, 12);
+            r.AddIngredient(ItemID.Cloud, 12);
+            r.AddIngredient(ItemID.Silk, 6);
+            r.AddIngredient(ItemID.BlackInk, 1);
+            r.AddTile(TileID.LunarCraftingStation);
+            r.Register();
         }
     }
 }

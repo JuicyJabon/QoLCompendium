@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Content.Buffs;
 using QoLCompendium.Content.Projectiles.Dedicated;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Dedicated
 {
@@ -7,11 +8,11 @@ namespace QoLCompendium.Content.Items.Dedicated
     {
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipLine line = new(Mod, "Dedicated", "Dedicated - Ned")
+            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - Ned")
             {
-                OverrideColor = new Color(255, 0, 0)
+                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
             };
-            tooltips.Add(line);
+            tooltips.Add(dedicated);
         }
 
         public override void SetStaticDefaults()
@@ -37,15 +38,12 @@ namespace QoLCompendium.Content.Items.Dedicated
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.DedicatedItems)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.Wood, 12)
-                .AddIngredient(ItemID.Cobweb, 7)
-                .AddIngredient(ItemID.Vine, 2)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type);
+            r.AddIngredient(ItemID.Wood, 12);
+            r.AddIngredient(ItemID.Cobweb, 7);
+            r.AddIngredient(ItemID.Vine, 2);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Tiles.Other;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Placeables.Other
 {
@@ -25,16 +26,13 @@ namespace QoLCompendium.Content.Items.Placeables.Other
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.AsphaltPlatform)
-            {
-                CreateRecipe(2)
-                .AddIngredient(ItemID.AsphaltBlock, 1)
-                .Register();
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, Type, 2);
+            r.AddIngredient(ItemID.AsphaltBlock);
+            r.Register();
 
-                Recipe.Create(ItemID.AsphaltBlock, 1)
-                    .AddIngredient(ModContent.ItemType<AsphaltPlatform>(), 2)
-                    .Register();
-            }
+            r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, Type);
+            r.AddIngredient(ModContent.ItemType<AsphaltPlatform>(), 2);
+            r.Register();
         }
     }
 }

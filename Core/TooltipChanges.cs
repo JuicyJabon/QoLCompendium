@@ -1,7 +1,6 @@
 ﻿using QoLCompendium.Content.Items.InformationAccessories;
 using QoLCompendium.Content.Items.Mirrors;
 using Terraria.DataStructures;
-using tModPorter;
 
 namespace QoLCompendium.Core
 {
@@ -19,7 +18,7 @@ namespace QoLCompendium.Core
             if (QoLCompendium.tooltipConfig.WingStatsTooltips) WingStatsTooltip(item, tooltips);
             if (QoLCompendium.tooltipConfig.HookStatsTooltips) HookStatsTooltip(item, tooltips);
         }
-
+        #pragma warning disable
         public static void AddLastTooltip(List<TooltipLine> tooltips, TooltipLine tooltip)
         {
             var last = tooltips.FindLast(t => t.Mod == "Terraria" && t.Name != "Expert" && t.Name != "Master")!;
@@ -144,13 +143,8 @@ namespace QoLCompendium.Core
                 ItemID.FishingBobberGlowingViolet,
                 ItemID.FishingBobberGlowingRainbow,
                 ItemID.TreasureMagnet,
-                ItemID.DivingHelmet,
-                ItemID.DivingGear,
-                ItemID.JellyfishDivingGear,
-                ItemID.ArcticDivingGear,
                 ItemID.RoyalGel,
                 ItemID.SpectreGoggles,
-                ItemID.CordageGuide,
                 ItemID.DontHurtCrittersBook,
                 ItemID.DontHurtNatureBook,
                 ItemID.DontHurtComboBook,
@@ -171,7 +165,36 @@ namespace QoLCompendium.Core
                 ModContent.ItemType<ToleranceDetector>(),
                 ModContent.ItemType<VitalDisplay>(),
                 ModContent.ItemType<IAH>(),
-                ModContent.ItemType<MosaicMirror>()
+                ModContent.ItemType<MosaicMirror>(),
+                Common.GetModItem(ModConditions.aequusMod, "AnglerBroadcaster"),
+                Common.GetModItem(ModConditions.aequusMod, "HoloLens"),
+                Common.GetModItem(ModConditions.aequusMod, "RichMansMonocle"),
+                Common.GetModItem(ModConditions.aequusMod, "DevilsTongue"),
+                Common.GetModItem(ModConditions.aequusMod, "NeonGenesis"),
+                Common.GetModItem(ModConditions.aequusMod, "RadonFishingBobber"),
+                Common.GetModItem(ModConditions.aequusMod, "Ramishroom"),
+                Common.GetModItem(ModConditions.aequusMod, "BusinessCard"),
+                Common.GetModItem(ModConditions.aequusMod, "FaultyCoin"),
+                Common.GetModItem(ModConditions.aequusMod, "HaltingMachine"),
+                Common.GetModItem(ModConditions.aequusMod, "HaltingMagnet"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "AttendanceLog"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "EngiRegistry"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "FortuneMirror"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "HitMarker"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "RSH"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "SafteyScanner"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "ScryingMirror"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "SmartHeart"),
+                Common.GetModItem(ModConditions.calamityMod, "AlluringBait"),
+                Common.GetModItem(ModConditions.calamityMod, "EnchantedPearl"),
+                Common.GetModItem(ModConditions.calamityMod, "SupremeBaitTackleBoxFishingStation"),
+                Common.GetModItem(ModConditions.calamityMod, "AncientFossil"),
+                Common.GetModItem(ModConditions.calamityMod, "ArchaicPowder"),
+                Common.GetModItem(ModConditions.calamityMod, "OceanCrest"),
+                Common.GetModItem(ModConditions.calamityMod, "SpelunkersAmulet"),
+                Common.GetModItem(ModConditions.spiritMod, "MetalBand"),
+                Common.GetModItem(ModConditions.spiritMod, "MimicRepellent"),
+                Common.GetModItem(ModConditions.thoriumMod, "HightechSonarDevice")
             };
 
             if (!itemsForTooltip.Contains(item.type))
@@ -414,6 +437,7 @@ namespace QoLCompendium.Core
             }
             return ItemID.None;
         }
+        #pragma warning restore
     }
 
     public static class ListExtension

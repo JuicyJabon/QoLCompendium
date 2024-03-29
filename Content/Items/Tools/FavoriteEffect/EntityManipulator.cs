@@ -35,16 +35,13 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.EntityManipulator)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.BattlePotion, 10)
-                .AddIngredient(ItemID.WaterCandle, 3)
-                .AddIngredient(ItemID.CalmingPotion, 10)
-                .AddIngredient(ItemID.PeaceCandle, 3)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EntityManipulator, Type);
+            r.AddIngredient(ItemID.BattlePotion, 10);
+            r.AddIngredient(ItemID.WaterCandle, 3);
+            r.AddIngredient(ItemID.CalmingPotion, 10);
+            r.AddIngredient(ItemID.PeaceCandle, 3);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
 
         public override void UpdateInventory(Player player)

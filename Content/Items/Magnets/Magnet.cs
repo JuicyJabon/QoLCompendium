@@ -1,3 +1,5 @@
+using QoLCompendium.Core;
+
 namespace QoLCompendium.Content.Items.Magnets
 {
     public class Magnet : ModItem
@@ -18,13 +20,10 @@ namespace QoLCompendium.Content.Items.Magnets
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.Magnets)
-            {
-                CreateRecipe()
-                .AddRecipeGroup(RecipeGroupID.IronBar, 12)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Magnets, Type);
+            r.AddRecipeGroup(RecipeGroupID.IronBar, 12);
+            r.Register();
+            r.AddTile(TileID.Anvils);
         }
 
         public override void UpdateInventory(Player player)

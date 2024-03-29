@@ -14,16 +14,16 @@ namespace QoLCompendium.Core
 
         public override void Load()
         {
-            oldBreak = Main.tileCut[231];
+            oldBreak = Main.tileCut[TileID.Larva];
             if (QoLCompendium.mainConfig.NoLarvaBreak)
             {
-                Main.tileCut[231] = false;
+                Main.tileCut[TileID.Larva] = false;
             }
         }
 
         public override void Unload()
         {
-            Main.tileCut[231] = oldBreak;
+            Main.tileCut[TileID.Larva] = oldBreak;
         }
     }
 

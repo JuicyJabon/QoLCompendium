@@ -1,4 +1,6 @@
-﻿namespace QoLCompendium.Content.Items.Tools.Usables
+﻿using QoLCompendium.Core;
+
+namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class SuperDummy : ModItem
     {
@@ -63,15 +65,12 @@
 
         public override void AddRecipes()
         {
-            if (QoLCompendium.itemConfig.SuperDummy)
-            {
-                CreateRecipe()
-                .AddIngredient(ItemID.TargetDummy)
-                .AddIngredient(RecipeGroupID.IronBar, 3)
-                .AddIngredient(ItemID.FallenStar)
-                .AddTile(TileID.Anvils)
-                .Register();
-            }
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.SuperDummy, Type);
+            r.AddIngredient(ItemID.TargetDummy);
+            r.AddRecipeGroup(RecipeGroupID.IronBar, 5);
+            r.AddIngredient(ItemID.FallenStar);
+            r.AddTile(TileID.Anvils);
+            r.Register();
         }
     }
 }

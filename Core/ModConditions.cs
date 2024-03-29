@@ -1,3 +1,4 @@
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Core
@@ -6,6 +7,19 @@ namespace QoLCompendium.Core
     {
 #pragma warning disable CA2211
         #region Bools & Conditions
+
+        //RECIPE CONDITIONS
+        public static Condition ItemToggled(Func<bool> toggle)
+        {
+            return new Condition(Language.GetTextValue("Mods.QoLCompendium.ModConditions.enabledInConfig"), toggle);
+        }
+        public static Recipe GetItemRecipe(Func<bool> toggle, int itemType, int amount = 1)
+        {
+            Recipe obj = Recipe.Create(itemType, amount);
+            obj.AddCondition(ItemToggled(toggle));
+            return obj;
+        }
+
         //VANILLA
         //EXPERT/MASTER
         public static Condition expertOrMaster = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.inExpertOrMaster"), () => Main.expertMode || Main.masterMode);
@@ -162,6 +176,34 @@ namespace QoLCompendium.Core
         public static Condition DownedEyeOfTheStorm = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEyeOfTheStorm"), () => downedEyeOfTheStorm);
         internal static bool downedFrigidius;
         public static Condition DownedFrigidius = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFrigidius"), () => downedFrigidius);
+
+
+        //BLOCK'S ARSENAL
+        internal static bool blocksArsenalLoaded;
+        internal static Mod blocksArsenalMod;
+
+
+        //BLOCK'S ARTIFICER
+        internal static bool blocksArtificerLoaded;
+        internal static Mod blocksArtificerMod;
+
+
+        //BLOCK'S CORE BOSS
+        internal static bool blocksCoreBossLoaded;
+        internal static Mod blocksCoreBossMod;
+        //BOSSES
+        internal static bool downedCoreBoss;
+        public static Condition DownedCoreBoss = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCoreBoss"), () => downedCoreBoss);
+
+
+        //BLOCK'S INFO ACCESSORIES
+        internal static bool blocksInfoAccessoriesLoaded;
+        internal static Mod blocksInfoAccessoriesMod;
+
+
+        //BLOCK'S THROWER
+        internal static bool blocksThrowerLoaded;
+        internal static Mod blocksThrowerMod;
 
 
         //BOMBUS APIS
@@ -337,6 +379,24 @@ namespace QoLCompendium.Core
         public static Condition DownedTurkor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTurkor"), () => downedTurkor);
         internal static bool downedOcram;
         public static Condition DownedOcram = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOcram"), () => downedOcram);
+
+
+        //CORALITE
+        internal static bool coraliteLoaded;
+        internal static Mod coraliteMod;
+        //BOSSES
+        internal static bool downedRediancie;
+        public static Condition DownedRediancie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRediancie"), () => downedRediancie);
+        internal static bool downedBabyIceDragon;
+        public static Condition DownedBabyIceDragon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBabyIceDragon"), () => downedBabyIceDragon);
+        internal static bool downedSlimeEmperor;
+        public static Condition DownedSlimeEmperor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSlimeEmperor"), () => downedSlimeEmperor);
+        internal static bool downedBloodiancie;
+        public static Condition DownedBloodiancie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBloodiancie"), () => downedBloodiancie);
+        internal static bool downedThunderveinDragon;
+        public static Condition DownedThunderveinDragon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedThunderveinDragon"), () => downedThunderveinDragon);
+        internal static bool downedNightmarePlantera;
+        public static Condition DownedNightmarePlantera = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNightmarePlantera"), () => downedNightmarePlantera);
 
 
         //DEPTHS
@@ -769,6 +829,24 @@ namespace QoLCompendium.Core
         public static Condition DownedEsophage = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEsophage"), () => downedEsophage);
         internal static bool downedConvectiveWanderer;
         public static Condition DownedConvectiveWanderer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedConvectiveWanderer"), () => downedConvectiveWanderer);
+
+
+        //PROJECT ZERO
+        internal static bool projectZeroLoaded;
+        internal static Mod projectZeroMod;
+        //BOSSES
+        internal static bool downedForestGuardian;
+        public static Condition DownedForestGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedForestGuardian"), () => downedForestGuardian);
+        internal static bool downedCryoGuardian;
+        public static Condition DownedCryoGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCryoGuardian"), () => downedCryoGuardian);
+        internal static bool downedPrimordialWorm;
+        public static Condition DownedPrimordialWorm = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPrimordialWorm"), () => downedPrimordialWorm);
+        internal static bool downedTheGuardianOfHell;
+        public static Condition DownedTheGuardianOfHell = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTheGuardianOfHell"), () => downedTheGuardianOfHell);
+        internal static bool downedVoid;
+        public static Condition DownedVoid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedVoid"), () => downedVoid);
+        internal static bool downedArmagem;
+        public static Condition DownedArmagem = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedArmagem"), () => downedArmagem);
 
 
         //QWERTY
@@ -1225,6 +1303,8 @@ namespace QoLCompendium.Core
             downedSeseKitsugai,
             downedEyeOfTheStorm,
             downedFrigidius,
+            //blocks core boss
+            downedCoreBoss,
             //calamity
             downedCragmawMire,
             downedNuclearTerror,
@@ -1241,6 +1321,13 @@ namespace QoLCompendium.Core
             downedLepus,
             downedTurkor,
             downedOcram,
+            //coralite
+            downedRediancie,
+            downedBabyIceDragon,
+            downedSlimeEmperor,
+            downedBloodiancie,
+            downedThunderveinDragon,
+            downedNightmarePlantera,
             //depths
             downedChasme,
             //echoes of the ancients
@@ -1381,6 +1468,13 @@ namespace QoLCompendium.Core
             downedSunPixie,
             downedEsophage,
             downedConvectiveWanderer,
+            //project zero
+            downedForestGuardian,
+            downedCryoGuardian,
+            downedPrimordialWorm,
+            downedTheGuardianOfHell,
+            downedVoid,
+            downedArmagem,
             //qwerty
             downedPolarExterminator,
             downedDivineLight,
@@ -1545,6 +1639,26 @@ namespace QoLCompendium.Core
             {
                 awfulGarbageMod = null;
             }
+            if (!blocksArsenalLoaded)
+            {
+                blocksArsenalMod = null;
+            }
+            if (!blocksArtificerLoaded)
+            {
+                blocksArtificerMod = null;
+            }
+            if (!blocksCoreBossLoaded)
+            {
+                blocksCoreBossMod = null;
+            }
+            if (!blocksInfoAccessoriesLoaded)
+            {
+                blocksInfoAccessoriesMod = null;
+            }
+            if (!blocksThrowerLoaded)
+            {
+                blocksThrowerMod = null;
+            }
             if (!bombusApisLoaded)
             {
                 bombusApisMod = null;
@@ -1588,6 +1702,10 @@ namespace QoLCompendium.Core
             if (!consolariaLoaded)
             {
                 consolariaMod = null;
+            }
+            if (!coraliteLoaded)
+            {
+                coraliteMod = null;
             }
             if (!depthsLoaded)
             {
@@ -1692,6 +1810,10 @@ namespace QoLCompendium.Core
             if (!polaritiesLoaded)
             {
                 polaritiesMod = null;
+            }
+            if (!projectZeroLoaded)
+            {
+                projectZeroMod = null;
             }
             if (!qwertyLoaded)
             {
@@ -1801,6 +1923,26 @@ namespace QoLCompendium.Core
             {
                 awfulGarbageMod = null;
             }
+            if (!blocksArsenalLoaded)
+            {
+                blocksArsenalMod = null;
+            }
+            if (!blocksArtificerLoaded)
+            {
+                blocksArtificerMod = null;
+            }
+            if (!blocksCoreBossLoaded)
+            {
+                blocksCoreBossMod = null;
+            }
+            if (!blocksInfoAccessoriesLoaded)
+            {
+                blocksInfoAccessoriesMod = null;
+            }
+            if (!blocksThrowerLoaded)
+            {
+                blocksThrowerMod = null;
+            }
             if (!bombusApisLoaded)
             {
                 bombusApisMod = null;
@@ -1844,6 +1986,10 @@ namespace QoLCompendium.Core
             if (!consolariaLoaded)
             {
                 consolariaMod = null;
+            }
+            if (!coraliteLoaded)
+            {
+                coraliteMod = null;
             }
             if (!depthsLoaded)
             {
@@ -1949,6 +2095,10 @@ namespace QoLCompendium.Core
             {
                 polaritiesMod = null;
             }
+            if (!projectZeroLoaded)
+            {
+                projectZeroMod = null;
+            }
             if (!qwertyLoaded)
             {
                 qwertyMod = null;
@@ -2051,6 +2201,21 @@ namespace QoLCompendium.Core
             awfulGarbageLoaded = ModLoader.TryGetMod("AwfulGarbageMod", out Mod AwfulGarbageMod);
             awfulGarbageMod = AwfulGarbageMod;
 
+            blocksArsenalLoaded = ModLoader.TryGetMod("Arsenal_Mod", out Mod Arsenal_Mod);
+            blocksArsenalMod = Arsenal_Mod;
+
+            blocksArtificerLoaded = ModLoader.TryGetMod("ArtificerMod", out Mod ArtificerMod);
+            blocksArtificerMod = ArtificerMod;
+
+            blocksCoreBossLoaded = ModLoader.TryGetMod("CorruptionBoss", out Mod CorruptionBoss);
+            blocksCoreBossMod = CorruptionBoss;
+
+            blocksInfoAccessoriesLoaded = ModLoader.TryGetMod("BInfoAcc", out Mod BInfoAcc);
+            blocksInfoAccessoriesMod = BInfoAcc;
+
+            blocksThrowerLoaded = ModLoader.TryGetMod("BCThrower", out Mod BCThrower);
+            blocksThrowerMod = BCThrower;
+
             bombusApisLoaded = ModLoader.TryGetMod("BombusApisBee", out Mod BombusApisBee);
             bombusApisMod = BombusApisBee;
 
@@ -2083,6 +2248,9 @@ namespace QoLCompendium.Core
 
             consolariaLoaded = ModLoader.TryGetMod("Consolaria", out Mod Consolaria);
             consolariaMod = Consolaria;
+
+            coraliteLoaded = ModLoader.TryGetMod("Coralite", out Mod Coralite);
+            coraliteMod = Coralite;
 
             depthsLoaded = ModLoader.TryGetMod("TheDepths", out Mod TheDepths);
             depthsMod = TheDepths;
@@ -2161,6 +2329,9 @@ namespace QoLCompendium.Core
 
             polaritiesLoaded = ModLoader.TryGetMod("Polarities", out Mod Polarities);
             polaritiesMod = Polarities;
+
+            projectZeroLoaded = ModLoader.TryGetMod("FM", out Mod FM);
+            projectZeroMod = FM;
 
             qwertyLoaded = ModLoader.TryGetMod("QwertyMod", out Mod QwertyMod);
             qwertyMod = QwertyMod;
@@ -2439,6 +2610,9 @@ namespace QoLCompendium.Core
             tag.Add("downedEyeOfTheStorm", downedEyeOfTheStorm);
             tag.Add("downedFrigidius", downedFrigidius);
 
+            //BLOCK'S CORE BOSS
+            tag.Add("downedCoreBoss", downedCoreBoss);
+
             //CALAMITY
             tag.Add("downedDesertScourge", downedDesertScourge);
             tag.Add("downedCrabulon", downedCrabulon);
@@ -2506,6 +2680,14 @@ namespace QoLCompendium.Core
             tag.Add("downedLepus", downedLepus);
             tag.Add("downedTurkor", downedTurkor);
             tag.Add("downedOcram", downedOcram);
+
+            //CORALITE
+            tag.Add("downedRediancie", downedRediancie);
+            tag.Add("downedBabyIceDragon", downedBabyIceDragon);
+            tag.Add("downedSlimeEmperor", downedSlimeEmperor);
+            tag.Add("downedBloodiancie", downedBloodiancie);
+            tag.Add("downedThunderveinDragon", downedThunderveinDragon);
+            tag.Add("downedNightmarePlantera", downedNightmarePlantera);
 
             //ECHOES OF THE ANCIENTS
             tag.Add("downedGalahis", downedGalahis);
@@ -2675,6 +2857,14 @@ namespace QoLCompendium.Core
             tag.Add("downedSunPixie", downedSunPixie);
             tag.Add("downedEsophage", downedEsophage);
             tag.Add("downedConvectiveWanderer", downedConvectiveWanderer);
+
+            //PROJECT ZERO
+            tag.Add("downedForestGuardian", downedForestGuardian);
+            tag.Add("downedCryoGuardian", downedCryoGuardian);
+            tag.Add("downedPrimordialWorm", downedPrimordialWorm);
+            tag.Add("downedTheGuardianOfHell", downedTheGuardianOfHell);
+            tag.Add("downedVoid", downedVoid);
+            tag.Add("downedArmagem", downedArmagem);
 
             //QWERTY
             tag.Add("downedPolarExterminator", downedPolarExterminator);
@@ -2948,6 +3138,9 @@ namespace QoLCompendium.Core
             downedEyeOfTheStorm = tag.Get<bool>("downedEyeOfTheStorm");
             downedFrigidius = tag.Get<bool>("downedFrigidius");
 
+            //BLOCK'S CORE BOSS
+            downedCoreBoss = tag.Get<bool>("downedCoreBoss");
+
             //CALAMITY
             downedDesertScourge = tag.Get<bool>("downedDesertScourge");
             downedCrabulon = tag.Get<bool>("downedCrabulon");
@@ -3015,6 +3208,14 @@ namespace QoLCompendium.Core
             downedLepus = tag.Get<bool>("downedLepus");
             downedTurkor = tag.Get<bool>("downedTurkor");
             downedOcram = tag.Get<bool>("downedOcram");
+
+            //CORALITE
+            downedRediancie = tag.Get<bool>("downedRediancie");
+            downedBabyIceDragon = tag.Get<bool>("downedBabyIceDragon");
+            downedSlimeEmperor = tag.Get<bool>("downedSlimeEmperor");
+            downedBloodiancie = tag.Get<bool>("downedBloodiancie");
+            downedThunderveinDragon = tag.Get<bool>("downedThunderveinDragon");
+            downedNightmarePlantera = tag.Get<bool>("downedNightmarePlantera");
 
             //ECHOES OF THE ANCIENTS
             downedGalahis = tag.Get<bool>("downedGalahis");
@@ -3184,6 +3385,14 @@ namespace QoLCompendium.Core
             downedSunPixie = tag.Get<bool>("downedSunPixie");
             downedEsophage = tag.Get<bool>("downedEsophage");
             downedConvectiveWanderer = tag.Get<bool>("downedConvectiveWanderer");
+
+            //PROJECT ZERO
+            downedForestGuardian = tag.Get<bool>("downedForestGuardian");
+            downedCryoGuardian = tag.Get<bool>("downedCryoGuardian");
+            downedPrimordialWorm = tag.Get<bool>("downedPrimordialWorm");
+            downedTheGuardianOfHell = tag.Get<bool>("downedTheGuardianOfHell");
+            downedVoid = tag.Get<bool>("downedVoid");
+            downedArmagem = tag.Get<bool>("downedArmagem");
 
             //QWERTY
             downedPolarExterminator = tag.Get<bool>("downedPolarExterminator");
@@ -3818,10 +4027,12 @@ namespace QoLCompendium.Core
                 {
                     beenToWasteland = true;
                 }
+                /*
                 if (downedAkka && downedUkko)
                 {
                     downedAncientDeityDuo = true;
                 }
+                */
             }
 
             if (secretsOfTheShadowsLoaded)
@@ -3833,14 +4044,6 @@ namespace QoLCompendium.Core
                 if (secretsOfTheShadowsMod.TryFind("PlanetariumBiome", out ModBiome PlanetariumBiome) && Main.LocalPlayer.InModBiome(PlanetariumBiome))
                 {
                     beenToPlanetarium = true;
-                }
-                if (downedAdvisor)
-                {
-                    downedOtherworldlySpirit = true;
-                }
-                if (downedLux)
-                {
-                    downedChaosSpirit = true;
                 }
             }
 
@@ -3884,10 +4087,12 @@ namespace QoLCompendium.Core
                 {
                     beenToCemetery = true;
                 }
+                /*
                 if (downedOrro && downedBoro)
                 {
                     downedOrroBoro = true;
                 }
+                */
             }
 
             if (starlightRiverLoaded)
@@ -4089,6 +4294,9 @@ namespace QoLCompendium.Core
             downedEyeOfTheStorm = false;
             downedFrigidius = false;
 
+            //BLOCK'S CORE BOSS
+            downedCoreBoss = false;
+
             //CALAMITY
             downedDesertScourge = false;
             downedCrabulon = false;
@@ -4158,6 +4366,14 @@ namespace QoLCompendium.Core
             downedLepus = false;
             downedTurkor = false;
             downedOcram = false;
+
+            //CORALITE
+            downedRediancie = false;
+            downedBabyIceDragon = false;
+            downedSlimeEmperor = false;
+            downedBloodiancie = false;
+            downedThunderveinDragon = false;
+            downedNightmarePlantera = false;
 
             //DEPTHS
             beenToDepths = false;
@@ -4338,6 +4554,14 @@ namespace QoLCompendium.Core
             downedSunPixie = false;
             downedEsophage = false;
             downedConvectiveWanderer = false;
+
+            //PROJECT ZERO
+            downedForestGuardian = false;
+            downedCryoGuardian = false;
+            downedPrimordialWorm = false;
+            downedTheGuardianOfHell = false;
+            downedVoid = false;
+            downedArmagem = false;
 
             //QWERTY
             downedPolarExterminator = false;
@@ -4594,6 +4818,12 @@ namespace QoLCompendium.Core
                 [3] = downedFrigidius
             });
 
+            //BLOCK'S CORE BOSS
+            writer.Write(new BitsByte
+            {
+                [0] = downedCoreBoss
+            });
+
             //calamity
             writer.Write(new BitsByte
             {
@@ -4630,6 +4860,17 @@ namespace QoLCompendium.Core
                 [2] = downedOcram
             });
 
+            //coralite
+            writer.Write(new BitsByte
+            {
+                [0] = downedRediancie,
+                [1] = downedBabyIceDragon,
+                [2] = downedSlimeEmperor,
+                [3] = downedBloodiancie,
+                [4] = downedThunderveinDragon,
+                [5] = downedNightmarePlantera
+            });
+
             //depths
             writer.Write(new BitsByte
             {
@@ -4650,8 +4891,8 @@ namespace QoLCompendium.Core
                 [0] = downedBlightKing,
                 [1] = downedGardener,
                 [2] = downedGlaciation,
-                [2] = downedHandOfCthulhu,
-                [2] = downedCursePreacher
+                [3] = downedHandOfCthulhu,
+                [4] = downedCursePreacher
             });
 
             //exalt
@@ -4862,6 +5103,17 @@ namespace QoLCompendium.Core
                 [3] = downedSunPixie,
                 [4] = downedEsophage,
                 [5] = downedConvectiveWanderer
+            });
+
+            //project zero
+            writer.Write(new BitsByte
+            {
+                [0] = downedForestGuardian,
+                [1] = downedCryoGuardian,
+                [2] = downedPrimordialWorm,
+                [3] = downedTheGuardianOfHell,
+                [4] = downedVoid,
+                [5] = downedArmagem
             });
 
             //qwerty
@@ -5134,6 +5386,10 @@ namespace QoLCompendium.Core
             downedEyeOfTheStorm = flags[2];
             downedFrigidius = flags[3];
 
+            //BLOCK'S CORE BOSS
+            flags = reader.ReadByte();
+            downedCoreBoss = flags[0];
+
             //calamity
             flags = reader.ReadByte();
             downedCragmawMire = flags[0];
@@ -5159,6 +5415,15 @@ namespace QoLCompendium.Core
             downedLepus = flags[0];
             downedTurkor = flags[1];
             downedOcram = flags[2];
+
+            //coralite
+            flags = reader.ReadByte();
+            downedRediancie = flags[0];
+            downedBabyIceDragon = flags[1];
+            downedSlimeEmperor = flags[2];
+            downedBloodiancie = flags[3];
+            downedThunderveinDragon = flags[4];
+            downedNightmarePlantera = flags[5];
 
             //depths
             flags = reader.ReadByte();
@@ -5343,6 +5608,15 @@ namespace QoLCompendium.Core
             downedSunPixie = flags[3];
             downedEsophage = flags[4];
             downedConvectiveWanderer = flags[5];
+
+            //project zero
+            flags = reader.ReadByte();
+            downedForestGuardian = flags[0];
+            downedCryoGuardian = flags[1];
+            downedPrimordialWorm = flags[2];
+            downedTheGuardianOfHell = flags[3];
+            downedVoid = flags[4];
+            downedArmagem = flags[5];
 
             //qwerty
             flags = reader.ReadByte();
