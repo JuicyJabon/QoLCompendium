@@ -1,5 +1,4 @@
-﻿using QoLCompendium.Content.Items.Mirrors;
-using QoLCompendium.Content.Projectiles.MobileStorages;
+﻿using QoLCompendium.Content.Projectiles.MobileStorages;
 using QoLCompendium.Core;
 using Terraria.DataStructures;
 

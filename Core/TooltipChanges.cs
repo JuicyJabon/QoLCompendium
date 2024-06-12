@@ -17,6 +17,7 @@ namespace QoLCompendium.Core
             if (QoLCompendium.tooltipConfig.WorksInBanksTooltip && QoLCompendium.mainConfig.InformationBanks) WorksInBankTooltip(item, tooltips);
             if (QoLCompendium.tooltipConfig.WingStatsTooltips) WingStatsTooltip(item, tooltips);
             if (QoLCompendium.tooltipConfig.HookStatsTooltips) HookStatsTooltip(item, tooltips);
+            if (QoLCompendium.tooltipConfig.UsedPermanentUpgradeTooltip) UsedPermanentUpgrade(item, tooltips);
         }
         #pragma warning disable
         public static void AddLastTooltip(List<TooltipLine> tooltips, TooltipLine tooltip)
@@ -178,13 +179,17 @@ namespace QoLCompendium.Core
                 Common.GetModItem(ModConditions.aequusMod, "HaltingMachine"),
                 Common.GetModItem(ModConditions.aequusMod, "HaltingMagnet"),
                 Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "AttendanceLog"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "BiomeCrystal"),
                 Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "EngiRegistry"),
                 Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "FortuneMirror"),
                 Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "HitMarker"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "Magimeter"),
                 Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "RSH"),
                 Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "SafteyScanner"),
                 Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "ScryingMirror"),
                 Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "SmartHeart"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "ThreatAnalyzer"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "WantedPoster"),
                 Common.GetModItem(ModConditions.calamityMod, "AlluringBait"),
                 Common.GetModItem(ModConditions.calamityMod, "EnchantedPearl"),
                 Common.GetModItem(ModConditions.calamityMod, "SupremeBaitTackleBoxFishingStation"),
@@ -263,9 +268,9 @@ namespace QoLCompendium.Core
                 TooltipLine horizontalSpeed = new(Mod, "HorizontalSpeed", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HorizontalSpeed", wingStats.AccRunSpeedOverride.ToString("~0.##")));
                 TooltipLine verticalSpeedMul = new(Mod, "VerticalSpeedMul", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.VerticalSpeedMul", wingStats.AccRunAccelerationMult.ToString("~0.##")));
 
-                tooltips.Insert(tooltips.IndexOf(equip), flightTime);
-                tooltips.Insert(tooltips.IndexOf(flightTime), horizontalSpeed);
-                tooltips.Insert(tooltips.IndexOf(horizontalSpeed), verticalSpeedMul);
+                tooltips.Insert(tooltips.IndexOf(equip) + 1, flightTime);
+                tooltips.Insert(tooltips.IndexOf(flightTime) + 1, horizontalSpeed);
+                tooltips.Insert(tooltips.IndexOf(horizontalSpeed) + 1, verticalSpeedMul);
             }
         }
 
@@ -410,8 +415,8 @@ namespace QoLCompendium.Core
                 TooltipLine reach = new(Mod, "HookReach", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HookReach", hookReach));
                 TooltipLine pullSpeed = new(Mod, "HookPullSpeed", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HookPullSpeed", hookSpeed));
 
-                tooltips.Insert(tooltips.IndexOf(equip), reach);
-                tooltips.Insert(tooltips.IndexOf(reach), pullSpeed);
+                tooltips.Insert(tooltips.IndexOf(equip) + 1, reach);
+                tooltips.Insert(tooltips.IndexOf(reach) + 1, pullSpeed);
             }
         }
 
@@ -422,20 +427,62 @@ namespace QoLCompendium.Core
             TooltipLine reach = new(Mod, "HookReach", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HookReach", hookReach));
             TooltipLine pullSpeed = new(Mod, "HookPullSpeed", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HookPullSpeed", hookSpeed));
 
-            tooltips.Insert(tooltips.IndexOf(equip), reach);
-            tooltips.Insert(tooltips.IndexOf(reach), pullSpeed);
+            tooltips.Insert(tooltips.IndexOf(equip) + 1, reach);
+            tooltips.Insert(tooltips.IndexOf(reach) + 1, pullSpeed);
         }
 
-        private int ModItemForBanks(Mod mod, string itemName)
+        public void UsedPermanentUpgrade(Item item, List<TooltipLine> tooltips)
         {
-            if (mod != null)
+            var tooltipLine = new TooltipLine(Mod, "UsedItem", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.UsedItem"));
+            tooltipLine.OverrideColor = Color.LightGreen;
+            if (item.type == ItemID.AegisCrystal && Main.LocalPlayer.usedAegisCrystal)
             {
-                if (mod.TryFind(itemName, out ModItem currItem) && currItem != null)
-                {
-                    return currItem.Type;
-                }
+                AddLastTooltip(tooltips, tooltipLine);
             }
-            return ItemID.None;
+            if (item.type == ItemID.ArcaneCrystal && Main.LocalPlayer.usedArcaneCrystal)
+            {
+                AddLastTooltip(tooltips, tooltipLine);
+            }
+            if (item.type == ItemID.AegisFruit && Main.LocalPlayer.usedAegisFruit)
+            {
+                AddLastTooltip(tooltips, tooltipLine);
+            }
+            if (item.type == ItemID.Ambrosia && Main.LocalPlayer.usedAmbrosia)
+            {
+                AddLastTooltip(tooltips, tooltipLine);
+            }
+            if (item.type == ItemID.GummyWorm && Main.LocalPlayer.usedGummyWorm)
+            {
+                AddLastTooltip(tooltips, tooltipLine);
+            }
+            if (item.type == ItemID.GalaxyPearl && Main.LocalPlayer.usedGalaxyPearl)
+            {
+                AddLastTooltip(tooltips, tooltipLine);
+            }
+            if (item.type == ItemID.PeddlersSatchel && NPC.peddlersSatchelWasUsed)
+            {
+                AddLastTooltip(tooltips, tooltipLine);
+            }
+            if (item.type == ItemID.ArtisanLoaf && Main.LocalPlayer.ateArtisanBread)
+            {
+                AddLastTooltip(tooltips, tooltipLine);
+            }
+            if (item.type == ItemID.CombatBook && NPC.combatBookWasUsed)
+            {
+                AddLastTooltip(tooltips, tooltipLine);
+            }
+            if (item.type == ItemID.CombatBookVolumeTwo && NPC.combatBookVolumeTwoWasUsed)
+            {
+                AddLastTooltip(tooltips, tooltipLine);
+            }
+            if (item.type == ItemID.TorchGodsFavor && Main.LocalPlayer.unlockedBiomeTorches)
+            {
+                AddLastTooltip(tooltips, tooltipLine);
+            }
+            if (item.type == ItemID.MinecartPowerup && Main.LocalPlayer.unlockedSuperCart)
+            {
+                AddLastTooltip(tooltips, tooltipLine);
+            }
         }
         #pragma warning restore
     }

@@ -48,11 +48,17 @@ namespace QoLCompendium.Core
                 ConversionRecipe(ItemID.AdamantiteBar, ItemID.TitaniumBar);
                 ConversionRecipe(ItemID.TitaniumBar, ItemID.AdamantiteBar);
 
+                ConversionRecipe(ItemID.RottenChunk, ItemID.Vertebrae);
+                ConversionRecipe(ItemID.Vertebrae, ItemID.RottenChunk);
+
                 ConversionRecipe(ItemID.ShadowScale, ItemID.TissueSample);
                 ConversionRecipe(ItemID.TissueSample, ItemID.ShadowScale);
 
                 ConversionRecipe(ItemID.CursedFlame, ItemID.Ichor);
                 ConversionRecipe(ItemID.Ichor, ItemID.CursedFlame);
+
+                ConversionRecipe(ItemID.SoulofNight, ItemID.SoulofLight);
+                ConversionRecipe(ItemID.SoulofLight, ItemID.SoulofNight);
 
                 ConversionRecipe(ItemID.EbonstoneBlock, ItemID.CrimstoneBlock);
                 ConversionRecipe(ItemID.CrimstoneBlock, ItemID.EbonstoneBlock);

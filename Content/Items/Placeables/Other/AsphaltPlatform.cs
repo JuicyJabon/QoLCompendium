@@ -30,7 +30,7 @@ namespace QoLCompendium.Content.Items.Placeables.Other
             r.AddIngredient(ItemID.AsphaltBlock);
             r.Register();
 
-            r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, Type);
+            r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, ItemID.AsphaltBlock);
             r.AddIngredient(ModContent.ItemType<AsphaltPlatform>(), 2);
             r.Register();
         }

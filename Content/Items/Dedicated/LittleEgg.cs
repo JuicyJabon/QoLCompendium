@@ -35,5 +35,14 @@ namespace QoLCompendium.Content.Items.Dedicated
             }
             return true;
         }
+
+        public override bool CanUseItem(Player player)
+        {
+            if (player.HasBuff(ModContent.BuffType<LittleYagiBuff>()))
+            {
+                return false;
+            }
+            return base.CanUseItem(player);
+        }
     }
 }

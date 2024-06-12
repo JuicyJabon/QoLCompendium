@@ -205,7 +205,7 @@ namespace QoLCompendium.Core.UI
             UIImageButton fishButton = new(buttonPlayTexture);
             if (QoLCompendium.shopConfig.ECFishShop == false)
             {
-                herbButton = new(buttonDeleteTexture);
+                fishButton = new(buttonDeleteTexture);
             }
             fishButton.Left.Set(10, 0f);
             fishButton.Top.Set(280, 0f);

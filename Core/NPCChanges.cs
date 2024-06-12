@@ -7,6 +7,7 @@ using QoLCompendium.Content.NPCs;
 using System.Reflection;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
+using static Terraria.NPC;
 
 namespace QoLCompendium.Core
 {
@@ -333,28 +334,61 @@ namespace QoLCompendium.Core
         }
     }
 
-    public class NoLavaFromSlimes : ModSystem
+    public class EnemiesBreakDoors : ModSystem
     {
         public override void Load()
         {
-            IL_NPC.VanillaHitEffect += LavalessLavaSlime;
+            if (QoLCompendium.mainConfig.NoDoorBreaking)
+            {
+                IL_NPC.AI_003_Fighters += NoDoorBreaking;
+            }
         }
 
-        private void LavalessLavaSlime(ILContext il)
+        public override void Unload()
+        {
+            IL_NPC.AI_003_Fighters -= NoDoorBreaking;
+        }
+
+        private void NoDoorBreaking(ILContext il)
         {
             var c = new ILCursor(il);
+            if (c.TryGotoNext(MoveType.Before, i => i.MatchLdfld<NPC>("type"), i => i.MatchLdcI4(26), i => i.MatchBneUn(out var label)))
+            {
+                c.Index++;
+                c.Next!.Operand = (sbyte)0;
+            }
+        }
+    }
 
-            if (!c.TryGotoNext(
-                    MoveType.After,
-                    i => i.MatchCall(typeof(Main), "get_expertMode"),
-                    i => i.Match(OpCodes.Brfalse),
-                    i => i.Match(OpCodes.Ldarg_0),
-                    i => i.MatchLdfld(typeof(NPC), nameof(NPC.type)),
-                    i => i.Match(OpCodes.Ldc_I4_S, (sbyte)NPCID.LavaSlime)
-                ))
+    public class NoLavaFromSlimes : GlobalNPC
+    {
+        public override void HitEffect(NPC npc, HitInfo hit)
+        {
+            if (npc.type != NPCID.LavaSlime || Main.netMode == NetmodeID.MultiplayerClient || npc.life > 0)
+            {
                 return;
-
-            c.EmitDelegate<Func<int, int>>(returnValue => QoLCompendium.mainConfig.LavaSlimeNoLava ? NPCLoader.NPCCount : returnValue);
+            }
+            try
+            {
+                if (QoLCompendium.mainConfig.LavaSlimeNoLava)
+                {
+                    int num = (int)(npc.Center.X / 16f);
+                    int num2 = (int)(npc.Center.Y / 16f);
+                    if (!WorldGen.SolidTile(num, num2, false))
+                    {
+                        Tile val = Main.tile[num, num2];
+                        if (val.CheckingLiquid)
+                        {
+                            Tile val2 = Main.tile[num, num2];
+                            val2.LiquidAmount = 0;
+                            WorldGen.SquareTileFrame(num, num2, true);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+            }
         }
     }
 
@@ -390,6 +424,26 @@ namespace QoLCompendium.Core
             if (npc.type == NPCID.DD2Betsy && QoLCompendium.mainConfig.DefenderMedalDrops)
             {
                 npcLoot.Add(ItemDropRule.Common(ItemID.DefenderMedal, 1, 50, 50));
+            }
+
+            if ((npc.type == NPCID.NebulaHeadcrab || npc.type == NPCID.NebulaBeast || npc.type == NPCID.NebulaBrain || npc.type == NPCID.NebulaSoldier) && QoLCompendium.mainConfig.MoreFragments)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemID.FragmentNebula, 1, 1, 3));
+            }
+
+            if ((npc.type == NPCID.SolarCorite || npc.type == NPCID.SolarCrawltipedeHead || npc.type == NPCID.SolarSpearman || npc.type == NPCID.SolarDrakomire || npc.type == NPCID.SolarDrakomireRider || npc.type == NPCID.SolarSolenian || npc.type == NPCID.SolarSroller) && QoLCompendium.mainConfig.MoreFragments)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemID.FragmentSolar, 1, 1, 3));
+            }
+
+            if ((npc.type == NPCID.StardustJellyfishBig || npc.type == NPCID.StardustWormHead || npc.type == NPCID.StardustCellBig || npc.type == NPCID.StardustSoldier || npc.type == NPCID.StardustSpiderBig) && QoLCompendium.mainConfig.MoreFragments)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemID.FragmentStardust, 1, 1, 3));
+            }
+
+            if ((npc.type == NPCID.VortexHornet || npc.type == NPCID.VortexHornetQueen || npc.type == NPCID.VortexRifleman || npc.type == NPCID.VortexSoldier) && QoLCompendium.mainConfig.MoreFragments)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemID.FragmentVortex, 1, 1, 3));
             }
         }
     }
@@ -1010,6 +1064,32 @@ namespace QoLCompendium.Core
                 }
             }
 
+            /*
+            if (ModConditions.dormantDawnLoaded)
+            {
+                if (npc.type == Common.GetModNPC(ModConditions.dormantDawnMod, "LifeGuard"))
+                {
+                    NPC.SetEventFlagCleared(ref ModConditions.downedLifeGuardian, -1);
+                }
+                if (npc.type == Common.GetModNPC(ModConditions.dormantDawnMod, "StarGuard"))
+                {
+                    NPC.SetEventFlagCleared(ref ModConditions.downedManaGuardian, -1);
+                }
+                if (npc.type == Common.GetModNPC(ModConditions.dormantDawnMod, "MeteorDigger_Head"))
+                {
+                    NPC.SetEventFlagCleared(ref ModConditions.downedMeteorExcavator, -1);
+                }
+                if (npc.type == Common.GetModNPC(ModConditions.dormantDawnMod, "MeteorAnnihilator"))
+                {
+                    NPC.SetEventFlagCleared(ref ModConditions.downedMeteorAnnihilator, -1);
+                }
+                if (npc.type == Common.GetModNPC(ModConditions.dormantDawnMod, "????"))
+                {
+                    NPC.SetEventFlagCleared(ref ModConditions.downedHellfireSerpent, -1);
+                }
+            }
+            */
+
             if (ModConditions.echoesOfTheAncientsLoaded)
             {
                 if (npc.type == Common.GetModNPC(ModConditions.echoesOfTheAncientsMod, "Galahis"))
@@ -1059,6 +1139,18 @@ namespace QoLCompendium.Core
                 if (npc.type == Common.GetModNPC(ModConditions.exaltMod, "IceLich"))
                 {
                     NPC.SetEventFlagCleared(ref ModConditions.downedIceLich, -1);
+                }
+            }
+
+            if (ModConditions.excelsiorLoaded)
+            {
+                if (npc.type == Common.GetModNPC(ModConditions.excelsiorMod, "Niflheim"))
+                {
+                    NPC.SetEventFlagCleared(ref ModConditions.downedNiflheim, -1);
+                }
+                if (npc.type == Common.GetModNPC(ModConditions.excelsiorMod, "StellarStarship"))
+                {
+                    NPC.SetEventFlagCleared(ref ModConditions.downedStellarStarship, -1);
                 }
             }
 
@@ -1543,6 +1635,22 @@ namespace QoLCompendium.Core
                 }
             }
 
+            if (ModConditions.ophioidLoaded)
+            {
+                if (npc.type == Common.GetModNPC(ModConditions.ophioidMod, "OphiopedeHead"))
+                {
+                    NPC.SetEventFlagCleared(ref ModConditions.downedOphiopede, -1);
+                }
+                if (npc.type == Common.GetModNPC(ModConditions.ophioidMod, "Ophiocoon"))
+                {
+                    NPC.SetEventFlagCleared(ref ModConditions.downedOphiocoon, -1);
+                }
+                if (npc.type == Common.GetModNPC(ModConditions.ophioidMod, "Ophiofly"))
+                {
+                    NPC.SetEventFlagCleared(ref ModConditions.downedOphiofly, -1);
+                }
+            }
+
             if (ModConditions.polaritiesLoaded)
             {
                 if (npc.type == Common.GetModNPC(ModConditions.polaritiesMod, "StormCloudfish"))
@@ -1774,7 +1882,7 @@ namespace QoLCompendium.Core
                     NPC.SetEventFlagCleared(ref ModConditions.downedAdvisor, -1);
                     NPC.SetEventFlagCleared(ref ModConditions.downedOtherworldlySpirit, -1);
                 }
-                if (npc.type == Common.GetModNPC(ModConditions.secretsOfTheShadowsMod, "Polaris"))
+                if (npc.type == Common.GetModNPC(ModConditions.secretsOfTheShadowsMod, "Polaris") || npc.type == Common.GetModNPC(ModConditions.secretsOfTheShadowsMod, "NewPolaris"))
                 {
                     NPC.SetEventFlagCleared(ref ModConditions.downedPolaris, -1);
                 }
@@ -1846,6 +1954,14 @@ namespace QoLCompendium.Core
                 if (npc.type == Common.GetModNPC(ModConditions.secretsOfTheShadowsMod, "InfernoSpirit"))
                 {
                     NPC.SetEventFlagCleared(ref ModConditions.downedInfernoSpirit, -1);
+                }
+            }
+
+            if (ModConditions.sloomeLoaded)
+            {
+                if (npc.type == Common.GetModNPC(ModConditions.sloomeMod, "ExoSlimeGod"))
+                {
+                    NPC.SetEventFlagCleared(ref ModConditions.downedExodygen, -1);
                 }
             }
 
@@ -2112,6 +2228,10 @@ namespace QoLCompendium.Core
                 if (npc.type == Common.GetModNPC(ModConditions.vitalityMod, "DreadnaughtBoss"))
                 {
                     NPC.SetEventFlagCleared(ref ModConditions.downedDreadnaught, -1);
+                }
+                if (npc.type == Common.GetModNPC(ModConditions.vitalityMod, "MosquitoMonarchBoss"))
+                {
+                    NPC.SetEventFlagCleared(ref ModConditions.downedMosquitoMonarch, -1);
                 }
                 if (npc.type == Common.GetModNPC(ModConditions.vitalityMod, "AnarchulesBeetleBoss"))
                 {

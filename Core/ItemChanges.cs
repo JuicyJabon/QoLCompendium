@@ -1,4 +1,5 @@
 using QoLCompendium.Content.Items.Dedicated;
+using QoLCompendium.Content.Items.Tools.Usables;
 using Terraria.GameContent.Creative;
 
 namespace QoLCompendium.Core
@@ -204,6 +205,29 @@ namespace QoLCompendium.Core
         }
     }
 
+    public class DontConsumeCoraliteSummons : GlobalItem
+    {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
+        {
+            return ModConditions.coraliteLoaded &&
+                ModConditions.coraliteMod.TryFind("RedBerry", out ModItem RedBerry)
+                && (entity.type == RedBerry.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
+        }
+
+        public override void SetDefaults(Item item)
+        {
+            item.consumable = false;
+            item.maxStack = 1;
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
+        }
+    }
+
     public class DontConsumeEdorbisSummons : GlobalItem
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
@@ -248,6 +272,31 @@ namespace QoLCompendium.Core
                 || entity.type == CherryAmulet.Type
                 || entity.type == HarvestLantern.Type
                 || entity.type == MintRing.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
+        }
+
+        public override void SetDefaults(Item item)
+        {
+            item.consumable = false;
+            item.maxStack = 1;
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
+        }
+    }
+
+    public class DontConsumeExcelsiorSummons : GlobalItem
+    {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
+        {
+            return ModConditions.excelsiorLoaded &&
+                ModConditions.excelsiorMod.TryFind("ReflectiveIceShard", out ModItem ReflectiveIceShard)
+                && ModConditions.excelsiorMod.TryFind("PlanetaryTrackingDevice", out ModItem PlanetaryTrackingDevice)
+                && (entity.type == ReflectiveIceShard.Type
+                || entity.type == PlanetaryTrackingDevice.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -717,6 +766,33 @@ namespace QoLCompendium.Core
         }
     }
 
+    public class DontConsumeOphioidSummons : GlobalItem
+    {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
+        {
+            return ModConditions.ophioidLoaded &&
+                ModConditions.ophioidMod.TryFind("DeadFungusbug", out ModItem DeadFungusbug)
+                && ModConditions.ophioidMod.TryFind("InfestedCompost", out ModItem InfestedCompost)
+                && ModConditions.ophioidMod.TryFind("LivingCarrion", out ModItem LivingCarrion)
+                && (entity.type == DeadFungusbug.Type
+                || entity.type == InfestedCompost.Type
+                || entity.type == LivingCarrion.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
+        }
+
+        public override void SetDefaults(Item item)
+        {
+            item.consumable = false;
+            item.maxStack = 1;
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
+            tooltips.Insert(tooltips.IndexOf(tip), text);
+        }
+    }
+
     public class DontConsumeQwertySummons : GlobalItem
     {
         //ModConditions.qwertyMod.TryFind("FortressBossSummon", out ModItem FortressBossSummon)
@@ -947,6 +1023,9 @@ namespace QoLCompendium.Core
                 && ModConditions.thoriumMod.TryFind("AromaticBulb", out ModItem AromaticBulb)
                 && ModConditions.thoriumMod.TryFind("AbyssalShadow2", out ModItem AbyssalShadow2)
                 && ModConditions.thoriumMod.TryFind("DoomSayersCoin", out ModItem DoomSayersCoin)
+                && ModConditions.thoriumMod.TryFind("FreshBrain", out ModItem FreshBrain)
+                && ModConditions.thoriumMod.TryFind("RottingSpore", out ModItem RottingSpore)
+                && ModConditions.thoriumMod.TryFind("IllusionaryGlass", out ModItem IllusionaryGlass)
                 && (entity.type == StormFlare.Type
                 || entity.type == JellyfishResonator.Type
                 || entity.type == UnstableCore.Type
@@ -956,7 +1035,10 @@ namespace QoLCompendium.Core
                 || entity.type == VoidLens.Type
                 || entity.type == AromaticBulb.Type
                 || entity.type == AbyssalShadow2.Type
-                || entity.type == DoomSayersCoin.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
+                || entity.type == DoomSayersCoin.Type
+                || entity.type == FreshBrain.Type
+                || entity.type == RottingSpore.Type
+                || entity.type == IllusionaryGlass.Type) && QoLCompendium.mainConfig.EndlessBossSummons;
         }
 
         public override void SetDefaults(Item item)
@@ -1058,6 +1140,7 @@ namespace QoLCompendium.Core
                 && ModConditions.vitalityMod.TryFind("MultigemCluster", out ModItem MultigemCluster)
                 && ModConditions.vitalityMod.TryFind("MoonlightLotusFlower", out ModItem MoonlightLotusFlower)
                 && ModConditions.vitalityMod.TryFind("Dreadcandle", out ModItem Dreadcandle)
+                && ModConditions.vitalityMod.TryFind("MeatyMushroom", out ModItem MeatyMushroom)
                 && ModConditions.vitalityMod.TryFind("AnarchyCrystal", out ModItem AnarchyCrystal)
                 && ModConditions.vitalityMod.TryFind("TotemofChaos", out ModItem TotemofChaos)
                 && ModConditions.vitalityMod.TryFind("MartianRadio", out ModItem MartianRadio)
@@ -1067,6 +1150,7 @@ namespace QoLCompendium.Core
                 || entity.type == MultigemCluster.Type
                 || entity.type == MoonlightLotusFlower.Type
                 || entity.type == Dreadcandle.Type
+                || entity.type == MeatyMushroom.Type
                 || entity.type == AnarchyCrystal.Type
                 || entity.type == TotemofChaos.Type
                 || entity.type == MartianRadio.Type
@@ -1167,6 +1251,16 @@ namespace QoLCompendium.Core
 
     public class OtherItemStuff : GlobalItem
     {
+        public override void Load()
+        {
+            On_Player.ItemCheck_UseMiningTools_TryHittingWall += (orig, player, item, x, y) =>
+            {
+                orig.Invoke(player, item, x, y);
+                if (player.itemTime == item.useTime / 2)
+                    player.itemTime = (int)Math.Max(1, (1f - QoLCompendium.mainConfig.FastTools) * (item.useTime / 2f));
+            };
+        }
+
         public override void SetDefaults(Item item)
         {
             if (QoLCompendium.mainConfig.NoDevs && ItemID.Sets.BossBag[item.type])
@@ -1174,408 +1268,425 @@ namespace QoLCompendium.Core
                 ItemID.Sets.PreHardmodeLikeBossBag[item.type] = true;
             }
 
-            if (QoLCompendium.mainConfig.IncreaseMaxStack)
+            if (QoLCompendium.mainConfig.IncreaseMaxStack > 0 && item.maxStack > 10 && (item.maxStack != 100) && !(item.type >= ItemID.CopperCoin && item.type <= ItemID.PlatinumCoin))
             {
-                if (item.maxStack > 10 && (item.maxStack != 100) && !(item.type >= ItemID.CopperCoin && item.type <= ItemID.PlatinumCoin))
-                {
-                    item.maxStack = 9999;
-                }
+                item.maxStack = QoLCompendium.mainConfig.IncreaseMaxStack;
             }
 
-            if (QoLCompendium.mainConfig.SuperIncreaseMaxStack)
+            if (QoLCompendium.mainConfig.StackableQuestItems && item.questItem == true && QoLCompendium.mainConfig.IncreaseMaxStack > 0)
             {
-                if (item.maxStack > 10 && (item.maxStack != 100) && !(item.type >= ItemID.CopperCoin && item.type <= ItemID.PlatinumCoin))
-                {
-                    item.maxStack = 99999;
-                }
+                item.maxStack = QoLCompendium.mainConfig.IncreaseMaxStack;
             }
 
-            if (QoLCompendium.mainConfig.StackableQuestItems)
-            {
-                if (item.maxStack == 1 && item.questItem == true)
-                {
-                    if (QoLCompendium.mainConfig.IncreaseMaxStack)
-                    {
-                        item.maxStack = 9999;
-                    }
-
-                    if (QoLCompendium.mainConfig.SuperIncreaseMaxStack)
-                    {
-                        item.maxStack = 99999;
-                    }
-                }
-            }
-
-            if (ModConditions.redemptionLoaded)
-            {
-                if (ModConditions.redemptionMod.TryFind("Keycard", out ModItem Card) && Card != null && ModConditions.redemptionMod.TryFind("Keycard2", out ModItem Card2) && Card2 != null)
-                {
-                    ItemID.Sets.ShimmerTransformToItem[Card2.Type] = Card.Type;
-                }
-            }
+            ItemID.Sets.ShimmerTransformToItem[Common.GetModItem(ModConditions.redemptionMod, "Keycard2")] = Common.GetModItem(ModConditions.redemptionMod, "Keycard");
 
             if (QoLCompendium.itemConfig.DedicatedItems)
             {
                 ItemID.Sets.ShimmerTransformToItem[ItemID.RottenEgg] = ModContent.ItemType<LittleEgg>();
             }
 
+            if (QoLCompendium.itemConfig.GoldenLockpick)
+            {
+                ItemID.Sets.ShimmerTransformToItem[ItemID.GoldenKey] = ModContent.ItemType<GoldenLockpick>();
+            }
+
             if (QoLCompendium.mainConfig.BossItemTransmutation)
             {
                 if (item.type == ItemID.NinjaHood)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 257;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.NinjaShirt;
                 }
                 if (item.type == ItemID.NinjaShirt)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 258;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.NinjaPants;
                 }
                 if (item.type == ItemID.NinjaPants)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 256;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.NinjaHood;
                 }
                 if (item.type == ItemID.BeeKeeper)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2888;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.BeesKnees;
                 }
                 if (item.type == ItemID.BeesKnees)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1121;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.BeeGun;
                 }
                 if (item.type == ItemID.BeeGun)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1132;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.HoneyComb;
                 }
                 if (item.type == ItemID.HoneyComb)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1123;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.BeeKeeper;
                 }
                 if (item.type == ItemID.LucyTheAxe)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 5117;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.PewMaticHorn;
                 }
                 if (item.type == ItemID.PewMaticHorn)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 5118;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.WeatherPain;
                 }
                 if (item.type == ItemID.WeatherPain)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 5119;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.HoundiusShootius;
                 }
                 if (item.type == ItemID.HoundiusShootius)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 5095;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.LucyTheAxe;
                 }
                 if (item.type == ItemID.BreakerBlade)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 434;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ClockworkAssaultRifle;
                 }
                 if (item.type == ItemID.ClockworkAssaultRifle)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 514;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.LaserRifle;
                 }
                 if (item.type == ItemID.LaserRifle)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4912;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.FireWhip;
                 }
                 if (item.type == ItemID.FireWhip)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 426;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.BreakerBlade;
                 }
                 if (item.type == ItemID.CrystalNinjaHelmet)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4983;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.CrystalNinjaChestplate;
                 }
                 if (item.type == ItemID.CrystalNinjaChestplate)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4984;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.CrystalNinjaLeggings;
                 }
                 if (item.type == ItemID.CrystalNinjaLeggings)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4982;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.CrystalNinjaHelmet;
                 }
                 if (item.type == ItemID.Seedler)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1259;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.FlowerPow;
                 }
                 if (item.type == ItemID.FlowerPow)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 758;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.GrenadeLauncher;
                 }
                 if (item.type == ItemID.GrenadeLauncher)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1255;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.VenusMagnum;
                 }
                 if (item.type == ItemID.VenusMagnum)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 788;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.NettleBurst;
                 }
                 if (item.type == ItemID.NettleBurst)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1178;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.LeafBlower;
                 }
                 if (item.type == ItemID.LeafBlower)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1155;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.WaspGun;
                 }
                 if (item.type == ItemID.WaspGun)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3018;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.Seedler;
                 }
                 if (item.type == ItemID.GolemFist)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1122;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.PossessedHatchet;
                 }
                 if (item.type == ItemID.PossessedHatchet)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1258;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.Stynger;
                 }
                 if (item.type == ItemID.Stynger)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1295;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.HeatRay;
                 }
                 if (item.type == ItemID.HeatRay)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1296;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.StaffofEarth;
                 }
                 if (item.type == ItemID.StaffofEarth)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 899;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.SunStone;
                 }
                 if (item.type == ItemID.SunStone)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1248;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.EyeoftheGolem;
                 }
                 if (item.type == ItemID.EyeoftheGolem)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1297;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.GolemFist;
                 }
                 if (item.type == ItemID.Flairon)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2624;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.Tsunami;
                 }
                 if (item.type == ItemID.Tsunami)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2622;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.RazorbladeTyphoon;
                 }
                 if (item.type == ItemID.RazorbladeTyphoon)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2623;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.BubbleGun;
                 }
                 if (item.type == ItemID.BubbleGun)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2621;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.TempestStaff;
                 }
                 if (item.type == ItemID.TempestStaff)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2611;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.Flairon;
                 }
                 if (item.type == ItemID.PiercingStarlight)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4953;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.FairyQueenRangedItem;
                 }
                 if (item.type == ItemID.FairyQueenRangedItem)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4952;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.FairyQueenMagicItem;
                 }
                 if (item.type == ItemID.FairyQueenMagicItem)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4914;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.RainbowWhip;
                 }
                 if (item.type == ItemID.RainbowWhip)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4923;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.PiercingStarlight;
                 }
                 if (item.type == ItemID.Terrarian)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3063;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.Meowmere;
                 }
                 if (item.type == ItemID.Meowmere)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3065;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.StarWrath;
                 }
                 if (item.type == ItemID.StarWrath)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3930;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.Celeb2;
                 }
                 if (item.type == ItemID.Celeb2)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1553;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.SDMG;
                 }
                 if (item.type == ItemID.SDMG)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3541;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.LastPrism;
                 }
                 if (item.type == ItemID.LastPrism)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3570;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.LunarFlareBook;
                 }
                 if (item.type == ItemID.LunarFlareBook)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3571;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.RainbowCrystalStaff;
                 }
                 if (item.type == ItemID.RainbowCrystalStaff)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3569;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.MoonlordTurretStaff;
                 }
                 if (item.type == ItemID.MoonlordTurretStaff)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3389;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.Terrarian;
                 }
                 if (item.type == ItemID.DD2SquireDemonSword)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3835;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.MonkStaffT1;
                 }
                 if (item.type == ItemID.MonkStaffT1)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3836;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.MonkStaffT2;
                 }
                 if (item.type == ItemID.MonkStaffT2)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3854;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.DD2PhoenixBow;
                 }
                 if (item.type == ItemID.DD2PhoenixBow)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3852;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.BookStaff;
                 }
                 if (item.type == ItemID.BookStaff)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3823;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.DD2SquireDemonSword;
                 }
                 if (item.type == ItemID.DD2SquireBetsySword)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3858;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.MonkStaffT3;
                 }
                 if (item.type == ItemID.MonkStaffT3)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3859;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.DD2BetsyBow;
                 }
                 if (item.type == ItemID.DD2BetsyBow)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3870;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ApprenticeStaffT3;
                 }
                 if (item.type == ItemID.ApprenticeStaffT3)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3827;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.DD2SquireBetsySword;
                 }
                 if (item.type == ItemID.StakeLauncher)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1845;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.NecromanticScroll;
                 }
                 if (item.type == ItemID.NecromanticScroll)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1835;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.StakeLauncher;
                 }
                 if (item.type == ItemID.TheHorsemansBlade)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1782;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.CandyCornRifle;
                 }
                 if (item.type == ItemID.CandyCornRifle)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1784;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.JackOLanternLauncher;
                 }
                 if (item.type == ItemID.JackOLanternLauncher)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1801;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.BatScepter;
                 }
                 if (item.type == ItemID.BatScepter)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1802;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.RavenStaff;
                 }
                 if (item.type == ItemID.RavenStaff)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4680;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ScytheWhip;
                 }
                 if (item.type == ItemID.ScytheWhip)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1826;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.TheHorsemansBlade;
                 }
                 if (item.type == ItemID.ChristmasTreeSword)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1930;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.Razorpine;
                 }
                 if (item.type == ItemID.Razorpine)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1928;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ChristmasTreeSword;
                 }
                 if (item.type == ItemID.ElfMelter)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1929;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ChainGun;
                 }
                 if (item.type == ItemID.ChainGun)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1910;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ElfMelter;
                 }
                 if (item.type == ItemID.NorthPole)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1946;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.SnowmanCannon;
                 }
                 if (item.type == ItemID.SnowmanCannon)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1931;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.BlizzardStaff;
                 }
                 if (item.type == ItemID.BlizzardStaff)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1947;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.NorthPole;
                 }
                 if (item.type == ItemID.InfluxWaver)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2797;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.Xenopopper;
                 }
                 if (item.type == ItemID.Xenopopper)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2796;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ElectrosphereLauncher;
                 }
                 if (item.type == ItemID.ElectrosphereLauncher)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2795;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.LaserMachinegun;
                 }
                 if (item.type == ItemID.LaserMachinegun)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2749;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.XenoStaff;
                 }
                 if (item.type == ItemID.XenoStaff)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2769;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.CosmicCarKey;
                 }
                 if (item.type == ItemID.CosmicCarKey)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 2880;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.InfluxWaver;
                 }
                 if (item.type == ItemID.BloodRainBow)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4273;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.VampireFrogStaff;
                 }
                 if (item.type == ItemID.VampireFrogStaff)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4381;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.BloodRainBow;
                 }
                 if (item.type == ItemID.SharpTears)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4272;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.DripplerFlail;
                 }
                 if (item.type == ItemID.DripplerFlail)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 4270;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.SharpTears;
                 }
                 if (item.type == ItemID.ShadowFlameKnife)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3052;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ShadowFlameBow;
                 }
                 if (item.type == ItemID.ShadowFlameBow)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3053;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ShadowFlameHexDoll;
                 }
                 if (item.type == ItemID.ShadowFlameHexDoll)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 3054;
-                }
-                if (item.type == ItemID.VampireKnives)
-                {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1571;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ShadowFlameKnife;
                 }
                 if (item.type == ItemID.ScourgeoftheCorruptor)
                 {
-                    ItemID.Sets.ShimmerTransformToItem[item.type] = 1569;
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.VampireKnives;
+                }
+                if (item.type == ItemID.VampireKnives)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ScourgeoftheCorruptor;
+                }
+                if (item.type == ItemID.DartRifle)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.DartPistol;
+                }
+                if (item.type == ItemID.DartPistol)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.DartRifle;
+                }
+                if (item.type == ItemID.ClingerStaff)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.SoulDrain;
+                }
+                if (item.type == ItemID.SoulDrain)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ClingerStaff;
+                }
+                if (item.type == ItemID.ChainGuillotines)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.FetidBaghnakhs;
+                }
+                if (item.type == ItemID.FetidBaghnakhs)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.ChainGuillotines;
+                }
+                if (item.type == ItemID.PutridScent)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.FleshKnuckles;
+                }
+                if (item.type == ItemID.FleshKnuckles)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.PutridScent;
+                }
+                if (item.type == ItemID.WormHook)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.TendonHook;
+                }
+                if (item.type == ItemID.TendonHook)
+                {
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.WormHook;
                 }
             }
         }
@@ -1592,19 +1703,19 @@ namespace QoLCompendium.Core
 
         public override float UseTimeMultiplier(Item item, Player player)
         {
-            if (item.pick > 0 || item.hammer > 0 || item.axe > 0)
+            if (item.pick > 0 || item.hammer > 0 || item.axe > 0 || item.type == ItemID.WireCutter)
                 return 1f - QoLCompendium.mainConfig.FastTools;
             return 1f;
         }
 
         public override bool ConsumeItem(Item item, Player player)
         {
-            if (item.consumable == true && item.damage == -1 && item.stack >= QoLCompendium.mainConfig.EndlessAmount && QoLCompendium.mainConfig.EndlessConsumables)
+            if (item.consumable == true && item.damage == -1 && item.stack >= QoLCompendium.mainConfig.EndlessItemAmount && QoLCompendium.mainConfig.EndlessConsumables)
             {
                 return false;
             }
 
-            if (item.consumable == true && item.damage > 0 && item.stack >= QoLCompendium.mainConfig.EndlessAmount && QoLCompendium.mainConfig.EndlessWeapons)
+            if (item.consumable == true && item.damage > 0 && item.stack >= QoLCompendium.mainConfig.EndlessWeaponAmount && QoLCompendium.mainConfig.EndlessWeapons)
             {
                 return false;
             }
@@ -1614,7 +1725,7 @@ namespace QoLCompendium.Core
 
         public override bool CanBeConsumedAsAmmo(Item ammo, Item weapon, Player player)
         {
-            if (ammo.ammo > 0 && ammo.stack >= QoLCompendium.mainConfig.EndlessAmount && QoLCompendium.mainConfig.EndlessAmmo)
+            if (ammo.ammo > 0 && ammo.stack >= QoLCompendium.mainConfig.EndlessAmmoAmount && QoLCompendium.mainConfig.EndlessAmmo)
             {
                 return false;
             }
@@ -1623,55 +1734,11 @@ namespace QoLCompendium.Core
 
         public override bool? CanConsumeBait(Player player, Item bait)
         {
-            if (bait.bait > 0 && bait.stack >= QoLCompendium.mainConfig.EndlessAmount && QoLCompendium.mainConfig.EndlessBait)
+            if (bait.bait > 0 && bait.stack >= QoLCompendium.mainConfig.EndlessBaitAmount && QoLCompendium.mainConfig.EndlessBait)
             {
                 return false;
             }
             return base.CanConsumeBait(player, bait);
-        }
-    }
-
-    public class MiningSpeedBenefits : GlobalItem
-    {
-        private int basedrillspeed;
-
-        private int minetime;
-
-        private int walltime;
-
-        public override bool InstancePerEntity => true;
-
-        public override void SetDefaults(Item item)
-        {
-            if (QoLCompendium.mainConfig.MiningSpeedForHammersAndAxesAndDrills && (item.pick >= 1 || item.axe >= 1 || item.hammer >= 1) && item.channel)
-            {
-                basedrillspeed = item.useTime;
-            }
-            if (QoLCompendium.mainConfig.MiningSpeedForHammersAndAxesAndDrills && (item.axe >= 1 || item.hammer >= 1) && !item.channel)
-            {
-                basedrillspeed = item.useTime;
-            }
-        }
-
-        public override void HoldItem(Item item, Player player)
-        {
-            int num3 = (int)(player.pickSpeed * 100f);
-            if (QoLCompendium.mainConfig.MiningSpeedForHammersAndAxesAndDrills && (item.pick >= 1 || item.axe >= 1 || item.hammer >= 1) && item.channel)
-            {
-                item.useTime = basedrillspeed * num3 / 100;
-                if (item.useTime == 0)
-                {
-                    item.useTime = 1;
-                }
-            }
-            if (QoLCompendium.mainConfig.MiningSpeedForHammersAndAxesAndDrills && (item.axe >= 1 || item.hammer >= 1) && !item.channel && item.pick == 0)
-            {
-                item.useTime = basedrillspeed * num3 / 100;
-                if (item.useTime == 0)
-                {
-                    item.useTime = 1;
-                }
-            }
         }
     }
 
@@ -1692,6 +1759,226 @@ namespace QoLCompendium.Core
                 {
                     item.TurnToAir();
                 }
+            }
+        }
+    }
+
+    public static class CoinStacker
+    {
+        public static int CoinType(int item)
+        {
+            if (item == 71)
+            {
+                return 1;
+            }
+            if (item == 72)
+            {
+                return 2;
+            }
+            if (item == 73)
+            {
+                return 3;
+            }
+            if (item == 74)
+            {
+                return 4;
+            }
+            return 0;
+        }
+
+        public static void Pig(Item[] pInv, Item[] cInv)
+        {
+            int[] array = new int[4];
+            List<int> list = new();
+            List<int> list2 = new();
+            bool flag = false;
+            int[] array2 = new int[40];
+            for (int i = 0; i < cInv.Length; i++)
+            {
+                array2[i] = -1;
+                if (cInv[i].stack < 1 || cInv[i].type <= ItemID.None)
+                {
+                    list2.Add(i);
+                    cInv[i] = new Item();
+                }
+                if (cInv[i] != null && cInv[i].stack > 0)
+                {
+                    int num = CoinType(cInv[i].type);
+                    array2[i] = num - 1;
+                    if (num > 0)
+                    {
+                        array[num - 1] += cInv[i].stack;
+                        list2.Add(i);
+                        cInv[i] = new Item();
+                        flag = true;
+                    }
+                }
+            }
+            if (!flag)
+            {
+                return;
+            }
+            for (int j = 0; j < pInv.Length; j++)
+            {
+                if (j != 58 && pInv[j] != null && pInv[j].stack > 0 && !pInv[j].favorited)
+                {
+                    int num2 = CoinType(pInv[j].type);
+                    if (num2 > 0)
+                    {
+                        array[num2 - 1] += pInv[j].stack;
+                        list.Add(j);
+                        pInv[j] = new Item();
+                    }
+                }
+            }
+            for (int k = 0; k < 3; k++)
+            {
+                while (array[k] >= 100)
+                {
+                    array[k] -= 100;
+                    array[k + 1]++;
+                }
+            }
+            for (int l = 0; l < 40; l++)
+            {
+                if (array2[l] >= 0 && cInv[l].type == ItemID.None)
+                {
+                    int num3 = l;
+                    int num4 = array2[l];
+                    if (array[num4] > 0)
+                    {
+                        cInv[num3].SetDefaults(71 + num4);
+                        cInv[num3].stack = array[num4];
+                        if (cInv[num3].stack > cInv[num3].maxStack)
+                        {
+                            cInv[num3].stack = cInv[num3].maxStack;
+                        }
+                        array[num4] -= cInv[num3].stack;
+                        array2[l] = -1;
+                    }
+                    list2.Remove(num3);
+                }
+            }
+            for (int m = 0; m < 40; m++)
+            {
+                if (array2[m] >= 0 && cInv[m].type == ItemID.None)
+                {
+                    int num5 = m;
+                    int n = 3;
+                    while (n >= 0)
+                    {
+                        if (array[n] > 0)
+                        {
+                            cInv[num5].SetDefaults(71 + n);
+                            cInv[num5].stack = array[n];
+                            if (cInv[num5].stack > cInv[num5].maxStack)
+                            {
+                                cInv[num5].stack = cInv[num5].maxStack;
+                            }
+                            array[n] -= cInv[num5].stack;
+                            array2[m] = -1;
+                            break;
+                        }
+                        if (array[n] == 0)
+                        {
+                            n--;
+                        }
+                    }
+                    if (Main.netMode == NetmodeID.MultiplayerClient && Main.player[Main.myPlayer].chest > -1)
+                    {
+                        NetMessage.SendData(MessageID.SyncChestItem, -1, -1, null, Main.player[Main.myPlayer].chest, num5, 0f, 0f, 0, 0, 0);
+                    }
+                    list2.Remove(num5);
+                }
+            }
+            while (list2.Count > 0)
+            {
+                int num6 = list2[0];
+                int num7 = 3;
+                while (num7 >= 0)
+                {
+                    if (array[num7] > 0)
+                    {
+                        cInv[num6].SetDefaults(71 + num7);
+                        cInv[num6].stack = array[num7];
+                        if (cInv[num6].stack > cInv[num6].maxStack)
+                        {
+                            cInv[num6].stack = cInv[num6].maxStack;
+                        }
+                        array[num7] -= cInv[num6].stack;
+                        break;
+                    }
+                    if (array[num7] == 0)
+                    {
+                        num7--;
+                    }
+                }
+                if (Main.netMode == NetmodeID.MultiplayerClient && Main.player[Main.myPlayer].chest > -1)
+                {
+                    NetMessage.SendData(MessageID.SyncChestItem, -1, -1, null, Main.player[Main.myPlayer].chest, list2[0], 0f, 0f, 0, 0, 0);
+                }
+                list2.RemoveAt(0);
+            }
+            int num8 = 3;
+            while (num8 >= 0 && list.Count > 0)
+            {
+                int num9 = list[0];
+                if (array[num8] > 0)
+                {
+                    pInv[num9].SetDefaults(71 + num8);
+                    pInv[num9].stack = array[num8];
+                    if (pInv[num9].stack > pInv[num9].maxStack)
+                    {
+                        pInv[num9].stack = pInv[num9].maxStack;
+                    }
+                    array[num8] -= pInv[num9].stack;
+                    list.RemoveAt(0);
+                }
+                if (array[num8] == 0)
+                {
+                    num8--;
+                }
+            }
+        }
+
+        static CoinStacker()
+        {
+            HashSet<int> hashSet = new()
+            {
+                71,
+                72,
+                73,
+                74
+            };
+            CoinTypes = hashSet;
+            List<int> list = new()
+            {
+                0,
+                1,
+                100,
+                10000,
+                1000000
+            };
+            CoinValues = list;
+        }
+
+        #pragma warning disable CA2211
+        public static HashSet<int> CoinTypes;
+        public static List<int> CoinValues;
+        public const int Copper = 1;
+        public const int Silver = 100;
+        public const int Gold = 10000;
+        public const int Platinum = 1000000;
+        #pragma warning restore CA2211
+    }
+
+    public class CoinGItem : GlobalItem
+    {
+        public override void UpdateInventory(Item item, Player player)
+        {
+            if (CoinStacker.CoinTypes.Contains(item.type) && QoLCompendium.mainConfig.AutoMoneyStack)
+            {
+                CoinStacker.Pig(player.inventory, player.bank.item);
             }
         }
     }

@@ -1,3 +1,52 @@
+v2.2.4
+1. Fixed localization of Max Stack Increase config
+2. Fixed localization of Stackable Quest Items config
+3. Fixed Max Stack Increase config being limited to 100 instead of 99999
+4. Raised the limit of Endless Stack configs to 99999
+5. Added multiple new configs for each type of endless item (Item, Weapon, Ammo, Bait)
+6. Fixed Potion Crate not applying buffs
+7. Fixed Red Potion not applying buffs
+8. Fixed Garden Gnome not increasing luck
+9. Fixed Banner Box not giving banner buffs and finally made it use the correct kill count for each enemy instead of base 50 for everything
+10. Added Golden Lockpick
+
+v2.2.3
+1. Fixed Thorium treasure bags not being sold due to name change
+2. Added new Wayfair Content Pack content to shops
+3. Fixed Aether Pylon having the incorrect hover icon
+4. Changed Blood Moon and Solar Eclipse checks to be true once the event ends, not when it starts
+5. Added new Vitality Mod content to shops
+6. Added new Gerd's Lab Mod content to shops
+7. Fixed Coralite Mod NPC sales not working at all
+8. Fixed Modded Fish Shop getting disabled when Modded Herb Shop was disabled
+9. Added support for Excelsior Mod
+10. Added vanilla treasure bags re-added by Thorium to Shops
+11. Added new Thorium boss summons to non-consumable list
+12. Potion crate now works in tandem with the Endless Buffs Amount config option
+13. Added support for Sloome Calamity Addon Mod
+14. Added a config option to stop meteors from falling
+15. Added new Secrets Of The Shadows content to shops
+16. Added support for Ophioid Boss Mod
+17. Added fragment drops to pillar enemies when more pillar fragment drops is enabled
+18. Added support for Calamity Overhaul Mod
+19. Resprited Staff Of Ashing
+20. Resprited Staff Of Cysting
+21. Resprited Staff Of Hemorrhaging
+22. Resprited Staff Of Overgrown Cysting
+23. Resprited Staff Of Overgrown Hemorrhaging
+24. Resprited Staff Of Overgrowth
+25. Removed mining speed for drills config option
+26. Added a config option to disable double tap dashing
+27. Added a keybind for dashing
+28. Added a config option to add a used item tooltip to permanent upgrades
+29. Added new Calamity Mod content to shops
+30. Fixed Wall of Flesh spawning inside the player when using the summoning remote
+31. Added new Blocks Info Accessories content to Information in Banks list
+32. Added a config to disable credits roll
+33. Added a config for no door breaking
+34. Added a config for the Slice Of Cake buff to be infinite like other station buffs
+35. Fixed Tesla Potion from Calamity Mod not working with infinite buffs
+
 v2.2.2
 1. Made Calamity wings not receive stats tooltips from this mod
 2. Added a config for Old One's Army minibosses dropping extra Defender Medals

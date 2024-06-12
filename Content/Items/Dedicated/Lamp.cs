@@ -1,7 +1,6 @@
 ﻿using QoLCompendium.Content.Buffs;
 using QoLCompendium.Content.Projectiles.Dedicated;
 using QoLCompendium.Core;
-using Terraria.ID;
 
 namespace QoLCompendium.Content.Items.Dedicated
 {
@@ -35,6 +34,15 @@ namespace QoLCompendium.Content.Items.Dedicated
                 player.AddBuff(Item.buffType, 3600);
             }
             return true;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            if (player.HasBuff(ModContent.BuffType<MothBuff>()))
+            {
+                return false;
+            }
+            return base.CanUseItem(player);
         }
 
         public override void AddRecipes()

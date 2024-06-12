@@ -1,5 +1,4 @@
-﻿using QoLCompendium.Content.Items.InformationAccessories;
-using QoLCompendium.Core;
+﻿using QoLCompendium.Core;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
 

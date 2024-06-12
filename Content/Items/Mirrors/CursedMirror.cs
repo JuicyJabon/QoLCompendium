@@ -1,4 +1,3 @@
-using QoLCompendium.Content.Items.Magnets;
 using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Mirrors

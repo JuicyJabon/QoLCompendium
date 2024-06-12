@@ -15,7 +15,7 @@
         internal BossUI bossUI;
         private UserInterface bossInterface;
 
-        public override void OnWorldLoad()
+        public override void Load()
         {
             if (!Main.dedServ)
             {

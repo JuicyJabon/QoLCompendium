@@ -15,61 +15,71 @@ namespace QoLCompendium.Core
         public bool EndlessHealing { get; set; }
 
         [DefaultValue(true)]
-        public  bool EndlessAmmo { get; set; }
+        public bool EndlessAmmo { get; set; }
 
         [DefaultValue(true)]
-        public  bool EndlessBait { get; set; }
+        public bool EndlessBait { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
-        public  bool EndlessBossSummons { get; set; }
+        public bool EndlessBossSummons { get; set; }
 
         [DefaultValue(true)]
-        public  bool EndlessConsumables { get; set; }
+        public bool EndlessConsumables { get; set; }
 
         [DefaultValue(true)]
         public bool EndlessWeapons { get; set; }
 
         [DefaultValue(30)]
-        [Range(1, 9999)]
-        public  int EndlessBuffAmount { get; set; }
+        [Range(1, 99999)]
+        public int EndlessBuffAmount { get; set; }
 
         [DefaultValue(30)]
-        [Range(1, 9999)]
+        [Range(1, 99999)]
         public int EndlessHealingAmount { get; set; }
 
         [DefaultValue(999)]
-        [Range(1, 9999)]
-        public  int EndlessAmount { get; set; }
+        [Range(1, 99999)]
+        public int EndlessItemAmount { get; set; }
+
+        [DefaultValue(999)]
+        [Range(1, 99999)]
+        public int EndlessWeaponAmount { get; set; }
+
+        [DefaultValue(999)]
+        [Range(1, 99999)]
+        public int EndlessAmmoAmount { get; set; }
+
+        [DefaultValue(999)]
+        [Range(1, 99999)]
+        public int EndlessBaitAmount { get; set; }
 
         [DefaultValue(false)]
         public bool EndlessBuffsOnlyFromCrate { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Spawn")]
         [DefaultValue(true)]
-        public  bool InstantRespawn { get; set; }
+        public bool InstantRespawn { get; set; }
 
         [DefaultValue(true)]
-        public  bool FullHPRespawn { get; set; }
+        public bool FullHPRespawn { get; set; }
 
         [DefaultValue(true)]
-        public  bool NoSpawns { get; set; }
+        public bool NoSpawns { get; set; }
 
         [DefaultValue(true)]
         public bool NoNaturalBossSpawns { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Items2")]
         [DefaultValue(true)]
-        public  bool NoDevs { get; set; }
+        public bool NoDevs { get; set; }
+
+        [DefaultValue(9999)]
+        [Range(1, 99999)]
+        public int IncreaseMaxStack { get; set; }
 
         [DefaultValue(true)]
-        public  bool IncreaseMaxStack { get; set; }
-
-        [DefaultValue(false)]
-        public bool SuperIncreaseMaxStack { get; set; }
-
-        [DefaultValue(true)]
-        public  bool InformationBanks { get; set; }
+        public bool InformationBanks { get; set; }
 
         [DefaultValue(true)]
         public bool StackableQuestItems { get; set; }
@@ -89,26 +99,26 @@ namespace QoLCompendium.Core
         public  int MoreCoins { get; set; }
 
         [DefaultValue(true)]
-        public  bool AutoMoneyStack { get; set; }
+        public bool AutoMoneyStack { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.NPCs")]
         [DefaultValue(true)]
-        public  bool BMNPC { get; set; }
+        public bool BMNPC { get; set; }
 
         [DefaultValue(true)]
-        public  bool ECNPC { get; set; }
+        public bool ECNPC { get; set; }
 
         [DefaultValue(false)]
         public bool RemoveBiomeRequirements { get; set; }
 
         [DefaultValue(true)]
-        public  bool FriendliesDontDie { get; set; }
+        public bool FriendliesDontDie { get; set; }
 
         [DefaultValue(true)]
-        public  bool FastTownieSpawns { get; set; }
+        public bool FastTownieSpawns { get; set; }
 
         [DefaultValue(true)]
-        public  bool TownieSpawn { get; set; }
+        public bool TownieSpawn { get; set; }
 
         [DefaultValue(true)]
         public bool GoHomeNPCs { get; set; }
@@ -122,7 +132,7 @@ namespace QoLCompendium.Core
 
         [DefaultValue(true)]
         [ReloadRequired]
-        public  bool ToggleHappiness { get; set; }
+        public bool ToggleHappiness { get; set; }
 
         [DefaultValue(false)]
         [ReloadRequired]
@@ -135,7 +145,7 @@ namespace QoLCompendium.Core
         [DefaultValue(0.75f)]
         [Increment(0.01f)]
         [Range(0, 1)]
-        public  float HappinessPriceChange { get; set; }
+        public float HappinessPriceChange { get; set; }
 
         [DefaultValue(true)]
         public bool AnglerQuestInstantReset { get; set; }
@@ -144,7 +154,7 @@ namespace QoLCompendium.Core
         [DefaultValue(10)]
         [Range(1, 100)]
         [Increment(5)]
-        public  int TowerShield { get; set; }
+        public int TowerShield { get; set; }
 
         [DefaultValue(true)]
         public bool MoreFragments { get; set; }
@@ -154,14 +164,18 @@ namespace QoLCompendium.Core
 
         [DefaultValue(true)]
         [ReloadRequired]
-        public  bool LavaSlimeNoLava { get; set; }
+        public bool LavaSlimeNoLava { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool NoDoorBreaking { get; set; }
 
         [DefaultValue(true)]
         public bool DefenderMedalDrops { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Projectiles")]
         [DefaultValue(true)]
-        public  bool ExtraLures { get; set; }
+        public bool ExtraLures { get; set; }
 
         [DefaultValue(true)]
         public bool NoFallingSandDamage { get; set; }
@@ -183,25 +197,22 @@ namespace QoLCompendium.Core
         [DefaultValue(6)]
         [Range(0, 20)]
         [Increment(2)]
-        public  int IncreasePlaceRange { get; set; }
+        public int IncreasePlaceRange { get; set; }
 
         [DefaultValue(0d)]
         [Range(0, 1f)]
         [Slider]
         [Increment(0.125f)]
-        public  float FastTools { get; set; }
+        public float FastTools { get; set; }
 
         [DefaultValue(true)]
-        public bool MiningSpeedForHammersAndAxesAndDrills { get; set; }
-
-        [DefaultValue(true)]
-        public  bool FastExtractor { get; set; }
+        public bool FastExtractor { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Player")]
         [Slider]
         [DefaultValue(44)]
         [Range(0, 88)]
-        public  uint ExtraBuffSlots { get; set; }
+        public uint ExtraBuffSlots { get; set; }
 
         [DefaultValue(true)]
         public bool KeepBuffsOnDeath { get; set; }
@@ -210,13 +221,17 @@ namespace QoLCompendium.Core
         public bool KeepDebuffsOnDeath { get; set; }
 
         [DefaultValue(true)]
-        public  bool RegrowthAutoReplant { get; set; }
+        [ReloadRequired]
+        public bool InfiniteSliceOfCake { get; set; }
 
         [DefaultValue(true)]
-        public  bool LifeformPointer { get; set; }
+        public bool RegrowthAutoReplant { get; set; }
 
         [DefaultValue(true)]
-        public  bool WingSlot { get; set; }
+        public bool LifeformPointer { get; set; }
+
+        [DefaultValue(true)]
+        public bool WingSlot { get; set; }
 
         [DefaultValue(true)]
         public bool NoChilled { get; set; }
@@ -246,17 +261,20 @@ namespace QoLCompendium.Core
         [DefaultValue(true)]
         public bool MapPorting { get; set; }
 
+        [DefaultValue(false)]
+        public bool DisableDashing { get; set; }
+
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.World")]
         [DefaultValue(true)]
         [ReloadRequired]
-        public  bool DisableEvilSpread { get; set; }
+        public bool DisableEvilSpread { get; set; }
 
         [DefaultValue(true)]
-        public  bool FastTrees { get; set; }
+        public bool FastTrees { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
-        public  bool FastHerbs { get; set; }
+        public bool FastHerbs { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
@@ -268,10 +286,17 @@ namespace QoLCompendium.Core
         public int MoreStars { get; set; }
 
         [DefaultValue(true)]
-        public  bool Christmas { get; set; }
+        [ReloadRequired]
+        public bool NoMeteors { get; set; }
 
         [DefaultValue(true)]
-        public  bool Halloween { get; set; }
+        public bool Christmas { get; set; }
+
+        [DefaultValue(true)]
+        public bool Halloween { get; set; }
+
+        [DefaultValue(false)]
+        public bool DisableCredits { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
@@ -332,13 +357,13 @@ namespace QoLCompendium.Core
             public override ConfigScope Mode => ConfigScope.ServerSide;
 
             [DefaultValue(true)]
-            public  bool AsphaltPlatform { get; set; }
+            public bool AsphaltPlatform { get; set; }
 
             [DefaultValue(true)]
-            public  bool AutoStructures { get; set; }
+            public bool AutoStructures { get; set; }
 
             [DefaultValue(true)]
-            public  bool BannerBox { get; set; }
+            public bool BannerBox { get; set; }
 
             [DefaultValue(true)]
             public bool CraftingStations { get; set; }
@@ -347,13 +372,16 @@ namespace QoLCompendium.Core
             public bool EndlessAmmo { get; set; }
 
             [DefaultValue(true)]
-            public  bool EntityManipulator { get; set; }
+            public bool EntityManipulator { get; set; }
 
             [DefaultValue(true)]
-            public  bool InformationAccessories { get; set; }
+            public bool GoldenLockpick { get; set; }
 
             [DefaultValue(true)]
-            public  bool Magnets { get; set; }
+            public bool InformationAccessories { get; set; }
+
+            [DefaultValue(true)]
+            public bool Magnets { get; set; }
 
             [DefaultValue(true)]
             public bool MiniSundial { get; set; }
@@ -362,10 +390,10 @@ namespace QoLCompendium.Core
             public bool Mirrors { get; set; }
 
             [DefaultValue(true)]
-            public  bool MobileStorages { get; set; }
+            public bool MobileStorages { get; set; }
 
             [DefaultValue(true)]
-            public  bool MoonPedestals { get; set; }
+            public bool MoonPedestals { get; set; }
 
             [DefaultValue(true)]
             public bool Paperweight { get; set; }
@@ -386,7 +414,7 @@ namespace QoLCompendium.Core
             public bool RestockNotice { get; set; }
 
             [DefaultValue(true)]
-            public  bool StarterBag { get; set; }
+            public bool StarterBag { get; set; }
 
             [DefaultValue(true)]
             public bool SummoningRemote { get; set; }
@@ -404,10 +432,10 @@ namespace QoLCompendium.Core
             public bool UltimateChecklist { get; set; }
 
             [DefaultValue(true)]
-            public  bool WatchingEye { get; set; }
+            public bool WatchingEye { get; set; }
 
             [DefaultValue(true)]
-            public  bool WorldGlobe { get; set; }
+            public bool WorldGlobe { get; set; }
 
             [DefaultValue(true)]
             public bool DedicatedItems { get; set; }
@@ -432,51 +460,51 @@ namespace QoLCompendium.Core
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BMPotionShop { get; set; }
+            public bool BMPotionShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BMStationShop { get; set; }
+            public bool BMStationShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BMMaterialShop { get; set; }
+            public bool BMMaterialShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BMMovementAccessoryShop { get; set; }
+            public bool BMMovementAccessoryShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BMCombatAccessoryShop { get; set; }
+            public bool BMCombatAccessoryShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BMInformationShop { get; set; }
+            public bool BMInformationShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BMBagShop { get; set; }
+            public bool BMBagShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BMCrateShop { get; set; }
+            public bool BMCrateShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BMOreShop { get; set; }
+            public bool BMOreShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BMNaturalBlockShop { get; set; }
+            public bool BMNaturalBlockShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BMBuildingBlockShop { get; set; }
+            public bool BMBuildingBlockShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool BMHerbShop { get; set; }
+            public bool BMHerbShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
@@ -494,39 +522,39 @@ namespace QoLCompendium.Core
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool ECPotionShop { get; set; }
+            public bool ECPotionShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool ECStationShop { get; set; }
+            public bool ECStationShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool ECMaterialShop { get; set; }
+            public bool ECMaterialShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool ECBagShop { get; set; }
+            public bool ECBagShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool ECCrateShop { get; set; }
+            public bool ECCrateShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool ECOreShop { get; set; }
+            public bool ECOreShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool ECNaturalBlocksShop { get; set; }
+            public bool ECNaturalBlocksShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool ECBuildingBlocksShop { get; set; }
+            public bool ECBuildingBlocksShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
-            public  bool ECHerbShop { get; set; }
+            public bool ECHerbShop { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]
@@ -631,6 +659,10 @@ namespace QoLCompendium.Core
             [DefaultValue(true)]
             [ReloadRequired]
             public bool WorksInBanksTooltip { get; set; }
+
+            [DefaultValue(true)]
+            [ReloadRequired]
+            public bool UsedPermanentUpgradeTooltip { get; set; }
 
             [DefaultValue(true)]
             [ReloadRequired]

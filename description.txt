@@ -72,6 +72,7 @@ Current Features:
  - No sand, snow, or tombstone litter
  - No Queen Bee larva break
  - No falling block damage
+ - No meteors falling
  - Seasonal events always
  - Starter Bag (Make sure to set items in config)
  - Many items for easing the playing experience

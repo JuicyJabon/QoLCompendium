@@ -6,6 +6,7 @@ using QoLCompendium.Content.Projectiles.MobileStorages;
 using QoLCompendium.Core.UI;
 using System.Reflection;
 using Terraria.DataStructures;
+using Terraria.GameInput;
 using Terraria.ModLoader.Config;
 using static MonoMod.Cil.ILContext;
 
@@ -50,6 +51,36 @@ namespace QoLCompendium.Core
             {
                 self.AvailableHairstyles.Add(i);
             }
+        }
+    }
+
+    public class DashPlayer : ModPlayer
+    {
+        public int latestXDirPressed = 0;
+        public int latestXDirReleased = 0;
+        private bool LeftLastPressed = false;
+        private bool RightLastPressed = false;
+
+        public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            if (Main.LocalPlayer.controlLeft && !LeftLastPressed)
+            {
+                latestXDirPressed = -1;
+            }
+            if (Main.LocalPlayer.controlRight && !RightLastPressed)
+            {
+                latestXDirPressed = 1;
+            }
+            if (!Main.LocalPlayer.controlLeft && !Main.LocalPlayer.releaseLeft)
+            {
+                latestXDirReleased = -1;
+            }
+            if (!Main.LocalPlayer.controlRight && !Main.LocalPlayer.releaseRight)
+            {
+                latestXDirReleased = 1;
+            }
+            LeftLastPressed = Main.LocalPlayer.controlLeft;
+            RightLastPressed = Main.LocalPlayer.controlRight;
         }
     }
 
@@ -867,6 +898,10 @@ namespace QoLCompendium.Core
                 {
                     Player.ApplyEquipFunctional(item, true);
                 }
+                if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "BiomeCrystal"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
                 if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "EngiRegistry"))
                 {
                     Player.ApplyEquipFunctional(item, true);
@@ -876,6 +911,10 @@ namespace QoLCompendium.Core
                     Player.ApplyEquipFunctional(item, true);
                 }
                 if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "HitMarker"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "Magimeter"))
                 {
                     Player.ApplyEquipFunctional(item, true);
                 }
@@ -892,6 +931,14 @@ namespace QoLCompendium.Core
                     Player.ApplyEquipFunctional(item, true);
                 }
                 if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "SmartHeart"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "ThreatAnalyzer"))
+                {
+                    Player.ApplyEquipFunctional(item, true);
+                }
+                if (item.type == Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "WantedPoster"))
                 {
                     Player.ApplyEquipFunctional(item, true);
                 }

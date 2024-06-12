@@ -10,6 +10,11 @@
             return Color.Lerp(firstColor, secondColor, num);
         }
 
+        public interface IRightClickOverrideWhenHeld
+        {
+            bool RightClickOverrideWhileHeld(ref Item heldItem, Item[] inv, int context, int slot, Player player, QoLCPlayer qPlayer);
+        }
+
         public static int GetModItem(Mod mod, string itemName)
         {
             if (mod != null)
@@ -44,6 +49,30 @@
                 }
             }
             return NPCID.None;
+        }
+
+        public static int GetModTile(Mod mod, string tileName)
+        {
+            if (mod != null)
+            {
+                if (mod.TryFind(tileName, out ModTile currTile) && currTile != null)
+                {
+                    return currTile.Type;
+                }
+            }
+            return -1;
+        }
+
+        public static int GetModBuff(Mod mod, string buffName)
+        {
+            if (mod != null)
+            {
+                if (mod.TryFind(buffName, out ModBuff currBuff) && currBuff != null)
+                {
+                    return currBuff.Type;
+                }
+            }
+            return -1;
         }
     }
 }

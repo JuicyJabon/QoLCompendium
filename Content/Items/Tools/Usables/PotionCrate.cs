@@ -42,11 +42,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void RightClick(Player player)
         {
-            if (Main.mouseItem.buffType > 0 && Main.mouseItem.stack >= 30 && !BuffIDList.Contains(Main.mouseItem.buffType) && !ItemIDList.Contains(Main.mouseItem.type))
+            if (Main.mouseItem.buffType > 0 && Main.mouseItem.stack >= QoLCompendium.mainConfig.EndlessBuffAmount && !BuffIDList.Contains(Main.mouseItem.buffType) && !ItemIDList.Contains(Main.mouseItem.type))
             {
                 BuffIDList.Add(Main.mouseItem.buffType);
                 ItemIDList.Add(Main.mouseItem.type);
-                Main.mouseItem.stack -= 30;
+                Main.mouseItem.stack -= QoLCompendium.mainConfig.EndlessBuffAmount;
                 if (Main.mouseItem.stack == 0)
                 {
                     Main.mouseItem.TurnToAir();
@@ -57,7 +57,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                 if (BuffIDList.Count == 0 && ItemIDList.Count == 0) return;
                 if (BuffIDList.Count > 0 && ItemIDList.Count > 0)
                 {
-                    Item.NewItem(Item.GetSource_FromThis(), player.position, ItemIDList.Last(), 30);
+                    Item.NewItem(Item.GetSource_FromThis(), player.position, ItemIDList.Last(), QoLCompendium.mainConfig.EndlessBuffAmount);
                     BuffIDList.RemoveAt(BuffIDList.Count - 1);
                     ItemIDList.RemoveAt(ItemIDList.Count - 1);
                 }

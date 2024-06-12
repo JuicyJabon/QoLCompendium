@@ -18,6 +18,7 @@ Mods: {
 			VerticalSpeedMul: Vertical Speed Multiplier: {0}
 			HookReach: Reach: {0}
 			HookPullSpeed: Pull Speed: {0}
+			UsedItem: You have used this upgrade
 		}
 
 		NPCStuff.GoHome: NPCs have been teleported home!
@@ -32,8 +33,6 @@ Mods: {
 				CursedMirror: Mosaic Mirror (Cursed)
 				MirrorOfReturn: Mosaic Mirror (Return)
 				TeleportationMirror: Mosaic Mirror (Teleportation)
-				DungeonMirror: Mosaic Mirror (Dungeon)
-				TempleMirror: Mosaic Mirror (Temple)
 			}
 
 			Omnistaff: {
@@ -73,7 +72,7 @@ Mods: {
 				DisplayName: Banner Box
 				Tooltip:
 					'''
-					Automatically recieve banner buffs for enemies with 50 kills logged
+					Automatically applies banner buffs for recieved banners
 					Works from any storage
 					'''
 			}
@@ -978,6 +977,11 @@ Mods: {
 				DisplayName: Pause Pedestal
 				Tooltip: Favorite this item to pause time
 			}
+
+			GoldenLockpick: {
+				DisplayName: Golden Lockpick
+				Tooltip: Opens all Golden Chests and Golden Lock Boxes
+			}
 		}
 
 		NPCs: {
@@ -1231,8 +1235,12 @@ Mods: {
 				}
 
 				IncreaseMaxStack: {
-					Label: "[i:2] Increase Max Item Stacks"
-					Tooltip: Toggles if stackable items can be stacked to 9999
+					Label: "[i:2] Item Max Stack"
+					Tooltip:
+						'''
+						Change the max stack of stackable items
+						Maximum stack is 99999
+						'''
 				}
 
 				ExtraLures: {
@@ -1371,7 +1379,7 @@ Mods: {
 
 				StackableQuestItems: {
 					Label: "[i:2452] Stackable Quest Items"
-					Tooltip: Toggles if quest items can be stacked to 9999 or 99999
+					Tooltip: Toggles if quest items can be stacked
 				}
 
 				AnglerQuestInstantReset: {
@@ -1530,6 +1538,51 @@ Mods: {
 					Label: "[i:86] Item Conversions"
 					Tooltip: Toggles if recipes are added for world specific items
 				}
+
+				NoMeteors: {
+					Tooltip: Toggles if meteors can fall
+					Label: "[i:116] No Meteors"
+				}
+
+				DisableDashing: {
+					Tooltip: Toggles if you can double tap dash when equipped with a vanilla dash accessory
+					Label: "[i:3097] Disable Double Tap Dashing"
+				}
+
+				DisableCredits: {
+					Tooltip: Toggles if credits will roll after the defeat of the Moon Lord
+					Label: "[i:264] Disable Credits"
+				}
+
+				InfiniteSliceOfCake: {
+					Tooltip: Toggles if the Sugar Rush buff is infinite like other station buffs
+					Label: "[i:3750] Infinite Slice Of Cake"
+				}
+
+				NoDoorBreaking: {
+					Tooltip: Toggles if enemies can break down doors
+					Label: "[i:25] No Door Breaking"
+				}
+
+				EndlessBaitAmount: {
+					Tooltip: Change the amount needed for endless bait
+					Label: "[i:3119] Endless Bait Amount"
+				}
+
+				EndlessAmmoAmount: {
+					Tooltip: Change the amount needed for endless ammo
+					Label: "[i:3119] Endless Ammo Amount"
+				}
+
+				EndlessItemAmount: {
+					Label: "[i:3119] Endless Item Amount"
+					Tooltip: Change the amount needed for endless items
+				}
+
+				EndlessWeaponAmount: {
+					Label: "[i:3119] Endless Weapon Amount"
+					Tooltip: Change the amount needed for endless weapons
+				}
 			}
 
 			ItemConfig: {
@@ -1561,7 +1614,7 @@ Mods: {
 				}
 
 				DedicatedItems: {
-					Label: "[i:QoLCompendium/SillySlapper][i:QoLCompendium/Burger][i:QoLCompendium/RangedAbsolution] Dedicated Items"
+					Label: "[i:QoLCompendium/SillySlapper] Dedicated Items"
 					Tooltip: Toggles Dedicated items
 				}
 
@@ -1683,6 +1736,11 @@ Mods: {
 					Label: "[i:QoLCompendium/EndlessFlarePouch] Endless Ammo"
 					Tooltip: Toggles Endless Ammo related items
 				}
+
+				GoldenLockpick: {
+					Tooltip: Toggles the Golden Lockpick item
+					Label: "[i:QoLCompendium/GoldenLockpick] Golden Lockpick"
+				}
 			}
 
 			ShopConfig: {
@@ -1734,7 +1792,7 @@ Mods: {
 				}
 
 				BMNaturalBlockShop: {
-					Label: "[i:3] Natural Block Shop"
+					Label: "[i:2] Natural Block Shop"
 					Tooltip: ""
 				}
 
@@ -1794,7 +1852,7 @@ Mods: {
 				}
 
 				ECNaturalBlocksShop: {
-					Label: "[i:3] Natural Block Shop"
+					Label: "[i:2] Natural Block Shop"
 					Tooltip: ""
 				}
 
@@ -1920,6 +1978,11 @@ Mods: {
 					Label: "[i:84] Hook Stats Tooltips"
 					Tooltip: Adds 2 tooltips to display hook stats
 				}
+
+				UsedPermanentUpgradeTooltip: {
+					Tooltip: Adds a tooltip to display if a permanent upgrade has been used
+					Label: "[i:5337] Used Permanent Upgrade Tooltip"
+				}
 			}
 		}
 
@@ -1946,6 +2009,7 @@ Mods: {
 			WhitelistTileBind.DisplayName: Whitelist Tile
 			RemoveWhitelistedTileBind.DisplayName: Remove Whitelisted Tile
 			RecallBind.DisplayName: Quick Recall
+			DashBind.DisplayName: Dash
 		}
 
 		ModConditions: {
@@ -2362,6 +2426,21 @@ Mods: {
 			downedBabyIceDragon: Downed Baby Ice Dragon
 			downedRediancie: Downed Rediancie
 			downedCoreBoss: Downed Corrupt or Crimson Core
+			downedMosquitoMonarch: Downed Mosquito Monarch
+			notDownedMechBossAll: Not Downed All Mech Bosses
+			downedStellarStarship: Downed Stellar Starship
+			downedNiflheim: Downed Niflheim
+			downedExodygen: Downed Exodygen
+			downedGoblinSorcererChieftain: Downed Goblin Sorcerer Chieftain
+			downedWitheredAcornSpirit: Downed Withered Acorn Spirit
+			downedHellfireSerpent: Downed Hellfire Serpent
+			downedMeteorAnnihilator: Downed Meteor Annihilator
+			downedMeteorExcavator: Downed Meteor Excavator
+			downedManaGuardian: Downed Mana Guardian
+			downedLifeGuardian: Downed Life Guardian
+			downedOphiofly: Downed Ophiofly
+			downedOphiocoon: Downed Ophiocoon
+			downedOphiopede: Downed Ophiopede
 		}
 
 		Tiles: {

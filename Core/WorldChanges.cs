@@ -1,5 +1,6 @@
 ﻿using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using Terraria.GameContent.Events;
 
 namespace QoLCompendium.Core
 {
@@ -88,6 +89,33 @@ namespace QoLCompendium.Core
         #pragma warning restore CA2211
     }
 
+    public class DisableMeteors : ModSystem
+    {
+        public override void Load() => On_WorldGen.dropMeteor += StopMeteor;
+
+        public override void Unload() => On_WorldGen.dropMeteor -= StopMeteor;
+
+        private void StopMeteor(On_WorldGen.orig_dropMeteor orig)
+        {
+            if (!QoLCompendium.mainConfig.NoMeteors)
+            {
+                orig();
+                return;
+            }
+
+            int activePlayerCount = Main.player.Where(player => player.active).ToArray().Length;
+
+            for (int i = 0; i < Main.player.Length; i++)
+            {
+                Player player = Main.player[i];
+                if (!player.active) continue;
+
+                int amount = Main.rand.Next(400, 500) / activePlayerCount;
+                player.QuickSpawnItem(player.GetSource_FromThis(), ItemID.Meteorite, amount);
+            }
+        }
+    }
+
     public class SeasonalActivation : ModSystem
     {
         public override void PostUpdateWorld()
@@ -101,6 +129,29 @@ namespace QoLCompendium.Core
             {
                 Main.xMas = true;
             }
+        }
+    }
+
+    public class DisableCredits : ModSystem
+    {
+        public override void Load()
+        {
+            if (QoLCompendium.mainConfig.DisableCredits)
+            {
+                IL_NPC.OnGameEventClearedForTheFirstTime += NoCredits;
+            }
+        }
+
+        public override void Unload()
+        {
+            IL_NPC.OnGameEventClearedForTheFirstTime -= NoCredits;
+        }
+
+        public void NoCredits(ILContext il)
+        {
+            var c = new ILCursor(il);
+            c.GotoNext(MoveType.Before, i => i.MatchCall<CreditsRollEvent>("TryStartingCreditsRoll"));
+            c.Remove();
         }
     }
 

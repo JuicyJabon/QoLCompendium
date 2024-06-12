@@ -674,7 +674,8 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.Emerald) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(new Item(ItemID.Ruby) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(new Item(ItemID.Sapphire) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
-                    .Add(new Item(ItemID.Topaz) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground);
+                    .Add(new Item(ItemID.Topaz) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(new Item(ItemID.Geode) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground);
             oreShop.Register();
 
             var naturalBlockShop = new NPCShop(Type, "Natural Blocks")

@@ -58,7 +58,7 @@ namespace QoLCompendium.Content.Tiles.Pylons
         public override void MouseOver(int i, int j)
         {
             Main.LocalPlayer.cursorItemIconEnabled = true;
-            Main.LocalPlayer.cursorItemIconID = ModContent.ItemType<TemplePylon>();
+            Main.LocalPlayer.cursorItemIconID = ModContent.ItemType<AetherPylon>();
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

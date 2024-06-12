@@ -37,6 +37,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             {
                 if (player.GetModPlayer<QoLCPlayer>().bossToSpawn != 0 && player.GetModPlayer<QoLCPlayer>().bossSpawn)
                 {
+                    if (player.GetModPlayer<QoLCPlayer>().bossToSpawn == NPCID.WallofFlesh)
+                    {
+                        NPC.SpawnWOF(player.Center);
+                        SoundEngine.PlaySound(SoundID.Roar, player.position);
+                        return true;
+                    }
                     if (player.GetModPlayer<QoLCPlayer>().bossToSpawn == NPCID.Retinazer)
                     {
                         NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.Spazmatism);

@@ -1,7 +1,5 @@
 ﻿using Terraria.GameInput;
 using Terraria.ModLoader.Config;
-using Terraria.ID;
-using Terraria;
 
 namespace QoLCompendium.Core
 {
@@ -126,6 +124,7 @@ namespace QoLCompendium.Core
     {
         public static ModKeybind GoHome { get; private set; }
         public static ModKeybind AutoRecall { get; private set; }
+        public static ModKeybind Dash { get; private set; }
         public static ModKeybind AddTileToWhitelist { get; private set; }
         public static ModKeybind RemoveTileFromWhitelist { get; private set; }
 
@@ -133,16 +132,69 @@ namespace QoLCompendium.Core
         {
             GoHome = KeybindLoader.RegisterKeybind(Mod, "HomeBind", "I");
             AutoRecall = KeybindLoader.RegisterKeybind(Mod, "RecallBind", "K");
+            Dash = KeybindLoader.RegisterKeybind(Mod, "DashBind", "C");
             AddTileToWhitelist = KeybindLoader.RegisterKeybind(Mod, "WhitelistTileBind", "O");
             RemoveTileFromWhitelist = KeybindLoader.RegisterKeybind(Mod, "RemoveWhitelistedTileBind", "P");
+
+            On_Player.DoCommonDashHandle += OnVanillaDash;
         }
 
         public override void Unload()
         {
             GoHome = null;
             AutoRecall = null;
+            Dash = null;
             AddTileToWhitelist = null;
             RemoveTileFromWhitelist = null;
+
+            On_Player.DoCommonDashHandle -= OnVanillaDash;
+        }
+
+        private static void OnVanillaDash(On_Player.orig_DoCommonDashHandle orig, Player player, out int dir, out bool dashing, Player.DashStartAction dashStartAction)
+        {
+            if (QoLCompendium.mainConfig.DisableDashing)
+            {
+                player.dashTime = 0;
+            }
+            orig.Invoke(player, out dir, out dashing, dashStartAction);
+            if (player.whoAmI == Main.myPlayer && Dash.JustPressed && !player.CCed)
+            {
+                DashPlayer modPlayer = player.GetModPlayer<DashPlayer>();
+                if (player.controlRight && player.controlLeft)
+                {
+                    dir = modPlayer.latestXDirPressed;
+                }
+                else if (player.controlRight)
+                {
+                    dir = 1;
+                }
+                else if (player.controlLeft)
+                {
+                    dir = -1;
+                }
+                if (dir == 0)
+                    return;
+                player.direction = dir;
+                dashing = true;
+                if (player.dashTime > 0)
+                {
+                    player.dashTime--;
+                }
+                if (player.dashTime < 0)
+                {
+                    player.dashTime++;
+                }
+                if ((player.dashTime <= 0 && player.direction == -1) || (player.dashTime >= 0 && player.direction == 1))
+                {
+                    player.dashTime = 15;
+                    return;
+                }
+                dashing = true;
+                player.dashTime = 0;
+                player.timeSinceLastDashStarted = 0;
+                if (dashStartAction != null)
+                    dashStartAction?.Invoke(dir);
+            }
         }
     }
 }

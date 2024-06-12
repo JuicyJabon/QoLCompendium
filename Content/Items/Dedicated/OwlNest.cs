@@ -36,6 +36,15 @@ namespace QoLCompendium.Content.Items.Dedicated
             return true;
         }
 
+        public override bool CanUseItem(Player player)
+        {
+            if (player.HasBuff(ModContent.BuffType<OwlBuff>()))
+            {
+                return false;
+            }
+            return base.CanUseItem(player);
+        }
+
         public override void AddRecipes()
         {
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type);

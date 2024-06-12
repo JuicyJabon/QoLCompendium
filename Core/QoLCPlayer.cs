@@ -27,6 +27,8 @@ namespace QoLCompendium.Core
 
         public bool sillySlapper = false;
 
+        public bool HasGoldenLockpick = false;
+
         public int selectedBiome = 0;
 
         public int selectedSpawnModifier = 5;
@@ -39,6 +41,16 @@ namespace QoLCompendium.Core
         public bool bossSpawn = false;
         public int eventToSpawn = 0;
         public bool eventSpawn = false;
+
+        public override void Load()
+        {
+            On_ItemSlot.RightClick_ItemArray_int_int += ItemSlot_RightClick;
+        }
+
+        public override void Unload()
+        {
+            On_ItemSlot.RightClick_ItemArray_int_int -= ItemSlot_RightClick;
+        }
 
         public override void ResetEffects()
         {
@@ -121,6 +133,28 @@ namespace QoLCompendium.Core
             }
         }
 
+        private static void ItemSlot_RightClick(On_ItemSlot.orig_RightClick_ItemArray_int_int orig, Item[] inv, int context, int slot)
+        {
+            if (Main.mouseRight && Main.mouseRightRelease)
+            {
+                var player = Main.LocalPlayer;
+                player.TryGetModPlayer(out QoLCPlayer qPlayer);
+                if (Main.mouseItem.ModItem is Common.IRightClickOverrideWhenHeld rightClickOverride && rightClickOverride.RightClickOverrideWhileHeld(ref Main.mouseItem, inv, context, slot, player, qPlayer))
+                {
+                    return;
+                }
+
+                if (context == ItemSlot.Context.InventoryItem)
+                {
+                    if (GoldenLockpick.UseKey(inv, slot, player, qPlayer))
+                    {
+                        return;
+                    }
+                }
+            }
+            orig(inv, context, slot);
+        }
+
         public void Reset()
         {
             sunPedestal = false;
@@ -132,6 +166,7 @@ namespace QoLCompendium.Core
             enemyCalmer = false;
             enemyEraser = false;
             sillySlapper = false;
+            HasGoldenLockpick = false;
 
             if (Main.netMode != NetmodeID.Server)
             {
