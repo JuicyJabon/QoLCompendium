@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Core;
 using QoLCompendium.Core.UI;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
@@ -14,14 +15,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         {
             Item.width = 7;
             Item.height = 15;
-            Item.maxStack = 1;
-            Item.consumable = false;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.rare = ItemRarityID.Orange;
-            Item.UseSound = new SoundStyle?(SoundID.MenuTick);
+            Item.UseSound = SoundID.MenuOpen;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.value = Item.sellPrice(silver: 90);
+
+            Item.SetShopValues(ItemRarityColor.Orange3, Item.buyPrice(0, 0, 90, 0));
         }
 
         public override void AddRecipes()

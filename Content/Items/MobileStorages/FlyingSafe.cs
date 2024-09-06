@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Content.Projectiles.MobileStorages;
 using QoLCompendium.Core;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.MobileStorages
 {
@@ -13,7 +14,9 @@ namespace QoLCompendium.Content.Items.MobileStorages
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.MoneyTrough);
-            Item.shoot = ModContent.ProjectileType<FlyingSafeProj>();
+            Item.shoot = ModContent.ProjectileType<FlyingSafeProjectile>();
+
+            Item.SetShopValues(ItemRarityColor.Orange3, Item.buyPrice(0, 2, 0, 0));
         }
 
         public override void AddRecipes()

@@ -82,15 +82,6 @@ namespace QoLCompendium.Core
             }
         }
 
-        public override void PreUpdateBuffs()
-        {
-            if (Player.HeldItem.type == ModContent.ItemType<SillySlapper>())
-            {
-                Player.GetDamage(DamageClass.Generic) *= 2;
-                sillySlapper = true;
-            }
-        }
-
         public override void PostUpdate()
         {
             if (ModConditions.reforgedLoaded && ModAccessorySlot.Player.equippedWings.social != true)
@@ -167,6 +158,7 @@ namespace QoLCompendium.Core
             enemyEraser = false;
             sillySlapper = false;
             HasGoldenLockpick = false;
+            PlayerHelper.SetLocalQoLCPlayer(this);
 
             if (Main.netMode != NetmodeID.Server)
             {

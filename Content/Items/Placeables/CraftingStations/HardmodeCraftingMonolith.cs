@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Content.Tiles.CraftingStations;
 using QoLCompendium.Core;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 {
@@ -12,32 +13,22 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 
         public override void SetDefaults()
         {
-            Item.width = 10;
-            Item.height = 16;
-            Item.maxStack = Item.CommonMaxStack;
-            Item.useTurn = true;
-            Item.autoReuse = true;
-            Item.useAnimation = 15;
-            Item.useTime = 10;
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.consumable = true;
-            Item.value = Item.buyPrice(gold: 30);
-            Item.createTile = ModContent.TileType<HardmodeCraftingMonolithTile>();
+            Item.DefaultToPlaceableTile(ModContent.TileType<HardmodeMonolithTile>());
+            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 10, 0, 0));
         }
 
         public override void AddRecipes()
         {
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type);
-            r.AddRecipeGroup(nameof(ItemID.MythrilAnvil));
-            r.AddRecipeGroup(nameof(ItemID.AdamantiteForge));
-            r.AddRecipeGroup(nameof(ItemID.Bookcase));
+            r.AddRecipeGroup("QoLCompendium:HardmodeAnvils");
+            r.AddRecipeGroup("QoLCompendium:HardmodeForges");
+            r.AddRecipeGroup("QoLCompendium:Bookcases");
             r.AddIngredient(ItemID.CrystalBall);
             r.AddIngredient(ItemID.FleshCloningVaat);
             r.AddIngredient(ItemID.LesionStation);
             r.AddIngredient(ItemID.SteampunkBoiler);
             r.AddIngredient(ItemID.BlendOMatic);
             r.AddIngredient(ItemID.MeatGrinder);
-            r.AddTile(TileID.Anvils);
             r.Register();
         }
     }

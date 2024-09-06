@@ -17,7 +17,7 @@
 
         public override bool IsEnabled()
         {
-            if (QoLCompendium.mainConfig.WingSlot) return true;
+            if (QoLCompendium.mainServerConfig.WingSlot) return true;
             return false;
         }
         public override bool IsVisibleWhenNotEnabled()

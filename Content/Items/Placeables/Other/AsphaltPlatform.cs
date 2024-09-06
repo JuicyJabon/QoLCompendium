@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Content.Tiles.Other;
 using QoLCompendium.Core;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.Other
 {
@@ -11,16 +12,8 @@ namespace QoLCompendium.Content.Items.Placeables.Other
         }
         public override void SetDefaults()
         {
-            Item.width = 12;
-            Item.height = 12;
-            Item.maxStack = 9999;
-            Item.useTurn = true;
-            Item.useTime = 10;
-            Item.useAnimation = 15;
-            Item.autoReuse = true;
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.consumable = true;
-            Item.createTile = ModContent.TileType<AsphaltPlatformTile>();
+            Item.DefaultToPlaceableTile(ModContent.TileType<AsphaltPlatformTile>());
+            Item.SetShopValues(ItemRarityColor.White0, Item.buyPrice(0, 0, 0, 0));
 
         }
 

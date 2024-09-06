@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
@@ -19,9 +20,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         {
             Item.width = 15;
             Item.height = 12;
-            Item.maxStack = 1;
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Item.sellPrice(gold: 4);
+            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 20, 0));
         }
 
         public override void SaveData(TagCompound tag)
@@ -42,11 +41,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void RightClick(Player player)
         {
-            if (Main.mouseItem.buffType > 0 && Main.mouseItem.stack >= QoLCompendium.mainConfig.EndlessBuffAmount && !BuffIDList.Contains(Main.mouseItem.buffType) && !ItemIDList.Contains(Main.mouseItem.type))
+            if (Main.mouseItem.buffType > 0 && Main.mouseItem.stack >= QoLCompendium.mainServerConfig.EndlessBuffAmount && !BuffIDList.Contains(Main.mouseItem.buffType) && !ItemIDList.Contains(Main.mouseItem.type))
             {
                 BuffIDList.Add(Main.mouseItem.buffType);
                 ItemIDList.Add(Main.mouseItem.type);
-                Main.mouseItem.stack -= QoLCompendium.mainConfig.EndlessBuffAmount;
+                Main.mouseItem.stack -= QoLCompendium.mainServerConfig.EndlessBuffAmount;
                 if (Main.mouseItem.stack == 0)
                 {
                     Main.mouseItem.TurnToAir();
@@ -57,7 +56,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                 if (BuffIDList.Count == 0 && ItemIDList.Count == 0) return;
                 if (BuffIDList.Count > 0 && ItemIDList.Count > 0)
                 {
-                    Item.NewItem(Item.GetSource_FromThis(), player.position, ItemIDList.Last(), QoLCompendium.mainConfig.EndlessBuffAmount);
+                    Item.NewItem(Item.GetSource_FromThis(), player.position, ItemIDList.Last(), QoLCompendium.mainServerConfig.EndlessBuffAmount);
                     BuffIDList.RemoveAt(BuffIDList.Count - 1);
                     ItemIDList.RemoveAt(ItemIDList.Count - 1);
                 }

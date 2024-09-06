@@ -15,7 +15,7 @@ namespace QoLCompendium.Core.UI
             ShopPanel.Left.Set(575f, 0f);
             ShopPanel.Top.Set(300f, 0f);
             ShopPanel.Width.Set(385f, 0f);
-            ShopPanel.Height.Set(310f, 0f);
+            ShopPanel.Height.Set(340f, 0f);
             ShopPanel.BackgroundColor = new Color(73, 94, 171);
 
             ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
@@ -35,58 +35,65 @@ namespace QoLCompendium.Core.UI
             stationText.Height.Set(22, 0f);
             ShopPanel.Append(stationText);
 
-            UIText materialText = new("Modded Materials");
+            UIText materialText = new("Modded Materials (Mods: A-M)");
             materialText.Left.Set(35, 0f);
             materialText.Top.Set(70, 0f);
             materialText.Width.Set(60, 0f);
             materialText.Height.Set(22, 0f);
             ShopPanel.Append(materialText);
 
+            UIText material2Text = new("Modded Materials (Mods: N-Z)");
+            material2Text.Left.Set(35, 0f);
+            material2Text.Top.Set(100, 0f);
+            material2Text.Width.Set(60, 0f);
+            material2Text.Height.Set(22, 0f);
+            ShopPanel.Append(material2Text);
+
             UIText bagText = new("Modded Treasure Bags");
             bagText.Left.Set(35, 0f);
-            bagText.Top.Set(100, 0f);
+            bagText.Top.Set(130, 0f);
             bagText.Width.Set(60, 0f);
             bagText.Height.Set(22, 0f);
             ShopPanel.Append(bagText);
 
             UIText crateText = new("Modded Crates & Grab Bags");
             crateText.Left.Set(35, 0f);
-            crateText.Top.Set(130, 0f);
+            crateText.Top.Set(160, 0f);
             crateText.Width.Set(60, 0f);
             crateText.Height.Set(22, 0f);
             ShopPanel.Append(crateText);
 
             UIText oreText = new("Modded Ores & Bars");
             oreText.Left.Set(35, 0f);
-            oreText.Top.Set(160, 0f);
+            oreText.Top.Set(190, 0f);
             oreText.Width.Set(60, 0f);
             oreText.Height.Set(22, 0f);
             ShopPanel.Append(oreText);
 
             UIText naturalText = new("Modded Natural Blocks");
             naturalText.Left.Set(35, 0f);
-            naturalText.Top.Set(190, 0f);
+            naturalText.Top.Set(220, 0f);
             naturalText.Width.Set(60, 0f);
             naturalText.Height.Set(22, 0f);
             ShopPanel.Append(naturalText);
 
             UIText buildingText = new("Modded Building Blocks");
             buildingText.Left.Set(35, 0f);
-            buildingText.Top.Set(220, 0f);
+            buildingText.Top.Set(250, 0f);
             buildingText.Width.Set(60, 0f);
             buildingText.Height.Set(22, 0f);
             ShopPanel.Append(buildingText);
 
             UIText herbText = new("Modded Herbs & Plants");
             herbText.Left.Set(35, 0f);
-            herbText.Top.Set(250, 0f);
+            herbText.Top.Set(280, 0f);
             herbText.Width.Set(60, 0f);
             herbText.Height.Set(22, 0f);
             ShopPanel.Append(herbText);
 
             UIText fishText = new("Modded Fish & Fishing Gear");
             fishText.Left.Set(35, 0f);
-            fishText.Top.Set(280, 0f);
+            fishText.Top.Set(310, 0f);
             fishText.Width.Set(60, 0f);
             fishText.Height.Set(22, 0f);
             ShopPanel.Append(fishText);
@@ -130,13 +137,25 @@ namespace QoLCompendium.Core.UI
             materialButton.OnLeftClick += new MouseEvent(MaterialShopClicked);
             ShopPanel.Append(materialButton);
 
+            UIImageButton material2Button = new(buttonPlayTexture);
+            if (QoLCompendium.shopConfig.ECMaterialShop == false)
+            {
+                material2Button = new(buttonDeleteTexture);
+            }
+            material2Button.Left.Set(10, 0f);
+            material2Button.Top.Set(100, 0f);
+            material2Button.Width.Set(22, 0f);
+            material2Button.Height.Set(22, 0f);
+            material2Button.OnLeftClick += new MouseEvent(Material2ShopClicked);
+            ShopPanel.Append(material2Button);
+
             UIImageButton bagButton = new(buttonPlayTexture);
             if (QoLCompendium.shopConfig.ECBagShop == false)
             {
                 bagButton = new(buttonDeleteTexture);
             }
             bagButton.Left.Set(10, 0f);
-            bagButton.Top.Set(100, 0f);
+            bagButton.Top.Set(130, 0f);
             bagButton.Width.Set(22, 0f);
             bagButton.Height.Set(22, 0f);
             bagButton.OnLeftClick += new MouseEvent(BagShopClicked);
@@ -148,7 +167,7 @@ namespace QoLCompendium.Core.UI
                 crateButton = new(buttonDeleteTexture);
             }
             crateButton.Left.Set(10, 0f);
-            crateButton.Top.Set(130, 0f);
+            crateButton.Top.Set(160, 0f);
             crateButton.Width.Set(22, 0f);
             crateButton.Height.Set(22, 0f);
             crateButton.OnLeftClick += new MouseEvent(CrateShopClicked);
@@ -160,7 +179,7 @@ namespace QoLCompendium.Core.UI
                 oreButton = new(buttonDeleteTexture);
             }
             oreButton.Left.Set(10, 0f);
-            oreButton.Top.Set(160, 0f);
+            oreButton.Top.Set(190, 0f);
             oreButton.Width.Set(22, 0f);
             oreButton.Height.Set(22, 0f);
             oreButton.OnLeftClick += new MouseEvent(OreShopClicked);
@@ -172,7 +191,7 @@ namespace QoLCompendium.Core.UI
                 naturalButton = new(buttonDeleteTexture);
             }
             naturalButton.Left.Set(10, 0f);
-            naturalButton.Top.Set(190, 0f);
+            naturalButton.Top.Set(220, 0f);
             naturalButton.Width.Set(22, 0f);
             naturalButton.Height.Set(22, 0f);
             naturalButton.OnLeftClick += new MouseEvent(NaturalShopClicked);
@@ -184,7 +203,7 @@ namespace QoLCompendium.Core.UI
                 buildingButton = new(buttonDeleteTexture);
             }
             buildingButton.Left.Set(10, 0f);
-            buildingButton.Top.Set(220, 0f);
+            buildingButton.Top.Set(250, 0f);
             buildingButton.Width.Set(22, 0f);
             buildingButton.Height.Set(22, 0f);
             buildingButton.OnLeftClick += new MouseEvent(BuildingShopClicked);
@@ -196,7 +215,7 @@ namespace QoLCompendium.Core.UI
                 herbButton = new(buttonDeleteTexture);
             }
             herbButton.Left.Set(10, 0f);
-            herbButton.Top.Set(250, 0f);
+            herbButton.Top.Set(280, 0f);
             herbButton.Width.Set(22, 0f);
             herbButton.Height.Set(22, 0f);
             herbButton.OnLeftClick += new MouseEvent(HerbShopClicked);
@@ -208,7 +227,7 @@ namespace QoLCompendium.Core.UI
                 fishButton = new(buttonDeleteTexture);
             }
             fishButton.Left.Set(10, 0f);
-            fishButton.Top.Set(280, 0f);
+            fishButton.Top.Set(310, 0f);
             fishButton.Width.Set(22, 0f);
             fishButton.Height.Set(22, 0f);
             fishButton.OnLeftClick += new MouseEvent(FishShopClicked);
@@ -250,12 +269,21 @@ namespace QoLCompendium.Core.UI
                 visible = false;
             }
         }
+        
+        private void Material2ShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECMaterialShop)
+            {
+                EtherealCollectorNPC.shopNum = 3;
+                visible = false;
+            }
+        }
 
         private void BagShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECBagShop)
             {
-                EtherealCollectorNPC.shopNum = 3;
+                EtherealCollectorNPC.shopNum = 4;
                 visible = false;
             }
         }
@@ -264,7 +292,7 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECCrateShop)
             {
-                EtherealCollectorNPC.shopNum = 4;
+                EtherealCollectorNPC.shopNum = 5;
                 visible = false;
             }
         }
@@ -273,7 +301,7 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECOreShop)
             {
-                EtherealCollectorNPC.shopNum = 5;
+                EtherealCollectorNPC.shopNum = 6;
                 visible = false;
             }
         }
@@ -282,7 +310,7 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECNaturalBlocksShop)
             {
-                EtherealCollectorNPC.shopNum = 6;
+                EtherealCollectorNPC.shopNum = 7;
                 visible = false;
             }
         }
@@ -291,7 +319,7 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECBuildingBlocksShop)
             {
-                EtherealCollectorNPC.shopNum = 7;
+                EtherealCollectorNPC.shopNum = 8;
                 visible = false;
             }
         }
@@ -300,7 +328,7 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECHerbShop)
             {
-                EtherealCollectorNPC.shopNum = 8;
+                EtherealCollectorNPC.shopNum = 9;
                 visible = false;
             }
         }
@@ -309,7 +337,7 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECFishShop)
             {
-                EtherealCollectorNPC.shopNum = 9;
+                EtherealCollectorNPC.shopNum = 10;
                 visible = false;
             }
         }

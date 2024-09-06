@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 {
@@ -6,7 +7,6 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
     {
         public override void SetDefaults()
         {
-            base.SetDefaults();
             Item.notAmmo = false;
             Item.useStyle = ItemUseStyleID.None;
             Item.useTime = 0;
@@ -73,9 +73,28 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
             public override int AmmunitionItem => ItemID.ExplosiveJackOLantern;
         }
 
-        public class EndlessGelBottle : BaseAmmo
+        public class EndlessGelBottle : ModItem
         {
-            public override int AmmunitionItem => ItemID.Gel;
+            public override void SetStaticDefaults()
+            {
+                Item.ResearchUnlockCount = 1;
+            }
+
+            public override void SetDefaults()
+            {
+                Item.ammo = AmmoID.Gel;
+                Item.knockBack = 0.5f;
+                Item.DamageType = DamageClass.Ranged;
+                Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 0, 0));
+            }
+
+            public override void AddRecipes()
+            {
+                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type);
+                r.AddIngredient(ItemID.Gel, 3996);
+                r.AddTile(TileID.CrystalBall);
+                r.Register();
+            }
         }
         
         public class EndlessNailPouch : BaseAmmo
@@ -101,6 +120,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
                 Item.useAnimation = 0;
                 Item.createTile = -1;
                 Item.shoot = ProjectileID.None;
+                Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 0, 0));
             }
 
             public override void AddRecipes()
@@ -129,6 +149,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
                 Item.useAnimation = 0;
                 Item.useTime = 0;
                 Item.useStyle = ItemUseStyleID.None;
+                Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 0, 0));
             }
 
             public override void AddRecipes()
@@ -144,9 +165,27 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
         {
             public override int AmmunitionItem => ItemID.Stake;
         }
-        public class EndlessStarPouch : BaseAmmo
+        public class EndlessStarPouch : ModItem
         {
-            public override int AmmunitionItem => ItemID.FallenStar;
+            public override void SetStaticDefaults()
+            {
+                Item.ResearchUnlockCount = 1;
+            }
+
+            public override void SetDefaults()
+            {
+                Item.ammo = AmmoID.FallenStar;
+                Item.DamageType = DamageClass.Ranged;
+                Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 0, 0));
+            }
+
+            public override void AddRecipes()
+            {
+                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type);
+                r.AddIngredient(ItemID.FallenStar, 3996);
+                r.AddTile(TileID.CrystalBall);
+                r.Register();
+            }
         }
         public class EndlessStyngerBoltQuiver : BaseAmmo
         {

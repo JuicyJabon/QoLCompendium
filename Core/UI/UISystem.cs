@@ -6,8 +6,8 @@
         private UserInterface bmInterface;
         internal ECNPCUI ecShopUI;
         private UserInterface ecInterface;
-        internal WorldGlobeUI worldGlobeUI;
-        private UserInterface worldGlobeInterface;
+        internal DestinationGlobeUI destinationGlobeUI;
+        private UserInterface destinationGlobeInterface;
         internal EntityManipulatorUI entityManipulatorUI;
         private UserInterface entityManipulatorInterface;
         internal MoonChangeUI moonChangeUI;
@@ -29,10 +29,10 @@
                 ecInterface = new UserInterface();
                 ecInterface.SetState(ecShopUI);
 
-                worldGlobeUI = new WorldGlobeUI();
-                worldGlobeUI.Activate();
-                worldGlobeInterface = new UserInterface();
-                worldGlobeInterface.SetState(worldGlobeUI);
+                destinationGlobeUI = new DestinationGlobeUI();
+                destinationGlobeUI.Activate();
+                destinationGlobeInterface = new UserInterface();
+                destinationGlobeInterface.SetState(destinationGlobeUI);
 
                 entityManipulatorUI = new EntityManipulatorUI();
                 entityManipulatorUI.Activate();
@@ -90,9 +90,9 @@
                     "QoLC: Globe Selector",
                     delegate
                     {
-                        if (WorldGlobeUI.visible)
+                        if (DestinationGlobeUI.visible)
                         {
-                            worldGlobeUI.Draw(Main.spriteBatch);
+                            destinationGlobeUI.Draw(Main.spriteBatch);
                         }
                         return true;
                     },
@@ -158,9 +158,9 @@
                 ecInterface.Update(gameTime);
             }
 
-            if (worldGlobeInterface != null && WorldGlobeUI.visible)
+            if (destinationGlobeInterface != null && DestinationGlobeUI.visible)
             {
-                worldGlobeInterface.Update(gameTime);
+                destinationGlobeInterface.Update(gameTime);
             }
 
             if (entityManipulatorInterface != null && EntityManipulatorUI.visible)

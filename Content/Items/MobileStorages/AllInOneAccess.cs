@@ -1,6 +1,7 @@
 ﻿using QoLCompendium.Content.Projectiles.MobileStorages;
 using QoLCompendium.Core;
 using Terraria.DataStructures;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.MobileStorages
 {
@@ -17,7 +18,9 @@ namespace QoLCompendium.Content.Items.MobileStorages
             Item.CloneDefaults(ItemID.MoneyTrough);
             Item.width = 16;
             Item.height = 22;
-            Item.shoot = ModContent.ProjectileType<FlyingSafeProj>();
+            Item.shoot = ModContent.ProjectileType<FlyingSafeProjectile>();
+
+            Item.SetShopValues(ItemRarityColor.LightRed4, Item.buyPrice(0, 6, 0, 0));
         }
 
         public override void UpdateInventory(Player player)
@@ -27,9 +30,9 @@ namespace QoLCompendium.Content.Items.MobileStorages
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo s, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
         {
-            Projectile.NewProjectile(player.GetSource_ItemUse(Item, "AllInOneAccessUsed"), player.Center.X - 48f, player.Center.Y - 24f, 0f, 0f, ModContent.ProjectileType<EtherianConstructProj>(), 0, 0f, player.whoAmI, 0f, 0f, 0f);
+            Projectile.NewProjectile(player.GetSource_ItemUse(Item, "AllInOneAccessUsed"), player.Center.X - 48f, player.Center.Y - 24f, 0f, 0f, ModContent.ProjectileType<EtherianConstructProjectile>(), 0, 0f, player.whoAmI, 0f, 0f, 0f);
             Projectile.NewProjectile(player.GetSource_ItemUse(Item, "AllInOneAccessUsed"), player.Center.X + 96f, player.Center.Y - 24f, 0f, 0f, 525, 0, 0f, player.whoAmI, 0f, 0f, 0f);
-            Projectile.NewProjectile(player.GetSource_ItemUse(Item, "AllInOneAccessUsed"), player.Center.X + 48f, player.Center.Y - 24f, 0f, 0f, ModContent.ProjectileType<FlyingSafeProj>(), 0, 0f, player.whoAmI, 0f, 0f, 0f);
+            Projectile.NewProjectile(player.GetSource_ItemUse(Item, "AllInOneAccessUsed"), player.Center.X + 48f, player.Center.Y - 24f, 0f, 0f, ModContent.ProjectileType<FlyingSafeProjectile>(), 0, 0f, player.whoAmI, 0f, 0f, 0f);
             Projectile.NewProjectile(player.GetSource_ItemUse(Item, "AllInOneAccessUsed"), player.Center.X - 96f, player.Center.Y - 24f, 0f, 0f, 734, 0, 0f, player.whoAmI, 0f, 0f, 0f);
             return false;
         }

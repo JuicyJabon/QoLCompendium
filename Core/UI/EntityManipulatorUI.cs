@@ -12,109 +12,109 @@ namespace QoLCompendium.Core.UI
         {
             ManipulatorPanel = new UIPanel();
             ManipulatorPanel.SetPadding(0);
-            ManipulatorPanel.Left.Set(575f, 0f);
-            ManipulatorPanel.Top.Set(275f, 0f);
+            ManipulatorPanel.Left.Set(Main.screenWidth / 2, 0f);
+            ManipulatorPanel.Top.Set(200f, 0f);
             ManipulatorPanel.Width.Set(290f, 0f);
             ManipulatorPanel.Height.Set(250f, 0f);
-            ManipulatorPanel.BackgroundColor = new Color(73, 94, 171);
+            ManipulatorPanel.BackgroundColor = new Color(99, 25, 25);
 
             ManipulatorPanel.OnLeftMouseDown += new MouseEvent(DragStart);
             ManipulatorPanel.OnLeftMouseUp += new MouseEvent(DragEnd);
 
-            UIText text0 = new("Increase Spawns");
-            text0.Left.Set(45, 0f);
-            text0.Top.Set(16, 0f);
-            text0.Width.Set(100, 0f);
-            text0.Height.Set(26, 0f);
-            ManipulatorPanel.Append(text0);
+            UIText increaseSpawnsText = new("Increase Spawns");
+            increaseSpawnsText.Left.Set(45, 0f);
+            increaseSpawnsText.Top.Set(16, 0f);
+            increaseSpawnsText.Width.Set(100, 0f);
+            increaseSpawnsText.Height.Set(26, 0f);
+            ManipulatorPanel.Append(increaseSpawnsText);
 
-            UIText text1 = new("Decrease Spawns");
-            text1.Left.Set(45, 0f);
-            text1.Top.Set(56, 0f);
-            text1.Width.Set(50, 0f);
-            text1.Height.Set(26, 0f);
-            ManipulatorPanel.Append(text1);
+            UIText decreaseSpawnsText = new("Decrease Spawns");
+            decreaseSpawnsText.Left.Set(45, 0f);
+            decreaseSpawnsText.Top.Set(56, 0f);
+            decreaseSpawnsText.Width.Set(50, 0f);
+            decreaseSpawnsText.Height.Set(26, 0f);
+            ManipulatorPanel.Append(decreaseSpawnsText);
 
-            UIText text2 = new("Cancel Spawns");
-            text2.Left.Set(45, 0f);
-            text2.Top.Set(96, 0f);
-            text2.Width.Set(40, 0f);
-            text2.Height.Set(26, 0f);
-            ManipulatorPanel.Append(text2);
+            UIText cancelSpawnsText = new("Cancel Spawns");
+            cancelSpawnsText.Left.Set(45, 0f);
+            cancelSpawnsText.Top.Set(96, 0f);
+            cancelSpawnsText.Width.Set(40, 0f);
+            cancelSpawnsText.Height.Set(26, 0f);
+            ManipulatorPanel.Append(cancelSpawnsText);
 
-            UIText text3 = new("Cancel Events");
-            text3.Left.Set(45, 0f);
-            text3.Top.Set(136, 0f);
-            text3.Width.Set(40, 0f);
-            text3.Height.Set(26, 0f);
-            ManipulatorPanel.Append(text3);
+            UIText cancelEventsText = new("Cancel Events");
+            cancelEventsText.Left.Set(45, 0f);
+            cancelEventsText.Top.Set(136, 0f);
+            cancelEventsText.Width.Set(40, 0f);
+            cancelEventsText.Height.Set(26, 0f);
+            ManipulatorPanel.Append(cancelEventsText);
 
-            UIText text4 = new("Cancel Events & Spawns");
-            text4.Left.Set(45, 0f);
-            text4.Top.Set(176, 0f);
-            text4.Width.Set(40, 0f);
-            text4.Height.Set(26, 0f);
-            ManipulatorPanel.Append(text4);
+            UIText cancelSpawnsAndEventsText = new("Cancel Events & Spawns");
+            cancelSpawnsAndEventsText.Left.Set(45, 0f);
+            cancelSpawnsAndEventsText.Top.Set(176, 0f);
+            cancelSpawnsAndEventsText.Width.Set(40, 0f);
+            cancelSpawnsAndEventsText.Height.Set(26, 0f);
+            ManipulatorPanel.Append(cancelSpawnsAndEventsText);
 
-            UIText text5 = new("Revert Changes");
-            text5.Left.Set(45, 0f);
-            text5.Top.Set(216, 0f);
-            text5.Width.Set(40, 0f);
-            text5.Height.Set(26, 0f);
-            ManipulatorPanel.Append(text5);
+            UIText revertText = new("Revert Changes");
+            revertText.Left.Set(45, 0f);
+            revertText.Top.Set(216, 0f);
+            revertText.Width.Set(40, 0f);
+            revertText.Height.Set(26, 0f);
+            ManipulatorPanel.Append(revertText);
 
             Asset<Texture2D> decreaseTexture = Request<Texture2D>("QoLCompendium/Assets/UI/Decrease");
             Asset<Texture2D> increaseTexture = Request<Texture2D>("QoLCompendium/Assets/UI/Increase");
             Asset<Texture2D> cancelTexture = Request<Texture2D>("QoLCompendium/Assets/UI/Cancel");
             Asset<Texture2D> buttonDeleteTexture = Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
 
-            UIImageButton playButton0 = new(increaseTexture);
-            playButton0.Left.Set(10, 0f);
-            playButton0.Top.Set(10, 0f);
-            playButton0.Width.Set(32, 0f);
-            playButton0.Height.Set(32, 0f);
-            playButton0.OnLeftClick += new MouseEvent(PlayButtonClicked0);
-            ManipulatorPanel.Append(playButton0);
+            UIImageButton increaseSpawnsButton = new(increaseTexture);
+            increaseSpawnsButton.Left.Set(10, 0f);
+            increaseSpawnsButton.Top.Set(10, 0f);
+            increaseSpawnsButton.Width.Set(32, 0f);
+            increaseSpawnsButton.Height.Set(32, 0f);
+            increaseSpawnsButton.OnLeftClick += new MouseEvent(IncreaseSpawnsButtonClicked);
+            ManipulatorPanel.Append(increaseSpawnsButton);
 
-            UIImageButton playButton1 = new(decreaseTexture);
-            playButton1.Left.Set(10, 0f);
-            playButton1.Top.Set(50, 0f);
-            playButton1.Width.Set(32, 0f);
-            playButton1.Height.Set(32, 0f);
-            playButton1.OnLeftClick += new MouseEvent(PlayButtonClicked1);
-            ManipulatorPanel.Append(playButton1);
+            UIImageButton decreaseSpawnsButton = new(decreaseTexture);
+            decreaseSpawnsButton.Left.Set(10, 0f);
+            decreaseSpawnsButton.Top.Set(50, 0f);
+            decreaseSpawnsButton.Width.Set(32, 0f);
+            decreaseSpawnsButton.Height.Set(32, 0f);
+            decreaseSpawnsButton.OnLeftClick += new MouseEvent(DecreaseSpawnsButtonClicked);
+            ManipulatorPanel.Append(decreaseSpawnsButton);
 
-            UIImageButton playButton2 = new(cancelTexture);
-            playButton2.Left.Set(10, 0f);
-            playButton2.Top.Set(90, 0f);
-            playButton2.Width.Set(32, 0f);
-            playButton2.Height.Set(32, 0f);
-            playButton2.OnLeftClick += new MouseEvent(PlayButtonClicked2);
-            ManipulatorPanel.Append(playButton2);
+            UIImageButton cancelSpawnsButton = new(cancelTexture);
+            cancelSpawnsButton.Left.Set(10, 0f);
+            cancelSpawnsButton.Top.Set(90, 0f);
+            cancelSpawnsButton.Width.Set(32, 0f);
+            cancelSpawnsButton.Height.Set(32, 0f);
+            cancelSpawnsButton.OnLeftClick += new MouseEvent(CancelSpawnsButtonClicked);
+            ManipulatorPanel.Append(cancelSpawnsButton);
 
-            UIImageButton playButton3 = new(cancelTexture);
-            playButton3.Left.Set(10, 0f);
-            playButton3.Top.Set(130, 0f);
-            playButton3.Width.Set(32, 0f);
-            playButton3.Height.Set(32, 0f);
-            playButton3.OnLeftClick += new MouseEvent(PlayButtonClicked3);
-            ManipulatorPanel.Append(playButton3);
+            UIImageButton cancelEventsButton = new(cancelTexture);
+            cancelEventsButton.Left.Set(10, 0f);
+            cancelEventsButton.Top.Set(130, 0f);
+            cancelEventsButton.Width.Set(32, 0f);
+            cancelEventsButton.Height.Set(32, 0f);
+            cancelEventsButton.OnLeftClick += new MouseEvent(CancelEventsButtonClicked);
+            ManipulatorPanel.Append(cancelEventsButton);
 
-            UIImageButton playButton4 = new(cancelTexture);
-            playButton4.Left.Set(10, 0f);
-            playButton4.Top.Set(170, 0f);
-            playButton4.Width.Set(32, 0f);
-            playButton4.Height.Set(32, 0f);
-            playButton4.OnLeftClick += new MouseEvent(PlayButtonClicked4);
-            ManipulatorPanel.Append(playButton4);
+            UIImageButton cancelSpawnsAndEventsButton = new(cancelTexture);
+            cancelSpawnsAndEventsButton.Left.Set(10, 0f);
+            cancelSpawnsAndEventsButton.Top.Set(170, 0f);
+            cancelSpawnsAndEventsButton.Width.Set(32, 0f);
+            cancelSpawnsAndEventsButton.Height.Set(32, 0f);
+            cancelSpawnsAndEventsButton.OnLeftClick += new MouseEvent(CancelSpawnsAndEventsButtonClicked);
+            ManipulatorPanel.Append(cancelSpawnsAndEventsButton);
 
-            UIImageButton playButton5 = new(cancelTexture);
-            playButton5.Left.Set(10, 0f);
-            playButton5.Top.Set(210, 0f);
-            playButton5.Width.Set(32, 0f);
-            playButton5.Height.Set(32, 0f);
-            playButton5.OnLeftClick += new MouseEvent(PlayButtonClicked5);
-            ManipulatorPanel.Append(playButton5);
+            UIImageButton revertButton = new(decreaseTexture);
+            revertButton.Left.Set(10, 0f);
+            revertButton.Top.Set(210, 0f);
+            revertButton.Width.Set(32, 0f);
+            revertButton.Height.Set(32, 0f);
+            revertButton.OnLeftClick += new MouseEvent(RevertButtonClicked);
+            ManipulatorPanel.Append(revertButton);
 
             UIImageButton closeButton = new(buttonDeleteTexture);
             closeButton.Left.Set(260, 0f);
@@ -126,62 +126,62 @@ namespace QoLCompendium.Core.UI
             Append(ManipulatorPanel);
         }
 
-        private void PlayButtonClicked0(UIMouseEvent evt, UIElement listeningElement)
+        private void IncreaseSpawnsButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = 0;
+                p.GetQoLCPlayer().selectedSpawnModifier = 0;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked1(UIMouseEvent evt, UIElement listeningElement)
+        private void DecreaseSpawnsButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = 1;
+                p.GetQoLCPlayer().selectedSpawnModifier = 1;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked2(UIMouseEvent evt, UIElement listeningElement)
+        private void CancelSpawnsButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = 2;
+                p.GetQoLCPlayer().selectedSpawnModifier = 2;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked3(UIMouseEvent evt, UIElement listeningElement)
+        private void CancelEventsButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = 3;
+                p.GetQoLCPlayer().selectedSpawnModifier = 3;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked4(UIMouseEvent evt, UIElement listeningElement)
+        private void CancelSpawnsAndEventsButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = 4;
+                p.GetQoLCPlayer().selectedSpawnModifier = 4;
                 visible = false;
             }
         }
 
-        private void PlayButtonClicked5(UIMouseEvent evt, UIElement listeningElement)
+        private void RevertButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
                 Player p = Main.LocalPlayer;
-                p.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = 5;
+                p.GetQoLCPlayer().selectedSpawnModifier = 5;
                 visible = false;
             }
         }

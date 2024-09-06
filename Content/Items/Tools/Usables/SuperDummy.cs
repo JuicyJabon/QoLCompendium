@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
@@ -16,8 +17,8 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.useTime = 15;
             Item.useAnimation = 15;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTurn = true;
-            Item.rare = ItemRarityID.Blue;
+
+            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 0, 0));
         }
 
         public override bool AltFunctionUse(Player player)

@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Mirrors
 {
@@ -12,7 +13,7 @@ namespace QoLCompendium.Content.Items.Mirrors
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.MagicMirror);
-            Item.rare = ItemRarityID.Orange;
+            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 2, 0, 0));
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)

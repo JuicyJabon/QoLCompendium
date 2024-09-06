@@ -11,9 +11,9 @@
     <None Remove="Content\Projectiles\SkybridgerProj.png" />
   </ItemGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Assets\Bosses\" />
     <Folder Include="Assets\Minibosses\" />
+    <Folder Include="Assets\Highlights\" />
+    <Folder Include="Assets\InfoDisplayIcons\" />
   </ItemGroup>
 </Project>

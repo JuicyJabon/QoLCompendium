@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Core;
 using QoLCompendium.Core.UI;
+using Terraria.Enums;
 using Terraria.GameContent.Events;
 
 namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
@@ -18,11 +19,11 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
             Item.maxStack = 1;
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.rare = ItemRarityID.Green;
-            Item.UseSound = new SoundStyle?(SoundID.MenuTick);
+            Item.UseSound = SoundID.MenuOpen;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.value = Item.sellPrice(silver: 50);
+
+            Item.SetShopValues(ItemRarityColor.Green2, Item.buyPrice(0, 5, 0, 0));
         }
 
         public override bool? UseItem(Player player)
@@ -48,22 +49,22 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
         {
             if (Item.favorited)
             {
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 0)
+                if (player.GetQoLCPlayer().selectedSpawnModifier == 0)
                 {
-                    player.GetModPlayer<QoLCPlayer>().enemyAggressor = true;
+                    player.GetQoLCPlayer().enemyAggressor = true;
                 }
 
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 1)
+                if (player.GetQoLCPlayer().selectedSpawnModifier == 1)
                 {
-                    player.GetModPlayer<QoLCPlayer>().enemyCalmer = true;
+                    player.GetQoLCPlayer().enemyCalmer = true;
                 }
 
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 2)
+                if (player.GetQoLCPlayer().selectedSpawnModifier == 2)
                 {
-                    player.GetModPlayer<QoLCPlayer>().enemyEraser = true;
+                    player.GetQoLCPlayer().enemyEraser = true;
                 }
 
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 3)
+                if (player.GetQoLCPlayer().selectedSpawnModifier == 3)
                 {
                     if (Main.invasionType != 0)
                     {
@@ -137,9 +138,9 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
                     }
                 }
 
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 4)
+                if (player.GetQoLCPlayer().selectedSpawnModifier == 4)
                 {
-                    player.GetModPlayer<QoLCPlayer>().enemyEraser = true;
+                    player.GetQoLCPlayer().enemyEraser = true;
                     if (Main.invasionType != 0)
                     {
                         Main.invasionType = 0;

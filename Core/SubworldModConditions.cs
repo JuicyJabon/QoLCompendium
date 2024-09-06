@@ -2,7 +2,7 @@
 {
     public static class SubworldModConditions
     {
-        internal static bool downedBereftVassal;
+        public static bool downedBereftVassal;
     }
 
     public class SubworldModConditionsPlayer : ModPlayer

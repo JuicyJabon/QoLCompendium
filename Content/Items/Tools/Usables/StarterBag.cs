@@ -1,4 +1,6 @@
-﻿namespace QoLCompendium.Content.Items.Tools.Usables
+﻿using Terraria.Enums;
+
+namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class StarterBag : ModItem
     {
@@ -15,9 +17,7 @@
         {
             Item.width = 15;
             Item.height = 12;
-            Item.maxStack = 1;
-            Item.consumable = false;
-            Item.rare = ItemRarityID.White;
+            Item.SetShopValues(ItemRarityColor.White0, Item.buyPrice(0, 0, 0, 0));
         }
 
         public override bool CanRightClick()

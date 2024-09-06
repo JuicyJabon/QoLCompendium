@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Core;
 using QoLCompendium.Core.UI;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.InformationAccessories
 {
@@ -15,9 +16,9 @@ namespace QoLCompendium.Content.Items.InformationAccessories
             Item.width = 18;
             Item.height = 12;
             Item.maxStack = 1;
-            Item.rare = ItemRarityID.Orange;
             Item.accessory = true;
-            Item.value = Item.sellPrice(gold: 6);
+
+            Item.SetShopValues(ItemRarityColor.Orange3, Item.buyPrice(0, 6, 0, 0));
         }
 
         public override void AddRecipes()
@@ -32,16 +33,16 @@ namespace QoLCompendium.Content.Items.InformationAccessories
 
         public override void UpdateInfoAccessory(Player player)
         {
-            player.GetModPlayer<InfoPlayer>().battalionLog = true;
-            player.GetModPlayer<InfoPlayer>().headCounter = true;
-            player.GetModPlayer<InfoPlayer>().trackingDevice = true;
+            player.GetInfoPlayer().battalionLog = true;
+            player.GetInfoPlayer().headCounter = true;
+            player.GetInfoPlayer().trackingDevice = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<InfoPlayer>().battalionLog = true;
-            player.GetModPlayer<InfoPlayer>().headCounter = true;
-            player.GetModPlayer<InfoPlayer>().trackingDevice = true;
+            player.GetInfoPlayer().battalionLog = true;
+            player.GetInfoPlayer().headCounter = true;
+            player.GetInfoPlayer().trackingDevice = true;
         }
     }
 }

@@ -1,3 +1,4 @@
+using QoLCompendium.Core.Changes;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Core
@@ -73,6 +74,11 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToDungeon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToDungeon"), () => beenToDungeon);
         public static bool beenToAether;
         public static Condition HasBeenToAether = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAether"), () => beenToAether);
+        //OTHER
+        public static bool talkedToSkeletonMerchant;
+        public static Condition HasTalkedToSkeletonMerchant = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.talkedToSkeletonMerchant"), () => talkedToSkeletonMerchant);
+        public static bool talkedToTravelingMerchant;
+        public static Condition HasTalkedToTravelingMerchant = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.talkedToTravelingMerchant"), () => talkedToTravelingMerchant);
 
 
         //AEQUUS
@@ -445,6 +451,11 @@ namespace QoLCompendium.Core
         public static Condition DownedGoblinSorcererChieftain = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGoblinSorcererChieftain"), () => downedGoblinSorcererChieftain);
 
 
+        //DRAEDON EXPANSION
+        public static bool draedonExpansionLoaded;
+        public static Mod draedonExpansionMod;
+
+
         //DBZMOD
         public static bool dragonBallTerrariaLoaded;
         public static Mod dragonBallTerrariaMod;
@@ -483,6 +494,14 @@ namespace QoLCompendium.Core
         public static Mod enchantedMoonsMod;
 
 
+        //EVERJADE
+        public static bool everjadeLoaded;
+        public static Mod everjadeMod;
+        //BIOMES
+        public static bool beenToJadeLake;
+        public static Condition HasBeenToJadeLake = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToJadeLake"), () => beenToJadeLake);
+
+
         //EXALT
         public static bool exaltLoaded;
         public static Mod exaltMod;
@@ -491,6 +510,7 @@ namespace QoLCompendium.Core
         public static Condition DownedEffulgence = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEffulgence"), () => downedEffulgence);
         public static bool downedIceLich;
         public static Condition DownedIceLich = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedIceLich"), () => downedIceLich);
+
 
         //EXCELSIOR
         public static bool excelsiorLoaded;
@@ -551,6 +571,11 @@ namespace QoLCompendium.Core
         //FARGOS SOULS DLC
         public static bool fargosSoulsDLCLoaded;
         public static Mod fargosSoulsDLCMod;
+
+
+        //FARGOS SOULS EXTRAS
+        public static bool fargosSoulsExtrasLoaded;
+        public static Mod fargosSoulsExtrasMod;
 
 
         //FRACTURES OF PENUMBRA
@@ -722,6 +747,11 @@ namespace QoLCompendium.Core
         //BIOMES
         public static bool beenToProfanedGardens;
         public static Condition HasBeenToProfanedGardens = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToProfanedGardens"), () => beenToProfanedGardens);
+
+
+        //LUIAFK
+        public static bool luiAFKLoaded;
+        public static Mod luiAFKMod;
 
 
         //LUNAR VEIL
@@ -986,7 +1016,7 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToWasteland = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToWasteland"), () => beenToWasteland);
 
 
-        //REFORGED
+        //REFORGED - DURABILITY MOD
         public static bool reforgedLoaded;
         public static Mod reforgedMod;
 
@@ -1052,6 +1082,39 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToPyramid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToPyramid"), () => beenToPyramid);
         public static bool beenToPlanetarium;
         public static Condition HasBeenToPlanetarium = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToPlanetarium"), () => beenToPlanetarium);
+
+
+        //SHADOWS OF ABADDON
+        public static bool shadowsOfAbaddonLoaded;
+        public static Mod shadowsOfAbaddonMod;
+        //BOSSES
+        public static bool downedDecree;
+        public static Condition DownedDecree = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDecree"), () => downedDecree);
+        public static bool downedFlamingPumpkin;
+        public static Condition DownedFlamingPumpkin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFlamingPumpkin"), () => downedFlamingPumpkin);
+        public static bool downedZombiePiglinBrute;
+        public static Condition DownedZombiePiglinBrute = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedZombiePiglinBrute"), () => downedZombiePiglinBrute);
+        public static bool downedJensenTheGrandHarpy;
+        public static Condition DownedJensenTheGrandHarpy = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedJensenTheGrandHarpy"), () => downedJensenTheGrandHarpy);
+        public static bool downedAraneas;
+        public static Condition DownedAraneas = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAraneas"), () => downedAraneas);
+        public static bool downedHarpyQueenRaynare;
+        public static Condition DownedHarpyQueenRaynare = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHarpyQueenRaynare"), () => downedHarpyQueenRaynare);
+        public static bool downedPrimordia;
+        public static Condition DownedPrimordia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPrimordia"), () => downedPrimordia);
+        public static bool downedAbaddon;
+        public static Condition DownedAbaddon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAbaddon"), () => downedAbaddon);
+        public static bool downedAraghur;
+        public static Condition DownedAraghur = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAraghur"), () => downedAraghur);
+        public static bool downedLostSiblings;
+        public static Condition DownedLostSiblings = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLostSiblings"), () => downedLostSiblings);
+        public static bool downedErazor;
+        public static Condition DownedErazor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedErazor"), () => downedErazor);
+        public static bool downedNihilus;
+        public static Condition DownedNihilus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNihilus"), () => downedNihilus);
+        //BIOMES
+        public static bool beenToCinderForest;
+        public static Condition HasBeenToCinderForest = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToCinderForest"), () => beenToCinderForest);
 
 
         //SLOOME
@@ -1187,6 +1250,11 @@ namespace QoLCompendium.Core
         public static Condition DownedOverloadedScandrone = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOverloadedScandrone"), () => downedOverloadedScandrone);
         public static bool downedPainbringer;
         public static Condition DownedPainbringer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPainbringer"), () => downedPainbringer);
+
+
+        //STRAMS CLASSES
+        public static bool stramsClassesLoaded;
+        public static Mod stramsClassesMod;
 
 
         //SUPERNOVA
@@ -1335,6 +1403,33 @@ namespace QoLCompendium.Core
         //BOSSES
         public static bool downedManaflora;
         public static Condition DownedManaflora = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedManaflora"), () => downedManaflora);
+
+
+        //WRATH OF THE GODS
+        public static bool wrathOfTheGodsLoaded;
+        public static Mod wrathOfTheGodsMod;
+        //BOSSES
+        public static bool downedNoxus;
+        public static Condition DownedNoxus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNoxus"), () => downedNoxus);
+        public static bool downedNamelessDeityOfLight;
+        public static Condition DownedNamelessDeityOfLight = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNamelessDeityOfLight"), () => downedNamelessDeityOfLight);
+
+
+        //ZYLON
+        public static bool zylonLoaded;
+        public static Mod zylonMod;
+        //BOSSES
+        public static bool downedDirtball;
+        public static Condition DownedDirtball = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDirtball"), () => downedDirtball);
+        public static bool downedMetelord;
+        public static Condition DownedMetelord = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMetelord"), () => downedMetelord);
+        public static bool downedAdeneb;
+        public static Condition DownedAdeneb = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAdeneb"), () => downedAdeneb);
+        public static bool downedEldritchJellyfish;
+        public static Condition DownedEldritchJellyfish = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEldritchJellyfish"), () => downedEldritchJellyfish);
+        public static bool downedSaburRex;
+        public static Condition DownedSaburRex = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSaburRex"), () => downedSaburRex);
+
 
         public enum Downed
         {
@@ -1612,6 +1707,19 @@ namespace QoLCompendium.Core
             downedEvilSpirit,
             downedInfernoSpirit,
             downedChaosSpirit,
+            //shadows of abaddon
+            downedDecree,
+            downedFlamingPumpkin,
+            downedZombiePiglinBrute,
+            downedJensenTheGrandHarpy,
+            downedAraneas,
+            downedHarpyQueenRaynare,
+            downedPrimordia,
+            downedAbaddon,
+            downedAraghur,
+            downedLostSiblings,
+            downedErazor,
+            downedNihilus,
             //sloome
             downedExodygen,
             //spirit
@@ -1686,7 +1794,16 @@ namespace QoLCompendium.Core
             downedChaosbringer,
             downedPaladinSpirit,
             //wayfair
-            downedManaflora
+            downedManaflora,
+            //wrath of the gods
+            downedNoxus,
+            downedNamelessDeityOfLight,
+            //zylon
+            downedDirtball,
+            downedMetelord,
+            downedAdeneb,
+            downedEldritchJellyfish,
+            downedSaburRex
         }
 
         public static bool[] downedBoss = new bool[Enum.GetValues(typeof(Downed)).Length];
@@ -1808,6 +1925,10 @@ namespace QoLCompendium.Core
             {
                 dormantDawnMod = null;
             }
+            if (!draedonExpansionLoaded)
+            {
+                draedonExpansionMod = null;
+            }
             if (!dragonBallTerrariaLoaded)
             {
                 dragonBallTerrariaMod = null;
@@ -1823,6 +1944,10 @@ namespace QoLCompendium.Core
             if (!enchantedMoonsLoaded)
             {
                 enchantedMoonsMod = null;
+            }
+            if (!everjadeLoaded)
+            {
+                everjadeMod = null;
             }
             if (!exaltLoaded)
             {
@@ -1847,6 +1972,10 @@ namespace QoLCompendium.Core
             if (!fargosSoulsDLCLoaded)
             {
                 fargosSoulsDLCMod = null;
+            }
+            if (!fargosSoulsExtrasLoaded)
+            {
+                fargosSoulsExtrasMod = null;
             }
             if (!fracturesOfPenumbraLoaded)
             {
@@ -1883,6 +2012,10 @@ namespace QoLCompendium.Core
             if (!infernumLoaded)
             {
                 infernumMod = null;
+            }
+            if (!luiAFKLoaded)
+            {
+                luiAFKMod = null;
             }
             if (!lunarVeilLoaded)
             {
@@ -1940,6 +2073,10 @@ namespace QoLCompendium.Core
             {
                 secretsOfTheShadowsMod = null;
             }
+            if (!shadowsOfAbaddonLoaded)
+            {
+                shadowsOfAbaddonMod = null;
+            }
             if (!sloomeLoaded)
             {
                 sloomeMod = null;
@@ -1963,6 +2100,10 @@ namespace QoLCompendium.Core
             if (!stormsAdditionsLoaded)
             {
                 stormsAdditionsMod = null;
+            }
+            if (!stramsClassesLoaded)
+            {
+                stramsClassesMod = null;
             }
             if (!supernovaLoaded)
             {
@@ -2003,6 +2144,14 @@ namespace QoLCompendium.Core
             if (!wayfairContentLoaded)
             {
                 wayfairContentMod = null;
+            }
+            if (!wrathOfTheGodsLoaded)
+            {
+                wrathOfTheGodsMod = null;
+            }
+            if (!zylonLoaded)
+            {
+                zylonMod = null;
             }
         }
 
@@ -2116,6 +2265,10 @@ namespace QoLCompendium.Core
             {
                 dormantDawnMod = null;
             }
+            if (!draedonExpansionLoaded)
+            {
+                draedonExpansionMod = null;
+            }
             if (!dragonBallTerrariaLoaded)
             {
                 dragonBallTerrariaMod = null;
@@ -2131,6 +2284,10 @@ namespace QoLCompendium.Core
             if (!enchantedMoonsLoaded)
             {
                 enchantedMoonsMod = null;
+            }
+            if (!everjadeLoaded)
+            {
+                everjadeMod = null;
             }
             if (!exaltLoaded)
             {
@@ -2155,6 +2312,10 @@ namespace QoLCompendium.Core
             if (!fargosSoulsDLCLoaded)
             {
                 fargosSoulsDLCMod = null;
+            }
+            if (!fargosSoulsExtrasLoaded)
+            {
+                fargosSoulsExtrasMod = null;
             }
             if (!fracturesOfPenumbraLoaded)
             {
@@ -2191,6 +2352,10 @@ namespace QoLCompendium.Core
             if (!infernumLoaded)
             {
                 infernumMod = null;
+            }
+            if (!luiAFKLoaded)
+            {
+                luiAFKMod = null;
             }
             if (!lunarVeilLoaded)
             {
@@ -2248,6 +2413,10 @@ namespace QoLCompendium.Core
             {
                 secretsOfTheShadowsMod = null;
             }
+            if (!shadowsOfAbaddonLoaded)
+            {
+                shadowsOfAbaddonMod = null;
+            }
             if (!sloomeLoaded)
             {
                 sloomeMod = null;
@@ -2271,6 +2440,10 @@ namespace QoLCompendium.Core
             if (!stormsAdditionsLoaded)
             {
                 stormsAdditionsMod = null;
+            }
+            if (!stramsClassesLoaded)
+            {
+                stramsClassesMod = null;
             }
             if (!supernovaLoaded)
             {
@@ -2311,6 +2484,14 @@ namespace QoLCompendium.Core
             if (!wayfairContentLoaded)
             {
                 wayfairContentMod = null;
+            }
+            if (!wrathOfTheGodsLoaded)
+            {
+                wrathOfTheGodsMod = null;
+            }
+            if (!zylonLoaded)
+            {
+                zylonMod = null;
             }
         }
 
@@ -2397,6 +2578,9 @@ namespace QoLCompendium.Core
             dormantDawnLoaded = ModLoader.TryGetMod("DDmod", out Mod DDmod);
             dormantDawnMod = DDmod;
 
+            draedonExpansionLoaded = ModLoader.TryGetMod("DraedonExpansion", out Mod DraedonExpansion);
+            draedonExpansionMod = DraedonExpansion;
+
             dragonBallTerrariaLoaded = ModLoader.TryGetMod("DBZMODPORT", out Mod DBZMODPORT);
             dragonBallTerrariaMod = DBZMODPORT;
 
@@ -2408,6 +2592,9 @@ namespace QoLCompendium.Core
 
             enchantedMoonsLoaded = ModLoader.TryGetMod("BlueMoon", out Mod BlueMoon);
             enchantedMoonsMod = BlueMoon;
+
+            everjadeLoaded = ModLoader.TryGetMod("JadeFables", out Mod JadeFables);
+            everjadeMod = JadeFables;
 
             exaltLoaded = ModLoader.TryGetMod("ExaltMod", out Mod ExaltMod);
             exaltMod = ExaltMod;
@@ -2423,9 +2610,12 @@ namespace QoLCompendium.Core
 
             fargosSoulsLoaded = ModLoader.TryGetMod("FargowiltasSouls", out Mod FargowiltasSouls);
             fargosSoulsMod = FargowiltasSouls;
+            
+            fargosSoulsDLCLoaded = ModLoader.TryGetMod("FargowiltasCrossmod", out Mod FargowiltasCrossmod);
+            fargosSoulsDLCMod = FargowiltasCrossmod;
 
-            fargosSoulsDLCLoaded = ModLoader.TryGetMod("FargowiltasSoulsDLC", out Mod FargowiltasSoulsDLC);
-            fargosSoulsDLCMod = FargowiltasSoulsDLC;
+            fargosSoulsExtrasLoaded = ModLoader.TryGetMod("FargowiltasSoulsDLC", out Mod FargowiltasSoulsDLC);
+            fargosSoulsExtrasMod = FargowiltasSoulsDLC;
 
             fracturesOfPenumbraLoaded = ModLoader.TryGetMod("FPenumbra", out Mod FPenumbra);
             fracturesOfPenumbraMod = FPenumbra;
@@ -2453,6 +2643,9 @@ namespace QoLCompendium.Core
 
             infernumLoaded = ModLoader.TryGetMod("InfernumMode", out Mod InfernumMode);
             infernumMod = InfernumMode;
+
+            luiAFKLoaded = ModLoader.TryGetMod("miningcracks_take_on_luiafk", out Mod miningcracks_take_on_luiafk);
+            luiAFKMod = miningcracks_take_on_luiafk;
 
             lunarVeilLoaded = ModLoader.TryGetMod("Stellamod", out Mod Stellamod);
             lunarVeilMod = Stellamod;
@@ -2496,6 +2689,9 @@ namespace QoLCompendium.Core
             secretsOfTheShadowsLoaded = ModLoader.TryGetMod("SOTS", out Mod SOTS);
             secretsOfTheShadowsMod = SOTS;
 
+            shadowsOfAbaddonLoaded = ModLoader.TryGetMod("SacredTools", out Mod SacredTools);
+            shadowsOfAbaddonMod = SacredTools;
+
             sloomeLoaded = ModLoader.TryGetMod("Bloopsitems", out Mod Bloopsitems);
             sloomeMod = Bloopsitems;
 
@@ -2513,6 +2709,9 @@ namespace QoLCompendium.Core
 
             stormsAdditionsLoaded = ModLoader.TryGetMod("StormDiversMod", out Mod StormDiversMod);
             stormsAdditionsMod = StormDiversMod;
+
+            stramsClassesLoaded = ModLoader.TryGetMod("StramClasses", out Mod StramClasses);
+            stramsClassesMod = StramClasses;
 
             supernovaLoaded = ModLoader.TryGetMod("SupernovaMod", out Mod SupernovaMod);
             supernovaMod = SupernovaMod;
@@ -2544,14 +2743,13 @@ namespace QoLCompendium.Core
             wayfairContentLoaded = ModLoader.TryGetMod("WAYFAIRContent", out Mod WAYFAIRContent);
             wayfairContentMod = WAYFAIRContent;
 
-            BuffSystem.DoCalamityModIntegration();
-            BuffSystem.DoCalamityRemixModIntegration();
-            BuffSystem.DoThoriumIntegration();
-            BuffSystem.DoSpiritIntegration();
-            BuffSystem.DoRedemptionIntegration();
-            BuffSystem.DoSOTSIntegration();
-            BuffSystem.DoFargosIntegration();
-            BuffSystem.DoHomewardIntegration();
+            wrathOfTheGodsLoaded = ModLoader.TryGetMod("NoxusBoss", out Mod NoxusBoss);
+            wrathOfTheGodsMod = NoxusBoss;
+
+            zylonLoaded = ModLoader.TryGetMod("Zylon", out Mod Zylon);
+            zylonMod = Zylon;
+
+            BuffSystem.DoBuffIntegration();
         }
 
         public override void OnWorldLoad()
@@ -2566,7 +2764,7 @@ namespace QoLCompendium.Core
 
         public override void PostUpdateEverything()
         {
-            if (Main.netMode == NetmodeID.MultiplayerClient || Main.netMode == NetmodeID.Server || QoLCompendium.mainConfig.RemoveBiomeRequirements)
+            if (Main.netMode == NetmodeID.MultiplayerClient || Main.netMode == NetmodeID.Server || QoLCompendium.mainServerConfig.RemoveBiomeShopRequirements)
             {
                 //VANILLA
                 //EVENTS
@@ -2616,6 +2814,10 @@ namespace QoLCompendium.Core
                 //BIOMES
                 beenToDepths = true;
 
+                //EVERJADE
+                //BIOMES
+                beenToJadeLake = true;
+
                 //EXXO AVALON ORIGINS
                 //BIOMES
                 beenToContagion = true;
@@ -2656,6 +2858,10 @@ namespace QoLCompendium.Core
                 //BIOMES
                 beenToPyramid = true;
                 beenToPlanetarium = true;
+
+                //SHADOWS OF ABADDON
+                //BIOMES
+                beenToCinderForest = true;
 
                 //SPIRIT
                 //BIOMES
@@ -2714,6 +2920,9 @@ namespace QoLCompendium.Core
             tag.Add("beenToTemple", beenToTemple);
             tag.Add("beenToDungeon", beenToDungeon);
             tag.Add("beenToAether", beenToAether);
+            //OTHER
+            tag.Add("talkedToSkeletonMerchant", talkedToSkeletonMerchant);
+            tag.Add("talkedToTravelingMerchant", talkedToTravelingMerchant);
 
             //AEQUUS
             tag.Add("downedCrabson", downedCrabson);
@@ -2857,6 +3066,9 @@ namespace QoLCompendium.Core
             tag.Add("downedGalahis", downedGalahis);
             tag.Add("downedCreation", downedCreation);
             tag.Add("downedDestruction", downedDestruction);
+
+            //EVERJADE
+            tag.Add("beenToJadeLake", beenToJadeLake);
 
             //EXALT
             tag.Add("downedEffulgence", downedEffulgence);
@@ -3108,6 +3320,22 @@ namespace QoLCompendium.Core
             tag.Add("beenToPyramid", beenToPyramid);
             tag.Add("beenToPlanetarium", beenToPlanetarium);
 
+            //SHADOWS OF ABADDON
+            tag.Add("downedDecree", downedDecree);
+            tag.Add("downedFlamingPumpkin", downedFlamingPumpkin);
+            tag.Add("downedZombiePiglinBrute", downedZombiePiglinBrute);
+            tag.Add("downedJensenTheGrandHarpy", downedJensenTheGrandHarpy);
+            tag.Add("downedAraneas", downedAraneas);
+            tag.Add("downedHarpyQueenRaynare", downedHarpyQueenRaynare);
+            tag.Add("downedPrimordia", downedPrimordia);
+            tag.Add("downedAbaddon", downedAbaddon);
+            tag.Add("downedAraghur", downedAraghur);
+            tag.Add("downedLostSiblings", downedLostSiblings);
+            tag.Add("downedErazor", downedErazor);
+            tag.Add("downedNihilus", downedNihilus);
+            //BIOMES
+            tag.Add("beenToCinderForest", beenToCinderForest);
+
             //SLOOME
             tag.Add("downedExodygen", downedExodygen);
 
@@ -3234,6 +3462,17 @@ namespace QoLCompendium.Core
             //WAYFAIR
             tag.Add("downedManaflora", downedManaflora);
 
+            //WRATH OF THE GODS
+            tag.Add("downedNoxus", downedNoxus);
+            tag.Add("downedNamelessDeityOfLight", downedNamelessDeityOfLight);
+
+            //ZYLON
+            tag.Add("downedDirtball", downedDirtball);
+            tag.Add("downedMetelord", downedMetelord);
+            tag.Add("downedAdeneb", downedAdeneb);
+            tag.Add("downedEldritchJellyfish", downedEldritchJellyfish);
+            tag.Add("downedSaburRex", downedSaburRex);
+
 
             List<string> downed = new();
             for (int i = 0; i < DownedBoss.Length; i++)
@@ -3270,6 +3509,9 @@ namespace QoLCompendium.Core
             beenToTemple = tag.Get<bool>("beenToTemple");
             beenToDungeon = tag.Get<bool>("beenToDungeon");
             beenToAether = tag.Get<bool>("beenToAether");
+            //OTHER
+            talkedToSkeletonMerchant = tag.Get<bool>("talkedToSkeletonMerchant");
+            talkedToTravelingMerchant = tag.Get<bool>("talkedToTravelingMerchant");
 
             //AEQUUS
             downedCrabson = tag.Get<bool>("downedCrabson");
@@ -3411,6 +3653,9 @@ namespace QoLCompendium.Core
             downedGalahis = tag.Get<bool>("downedGalahis");
             downedCreation = tag.Get<bool>("downedCreation");
             downedDestruction = tag.Get<bool>("downedDestruction");
+
+            //EVERJADE
+            beenToJadeLake = tag.Get<bool>("beenToJadeLake");
 
             //EXALT
             downedEffulgence = tag.Get<bool>("downedEffulgence");
@@ -3662,6 +3907,22 @@ namespace QoLCompendium.Core
             beenToPyramid = tag.Get<bool>("beenToPyramid");
             beenToPlanetarium = tag.Get<bool>("beenToPlanetarium");
 
+            //SHADOWS OF ABADDON
+            downedDecree = tag.Get<bool>("downedDecree");
+            downedFlamingPumpkin = tag.Get<bool>("downedFlamingPumpkin");
+            downedZombiePiglinBrute = tag.Get<bool>("downedZombiePiglinBrute");
+            downedJensenTheGrandHarpy = tag.Get<bool>("downedJensenTheGrandHarpy");
+            downedAraneas = tag.Get<bool>("downedAraneas");
+            downedHarpyQueenRaynare = tag.Get<bool>("downedHarpyQueenRaynare");
+            downedPrimordia = tag.Get<bool>("downedPrimordia");
+            downedAbaddon = tag.Get<bool>("downedAbaddon");
+            downedAraghur = tag.Get<bool>("downedAraghur");
+            downedLostSiblings = tag.Get<bool>("downedLostSiblings");
+            downedErazor = tag.Get<bool>("downedErazor");
+            downedNihilus = tag.Get<bool>("downedNihilus");
+            //BIOMES
+            beenToCinderForest = tag.Get<bool>("beenToCinderForest");
+
             //SLOOME
             downedExodygen = tag.Get<bool>("downedExodygen");
 
@@ -3788,6 +4049,17 @@ namespace QoLCompendium.Core
             //WAYFAIR
             downedManaflora = tag.Get<bool>("downedManaflora");
 
+            //WRATH OF THE GODS
+            downedNoxus = tag.Get<bool>("downedNoxus");
+            downedNamelessDeityOfLight = tag.Get<bool>("downedNamelessDeityOfLight");
+
+            //ZYLON
+            downedDirtball = tag.Get<bool>("downedDirtball");
+            downedMetelord = tag.Get<bool>("downedMetelord");
+            downedAdeneb = tag.Get<bool>("downedAdeneb");
+            downedEldritchJellyfish = tag.Get<bool>("downedEldritchJellyfish");
+            downedSaburRex = tag.Get<bool>("downedSaburRex");
+
             IList<string> downed = tag.GetList<string>("downed");
             for (int i = 0; i < DownedBoss.Length; i++)
                 DownedBoss[i] = downed.Contains($"downedBoss{i}");
@@ -3896,16 +4168,17 @@ namespace QoLCompendium.Core
             if (aequusLoaded)
             {
                 #region Bosses & Events
-                downedCrabson = (bool)aequusMod.Call("downedCrabson", Mod);
-                downedOmegaStarite = (bool)aequusMod.Call("downedOmegaStarite", Mod);
-                downedDustDevil = (bool)aequusMod.Call("downedDustDevil", Mod);
-                downedRedSprite = (bool)aequusMod.Call("downedRedSprite", Mod);
-                downedSpaceSquid = (bool)aequusMod.Call("downedSpaceSquid", Mod);
-                downedHyperStarite = (bool)aequusMod.Call("downedHyperStarite", Mod);
-                downedUltraStarite = (bool)aequusMod.Call("downedUltraStarite", Mod);
-                downedDemonSiege = (bool)aequusMod.Call("downedEventDemon", Mod);
-                downedGlimmer = (bool)aequusMod.Call("downedEventCosmic", Mod);
-                downedGaleStreams = (bool)aequusMod.Call("downedEventAtmosphere", Mod);
+                downedCrabson = (bool)aequusMod.Call("downedCrabson");
+                downedOmegaStarite = (bool)aequusMod.Call("downedOmegaStarite");
+                downedDustDevil = (bool)aequusMod.Call("downedDustDevil");
+                downedRedSprite = (bool)aequusMod.Call("downedRedSprite");
+                downedSpaceSquid = (bool)aequusMod.Call("downedSpaceSquid");
+                downedHyperStarite = (bool)aequusMod.Call("downedHyperStarite");
+                downedUltraStarite = (bool)aequusMod.Call("downedUltraStarite");
+                //Events
+                downedDemonSiege = (bool)aequusMod.Call("downedEventDemon");
+                downedGlimmer = (bool)aequusMod.Call("downedEventCosmic");
+                downedGaleStreams = (bool)aequusMod.Call("downedEventAtmosphere");
                 #endregion
 
                 #region Biomes
@@ -3919,166 +4192,44 @@ namespace QoLCompendium.Core
             if (calamityLoaded)
             {
                 #region Bosses & Events
-                downedDesertScourge = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "DesertScourge"
-                });
-                downedCrabulon = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "Crabulon"
-                });
-                downedHiveMind = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "HiveMind"
-                });
-                downedPerforators = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "Perforator"
-                });
-                downedSlimeGod = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "SlimeGod"
-                });
-                downedCryogen = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "Cryogen"
-                });
-                downedAquaticScourge = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "AquaticScourge"
-                });
-                downedBrimstoneElemental = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "BrimstoneElemental"
-                });
-                downedCalamitasClone = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "CalamitasClone"
-                });
-                downedLeviathanAndAnahita = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "AnahitaLeviathan"
-                });
-                downedAstrumAureus = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "AstrumAureus"
-                });
-                downedPlaguebringerGoliath = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "PlaguebringerGoliath"
-                });
-                downedRavager = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "Ravager"
-                });
-                downedAstrumDeus = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "AstrumDeus"
-                });
-                downedProfanedGuardians = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "Guardians"
-                });
-                downedDragonfolly = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "Dragonfolly"
-                });
-                downedProvidence = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "Providence"
-                });
-                downedStormWeaver = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "StormWeaver"
-                });
-                downedCeaselessVoid = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "CeaselessVoid"
-                });
-                downedSignus = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "Signus"
-                });
-                downedPolterghast = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "Polterghast"
-                });
-                downedOldDuke = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "OldDuke"
-                });
-                downedDevourerOfGods = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "DevourerOfGods"
-                });
-                downedYharon = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "Yharon"
-                });
-                downedExoMechs = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "ExoMechs"
-                });
-                downedSupremeCalamitas = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "SupremeCalamitas"
-                });
-                downedGiantClam = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "GiantClam"
-                });
-                downedGreatSandShark = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "GreatSandShark"
-                });
-                downedEidolonWyrm = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "primordialwyrm"
-                });
-                downedAcidRain1 = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "acidraineoc"
-                });
-                downedAcidRain2 = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "acidrainscourge"
-                });
-                downedBossRush = (bool)calamityMod.Call(new object[]
-                {
-                    "GetBossDowned",
-                    "bossrush"
-                });
+                //Bosses
+                downedDesertScourge = (bool)calamityMod.Call("GetBossDowned", "DesertScourge");
+                downedCrabulon = (bool)calamityMod.Call("GetBossDowned", "Crabulon");
+                downedHiveMind = (bool)calamityMod.Call("GetBossDowned", "HiveMind");
+                downedPerforators = (bool)calamityMod.Call("GetBossDowned", "Perforator");
+                downedSlimeGod = (bool)calamityMod.Call("GetBossDowned", "SlimeGod");
+                downedCryogen = (bool)calamityMod.Call("GetBossDowned", "Cryogen");
+                downedAquaticScourge = (bool)calamityMod.Call("GetBossDowned", "AquaticScourge");
+                downedBrimstoneElemental = (bool)calamityMod.Call("GetBossDowned", "BrimstoneElemental");
+                downedCalamitasClone = (bool)calamityMod.Call("GetBossDowned", "CalamitasClone");
+                downedLeviathanAndAnahita = (bool)calamityMod.Call("GetBossDowned", "AnahitaLeviathan");
+                downedAstrumAureus = (bool)calamityMod.Call("GetBossDowned", "AstrumAureus");
+                downedPlaguebringerGoliath = (bool)calamityMod.Call("GetBossDowned", "PlaguebringerGoliath");
+                downedRavager = (bool)calamityMod.Call("GetBossDowned", "Ravager");
+                downedAstrumDeus = (bool)calamityMod.Call("GetBossDowned", "AstrumDeus");
+                downedProfanedGuardians = (bool)calamityMod.Call("GetBossDowned", "Guardians");
+                downedDragonfolly = (bool)calamityMod.Call("GetBossDowned", "Dragonfolly");
+                downedProvidence = (bool)calamityMod.Call("GetBossDowned", "Providence");
+                downedStormWeaver = (bool)calamityMod.Call("GetBossDowned", "StormWeaver");
+                downedCeaselessVoid = (bool)calamityMod.Call("GetBossDowned", "CeaselessVoid");
+                downedSignus = (bool)calamityMod.Call("GetBossDowned", "Signus");
+                downedPolterghast = (bool)calamityMod.Call("GetBossDowned", "Polterghast");
+                downedOldDuke = (bool)calamityMod.Call("GetBossDowned", "OldDuke");
+                downedDevourerOfGods = (bool)calamityMod.Call("GetBossDowned", "DevourerOfGods");
+                downedYharon = (bool)calamityMod.Call("GetBossDowned", "Yharon");
+                downedExoMechs = (bool)calamityMod.Call("GetBossDowned", "ExoMechs");
+                downedSupremeCalamitas = (bool)calamityMod.Call("GetBossDowned", "SupremeCalamitas");
+                //Minibosses
+                downedGiantClam = (bool)calamityMod.Call("GetBossDowned", "GiantClam");
+                downedCragmawMire = (bool)calamityMod.Call("GetBossDowned", "cragmawmire");
+                downedGreatSandShark = (bool)calamityMod.Call("GetBossDowned", "GreatSandShark");
+                downedMauler = (bool)calamityMod.Call("GetBossDowned", "mauler");
+                downedNuclearTerror = (bool)calamityMod.Call("GetBossDowned", "nuclearterror");
+                downedEidolonWyrm = (bool)calamityMod.Call("GetBossDowned", "primordialwyrm");
+                //Events
+                downedAcidRain1 = (bool)calamityMod.Call("GetBossDowned", "acidraineoc");
+                downedAcidRain2 = (bool)calamityMod.Call("GetBossDowned", "acidrainscourge");
+                downedBossRush = (bool)calamityMod.Call("GetBossDowned", "bossrush");
                 #endregion
 
                 #region Biomes
@@ -4153,6 +4304,14 @@ namespace QoLCompendium.Core
                 {
                     beenToDepths = true;
                     beenToUnderworld = true;
+                }
+            }
+
+            if (everjadeLoaded)
+            {
+                if (everjadeMod.TryFind("JadeLakeBiome", out ModBiome JadeLakeBiome) && Main.LocalPlayer.InModBiome(JadeLakeBiome))
+                {
+                    beenToJadeLake = true;
                 }
             }
 
@@ -4263,6 +4422,14 @@ namespace QoLCompendium.Core
                 if (secretsOfTheShadowsMod.TryFind("PlanetariumBiome", out ModBiome PlanetariumBiome) && Main.LocalPlayer.InModBiome(PlanetariumBiome))
                 {
                     beenToPlanetarium = true;
+                }
+            }
+
+            if (shadowsOfAbaddonLoaded)
+            {
+                if ((shadowsOfAbaddonMod.TryFind("CinderDesertBiome", out ModBiome CinderDesertBiome) && Main.LocalPlayer.InModBiome(CinderDesertBiome)) || (shadowsOfAbaddonMod.TryFind("CinderForestBiome", out ModBiome CinderForestBiome) && Main.LocalPlayer.InModBiome(CinderForestBiome)) || (shadowsOfAbaddonMod.TryFind("CinderForestUndergroundBiome", out ModBiome CinderForestUndergroundBiome) && Main.LocalPlayer.InModBiome(CinderForestUndergroundBiome)))
+                {
+                    beenToCinderForest = true;
                 }
             }
 
@@ -4438,6 +4605,12 @@ namespace QoLCompendium.Core
                     beenToVerdant = true;
                 }
             }
+
+            if (wrathOfTheGodsLoaded)
+            {
+                downedNoxus = (bool)wrathOfTheGodsMod.Call("GetBossDefeated", "noxus");
+                downedNamelessDeityOfLight = (bool)wrathOfTheGodsMod.Call("GetBossDefeated", "namelessdeity");
+            }
         }
 
         public static void Resetdowned()
@@ -4467,6 +4640,9 @@ namespace QoLCompendium.Core
             beenToTemple = false;
             beenToDungeon = false;
             beenToAether = false;
+            //OTHER
+            talkedToSkeletonMerchant = false;
+            talkedToTravelingMerchant = false;
 
             //AEQUUS
             downedCrabson = false;
@@ -4617,6 +4793,9 @@ namespace QoLCompendium.Core
             downedGlaciation = false;
             downedHandOfCthulhu = false;
             downedCursePreacher = false;
+
+            //EVERJADE
+            beenToJadeLake = false;
 
             //EXALT
             downedEffulgence = false;
@@ -4866,6 +5045,22 @@ namespace QoLCompendium.Core
             beenToPyramid = false;
             beenToPlanetarium = false;
 
+            //SHADOWS OF ABADDON
+            downedDecree = false;
+            downedFlamingPumpkin = false;
+            downedZombiePiglinBrute = false;
+            downedJensenTheGrandHarpy = false;
+            downedAraneas = false;
+            downedHarpyQueenRaynare = false;
+            downedPrimordia = false;
+            downedAbaddon = false;
+            downedAraghur = false;
+            downedLostSiblings = false;
+            downedErazor = false;
+            downedNihilus = false;
+            //BIOMES
+            beenToCinderForest = false;
+
             //SLOOME
             downedExodygen = false;
 
@@ -4994,6 +5189,17 @@ namespace QoLCompendium.Core
 
             //WAYFAIR
             downedManaflora = false;
+
+            //WRATH OF THE GODS
+            downedNoxus = false;
+            downedNamelessDeityOfLight = false;
+
+            //ZYLON
+            downedDirtball = false;
+            downedMetelord = false;
+            downedAdeneb = false;
+            downedEldritchJellyfish = false;
+            downedSaburRex = false;
 
             for (int i = 0; i < DownedBoss.Length; i++)
                 DownedBoss[i] = false;
@@ -5459,6 +5665,26 @@ namespace QoLCompendium.Core
                 [6] = downedChaosSpirit
             });
 
+            //shadows of abaddon
+            writer.Write(new BitsByte
+            {
+                [0] = downedDecree,
+                [1] = downedFlamingPumpkin,
+                [2] = downedZombiePiglinBrute,
+                [3] = downedJensenTheGrandHarpy,
+                [4] = downedAraneas,
+                [5] = downedHarpyQueenRaynare,
+                [6] = downedPrimordia,
+                [7] = downedAbaddon
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = downedAraghur,
+                [1] = downedLostSiblings,
+                [2] = downedErazor,
+                [3] = downedNihilus
+            });
+
             //sloome
             writer.Write(new BitsByte
             {
@@ -5597,6 +5823,23 @@ namespace QoLCompendium.Core
             writer.Write(new BitsByte
             {
                 [0] = downedManaflora
+            });
+
+            //wrath of the gods
+            writer.Write(new BitsByte
+            {
+                [0] = downedNoxus,
+                [1] = downedNamelessDeityOfLight
+            });
+
+            //zylon
+            writer.Write(new BitsByte
+            {
+                [0] = downedDirtball,
+                [1] = downedMetelord,
+                [2] = downedAdeneb,
+                [3] = downedEldritchJellyfish,
+                [4] = downedSaburRex
             });
 
             BitsByte bitsByte = new();
@@ -5978,6 +6221,22 @@ namespace QoLCompendium.Core
             downedInfernoSpirit = flags[5];
             downedChaosSpirit = flags[6];
 
+            //shadows of abaddon
+            flags = reader.ReadByte();
+            downedDecree = flags[0];
+            downedFlamingPumpkin = flags[1];
+            downedZombiePiglinBrute = flags[2];
+            downedJensenTheGrandHarpy = flags[3];
+            downedAraneas = flags[4];
+            downedHarpyQueenRaynare = flags[5];
+            downedPrimordia = flags[6];
+            downedAbaddon = flags[7];
+            flags = reader.ReadByte();
+            downedAraghur = flags[0];
+            downedLostSiblings = flags[1];
+            downedErazor = flags[2];
+            downedNihilus = flags[3];
+
             //sloome
             flags = reader.ReadByte();
             downedExodygen = flags[0];
@@ -6083,6 +6342,19 @@ namespace QoLCompendium.Core
             //wayfair
             flags = reader.ReadByte();
             downedManaflora = flags[0];
+
+            //wrath of the gods
+            flags = reader.ReadByte();
+            downedNoxus = flags[0];
+            downedNamelessDeityOfLight = flags[1];
+
+            //zylon
+            flags = reader.ReadByte();
+            downedDirtball = flags[0];
+            downedMetelord = flags[1];
+            downedAdeneb = flags[2];
+            downedEldritchJellyfish = flags[3];
+            downedSaburRex = flags[4];
 
             for (int i = 0; i < DownedBoss.Length; i++)
             {

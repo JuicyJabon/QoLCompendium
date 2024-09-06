@@ -2,8 +2,6 @@
 {
     public class ShopButtons : GameInterfaceLayer
     {
-
-
         public ShopButtons()
             : base("QoLCompendium: Shop Buttons", InterfaceScaleType.UI)
         {

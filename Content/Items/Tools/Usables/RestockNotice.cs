@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
@@ -13,14 +14,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         {
             Item.width = 19;
             Item.height = 18;
-            Item.maxStack = 1;
-            Item.consumable = false;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.rare = ItemRarityID.Blue;
-            Item.UseSound = new SoundStyle?(SoundID.Item4);
+            Item.UseSound = SoundID.Item4;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.value = Item.sellPrice(gold: 2);
+
+            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 50, 0));
         }
 
         public override bool? UseItem(Player player)
