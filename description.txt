@@ -1,5 +1,9 @@
 Another QoL mod... but this one is a little different.
+
 This mod aims to condense most of the other 1-off QoL mods into one.
+
+Check out a more vanilla friendly QoL mod:
+https://steamcommunity.com/sharedfiles/filedetails/?id=3086919933
 
 All features are configurable.
 
@@ -71,7 +75,7 @@ Current Features:
  - No meteors falling
  - Seasonal events always
  - Starter Bag (Make sure to set items in config)
- - Many more items for easing the playing experience
+ - Many items for easing the playing experience
  - 2 Town NPCs who sell almost everything needed
 
 Current Mod Support Document:

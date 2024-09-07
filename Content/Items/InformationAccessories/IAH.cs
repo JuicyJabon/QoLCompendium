@@ -1,6 +1,5 @@
 ﻿using QoLCompendium.Core;
 using QoLCompendium.Core.UI;
-using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.InformationAccessories
 {
@@ -16,9 +15,9 @@ namespace QoLCompendium.Content.Items.InformationAccessories
             Item.width = 17;
             Item.height = 14;
             Item.maxStack = 1;
+            Item.rare = ItemRarityID.Pink;
             Item.accessory = true;
-
-            Item.SetShopValues(ItemRarityColor.Pink5, Item.buyPrice(0, 9, 0, 0));
+            Item.value = Item.sellPrice(gold: 9);
         }
 
         public override void AddRecipes()
@@ -34,34 +33,34 @@ namespace QoLCompendium.Content.Items.InformationAccessories
 
         public override void UpdateInfoAccessory(Player player)
         {
-            player.GetInfoPlayer().battalionLog = true;
-            player.GetInfoPlayer().harmInducer = true;
-            player.GetInfoPlayer().headCounter = true;
-            player.GetInfoPlayer().kettlebell = true;
-            player.GetInfoPlayer().luckyDie = true;
-            player.GetInfoPlayer().metallicClover = true;
-            player.GetInfoPlayer().plateCracker = true;
-            player.GetInfoPlayer().regenerator = true;
-            player.GetInfoPlayer().reinforcedPanel = true;
-            player.GetInfoPlayer().replenisher = true;
-            player.GetInfoPlayer().trackingDevice = true;
-            player.GetInfoPlayer().wingTimer = true;
+            player.GetModPlayer<InfoPlayer>().battalionLog = true;
+            player.GetModPlayer<InfoPlayer>().harmInducer = true;
+            player.GetModPlayer<InfoPlayer>().headCounter = true;
+            player.GetModPlayer<InfoPlayer>().kettlebell = true;
+            player.GetModPlayer<InfoPlayer>().luckyDie = true;
+            player.GetModPlayer<InfoPlayer>().metallicClover = true;
+            player.GetModPlayer<InfoPlayer>().plateCracker = true;
+            player.GetModPlayer<InfoPlayer>().regenerator = true;
+            player.GetModPlayer<InfoPlayer>().reinforcedPanel = true;
+            player.GetModPlayer<InfoPlayer>().replenisher = true;
+            player.GetModPlayer<InfoPlayer>().trackingDevice = true;
+            player.GetModPlayer<InfoPlayer>().wingTimer = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetInfoPlayer().battalionLog = true;
-            player.GetInfoPlayer().harmInducer = true;
-            player.GetInfoPlayer().headCounter = true;
-            player.GetInfoPlayer().kettlebell = true;
-            player.GetInfoPlayer().luckyDie = true;
-            player.GetInfoPlayer().metallicClover = true;
-            player.GetInfoPlayer().plateCracker = true;
-            player.GetInfoPlayer().regenerator = true;
-            player.GetInfoPlayer().reinforcedPanel = true;
-            player.GetInfoPlayer().replenisher = true;
-            player.GetInfoPlayer().trackingDevice = true;
-            player.GetInfoPlayer().wingTimer = true;
+            player.GetModPlayer<InfoPlayer>().battalionLog = true;
+            player.GetModPlayer<InfoPlayer>().harmInducer = true;
+            player.GetModPlayer<InfoPlayer>().headCounter = true;
+            player.GetModPlayer<InfoPlayer>().kettlebell = true;
+            player.GetModPlayer<InfoPlayer>().luckyDie = true;
+            player.GetModPlayer<InfoPlayer>().metallicClover = true;
+            player.GetModPlayer<InfoPlayer>().plateCracker = true;
+            player.GetModPlayer<InfoPlayer>().regenerator = true;
+            player.GetModPlayer<InfoPlayer>().reinforcedPanel = true;
+            player.GetModPlayer<InfoPlayer>().replenisher = true;
+            player.GetModPlayer<InfoPlayer>().trackingDevice = true;
+            player.GetModPlayer<InfoPlayer>().wingTimer = true;
         }
     }
 }

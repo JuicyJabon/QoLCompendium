@@ -1,6 +1,4 @@
-﻿using QoLCompendium.Core.Changes;
-using Terraria.Chat;
-using Terraria.GameInput;
+﻿using Terraria.GameInput;
 using Terraria.ModLoader.Config;
 
 namespace QoLCompendium.Core
@@ -16,39 +14,43 @@ namespace QoLCompendium.Core
             if (KeybindSystem.GoHome.JustPressed)
             {
                 foreach (var npc in from n in Main.npc where n is not null && n.active && n.townNPC && !n.homeless select n)
-                    QoLCompendium.TownEntitiesTeleportToHome(npc, npc.homeTileX, npc.homeTileY);
-                ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.QoLCompendium.Messages.TeleportNPCsHome"), Color.White);
+                {
+                    if (QoLCompendium.mainConfig.GoHomeNPCs)
+                    {
+                        QoLCompendium.TownEntitiesTeleportToHome(npc, npc.homeTileX, npc.homeTileY);
+                    }
+                }
+                if (QoLCompendium.mainConfig.GoHomeNPCs)
+                {
+                    Main.NewText(Language.GetTextValue("Mods.QoLCompendium.NPCStuff.GoHome"));
+                }
             }
 
             if (KeybindSystem.AutoRecall.JustPressed)
+            {
                 AutoUseMirror();
+            }
 
             if (KeybindSystem.AddTileToWhitelist.JustPressed)
             {
-                if (QoLCompendium.mainServerConfig.VeinMinerWhitelist == null)
-                    Main.NewText(Language.GetTextValue("Mods.QoLCompendium.TileStuff.Failed"));
-
                 int tileTargetX = Player.tileTargetX;
                 int tileTargetY = Player.tileTargetY;
                 Tile target = Main.tile[tileTargetX, tileTargetY];
-                if (target != null && target.HasTile && !QoLCompendium.mainServerConfig.VeinMinerWhitelist.Contains(new TileDefinition(target.TileType)))
+                if (target != null && target.HasTile && !QoLCompendium.mainConfig.VeinMinerWhitelist.Contains(new TileDefinition(target.TileType)))
                 {
-                    QoLCompendium.mainServerConfig.VeinMinerWhitelist.Add(new TileDefinition(target.TileType));
+                    QoLCompendium.mainConfig.VeinMinerWhitelist.Add(new TileDefinition(target.TileType));
                     Main.NewText(Language.GetTextValue("Mods.QoLCompendium.TileStuff.Whitelisted") + " " + new TileDefinition(target.TileType).Name);
                 }
             }
 
             if (KeybindSystem.RemoveTileFromWhitelist.JustPressed)
             {
-                if (QoLCompendium.mainServerConfig.VeinMinerWhitelist == null)
-                    Main.NewText(Language.GetTextValue("Mods.QoLCompendium.TileStuff.Failed"));
-
                 int tileTargetX = Player.tileTargetX;
                 int tileTargetY = Player.tileTargetY;
                 Tile target = Main.tile[tileTargetX, tileTargetY];
-                if (target != null && target.HasTile && QoLCompendium.mainServerConfig.VeinMinerWhitelist.Contains(new TileDefinition(target.TileType)))
+                if (target != null && target.HasTile && QoLCompendium.mainConfig.VeinMinerWhitelist.Contains(new TileDefinition(target.TileType)))
                 {
-                    QoLCompendium.mainServerConfig.VeinMinerWhitelist.Remove(new TileDefinition(target.TileType));
+                    QoLCompendium.mainConfig.VeinMinerWhitelist.Remove(new TileDefinition(target.TileType));
                     Main.NewText(Language.GetTextValue("Mods.QoLCompendium.TileStuff.Removed") + " " + new TileDefinition(target.TileType).Name);
                 }
             }
@@ -133,6 +135,7 @@ namespace QoLCompendium.Core
             Dash = KeybindLoader.RegisterKeybind(Mod, "DashBind", "C");
             AddTileToWhitelist = KeybindLoader.RegisterKeybind(Mod, "WhitelistTileBind", "O");
             RemoveTileFromWhitelist = KeybindLoader.RegisterKeybind(Mod, "RemoveWhitelistedTileBind", "P");
+
             On_Player.DoCommonDashHandle += OnVanillaDash;
         }
 
@@ -143,31 +146,44 @@ namespace QoLCompendium.Core
             Dash = null;
             AddTileToWhitelist = null;
             RemoveTileFromWhitelist = null;
+
             On_Player.DoCommonDashHandle -= OnVanillaDash;
         }
 
         private static void OnVanillaDash(On_Player.orig_DoCommonDashHandle orig, Player player, out int dir, out bool dashing, Player.DashStartAction dashStartAction)
         {
-            if (QoLCompendium.mainClientConfig.DisableDashing)
+            if (QoLCompendium.mainConfig.DisableDashing)
+            {
                 player.dashTime = 0;
+            }
             orig.Invoke(player, out dir, out dashing, dashStartAction);
             if (player.whoAmI == Main.myPlayer && Dash.JustPressed && !player.CCed)
             {
                 DashPlayer modPlayer = player.GetModPlayer<DashPlayer>();
                 if (player.controlRight && player.controlLeft)
+                {
                     dir = modPlayer.latestXDirPressed;
+                }
                 else if (player.controlRight)
+                {
                     dir = 1;
+                }
                 else if (player.controlLeft)
+                {
                     dir = -1;
+                }
                 if (dir == 0)
                     return;
                 player.direction = dir;
                 dashing = true;
                 if (player.dashTime > 0)
+                {
                     player.dashTime--;
+                }
                 if (player.dashTime < 0)
+                {
                     player.dashTime++;
+                }
                 if ((player.dashTime <= 0 && player.direction == -1) || (player.dashTime >= 0 && player.direction == 1))
                 {
                     player.dashTime = 15;

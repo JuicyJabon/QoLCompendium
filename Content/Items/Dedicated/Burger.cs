@@ -1,11 +1,19 @@
 ﻿using QoLCompendium.Content.Tiles.Dedicated;
 using QoLCompendium.Core;
-using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Dedicated
 {
     public class Burger : ModItem
     {
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - BladeBurger")
+            {
+                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
+            };
+            tooltips.Add(dedicated);
+        }
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 100;
@@ -15,29 +23,18 @@ namespace QoLCompendium.Content.Items.Dedicated
         {
             Item.width = 8;
             Item.height = 8;
-            Item.maxStack = Item.CommonMaxStack;
+            Item.maxStack = 9999;
             Item.consumable = true;
-
             Item.useStyle = ItemUseStyleID.EatFood;
             Item.UseSound = SoundID.Item2;
             Item.useTurn = true;
+            Item.autoReuse = true;
+            Item.rare = ItemRarityID.Green;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.autoReuse = true;
             Item.noMelee = true;
-
+            Item.value = Item.sellPrice(gold: 1);
             Item.createTile = ModContent.TileType<BurgerTile>();
-
-            Item.SetShopValues(ItemRarityColor.StrongRed10, Item.buyPrice(0, 1, 0, 0));
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - BladeBurger")
-            {
-                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
-            };
-            tooltips.Add(dedicated);
         }
     }
 }

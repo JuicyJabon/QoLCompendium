@@ -67,10 +67,14 @@ namespace QoLCompendium.Content.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs)
         {
-            if (QoLCompendium.mainServerConfig.BlackMarketDealerCanSpawn)
+            if (QoLCompendium.mainConfig.BMNPC)
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
 
         public override List<string> SetNPCNameList()
@@ -722,13 +726,6 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.CrimsonSandstone) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.HallowSandstone) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
                     .Add(new Item(ItemID.DesertFossil) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.AmberStoneBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.AmethystStoneBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.DiamondStoneBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.EmeraldStoneBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.RubyStoneBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.SapphireStoneBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.TopazStoneBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.ShellPileBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.Cloud) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.RainCloud) { shopCustomPrice = Item.buyPrice(copper: 10) })
@@ -874,19 +871,6 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.CrimsonSeeds) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.DownedEyeOfCthulhu)
                     .Add(new Item(ItemID.AshGrassSeeds) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.HallowedSeeds) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
-
-                    .Add(new Item(ItemID.BlueMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.BrownMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.GreenMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.LavaMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.PurpleMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.RedMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.ArgonMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.KryptonMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.VioletMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.XenonMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                    .Add(new Item(ItemID.RainbowMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
-
                     .Add(new Item(ItemID.Coral) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.Starfish) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.Seashell) { shopCustomPrice = Item.buyPrice(copper: 10) })

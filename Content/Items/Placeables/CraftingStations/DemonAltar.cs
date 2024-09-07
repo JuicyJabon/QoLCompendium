@@ -1,6 +1,5 @@
 ﻿using QoLCompendium.Content.Tiles.CraftingStations;
 using QoLCompendium.Core;
-using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 {
@@ -14,8 +13,17 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 
         public override void SetDefaults()
         {
-            Item.DefaultToPlaceableTile(ModContent.TileType<DemonAltarTile>());
-            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 1, 0, 0));
+            Item.width = 28;
+            Item.height = 14;
+            Item.rare = ItemRarityID.Blue;
+            Item.maxStack = Item.CommonMaxStack;
+            Item.useTurn = true;
+            Item.autoReuse = true;
+            Item.useAnimation = 15;
+            Item.useTime = 10;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.consumable = true;
+            Item.createTile = ModContent.TileType<DemonAltarTile>();
         }
 
         public override void AddRecipes()

@@ -1,7 +1,5 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
 using QoLCompendium.Core.UI;
-using Terraria.Enums;
 using Terraria.GameContent.Events;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
@@ -18,12 +16,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         {
             Item.width = 7;
             Item.height = 17;
+            Item.maxStack = 1;
+            Item.rare = ItemRarityID.White;
+            Item.useAnimation = 30;
+            Item.useTime = 30;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.UseSound = SoundID.MenuOpen;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
-
-            Item.SetShopValues(ItemRarityColor.White0, Item.buyPrice(0, 1, 0, 0));
         }
 
         public override bool? UseItem(Player player)
@@ -38,23 +35,23 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             }
             else
             {
-                if (player.GetQoLCPlayer().bossToSpawn != 0 && player.GetQoLCPlayer().bossSpawn)
+                if (player.GetModPlayer<QoLCPlayer>().bossToSpawn != 0 && player.GetModPlayer<QoLCPlayer>().bossSpawn)
                 {
-                    if (player.GetQoLCPlayer().bossToSpawn == NPCID.WallofFlesh)
+                    if (player.GetModPlayer<QoLCPlayer>().bossToSpawn == NPCID.WallofFlesh)
                     {
                         NPC.SpawnWOF(player.Center);
                         SoundEngine.PlaySound(SoundID.Roar, player.position);
                         return true;
                     }
-                    if (player.GetQoLCPlayer().bossToSpawn == NPCID.Retinazer)
+                    if (player.GetModPlayer<QoLCPlayer>().bossToSpawn == NPCID.Retinazer)
                     {
                         NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.Spazmatism);
                     }
-                    NetcodeBossSpawn.SpawnBossNetcoded(player, player.GetQoLCPlayer().bossToSpawn);
+                    NetcodeBossSpawn.SpawnBossNetcoded(player, player.GetModPlayer<QoLCPlayer>().bossToSpawn);
                 }
-                if (player.GetQoLCPlayer().eventToSpawn != 0 && player.GetQoLCPlayer().eventSpawn)
+                if (player.GetModPlayer<QoLCPlayer>().eventToSpawn != 0 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
                 {
-                    if (player.GetQoLCPlayer().eventToSpawn == 1)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 1)
                     {
                         LanternNight.GenuineLanterns = false;
                         LanternNight.ManualLanterns = false;
@@ -74,7 +71,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                         TextHelper.PrintText("The skies darken", new Color(50, 255, 130));
                         SoundEngine.PlaySound(SoundID.Roar, player.position);
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 2)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 2)
                     {
                         Main.windSpeedTarget = Main.windSpeedCurrent = 0.8f;
 
@@ -83,7 +80,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                         TextHelper.PrintText("The wind has been stirred", new Color(50, 255, 130));
                         SoundEngine.PlaySound(SoundID.Roar, player.position);
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 3)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 3)
                     {
                         Sandstorm.StartSandstorm();
 
@@ -92,7 +89,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                         TextHelper.PrintText("The desert winds are howling", new Color(50, 255, 130));
                         SoundEngine.PlaySound(SoundID.Roar, player.position);
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 4)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 4)
                     {
                         BirthdayParty.PartyDaysOnCooldown = 0;
 
@@ -109,7 +106,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.WorldData);
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 5)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 5)
                     {
                         Main.StartSlimeRain();
                         Main.slimeWarningDelay = 1;
@@ -119,7 +116,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.WorldData);
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 6)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 6)
                     {
                         if (!Main.dayTime)
                         {
@@ -130,25 +127,25 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                                 NetMessage.SendData(MessageID.WorldData);
                         }
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 7)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 7)
                     {
                         Main.StartInvasion(InvasionID.GoblinArmy);
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.WorldData);
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 8)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 8)
                     {
                         Main.StartInvasion(InvasionID.SnowLegion);
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.WorldData);
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 9)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 9)
                     {
                         Main.StartInvasion(InvasionID.PirateInvasion);
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.WorldData);
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 10)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 10)
                     {
                         if (Main.dayTime)
                         {
@@ -159,7 +156,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                                 NetMessage.SendData(MessageID.WorldData);
                         }
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 11)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 11)
                     {
                         if (!Main.dayTime)
                         {
@@ -169,7 +166,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                                 NetMessage.SendData(MessageID.WorldData);
                         }
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 12)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 12)
                     {
                         if (!Main.dayTime)
                         {
@@ -179,25 +176,25 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                                 NetMessage.SendData(MessageID.WorldData);
                         }
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 13)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 13)
                     {
                         Main.StartInvasion(InvasionID.MartianMadness);
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.WorldData);
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 14)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 14)
                     {
                         NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerNebula);
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 15)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 15)
                     {
                         NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerSolar);
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 16)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 16)
                     {
                         NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerStardust);
                     }
-                    if (player.GetQoLCPlayer().eventToSpawn == 17)
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 17)
                     {
                         NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerVortex);
                     }

@@ -26,6 +26,7 @@ namespace QoLCompendium.Content.Items.Tools.Staves
             Item.createTile = TileID.AshGrass;
             Item.UseSound = SoundID.Item1;
             Item.knockBack = 3f;
+            Item.rare = ItemRarityID.LightPurple;
             Item.SetShopValues(ItemRarityColor.LightPurple6, Item.sellPrice(0, 0, 50));
             Item.DamageType = DamageClass.Melee;
         }

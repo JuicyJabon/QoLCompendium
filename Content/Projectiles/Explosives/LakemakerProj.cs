@@ -22,6 +22,7 @@
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
         {
             fallThrough = false;
+
             return base.TileCollideStyle(ref width, ref height, ref fallThrough, ref hitboxCenterFrac);
         }
 
@@ -74,6 +75,7 @@
 
                 }
             }
+
             Main.refreshMap = true;
         }
     }

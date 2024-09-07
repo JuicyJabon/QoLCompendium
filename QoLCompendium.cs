@@ -26,8 +26,8 @@ namespace QoLCompendium
         private UserInterface bmInterface;
         internal ECNPCUI ecShopUI;
         private UserInterface ecInterface;
-        internal DestinationGlobeUI destinationGlobeUI;
-        private UserInterface destinationGlobeInterface;
+        internal WorldGlobeUI worldGlobeUI;
+        private UserInterface worldGlobeInterface;
         internal EntityManipulatorUI entityManipulatorUI;
         private UserInterface entityManipulatorInterface;
         internal MoonChangeUI moonChangeUI;
@@ -39,22 +39,24 @@ namespace QoLCompendium
         #pragma warning disable CA2211
         public static Mod Instance;
         internal static QoLCompendium instance;
-        internal static QoLCConfig mainServerConfig;
-        internal static MainClientConfig mainClientConfig;
+        internal static QoLCConfig mainConfig;
         internal static ItemConfig itemConfig;
         internal static ShopConfig shopConfig;
         internal static TooltipConfig tooltipConfig;
         #pragma warning restore CA2211
 
-        public override uint ExtraPlayerBuffSlots => mainServerConfig.ExtraBuffSlots;
+        public override uint ExtraPlayerBuffSlots => mainConfig.ExtraBuffSlots;
 
         public override void Load()
         {
+            if (mainConfig.GoHomeNPCs)
+            {
+                On_WorldGen.moveRoom += WorldGen_moveRoom;
+            }
+
             instance = this;
             Instance = this;
-            On_WorldGen.moveRoom += WorldGen_moveRoom;
 
-            #region UI
             if (!Main.dedServ)
             {
                 bmShopUI = new BMNPCUI();
@@ -67,10 +69,10 @@ namespace QoLCompendium
                 ecInterface = new UserInterface();
                 ecInterface.SetState(ecShopUI);
 
-                destinationGlobeUI = new DestinationGlobeUI();
-                destinationGlobeUI.Activate();
-                destinationGlobeInterface = new UserInterface();
-                destinationGlobeInterface.SetState(destinationGlobeUI);
+                worldGlobeUI = new WorldGlobeUI();
+                worldGlobeUI.Activate();
+                worldGlobeInterface = new UserInterface();
+                worldGlobeInterface.SetState(worldGlobeUI);
 
                 entityManipulatorUI = new EntityManipulatorUI();
                 entityManipulatorUI.Activate();
@@ -87,25 +89,26 @@ namespace QoLCompendium
                 bossInterface = new UserInterface();
                 bossInterface.SetState(bossUI);
             }
-            #endregion
         }
 
         public override void Unload()
         {
             instance = null;
             Instance = null;
-            mainServerConfig = null;
-            mainClientConfig = null;
+            mainConfig = null;
             itemConfig = null;
             shopConfig = null;
             tooltipConfig = null;
+            //BannerBox.itemToBanner.Clear();
             On_WorldGen.moveRoom -= WorldGen_moveRoom;
         }
 
         public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
             foreach (var npc in from n in Main.npc where n is not null && n.active && n.townNPC && !n.homeless select n)
+            {
                 TownEntitiesTeleportToHome(npc, npc.homeTileX, npc.homeTileY);
+            }
         }
 
         private void WorldGen_moveRoom(On_WorldGen.orig_moveRoom orig, int x, int y, int n)
@@ -121,6 +124,38 @@ namespace QoLCompendium
                 BindingFlags.Instance | BindingFlags.NonPublic,
                 new[] { typeof(int), typeof(int) })?
                 .Invoke(npc, new object[] { homeFloorX, homeFloorY });
+        }
+
+        public override void PostSetupContent()
+        {
+            /*
+            BannerBox.itemToBanner.Clear();
+            FieldInfo bannerToItemField = typeof(NPCLoader).GetField("bannerToItem", BindingFlags.NonPublic | BindingFlags.Static);
+            Dictionary<int, int> bannerToItem = (Dictionary<int, int>)bannerToItemField.GetValue(null);
+            foreach (var item in bannerToItem)
+            {
+                if (!BannerBox.itemToBanner.ContainsKey(item.Value))
+                {
+                    BannerBox.itemToBanner.Add(item.Value, item.Key);
+                }
+            }
+
+            for (int i = -10; i < NPCID.Count; i++)
+            {
+                int vanillaBannerID = Item.NPCtoBanner(i);
+                if (vanillaBannerID > 0 && !NPCID.Sets.PositiveNPCTypesExcludedFromDeathTally[NPCID.FromNetId(i)])
+                {
+                    int vanillaBannerItemID = Item.BannerToItem(vanillaBannerID);
+                    if (ItemID.Sets.BannerStrength[vanillaBannerItemID].Enabled)
+                    {
+                        if (!BannerBox.itemToBanner.ContainsKey(vanillaBannerItemID))
+                        {
+                            BannerBox.itemToBanner.Add(vanillaBannerItemID, vanillaBannerID);
+                        }
+                    }
+                }
+            }
+            */
         }
     }
 }

@@ -21,7 +21,7 @@ namespace QoLCompendium.Content.Tiles.Pylons
         public override void Load()
         {
             crystalTexture = ModContent.Request<Texture2D>("QoLCompendium/Assets/PylonCrystals/CrimsonPylonTile_Crystal", (AssetRequestMode)2);
-            crystalHighlightTexture = ModContent.Request<Texture2D>("QoLCompendium/Assets/Highlights/PylonCrystal_Highlight", (AssetRequestMode)2);
+            crystalHighlightTexture = ModContent.Request<Texture2D>("QoLCompendium/Assets/PylonCrystals/Highlight", (AssetRequestMode)2);
             mapIcon = ModContent.Request<Texture2D>("QoLCompendium/Assets/MapIcons/CrimsonPylonTile_MapIcon", (AssetRequestMode)2);
         }
 
@@ -83,7 +83,7 @@ namespace QoLCompendium.Content.Tiles.Pylons
 
         public override void SpecialDraw(int i, int j, SpriteBatch spriteBatch)
         {
-            DefaultDrawPylonCrystal(spriteBatch, i, j, crystalTexture, crystalHighlightTexture, new Vector2(-1f, -12f), Color.White * 0.1f, Common.ColorSwap(Color.IndianRed, Color.OrangeRed, 1.5f), 4, CrystalVerticalFrameCount);
+            DefaultDrawPylonCrystal(spriteBatch, i, j, crystalTexture, crystalHighlightTexture, new Vector2(0f, -12f), Color.White * 0.1f, Common.ColorSwap(Color.IndianRed, Color.OrangeRed, 1.5f), 4, CrystalVerticalFrameCount);
         }
 
         public override void DrawMapIcon(ref MapOverlayDrawContext context, ref string mouseOverText, TeleportPylonInfo pylonInfo, bool isNearPylon, Color drawColor, float deselectedScale, float selectedScale)

@@ -2,11 +2,9 @@ namespace QoLCompendium.Core.UI
 {
     public class RegenInfoDisplay : InfoDisplay
     {
-        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/RegenInfoDisplay";
-
         public override bool Active()
         {
-            return Main.LocalPlayer.GetInfoPlayer().regenerator;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().regenerator;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -28,11 +26,9 @@ namespace QoLCompendium.Core.UI
 
     public class ManaRegenInfoDisplay : InfoDisplay
     {
-        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/ManaRegenInfoDisplay";
-
         public override bool Active()
         {
-            return Main.LocalPlayer.GetInfoPlayer().replenisher;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().replenisher;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -50,11 +46,9 @@ namespace QoLCompendium.Core.UI
 
     public class LuckInfoDisplay : InfoDisplay
     {
-        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/LuckInfoDisplay";
-
         public override bool Active()
         {
-            return Main.LocalPlayer.GetInfoPlayer().metallicClover;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().metallicClover;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -65,22 +59,20 @@ namespace QoLCompendium.Core.UI
 
     public class SpawnInfoDisplay : InfoDisplay
     {
-        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/SpawnInfoDisplay";
-
         public override bool Active()
         {
-            return Main.LocalPlayer.GetInfoPlayer().headCounter;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().headCounter;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
-            int spawnRateRaw = Main.LocalPlayer.GetQoLCPlayer().spawnRate;
+            int spawnRateRaw = Main.LocalPlayer.GetModPlayer<QoLCPlayer>().spawnRate;
 
             if (spawnRateRaw == 0)
             {
                 return "Spawns Disabled";
             }
-            if (Main.LocalPlayer.GetQoLCPlayer().enemyEraser)
+            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().enemyEraser)
             {
                 return "Spawns Disabled";
             }
@@ -94,11 +86,9 @@ namespace QoLCompendium.Core.UI
 
     public class MinionInfoDisplay : InfoDisplay
     {
-        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/MinionInfoDisplay";
-
         public override bool Active()
         {
-            return Main.LocalPlayer.GetInfoPlayer().trackingDevice;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().trackingDevice;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -109,11 +99,9 @@ namespace QoLCompendium.Core.UI
 
     public class SentryInfoDisplay : InfoDisplay
     {
-        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/SentryInfoDisplay";
-
         public override bool Active()
         {
-            return Main.LocalPlayer.GetInfoPlayer().battalionLog;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().battalionLog;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -125,44 +113,35 @@ namespace QoLCompendium.Core.UI
 
     public class WingTimeInfoDisplay : InfoDisplay
     {
-        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/WingTimeInfoDisplay";
-
         public override bool Active()
         {
-            return Main.LocalPlayer.GetInfoPlayer().wingTimer;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().wingTimer;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
-            List<int> infiniteFlightWings = new()
-            {
-                Common.GetModItem(ModConditions.fargosSoulsMod, "FlightMasterySoul"),
-                Common.GetModItem(ModConditions.fargosSoulsMod, "DimensionSoul"),
-                Common.GetModItem(ModConditions.fargosSoulsMod, "EternitySoul"),
-                Common.GetModItem(ModConditions.wrathOfTheGodsMod, "DivineWings")
-            };
-
-            float wingTimeInSeconds = Main.LocalPlayer.wingTime / 60f;
-            if (Main.LocalPlayer.empressBrooch && !ModConditions.calamityLoaded)
-                return "Infinite Wing Time";
+            float num = Main.LocalPlayer.wingTime / 60f;
 
             for (int i = 3; i < Main.LocalPlayer.armor.Length; i++)
             {
-                if (infiniteFlightWings.Contains(Main.LocalPlayer.armor[i].netID) && i < 13)
-                    return "Infinite Wing Time";
+                if (Main.LocalPlayer.armor[i].netID == ItemID.EmpressFlightBooster && !ModConditions.calamityLoaded)
+                {
+                    if (i < 13)
+                    {
+                        return "Infinite Wing Time";
+                    }
+                }
             }
 
-            return wingTimeInSeconds.ToString("0.00") + "s Wing Time";
+            return num.ToString("0.00") + "s Wing Time";
         }
     }
 
     public class EnduranceInfoDisplay : InfoDisplay
     {
-        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/EnduranceInfoDisplay";
-
         public override bool Active()
         {
-            return Main.LocalPlayer.GetInfoPlayer().reinforcedPanel;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().reinforcedPanel;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -173,11 +152,9 @@ namespace QoLCompendium.Core.UI
 
     public class MiningSpeedInfoDisplay : InfoDisplay
     {
-        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/MiningSpeedInfoDisplay";
-
         public override bool Active()
         {
-            return Main.LocalPlayer.GetInfoPlayer().kettlebell;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().kettlebell;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
@@ -188,48 +165,42 @@ namespace QoLCompendium.Core.UI
 
     public class DamageInfoDisplay : InfoDisplay
     {
-        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/DamageInfoDisplay";
-
         public override bool Active()
         {
-            return Main.LocalPlayer.GetInfoPlayer().harmInducer;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().harmInducer;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
-            float damageStat = Main.LocalPlayer.GetInfoPlayer().damageStat;
+            float damageStat = Main.LocalPlayer.GetModPlayer<InfoPlayer>().damageStat;
             return damageStat.ToString("N2") + "x Damage";
         }
     }
 
     public class CritInfoDisplay : InfoDisplay
     {
-        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/CritInfoDisplay";
-
         public override bool Active()
         {
-            return Main.LocalPlayer.GetInfoPlayer().luckyDie;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().luckyDie;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
-            float critChanceStat = Main.LocalPlayer.GetInfoPlayer().critChanceStat;
+            float critChanceStat = Main.LocalPlayer.GetModPlayer<InfoPlayer>().critChanceStat;
             return $"{critChanceStat}% Critical Strike Chance";
         }
     }
 
     public class ArmorPenetrationInfoDisplay : InfoDisplay
     {
-        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/ArmorPenetrationInfoDisplay";
-
         public override bool Active()
         {
-            return Main.LocalPlayer.GetInfoPlayer().plateCracker;
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().plateCracker;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
-            float armorPenetrationStat = Main.LocalPlayer.GetInfoPlayer().armorPenetrationStat;
+            float armorPenetrationStat = Main.LocalPlayer.GetModPlayer<InfoPlayer>().armorPenetrationStat;
             return $"{armorPenetrationStat} Armor Penetration";
         }
     }
@@ -305,7 +276,6 @@ namespace QoLCompendium.Core.UI
             replenisher = false;
             trackingDevice = false;
             wingTimer = false;
-            PlayerHelper.SetLocalInfoPlayer(this);
         }
     }
 }

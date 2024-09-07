@@ -9,7 +9,7 @@ namespace QoLCompendium.Core.UI
             {
                 layers.Insert(num, new LegacyGameInterfaceLayer("QoLCompendium: Locator Arrow", delegate ()
                 {
-                    if (Main.LocalPlayer.accCritterGuide && QoLCompendium.mainServerConfig.LifeformAnalyzerPointer)
+                    if (Main.LocalPlayer.accCritterGuide && QoLCompendium.mainConfig.LifeformPointer)
                     {
                         for (int i = 0; i < 200; i++)
                         {

@@ -1,4 +1,5 @@
-﻿using QoLCompendium.Core;
+﻿using QoLCompendium.Content.Items.Weapons.Ammo.Rockets;
+using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo
 {
@@ -24,7 +25,8 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type);
+            int amount = Item.type == ModContent.ItemType<EndlessMiniNukeIPouch>() || Item.type == ModContent.ItemType<EndlessMiniNukeIIPouch>() ? 2 : 1;
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, amount);
             r.AddIngredient(AmmunitionItem, 3996);
             r.AddTile(TileID.CrystalBall);
             r.Register();

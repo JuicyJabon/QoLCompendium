@@ -117,6 +117,11 @@
         public override int SnowmanProjectile => ProjectileID.MiniNukeSnowmanRocketI;
         public override int GrenadeProjectile => ProjectileID.MiniNukeGrenadeI;
         public override int MineProjectile => ProjectileID.MiniNukeMineI;
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            Item.maxStack = 2;
+        }
     }
 
     public class EndlessMiniNukeIIPouch : RocketPouch
@@ -126,5 +131,10 @@
         public override int SnowmanProjectile => ProjectileID.MiniNukeSnowmanRocketII;
         public override int GrenadeProjectile => ProjectileID.MiniNukeGrenadeII;
         public override int MineProjectile => ProjectileID.MiniNukeMineII;
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            Item.maxStack = 2;
+        }
     }
 }

@@ -19,9 +19,13 @@ namespace QoLCompendium.Core.UI
         {
             ModLoader.TryGetMod("VanillaQoL", out Mod VanillaQoL);
             if (VanillaQoL == null)
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
 
         public override void Load()

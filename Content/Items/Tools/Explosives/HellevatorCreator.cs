@@ -1,6 +1,5 @@
 using QoLCompendium.Content.Projectiles.Explosives;
 using QoLCompendium.Core;
-using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Explosives
 {
@@ -18,6 +17,7 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
             Item.maxStack = 1;
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.Swing;
+            Item.rare = ItemRarityID.Green;
             Item.UseSound = new SoundStyle?(SoundID.Item1);
             Item.useAnimation = 20;
             Item.useTime = 20;
@@ -25,8 +25,6 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
             Item.noMelee = true;
             Item.shoot = ModContent.ProjectileType<HellevatorCreatorProj>();
             Item.shootSpeed = 5f;
-
-            Item.SetShopValues(ItemRarityColor.Green2, Item.buyPrice(0, 5, 0, 0));
         }
 
         public override void AddRecipes()

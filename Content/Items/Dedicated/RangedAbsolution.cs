@@ -1,10 +1,18 @@
 ﻿using QoLCompendium.Core;
-using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Dedicated
 {
     public class RangedAbsolution : ModItem
     {
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - Nobisyu")
+            {
+                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
+            };
+            tooltips.Add(dedicated);
+        }
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -15,32 +23,26 @@ namespace QoLCompendium.Content.Items.Dedicated
         {
             Item.width = 26;
             Item.height = 26;
+            Item.rare = ItemRarityID.Orange;
 
             Item.useTime = 8;
             Item.useAnimation = 8;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.UseSound = SoundID.Item11;
             Item.autoReuse = true;
-            
+            Item.UseSound = SoundID.Item11;
+
+            Item.knockBack = 7;
             Item.damage = 26;
             Item.DamageType = DamageClass.Ranged;
-            Item.knockBack = 7;
+
             Item.shoot = ProjectileID.PurificationPowder;
             Item.useAmmo = AmmoID.Bullet;
             Item.shootSpeed = 16f;
-
-            Item.SetShopValues(ItemRarityColor.StrongRed10, Item.buyPrice(0, 4, 0, 0));
         }
 
-        public override bool RangedPrefix() => true;
-
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        public override bool RangedPrefix()
         {
-            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - Nobisyu")
-            {
-                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
-            };
-            tooltips.Add(dedicated);
+            return true;
         }
 
         public override void AddRecipes()

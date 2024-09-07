@@ -1,7 +1,6 @@
 ﻿using QoLCompendium.Content.Items.InformationAccessories;
 using QoLCompendium.Core;
 using QoLCompendium.Core.UI;
-using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Mirrors
@@ -18,7 +17,7 @@ namespace QoLCompendium.Content.Items.Mirrors
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.MagicMirror);
-            Item.SetShopValues(ItemRarityColor.Lime7, Item.buyPrice(0, 10, 0, 0));
+            Item.rare = ItemRarityID.Cyan;
         }
 
         public override void OnConsumeItem(Player player) => Item.stack++;
@@ -205,18 +204,18 @@ namespace QoLCompendium.Content.Items.Mirrors
 
         public override void UpdateInfoAccessory(Player player)
         {
-            player.GetInfoPlayer().battalionLog = true;
-            player.GetInfoPlayer().harmInducer = true;
-            player.GetInfoPlayer().headCounter = true;
-            player.GetInfoPlayer().kettlebell = true;
-            player.GetInfoPlayer().luckyDie = true;
-            player.GetInfoPlayer().metallicClover = true;
-            player.GetInfoPlayer().plateCracker = true;
-            player.GetInfoPlayer().regenerator = true;
-            player.GetInfoPlayer().reinforcedPanel = true;
-            player.GetInfoPlayer().replenisher = true;
-            player.GetInfoPlayer().trackingDevice = true;
-            player.GetInfoPlayer().wingTimer = true;
+            player.GetModPlayer<InfoPlayer>().battalionLog = true;
+            player.GetModPlayer<InfoPlayer>().harmInducer = true;
+            player.GetModPlayer<InfoPlayer>().headCounter = true;
+            player.GetModPlayer<InfoPlayer>().kettlebell = true;
+            player.GetModPlayer<InfoPlayer>().luckyDie = true;
+            player.GetModPlayer<InfoPlayer>().metallicClover = true;
+            player.GetModPlayer<InfoPlayer>().plateCracker = true;
+            player.GetModPlayer<InfoPlayer>().regenerator = true;
+            player.GetModPlayer<InfoPlayer>().reinforcedPanel = true;
+            player.GetModPlayer<InfoPlayer>().replenisher = true;
+            player.GetModPlayer<InfoPlayer>().trackingDevice = true;
+            player.GetModPlayer<InfoPlayer>().wingTimer = true;
         }
 
         public override void AddRecipes()
@@ -226,7 +225,6 @@ namespace QoLCompendium.Content.Items.Mirrors
             r.AddIngredient(ModContent.ItemType<CursedMirror>());
             r.AddIngredient(ModContent.ItemType<MirrorOfReturn>());
             r.AddIngredient(ModContent.ItemType<TeleportationMirror>());
-            r.AddIngredient(ModContent.ItemType<WormholeMirror>());
             r.AddTile(TileID.TinkerersWorkbench);
             r.Register();
         }

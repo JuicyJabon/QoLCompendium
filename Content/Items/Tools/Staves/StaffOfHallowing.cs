@@ -23,6 +23,7 @@ namespace QoLCompendium.Content.Items.Tools.Staves
             Item.createTile = TileID.HallowedGrass;
             Item.UseSound = SoundID.Item1;
             Item.knockBack = 3f;
+            Item.rare = ItemRarityID.Pink;
             Item.SetShopValues(ItemRarityColor.Pink5, Item.sellPrice(0, 0, 50));
             Item.DamageType = DamageClass.Melee;
         }

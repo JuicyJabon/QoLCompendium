@@ -15,7 +15,6 @@ namespace QoLCompendium.Content.Tiles.CraftingStations
             LocalizedText name = CreateMapEntryName();
             AddMapEntry(new Color(200, 200, 200), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
-            TileID.Sets.CountsAsShimmerSource[Type] = true;
             DustType = -1;
         }
     }

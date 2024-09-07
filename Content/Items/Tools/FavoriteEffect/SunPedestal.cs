@@ -1,5 +1,4 @@
 ﻿using QoLCompendium.Core;
-using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 {
@@ -16,8 +15,8 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
             Item.height = 20;
             Item.maxStack = 1;
             Item.consumable = false;
-
-            Item.SetShopValues(ItemRarityColor.Green2, Item.buyPrice(0, 0, 90, 0));
+            Item.rare = ItemRarityID.Green;
+            Item.value = Item.sellPrice(silver: 90);
         }
 
         public override void AddRecipes()
@@ -33,7 +32,7 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
         {
             if (Item.favorited)
             {
-                player.GetQoLCPlayer().sunPedestal = true;
+                player.GetModPlayer<QoLCPlayer>().sunPedestal = true;
             }
         }
     }

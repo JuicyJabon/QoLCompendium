@@ -475,9 +475,9 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.KingSlime;
-                Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.KingSlime;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                 visible = false;
             }
         }
@@ -486,9 +486,9 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.EyeofCthulhu;
-                Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.EyeofCthulhu;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                 visible = false;
             }
         }
@@ -499,9 +499,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedBoss1)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.EaterofWorldsHead;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.EaterofWorldsHead;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -513,9 +513,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedBoss1)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.BrainofCthulhu;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.BrainofCthulhu;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -527,9 +527,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedBoss2)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.QueenBee;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.QueenBee;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -541,9 +541,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedBoss2)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.SkeletronHead;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.SkeletronHead;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -555,9 +555,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedBoss3)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.Deerclops;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.Deerclops;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -569,9 +569,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedBoss3)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.WallofFlesh;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.WallofFlesh;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -583,9 +583,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (Main.hardMode)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.QueenSlimeBoss;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.QueenSlimeBoss;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -597,9 +597,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (Main.hardMode)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.Retinazer;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.Retinazer;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -611,9 +611,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (Main.hardMode)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.TheDestroyer;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.TheDestroyer;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -625,9 +625,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (Main.hardMode)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.SkeletronPrime;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.SkeletronPrime;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -639,9 +639,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.Plantera;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.Plantera;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
                 
@@ -654,9 +654,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedPlantBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.Golem;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.Golem;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -668,9 +668,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (Main.hardMode)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.DukeFishron;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.DukeFishron;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -682,9 +682,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedPlantBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.HallowBoss;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.HallowBoss;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -696,9 +696,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedGolemBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.CultistBoss;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.CultistBoss;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -710,9 +710,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedAncientCultist)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.MoonLordCore;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.MoonLordCore;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -724,9 +724,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedBoss2)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.DD2DarkMageT1;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.DD2DarkMageT1;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -738,9 +738,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (Main.hardMode)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.BloodNautilus;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.BloodNautilus;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -752,9 +752,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (Main.hardMode)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.PirateShip;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.PirateShip;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -766,9 +766,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedMechBossAny)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.DD2OgreT2;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.DD2OgreT2;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -780,9 +780,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedPlantBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.MourningWood;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.MourningWood;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -794,9 +794,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedPlantBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.Pumpking;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.Pumpking;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -808,9 +808,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedPlantBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.Everscream;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.Everscream;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -822,9 +822,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedPlantBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.SantaNK1;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.SantaNK1;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -836,9 +836,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedPlantBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.IceQueen;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.IceQueen;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -850,9 +850,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedGolemBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.MartianSaucerCore;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.MartianSaucerCore;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -864,9 +864,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedGolemBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().bossToSpawn = NPCID.DD2Betsy;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = true;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = NPCID.DD2Betsy;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
                     visible = false;
                 }
             }
@@ -876,9 +876,9 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 1;
-                Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 1;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                 visible = false;
             }
         }
@@ -887,9 +887,9 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 2;
-                Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 2;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                 visible = false;
             }
         }
@@ -898,9 +898,9 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 3;
-                Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 3;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                 visible = false;
             }
         }
@@ -909,9 +909,9 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 4;
-                Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 4;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                 visible = false;
             }
         }
@@ -920,9 +920,9 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 5;
-                Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 5;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                 visible = false;
             }
         }
@@ -931,9 +931,9 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 6;
-                Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 6;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                 visible = false;
             }
         }
@@ -942,9 +942,9 @@ namespace QoLCompendium.Core.UI
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 7;
-                Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 7;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                 visible = false;
             }
         }
@@ -955,9 +955,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (Main.hardMode)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 8;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 8;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
                 }
             }
@@ -969,9 +969,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (Main.hardMode)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 9;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 9;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
                 }
             }
@@ -983,9 +983,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedMechBossAny)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 10;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 10;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
                 }
             }
@@ -997,9 +997,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedPlantBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 11;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 11;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
                 }
             }
@@ -1011,9 +1011,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedPlantBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 12;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 12;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
                 }
             }
@@ -1025,9 +1025,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedGolemBoss)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 13;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 13;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
                 }
             }
@@ -1039,9 +1039,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedAncientCultist)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 14;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 14;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
                 }
             }
@@ -1053,9 +1053,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedAncientCultist)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 15;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 15;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
                 }
             }
@@ -1067,9 +1067,9 @@ namespace QoLCompendium.Core.UI
             {
                 if(NPC.downedAncientCultist)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 16;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 16;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
                 }
             }
@@ -1081,9 +1081,9 @@ namespace QoLCompendium.Core.UI
             {
                 if (NPC.downedAncientCultist)
                 {
-                    Main.LocalPlayer.GetQoLCPlayer().eventToSpawn = 17;
-                    Main.LocalPlayer.GetQoLCPlayer().bossSpawn = false;
-                    Main.LocalPlayer.GetQoLCPlayer().eventSpawn = true;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = 17;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                    Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
                     visible = false;
                 }
             }

@@ -6,14 +6,12 @@
 
         public override void SetDefaults()
         {
-            Projectile.width = 29;
-            Projectile.height = 29;
+            Projectile.width = 26;
+            Projectile.height = 26;
             Projectile.aiStyle = 16;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 300;
-            DrawOffsetX = -13;
-            DrawOriginOffsetY = -20;
+            Projectile.timeLeft = 170;
         }
 
         public override bool? CanDamage()
@@ -23,8 +21,8 @@
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            Projectile.velocity.X = 0f;
-            return base.OnTileCollide(oldVelocity);
+            Projectile.Kill();
+            return true;
         }
 
         public override void OnKill(int timeLeft)
