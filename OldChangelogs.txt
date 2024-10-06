@@ -1,3 +1,118 @@
+v2.2.6
+1. Added a config to allow fountains to cause biomes
+2. Added a config to allow fountains to cause biomes from the inventory or banks
+3. Added fountain support for the following mods:
+ - Calamity
+4. Added new item names for the Destination Globe, Entity Manipulator, Phase Interrupter, and Summoning Remote to better indicate their current mode
+5. Demon and Crimson Altar crafting station tiles from this mod now use the vanilla sprite, so they work with texture packs when placed
+6. Added the Lunar Event to the summoning remote
+7. Localized the Summoning Remote's event spawn messages
+8. Updated mod shops for:
+ - Edorbis
+9. Localized most UI text
+10. Added Skeleton Rucksack
+11. Fixed Rod of Harmony sale condition with Calamity enabled
+12. Added Bottomless Chum Bucket
+13. Added client side chat messages when attempting to click on a locked boss when using the Summoning Remote that indicate requirements
+14. Added Challenger's Coin
+15. Veinmining configs no longer require a reload
+16. Added conversion recipes for vanilla ores
+17. Added a config to allow relic drops in expert
+18. Added Expert relic drop support for the following mods:
+ - Aequus
+ - Calamity (Drops disabled in Rev+)
+ - Consolaria
+ - Fargo's Souls (Drops disabled in Eternity)
+ - Homeward Journey
+ - Redemption
+ - Secrets of the Shadows
+ - Spirit
+ - Thorium
+ - Vitality
+19. Added Warp Mirror
+20. Added a config for banner recipes
+21. Added a config for adding a tooltip to display if an item's effects are active
+22. Fixed an issue with Infinite Buffs and Spirit Mod causing tiles to break when walked through, this could fix other unknown mod issues too
+
+v2.2.5
+1. Fixed some mod accessories not working from banks (Aequus/Thorium)
+2. Minor optimization to non-consumable boss summons
+3. Added a config to change reforge prices
+4. Fixed Shadow Candle and War Table not working with Infinite Buffs
+5. Added a config for Endless Station stack amount
+6. Added Legendary Catcher
+7. Fixed Starlight River's Glassweaver miniboss sale condition not working
+8. Updated sales for the following mods:
+ - Depths (Hell Alternative)
+ - Dragon Ball Terraria Legacy
+ - Exxo Avalon Origins
+ - Gerd's Lab
+ - Mod of Redemption
+ - Starlight River
+ - Verdant
+9. Added support for the following mods:
+ - Calamity: Permanent Upgrade Tooltip
+ - Draedon Expansion: NPC Sales
+ - Everjade: Non-consumable Boss & Event summons & NPC Sales
+ - Exxo Avalon Origins: Permanent Upgrade Tooltip
+ - Fargo's Souls: Permanent Upgrade Tooltip
+ - Fargo's Souls DLC: Non-consumable Boss & Event summons
+ - Redemption: Permanent Upgrade Tooltip
+ - Shadows of Abaddon [Public Beta]: Endless Station Buffs, Non-consumable Boss & Event summons & NPC Sales
+ - Stram's Classes: NPC Sales
+ - Thorium: Permanent Upgrade Tooltip
+ - Zylon: Non-consumable Boss & Event summons & NPC Sales
+10. Split the Modded Materials shop into two shops:
+ - Modded Materials (Mods: A-M)
+ - Modded Materials (Mods: N-Z)
+(The shop was so huge the mod couldn't build anymore LOL)
+11. Added a config to allow Purification Powder to work on walls
+12. Updated the shimmerable tooltip to show item, npc, or coin luck
+13. Tooltip related configs no longer require a reload
+14. NPCs Can Live In Evil Biomes config no longer requires a reload
+15. Disable NPC Happiness config no longer requires a reload
+16. No Pylon Restrictions config no longer requires a reload
+17. Lava Slime No Lava config no longer requires a reload
+18. Fast Herb Growth config no longer requires a reload
+19. Fast Tree Growth config no longer requires a reload
+20. Trees Drop More config no longer requires a reload
+21. No Meteors config no longer requires a reload
+22. Resprited all Pylon items and tiles
+23. Added Wormhole Mirror
+24. Removed Teleport Town NPCs Home config (Keybind still works)
+25. Renamed World Globe to Destination Globe and resprited
+26. Resprited Aether Altar and clarified how it's obtained
+27. Added Moss Staff
+28. Added Glowing Moss Staff
+29. Resprited Omnistaff, Staff of Cysting (+Overgrown), Staff of Hallowing, Staff of Hemorrhaging (+Overgrown), and Staff of Shrooming
+30. Resprited Superbomber and gave it a fuse timer instead of exploding on collision
+31. Updated the Used Permanent Upgrade Tooltip to show stackable upgrades use count
+32. Clarified a bunch of config entry names and descriptions
+33. Added Eightworm
+34. Fixed multiple instances of recipes not enabling when their config was toggled on in-game
+35. Changed used sounds for multiple items
+36. More resprites
+37. Retiered Chlorophyte Magnet, renamed to Soul Magnet and resprited
+38. Added a config to allow Hellstone to work with the Spelunker Potion
+39. Aether Altar and Lunar Crafting Monolith now count as a shimmer source for crafting
+40. Added the Nickel Anvil from Exxo Avalon Origins to the "Any Anvil" recipe group
+41. Added the Naquadah Anvil from Exxo Avalon Origins to the "Any Mythril Anvil" recipe group
+42. Added the Troxinium Forge from Exxo Avalon Origins to the "Any Adamantite Forge" recipe group
+43. Added the Evil Altars from Exxo Avalon Origins, Fargo's Mutant, LuiAFK, and Magic Storage to the "Any Altar" recipe group
+44. Added a config for boss bag recipes
+45. Added a config for crate recipes
+46. Resprited all Crafting Monoliths
+47. Renamed "Advanced Crafting Monolith" to "Specialized Crafting Monolith"
+48. Fixed the game being unplayable when using the Aequus Mod
+49. Fixed Wrath of the Gods' Divine Wings item recieving extra wing stat tooltips
+50. Cleaned up the Wing Time info display code a little
+
+v2.2.5 RERELEASE CHANGES:
+1. Fixed multiplayer not loading
+2. More resprites
+3. Many recipe changes
+4. Added Skull Watch
+
 v2.2.4
 1. Fixed localization of Max Stack Increase config
 2. Fixed localization of Stackable Quest Items config

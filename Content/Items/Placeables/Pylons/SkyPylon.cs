@@ -13,7 +13,7 @@ namespace QoLCompendium.Content.Items.Placeables.Pylons
         public override void SetDefaults()
         {
             Item.DefaultToPlaceableTile(ModContent.TileType<SkyPylonTile>(), 0);
-            Item.SetShopValues((ItemRarityColor)1, Item.buyPrice(0, 10, 0, 0));
+            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 10, 0, 0));
         }
     }
 }

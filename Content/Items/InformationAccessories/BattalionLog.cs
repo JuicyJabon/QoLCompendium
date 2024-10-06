@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.UI;
+using QoLCompendium.Core.UI.Other;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.InformationAccessories
 {
@@ -15,17 +16,17 @@ namespace QoLCompendium.Content.Items.InformationAccessories
             Item.width = 16;
             Item.height = 15;
             Item.maxStack = 1;
-            Item.rare = ItemRarityID.Blue;
             Item.accessory = true;
-            Item.value = Item.sellPrice(gold: 3);
+
+            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 3, 0, 0));
         }
 
         public override void AddRecipes()
         {
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type);
-            r.AddIngredient(ItemID.BambooBlock, 4);
-            r.AddIngredient(ItemID.Wood, 2);
-            r.AddRecipeGroup(RecipeGroupID.IronBar, 2);
+            r.AddIngredient(ItemID.Silk, 8);
+            r.AddIngredient(ItemID.Wood, 10);
+            r.AddRecipeGroup(RecipeGroupID.IronBar, 4);
             r.AddTile(TileID.Loom);
             r.Register();
         }

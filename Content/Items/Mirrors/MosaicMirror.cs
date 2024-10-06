@@ -1,6 +1,7 @@
 ﻿using QoLCompendium.Content.Items.InformationAccessories;
 using QoLCompendium.Core;
-using QoLCompendium.Core.UI;
+using QoLCompendium.Core.UI.Other;
+using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Mirrors
@@ -17,7 +18,7 @@ namespace QoLCompendium.Content.Items.Mirrors
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.MagicMirror);
-            Item.rare = ItemRarityID.Cyan;
+            Item.SetShopValues(ItemRarityColor.Lime7, Item.buyPrice(0, 10, 0, 0));
         }
 
         public override void OnConsumeItem(Player player) => Item.stack++;
@@ -35,6 +36,8 @@ namespace QoLCompendium.Content.Items.Mirrors
 
         public override void UpdateInventory(Player player)
         {
+            player.GetModPlayer<QoLCPlayer>().warpMirror = true;
+
             if (Mode == 0)
             {
                 Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.MosaicMirror.CursedMirror"));
@@ -225,6 +228,8 @@ namespace QoLCompendium.Content.Items.Mirrors
             r.AddIngredient(ModContent.ItemType<CursedMirror>());
             r.AddIngredient(ModContent.ItemType<MirrorOfReturn>());
             r.AddIngredient(ModContent.ItemType<TeleportationMirror>());
+            r.AddIngredient(ModContent.ItemType<WarpMirror>());
+            r.AddIngredient(ModContent.ItemType<WormholeMirror>());
             r.AddTile(TileID.TinkerersWorkbench);
             r.Register();
         }

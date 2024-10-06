@@ -2,7 +2,6 @@ Mods: {
 	QoLCompendium: {
 		CommonItemTooltips: {
 			NotConsumable: Not Consumable
-			Shimmerable: Shimmerable
 			WorksInBanks: Works from inside banks
 			StaffOfAshingPlaceable: Creates ash grass on ash
 			StaffOfCystingPlaceable: Creates corrupt grass on dirt
@@ -13,19 +12,153 @@ Mods: {
 			StaffOfOvergrowthPlaceable: Creates jungle grass on mud
 			StaffOfShroomingPlaceable: Creates mushroom grass on mud
 			OmnistaffPlaceable: Creates grasses on dirt, mud, or ash
+			MossStaffPlaceable: Creates mosses on stone or gray brick
+			GlowingMossStaffPlaceable: Creates glowing mosses on stone or gray brick
 			FlightTime: Flight Time: {0}
 			HorizontalSpeed: Horizontal Speed: {0}
 			VerticalSpeedMul: Vertical Speed Multiplier: {0}
 			HookReach: Reach: {0}
 			HookPullSpeed: Pull Speed: {0}
 			UsedItem: You have used this upgrade
+			UsedItemCountable: You have used {0}/{1}
+			Shimmerable: Shimmerable
+			ShimmerCoinLuck: Shimmerable into coin luck: {0}
+			ShimmerableIntoItem: Shimmerable into item: [i:{0}] ({1})
+			ShimmerableIntoNPC: Shimmerable into NPC: {0}
+			UseAmmo: Uses [i:{0}] ({1}) as ammo
+			Active: Item Activated
+			ActiveBuff: Buff Activated
+			PotionCrateTooltip:
+				'''
+				Right click while holding a stack of {0} potions to deposit them
+				Right click with an empty hand to retrieve deposited potions
+				Applies buffs from any storage
+				'''
 		}
 
-		NPCStuff.GoHome: NPCs have been teleported home!
+		NPCDropConditions.ExpertNotMaster: Drops in Expert Mode
+
+		Messages: {
+			MeteorStopped: "[c/32FF82:A meteorite burned up in the atmosphere!]"
+			MeteoriteGiven: "[c/FFF014:Collected {0} {$ItemName.Meteorite}] [i/s{0}:116]"
+			TeleportNPCsHome: "[c/32FF82:Town NPCs have been teleported home!]"
+			EventRain: The skies darken
+			EventWind: The wind has been stirred
+			EventSandstorm: The desert winds are howling
+			EventBloodMoon: The Blood Moon is rising...
+			EventEclipse: A solar eclipse is happening!
+			EventPumpkinMoon: The Pumpkin Moon is rising...
+			EventFrostMoon: The Frost Moon is rising...
+			LockedBoss: Defeat {0} to unlock
+			LockedBossWithTwoRequirements: Defeat {0} and {1} to unlock
+			LockedBossWithTwoOptions: Defeat {0} or {1} to unlock
+			LockedHardmode: Enter Hardmode to unlock
+			LockedOneMech: Defeat 1 mechanical boss to unlock
+			LockedThreeMechs: Defeat all 3 mechanical bosses to unlock
+			WorldJourney: Difficulty changed to Journey Mode
+			WorldNormal: Difficulty changed to Normal Mode
+			WorldExpert: Difficulty changed to Expert Mode
+			WorldMaster: Difficulty changed to Master Mode
+		}
+
+		RecipeGroupNames: {
+			AnyPirateBanner: Pirate Banner
+			AnyArmoredBonesBanner: Armored Bones Banner
+			AnySlimeBanner: Slime Banner
+			AnyBatBanner: Bat Banner
+			AnyHallowBanner: Hallow Banner
+			AnyCorruptionBanner: Corruption Banner
+			AnyCrimsonBanner: Crimson Banner
+			AnyJungleBanner: Jungle Banner
+			AnySnowBanner: Snow Banner
+			AnyDesertBanner: Desert Banner
+			AnyUnderworldBanner: Underworld Banner
+		}
+
+		InfoDisplayText: {
+			ArmorPenetration: Armor penetration
+			CriticalStrikeChance: % Critical strike chance
+			DamageMultiplier: x Damage
+			DeathCount: Total Deaths
+			Endurance: % Damage reduction
+			Luck: Luck
+			ManaRegeneration: Mana per second
+			MiningSpeed: % Mining speed
+			MinionSlots: Minion Slots
+			Regeneration: Health per second
+			SentrySlots: Sentry Slots
+			SpawnRate: Spawns per second
+			WingTime: s Wing Time
+			FullHealth: Full Health
+			FullMana: Full Mana
+			SpawnsDisabled: Spawns Disabled
+			InfiniteWingTime: Infinite Wing Time
+		}
+
+		UIText: {
+			BMPotionText: Potions
+			BMStationText: Flasks, Stations & Foods
+			BMMaterialText: Materials
+			BMMovementAccessoryText: Movement Accessories
+			BMCombatAccessoryText: Combat Accessories
+			BMInformativeText: Informative/Building Gear
+			BMBagText: Treasure Bags
+			BMCrateText: Crates & Grab Bags
+			BMOreText: Ores & Bars
+			BMNaturalBlockText: Natural Blocks
+			BMBuildingBlockText: Building Blocks
+			BMHerbText: Herbs & Plants
+			BMFishText: Fish & Fishing Gear
+			BMMountText: Mounts & Hooks
+			BMAmmoText: Ammo
+			ECPotionText: Modded Potions
+			ECStationText: Modded Flasks, Stations & Foods
+			ECMaterialText: Modded Materials (Mods: A-M)
+			ECMaterial2Text: Modded Materials (Mods: N-Z)
+			ECBagText: Modded Treasure Bags
+			ECCrateText: Modded Crates & Grab Bags
+			ECOreText: Modded Ores & Bars
+			ECNaturalBlockText: Modded Natural Blocks
+			ECBuildingBlockText: Modded Building Blocks
+			ECHerbText: Modded Herbs & Plants
+			ECFishText: Modded Fish & Fishing Gear
+			BossText: Bosses
+			EventText: Events
+			MinibossText: Minibosses
+			IncreaseSpawnText: Increase Spawns
+			DecreaseSpawnText: Decrease Spawns
+			CancelSpawnText: Cancel Spawns
+			CancelEventText: Cancel Events
+			CancelSpawnAndEventText: Cancel Spawns & Events
+			RevertText: Revert Changes
+			FullMoonText: Full Moon
+			WaningGibbousText: Waning Gibbous
+			ThirdQuarterText: Third Quarter
+			WaningCrescentText: Waning Crescent
+			NewMoonText: New Moon
+			WaxingCrescentText: Waxing Crescent
+			FirstQuarterText: First Quarter
+			WaxingGibbousText: Waxing Gibbous
+			PiggyBankText: Piggy Bank
+			SafeText: Safe
+			DefendersForgeText: Defender's Forge
+			VoidVaultText: Void Vault
+			DesertText: Desert
+			SnowText: Snow
+			JungleText: Jungle
+			GlowingMushroomText: Glowing Mushroom
+			CorruptionText: Corruption
+			CrimsonText: Crimson
+			HallowText: Hallow (Requires Hardmode)
+			PurityText: Purity
+			CloseText: Close
+			ResetText: Reset Selection
+		}
 
 		TileStuff: {
 			Whitelisted: Whitelisted:
 			Removed: Removed from Whitelist:
+			Failed: "[c/ff1919:Failed to Whitelist! Please activate the Whitelist inside the Main Config]"
 		}
 
 		ItemNames: {
@@ -46,6 +179,92 @@ Mods: {
 				StaffOfRegrowth: Omnistaff (Grass)
 				StaffOfShrooming: Omnistaff (Mushroom Grass)
 			}
+
+			MossStaff: {
+				BlueMoss: Moss Staff (Blue)
+				BrownMoss: Moss Staff (Brown)
+				GreenMoss: Moss Staff (Green)
+				PurpleMoss: Moss Staff (Purple)
+				RedMoss: Moss Staff (Red)
+			}
+
+			GlowingMossStaff: {
+				ArgonMoss: Glowing Moss Staff (Argon)
+				KryptonMoss: Glowing Moss Staff (Krypton)
+				LavaMoss: Glowing Moss Staff (Lava)
+				NeonMoss: Glowing Moss Staff (Neon)
+				XenonMoss: Glowing Moss Staff (Xenon)
+				HeliumMoss: Glowing Moss Staff (Helium)
+			}
+
+			DestinationGlobe: {
+				NoModifier: Destination Globe (No Selection)
+				Desert: Destination Globe (Desert)
+				Snow: Destination Globe (Snow)
+				Jungle: Destination Globe (Jungle)
+				GlowingMushroom: Destination Globe (Glowing Mushroom)
+				Corruption: Destination Globe (Corruption)
+				Crimson: Destination Globe (Crimson)
+				Hallow: Destination Globe (Hallow)
+				Purity: Destination Globe (Purity)
+			}
+
+			EntityManipulator: {
+				SpawnIncrease: Entity Manipulator (Increased Spawns)
+				SpawnDecrease: Entity Manipulator (Decreased Spawns)
+				CanceledSpawns: Entity Manipulator (Canceled Spawns)
+				CanceledEvents: Entity Manipulator (Canceled Events)
+				CanceledSpawnsAndEvents: Entity Manipulator (Canceled Spawns & Events)
+				NoModifier: Entity Manipulator (No Selection)
+			}
+
+			SummoningRemote: {
+				Boss: Summoning Remote ({0})
+				BossTwins: Summoning Remote (The Twins)
+				BossMoonLord: Summoning Remote (Moon Lord)
+				EventRain: Summoning Remote (Rain)
+				EventWind: Summoning Remote (Wind)
+				EventSandstorm: Summoning Remote (Sandstorm)
+				EventParty: Summoning Remote (Party)
+				EventSlimeRain: Summoning Remote (Slime Rain)
+				EventBloodMoon: Summoning Remote (Blood Moon)
+				EventGoblinArmy: Summoning Remote (Goblin Army)
+				EventSnowLegion: Summoning Remote (Snow Legion)
+				EventPirateInvasion: Summoning Remote (Pirate Invasion)
+				EventEclipse: Summoning Remote (Eclipse)
+				EventPumpkinMoon: Summoning Remote (Pumpkin Moon)
+				EventFrostMoon: Summoning Remote (Frost Moon)
+				EventMartianMadness: Summoning Remote (Martian Madness)
+				EventNebulaPillar: Summoning Remote (Nebula Pillar)
+				EventSolarPillar: Summoning Remote (Solar Pillar)
+				EventStardustPillar: Summoning Remote (Stardust Pillar)
+				EventVortexPillar: Summoning Remote (Vortex Pillar)
+				EventLunar: Summoning Remote (Lunar Event)
+				NoModifier: Summoning Remote (No Selection)
+			}
+
+			ChallengersCoin: {
+				Journey: Challenger's Coin (Mode: Journey)
+				Normal: Challenger's Coin (Mode: Normal)
+				Expert: Challenger's Coin (Mode: Expert)
+				Master: Challenger's Coin (Mode: Master)
+			}
+
+			PhaseInterrupter: {
+				FullMoon: Phase Interrupter (Full Moon)
+				WaningGibbous: Phase Interrupter (Waning Gibbous)
+				ThirdQuarter: Phase Interrupter (Third Quarter)
+				WaningCrescent: Phase Interrupter (Waning Crescent)
+				NewMoon: Phase Interrupter (New Moon)
+				WaxingCrescent: Phase Interrupter (Waxing Crescent)
+				FirstQuarter: Phase Interrupter (First Quarter)
+				WaxingGibbous: Phase Interrupter (Waxing Gibbous)
+			}
+
+			AllInOneAccess: {
+				Open: All In One Access (Void Vault Open)
+				Closed: All In One Access (Void Vault Closed)
+			}
 		}
 
 		Items: {
@@ -53,8 +272,8 @@ Mods: {
 				DisplayName: All In One Access
 				Tooltip:
 					'''
-					Summons all floating storages to store your items
-					Works as all portable storages
+					Opens a menu for mobile access to all personal storages
+					Right click to open/close the Void Vault
 					'''
 			}
 
@@ -65,7 +284,7 @@ Mods: {
 
 			AutoHouser: {
 				DisplayName: Auto Houser
-				Tooltip: Places an NPC house
+				Tooltip: Places a town NPC house
 			}
 
 			BannerBox: {
@@ -106,11 +325,6 @@ Mods: {
 					'''
 			}
 
-			DungeonMirror: {
-				DisplayName: Dungeon Mirror
-				Tooltip: Gaze into the mirror to materialize at the Dungeon
-			}
-
 			EclipsePedestal: {
 				DisplayName: Eclipse Pedestal
 				Tooltip: Favorite this item to have an eclipse occur every morning
@@ -140,11 +354,6 @@ Mods: {
 					'''
 			}
 
-			ChlorophyteMagnet: {
-				DisplayName: Chlorophyte Magnet
-				Tooltip: Favorite this item to increase grab range by 2100 tiles
-			}
-
 			HarmInducer: {
 				DisplayName: Harm Inducer
 				Tooltip: Displays the damage multiplier for your held weapon
@@ -166,6 +375,8 @@ Mods: {
 					'''
 					Creates a drill bomb that carves a hellbridge across the entire world
 					Will not destroy modded structures
+					Left click for a double row of platforms
+					Right click for a single row of platforms
 					'''
 			}
 
@@ -233,6 +444,8 @@ Mods: {
 					'''
 					Right click to toggle destination
 					Displays all modded information
+					Teleports you to a party member or town NPC
+					Click their head on the fullscreen map
 					'''
 			}
 
@@ -252,13 +465,7 @@ Mods: {
 
 			PotionCrate: {
 				DisplayName: Potion Crate
-				Tooltip:
-					'''
-					Used to store potions and apply buffs
-					Right click while holding a stack of 30 potions to deposit them
-					Right click with an empty hand to retrieve deposited potions
-					Applies buffs from any storage
-					'''
+				Tooltip: Used to store potions and apply buffs
 			}
 
 			RangedAbsolution: {
@@ -320,11 +527,6 @@ Mods: {
 				Tooltip: Gaze into the mirror to materialize at a random location
 			}
 
-			TempleMirror: {
-				DisplayName: Temple Mirror
-				Tooltip: Gaze into the mirror to materialize at the Temple
-			}
-
 			ToleranceDetector: {
 				DisplayName: Tolerance Detector
 				Tooltip: Displays armor penetration, crit chance, and the damage multiplier for your held weapon
@@ -338,6 +540,11 @@ Mods: {
 			TravelersMannequin: {
 				DisplayName: Traveler's Mannequin
 				Tooltip: Summons a Traveling Merchant
+			}
+
+			SkeletonRucksack: {
+				DisplayName: Skeleton Rucksack
+				Tooltip: Summons a Skeleton Merchant
 			}
 
 			VitalDisplay: {
@@ -364,13 +571,8 @@ Mods: {
 				Tooltip: Displays wing time
 			}
 
-			WIP: {
-				DisplayName: Work In Progress
-				Tooltip: Shop is being built, please come back later!
-			}
-
-			WorldGlobe: {
-				DisplayName: World Globe
+			DestinationGlobe: {
+				DisplayName: Destination Globe
 				Tooltip:
 					'''
 					Use to select a biome to be in
@@ -384,12 +586,9 @@ Mods: {
 					'''
 					Creates a drill bomb that creates a skybridge across the entire world
 					Will destroy everything in it's way
+					Left click for a double row of platforms
+					Right click for a single row of platforms
 					'''
-			}
-
-			AdvancedCraftingMonolith: {
-				DisplayName: Advanced Crafting Monolith
-				Tooltip: Functions as many advanced crafting stations
 			}
 
 			BasicCraftingMonolith: {
@@ -405,6 +604,11 @@ Mods: {
 			LunarCraftingMonolith: {
 				DisplayName: Lunar Crafting Monolith
 				Tooltip: Functions as every crafting station
+			}
+
+			SpecializedCraftingMonolith: {
+				DisplayName: Specialized Crafting Monolithi looked
+				Tooltip: Functions as many advanced crafting stations
 			}
 
 			DemonAltar: {
@@ -430,32 +634,32 @@ Mods: {
 			}
 
 			StaffOfShrooming: {
-				DisplayName: Staff Of Shrooming
+				DisplayName: Staff of Shrooming
 				Tooltip: ""
 			}
 
 			StaffOfHallowing: {
-				DisplayName: Staff Of Hallowing
+				DisplayName: Staff of Hallowing
 				Tooltip: ""
 			}
 
 			StaffOfAshing: {
-				DisplayName: Staff Of Ashing
+				DisplayName: Staff of Ashing
 				Tooltip: ""
 			}
 
 			StaffOfCysting: {
-				DisplayName: Staff Of Cysting
+				DisplayName: Staff of Cysting
 				Tooltip: ""
 			}
 
 			StaffOfHemorrhaging: {
-				DisplayName: Staff Of Hemorrhaging
+				DisplayName: Staff of Hemorrhaging
 				Tooltip: ""
 			}
 
 			StaffOfOvergrowth: {
-				DisplayName: Staff Of Overgrowth
+				DisplayName: Staff of Overgrowth
 				Tooltip: ""
 			}
 
@@ -498,7 +702,7 @@ Mods: {
 					Allows teleporting without requiring villagers
 					You can only place one per type and in the matching biome
 					'''
-				DisplayName: Hell Pylon
+				DisplayName: Underworld Pylon
 			}
 
 			DungeonPylon: {
@@ -548,7 +752,11 @@ Mods: {
 
 			AetherAltar: {
 				DisplayName: Aether Altar
-				Tooltip: Allows crafting shimmerable items into their results
+				Tooltip:
+					'''
+					Allows crafting shimmerable items into their results
+					Obtained by throwing a Demon/Crimson altar into shimmer
+					'''
 			}
 
 			LittleEgg: {
@@ -570,17 +778,18 @@ Mods: {
 				Tooltip:
 					'''
 					Unlocks the entire research duplication menu
+					Unlocks the entire research duplication menu
 					Cannot be undone
 					'''
 			}
 
 			StaffOfOvergrownCysting: {
-				DisplayName: Staff Of Overgrown Cysting
+				DisplayName: Staff of Overgrown Cysting
 				Tooltip: ""
 			}
 
 			StaffOfOvergrownHemorrhaging: {
-				DisplayName: Staff Of Overgrown Hemorrhaging
+				DisplayName: Staff of Overgrown Hemorrhaging
 				Tooltip: ""
 			}
 
@@ -589,7 +798,9 @@ Mods: {
 				Tooltip:
 					'''
 					Creates an asphalt platform highway across the entire world
-					Will not destroy modded structures
+					Will destroy everything in it's way
+					Left click for a double row of platforms
+					Right click for a single row of platforms
 					'''
 			}
 
@@ -688,33 +899,33 @@ Mods: {
 				Tooltip: ""
 			}
 
-			EndlessBlueFlarePouch: {
-				DisplayName: Endless Blue Flare Pouch
+			EndlessBlueFlareBox: {
+				DisplayName: Endless Blue Flare Box
 				Tooltip: ""
 			}
 
-			EndlessCursedFlarePouch: {
-				DisplayName: Endless Cursed Flare Pouch
+			EndlessCursedFlareBox: {
+				DisplayName: Endless Cursed Flare Box
 				Tooltip: ""
 			}
 
-			EndlessFlarePouch: {
-				DisplayName: Endless Flare Pouch
+			EndlessFlareBox: {
+				DisplayName: Endless Flare Box
 				Tooltip: ""
 			}
 
-			EndlessRainbowFlarePouch: {
-				DisplayName: Endless Rainbow Flare Pouch
+			EndlessRainbowFlareBox: {
+				DisplayName: Endless Rainbow Flare Box
 				Tooltip: ""
 			}
 
-			EndlessShimmerFlarePouch: {
-				DisplayName: Endless Shimmer Flare Pouch
+			EndlessShimmerFlareBox: {
+				DisplayName: Endless Shimmer Flare Box
 				Tooltip: ""
 			}
 
-			EndlessSpelunkerFlarePouch: {
-				DisplayName: Endless Spelunker Flare Pouch
+			EndlessSpelunkerFlareBox: {
+				DisplayName: Endless Spelunker Flare Box
 				Tooltip: ""
 			}
 
@@ -982,6 +1193,229 @@ Mods: {
 				DisplayName: Golden Lockpick
 				Tooltip: Opens all Golden Chests and Golden Lock Boxes
 			}
+
+			LegendaryCatcher: {
+				DisplayName: Legendary Catcher
+				Tooltip:
+					'''
+					Casts a ridiculous amount of lines
+					Can fish in lava
+					Fishing line never snaps
+					Increases fishing power of the rod during rain or at night
+					Requires 1 bait for infinite uses
+					'''
+			}
+
+			BaitCollector: {
+				DisplayName: Bait Collector
+				Tooltip: ""
+			}
+
+			BossCollector: {
+				DisplayName: Boss Collector
+				Tooltip: ""
+			}
+
+			CavernCollector: {
+				DisplayName: Cavern Collector
+				Tooltip: ""
+			}
+
+			CorruptionCollector: {
+				DisplayName: Corruption Collector
+				Tooltip: ""
+			}
+
+			CrimsonCollector: {
+				DisplayName: Crimson Collector
+				Tooltip: ""
+			}
+
+			DesertCollector: {
+				DisplayName: Desert Collector
+				Tooltip: ""
+			}
+
+			DungeonCollector: {
+				DisplayName: Dungeon Collector
+				Tooltip: ""
+			}
+
+			DyePlantCollector: {
+				DisplayName: Dye Plant Collector
+				Tooltip: ""
+			}
+
+			EnemyCollector: {
+				DisplayName: Enemy Collector
+				Tooltip: ""
+			}
+
+			FishCollector: {
+				DisplayName: Fish Collector
+				Tooltip: ""
+			}
+
+			ForestCollector: {
+				DisplayName: Forest Collector
+				Tooltip: ""
+			}
+
+			GemCollector: {
+				DisplayName: Gem Collector
+				Tooltip: ""
+			}
+
+			HallowCollector: {
+				DisplayName: Hallow Collector
+				Tooltip: ""
+			}
+
+			HerbCollector: {
+				DisplayName: Herb Collector
+				Tooltip: ""
+			}
+
+			JungleCollector: {
+				DisplayName: Jungle Collector
+				Tooltip: ""
+			}
+
+			LiquidCollector: {
+				DisplayName: Liquid Collector
+				Tooltip: ""
+			}
+
+			LunarCollector: {
+				DisplayName: Lunar Collector
+				Tooltip: ""
+			}
+
+			MeteorCollector: {
+				DisplayName: Meteor Collector
+				Tooltip: ""
+			}
+
+			ModBiomeCollector: {
+				DisplayName: Mod Biome Collector
+				Tooltip: ""
+			}
+
+			MushroomCollector: {
+				DisplayName: Mushroom Collector
+				Tooltip: ""
+			}
+
+			NaturalBlockCollector: {
+				DisplayName: Natural Block Collector
+				Tooltip: ""
+			}
+
+			OceanCollector: {
+				DisplayName: Ocean Collector
+				Tooltip: ""
+			}
+
+			OreCollector: {
+				DisplayName: Ore Collector
+				Tooltip: ""
+			}
+
+			SkyCollector: {
+				DisplayName: Sky Collector
+				Tooltip: ""
+			}
+
+			SnowCollector: {
+				DisplayName: Snow Collector
+				Tooltip: ""
+			}
+
+			TempleCollector: {
+				DisplayName: Temple Collector
+				Tooltip: ""
+			}
+
+			TreeCollector: {
+				DisplayName: Tree Collector
+				Tooltip: ""
+			}
+
+			UnderworldCollector: {
+				DisplayName: Underworld Collector
+				Tooltip: ""
+			}
+
+			WormholeMirror: {
+				DisplayName: Wormhole Mirror
+				Tooltip:
+					'''
+					Teleports you to a party member
+					Click their head on the fullscreen map
+					'''
+			}
+
+			MossStaff: {
+				DisplayName: Moss Staff
+				Tooltip: ""
+			}
+
+			GlowingMossStaff: {
+				Tooltip: ""
+				DisplayName: Glowing Moss Staff
+			}
+
+			Eightworm: {
+				DisplayName: Eightworm
+				Tooltip: "'Infinity + worms'"
+			}
+
+			SoulMagnet: {
+				Tooltip: Favorite this item to increase grab range by 2100 tiles
+				DisplayName: Soul Magnet
+			}
+
+			SkullWatch: {
+				DisplayName: Skull Watch
+				Tooltip: Displays death count
+			}
+
+			BottomlessChumBucket: {
+				DisplayName: Bottomless Chum Bucket
+				Tooltip:
+					'''
+					Contains an endless amount of chum
+					Toss in water up to 3 times to increase fishing power
+					Obtained through Blood Moon fishing
+					'''
+			}
+
+			ChallengersCoin: {
+				DisplayName: Challenger's Coin
+				Tooltip:
+					'''
+					Changes the difficulty of the world
+					Right click to toggle Journey Mode
+					'''
+			}
+
+			WarpMirror: {
+				DisplayName: Warp Mirror
+				Tooltip:
+					'''
+					Teleports you to a town NPC
+					Click their head on the fullscreen map
+					'''
+			}
+
+			Minibridge: {
+				DisplayName: Minibridge
+				Tooltip:
+					'''
+					Creates a drill bomb that creates a 200 tile long platform
+					The center of the platform is where it is used, 100 tiles on each side
+					'''
+			}
 		}
 
 		NPCs: {
@@ -1007,51 +1441,88 @@ Mods: {
 				}
 
 				Census.SpawnCondition: No condition
+
+				ShopName: {
+					Potions: Black Market Dealer: Potions
+					"Flasks, Stations & Foods": Black Market Dealer: Flasks, Stations & Foods
+					Materials: Black Market Dealer: Materials
+					"Movement Accessories": Black Market Dealer: Movement Accessories
+					"Combat Accessories": Black Market Dealer: Combat Accessories
+					"Informative/Building Gear": Black Market Dealer: Informative/Building Gear
+					"Treasure Bags": Black Market Dealer: Treasure Bags
+					"Crates & Grab Bags": Black Market Dealer: Crates & Grab Bags
+					"Ores & Bars": Black Market Dealer: Ores & Bars
+					"Natural Blocks": Black Market Dealer: Natural Blocks
+					"Building Blocks": Black Market Dealer: Building Blocks
+					"Herbs & Plants": Black Market Dealer: Herbs & Plants
+					"Fish & Fishing Gear": Black Market Dealer: Fish & Fishing Gear
+					"Mounts & Hooks": Black Market Dealer: Mounts & Hooks
+					Ammo: Black Market Dealer: Ammo
+				}
 			}
 
 			EtherealCollectorNPC: {
 				DisplayName: Ethereal Collector
 
 				TownNPCMood: {
-					Content: I am content.
-					NoHome: I hate not having a home.
-					FarFromHome: I am too far from home.
-					LoveSpace: I love having so much space.
-					DislikeCrowded: I dislike how crowded I am.
-					HateCrowded: I hate how crowded I am.
-					LoveBiome: I love {BiomeName}.
+					Content: This place is pretty alright.
+					NoHome: Can you please make me a house?
+					FarFromHome: How did I get here?
+					LoveSpace: This is the best place to be for sure.
+					DislikeCrowded: Too many people.
+					HateCrowded: Please move some of these people out.
+					LoveBiome: This {BiomeName} is pretty chill.
 					LikeBiome: I like {BiomeName}.
-					DislikeBiome: I dislike {BiomeName}.
-					LoveNPC: I love {NPCName}.
-					LikeNPC: I like {NPCName}.
-					DislikeNPC: I dislike {NPCName}.
-					HateNPC: I hate {NPCName}.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
+					DislikeBiome: This {BiomeName} is too dry.
+					LoveNPC: I love when {NPCName} does her incantations.
+					LikeNPC: My friend {NPCName} has a lot of cool stuff.
+					DislikeNPC: That guy {NPCName} is too loud.
+					HateNPC: The Tax Collector, {NPCName}, gets in the way of profit.
+					LikeNPC_Princess: The Princess is cool.
+					Princess_LovesNPC: "{NPCName} is awesome!"
 				}
 
 				Census.SpawnCondition: No condition
+
+				ShopName: {
+					"Modded Potions": Ethereal Collector: Modded Potions
+					"Modded Flasks, Stations & Foods": Ethereal Collector: Modded Flasks, Stations & Foods
+					"Modded Materials": Ethereal Collector: Modded Materials
+					"Modded Materials 2": Ethereal Collector: Modded Materials 2
+					"Modded Treasure Bags": Ethereal Collector: Modded Treasure Bags
+					"Modded Crates & Grab Bags": Ethereal Collector: Modded Crates & Grab Bags
+					"Modded Ores & Bars": Ethereal Collector: Modded Ores & Bars
+					"Modded Natural Blocks": Ethereal Collector: Modded Natural Blocks
+					"Modded Building Blocks": Ethereal Collector: Modded Building Blocks
+					"Modded Herbs & Plants": Ethereal Collector: Modded Herbs & Plants
+					"Modded Fish & Fishing Gear": Ethereal Collector: Modded Fish & Fishing Gear
+				}
 			}
 
 			SuperDummy.DisplayName: Super Dummy
 		}
 
 		Projectiles: {
-			AutoHouserProj.DisplayName: Auto Houser Projectile
-			EtherianConstructProj.DisplayName: Etherian Construct Projectile
-			HellevatorCreatorProj.DisplayName: Hellevator Creator Projectile
-			LifeformLocator.DisplayName: Lifeform Locator Projectile
-			FlyingSafeProj.DisplayName: Flying Safe Projectile
-			SillySlapperWhip.DisplayName: Silly Slapper Whip
-			RangedAbsolutionProj.DisplayName: Ranged Absolution Projectile
-			HellbridgerProj.DisplayName: Hellbridger Projectile
-			SkybridgerProj.DisplayName: Skybridger Projectile
-			LakemakerProj.DisplayName: Lakemaker Projectile
-			SuperbomberProj.DisplayName: Superbomber Projectile
+			AutoHouserProj.DisplayName: Auto Houser
+			HellevatorCreatorProj.DisplayName: Hellevator Creator
+			LifeformLocator.DisplayName: Lifeform Locator
+			SillySlapperWhip.DisplayName: Silly Slapper
+			RangedAbsolutionProj.DisplayName: Ranged Absolution
+			HellbridgerProj.DisplayName: Hellbridger
+			HellbridgerSingleProj.DisplayName: Hellbridger Single
+			SkybridgerProj.DisplayName: Skybridger
+			SkybridgerSingleProj.DisplayName: Skybridger Single
+			LakemakerProj.DisplayName: Lakemaker
+			SuperbomberProj.DisplayName: Superbomber
 			LittleYagi.DisplayName: Little Yagi
-			AsphaltAutohighwayProj.DisplayName: Asphalt Autohighway Projectile
+			AsphaltAutohighwayProj.DisplayName: Asphalt Autohighway
+			AsphaltAutohighwaySingleProj.DisplayName: Asphalt Autohighway Single
 			Moth.DisplayName: Moth
 			Owl.DisplayName: Owl
+			LegendaryBobber.DisplayName: Legendary Bobber
+			EtherianConstructProjectile.DisplayName: Etherian Construct
+			FlyingSafeProjectile.DisplayName: Flying Safe
+			MinibridgeProj.DisplayName: Minibridge
 		}
 
 		InfoDisplays: {
@@ -1067,11 +1538,31 @@ Mods: {
 			SentryInfoDisplay.DisplayName: Sentry Slots
 			SpawnInfoDisplay.DisplayName: Spawn Rate
 			WingTimeInfoDisplay.DisplayName: Wing Time
+			DeathsInfoDisplay.DisplayName: Deaths
+		}
+
+		BootSlot: {
+			Boots: Boots
+			SocialBoots: Social Boots
+			Dye: Dye
+		}
+
+		ExpertSlot: {
+			Expert: Expert Accessory
+			SocialExpert: Social Expert Accessory
+			Dye: Dye
+		}
+
+		ShieldSlot: {
+			Shield: Shield
+			SocialShield: Social Shield
+			Dye: Dye
 		}
 
 		WingSlot: {
 			Wings: Wings
 			SocialWings: Social Wings
+			Dye: Dye
 		}
 
 		Configs: {
@@ -1083,7 +1574,7 @@ Mods: {
 					Tooltip:
 						'''
 						Toggles endless buffs
-						You only need 1 buff station for station buffs
+						You only need 1 station for station buffs
 						'''
 				}
 
@@ -1116,78 +1607,294 @@ Mods: {
 						'''
 				}
 
-				EndlessAmount: {
+				EndlessWeapons: {
+					Label: "[i:42] Endless Weapons"
+					Tooltip: Toggles endless weapons
+				}
+
+				EndlessBuffAmount: {
+					Label: "[i:3119] Endless Potion Amount"
+					Tooltip: Change the amount needed for endless potions
+				}
+
+				EndlessStationAmount: {
+					Label: "[i:3119] Endless Station Amount"
+					Tooltip: Change the amount needed for endless stations
+				}
+
+				EndlessHealingAmount: {
+					Label: "[i:3119] Endless Healing Amount"
+					Tooltip: Change the amount needed for endless healing
+				}
+
+				EndlessItemAmount: {
 					Label: "[i:3119] Endless Item Amount"
-					Tooltip: Change the amount needed for all endless toggles
+					Tooltip: Change the amount needed for endless items
 				}
 
-				ExtraBuffSlots: {
-					Label: "[i:296] Extra Buff Slots"
-					Tooltip: The amount of extra buff slots
+				EndlessWeaponAmount: {
+					Label: "[i:3119] Endless Weapon Amount"
+					Tooltip: Change the amount needed for endless weapons
 				}
 
-				InstantRespawn: {
-					Label: "[i:583] Instant Respawn"
+				EndlessAmmoAmount: {
+					Tooltip: Change the amount needed for endless ammo
+					Label: "[i:3119] Endless Ammo Amount"
+				}
+
+				EndlessBaitAmount: {
+					Tooltip: Change the amount needed for endless bait
+					Label: "[i:3119] Endless Bait Amount"
+				}
+
+				EndlessBuffsOnlyFromCrate: {
+					Label: "[i:292] Endless Buffs Only Work From Potion Crate"
+					Tooltip: Toggles if endless buffs only work when put into the Potion Crate
+				}
+
+				IncreaseMaxStack: {
+					Label: "[i:2] Item Max Stack"
 					Tooltip:
 						'''
-						Toggles instant respawns, will despawn bosses on death if enabled
-						Turn off for multiplayer, has unintended effects with boss despawns
+						Change the max stack of stackable items
+						Maximum stack is 99999
 						'''
 				}
 
-				FullHPRespawn: {
-					Label: "[i:29] Full HP Respawn"
-					Tooltip: Toggles if you respawn with max health
+				UtilityAccessoriesWorkInBanks: {
+					Label: "[i:3084] Utility Accessories Work In Banks"
+					Tooltip: Toggles if informational, fishing, mining, and building accessories work in banks
 				}
 
-				NoSpawns: {
-					Label: "[i:2324] No Spawns During Bosses"
-					Tooltip: Toggles enemy spawns during bosses
+				StackableQuestItems: {
+					Label: "[i:2452] Stackable Quest Items"
+					Tooltip: Toggles if quest items can be stacked
 				}
 
-				NoDevs: {
-					Label: "[i:3287] No Devs From Boss Bags"
-					Tooltip: Toggles if boss bags can drop dev sets
+				BossItemTransmutation: {
+					Label: "[i:5349] Boss Item Transmutation"
+					Tooltip: Toggles if boss items can be transmutated with shimmer
 				}
 
-				BMNPC: {
-					Label: "[i:4413] Black Market Dealer"
-					Tooltip: Toggles the Black Market Dealer NPC
+				ItemConversions: {
+					Label: "[i:86] Item Conversions"
+					Tooltip: Toggles if recipes are added for item conversion
 				}
 
-				ECNPC: {
-					Label: "[i:4412] Ethereal Collector"
-					Tooltip: Toggles the Ethereal Collector NPC
+				BossBagRecipes: {
+					Label: "[i:3318] Boss Bag Recipes"
+					Tooltip: Toggles if recipes are added for boss drops using their bag
 				}
 
-				FriendliesDontDie: {
-					Label: "[i:1175] Friendlies Don't Die"
-					Tooltip: Toggles whether friendly NPCs take damage
+				CrateRecipes: {
+					Label: "[i:2334] Crate Recipes"
+					Tooltip: Toggles if recipes are added for crate drops using crates
 				}
 
-				ToggleHappiness: {
-					Label: "[i:58] Disable NPC Happiness"
-					Tooltip: Toggles if NPCs should have happiness or not
+				BannerRecipes: {
+					Label: "[i:1683] Banner Recipes"
+					Tooltip: Toggles if recipes are added for enemy drops using banners
+				}
+
+				NoDeveloperSetsFromBossBags: {
+					Label: "[i:3287] No Developer Sets From Boss Bags"
+					Tooltip: Toggles if boss bags can drop developer sets
+				}
+
+				EnemiesDropMoreCoins: {
+					Label: "[i:855] Enemies Drop More Coins"
+					Tooltip: Multiplies the amount of dropped coins
+				}
+
+				AutoMoneyQuickStack: {
+					Label: "[i:87] Auto Quick Stack Money"
+					Tooltip:
+						'''
+						Toggles if money automatically goes into the piggy bank
+						Requires at least 1 copper in the piggy bank to function
+						'''
+				}
+
+				BlackMarketDealerCanSpawn: {
+					Label: "[i:4413] Black Market Dealer Can Spawn"
+					Tooltip: Toggles if the Black Market Dealer can spawn
+				}
+
+				EtherealCollectorCanSpawn: {
+					Label: "[i:4412] Ethereal Collector Can Spawn"
+					Tooltip: Toggles if the Ethereal Collector can spawn
+				}
+
+				RemoveBiomeShopRequirements: {
+					Label: "[i:4766] Remove Biome Requirements For Shops"
+					Tooltip:
+						'''
+						Toggles if shop items require visiting a biome to unlock
+						This is permanent when turned on for a world
+						'''
+				}
+
+				TownNPCsDontDie: {
+					Label: "[i:1175] Town NPCs Don't Take Damage"
+					Tooltip:
+						'''
+						Toggles whether town NPCs take damage
+						They can still die to lava and player attacks
+						'''
+				}
+
+				FastTownNPCSpawns: {
+					Label: "[i:17] Fast Town NPC Spawns"
+					Tooltip: Toggles if Town NPCs spawn faster
+				}
+
+				TownNPCSpawnImprovements: {
+					Label: "[i:985] Town NPC Spawn Improvement"
+					Tooltip:
+						'''
+						Allows town NPCs to spawn without being saved
+						Affects:
+						- Angler
+						- Golfer
+						- Stylist
+						- Goblin Tinkerer
+						- Tavernkeep
+						- Mechanic
+						- Wizard
+						- Tax Collector
+						'''
+				}
+
+				NoTownSlimes: {
+					Label: "[i:23] No Town Slimes"
+					Tooltip: Prevents town slimes from moving in
+				}
+
+				TownNPCsLiveInEvil: {
+					Label: "[i:61] Town NPCs Can Live In Evil Biomes"
+					Tooltip: Toggles if town NPCs can live in the corruption or crimson biomes
+				}
+
+				DisableHappiness: {
+					Label: "[i:58] Disable Town NPC Happiness"
+					Tooltip: Toggles if town NPCs should have happiness or not
+				}
+
+				OverridePylonSales: {
+					Label: "[i:4876] Override Pylon Sales"
+					Tooltip: Toggles if NPCs always sell pylons
 				}
 
 				HappinessPriceChange: {
 					Label: "[i:74] Happiness Price Change"
 					Tooltip:
 						'''
-						Change the price multiplier for NPCs
+						Change the price multiplier for town NPCs
 						Lower number is happier
 						Only Active if Happiness is disabled
 						'''
 				}
 
-				TowerShield: {
-					Label: "[i:3539] Tower Shield Health"
-					Tooltip: Changes the shield health of the celestial towers
+				ReforgePriceChange: {
+					Label: "[i:73] Reforge Price Change"
+					Tooltip: Change the price multiplier when reforging items
 				}
 
-				MoreCoins: {
-					Label: "[i:855] More Coins"
-					Tooltip: Multiplies the amount of dropped coins
+				AnglerQuestInstantReset: {
+					Label: "[i:2374] Angler Quest Instant Reset"
+					Tooltip: Toggles if the Angler's quests will instantly reset on completion
+				}
+
+				LunarPillarShieldHeath: {
+					Label: "[i:3539] Lunar Pillar Shield Health"
+					Tooltip: Changes the shield health of the Lunar Pillars
+				}
+
+				LunarPillarsDropMoreFragments: {
+					Label: "[i:3458] More Lunar Fragments"
+					Tooltip: Toggles if the Lunar Pillars drop way more fragments
+				}
+
+				LunarEnemiesDropFragments: {
+					Label: "[i:3456] Lunar Enemies Drop Fragments"
+					Tooltip: Toggles if Lunar enemies can drop fragments
+				}
+
+				OneKillForBestiaryEntries: {
+					Label: "[i:583] One Kill For Bestiary Entries"
+					Tooltip: Toggles if one kill unlocks the entire bestiary entry for that enemy
+				}
+
+				LavaSlimesDontDropLava: {
+					Label: "[i:207] Lava Slimes Dont Drop Lava"
+					Tooltip: Toggles if Lava Slimes drop lava in Expert+
+				}
+
+				NoDoorBreaking: {
+					Tooltip: Toggles if enemies can break down doors
+					Label: "[i:25] No Door Breaking"
+				}
+
+				ExtraDefenderMedalDrops: {
+					Tooltip: Toggles if Old One's Army minibosses drop defender medals
+					Label: "[i:3817] Extra Defender Medal Drops"
+				}
+
+				RelicsInExpert: {
+					Tooltip: Toggles if Master Mode relics can drop in Expert Mode
+					Label: "[i:4924] Relics Can Drop In Expert"
+				}
+
+				NoSpawnsDuringBosses: {
+					Label: "[i:2324] No Spawns During Bosses"
+					Tooltip: Toggles if enemies can spawn during boss fights
+				}
+
+				NoNaturalBossSpawns: {
+					Label: "[i:560] No Natural Boss Spawns"
+					Tooltip:
+						'''
+						Toggles if bosses can spawn naturally
+						Disables natural spawns for:
+						 - Eye of Cthulhu
+						 - The Twins
+						 - The Destroyer
+						 - Skeletron Prime
+						'''
+				}
+
+				ExtraLures: {
+					Label: "[i:5139] Extra Lures"
+					Tooltip:
+						'''
+						Change the amount of bobbers fishing rods cast
+						1 = disabled
+						'''
+				}
+
+				MobileStoragesFollowThePlayer: {
+					Label: "[i:3213] Mobile Storages Follow The Player"
+					Tooltip: Toggles if mobile storages will follow the player
+				}
+
+				NoFallingSandDamage: {
+					Label: "[i:169] No Falling Block Damage"
+					Tooltip: Toggles if falling blocks can hurt the player
+				}
+
+				NoLittering: {
+					Label: "[i:169] No Block Litter"
+					Tooltip: Toggles if sand, snow, and tombstone projectiles can place their tile
+				}
+
+				NoLarvaBreak: {
+					Label: "[i:1133] No Larva Break"
+					Tooltip: Toggles if the Queen's Larva is breakable with projectiles
+				}
+
+				PurificationPowderCleansesWalls: {
+					Label: "[i:66] Purification Powder Cleanses Walls"
+					Tooltip: Toggles if Purification Powder works on walls
 				}
 
 				IncreasePlaceSpeed: {
@@ -1200,142 +1907,58 @@ Mods: {
 					Tooltip: Increases placement range
 				}
 
-				FastTools: {
-					Label: "[i:1] Fast Tools"
+				IncreaseToolSpeed: {
+					Label: "[i:1] Increase Tool Speed"
 					Tooltip: Changes how fast tools are used
 				}
 
-				FastExtractor: {
-					Label: "[i:997] Fast Extractor"
-					Tooltip: Toggles faster extractinator use speed
+				FasterExtractinator: {
+					Label: "[i:997] Faster Extractinator"
+					Tooltip: Toggles faster Extractinator use speed
 				}
 
-				AutoMoneyStack: {
-					Label: "[i:87] Auto Money Stack"
-					Tooltip:
-						'''
-						Toggles money automatically going into the piggy bank
-						Requires at least 1 copper in the piggy bank to function
-						'''
+				ExtraBuffSlots: {
+					Label: "[i:296] Extra Buff Slots"
+					Tooltip: The amount of extra buff slots
 				}
 
-				LifeformPointer: {
-					Label: "[i:3118] Lifeform Pointer"
-					Tooltip: Toggles an arrow that points towards rare creatures when using a lifeform analyzer
+				KeepBuffsOnDeath: {
+					Tooltip: Toggles if buffs are persistent through death
+					Label: "[i:4870] Keep Buffs On Death"
 				}
 
-				InformationBanks: {
-					Label: "[i:3084] Information In Banks"
-					Tooltip: Toggles if informational, fishing, mining, and building accessories work in banks
+				KeepDebuffsOnDeath: {
+					Tooltip: Toggles if debuffs are persistent through death
+					Label: "[i:4870] Keep Debuffs On Death"
 				}
 
-				MapPorting: {
-					Label: "[i:2351] Map Teleporting"
-					Tooltip: Toggles if you can right click on the map to teleport to that position
-				}
-
-				IncreaseMaxStack: {
-					Label: "[i:2] Item Max Stack"
-					Tooltip:
-						'''
-						Change the max stack of stackable items
-						Maximum stack is 99999
-						'''
-				}
-
-				ExtraLures: {
-					Label: "[i:5139] Extra Lures"
-					Tooltip: Toggles if fishing rods fire extra lures
-				}
-
-				NoLittering: {
-					Label: "[i:169] No Littering"
-					Tooltip: Toggles if certain projectiles don't place their tile
-				}
-
-				NoLarvaBreak: {
-					Label: "[i:1133] No Larva Break"
-					Tooltip: Toggles if the Queen's Larva is breakable with projectiles
-				}
-
-				DisableEvilSpread: {
-					Label: "[i:59] Disable Evil Spread"
-					Tooltip: Toggles world evil & hallow spread
-				}
-
-				TownieSpawn: {
-					Label: "[i:985] Town NPC Spawn Improvement"
-					Tooltip: Allows NPCs such as the Stylist or Tinkerer to spawn without being saved
+				InfiniteSliceOfCake: {
+					Tooltip: Toggles if the Sugar Rush buff is infinite like other station buffs
+					Label: "[i:3750] Infinite Slice Of Cake"
 				}
 
 				RegrowthAutoReplant: {
 					Label: "[i:213] Regrowth Auto-Plant"
-					Tooltip: Allows staff of regrowth to replace the herbs it just harvested
+					Tooltip:
+						'''
+						Allows Staff of Regrowth & Axe of Regrowth to replace the herb it just harvested
+						Allows Axe of Regrowth to replace the gemcorn it just harvested
+						'''
 				}
 
-				Halloween: {
-					Tooltip: Toggles the Halloween seasonal event
-					Label: "[i:1844] Toggle Halloween"
+				LifeformAnalyzerPointer: {
+					Label: "[i:3118] Lifeform Analyzer Pointer"
+					Tooltip: Toggles an arrow that points towards rare creatures when using a Lifeform Analyzer
 				}
 
-				Christmas: {
-					Tooltip: Toggles the Christmas seasonal event
-					Label: "[i:1958] Toggle Christmas"
-				}
-
-				EndlessBuffAmount: {
-					Label: "[i:3119] Endless Potion Amount"
-					Tooltip: Change the amount needed for endless potions
-				}
-
-				EndlessHealingAmount: {
-					Label: "[i:3119] Endless Healing Amount"
-					Tooltip: Change the amount needed for endless healing
-				}
-
-				WingSlot: {
-					Label: "[i:4978] Wing Slot"
-					Tooltip: Toggles wing slot
-				}
-
-				LavaSlimeNoLava: {
-					Label: "[i:207] Lava Slime No Lava"
-					Tooltip: Toggles if lava slimes drop lava in Expert+
-				}
-
-				StopOpeningDoors: {
-					Label: "[i:25] Stop Opening Doors"
-					Tooltip: Toggles if enemies can open doors
-				}
-
-				FastTownieSpawns: {
-					Label: "[i:17] Fast Town NPC Spawns"
-					Tooltip: Toggles if Town NPCs spawn faster
-				}
-
-				ExtraPhoneInfo: {
-					Label: "[i:3124] Extra Phone Info"
-					Tooltip: Toggles if the Cell Phone has this mod's info items in it's recipe and effects
-				}
-
-				FastTrees: {
-					Label: "[i:27] Fast Tree Growth"
-					Tooltip: Toggles if trees grow faster
-				}
-
-				FastHerbs: {
-					Label: "[i:313] Fast Herb Growth"
-					Tooltip: Toggles if herbs grow faster
-				}
-
-				NoChilled: {
-					Label: "[i:664] No Chilled"
+				NoExpertIceWaterChilled: {
+					Label: "[i:664] No Expert Ice Water Chilled"
 					Tooltip: Makes you immune to expert+ ice biome water
 				}
 
-				NoTownSlimes: {
-					Label: "[i:23] No Town Slimes"
-					Tooltip: Prevents town slimes from moving in
+				NoShimmerSink: {
+					Tooltip: Toggles if you can sink through blocks when in shimmer
+					Label: "[i:5364] No Shimmer Sink"
 				}
 
 				AutoTeams: {
@@ -1352,102 +1975,14 @@ Mods: {
 						'''
 				}
 
-				NoTombs: {
-					Label: "[i:321] No Tombstones"
-					Tooltip: Disables tombstones from spawning
-				}
-
-				GoHomeNPCs: {
-					Label: "[i:25] Teleport NPCs Home"
-					Tooltip: Allows teleporting NPCs home with a bindable key
-				}
-
-				EndlessWeapons: {
-					Label: "[i:42] Endless Weapons"
-					Tooltip: Toggles endless weapons
-				}
-
-				EndlessBuffsOnlyFromCrate: {
-					Label: "[i:292] Endless Buffs Only Work From Potion Crate"
-					Tooltip: Toggles if endless buffs only work when put into the Potion Crate
-				}
-
-				SuperIncreaseMaxStack: {
-					Label: "[i:2] Super Increased Max Item Stacks"
-					Tooltip: Toggles if stackable items can be stacked to 99999
-				}
-
-				StackableQuestItems: {
-					Label: "[i:2452] Stackable Quest Items"
-					Tooltip: Toggles if quest items can be stacked
-				}
-
-				AnglerQuestInstantReset: {
-					Label: "[i:2374] Angler Quest Instant Reset"
-					Tooltip: Toggles if the Angler's quests will instantly reset on completion
-				}
-
-				TreesDropMore: {
-					Label: "[i:4856] Trees Drop More"
-					Tooltip: Toggles if trees drop more fruits and gems
-				}
-
-				NoShimmerSink: {
-					Tooltip: Toggles if you can sink through blocks when in shimmer
-					Label: "[i:5364] No Shimmer Sink"
-				}
-
-				KeepDebuffsOnDeath: {
-					Tooltip: Toggles if debuffs are persistent through death
-					Label: "[i:4870] Keep Debuffs On Death"
-				}
-
-				KeepBuffsOnDeath: {
-					Tooltip: Toggles if buffs are persistent through death
-					Label: "[i:4870] Keep Buffs On Death"
-				}
-
-				MiningSpeedForHammersAndAxesAndDrills: {
-					Tooltip: Toggles if mining speed benefits affect hammers, axes, and drills
-					Label: "[i:579] Mining Speed Benefits Hammers, Axes, & Drills"
-				}
-
-				TowniesLiveInEvil: {
-					Label: "[i:61] NPCs Can Live In Evil Biomes"
-					Tooltip: Toggles if NPCs can live in the corruption or crimson biomes
-				}
-
-				AllHairsAvailable: {
+				AllHairStylesAvailable: {
 					Label: "[i:1990] All Hairstyles Available"
 					Tooltip: Toggles if all hairstyles are available on character creation
 				}
 
-				BossItemTransmutation: {
-					Label: "[i:5349] Boss Item Transmutation"
-					Tooltip: Toggles if boss items can be transmutated with shimmer
-				}
-
-				MoreStars: {
-					Label: "[i:75] More Stars"
-					Tooltip:
-						'''
-						Increase the amount of fallen stars
-						Ranges from 1 to 500, with 1 being the normal rate
-						'''
-				}
-
-				NoFallingSandDamage: {
-					Label: "[i:169] No Falling Block Damage"
-					Tooltip: Toggles if falling blocks can hurt the player
-				}
-
-				RemoveBiomeRequirements: {
-					Label: "[i:4766] Remove Biome Requirements For Shops"
-					Tooltip:
-						'''
-						Toggles if shop items require visiting a biome to unlock
-						This is permanent when turned on for a world
-						'''
+				NoTombstoneDrops: {
+					Label: "[i:321] No Tombstone Drops"
+					Tooltip: Toggles if tombstones drop on death
 				}
 
 				AutoFishing: {
@@ -1455,49 +1990,82 @@ Mods: {
 					Tooltip: Toggles auto fishing
 				}
 
-				PortableCrafting: {
+				PortableCraftingStations: {
 					Tooltip: Toggles if crafting stations work from the inventory
-					Label: "[i:36] Portable Crafting"
+					Label: "[i:36] Portable Crafting Stations"
 				}
 
-				FavoriteResearching: {
-					Tooltip: Toggles if favorited items are auto-researched if they meet the stack requirements
-					Label: "[i:75] Auto Research Favorited Items"
+				NoPylonTeleportRestrictions: {
+					Label: "[i:4951] No Pylon Teleport Restrictions"
+					Tooltip: Toggles if there are pylon teleportation restrictions
 				}
 
-				OneKillForBestiary: {
-					Label: "[i:583] One Kill For Bestiary"
-					Tooltip: Toggles if one kill unlocks the entire bestiary entry for that enemy
+				InstantRespawn: {
+					Label: "[i:583] Instant Respawn"
+					Tooltip: Toggles instant respawns, will despawn all hostile NPCs on death if enabled
 				}
 
-				OverridePylon: {
-					Label: "[i:4876] Override Pylon Sales"
-					Tooltip: Toggles if NPCs always sell pylons
+				FullHealthRespawn: {
+					Label: "[i:29] Full Health On Respawn"
+					Tooltip: Toggles if you respawn with max health and mana
 				}
 
-				NoPylonRestriction: {
-					Label: "[i:4951] No Pylon Restrictions"
-					Tooltip: Toggles if there are pylon restrictions
+				DisableEvilBiomeSpread: {
+					Label: "[i:59] Disable Evil Biome Spread"
+					Tooltip: Toggles the spread of the Corruption, Crimson, and Hallow
 				}
 
-				MoreFragments: {
-					Label: "[i:3458] More Lunar Fragments"
-					Tooltip: Toggles if the Lunar Pillars drop way more fragments
+				FastTreeGrowth: {
+					Label: "[i:27] Fast Tree Growth"
+					Tooltip: Toggles if trees grow faster
 				}
 
-				NoNaturalBossSpawns: {
-					Label: "[i:560] No Natural Boss Spawns"
+				FastHerbGrowth: {
+					Label: "[i:313] Fast Herb Growth"
+					Tooltip: Toggles if herbs grow faster
+				}
+
+				TreesDropMoreWhenShook: {
+					Label: "[i:4856] Trees Drop More When Shook"
+					Tooltip: Toggles if trees drop more fruits and gems when shaken
+				}
+
+				MoreFallenStars: {
+					Label: "[i:75] More Fallen Stars"
 					Tooltip:
 						'''
-						Toggles if bosses can spawn naturally
-						Disables natural spawns for:
-						 - King Slime
-						 - Eye of Cthulhu
-						 - Deerclops
-						 - The Twins
-						 - The Destroyer
-						 - Skeletron Prime
+						Increase the amount of fallen stars
+						Ranges from 1 to 500, with 1 being the normal rate
 						'''
+				}
+
+				NoMeteorSpawns: {
+					Tooltip:
+						'''
+						Toggles if meteors can fall
+						If one attempts to fall you are granted meteorite instead
+						'''
+					Label: "[i:116] No Meteor Spawns"
+				}
+
+				HellstoneWorksWithSpelunker: {
+					Label: "[i:174] Hellstone Works With Spelunker Potion"
+					Tooltip: Toggles if Hellstone is lit up when using a spelunker potion
+				}
+
+				ChristmasActive: {
+					Tooltip: Toggles the Christmas seasonal event
+					Label: "[i:1958] Christmas Seasonal Event"
+				}
+
+				HalloweenActive: {
+					Tooltip: Toggles the Halloween seasonal event
+					Label: "[i:1844] Halloween Seasonal Event"
+				}
+
+				DisableCredits: {
+					Tooltip: Toggles if credits will roll after the defeat of the Moon Lord
+					Label: "[i:264] Disable Credits"
 				}
 
 				VeinMiner: {
@@ -1514,74 +2082,29 @@ Mods: {
 						'''
 				}
 
-				VeinMinerWhitelist: {
-					Label: "[i:3509] Vein Miner Whitelist"
-					Tooltip: Sets which tiles can be vein mined
-				}
-
 				VeinMinerTileLimit: {
 					Tooltip: Sets how many tiles can be vein mined at a time
 					Label: "[i:3509] Vein Miner Tile Limit"
 				}
 
-				DefenderMedalDrops: {
-					Tooltip: Toggles if Old One's Army minibosses drop extra defender medals
-					Label: "[i:3817] Defender Medal Drops"
+				VeinMinerWhitelist: {
+					Label: "[i:3509] Vein Miner Whitelist"
+					Tooltip: Sets which tiles can be vein mined
 				}
 
-				NoReforgeRNG: {
-					Label: "[i:7] No Reforge RNG"
-					Tooltip: Removes reforge RNG
+				FountainsCauseBiomes: {
+					Label: "[i:909] Fountains Cause Biomes"
+					Tooltip: Toggles if being near fountains causes their biomes
 				}
 
-				ItemConversions: {
-					Label: "[i:86] Item Conversions"
-					Tooltip: Toggles if recipes are added for world specific items
+				NonConsumableKeys: {
+					Label: "[i:329] Non Consumable Keys"
+					Tooltip: Toggles if Shadow Keys/Golden Lockpicks are consumed when used as crafting ingredients
 				}
 
-				NoMeteors: {
-					Tooltip: Toggles if meteors can fall
-					Label: "[i:116] No Meteors"
-				}
-
-				DisableDashing: {
-					Tooltip: Toggles if you can double tap dash when equipped with a vanilla dash accessory
-					Label: "[i:3097] Disable Double Tap Dashing"
-				}
-
-				DisableCredits: {
-					Tooltip: Toggles if credits will roll after the defeat of the Moon Lord
-					Label: "[i:264] Disable Credits"
-				}
-
-				InfiniteSliceOfCake: {
-					Tooltip: Toggles if the Sugar Rush buff is infinite like other station buffs
-					Label: "[i:3750] Infinite Slice Of Cake"
-				}
-
-				NoDoorBreaking: {
-					Tooltip: Toggles if enemies can break down doors
-					Label: "[i:25] No Door Breaking"
-				}
-
-				EndlessBaitAmount: {
-					Tooltip: Change the amount needed for endless bait
-					Label: "[i:3119] Endless Bait Amount"
-				}
-
-				EndlessAmmoAmount: {
-					Tooltip: Change the amount needed for endless ammo
-					Label: "[i:3119] Endless Ammo Amount"
-				}
-
-				EndlessItemAmount: {
-					Label: "[i:3119] Endless Item Amount"
-					Tooltip: Change the amount needed for endless items
-				}
-
-				EndlessWeaponAmount: {
-					Label: "[i:3119] Endless Weapon Amount"
-					Tooltip: Change the amount needed for endless weapons
+				FountainsWorkFromInventories: {
+					Label: "[i:909] Fountains Work From Inventories"
+					Tooltip: Toggles if having fountains in your inventory/banks causes their biomes
 				}
 			}
 
@@ -1601,6 +2124,16 @@ Mods: {
 				BannerBox: {
 					Label: "[i:QoLCompendium/BannerBox] Banner Box"
 					Tooltip: Toggles the Banner Box item
+				}
+
+				BottomlessChumBucket: {
+					Label: "[i:QoLCompendium/BottomlessChumBucket] Bottomless Chum Bucket"
+					Tooltip: Toggles the Bottomless Chum Bucket item
+				}
+
+				ChallengersCoin: {
+					Label: "[i:QoLCompendium/ChallengersCoin] Challenger's Coin"
+					Tooltip: Toggles the Challenger's Coin item
 				}
 
 				SummoningRemote: {
@@ -1667,9 +2200,9 @@ Mods: {
 					Tooltip: Toggles the Watching Eye item
 				}
 
-				WorldGlobe: {
-					Label: "[i:QoLCompendium/WorldGlobe] World Globe"
-					Tooltip: Toggles the World Globe item
+				DestinationGlobe: {
+					Label: "[i:QoLCompendium/DestinationGlobe] Destination Globe"
+					Tooltip: Toggles the Destination Globe item
 				}
 
 				PotionCrate: {
@@ -1727,19 +2260,34 @@ Mods: {
 					Tooltip: Toggles the Restock Notice item
 				}
 
+				SkeletonRucksack: {
+					Label: "[i:QoLCompendium/SkeletonRucksack] Skeleton Rucksack"
+					Tooltip: Toggles the Skeleton Rucksack item
+				}
+
 				TravelersMannequin: {
 					Label: "[i:QoLCompendium/TravelersMannequin] Traveler's Mannequin"
 					Tooltip: Toggles the Traveler's Mannequin item
 				}
 
 				EndlessAmmo: {
-					Label: "[i:QoLCompendium/EndlessFlarePouch] Endless Ammo"
+					Label: "[i:QoLCompendium/EndlessFlareBox] Endless Ammo"
 					Tooltip: Toggles Endless Ammo related items
 				}
 
 				GoldenLockpick: {
 					Tooltip: Toggles the Golden Lockpick item
 					Label: "[i:QoLCompendium/GoldenLockpick] Golden Lockpick"
+				}
+
+				LegendaryCatcher: {
+					Label: "[i:QoLCompendium/LegendaryCatcher] Legendary Catcher"
+					Tooltip: Toggles the Legendary Catcher item
+				}
+
+				Eightworm: {
+					Label: "[i:QoLCompendium/Eightworm] Eightworm"
+					Tooltip: Toggles the Eightworm item
 				}
 			}
 
@@ -1983,20 +2531,62 @@ Mods: {
 					Tooltip: Adds a tooltip to display if a permanent upgrade has been used
 					Label: "[i:5337] Used Permanent Upgrade Tooltip"
 				}
+
+				AmmoTooltip: {
+					Tooltip: Adds a tooltip to display what ammo an item uses
+					Label: "[i:3104] Use Ammo Tooltip"
+				}
+
+				ActiveTooltip: {
+					Tooltip: Adds a tooltip to display if an item is providing it's effects
+					Label: "[i:292] Item Active Tooltip"
+				}
+			}
+
+			MainClientConfig: {
+				DisplayName: Central Client Config
+
+				FavoriteResearching: {
+					Tooltip: Toggles if favorited items are auto-researched if they meet the stack requirements
+					Label: "[i:75] Auto Research Favorited Items"
+				}
+
+				MapTeleporting: {
+					Label: "[i:2351] Map Teleporting"
+					Tooltip: Toggles if you can right click on the map to teleport to that position
+				}
+
+				WingSlot: {
+					Label: "[i:4978] Wing Slot"
+					Tooltip: Toggles an accessory slot used for wings
+				}
+
+				BootSlot: {
+					Label: "[i:54] Boot Slot"
+					Tooltip: Toggles an accessory slot used for boots
+				}
+
+				ShieldSlot: {
+					Label: "[i:156] Shield Slot"
+					Tooltip: Toggles an accessory slot used for shields
+				}
+
+				ExpertSlot: {
+					Label: "[i:3335] Expert Slot"
+					Tooltip: Toggles an accessory slot used for expert exclusive accessories
+				}
 			}
 		}
 
 		QoLCConfig: {
 			Headers: {
-				Endless: Endless Toggles
-				Spawn: Spawn Change Toggles
+				Endless: Endless Changes
 				Items: Item Toggles
-				Items2: Item Change Toggles
-				NPCs: NPC Change Toggles
-				Projectiles: Projectile Change Toggles
-				Player: Player Change Toggles
-				Speed: Speed Change Toggles
-				World: World Change Toggles
+				Items2: Item Changes
+				NPCs: NPC Changes
+				Projectiles: Projectile Changes
+				Player: Player Changes
+				World: World Changes
 				BMShop: Black Market Dealer Shop Toggles
 				ECShop: Ethereal Collector Shop Toggles
 				Prices: Price Modifiers
@@ -2005,10 +2595,11 @@ Mods: {
 		}
 
 		Keybinds: {
-			HomeBind.DisplayName: Teleport NPCs Home
+			SendNPCsHomeBind.DisplayName: Teleport NPCs Home
 			WhitelistTileBind.DisplayName: Whitelist Tile
 			RemoveWhitelistedTileBind.DisplayName: Remove Whitelisted Tile
 			RecallBind.DisplayName: Quick Recall
+			MosaicMirrorBind.DisplayName: Quick Mosaic Mirror
 			DashBind.DisplayName: Dash
 		}
 
@@ -2441,23 +3032,85 @@ Mods: {
 			downedOphiofly: Downed Ophiofly
 			downedOphiocoon: Downed Ophiocoon
 			downedOphiopede: Downed Ophiopede
+			downedSaburRex: Downed Sabur Rex
+			downedEldritchJellyfish: Downed Eldritch Jellyfish
+			downedAdeneb: Downed Adeneb
+			downedMetelord: Downed Metelord
+			downedDirtball: Downed Dirtball
+			beenToCinderForest: Been to the Cinder Forest biome
+			downedNihilus: Downed Nihilus
+			downedErazor: Downed Erazor
+			downedLostSiblings: Downed Lost Siblings
+			downedAraghur: Downed Araghur
+			downedAbaddon: Downed Abaddon
+			downedPrimordia: Downed Primordia
+			downedHarpyQueenRaynare: Downed Raynare
+			downedAraneas: Downed Araneas
+			downedJensenTheGrandHarpy: Downed Jensen
+			downedZombiePiglinBrute: Downed Zombie Piglin Brute
+			downedFlamingPumpkin: Downed Flaming Pumpkin
+			downedDecree: Downed Decree
+			beenToJadeLake: Been to the Jade Lake biome
+			talkedToSkeletonMerchant: Talked to Skeleton Merchant
+			talkedToTravelingMerchant: Talked to Traveling Merchant
+			downedNoxus: Downed Entropic God, Noxus
+			downedNamelessDeityOfLight: Downed Nameless Deity of Light
+			downedMACEProject: Downed MACE Project
+			downedProtectorVolt: Downed Protector Volt
+			downedBlisterface: Downed Blisterface
+			downedIrradiatedBehemoth: Downed Irradiated Behemoth
+			downedTheJanitor: Downed Janitor
+			downedCalavia: Downed Calavia
+			downedEaglecrestGolem: Downed Eaglecrest Golem
+			downedSkullDigger: Downed Skull Digger
+			downedBasan: Downed Basan
+			downedCockatrice: Downed Cockatrice
+			shimmerableAfterMoonLordOrSupremeCalamitas: Downed Moon Lord, or downed Supreme Calamitas with Calamity enabled
 		}
 
 		Tiles: {
-			AdvancedCraftingMonolithTile.MapEntry: Advanced Crafting Monolith
-			BasicCraftingMonolithTile.MapEntry: Basic Crafting Monolith
-			HardmodeCraftingMonolithTile.MapEntry: Hardmode Crafting Monolith
-			LunarCraftingMonolithTile.MapEntry: Lunar Crafting Monolith
+			BasicMonolithTile.MapEntry: Basic Crafting Monolith
+			HardmodeMonolithTile.MapEntry: Hardmode Crafting Monolith
+			LunarMonolithTile.MapEntry: Lunar Crafting Monolith
+			SpecializedMonolithTile.MapEntry: Specialized Crafting Monolith
 			DemonAltarTile.MapEntry: Demon Altar
 			CrimsonAltarTile.MapEntry: Crimson Altar
 			SkyPylonTile.MapEntry: Sky Pylon
-			HellPylonTile.MapEntry: Hell Pylon
+			HellPylonTile.MapEntry: Underworld Pylon
 			DungeonPylonTile.MapEntry: Dungeon Pylon
 			CrimsonPylonTile.MapEntry: Crimson Pylon
 			CorruptionPylonTile.MapEntry: Corruption Pylon
 			AetherAltarTile.MapEntry: Aether Altar
 			AetherPylonTile.MapEntry: Aether Pylon
 			TemplePylonTile.MapEntry: Temple Pylon
+			BaitCollectorTile.MapEntry: Bait Collector
+			BossCollectorTile.MapEntry: Boss Collector
+			CavernCollectorTile.MapEntry: Cavern Collector
+			CorruptionCollectorTile.MapEntry: Corruption Collector
+			CrimsonCollectorTile.MapEntry: Crimson Collector
+			DesertCollectorTile.MapEntry: Desert Collector
+			DungeonCollectorTile.MapEntry: Dungeon Collector
+			DyePlantCollectorTile.MapEntry: Dye Plant Collector
+			EnemyCollectorTile.MapEntry: Enemy Collector
+			FishCollectorTile.MapEntry: Fish Collector
+			ForestCollectorTile.MapEntry: Forest Collector
+			GemCollectorTile.MapEntry: Gem Collector
+			HallowCollectorTile.MapEntry: Hallow Collector
+			HerbCollectorTile.MapEntry: Herb Collector
+			JungleCollectorTile.MapEntry: Jungle Collector
+			LiquidCollectorTile.MapEntry: Liquid Collector
+			LunarCollectorTile.MapEntry: Lunar Collector
+			MeteorCollectorTile.MapEntry: Meteor Collector
+			ModBiomeCollectorTile.MapEntry: Mod Biome Collector
+			MushroomCollectorTile.MapEntry: Mushroom Collector
+			NaturalBlockCollectorTile.MapEntry: Natural Block Collector
+			OceanCollectorTile.MapEntry: Ocean Collector
+			OreCollectorTile.MapEntry: Ore Collector
+			SkyCollectorTile.MapEntry: Sky Collector
+			SnowCollectorTile.MapEntry: Snow Collector
+			TempleCollectorTile.MapEntry: Temple Collector
+			TreeCollectorTile.MapEntry: Tree Collector
+			UnderworldCollectorTile.MapEntry: Underworld Collector
 		}
 
 		Buffs: {

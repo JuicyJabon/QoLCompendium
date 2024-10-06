@@ -1,4 +1,5 @@
 using QoLCompendium.Core;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Magnets
 {
@@ -14,8 +15,8 @@ namespace QoLCompendium.Content.Items.Magnets
             Item.width = 13;
             Item.height = 13;
             Item.maxStack = 1;
-            Item.rare = ItemRarityID.Red;
-            Item.value = Item.sellPrice(gold: 8);
+
+            Item.SetShopValues(ItemRarityColor.StrongRed10, Item.buyPrice(0, 8, 0, 0));
         }
 
         public override void AddRecipes()
@@ -23,8 +24,8 @@ namespace QoLCompendium.Content.Items.Magnets
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Magnets, Type);
             r.AddIngredient(ModContent.ItemType<SpectreMagnet>());
             r.AddIngredient(ItemID.LunarBar, 10);
-            r.Register();
             r.AddTile(TileID.LunarCraftingStation);
+            r.Register();
         }
 
         public override void UpdateInventory(Player player)

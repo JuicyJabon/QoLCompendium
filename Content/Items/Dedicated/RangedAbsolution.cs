@@ -1,21 +1,16 @@
 ﻿using QoLCompendium.Core;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Dedicated
 {
     public class RangedAbsolution : ModItem
     {
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - Nobisyu")
-            {
-                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
-            };
-            tooltips.Add(dedicated);
-        }
+        public int shootType = 0;
 
         public override void SetStaticDefaults()
         {
-            Item.staff[Item.type] = true;
             Item.ResearchUnlockCount = 1;
         }
 
@@ -23,26 +18,94 @@ namespace QoLCompendium.Content.Items.Dedicated
         {
             Item.width = 26;
             Item.height = 26;
-            Item.rare = ItemRarityID.Orange;
 
-            Item.useTime = 8;
-            Item.useAnimation = 8;
-            Item.useStyle = ItemUseStyleID.Shoot;
-            Item.autoReuse = true;
+            Item.useTime = 12;
+            Item.useAnimation = 12;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = SoundID.Item11;
-
-            Item.knockBack = 7;
+            Item.autoReuse = true;
+            
             Item.damage = 26;
             Item.DamageType = DamageClass.Ranged;
-
+            Item.knockBack = 7;
             Item.shoot = ProjectileID.PurificationPowder;
             Item.useAmmo = AmmoID.Bullet;
             Item.shootSpeed = 16f;
+
+            Item.SetShopValues(ItemRarityColor.StrongRed10, Item.buyPrice(0, 4, 0, 0));
         }
 
-        public override bool RangedPrefix()
+        public override bool RangedPrefix() => true;
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            return true;
+            shootType = type;
+            return false;
+        }
+
+        public override void MeleeEffects(Player player, Rectangle hitbox)
+        {
+            if (player.itemAnimation == (int)(player.itemAnimationMax * 0.1) || player.itemAnimation == (int)(player.itemAnimationMax * 0.3) || player.itemAnimation == (int)(player.itemAnimationMax * 0.5) || player.itemAnimation == (int)(player.itemAnimationMax * 0.7) || player.itemAnimation == (int)(player.itemAnimationMax * 0.9))
+            {
+                float speedY = 0f;
+                float speedX = 0f;
+                float posY = 0f;
+                float posX = 0f;
+                if (player.itemAnimation == (int)(player.itemAnimationMax * 0.9))
+                {
+                    speedY = -7f;
+                    if (player.direction == -1)
+                        posX -= 8f;
+                }
+                if (player.itemAnimation == (int)(player.itemAnimationMax * 0.7))
+                {
+                    speedY = -6f;
+                    speedX = 2f;
+                    if (player.direction == -1)
+                        posX -= 6f;
+                }
+                if (player.itemAnimation == (int)(player.itemAnimationMax * 0.5))
+                {
+                    speedY = -4f;
+                    speedX = 4f;
+                }
+                if (player.itemAnimation == (int)(player.itemAnimationMax * 0.3))
+                {
+                    speedY = -2f;
+                    speedX = 6f;
+                }
+                if (player.itemAnimation == (int)(player.itemAnimationMax * 0.1))
+                {
+                    speedX = 7f;
+                }
+                if (player.itemAnimation == (int)(player.itemAnimationMax * 0.7))
+                {
+                    posX = 26f;
+                }
+                if (player.itemAnimation == (int)(player.itemAnimationMax * 0.3))
+                {
+                    posX -= 4f;
+                    posY -= 20f;
+                }
+                if (player.itemAnimation == (int)(player.itemAnimationMax * 0.1))
+                {
+                    posY += 6f;
+                }
+                speedY *= 1.5f;
+                speedX *= 1.5f;
+                float direction = posX * player.direction;
+                float yDirection = posY * player.gravDir;
+                Projectile.NewProjectile(player.GetSource_ItemUse(Item), (hitbox.X + hitbox.Width / 2) + direction, (hitbox.Y + hitbox.Height / 2) + yDirection, player.direction * speedX, speedY * player.gravDir, shootType, Item.damage, 0f, player.whoAmI);
+            }
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - Nobisyu")
+            {
+                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
+            };
+            tooltips.Add(dedicated);
         }
 
         public override void AddRecipes()

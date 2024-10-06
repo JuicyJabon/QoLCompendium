@@ -1,5 +1,5 @@
 using QoLCompendium.Core;
-using QoLCompendium.Core.UI;
+using QoLCompendium.Core.UI.Panels;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
 
@@ -67,7 +67,7 @@ namespace QoLCompendium.Content.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs)
         {
-            if (QoLCompendium.mainConfig.BMNPC)
+            if (QoLCompendium.mainConfig.BlackMarketDealerCanSpawn)
             {
                 return true;
             }
@@ -223,12 +223,12 @@ namespace QoLCompendium.Content.NPCs
             if (firstButton)
             {
                 shop = ShopName;
-                BMNPCUI.visible = false;
+                BlackMarketDealerNPCUI.visible = false;
             }
             else
             {
-                if (!BMNPCUI.visible) BMNPCUI.timeStart = Main.GameUpdateCount;
-                BMNPCUI.visible = true;
+                if (!BlackMarketDealerNPCUI.visible) BlackMarketDealerNPCUI.timeStart = Main.GameUpdateCount;
+                BlackMarketDealerNPCUI.visible = true;
             }
         }
 
@@ -289,7 +289,19 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.FlaskofNanites) { shopCustomPrice = Item.buyPrice(silver: 75) }, Condition.DownedPlantera, Condition.DownedQueenBee)
                     .Add(new Item(ItemID.FlaskofParty) { shopCustomPrice = Item.buyPrice(silver: 75) }, Condition.DownedQueenBee)
                     .Add(new Item(ItemID.FlaskofPoison) { shopCustomPrice = Item.buyPrice(silver: 75) }, Condition.DownedQueenBee, ModConditions.HasBeenToJungle)
-                    .Add(new Item(ItemID.FlaskofVenom) { shopCustomPrice = Item.buyPrice(silver: 75) }, Condition.Hardmode, Condition.DownedQueenBee, ModConditions.HasBeenToJungle)
+                    .Add(new Item(ItemID.FlaskofVenom) { shopCustomPrice = Item.buyPrice(silver: 75) }, Condition.DownedPlantera, Condition.DownedQueenBee, ModConditions.HasBeenToJungle)
+                    .Add(new Item(ItemID.LesserHealingPotion) { shopCustomPrice = Item.buyPrice(silver: 75) })
+                    .Add(new Item(ItemID.HealingPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasBeenToMushroom)
+                    .Add(new Item(ItemID.GreaterHealingPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, Condition.Hardmode, ModConditions.HasBeenToHallow)
+                    .Add(new Item(ItemID.SuperHealingPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.DownedLunarEvent)
+                    .Add(new Item(ItemID.LesserManaPotion) { shopCustomPrice = Item.buyPrice(silver: 75) })
+                    .Add(new Item(ItemID.ManaPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasBeenToMushroom)
+                    .Add(new Item(ItemID.GreaterManaPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, Condition.Hardmode)
+                    .Add(new Item(ItemID.SuperManaPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, Condition.Hardmode, ModConditions.HasBeenToHallow)
+                    .Add(new Item(ItemID.RestorationPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasBeenToMushroom)
+                    .Add(new Item(ItemID.BottledWater) { shopCustomPrice = Item.buyPrice(silver: 75) })
+                    .Add(new Item(ItemID.BottledHoney) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasBeenToJungle)
+                    .Add(new Item(ItemID.StrangeBrew) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasTalkedToSkeletonMerchant)
                     .Add(new Item(ItemID.GenderChangePotion) { shopCustomPrice = Item.buyPrice(silver: 75) })
                     .Add(new Item(ItemID.PotionOfReturn) { shopCustomPrice = Item.buyPrice(silver: 75) }, Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
                     .Add(new Item(ItemID.RecallPotion) { shopCustomPrice = Item.buyPrice(silver: 75) })
@@ -310,9 +322,6 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.PeaceCandle) { shopCustomPrice = Item.buyPrice(gold: 15) })
                     .Add(new Item(ItemID.WaterCandle) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
                     .Add(new Item(ItemID.ShadowCandle) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToEvil)
-                    .Add(new Item(ItemID.WaterBucket) { shopCustomPrice = Item.buyPrice(gold: 15) })
-                    .Add(new Item(ItemID.LavaBucket) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToUnderworld)
-                    .Add(new Item(ItemID.HoneyBucket) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToJungle)
                     .Add(new Item(ItemID.LifeCrystal) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(new Item(ItemID.LifeFruit) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedMechBossAny, ModConditions.HasBeenToJungle)
                     .Add(new Item(ItemID.ManaCrystal) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenThroughNight)
@@ -322,8 +331,8 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.Ambrosia) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToAether)
                     .Add(new Item(ItemID.GummyWorm) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToAether)
                     .Add(new Item(ItemID.GalaxyPearl) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToAether)
-                    .Add(new Item(ItemID.PeddlersSatchel) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToAether)
-                    .Add(new Item(ItemID.ArtisanLoaf) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(new Item(ItemID.PeddlersSatchel) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasTalkedToTravelingMerchant)
+                    .Add(new Item(ItemID.ArtisanLoaf) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasTalkedToSkeletonMerchant)
                     .Add(new Item(ItemID.CombatBook) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.DownedBloodMoon)
                     .Add(new Item(ItemID.CombatBookVolumeTwo) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.Hardmode, ModConditions.HasBeenToAether);
             flaskShop.Register();
@@ -550,10 +559,13 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.HallowedKey) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedPlantera, ModConditions.HasBeenToHallow)
                    .Add(new Item(ItemID.JungleKey) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedPlantera, ModConditions.HasBeenToJungle)
                    .Add(new Item(ItemID.TempleKey) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedPlantera, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.WaterBucket) { shopCustomPrice = Item.buyPrice(gold: 15) })
+                   .Add(new Item(ItemID.LavaBucket) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToUnderworld)
+                   .Add(new Item(ItemID.HoneyBucket) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToJungle)
                    .Add(new Item(ItemID.BottomlessBucket) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.BottomlessHoneyBucket) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.BottomlessLavaBucket) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.BottomlessShimmerBucket) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMoonLord)
+                   .Add(new Item(ItemID.BottomlessLavaBucket) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToUnderworld)
+                   .Add(new Item(ItemID.BottomlessHoneyBucket) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.BottomlessShimmerBucket) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMoonLord, ModConditions.HasBeenToAether)
                    .Add(new Item(ItemID.SuperAbsorbantSponge) { shopCustomPrice = Item.buyPrice(gold: 2) })
                    .Add(new Item(ItemID.HoneyAbsorbantSponge) { shopCustomPrice = Item.buyPrice(gold: 2) })
                    .Add(new Item(ItemID.LavaAbsorbantSponge) { shopCustomPrice = Item.buyPrice(gold: 2) })
@@ -563,7 +575,7 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.EncumberingStone) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToDesert)
                    .Add(new Item(ItemID.PortalGun) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMoonLord)
                    .Add(new Item(ItemID.RodofDiscord) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode, ModConditions.HasBeenToHallow)
-                   .Add(new Item(ItemID.RodOfHarmony) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMoonLord, ModConditions.HasBeenToAether)
+                   .Add(new Item(ItemID.RodOfHarmony) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.ShimmerableAfterMoonLordOrSupremeCalamitas, ModConditions.HasBeenToAether)
                    .Add(new Item(ItemID.Clentaminator) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode, Condition.DownedMechBossAny, Condition.NotDownedMoonLord)
                    .Add(new Item(ItemID.Clentaminator2) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMoonLord, ModConditions.HasBeenToAether);
             infoShop.Register();
@@ -833,7 +845,13 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.LesionBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
                     .Add(new Item(ItemID.SpiderBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
                     .Add(new Item(ItemID.SlimeBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.DownedKingSlime)
-                    .Add(new Item(ItemID.PinkSlimeBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.DownedKingSlime);
+                    .Add(new Item(ItemID.PinkSlimeBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.DownedKingSlime)
+                    .Add(new Item(ItemID.LivingFireBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
+                    .Add(new Item(ItemID.LivingCursedFireBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
+                    .Add(new Item(ItemID.LivingDemonFireBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
+                    .Add(new Item(ItemID.LivingFrostFireBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
+                    .Add(new Item(ItemID.LivingIchorBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
+                    .Add(new Item(ItemID.LivingUltrabrightFireBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode);
             buildingBlockShop.Register();
 
             var plantShop = new NPCShop(Type, "Herbs & Plants")
@@ -1050,8 +1068,8 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.FrostburnArrow) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.JestersArrow) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.UnholyArrow) { shopCustomPrice = Item.buyPrice(copper: 1) })
-                    .Add(new Item(ItemID.BoneArrow) { shopCustomPrice = Item.buyPrice(copper: 1) })
-                    .Add(new Item(ItemID.ShimmerArrow) { shopCustomPrice = Item.buyPrice(copper: 1) })
+                    .Add(new Item(ItemID.BoneArrow) { shopCustomPrice = Item.buyPrice(copper: 1) }, ModConditions.HasTalkedToSkeletonMerchant)
+                    .Add(new Item(ItemID.ShimmerArrow) { shopCustomPrice = Item.buyPrice(copper: 1) }, ModConditions.HasBeenToAether)
                     .Add(new Item(ItemID.HellfireArrow) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedEowOrBoc)
                     .Add(new Item(ItemID.CursedArrow) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.Hardmode)
                     .Add(new Item(ItemID.IchorArrow) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.Hardmode)
@@ -1083,7 +1101,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.Flare) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.BlueFlare) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.SpelunkerFlare) { shopCustomPrice = Item.buyPrice(copper: 1) })
-                    .Add(new Item(ItemID.ShimmerFlare) { shopCustomPrice = Item.buyPrice(copper: 1) })
+                    .Add(new Item(ItemID.ShimmerFlare) { shopCustomPrice = Item.buyPrice(copper: 1) }, ModConditions.HasBeenToAether)
                     .Add(new Item(ItemID.CursedFlare) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.Hardmode)
                     .Add(new Item(ItemID.RainbowFlare) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.Hardmode)
 

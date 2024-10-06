@@ -1,2 +1,32 @@
-v2.2.5
-1. 
+v2.2.7
+1. Rewrote mod description
+2. Converted the Extra Lures config to a number allowing customizable lure counts
+3. Changed the max value of the increased place speed config to 1
+4. Further increased the safety of the Spirit Mod infinite buff patch
+5. Added Minibridge
+6. Added a right click function to the All In One Access to allow opening and closing the Void Vault
+7. Added a config for lunar enemies dropping fragments, this is now seperated from the "More Lunar Fragments" config
+8. Resprites
+9. Made the Potion Crate tooltip reflect the Endless Buff Amount config
+10. Added Expert relic drop support for the following mods:
+ - Edorbis
+ - Martin's Order
+ - Qwerty's Mod
+ - Spooky Mod
+ - Stars Above
+ - Storm's Additions
+ - Uhtric
+11. The dash keybind should now work with most mod's dashes
+ - Calamity dashes require double tapping this mod's key, as their sytem uses custom cooldowns
+ - If using other mods along with Calamity just bind Calamity's dash key to the same key as this mod
+ - If using Fargo's Mutant and/or Souls make sure to have their disable double dash config off
+12. Fixed an issue with Credits Disabling conflicting with Vanilla+ QoL
+13. Removed the Disable Dashing config since it conflicts with the new dash keybind system
+14. All In One Access now uses a UI instead of projectiles
+15. Added a config to allow Mobile Storages to follow the player
+16. Added a config for a boot accessory slot
+17. Added a config for a shield accessory slot
+18. Added a config for an expert exclusive accessory slot
+19. Moved accessory slot configs to the client-side config section
+20. Localized Info Display text
+21. Changed more mod UI to be more polished

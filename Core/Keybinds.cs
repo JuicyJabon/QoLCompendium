@@ -1,35 +1,34 @@
-﻿using Terraria.GameInput;
+﻿using QoLCompendium.Content.Items.Mirrors;
+using QoLCompendium.Core.Changes;
+using Terraria.GameInput;
 using Terraria.ModLoader.Config;
 
 namespace QoLCompendium.Core
 {
     public class KeybindPlayer : ModPlayer
     {
-        internal int originalSelectedItem;
+        public int originalSelectedItem;
 
-        internal bool autoRevertSelectedItem;
+        public bool autoRevertSelectedItem;
+
+        public int dashTimeMod;
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (KeybindSystem.GoHome.JustPressed)
+            if (KeybindSystem.SendNPCsHome.JustPressed)
             {
                 foreach (var npc in from n in Main.npc where n is not null && n.active && n.townNPC && !n.homeless select n)
                 {
-                    if (QoLCompendium.mainConfig.GoHomeNPCs)
-                    {
-                        QoLCompendium.TownEntitiesTeleportToHome(npc, npc.homeTileX, npc.homeTileY);
-                    }
+                    QoLCompendium.TownEntitiesTeleportToHome(npc, npc.homeTileX, npc.homeTileY);
                 }
-                if (QoLCompendium.mainConfig.GoHomeNPCs)
-                {
-                    Main.NewText(Language.GetTextValue("Mods.QoLCompendium.NPCStuff.GoHome"));
-                }
+                Main.NewText(Language.GetTextValue("Mods.QoLCompendium.Messages.TeleportNPCsHome"));
             }
 
-            if (KeybindSystem.AutoRecall.JustPressed)
-            {
+            if (KeybindSystem.QuickRecall.JustPressed)
                 AutoUseMirror();
-            }
+
+            if (KeybindSystem.QuickMosaicMirror.JustPressed)
+                AutoUseMosaicMirror();
 
             if (KeybindSystem.AddTileToWhitelist.JustPressed)
             {
@@ -54,6 +53,56 @@ namespace QoLCompendium.Core
                     Main.NewText(Language.GetTextValue("Mods.QoLCompendium.TileStuff.Removed") + " " + new TileDefinition(target.TileType).Name);
                 }
             }
+
+            if (KeybindSystem.Dash.JustPressed)
+            {
+                int directionPressed = Player.GetModPlayer<DashPlayer>().latestXDirPressed;
+                int directionReleased = Player.GetModPlayer<DashPlayer>().latestXDirReleased;
+                //directionPressed == -1 || directionReleased == -1 || 
+                //directionPressed == 1 || directionReleased == 1 || 
+                if (Player.GetModPlayer<DashPlayer>().LeftLastPressed || (Player.direction == -1 && Player.velocity.X == 0))
+                {
+                    Player.doubleTapCardinalTimer[3] = 15;
+                    Player.KeyDoubleTap(3);
+                    bool flag = false;
+                    Player.dashTime = -15;
+                    Player.controlLeft = true;
+                    Player.releaseLeft = true;
+                    for (int i = 0; i < 10; i++)
+                    {
+                        if (flag)
+                            break;
+                        if (i >= 9)
+                            flag = true;
+                    }
+                    if (flag)
+                    {
+                        Player.controlLeft = true;
+                        Player.releaseLeft = true;
+                    }
+                }
+                if (Player.GetModPlayer<DashPlayer>().RightLastPressed || (Player.direction == 1 && Player.velocity.X == 0))
+                {
+                    Player.doubleTapCardinalTimer[2] = 15;
+                    Player.KeyDoubleTap(2);
+                    bool flag = false;
+                    Player.dashTime = 15;
+                    Player.controlRight = true;
+                    Player.releaseRight = true;
+                    for (int i = 0; i < 10; i++)
+                    {
+                        if (flag)
+                            break;
+                        if (i >= 9)
+                            flag = true;
+                    }
+                    if (flag)
+                    {
+                        Player.controlRight = true;
+                        Player.releaseRight = true;
+                    }
+                }
+            }
         }
 
         public override void PostUpdate()
@@ -73,7 +122,6 @@ namespace QoLCompendium.Core
             int potionofReturn = -1;
             int recallPotion = -1;
             int magicMirror = -1;
-
             for (int i = 0; i < Player.inventory.Length; i++)
             {
                 switch (Player.inventory[i].type)
@@ -103,6 +151,23 @@ namespace QoLCompendium.Core
                 QuickUseItemAt(magicMirror);
         }
 
+        public void AutoUseMosaicMirror()
+        {
+            int mosaicMirror = -1;
+
+            for (int i = 0; i < Player.inventory.Length; i++)
+            {
+                if (Player.inventory[i].type == ModContent.ItemType<MosaicMirror>())
+                {
+                    mosaicMirror = i;
+                    break;
+                }
+            }
+
+            if (mosaicMirror != -1)
+                QuickUseItemAt(mosaicMirror);
+        }
+
         public void QuickUseItemAt(int index, bool use = true)
         {
             if (!autoRevertSelectedItem && Player.selectedItem != index && Player.inventory[index].type != ItemID.None)
@@ -122,40 +187,38 @@ namespace QoLCompendium.Core
 
     public class KeybindSystem : ModSystem
     {
-        public static ModKeybind GoHome { get; private set; }
-        public static ModKeybind AutoRecall { get; private set; }
+        public static ModKeybind SendNPCsHome { get; private set; }
+        public static ModKeybind QuickRecall { get; private set; }
+        public static ModKeybind QuickMosaicMirror { get; private set; }
         public static ModKeybind Dash { get; private set; }
         public static ModKeybind AddTileToWhitelist { get; private set; }
         public static ModKeybind RemoveTileFromWhitelist { get; private set; }
 
         public override void Load()
         {
-            GoHome = KeybindLoader.RegisterKeybind(Mod, "HomeBind", "I");
-            AutoRecall = KeybindLoader.RegisterKeybind(Mod, "RecallBind", "K");
+            SendNPCsHome = KeybindLoader.RegisterKeybind(Mod, "SendNPCsHomeBind", "I");
+            QuickRecall = KeybindLoader.RegisterKeybind(Mod, "RecallBind", "K");
+            QuickMosaicMirror = KeybindLoader.RegisterKeybind(Mod, "MosaicMirrorBind", "L");
             Dash = KeybindLoader.RegisterKeybind(Mod, "DashBind", "C");
             AddTileToWhitelist = KeybindLoader.RegisterKeybind(Mod, "WhitelistTileBind", "O");
             RemoveTileFromWhitelist = KeybindLoader.RegisterKeybind(Mod, "RemoveWhitelistedTileBind", "P");
 
-            On_Player.DoCommonDashHandle += OnVanillaDash;
+            //On_Player.DoCommonDashHandle += OnVanillaDash;
         }
 
         public override void Unload()
         {
-            GoHome = null;
-            AutoRecall = null;
+            SendNPCsHome = null;
+            QuickRecall = null;
+            QuickMosaicMirror = null;
             Dash = null;
             AddTileToWhitelist = null;
             RemoveTileFromWhitelist = null;
-
-            On_Player.DoCommonDashHandle -= OnVanillaDash;
+            //On_Player.DoCommonDashHandle -= OnVanillaDash;
         }
 
-        private static void OnVanillaDash(On_Player.orig_DoCommonDashHandle orig, Player player, out int dir, out bool dashing, Player.DashStartAction dashStartAction)
+        public static void OnVanillaDash(On_Player.orig_DoCommonDashHandle orig, Player player, out int dir, out bool dashing, Player.DashStartAction dashStartAction)
         {
-            if (QoLCompendium.mainConfig.DisableDashing)
-            {
-                player.dashTime = 0;
-            }
             orig.Invoke(player, out dir, out dashing, dashStartAction);
             if (player.whoAmI == Main.myPlayer && Dash.JustPressed && !player.CCed)
             {

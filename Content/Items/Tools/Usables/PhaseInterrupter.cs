@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.UI;
+using QoLCompendium.Core.UI.Panels;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
@@ -13,15 +14,40 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         public override void SetDefaults()
         {
             Item.width = 7;
-            Item.height = 15;
-            Item.maxStack = 1;
-            Item.consumable = false;
+            Item.height = 18;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.rare = ItemRarityID.Orange;
-            Item.UseSound = new SoundStyle?(SoundID.MenuTick);
+            Item.UseSound = SoundID.MenuOpen;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.value = Item.sellPrice(silver: 90);
+
+            Item.SetShopValues(ItemRarityColor.Orange3, Item.buyPrice(0, 0, 90, 0));
+        }
+
+        public override void UpdateInventory(Player player)
+        {
+            if (Main.moonPhase == 0)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.FullMoon"));
+
+            if (Main.moonPhase == 1)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.WaningGibbous"));
+
+            if (Main.moonPhase == 2)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.ThirdQuarter"));
+
+            if (Main.moonPhase == 3)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.WaningCrescent"));
+
+            if (Main.moonPhase == 4)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.NewMoon"));
+
+            if (Main.moonPhase == 5)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.WaxingCrescent"));
+
+            if (Main.moonPhase == 6)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.FirstQuarter"));
+
+            if (Main.moonPhase == 7)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.WaxingGibbous"));
         }
 
         public override void AddRecipes()
@@ -36,8 +62,8 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override bool? UseItem(Player player)
         {
-            if (!MoonChangeUI.visible) MoonChangeUI.timeStart = Main.GameUpdateCount;
-            MoonChangeUI.visible = true;
+            if (!PhaseInterrupterUI.visible) PhaseInterrupterUI.timeStart = Main.GameUpdateCount;
+            PhaseInterrupterUI.visible = true;
 
             return base.UseItem(player);
         }

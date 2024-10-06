@@ -1,94 +1,89 @@
-﻿using QoLCompendium.Content.Tiles;
-using QoLCompendium.Core;
+﻿using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.GameInput;
 
 namespace QoLCompendium.Content.Projectiles.MobileStorages
 {
     public class PortableBankAI
     {
-        internal static void BankAI(Projectile proj, int itemType, int chestType, ref int playerBank, Player p, BankPlayer bplayer)
+        public static void BankAI(Projectile projectile, int itemType, int chestType, ref int playerBank, Player player, BankPlayer bankPlayer)
         {
             if (Main.gamePaused && !Main.gameMenu || Main.SmartCursorIsUsed)
-            {
                 return;
-            }
-            Vector2 vector = proj.position - Main.screenPosition;
-            int num = (int)(p.Center.X / 16.0);
-            int num2 = (int)(p.Center.Y / 16.0);
-            int num3 = (int)proj.Center.X / 16;
-            int num4 = (int)proj.Center.Y / 16;
-            int lastTileRangeX = p.lastTileRangeX;
-            int lastTileRangeY = p.lastTileRangeY;
-            if (num < num3 - lastTileRangeX || num > num3 + lastTileRangeX + 1 || num2 < num4 - lastTileRangeY || num2 > num4 + lastTileRangeY + 1)
+
+            Vector2 projectileWorldPosition = projectile.position - Main.screenPosition;
+            Vector2 playerWorldPosition = player.Center;
+            int playerCenterX = (int)(player.Center.X / 16.0);
+            int playerCenterY = (int)(player.Center.Y / 16.0);
+            int projectileCenterX = (int)projectile.Center.X / 16;
+            int projectileCenterY = (int)projectile.Center.Y / 16;
+            int lastTileRangeX = player.lastTileRangeX;
+            int lastTileRangeY = player.lastTileRangeY;
+
+            if ((playerCenterX < projectileCenterX - lastTileRangeX || playerCenterX > projectileCenterX + lastTileRangeX + 1 || playerCenterY < projectileCenterY - lastTileRangeY || playerCenterY > projectileCenterY + lastTileRangeY + 1) && playerBank == projectile.whoAmI)
             {
-                if (playerBank == proj.whoAmI)
-                {
-                    playerBank = -1;
-                    bplayer.chests = false;
-                    return;
-                }
+                playerBank = -1;
+                bankPlayer.chests = false;
+                return;
             }
             else
             {
-                if (Main.mouseX <= vector.X || Main.mouseX >= vector.X + proj.width || Main.mouseY <= vector.Y || Main.mouseY >= vector.Y + proj.height)
-                {
+                if (Main.mouseX <= projectileWorldPosition.X || Main.mouseX >= projectileWorldPosition.X + projectile.width || Main.mouseY <= projectileWorldPosition.Y || Main.mouseY >= projectileWorldPosition.Y + projectile.height)
                     return;
-                }
-                p.noThrow = 2;
-                p.cursorItemIconEnabled = true;
-                p.cursorItemIconID = itemType;
+
+                player.noThrow = 2;
+                player.cursorItemIconEnabled = true;
+                player.cursorItemIconID = itemType;
+
                 if (PlayerInput.UsingGamepad)
-                {
-                    p.GamepadEnableGrappleCooldown();
-                }
+                    player.GamepadEnableGrappleCooldown();
+
                 if (!Main.mouseRight || !Main.mouseRightRelease || Player.BlockInteractionWithProjectiles != 0)
-                {
                     return;
-                }
+
                 Main.mouseRightRelease = false;
-                if (p.chest == chestType)
+                if (player.chest == chestType)
                 {
                     SoundEngine.PlaySound(SoundID.MenuClose, Main.LocalPlayer.position, null);
-                    p.chest = -1;
+                    player.chest = -1;
                     Recipe.FindRecipes(false);
                     return;
                 }
+
                 bool flag = false;
-                num = p.SpawnX == -1 ? Main.spawnTileX : p.SpawnX;
-                num2 = p.SpawnY == -1 ? Main.spawnTileY : p.SpawnY;
-                int num5 = (int)proj.Center.X / 16;
-                int num6 = (int)proj.Center.Y / 16;
-                if (!TileChecks.SolidTile(num5, num6))
+                playerCenterX = player.SpawnX == -1 ? Main.spawnTileX : player.SpawnX;
+                playerCenterY = player.SpawnY == -1 ? Main.spawnTileY : player.SpawnY;
+                if (!Common.SolidTile(projectileCenterX, projectileCenterY))
                 {
                     for (int i = 0; i < 5000; i++)
                     {
                         for (int j = 0; j < 2000; j++)
                         {
-                            if (num - i > 40 && num2 + j < Main.maxTilesY - 40 && TileChecks.SolidTile(num - i, num2 + j))
+                            if (playerCenterX - i > 40 && playerCenterY + j < Main.maxTilesY - 40 && Common.SolidTile(playerCenterX - i, playerCenterY + j))
                             {
-                                num5 = num - i;
-                                num6 = num2 + j;
+                                projectileCenterX = playerCenterX - i;
+                                projectileCenterY = playerCenterY + j;
                                 flag = true;
                                 break;
                             }
-                            if (num + i < Main.maxTilesX - 40 && num2 + j < Main.maxTilesY - 40 && TileChecks.SolidTile(num + i, num2 + j))
+                            if (playerCenterX + i < Main.maxTilesX - 40 && playerCenterY + j < Main.maxTilesY - 40 && Common.SolidTile(playerCenterX + i, playerCenterY + j))
                             {
-                                num5 = num + i;
-                                num6 = num2 + j;
+                                projectileCenterX = playerCenterX + i;
+                                projectileCenterY = playerCenterY + j;
                                 flag = true;
                                 break;
                             }
-                            if (num + i < Main.maxTilesX - 40 && num2 - j > 40 && TileChecks.SolidTile(num + i, num2 - j))
+                            if (playerCenterX + i < Main.maxTilesX - 40 && playerCenterY - j > 40 && Common.SolidTile(playerCenterX + i, playerCenterY - j))
                             {
-                                num5 = num + i;
-                                num6 = num2 - j;
+                                projectileCenterX = playerCenterX + i;
+                                projectileCenterY = playerCenterY - j;
                                 flag = true;
                                 break;
                             }
-                            if (num - i > 40 && num2 - j > 40 && TileChecks.SolidTile(num - i, num2 - j))
+                            if (playerCenterX - i > 40 && playerCenterY - j > 40 && Common.SolidTile(playerCenterX - i, playerCenterY - j))
                             {
-                                num5 = num - i;
-                                num6 = num2 - j;
+                                projectileCenterX = playerCenterX - i;
+                                projectileCenterY = playerCenterY - j;
                                 flag = true;
                                 break;
                             }
@@ -99,17 +94,50 @@ namespace QoLCompendium.Content.Projectiles.MobileStorages
                         }
                     }
                 }
-                playerBank = proj.whoAmI;
-                bplayer.chests = true;
-                p.chest = chestType;
-                p.chestX = num5;
-                p.chestY = num6;
-                p.SetTalkNPC(playerBank, false);
+                playerBank = projectile.whoAmI;
+                bankPlayer.chests = true;
+                player.chest = chestType;
+                player.chestX = projectileCenterX;
+                player.chestY = projectileCenterY;
+                player.SetTalkNPC(playerBank, false);
                 Main.oldNPCShop = 0;
                 Main.playerInventory = true;
                 SoundEngine.PlaySound(SoundID.MenuOpen, Main.LocalPlayer.position, null);
                 Recipe.FindRecipes(false);
             }
+        }
+    }
+
+    public class MobileStorageFollowing : GlobalProjectile
+    {
+        public override bool InstancePerEntity => true;
+
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
+        {
+            return entity.type == ProjectileID.FlyingPiggyBank || entity.type == ProjectileID.VoidLens || entity.type == ModContent.ProjectileType<EtherianConstructProjectile>() || entity.type == ModContent.ProjectileType<FlyingSafeProjectile>();
+        }
+
+        public override bool PreAI(Projectile projectile)
+        {
+            if (QoLCompendium.mainConfig.MobileStoragesFollowThePlayer)
+            {
+                Player player = Main.player[projectile.owner];
+                float distance = Vector2.Distance(projectile.Center, player.Center);
+                if (distance > 3000f)
+                {
+                    projectile.Center = player.Top;
+                }
+                else if (projectile.Center != player.Center)
+                {
+                    Vector2 val2 = (player.Center + projectile.DirectionFrom(player.Center) * 3f * 16f - projectile.Center) / ((distance < 48f) ? 30f : 60f);
+                    projectile.position = projectile.position + val2;
+                }
+                if (projectile.timeLeft < 2 && projectile.timeLeft > 0)
+                {
+                    projectile.timeLeft = 2;
+                }
+            }
+            return base.PreAI(projectile);
         }
     }
 }

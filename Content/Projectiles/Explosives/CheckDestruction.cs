@@ -6,7 +6,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
 {
     public class CheckDestruction : GlobalProjectile
     {
-        public static bool OkayToDestroyTile(Tile tile)
+        public static bool OkayToDestroyTile(Tile tile, bool ignoreModdedTiles = false)
         {
             bool noDungeon = !NPC.downedBoss3 &&
                 (tile.TileType == TileID.BlueDungeonBrick || tile.TileType == TileID.GreenDungeonBrick || tile.TileType == TileID.PinkDungeonBrick
@@ -18,7 +18,9 @@ namespace QoLCompendium.Content.Projectiles.Explosives
             bool noChloro = tile.TileType == TileID.Chlorophyte && !(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3);
             bool noLihzahrd = (tile.TileType == TileID.LihzahrdBrick || tile.WallType == WallID.LihzahrdBrickUnsafe) && !NPC.downedGolemBoss;
 
-            if (noDungeon || noHMOre || noChloro || noLihzahrd || TileBelongsToMod(tile))
+            if (noDungeon || noHMOre || noChloro || noLihzahrd)
+                return false;
+            if (TileBelongsToMod(tile) && ignoreModdedTiles)
                 return false;
 
             return true;

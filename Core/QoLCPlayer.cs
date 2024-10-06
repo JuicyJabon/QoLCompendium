@@ -1,46 +1,45 @@
-using QoLCompendium.Content.Items.Dedicated;
+using QoLCompendium.Content.Items.Tools.Fishing;
 using QoLCompendium.Content.Items.Tools.Usables;
-using QoLCompendium.Core.UI;
+using QoLCompendium.Core.UI.Panels;
 using System.Reflection;
 using Terraria.DataStructures;
+using Terraria.GameInput;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Core
 {
     public class QoLCPlayer : ModPlayer
     {
+        //Pedestals
         public bool sunPedestal = false;
-
         public bool moonPedestal = false;
-
         public bool bloodMoonPedestal = false;
-
         public bool eclipsePedestal = false;
-
         public bool pausePedestal = false;
 
-        public bool enemyAggressor = false;
-
-        public bool enemyCalmer = false;
-
-        public bool enemyEraser = false;
-
-        public bool sillySlapper = false;
-
-        public bool HasGoldenLockpick = false;
-
-        public int selectedBiome = 0;
-
-        public int selectedSpawnModifier = 5;
-
+        //Spawns
+        public bool increasedSpawns = false;
+        public bool decreasedSpawns = false;
+        public bool noSpawns = false;
+        public int selectedSpawnModifier = 0;
         public int spawnRate;
         public int spawnRateUpdateTimer;
-        static FieldInfo spawnRateFieldInfo; 
-
+        static FieldInfo spawnRateFieldInfo;
         public int bossToSpawn = 0;
         public bool bossSpawn = false;
         public int eventToSpawn = 0;
         public bool eventSpawn = false;
+
+        //Items
+        public bool sillySlapper = false;
+        public bool warpMirror = false;
+        public bool HasGoldenLockpick = false;
+        public List<int> activeItems = new();
+        public List<int> activeBuffItems = new();
+        public List<int> activeCraftingStationItems = new();
+
+        //Biomes
+        public int selectedBiome = 0;
 
         public override void Load()
         {
@@ -66,12 +65,20 @@ namespace QoLCompendium.Core
         {
             tag.Add("SelectedBiome", selectedBiome);
             tag.Add("SelectedSpawnModifier", selectedSpawnModifier);
+            tag.Add("bossToSpawn", bossToSpawn);
+            tag.Add("bossSpawn", bossSpawn);
+            tag.Add("eventToSpawn", eventToSpawn);
+            tag.Add("eventSpawn", eventSpawn);
         }
 
         public override void LoadData(TagCompound tag)
         {
             selectedBiome = tag.GetInt("SelectedBiome");
             selectedSpawnModifier = tag.GetInt("SelectedSpawnModifier");
+            bossToSpawn = tag.GetInt("bossToSpawn");
+            bossSpawn = tag.GetBool("bossSpawn");
+            eventToSpawn = tag.GetInt("eventToSpawn");
+            eventSpawn = tag.GetBool("eventSpawn");
         }
 
         public override void PreUpdate()
@@ -79,15 +86,6 @@ namespace QoLCompendium.Core
             if (spawnRateUpdateTimer > 0)
             {
                 spawnRateUpdateTimer--;
-            }
-        }
-
-        public override void PreUpdateBuffs()
-        {
-            if (Player.HeldItem.type == ModContent.ItemType<SillySlapper>())
-            {
-                Player.GetDamage(DamageClass.Generic) *= 2;
-                sillySlapper = true;
             }
         }
 
@@ -108,6 +106,51 @@ namespace QoLCompendium.Core
                 spawnRateFieldInfo = typeof(NPC).GetField("spawnRate", BindingFlags.Static | BindingFlags.NonPublic);
 
                 spawnRate = (int)spawnRateFieldInfo.GetValue(null);
+            }
+
+            if (Player.whoAmI != Main.myPlayer || !Main.mapFullscreen || !Main.mouseLeft || !Main.mouseLeftRelease || !warpMirror)
+                return;
+            PlayerInput.SetZoom_Unscaled();
+            float scale = 16f / Main.mapFullscreenScale;
+            float minX = Main.mapFullscreenPos.X * 16f - 10f;
+            float minY = Main.mapFullscreenPos.Y * 16f - 21f;
+            float mouseX = Main.mouseX - Main.screenWidth / 2;
+            float mouseY = Main.mouseY - Main.screenHeight / 2;
+            float cursorOnMapX = minX + mouseX * scale;
+            float cursorOnMapY = minY + mouseY * scale;
+
+            //CLICKED NEAR TOWN NPC
+            for (int i = 0; i < Main.npc.Length; i++)
+            {
+                NPC teleportNPC = Main.npc[i];
+                if (teleportNPC.active && teleportNPC.townNPC)
+                {
+                    float minClickX = teleportNPC.position.X - 14f * scale;
+                    float minClickY = teleportNPC.position.Y - 14f * scale;
+                    float maxClickX = teleportNPC.position.X + 14f * scale;
+                    float maxClickY = teleportNPC.position.Y + 14f * scale;
+                    if (cursorOnMapX >= minClickX && cursorOnMapX <= maxClickX && cursorOnMapY >= minClickY && cursorOnMapY <= maxClickY)
+                    {
+                        Main.mouseLeftRelease = false;
+                        Main.mapFullscreen = false;
+                        Player.Teleport(teleportNPC.position + new Vector2(0f, -6f));
+                        PlayerInput.SetZoom_Unscaled();
+                        return;
+                    }
+                }
+            }
+        }
+
+        public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
+        {
+            bool inWater = !attempt.inLava && !attempt.inHoney;
+            if (inWater && Main.bloodMoon && attempt.crate && QoLCompendium.itemConfig.BottomlessChumBucket)
+            {
+                if (!attempt.uncommon && !attempt.rare && (attempt.veryrare || attempt.legendary) && Main.rand.NextBool())
+                {
+                    itemDrop = ModContent.ItemType<BottomlessChumBucket>();
+                    return;
+                }
             }
         }
 
@@ -162,11 +205,15 @@ namespace QoLCompendium.Core
             bloodMoonPedestal = false;
             eclipsePedestal = false;
             pausePedestal = false;
-            enemyAggressor = false;
-            enemyCalmer = false;
-            enemyEraser = false;
+            increasedSpawns = false;
+            decreasedSpawns = false;
+            noSpawns = false;
             sillySlapper = false;
+            warpMirror = false;
             HasGoldenLockpick = false;
+            activeItems.Clear();
+            activeBuffItems.Clear();
+            activeCraftingStationItems.Clear();
 
             if (Main.netMode != NetmodeID.Server)
             {
@@ -179,8 +226,8 @@ namespace QoLCompendium.Core
                             return;
                         }
                     }
-                    BMNPCUI.visible = false;
-                    ECNPCUI.visible = false;
+                    BlackMarketDealerNPCUI.visible = false;
+                    EtherealCollectorNPCUI.visible = false;
                 }
             }
         }

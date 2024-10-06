@@ -1,80 +1,94 @@
 Another QoL mod... but this one is a little different.
 
 This mod aims to condense most of the other 1-off QoL mods into one.
-
-Check out a more vanilla friendly QoL mod:
-https://steamcommunity.com/sharedfiles/filedetails/?id=3086919933
-
 All features are configurable.
 
 Current Features:
- - Endless Potion Buffs (30+)
- - Endless Station Buffs (1+)
- - Endless Healing & Mana Potions (30+)
- - Endless Consumables (999+)
- - Endless Placeables (999+)
- - Endless Bait (999+)
- - Endless Ammo (999+)
+ - Endless Potion Buffs (Default 30+)
+ - Endless Station Buffs (Default 1+)
+ - Endless Healing & Mana Potions (Default 30+)
+ - Endless Consumables (Default 999+)
+ - Endless Placeables (Default 999+)
+ - Endless Bait (Default 999+)
+ - Endless Ammo (Default 999+)
  - Non-consumable Boss & Event summons
- - No favorite tooltip
- - Extra buff slots
- - Keep buffs on death
- - Instant respawn (Singleplayer Only)
- - Full HP on respawn
- - Auto-join multiplayer teams
- - No enemy spawns during bosses
- - No lava slime lava
- - Lifeform Analyzer points towards rare creatures
- - Editable Lunar Pillar shield health
- - Lunar Pillars drop more fragments
- - Increased coin drops
- - Increased mining & placing speeds
- - Increased placing range
- - Increased max stacks
- - Faster extractinator
- - Automatic coin quick-stacking
- - Informational accessories work in banks
- - Portable crafting stations
- - Auto fishing
- - Vein Miner (With Whitelist)
- - Mining speed affects all tools
- - Auto research favorited items
- - Boss bags don't drop vanities
- - Boss loot shimmer conversions
- - Defender Medal drops
- - No natural boss spawns
- - Shimmerable tooltip
- - Bestiary entry unlocks with 1 kill
- - Extra fishing lures
- - Fast herb & tree growth
- - Friendly NPCs become invincible
- - NPC happiness removal
- - Fast town NPC spawns
- - Improved town NPC spawns
- - NPCs can live in evil biomes
- - NPCs always sell pylons
- - No pylon teleportation restrictions
- - Teleport NPCs home (Make sure to set a keybind)
- - Quick recall (Make sure to set a keybind)
- - Shop Expander (Thanks Pannoniae!)
- - Angler instant quest reset
+ - Item max stack changing
+ - Utility accessories work in banks
+ - Stackable quest items
+ - Boss item shimmer transmutation
+ - Item crafting conversions
+ - Boss bag recipes
+ - Crate recipes
+ - Banner recipes
+ - No developer sets from boss bags
+ - Coin drop multiplier
+ - Automatic money quick-stacking
+ - Town NPCs are invincible
+ - Town NPCs move in without being saved
  - No town slimes
- - No world evil spread
- - No chilled in ice water
+ - Town NPCs can live in evil biomes
+ - No town NPC happiness
+ - Happiness price changing
+ - Reforge price changing
+ - No pylon sale restrictions
+ - Angler quests reset instantly
+ - Lunar Pillar shield health changing
+ - Lunar Pillars drop more fragments
+ - Lunar enemies drop fragments
+ - One kill bestiary unlocks
+ - Lava slimes don't drop lava
+ - Old One's Army minibosses drop Defender Medals
+ - Relics can drop in expert
+ - Bosses stop enemy spawns
+ - Bosses can't spawn naturally
+ - Fishing rods gain extra lures (Default +3)
+ - Falling sand doesn't deal damage
+ - Sand, snow, and tombstones drop as items
+ - Queen Bee's larva can't be accidentally broken
+ - Purification Powder works on walls
+ - Increased tile placement speed
+ - Increased tile placement range
+ - Increased tool speed
+ - Increased Extractinator speed
+ - Extra buff slots
+ - Persistent buffs
+ - Persistent debuffs
+ - Slice of Cake buff time doesn't decrease
+ - Staff of Regrowth replaces herbs
+ - Lifeform Analyzer points towards rare creatures
+ - Wing slot
+ - Expert+ ice water doesn't caused chilled
  - No sinking in shimmer
- - Seasonal events always
- - Staff of Regrowth auto-plant
- - More drops from trees
- - Wing Slot
- - Map Teleporting
- - All hairstyles unlocked
- - No tombstones
- - No sand, snow, or tombstone litter
- - No Queen Bee larva break
- - No falling block damage
- - No meteors falling
- - Seasonal events always
- - Starter Bag (Make sure to set items in config)
+ - Auto team joining
+ - All hairstyles available on character creation
+ - Disable tombstones from spawning on death
+ - Auto fishing
+ - Portable crafting stations
+ - No restrictions for pylon teleportation
+ - Instant respawn (Singleplayer only)
+ - Full health on respawn
+ - Disable spreading of evil biomes
+ - Fountains cause their biomes
+ - Trees grow faster
+ - Herbs grow faster
+ - Trees drop more fruits when shook
+ - Fallen star rate multiplier
+ - No meteor spawns
+ - Hellstone ore works with speluker potion
+ - Always Christmas season
+ - Always Halloween season
+ - No credits on beating the game
+ - Vein mining
+ - Favorite items to research them
+ - Fullscreen map teleporting
+ - Dash keybind and double tap dash disabling
+ - No favorite tooltips
+ - Shimmerable tooltips
+ - Works in banks tooltips
+ - Permanent upgrade use tooltips
+ - Wing and hook stats tooltips
+ - Use ammo type tooltips
+ - Active buff/item tooltips
  - Many items for easing the playing experience
  - 2 Town NPCs who sell almost everything needed
 

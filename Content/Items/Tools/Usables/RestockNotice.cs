@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
@@ -11,16 +12,14 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void SetDefaults()
         {
-            Item.width = 19;
-            Item.height = 18;
-            Item.maxStack = 1;
-            Item.consumable = false;
+            Item.width = 15;
+            Item.height = 12;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.rare = ItemRarityID.Blue;
-            Item.UseSound = new SoundStyle?(SoundID.Item4);
+            Item.UseSound = SoundID.Item4;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.value = Item.sellPrice(gold: 2);
+
+            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 50, 0));
         }
 
         public override bool? UseItem(Player player)
@@ -42,8 +41,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         {
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.RestockNotice, Type);
             r.AddIngredient(ItemID.Silk, 8);
-            r.AddIngredient(ItemID.BlackInk, 1);
-            r.AddIngredient(ItemID.Feather, 1);
+            r.AddIngredient(ItemID.BlackDye, 1);
             r.AddTile(TileID.Anvils);
             r.Register();
         }

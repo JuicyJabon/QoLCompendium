@@ -14,8 +14,8 @@ namespace QoLCompendium.Content.Projectiles.Dedicated
 
         public override void SetDefaults()
         {
-            Projectile.CloneDefaults(ProjectileID.ZephyrFish);
-            AIType = ProjectileID.ZephyrFish;
+            Projectile.CloneDefaults(ProjectileID.DD2PetGato);
+            AIType = ProjectileID.DD2PetGato;
         }
 
         public override bool PreAI()

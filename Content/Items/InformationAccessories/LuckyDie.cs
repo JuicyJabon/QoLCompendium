@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.UI;
+using QoLCompendium.Core.UI.Other;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.InformationAccessories
 {
@@ -15,15 +16,15 @@ namespace QoLCompendium.Content.Items.InformationAccessories
             Item.width = 13;
             Item.height = 14;
             Item.maxStack = 1;
-            Item.rare = ItemRarityID.Blue;
             Item.accessory = true;
-            Item.value = Item.sellPrice(gold: 3);
+
+            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 3, 0, 0));
         }
 
         public override void AddRecipes()
         {
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type);
-            r.AddIngredient(ItemID.MarbleBlock, 5);
+            r.AddIngredient(ItemID.MarbleBlock, 12);
             r.AddIngredient(ItemID.BlackDye, 1);
             r.AddTile(TileID.Anvils);
             r.Register();

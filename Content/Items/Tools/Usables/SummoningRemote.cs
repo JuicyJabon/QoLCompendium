@@ -1,5 +1,8 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.UI;
+﻿using Humanizer;
+using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.UI.Panels;
+using Terraria.Enums;
 using Terraria.GameContent.Events;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
@@ -16,11 +19,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         {
             Item.width = 7;
             Item.height = 17;
-            Item.maxStack = 1;
-            Item.rare = ItemRarityID.White;
-            Item.useAnimation = 30;
-            Item.useTime = 30;
             Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.useAnimation = 20;
+            Item.useTime = 20;
+
+            Item.SetShopValues(ItemRarityColor.White0, Item.buyPrice(0, 1, 0, 0));
         }
 
         public override bool? UseItem(Player player)
@@ -29,8 +32,9 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             //new Color(50, 255, 130) - GREEN
             if (player.altFunctionUse == 2)
             {
-                if (!BossUI.visible) BossUI.timeStart = Main.GameUpdateCount;
-                BossUI.visible = true;
+                if (!SummoningRemoteUI.visible) SummoningRemoteUI.timeStart = Main.GameUpdateCount;
+                SoundEngine.PlaySound(SoundID.MenuOpen, player.Center);
+                SummoningRemoteUI.visible = true;
                 return base.UseItem(player);
             }
             else
@@ -68,7 +72,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                             NetMessage.SendData(MessageID.WorldData);
                             Main.SyncRain();
                         }
-                        TextHelper.PrintText("The skies darken", new Color(50, 255, 130));
+                        TextHelper.PrintText(Language.GetTextValue("Mods.QoLCompendium.Messages.EventRain"), new Color(50, 255, 130));
                         SoundEngine.PlaySound(SoundID.Roar, player.position);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 2)
@@ -77,7 +81,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.WorldData);
-                        TextHelper.PrintText("The wind has been stirred", new Color(50, 255, 130));
+                        TextHelper.PrintText(Language.GetTextValue("Mods.QoLCompendium.Messages.EventWind"), new Color(50, 255, 130));
                         SoundEngine.PlaySound(SoundID.Roar, player.position);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 3)
@@ -86,7 +90,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.WorldData);
-                        TextHelper.PrintText("The desert winds are howling", new Color(50, 255, 130));
+                        TextHelper.PrintText(Language.GetTextValue("Mods.QoLCompendium.Messages.EventSandstorm"), new Color(50, 255, 130));
                         SoundEngine.PlaySound(SoundID.Roar, player.position);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 4)
@@ -122,7 +126,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                         {
                             Main.bloodMoon = true;
                             SoundEngine.PlaySound(SoundID.Roar, player.position);
-                            TextHelper.PrintText("The Blood Moon is rising...", new Color(50, 255, 130));
+                            TextHelper.PrintText(Language.GetTextValue("Mods.QoLCompendium.Messages.EventBloodMoon"), new Color(50, 255, 130));
                             if (Main.netMode == NetmodeID.Server)
                                 NetMessage.SendData(MessageID.WorldData);
                         }
@@ -151,7 +155,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                         {
                             Main.eclipse = true;
                             SoundEngine.PlaySound(SoundID.Roar, player.position);
-                            TextHelper.PrintText("A solar eclipse is happening!", new Color(50, 255, 130));
+                            TextHelper.PrintText(Language.GetTextValue("Mods.QoLCompendium.Messages.EventEclipse"), new Color(50, 255, 130));
                             if (Main.netMode == NetmodeID.Server)
                                 NetMessage.SendData(MessageID.WorldData);
                         }
@@ -161,7 +165,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                         if (!Main.dayTime)
                         {
                             Main.startPumpkinMoon();
-                            TextHelper.PrintText("The Pumpkin Moon is rising...", new Color(50, 255, 130));
+                            TextHelper.PrintText(Language.GetTextValue("Mods.QoLCompendium.Messages.EventPumpkinMoon"), new Color(50, 255, 130));
                             if (Main.netMode == NetmodeID.Server)
                                 NetMessage.SendData(MessageID.WorldData);
                         }
@@ -171,7 +175,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                         if (!Main.dayTime)
                         {
                             Main.startSnowMoon();
-                            TextHelper.PrintText("The Frost Moon is rising...", new Color(50, 255, 130));
+                            TextHelper.PrintText(Language.GetTextValue("Mods.QoLCompendium.Messages.EventFrostMoon"), new Color(50, 255, 130));
                             if (Main.netMode == NetmodeID.Server)
                                 NetMessage.SendData(MessageID.WorldData);
                         }
@@ -198,9 +202,83 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                     {
                         NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerVortex);
                     }
+                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 18)
+                    {
+                        WorldGen.TriggerLunarApocalypse();
+                        NPC.LunarApocalypseIsUp = true;
+                    }
                 }
                 return true;
             }
+        }
+
+        public override void UpdateInventory(Player player)
+        {
+            if (player.GetModPlayer<QoLCPlayer>().bossToSpawn > 0 && player.GetModPlayer<QoLCPlayer>().bossToSpawn != NPCID.Retinazer && player.GetModPlayer<QoLCPlayer>().bossToSpawn != NPCID.MoonLordCore && player.GetModPlayer<QoLCPlayer>().bossSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.Boss").FormatWith(ContentSamples.NpcsByNetId[player.GetModPlayer<QoLCPlayer>().bossToSpawn].FullName));
+
+            if (player.GetModPlayer<QoLCPlayer>().bossToSpawn == NPCID.Retinazer && player.GetModPlayer<QoLCPlayer>().bossSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.BossTwins"));
+
+            if (player.GetModPlayer<QoLCPlayer>().bossToSpawn == NPCID.MoonLordCore && player.GetModPlayer<QoLCPlayer>().bossSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.BossMoonLord"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 1 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventRain"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 2 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventWind"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 3 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventSandstorm"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 4 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventParty"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 5 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventSlimeRain"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 6 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventBloodMoon"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 7 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventGoblinArmy"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 8 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventSnowLegion"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 9 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventPirateInvasion"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 10 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventEclipse"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 11 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventPumpkinMoon"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 12 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventFrostMoon"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 13 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventMartianMadness"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 14 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventNebulaPillar"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 15 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventSolarPillar"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 16 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventStardustPillar"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 17 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventVortexPillar"));
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 18 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.EventLunar"));
+
+            if (!player.GetModPlayer<QoLCPlayer>().bossSpawn && !player.GetModPlayer<QoLCPlayer>().eventSpawn)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.SummoningRemote.NoModifier"));
         }
 
         public override bool AltFunctionUse(Player player)
@@ -211,9 +289,9 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         public override void AddRecipes()
         {
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.SummoningRemote, Type);
-            r.AddRecipeGroup(RecipeGroupID.IronBar, 7);
-            r.AddIngredient(ItemID.Ruby, 2);
-            r.AddIngredient(ItemID.Lens, 3);
+            r.AddRecipeGroup(RecipeGroupID.IronBar, 12);
+            r.AddIngredient(ItemID.Ruby, 5);
+            r.AddIngredient(ItemID.Lens, 2);
             r.AddTile(TileID.Anvils);
             r.Register();
         }

@@ -51,7 +51,7 @@
                     if (tile == null)
                         continue;
 
-                    if (!CheckDestruction.OkayToDestroyTile(tile))
+                    if (!CheckDestruction.OkayToDestroyTile(tile, true))
                         stopRight = true;
 
 
@@ -90,7 +90,7 @@
                     if (tile == null)
                         continue;
 
-                    if (!CheckDestruction.OkayToDestroyTile(tile))
+                    if (!CheckDestruction.OkayToDestroyTile(tile, true))
                         stopLeft = true;
 
                     if (y == -20 || y == 0)

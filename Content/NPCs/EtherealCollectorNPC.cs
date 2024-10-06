@@ -1,7 +1,6 @@
-using Mono.Cecil.Mdb;
 using QoLCompendium.Content.Items.Dedicated;
 using QoLCompendium.Core;
-using QoLCompendium.Core.UI;
+using QoLCompendium.Core.UI.Panels;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
 
@@ -70,14 +69,10 @@ namespace QoLCompendium.Content.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs)
         {
-            if (QoLCompendium.mainConfig.ECNPC)
-            {
+            if (QoLCompendium.mainConfig.EtherealCollectorCanSpawn)
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
         public override List<string> SetNPCNameList()
@@ -160,40 +155,45 @@ namespace QoLCompendium.Content.NPCs
             }
             else if (shopNum == 2)
             {
-                button = "Modded Materials";
+                button = "Modded Materials (Mods: A-M)";
                 ShopName = "Modded Materials";
             }
             else if (shopNum == 3)
             {
+                button = "Modded Materials (Mods: N-Z)";
+                ShopName = "Modded Materials 2";
+            }
+            else if (shopNum == 4)
+            {
                 button = "Modded Treasure Bags";
                 ShopName = "Modded Treasure Bags";
             }
-            else if (shopNum == 4)
+            else if (shopNum == 5)
             {
                 button = "Modded Crates & Grab Bags";
                 ShopName = "Modded Crates & Grab Bags";
             }
-            else if (shopNum == 5)
+            else if (shopNum == 6)
             {
                 button = "Modded Ores & Bars";
                 ShopName = "Modded Ores & Bars";
             }
-            else if (shopNum == 6)
+            else if (shopNum == 7)
             {
                 button = "Modded Natural Blocks";
                 ShopName = "Modded Natural Blocks";
             }
-            else if (shopNum == 7)
+            else if (shopNum == 8)
             {
                 button = "Modded Building Blocks";
                 ShopName = "Modded Building Blocks";
             }
-            else if (shopNum == 8)
+            else if (shopNum == 9)
             {
                 button = "Modded Herbs & Plants";
                 ShopName = "Modded Herbs & Plants";
             }
-            else if (shopNum == 9)
+            else if (shopNum == 10)
             {
                 button = "Modded Fish & Fishing Gear";
                 ShopName = "Modded Fish & Fishing Gear";
@@ -213,7 +213,7 @@ namespace QoLCompendium.Content.NPCs
             if (firstButton)
             {
                 shop = ShopName;
-                ECNPCUI.visible = false;
+                EtherealCollectorNPCUI.visible = false;
             }
             else
             {
@@ -223,8 +223,8 @@ namespace QoLCompendium.Content.NPCs
                 }
                 else
                 {
-                    if (!ECNPCUI.visible) ECNPCUI.timeStart = Main.GameUpdateCount;
-                    ECNPCUI.visible = true;
+                    if (!EtherealCollectorNPCUI.visible) EtherealCollectorNPCUI.timeStart = Main.GameUpdateCount;
+                    EtherealCollectorNPCUI.visible = true;
                 }
             }
         }
@@ -272,8 +272,9 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.buffariaMod, "BeePotion", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToJungle)
                 .AddModItemToShop(ModConditions.buffariaMod, "BoostPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToHallow)
                 .AddModItemToShop(ModConditions.buffariaMod, "BreakerPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToCavernsOrUnderground)
-                .AddModItemToShop(ModConditions.buffariaMod, "CorruptionPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToEvil)
-                .AddModItemToShop(ModConditions.buffariaMod, "CrimsonPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToEvil)
+                .AddModItemToShop(ModConditions.buffariaMod, "CavernPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToCavernsOrUnderground)
+                .AddModItemToShop(ModConditions.buffariaMod, "CorruptionPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc, ModConditions.HasBeenToEvil)
+                .AddModItemToShop(ModConditions.buffariaMod, "CrimsonPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc, ModConditions.HasBeenToEvil)
                 .AddModItemToShop(ModConditions.buffariaMod, "CrimtaneRegenerationPotion", Item.buyPrice(silver: 75), Condition.DownedEyeOfCthulhu, ModConditions.HasBeenToEvil)
                 .AddModItemToShop(ModConditions.buffariaMod, "DemoniteProtectionPotion", Item.buyPrice(silver: 75), Condition.DownedEyeOfCthulhu, ModConditions.HasBeenToEvil)
                 .AddModItemToShop(ModConditions.buffariaMod, "DesertPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToDesert)
@@ -283,24 +284,25 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.buffariaMod, "FlightPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToSky)
                 .AddModItemToShop(ModConditions.buffariaMod, "ForestPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.buffariaMod, "HallowPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToHallow)
-                .AddModItemToShop(ModConditions.buffariaMod, "HellPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(ModConditions.buffariaMod, "HellPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToUnderworld)
                 .AddModItemToShop(ModConditions.buffariaMod, "HolyPotion", Item.buyPrice(silver: 75), Condition.Hardmode, Condition.DownedMechBossAny)
                 .AddModItemToShop(ModConditions.buffariaMod, "HoppingPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToJungle)
                 .AddModItemToShop(ModConditions.buffariaMod, "HyperPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToSky)
                 .AddModItemToShop(ModConditions.buffariaMod, "ImpactPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToEvil)
                 .AddModItemToShop(ModConditions.buffariaMod, "InfestedPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToMushroom)
-                .AddModItemToShop(ModConditions.buffariaMod, "JunglePotion", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToJungle)
+                .AddModItemToShop(ModConditions.buffariaMod, "JunglePotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToJungle)
                 .AddModItemToShop(ModConditions.buffariaMod, "ManaforcePotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToHallow)
+                .AddModItemToShop(ModConditions.buffariaMod, "OceanPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToOcean)
                 .AddModItemToShop(ModConditions.buffariaMod, "PalladiumRegenerationPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground)
                 .AddModItemToShop(ModConditions.buffariaMod, "PhoenixPotion", Item.buyPrice(silver: 75), Condition.DownedMechBossAny, ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(ModConditions.buffariaMod, "RadarPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToCavernsOrUnderground)
                 .AddModItemToShop(ModConditions.buffariaMod, "SentryPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToJungle)
-                .AddModItemToShop(ModConditions.buffariaMod, "ShockPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera, ModConditions.HasBeenToSnow)
+                .AddModItemToShop(ModConditions.buffariaMod, "ShockPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToEvil)
                 .AddModItemToShop(ModConditions.buffariaMod, "ShredderPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron, ModConditions.HasBeenToSnow)
                 .AddModItemToShop(ModConditions.buffariaMod, "SnowPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToSnow)
                 .AddModItemToShop(ModConditions.buffariaMod, "SoftfallPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToSky)
-                .AddModItemToShop(ModConditions.buffariaMod, "StabbingPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToJungle)
-                .AddModItemToShop(ModConditions.buffariaMod, "SteadfastPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToCavernsOrUnderground)
-                .AddModItemToShop(ModConditions.buffariaMod, "SuperLuckPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToDesert)
+                .AddModItemToShop(ModConditions.buffariaMod, "StabbingPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToDesert)
+                .AddModItemToShop(ModConditions.buffariaMod, "SteadfastPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
                 .AddModItemToShop(ModConditions.buffariaMod, "UnflinchingPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToCavernsOrUnderground)
                 .AddModItemToShop(ModConditions.buffariaMod, "WisdomPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenThroughNight)
                 //Upgraded
@@ -368,9 +370,16 @@ namespace QoLCompendium.Content.NPCs
             //Depths
                 .AddModItemToShop(ModConditions.depthsMod, "CrystalSkinPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToDepthsOrUnderworld)
                 .AddModItemToShop(ModConditions.depthsMod, "SilverSpherePotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToDepthsOrUnderworld)
+            //Dragon Ball Terraria
+                .AddModItemToShop(ModConditions.dragonBallTerrariaMod, "DisgustingGoop", Item.buyPrice(silver: 75), ModConditions.HasTalkedToSkeletonMerchant)
+                .AddModItemToShop(ModConditions.dragonBallTerrariaMod, "MRE", Item.buyPrice(silver: 75), ModConditions.HasTalkedToTravelingMerchant)
+                .AddModItemToShop(ModConditions.dragonBallTerrariaMod, "KiStimulant", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
             //Edorbis
                 .AddModItemToShop(ModConditions.edorbisMod, "CapacityPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.edorbisMod, "EnergyRegenerationPotion", Item.buyPrice(silver: 75), ModConditions.DownedGlaciation)
+            //Everjade
+                .AddModItemToShop(ModConditions.everjadeMod, "HeartbeatPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.everjadeMod, "SpinePotion", Item.buyPrice(silver: 75))
             //Excelsior
                 .AddModItemToShop(ModConditions.excelsiorMod, "SweetPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.excelsiorMod, "UncoagulatingPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
@@ -509,6 +518,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.medialRiftMod, "BackwardsPotion", Item.buyPrice(silver: 75), Condition.Hardmode, Condition.DownedQueenSlime)
                 .AddModItemToShop(ModConditions.medialRiftMod, "BrilliantBeerBoot", Item.buyPrice(silver: 75), Condition.DownedPlantera)
                 .AddModItemToShop(ModConditions.medialRiftMod, "DazzlingPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera)
+                .AddModItemToShop(ModConditions.medialRiftMod, "ExpiredMatterSyringe", Item.buyPrice(silver: 75), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.medialRiftMod, "GlobalPotion", Item.buyPrice(silver: 75), Condition.Hardmode, Condition.DownedQueenSlime)
                 .AddModItemToShop(ModConditions.medialRiftMod, "MatterSyringe", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
                 .AddModItemToShop(ModConditions.medialRiftMod, "OverclockedBackwardsPotion", Item.buyPrice(silver: 75), Condition.Hardmode, Condition.DownedQueenSlime)
@@ -523,6 +533,7 @@ namespace QoLCompendium.Content.NPCs
             //Redemption
                 .AddModItemToShop(ModConditions.redemptionMod, "CharismaPotion", Item.buyPrice(silver: 75), ModConditions.DownedThorn, ModConditions.HasBeenToCavernsOrUnderground)
                 .AddModItemToShop(ModConditions.redemptionMod, "HydraCorrosionPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToWasteland)
+                .AddModItemToShop(ModConditions.redemptionMod, "SkirmishPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToWasteland)
                 .AddModItemToShop(ModConditions.redemptionMod, "VendettaPotion", Item.buyPrice(silver: 75), ModConditions.DownedThorn, ModConditions.HasBeenToDesert)
                 .AddModItemToShop(ModConditions.redemptionMod, "VigourousPotion", Item.buyPrice(silver: 75), ModConditions.DownedNebuleus)
             //SOTS
@@ -544,6 +555,29 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "SoulAccessPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc, ModConditions.HasBeenToPyramid)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "StarlightTonic", Item.buyPrice(silver: 75), ModConditions.DownedAdvisor, ModConditions.HasBeenToPlanetarium)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "VibePotion", Item.buyPrice(silver: 75))
+            //Shadows of Abaddon
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "SentryPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "DayStatsPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ExtraEndurancePotion", Item.buyPrice(silver: 75), ModConditions.DownedAraghur)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "NightStatsPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ComboPotion", Item.buyPrice(silver: 75), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FlariumInfernoImmunityPotion", Item.buyPrice(silver: 75), ModConditions.DownedAraghur)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "NeilShinePotion", Item.buyPrice(silver: 75), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "NeilCritDamagePotion", Item.buyPrice(silver: 75), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "NeilBossDamagePotion", Item.buyPrice(silver: 75), ModConditions.DownedAbaddon, ModConditions.DownedLostSiblings)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FastFallPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "HolyShinePotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "MoonlightPotion", Item.buyPrice(silver: 75), ModConditions.DownedLostSiblings)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "NightmarePotion", Item.buyPrice(silver: 75), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ThrownPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "NeilPolarizePotion", Item.buyPrice(silver: 75), ModConditions.DownedAbaddon, ModConditions.DownedLostSiblings)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "SuppressionPotion", Item.buyPrice(silver: 75), ModConditions.DownedLostSiblings)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ThrownSpeedPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FewerSpawnsPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "NeilSpeedPotion", Item.buyPrice(silver: 75), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ExtraFishPotion", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "JumpBoostPotion", Item.buyPrice(silver: 75), ModConditions.DownedJensenTheGrandHarpy)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "SandstormWindImmunityPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
             //Sloome
                 .AddModItemToShop(ModConditions.sloomeMod, "YharmStim", Item.buyPrice(silver: 75), ModConditions.DownedYharon)
             //Spirit
@@ -558,7 +592,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.spiritMod, "TurtlePotion", Item.buyPrice(silver: 75), Condition.DownedMechBossAny, ModConditions.HasBeenToSpirit)
                 .AddModItemToShop(ModConditions.spiritMod, "BismitePotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToCavernsOrUnderground)
                 .AddModItemToShop(ModConditions.spiritMod, "DoubleJumpPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToSky)
-            //Storms
+            //Starlight River
+                .AddModItemToShop(ModConditions.starlightRiverMod, "PotionForest", Item.buyPrice(silver: 75))
+                //.AddModItemToShop(ModConditions.starlightRiverMod, "InoculationPotion", Item.buyPrice(silver: 75))
+                //Storms
                 .AddModItemToShop(ModConditions.stormsAdditionsMod, "BeetlePotion", Item.buyPrice(silver: 75), Condition.DownedGolem, ModConditions.HasBeenToTemple)
                 .AddModItemToShop(ModConditions.stormsAdditionsMod, "FruitHeartPotion", Item.buyPrice(silver: 75), Condition.DownedMechBossAny, ModConditions.HasBeenToJungle)
                 .AddModItemToShop(ModConditions.stormsAdditionsMod, "GunPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToJungle)
@@ -566,6 +603,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.stormsAdditionsMod, "ShroomitePotion", Item.buyPrice(silver: 75), Condition.DownedPlantera, ModConditions.HasBeenToMushroom)
                 .AddModItemToShop(ModConditions.stormsAdditionsMod, "SpectrePotion", Item.buyPrice(silver: 75), Condition.DownedPlantera, ModConditions.HasBeenToDungeon)
                 .AddModItemToShop(ModConditions.stormsAdditionsMod, "SpookyPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera, Condition.DownedMourningWood)
+            //Strams Classes
+                .AddModItemToShop(ModConditions.stramsClassesMod, "RetributionPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.stramsClassesMod, "StealthPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToJungle)
+                .AddModItemToShop(ModConditions.stramsClassesMod, "StrengthPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToSky)
             //Supernova
                 .AddModItemToShop(ModConditions.supernovaMod, "QuarionPotion", Item.buyPrice(silver: 75))
             //Terrorborn
@@ -615,7 +656,16 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.vitalityMod, "LeapingPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToSky)
                 .AddModItemToShop(ModConditions.vitalityMod, "TranquillityPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToSky)
                 .AddModItemToShop(ModConditions.vitalityMod, "TravelsensePotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToOcean)
-                .AddModItemToShop(ModConditions.vitalityMod, "WarriorPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc, ModConditions.HasBeenToEvil);
+                .AddModItemToShop(ModConditions.vitalityMod, "WarriorPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc, ModConditions.HasBeenToEvil)
+            //Zylon
+                .AddModItemToShop(ModConditions.zylonMod, "BloodiedVial", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.DownedBloodMoon)
+                .AddModItemToShop(ModConditions.zylonMod, "FeralChemicals", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.zylonMod, "FloaterPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.zylonMod, "GalePotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.zylonMod, "HeavyHitterPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
+                .AddModItemToShop(ModConditions.zylonMod, "ManareachPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.zylonMod, "NeutroninaBottle", Item.buyPrice(silver: 75), ModConditions.DownedLunarEvent)
+                .AddModItemToShop(ModConditions.zylonMod, "StealthPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron);
             modPotionsShop.Register();
 
             var modFlasksShop = new NPCShop(Type, "Modded Flasks, Stations & Foods")
@@ -652,7 +702,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.buffariaMod, "PoisonPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
                 .AddModItemToShop(ModConditions.buffariaMod, "ShadowflamePhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
                 .AddModItemToShop(ModConditions.buffariaMod, "VenomPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedPlantera)
-                .AddModItemToShop(ModConditions.buffariaMod, "LegendaryPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.DownedLunarEvent)
+                .AddModItemToShop(ModConditions.buffariaMod, "LegendaryPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedCultist)
                 .AddModItemToShop(ModConditions.buffariaMod, "LesserHoneyedHealingPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.buffariaMod, "HoneyedHealingPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.buffariaMod, "GreaterHoneyedHealingPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
@@ -660,6 +710,14 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.buffariaMod, "LesserRestorationPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.buffariaMod, "GreaterRestorationPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.buffariaMod, "SuperRestorationPotion", Item.buyPrice(silver: 75), ModConditions.DownedLunarEvent)
+                .AddModItemToShop(ModConditions.buffariaMod, "LesserScalingHealingPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
+                .AddModItemToShop(ModConditions.buffariaMod, "ScalingHealingPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
+                .AddModItemToShop(ModConditions.buffariaMod, "GreaterScalingHealingPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera)
+                .AddModItemToShop(ModConditions.buffariaMod, "SuperScalingHealingPotion", Item.buyPrice(silver: 75), Condition.DownedMoonLord)
+                .AddModItemToShop(ModConditions.buffariaMod, "LesserScalingManaPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
+                .AddModItemToShop(ModConditions.buffariaMod, "ScalingManaPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
+                .AddModItemToShop(ModConditions.buffariaMod, "GreaterScalingManaPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera)
+                .AddModItemToShop(ModConditions.buffariaMod, "SuperScalingManaPotion", Item.buyPrice(silver: 75), Condition.DownedMoonLord)
             //Calamity
                 .AddModItemToShop(ModConditions.calamityMod, "Baguette", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.calamityMod, "HadalStew", Item.buyPrice(silver: 75), ModConditions.HasBeenToAbyss)
@@ -697,6 +755,22 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.clickerClassMod, "HeavenlyChip", Item.buyPrice(gold: 15), ModConditions.HasBeenToAether)
             //Depths
                 .AddModItemToShop(ModConditions.depthsMod, "FlaskofMercury", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToDepthsOrUnderworld)
+            //Dragon Ball Terraria
+                .AddModItemToShop(ModConditions.dragonBallTerrariaMod, "KiPotion1", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.dragonBallTerrariaMod, "KiPotion2", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
+                .AddModItemToShop(ModConditions.dragonBallTerrariaMod, "KiPotion3", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.dragonBallTerrariaMod, "KiPotion4", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.dragonBallTerrariaMod, "KiPotion5", Item.buyPrice(silver: 75), Condition.DownedPlantera)
+            //Draedon Expansion
+                .AddModItemToShop(ModConditions.draedonExpansionMod, "FlaskOfElectricity", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
+            //Edorbis
+                .AddModItemToShop(ModConditions.edorbisMod, "LesserEnergyPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.edorbisMod, "EnergyPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
+                .AddModItemToShop(ModConditions.edorbisMod, "GreaterEnergyPotion", Item.buyPrice(silver: 75), Condition.DownedMechBossAny)
+                .AddModItemToShop(ModConditions.edorbisMod, "SuperEnergyPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera)
+            //Everjade
+                .AddModItemToShop(ModConditions.everjadeMod, "JasmineTea", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.everjadeMod, "SpringWater", Item.buyPrice(silver: 75))
             //Excelsior
                 .AddModItemToShop(ModConditions.excelsiorMod, "FlaskofEnergy", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
                 .AddModItemToShop(ModConditions.excelsiorMod, "FrostfireFlask", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.DownedNiflheim)
@@ -774,6 +848,8 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.redemptionMod, "RevivalPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.redemptionMod, "CrystalSerum", Item.buyPrice(silver: 75), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.redemptionMod, "RadiationPill", Item.buyPrice(silver: 75), Condition.DownedMechBossAll)
+                .AddModItemToShop(ModConditions.redemptionMod, "MedicKit", Item.buyPrice(silver: 75), ModConditions.DownedPatientZero)
+                .AddModItemToShop(ModConditions.redemptionMod, "GalaxyHeart", Item.buyPrice(silver: 75), ModConditions.DownedNebuleus)
             //SOTS
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "AlmondMilk", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "AvocadoSoup", Item.buyPrice(silver: 75))
@@ -785,6 +861,15 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "FoulConcoction", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "StrawberryIcecream", Item.buyPrice(silver: 75), ModConditions.HasBeenToSnow)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "DigitalDisplay", Item.buyPrice(gold: 15), ModConditions.HasBeenToPlanetarium)
+            //Shadows of Abaddon
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "MegaHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedAraghur)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "MegaManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedAraghur)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "AsthraltiteHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedErazor)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "AsthraltiteManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedErazor)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "AhristaHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedErazor)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "KrysteaManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedErazor)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FruitLantern", Item.buyPrice(gold: 15), Condition.DownedPlantera)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ManaFruit", Item.buyPrice(gold: 15), Condition.DownedPlantera)
             //Spirit
                 .AddModItemToShop(ModConditions.spiritMod, "Candy", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.spiritMod, "ChocolateBar", Item.buyPrice(silver: 75))
@@ -798,6 +883,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.spiritMod, "TheCouch", Item.buyPrice(gold: 15), Condition.DownedSkeletron)
                 .AddModItemToShop(ModConditions.spiritMod, "MoonJelly", Item.buyPrice(silver: 75), ModConditions.DownedJellyDeluge)
                 .AddModItemToShop(ModConditions.spiritMod, "MoonJellyDonut", Item.buyPrice(silver: 75), ModConditions.DownedJellyDeluge, ModConditions.DownedMysticMoon)
+            //Starlight River
+                .AddModItemToShop(ModConditions.starlightRiverMod, "LesserBarrierPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.starlightRiverMod, "RegularBarrierPotion", Item.buyPrice(silver: 75), ModConditions.DownedGlassweaver, ModConditions.HasBeenToVitricDesert)
+                .AddModItemToShop(ModConditions.starlightRiverMod, "GreaterBarrierPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
             //Thorium
                 .AddModItemToShop(ModConditions.thoriumMod, "DeepFreezeCoatingItem", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToSnow)
                 .AddModItemToShop(ModConditions.thoriumMod, "ExplosiveCoatingItem", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToUnderworld)
@@ -816,7 +905,13 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.thoriumMod, "SpringWater", Item.buyPrice(silver: 75), ModConditions.HasBeenToAquaticDepths)
                 .AddModItemToShop(ModConditions.thoriumMod, "WaterChestnut", Item.buyPrice(silver: 75), ModConditions.HasBeenToAquaticDepths)
             //Vitality
-                .AddModItemToShop(ModConditions.vitalityMod, "LifeJuice", Item.buyPrice(silver: 75), Condition.DownedMechBossAll);
+                .AddModItemToShop(ModConditions.vitalityMod, "LifeJuice", Item.buyPrice(silver: 75), Condition.DownedMechBossAll)
+            //Zylon
+                .AddModItemToShop(ModConditions.zylonMod, "LesserRestorationPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.zylonMod, "GreaterRestorationPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.zylonMod, "SuperRestorationPotion", Item.buyPrice(silver: 75), ModConditions.DownedLunarEvent)
+                .AddModItemToShop(ModConditions.zylonMod, "Tent", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.zylonMod, "Cabin", Item.buyPrice(silver: 75));
             modFlasksShop.Register();
 
             var modMaterialsShop = new NPCShop(Type, "Modded Materials")
@@ -1095,7 +1190,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.depthsMod, "DiamondDust", Item.buyPrice(silver: 25), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.depthsMod, "Ember", Item.buyPrice(silver: 25), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.depthsMod, "Geode", Item.buyPrice(silver: 25), ModConditions.HasBeenToDepthsOrUnderworld)
-            //DBZ
+            //Dragon Ball Terraria
                 .AddModItemToShop(ModConditions.dragonBallTerrariaMod, "AngerKiCrystal", Item.buyPrice(silver: 25), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.dragonBallTerrariaMod, "AstralEssentia", Item.buyPrice(silver: 25), Condition.DownedQueenBee)
                 .AddModItemToShop(ModConditions.dragonBallTerrariaMod, "CalmKiCrystal", Item.buyPrice(silver: 25), Condition.DownedEowOrBoc)
@@ -1144,6 +1239,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.echoesOfTheAncientsMod, "Wyvernscale", Item.buyPrice(silver: 25), Condition.Hardmode)
             //Edorbis
                 .AddModItemToShop(ModConditions.edorbisMod, "Battery", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.edorbisMod, "BlobMatter", Item.buyPrice(silver: 25), ModConditions.HasBeenToCavernsOrUnderground)
                 .AddModItemToShop(ModConditions.edorbisMod, "BrokenDamocles", Item.buyPrice(silver: 25), ModConditions.DownedGlaciation)
                 .AddModItemToShop(ModConditions.edorbisMod, "CentauriumBattery", Item.buyPrice(silver: 25), Condition.DownedCultist)
                 .AddModItemToShop(ModConditions.edorbisMod, "ChlorophyteWire", Item.buyPrice(silver: 25), Condition.DownedPlantera)
@@ -1156,6 +1252,11 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.edorbisMod, "MetalSalvages", Item.buyPrice(silver: 25), Condition.DownedGoblinArmy)
                 .AddModItemToShop(ModConditions.edorbisMod, "MetalWire", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.edorbisMod, "SoulOfFight", Item.buyPrice(silver: 25), ModConditions.DownedCursePreacher)
+            //Everjade
+                .AddModItemToShop(ModConditions.everjadeMod, "JadeChunk", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.everjadeMod, "LotusFiber", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.everjadeMod, "SpineItem", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.everjadeMod, "JasmineFlower", Item.buyPrice(silver: 25))
             //Exalt
                 .AddModItemToShop(ModConditions.exaltMod, "DragonScale", Item.buyPrice(silver: 25), Condition.DownedMoonLord)
                 .AddModItemToShop(ModConditions.exaltMod, "IceCrystal", Item.buyPrice(silver: 25), Condition.DownedMoonLord)
@@ -1266,6 +1367,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.gerdsLabMod, "SpecialUpgradeCrystal", Item.buyPrice(silver: 25), Condition.DownedMechBossAny)
                 .AddModItemToShop(ModConditions.gerdsLabMod, "BossUpgradeCrystal", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu)
                 .AddModItemToShop(ModConditions.gerdsLabMod, "UpgradeCrystal", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.gerdsLabMod, "InfraRedBar", Item.buyPrice(silver: 25), ModConditions.DownedAcheron)
                 .AddModItemToShop(ModConditions.gerdsLabMod, "InfraRedCrystalShard", Item.buyPrice(silver: 25), ModConditions.DownedAcheron)
                 .AddModItemToShop(ModConditions.gerdsLabMod, "PrimeEnhancementModule", Item.buyPrice(silver: 25), Condition.DownedPlantera)
                 .AddModItemToShop(ModConditions.gerdsLabMod, "PrimePlating", Item.buyPrice(silver: 25), Condition.DownedMechBossAny)
@@ -1417,7 +1519,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.metroidMod, "NightmareCoreXFragment", Item.buyPrice(silver: 25), ModConditions.DownedNightmare)
                 .AddModItemToShop(ModConditions.metroidMod, "PurePhazon", Item.buyPrice(silver: 25), ModConditions.DownedOmegaPirate)
                 .AddModItemToShop(ModConditions.metroidMod, "SerrisCoreX", Item.buyPrice(silver: 25), ModConditions.DownedSerris)
-                .AddModItemToShop(ModConditions.metroidMod, "UnknownPlasmaBeam", Item.buyPrice(silver: 25), ModConditions.DownedKraid)
+                .AddModItemToShop(ModConditions.metroidMod, "UnknownPlasmaBeam", Item.buyPrice(silver: 25), ModConditions.DownedKraid);
+            modMaterialsShop.Register();
+
+            var modMaterialsShop2 = new NPCShop(Type, "Modded Materials 2")
             //Polarities
                 .AddModItemToShop(ModConditions.polaritiesMod, "AlkalineFluid", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.polaritiesMod, "CongealedBrine", Item.buyPrice(silver: 25), Condition.Hardmode)
@@ -1502,6 +1607,46 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "TwilightGel", Item.buyPrice(silver: 25), ModConditions.HasBeenToPlanetarium)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "TwilightShard", Item.buyPrice(silver: 25), ModConditions.DownedAdvisor)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "VialofAcid", Item.buyPrice(silver: 25), ModConditions.DownedPutridPinky)
+            //Shadows of Abaddon
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "TabletOfWeaponMastery", Item.buyPrice(silver: 25), ModConditions.DownedErazor)// a
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "AsthraltitePowerCell", Item.buyPrice(silver: 25), ModConditions.DownedErazor)// a
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "BlazePowder", Item.buyPrice(silver: 25), ModConditions.DownedZombiePiglinBrute)// b
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "BlazeRod", Item.buyPrice(silver: 25), ModConditions.DownedZombiePiglinBrute)// b
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "Blightbone", Item.buyPrice(silver: 25), ModConditions.DownedFlamingPumpkin, Condition.DownedSkeletron)// b
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ArcticFur", Item.buyPrice(silver: 25), ModConditions.DownedDecree)// d
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "DesertCrystal", Item.buyPrice(silver: 25), Condition.Hardmode)// d
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "DreadFlame", Item.buyPrice(silver: 25), ModConditions.DownedFlamingPumpkin)// d
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "EldritchSpark", Item.buyPrice(silver: 25), Condition.DownedMoonLord)// e
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "EmberOfOmen", Item.buyPrice(silver: 25), ModConditions.DownedNihilus)// e
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ForgottenCrown", Item.buyPrice(silver: 25), Condition.DownedGolem)// f
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ForgottenCrystalBattery", Item.buyPrice(silver: 25), Condition.DownedGolem)// f
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ForgottenTablet", Item.buyPrice(silver: 25), Condition.DownedGolem)// f
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FieryExtract", Item.buyPrice(silver: 25), ModConditions.DownedAraghur)// f
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FlareEssentia", Item.buyPrice(silver: 25), ModConditions.DownedAbaddon)// f
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FlariumShard", Item.buyPrice(silver: 25), ModConditions.DownedAraghur)// f
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FragmentBlight", Item.buyPrice(silver: 25), ModConditions.DownedAraghur)// f
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FragmentHatred", Item.buyPrice(silver: 25), ModConditions.DownedAraghur)// f
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FrigidOoze", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu)// f
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "LifeEmber", Item.buyPrice(silver: 25), Condition.DownedEowOrBoc)// l
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "LuminousEnergy", Item.buyPrice(silver: 25), ModConditions.DownedLostSiblings)// l
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "MarstechChip", Item.buyPrice(silver: 25), ModConditions.DownedMartianSaucer)// m
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "SoulOfTide", Item.buyPrice(silver: 25), Condition.DownedDukeFishron)// m
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "JellyNebula", Item.buyPrice(silver: 25), Condition.DownedMoonLord)// n
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "PrimordialRune", Item.buyPrice(silver: 25), ModConditions.DownedPrimordia)// p
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FragmentQuasar", Item.buyPrice(silver: 25), Condition.DownedCultist)// q
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "JellyQuasar", Item.buyPrice(silver: 25), Condition.DownedMoonLord)// q
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "TabletFragment", Item.buyPrice(silver: 25), ModConditions.DownedErazor)// r
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "DarkMist", Item.buyPrice(silver: 25), ModConditions.DownedAbaddon)// s
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "SpaceJunk", Item.buyPrice(silver: 25), Condition.Hardmode)// s
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "JellySolar", Item.buyPrice(silver: 25), Condition.DownedMoonLord)// s
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "JellyStardust", Item.buyPrice(silver: 25), Condition.DownedMoonLord)// s
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "GrandHarpyFeather", Item.buyPrice(silver: 25), ModConditions.DownedJensenTheGrandHarpy)// s
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "TraceOfChaos", Item.buyPrice(silver: 25), ModConditions.DownedAbaddon)// t
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "Tumblestick", Item.buyPrice(silver: 25))// t
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "VenomSample", Item.buyPrice(silver: 25), ModConditions.DownedAraneas)// v
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "GoldenFeather", Item.buyPrice(silver: 25), ModConditions.DownedHarpyQueenRaynare)// v
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "JellyVortex", Item.buyPrice(silver: 25), Condition.DownedMoonLord)// v
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "BirdFeather", Item.buyPrice(silver: 25))// w
             //Spirit
                 .AddModItemToShop(ModConditions.spiritMod, "Rune", Item.buyPrice(silver: 25), Condition.DownedMechBossAny, ModConditions.HasBeenToSpirit)
                 .AddModItemToShop(ModConditions.spiritMod, "ArcaneGeyser", Item.buyPrice(silver: 25), ModConditions.DownedAtlas)
@@ -1539,13 +1684,19 @@ namespace QoLCompendium.Content.NPCs
             //Starlight River
                 .AddModItemToShop(ModConditions.starlightRiverMod, "SandstoneChunk", Item.buyPrice(silver: 25), ModConditions.HasBeenToVitricDesert)
                 .AddModItemToShop(ModConditions.starlightRiverMod, "AncientGear", Item.buyPrice(silver: 25), ModConditions.HasBeenToCavernsOrUnderground)
-                .AddModItemToShop(ModConditions.starlightRiverMod, "Astroscrap", Item.buyPrice(silver: 25), ModConditions.DownedCeiros)
+                .AddModItemToShop(ModConditions.starlightRiverMod, "Astroscrap", Item.buyPrice(silver: 25), ModConditions.DownedGlassweaver, ModConditions.HasBeenToVitricDesert)
+                .AddModItemToShop(ModConditions.starlightRiverMod, "BasicInfusion", Item.buyPrice(silver: 25), ModConditions.DownedGlassweaver, ModConditions.HasBeenToVitricDesert)
+                .AddModItemToShop(ModConditions.starlightRiverMod, "ChargedMagnet", Item.buyPrice(silver: 25), Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
                 .AddModItemToShop(ModConditions.starlightRiverMod, "ExoticGeodeArtifactItem", Item.buyPrice(silver: 25), ModConditions.HasBeenToCavernsOrUnderground)
+                .AddModItemToShop(ModConditions.starlightRiverMod, "GlassIdol", Item.buyPrice(silver: 25), ModConditions.DownedGlassweaver, ModConditions.HasBeenToVitricDesert)
+                .AddModItemToShop(ModConditions.starlightRiverMod, "GloomGel", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.starlightRiverMod, "InertStaff", Item.buyPrice(silver: 25), Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
                 .AddModItemToShop(ModConditions.starlightRiverMod, "LivingBlood", Item.buyPrice(silver: 25), ModConditions.DownedBloodMoon)
-                .AddModItemToShop(ModConditions.starlightRiverMod, "MagmaCore", Item.buyPrice(silver: 25), ModConditions.DownedCeiros)
-                .AddModItemToShop(ModConditions.starlightRiverMod, "StaminaGel", Item.buyPrice(silver: 25), ModConditions.DownedCeiros)
+                .AddModItemToShop(ModConditions.starlightRiverMod, "MagmaCore", Item.buyPrice(silver: 25), ModConditions.DownedCeiros, ModConditions.HasBeenToVitricTemple)
+                .AddModItemToShop(ModConditions.starlightRiverMod, "Slimeberry", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.starlightRiverMod, "StaminaGel", Item.buyPrice(silver: 25), ModConditions.DownedGlassweaver, ModConditions.HasBeenToVitricDesert)
                 .AddModItemToShop(ModConditions.starlightRiverMod, "VengefulSpirit", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu)
-                .AddModItemToShop(ModConditions.starlightRiverMod, "VitricOre", Item.buyPrice(silver: 25), ModConditions.HasBeenToVitricDesert, ModConditions.DownedCeiros)
+                .AddModItemToShop(ModConditions.starlightRiverMod, "VitricOre", Item.buyPrice(silver: 25), ModConditions.DownedGlassweaver, ModConditions.HasBeenToVitricDesert)
             //Stars Above
                 .AddModItemToShop(ModConditions.starsAboveMod, "BandedTenebrium", Item.buyPrice(silver: 25), Condition.DownedEowOrBoc)
                 .AddModItemToShop(ModConditions.starsAboveMod, "EnigmaticDust", Item.buyPrice(silver: 25), ModConditions.DownedVagrantofSpace)
@@ -1565,6 +1716,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.stormsAdditionsMod, "BlueCloth", Item.buyPrice(silver: 25), ModConditions.HasBeenToSnow)
                 .AddModItemToShop(ModConditions.stormsAdditionsMod, "SantankScrap", Item.buyPrice(silver: 25), Condition.DownedSantaNK1)
                 .AddModItemToShop(ModConditions.stormsAdditionsMod, "RedSilk", Item.buyPrice(silver: 25), ModConditions.HasBeenToCavernsOrUnderground)
+            //Strams Classes
+                .AddModItemToShop(ModConditions.stramsClassesMod, "FineSilk", Item.buyPrice(silver: 25), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.stramsClassesMod, "IceSpike", Item.buyPrice(silver: 25), ModConditions.HasBeenToSnow)
+                .AddModItemToShop(ModConditions.stramsClassesMod, "ReinforcedPlate", Item.buyPrice(silver: 25), ModConditions.HasBeenToCavernsOrUnderground)
             //Supernova
                 .AddModItemToShop(ModConditions.supernovaMod, "BloodShards", Item.buyPrice(silver: 25), ModConditions.DownedBloodMoon)
                 .AddModItemToShop(ModConditions.supernovaMod, "BoneFragment", Item.buyPrice(silver: 25), ModConditions.DownedBloodweaver)
@@ -1712,8 +1867,35 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.wayfairContentMod, "LivingLeaf", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.wayfairContentMod, "MagicShard", Item.buyPrice(silver: 25), ModConditions.DownedManaflora)
                 .AddModItemToShop(ModConditions.wayfairContentMod, "ParafalconFeather", Item.buyPrice(silver: 25))
-                .AddModItemToShop(ModConditions.wayfairContentMod, "VultureFeather", Item.buyPrice(silver: 25));
-            modMaterialsShop.Register();
+                .AddModItemToShop(ModConditions.wayfairContentMod, "VultureFeather", Item.buyPrice(silver: 25))
+            //Zylon
+                .AddModItemToShop(ModConditions.zylonMod, "AdeniteCrumbles", Item.buyPrice(silver: 25), ModConditions.DownedAdeneb)
+                .AddModItemToShop(ModConditions.zylonMod, "BloodDroplet", Item.buyPrice(silver: 25), ModConditions.DownedDreadnautilus)
+                .AddModItemToShop(ModConditions.zylonMod, "BloodySpiderLeg", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "Cerussite", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "CocoaBeans", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "EerieBell", Item.buyPrice(silver: 25), ModConditions.DownedEldritchJellyfish)
+                .AddModItemToShop(ModConditions.zylonMod, "ElementalGoop", Item.buyPrice(silver: 25), Condition.DownedPlantera)
+                .AddModItemToShop(ModConditions.zylonMod, "EnchantedIceCube", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "FantasticalFinality", Item.buyPrice(silver: 25), ModConditions.DownedSaburRex)
+                .AddModItemToShop(ModConditions.zylonMod, "GloryPetals", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "GrahamCracker", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "LivingBranch", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "MetallicBell", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "NeutronFragment", Item.buyPrice(silver: 25), ModConditions.DownedLunarEvent)
+                .AddModItemToShop(ModConditions.zylonMod, "ObeliskShard", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "OnyxShard", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "Oozeberry", Item.buyPrice(silver: 25), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.zylonMod, "OtherworldlyFang", Item.buyPrice(silver: 25), ModConditions.DownedEldritchJellyfish)
+                .AddModItemToShop(ModConditions.zylonMod, "Smore", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "SearedStone", Item.buyPrice(silver: 25), ModConditions.DownedAdeneb)
+                .AddModItemToShop(ModConditions.zylonMod, "SlimyCore", Item.buyPrice(silver: 25), Condition.DownedKingSlime)
+                .AddModItemToShop(ModConditions.zylonMod, "SpeckledStardust", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "SpectralFairyDust", Item.buyPrice(silver: 25), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.zylonMod, "TabooEssence", Item.buyPrice(silver: 25), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.zylonMod, "WindEssence", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "WolfPelt", Item.buyPrice(silver: 25), Condition.Hardmode);
+            modMaterialsShop2.Register();
 
             var modBossBagShop = new NPCShop(Type, "Modded Treasure Bags")
             //Aequus
@@ -1953,6 +2135,19 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "SubspaceBag", Item.buyPrice(gold: 25), ModConditions.DownedSubspaceSerpent, ModConditions.expertOrMaster)
             //Sloome
                 .AddModItemToShop(ModConditions.sloomeMod, "Bag", Item.buyPrice(gold: 25), ModConditions.DownedExodygen, ModConditions.expertOrMaster)
+            //Shadows of Abaddon
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "DecreeBag", Item.buyPrice(gold: 25), ModConditions.DownedDecree, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "RalnekBag", Item.buyPrice(gold: 25), ModConditions.DownedFlamingPumpkin, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "BruteBag", Item.buyPrice(gold: 25), ModConditions.DownedZombiePiglinBrute, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "JensenBag", Item.buyPrice(gold: 25), ModConditions.DownedJensenTheGrandHarpy, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "AraneasBag", Item.buyPrice(gold: 25), ModConditions.DownedAraneas, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "RaynareBag", Item.buyPrice(gold: 25), ModConditions.DownedHarpyQueenRaynare, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "PrimordiaBag", Item.buyPrice(gold: 25), ModConditions.DownedPrimordia, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "AbaddonBag", Item.buyPrice(gold: 25), ModConditions.DownedAbaddon, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "AraghurBag", Item.buyPrice(gold: 25), ModConditions.DownedAraghur, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "LostSiblingsBag", Item.buyPrice(gold: 25), ModConditions.DownedLostSiblings, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ErazorBag", Item.buyPrice(gold: 25), ModConditions.DownedErazor, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "NihilusBag", Item.buyPrice(gold: 25), ModConditions.DownedNihilus, ModConditions.expertOrMaster)
             //Spirit
                 .AddModItemToShop(ModConditions.spiritMod, "BagOScarabs", Item.buyPrice(gold: 25), ModConditions.DownedScarabeus, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.spiritMod, "MJWBag", Item.buyPrice(gold: 25), ModConditions.DownedMoonJellyWizard, ModConditions.expertOrMaster)
@@ -2034,7 +2229,13 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.vitalityMod, "ChaosbringerBossBag", Item.buyPrice(gold: 25), ModConditions.DownedChaosbringer, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.vitalityMod, "PaladinSpiritBossBag", Item.buyPrice(gold: 25), ModConditions.DownedPaladinSpirit, ModConditions.expertOrMaster)
             //Wayfair
-                .AddModItemToShop(ModConditions.wayfairContentMod, "LightblossomTreasureBag", Item.buyPrice(gold: 25), ModConditions.DownedManaflora, ModConditions.expertOrMaster);
+                .AddModItemToShop(ModConditions.wayfairContentMod, "LightblossomTreasureBag", Item.buyPrice(gold: 25), ModConditions.DownedManaflora, ModConditions.expertOrMaster)
+            //Zylon
+                .AddModItemToShop(ModConditions.zylonMod, "DirtballBag", Item.buyPrice(gold: 25), ModConditions.DownedDirtball, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.zylonMod, "MetelordBag", Item.buyPrice(gold: 25), ModConditions.DownedMetelord, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.zylonMod, "AdenebBag", Item.buyPrice(gold: 25), ModConditions.DownedAdeneb, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.zylonMod, "JellyBag", Item.buyPrice(gold: 25), ModConditions.DownedEldritchJellyfish, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.zylonMod, "SaburBag", Item.buyPrice(gold: 25), ModConditions.DownedSaburRex, ModConditions.expertOrMaster);
             modBossBagShop.Register();
 
             var modCratesShop = new NPCShop(Type, "Modded Crates & Grab Bags")
@@ -2064,6 +2265,9 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.depthsMod, "QuartzCrate", Item.buyPrice(gold: 5), Condition.DownedEowOrBoc, ModConditions.HasBeenToDepthsOrUnderworld)
                 .AddModItemToShop(ModConditions.depthsMod, "ArqueriteCrate", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.HasBeenToDepthsOrUnderworld)
                 .AddModItemToShop(ModConditions.depthsMod, "QuartzLockBox", Item.buyPrice(gold: 5), Condition.DownedEowOrBoc, ModConditions.HasBeenToDepthsOrUnderworld)
+            //Everjade
+                .AddModItemToShop(ModConditions.everjadeMod, "SpringCrate", Item.buyPrice(gold: 5), ModConditions.HasBeenToJadeLake)
+                .AddModItemToShop(ModConditions.everjadeMod, "DragonCrate", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.HasBeenToJadeLake)
             //Exxo Avalon Origins
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "ContagionCrate", Item.buyPrice(gold: 5), ModConditions.HasBeenToAvalonEvilBiomes)
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "PlagueCrate", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.HasBeenToAvalonEvilBiomes)
@@ -2087,9 +2291,12 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.redemptionMod, "PetrifiedCrate", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.HasBeenToWasteland)
                 .AddModItemToShop(ModConditions.redemptionMod, "LabCrate", Item.buyPrice(gold: 5), Condition.DownedMechBossAll, ModConditions.HasBeenToLab)
                 .AddModItemToShop(ModConditions.redemptionMod, "LabCrate2", Item.buyPrice(gold: 5), Condition.DownedMoonLord, ModConditions.HasBeenToLab)
+                .AddModItemToShop(ModConditions.redemptionMod, "ScrapMetal", Item.buyPrice(gold: 5), Condition.DownedMechBossAll, ModConditions.HasBeenToLab)
             //SOTS
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "PyramidCrate", Item.buyPrice(gold: 5), Condition.DownedEowOrBoc, ModConditions.HasBeenToPyramid)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "JarOfSouls", Item.buyPrice(gold: 5), ModConditions.DownedAdvisor)
+            //Shadows of Abaddon
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FlariumCrate", Item.buyPrice(gold: 5), ModConditions.DownedAraghur)
             //Spirit
                 .AddModItemToShop(ModConditions.spiritMod, "ReachCrate", Item.buyPrice(gold: 5), ModConditions.HasBeenToBriar)
                 .AddModItemToShop(ModConditions.spiritMod, "BriarCrate", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.HasBeenToBriar)
@@ -2108,12 +2315,14 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.thoriumMod, "WondrousCrate", Item.buyPrice(gold: 5), Condition.Hardmode)
             //Verdant
                 .AddModItemToShop(ModConditions.verdantMod, "LushWoodCrateItem", Item.buyPrice(gold: 5), ModConditions.HasBeenToVerdant)
-                .AddModItemToShop(ModConditions.verdantMod, "MysteriaCrateItem", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.HasBeenToVerdant);
+                .AddModItemToShop(ModConditions.verdantMod, "MysteriaCrateItem", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.HasBeenToVerdant)
+            //Zylon
+                .AddModItemToShop(ModConditions.zylonMod, "BagofFruits", Item.buyPrice(gold: 5), ModConditions.DownedDirtball);
             modCratesShop.Register();
 
             var modOreShop = new NPCShop(Type, "Modded Ores & Bars")
             //Aequus
-                .AddModItemToShop(ModConditions.aequusMod, "HexxedBar", Item.buyPrice(silver: 50), Condition.DownedPlantera, ModConditions.HasBeenToDungeon)
+                //.AddModItemToShop(ModConditions.aequusMod, "HexxedBar", Item.buyPrice(silver: 50), Condition.DownedPlantera, ModConditions.HasBeenToDungeon)
                 .AddModItemToShop(ModConditions.aequusMod, "PearlShardBlack", Item.buyPrice(silver: 25), ModConditions.HasBeenToCrabCrevice)
                 .AddModItemToShop(ModConditions.aequusMod, "SoulGem", Item.buyPrice(silver: 25), ModConditions.DownedDemonSiege)
                 .AddModItemToShop(ModConditions.aequusMod, "MonoGem", Item.buyPrice(silver: 25), ModConditions.HasBeenToCavernsOrUnderground)
@@ -2200,7 +2409,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.edorbisMod, "CentauriumBar", Item.buyPrice(silver: 50), Condition.DownedGolem)
                 .AddModItemToShop(ModConditions.edorbisMod, "KelviniteBar", Item.buyPrice(silver: 50), Condition.DownedEowOrBoc)
                 .AddModItemToShop(ModConditions.edorbisMod, "SteampunkAlloy", Item.buyPrice(silver: 50), Condition.DownedMechBossAny)
-                .AddModItemToShop(ModConditions.edorbisMod, "ThermiteBar", Item.buyPrice(silver: 50), ModConditions.DownedCursePreacher)
+                .AddModItemToShop(ModConditions.edorbisMod, "ThermiteBar", Item.buyPrice(silver: 50), Condition.DownedPlantera, ModConditions.DownedCursePreacher)
             //Exalt
                 .AddModItemToShop(ModConditions.exaltMod, "TitanicOre", Item.buyPrice(silver: 25), Condition.DownedPlantera)
                 .AddModItemToShop(ModConditions.exaltMod, "TitanicBar", Item.buyPrice(silver: 50), Condition.DownedPlantera)
@@ -2231,6 +2440,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "Starstone", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "Sulphur", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "TroxiniumOre", Item.buyPrice(silver: 25), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "XanthophyteOre", Item.buyPrice(silver: 25), Condition.DownedMechBossAll)
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "ZincOre", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "BacciliteBar", Item.buyPrice(silver: 50), Condition.DownedEyeOfCthulhu)
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "BismuthBar", Item.buyPrice(silver: 50))
@@ -2244,6 +2454,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "OsmiumBar", Item.buyPrice(silver: 50), ModConditions.DownedDesertBeak)
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "RhodiumBar", Item.buyPrice(silver: 50), ModConditions.DownedDesertBeak)
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "TroxiniumBar", Item.buyPrice(silver: 50), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "XanthophyteBar", Item.buyPrice(silver: 50), Condition.DownedMechBossAll)
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "ZincBar", Item.buyPrice(silver: 50))
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "Peridot", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "Tourmaline", Item.buyPrice(silver: 25))
@@ -2353,6 +2564,8 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.redemptionMod, "MoltenScrap", Item.buyPrice(silver: 50), Condition.DownedMoonLord)
                 .AddModItemToShop(ModConditions.redemptionMod, "PureIronAlloy", Item.buyPrice(silver: 50), Condition.DownedSkeletron, ModConditions.HasBeenToSnow)
                 .AddModItemToShop(ModConditions.redemptionMod, "XeniumAlloy", Item.buyPrice(silver: 50), Condition.DownedMoonLord, ModConditions.HasBeenToLab)
+                .AddModItemToShop(ModConditions.redemptionMod, "OreBomb", Item.buyPrice(silver: 50))
+                .AddModItemToShop(ModConditions.redemptionMod, "OrePowder", Item.buyPrice(silver: 50), Condition.Hardmode)
             //Remnants
                 .AddModItemToShop(ModConditions.remnantsMod, "starore", Item.buyPrice(silver: 25))
             //SOTS
@@ -2371,6 +2584,20 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "RubyKeystone", Item.buyPrice(silver: 25), ModConditions.HasBeenToPyramid, ModConditions.DownedPharaohsCurse)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "TaintedKeystoneShard", Item.buyPrice(silver: 25), ModConditions.HasBeenToPyramid, ModConditions.DownedPharaohsCurse)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "TaintedKeystone", Item.buyPrice(silver: 25), ModConditions.HasBeenToPyramid, ModConditions.DownedPharaohsCurse)
+            //Shadows of Abaddon
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FlariumCrystal", Item.buyPrice(silver: 25), ModConditions.DownedAraghur)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "OblivionOre", Item.buyPrice(silver: 25), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "RawBismuth", Item.buyPrice(silver: 25), Condition.DownedEowOrBoc)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "RawLapis", Item.buyPrice(silver: 25), Condition.DownedEowOrBoc)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "VenomiteOre", Item.buyPrice(silver: 25), ModConditions.DownedAraneas)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "DraconiumAlloy", Item.buyPrice(silver: 50), ModConditions.DownedAraghur)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "SnowBar", Item.buyPrice(silver: 50), Condition.DownedQueenBee)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "LihzahrdBar", Item.buyPrice(silver: 50), Condition.DownedPlantera)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "OblivionBar", Item.buyPrice(silver: 50), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "RefinedBismuth", Item.buyPrice(silver: 50), Condition.DownedEowOrBoc)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "RefinedLapis", Item.buyPrice(silver: 50), Condition.DownedEowOrBoc)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "TiridiumBar", Item.buyPrice(silver: 50), ModConditions.DownedLostSiblings)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "VenomiteBar", Item.buyPrice(silver: 50), ModConditions.DownedAraneas)
             //Spirit
                 .AddModItemToShop(ModConditions.spiritMod, "MarbleChunk", Item.buyPrice(silver: 25), Condition.DownedEowOrBoc, ModConditions.HasBeenToCavernsOrUnderground)
                 .AddModItemToShop(ModConditions.spiritMod, "CosmiliteShard", Item.buyPrice(silver: 25), ModConditions.DownedStarplateVoyager, ModConditions.HasBeenToSky)
@@ -2437,8 +2664,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.valhallaMod, "HardenedGlass", Item.buyPrice(silver: 50))
                 .AddModItemToShop(ModConditions.valhallaMod, "ValhalliteBar", Item.buyPrice(silver: 50))
             //Verdant
-                .AddModItemToShop(ModConditions.verdantMod, "AquamarineItem", Item.buyPrice(silver: 25), ModConditions.HasBeenToCavernsOrUnderground)
+                .AddModItemToShop(ModConditions.verdantMod, "AquamarineItem", Item.buyPrice(silver: 25), ModConditions.HasBeenToCavernsOrUnderground, ModConditions.HasBeenToVerdant)
                 .AddModItemToShop(ModConditions.verdantMod, "GreenCrystalItem", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu, ModConditions.HasBeenToVerdant)
+                .AddModItemToShop(ModConditions.verdantMod, "EmbeddedStoneAquamarineItem", Item.buyPrice(silver: 25), ModConditions.HasBeenToCavernsOrUnderground, ModConditions.HasBeenToVerdant)
+                .AddModItemToShop(ModConditions.verdantMod, "EmbeddedAquamarineItem", Item.buyPrice(silver: 25), ModConditions.HasBeenToCavernsOrUnderground, ModConditions.HasBeenToVerdant)
             //Vitality
                 .AddModItemToShop(ModConditions.vitalityMod, "ArcticOre", Item.buyPrice(silver: 25), Condition.DownedMechBossAny)
                 .AddModItemToShop(ModConditions.vitalityMod, "Bloodrock", Item.buyPrice(silver: 25), Condition.DownedPlantera)
@@ -2453,7 +2682,16 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.vitalityMod, "GeraniumBar", Item.buyPrice(silver: 50), Condition.DownedSkeletron)
                 .AddModItemToShop(ModConditions.vitalityMod, "GlowingGraniteBar", Item.buyPrice(silver: 50))
                 .AddModItemToShop(ModConditions.vitalityMod, "SteelAlloy", Item.buyPrice(silver: 50))
-                .AddModItemToShop(ModConditions.vitalityMod, "PurifiedBar", Item.buyPrice(silver: 50));
+                .AddModItemToShop(ModConditions.vitalityMod, "PurifiedBar", Item.buyPrice(silver: 50))
+            //Zylon
+                .AddModItemToShop(ModConditions.zylonMod, "CarnalliteOre", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "HaxoniteOre", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "ZincOre", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "JadeStoneBlock", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.zylonMod, "CarnalliteBar", Item.buyPrice(silver: 50))
+                .AddModItemToShop(ModConditions.zylonMod, "HaxoniteBar", Item.buyPrice(silver: 50))
+                .AddModItemToShop(ModConditions.zylonMod, "ZincBar", Item.buyPrice(silver: 50))
+                .AddModItemToShop(ModConditions.zylonMod, "Jade", Item.buyPrice(silver: 25));
             modOreShop.Register();
 
             var modNaturalBlocksShop = new NPCShop(Type, "Modded Natural Blocks")
@@ -2461,6 +2699,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.arbourMod, "BirchWoodBlock", Item.buyPrice(copper: 10))
             //Aequus
                 .AddModItemToShop(ModConditions.aequusMod, "SedimentaryRockItem", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.aequusMod, "MeadowWood", Item.buyPrice(copper: 10))
             //Calamity
                 .AddModItemToShop(ModConditions.calamityMod, "AbyssGravel", Item.buyPrice(copper: 10), Condition.DownedEowOrBoc)
                 .AddModItemToShop(ModConditions.calamityMod, "Acidwood", Item.buyPrice(copper: 10))
@@ -2549,6 +2788,12 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.depthsMod, "ShaleBlock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.depthsMod, "Shalestone", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.depthsMod, "TopazShalestoneBlock", Item.buyPrice(copper: 10))
+            //Edorbis
+                .AddModItemToShop(ModConditions.edorbisMod, "Nightwood", Item.buyPrice(copper: 10), ModConditions.HasBeenThroughNight)
+            //Everjade
+                .AddModItemToShop(ModConditions.everjadeMod, "HardenedJadeSandItem", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.everjadeMod, "JadeSandItem", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.everjadeMod, "JadeSandstoneItem", Item.buyPrice(copper: 10))
             //Exalt
                 .AddModItemToShop(ModConditions.exaltMod, "Basalt", Item.buyPrice(copper: 10), Condition.DownedEowOrBoc)
             //Excelsior
@@ -2674,7 +2919,9 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.martainsOrderMod, "WhiteSlimeBlock", Item.buyPrice(copper: 10), ModConditions.DownedPrinceSlime)
             //Medial Rift
                 .AddModItemToShop(ModConditions.medialRiftMod, "Fissurestone", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.medialRiftMod, "LucidGlass", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.medialRiftMod, "SiltRock", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.medialRiftMod, "Stellarock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.medialRiftMod, "SummitGrass", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.medialRiftMod, "Summitstone", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.medialRiftMod, "VertexGrass", Item.buyPrice(copper: 10), Condition.DownedEyeOfCthulhu)
@@ -2726,6 +2973,16 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "GlowSilk", Item.buyPrice(copper: 10), ModConditions.DownedGlowmoth)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "Wormwood", Item.buyPrice(copper: 10), Condition.DownedKingSlime)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "SootBlock", Item.buyPrice(copper: 10))
+            //Shadows of Abaddon
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "CinderDirt", Item.buyPrice(copper: 10), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "Emberbark", Item.buyPrice(copper: 10), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "HardenedScorchedSand", Item.buyPrice(copper: 10), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "EmberRock", Item.buyPrice(copper: 10), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ScorchedSand", Item.buyPrice(copper: 10), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ScorchedSandstone", Item.buyPrice(copper: 10), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ThermalRack", Item.buyPrice(copper: 10), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "Tuff", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "Weaverstone", Item.buyPrice(copper: 10), ModConditions.DownedAraneas)
             //Spirit
                 .AddModItemToShop(ModConditions.spiritMod, "AsteroidBlock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.spiritMod, "AzureGemBlockItem", Item.buyPrice(copper: 10))
@@ -2803,10 +3060,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.starlightRiverMod, "VitricCactusItem", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.starlightRiverMod, "LeafOvergrowItem", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.starlightRiverMod, "VitricSandItem", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.starlightRiverMod, "OvergrowthLivingWoodItem", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.starlightRiverMod, "PalestoneItem", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.starlightRiverMod, "PermafrostIceItem", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.starlightRiverMod, "StoneOvergrowItem", Item.buyPrice(copper: 10))
-                .AddModItemToShop(ModConditions.starlightRiverMod, "VitricSoftSandItem", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.starlightRiverMod, "VitricSoftSandItem", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.starlightRiverMod, "VitricSandPlainItem", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.starlightRiverMod, "SpringstoneItem", Item.buyPrice(copper: 10))
@@ -2833,14 +3090,18 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.valhallaMod, "WildRoot", Item.buyPrice(copper: 10))
             //Verdant
                 .AddModItemToShop(ModConditions.verdantMod, "BackslateTileItem", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.verdantMod, "PuffBlockItem", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.verdantMod, "LightbulbLeafItem", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.verdantMod, "VerdantGrassBlock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.verdantMod, "LushSoilBlock", Item.buyPrice(copper: 10))
-                .AddModItemToShop(ModConditions.verdantMod, "LushWoodPlankBlock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.verdantMod, "MysteriaFluffItem", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.verdantMod, "MysteriaWood", Item.buyPrice(copper: 10))
-                .AddModItemToShop(ModConditions.verdantMod, "PuffBlockItem", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.verdantMod, "PinkPetalBlock", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.verdantMod, "RedPetalBlock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.verdantMod, "SnailShellBlockItem", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.verdantMod, "ThornBlock", Item.buyPrice(copper: 10))
-                .AddModItemToShop(ModConditions.verdantMod, "VerdantWoodBlock", Item.buyPrice(copper: 10));
+                .AddModItemToShop(ModConditions.verdantMod, "VerdantWoodBlock", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.verdantMod, "LivingLushWoodWand", Item.buyPrice(gold: 1), ModConditions.HasBeenToVerdant);
             modNaturalBlocksShop.Register();
 
             var modBuildingBlocksShop = new NPCShop(Type, "Modded Building Blocks")
@@ -2966,8 +3227,11 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.depthsMod, "ShadowBrick", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.depthsMod, "ShaleBricks", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.depthsMod, "SilverfallBlock", Item.buyPrice(copper: 10))
-            //DBZ
+            //Dragon Ball Terraria
                 .AddModItemToShop(ModConditions.dragonBallTerrariaMod, "RadiantFragmentBlockItem", Item.buyPrice(copper: 10), Condition.DownedCultist, ModConditions.DownedLunarPillarAny)
+            //Edorbis
+                .AddModItemToShop(ModConditions.edorbisMod, "KelviniteBrick", Item.buyPrice(copper: 10), Condition.DownedEowOrBoc)
+                .AddModItemToShop(ModConditions.edorbisMod, "ThermiteBrick", Item.buyPrice(copper: 10), Condition.DownedPlantera, ModConditions.DownedCursePreacher)
             //Exalt
                 .AddModItemToShop(ModConditions.exaltMod, "BasaltBrick", Item.buyPrice(copper: 10))
             //Excelsior
@@ -3218,6 +3482,18 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "UltimatePlating", Item.buyPrice(copper: 10), ModConditions.DownedChaosConstruct, ModConditions.DownedEarthenConstruct, ModConditions.DownedEvilConstruct, ModConditions.DownedInfernoConstruct, ModConditions.DownedNatureConstruct, ModConditions.DownedOtherworldlyConstruct, ModConditions.DownedPermafrostConstruct, ModConditions.DownedTidalConstruct)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "DissolvingUmbraBlock", Item.buyPrice(copper: 10), ModConditions.DownedEvilSpirit)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "VibrantBrick", Item.buyPrice(copper: 10))
+            //Shadows of Abaddon
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "BricksAsthral", Item.buyPrice(copper: 10), ModConditions.DownedErazor)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "BricksEmber", Item.buyPrice(copper: 10), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FrostbitePanel", Item.buyPrice(copper: 10), ModConditions.DownedDecree)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "OblivionBrick", Item.buyPrice(copper: 10), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "MossShrineBrick", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "RunedShrineBrick", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "QuasarFragmentBlock", Item.buyPrice(copper: 10), Condition.DownedCultist)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ShrineBrick", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ShrineLight", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "ShrineShingles", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "BricksThermal", Item.buyPrice(copper: 10), ModConditions.DownedAbaddon)
             //Spirit
                 .AddModItemToShop(ModConditions.spiritMod, "AcidBrick", Item.buyPrice(copper: 10), Condition.DownedPlantera)
                 .AddModItemToShop(ModConditions.spiritMod, "NeonBlockBlueItem", Item.buyPrice(copper: 10), Condition.DownedGoblinArmy)
@@ -3288,7 +3564,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.valhallaMod, "Terracotta", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.valhallaMod, "ValhalliteBrick", Item.buyPrice(copper: 10))
             //Verdant
+                .AddModItemToShop(ModConditions.verdantMod, "GemsparkAquamarineItem", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.verdantMod, "LushWoodPlankBlock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.verdantMod, "OvergrownBrickItem", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.verdantMod, "TrimmedOvergrownBrickItem", Item.buyPrice(copper: 10))
             //Vitality
                 .AddModItemToShop(ModConditions.vitalityMod, "ArcticBrick", Item.buyPrice(copper: 10), Condition.DownedMechBossAny)
                 .AddModItemToShop(ModConditions.vitalityMod, "BronzeBrick", Item.buyPrice(copper: 10))
@@ -3300,6 +3579,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.arbourMod, "ArborGrassSeeds", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.arbourMod, "MicrobirchAcorn", Item.buyPrice(copper: 10))
             //Aequus
+                .AddModItemToShop(ModConditions.aequusMod, "MeadowGrass", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.aequusMod, "ManaclePollen", Item.buyPrice(copper: 10), ModConditions.DownedDemonSiege)
                 .AddModItemToShop(ModConditions.aequusMod, "ManacleSeeds", Item.buyPrice(copper: 10), ModConditions.DownedDemonSiege)
                 .AddModItemToShop(ModConditions.aequusMod, "MistralPollen", Item.buyPrice(copper: 10), ModConditions.DownedDustDevil)
@@ -3324,6 +3604,8 @@ namespace QoLCompendium.Content.NPCs
             //Depths
                 .AddModItemToShop(ModConditions.depthsMod, "MercuryMoss", Item.buyPrice(copper: 10), ModConditions.HasBeenToDepthsOrUnderworld)
                 .AddModItemToShop(ModConditions.depthsMod, "ShadowShrub", Item.buyPrice(copper: 10), ModConditions.HasBeenToDepthsOrUnderworld)
+            //Everjade
+                .AddModItemToShop(ModConditions.everjadeMod, "JadeGrassSeeds", Item.buyPrice(copper: 10), ModConditions.HasBeenToJadeLake)
             //Exxo Avalon Origins
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "Barfbush", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "BarfbushSeeds", Item.buyPrice(copper: 10))
@@ -3365,16 +3647,29 @@ namespace QoLCompendium.Content.NPCs
                 //.AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "TropicalShroomCap", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "VirulentMushroom", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "VirulentPowder", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "PeridotGemcorn", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "TourmalineGemcorn", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "ZirconGemcorn", Item.buyPrice(copper: 10))
             //Furniture Food & Fun
                 .AddModItemToShop(ModConditions.furnitureFoodAndFunMod, "CelestialGrassSeed", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.furnitureFoodAndFunMod, "GardenGrassSeed", Item.buyPrice(copper: 10))
             //Gensokyo
                 .AddModItemToShop(ModConditions.gensokyoMod, "EssenceOfSpring", Item.buyPrice(copper: 10), ModConditions.DownedLilyWhite)
             //Redemption
-                .AddModItemToShop(ModConditions.redemptionMod, "AnglonicMysticBlossom", Item.buyPrice(copper: 10))
-                .AddModItemToShop(ModConditions.redemptionMod, "LivingTwig", Item.buyPrice(copper: 10))
-                .AddModItemToShop(ModConditions.redemptionMod, "Nightshade", Item.buyPrice(copper: 10))
-                .AddModItemToShop(ModConditions.redemptionMod, "NightshadeSeeds", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.redemptionMod, "AncientGrassSeeds", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.redemptionMod, "IrradiatedCorruptGrassSeeds", Item.buyPrice(copper: 10), Condition.Hardmode, ModConditions.HasBeenToWasteland)
+                .AddModItemToShop(ModConditions.redemptionMod, "IrradiatedCrimsonGrassSeeds", Item.buyPrice(copper: 10), Condition.Hardmode, ModConditions.HasBeenToWasteland)
+                .AddModItemToShop(ModConditions.redemptionMod, "IrradiatedGrassSeeds", Item.buyPrice(copper: 10), Condition.Hardmode, ModConditions.HasBeenToWasteland)
+                .AddModItemToShop(ModConditions.redemptionMod, "AnglonicMysticBlossom", Item.buyPrice(copper: 10), ModConditions.DownedThorn)
+                .AddModItemToShop(ModConditions.redemptionMod, "Nightshade", Item.buyPrice(copper: 10), ModConditions.DownedThorn)
+                .AddModItemToShop(ModConditions.redemptionMod, "NightshadeSeeds", Item.buyPrice(copper: 10), ModConditions.DownedThorn)
+            //Shadows of Abaddon
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "Enduflora", Item.buyPrice(copper: 10), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "EndufloraSeeds", Item.buyPrice(copper: 10), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "Illumifern", Item.buyPrice(copper: 10), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "IllumifernSeeds", Item.buyPrice(copper: 10), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "Welkinbell", Item.buyPrice(copper: 10))
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "WelkinbellSeeds", Item.buyPrice(copper: 10))
             //Spirit
                 .AddModItemToShop(ModConditions.spiritMod, "CloudstalkItem", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.spiritMod, "CloudstalkSeed", Item.buyPrice(copper: 10))
@@ -3397,6 +3692,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.thoriumMod, "MarineKelpSeeds", Item.buyPrice(copper: 10), ModConditions.HasBeenToAquaticDepths)
             //Verdant
                 .AddModItemToShop(ModConditions.verdantMod, "LightbulbSeeds", Item.buyPrice(copper: 10), ModConditions.HasBeenToVerdant)
+                .AddModItemToShop(ModConditions.verdantMod, "LushGrassSeeds", Item.buyPrice(copper: 10), ModConditions.HasBeenToVerdant)
                 .AddModItemToShop(ModConditions.verdantMod, "MysteriaAcorn", Item.buyPrice(copper: 10), ModConditions.HasBeenToVerdant)
                 .AddModItemToShop(ModConditions.verdantMod, "WisplantSeeds", Item.buyPrice(copper: 10), ModConditions.HasBeenToVerdant)
             //Wayfair
@@ -3475,11 +3771,15 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.depthsMod, "MercuryMossFishingBobber", Item.buyPrice(gold: 2), Condition.DownedEowOrBoc, ModConditions.HasBeenToDepthsOrUnderworld)
                 .AddModItemToShop(ModConditions.depthsMod, "SilverLiner", Item.buyPrice(gold: 2), Condition.DownedEowOrBoc, ModConditions.HasBeenToDepthsOrUnderworld)
                 .AddModItemToShop(ModConditions.depthsMod, "QuicksilverproofBugNet", Item.buyPrice(gold: 2), Condition.DownedEowOrBoc, ModConditions.HasBeenToDepthsOrUnderworld)
-                .AddModItemToShop(ModConditions.depthsMod, "QuartzFeeder", Item.buyPrice(gold: 2), Condition.DownedEowOrBoc, ModConditions.HasBeenToDepthsOrUnderworld)
-                .AddModItemToShop(ModConditions.depthsMod, "ShadowFightingFish", Item.buyPrice(gold: 2), Condition.DownedEowOrBoc, ModConditions.HasBeenToDepthsOrUnderworld)
+                .AddModItemToShop(ModConditions.depthsMod, "QuartzFeeder", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToDepthsOrUnderworld)
+                .AddModItemToShop(ModConditions.depthsMod, "ShadowFightingFish", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToDepthsOrUnderworld)
                 .AddModItemToShop(ModConditions.depthsMod, "AlbinoRat", Item.buyPrice(gold: 2), Condition.DownedEowOrBoc, ModConditions.HasBeenToDepthsOrUnderworld)
                 .AddModItemToShop(ModConditions.depthsMod, "EnchantedNightmareWorm", Item.buyPrice(gold: 2), Condition.DownedEowOrBoc, ModConditions.HasBeenToDepthsOrUnderworld)
                 .AddModItemToShop(ModConditions.depthsMod, "QuartzCrawler", Item.buyPrice(gold: 2), Condition.DownedEowOrBoc, ModConditions.HasBeenToDepthsOrUnderworld)
+                .AddModItemToShop(ModConditions.depthsMod, "QuicksilverBucket", Item.buyPrice(gold: 2), ModConditions.HasBeenToDepthsOrUnderworld)
+            //Everjade
+                .AddModItemToShop(ModConditions.everjadeMod, "KoiItem", Item.buyPrice(silver: 10), ModConditions.HasBeenToJadeLake)
+                .AddModItemToShop(ModConditions.everjadeMod, "JadeWaterfallBucket", Item.buyPrice(gold: 2), ModConditions.HasBeenToJadeLake)
             //Exxo Avalon Origins
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "Ickfish", Item.buyPrice(silver: 10), ModConditions.HasBeenToAvalonEvilBiomes)
                 .AddModItemToShop(ModConditions.exxoAvalonOriginsMod, "SicklyTrout", Item.buyPrice(silver: 10), ModConditions.HasBeenToAvalonEvilBiomes)
@@ -3490,6 +3790,7 @@ namespace QoLCompendium.Content.NPCs
             //Redemption
                 .AddModItemToShop(ModConditions.redemptionMod, "BloatedTrout", Item.buyPrice(gold: 2), Condition.Hardmode, ModConditions.HasBeenToWasteland)
                 .AddModItemToShop(ModConditions.redemptionMod, "ToxicGlooper", Item.buyPrice(gold: 2), Condition.Hardmode, ModConditions.HasBeenToWasteland)
+                .AddModItemToShop(ModConditions.redemptionMod, "AntiJohnSnailItem", Item.buyPrice(gold: 2))
                 .AddModItemToShop(ModConditions.redemptionMod, "CoastScarabItem", Item.buyPrice(gold: 2))
                 .AddModItemToShop(ModConditions.redemptionMod, "FlyBait", Item.buyPrice(gold: 2))
                 .AddModItemToShop(ModConditions.redemptionMod, "GrandLarvaBait", Item.buyPrice(gold: 2))
@@ -3498,6 +3799,9 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.redemptionMod, "SandskinSpiderItem", Item.buyPrice(gold: 2))
                 .AddModItemToShop(ModConditions.redemptionMod, "SpiderSwarmerItem", Item.buyPrice(gold: 2))
                 .AddModItemToShop(ModConditions.redemptionMod, "TreeBugItem", Item.buyPrice(gold: 2))
+            //Shadows of Abaddon
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "Blazefury", Item.buyPrice(silver: 10), ModConditions.DownedAbaddon)
+                .AddModItemToShop(ModConditions.shadowsOfAbaddonMod, "FieryFin", Item.buyPrice(silver: 10), ModConditions.DownedAbaddon)
             //SOTS
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "Curgeon", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToPyramid)
                 .AddModItemToShop(ModConditions.secretsOfTheShadowsMod, "PhantomFish", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToPyramid)
@@ -3512,7 +3816,9 @@ namespace QoLCompendium.Content.NPCs
             //Thorium
                 .AddModItemToShop(ModConditions.thoriumMod, "HightechSonarDevice", Item.buyPrice(gold: 2))
                 .AddModItemToShop(ModConditions.thoriumMod, "FlamingCrackGut", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
-                .AddModItemToShop(ModConditions.thoriumMod, "MagmaGill", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld);
+                .AddModItemToShop(ModConditions.thoriumMod, "MagmaGill", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
+            //Zylon
+                .AddModItemToShop(ModConditions.zylonMod, "PaintedGlassTetra", Item.buyPrice(silver: 10));
             modFishShop.Register();
         }
     }

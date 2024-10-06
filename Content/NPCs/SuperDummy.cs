@@ -1,4 +1,4 @@
-﻿using QoLCompendium.Core;
+﻿using QoLCompendium.Core.Changes;
 using Terraria.DataStructures;
 
 namespace QoLCompendium.Content.NPCs

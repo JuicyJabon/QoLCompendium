@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Projectiles.Dedicated
             Projectile.CloneDefaults(ProjectileID.ZephyrFish);
             AIType = ProjectileID.ZephyrFish;
             Projectile.width = 48;
-            Projectile.height = 30;
+            Projectile.height = 34;
         }
 
         public override bool PreAI()

@@ -1,6 +1,6 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.UI;
-using Terraria.GameContent.Events;
+using QoLCompendium.Core.UI.Panels;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 {
@@ -18,11 +18,11 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
             Item.maxStack = 1;
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.rare = ItemRarityID.Green;
-            Item.UseSound = new SoundStyle?(SoundID.MenuTick);
+            Item.UseSound = SoundID.MenuOpen;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.value = Item.sellPrice(silver: 50);
+
+            Item.SetShopValues(ItemRarityColor.Green2, Item.buyPrice(0, 5, 0, 0));
         }
 
         public override bool? UseItem(Player player)
@@ -46,23 +46,42 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void UpdateInventory(Player player)
         {
+            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 0)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.NoModifier"));
+
+            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 1)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.SpawnIncrease"));
+
+            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 2)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.SpawnDecrease"));
+
+            /*
+            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 2)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.CanceledSpawns"));
+
+            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 3)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.CanceledEvents"));
+
+            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 4)
+                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.CanceledSpawnsAndEvents"));
+            */
+
             if (Item.favorited)
             {
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 0)
-                {
-                    player.GetModPlayer<QoLCPlayer>().enemyAggressor = true;
-                }
+                player.GetModPlayer<QoLCPlayer>().activeItems.Add(Item.type);
 
                 if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 1)
-                {
-                    player.GetModPlayer<QoLCPlayer>().enemyCalmer = true;
-                }
+                    player.GetModPlayer<QoLCPlayer>().increasedSpawns = true;
 
+                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 2)
+                    player.GetModPlayer<QoLCPlayer>().decreasedSpawns = true;
+
+                /*
                 if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 2)
                 {
                     player.GetModPlayer<QoLCPlayer>().enemyEraser = true;
                 }
-
+                
                 if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 3)
                 {
                     if (Main.invasionType != 0)
@@ -211,6 +230,7 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
                         }
                     }
                 }
+                */
             }
         }
     }

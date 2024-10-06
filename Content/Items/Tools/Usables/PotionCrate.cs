@@ -1,4 +1,6 @@
-﻿using QoLCompendium.Core;
+﻿using Humanizer;
+using QoLCompendium.Core;
+using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
@@ -17,11 +19,9 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void SetDefaults()
         {
-            Item.width = 15;
-            Item.height = 12;
-            Item.maxStack = 1;
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Item.sellPrice(gold: 4);
+            Item.width = 16;
+            Item.height = 16;
+            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 20, 0));
         }
 
         public override void SaveData(TagCompound tag)
@@ -62,6 +62,13 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                     ItemIDList.RemoveAt(ItemIDList.Count - 1);
                 }
             }
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipLine tip0 = tooltips.Find(l => l.Name == "Tooltip0");
+            TooltipLine text = new(Mod, "PotionCrateTooltip", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.PotionCrateTooltip").FormatWith(QoLCompendium.mainConfig.EndlessBuffAmount));
+            tooltips.Insert(tooltips.IndexOf(tip0) + 1, text);
         }
 
         public override void AddRecipes()

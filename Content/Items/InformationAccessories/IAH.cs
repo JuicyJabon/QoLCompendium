@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.UI;
+using QoLCompendium.Core.UI.Other;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.InformationAccessories
 {
@@ -15,9 +16,9 @@ namespace QoLCompendium.Content.Items.InformationAccessories
             Item.width = 17;
             Item.height = 14;
             Item.maxStack = 1;
-            Item.rare = ItemRarityID.Pink;
             Item.accessory = true;
-            Item.value = Item.sellPrice(gold: 9);
+
+            Item.SetShopValues(ItemRarityColor.Pink5, Item.buyPrice(0, 9, 0, 0));
         }
 
         public override void AddRecipes()

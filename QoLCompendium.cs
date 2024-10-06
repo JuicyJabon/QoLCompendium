@@ -15,31 +15,17 @@ global using Terraria.Localization;
 global using Terraria.ModLoader;
 global using Terraria.UI;
 using QoLCompendium.Core;
-using QoLCompendium.Core.UI;
 using System.Reflection;
 
 namespace QoLCompendium
 {
     public class QoLCompendium : Mod
     {
-        internal BMNPCUI bmShopUI;
-        private UserInterface bmInterface;
-        internal ECNPCUI ecShopUI;
-        private UserInterface ecInterface;
-        internal WorldGlobeUI worldGlobeUI;
-        private UserInterface worldGlobeInterface;
-        internal EntityManipulatorUI entityManipulatorUI;
-        private UserInterface entityManipulatorInterface;
-        internal MoonChangeUI moonChangeUI;
-        private UserInterface moonInterface;
-        internal BossUI bossUI;
-        private UserInterface bossInterface;
-
-
         #pragma warning disable CA2211
         public static Mod Instance;
         internal static QoLCompendium instance;
         internal static QoLCConfig mainConfig;
+        internal static MainClientConfig mainClientConfig;
         internal static ItemConfig itemConfig;
         internal static ShopConfig shopConfig;
         internal static TooltipConfig tooltipConfig;
@@ -49,46 +35,9 @@ namespace QoLCompendium
 
         public override void Load()
         {
-            if (mainConfig.GoHomeNPCs)
-            {
-                On_WorldGen.moveRoom += WorldGen_moveRoom;
-            }
-
+            On_WorldGen.moveRoom += WorldGen_moveRoom;
             instance = this;
             Instance = this;
-
-            if (!Main.dedServ)
-            {
-                bmShopUI = new BMNPCUI();
-                bmShopUI.Activate();
-                bmInterface = new UserInterface();
-                bmInterface.SetState(bmShopUI);
-
-                ecShopUI = new ECNPCUI();
-                ecShopUI.Activate();
-                ecInterface = new UserInterface();
-                ecInterface.SetState(ecShopUI);
-
-                worldGlobeUI = new WorldGlobeUI();
-                worldGlobeUI.Activate();
-                worldGlobeInterface = new UserInterface();
-                worldGlobeInterface.SetState(worldGlobeUI);
-
-                entityManipulatorUI = new EntityManipulatorUI();
-                entityManipulatorUI.Activate();
-                entityManipulatorInterface = new UserInterface();
-                entityManipulatorInterface.SetState(entityManipulatorUI);
-
-                moonChangeUI = new MoonChangeUI();
-                moonChangeUI.Activate();
-                moonInterface = new UserInterface();
-                moonInterface.SetState(moonChangeUI);
-
-                bossUI = new BossUI();
-                bossUI.Activate();
-                bossInterface = new UserInterface();
-                bossInterface.SetState(bossUI);
-            }
         }
 
         public override void Unload()
@@ -96,11 +45,12 @@ namespace QoLCompendium
             instance = null;
             Instance = null;
             mainConfig = null;
+            mainClientConfig = null;
             itemConfig = null;
             shopConfig = null;
             tooltipConfig = null;
-            //BannerBox.itemToBanner.Clear();
             On_WorldGen.moveRoom -= WorldGen_moveRoom;
+            Common.Unload();
         }
 
         public override void HandlePacket(BinaryReader reader, int whoAmI)
@@ -124,38 +74,6 @@ namespace QoLCompendium
                 BindingFlags.Instance | BindingFlags.NonPublic,
                 new[] { typeof(int), typeof(int) })?
                 .Invoke(npc, new object[] { homeFloorX, homeFloorY });
-        }
-
-        public override void PostSetupContent()
-        {
-            /*
-            BannerBox.itemToBanner.Clear();
-            FieldInfo bannerToItemField = typeof(NPCLoader).GetField("bannerToItem", BindingFlags.NonPublic | BindingFlags.Static);
-            Dictionary<int, int> bannerToItem = (Dictionary<int, int>)bannerToItemField.GetValue(null);
-            foreach (var item in bannerToItem)
-            {
-                if (!BannerBox.itemToBanner.ContainsKey(item.Value))
-                {
-                    BannerBox.itemToBanner.Add(item.Value, item.Key);
-                }
-            }
-
-            for (int i = -10; i < NPCID.Count; i++)
-            {
-                int vanillaBannerID = Item.NPCtoBanner(i);
-                if (vanillaBannerID > 0 && !NPCID.Sets.PositiveNPCTypesExcludedFromDeathTally[NPCID.FromNetId(i)])
-                {
-                    int vanillaBannerItemID = Item.BannerToItem(vanillaBannerID);
-                    if (ItemID.Sets.BannerStrength[vanillaBannerItemID].Enabled)
-                    {
-                        if (!BannerBox.itemToBanner.ContainsKey(vanillaBannerItemID))
-                        {
-                            BannerBox.itemToBanner.Add(vanillaBannerItemID, vanillaBannerID);
-                        }
-                    }
-                }
-            }
-            */
         }
     }
 }
