@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Content.Tiles.CraftingStations;
 using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.CraftingStations
@@ -18,9 +19,14 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
             Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 1, 0, 0));
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.CraftingStations);
+        }
+
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.DemoniteBar, 5);
             r.AddIngredient(ItemID.EbonstoneBlock, 12);
             r.AddTile(TileID.Anvils);

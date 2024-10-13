@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Content.Projectiles.MobileStorages;
 using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using QoLCompendium.Core.UI.Panels;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -31,6 +32,11 @@ namespace QoLCompendium.Content.Items.MobileStorages
             Item.SetShopValues(ItemRarityColor.Orange3, Item.buyPrice(0, 10, 0, 0));
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.MobileStorages);
+        }
+
         public override void OnConsumeItem(Player player) => Item.stack++;
 
         public override bool CanRightClick()
@@ -58,8 +64,17 @@ namespace QoLCompendium.Content.Items.MobileStorages
             Mode = tag.GetInt("AllInOneAccessMode");
         }
 
+        public override void HoldItem(Player player)
+        {
+            if (AllInOneAccessUI.visible)
+                player.GetModPlayer<BankPlayer>().chests = true;
+        }
+
         public override void UpdateInventory(Player player)
         {
+            if (AllInOneAccessUI.visible)
+                player.GetModPlayer<BankPlayer>().chests = true;
+
             if (Mode == 0)
             {
                 Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.AllInOneAccess.Open"));
@@ -76,7 +91,7 @@ namespace QoLCompendium.Content.Items.MobileStorages
         {
             if (!AllInOneAccessUI.visible)
                 AllInOneAccessUI.visible = true;
-            return base.UseItem(player);
+            return true;
         }
 
         public override bool CanUseItem(Player player)
@@ -89,7 +104,7 @@ namespace QoLCompendium.Content.Items.MobileStorages
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MobileStorages, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MobileStorages, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.MoneyTrough);
             r.AddIngredient(ModContent.ItemType<EtherianConstruct>());
             r.AddIngredient(ModContent.ItemType<FlyingSafe>());

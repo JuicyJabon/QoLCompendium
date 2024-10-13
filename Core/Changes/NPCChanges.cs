@@ -674,7 +674,7 @@ namespace QoLCompendium.Core.Changes
 
 
             //AEQUUS
-            if (npc.type == Common.GetModNPC(ModConditions.aequusMod, "Crabson"))
+            if (npc.type == Common.GetModNPC(ModConditions.aequusMod, "Crabson") || npc.type == Common.GetModNPC(ModConditions.aequusMod, "CrabsonOld") || npc.type == Common.GetModNPC(ModConditions.aequusMod, "CrabsonClaw"))
                 npcLoot.Add(ItemDropRule.ByCondition(new ExpertOnlyDropCondition(), Common.GetModItem(ModConditions.aequusMod, "CrabsonRelic")));
 
             if (npc.type == Common.GetModNPC(ModConditions.aequusMod, "OmegaStarite"))
@@ -1190,27 +1190,6 @@ namespace QoLCompendium.Core.Changes
             if (npc.type == Common.GetModNPC(ModConditions.vitalityMod, "PaladinSpiritBoss"))
                 npcLoot.Add(ItemDropRule.ByCondition(new ExpertOnlyDropCondition(), Common.GetModItem(ModConditions.vitalityMod, "PaladinSpiritRelic")));
             #endregion
-        }
-    }
-
-    public static class NetcodeBossSpawn
-    {
-        public static void SpawnBossNetcoded(Player player, int bossType)
-        {
-            if (player.whoAmI == Main.myPlayer)
-            {
-                SoundEngine.PlaySound(SoundID.Roar, player.position);
-
-                if (Main.netMode != NetmodeID.MultiplayerClient)
-                {
-                    Vector2 spawnPosition = player.Center - Vector2.UnitY * 800f;
-                    NPC.NewNPC(null, (int)spawnPosition.X, (int)spawnPosition.Y, bossType);
-                }
-                else
-                {
-                    NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: bossType);
-                }
-            }
         }
     }
 

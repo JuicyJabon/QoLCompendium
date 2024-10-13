@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Staves
@@ -33,11 +34,13 @@ namespace QoLCompendium.Content.Items.Tools.Staves
             TooltipLine text = new(Mod, "StaffOfAshingEffect", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.StaffOfAshingPlaceable"));
             tooltips.Insert(tooltips.IndexOf(placeable), text);
             tooltips.RemoveAll((x) => x.Name == "Placeable" && x.Mod == "Terraria");
+
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.RegrowthStaves, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.RegrowthStaves, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.AshWood, 12);
             r.AddIngredient(ItemID.AshBlock, 3);
             r.AddIngredient(ItemID.AshGrassSeeds, 1);

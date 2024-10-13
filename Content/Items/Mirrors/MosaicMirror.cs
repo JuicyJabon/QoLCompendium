@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Content.Items.InformationAccessories;
 using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using QoLCompendium.Core.UI.Other;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
@@ -19,6 +20,11 @@ namespace QoLCompendium.Content.Items.Mirrors
         {
             Item.CloneDefaults(ItemID.MagicMirror);
             Item.SetShopValues(ItemRarityColor.Lime7, Item.buyPrice(0, 10, 0, 0));
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Mirrors && QoLCompendium.itemConfig.InformationAccessories);
         }
 
         public override void OnConsumeItem(Player player) => Item.stack++;
@@ -223,7 +229,7 @@ namespace QoLCompendium.Content.Items.Mirrors
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors && QoLCompendium.itemConfig.InformationAccessories, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors && QoLCompendium.itemConfig.InformationAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<IAH>());
             r.AddIngredient(ModContent.ItemType<CursedMirror>());
             r.AddIngredient(ModContent.ItemType<MirrorOfReturn>());

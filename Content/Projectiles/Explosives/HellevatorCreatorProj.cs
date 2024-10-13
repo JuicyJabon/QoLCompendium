@@ -11,24 +11,12 @@ namespace QoLCompendium.Content.Projectiles.Explosives
             Projectile.aiStyle = 16;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 170;
+            Projectile.timeLeft = 1;
         }
 
         public override bool? CanDamage()
         {
             return false;
-        }
-
-        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
-        {
-            fallThrough = false;
-            return base.TileCollideStyle(ref width, ref height, ref fallThrough, ref hitboxCenterFrac);
-        }
-
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            Projectile.Kill();
-            return true;
         }
 
         public override void OnKill(int timeLeft)

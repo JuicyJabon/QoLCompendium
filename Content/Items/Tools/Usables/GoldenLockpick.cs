@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
@@ -14,6 +15,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         {
             Item.CloneDefaults(ItemID.GoldenKey);
             Item.SetShopValues(ItemRarityColor.White0, Item.buyPrice(0, 1, 75, 0));
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.GoldenLockpick);
         }
 
         public override void UpdateInventory(Player player)
@@ -45,7 +51,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.GoldenLockpick, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.GoldenLockpick, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.GoldenKey);
             r.AddIngredient(ItemID.Bone, 25);
             r.AddTile(TileID.HeavyWorkBench);

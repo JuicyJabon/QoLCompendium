@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
@@ -19,6 +20,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.useStyle = ItemUseStyleID.Swing;
 
             Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 0, 0));
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.SuperDummy);
         }
 
         public override bool AltFunctionUse(Player player)
@@ -66,7 +72,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.SuperDummy, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.SuperDummy, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.TargetDummy);
             r.AddRecipeGroup(RecipeGroupID.IronBar, 5);
             r.AddIngredient(ItemID.FallenStar);

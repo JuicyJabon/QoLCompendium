@@ -1,4 +1,5 @@
 using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 using Terraria.GameContent.Events;
 
@@ -23,9 +24,14 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.SetShopValues(ItemRarityColor.Orange3, Item.buyPrice(0, 0, 90, 0));
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.MiniSundial);
+        }
+
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MiniSundial, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MiniSundial, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Obsidian, 12);
             r.AddIngredient(ItemID.SunplateBlock, 12);
             r.AddTile(TileID.SkyMill);

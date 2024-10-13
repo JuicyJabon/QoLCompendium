@@ -1,6 +1,4 @@
-﻿using Terraria;
-
-namespace QoLCompendium.Content.Projectiles.Explosives
+﻿namespace QoLCompendium.Content.Projectiles.Explosives
 {
     public class MinibridgeProj : ModProjectile
     {

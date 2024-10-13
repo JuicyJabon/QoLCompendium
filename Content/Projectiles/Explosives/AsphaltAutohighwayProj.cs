@@ -41,7 +41,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
                     break;
 
                 // Six down, last is platforms
-                for (int y = -120; y <= 0; y++)
+                for (int y = -90; y <= 0; y++)
                 {
                     int xPosition = x;
                     int yPosition = (int)(y + position.Y / 16.0f);
@@ -57,7 +57,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
                         stopRight = true;
 
 
-                    if (y == -40 || y == 0)
+                    if (y == -30 || y == 0)
                     {
                         Destruction.ClearEverything(xPosition, yPosition, false);
                         // Spawn platforms
@@ -80,7 +80,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
                     break;
 
                 // Six down, last is platforms
-                for (int y = -120; y <= 0; y++)
+                for (int y = -90; y <= 0; y++)
                 {
                     int xPosition = x;
                     int yPosition = (int)(y + position.Y / 16.0f);
@@ -95,7 +95,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
                     if (!CheckDestruction.OkayToDestroyTile(tile))
                         stopLeft = true;
 
-                    if (y == -40 || y == 0)
+                    if (y == -30 || y == 0)
                     {
                         Destruction.ClearEverything(xPosition, yPosition, false);
                         // Spawn platforms

@@ -15,10 +15,15 @@
         //7 = Waxing Gibbous
         public static int moonTexture;
 
-        public MoonPhaseButton(Asset<Texture2D> faceTexture) : base(ModContent.Request<Texture2D>("QoLCompendium/Assets/Moons/Moon_" + moonTexture))
+        //0 = Left
+        //1 = Center
+        //2 = Right
+        public static int backgroundTexture;
+
+        public MoonPhaseButton(Asset<Texture2D> faceTexture) : base(ModContent.Request<Texture2D>("QoLCompendium/Assets/Backgrounds/Background_" + backgroundTexture))
         {
             this.faceTexture = faceTexture;
-            SetHoverImage(ModContent.Request<Texture2D>("QoLCompendium/Assets/Hover/Moon_" + moonTexture));
+            SetHoverImage(ModContent.Request<Texture2D>("QoLCompendium/Assets/Moons/Moon_Hover_" + moonTexture));
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch)

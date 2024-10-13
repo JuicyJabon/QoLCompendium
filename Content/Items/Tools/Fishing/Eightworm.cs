@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Fishing
@@ -19,9 +20,14 @@ namespace QoLCompendium.Content.Items.Tools.Fishing
             Item.SetShopValues(ItemRarityColor.StrongRed10, Item.buyPrice(0, 5, 0, 0));
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Eightworm);
+        }
+
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Eightworm, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Eightworm, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Worm, 8);
             r.AddIngredient(ItemID.PlatinumCoin, 1);
             r.AddTile(TileID.Anvils);

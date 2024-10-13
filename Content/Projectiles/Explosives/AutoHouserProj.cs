@@ -8,6 +8,7 @@
             Projectile.height = 1;
             Projectile.timeLeft = 1;
         }
+
 #pragma warning disable IDE0060
         public static void PlaceHouse(int x, int y, Vector2 position, int side, Player player)
         {

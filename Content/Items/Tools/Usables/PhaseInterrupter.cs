@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using QoLCompendium.Core.UI.Panels;
 using Terraria.Enums;
 
@@ -21,6 +22,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.useTime = 20;
 
             Item.SetShopValues(ItemRarityColor.Orange3, Item.buyPrice(0, 0, 90, 0));
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PhaseInterrupter);
         }
 
         public override void UpdateInventory(Player player)
@@ -52,7 +58,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PhaseInterrupter, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PhaseInterrupter, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddRecipeGroup(RecipeGroupID.IronBar, 7);
             r.AddIngredient(ItemID.Diamond, 3);
             r.AddIngredient(ItemID.BlackLens, 1);

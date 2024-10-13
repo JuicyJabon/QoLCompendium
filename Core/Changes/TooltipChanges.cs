@@ -21,6 +21,7 @@ namespace QoLCompendium.Core.Changes
         {
             TooltipLine fav = tooltips.Find(l => l.Name == "Favorite");
             TooltipLine favDescr = tooltips.Find(l => l.Name == "FavoriteDesc");
+            TooltipLine oneDropLogo = tooltips.Find(l => l.Name == "OneDropLogo");
 
             if (QoLCompendium.tooltipConfig.NoFavoriteTooltip) tooltips.Remove(fav);
             if (QoLCompendium.tooltipConfig.NoFavoriteTooltip) tooltips.Remove(favDescr);
@@ -31,6 +32,7 @@ namespace QoLCompendium.Core.Changes
             if (QoLCompendium.tooltipConfig.UsedPermanentUpgradeTooltip) UsedPermanentUpgrade(item, tooltips);
             if (QoLCompendium.tooltipConfig.AmmoTooltip) AmmoTooltip(item, tooltips);
             if (QoLCompendium.tooltipConfig.ActiveTooltip) ActiveTooltip(item, tooltips);
+            if (QoLCompendium.tooltipConfig.NoYoyoTooltip) tooltips.Remove(oneDropLogo);
         }
 #pragma warning disable
         public void ShimmmerableTooltips(Item item, List<TooltipLine> tooltips)
@@ -572,90 +574,6 @@ namespace QoLCompendium.Core.Changes
                 AddLastTooltip(tooltips, tooltipLine);
             }
             #endregion
-
-            #region Exxo Avalon Origins
-            if (item.type == Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "StaminaCrystal"))
-            {
-                tooltipLine.Text = GetTooltipValue("UsedItemCountable", PermanentUpgradePlayer.usedStaminaCrystalCount, 9);
-                AddLastTooltip(tooltips, tooltipLine);
-            }
-            if (item.type == Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "EnergyCrystal") && PermanentUpgradePlayer.usedEnergyCrystal)
-            {
-                AddLastTooltip(tooltips, tooltipLine);
-            }
-            #endregion
-
-            #region Fargos Souls
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "DeerSinew") && PermanentUpgradePlayer.usedDeerSinew)
-            {
-                AddLastTooltip(tooltips, tooltipLine);
-            }
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsCreditCard") && PermanentUpgradePlayer.usedMutantsCreditCard)
-            {
-                AddLastTooltip(tooltips, tooltipLine);
-            }
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsDiscountCard") && PermanentUpgradePlayer.usedMutantsDiscountCard)
-            {
-                AddLastTooltip(tooltips, tooltipLine);
-            }
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsPact") && PermanentUpgradePlayer.usedMutantsPact)
-            {
-                AddLastTooltip(tooltips, tooltipLine);
-            }
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "RabiesVaccine") && PermanentUpgradePlayer.usedRabiesVaccine)
-            {
-                AddLastTooltip(tooltips, tooltipLine);
-            }
-            #endregion
-
-            #region Redemption
-            if (item.type == Common.GetModItem(ModConditions.redemptionMod, "MedicKit") && PermanentUpgradePlayer.usedMedicKit)
-            {
-                AddLastTooltip(tooltips, tooltipLine);
-            }
-            if (item.type == Common.GetModItem(ModConditions.redemptionMod, "GalaxyHeart") && PermanentUpgradePlayer.usedGalaxyHeart)
-            {
-                AddLastTooltip(tooltips, tooltipLine);
-            }
-            #endregion
-
-            #region Thorium
-            if (ModConditions.thoriumLoaded)
-            {
-                if (item.type == Common.GetModItem(ModConditions.thoriumMod, "CrystalWave"))
-                {
-                    tooltipLine.Text = GetTooltipValue("UsedItemCountable", PermanentUpgradePlayer.usedCrystalWaveCount, 5);
-                    AddLastTooltip(tooltips, tooltipLine);
-                }
-                if (item.type == Common.GetModItem(ModConditions.thoriumMod, "AstralWave") && PermanentUpgradePlayer.usedAstralWave)
-                {
-                    AddLastTooltip(tooltips, tooltipLine);
-                }
-                if (item.type == Common.GetModItem(ModConditions.thoriumMod, "InspirationGem") && PermanentUpgradePlayer.usedInspirationGem)
-                {
-                    AddLastTooltip(tooltips, tooltipLine);
-                }
-                int bardResourceMax = (int)ModConditions.thoriumMod.Call("GetBardInspirationMax", Main.LocalPlayer);
-                int fragmentMax = 10;
-                int shardMax = 20;
-                int crystalMax = 30;
-                if (item.type == Common.GetModItem(ModConditions.thoriumMod, "InspirationFragment"))
-                {
-                    tooltipLine.Text = GetTooltipValue("UsedItemCountable", Math.Clamp(Math.Max(bardResourceMax - fragmentMax, 0), 0, 10), 10);
-                    AddLastTooltip(tooltips, tooltipLine);
-                }
-                if (item.type == Common.GetModItem(ModConditions.thoriumMod, "InspirationShard"))
-                {
-                    tooltipLine.Text = GetTooltipValue("UsedItemCountable", Math.Clamp(Math.Max(bardResourceMax - shardMax, 0), 0, 10), 10);
-                    AddLastTooltip(tooltips, tooltipLine);
-                }
-                if (item.type == Common.GetModItem(ModConditions.thoriumMod, "InspirationCrystalNew"))
-                {
-                    tooltipLine.Text = GetTooltipValue("UsedItemCountable", Math.Clamp(Math.Max(bardResourceMax - crystalMax, 0), 0, 10), 10);
-                    AddLastTooltip(tooltips, tooltipLine);
-                }
-            }
-            #endregion
         }
 
         public void AmmoTooltip(Item item, List<TooltipLine> tooltips)
@@ -700,7 +618,19 @@ namespace QoLCompendium.Core.Changes
             */
         }
 
-        private string GetTooltipValue(string suffix, params object[] args)
+        public static void ItemDisabledTooltip(Item item, List<TooltipLine> tooltips, bool configOn)
+        {
+            TooltipLine name = tooltips.Find(l => l.Name == "ItemName");
+            var tooltipDisabled = new TooltipLine(QoLCompendium.instance, "ItemDisabled", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ItemDisabled"));
+            tooltipDisabled.OverrideColor = Common.ColorSwap(Color.Red, Color.DarkRed, 1);
+            if (configOn)
+                tooltips.Remove(tooltipDisabled);
+            else
+                tooltips.AddAfter(name, tooltipDisabled);
+            
+        }
+
+        public static string GetTooltipValue(string suffix, params object[] args)
         {
             return Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips." + suffix, args);
         }

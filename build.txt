@@ -1,7 +1,7 @@
 displayName = Quality of Life Compendium
 author = Jabon
-version = 2.2.7
+version = 2.2.8
 hideCode = true
 hideResources = true
 buildIgnore = *.csproj, *.user, *.sln, *.gitignore, *.editorconfig, *.md, *.ase, obj\*, bin\*, .vs\*, .cache\*, *.dll
-weakReferences = CalamityMod@2.0.4.3
+weakReferences = CalamityMod@2.0.4.3, ThoriumMod@1.7.1.6, Aequus@2.7.3.3, Avalon@1.3.0.1, FargowiltasSouls@1.6.10.6, Redemption@0.8.0.4044

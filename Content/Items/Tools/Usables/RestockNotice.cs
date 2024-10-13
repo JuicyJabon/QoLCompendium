@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
@@ -12,14 +13,19 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void SetDefaults()
         {
-            Item.width = 15;
-            Item.height = 12;
+            Item.width = 18;
+            Item.height = 15;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.UseSound = SoundID.Item4;
             Item.useAnimation = 20;
             Item.useTime = 20;
 
             Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 50, 0));
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RestockNotice);
         }
 
         public override bool? UseItem(Player player)
@@ -39,7 +45,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.RestockNotice, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.RestockNotice, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Silk, 8);
             r.AddIngredient(ItemID.BlackDye, 1);
             r.AddTile(TileID.Anvils);

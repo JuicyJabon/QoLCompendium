@@ -33,7 +33,7 @@
             for (int x = Main.maxTilesX / 2; x < Main.maxTilesX; x++)
             {
                 // Six down, last is platforms
-                for (int y = -120; y <= 0; y++)
+                for (int y = -90; y <= 0; y++)
                 {
                     int xPosition = x;
                     int yPosition = (int)(y + position.Y / 16.0f);
@@ -46,7 +46,7 @@
                         continue;
 
 
-                    if (y == -40 || y == 0)
+                    if (y == -30 || y == 0)
                     {
                         Destruction.ClearEverything(xPosition, yPosition, false);
                         // Spawn platforms
@@ -66,7 +66,7 @@
             for (int x = Main.maxTilesX / 2; x > 0; x--)
             {
                 // Six down, last is platforms
-                for (int y = -120; y <= 0; y++)
+                for (int y = -90; y <= 0; y++)
                 {
                     int xPosition = x;
                     int yPosition = (int)(y + position.Y / 16.0f);
@@ -78,7 +78,7 @@
                     if (tile == null)
                         continue;
 
-                    if (y == -40 || y == 0)
+                    if (y == -30 || y == 0)
                     {
                         Destruction.ClearEverything(xPosition, yPosition, false);
                         // Spawn platforms

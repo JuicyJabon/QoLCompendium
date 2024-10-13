@@ -9,14 +9,15 @@ namespace QoLCompendium.Core
         #region Bools & Conditions
 
         //RECIPE CONDITIONS
-        public static Condition ItemToggled(Func<bool> toggle)
+        public static Condition ItemToggled(string displayText, Func<bool> toggle)
         {
-            return new Condition(Language.GetTextValue("Mods.QoLCompendium.ModConditions.enabledInConfig"), toggle);
+            return new Condition(Language.GetTextValue(displayText), toggle);
         }
-        public static Recipe GetItemRecipe(Func<bool> toggle, int itemType, int amount = 1)
+
+        public static Recipe GetItemRecipe(Func<bool> toggle, int itemType, int amount = 1, string displayText = "")
         {
             Recipe obj = Recipe.Create(itemType, amount);
-            obj.AddCondition(ItemToggled(toggle));
+            obj.AddCondition(ItemToggled(displayText, toggle));
             return obj;
         }
 

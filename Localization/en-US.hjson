@@ -34,6 +34,28 @@ Mods: {
 				Right click with an empty hand to retrieve deposited potions
 				Applies buffs from any storage
 				'''
+			ItemDisabled: (ITEM DISABLED)
+		}
+
+		DedicatedTooltips: {
+			BladeBurger: Dedicated: BladeBurger
+			Jabon: Developer: Jabon
+			Jack: Dedicated: Jack
+			Jay: Dedicated: Jay
+			Ned: Dedicated: Ned
+			Nobisyu: Dedicated: Nobisyu
+			Quinn: Dedicated: Quinn
+		}
+
+		ItemToggledConditions: {
+			ItemEnabled: Item Enabled
+			ItemConversions: Item Conversions Enabled
+			BossBags: Boss Bag Recipes Enabled
+			Crates: Crate Recipes Enabled
+			Banners: Banner Recipes Enabled
+			CraftingStations: Crafting Stations Enabled
+			MobileStorages: Mobile Storages Enabled
+			Pylons: Pylons Enabled
 		}
 
 		NPCDropConditions.ExpertNotMaster: Drops in Expert Mode
@@ -127,9 +149,9 @@ Mods: {
 			MinibossText: Minibosses
 			IncreaseSpawnText: Increase Spawns
 			DecreaseSpawnText: Decrease Spawns
-			CancelSpawnText: Cancel Spawns
-			CancelEventText: Cancel Events
-			CancelSpawnAndEventText: Cancel Spawns & Events
+			CancelSpawnText: No Spawns
+			CancelEventText: No Events
+			CancelSpawnAndEventText: No Spawns or Events
 			RevertText: Revert Changes
 			FullMoonText: Full Moon
 			WaningGibbousText: Waning Gibbous
@@ -264,6 +286,13 @@ Mods: {
 			AllInOneAccess: {
 				Open: All In One Access (Void Vault Open)
 				Closed: All In One Access (Void Vault Closed)
+			}
+
+			BottomlessLiquidBucket: {
+				Water: Bottomless Liquid Bucket (Water)
+				Lava: Bottomless Liquid Bucket (Lava)
+				Honey: Bottomless Liquid Bucket (Honey)
+				Shimmer: Bottomless Liquid Bucket (Shimmer)
 			}
 		}
 
@@ -777,8 +806,8 @@ Mods: {
 				DisplayName: Ultimate Checklist
 				Tooltip:
 					'''
-					Unlocks the entire research duplication menu
-					Unlocks the entire research duplication menu
+					Left click to unlock the entire research duplication menu
+					Right click to unlock the entire bestiary
 					Cannot be undone
 					'''
 			}
@@ -827,6 +856,11 @@ Mods: {
 			OwlNest: {
 				DisplayName: Owl Nest
 				Tooltip: Summons an Owl
+			}
+
+			Flute: {
+				DisplayName: Flute
+				Tooltip: Summons a Snake
 			}
 
 			EndlessChlorophytePouch: {
@@ -1074,9 +1108,9 @@ Mods: {
 				DisplayName: Endless Gold Coin Pouch
 			}
 
-			EndlessGelBottle: {
+			EndlessGelTank: {
 				Tooltip: ""
-				DisplayName: Endless Gel Bottle
+				DisplayName: Endless Gel Tank
 			}
 
 			EndlessExplosiveJackOLanternPouch: {
@@ -1192,6 +1226,11 @@ Mods: {
 			GoldenLockpick: {
 				DisplayName: Golden Lockpick
 				Tooltip: Opens all Golden Chests and Golden Lock Boxes
+			}
+
+			GoldenPowder: {
+				DisplayName: Golden Powder
+				Tooltip: Turns critters into their gold variants
 			}
 
 			LegendaryCatcher: {
@@ -1390,6 +1429,16 @@ Mods: {
 					'''
 			}
 
+			BottomlessLiquidBucket: {
+				DisplayName: Bottomless Liquid Bucket
+				Tooltip:
+					'''
+					Contains an endless amount of liquids
+					Can be poured out
+					Right click to cycle liquids
+					'''
+			}
+
 			ChallengersCoin: {
 				DisplayName: Challenger's Coin
 				Tooltip:
@@ -1519,10 +1568,14 @@ Mods: {
 			AsphaltAutohighwaySingleProj.DisplayName: Asphalt Autohighway Single
 			Moth.DisplayName: Moth
 			Owl.DisplayName: Owl
+			Snake.DisplayName: Snake
 			LegendaryBobber.DisplayName: Legendary Bobber
 			EtherianConstructProjectile.DisplayName: Etherian Construct
 			FlyingSafeProjectile.DisplayName: Flying Safe
 			MinibridgeProj.DisplayName: Minibridge
+			BuildIndicatorProjectile.DisplayName: Build Indicator
+			AllInOneAccessProjectile.DisplayName: All In One Access Projectile
+			GoldenPowderProjectile.DisplayName: Golden Powder Projectile
 		}
 
 		InfoDisplays: {
@@ -1571,16 +1624,12 @@ Mods: {
 
 				EndlessBuffs: {
 					Label: "[i:292][i:3198] Endless Buffs"
-					Tooltip:
-						'''
-						Toggles endless buffs
-						You only need 1 station for station buffs
-						'''
+					Tooltip: Toggles endless buffs
 				}
 
 				EndlessHealing: {
-					Label: "[i:188] Endless Healing"
-					Tooltip: Toggles endless healing items
+					Label: "[i:188] Endless Healing And Mana"
+					Tooltip: Toggles endless healing and mana items
 				}
 
 				EndlessAmmo: {
@@ -1704,6 +1753,11 @@ Mods: {
 				EnemiesDropMoreCoins: {
 					Label: "[i:855] Enemies Drop More Coins"
 					Tooltip: Multiplies the amount of dropped coins
+				}
+
+				EncumberingStoneAllowsCoins: {
+					Label: "[i:4346] Encumbering Stone Allows Coins"
+					Tooltip: Toggles if the Encumbering Stone allows coin pickups even when enabled
 				}
 
 				AutoMoneyQuickStack: {
@@ -2131,6 +2185,11 @@ Mods: {
 					Tooltip: Toggles the Bottomless Chum Bucket item
 				}
 
+				BottomlessLiquidBucket: {
+					Label: "[i:QoLCompendium/BottomlessLiquidBucket] Bottomless Liquid Bucket"
+					Tooltip: Toggles the Bottomless Liquid Bucket item
+				}
+
 				ChallengersCoin: {
 					Label: "[i:QoLCompendium/ChallengersCoin] Challenger's Coin"
 					Tooltip: Toggles the Challenger's Coin item
@@ -2278,6 +2337,11 @@ Mods: {
 				GoldenLockpick: {
 					Tooltip: Toggles the Golden Lockpick item
 					Label: "[i:QoLCompendium/GoldenLockpick] Golden Lockpick"
+				}
+
+				GoldenPowder: {
+					Tooltip: Toggles the Golden Powder item
+					Label: "[i:QoLCompendium/GoldenPowder] Golden Powder"
 				}
 
 				LegendaryCatcher: {
@@ -2540,6 +2604,11 @@ Mods: {
 				ActiveTooltip: {
 					Tooltip: Adds a tooltip to display if an item is providing it's effects
 					Label: "[i:292] Item Active Tooltip"
+				}
+
+				NoYoyoTooltip: {
+					Tooltip: Removes the logo tooltip from certain yoyos
+					Label: "[i:3285] No Yoyo Tooltip"
 				}
 			}
 
@@ -3003,7 +3072,6 @@ Mods: {
 			downedBacteriumPrime: Downed Bacterium Prime
 			downedThespian: Downed Thespian, the Act of Alchemy
 			downedStarfarers: Downed Asphodene and Eridani
-			enabledInConfig: Enabled in Item Config
 			downedArmagem: Downed Armagem
 			downedVoid: Downed Void
 			downedTheGuardianOfHell: Downed The Guardian Of Hell
@@ -3127,6 +3195,11 @@ Mods: {
 			OwlBuff: {
 				DisplayName: Owl
 				Description: Hooter
+			}
+
+			SnakeBuff: {
+				DisplayName: Snake
+				Description: How is he floating?
 			}
 		}
 	}

@@ -26,6 +26,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.SetShopValues(ItemRarityColor.White0, Item.buyPrice(0, 1, 0, 0));
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.SummoningRemote);
+        }
+
         public override bool? UseItem(Player player)
         {
             //new Color(175, 75, 255) - PURPLE
@@ -33,9 +38,9 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             if (player.altFunctionUse == 2)
             {
                 if (!SummoningRemoteUI.visible) SummoningRemoteUI.timeStart = Main.GameUpdateCount;
-                SoundEngine.PlaySound(SoundID.MenuOpen, player.Center);
                 SummoningRemoteUI.visible = true;
-                return base.UseItem(player);
+                SoundEngine.PlaySound(SoundID.MenuOpen, player.Center);
+                return true;
             }
             else
             {
@@ -49,9 +54,9 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                     }
                     if (player.GetModPlayer<QoLCPlayer>().bossToSpawn == NPCID.Retinazer)
                     {
-                        NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.Spazmatism);
+                        Common.SpawnBoss(player, NPCID.Spazmatism);
                     }
-                    NetcodeBossSpawn.SpawnBossNetcoded(player, player.GetModPlayer<QoLCPlayer>().bossToSpawn);
+                    Common.SpawnBoss(player, player.GetModPlayer<QoLCPlayer>().bossToSpawn);
                 }
                 if (player.GetModPlayer<QoLCPlayer>().eventToSpawn != 0 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
                 {
@@ -188,19 +193,19 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 14)
                     {
-                        NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerNebula);
+                        Common.SpawnBoss(player, NPCID.LunarTowerNebula);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 15)
                     {
-                        NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerSolar);
+                        Common.SpawnBoss(player, NPCID.LunarTowerSolar);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 16)
                     {
-                        NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerStardust);
+                        Common.SpawnBoss(player, NPCID.LunarTowerStardust);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 17)
                     {
-                        NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.LunarTowerVortex);
+                        Common.SpawnBoss(player, NPCID.LunarTowerVortex);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 18)
                     {
@@ -288,7 +293,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.SummoningRemote, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.SummoningRemote, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddRecipeGroup(RecipeGroupID.IronBar, 12);
             r.AddIngredient(ItemID.Ruby, 5);
             r.AddIngredient(ItemID.Lens, 2);

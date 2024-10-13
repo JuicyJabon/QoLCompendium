@@ -1,5 +1,6 @@
 ﻿using Humanizer;
 using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
@@ -69,11 +70,13 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             TooltipLine tip0 = tooltips.Find(l => l.Name == "Tooltip0");
             TooltipLine text = new(Mod, "PotionCrateTooltip", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.PotionCrateTooltip").FormatWith(QoLCompendium.mainConfig.EndlessBuffAmount));
             tooltips.Insert(tooltips.IndexOf(tip0) + 1, text);
-        }
+
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PotionCrate);
+    }
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PotionCrate, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PotionCrate, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Wood, 12);
             r.AddRecipeGroup(RecipeGroupID.IronBar, 4);
             r.AddTile(TileID.Anvils);

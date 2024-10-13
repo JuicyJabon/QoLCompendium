@@ -23,9 +23,14 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 75, 0));
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.TravelersMannequin);
+        }
+
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.TravelersMannequin, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.TravelersMannequin, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Silk, 6);
             r.AddIngredient(ItemID.Ruby, 2);
             r.AddIngredient(ItemID.Feather);
@@ -36,9 +41,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         public override bool? UseItem(Player player)
         {
             if (NPC.CountNPCS(NPCID.TravellingMerchant) < 1)
-            {
-                NetcodeBossSpawn.SpawnBossNetcoded(player, NPCID.TravellingMerchant);
-            }
+                Common.SpawnBoss(player, NPCID.TravellingMerchant);
             return true;
         }
     }

@@ -1,5 +1,5 @@
 ﻿using QoLCompendium.Core;
-using Terraria;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
@@ -21,9 +21,14 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
             Item.SetShopValues(ItemRarityColor.Green2, Item.buyPrice(0, 0, 90, 0));
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.MoonPedestals);
+        }
+
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MoonPedestals, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MoonPedestals, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.GrayBrick, 10);
             r.AddIngredient(ItemID.StoneBlock, 8);
             r.AddIngredient(ItemID.Ruby, 3);

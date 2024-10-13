@@ -203,6 +203,14 @@ namespace QoLCompendium.Core
             ItemID.NebulaPickup3,
         };
 
+        public static readonly bool[] NormalBunnies = NPCID.Sets.Factory.CreateBoolSet(NPCID.Bunny, NPCID.GemBunnyTopaz, NPCID.GemBunnySapphire, NPCID.GemBunnyRuby, NPCID.GemBunnyEmerald, NPCID.GemBunnyDiamond, NPCID.GemBunnyAmethyst, NPCID.GemBunnyAmber, NPCID.ExplosiveBunny, NPCID.BunnySlimed, NPCID.BunnyXmas, NPCID.CorruptBunny, NPCID.CrimsonBunny, NPCID.PartyBunny);
+        
+        public static readonly bool[] NormalSquirrels = NPCID.Sets.Factory.CreateBoolSet(NPCID.Squirrel, NPCID.SquirrelRed, NPCID.GemSquirrelTopaz, NPCID.GemSquirrelSapphire, NPCID.GemSquirrelRuby, NPCID.GemSquirrelEmerald, NPCID.GemSquirrelDiamond, NPCID.GemSquirrelAmethyst, NPCID.GemSquirrelAmber);
+        
+        public static readonly bool[] NormalButterflies = NPCID.Sets.Factory.CreateBoolSet(NPCID.Butterfly, NPCID.HellButterfly, NPCID.EmpressButterfly);
+        
+        public static readonly bool[] NormalBirds = NPCID.Sets.Factory.CreateBoolSet(NPCID.Bird, NPCID.BirdBlue, NPCID.BirdRed);
+
         #region Boss Drops
         public static readonly int[] kingSlimeDrops = { 
             ItemID.SlimySaddle,
@@ -463,48 +471,32 @@ namespace QoLCompendium.Core
         {
             for (int i = 0; i < items.Length; i++)
             {
-                Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.BossBagRecipes, items[i]);
-                recipe.AddIngredient(bagID);
-                recipe.AddTile(TileID.Solidifier);
-                recipe.DisableDecraft();
-                recipe.Register();
+                CreateSimpleRecipe(bagID, items[i], TileID.Solidifier, 1, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.BossBags", () => QoLCompendium.mainConfig.BossBagRecipes));
             }
         }
 
         public static void CreateCrateRecipe(int result, int crateID, int crateHardmodeID, int crateCount)
         {
-            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, result);
-            recipe.AddIngredient(crateID, crateCount);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.DisableDecraft();
-            recipe.Register();
+            CreateSimpleRecipe(crateID, result, TileID.Solidifier, crateCount, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Crates", () => QoLCompendium.mainConfig.CrateRecipes));
 
-            recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, result);
-            recipe.AddIngredient(crateHardmodeID, crateCount);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.DisableDecraft();
-            recipe.Register();
+            CreateSimpleRecipe(crateHardmodeID, result, TileID.Solidifier, crateCount, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Crates", () => QoLCompendium.mainConfig.CrateRecipes));
         }
 
         public static void CreateCrateHardmodeRecipe(int result, int crateHardmodeID, int crateCount)
         {
-            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, result);
-            recipe.AddIngredient(crateHardmodeID, crateCount);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.DisableDecraft();
-            recipe.Register();
+            CreateSimpleRecipe(crateHardmodeID, result, TileID.Solidifier, crateCount, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Crates", () => QoLCompendium.mainConfig.CrateRecipes));
         }
 
         public static void CreateCrateWithKeyRecipe(int item, int crateID, int crateHardmodeID, int crateCount, int keyID)
         {
-            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, item);
+            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateID, crateCount);
             recipe.AddIngredient(keyID);
             recipe.AddTile(TileID.Solidifier);
             recipe.DisableDecraft();
             recipe.Register();
 
-            recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, item);
+            recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateHardmodeID, crateCount);
             recipe.AddIngredient(keyID);
             recipe.AddTile(TileID.Solidifier);
@@ -515,25 +507,20 @@ namespace QoLCompendium.Core
         public static void ConversionRecipe(int item1, int item2, int station)
         {
             //Item 1 -> Item 2
-            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.ItemConversions, item2);
-            recipe.AddIngredient(item1);
-            recipe.AddTile(station);
-            recipe.Register();
+            CreateSimpleRecipe(item1, item2, station, 1, 1, false, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.ItemConversions", () => QoLCompendium.mainConfig.ItemConversions));
+
             //Item 2 -> Item 1
-            recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.ItemConversions, item1);
-            recipe.AddIngredient(item2);
-            recipe.AddTile(station);
-            recipe.Register();
+            CreateSimpleRecipe(item2, item1, station, 1, 1, false, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.ItemConversions", () => QoLCompendium.mainConfig.ItemConversions));
         }
 
         public static void AddBannerGroupToItemRecipe(int recipeGroupID, int resultID, int resultAmount = 1, int groupAmount = 1, params Condition[] conditions)
         {
-            CreateSimpleBannerRecipe(recipeGroupID, resultID, TileID.Solidifier, groupAmount, resultAmount, disableDecraft: true, usesRecipeGroup: true, conditions);
+            CreateSimpleRecipe(recipeGroupID, resultID, TileID.Solidifier, groupAmount, resultAmount, disableDecraft: true, usesRecipeGroup: true, conditions);
         }
 
         public static void AddBannerToItemRecipe(int bannerItemID, int resultID, int bannerAmount = 1, int resultAmount = 1, params Condition[] conditions)
         {
-            CreateSimpleBannerRecipe(bannerItemID, resultID, TileID.Solidifier, bannerAmount, resultAmount, disableDecraft: true, usesRecipeGroup: false, conditions);
+            CreateSimpleRecipe(bannerItemID, resultID, TileID.Solidifier, bannerAmount, resultAmount, disableDecraft: true, usesRecipeGroup: false, conditions);
         }
 
         public static void AddBannerSetToItemRecipe(bool[] set, int resultID)
@@ -544,14 +531,14 @@ namespace QoLCompendium.Core
                 {
                     int num = Item.NPCtoBanner(i);
                     if (num > 0)
-                        CreateSimpleBannerRecipe(Item.BannerToItem(num), resultID, TileID.Solidifier, 1, 1, true, false);
+                        CreateSimpleRecipe(Item.BannerToItem(num), resultID, TileID.Solidifier, 1, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
                 }
             }
         }
 
-        public static void CreateSimpleBannerRecipe(int ingredientID, int resultID, int tileID, int ingredientAmount = 1, int resultAmount = 1, bool disableDecraft = false, bool usesRecipeGroup = false, params Condition[] conditions)
+        public static void CreateSimpleRecipe(int ingredientID, int resultID, int tileID, int ingredientAmount = 1, int resultAmount = 1, bool disableDecraft = false, bool usesRecipeGroup = false, params Condition[] conditions)
         {
-            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.BannerRecipes, resultID, resultAmount);
+            Recipe recipe = Recipe.Create(resultID, resultAmount);
             if (usesRecipeGroup)
                 recipe.AddRecipeGroup(ingredientID, ingredientAmount);
             else
@@ -562,6 +549,28 @@ namespace QoLCompendium.Core
             if (disableDecraft)
                 recipe.DisableDecraft();
             recipe.Register();
+        }
+
+        public static void SpawnBoss(Player player, int bossType)
+        {
+            if (player.whoAmI == Main.myPlayer)
+            {
+                SoundEngine.PlaySound(SoundID.Roar, player.position);
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    Vector2 spawnPosition = player.Center - Vector2.UnitY * 800f;
+                    NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)spawnPosition.X, (int)spawnPosition.Y, bossType);
+                }
+                else
+                {
+                    NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: bossType);
+                }
+            }
+        }
+
+        public static Asset<Texture2D> GetAsset(string location, string filename, int fileNumber)
+        {
+            return ModContent.Request<Texture2D>("QoLCompendium/Assets/" + location + "/" + filename + fileNumber);
         }
 
         public static Point16 PlayerCenterTile(Player player)

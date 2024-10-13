@@ -15,10 +15,15 @@
         //7 = Purity/Forest
         public static int biomeTexture;
 
-        public BiomeButton(Asset<Texture2D> faceTexture) : base(ModContent.Request<Texture2D>("QoLCompendium/Assets/Biomes/Biome_" + biomeTexture))
+        //0 = Left
+        //1 = Center
+        //2 = Right
+        public static int backgroundTexture;
+
+        public BiomeButton(Asset<Texture2D> faceTexture) : base(ModContent.Request<Texture2D>("QoLCompendium/Assets/Backgrounds/Background_" + backgroundTexture))
         {
             this.faceTexture = faceTexture;
-            SetHoverImage(ModContent.Request<Texture2D>("QoLCompendium/Assets/Hover/Biome_" + biomeTexture));
+            SetHoverImage(ModContent.Request<Texture2D>("QoLCompendium/Assets/Biomes/Biome_Hover_" + biomeTexture));
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch)

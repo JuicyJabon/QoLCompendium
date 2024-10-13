@@ -11,10 +11,15 @@
         //3 = Void Vault
         public static int storageTexture;
 
-        public AllInOneAccessButton(Asset<Texture2D> faceTexture) : base(ModContent.Request<Texture2D>("QoLCompendium/Assets/Storages/Storage_" + storageTexture))
+        //0 = Left
+        //1 = Center
+        //2 = Right
+        public static int backgroundTexture;
+
+        public AllInOneAccessButton(Asset<Texture2D> faceTexture) : base(ModContent.Request<Texture2D>("QoLCompendium/Assets/Backgrounds/Background_" + backgroundTexture))
         {
             this.faceTexture = faceTexture;
-            SetHoverImage(ModContent.Request<Texture2D>("QoLCompendium/Assets/Hover/Storage_" + storageTexture));
+            SetHoverImage(ModContent.Request<Texture2D>("QoLCompendium/Assets/Storages/Storage_Hover_" + storageTexture));
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch)

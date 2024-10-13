@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
@@ -22,9 +23,14 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.SetShopValues(ItemRarityColor.Green2, Item.buyPrice(0, 0, 80, 0));
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.WatchingEye);
+        }
+
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.WatchingEye, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.WatchingEye, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Lens, 4);
             r.AddIngredient(ItemID.Emerald, 2);
             r.AddTile(TileID.Anvils);

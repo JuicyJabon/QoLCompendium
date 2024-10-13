@@ -1,4 +1,5 @@
-﻿using Terraria.Enums;
+﻿using QoLCompendium.Core.Changes;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
@@ -18,6 +19,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.width = 15;
             Item.height = 12;
             Item.SetShopValues(ItemRarityColor.White0, Item.buyPrice(0, 0, 0, 0));
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.StarterBag);
         }
 
         public override bool CanRightClick()

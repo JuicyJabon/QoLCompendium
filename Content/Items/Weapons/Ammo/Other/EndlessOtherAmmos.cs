@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
@@ -47,18 +48,29 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
                 Item.CloneDefaults(ItemID.Bone);
                 Item.consumable = false;
                 Item.maxStack = 1;
-
                 Item.shoot = ProjectileID.None;
                 Item.useAnimation = 0;
                 Item.useTime = 0;
                 Item.useStyle = ItemUseStyleID.None;
+                Item.DamageType = DamageClass.Ranged;
+                Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
+            }
+
+            public override bool CanUseItem(Player player)
+            {
+                return false;
+            }
+
+            public override void ModifyTooltips(List<TooltipLine> tooltips)
+            {
+                TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
             }
 
             public override void AddRecipes()
             {
-                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type);
+                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
                 r.AddIngredient(ItemID.Bone, 3996);
-                r.AddTile(TileID.CrystalBall);
+                r.AddTile(TileID.Solidifier);
                 r.Register();
             }
         }
@@ -73,7 +85,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
             public override int AmmunitionItem => ItemID.ExplosiveJackOLantern;
         }
 
-        public class EndlessGelBottle : ModItem
+        public class EndlessGelTank : ModItem
         {
             public override void SetStaticDefaults()
             {
@@ -85,14 +97,19 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
                 Item.ammo = AmmoID.Gel;
                 Item.knockBack = 0.5f;
                 Item.DamageType = DamageClass.Ranged;
-                Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 0, 0));
+                Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
+            }
+
+            public override void ModifyTooltips(List<TooltipLine> tooltips)
+            {
+                TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
             }
 
             public override void AddRecipes()
             {
-                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type);
+                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
                 r.AddIngredient(ItemID.Gel, 3996);
-                r.AddTile(TileID.CrystalBall);
+                r.AddTile(TileID.Solidifier);
                 r.Register();
             }
         }
@@ -120,14 +137,24 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
                 Item.useAnimation = 0;
                 Item.createTile = -1;
                 Item.shoot = ProjectileID.None;
-                Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 0, 0));
+                Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
+            }
+
+            public override void ModifyTooltips(List<TooltipLine> tooltips)
+            {
+                TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+            }
+
+            public override bool CanUseItem(Player player)
+            {
+                return false;
             }
 
             public override void AddRecipes()
             {
-                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type);
+                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
                 r.AddIngredient(ItemID.SandBlock, 3996);
-                r.AddTile(TileID.CrystalBall);
+                r.AddTile(TileID.Solidifier);
                 r.Register();
             }
         }
@@ -149,14 +176,24 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
                 Item.useAnimation = 0;
                 Item.useTime = 0;
                 Item.useStyle = ItemUseStyleID.None;
-                Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 0, 0));
+                Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
+            }
+
+            public override void ModifyTooltips(List<TooltipLine> tooltips)
+            {
+                TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+            }
+
+            public override bool CanUseItem(Player player)
+            {
+                return false;
             }
 
             public override void AddRecipes()
             {
-                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type);
+                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
                 r.AddIngredient(ItemID.Snowball, 3996);
-                r.AddTile(TileID.CrystalBall);
+                r.AddTile(TileID.Solidifier);
                 r.Register();
             }
         }
@@ -165,6 +202,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
         {
             public override int AmmunitionItem => ItemID.Stake;
         }
+
         public class EndlessStarPouch : ModItem
         {
             public override void SetStaticDefaults()
@@ -176,14 +214,24 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
             {
                 Item.ammo = AmmoID.FallenStar;
                 Item.DamageType = DamageClass.Ranged;
-                Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 0, 0));
+                Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
+            }
+
+            public override void ModifyTooltips(List<TooltipLine> tooltips)
+            {
+                TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+            }
+
+            public override bool CanUseItem(Player player)
+            {
+                return false;
             }
 
             public override void AddRecipes()
             {
-                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type);
+                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
                 r.AddIngredient(ItemID.FallenStar, 3996);
-                r.AddTile(TileID.CrystalBall);
+                r.AddTile(TileID.Solidifier);
                 r.Register();
             }
         }

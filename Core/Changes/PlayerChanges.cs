@@ -8,12 +8,11 @@ using System.Reflection;
 using Terraria.DataStructures;
 using Terraria.GameInput;
 using Terraria.ModLoader.Config;
-using Terraria.ModLoader.IO;
 using static MonoMod.Cil.ILContext;
 
 namespace QoLCompendium.Core.Changes
 {
-    public class PlayerChanges : ModSystem
+    public class AllHairstyles : ModSystem
     {
         private static bool _rebuilt;
 
@@ -55,120 +54,6 @@ namespace QoLCompendium.Core.Changes
             {
                 self.AvailableHairstyles.Add(i);
             }
-        }
-    }
-
-    public class PermanentUpgradePlayer : ModPlayer
-    {
-        //Exxo Avalon Origins
-        public static int usedStaminaCrystalCount = 0;
-        public static bool usedEnergyCrystal;
-
-        //Fargos Souls
-        public static bool usedDeerSinew;
-        public static bool usedMutantsCreditCard;
-        public static bool usedMutantsDiscountCard;
-        public static bool usedMutantsPact;
-        public static bool usedRabiesVaccine;
-
-        //Redemption
-        public static bool usedMedicKit;
-        public static bool usedGalaxyHeart;
-
-        //Thorium
-        public static int usedCrystalWaveCount = 0;
-        public static bool usedAstralWave;
-        public static bool usedInspirationGem;
-
-        public override void SaveData(TagCompound tag)
-        {
-            //Exxo Avalon Origins
-            tag.Add("usedStaminaCrystalCount", usedStaminaCrystalCount);
-            tag.Add("usedEnergyCrystal", usedEnergyCrystal);
-            //Fargos Souls
-            tag.Add("usedDeerSinew", usedDeerSinew);
-            tag.Add("usedMutantsCreditCard", usedMutantsCreditCard);
-            tag.Add("usedMutantsDiscountCard", usedMutantsDiscountCard);
-            tag.Add("usedMutantsPact", usedMutantsPact);
-            tag.Add("usedRabiesVaccine", usedRabiesVaccine);
-            //Redemption
-            tag.Add("usedMedicKit", usedMedicKit);
-            tag.Add("usedGalaxyHeart", usedGalaxyHeart);
-            //Thorium
-            tag.Add("usedCrystalWaveCount", usedCrystalWaveCount);
-            tag.Add("usedAstralWave", usedAstralWave);
-            tag.Add("usedInspirationGem", usedInspirationGem);
-        }
-
-        public override void LoadData(TagCompound tag)
-        {
-            //Exxo Avalon Origins
-            usedStaminaCrystalCount = tag.Get<int>("usedStaminaCrystalCount");
-            usedEnergyCrystal = tag.Get<bool>("usedEnergyCrystal");
-            //Fargos Souls
-            usedDeerSinew = tag.Get<bool>("usedDeerSinew");
-            usedMutantsCreditCard = tag.Get<bool>("usedMutantsCreditCard");
-            usedMutantsDiscountCard = tag.Get<bool>("usedMutantsDiscountCard");
-            usedMutantsPact = tag.Get<bool>("usedMutantsPact");
-            usedRabiesVaccine = tag.Get<bool>("usedRabiesVaccine");
-            //Redemption
-            usedMedicKit = tag.Get<bool>("usedMedicKit");
-            usedGalaxyHeart = tag.Get<bool>("usedGalaxyHeart");
-            //Thorium
-            usedCrystalWaveCount = tag.Get<int>("usedCrystalWaveCount");
-            usedAstralWave = tag.Get<bool>("usedAstralWave");
-            usedInspirationGem = tag.Get<bool>("usedInspirationGem");
-        }
-    }
-
-    public class PermanentUpgradeItem : GlobalItem
-    {
-        public override bool? UseItem(Item item, Player player)
-        {
-            //EXXO AVALON ORIGINS
-            //STAMINA CRYSTAL
-            if (item.type == Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "StaminaCrystal") && PermanentUpgradePlayer.usedStaminaCrystalCount < 10)
-                PermanentUpgradePlayer.usedStaminaCrystalCount += 1;
-            //ENERGY CRYSTAL
-            if (item.type == Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "EnergyCrystal"))
-                PermanentUpgradePlayer.usedEnergyCrystal = true;
-
-            //FARGOS SOULS
-            //DEER SINEW
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "DeerSinew"))
-                PermanentUpgradePlayer.usedDeerSinew = true;
-            //MUTANT'S CREDIT CARD
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsCreditCard"))
-                PermanentUpgradePlayer.usedMutantsCreditCard = true;
-            //MUTANT'S DISCOUNT CARD
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsDiscountCard"))
-                PermanentUpgradePlayer.usedMutantsDiscountCard = true;
-            //MUTANT'S PACT
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsPact"))
-                PermanentUpgradePlayer.usedMutantsPact = true;
-            //RABIES VACCINE
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "RabiesVaccine"))
-                PermanentUpgradePlayer.usedRabiesVaccine = true;
-
-            //REDEMPTION
-            //MEDIC KIT
-            if (item.type == Common.GetModItem(ModConditions.redemptionMod, "MedicKit"))
-                PermanentUpgradePlayer.usedMedicKit = true;
-            //GALAXY HEART
-            if (item.type == Common.GetModItem(ModConditions.redemptionMod, "GalaxyHeart"))
-                PermanentUpgradePlayer.usedGalaxyHeart = true;
-
-            //THORIUM
-            //CRYSTAL WAVE
-            if (item.type == Common.GetModItem(ModConditions.thoriumMod, "CrystalWave") && PermanentUpgradePlayer.usedCrystalWaveCount < 5)
-                PermanentUpgradePlayer.usedCrystalWaveCount += 1;
-            //ASTRAL WAVE
-            if (item.type == Common.GetModItem(ModConditions.thoriumMod, "AstralWave"))
-                PermanentUpgradePlayer.usedAstralWave = true;
-            //INSPIRATION GEM
-            if (item.type == Common.GetModItem(ModConditions.thoriumMod, "InspirationGem"))
-                PermanentUpgradePlayer.usedInspirationGem = true;
-            return base.UseItem(item, player);
         }
     }
 
@@ -540,8 +425,10 @@ namespace QoLCompendium.Core.Changes
     public class BankPlayer : ModPlayer
     {
         internal bool chests;
+        internal int pig = -1;
         internal int safe = -1;
         internal int defenders = -1;
+        internal int vault = -1;
 
         public override void SetControls()
         {
@@ -552,8 +439,10 @@ namespace QoLCompendium.Core.Changes
                 Player.tileRangeY = 5000;
                 if (Player.chest >= -1)
                 {
+                    pig = -1;
                     safe = -1;
                     defenders = -1;
+                    vault = -1;
                     chests = false;
                 }
                 if (safe != -1 && Main.projectile[safe].type != ModContent.ProjectileType<FlyingSafeProjectile>())

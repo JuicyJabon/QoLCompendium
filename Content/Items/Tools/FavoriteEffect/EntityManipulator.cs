@@ -1,6 +1,8 @@
 ﻿using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using QoLCompendium.Core.UI.Panels;
 using Terraria.Enums;
+using Terraria.GameContent.Events;
 
 namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 {
@@ -25,6 +27,11 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
             Item.SetShopValues(ItemRarityColor.Green2, Item.buyPrice(0, 5, 0, 0));
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EntityManipulator);
+        }
+
         public override bool? UseItem(Player player)
         {
             if (!EntityManipulatorUI.visible) EntityManipulatorUI.timeStart = Main.GameUpdateCount;
@@ -35,7 +42,7 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EntityManipulator, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EntityManipulator, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.BattlePotion, 10);
             r.AddIngredient(ItemID.WaterCandle, 3);
             r.AddIngredient(ItemID.CalmingPotion, 10);
@@ -55,16 +62,14 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
             if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 2)
                 Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.SpawnDecrease"));
 
-            /*
-            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 2)
+            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 3)
                 Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.CanceledSpawns"));
 
-            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 3)
+            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 4)
                 Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.CanceledEvents"));
 
-            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 4)
+            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 5)
                 Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.CanceledSpawnsAndEvents"));
-            */
 
             if (Item.favorited)
             {
@@ -76,13 +81,10 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
                 if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 2)
                     player.GetModPlayer<QoLCPlayer>().decreasedSpawns = true;
 
-                /*
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 2)
-                {
-                    player.GetModPlayer<QoLCPlayer>().enemyEraser = true;
-                }
-                
                 if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 3)
+                    player.GetModPlayer<QoLCPlayer>().noSpawns = true;
+
+                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 4)
                 {
                     if (Main.invasionType != 0)
                     {
@@ -156,9 +158,9 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
                     }
                 }
 
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 4)
+                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 5)
                 {
-                    player.GetModPlayer<QoLCPlayer>().enemyEraser = true;
+                    player.GetModPlayer<QoLCPlayer>().noSpawns = true;
                     if (Main.invasionType != 0)
                     {
                         Main.invasionType = 0;
@@ -230,7 +232,6 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
                         }
                     }
                 }
-                */
             }
         }
     }

@@ -1,4 +1,5 @@
 using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using QoLCompendium.Core.UI.Panels;
 using Terraria.Enums;
 
@@ -25,10 +26,15 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
             Item.SetShopValues(ItemRarityColor.Green2, Item.buyPrice(0, 2, 0, 0));
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DestinationGlobe);
+        }
+
         public override bool? UseItem(Player player)
         {
-            if (!DestinationGlobeUI.visible)
-                DestinationGlobeUI.visible = true;
+            if (!DestinationGlobeUI.visible) DestinationGlobeUI.timeStart = Main.GameUpdateCount;
+            DestinationGlobeUI.visible = true;
 
             return base.UseItem(player);
         }
@@ -36,18 +42,14 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
         public override bool CanUseItem(Player player)
         {
             if (DestinationGlobeUI.visible)
-            {
                 return false;
-            }
             else
-            {
                 return true;
-            }
         }
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.DestinationGlobe, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.DestinationGlobe, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Glass, 15);
             r.AddIngredient(ItemID.DirtBlock, 5);
             r.AddIngredient(ItemID.GrassSeeds, 5);

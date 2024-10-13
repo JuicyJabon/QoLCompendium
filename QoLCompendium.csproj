@@ -7,12 +7,6 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <AdditionalFiles Remove="Assets\SpawnModifiers\**" />
-    <Compile Remove="Assets\SpawnModifiers\**" />
-    <EmbeddedResource Remove="Assets\SpawnModifiers\**" />
-    <None Remove="Assets\SpawnModifiers\**" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Content\Items\Placeables\HellBridger.png" />
     <None Remove="Content\Projectiles\SkybridgerProj.png" />
   </ItemGroup>
@@ -20,13 +14,30 @@
     <Folder Include="Assets\Bosses\" />
     <Folder Include="Assets\Minibosses\" />
     <Folder Include="Assets\InfoDisplayIcons\" />
+    <Folder Include="Assets\Backgrounds\" />
+    <Folder Include="Assets\SpawnModifiers\" />
     <Folder Include="Assets\Slots\" />
     <Folder Include="Assets\Storages\" />
     <Folder Include="Content\Projectiles\Fishing\" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Aequus">
+      <HintPath>..\..\ModReader\Aequus\Aequus.dll</HintPath>
+    </Reference>
+    <Reference Include="Avalon">
+      <HintPath>..\..\ModReader\Avalon\Avalon.dll</HintPath>
+    </Reference>
     <Reference Include="CalamityMod">
       <HintPath>..\..\..\..\..\Apps\dnSpy\CalamityMod.dll</HintPath>
+    </Reference>
+    <Reference Include="FargowiltasSouls">
+      <HintPath>..\..\ModReader\FargowiltasSouls\FargowiltasSouls.dll</HintPath>
+    </Reference>
+    <Reference Include="Redemption">
+      <HintPath>..\..\ModReader\Redemption\Redemption.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoriumMod">
+      <HintPath>..\..\ModReader\ThoriumMod\ThoriumMod.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

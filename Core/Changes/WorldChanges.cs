@@ -45,6 +45,14 @@ namespace QoLCompendium.Core.Changes
                 Main.eclipse = true;
             }
         }
+
+        public override void PostUpdateWorld()
+        {
+            if (QoLCompendium.mainConfig.HalloweenActive)
+                Main.halloween = true;
+            if (QoLCompendium.mainConfig.ChristmasActive)
+                Main.xMas = true;
+        }
     }
 
     public class DisableEvilSpreadSystem : ModSystem
@@ -116,17 +124,6 @@ namespace QoLCompendium.Core.Changes
 
                 ChatHelper.SendChatMessageToClient(NetworkText.FromKey("Mods.QoLCompendium.Messages.MeteoriteGiven", amount), Color.White, i);
             }
-        }
-    }
-
-    public class SeasonalActivation : ModSystem
-    {
-        public override void PostUpdateWorld()
-        {
-            if (QoLCompendium.mainConfig.HalloweenActive)
-                Main.halloween = true;
-            if (QoLCompendium.mainConfig.ChristmasActive)
-                Main.xMas = true;
         }
     }
 

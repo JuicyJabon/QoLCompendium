@@ -27,7 +27,7 @@ namespace QoLCompendium.Core.Changes
         }
     }
 
-    public class BuffItemTweaks : GlobalItem
+    public class BuffItem : GlobalItem
     {
         public override bool ConsumeItem(Item item, Player player)
         {

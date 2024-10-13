@@ -1,5 +1,4 @@
-﻿using QoLCompendium.Core;
-using Terraria.ObjectData;
+﻿using Terraria.ObjectData;
 
 namespace QoLCompendium.Content.Tiles.CraftingStations
 {

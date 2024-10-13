@@ -1,5 +1,6 @@
 using QoLCompendium.Content.Projectiles.Explosives;
 using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Explosives
@@ -29,9 +30,14 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
             Item.SetShopValues(ItemRarityColor.Green2, Item.buyPrice(0, 5, 0, 0));
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.AutoStructures);
+        }
+
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AutoStructures, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AutoStructures, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.WaterBucket, 10);
             r.AddIngredient(ItemID.Dynamite, 25);
             r.AddIngredient(ItemID.Diamond, 5);

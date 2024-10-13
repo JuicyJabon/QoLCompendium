@@ -1,4 +1,6 @@
 ﻿using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
+using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo
 {
@@ -18,15 +20,19 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo
             Item.height = 26;
             Item.consumable = false;
             Item.maxStack = 1;
-            Item.value *= 3996;
-            Item.rare += 1;
+            Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(AmmunitionItem, 3996);
-            r.AddTile(TileID.CrystalBall);
+            r.AddTile(TileID.Solidifier);
             r.Register();
         }
     }

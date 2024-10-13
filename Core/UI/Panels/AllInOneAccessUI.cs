@@ -1,6 +1,7 @@
-﻿using QoLCompendium.Core.Changes;
+﻿using Aequus.Common.Tiles;
+using QoLCompendium.Core.Changes;
 using QoLCompendium.Core.UI.Buttons;
-using static Terraria.ModLoader.ModContent;
+using Terraria;
 
 namespace QoLCompendium.Core.UI.Panels
 {
@@ -13,116 +14,69 @@ namespace QoLCompendium.Core.UI.Panels
         public override void OnInitialize()
         {
             StoragePanel = new UIPanel();
-            StoragePanel.Top.Set(Main.screenHeight / 2 - 30, 0f);
-            StoragePanel.Left.Set(Main.screenWidth / 2 + 75, 0f);
+            StoragePanel.Top.Set(Main.screenHeight / 2, 0f);
+            StoragePanel.Left.Set(Main.screenWidth / 2 + 47, 0f);
             StoragePanel.Width.Set(200f, 0f);
             StoragePanel.Height.Set(200f, 0f);
             StoragePanel.BackgroundColor *= 0f;
             StoragePanel.BorderColor *= 0f;
             Append(StoragePanel);
 
-            AllInOneAccessButton.storageTexture = 0;
-            AllInOneAccessButton piggyBank = new(Request<Texture2D>("QoLCompendium/Assets/Storages/Storage_" + AllInOneAccessButton.storageTexture));
+            AllInOneAccessButton.backgroundTexture = 0;
+            AllInOneAccessButton piggyBank = new(Common.GetAsset("Storages", "Storage_", AllInOneAccessButton.storageTexture = 0));
             piggyBank.Left.Set(0f, 0f);
             piggyBank.Top.Set(0f, 0f);
-            piggyBank.Width.Set(36f, 0f);
-            piggyBank.Height.Set(36f, 0f);
+            piggyBank.Width.Set(40f, 0f);
+            piggyBank.Height.Set(40f, 0f);
             piggyBank.OnLeftClick += PiggyBankClicked;
             piggyBank.Tooltip = UISystem.PiggyBankText;
             StoragePanel.Append(piggyBank);
 
-            AllInOneAccessButton.storageTexture = 1;
-            AllInOneAccessButton safe = new(Request<Texture2D>("QoLCompendium/Assets/Storages/Storage_" + AllInOneAccessButton.storageTexture));
-            safe.Left.Set(36f, 0f);
+            AllInOneAccessButton.backgroundTexture = 1;
+            AllInOneAccessButton safe = new(Common.GetAsset("Storages", "Storage_", AllInOneAccessButton.storageTexture = 1));
+            safe.Left.Set(40f, 0f);
             safe.Top.Set(0f, 0f);
-            safe.Width.Set(36f, 0f);
-            safe.Height.Set(36f, 0f);
+            safe.Width.Set(40f, 0f);
+            safe.Height.Set(40f, 0f);
             safe.OnLeftClick += SafeClicked;
             safe.Tooltip = UISystem.SafeText;
             StoragePanel.Append(safe);
 
-            AllInOneAccessButton.storageTexture = 2;
-            AllInOneAccessButton defendersForge = new(Request<Texture2D>("QoLCompendium/Assets/Storages/Storage_" + AllInOneAccessButton.storageTexture));
-            defendersForge.Left.Set(72f, 0f);
+            AllInOneAccessButton.backgroundTexture = 1;
+            AllInOneAccessButton defendersForge = new(Common.GetAsset("Storages", "Storage_", AllInOneAccessButton.storageTexture = 2));
+            defendersForge.Left.Set(80f, 0f);
             defendersForge.Top.Set(0f, 0f);
-            defendersForge.Width.Set(36f, 0f);
-            defendersForge.Height.Set(36f, 0f);
+            defendersForge.Width.Set(40f, 0f);
+            defendersForge.Height.Set(40f, 0f);
             defendersForge.OnLeftClick += DefendersForgeClicked;
             defendersForge.Tooltip = UISystem.DefendersForgeText;
             StoragePanel.Append(defendersForge);
 
-            AllInOneAccessButton.storageTexture = 3;
-            AllInOneAccessButton voidVault = new(Request<Texture2D>("QoLCompendium/Assets/Storages/Storage_" + AllInOneAccessButton.storageTexture));
-            voidVault.Left.Set(108f, 0f);
+            AllInOneAccessButton.backgroundTexture = 1;
+            AllInOneAccessButton voidVault = new(Common.GetAsset("Storages", "Storage_", AllInOneAccessButton.storageTexture = 3));
+            voidVault.Left.Set(120f, 0f);
             voidVault.Top.Set(0f, 0f);
-            voidVault.Width.Set(36f, 0f);
-            voidVault.Height.Set(36f, 0f);
+            voidVault.Width.Set(40f, 0f);
+            voidVault.Height.Set(40f, 0f);
             voidVault.OnLeftClick += VoidVaultClicked;
             voidVault.Tooltip = UISystem.VoidVaultText;
             StoragePanel.Append(voidVault);
 
-            GenericUIButton.buttonTexture = 0;
-            GenericUIButton closeButton = new(Request<Texture2D>("QoLCompendium/Assets/UI/UI_" + GenericUIButton.buttonTexture));
-            closeButton.Left.Set(54f, 0f);
-            closeButton.Top.Set(36f, 0f);
-            closeButton.Width.Set(36f, 0f);
-            closeButton.Height.Set(36f, 0f);
+            GenericUIButton.backgroundTexture = 2;
+            GenericUIButton closeButton = new(Common.GetAsset("Buttons", "Button_Small_", GenericUIButton.buttonTexture = 3));
+            closeButton.Left.Set(160f, 0f);
+            closeButton.Top.Set(0f, 0f);
+            closeButton.Width.Set(40f, 0f);
+            closeButton.Height.Set(40f, 0f);
             closeButton.OnLeftClick += CloseButtonClicked;
             closeButton.Tooltip = UISystem.CloseText;
             StoragePanel.Append(closeButton);
         }
 
-        private void PiggyBankClicked(UIMouseEvent evt, UIElement listeningElement)
-        {
-            if (Main.GameUpdateCount - timeStart >= 10)
-            {
-                Main.LocalPlayer.GetModPlayer<BankPlayer>().chests = true;
-                Main.LocalPlayer.chest = -2;
-                Main.oldNPCShop = 0;
-                Main.playerInventory = true;
-                SoundEngine.PlaySound(SoundID.Item59, Main.LocalPlayer.position, null);
-                Recipe.FindRecipes(false);
-            }
-        }
-
-        private void SafeClicked(UIMouseEvent evt, UIElement listeningElement)
-        {
-            if (Main.GameUpdateCount - timeStart >= 10)
-            {
-                Main.LocalPlayer.GetModPlayer<BankPlayer>().chests = true;
-                Main.LocalPlayer.chest = -3;
-                Main.oldNPCShop = 0;
-                Main.playerInventory = true;
-                SoundEngine.PlaySound(SoundID.MenuOpen, Main.LocalPlayer.position, null);
-                Recipe.FindRecipes(false);
-            }
-        }
-
-        private void DefendersForgeClicked(UIMouseEvent evt, UIElement listeningElement)
-        {
-            if (Main.GameUpdateCount - timeStart >= 10)
-            {
-                Main.LocalPlayer.GetModPlayer<BankPlayer>().chests = true;
-                Main.LocalPlayer.chest = -4;
-                Main.oldNPCShop = 0;
-                Main.playerInventory = true;
-                SoundEngine.PlaySound(SoundID.MenuOpen, Main.LocalPlayer.position, null);
-                Recipe.FindRecipes(false);
-            }
-        }
-
-        private void VoidVaultClicked(UIMouseEvent evt, UIElement listeningElement)
-        {
-            if (Main.GameUpdateCount - timeStart >= 10)
-            {
-                Main.LocalPlayer.GetModPlayer<BankPlayer>().chests = true;
-                Main.LocalPlayer.chest = -5;
-                Main.oldNPCShop = 0;
-                Main.playerInventory = true;
-                SoundEngine.PlaySound(SoundID.Item130, Main.LocalPlayer.position, null);
-                Recipe.FindRecipes(false);
-            }
-        }
+        private void PiggyBankClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(-2, SoundID.Item59);
+        private void SafeClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(-3, SoundID.MenuOpen);
+        private void DefendersForgeClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(-4, SoundID.MenuOpen);
+        private void VoidVaultClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(-5, SoundID.Item130);
 
         private void CloseButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -130,6 +84,24 @@ namespace QoLCompendium.Core.UI.Panels
             {
                 SoundEngine.PlaySound(SoundID.MenuClose);
                 visible = false;
+            }
+        }
+
+        public static void StorageClick(int chest, SoundStyle sound)
+        {
+            if (Main.GameUpdateCount - timeStart >= 10)
+            {
+                Main.playerInventory = true;
+                Main.LocalPlayer.chest = chest;
+                QoLCompendium.LastOpenedBank = chest;
+                Point pos = Main.LocalPlayer.Center.ToTileCoordinates();
+                Main.LocalPlayer.chestX = pos.X;
+                Main.LocalPlayer.chestY = pos.Y;
+                Main.oldNPCShop = 0;
+                Main.LocalPlayer.SetTalkNPC(-1);
+                Main.SetNPCShopIndex(0);
+                SoundEngine.PlaySound(sound, Main.LocalPlayer.position, null);
+                Recipe.FindRecipes(false);
             }
         }
     }

@@ -37,7 +37,7 @@ namespace QoLCompendium.Core
             {
                 if (ItemID.Sets.ShimmerTransformToItem[i] > ItemID.None)
                 {
-                    Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, ItemID.Sets.ShimmerTransformToItem[i]);
+                    Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, ItemID.Sets.ShimmerTransformToItem[i], 1, "Mods.QoLCompendium.ItemToggledConditions.CraftingStations");
                     r.AddIngredient(i);
                     r.AddTile(ModContent.TileType<AetherAltarTile>());
                     r.Register();
@@ -51,13 +51,10 @@ namespace QoLCompendium.Core
             BannerRecipes();
 
             //Mobile Storage Parity
-            Recipe moneyTrough = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MobileStorages, ItemID.MoneyTrough);
-            moneyTrough.AddIngredient(ItemID.PiggyBank);
-            moneyTrough.AddTile(TileID.Anvils);
-            moneyTrough.Register();
+            Common.CreateSimpleRecipe(ItemID.PiggyBank, ItemID.MoneyTrough, TileID.Anvils, 1, 1, false, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.MobileStorages", () => QoLCompendium.itemConfig.MobileStorages));
 
             //Easier Universal Pylon
-            Recipe universalPylon = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Pylons, ItemID.TeleportationPylonVictory);
+            Recipe universalPylon = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Pylons, ItemID.TeleportationPylonVictory, 1, "Mods.QoLCompendium.ItemToggledConditions.Pylons");
             universalPylon.AddIngredient(ModContent.ItemType<AetherPylon>());
             universalPylon.AddIngredient(ItemID.TeleportationPylonUnderground); //Cavern
             universalPylon.AddIngredient(ModContent.ItemType<CorruptionPylon>());
@@ -279,99 +276,99 @@ namespace QoLCompendium.Core
 
             #region Underground/Caverns
             //Accessories
-            AddBannerToItemRecipe(ItemID.JellyfishBanner, ItemID.JellyfishNecklace, 1, 1);
-            AddBannerToItemRecipe(ItemID.GreenJellyfishBanner, ItemID.JellyfishNecklace, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.SkeletonArcherBanner, ItemID.MagicQuiver, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.TitanGlove, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.PhilosophersStone, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.CrossNecklace, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.StarCloak, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.ToxicSludgeBanner, ItemID.Bezoar, 1, 1);
-            AddBannerToItemRecipe(ItemID.AnglerFishBanner, ItemID.AdhesiveBandage, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.ArmoredSkeletonBanner, ItemID.ArmorPolish, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.GiantBatBanner, ItemID.TrifoldMap, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.GreenJellyfishBanner, ItemID.Megaphone, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MedusaBanner, ItemID.PocketMirror, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Compass, 1, 1);
-            AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Compass, 1, 1);
-            AddBannerToItemRecipe(ItemID.MotherSlimeBanner, ItemID.Compass, 1, 1);
-            AddBannerToItemRecipe(ItemID.PiranhaBanner, ItemID.Compass, 1, 1);
-            AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Compass, 1, 1);
-            AddBannerToItemRecipe(ItemID.BatBanner, ItemID.DepthMeter, 1, 1);
-            AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.DepthMeter, 1, 1);
-            AddBannerToItemRecipe(ItemID.GiantBatBanner, ItemID.DepthMeter, 1, 1);
-            AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.DepthMeter, 1, 1);
-            AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.DepthMeter, 1, 1);
-            AddBannerToItemRecipe(ItemID.NypmhBanner, ItemID.MetalDetector, 1, 1);
+            AddBannerToItemRecipe(ItemID.JellyfishBanner, ItemID.JellyfishNecklace, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GreenJellyfishBanner, ItemID.JellyfishNecklace, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.SkeletonArcherBanner, ItemID.MagicQuiver, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.TitanGlove, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.PhilosophersStone, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.CrossNecklace, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.StarCloak, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.ToxicSludgeBanner, ItemID.Bezoar, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.AnglerFishBanner, ItemID.AdhesiveBandage, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.ArmoredSkeletonBanner, ItemID.ArmorPolish, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.GiantBatBanner, ItemID.TrifoldMap, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.GreenJellyfishBanner, ItemID.Megaphone, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MedusaBanner, ItemID.PocketMirror, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Compass, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Compass, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.MotherSlimeBanner, ItemID.Compass, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.PiranhaBanner, ItemID.Compass, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Compass, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.BatBanner, ItemID.DepthMeter, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.DepthMeter, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GiantBatBanner, ItemID.DepthMeter, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.DepthMeter, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.DepthMeter, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.NypmhBanner, ItemID.MetalDetector, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.GraniteFlyerBanner, ItemID.NightVisionHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.GraniteGolemBanner, ItemID.NightVisionHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.GreekSkeletonBanner, ItemID.GladiatorLeggings, 1, 1);
-            AddBannerToItemRecipe(ItemID.GreekSkeletonBanner, ItemID.GladiatorBreastplate, 1, 1);
-            AddBannerToItemRecipe(ItemID.GreekSkeletonBanner, ItemID.GladiatorHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.SkeletonBanner, ItemID.AncientIronHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.SkeletonBanner, ItemID.AncientGoldHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.MiningPants, 1, 1);
-            AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.MiningShirt, 1, 1);
-            AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.MiningHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.RockGolemBanner, ItemID.RockGolemHead, 1, 1);
-            AddBannerToItemRecipe(ItemID.AnglerFishBanner, ItemID.RobotHat, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.GraniteFlyerBanner, ItemID.NightVisionHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GraniteGolemBanner, ItemID.NightVisionHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GreekSkeletonBanner, ItemID.GladiatorLeggings, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GreekSkeletonBanner, ItemID.GladiatorBreastplate, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GreekSkeletonBanner, ItemID.GladiatorHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SkeletonBanner, ItemID.AncientIronHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SkeletonBanner, ItemID.AncientGoldHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.MiningPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.MiningShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.MiningHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.RockGolemBanner, ItemID.RockGolemHead, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.AnglerFishBanner, ItemID.RobotHat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Food
-            AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.PotatoChips, 1, 1);
-            AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.PotatoChips, 1, 1);
-            AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.PotatoChips, 1, 1);
+            AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.PotatoChips, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.PotatoChips, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.PotatoChips, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             AddBannerSetToItemRecipe(NPCID.Sets.Skeletons, ItemID.MilkCarton);
-            AddBannerToItemRecipe(ItemID.SpiderBanner, ItemID.FriedEgg, 1, 1);
-            AddBannerToItemRecipe(ItemID.BlackRecluseBanner, ItemID.FriedEgg, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.GreekSkeletonBanner, ItemID.Pizza, 1, 1);
-            AddBannerToItemRecipe(ItemID.MedusaBanner, ItemID.Pizza, 1, 1);
-            AddBannerToItemRecipe(ItemID.GraniteGolemBanner, ItemID.Spaghetti, 1, 1);
-            AddBannerToItemRecipe(ItemID.GraniteFlyerBanner, ItemID.Spaghetti, 1, 1);
-            AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.Steak, 1, 1);
+            AddBannerToItemRecipe(ItemID.SpiderBanner, ItemID.FriedEgg, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.BlackRecluseBanner, ItemID.FriedEgg, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.GreekSkeletonBanner, ItemID.Pizza, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.MedusaBanner, ItemID.Pizza, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GraniteGolemBanner, ItemID.Spaghetti, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GraniteFlyerBanner, ItemID.Spaghetti, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.Steak, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Furniture
             //Materials
             //Weapons
-            AddBannerGroupToItemRecipe(AnyBatBanner, ItemID.BatBat, 1, 1);
-            AddBannerToItemRecipe(ItemID.BatBanner, ItemID.ChainKnife, 1, 1, Condition.NotRemixWorld);
-            AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Rally, 1, 1);
-            AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Rally, 1, 1);
-            AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Rally, 1, 1);
-            AddBannerToItemRecipe(ItemID.SkeletonBanner, ItemID.BoneSword, 1, 1);
-            AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.BonePickaxe, 1, 1);
-            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.FlowerofFrost, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.Frostbrand, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.IceBow, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.MagicDagger, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.GreekSkeletonBanner, ItemID.Gladius, 1, 1);
-            AddBannerToItemRecipe(ItemID.SkeletonArcherBanner, ItemID.Marrow, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.ArmoredSkeletonBanner, ItemID.BeamSword, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MedusaBanner, ItemID.MedusaHead, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.GiantBatBanner, ItemID.ChainKnife, 1, 1, Condition.Hardmode, Condition.NotRemixWorld);
-            AddBannerToItemRecipe(ItemID.BlackRecluseBanner, ItemID.PoisonStaff, 1, 1, Condition.Hardmode);
+            AddBannerGroupToItemRecipe(AnyBatBanner, ItemID.BatBat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.BatBanner, ItemID.ChainKnife, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.NotRemixWorld);
+            AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Rally, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Rally, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Rally, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SkeletonBanner, ItemID.BoneSword, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.BonePickaxe, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.FlowerofFrost, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.Frostbrand, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.IceBow, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.MagicDagger, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.GreekSkeletonBanner, ItemID.Gladius, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SkeletonArcherBanner, ItemID.Marrow, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.ArmoredSkeletonBanner, ItemID.BeamSword, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MedusaBanner, ItemID.MedusaHead, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.GiantBatBanner, ItemID.ChainKnife, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode, Condition.NotRemixWorld);
+            AddBannerToItemRecipe(ItemID.BlackRecluseBanner, ItemID.PoisonStaff, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Misc Equips
-            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.DualHook, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.ToySled, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.DualHook, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.ToySled, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Misc
-            AddBannerToItemRecipe(ItemID.WormBanner, ItemID.WhoopieCushion, 1, 1);
+            AddBannerToItemRecipe(ItemID.WormBanner, ItemID.WhoopieCushion, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             #endregion
 
             #region Underworld
             //Accessories
-            AddBannerToItemRecipe(ItemID.FireImpBanner, ItemID.ObsidianRose, 1, 1);
-            AddBannerToItemRecipe(ItemID.HellbatBanner, ItemID.MagmaStone, 1, 1);
-            AddBannerToItemRecipe(ItemID.LavaBatBanner, ItemID.MagmaStone, 1, 1);
+            AddBannerToItemRecipe(ItemID.FireImpBanner, ItemID.ObsidianRose, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.HellbatBanner, ItemID.MagmaStone, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.LavaBatBanner, ItemID.MagmaStone, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Armor/Vanity
             //Food
-            AddBannerToItemRecipe(ItemID.BoneSerpentBanner, ItemID.Hotdog, 1, 1);
-            AddBannerToItemRecipe(ItemID.RedDevilBanner, ItemID.Hotdog, 1, 1, Condition.DownedMechBossAny);
+            AddBannerToItemRecipe(ItemID.BoneSerpentBanner, ItemID.Hotdog, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.RedDevilBanner, ItemID.Hotdog, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAny);
             //Furniture
             //Materials
-            AddBannerToItemRecipe(ItemID.RedDevilBanner, ItemID.FireFeather, 1, 1, Condition.DownedMechBossAny);
+            AddBannerToItemRecipe(ItemID.RedDevilBanner, ItemID.FireFeather, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAny);
             //Weapons
-            AddBannerToItemRecipe(ItemID.DemonBanner, ItemID.DemonScythe, 1, 1);
-            AddBannerGroupToItemRecipe(AnyUnderworldBanner, ItemID.Cascade, 1, 1, Condition.DownedSkeletron);
-            AddBannerGroupToItemRecipe(AnyUnderworldBanner, ItemID.HelFire, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.RedDevilBanner, ItemID.UnholyTrident, 1, 1, Condition.DownedMechBossAny);
+            AddBannerToItemRecipe(ItemID.DemonBanner, ItemID.DemonScythe, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerGroupToItemRecipe(AnyUnderworldBanner, ItemID.Cascade, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedSkeletron);
+            AddBannerGroupToItemRecipe(AnyUnderworldBanner, ItemID.HelFire, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.RedDevilBanner, ItemID.UnholyTrident, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAny);
             //Misc Equips
             //Misc
             #endregion
@@ -380,10 +377,10 @@ namespace QoLCompendium.Core
             //Accessories
             //Armor/Vanity
             //Food
-            AddBannerToItemRecipe(ItemID.HarpyBanner, ItemID.ChickenNugget, 1, 1);
+            AddBannerToItemRecipe(ItemID.HarpyBanner, ItemID.ChickenNugget, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Furniture
             //Materials
-            AddBannerToItemRecipe(ItemID.HarpyBanner, ItemID.GiantHarpyFeather, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.HarpyBanner, ItemID.GiantHarpyFeather, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Weapons
             //Misc Equips
             //Misc
@@ -391,78 +388,78 @@ namespace QoLCompendium.Core
 
             #region Snow
             //Accessories
-            AddBannerToItemRecipe(ItemID.IceTortoiseBanner, ItemID.FrozenTurtleShell, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.ArmoredVikingBanner, ItemID.Compass, 1, 1);
-            AddBannerToItemRecipe(ItemID.SnowFlinxBanner, ItemID.Compass, 1, 1);
-            AddBannerToItemRecipe(ItemID.UndeadVikingBanner, ItemID.Compass, 1, 1);
-            AddBannerToItemRecipe(ItemID.IceBatBanner, ItemID.DepthMeter, 1, 1);
+            AddBannerToItemRecipe(ItemID.IceTortoiseBanner, ItemID.FrozenTurtleShell, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.ArmoredVikingBanner, ItemID.Compass, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SnowFlinxBanner, ItemID.Compass, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.UndeadVikingBanner, ItemID.Compass, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.IceBatBanner, ItemID.DepthMeter, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.UndeadVikingBanner, ItemID.VikingHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.ArmoredVikingBanner, ItemID.VikingHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.ZombieEskimoBanner, ItemID.EskimoPants, 1, 1);
-            AddBannerToItemRecipe(ItemID.ZombieEskimoBanner, ItemID.EskimoCoat, 1, 1);
-            AddBannerToItemRecipe(ItemID.ZombieEskimoBanner, ItemID.EskimoHood, 1, 1);
+            AddBannerToItemRecipe(ItemID.UndeadVikingBanner, ItemID.VikingHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.ArmoredVikingBanner, ItemID.VikingHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.ZombieEskimoBanner, ItemID.EskimoPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.ZombieEskimoBanner, ItemID.EskimoCoat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.ZombieEskimoBanner, ItemID.EskimoHood, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Food
-            AddBannerToItemRecipe(ItemID.IceSlimeBanner, ItemID.IceCream, 1, 1);
-            AddBannerToItemRecipe(ItemID.IceBatBanner, ItemID.IceCream, 1, 1);
-            AddBannerToItemRecipe(ItemID.SpikedIceSlimeBanner, ItemID.IceCream, 1, 1);
-            AddBannerToItemRecipe(ItemID.IcyMermanBanner, ItemID.Milkshake, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.IceTortoiseBanner, ItemID.Milkshake, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.PigronBanner, ItemID.Bacon, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.IceSlimeBanner, ItemID.IceCream, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.IceBatBanner, ItemID.IceCream, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SpikedIceSlimeBanner, ItemID.IceCream, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.IcyMermanBanner, ItemID.Milkshake, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.IceTortoiseBanner, ItemID.Milkshake, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.PigronBanner, ItemID.Bacon, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Furniture
             //Materials
-            AddBannerToItemRecipe(ItemID.IceGolemBanner, ItemID.IceFeather, 1, 1, Condition.DownedMechBossAny);
+            AddBannerToItemRecipe(ItemID.IceGolemBanner, ItemID.IceFeather, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAny);
             //Weapons
-            AddBannerToItemRecipe(ItemID.SnowFlinxBanner, ItemID.SnowballLauncher, 1, 1);
-            AddBannerGroupToItemRecipe(AnySnowBanner, ItemID.Amarok, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.ArmoredVikingBanner, ItemID.IceSickle, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.IcyMermanBanner, ItemID.FrostStaff, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.PigronBanner, ItemID.HamBat, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.SnowFlinxBanner, ItemID.SnowballLauncher, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerGroupToItemRecipe(AnySnowBanner, ItemID.Amarok, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.ArmoredVikingBanner, ItemID.IceSickle, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.IcyMermanBanner, ItemID.FrostStaff, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.PigronBanner, ItemID.HamBat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Misc Equips
-            AddBannerToItemRecipe(ItemID.PigronBanner, ItemID.PigronMinecart, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.WolfBanner, ItemID.WolfMountItem, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.PigronBanner, ItemID.PigronMinecart, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.WolfBanner, ItemID.WolfMountItem, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Misc
-            AddBannerGroupToItemRecipe(AnySnowBanner, ItemID.FrozenKey, 1, 5, Condition.Hardmode);
+            AddBannerGroupToItemRecipe(AnySnowBanner, ItemID.FrozenKey, 1, 5, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             #endregion
 
             #region Desert
             //Accessories
-            AddBannerToItemRecipe(ItemID.MummyBanner, ItemID.FastClock, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MummyBanner, ItemID.FastClock, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.DesertDjinnBanner, ItemID.DjinnsCurse, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.DesertLamiaBanner, ItemID.LamiaPants, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.DesertLamiaBanner, ItemID.LamiaShirt, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.DesertLamiaBanner, ItemID.LamiaHat, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.DesertLamiaBanner, ItemID.MoonMask, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.DesertLamiaBanner, ItemID.SunMask, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MummyBanner, ItemID.MummyPants, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MummyBanner, ItemID.MummyShirt, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.MummyBanner, ItemID.MummyMask, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.DesertDjinnBanner, ItemID.DjinnsCurse, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.DesertLamiaBanner, ItemID.LamiaPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.DesertLamiaBanner, ItemID.LamiaShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.DesertLamiaBanner, ItemID.LamiaHat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.DesertLamiaBanner, ItemID.MoonMask, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.DesertLamiaBanner, ItemID.SunMask, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MummyBanner, ItemID.MummyPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MummyBanner, ItemID.MummyShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.MummyBanner, ItemID.MummyMask, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Food
-            AddBannerToItemRecipe(ItemID.AntlionBanner, ItemID.BananaSplit, 1, 1);
-            AddBannerToItemRecipe(ItemID.WalkingAntlionBanner, ItemID.BananaSplit, 1, 1);
-            AddBannerToItemRecipe(ItemID.FlyingAntlionBanner, ItemID.BananaSplit, 1, 1);
-            AddBannerToItemRecipe(ItemID.TumbleweedBanner, ItemID.Nachos, 1, 1);
-            AddBannerToItemRecipe(ItemID.RavagerScorpionBanner, ItemID.FriedEgg, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.SandsharkBanner, ItemID.Nachos, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.AntlionBanner, ItemID.BananaSplit, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.WalkingAntlionBanner, ItemID.BananaSplit, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.FlyingAntlionBanner, ItemID.BananaSplit, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.TumbleweedBanner, ItemID.Nachos, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.RavagerScorpionBanner, ItemID.FriedEgg, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.SandsharkBanner, ItemID.Nachos, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Furniture
             //Materials
             //Weapons
-            AddBannerToItemRecipe(ItemID.WalkingAntlionBanner, ItemID.AntlionClaw, 1, 1);
+            AddBannerToItemRecipe(ItemID.WalkingAntlionBanner, ItemID.AntlionClaw, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Misc Equips
-            AddBannerToItemRecipe(ItemID.DesertBasiliskBanner, ItemID.AncientHorn, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.DesertBasiliskBanner, ItemID.AncientHorn, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Misc
-            AddBannerGroupToItemRecipe(AnyDesertBanner, ItemID.DungeonDesertKey, 1, 5, Condition.Hardmode);
+            AddBannerGroupToItemRecipe(AnyDesertBanner, ItemID.DungeonDesertKey, 1, 5, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             #endregion
 
             #region Ocean
             //Accessories
-            AddBannerToItemRecipe(ItemID.SharkBanner, ItemID.DivingHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.PinkJellyfishBanner, ItemID.JellyfishNecklace, 1, 1);
+            AddBannerToItemRecipe(ItemID.SharkBanner, ItemID.DivingHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.PinkJellyfishBanner, ItemID.JellyfishNecklace, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Armor/Vanity
             //Food
-            AddBannerToItemRecipe(ItemID.SharkBanner, ItemID.ShrimpPoBoy, 1, 1);
-            AddBannerToItemRecipe(ItemID.CrabBanner, ItemID.ShrimpPoBoy, 1, 1);
+            AddBannerToItemRecipe(ItemID.SharkBanner, ItemID.ShrimpPoBoy, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CrabBanner, ItemID.ShrimpPoBoy, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Furniture
             //Materials
             //Weapons
@@ -472,30 +469,30 @@ namespace QoLCompendium.Core
 
             #region Jungle
             //Accessories
-            AddBannerToItemRecipe(ItemID.HornetBanner, ItemID.Bezoar, 1, 1);
-            AddBannerToItemRecipe(ItemID.MossHornetBanner, ItemID.Bezoar, 1, 1);
-            AddBannerToItemRecipe(ItemID.JungleBatBanner, ItemID.DepthMeter, 1, 1);
+            AddBannerToItemRecipe(ItemID.HornetBanner, ItemID.Bezoar, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.MossHornetBanner, ItemID.Bezoar, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.JungleBatBanner, ItemID.DepthMeter, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.HornetBanner, ItemID.AncientCobaltLeggings, 1, 1);
-            AddBannerToItemRecipe(ItemID.HornetBanner, ItemID.AncientCobaltBreastplate, 1, 1);
-            AddBannerToItemRecipe(ItemID.HornetBanner, ItemID.AncientCobaltHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.PiranhaBanner, ItemID.RobotHat, 1, 1);
+            AddBannerToItemRecipe(ItemID.HornetBanner, ItemID.AncientCobaltLeggings, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.HornetBanner, ItemID.AncientCobaltBreastplate, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.HornetBanner, ItemID.AncientCobaltHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.PiranhaBanner, ItemID.RobotHat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Food
-            AddBannerToItemRecipe(ItemID.ManEaterBanner, ItemID.CoffeeCup, 1, 1);
-            AddBannerToItemRecipe(ItemID.SnatcherBanner, ItemID.CoffeeCup, 1, 1);
-            AddBannerToItemRecipe(ItemID.AngryTrapperBanner, ItemID.CoffeeCup, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.GiantFlyingFoxBanner, ItemID.Grapes, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.DerplingBanner, ItemID.Grapes, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.ManEaterBanner, ItemID.CoffeeCup, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SnatcherBanner, ItemID.CoffeeCup, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.AngryTrapperBanner, ItemID.CoffeeCup, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.GiantFlyingFoxBanner, ItemID.Grapes, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.DerplingBanner, ItemID.Grapes, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Furniture
             //Materials
-            AddBannerToItemRecipe(ItemID.MossHornetBanner, ItemID.TatteredBeeWing, 1, 1, Condition.DownedMechBossAny);
-            AddBannerToItemRecipe(ItemID.MothBanner, ItemID.ButterflyDust, 1, 1, Condition.DownedMechBossAny);
+            AddBannerToItemRecipe(ItemID.MossHornetBanner, ItemID.TatteredBeeWing, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAny);
+            AddBannerToItemRecipe(ItemID.MothBanner, ItemID.ButterflyDust, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAny);
             //Weapons
-            AddBannerToItemRecipe(ItemID.AngryTrapperBanner, ItemID.Uzi, 1, 1, Condition.Hardmode);
-            AddBannerGroupToItemRecipe(AnyJungleBanner, ItemID.Yelets, 1, 1, Condition.DownedMechBossAny);
+            AddBannerToItemRecipe(ItemID.AngryTrapperBanner, ItemID.Uzi, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerGroupToItemRecipe(AnyJungleBanner, ItemID.Yelets, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAny);
             //Misc Equips
             //Misc
-            AddBannerGroupToItemRecipe(AnyJungleBanner, ItemID.JungleKey, 1, 5, Condition.Hardmode);
+            AddBannerGroupToItemRecipe(AnyJungleBanner, ItemID.JungleKey, 1, 5, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             #endregion
 
             #region Temple
@@ -506,155 +503,155 @@ namespace QoLCompendium.Core
             //Materials
             //Weapons
             //Misc Equips
-            AddBannerToItemRecipe(ItemID.LihzahrdBanner, ItemID.LizardEgg, 1, 1, Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.LihzahrdBanner, ItemID.LizardEgg, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
             //Misc
             #endregion
 
             #region Glowing Mushroom
             //Accessories
-            AddBannerToItemRecipe(ItemID.SporeBatBanner, ItemID.DepthMeter, 1, 1);
+            AddBannerToItemRecipe(ItemID.SporeBatBanner, ItemID.DepthMeter, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Armor/Vanity
             //Food
             //Furniture
             //Materials
             //Weapons
-            AddBannerToItemRecipe(ItemID.SporeBatBanner, ItemID.Shroomerang, 1, 1);
+            AddBannerToItemRecipe(ItemID.SporeBatBanner, ItemID.Shroomerang, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Misc Equips
             //Misc
             #endregion
 
             #region Corruption
             //Accessories
-            AddBannerToItemRecipe(ItemID.CursedHammerBanner, ItemID.Nazar, 1, 1);
-            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.Blindfold, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.Megaphone, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.CorruptSlimeBanner, ItemID.Blindfold, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.CorruptorBanner, ItemID.Vitamins, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.CursedHammerBanner, ItemID.Nazar, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.Blindfold, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.Megaphone, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.CorruptSlimeBanner, ItemID.Blindfold, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.CorruptorBanner, ItemID.Vitamins, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.AncientShadowGreaves, 1, 1);
-            AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.AncientShadowScalemail, 1, 1);
-            AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.AncientShadowHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.CorruptBunnyBanner, ItemID.BunnyHood, 1, 1);
-            AddBannerToItemRecipe(ItemID.CorruptPenguinBanner, ItemID.PedguinPants, 1, 1);
-            AddBannerToItemRecipe(ItemID.CorruptPenguinBanner, ItemID.PedguinShirt, 1, 1);
-            AddBannerToItemRecipe(ItemID.CorruptPenguinBanner, ItemID.PedguinHat, 1, 1);
-            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.MummyPants, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.MummyShirt, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.MummyMask, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.AncientShadowGreaves, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.AncientShadowScalemail, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.AncientShadowHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CorruptBunnyBanner, ItemID.BunnyHood, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CorruptPenguinBanner, ItemID.PedguinPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CorruptPenguinBanner, ItemID.PedguinShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CorruptPenguinBanner, ItemID.PedguinHat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.MummyPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.MummyShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.MummyMask, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Food
-            AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.Burger, 1, 1);
-            AddBannerToItemRecipe(ItemID.SandsharkCorruptBanner, ItemID.Nachos, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.Burger, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SandsharkCorruptBanner, ItemID.Nachos, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Furniture
-            AddBannerGroupToItemRecipe(AnyCorruptionBanner, ItemID.MeatGrinder, 1, 1, Condition.Hardmode);
+            AddBannerGroupToItemRecipe(AnyCorruptionBanner, ItemID.MeatGrinder, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Materials
             //Weapons
-            AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.TentacleSpike, 1, 1);
+            AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.TentacleSpike, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Misc Equips
             //Misc
-            AddBannerGroupToItemRecipe(AnyCorruptionBanner, ItemID.CorruptionKey, 1, 5, Condition.Hardmode);
+            AddBannerGroupToItemRecipe(AnyCorruptionBanner, ItemID.CorruptionKey, 1, 5, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             #endregion
 
             #region Crimson
             //Accessories
-            AddBannerToItemRecipe(ItemID.CrimsonAxeBanner, ItemID.Nazar, 1, 1);
-            AddBannerToItemRecipe(ItemID.BloodMummyBanner, ItemID.Blindfold, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.BloodMummyBanner, ItemID.Megaphone, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.CrimslimeBanner, ItemID.Blindfold, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.FloatyGrossBanner, ItemID.Vitamins, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.CrimsonAxeBanner, ItemID.Nazar, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.BloodMummyBanner, ItemID.Blindfold, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.BloodMummyBanner, ItemID.Megaphone, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.CrimslimeBanner, ItemID.Blindfold, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.FloatyGrossBanner, ItemID.Vitamins, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.CrimsonBunnyBanner, ItemID.BunnyHood, 1, 1);
-            AddBannerToItemRecipe(ItemID.CrimsonPenguinBanner, ItemID.PedguinPants, 1, 1);
-            AddBannerToItemRecipe(ItemID.CrimsonPenguinBanner, ItemID.PedguinShirt, 1, 1);
-            AddBannerToItemRecipe(ItemID.CrimsonPenguinBanner, ItemID.PedguinHat, 1, 1);
-            AddBannerToItemRecipe(ItemID.BloodMummyBanner, ItemID.MummyPants, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.BloodMummyBanner, ItemID.MummyShirt, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.BloodMummyBanner, ItemID.MummyMask, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.CrimsonBunnyBanner, ItemID.BunnyHood, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CrimsonPenguinBanner, ItemID.PedguinPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CrimsonPenguinBanner, ItemID.PedguinShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CrimsonPenguinBanner, ItemID.PedguinHat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.BloodMummyBanner, ItemID.MummyPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.BloodMummyBanner, ItemID.MummyShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.BloodMummyBanner, ItemID.MummyMask, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Food
-            AddBannerToItemRecipe(ItemID.CrimeraBanner, ItemID.Burger, 1, 1);
-            AddBannerToItemRecipe(ItemID.SandsharkCrimsonBanner, ItemID.Nachos, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.CrimeraBanner, ItemID.Burger, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SandsharkCrimsonBanner, ItemID.Nachos, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Furniture
-            AddBannerGroupToItemRecipe(AnyCrimsonBanner, ItemID.MeatGrinder, 1, 1, Condition.Hardmode);
+            AddBannerGroupToItemRecipe(AnyCrimsonBanner, ItemID.MeatGrinder, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Materials
             //Weapons
-            AddBannerToItemRecipe(ItemID.BloodCrawlerBanner, ItemID.TentacleSpike, 1, 1);
-            AddBannerToItemRecipe(ItemID.CrimeraBanner, ItemID.TentacleSpike, 1, 1);
-            AddBannerToItemRecipe(ItemID.FaceMonsterBanner, ItemID.TentacleSpike, 1, 1);
+            AddBannerToItemRecipe(ItemID.BloodCrawlerBanner, ItemID.TentacleSpike, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CrimeraBanner, ItemID.TentacleSpike, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.FaceMonsterBanner, ItemID.TentacleSpike, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Misc Equips
             //Misc
-            AddBannerGroupToItemRecipe(AnyCrimsonBanner, ItemID.CrimsonKey, 1, 5, Condition.Hardmode);
+            AddBannerGroupToItemRecipe(AnyCrimsonBanner, ItemID.CrimsonKey, 1, 5, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             #endregion
 
             #region Hallow
             //Accessories
-            AddBannerToItemRecipe(ItemID.EnchantedSwordBanner, ItemID.Nazar, 1, 1);
-            AddBannerToItemRecipe(ItemID.LightMummyBanner, ItemID.TrifoldMap, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.PixieBanner, ItemID.Megaphone, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.PixieBanner, ItemID.FastClock, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.EnchantedSwordBanner, ItemID.Nazar, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.LightMummyBanner, ItemID.TrifoldMap, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.PixieBanner, ItemID.Megaphone, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.PixieBanner, ItemID.FastClock, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.LightMummyBanner, ItemID.MummyPants, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.LightMummyBanner, ItemID.MummyShirt, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.LightMummyBanner, ItemID.MummyMask, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.LightMummyBanner, ItemID.MummyPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.LightMummyBanner, ItemID.MummyShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.LightMummyBanner, ItemID.MummyMask, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Food
-            AddBannerToItemRecipe(ItemID.SandsharkHallowedBanner, ItemID.Nachos, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.ChaosElementalBanner, ItemID.ApplePie, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.IlluminantBatBanner, ItemID.ApplePie, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.IlluminantSlimeBanner, ItemID.ApplePie, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.GastropodBanner, ItemID.ChocolateChipCookie, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.SandsharkHallowedBanner, ItemID.Nachos, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.ChaosElementalBanner, ItemID.ApplePie, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.IlluminantBatBanner, ItemID.ApplePie, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.IlluminantSlimeBanner, ItemID.ApplePie, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.GastropodBanner, ItemID.ChocolateChipCookie, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Furniture
             //Materials
             //Weapons
             //Misc Equips
-            AddBannerToItemRecipe(ItemID.UnicornBanner, ItemID.BlessedApple, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.UnicornBanner, ItemID.BlessedApple, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Misc
-            AddBannerToItemRecipe(ItemID.ChaosElementalBanner, ItemID.RodofDiscord, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.UnicornBanner, ItemID.UnicornonaStick, 1, 1, Condition.Hardmode);
-            AddBannerGroupToItemRecipe(AnyHallowBanner, ItemID.HallowedKey, 1, 5, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.ChaosElementalBanner, ItemID.RodofDiscord, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.UnicornBanner, ItemID.UnicornonaStick, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerGroupToItemRecipe(AnyHallowBanner, ItemID.HallowedKey, 1, 5, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             #endregion
 
             #region Dungeon
             //Accessories
-            AddBannerToItemRecipe(ItemID.BoneLeeBanner, ItemID.BlackBelt, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.BoneLeeBanner, ItemID.Tabi, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.SkeletonSniperBanner, ItemID.RifleScope, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.PaladinBanner, ItemID.PaladinsShield, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.CursedSkullBanner, ItemID.Nazar, 1, 1);
-            AddBannerToItemRecipe(ItemID.GiantCursedSkullBanner, ItemID.Nazar, 1, 1);
-            AddBannerToItemRecipe(ItemID.RustyArmoredBonesBanner, ItemID.AdhesiveBandage, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.BlueArmoredBonesBanner, ItemID.ArmorPolish, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.TallyCounter, 1, 1);
-            AddBannerToItemRecipe(ItemID.CursedSkullBanner, ItemID.TallyCounter, 1, 1);
-            AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ItemID.TallyCounter, 1, 1);
+            AddBannerToItemRecipe(ItemID.BoneLeeBanner, ItemID.BlackBelt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.BoneLeeBanner, ItemID.Tabi, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.SkeletonSniperBanner, ItemID.RifleScope, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.PaladinBanner, ItemID.PaladinsShield, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.CursedSkullBanner, ItemID.Nazar, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GiantCursedSkullBanner, ItemID.Nazar, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.RustyArmoredBonesBanner, ItemID.AdhesiveBandage, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.BlueArmoredBonesBanner, ItemID.ArmorPolish, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.TallyCounter, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CursedSkullBanner, ItemID.TallyCounter, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ItemID.TallyCounter, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.AncientNecroHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ItemID.AncientNecroHelmet, 1, 1);
-            AddBannerToItemRecipe(ItemID.TacticalSkeletonBanner, ItemID.SWATHelmet, 1, 1, Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.AncientNecroHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ItemID.AncientNecroHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.TacticalSkeletonBanner, ItemID.SWATHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
             //Food
-            AddBannerToItemRecipe(ItemID.CursedSkullBanner, ItemID.CreamSoda, 1, 1);
-            AddBannerToItemRecipe(ItemID.BoneLeeBanner, ItemID.CoffeeCup, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.GiantCursedSkullBanner, ItemID.CreamSoda, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.SkeletonCommandoBanner, ItemID.BBQRibs, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.SkeletonSniperBanner, ItemID.BBQRibs, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.TacticalSkeletonBanner, ItemID.BBQRibs, 1, 1, Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.CursedSkullBanner, ItemID.CreamSoda, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.BoneLeeBanner, ItemID.CoffeeCup, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.GiantCursedSkullBanner, ItemID.CreamSoda, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.SkeletonCommandoBanner, ItemID.BBQRibs, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.SkeletonSniperBanner, ItemID.BBQRibs, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.TacticalSkeletonBanner, ItemID.BBQRibs, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
             //Furniture
             //Materials
-            AddBannerGroupToItemRecipe(AnyArmoredBonesBanner, ItemID.BoneFeather, 1, 1, Condition.Hardmode);
+            AddBannerGroupToItemRecipe(AnyArmoredBonesBanner, ItemID.BoneFeather, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Weapons
-            AddBannerGroupToItemRecipe(AnyArmoredBonesBanner, ItemID.Keybrand, 1, 1, Condition.DownedPlantera);
-            AddBannerGroupToItemRecipe(AnyArmoredBonesBanner, ItemID.Kraken, 1, 1, Condition.DownedPlantera);
-            AddBannerGroupToItemRecipe(AnyArmoredBonesBanner, ItemID.MaceWhip, 1, 1, Condition.DownedPlantera);
-            AddBannerGroupToItemRecipe(AnyArmoredBonesBanner, ItemID.MagnetSphere, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.GiantCursedSkullBanner, ItemID.ShadowJoustingLance, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.DiablolistBanner, ItemID.InfernoFork, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.PaladinBanner, ItemID.PaladinsHammer, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.NecromancerBanner, ItemID.ShadowbeamStaff, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.RaggedCasterBanner, ItemID.SpectreStaff, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.SkeletonCommandoBanner, ItemID.RocketLauncher, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.SkeletonSniperBanner, ItemID.SniperRifle, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.TacticalSkeletonBanner, ItemID.TacticalShotgun, 1, 1, Condition.DownedPlantera);
+            AddBannerGroupToItemRecipe(AnyArmoredBonesBanner, ItemID.Keybrand, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerGroupToItemRecipe(AnyArmoredBonesBanner, ItemID.Kraken, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerGroupToItemRecipe(AnyArmoredBonesBanner, ItemID.MaceWhip, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerGroupToItemRecipe(AnyArmoredBonesBanner, ItemID.MagnetSphere, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.GiantCursedSkullBanner, ItemID.ShadowJoustingLance, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.DiablolistBanner, ItemID.InfernoFork, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.PaladinBanner, ItemID.PaladinsHammer, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.NecromancerBanner, ItemID.ShadowbeamStaff, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.RaggedCasterBanner, ItemID.SpectreStaff, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.SkeletonCommandoBanner, ItemID.RocketLauncher, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.SkeletonSniperBanner, ItemID.SniperRifle, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.TacticalSkeletonBanner, ItemID.TacticalShotgun, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
             //Misc Equips
-            AddBannerGroupToItemRecipe(AnyArmoredBonesBanner, ItemID.WispinaBottle, 1, 1, Condition.DownedPlantera);
+            AddBannerGroupToItemRecipe(AnyArmoredBonesBanner, ItemID.WispinaBottle, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
             //Misc
-            AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ItemID.BoneWand, 1, 1);
+            AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ItemID.BoneWand, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             #endregion
             #endregion
 
@@ -672,18 +669,18 @@ namespace QoLCompendium.Core
 
             #region Night
             //Accessories
-            AddBannerToItemRecipe(ItemID.ZombieBanner, ItemID.Shackle, 1, 1);
-            AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.Shackle, 1, 1);
-            AddBannerToItemRecipe(ItemID.ZombieEskimoBanner, ItemID.Shackle, 1, 1);
-            AddBannerToItemRecipe(ItemID.WerewolfBanner, ItemID.MoonCharm, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.WerewolfBanner, ItemID.AdhesiveBandage, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.WraithBanner, ItemID.FastClock, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.ZombieBanner, ItemID.Shackle, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.Shackle, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.ZombieEskimoBanner, ItemID.Shackle, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.WerewolfBanner, ItemID.MoonCharm, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.WerewolfBanner, ItemID.AdhesiveBandage, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.WraithBanner, ItemID.FastClock, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Armor/Vanity
             //Food
             //Furniture
             //Materials
             //Weapons
-            AddBannerToItemRecipe(ItemID.ZombieBanner, ItemID.ZombieArm, 1, 1);
+            AddBannerToItemRecipe(ItemID.ZombieBanner, ItemID.ZombieArm, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Misc Equips
             //Misc
             #endregion
@@ -691,18 +688,18 @@ namespace QoLCompendium.Core
             #region Rain
             //Accessories
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.UmbrellaSlimeBanner, ItemID.UmbrellaHat, 1, 1);
-            AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.RainCoat, 1, 1);
-            AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.RainHat, 1, 1);
+            AddBannerToItemRecipe(ItemID.UmbrellaSlimeBanner, ItemID.UmbrellaHat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.RainCoat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.RainHat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Food
-            AddBannerToItemRecipe(ItemID.FlyingFishBanner, ItemID.Fries, 1, 1);
+            AddBannerToItemRecipe(ItemID.FlyingFishBanner, ItemID.Fries, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Furniture
             //Materials
             //Weapons
-            AddBannerToItemRecipe(ItemID.AngryNimbusBanner, ItemID.NimbusRod, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.AngryNimbusBanner, ItemID.NimbusRod, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Misc Equips
             //Misc
-            AddBannerToItemRecipe(ItemID.FlyingFishBanner, ItemID.CarbonGuitar, 1, 1);
+            AddBannerToItemRecipe(ItemID.FlyingFishBanner, ItemID.CarbonGuitar, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             #endregion
 
             #region Wind
@@ -712,54 +709,54 @@ namespace QoLCompendium.Core
             //Weapons
             //Misc Equips
             //Misc
-            AddBannerToItemRecipe(ItemID.BoneSerpentBanner, ItemID.KiteBoneSerpent, 1, 1);
-            AddBannerToItemRecipe(ItemID.BunnyBanner, ItemID.KiteBunny, 1, 1);
-            AddBannerToItemRecipe(ItemID.CorruptBunnyBanner, ItemID.KiteBunnyCorrupt, 1, 1);
-            AddBannerToItemRecipe(ItemID.CrimsonBunnyBanner, ItemID.KiteBunnyCrimson, 1, 1);
-            AddBannerToItemRecipe(ItemID.GoldfishBanner, ItemID.KiteGoldfish, 1, 1);
-            AddBannerToItemRecipe(ItemID.JellyfishBanner, ItemID.KiteJellyfishBlue, 1, 1);
-            AddBannerToItemRecipe(ItemID.ManEaterBanner, ItemID.KiteManEater, 1, 1);
-            AddBannerToItemRecipe(ItemID.PinkJellyfishBanner, ItemID.KiteJellyfishPink, 1, 1);
-            AddBannerToItemRecipe(ItemID.RedSlimeBanner, ItemID.KiteRed, 1, 1);
-            AddBannerToItemRecipe(ItemID.SharkBanner, ItemID.KiteShark, 1, 1);
-            AddBannerToItemRecipe(ItemID.SlimeBanner, ItemID.KiteBlue, 1, 1);
-            AddBannerToItemRecipe(ItemID.YellowSlimeBanner, ItemID.KiteYellow, 1, 1);
-            AddBannerToItemRecipe(ItemID.AngryTrapperBanner, ItemID.KiteAngryTrapper, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.PigronBanner, ItemID.KitePigron, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.SandsharkBanner, ItemID.KiteSandShark, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.UnicornBanner, ItemID.KiteUnicorn, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.WanderingEyeBanner, ItemID.KiteWanderingEye, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.WorldFeederBanner, ItemID.KiteWorldFeeder, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.WyvernBanner, ItemID.KiteWyvern, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.BoneSerpentBanner, ItemID.KiteBoneSerpent, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.BunnyBanner, ItemID.KiteBunny, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CorruptBunnyBanner, ItemID.KiteBunnyCorrupt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.CrimsonBunnyBanner, ItemID.KiteBunnyCrimson, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.GoldfishBanner, ItemID.KiteGoldfish, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.JellyfishBanner, ItemID.KiteJellyfishBlue, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.ManEaterBanner, ItemID.KiteManEater, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.PinkJellyfishBanner, ItemID.KiteJellyfishPink, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.RedSlimeBanner, ItemID.KiteRed, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SharkBanner, ItemID.KiteShark, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.SlimeBanner, ItemID.KiteBlue, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.YellowSlimeBanner, ItemID.KiteYellow, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.AngryTrapperBanner, ItemID.KiteAngryTrapper, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.PigronBanner, ItemID.KitePigron, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.SandsharkBanner, ItemID.KiteSandShark, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.UnicornBanner, ItemID.KiteUnicorn, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.WanderingEyeBanner, ItemID.KiteWanderingEye, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.WorldFeederBanner, ItemID.KiteWorldFeeder, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.WyvernBanner, ItemID.KiteWyvern, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             #endregion
 
             #region Blood Moon
             //Accessories
-            AddBannerToItemRecipe(ItemID.BloodZombieBanner, ItemID.SharkToothNecklace, 1, 1);
-            AddBannerToItemRecipe(ItemID.DripplerBanner, ItemID.SharkToothNecklace, 1, 1);
-            AddBannerToItemRecipe(ItemID.ClownBanner, ItemID.TrifoldMap, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.BloodZombieBanner, ItemID.SharkToothNecklace, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.DripplerBanner, ItemID.SharkToothNecklace, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.ClownBanner, ItemID.TrifoldMap, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Armor/Vanity
             //Food
             //Furniture
             //Materials
             //Weapons
-            AddBannerToItemRecipe(ItemID.EyeballFlyingFishBanner, ItemID.BloodRainBow, 1, 1);
-            AddBannerToItemRecipe(ItemID.EyeballFlyingFishBanner, ItemID.VampireFrogStaff, 1, 1);
-            AddBannerToItemRecipe(ItemID.ZombieMermanBanner, ItemID.BloodRainBow, 1, 1);
-            AddBannerToItemRecipe(ItemID.ZombieMermanBanner, ItemID.VampireFrogStaff, 1, 1);
-            AddBannerToItemRecipe(ItemID.BloodZombieBanner, ItemID.KOCannon, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.ClownBanner, ItemID.KOCannon, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.GoblinSharkBanner, ItemID.SharpTears, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.GoblinSharkBanner, ItemID.BloodHamaxe, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.BloodEelBanner, ItemID.DripplerFlail, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.BloodEelBanner, ItemID.BloodHamaxe, 1, 1, Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.BloodNautilusBanner, ItemID.SanguineStaff, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.EyeballFlyingFishBanner, ItemID.BloodRainBow, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.EyeballFlyingFishBanner, ItemID.VampireFrogStaff, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.ZombieMermanBanner, ItemID.BloodRainBow, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.ZombieMermanBanner, ItemID.VampireFrogStaff, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.BloodZombieBanner, ItemID.KOCannon, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.ClownBanner, ItemID.KOCannon, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.GoblinSharkBanner, ItemID.SharpTears, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.GoblinSharkBanner, ItemID.BloodHamaxe, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.BloodEelBanner, ItemID.DripplerFlail, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.BloodEelBanner, ItemID.BloodHamaxe, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.BloodNautilusBanner, ItemID.SanguineStaff, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             //Misc Equips
             //Misc
-            AddBannerToItemRecipe(ItemID.DripplerBanner, ItemID.MoneyTrough, 1, 1);
-            AddBannerToItemRecipe(ItemID.EyeballFlyingFishBanner, ItemID.BloodFishingRod, 1, 1);
-            AddBannerToItemRecipe(ItemID.ZombieMermanBanner, ItemID.BloodFishingRod, 1, 1);
-            AddBannerToItemRecipe(ItemID.BloodNautilusBanner, ItemID.BloodMoonMonolith, 1, 1, Condition.Hardmode);
+            AddBannerToItemRecipe(ItemID.DripplerBanner, ItemID.MoneyTrough, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.EyeballFlyingFishBanner, ItemID.BloodFishingRod, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.ZombieMermanBanner, ItemID.BloodFishingRod, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+            AddBannerToItemRecipe(ItemID.BloodNautilusBanner, ItemID.BloodMoonMonolith, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.Hardmode);
             #endregion
 
             #region Goblins
@@ -769,7 +766,7 @@ namespace QoLCompendium.Core
             //Furniture
             //Materials
             //Weapons
-            AddBannerToItemRecipe(ItemID.GoblinArcherBanner, ItemID.Harpoon, 1, 1);
+            AddBannerToItemRecipe(ItemID.GoblinArcherBanner, ItemID.Harpoon, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
             //Misc Equips
             //Misc
             #endregion
@@ -787,65 +784,65 @@ namespace QoLCompendium.Core
 
             #region Pirates
             //Accessories
-            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.DiscountCard, 1, 1, Condition.DownedPirates);
-            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.GoldRing, 1, 1, Condition.DownedPirates);
-            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.LuckyCoin, 1, 1, Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.DiscountCard, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.GoldRing, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.LuckyCoin, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
             //Armor/Vanity
-            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.SailorPants, 1, 1, Condition.DownedPirates);
-            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.SailorShirt, 1, 1, Condition.DownedPirates);
-            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.SailorHat, 1, 1, Condition.DownedPirates);
-            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.EyePatch, 1, 1, Condition.DownedPirates);
-            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.BuccaneerPants, 1, 1, Condition.DownedPirates);
-            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.BuccaneerShirt, 1, 1, Condition.DownedPirates);
-            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.BuccaneerBandana, 1, 1, Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.SailorPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.SailorShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.SailorHat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.EyePatch, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.BuccaneerPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.BuccaneerShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.BuccaneerBandana, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
             //Food
             //Furniture
             //Materials
             //Weapons
-            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.Cutlass, 1, 1, Condition.DownedPirates);
-            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.PirateStaff, 1, 1, Condition.DownedPirates);
-            AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ItemID.CoinGun, 1, 1, Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.Cutlass, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.PirateStaff, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
+            AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ItemID.CoinGun, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPirates);
             //Misc Equips
             //Misc
             #endregion
 
             #region Eclipse
             //Accessories
-            AddBannerToItemRecipe(ItemID.CreatureFromTheDeepBanner, ItemID.NeptunesShell, 1, 1, Condition.DownedMechBossAny);
-            AddBannerToItemRecipe(ItemID.VampireBanner, ItemID.MoonStone, 1, 1, Condition.DownedMechBossAny);
-            AddBannerToItemRecipe(ItemID.MothronBanner, ItemID.MothronWings, 1, 1, Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.CreatureFromTheDeepBanner, ItemID.NeptunesShell, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAny);
+            AddBannerToItemRecipe(ItemID.VampireBanner, ItemID.MoonStone, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAny);
+            AddBannerToItemRecipe(ItemID.MothronBanner, ItemID.MothronWings, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.ButcherBanner, ItemID.ButcherPants, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.ButcherBanner, ItemID.ButcherApron, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.ButcherBanner, ItemID.ButcherPants, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.DrManFlyBanner, ItemID.DrManFlyLabCoat, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.DrManFlyBanner, ItemID.DrManFlyMask, 1, 1, Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.ButcherBanner, ItemID.ButcherPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.ButcherBanner, ItemID.ButcherApron, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.ButcherBanner, ItemID.ButcherPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.DrManFlyBanner, ItemID.DrManFlyLabCoat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.DrManFlyBanner, ItemID.DrManFlyMask, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
             //Food
-            AddBannerToItemRecipe(ItemID.ThePossessedBanner, ItemID.Steak, 1, 1, Condition.DownedMechBossAny);
+            AddBannerToItemRecipe(ItemID.ThePossessedBanner, ItemID.Steak, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAny);
             //Furniture
             //Materials
-            AddBannerToItemRecipe(ItemID.VampireBanner, ItemID.BrokenBatWing, 1, 1, Condition.DownedMechBossAny);
-            AddBannerToItemRecipe(ItemID.MothronBanner, ItemID.BrokenHeroSword, 1, 1, Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.VampireBanner, ItemID.BrokenBatWing, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAny);
+            AddBannerToItemRecipe(ItemID.MothronBanner, ItemID.BrokenHeroSword, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
             //Weapons
-            AddBannerToItemRecipe(ItemID.ReaperBanner, ItemID.DeathSickle, 1, 1, Condition.DownedMechBossAll);
-            AddBannerToItemRecipe(ItemID.ButcherBanner, ItemID.ButchersChainsaw, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.DeadlySphereBanner, ItemID.DeadlySphereStaff, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.DrManFlyBanner, ItemID.ToxicFlask, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.MothronBanner, ItemID.TheEyeOfCthulhu, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.NailheadBanner, ItemID.NailGun, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.PsychoBanner, ItemID.PsychoKnife, 1, 1, Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.ReaperBanner, ItemID.DeathSickle, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAll);
+            AddBannerToItemRecipe(ItemID.ButcherBanner, ItemID.ButchersChainsaw, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.DeadlySphereBanner, ItemID.DeadlySphereStaff, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.DrManFlyBanner, ItemID.ToxicFlask, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.MothronBanner, ItemID.TheEyeOfCthulhu, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.NailheadBanner, ItemID.NailGun, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.PsychoBanner, ItemID.PsychoKnife, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
             //Misc Equips
-            AddBannerToItemRecipe(ItemID.EyezorBanner, ItemID.EyeSpring, 1, 1, Condition.DownedMechBossAny);
+            AddBannerToItemRecipe(ItemID.EyezorBanner, ItemID.EyeSpring, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMechBossAny);
             //Misc
             #endregion
 
             #region Pumpkin Moon
             //Accessories
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.ScarecrowBanner, ItemID.ScarecrowPants, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.ScarecrowBanner, ItemID.ScarecrowShirt, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.ScarecrowBanner, ItemID.ScarecrowHat, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.HeadlessHorsemanBanner, ItemID.JackOLanternMask, 1, 1, Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.ScarecrowBanner, ItemID.ScarecrowPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.ScarecrowBanner, ItemID.ScarecrowShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.ScarecrowBanner, ItemID.ScarecrowHat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.HeadlessHorsemanBanner, ItemID.JackOLanternMask, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
             //Food
             //Furniture
             //Materials
@@ -857,9 +854,9 @@ namespace QoLCompendium.Core
             #region Frost Moon
             //Accessories
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.ZombieElfBanner, ItemID.ElfPants, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.ZombieElfBanner, ItemID.ElfShirt, 1, 1, Condition.DownedPlantera);
-            AddBannerToItemRecipe(ItemID.ZombieElfBanner, ItemID.ElfHat, 1, 1, Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.ZombieElfBanner, ItemID.ElfPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.ZombieElfBanner, ItemID.ElfShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
+            AddBannerToItemRecipe(ItemID.ZombieElfBanner, ItemID.ElfHat, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedPlantera);
             //Food
             //Furniture
             //Materials
@@ -871,31 +868,31 @@ namespace QoLCompendium.Core
             #region Martian Madness
             //Accessories
             //Armor/Vanity
-            AddBannerToItemRecipe(ItemID.MartianGreyGruntBanner, ItemID.MartianCostumePants, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianGreyGruntBanner, ItemID.MartianCostumeShirt, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianGreyGruntBanner, ItemID.MartianCostumeMask, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianRaygunnerBanner, ItemID.MartianCostumePants, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianRaygunnerBanner, ItemID.MartianCostumeShirt, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianRaygunnerBanner, ItemID.MartianCostumeMask, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianBrainscramblerBanner, ItemID.MartianCostumePants, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianBrainscramblerBanner, ItemID.MartianCostumeShirt, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianBrainscramblerBanner, ItemID.MartianCostumeMask, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianOfficerBanner, ItemID.MartianUniformPants, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianOfficerBanner, ItemID.MartianUniformTorso, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianOfficerBanner, ItemID.MartianUniformHelmet, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianEngineerBanner, ItemID.MartianUniformPants, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianEngineerBanner, ItemID.MartianUniformTorso, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianEngineerBanner, ItemID.MartianUniformHelmet, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianGigazapperBanner, ItemID.MartianUniformPants, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianGigazapperBanner, ItemID.MartianUniformTorso, 1, 1, Condition.DownedGolem);
-            AddBannerToItemRecipe(ItemID.MartianGigazapperBanner, ItemID.MartianUniformHelmet, 1, 1, Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianGreyGruntBanner, ItemID.MartianCostumePants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianGreyGruntBanner, ItemID.MartianCostumeShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianGreyGruntBanner, ItemID.MartianCostumeMask, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianRaygunnerBanner, ItemID.MartianCostumePants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianRaygunnerBanner, ItemID.MartianCostumeShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianRaygunnerBanner, ItemID.MartianCostumeMask, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianBrainscramblerBanner, ItemID.MartianCostumePants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianBrainscramblerBanner, ItemID.MartianCostumeShirt, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianBrainscramblerBanner, ItemID.MartianCostumeMask, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianOfficerBanner, ItemID.MartianUniformPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianOfficerBanner, ItemID.MartianUniformTorso, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianOfficerBanner, ItemID.MartianUniformHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianEngineerBanner, ItemID.MartianUniformPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianEngineerBanner, ItemID.MartianUniformTorso, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianEngineerBanner, ItemID.MartianUniformHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianGigazapperBanner, ItemID.MartianUniformPants, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianGigazapperBanner, ItemID.MartianUniformTorso, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
+            AddBannerToItemRecipe(ItemID.MartianGigazapperBanner, ItemID.MartianUniformHelmet, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedGolem);
             //Food
             //Furniture
             //Materials
             //Weapons
             //Misc Equips
-            AddBannerToItemRecipe(ItemID.MartianScutlixGunnerBanner, ItemID.BrainScrambler, 1, 1, Condition.DownedMartians);
-            AddBannerToItemRecipe(ItemID.ScutlixBanner, ItemID.BrainScrambler, 1, 1, Condition.DownedMartians);
+            AddBannerToItemRecipe(ItemID.MartianScutlixGunnerBanner, ItemID.BrainScrambler, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMartians);
+            AddBannerToItemRecipe(ItemID.ScutlixBanner, ItemID.BrainScrambler, 1, 1, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes), Condition.DownedMartians);
             //Misc
             #endregion
 

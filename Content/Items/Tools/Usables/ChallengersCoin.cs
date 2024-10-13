@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Chat;
 using Terraria.Enums;
 
@@ -21,6 +22,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.UseSound = SoundID.Item4;
             Item.consumable = false;
             Item.SetShopValues(ItemRarityColor.TrashMinus1, Item.buyPrice(0, 2, 0, 0));
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.ChallengersCoin);
         }
 
         public override bool AltFunctionUse(Player player)
@@ -138,7 +144,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.ChallengersCoin, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.ChallengersCoin, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddRecipeGroup(RecipeGroupID.IronBar, 16);
             r.AddIngredient(ItemID.GoldCoin);
             r.AddTile(TileID.Anvils);

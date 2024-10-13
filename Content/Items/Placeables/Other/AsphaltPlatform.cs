@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Content.Tiles.Other;
 using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.Other
@@ -13,17 +14,22 @@ namespace QoLCompendium.Content.Items.Placeables.Other
         public override void SetDefaults()
         {
             Item.DefaultToPlaceableTile(ModContent.TileType<AsphaltPlatformTile>());
-            Item.SetShopValues(ItemRarityColor.White0, Item.buyPrice(0, 0, 0, 0));
 
+            Item.SetShopValues(ItemRarityColor.White0, Item.buyPrice(0, 0, 0, 0));
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.AsphaltPlatform);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, Type, 2);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, Type, 2, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.AsphaltBlock);
             r.Register();
 
-            r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, ItemID.AsphaltBlock);
+            r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, ItemID.AsphaltBlock, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<AsphaltPlatform>(), 2);
             r.Register();
         }

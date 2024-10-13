@@ -81,7 +81,7 @@ Current Features:
  - Vein mining
  - Favorite items to research them
  - Fullscreen map teleporting
- - Dash keybind and double tap dash disabling
+ - Dash keybind
  - No favorite tooltips
  - Shimmerable tooltips
  - Works in banks tooltips
@@ -93,4 +93,4 @@ Current Features:
  - 2 Town NPCs who sell almost everything needed
 
 Current Mod Support Document:
-https://docs.google.com/document/d/1yVZoVjiHJ2TJPdBJND9mIV5th3AOI6StFgr2YY1Evuk/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1h_1eK3lDncGwz0KSwWPEkY9foDuFhYDvsteQuWzmVRA/edit?usp=sharing

@@ -29,12 +29,15 @@ namespace QoLCompendium
         internal static ItemConfig itemConfig;
         internal static ShopConfig shopConfig;
         internal static TooltipConfig tooltipConfig;
-        #pragma warning restore CA2211
+
+        internal static int? LastOpenedBank;
+#pragma warning restore CA2211
 
         public override uint ExtraPlayerBuffSlots => mainConfig.ExtraBuffSlots;
 
         public override void Load()
         {
+            On_Player.HandleBeingInChestRange += ChestRange;
             On_WorldGen.moveRoom += WorldGen_moveRoom;
             instance = this;
             Instance = this;
@@ -49,6 +52,7 @@ namespace QoLCompendium
             itemConfig = null;
             shopConfig = null;
             tooltipConfig = null;
+            On_Player.HandleBeingInChestRange -= ChestRange;
             On_WorldGen.moveRoom -= WorldGen_moveRoom;
             Common.Unload();
         }
@@ -74,6 +78,14 @@ namespace QoLCompendium
                 BindingFlags.Instance | BindingFlags.NonPublic,
                 new[] { typeof(int), typeof(int) })?
                 .Invoke(npc, new object[] { homeFloorX, homeFloorY });
+        }
+
+        private void ChestRange(On_Player.orig_HandleBeingInChestRange orig, Player player)
+        {
+            if (player.chest == LastOpenedBank) return;
+            if (LastOpenedBank != null) LastOpenedBank = null;
+
+            orig.Invoke(player);
         }
     }
 }

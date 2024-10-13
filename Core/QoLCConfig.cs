@@ -103,6 +103,9 @@ namespace QoLCompendium.Core
         public int EnemiesDropMoreCoins { get; set; }
 
         [DefaultValue(true)]
+        public bool EncumberingStoneAllowsCoins { get; set; }
+
+        [DefaultValue(true)]
         public bool AutoMoneyQuickStack { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.NPCs")]
@@ -382,6 +385,9 @@ namespace QoLCompendium.Core
             public bool BottomlessChumBucket { get; set; }
 
             [DefaultValue(true)]
+            public bool BottomlessLiquidBucket { get; set; }
+
+            [DefaultValue(true)]
             public bool ChallengersCoin { get; set; }
 
             [DefaultValue(true)]
@@ -401,6 +407,9 @@ namespace QoLCompendium.Core
 
             [DefaultValue(true)]
             public bool GoldenLockpick { get; set; }
+
+            [DefaultValue(true)]
+            public bool GoldenPowder { get; set; }
 
             [DefaultValue(true)]
             public bool InformationAccessories { get; set; }
@@ -453,8 +462,10 @@ namespace QoLCompendium.Core
             [DefaultValue(true)]
             public bool SuperDummy { get; set; }
 
+            /*
             [DefaultValue(true)]
             public bool TheFinalList { get; set; }
+            */
             
             [DefaultValue(true)]
             public bool TravelersMannequin { get; set; }
@@ -699,6 +710,9 @@ namespace QoLCompendium.Core
 
             [DefaultValue(true)]
             public bool ActiveTooltip { get; set; }
+
+            [DefaultValue(true)]
+            public bool NoYoyoTooltip { get; set; }
 
             public override void OnLoaded()
             {

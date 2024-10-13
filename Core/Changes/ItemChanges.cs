@@ -1,4 +1,6 @@
+using Terraria;
 using Terraria.GameContent.Creative;
+using ThoriumMod.Items.ThrownItems;
 
 namespace QoLCompendium.Core.Changes
 {
@@ -739,6 +741,24 @@ namespace QoLCompendium.Core.Changes
                 if (item.type == ItemID.Toolbox)
                     ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.Toolbelt;
 
+                if (item.type == ItemID.BottomlessBucket)
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.BottomlessLavaBucket;
+
+                if (item.type == ItemID.BottomlessLavaBucket)
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.BottomlessHoneyBucket;
+
+                if (item.type == ItemID.BottomlessHoneyBucket)
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.BottomlessBucket;
+
+                if (item.type == ItemID.SuperAbsorbantSponge)
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.LavaAbsorbantSponge;
+
+                if (item.type == ItemID.LavaAbsorbantSponge)
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.HoneyAbsorbantSponge;
+
+                if (item.type == ItemID.HoneyAbsorbantSponge)
+                    ItemID.Sets.ShimmerTransformToItem[item.type] = ItemID.SuperAbsorbantSponge;
+
                 if (item.type == Common.GetModItem(ModConditions.redemptionMod, "Keycard2"))
                     ItemID.Sets.ShimmerTransformToItem[item.type] = Common.GetModItem(ModConditions.redemptionMod, "Keycard");
             }
@@ -818,6 +838,27 @@ namespace QoLCompendium.Core.Changes
                 {
                     item.TurnToAir();
                 }
+            }
+        }
+    }
+
+    public class EncumberingStoneCoins : ModPlayer
+    {
+        public override void PostUpdateMiscEffects()
+        {
+            if (QoLCompendium.mainConfig.EncumberingStoneAllowsCoins)
+            {
+                ItemID.Sets.IgnoresEncumberingStone[ItemID.CopperCoin] = true;
+                ItemID.Sets.IgnoresEncumberingStone[ItemID.SilverCoin] = true;
+                ItemID.Sets.IgnoresEncumberingStone[ItemID.GoldCoin] = true;
+                ItemID.Sets.IgnoresEncumberingStone[ItemID.PlatinumCoin] = true;
+            }
+            else
+            {
+                ItemID.Sets.IgnoresEncumberingStone[ItemID.CopperCoin] = false;
+                ItemID.Sets.IgnoresEncumberingStone[ItemID.SilverCoin] = false;
+                ItemID.Sets.IgnoresEncumberingStone[ItemID.GoldCoin] = false;
+                ItemID.Sets.IgnoresEncumberingStone[ItemID.PlatinumCoin] = false;
             }
         }
     }

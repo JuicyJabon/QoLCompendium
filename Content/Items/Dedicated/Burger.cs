@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Content.Tiles.Dedicated;
 using QoLCompendium.Core;
+using QoLCompendium.Core.Changes;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Dedicated
@@ -33,11 +34,13 @@ namespace QoLCompendium.Content.Items.Dedicated
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - BladeBurger")
+            TooltipLine dedicated = new(Mod, "Dedicated", Language.GetTextValue("Mods.QoLCompendium.DedicatedTooltips.BladeBurger"))
             {
-                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
+                OverrideColor = Common.ColorSwap(Color.LightSeaGreen, Color.Aquamarine, 3)
             };
             tooltips.Add(dedicated);
+
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DedicatedItems);
         }
     }
 }

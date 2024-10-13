@@ -1,5 +1,5 @@
 ﻿using QoLCompendium.Core;
-using Terraria;
+using QoLCompendium.Core.Changes;
 using Terraria.DataStructures;
 using Terraria.Enums;
 
@@ -101,16 +101,18 @@ namespace QoLCompendium.Content.Items.Dedicated
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipLine dedicated = new(Mod, "Dedicated", "Dedicated - Nobisyu")
+            TooltipLine dedicated = new(Mod, "Dedicated", Language.GetTextValue("Mods.QoLCompendium.DedicatedTooltips.Nobisyu"))
             {
-                OverrideColor = Common.ColorSwap(Color.Crimson, Color.Tomato, 2)
+                OverrideColor = Common.ColorSwap(Color.LightSeaGreen, Color.Aquamarine, 3)
             };
             tooltips.Add(dedicated);
+
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DedicatedItems);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type);
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.CrimtaneBar, 10);
             r.AddIngredient(ItemID.Obsidian, 5);
             r.AddTile(TileID.Anvils);
