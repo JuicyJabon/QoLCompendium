@@ -63,9 +63,8 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
         public void HandleShadow(Player player)
         {
             if (player.ownedProjectileCounts[ModContent.ProjectileType<BuildIndicatorProjectile>()] > 200)
-            {
                 return;
-            }
+
             for (int i = -100; i <= 100; i++)
             {
                 Vector2 mouse = Main.MouseWorld;

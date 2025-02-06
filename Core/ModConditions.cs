@@ -1,11 +1,10 @@
-using QoLCompendium.Core.Changes;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Core
 {
     public class ModConditions : ModSystem
     {
-#pragma warning disable CA2211
+#pragma warning disable
         #region Bools & Conditions
 
         //RECIPE CONDITIONS
@@ -334,6 +333,14 @@ namespace QoLCompendium.Core
         public static Condition DownedWulfrumExcavator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWulfrumExcavator"), () => downedWulfrumExcavator);
 
 
+        //CALAMITY ENTROPY
+        public static bool calamityEntropyLoaded;
+        public static Mod calamityEntropyMod;
+        //BOSSES
+        public static bool downedCruiser;
+        public static Condition DownedCruiser = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCruiser"), () => downedCruiser);
+
+
         //CALAMITY OVERHAUL
         public static bool calamityOverhaulLoaded;
         public static Mod calamityOverhaulMod;
@@ -345,6 +352,11 @@ namespace QoLCompendium.Core
         //BIOMES
         public static bool beenToAstralBlight;
         public static Condition HasBeenToAstralBlight = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAstralBlight"), () => beenToAstralBlight);
+
+
+        //CAPTURE DISCS CLASS
+        public static bool captureDiscsClassLoaded;
+        public static Mod captureDiscsClassMod;
 
 
         //CATALYST
@@ -419,6 +431,11 @@ namespace QoLCompendium.Core
         public static Condition DownedThunderveinDragon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedThunderveinDragon"), () => downedThunderveinDragon);
         public static bool downedNightmarePlantera;
         public static Condition DownedNightmarePlantera = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNightmarePlantera"), () => downedNightmarePlantera);
+
+
+        //DEPTHS
+        public static bool crystalDragonsLoaded;
+        public static Mod crystalDragonsMod;
 
 
         //DEPTHS
@@ -557,6 +574,8 @@ namespace QoLCompendium.Core
         //BOSSES
         public static bool downedTrojanSquirrel;
         public static Condition DownedTrojanSquirrel = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTrojanSquirrel"), () => downedTrojanSquirrel);
+        public static bool downedCursedCoffin;
+        public static Condition DownedCursedCoffin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCursedCoffin"), () => downedCursedCoffin);
         public static bool downedDeviantt;
         public static Condition DownedDeviantt = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDeviantt"), () => downedDeviantt);
         public static bool downedLifelight;
@@ -728,6 +747,7 @@ namespace QoLCompendium.Core
         public static Condition DownedSnowOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSnowOrdeal"), () => downedSnowOrdeal);
         public static bool downedUnderworldOrdeal;
         public static Condition DownedUnderworldOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedUnderworldOrdeal"), () => downedUnderworldOrdeal);
+        public static Condition DownedOrdealAny = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOrdealAny"), () => downedCaveOrdeal || downedCorruptOrdeal || downedCrimsonOrdeal || downedDesertOrdeal || downedForestOrdeal || downedHallowOrdeal || downedJungleOrdeal || downedSkyOrdeal || downedSnowOrdeal || downedUnderworldOrdeal);
         //BIOMES
         public static bool beenToHomewardAbyss;
         public static Condition HasBeenToHomewardAbyss = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToHomewardAbyss"), () => beenToHomewardAbyss);
@@ -892,6 +912,16 @@ namespace QoLCompendium.Core
         //MOOMOO'S ULTIMATE YOYO REVAMP
         public static bool moomoosUltimateYoyoRevampLoaded;
         public static Mod moomoosUltimateYoyoRevampMod;
+
+
+        //MR PLAGUE'S RACES
+        public static bool mrPlagueRacesLoaded;
+        public static Mod mrPlagueRacesMod;
+
+
+        //ORCHID MOD
+        public static bool orchidLoaded;
+        public static Mod orchidMod;
 
 
         //OPHIOID MOD
@@ -1462,1354 +1492,401 @@ namespace QoLCompendium.Core
         public enum Downed
         {
             //vanilla
-            downedDreadnautilus,
-            downedMartianSaucer,
-            downedBloodMoon,
-            downedEclipse,
-            downedLunarEvent,
+            Dreadnautilus,
+            MartianSaucer,
+            BloodMoon,
+            Eclipse,
+            LunarEvent,
             //afkpets
-            downedSlayerOfEvil,
-            downedSATLA,
-            downedDrFetus,
-            downedSlimesHope,
-            downedPoliticianSlime,
-            downedAncientTrio,
-            downedLavalGolem,
-            downedAntony,
-            downedBunnyZeppelin,
-            downedOkiku,
-            downedHarpyAirforce,
-            downedIsaac,
-            downedAncientGuardian,
-            downedHeroicSlime,
-            downedHoloSlime,
-            downedSecurityBot,
-            downedUndeadChef,
-            downedGuardianOfFrost,
+            SlayerOfEvil,
+            SATLA,
+            DrFetus,
+            SlimesHope,
+            PoliticianSlime,
+            AncientTrio,
+            LavalGolem,
+            Antony,
+            BunnyZeppelin,
+            Okiku,
+            HarpyAirforce,
+            Isaac,
+            AncientGuardian,
+            HeroicSlime,
+            HoloSlime,
+            SecurityBot,
+            UndeadChef,
+            GuardianOfFrost,
             //assorted crazy things
-            downedSoulHarvester,
+            SoulHarvester,
             //awful garbage
-            downedTreeToad,
-            downedSeseKitsugai,
-            downedEyeOfTheStorm,
-            downedFrigidius,
+            TreeToad,
+            SeseKitsugai,
+            EyeOfTheStorm,
+            Frigidius,
             //blocks core boss
-            downedCoreBoss,
+            CoreBoss,
             //calamity
-            downedCragmawMire,
-            downedNuclearTerror,
-            downedMauler,
+            CragmawMire,
+            NuclearTerror,
+            Mauler,
             //calamity community remix
-            downedWulfrumExcavator,
+            WulfrumExcavator,
+            //calamity entropy
+            Cruiser,
             //catalyst
-            downedAstrageldon,
+            Astrageldon,
             //clamity
-            downedClamitas,
-            downedPyrogen,
-            downedWallOfBronze,
+            Clamitas,
+            Pyrogen,
+            WallOfBronze,
             //consolaria
-            downedLepus,
-            downedTurkor,
-            downedOcram,
+            Lepus,
+            Turkor,
+            Ocram,
             //coralite
-            downedRediancie,
-            downedBabyIceDragon,
-            downedSlimeEmperor,
-            downedBloodiancie,
-            downedThunderveinDragon,
-            downedNightmarePlantera,
+            Rediancie,
+            BabyIceDragon,
+            SlimeEmperor,
+            Bloodiancie,
+            ThunderveinDragon,
+            NightmarePlantera,
             //depths
-            downedChasme,
+            Chasme,
             //dormant dawn
-            downedLifeGuardian,
-            downedManaGuardian,
-            downedMeteorExcavator,
-            downedMeteorAnnihilator,
-            downedHellfireSerpent,
-            downedWitheredAcornSpirit,
-            downedGoblinSorcererChieftain,
+            LifeGuardian,
+            ManaGuardian,
+            MeteorExcavator,
+            MeteorAnnihilator,
+            HellfireSerpent,
+            WitheredAcornSpirit,
+            GoblinSorcererChieftain,
             //echoes of the ancients
-            downedGalahis,
-            downedCreation,
-            downedDestruction,
+            Galahis,
+            Creation,
+            Destruction,
             //edorbis
-            downedBlightKing,
-            downedGardener,
-            downedGlaciation,
-            downedHandOfCthulhu,
-            downedCursePreacher,
+            BlightKing,
+            Gardener,
+            Glaciation,
+            HandOfCthulhu,
+            CursePreacher,
             //exalt
-            downedEffulgence,
-            downedIceLich,
+            Effulgence,
+            IceLich,
             //excelsior
-            downedNiflheim,
-            downedStellarStarship,
+            Niflheim,
+            StellarStarship,
             //exxo avalon origins
-            downedBacteriumPrime,
-            downedDesertBeak,
-            downedKingSting,
-            downedMechasting,
-            downedPhantasm,
+            BacteriumPrime,
+            DesertBeak,
+            KingSting,
+            Mechasting,
+            Phantasm,
             //fargos
-            downedTrojanSquirrel,
-            downedDeviantt,
-            downedLifelight,
-            downedBanishedBaron,
-            downedEridanus,
-            downedAbominationn,
-            downedMutant,
+            TrojanSquirrel,
+            CursedCoffin,
+            Deviantt,
+            Lifelight,
+            BanishedBaron,
+            Eridanus,
+            Abominationn,
+            Mutant,
             //fractures of penumbra
-            downedAlphaFrostjaw,
-            downedSanguineElemental,
+            AlphaFrostjaw,
+            SanguineElemental,
             //gameterraria
-            downedLad,
-            downedHornlitz,
-            downedSnowDon,
-            downedStoffie,
+            Lad,
+            Hornlitz,
+            SnowDon,
+            Stoffie,
             //gensokyo
-            downedLilyWhite,
-            downedRumia,
-            downedEternityLarva,
-            downedNazrin,
-            downedHinaKagiyama,
-            downedSekibanki,
-            downedSeiran,
-            downedNitoriKawashiro,
-            downedMedicineMelancholy,
-            downedCirno,
-            downedMinamitsuMurasa,
-            downedAliceMargatroid,
-            downedSakuyaIzayoi,
-            downedSeijaKijin,
-            downedMayumiJoutouguu,
-            downedToyosatomimiNoMiko,
-            downedKaguyaHouraisan,
-            downedUtsuhoReiuji,
-            downedTenshiHinanawi,
-            downedKisume,
+            LilyWhite,
+            Rumia,
+            EternityLarva,
+            Nazrin,
+            HinaKagiyama,
+            Sekibanki,
+            Seiran,
+            NitoriKawashiro,
+            MedicineMelancholy,
+            Cirno,
+            MinamitsuMurasa,
+            AliceMargatroid,
+            SakuyaIzayoi,
+            SeijaKijin,
+            MayumiJoutouguu,
+            ToyosatomimiNoMiko,
+            KaguyaHouraisan,
+            UtsuhoReiuji,
+            TenshiHinanawi,
+            Kisume,
             //gerds lab
-            downedTrerios,
-            downedMagmaEye,
-            downedJack,
-            downedAcheron,
+            Trerios,
+            MagmaEye,
+            Jack,
+            Acheron,
             //homeward journey
-            downedMarquisMoonsquid,
-            downedPriestessRod,
-            downedDiver,
-            downedMotherbrain,
-            downedWallOfShadow,
-            downedSunSlimeGod,
-            downedOverwatcher,
-            downedLifebringer,
-            downedMaterealizer,
-            downedScarabBelief,
-            downedWorldsEndWhale,
-            downedSon,
-            downedCaveOrdeal,
-            downedCorruptOrdeal,
-            downedCrimsonOrdeal,
-            downedDesertOrdeal,
-            downedForestOrdeal,
-            downedHallowOrdeal,
-            downedJungleOrdeal,
-            downedSkyOrdeal,
-            downedSnowOrdeal,
-            downedUnderworldOrdeal,
+            MarquisMoonsquid,
+            PriestessRod,
+            Diver,
+            Motherbrain,
+            WallOfShadow,
+            SunSlimeGod,
+            Overwatcher,
+            Lifebringer,
+            Materealizer,
+            ScarabBelief,
+            WorldsEndWhale,
+            Son,
+            CaveOrdeal,
+            CorruptOrdeal,
+            CrimsonOrdeal,
+            DesertOrdeal,
+            ForestOrdeal,
+            HallowOrdeal,
+            JungleOrdeal,
+            SkyOrdeal,
+            SnowOrdeal,
+            UnderworldOrdeal,
             //hunt of the old god
-            downedGoozma,
+            Goozma,
             //infernum
-            downedBereftVassal,
+            BereftVassal,
             //lunar veil
-            downedStoneGuardian,
-            downedCommanderGintzia,
-            downedSunStalker,
-            downedPumpkinJack,
-            downedForgottenPuppetDaedus,
-            downedDreadMire,
-            downedSingularityFragment,
-            downedVerlia,
-            downedIrradia,
-            downedSylia,
-            downedFenix,
-            downedBlazingSerpent,
-            downedCogwork,
-            downedWaterCogwork,
-            downedWaterJellyfish,
-            downedSparn,
-            downedPandorasFlamebox,
-            downedSTARBOMBER,
-            downedGintzeArmy,
+            StoneGuardian,
+            CommanderGintzia,
+            SunStalker,
+            PumpkinJack,
+            ForgottenPuppetDaedus,
+            DreadMire,
+            SingularityFragment,
+            Verlia,
+            Irradia,
+            Sylia,
+            Fenix,
+            BlazingSerpent,
+            Cogwork,
+            WaterCogwork,
+            WaterJellyfish,
+            Sparn,
+            PandorasFlamebox,
+            STARBOMBER,
+            GintzeArmy,
             //martains order
-            downedBritzz,
-            downedTheAlchemist,
-            downedCarnagePillar,
-            downedVoidDigger,
-            downedPrinceSlime,
-            downedTriplets,
-            downedJungleDefenders,
+            Britzz,
+            TheAlchemist,
+            CarnagePillar,
+            VoidDigger,
+            PrinceSlime,
+            Triplets,
+            JungleDefenders,
             //mech rework
-            downedSt4sys,
-            downedTerminator,
-            downedCaretaker,
-            downedSiegeEngine,
+            St4sys,
+            Terminator,
+            Caretaker,
+            SiegeEngine,
             //medial rift
-            downedSuperVMS,
+            SuperVMS,
             //metroid
-            downedTorizo,
-            downedSerris,
-            downedKraid,
-            downedPhantoon,
-            downedOmegaPirate,
-            downedNightmare,
-            downedGoldenTorizo,
+            Torizo,
+            Serris,
+            Kraid,
+            Phantoon,
+            OmegaPirate,
+            Nightmare,
+            GoldenTorizo,
             //ophioid
-            downedOphiopede,
-            downedOphiocoon,
-            downedOphiofly,
+            Ophiopede,
+            Ophiocoon,
+            Ophiofly,
             //polarities
-            downedStormCloudfish,
-            downedStarConstruct,
-            downedGigabat,
-            downedSunPixie,
-            downedEsophage,
-            downedConvectiveWanderer,
+            StormCloudfish,
+            StarConstruct,
+            Gigabat,
+            SunPixie,
+            Esophage,
+            ConvectiveWanderer,
             //project zero
-            downedForestGuardian,
-            downedCryoGuardian,
-            downedPrimordialWorm,
-            downedTheGuardianOfHell,
-            downedVoid,
-            downedArmagem,
+            ForestGuardian,
+            CryoGuardian,
+            PrimordialWorm,
+            TheGuardianOfHell,
+            Void,
+            Armagem,
             //qwerty
-            downedPolarExterminator,
-            downedDivineLight,
-            downedAncientMachine,
-            downedNoehtnap,
-            downedHydra,
-            downedImperious,
-            downedRuneGhost,
-            downedInvaderBattleship,
-            downedInvaderNoehtnap,
-            downedOLORD,
-            downedGreatTyrannosaurus,
-            downedDinoMilitia,
-            downedInvaders,
+            PolarExterminator,
+            DivineLight,
+            AncientMachine,
+            Noehtnap,
+            Hydra,
+            Imperious,
+            RuneGhost,
+            InvaderBattleship,
+            InvaderNoehtnap,
+            OLORD,
+            GreatTyrannosaurus,
+            DinoMilitia,
+            Invaders,
             //redemption
-            downedThorn,
-            downedErhan,
-            downedKeeper,
-            downedSeedOfInfection,
-            downedKingSlayerIII,
-            downedOmegaCleaver,
-            downedOmegaGigapora,
-            downedOmegaObliterator,
-            downedPatientZero,
-            downedAkka,
-            downedUkko,
-            downedAncientDeityDuo,
-            downedNebuleus,
-            downedFowlEmperor,
-            downedCockatrice,
-            downedBasan,
-            downedSkullDigger,
-            downedEaglecrestGolem,
-            downedCalavia,
-            downedTheJanitor,
-            downedIrradiatedBehemoth,
-            downedBlisterface,
-            downedProtectorVolt,
-            downedMACEProject,
-            downedFowlMorning,
-            downedRaveyard,
+            Thorn,
+            Erhan,
+            Keeper,
+            SeedOfInfection,
+            KingSlayerIII,
+            OmegaCleaver,
+            OmegaGigapora,
+            OmegaObliterator,
+            PatientZero,
+            Akka,
+            Ukko,
+            AncientDeityDuo,
+            Nebuleus,
+            FowlEmperor,
+            Cockatrice,
+            Basan,
+            SkullDigger,
+            EaglecrestGolem,
+            Calavia,
+            TheJanitor,
+            IrradiatedBehemoth,
+            Blisterface,
+            ProtectorVolt,
+            MACEProject,
+            FowlMorning,
+            Raveyard,
             //secrets of the shadows
-            downedPutridPinky,
-            downedGlowmoth,
-            downedPharaohsCurse,
-            downedAdvisor,
-            downedPolaris,
-            downedLux,
-            downedSubspaceSerpent,
-            downedNatureConstruct,
-            downedEarthenConstruct,
-            downedPermafrostConstruct,
-            downedTidalConstruct,
-            downedOtherworldlyConstruct,
-            downedEvilConstruct,
-            downedInfernoConstruct,
-            downedChaosConstruct,
-            downedNatureSpirit,
-            downedEarthenSpirit,
-            downedPermafrostSpirit,
-            downedTidalSpirit,
-            downedOtherworldlySpirit,
-            downedEvilSpirit,
-            downedInfernoSpirit,
-            downedChaosSpirit,
+            PutridPinky,
+            Glowmoth,
+            PharaohsCurse,
+            Advisor,
+            Polaris,
+            Lux,
+            SubspaceSerpent,
+            NatureConstruct,
+            EarthenConstruct,
+            PermafrostConstruct,
+            TidalConstruct,
+            OtherworldlyConstruct,
+            EvilConstruct,
+            InfernoConstruct,
+            ChaosConstruct,
+            NatureSpirit,
+            EarthenSpirit,
+            PermafrostSpirit,
+            TidalSpirit,
+            OtherworldlySpirit,
+            EvilSpirit,
+            InfernoSpirit,
+            ChaosSpirit,
             //shadows of abaddon
-            downedDecree,
-            downedFlamingPumpkin,
-            downedZombiePiglinBrute,
-            downedJensenTheGrandHarpy,
-            downedAraneas,
-            downedHarpyQueenRaynare,
-            downedPrimordia,
-            downedAbaddon,
-            downedAraghur,
-            downedLostSiblings,
-            downedErazor,
-            downedNihilus,
+            Decree,
+            FlamingPumpkin,
+            ZombiePiglinBrute,
+            JensenTheGrandHarpy,
+            Araneas,
+            HarpyQueenRaynare,
+            Primordia,
+            Abaddon,
+            Araghur,
+            LostSiblings,
+            Erazor,
+            Nihilus,
             //sloome
-            downedExodygen,
+            Exodygen,
             //spirit
-            downedScarabeus,
-            downedMoonJellyWizard,
-            downedVinewrathBane,
-            downedAncientAvian,
-            downedStarplateVoyager,
-            downedInfernon,
-            downedDusking,
-            downedAtlas,
-            downedJellyDeluge,
-            downedTide,
-            downedMysticMoon,
+            Scarabeus,
+            MoonJellyWizard,
+            VinewrathBane,
+            AncientAvian,
+            StarplateVoyager,
+            Infernon,
+            Dusking,
+            Atlas,
+            JellyDeluge,
+            Tide,
+            MysticMoon,
             //spooky
-            downedSpookySpirit,
-            downedRotGourd,
-            downedMoco,
-            downedDaffodil,
-            downedOrroBoro,
-            downedBigBone,
+            SpookySpirit,
+            RotGourd,
+            Moco,
+            Daffodil,
+            OrroBoro,
+            BigBone,
             //starlight river
-            downedAuroracle,
-            downedCeiros,
-            downedGlassweaver,
+            Auroracle,
+            Ceiros,
+            Glassweaver,
             //stars above
-            downedVagrantofSpace,
-            downedThespian,
-            downedDioskouroi,
-            downedNalhaun,
-            downedStarfarers,
-            downedPenthesilea,
-            downedArbitration,
-            downedWarriorOfLight,
-            downedTsukiyomi,
+            VagrantofSpace,
+            Thespian,
+            Dioskouroi,
+            Nalhaun,
+            Starfarers,
+            Penthesilea,
+            Arbitration,
+            WarriorOfLight,
+            Tsukiyomi,
             //storms additions
-            downedAncientHusk,
-            downedOverloadedScandrone,
-            downedPainbringer,
+            AncientHusk,
+            OverloadedScandrone,
+            Painbringer,
             //supernova
-            downedHarbingerOfAnnihilation,
-            downedFlyingTerror,
-            downedStoneMantaRay,
-            downedBloodweaver,
+            HarbingerOfAnnihilation,
+            FlyingTerror,
+            StoneMantaRay,
+            Bloodweaver,
             //terrorborn
-            downedInfectedIncarnate,
-            downedTidalTitan,
-            downedDunestock,
-            downedHexedConstructor,
-            downedShadowcrawler,
-            downedPrototypeI,
+            InfectedIncarnate,
+            TidalTitan,
+            Dunestock,
+            HexedConstructor,
+            Shadowcrawler,
+            PrototypeI,
             //trae
-            downedGraniteOvergrowth,
-            downedBeholder,
+            GraniteOvergrowth,
+            Beholder,
             //uhtric
-            downedDredger,
-            downedCharcoolSnowman,
-            downedCosmicMenace,
+            Dredger,
+            CharcoolSnowman,
+            CosmicMenace,
             //universe of swords
-            downedEvilFlyingBlade,
+            EvilFlyingBlade,
             //valhalla
-            downedColossalCarnage,
-            downedYurnero,
+            ColossalCarnage,
+            Yurnero,
             //vitality
-            downedStormCloud,
-            downedGrandAntlion,
-            downedGemstoneElemental,
-            downedMoonlightDragonfly,
-            downedDreadnaught,
-            downedMosquitoMonarch,
-            downedAnarchulesBeetle,
-            downedChaosbringer,
-            downedPaladinSpirit,
+            StormCloud,
+            GrandAntlion,
+            GemstoneElemental,
+            MoonlightDragonfly,
+            Dreadnaught,
+            MosquitoMonarch,
+            AnarchulesBeetle,
+            Chaosbringer,
+            PaladinSpirit,
             //wayfair
-            downedManaflora,
+            Manaflora,
             //wrath of the gods
-            downedNoxus,
-            downedNamelessDeityOfLight,
+            Noxus,
+            NamelessDeityOfLight,
             //zylon
-            downedDirtball,
-            downedMetelord,
-            downedAdeneb,
-            downedEldritchJellyfish,
-            downedSaburRex
+            Dirtball,
+            Metelord,
+            Adeneb,
+            EldritchJellyfish,
+            SaburRex
         }
 
         public static bool[] downedBoss = new bool[Enum.GetValues(typeof(Downed)).Length];
 
         public static bool[] DownedBoss { get => downedBoss; set => downedBoss = value; }
-
         #endregion
-#pragma warning restore CA2211
 
-        public override void Unload()
-        {
-            DownedBoss = null;
+        public override void Unload() => DownedBoss = null;
 
-            if (!aequusLoaded)
-            {
-                aequusMod = null;
-            }
-            if (!afkpetsLoaded)
-            {
-                afkpetsMod = null;
-            }
-            if (!amuletOfManyMinionsLoaded)
-            {
-                amuletOfManyMinionsMod = null;
-            }
-            if (!arbourLoaded)
-            {
-                arbourMod = null;
-            }
-            if (!assortedCrazyThingsLoaded)
-            {
-                assortedCrazyThingsMod = null;
-            }
-            if (!awfulGarbageLoaded)
-            {
-                awfulGarbageMod = null;
-            }
-            if (!blocksArsenalLoaded)
-            {
-                blocksArsenalMod = null;
-            }
-            if (!blocksArtificerLoaded)
-            {
-                blocksArtificerMod = null;
-            }
-            if (!blocksCoreBossLoaded)
-            {
-                blocksCoreBossMod = null;
-            }
-            if (!blocksInfoAccessoriesLoaded)
-            {
-                blocksInfoAccessoriesMod = null;
-            }
-            if (!blocksThrowerLoaded)
-            {
-                blocksThrowerMod = null;
-            }
-            if (!bombusApisLoaded)
-            {
-                bombusApisMod = null;
-            }
-            if (!buffariaLoaded)
-            {
-                buffariaMod = null;
-            }
-            if (!calamityLoaded)
-            {
-                calamityMod = null;
-            }
-            if (!calamityCommunityRemixLoaded)
-            {
-                calamityCommunityRemixMod = null;
-            }
-            if (!calamityOverhaulLoaded)
-            {
-                calamityOverhaulMod = null;
-            }
-            if (!calamityVanitiesLoaded)
-            {
-                calamityVanitiesMod = null;
-            }
-            if (!catalystLoaded)
-            {
-                catalystMod = null;
-            }
-            if (!cerebralLoaded)
-            {
-                cerebralMod = null;
-            }
-            if (!clamityAddonLoaded)
-            {
-                clamityAddonMod = null;
-            }
-            if (!classicalLoaded)
-            {
-                classicalMod = null;
-            }
-            if (!clickerClassLoaded)
-            {
-                clickerClassMod = null;
-            }
-            if (!confectionRebakedLoaded)
-            {
-                confectionRebakedMod = null;
-            }
-            if (!consolariaLoaded)
-            {
-                consolariaMod = null;
-            }
-            if (!coraliteLoaded)
-            {
-                coraliteMod = null;
-            }
-            if (!depthsLoaded)
-            {
-                depthsMod = null;
-            }
-            if (!dormantDawnLoaded)
-            {
-                dormantDawnMod = null;
-            }
-            if (!draedonExpansionLoaded)
-            {
-                draedonExpansionMod = null;
-            }
-            if (!dragonBallTerrariaLoaded)
-            {
-                dragonBallTerrariaMod = null;
-            }
-            if (!echoesOfTheAncientsLoaded)
-            {
-                echoesOfTheAncientsMod = null;
-            }
-            if (!edorbisLoaded)
-            {
-                edorbisMod = null;
-            }
-            if (!enchantedMoonsLoaded)
-            {
-                enchantedMoonsMod = null;
-            }
-            if (!everjadeLoaded)
-            {
-                everjadeMod = null;
-            }
-            if (!exaltLoaded)
-            {
-                exaltMod = null;
-            }
-            if (!excelsiorLoaded)
-            {
-                excelsiorMod = null;
-            }
-            if (!exxoAvalonOriginsLoaded)
-            {
-                exxoAvalonOriginsMod = null;
-            }
-            if (!fargosMutantLoaded)
-            {
-                fargosMutantMod = null;
-            }
-            if (!fargosSoulsLoaded)
-            {
-                fargosSoulsMod = null;
-            }
-            if (!fargosSoulsDLCLoaded)
-            {
-                fargosSoulsDLCMod = null;
-            }
-            if (!fargosSoulsExtrasLoaded)
-            {
-                fargosSoulsExtrasMod = null;
-            }
-            if (!fracturesOfPenumbraLoaded)
-            {
-                fracturesOfPenumbraMod = null;
-            }
-            if (!furnitureFoodAndFunLoaded)
-            {
-                furnitureFoodAndFunMod = null;
-            }
-            if (!gameTerrariaLoaded)
-            {
-                gameTerrariaMod = null;
-            }
-            if (!gensokyoLoaded)
-            {
-                gensokyoMod = null;
-            }
-            if (!gerdsLabLoaded)
-            {
-                gerdsLabMod = null;
-            }
-            if (!heartbeatariaLoaded)
-            {
-                heartbeatariaMod = null;
-            }
-            if (!homewardJourneyLoaded)
-            {
-                homewardJourneyMod = null;
-            }
-            if (!huntOfTheOldGodLoaded)
-            {
-                huntOfTheOldGodMod = null;
-            }
-            if (!infernumLoaded)
-            {
-                infernumMod = null;
-            }
-            if (!luiAFKLoaded)
-            {
-                luiAFKMod = null;
-            }
-            if (!lunarVeilLoaded)
-            {
-                lunarVeilMod = null;
-            }
-            if (!magicStorageLoaded)
-            {
-                magicStorageMod = null;
-            }
-            if (!martainsOrderLoaded)
-            {
-                martainsOrderMod = null;
-            }
-            if (!mechReworkLoaded)
-            {
-                mechReworkMod = null;
-            }
-            if (!medialRiftLoaded)
-            {
-                medialRiftMod = null;
-            }
-            if (!metroidLoaded)
-            {
-                metroidMod = null;
-            }
-            if (!moomoosUltimateYoyoRevampLoaded)
-            {
-                moomoosUltimateYoyoRevampMod = null;
-            }
-            if (!ophioidLoaded)
-            {
-                ophioidMod = null;
-            }
-            if (!polaritiesLoaded)
-            {
-                polaritiesMod = null;
-            }
-            if (!projectZeroLoaded)
-            {
-                projectZeroMod = null;
-            }
-            if (!qwertyLoaded)
-            {
-                qwertyMod = null;
-            }
-            if (!redemptionLoaded)
-            {
-                redemptionMod = null;
-            }
-            if (!reforgedLoaded)
-            {
-                reforgedMod = null;
-            }
-            if (!remnantsLoaded)
-            {
-                remnantsMod = null;
-            }
-            if (!secretsOfTheShadowsLoaded)
-            {
-                secretsOfTheShadowsMod = null;
-            }
-            if (!shadowsOfAbaddonLoaded)
-            {
-                shadowsOfAbaddonMod = null;
-            }
-            if (!sloomeLoaded)
-            {
-                sloomeMod = null;
-            }
-            if (!spiritLoaded)
-            {
-                spiritMod = null;
-            }
-            if (!spookyLoaded)
-            {
-                spookyMod = null;
-            }
-            if (!starlightRiverLoaded)
-            {
-                starlightRiverMod = null;
-            }
-            if (!starsAboveLoaded)
-            {
-                starsAboveMod = null;
-            }
-            if (!stormsAdditionsLoaded)
-            {
-                stormsAdditionsMod = null;
-            }
-            if (!stramsClassesLoaded)
-            {
-                stramsClassesMod = null;
-            }
-            if (!supernovaLoaded)
-            {
-                supernovaMod = null;
-            }
-            if (!terrorbornLoaded)
-            {
-                terrorbornMod = null;
-            }
-            if (!thoriumLoaded)
-            {
-                thoriumMod = null;
-            }
-            if (!traeLoaded)
-            {
-                traeMod = null;
-            }
-            if (!uhtricLoaded)
-            {
-                uhtricMod = null;
-            }
-            if (!universeOfSwordsLoaded)
-            {
-                universeOfSwordsMod = null;
-            }
-            if (!valhallaLoaded)
-            {
-                valhallaMod = null;
-            }
-            if (!verdantLoaded)
-            {
-                verdantMod = null;
-            }
-            if (!vitalityLoaded)
-            {
-                vitalityMod = null;
-            }
-            if (!wayfairContentLoaded)
-            {
-                wayfairContentMod = null;
-            }
-            if (!wrathOfTheGodsLoaded)
-            {
-                wrathOfTheGodsMod = null;
-            }
-            if (!zylonLoaded)
-            {
-                zylonMod = null;
-            }
-        }
+        public override void OnWorldLoad() => Resetdowned();
 
-        public override void Load()
-        {
-            if (!aequusLoaded)
-            {
-                aequusMod = null;
-            }
-            if (!afkpetsLoaded)
-            {
-                afkpetsMod = null;
-            }
-            if (!amuletOfManyMinionsLoaded)
-            {
-                amuletOfManyMinionsMod = null;
-            }
-            if (!arbourLoaded)
-            {
-                arbourMod = null;
-            }
-            if (!assortedCrazyThingsLoaded)
-            {
-                assortedCrazyThingsMod = null;
-            }
-            if (!awfulGarbageLoaded)
-            {
-                awfulGarbageMod = null;
-            }
-            if (!blocksArsenalLoaded)
-            {
-                blocksArsenalMod = null;
-            }
-            if (!blocksArtificerLoaded)
-            {
-                blocksArtificerMod = null;
-            }
-            if (!blocksCoreBossLoaded)
-            {
-                blocksCoreBossMod = null;
-            }
-            if (!blocksInfoAccessoriesLoaded)
-            {
-                blocksInfoAccessoriesMod = null;
-            }
-            if (!blocksThrowerLoaded)
-            {
-                blocksThrowerMod = null;
-            }
-            if (!bombusApisLoaded)
-            {
-                bombusApisMod = null;
-            }
-            if (!buffariaLoaded)
-            {
-                buffariaMod = null;
-            }
-            if (!calamityLoaded)
-            {
-                calamityMod = null;
-            }
-            if (!calamityCommunityRemixLoaded)
-            {
-                calamityCommunityRemixMod = null;
-            }
-            if (!calamityOverhaulLoaded)
-            {
-                calamityOverhaulMod = null;
-            }
-            if (!calamityVanitiesLoaded)
-            {
-                calamityVanitiesMod = null;
-            }
-            if (!catalystLoaded)
-            {
-                catalystMod = null;
-            }
-            if (!cerebralLoaded)
-            {
-                cerebralMod = null;
-            }
-            if (!clamityAddonLoaded)
-            {
-                clamityAddonMod = null;
-            }
-            if (!classicalLoaded)
-            {
-                classicalMod = null;
-            }
-            if (!clickerClassLoaded)
-            {
-                clickerClassMod = null;
-            }
-            if (!confectionRebakedLoaded)
-            {
-                confectionRebakedMod = null;
-            }
-            if (!consolariaLoaded)
-            {
-                consolariaMod = null;
-            }
-            if (!coraliteLoaded)
-            {
-                coraliteMod = null;
-            }
-            if (!depthsLoaded)
-            {
-                depthsMod = null;
-            }
-            if (!dormantDawnLoaded)
-            {
-                dormantDawnMod = null;
-            }
-            if (!draedonExpansionLoaded)
-            {
-                draedonExpansionMod = null;
-            }
-            if (!dragonBallTerrariaLoaded)
-            {
-                dragonBallTerrariaMod = null;
-            }
-            if (!echoesOfTheAncientsLoaded)
-            {
-                echoesOfTheAncientsMod = null;
-            }
-            if (!edorbisLoaded)
-            {
-                edorbisMod = null;
-            }
-            if (!enchantedMoonsLoaded)
-            {
-                enchantedMoonsMod = null;
-            }
-            if (!everjadeLoaded)
-            {
-                everjadeMod = null;
-            }
-            if (!exaltLoaded)
-            {
-                exaltMod = null;
-            }
-            if (!excelsiorLoaded)
-            {
-                excelsiorMod = null;
-            }
-            if (!exxoAvalonOriginsLoaded)
-            {
-                exxoAvalonOriginsMod = null;
-            }
-            if (!fargosMutantLoaded)
-            {
-                fargosMutantMod = null;
-            }
-            if (!fargosSoulsLoaded)
-            {
-                fargosSoulsMod = null;
-            }
-            if (!fargosSoulsDLCLoaded)
-            {
-                fargosSoulsDLCMod = null;
-            }
-            if (!fargosSoulsExtrasLoaded)
-            {
-                fargosSoulsExtrasMod = null;
-            }
-            if (!fracturesOfPenumbraLoaded)
-            {
-                fracturesOfPenumbraMod = null;
-            }
-            if (!furnitureFoodAndFunLoaded)
-            {
-                furnitureFoodAndFunMod = null;
-            }
-            if (!gameTerrariaLoaded)
-            {
-                gameTerrariaMod = null;
-            }
-            if (!gensokyoLoaded)
-            {
-                gensokyoMod = null;
-            }
-            if (!gerdsLabLoaded)
-            {
-                gerdsLabMod = null;
-            }
-            if (!heartbeatariaLoaded)
-            {
-                heartbeatariaMod = null;
-            }
-            if (!homewardJourneyLoaded)
-            {
-                homewardJourneyMod = null;
-            }
-            if (!huntOfTheOldGodLoaded)
-            {
-                huntOfTheOldGodMod = null;
-            }
-            if (!infernumLoaded)
-            {
-                infernumMod = null;
-            }
-            if (!luiAFKLoaded)
-            {
-                luiAFKMod = null;
-            }
-            if (!lunarVeilLoaded)
-            {
-                lunarVeilMod = null;
-            }
-            if (!magicStorageLoaded)
-            {
-                magicStorageMod = null;
-            }
-            if (!martainsOrderLoaded)
-            {
-                martainsOrderMod = null;
-            }
-            if (!mechReworkLoaded)
-            {
-                mechReworkMod = null;
-            }
-            if (!medialRiftLoaded)
-            {
-                medialRiftMod = null;
-            }
-            if (!metroidLoaded)
-            {
-                metroidMod = null;
-            }
-            if (!moomoosUltimateYoyoRevampLoaded)
-            {
-                moomoosUltimateYoyoRevampMod = null;
-            }
-            if (!ophioidLoaded)
-            {
-                ophioidMod = null;
-            }
-            if (!polaritiesLoaded)
-            {
-                polaritiesMod = null;
-            }
-            if (!projectZeroLoaded)
-            {
-                projectZeroMod = null;
-            }
-            if (!qwertyLoaded)
-            {
-                qwertyMod = null;
-            }
-            if (!redemptionLoaded)
-            {
-                redemptionMod = null;
-            }
-            if (!reforgedLoaded)
-            {
-                reforgedMod = null;
-            }
-            if (!remnantsLoaded)
-            {
-                remnantsMod = null;
-            }
-            if (!secretsOfTheShadowsLoaded)
-            {
-                secretsOfTheShadowsMod = null;
-            }
-            if (!shadowsOfAbaddonLoaded)
-            {
-                shadowsOfAbaddonMod = null;
-            }
-            if (!sloomeLoaded)
-            {
-                sloomeMod = null;
-            }
-            if (!spiritLoaded)
-            {
-                spiritMod = null;
-            }
-            if (!spookyLoaded)
-            {
-                spookyMod = null;
-            }
-            if (!starlightRiverLoaded)
-            {
-                starlightRiverMod = null;
-            }
-            if (!starsAboveLoaded)
-            {
-                starsAboveMod = null;
-            }
-            if (!stormsAdditionsLoaded)
-            {
-                stormsAdditionsMod = null;
-            }
-            if (!stramsClassesLoaded)
-            {
-                stramsClassesMod = null;
-            }
-            if (!supernovaLoaded)
-            {
-                supernovaMod = null;
-            }
-            if (!terrorbornLoaded)
-            {
-                terrorbornMod = null;
-            }
-            if (!thoriumLoaded)
-            {
-                thoriumMod = null;
-            }
-            if (!traeLoaded)
-            {
-                traeMod = null;
-            }
-            if (!uhtricLoaded)
-            {
-                uhtricMod = null;
-            }
-            if (!universeOfSwordsLoaded)
-            {
-                universeOfSwordsMod = null;
-            }
-            if (!valhallaLoaded)
-            {
-                valhallaMod = null;
-            }
-            if (!verdantLoaded)
-            {
-                verdantMod = null;
-            }
-            if (!vitalityLoaded)
-            {
-                vitalityMod = null;
-            }
-            if (!wayfairContentLoaded)
-            {
-                wayfairContentMod = null;
-            }
-            if (!wrathOfTheGodsLoaded)
-            {
-                wrathOfTheGodsMod = null;
-            }
-            if (!zylonLoaded)
-            {
-                zylonMod = null;
-            }
-        }
-
-        public override void PostSetupContent()
-        {
-            aequusLoaded = ModLoader.TryGetMod("Aequus", out Mod Aequus);
-            aequusMod = Aequus;
-
-            afkpetsLoaded = ModLoader.TryGetMod("AFKPETS", out Mod AFKPETS);
-            afkpetsMod = AFKPETS;
-
-            amuletOfManyMinionsLoaded = ModLoader.TryGetMod("AmuletOfManyMinions", out Mod AmuletOfManyMinions);
-            amuletOfManyMinionsMod = AmuletOfManyMinions;
-
-            arbourLoaded = ModLoader.TryGetMod("Arbour", out Mod Arbour);
-            arbourMod = Arbour;
-
-            assortedCrazyThingsLoaded = ModLoader.TryGetMod("AssortedCrazyThings", out Mod AssortedCrazyThings);
-            assortedCrazyThingsMod = AssortedCrazyThings;
-
-            awfulGarbageLoaded = ModLoader.TryGetMod("AwfulGarbageMod", out Mod AwfulGarbageMod);
-            awfulGarbageMod = AwfulGarbageMod;
-
-            blocksArsenalLoaded = ModLoader.TryGetMod("Arsenal_Mod", out Mod Arsenal_Mod);
-            blocksArsenalMod = Arsenal_Mod;
-
-            blocksArtificerLoaded = ModLoader.TryGetMod("ArtificerMod", out Mod ArtificerMod);
-            blocksArtificerMod = ArtificerMod;
-
-            blocksCoreBossLoaded = ModLoader.TryGetMod("CorruptionBoss", out Mod CorruptionBoss);
-            blocksCoreBossMod = CorruptionBoss;
-
-            blocksInfoAccessoriesLoaded = ModLoader.TryGetMod("BInfoAcc", out Mod BInfoAcc);
-            blocksInfoAccessoriesMod = BInfoAcc;
-
-            blocksThrowerLoaded = ModLoader.TryGetMod("BCThrower", out Mod BCThrower);
-            blocksThrowerMod = BCThrower;
-
-            bombusApisLoaded = ModLoader.TryGetMod("BombusApisBee", out Mod BombusApisBee);
-            bombusApisMod = BombusApisBee;
-
-            buffariaLoaded = ModLoader.TryGetMod("Buffaria", out Mod Buffaria);
-            buffariaMod = Buffaria;
-
-            calamityLoaded = ModLoader.TryGetMod("CalamityMod", out Mod CalamityMod);
-            calamityMod = CalamityMod;
-
-            calamityCommunityRemixLoaded = ModLoader.TryGetMod("CalRemix", out Mod CalRemix);
-            calamityCommunityRemixMod = CalRemix;
-
-            calamityOverhaulLoaded = ModLoader.TryGetMod("CalamityOverhaul", out Mod CalamityOverhaul);
-            calamityOverhaulMod = CalamityOverhaul;
-
-            calamityVanitiesLoaded = ModLoader.TryGetMod("CalValEX", out Mod CalValEX);
-            calamityVanitiesMod = CalValEX;
-
-            catalystLoaded = ModLoader.TryGetMod("CatalystMod", out Mod CatalystMod);
-            catalystMod = CatalystMod;
-
-            cerebralLoaded = ModLoader.TryGetMod("CerebralMod", out Mod CerebralMod);
-            cerebralMod = CerebralMod;
-
-            clamityAddonLoaded = ModLoader.TryGetMod("Clamity", out Mod Clamity);
-            clamityAddonMod = Clamity;
-
-            classicalLoaded = ModLoader.TryGetMod("Classical", out Mod Classical);
-            classicalMod = Classical;
-
-            clickerClassLoaded = ModLoader.TryGetMod("ClickerClass", out Mod ClickerClass);
-            clickerClassMod = ClickerClass;
-
-            confectionRebakedLoaded = ModLoader.TryGetMod("TheConfectionRebirth", out Mod TheConfectionRebirth);
-            confectionRebakedMod = TheConfectionRebirth;
-
-            consolariaLoaded = ModLoader.TryGetMod("Consolaria", out Mod Consolaria);
-            consolariaMod = Consolaria;
-
-            coraliteLoaded = ModLoader.TryGetMod("Coralite", out Mod Coralite);
-            coraliteMod = Coralite;
-
-            depthsLoaded = ModLoader.TryGetMod("TheDepths", out Mod TheDepths);
-            depthsMod = TheDepths;
-
-            dormantDawnLoaded = ModLoader.TryGetMod("DDmod", out Mod DDmod);
-            dormantDawnMod = DDmod;
-
-            draedonExpansionLoaded = ModLoader.TryGetMod("DraedonExpansion", out Mod DraedonExpansion);
-            draedonExpansionMod = DraedonExpansion;
-
-            dragonBallTerrariaLoaded = ModLoader.TryGetMod("DBZMODPORT", out Mod DBZMODPORT);
-            dragonBallTerrariaMod = DBZMODPORT;
-
-            echoesOfTheAncientsLoaded = ModLoader.TryGetMod("EchoesoftheAncients", out Mod EchoesoftheAncients);
-            echoesOfTheAncientsMod = EchoesoftheAncients;
-
-            edorbisLoaded = ModLoader.TryGetMod("Edorbis", out Mod Edorbis);
-            edorbisMod = Edorbis;
-
-            enchantedMoonsLoaded = ModLoader.TryGetMod("BlueMoon", out Mod BlueMoon);
-            enchantedMoonsMod = BlueMoon;
-
-            everjadeLoaded = ModLoader.TryGetMod("JadeFables", out Mod JadeFables);
-            everjadeMod = JadeFables;
-
-            exaltLoaded = ModLoader.TryGetMod("ExaltMod", out Mod ExaltMod);
-            exaltMod = ExaltMod;
-
-            excelsiorLoaded = ModLoader.TryGetMod("excels", out Mod excels);
-            excelsiorMod = excels;
-
-            exxoAvalonOriginsLoaded = ModLoader.TryGetMod("Avalon", out Mod Avalon);
-            exxoAvalonOriginsMod = Avalon;
-
-            fargosMutantLoaded = ModLoader.TryGetMod("Fargowiltas", out Mod Fargowiltas);
-            fargosMutantMod = Fargowiltas;
-
-            fargosSoulsLoaded = ModLoader.TryGetMod("FargowiltasSouls", out Mod FargowiltasSouls);
-            fargosSoulsMod = FargowiltasSouls;
-            
-            fargosSoulsDLCLoaded = ModLoader.TryGetMod("FargowiltasCrossmod", out Mod FargowiltasCrossmod);
-            fargosSoulsDLCMod = FargowiltasCrossmod;
-
-            fargosSoulsExtrasLoaded = ModLoader.TryGetMod("FargowiltasSoulsDLC", out Mod FargowiltasSoulsDLC);
-            fargosSoulsExtrasMod = FargowiltasSoulsDLC;
-
-            fracturesOfPenumbraLoaded = ModLoader.TryGetMod("FPenumbra", out Mod FPenumbra);
-            fracturesOfPenumbraMod = FPenumbra;
-
-            furnitureFoodAndFunLoaded = ModLoader.TryGetMod("CosmeticVariety", out Mod CosmeticVariety);
-            furnitureFoodAndFunMod = CosmeticVariety;
-
-            gameTerrariaLoaded = ModLoader.TryGetMod("GMT", out Mod GMT);
-            gameTerrariaMod = GMT;
-
-            gensokyoLoaded = ModLoader.TryGetMod("Gensokyo", out Mod Gensokyo);
-            gensokyoMod = Gensokyo;
-
-            gerdsLabLoaded = ModLoader.TryGetMod("GMR", out Mod GMR);
-            gerdsLabMod = GMR;
-
-            heartbeatariaLoaded = ModLoader.TryGetMod("XDContentMod", out Mod XDContentMod);
-            heartbeatariaMod = XDContentMod;
-
-            homewardJourneyLoaded = ModLoader.TryGetMod("ContinentOfJourney", out Mod ContinentOfJourney);
-            homewardJourneyMod = ContinentOfJourney;
-
-            huntOfTheOldGodLoaded = ModLoader.TryGetMod("CalamityHunt", out Mod CalamityHunt);
-            huntOfTheOldGodMod = CalamityHunt;
-
-            infernumLoaded = ModLoader.TryGetMod("InfernumMode", out Mod InfernumMode);
-            infernumMod = InfernumMode;
-
-            luiAFKLoaded = ModLoader.TryGetMod("miningcracks_take_on_luiafk", out Mod miningcracks_take_on_luiafk);
-            luiAFKMod = miningcracks_take_on_luiafk;
-
-            lunarVeilLoaded = ModLoader.TryGetMod("Stellamod", out Mod Stellamod);
-            lunarVeilMod = Stellamod;
-
-            magicStorageLoaded = ModLoader.TryGetMod("MagicStorage", out Mod MagicStorage);
-            magicStorageMod = MagicStorage;
-
-            martainsOrderLoaded = ModLoader.TryGetMod("MartainsOrder", out Mod MartainsOrder);
-            martainsOrderMod = MartainsOrder;
-
-            mechReworkLoaded = ModLoader.TryGetMod("PrimeRework", out Mod PrimeRework);
-            mechReworkMod = PrimeRework;
-
-            medialRiftLoaded = ModLoader.TryGetMod("MedRift", out Mod MedRift);
-            medialRiftMod = MedRift;
-
-            metroidLoaded = ModLoader.TryGetMod("MetroidMod", out Mod MetroidMod);
-            metroidMod = MetroidMod;
-
-            moomoosUltimateYoyoRevampLoaded = ModLoader.TryGetMod("CombinationsMod", out Mod CombinationsMod);
-            moomoosUltimateYoyoRevampMod = CombinationsMod;
-
-            ophioidLoaded = ModLoader.TryGetMod("OphioidMod", out Mod OphioidMod);
-            ophioidMod = OphioidMod;
-
-            polaritiesLoaded = ModLoader.TryGetMod("Polarities", out Mod Polarities);
-            polaritiesMod = Polarities;
-
-            projectZeroLoaded = ModLoader.TryGetMod("FM", out Mod FM);
-            projectZeroMod = FM;
-
-            qwertyLoaded = ModLoader.TryGetMod("QwertyMod", out Mod QwertyMod);
-            qwertyMod = QwertyMod;
-
-            redemptionLoaded = ModLoader.TryGetMod("Redemption", out Mod Redemption);
-            redemptionMod = Redemption;
-
-            reforgedLoaded = ModLoader.TryGetMod("ReforgeOverhaul", out Mod ReforgeOverhaul);
-            reforgedMod = ReforgeOverhaul;
-
-            remnantsLoaded = ModLoader.TryGetMod("Remnants", out Mod Remnants);
-            remnantsMod = Remnants;
-
-            secretsOfTheShadowsLoaded = ModLoader.TryGetMod("SOTS", out Mod SOTS);
-            secretsOfTheShadowsMod = SOTS;
-
-            shadowsOfAbaddonLoaded = ModLoader.TryGetMod("SacredTools", out Mod SacredTools);
-            shadowsOfAbaddonMod = SacredTools;
-
-            sloomeLoaded = ModLoader.TryGetMod("Bloopsitems", out Mod Bloopsitems);
-            sloomeMod = Bloopsitems;
-
-            spiritLoaded = ModLoader.TryGetMod("SpiritMod", out Mod SpiritMod);
-            spiritMod = SpiritMod;
-
-            spookyLoaded = ModLoader.TryGetMod("Spooky", out Mod Spooky);
-            spookyMod = Spooky;
-
-            starlightRiverLoaded = ModLoader.TryGetMod("StarlightRiver", out Mod StarlightRiver);
-            starlightRiverMod = StarlightRiver;
-
-            starsAboveLoaded = ModLoader.TryGetMod("StarsAbove", out Mod StarsAbove);
-            starsAboveMod = StarsAbove;
-
-            stormsAdditionsLoaded = ModLoader.TryGetMod("StormDiversMod", out Mod StormDiversMod);
-            stormsAdditionsMod = StormDiversMod;
-
-            stramsClassesLoaded = ModLoader.TryGetMod("StramClasses", out Mod StramClasses);
-            stramsClassesMod = StramClasses;
-
-            supernovaLoaded = ModLoader.TryGetMod("SupernovaMod", out Mod SupernovaMod);
-            supernovaMod = SupernovaMod;
-
-            terrorbornLoaded = ModLoader.TryGetMod("TerrorbornMod", out Mod TerrorbornMod);
-            terrorbornMod = TerrorbornMod;
-
-            thoriumLoaded = ModLoader.TryGetMod("ThoriumMod", out Mod ThoriumMod);
-            thoriumMod = ThoriumMod;
-
-            traeLoaded = ModLoader.TryGetMod("TRAEProject", out Mod TRAEProject);
-            traeMod = TRAEProject;
-
-            uhtricLoaded = ModLoader.TryGetMod("Uhtric", out Mod Uhtric);
-            uhtricMod = Uhtric;
-
-            universeOfSwordsLoaded = ModLoader.TryGetMod("UniverseOfSwordsMod", out Mod UniverseOfSwordsMod);
-            universeOfSwordsMod = UniverseOfSwordsMod;
-
-            valhallaLoaded = ModLoader.TryGetMod("ValhallaMod", out Mod ValhallaMod);
-            valhallaMod = ValhallaMod;
-
-            verdantLoaded = ModLoader.TryGetMod("Verdant", out Mod Verdant);
-            verdantMod = Verdant;
-
-            vitalityLoaded = ModLoader.TryGetMod("VitalityMod", out Mod VitalityMod);
-            vitalityMod = VitalityMod;
-
-            wayfairContentLoaded = ModLoader.TryGetMod("WAYFAIRContent", out Mod WAYFAIRContent);
-            wayfairContentMod = WAYFAIRContent;
-
-            wrathOfTheGodsLoaded = ModLoader.TryGetMod("NoxusBoss", out Mod NoxusBoss);
-            wrathOfTheGodsMod = NoxusBoss;
-
-            zylonLoaded = ModLoader.TryGetMod("Zylon", out Mod Zylon);
-            zylonMod = Zylon;
-
-            BuffSystem.DoBuffIntegration();
-        }
-
-        public override void OnWorldLoad()
-        {
-            Resetdowned();
-        }
-
-        public override void OnWorldUnload()
-        {
-            Resetdowned();
-        }
+        public override void OnWorldUnload() => Resetdowned();
 
         public override void PostUpdateEverything()
         {
@@ -2942,8 +2019,550 @@ namespace QoLCompendium.Core
             }
         }
 
+        public override void PreUpdatePlayers()
+        {
+            #region Vanilla Events
+            if (Main.bloodMoon && !waitForBloodMoon)
+            {
+                waitForBloodMoon = true;
+            }
+            if (waitForBloodMoon && !Main.bloodMoon && Main.dayTime)
+            {
+                downedBloodMoon = true;
+            }
+            if (waitForBloodMoon && !Main.bloodMoon && !Main.dayTime)
+            {
+                waitForBloodMoon = false;
+            }
+            if (Main.eclipse && !waitForEclipse)
+            {
+                waitForEclipse = true;
+            }
+            if (waitForEclipse && !Main.eclipse && !Main.dayTime)
+            {
+                downedEclipse = true;
+            }
+            if (waitForEclipse && !Main.eclipse && Main.dayTime)
+            {
+                waitForEclipse = false;
+            }
+            if (NPC.downedTowerNebula && NPC.downedTowerSolar && NPC.downedTowerStardust && NPC.downedTowerVortex)
+            {
+                downedLunarEvent = true;
+            }
+            if (!Main.dayTime)
+            {
+                beenThroughNight = true;
+            }
+            #endregion
+
+            #region Vanilla Biomes
+            if (Main.LocalPlayer.ZoneForest)
+            {
+                beenToPurity = true;
+            }
+            if (Main.LocalPlayer.ZoneNormalCaverns || Main.LocalPlayer.ZoneNormalUnderground)
+            {
+                beenToCavernsOrUnderground = true;
+            }
+            if (Main.LocalPlayer.ZoneUnderworldHeight)
+            {
+                beenToUnderworld = true;
+            }
+            if (Main.LocalPlayer.ZoneSkyHeight)
+            {
+                beenToSky = true;
+            }
+            if (Main.LocalPlayer.ZoneSnow)
+            {
+                beenToSnow = true;
+            }
+            if (Main.LocalPlayer.ZoneDesert || Main.LocalPlayer.ZoneUndergroundDesert)
+            {
+                beenToDesert = true;
+            }
+            if (Main.LocalPlayer.ZoneBeach)
+            {
+                beenToOcean = true;
+            }
+            if (Main.LocalPlayer.ZoneJungle)
+            {
+                beenToJungle = true;
+            }
+            if (Main.LocalPlayer.ZoneGlowshroom)
+            {
+                beenToMushroom = true;
+            }
+            if (Main.LocalPlayer.ZoneCorrupt)
+            {
+                beenToCorruption = true;
+            }
+            if (Main.LocalPlayer.ZoneCrimson)
+            {
+                beenToCrimson = true;
+            }
+            if (Main.LocalPlayer.ZoneHallow)
+            {
+                beenToHallow = true;
+            }
+            if (Main.LocalPlayer.ZoneLihzhardTemple)
+            {
+                beenToTemple = true;
+            }
+            if (Main.LocalPlayer.ZoneDungeon)
+            {
+                beenToDungeon = true;
+            }
+            if (Main.LocalPlayer.ZoneShimmer)
+            {
+                beenToAether = true;
+            }
+            #endregion
+
+            if (aequusLoaded)
+            {
+                #region Bosses & Events
+                downedCrabson = (bool)aequusMod.Call("downedCrabson");
+                downedOmegaStarite = (bool)aequusMod.Call("downedOmegaStarite");
+                downedDustDevil = (bool)aequusMod.Call("downedDustDevil");
+                downedRedSprite = (bool)aequusMod.Call("downedRedSprite");
+                downedSpaceSquid = (bool)aequusMod.Call("downedSpaceSquid");
+                downedHyperStarite = (bool)aequusMod.Call("downedHyperStarite");
+                downedUltraStarite = (bool)aequusMod.Call("downedUltraStarite");
+                //Events
+                downedDemonSiege = (bool)aequusMod.Call("downedEventDemon");
+                downedGlimmer = (bool)aequusMod.Call("downedEventCosmic");
+                downedGaleStreams = (bool)aequusMod.Call("downedEventAtmosphere");
+                #endregion
+
+                #region Biomes
+                if (aequusMod.TryFind("CrabCreviceBiome", out ModBiome CrabCreviceBiome) && Main.LocalPlayer.InModBiome(CrabCreviceBiome))
+                    beenToCrabCrevice = true;
+                #endregion
+            }
+
+            if (calamityLoaded)
+            {
+                #region Bosses & Events
+                //Bosses
+
+                downedDesertScourge = (bool)calamityMod.Call("GetBossDowned", "DesertScourge");
+                downedCrabulon = (bool)calamityMod.Call("GetBossDowned", "Crabulon");
+                downedHiveMind = (bool)calamityMod.Call("GetBossDowned", "HiveMind");
+                downedPerforators = (bool)calamityMod.Call("GetBossDowned", "Perforator");
+                downedSlimeGod = (bool)calamityMod.Call("GetBossDowned", "SlimeGod");
+                downedCryogen = (bool)calamityMod.Call("GetBossDowned", "Cryogen");
+                downedAquaticScourge = (bool)calamityMod.Call("GetBossDowned", "AquaticScourge");
+                downedBrimstoneElemental = (bool)calamityMod.Call("GetBossDowned", "BrimstoneElemental");
+                downedCalamitasClone = (bool)calamityMod.Call("GetBossDowned", "CalamitasClone");
+                downedLeviathanAndAnahita = (bool)calamityMod.Call("GetBossDowned", "AnahitaLeviathan");
+                downedAstrumAureus = (bool)calamityMod.Call("GetBossDowned", "AstrumAureus");
+                downedPlaguebringerGoliath = (bool)calamityMod.Call("GetBossDowned", "PlaguebringerGoliath");
+                downedRavager = (bool)calamityMod.Call("GetBossDowned", "Ravager");
+                downedAstrumDeus = (bool)calamityMod.Call("GetBossDowned", "AstrumDeus");
+                downedProfanedGuardians = (bool)calamityMod.Call("GetBossDowned", "Guardians");
+                downedDragonfolly = (bool)calamityMod.Call("GetBossDowned", "Dragonfolly");
+                downedProvidence = (bool)calamityMod.Call("GetBossDowned", "Providence");
+                downedStormWeaver = (bool)calamityMod.Call("GetBossDowned", "StormWeaver");
+                downedCeaselessVoid = (bool)calamityMod.Call("GetBossDowned", "CeaselessVoid");
+                downedSignus = (bool)calamityMod.Call("GetBossDowned", "Signus");
+                downedPolterghast = (bool)calamityMod.Call("GetBossDowned", "Polterghast");
+                downedOldDuke = (bool)calamityMod.Call("GetBossDowned", "OldDuke");
+                downedDevourerOfGods = (bool)calamityMod.Call("GetBossDowned", "DevourerOfGods");
+                downedYharon = (bool)calamityMod.Call("GetBossDowned", "Yharon");
+                downedExoMechs = (bool)calamityMod.Call("GetBossDowned", "ExoMechs");
+                downedSupremeCalamitas = (bool)calamityMod.Call("GetBossDowned", "SupremeCalamitas");
+                //Minibosses
+                downedGiantClam = (bool)calamityMod.Call("GetBossDowned", "GiantClam");
+                downedCragmawMire = (bool)calamityMod.Call("GetBossDowned", "cragmawmire");
+                downedGreatSandShark = (bool)calamityMod.Call("GetBossDowned", "GreatSandShark");
+                downedMauler = (bool)calamityMod.Call("GetBossDowned", "mauler");
+                downedNuclearTerror = (bool)calamityMod.Call("GetBossDowned", "nuclearterror");
+                downedEidolonWyrm = (bool)calamityMod.Call("GetBossDowned", "primordialwyrm");
+                //Events
+                downedAcidRain1 = (bool)calamityMod.Call("GetBossDowned", "acidraineoc");
+                downedAcidRain2 = (bool)calamityMod.Call("GetBossDowned", "acidrainscourge");
+                downedBossRush = (bool)calamityMod.Call("GetBossDowned", "bossrush");
+
+                #endregion
+
+                #region Biomes
+                if (calamityMod.TryFind("AstralInfectionBiome", out ModBiome AstralInfectionBiome) && Main.LocalPlayer.InModBiome(AstralInfectionBiome))
+                    beenToAstral = true;
+
+                if (calamityMod.TryFind("AbyssLayer1Biome", out ModBiome AbyssLayer1Biome) && Main.LocalPlayer.InModBiome(AbyssLayer1Biome))
+                {
+                    beenToAbyss = true;
+                    beenToAbyssLayer1 = true;
+                }
+                if (calamityMod.TryFind("AbyssLayer2Biome", out ModBiome AbyssLayer2Biome) && Main.LocalPlayer.InModBiome(AbyssLayer2Biome))
+                {
+                    beenToAbyss = true;
+                    beenToAbyssLayer2 = true;
+                }
+
+                if (calamityMod.TryFind("AbyssLayer3Biome", out ModBiome AbyssLayer3Biome) && Main.LocalPlayer.InModBiome(AbyssLayer3Biome))
+                {
+                    beenToAbyss = true;
+                    beenToAbyssLayer3 = true;
+                }
+                if (calamityMod.TryFind("AbyssLayer4Biome", out ModBiome AbyssLayer4Biome) && Main.LocalPlayer.InModBiome(AbyssLayer4Biome))
+                {
+                    beenToAbyss = true;
+                    beenToAbyssLayer4 = true;
+                }
+
+                if (calamityMod.TryFind("BrimstoneCragsBiome", out ModBiome BrimstoneCragsBiome) && Main.LocalPlayer.InModBiome(BrimstoneCragsBiome))
+                    beenToCrags = true;
+
+                if (calamityMod.TryFind("SulphurousSeaBiome", out ModBiome SulphurousSeaBiome) && Main.LocalPlayer.InModBiome(SulphurousSeaBiome))
+                    beenToSulphurSea = true;
+
+                if (calamityMod.TryFind("SunkenSeaBiome", out ModBiome SunkenSeaBiome) && Main.LocalPlayer.InModBiome(SunkenSeaBiome))
+                    beenToSunkenSea = true;
+                #endregion
+            }
+
+            if (calamityVanitiesLoaded)
+            {
+                if (calamityVanitiesMod.TryFind("AstralBlight", out ModBiome AstralBlight) && Main.LocalPlayer.InModBiome(AstralBlight))
+                {
+                    beenToAstralBlight = true;
+                }
+            }
+
+            if (confectionRebakedLoaded)
+            {
+                if ((confectionRebakedMod.TryFind("ConfectionBiome", out ModBiome ConfectionBiome) && Main.LocalPlayer.InModBiome(ConfectionBiome))
+                    || (confectionRebakedMod.TryFind("ConfectionUndergroundBiome", out ModBiome ConfectionUndergroundBiome) && Main.LocalPlayer.InModBiome(ConfectionUndergroundBiome))
+                    || (confectionRebakedMod.TryFind("IceConfectionSurfaceBiome", out ModBiome IceConfectionSurfaceBiome) && Main.LocalPlayer.InModBiome(IceConfectionSurfaceBiome))
+                    || (confectionRebakedMod.TryFind("IceConfectionUndergroundBiome", out ModBiome IceConfectionUndergroundBiome) && Main.LocalPlayer.InModBiome(IceConfectionUndergroundBiome))
+                    || (confectionRebakedMod.TryFind("SandConfectionSurfaceBiome", out ModBiome SandConfectionSurfaceBiome) && Main.LocalPlayer.InModBiome(SandConfectionSurfaceBiome))
+                    || (confectionRebakedMod.TryFind("SandConfectionUndergroundBiome", out ModBiome SandConfectionUndergroundBiome) && Main.LocalPlayer.InModBiome(SandConfectionUndergroundBiome)))
+                {
+                    beenToConfection = true;
+                    beenToHallow = true;
+                }
+            }
+
+            if (depthsLoaded)
+            {
+                if (depthsMod.TryFind("DepthsBiome", out ModBiome DepthsBiome) && Main.LocalPlayer.InModBiome(DepthsBiome))
+                {
+                    beenToDepths = true;
+                    beenToUnderworld = true;
+                }
+            }
+
+            if (everjadeLoaded)
+            {
+                if (everjadeMod.TryFind("JadeLakeBiome", out ModBiome JadeLakeBiome) && Main.LocalPlayer.InModBiome(JadeLakeBiome))
+                {
+                    beenToJadeLake = true;
+                }
+            }
+
+            if (exxoAvalonOriginsLoaded)
+            {
+                if ((exxoAvalonOriginsMod.TryFind("Contagion", out ModBiome Contagion) && Main.LocalPlayer.InModBiome(Contagion))
+                    || (exxoAvalonOriginsMod.TryFind("UndergroundContagion", out ModBiome UndergroundContagion) && Main.LocalPlayer.InModBiome(UndergroundContagion))
+                    || (exxoAvalonOriginsMod.TryFind("ContagionDesert", out ModBiome ContagionDesert) && Main.LocalPlayer.InModBiome(ContagionDesert))
+                    || (exxoAvalonOriginsMod.TryFind("ContagionCaveDesert", out ModBiome ContagionCaveDesert) && Main.LocalPlayer.InModBiome(ContagionCaveDesert)))
+                {
+                    beenToContagion = true;
+                }
+            }
+
+            if (fracturesOfPenumbraLoaded)
+            {
+                if ((fracturesOfPenumbraMod.TryFind("DreadSurfaceBiome", out ModBiome DreadSurfaceBiome) && Main.LocalPlayer.InModBiome(DreadSurfaceBiome))
+                    || (fracturesOfPenumbraMod.TryFind("DreadUndergroundBiome", out ModBiome DreadUndergroundBiome) && Main.LocalPlayer.InModBiome(DreadUndergroundBiome)))
+                {
+                    beenToDread = true;
+                }
+            }
+
+            if (homewardJourneyLoaded)
+            {
+                if (homewardJourneyMod.TryFind("AbyssUndergroundBiome", out ModBiome AbyssUndergroundBiome) && Main.LocalPlayer.InModBiome(AbyssUndergroundBiome))
+                {
+                    beenToHomewardAbyss = true;
+                }
+            }
+
+            if (infernumLoaded)
+            {
+                if (infernumMod.TryFind("ProfanedTempleBiome", out ModBiome ProfanedTempleBiome) && Main.LocalPlayer.InModBiome(ProfanedTempleBiome))
+                {
+                    beenToProfanedGardens = true;
+                }
+            }
+
+            if (lunarVeilLoaded)
+            {
+                if (lunarVeilMod.TryFind("AbyssBiome", out ModBiome AbyssBiome) && Main.LocalPlayer.InModBiome(AbyssBiome))
+                {
+                    beenToLunarVeilAbyss = true;
+                }
+                if (lunarVeilMod.TryFind("AcidBiome", out ModBiome AcidBiome) && Main.LocalPlayer.InModBiome(AcidBiome))
+                {
+                    beenToAcid = true;
+                }
+                if (lunarVeilMod.TryFind("AurelusBiome", out ModBiome AurelusBiome) && Main.LocalPlayer.InModBiome(AurelusBiome))
+                {
+                    beenToAurelus = true;
+                }
+                if (lunarVeilMod.TryFind("FableBiome", out ModBiome FableBiome) && Main.LocalPlayer.InModBiome(FableBiome))
+                {
+                    beenToFable = true;
+                }
+                if (lunarVeilMod.TryFind("GovheilCastle", out ModBiome GovheilCastle) && Main.LocalPlayer.InModBiome(GovheilCastle))
+                {
+                    beenToGovheilCastle = true;
+                }
+                if (lunarVeilMod.TryFind("CathedralBiome", out ModBiome CathedralBiome) && Main.LocalPlayer.InModBiome(CathedralBiome))
+                {
+                    beenToCathedral = true;
+                }
+                if (lunarVeilMod.TryFind("MarrowSurfaceBiome", out ModBiome MarrowSurfaceBiome) && Main.LocalPlayer.InModBiome(MarrowSurfaceBiome))
+                {
+                    beenToMarrowSurface = true;
+                }
+                if (lunarVeilMod.TryFind("MorrowUndergroundBiome", out ModBiome MorrowUndergroundBiome) && Main.LocalPlayer.InModBiome(MorrowUndergroundBiome))
+                {
+                    beenToMorrowUnderground = true;
+                }
+            }
+
+            if (qwertyLoaded)
+            {
+                if (qwertyMod.TryFind("FortressBiome", out ModBiome FortressBiome) && Main.LocalPlayer.InModBiome(FortressBiome))
+                {
+                    beenToSkyFortress = true;
+                }
+            }
+
+            if (redemptionLoaded)
+            {
+                if (redemptionMod.TryFind("LabBiome", out ModBiome LabBiome) && Main.LocalPlayer.InModBiome(LabBiome))
+                {
+                    beenToLab = true;
+                }
+                if (redemptionMod.TryFind("WastelandPurityBiome", out ModBiome WastelandPurityBiome) && Main.LocalPlayer.InModBiome(WastelandPurityBiome))
+                {
+                    beenToWasteland = true;
+                }
+                /*
+                if (downedAkka && downedUkko)
+                {
+                    downedAncientDeityDuo = true;
+                }
+                */
+            }
+
+            if (secretsOfTheShadowsLoaded)
+            {
+                if (secretsOfTheShadowsMod.TryFind("PyramidBiome", out ModBiome PyramidBiome) && Main.LocalPlayer.InModBiome(PyramidBiome))
+                {
+                    beenToPyramid = true;
+                }
+                if (secretsOfTheShadowsMod.TryFind("PlanetariumBiome", out ModBiome PlanetariumBiome) && Main.LocalPlayer.InModBiome(PlanetariumBiome))
+                {
+                    beenToPlanetarium = true;
+                }
+            }
+
+            if (shadowsOfAbaddonLoaded)
+            {
+                if ((shadowsOfAbaddonMod.TryFind("CinderDesertBiome", out ModBiome CinderDesertBiome) && Main.LocalPlayer.InModBiome(CinderDesertBiome)) || (shadowsOfAbaddonMod.TryFind("CinderForestBiome", out ModBiome CinderForestBiome) && Main.LocalPlayer.InModBiome(CinderForestBiome)) || (shadowsOfAbaddonMod.TryFind("CinderForestUndergroundBiome", out ModBiome CinderForestUndergroundBiome) && Main.LocalPlayer.InModBiome(CinderForestUndergroundBiome)))
+                {
+                    beenToCinderForest = true;
+                }
+            }
+
+            if (spiritLoaded)
+            {
+                if ((spiritMod.TryFind("BriarSurfaceBiome", out ModBiome BriarSurfaceBiome) && Main.LocalPlayer.InModBiome(BriarSurfaceBiome))
+                    || (spiritMod.TryFind("BriarUndergroundBiome", out ModBiome BriarUndergroundBiome) && Main.LocalPlayer.InModBiome(BriarUndergroundBiome)))
+                {
+                    beenToBriar = true;
+                }
+                if ((spiritMod.TryFind("SpiritSurfaceBiome", out ModBiome SpiritSurfaceBiome) && Main.LocalPlayer.InModBiome(SpiritSurfaceBiome))
+                    || (spiritMod.TryFind("SpiritUndergroundBiome", out ModBiome SpiritUndergroundBiome) && Main.LocalPlayer.InModBiome(SpiritUndergroundBiome)))
+                {
+                    beenToSpirit = true;
+                }
+            }
+
+            if (spookyLoaded)
+            {
+                if (spookyMod.TryFind("SpookyBiome", out ModBiome SpookyBiome) && Main.LocalPlayer.InModBiome(SpookyBiome))
+                {
+                    beenToSpookyForest = true;
+                }
+                if (spookyMod.TryFind("SpookyBiomeUg", out ModBiome SpookyBiomeUg) && Main.LocalPlayer.InModBiome(SpookyBiomeUg))
+                {
+                    beenToSpookyUnderground = true;
+                }
+                if (spookyMod.TryFind("SpookyHellBiome", out ModBiome SpookyHellBiome) && Main.LocalPlayer.InModBiome(SpookyHellBiome))
+                {
+                    beenToEyeValley = true;
+                }
+                if (spookyMod.TryFind("SpiderCaveBiome", out ModBiome SpiderCaveBiome) && Main.LocalPlayer.InModBiome(SpiderCaveBiome))
+                {
+                    beenToSpiderCave = true;
+                }
+                if (spookyMod.TryFind("CatacombBiome", out ModBiome CatacombBiome) && Main.LocalPlayer.InModBiome(CatacombBiome))
+                {
+                    beenToCatacombs = true;
+                }
+                if (spookyMod.TryFind("CemeteryBiome", out ModBiome CemeteryBiome) && Main.LocalPlayer.InModBiome(CemeteryBiome))
+                {
+                    beenToCemetery = true;
+                }
+                /*
+                if (downedOrro && downedBoro)
+                {
+                    downedOrroBoro = true;
+                }
+                */
+            }
+
+            if (starlightRiverLoaded)
+            {
+                if (starlightRiverMod.TryFind("PermafrostTempleBiome", out ModBiome PermafrostTempleBiome) && Main.LocalPlayer.InModBiome(PermafrostTempleBiome))
+                {
+                    beenToAuroracleTemple = true;
+                }
+                if (starlightRiverMod.TryFind("VitricDesertBiome", out ModBiome VitricDesertBiome) && Main.LocalPlayer.InModBiome(VitricDesertBiome))
+                {
+                    beenToVitricDesert = true;
+                }
+                if (starlightRiverMod.TryFind("VitricTempleBiome", out ModBiome VitricTempleBiome) && Main.LocalPlayer.InModBiome(VitricTempleBiome))
+                {
+                    beenToVitricTemple = true;
+                }
+            }
+
+            if (starsAboveLoaded)
+            {
+                downedVagrantofSpace = (bool)starsAboveMod.Call("downedVagrant", Mod);
+                downedThespian = (bool)starsAboveMod.Call("downedThespian", Mod);
+                downedDioskouroi = (bool)starsAboveMod.Call("downedDioskouroi", Mod);
+                downedNalhaun = (bool)starsAboveMod.Call("downedNalhaun", Mod);
+                downedStarfarers = (bool)starsAboveMod.Call("downedStarfarers", Mod);
+                downedPenthesilea = (bool)starsAboveMod.Call("downedPenthesilea", Mod);
+                downedArbitration = (bool)starsAboveMod.Call("downedArbitration", Mod);
+                downedWarriorOfLight = (bool)starsAboveMod.Call("downedWarriorOfLight", Mod);
+                downedTsukiyomi = (bool)starsAboveMod.Call("downedTsukiyomi", Mod);
+
+                if (downedCastor && downedPollux)
+                {
+                    downedDioskouroi = true;
+                }
+            }
+
+            if (thoriumLoaded)
+            {
+                #region Bosses
+                downedGrandThunderBird = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "TheGrandThunderBird"
+                });
+                downedQueenJellyfish = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "QueenJellyfish"
+                });
+                downedViscount = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "Viscount"
+                });
+                downedGraniteEnergyStorm = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "GraniteEnergyStorm"
+                });
+                downedBuriedChampion = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "BuriedChampion"
+                });
+                downedStarScouter = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "StarScouter"
+                });
+                downedBoreanStrider = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "BoreanStrider"
+                });
+                downedFallenBeholder = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "FallenBeholder"
+                });
+                downedLich = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "Lich"
+                });
+                downedForgottenOne = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "ForgottenOne"
+                });
+                downedPrimordials = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "ThePrimordials"
+                });
+                downedPatchWerk = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "PatchWerk"
+                });
+                downedCorpseBloom = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "CorpseBloom"
+                });
+                downedIllusionist = (bool)thoriumMod.Call(new object[]
+                {
+                    "GetDownedBoss",
+                    "Illusionist"
+                });
+                #endregion
+
+                #region Biomes
+                if (thoriumMod.TryFind("DepthsBiome", out ModBiome DepthsBiome) && Main.LocalPlayer.InModBiome(DepthsBiome))
+                {
+                    beenToAquaticDepths = true;
+                }
+                #endregion
+            }
+
+            if (verdantLoaded)
+            {
+                if (verdantMod.TryFind("VerdantBiome", out ModBiome VerdantBiome) && Main.LocalPlayer.InModBiome(VerdantBiome))
+                {
+                    beenToVerdant = true;
+                }
+            }
+
+            if (wrathOfTheGodsLoaded)
+            {
+                downedNoxus = (bool)wrathOfTheGodsMod.Call("GetBossDefeated", "noxus");
+                downedNamelessDeityOfLight = (bool)wrathOfTheGodsMod.Call("GetBossDefeated", "namelessdeity");
+            }
+        }
+
         public override void SaveWorldData(TagCompound tag)
         {
+            /*
             //VANILLA
             //BOSSES
             tag.Add("downedDreadnautilus", downedDreadnautilus);
@@ -3073,6 +2692,9 @@ namespace QoLCompendium.Core
             //CALAMITY COMMUNITY REMIX
             tag.Add("downedWulfrumExcavator", downedWulfrumExcavator);
 
+            //CALAMITY ENTROPY
+            tag.Add("downedCruiser", downedCruiser);
+
             //CALAMITY VANITIES
             tag.Add("beenToAstralBlight", beenToAstralBlight);
 
@@ -3137,6 +2759,7 @@ namespace QoLCompendium.Core
 
             //FARGOS SOULS
             tag.Add("downedTrojanSquirrel", downedTrojanSquirrel);
+            tag.Add("downedCursedCoffin", downedCursedCoffin);
             tag.Add("downedDeviantt", downedDeviantt);
             tag.Add("downedBanishedBaron", downedBanishedBaron);
             tag.Add("downedLifelight", downedLifelight);
@@ -3532,18 +3155,20 @@ namespace QoLCompendium.Core
             tag.Add("downedAdeneb", downedAdeneb);
             tag.Add("downedEldritchJellyfish", downedEldritchJellyfish);
             tag.Add("downedSaburRex", downedSaburRex);
-
+            */
 
             List<string> downed = new();
             for (int i = 0; i < DownedBoss.Length; i++)
             {
                 if (DownedBoss[i])
-                    downed.Add("downedBoss" + i.ToString());
+                    downed.Add("QoLCdownedBoss" + i);
             }
+            tag.Add("QoLCdowned", downed);
         }
 
         public override void LoadWorldData(TagCompound tag)
         {
+            /*
             //VANILLA
             //BOSSES
             downedDreadnautilus = tag.Get<bool>("downedDreadnautilus");
@@ -3672,6 +3297,9 @@ namespace QoLCompendium.Core
             //CALAMITY COMMUNITY REMIX
             downedWulfrumExcavator = tag.Get<bool>("downedWulfrumExcavator");
 
+            //CALAMITY ENTROPY
+            downedCruiser = tag.Get<bool>("downedCruiser");
+
             //CALAMITY VANITIES
             beenToAstralBlight = tag.Get<bool>("beenToAstralBlight");
 
@@ -3735,6 +3363,7 @@ namespace QoLCompendium.Core
 
             //FARGOS SOULS
             downedTrojanSquirrel = tag.Get<bool>("downedTrojanSquirrel");
+            downedCursedCoffin = tag.Get<bool>("downedCursedCoffin");
             downedDeviantt = tag.Get<bool>("downedDeviantt");
             downedBanishedBaron = tag.Get<bool>("downedBanishedBaron");
             downedLifelight = tag.Get<bool>("downedLifelight");
@@ -4130,1167 +3759,11 @@ namespace QoLCompendium.Core
             downedAdeneb = tag.Get<bool>("downedAdeneb");
             downedEldritchJellyfish = tag.Get<bool>("downedEldritchJellyfish");
             downedSaburRex = tag.Get<bool>("downedSaburRex");
+            */
 
-            IList<string> downed = tag.GetList<string>("downed");
+            IList<string> downed = tag.GetList<string>("QoLCdowned");
             for (int i = 0; i < DownedBoss.Length; i++)
-                DownedBoss[i] = downed.Contains($"downedBoss{i}");
-        }
-
-        public override void PreUpdatePlayers()
-        {
-            #region Vanilla Events
-            if (Main.bloodMoon && !waitForBloodMoon)
-            {
-                waitForBloodMoon = true;
-            }
-            if (waitForBloodMoon && !Main.bloodMoon && Main.dayTime)
-            {
-                downedBloodMoon = true;
-            }
-            if (waitForBloodMoon && !Main.bloodMoon && !Main.dayTime)
-            {
-                waitForBloodMoon = false;
-            }
-            if (Main.eclipse && !waitForEclipse)
-            {
-                waitForEclipse = true;
-            }
-            if (waitForEclipse && !Main.eclipse && !Main.dayTime)
-            {
-                downedEclipse = true;
-            }
-            if (waitForEclipse && !Main.eclipse && Main.dayTime)
-            {
-                waitForEclipse = false;
-            }
-            if (NPC.downedTowerNebula && NPC.downedTowerSolar && NPC.downedTowerStardust && NPC.downedTowerVortex)
-            {
-                downedLunarEvent = true;
-            }
-            if (!Main.dayTime)
-            {
-                beenThroughNight = true;
-            }
-            #endregion
-
-            #region Vanilla Biomes
-            if (Main.LocalPlayer.ZoneForest)
-            {
-                beenToPurity = true;
-            }
-            if (Main.LocalPlayer.ZoneNormalCaverns || Main.LocalPlayer.ZoneNormalUnderground)
-            {
-                beenToCavernsOrUnderground = true;
-            }
-            if (Main.LocalPlayer.ZoneUnderworldHeight)
-            {
-                beenToUnderworld = true;
-            }
-            if (Main.LocalPlayer.ZoneSkyHeight)
-            {
-                beenToSky = true;
-            }
-            if (Main.LocalPlayer.ZoneSnow)
-            {
-                beenToSnow = true;
-            }
-            if (Main.LocalPlayer.ZoneDesert || Main.LocalPlayer.ZoneUndergroundDesert)
-            {
-                beenToDesert = true;
-            }
-            if (Main.LocalPlayer.ZoneBeach)
-            {
-                beenToOcean = true;
-            }
-            if (Main.LocalPlayer.ZoneJungle)
-            {
-                beenToJungle = true;
-            }
-            if (Main.LocalPlayer.ZoneGlowshroom)
-            {
-                beenToMushroom = true;
-            }
-            if (Main.LocalPlayer.ZoneCorrupt)
-            {
-                beenToCorruption = true;
-            }
-            if (Main.LocalPlayer.ZoneCrimson)
-            {
-                beenToCrimson = true;
-            }
-            if (Main.LocalPlayer.ZoneHallow)
-            {
-                beenToHallow = true;
-            }
-            if (Main.LocalPlayer.ZoneLihzhardTemple)
-            {
-                beenToTemple = true;
-            }
-            if (Main.LocalPlayer.ZoneDungeon)
-            {
-                beenToDungeon = true;
-            }
-            if (Main.LocalPlayer.ZoneShimmer)
-            {
-                beenToAether = true;
-            }
-            #endregion
-
-            if (aequusLoaded)
-            {
-                #region Bosses & Events
-                downedCrabson = (bool)aequusMod.Call("downedCrabson");
-                downedOmegaStarite = (bool)aequusMod.Call("downedOmegaStarite");
-                downedDustDevil = (bool)aequusMod.Call("downedDustDevil");
-                downedRedSprite = (bool)aequusMod.Call("downedRedSprite");
-                downedSpaceSquid = (bool)aequusMod.Call("downedSpaceSquid");
-                downedHyperStarite = (bool)aequusMod.Call("downedHyperStarite");
-                downedUltraStarite = (bool)aequusMod.Call("downedUltraStarite");
-                //Events
-                downedDemonSiege = (bool)aequusMod.Call("downedEventDemon");
-                downedGlimmer = (bool)aequusMod.Call("downedEventCosmic");
-                downedGaleStreams = (bool)aequusMod.Call("downedEventAtmosphere");
-                #endregion
-
-                #region Biomes
-                if (aequusMod.TryFind("CrabCreviceBiome", out ModBiome CrabCreviceBiome) && Main.LocalPlayer.InModBiome(CrabCreviceBiome))
-                {
-                    beenToCrabCrevice = true;
-                }
-                /*
-                if (Common.GetInModBiome(aequusMod, Main.LocalPlayer, "CrabCreviceBiome"))
-                {
-                    beenToCrabCrevice = true;
-                }
-                */
-                #endregion
-            }
-
-            if (calamityLoaded)
-            {
-                #region Bosses & Events
-                //Bosses
-                downedDesertScourge = (bool)calamityMod.Call("GetBossDowned", "DesertScourge");
-                downedCrabulon = (bool)calamityMod.Call("GetBossDowned", "Crabulon");
-                downedHiveMind = (bool)calamityMod.Call("GetBossDowned", "HiveMind");
-                downedPerforators = (bool)calamityMod.Call("GetBossDowned", "Perforator");
-                downedSlimeGod = (bool)calamityMod.Call("GetBossDowned", "SlimeGod");
-                downedCryogen = (bool)calamityMod.Call("GetBossDowned", "Cryogen");
-                downedAquaticScourge = (bool)calamityMod.Call("GetBossDowned", "AquaticScourge");
-                downedBrimstoneElemental = (bool)calamityMod.Call("GetBossDowned", "BrimstoneElemental");
-                downedCalamitasClone = (bool)calamityMod.Call("GetBossDowned", "CalamitasClone");
-                downedLeviathanAndAnahita = (bool)calamityMod.Call("GetBossDowned", "AnahitaLeviathan");
-                downedAstrumAureus = (bool)calamityMod.Call("GetBossDowned", "AstrumAureus");
-                downedPlaguebringerGoliath = (bool)calamityMod.Call("GetBossDowned", "PlaguebringerGoliath");
-                downedRavager = (bool)calamityMod.Call("GetBossDowned", "Ravager");
-                downedAstrumDeus = (bool)calamityMod.Call("GetBossDowned", "AstrumDeus");
-                downedProfanedGuardians = (bool)calamityMod.Call("GetBossDowned", "Guardians");
-                downedDragonfolly = (bool)calamityMod.Call("GetBossDowned", "Dragonfolly");
-                downedProvidence = (bool)calamityMod.Call("GetBossDowned", "Providence");
-                downedStormWeaver = (bool)calamityMod.Call("GetBossDowned", "StormWeaver");
-                downedCeaselessVoid = (bool)calamityMod.Call("GetBossDowned", "CeaselessVoid");
-                downedSignus = (bool)calamityMod.Call("GetBossDowned", "Signus");
-                downedPolterghast = (bool)calamityMod.Call("GetBossDowned", "Polterghast");
-                downedOldDuke = (bool)calamityMod.Call("GetBossDowned", "OldDuke");
-                downedDevourerOfGods = (bool)calamityMod.Call("GetBossDowned", "DevourerOfGods");
-                downedYharon = (bool)calamityMod.Call("GetBossDowned", "Yharon");
-                downedExoMechs = (bool)calamityMod.Call("GetBossDowned", "ExoMechs");
-                downedSupremeCalamitas = (bool)calamityMod.Call("GetBossDowned", "SupremeCalamitas");
-                //Minibosses
-                downedGiantClam = (bool)calamityMod.Call("GetBossDowned", "GiantClam");
-                downedCragmawMire = (bool)calamityMod.Call("GetBossDowned", "cragmawmire");
-                downedGreatSandShark = (bool)calamityMod.Call("GetBossDowned", "GreatSandShark");
-                downedMauler = (bool)calamityMod.Call("GetBossDowned", "mauler");
-                downedNuclearTerror = (bool)calamityMod.Call("GetBossDowned", "nuclearterror");
-                downedEidolonWyrm = (bool)calamityMod.Call("GetBossDowned", "primordialwyrm");
-                //Events
-                downedAcidRain1 = (bool)calamityMod.Call("GetBossDowned", "acidraineoc");
-                downedAcidRain2 = (bool)calamityMod.Call("GetBossDowned", "acidrainscourge");
-                downedBossRush = (bool)calamityMod.Call("GetBossDowned", "bossrush");
-                #endregion
-
-                #region Biomes
-                if ((calamityMod.TryFind("AbovegroundAstralBiome", out ModBiome AbovegroundAstralBiome) && Main.LocalPlayer.InModBiome(AbovegroundAstralBiome)) 
-                    || (calamityMod.TryFind("AbovegroundAstralBiomeSurface", out ModBiome AbovegroundAstralBiomeSurface) && Main.LocalPlayer.InModBiome(AbovegroundAstralBiomeSurface))
-                    || (calamityMod.TryFind("AbovegroundAstralDesertBiome", out ModBiome AbovegroundAstralDesertBiome) && Main.LocalPlayer.InModBiome(AbovegroundAstralDesertBiome))
-                    || (calamityMod.TryFind("AbovegroundAstralSnowBiome", out ModBiome AbovegroundAstralSnowBiome) && Main.LocalPlayer.InModBiome(AbovegroundAstralSnowBiome))
-                    || (calamityMod.TryFind("UndergroundAstralBiome", out ModBiome UndergroundAstralBiome) && Main.LocalPlayer.InModBiome(UndergroundAstralBiome)))
-                {
-                    beenToAstral = true;
-                }
-                if (calamityMod.TryFind("AbyssLayer1Biome", out ModBiome AbyssLayer1Biome) && Main.LocalPlayer.InModBiome(AbyssLayer1Biome))
-                {
-                    beenToAbyss = true;
-                    beenToAbyssLayer1 = true;
-                }
-                if (calamityMod.TryFind("AbyssLayer2Biome", out ModBiome AbyssLayer2Biome) && Main.LocalPlayer.InModBiome(AbyssLayer2Biome))
-                {
-                    beenToAbyss = true;
-                    beenToAbyssLayer2 = true;
-                }
-                if (calamityMod.TryFind("AbyssLayer3Biome", out ModBiome AbyssLayer3Biome) && Main.LocalPlayer.InModBiome(AbyssLayer3Biome))
-                {
-                    beenToAbyss = true;
-                    beenToAbyssLayer3 = true;
-                }
-                if (calamityMod.TryFind("AbyssLayer4Biome", out ModBiome AbyssLayer4Biome) && Main.LocalPlayer.InModBiome(AbyssLayer4Biome))
-                {
-                    beenToAbyss = true;
-                    beenToAbyssLayer4 = true;
-                }
-                if (calamityMod.TryFind("BrimstoneCragsBiome", out ModBiome BrimstoneCragsBiome) && Main.LocalPlayer.InModBiome(BrimstoneCragsBiome))
-                {
-                    beenToCrags = true;
-                }
-                if (calamityMod.TryFind("SulphurousSeaBiome", out ModBiome SulphurousSeaBiome) && Main.LocalPlayer.InModBiome(SulphurousSeaBiome))
-                {
-                    beenToSulphurSea = true;
-                }
-                if (calamityMod.TryFind("SunkenSeaBiome", out ModBiome SunkenSeaBiome) && Main.LocalPlayer.InModBiome(SunkenSeaBiome))
-                {
-                    beenToSunkenSea = true;
-                }
-                #endregion
-            }
-
-            if (calamityVanitiesLoaded)
-            {
-                if (calamityVanitiesMod.TryFind("AstralBlight", out ModBiome AstralBlight) && Main.LocalPlayer.InModBiome(AstralBlight))
-                {
-                    beenToAstralBlight = true;
-                }
-            }
-
-            if (confectionRebakedLoaded)
-            {
-                if ((confectionRebakedMod.TryFind("ConfectionBiome", out ModBiome ConfectionBiome) && Main.LocalPlayer.InModBiome(ConfectionBiome))
-                    || (confectionRebakedMod.TryFind("ConfectionUndergroundBiome", out ModBiome ConfectionUndergroundBiome) && Main.LocalPlayer.InModBiome(ConfectionUndergroundBiome))
-                    || (confectionRebakedMod.TryFind("IceConfectionSurfaceBiome", out ModBiome IceConfectionSurfaceBiome) && Main.LocalPlayer.InModBiome(IceConfectionSurfaceBiome))
-                    || (confectionRebakedMod.TryFind("IceConfectionUndergroundBiome", out ModBiome IceConfectionUndergroundBiome) && Main.LocalPlayer.InModBiome(IceConfectionUndergroundBiome))
-                    || (confectionRebakedMod.TryFind("SandConfectionSurfaceBiome", out ModBiome SandConfectionSurfaceBiome) && Main.LocalPlayer.InModBiome(SandConfectionSurfaceBiome))
-                    || (confectionRebakedMod.TryFind("SandConfectionUndergroundBiome", out ModBiome SandConfectionUndergroundBiome) && Main.LocalPlayer.InModBiome(SandConfectionUndergroundBiome)))
-                {
-                    beenToConfection = true;
-                    beenToHallow = true;
-                }
-            }
-
-            if (depthsLoaded)
-            {
-                if (depthsMod.TryFind("DepthsBiome", out ModBiome DepthsBiome) && Main.LocalPlayer.InModBiome(DepthsBiome))
-                {
-                    beenToDepths = true;
-                    beenToUnderworld = true;
-                }
-            }
-
-            if (everjadeLoaded)
-            {
-                if (everjadeMod.TryFind("JadeLakeBiome", out ModBiome JadeLakeBiome) && Main.LocalPlayer.InModBiome(JadeLakeBiome))
-                {
-                    beenToJadeLake = true;
-                }
-            }
-
-            if (exxoAvalonOriginsLoaded)
-            {
-                if ((exxoAvalonOriginsMod.TryFind("Contagion", out ModBiome Contagion) && Main.LocalPlayer.InModBiome(Contagion))
-                    || (exxoAvalonOriginsMod.TryFind("UndergroundContagion", out ModBiome UndergroundContagion) && Main.LocalPlayer.InModBiome(UndergroundContagion))
-                    || (exxoAvalonOriginsMod.TryFind("ContagionDesert", out ModBiome ContagionDesert) && Main.LocalPlayer.InModBiome(ContagionDesert))
-                    || (exxoAvalonOriginsMod.TryFind("ContagionCaveDesert", out ModBiome ContagionCaveDesert) && Main.LocalPlayer.InModBiome(ContagionCaveDesert)))
-                {
-                    beenToContagion = true;
-                }
-            }
-
-            if (fracturesOfPenumbraLoaded)
-            {
-                if ((fracturesOfPenumbraMod.TryFind("DreadSurfaceBiome", out ModBiome DreadSurfaceBiome) && Main.LocalPlayer.InModBiome(DreadSurfaceBiome)) 
-                    || (fracturesOfPenumbraMod.TryFind("DreadUndergroundBiome", out ModBiome DreadUndergroundBiome) && Main.LocalPlayer.InModBiome(DreadUndergroundBiome)))
-                {
-                    beenToDread = true;
-                }
-            }
-
-            if (homewardJourneyLoaded)
-            {
-                if (homewardJourneyMod.TryFind("AbyssUndergroundBiome", out ModBiome AbyssUndergroundBiome) && Main.LocalPlayer.InModBiome(AbyssUndergroundBiome))
-                {
-                    beenToHomewardAbyss = true;
-                }
-            }
-
-            if (infernumLoaded)
-            {
-                if (infernumMod.TryFind("ProfanedTempleBiome", out ModBiome ProfanedTempleBiome) && Main.LocalPlayer.InModBiome(ProfanedTempleBiome))
-                {
-                    beenToProfanedGardens = true;
-                }
-            }
-
-            if (lunarVeilLoaded)
-            {
-                if (lunarVeilMod.TryFind("AbyssBiome", out ModBiome AbyssBiome) && Main.LocalPlayer.InModBiome(AbyssBiome))
-                {
-                    beenToLunarVeilAbyss = true;
-                }
-                if (lunarVeilMod.TryFind("AcidBiome", out ModBiome AcidBiome) && Main.LocalPlayer.InModBiome(AcidBiome))
-                {
-                    beenToAcid = true;
-                }
-                if (lunarVeilMod.TryFind("AurelusBiome", out ModBiome AurelusBiome) && Main.LocalPlayer.InModBiome(AurelusBiome))
-                {
-                    beenToAurelus = true;
-                }
-                if (lunarVeilMod.TryFind("FableBiome", out ModBiome FableBiome) && Main.LocalPlayer.InModBiome(FableBiome))
-                {
-                    beenToFable = true;
-                }
-                if (lunarVeilMod.TryFind("GovheilCastle", out ModBiome GovheilCastle) && Main.LocalPlayer.InModBiome(GovheilCastle))
-                {
-                    beenToGovheilCastle = true;
-                }
-                if (lunarVeilMod.TryFind("CathedralBiome", out ModBiome CathedralBiome) && Main.LocalPlayer.InModBiome(CathedralBiome))
-                {
-                    beenToCathedral = true;
-                }
-                if (lunarVeilMod.TryFind("MarrowSurfaceBiome", out ModBiome MarrowSurfaceBiome) && Main.LocalPlayer.InModBiome(MarrowSurfaceBiome))
-                {
-                    beenToMarrowSurface = true;
-                }
-                if (lunarVeilMod.TryFind("MorrowUndergroundBiome", out ModBiome MorrowUndergroundBiome) && Main.LocalPlayer.InModBiome(MorrowUndergroundBiome))
-                {
-                    beenToMorrowUnderground = true;
-                }
-            }
-
-            if (qwertyLoaded)
-            {
-                if (qwertyMod.TryFind("FortressBiome", out ModBiome FortressBiome) && Main.LocalPlayer.InModBiome(FortressBiome))
-                {
-                    beenToSkyFortress = true;
-                }
-            }
-
-            if (redemptionLoaded)
-            {
-                if (redemptionMod.TryFind("LabBiome", out ModBiome LabBiome) && Main.LocalPlayer.InModBiome(LabBiome))
-                {
-                    beenToLab = true;
-                }
-                if (redemptionMod.TryFind("WastelandPurityBiome", out ModBiome WastelandPurityBiome) && Main.LocalPlayer.InModBiome(WastelandPurityBiome))
-                {
-                    beenToWasteland = true;
-                }
-                /*
-                if (downedAkka && downedUkko)
-                {
-                    downedAncientDeityDuo = true;
-                }
-                */
-            }
-
-            if (secretsOfTheShadowsLoaded)
-            {
-                if (secretsOfTheShadowsMod.TryFind("PyramidBiome", out ModBiome PyramidBiome) && Main.LocalPlayer.InModBiome(PyramidBiome))
-                {
-                    beenToPyramid = true;
-                }
-                if (secretsOfTheShadowsMod.TryFind("PlanetariumBiome", out ModBiome PlanetariumBiome) && Main.LocalPlayer.InModBiome(PlanetariumBiome))
-                {
-                    beenToPlanetarium = true;
-                }
-            }
-
-            if (shadowsOfAbaddonLoaded)
-            {
-                if ((shadowsOfAbaddonMod.TryFind("CinderDesertBiome", out ModBiome CinderDesertBiome) && Main.LocalPlayer.InModBiome(CinderDesertBiome)) || (shadowsOfAbaddonMod.TryFind("CinderForestBiome", out ModBiome CinderForestBiome) && Main.LocalPlayer.InModBiome(CinderForestBiome)) || (shadowsOfAbaddonMod.TryFind("CinderForestUndergroundBiome", out ModBiome CinderForestUndergroundBiome) && Main.LocalPlayer.InModBiome(CinderForestUndergroundBiome)))
-                {
-                    beenToCinderForest = true;
-                }
-            }
-
-            if (spiritLoaded)
-            {
-                if ((spiritMod.TryFind("BriarSurfaceBiome", out ModBiome BriarSurfaceBiome) && Main.LocalPlayer.InModBiome(BriarSurfaceBiome))
-                    || (spiritMod.TryFind("BriarUndergroundBiome", out ModBiome BriarUndergroundBiome) && Main.LocalPlayer.InModBiome(BriarUndergroundBiome)))
-                {
-                    beenToBriar = true;
-                }
-                if ((spiritMod.TryFind("SpiritSurfaceBiome", out ModBiome SpiritSurfaceBiome) && Main.LocalPlayer.InModBiome(SpiritSurfaceBiome))
-                    || (spiritMod.TryFind("SpiritUndergroundBiome", out ModBiome SpiritUndergroundBiome) && Main.LocalPlayer.InModBiome(SpiritUndergroundBiome)))
-                {
-                    beenToSpirit = true;
-                }
-            }
-
-            if (spookyLoaded)
-            {
-                if (spookyMod.TryFind("SpookyBiome", out ModBiome SpookyBiome) && Main.LocalPlayer.InModBiome(SpookyBiome))
-                {
-                    beenToSpookyForest = true;
-                }
-                if (spookyMod.TryFind("SpookyBiomeUg", out ModBiome SpookyBiomeUg) && Main.LocalPlayer.InModBiome(SpookyBiomeUg))
-                {
-                    beenToSpookyUnderground = true;
-                }
-                if (spookyMod.TryFind("SpookyHellBiome", out ModBiome SpookyHellBiome) && Main.LocalPlayer.InModBiome(SpookyHellBiome))
-                {
-                    beenToEyeValley = true;
-                }
-                if (spookyMod.TryFind("SpiderCaveBiome", out ModBiome SpiderCaveBiome) && Main.LocalPlayer.InModBiome(SpiderCaveBiome))
-                {
-                    beenToSpiderCave = true;
-                }
-                if (spookyMod.TryFind("CatacombBiome", out ModBiome CatacombBiome) && Main.LocalPlayer.InModBiome(CatacombBiome))
-                {
-                    beenToCatacombs = true;
-                }
-                if (spookyMod.TryFind("CemeteryBiome", out ModBiome CemeteryBiome) && Main.LocalPlayer.InModBiome(CemeteryBiome))
-                {
-                    beenToCemetery = true;
-                }
-                /*
-                if (downedOrro && downedBoro)
-                {
-                    downedOrroBoro = true;
-                }
-                */
-            }
-
-            if (starlightRiverLoaded)
-            {
-                if (starlightRiverMod.TryFind("PermafrostTempleBiome", out ModBiome PermafrostTempleBiome) && Main.LocalPlayer.InModBiome(PermafrostTempleBiome))
-                {
-                    beenToAuroracleTemple = true;
-                }
-                if (starlightRiverMod.TryFind("VitricDesertBiome", out ModBiome VitricDesertBiome) && Main.LocalPlayer.InModBiome(VitricDesertBiome))
-                {
-                    beenToVitricDesert = true;
-                }
-                if (starlightRiverMod.TryFind("VitricTempleBiome", out ModBiome VitricTempleBiome) && Main.LocalPlayer.InModBiome(VitricTempleBiome))
-                {
-                    beenToVitricTemple = true;
-                }
-            }
-
-            if (starsAboveLoaded)
-            {
-                downedVagrantofSpace = (bool)starsAboveMod.Call("downedVagrant", Mod);
-                downedThespian = (bool)starsAboveMod.Call("downedThespian", Mod);
-                downedDioskouroi = (bool)starsAboveMod.Call("downedDioskouroi", Mod);
-                downedNalhaun = (bool)starsAboveMod.Call("downedNalhaun", Mod);
-                downedStarfarers = (bool)starsAboveMod.Call("downedStarfarers", Mod);
-                downedPenthesilea = (bool)starsAboveMod.Call("downedPenthesilea", Mod);
-                downedArbitration = (bool)starsAboveMod.Call("downedArbitration", Mod);
-                downedWarriorOfLight = (bool)starsAboveMod.Call("downedWarriorOfLight", Mod);
-                downedTsukiyomi = (bool)starsAboveMod.Call("downedTsukiyomi", Mod);
-
-                if (downedCastor && downedPollux)
-                {
-                    downedDioskouroi = true;
-                }
-            }
-
-            if (thoriumLoaded)
-            {
-                #region Bosses
-                downedGrandThunderBird = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "TheGrandThunderBird"
-                });
-                downedQueenJellyfish = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "QueenJellyfish"
-                });
-                downedViscount = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "Viscount"
-                });
-                downedGraniteEnergyStorm = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "GraniteEnergyStorm"
-                });
-                downedBuriedChampion = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "BuriedChampion"
-                });
-                downedStarScouter = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "StarScouter"
-                });
-                downedBoreanStrider = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "BoreanStrider"
-                });
-                downedFallenBeholder = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "FallenBeholder"
-                });
-                downedLich = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "Lich"
-                });
-                downedForgottenOne = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "ForgottenOne"
-                });
-                downedPrimordials = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "ThePrimordials"
-                });
-                downedPatchWerk = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "PatchWerk"
-                });
-                downedCorpseBloom = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "CorpseBloom"
-                });
-                downedIllusionist = (bool)thoriumMod.Call(new object[]
-                {
-                    "GetDownedBoss",
-                    "Illusionist"
-                });
-                #endregion
-
-                #region Biomes
-                if (thoriumMod.TryFind("DepthsBiome", out ModBiome DepthsBiome) && Main.LocalPlayer.InModBiome(DepthsBiome))
-                {
-                    beenToAquaticDepths = true;
-                }
-                #endregion
-            }
-
-            if (verdantLoaded)
-            {
-                if (verdantMod.TryFind("VerdantBiome", out ModBiome VerdantBiome) && Main.LocalPlayer.InModBiome(VerdantBiome))
-                {
-                    beenToVerdant = true;
-                }
-            }
-
-            if (wrathOfTheGodsLoaded)
-            {
-                downedNoxus = (bool)wrathOfTheGodsMod.Call("GetBossDefeated", "noxus");
-                downedNamelessDeityOfLight = (bool)wrathOfTheGodsMod.Call("GetBossDefeated", "namelessdeity");
-            }
-        }
-
-        public static void Resetdowned()
-        {
-            //VANILLA
-            //BOSSES
-            downedDreadnautilus = false;
-            downedMartianSaucer = false;
-            //EVENTS
-            downedBloodMoon = false;
-            downedEclipse = false;
-            downedLunarEvent = false;
-            beenThroughNight = false;
-            //BIOMES
-            beenToPurity = false;
-            beenToCavernsOrUnderground = false;
-            beenToUnderworld = false;
-            beenToSky = false;
-            beenToSnow = false;
-            beenToDesert = false;
-            beenToOcean = false;
-            beenToJungle = false;
-            beenToMushroom = false;
-            beenToCorruption = false;
-            beenToCrimson = false;
-            beenToHallow = false;
-            beenToTemple = false;
-            beenToDungeon = false;
-            beenToAether = false;
-            //OTHER
-            talkedToSkeletonMerchant = false;
-            talkedToTravelingMerchant = false;
-
-            //AEQUUS
-            downedCrabson = false;
-            downedOmegaStarite = false;
-            downedDustDevil = false;
-            downedRedSprite = false;
-            downedSpaceSquid = false;
-            downedHyperStarite = false;
-            downedUltraStarite = false;
-            //EVENTS
-            downedDemonSiege = false;
-            downedGlimmer = false;
-            downedGaleStreams = false;
-            //BIOMES
-            beenToCrabCrevice = false;
-
-            //AFKPETS
-            downedSlayerOfEvil = false;
-            downedSATLA = false;
-            downedDrFetus = false;
-            downedSlimesHope = false;
-            downedPoliticianSlime = false;
-            downedAncientTrio = false;
-            downedLavalGolem = false;
-            //MINIBOSSES
-            downedAntony = false;
-            downedBunnyZeppelin = false;
-            downedOkiku = false;
-            downedHarpyAirforce = false;
-            downedIsaac = false;
-            downedAncientGuardian = false;
-            downedHeroicSlime = false;
-            downedHoloSlime = false;
-            downedSecurityBot = false;
-            downedUndeadChef = false;
-            downedGuardianOfFrost = false;
-
-            //ASSORTED CRAZY THINGS
-            downedSoulHarvester = false;
-
-            //AWFUL GARBAGE
-            downedTreeToad = false;
-            downedSeseKitsugai = false;
-            downedEyeOfTheStorm = false;
-            downedFrigidius = false;
-
-            //BLOCK'S CORE BOSS
-            downedCoreBoss = false;
-
-            //CALAMITY
-            downedDesertScourge = false;
-            downedCrabulon = false;
-            downedHiveMind = false;
-            downedPerforators = false;
-            downedSlimeGod = false;
-            downedCryogen = false;
-            downedAquaticScourge = false;
-            downedBrimstoneElemental = false;
-            downedCalamitasClone = false;
-            downedLeviathanAndAnahita = false;
-            downedAstrumAureus = false;
-            downedPlaguebringerGoliath = false;
-            downedRavager = false;
-            downedAstrumDeus = false;
-            downedProfanedGuardians = false;
-            downedDragonfolly = false;
-            downedProvidence = false;
-            downedStormWeaver = false;
-            downedCeaselessVoid = false;
-            downedSignus = false;
-            downedPolterghast = false;
-            downedOldDuke = false;
-            downedDevourerOfGods = false;
-            downedYharon = false;
-            downedExoMechs = false;
-            downedSupremeCalamitas = false;
-            downedGiantClam = false;
-            downedGreatSandShark = false;
-            downedCragmawMire = false;
-            downedNuclearTerror = false;
-            downedMauler = false;
-            downedEidolonWyrm = false;
-            //EVENTS
-            downedAcidRain1 = false;
-            downedAcidRain2 = false;
-            downedBossRush = false;
-            //BIOMES
-            beenToCrags = false;
-            beenToAstral = false;
-            beenToSunkenSea = false;
-            beenToSulphurSea = false;
-            beenToAbyss = false;
-            beenToAbyssLayer1 = false;
-            beenToAbyssLayer2 = false;
-            beenToAbyssLayer3 = false;
-            beenToAbyssLayer4 = false;
-
-            //CALAMITY COMMUNITY REMIX
-            downedWulfrumExcavator = false;
-
-            //CALAMITY VANITIES
-            beenToAstralBlight = false;
-
-            //CATALYST
-            downedAstrageldon = false;
-
-            //CLAMITY
-            downedClamitas = false;
-            downedPyrogen = false;
-            downedWallOfBronze = false;
-
-            //CONFECTION
-            beenToConfection = false;
-
-            //CONSOLARIA
-            downedLepus = false;
-            downedTurkor = false;
-            downedOcram = false;
-
-            //CORALITE
-            downedRediancie = false;
-            downedBabyIceDragon = false;
-            downedSlimeEmperor = false;
-            downedBloodiancie = false;
-            downedThunderveinDragon = false;
-            downedNightmarePlantera = false;
-
-            //DEPTHS
-            beenToDepths = false;
-
-            //DORMANT DAWN
-            downedLifeGuardian = false;
-            downedManaGuardian = false;
-            downedMeteorExcavator = false;
-            downedMeteorAnnihilator = false;
-            downedHellfireSerpent = false;
-            downedWitheredAcornSpirit = false;
-            downedGoblinSorcererChieftain = false;
-
-            //ECHOES OF THE ANCIENTS
-            downedGalahis = false;
-            downedCreation = false;
-            downedDestruction = false;
-
-            //EDORBIS
-            downedBlightKing = false;
-            downedGardener = false;
-            downedGlaciation = false;
-            downedHandOfCthulhu = false;
-            downedCursePreacher = false;
-
-            //EVERJADE
-            beenToJadeLake = false;
-
-            //EXALT
-            downedEffulgence = false;
-            downedIceLich = false;
-
-            //EXXO AVALON ORIGINS
-            downedBacteriumPrime = false;
-            downedDesertBeak = false;
-            downedKingSting = false;
-            downedMechasting = false;
-            downedPhantasm = false;
-            //BIOMES
-            beenToContagion = false;
-
-            //FARGOS SOULS
-            downedTrojanSquirrel = false;
-            downedDeviantt = false;
-            downedBanishedBaron = false;
-            downedLifelight = false;
-            downedEridanus = false;
-            downedAbominationn = false;
-            downedMutant = false;
-
-            //FRACTURES OF PENUMBRA
-            downedAlphaFrostjaw = false;
-            downedSanguineElemental = false;
-            //BIOMES
-            beenToDread = false;
-
-            //GAMETERRARIA
-            downedLad = false;
-            downedHornlitz = false;
-            downedSnowDon = false;
-            downedStoffie = false;
-
-            //GENSOKYO
-            downedLilyWhite = false;
-            downedRumia = false;
-            downedEternityLarva = false;
-            downedNazrin = false;
-            downedHinaKagiyama = false;
-            downedSekibanki = false;
-            downedSeiran = false;
-            downedNitoriKawashiro = false;
-            downedMedicineMelancholy = false;
-            downedCirno = false;
-            downedMinamitsuMurasa = false;
-            downedAliceMargatroid = false;
-            downedSakuyaIzayoi = false;
-            downedSeijaKijin = false;
-            downedMayumiJoutouguu = false;
-            downedToyosatomimiNoMiko = false;
-            downedKaguyaHouraisan = false;
-            downedUtsuhoReiuji = false;
-            downedTenshiHinanawi = false;
-            //MINIBOSSES
-            downedKisume = false;
-
-            //GMR
-            downedTrerios = false;
-            downedMagmaEye = false;
-            downedJack = false;
-            downedAcheron = false;
-
-            //HOMEWARD JOURNEY
-            downedMarquisMoonsquid = false;
-            downedPriestessRod = false;
-            downedDiver = false;
-            downedMotherbrain = false;
-            downedWallOfShadow = false;
-            downedSunSlimeGod = false;
-            downedOverwatcher = false;
-            downedLifebringer = false;
-            downedMaterealizer = false;
-            downedScarabBelief = false;
-            downedWorldsEndWhale = false;
-            downedSon = false;
-            //EVENTS
-            downedCaveOrdeal = false;
-            downedCorruptOrdeal = false;
-            downedCrimsonOrdeal = false;
-            downedDesertOrdeal = false;
-            downedForestOrdeal = false;
-            downedHallowOrdeal = false;
-            downedJungleOrdeal = false;
-            downedSkyOrdeal = false;
-            downedSnowOrdeal = false;
-            downedUnderworldOrdeal = false;
-            //BIOMES
-            beenToHomewardAbyss = false;
-
-            //HUNT OF THE OLD GOD
-            downedGoozma = false;
-
-            //INFERNUM
-            downedBereftVassal = false;
-            //BIOMES
-            beenToProfanedGardens = false;
-
-            //LUNAR VEIL
-            downedStoneGuardian = false;
-            downedCommanderGintzia = false;
-            downedSunStalker = false;
-            downedPumpkinJack = false;
-            downedForgottenPuppetDaedus = false;
-            downedDreadMire = false;
-            downedSingularityFragment = false;
-            downedVerlia = false;
-            downedIrradia = false;
-            downedSylia = false;
-            downedFenix = false;
-            //MINIBOSSSES
-            downedBlazingSerpent = false;
-            downedCogwork = false;
-            downedWaterCogwork = false;
-            downedWaterJellyfish = false;
-            downedSparn = false;
-            downedPandorasFlamebox = false;
-            downedSTARBOMBER = false;
-            //EVENT
-            downedGintzeArmy = false;
-            //BIOMES
-            beenToLunarVeilAbyss = false;
-            beenToAcid = false;
-            beenToAurelus = false;
-            beenToFable = false;
-            beenToGovheilCastle = false;
-            beenToCathedral = false;
-            beenToMarrowSurface = false;
-            beenToMorrowUnderground = false;
-
-            //MARTAINS ORDER
-            downedBritzz = false;
-            downedTheAlchemist = false;
-            downedCarnagePillar = false;
-            downedVoidDigger = false;
-            downedPrinceSlime = false;
-            downedTriplets = false;
-            downedJungleDefenders = false;
-
-            //MECH REWORK
-            downedSt4sys = false;
-            downedTerminator = false;
-            downedCaretaker = false;
-            downedSiegeEngine = false;
-
-            //MEDIAL RIFT
-            downedSuperVoltaicMotherSlime = false;
-
-            //METROID
-            downedTorizo = false;
-            downedSerris = false;
-            downedKraid = false;
-            downedPhantoon = false;
-            downedOmegaPirate = false;
-            downedNightmare = false;
-            downedGoldenTorizo = false;
-
-            //OPHIOID
-            downedOphiopede = false;
-            downedOphiocoon = false;
-            downedOphiofly = false;
-
-            //POLARITIES
-            downedStormCloudfish = false;
-            downedStarConstruct = false;
-            downedGigabat = false;
-            downedSunPixie = false;
-            downedEsophage = false;
-            downedConvectiveWanderer = false;
-
-            //PROJECT ZERO
-            downedForestGuardian = false;
-            downedCryoGuardian = false;
-            downedPrimordialWorm = false;
-            downedTheGuardianOfHell = false;
-            downedVoid = false;
-            downedArmagem = false;
-
-            //QWERTY
-            downedPolarExterminator = false;
-            downedDivineLight = false;
-            downedAncientMachine = false;
-            downedNoehtnap = false;
-            downedHydra = false;
-            downedImperious = false;
-            downedRuneGhost = false;
-            downedInvaderBattleship = false;
-            downedInvaderNoehtnap = false;
-            downedOLORD = false;
-            //MINIBOSSES
-            downedGreatTyrannosaurus = false;
-            //EVENTS
-            downedDinoMilitia = false;
-            downedInvaders = false;
-            //BIOMES
-            beenToSkyFortress = false;
-
-            //REDEMPTION
-            downedThorn = false;
-            downedErhan = false;
-            downedKeeper = false;
-            downedSeedOfInfection = false;
-            downedKingSlayerIII = false;
-            downedOmegaCleaver = false;
-            downedOmegaGigapora = false;
-            downedOmegaObliterator = false;
-            downedPatientZero = false;
-            downedAkka = false;
-            downedUkko = false;
-            downedAncientDeityDuo = false;
-            downedNebuleus = false;
-            //MINIBOSSES
-            downedFowlEmperor = false;
-            downedCockatrice = false;
-            downedBasan = false;
-            downedSkullDigger = false;
-            downedEaglecrestGolem = false;
-            downedCalavia = false;
-            downedTheJanitor = false;
-            downedIrradiatedBehemoth = false;
-            downedBlisterface = false;
-            downedProtectorVolt = false;
-            downedMACEProject = false;
-            //EVENTS
-            downedFowlMorning = false;
-            downedRaveyard = false;
-            //BIOMES
-            beenToLab = false;
-            beenToWasteland = false;
-
-            //SOTS
-            downedGlowmoth = false;
-            downedPutridPinky = false;
-            downedPharaohsCurse = false;
-            downedAdvisor = false;
-            downedPolaris = false;
-            downedLux = false;
-            downedSubspaceSerpent = false;
-            //MINIBOSSES
-            downedNatureConstruct = false;
-            downedEarthenConstruct = false;
-            downedPermafrostConstruct = false;
-            downedTidalConstruct = false;
-            downedOtherworldlyConstruct = false;
-            downedEvilConstruct = false;
-            downedInfernoConstruct = false;
-            downedChaosConstruct = false;
-            downedNatureSpirit = false;
-            downedEarthenSpirit = false;
-            downedPermafrostSpirit = false;
-            downedTidalSpirit = false;
-            downedOtherworldlySpirit = false;
-            downedEvilSpirit = false;
-            downedInfernoSpirit = false;
-            downedChaosSpirit = false;
-            //BIOMES
-            beenToPyramid = false;
-            beenToPlanetarium = false;
-
-            //SHADOWS OF ABADDON
-            downedDecree = false;
-            downedFlamingPumpkin = false;
-            downedZombiePiglinBrute = false;
-            downedJensenTheGrandHarpy = false;
-            downedAraneas = false;
-            downedHarpyQueenRaynare = false;
-            downedPrimordia = false;
-            downedAbaddon = false;
-            downedAraghur = false;
-            downedLostSiblings = false;
-            downedErazor = false;
-            downedNihilus = false;
-            //BIOMES
-            beenToCinderForest = false;
-
-            //SLOOME
-            downedExodygen = false;
-
-            //SPIRIT
-            downedScarabeus = false;
-            downedMoonJellyWizard = false;
-            downedVinewrathBane = false;
-            downedAncientAvian = false;
-            downedStarplateVoyager = false;
-            downedInfernon = false;
-            downedDusking = false;
-            downedAtlas = false;
-            //EVENTS
-            downedJellyDeluge = false;
-            downedTide = false;
-            downedMysticMoon = false;
-            //BIOMES
-            beenToBriar = false;
-            beenToSpirit = false;
-
-            //SPOOKY
-            downedSpookySpirit = false;
-            downedRotGourd = false;
-            downedMoco = false;
-            downedDaffodil = false;
-            downedOrroBoro = false;
-            downedOrro = false;
-            downedBoro = false;
-            downedBigBone = false;
-            //BIOMES
-            beenToSpookyForest = false;
-            beenToSpookyUnderground = false;
-            beenToEyeValley = false;
-            beenToSpiderCave = false;
-            beenToCatacombs = false;
-            beenToCemetery = false;
-
-            //STARLIGHT RIVER
-            downedAuroracle = false;
-            downedCeiros = false;
-            //MINIBOSSES
-            downedGlassweaver = false;
-            //BIOMES
-            beenToAuroracleTemple = false;
-            beenToVitricDesert = false;
-            beenToVitricTemple = false;
-
-            //STARS ABOVE
-            downedVagrantofSpace = false;
-            downedThespian = false;
-            downedDioskouroi = false;
-            downedNalhaun = false;
-            downedStarfarers = false;
-            downedPenthesilea = false;
-            downedArbitration = false;
-            downedWarriorOfLight = false;
-            downedTsukiyomi = false;
-
-            //STORM DIVERS MOD
-            downedAncientHusk = false;
-            downedOverloadedScandrone = false;
-            downedPainbringer = false;
-
-            //SUPERNOVA
-            downedHarbingerOfAnnihilation = false;
-            downedFlyingTerror = false;
-            downedStoneMantaRay = false;
-            //MINIBOSSES
-            downedBloodweaver = false;
-
-            //TERRORBORN
-            downedInfectedIncarnate = false;
-            downedTidalTitan = false;
-            downedDunestock = false;
-            downedShadowcrawler = false;
-            downedHexedConstructor = false;
-            downedPrototypeI = false;
-
-            //THORIUM
-            downedGrandThunderBird = false;
-            downedQueenJellyfish = false;
-            downedViscount = false;
-            downedGraniteEnergyStorm = false;
-            downedBuriedChampion = false;
-            downedBoreanStrider = false;
-            downedFallenBeholder = false;
-            downedLich = false;
-            downedForgottenOne = false;
-            downedPrimordials = false;
-            //MINIBOSSES
-            downedPatchWerk = false;
-            downedCorpseBloom = false;
-            downedIllusionist = false;
-            //BIOMES
-            beenToAquaticDepths = false;
-
-            //TRAE
-            downedGraniteOvergrowth = false;
-            downedBeholder = false;
-
-            //UHTRIC
-            downedDredger = false;
-            downedCharcoolSnowman = false;
-            downedCosmicMenace = false;
-
-            //UNIVERSE OF SWORDS
-            downedEvilFlyingBlade = false;
-
-            //VALHALLA
-            downedColossalCarnage = false;
-            downedYurnero = false;
-
-            //VERDANT
-            beenToVerdant = false;
-
-            //VITALITY
-            downedStormCloud = false;
-            downedGrandAntlion = false;
-            downedGemstoneElemental = false;
-            downedMoonlightDragonfly = false;
-            downedDreadnaught = false;
-            downedMosquitoMonarch = false;
-            downedAnarchulesBeetle = false;
-            downedChaosbringer = false;
-            downedPaladinSpirit = false;
-
-            //WAYFAIR
-            downedManaflora = false;
-
-            //WRATH OF THE GODS
-            downedNoxus = false;
-            downedNamelessDeityOfLight = false;
-
-            //ZYLON
-            downedDirtball = false;
-            downedMetelord = false;
-            downedAdeneb = false;
-            downedEldritchJellyfish = false;
-            downedSaburRex = false;
-
-            for (int i = 0; i < DownedBoss.Length; i++)
-                DownedBoss[i] = false;
+                DownedBoss[i] = downed.Contains($"QoLCdownedBoss{i}");
         }
 
         public override void NetSend(BinaryWriter writer)
@@ -5367,6 +3840,12 @@ namespace QoLCompendium.Core
             writer.Write(new BitsByte
             {
                 [0] = downedWulfrumExcavator
+            });
+
+            //calamity entropy
+            writer.Write(new BitsByte
+            {
+                [0] = downedCruiser
             });
 
             //catalyst
@@ -5466,12 +3945,13 @@ namespace QoLCompendium.Core
             writer.Write(new BitsByte
             {
                 [0] = downedTrojanSquirrel,
-                [1] = downedDeviantt,
-                [2] = downedLifelight,
-                [3] = downedBanishedBaron,
-                [4] = downedEridanus,
-                [5] = downedAbominationn,
-                [6] = downedMutant
+                [1] = downedCursedCoffin,
+                [2] = downedDeviantt,
+                [3] = downedLifelight,
+                [4] = downedBanishedBaron,
+                [5] = downedEridanus,
+                [6] = downedAbominationn,
+                [7] = downedMutant
             });
 
             //fractures of penumbra
@@ -6021,6 +4501,10 @@ namespace QoLCompendium.Core
             flags = reader.ReadByte();
             downedWulfrumExcavator = flags[0];
 
+            //calamity entropy
+            flags = reader.ReadByte();
+            downedCruiser = flags[0];
+
             //catalyst
             flags = reader.ReadByte();
             downedAstrageldon = flags[0];
@@ -6095,12 +4579,13 @@ namespace QoLCompendium.Core
             //fargos
             flags = reader.ReadByte();
             downedTrojanSquirrel = flags[0];
-            downedDeviantt = flags[1];
-            downedLifelight = flags[2];
-            downedBanishedBaron = flags[3];
-            downedEridanus = flags[4];
-            downedAbominationn = flags[5];
-            downedMutant = flags[6];
+            downedCursedCoffin = flags[1];
+            downedDeviantt = flags[2];
+            downedLifelight = flags[3];
+            downedBanishedBaron = flags[4];
+            downedEridanus = flags[5];
+            downedAbominationn = flags[6];
+            downedMutant = flags[7];
 
             //fractures of penumbra
             flags = reader.ReadByte();
@@ -6480,6 +4965,886 @@ namespace QoLCompendium.Core
 
                 DownedBoss[i] = flags[bits];
             }
+        }
+
+        public static void Resetdowned()
+        {
+            //VANILLA
+            //BOSSES
+            downedDreadnautilus = false;
+            downedMartianSaucer = false;
+            //EVENTS
+            downedBloodMoon = false;
+            downedEclipse = false;
+            downedLunarEvent = false;
+            beenThroughNight = false;
+            //BIOMES
+            beenToPurity = false;
+            beenToCavernsOrUnderground = false;
+            beenToUnderworld = false;
+            beenToSky = false;
+            beenToSnow = false;
+            beenToDesert = false;
+            beenToOcean = false;
+            beenToJungle = false;
+            beenToMushroom = false;
+            beenToCorruption = false;
+            beenToCrimson = false;
+            beenToHallow = false;
+            beenToTemple = false;
+            beenToDungeon = false;
+            beenToAether = false;
+            //OTHER
+            talkedToSkeletonMerchant = false;
+            talkedToTravelingMerchant = false;
+
+            //AEQUUS
+            downedCrabson = false;
+            downedOmegaStarite = false;
+            downedDustDevil = false;
+            downedRedSprite = false;
+            downedSpaceSquid = false;
+            downedHyperStarite = false;
+            downedUltraStarite = false;
+            //EVENTS
+            downedDemonSiege = false;
+            downedGlimmer = false;
+            downedGaleStreams = false;
+            //BIOMES
+            beenToCrabCrevice = false;
+
+            //AFKPETS
+            downedSlayerOfEvil = false;
+            downedSATLA = false;
+            downedDrFetus = false;
+            downedSlimesHope = false;
+            downedPoliticianSlime = false;
+            downedAncientTrio = false;
+            downedLavalGolem = false;
+            //MINIBOSSES
+            downedAntony = false;
+            downedBunnyZeppelin = false;
+            downedOkiku = false;
+            downedHarpyAirforce = false;
+            downedIsaac = false;
+            downedAncientGuardian = false;
+            downedHeroicSlime = false;
+            downedHoloSlime = false;
+            downedSecurityBot = false;
+            downedUndeadChef = false;
+            downedGuardianOfFrost = false;
+
+            //ASSORTED CRAZY THINGS
+            downedSoulHarvester = false;
+
+            //AWFUL GARBAGE
+            downedTreeToad = false;
+            downedSeseKitsugai = false;
+            downedEyeOfTheStorm = false;
+            downedFrigidius = false;
+
+            //BLOCK'S CORE BOSS
+            downedCoreBoss = false;
+
+            //CALAMITY
+            downedDesertScourge = false;
+            downedCrabulon = false;
+            downedHiveMind = false;
+            downedPerforators = false;
+            downedSlimeGod = false;
+            downedCryogen = false;
+            downedAquaticScourge = false;
+            downedBrimstoneElemental = false;
+            downedCalamitasClone = false;
+            downedLeviathanAndAnahita = false;
+            downedAstrumAureus = false;
+            downedPlaguebringerGoliath = false;
+            downedRavager = false;
+            downedAstrumDeus = false;
+            downedProfanedGuardians = false;
+            downedDragonfolly = false;
+            downedProvidence = false;
+            downedStormWeaver = false;
+            downedCeaselessVoid = false;
+            downedSignus = false;
+            downedPolterghast = false;
+            downedOldDuke = false;
+            downedDevourerOfGods = false;
+            downedYharon = false;
+            downedExoMechs = false;
+            downedSupremeCalamitas = false;
+            downedGiantClam = false;
+            downedGreatSandShark = false;
+            downedCragmawMire = false;
+            downedNuclearTerror = false;
+            downedMauler = false;
+            downedEidolonWyrm = false;
+            //EVENTS
+            downedAcidRain1 = false;
+            downedAcidRain2 = false;
+            downedBossRush = false;
+            //BIOMES
+            beenToCrags = false;
+            beenToAstral = false;
+            beenToSunkenSea = false;
+            beenToSulphurSea = false;
+            beenToAbyss = false;
+            beenToAbyssLayer1 = false;
+            beenToAbyssLayer2 = false;
+            beenToAbyssLayer3 = false;
+            beenToAbyssLayer4 = false;
+
+            //CALAMITY COMMUNITY REMIX
+            downedWulfrumExcavator = false;
+
+            //CALAMITY ENTROPY
+            downedCruiser = false;
+
+            //CALAMITY VANITIES
+            beenToAstralBlight = false;
+
+            //CATALYST
+            downedAstrageldon = false;
+
+            //CLAMITY
+            downedClamitas = false;
+            downedPyrogen = false;
+            downedWallOfBronze = false;
+
+            //CONFECTION
+            beenToConfection = false;
+
+            //CONSOLARIA
+            downedLepus = false;
+            downedTurkor = false;
+            downedOcram = false;
+
+            //CORALITE
+            downedRediancie = false;
+            downedBabyIceDragon = false;
+            downedSlimeEmperor = false;
+            downedBloodiancie = false;
+            downedThunderveinDragon = false;
+            downedNightmarePlantera = false;
+
+            //DEPTHS
+            beenToDepths = false;
+
+            //DORMANT DAWN
+            downedLifeGuardian = false;
+            downedManaGuardian = false;
+            downedMeteorExcavator = false;
+            downedMeteorAnnihilator = false;
+            downedHellfireSerpent = false;
+            downedWitheredAcornSpirit = false;
+            downedGoblinSorcererChieftain = false;
+
+            //ECHOES OF THE ANCIENTS
+            downedGalahis = false;
+            downedCreation = false;
+            downedDestruction = false;
+
+            //EDORBIS
+            downedBlightKing = false;
+            downedGardener = false;
+            downedGlaciation = false;
+            downedHandOfCthulhu = false;
+            downedCursePreacher = false;
+
+            //EVERJADE
+            beenToJadeLake = false;
+
+            //EXALT
+            downedEffulgence = false;
+            downedIceLich = false;
+
+            //EXXO AVALON ORIGINS
+            downedBacteriumPrime = false;
+            downedDesertBeak = false;
+            downedKingSting = false;
+            downedMechasting = false;
+            downedPhantasm = false;
+            //BIOMES
+            beenToContagion = false;
+
+            //FARGOS SOULS
+            downedTrojanSquirrel = false;
+            downedCursedCoffin = false;
+            downedDeviantt = false;
+            downedBanishedBaron = false;
+            downedLifelight = false;
+            downedEridanus = false;
+            downedAbominationn = false;
+            downedMutant = false;
+
+            //FRACTURES OF PENUMBRA
+            downedAlphaFrostjaw = false;
+            downedSanguineElemental = false;
+            //BIOMES
+            beenToDread = false;
+
+            //GAMETERRARIA
+            downedLad = false;
+            downedHornlitz = false;
+            downedSnowDon = false;
+            downedStoffie = false;
+
+            //GENSOKYO
+            downedLilyWhite = false;
+            downedRumia = false;
+            downedEternityLarva = false;
+            downedNazrin = false;
+            downedHinaKagiyama = false;
+            downedSekibanki = false;
+            downedSeiran = false;
+            downedNitoriKawashiro = false;
+            downedMedicineMelancholy = false;
+            downedCirno = false;
+            downedMinamitsuMurasa = false;
+            downedAliceMargatroid = false;
+            downedSakuyaIzayoi = false;
+            downedSeijaKijin = false;
+            downedMayumiJoutouguu = false;
+            downedToyosatomimiNoMiko = false;
+            downedKaguyaHouraisan = false;
+            downedUtsuhoReiuji = false;
+            downedTenshiHinanawi = false;
+            //MINIBOSSES
+            downedKisume = false;
+
+            //GMR
+            downedTrerios = false;
+            downedMagmaEye = false;
+            downedJack = false;
+            downedAcheron = false;
+
+            //HOMEWARD JOURNEY
+            downedMarquisMoonsquid = false;
+            downedPriestessRod = false;
+            downedDiver = false;
+            downedMotherbrain = false;
+            downedWallOfShadow = false;
+            downedSunSlimeGod = false;
+            downedOverwatcher = false;
+            downedLifebringer = false;
+            downedMaterealizer = false;
+            downedScarabBelief = false;
+            downedWorldsEndWhale = false;
+            downedSon = false;
+            //EVENTS
+            downedCaveOrdeal = false;
+            downedCorruptOrdeal = false;
+            downedCrimsonOrdeal = false;
+            downedDesertOrdeal = false;
+            downedForestOrdeal = false;
+            downedHallowOrdeal = false;
+            downedJungleOrdeal = false;
+            downedSkyOrdeal = false;
+            downedSnowOrdeal = false;
+            downedUnderworldOrdeal = false;
+            //BIOMES
+            beenToHomewardAbyss = false;
+
+            //HUNT OF THE OLD GOD
+            downedGoozma = false;
+
+            //INFERNUM
+            downedBereftVassal = false;
+            //BIOMES
+            beenToProfanedGardens = false;
+
+            //LUNAR VEIL
+            downedStoneGuardian = false;
+            downedCommanderGintzia = false;
+            downedSunStalker = false;
+            downedPumpkinJack = false;
+            downedForgottenPuppetDaedus = false;
+            downedDreadMire = false;
+            downedSingularityFragment = false;
+            downedVerlia = false;
+            downedIrradia = false;
+            downedSylia = false;
+            downedFenix = false;
+            //MINIBOSSSES
+            downedBlazingSerpent = false;
+            downedCogwork = false;
+            downedWaterCogwork = false;
+            downedWaterJellyfish = false;
+            downedSparn = false;
+            downedPandorasFlamebox = false;
+            downedSTARBOMBER = false;
+            //EVENT
+            downedGintzeArmy = false;
+            //BIOMES
+            beenToLunarVeilAbyss = false;
+            beenToAcid = false;
+            beenToAurelus = false;
+            beenToFable = false;
+            beenToGovheilCastle = false;
+            beenToCathedral = false;
+            beenToMarrowSurface = false;
+            beenToMorrowUnderground = false;
+
+            //MARTAINS ORDER
+            downedBritzz = false;
+            downedTheAlchemist = false;
+            downedCarnagePillar = false;
+            downedVoidDigger = false;
+            downedPrinceSlime = false;
+            downedTriplets = false;
+            downedJungleDefenders = false;
+
+            //MECH REWORK
+            downedSt4sys = false;
+            downedTerminator = false;
+            downedCaretaker = false;
+            downedSiegeEngine = false;
+
+            //MEDIAL RIFT
+            downedSuperVoltaicMotherSlime = false;
+
+            //METROID
+            downedTorizo = false;
+            downedSerris = false;
+            downedKraid = false;
+            downedPhantoon = false;
+            downedOmegaPirate = false;
+            downedNightmare = false;
+            downedGoldenTorizo = false;
+
+            //OPHIOID
+            downedOphiopede = false;
+            downedOphiocoon = false;
+            downedOphiofly = false;
+
+            //POLARITIES
+            downedStormCloudfish = false;
+            downedStarConstruct = false;
+            downedGigabat = false;
+            downedSunPixie = false;
+            downedEsophage = false;
+            downedConvectiveWanderer = false;
+
+            //PROJECT ZERO
+            downedForestGuardian = false;
+            downedCryoGuardian = false;
+            downedPrimordialWorm = false;
+            downedTheGuardianOfHell = false;
+            downedVoid = false;
+            downedArmagem = false;
+
+            //QWERTY
+            downedPolarExterminator = false;
+            downedDivineLight = false;
+            downedAncientMachine = false;
+            downedNoehtnap = false;
+            downedHydra = false;
+            downedImperious = false;
+            downedRuneGhost = false;
+            downedInvaderBattleship = false;
+            downedInvaderNoehtnap = false;
+            downedOLORD = false;
+            //MINIBOSSES
+            downedGreatTyrannosaurus = false;
+            //EVENTS
+            downedDinoMilitia = false;
+            downedInvaders = false;
+            //BIOMES
+            beenToSkyFortress = false;
+
+            //REDEMPTION
+            downedThorn = false;
+            downedErhan = false;
+            downedKeeper = false;
+            downedSeedOfInfection = false;
+            downedKingSlayerIII = false;
+            downedOmegaCleaver = false;
+            downedOmegaGigapora = false;
+            downedOmegaObliterator = false;
+            downedPatientZero = false;
+            downedAkka = false;
+            downedUkko = false;
+            downedAncientDeityDuo = false;
+            downedNebuleus = false;
+            //MINIBOSSES
+            downedFowlEmperor = false;
+            downedCockatrice = false;
+            downedBasan = false;
+            downedSkullDigger = false;
+            downedEaglecrestGolem = false;
+            downedCalavia = false;
+            downedTheJanitor = false;
+            downedIrradiatedBehemoth = false;
+            downedBlisterface = false;
+            downedProtectorVolt = false;
+            downedMACEProject = false;
+            //EVENTS
+            downedFowlMorning = false;
+            downedRaveyard = false;
+            //BIOMES
+            beenToLab = false;
+            beenToWasteland = false;
+
+            //SOTS
+            downedGlowmoth = false;
+            downedPutridPinky = false;
+            downedPharaohsCurse = false;
+            downedAdvisor = false;
+            downedPolaris = false;
+            downedLux = false;
+            downedSubspaceSerpent = false;
+            //MINIBOSSES
+            downedNatureConstruct = false;
+            downedEarthenConstruct = false;
+            downedPermafrostConstruct = false;
+            downedTidalConstruct = false;
+            downedOtherworldlyConstruct = false;
+            downedEvilConstruct = false;
+            downedInfernoConstruct = false;
+            downedChaosConstruct = false;
+            downedNatureSpirit = false;
+            downedEarthenSpirit = false;
+            downedPermafrostSpirit = false;
+            downedTidalSpirit = false;
+            downedOtherworldlySpirit = false;
+            downedEvilSpirit = false;
+            downedInfernoSpirit = false;
+            downedChaosSpirit = false;
+            //BIOMES
+            beenToPyramid = false;
+            beenToPlanetarium = false;
+
+            //SHADOWS OF ABADDON
+            downedDecree = false;
+            downedFlamingPumpkin = false;
+            downedZombiePiglinBrute = false;
+            downedJensenTheGrandHarpy = false;
+            downedAraneas = false;
+            downedHarpyQueenRaynare = false;
+            downedPrimordia = false;
+            downedAbaddon = false;
+            downedAraghur = false;
+            downedLostSiblings = false;
+            downedErazor = false;
+            downedNihilus = false;
+            //BIOMES
+            beenToCinderForest = false;
+
+            //SLOOME
+            downedExodygen = false;
+
+            //SPIRIT
+            downedScarabeus = false;
+            downedMoonJellyWizard = false;
+            downedVinewrathBane = false;
+            downedAncientAvian = false;
+            downedStarplateVoyager = false;
+            downedInfernon = false;
+            downedDusking = false;
+            downedAtlas = false;
+            //EVENTS
+            downedJellyDeluge = false;
+            downedTide = false;
+            downedMysticMoon = false;
+            //BIOMES
+            beenToBriar = false;
+            beenToSpirit = false;
+
+            //SPOOKY
+            downedSpookySpirit = false;
+            downedRotGourd = false;
+            downedMoco = false;
+            downedDaffodil = false;
+            downedOrroBoro = false;
+            downedOrro = false;
+            downedBoro = false;
+            downedBigBone = false;
+            //BIOMES
+            beenToSpookyForest = false;
+            beenToSpookyUnderground = false;
+            beenToEyeValley = false;
+            beenToSpiderCave = false;
+            beenToCatacombs = false;
+            beenToCemetery = false;
+
+            //STARLIGHT RIVER
+            downedAuroracle = false;
+            downedCeiros = false;
+            //MINIBOSSES
+            downedGlassweaver = false;
+            //BIOMES
+            beenToAuroracleTemple = false;
+            beenToVitricDesert = false;
+            beenToVitricTemple = false;
+
+            //STARS ABOVE
+            downedVagrantofSpace = false;
+            downedThespian = false;
+            downedDioskouroi = false;
+            downedNalhaun = false;
+            downedStarfarers = false;
+            downedPenthesilea = false;
+            downedArbitration = false;
+            downedWarriorOfLight = false;
+            downedTsukiyomi = false;
+
+            //STORM DIVERS MOD
+            downedAncientHusk = false;
+            downedOverloadedScandrone = false;
+            downedPainbringer = false;
+
+            //SUPERNOVA
+            downedHarbingerOfAnnihilation = false;
+            downedFlyingTerror = false;
+            downedStoneMantaRay = false;
+            //MINIBOSSES
+            downedBloodweaver = false;
+
+            //TERRORBORN
+            downedInfectedIncarnate = false;
+            downedTidalTitan = false;
+            downedDunestock = false;
+            downedShadowcrawler = false;
+            downedHexedConstructor = false;
+            downedPrototypeI = false;
+
+            //THORIUM
+            downedGrandThunderBird = false;
+            downedQueenJellyfish = false;
+            downedViscount = false;
+            downedGraniteEnergyStorm = false;
+            downedBuriedChampion = false;
+            downedBoreanStrider = false;
+            downedFallenBeholder = false;
+            downedLich = false;
+            downedForgottenOne = false;
+            downedPrimordials = false;
+            //MINIBOSSES
+            downedPatchWerk = false;
+            downedCorpseBloom = false;
+            downedIllusionist = false;
+            //BIOMES
+            beenToAquaticDepths = false;
+
+            //TRAE
+            downedGraniteOvergrowth = false;
+            downedBeholder = false;
+
+            //UHTRIC
+            downedDredger = false;
+            downedCharcoolSnowman = false;
+            downedCosmicMenace = false;
+
+            //UNIVERSE OF SWORDS
+            downedEvilFlyingBlade = false;
+
+            //VALHALLA
+            downedColossalCarnage = false;
+            downedYurnero = false;
+
+            //VERDANT
+            beenToVerdant = false;
+
+            //VITALITY
+            downedStormCloud = false;
+            downedGrandAntlion = false;
+            downedGemstoneElemental = false;
+            downedMoonlightDragonfly = false;
+            downedDreadnaught = false;
+            downedMosquitoMonarch = false;
+            downedAnarchulesBeetle = false;
+            downedChaosbringer = false;
+            downedPaladinSpirit = false;
+
+            //WAYFAIR
+            downedManaflora = false;
+
+            //WRATH OF THE GODS
+            downedNoxus = false;
+            downedNamelessDeityOfLight = false;
+
+            //ZYLON
+            downedDirtball = false;
+            downedMetelord = false;
+            downedAdeneb = false;
+            downedEldritchJellyfish = false;
+            downedSaburRex = false;
+
+            for (int i = 0; i < DownedBoss.Length; i++)
+                DownedBoss[i] = false;
+        }
+
+        public static void LoadSupportedMods()
+        {
+            aequusLoaded = ModLoader.TryGetMod("Aequus", out Mod Aequus);
+            aequusMod = Aequus;
+
+            afkpetsLoaded = ModLoader.TryGetMod("AFKPETS", out Mod AFKPETS);
+            afkpetsMod = AFKPETS;
+
+            amuletOfManyMinionsLoaded = ModLoader.TryGetMod("AmuletOfManyMinions", out Mod AmuletOfManyMinions);
+            amuletOfManyMinionsMod = AmuletOfManyMinions;
+
+            arbourLoaded = ModLoader.TryGetMod("Arbour", out Mod Arbour);
+            arbourMod = Arbour;
+
+            assortedCrazyThingsLoaded = ModLoader.TryGetMod("AssortedCrazyThings", out Mod AssortedCrazyThings);
+            assortedCrazyThingsMod = AssortedCrazyThings;
+
+            awfulGarbageLoaded = ModLoader.TryGetMod("AwfulGarbageMod", out Mod AwfulGarbageMod);
+            awfulGarbageMod = AwfulGarbageMod;
+
+            blocksArsenalLoaded = ModLoader.TryGetMod("Arsenal_Mod", out Mod Arsenal_Mod);
+            blocksArsenalMod = Arsenal_Mod;
+
+            blocksArtificerLoaded = ModLoader.TryGetMod("ArtificerMod", out Mod ArtificerMod);
+            blocksArtificerMod = ArtificerMod;
+
+            blocksCoreBossLoaded = ModLoader.TryGetMod("CorruptionBoss", out Mod CorruptionBoss);
+            blocksCoreBossMod = CorruptionBoss;
+
+            blocksInfoAccessoriesLoaded = ModLoader.TryGetMod("BInfoAcc", out Mod BInfoAcc);
+            blocksInfoAccessoriesMod = BInfoAcc;
+
+            blocksThrowerLoaded = ModLoader.TryGetMod("BCThrower", out Mod BCThrower);
+            blocksThrowerMod = BCThrower;
+
+            bombusApisLoaded = ModLoader.TryGetMod("BombusApisBee", out Mod BombusApisBee);
+            bombusApisMod = BombusApisBee;
+
+            buffariaLoaded = ModLoader.TryGetMod("Buffaria", out Mod Buffaria);
+            buffariaMod = Buffaria;
+
+            calamityLoaded = ModLoader.TryGetMod("CalamityMod", out Mod CalamityMod);
+            calamityMod = CalamityMod;
+
+            calamityCommunityRemixLoaded = ModLoader.TryGetMod("CalRemix", out Mod CalRemix);
+            calamityCommunityRemixMod = CalRemix;
+
+            calamityEntropyLoaded = ModLoader.TryGetMod("CalamityEntropy", out Mod CalamityEntropy);
+            calamityEntropyMod = CalamityEntropy;
+
+            calamityOverhaulLoaded = ModLoader.TryGetMod("CalamityOverhaul", out Mod CalamityOverhaul);
+            calamityOverhaulMod = CalamityOverhaul;
+
+            calamityVanitiesLoaded = ModLoader.TryGetMod("CalValEX", out Mod CalValEX);
+            calamityVanitiesMod = CalValEX;
+
+            captureDiscsClassLoaded = ModLoader.TryGetMod("CaptureDiscClass", out Mod CaptureDiscClass);
+            captureDiscsClassMod = CaptureDiscClass;
+
+            catalystLoaded = ModLoader.TryGetMod("CatalystMod", out Mod CatalystMod);
+            catalystMod = CatalystMod;
+
+            cerebralLoaded = ModLoader.TryGetMod("CerebralMod", out Mod CerebralMod);
+            cerebralMod = CerebralMod;
+
+            clamityAddonLoaded = ModLoader.TryGetMod("Clamity", out Mod Clamity);
+            clamityAddonMod = Clamity;
+
+            classicalLoaded = ModLoader.TryGetMod("Classical", out Mod Classical);
+            classicalMod = Classical;
+
+            clickerClassLoaded = ModLoader.TryGetMod("ClickerClass", out Mod ClickerClass);
+            clickerClassMod = ClickerClass;
+
+            confectionRebakedLoaded = ModLoader.TryGetMod("TheConfectionRebirth", out Mod TheConfectionRebirth);
+            confectionRebakedMod = TheConfectionRebirth;
+
+            consolariaLoaded = ModLoader.TryGetMod("Consolaria", out Mod Consolaria);
+            consolariaMod = Consolaria;
+
+            coraliteLoaded = ModLoader.TryGetMod("Coralite", out Mod Coralite);
+            coraliteMod = Coralite;
+
+            crystalDragonsLoaded = ModLoader.TryGetMod("CrystalDragons", out Mod CrystalDragons);
+            crystalDragonsMod = CrystalDragons;
+
+            depthsLoaded = ModLoader.TryGetMod("TheDepths", out Mod TheDepths);
+            depthsMod = TheDepths;
+
+            dormantDawnLoaded = ModLoader.TryGetMod("DDmod", out Mod DDmod);
+            dormantDawnMod = DDmod;
+
+            draedonExpansionLoaded = ModLoader.TryGetMod("DraedonExpansion", out Mod DraedonExpansion);
+            draedonExpansionMod = DraedonExpansion;
+
+            dragonBallTerrariaLoaded = ModLoader.TryGetMod("DBZMODPORT", out Mod DBZMODPORT);
+            dragonBallTerrariaMod = DBZMODPORT;
+
+            echoesOfTheAncientsLoaded = ModLoader.TryGetMod("EchoesoftheAncients", out Mod EchoesoftheAncients);
+            echoesOfTheAncientsMod = EchoesoftheAncients;
+
+            edorbisLoaded = ModLoader.TryGetMod("Edorbis", out Mod Edorbis);
+            edorbisMod = Edorbis;
+
+            enchantedMoonsLoaded = ModLoader.TryGetMod("BlueMoon", out Mod BlueMoon);
+            enchantedMoonsMod = BlueMoon;
+
+            everjadeLoaded = ModLoader.TryGetMod("JadeFables", out Mod JadeFables);
+            everjadeMod = JadeFables;
+
+            exaltLoaded = ModLoader.TryGetMod("ExaltMod", out Mod ExaltMod);
+            exaltMod = ExaltMod;
+
+            excelsiorLoaded = ModLoader.TryGetMod("excels", out Mod excels);
+            excelsiorMod = excels;
+
+            exxoAvalonOriginsLoaded = ModLoader.TryGetMod("Avalon", out Mod Avalon);
+            exxoAvalonOriginsMod = Avalon;
+
+            fargosMutantLoaded = ModLoader.TryGetMod("Fargowiltas", out Mod Fargowiltas);
+            fargosMutantMod = Fargowiltas;
+
+            fargosSoulsLoaded = ModLoader.TryGetMod("FargowiltasSouls", out Mod FargowiltasSouls);
+            fargosSoulsMod = FargowiltasSouls;
+
+            fargosSoulsDLCLoaded = ModLoader.TryGetMod("FargowiltasCrossmod", out Mod FargowiltasCrossmod);
+            fargosSoulsDLCMod = FargowiltasCrossmod;
+
+            fargosSoulsExtrasLoaded = ModLoader.TryGetMod("FargowiltasSoulsDLC", out Mod FargowiltasSoulsDLC);
+            fargosSoulsExtrasMod = FargowiltasSoulsDLC;
+
+            fracturesOfPenumbraLoaded = ModLoader.TryGetMod("FPenumbra", out Mod FPenumbra);
+            fracturesOfPenumbraMod = FPenumbra;
+
+            furnitureFoodAndFunLoaded = ModLoader.TryGetMod("CosmeticVariety", out Mod CosmeticVariety);
+            furnitureFoodAndFunMod = CosmeticVariety;
+
+            gameTerrariaLoaded = ModLoader.TryGetMod("GMT", out Mod GMT);
+            gameTerrariaMod = GMT;
+
+            gensokyoLoaded = ModLoader.TryGetMod("Gensokyo", out Mod Gensokyo);
+            gensokyoMod = Gensokyo;
+
+            gerdsLabLoaded = ModLoader.TryGetMod("GMR", out Mod GMR);
+            gerdsLabMod = GMR;
+
+            heartbeatariaLoaded = ModLoader.TryGetMod("XDContentMod", out Mod XDContentMod);
+            heartbeatariaMod = XDContentMod;
+
+            homewardJourneyLoaded = ModLoader.TryGetMod("ContinentOfJourney", out Mod ContinentOfJourney);
+            homewardJourneyMod = ContinentOfJourney;
+
+            huntOfTheOldGodLoaded = ModLoader.TryGetMod("CalamityHunt", out Mod CalamityHunt);
+            huntOfTheOldGodMod = CalamityHunt;
+
+            infernumLoaded = ModLoader.TryGetMod("InfernumMode", out Mod InfernumMode);
+            infernumMod = InfernumMode;
+
+            luiAFKLoaded = ModLoader.TryGetMod("miningcracks_take_on_luiafk", out Mod miningcracks_take_on_luiafk);
+            luiAFKMod = miningcracks_take_on_luiafk;
+
+            lunarVeilLoaded = ModLoader.TryGetMod("Stellamod", out Mod Stellamod);
+            lunarVeilMod = Stellamod;
+
+            magicStorageLoaded = ModLoader.TryGetMod("MagicStorage", out Mod MagicStorage);
+            magicStorageMod = MagicStorage;
+
+            martainsOrderLoaded = ModLoader.TryGetMod("MartainsOrder", out Mod MartainsOrder);
+            martainsOrderMod = MartainsOrder;
+
+            mechReworkLoaded = ModLoader.TryGetMod("PrimeRework", out Mod PrimeRework);
+            mechReworkMod = PrimeRework;
+
+            medialRiftLoaded = ModLoader.TryGetMod("MedRift", out Mod MedRift);
+            medialRiftMod = MedRift;
+
+            metroidLoaded = ModLoader.TryGetMod("MetroidMod", out Mod MetroidMod);
+            metroidMod = MetroidMod;
+
+            moomoosUltimateYoyoRevampLoaded = ModLoader.TryGetMod("CombinationsMod", out Mod CombinationsMod);
+            moomoosUltimateYoyoRevampMod = CombinationsMod;
+
+            mrPlagueRacesLoaded = ModLoader.TryGetMod("MrPlagueRaces", out Mod MrPlagueRaces);
+            mrPlagueRacesMod = MrPlagueRaces;
+
+            orchidLoaded = ModLoader.TryGetMod("OrchidMod", out Mod OrchidMod);
+            orchidMod = OrchidMod;
+
+            ophioidLoaded = ModLoader.TryGetMod("OphioidMod", out Mod OphioidMod);
+            ophioidMod = OphioidMod;
+
+            polaritiesLoaded = ModLoader.TryGetMod("Polarities", out Mod Polarities);
+            polaritiesMod = Polarities;
+
+            projectZeroLoaded = ModLoader.TryGetMod("FM", out Mod FM);
+            projectZeroMod = FM;
+
+            qwertyLoaded = ModLoader.TryGetMod("QwertyMod", out Mod QwertyMod);
+            qwertyMod = QwertyMod;
+
+            redemptionLoaded = ModLoader.TryGetMod("Redemption", out Mod Redemption);
+            redemptionMod = Redemption;
+
+            reforgedLoaded = ModLoader.TryGetMod("ReforgeOverhaul", out Mod ReforgeOverhaul);
+            reforgedMod = ReforgeOverhaul;
+
+            remnantsLoaded = ModLoader.TryGetMod("Remnants", out Mod Remnants);
+            remnantsMod = Remnants;
+
+            secretsOfTheShadowsLoaded = ModLoader.TryGetMod("SOTS", out Mod SOTS);
+            secretsOfTheShadowsMod = SOTS;
+
+            shadowsOfAbaddonLoaded = ModLoader.TryGetMod("SacredTools", out Mod SacredTools);
+            shadowsOfAbaddonMod = SacredTools;
+
+            sloomeLoaded = ModLoader.TryGetMod("Bloopsitems", out Mod Bloopsitems);
+            sloomeMod = Bloopsitems;
+
+            spiritLoaded = ModLoader.TryGetMod("SpiritMod", out Mod SpiritMod);
+            spiritMod = SpiritMod;
+
+            spookyLoaded = ModLoader.TryGetMod("Spooky", out Mod Spooky);
+            spookyMod = Spooky;
+
+            starlightRiverLoaded = ModLoader.TryGetMod("StarlightRiver", out Mod StarlightRiver);
+            starlightRiverMod = StarlightRiver;
+
+            starsAboveLoaded = ModLoader.TryGetMod("StarsAbove", out Mod StarsAbove);
+            starsAboveMod = StarsAbove;
+
+            stormsAdditionsLoaded = ModLoader.TryGetMod("StormDiversMod", out Mod StormDiversMod);
+            stormsAdditionsMod = StormDiversMod;
+
+            stramsClassesLoaded = ModLoader.TryGetMod("StramClasses", out Mod StramClasses);
+            stramsClassesMod = StramClasses;
+
+            supernovaLoaded = ModLoader.TryGetMod("SupernovaMod", out Mod SupernovaMod);
+            supernovaMod = SupernovaMod;
+
+            terrorbornLoaded = ModLoader.TryGetMod("TerrorbornMod", out Mod TerrorbornMod);
+            terrorbornMod = TerrorbornMod;
+
+            thoriumLoaded = ModLoader.TryGetMod("ThoriumMod", out Mod ThoriumMod);
+            thoriumMod = ThoriumMod;
+
+            traeLoaded = ModLoader.TryGetMod("TRAEProject", out Mod TRAEProject);
+            traeMod = TRAEProject;
+
+            uhtricLoaded = ModLoader.TryGetMod("Uhtric", out Mod Uhtric);
+            uhtricMod = Uhtric;
+
+            universeOfSwordsLoaded = ModLoader.TryGetMod("UniverseOfSwordsMod", out Mod UniverseOfSwordsMod);
+            universeOfSwordsMod = UniverseOfSwordsMod;
+
+            valhallaLoaded = ModLoader.TryGetMod("ValhallaMod", out Mod ValhallaMod);
+            valhallaMod = ValhallaMod;
+
+            verdantLoaded = ModLoader.TryGetMod("Verdant", out Mod Verdant);
+            verdantMod = Verdant;
+
+            vitalityLoaded = ModLoader.TryGetMod("VitalityMod", out Mod VitalityMod);
+            vitalityMod = VitalityMod;
+
+            wayfairContentLoaded = ModLoader.TryGetMod("WAYFAIRContent", out Mod WAYFAIRContent);
+            wayfairContentMod = WAYFAIRContent;
+
+            wrathOfTheGodsLoaded = ModLoader.TryGetMod("NoxusBoss", out Mod NoxusBoss);
+            wrathOfTheGodsMod = NoxusBoss;
+
+            zylonLoaded = ModLoader.TryGetMod("Zylon", out Mod Zylon);
+            zylonMod = Zylon;
         }
     }
 }

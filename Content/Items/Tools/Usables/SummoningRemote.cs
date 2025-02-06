@@ -1,7 +1,9 @@
 ﻿using Humanizer;
+using QoLCompendium.Content.Projectiles.Other;
 using QoLCompendium.Core;
 using QoLCompendium.Core.Changes;
 using QoLCompendium.Core.UI.Panels;
+using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent.Events;
 
@@ -22,6 +24,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.useAnimation = 20;
             Item.useTime = 20;
+            Item.shoot = ModContent.ProjectileType<NPCSpawner>();
 
             Item.SetShopValues(ItemRarityColor.White0, Item.buyPrice(0, 1, 0, 0));
         }
@@ -29,6 +32,51 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.SummoningRemote);
+        }
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            if (player.altFunctionUse == 2)
+                return false;
+
+            Vector2 spawnPosition = player.Center - Vector2.UnitY * 800f;
+
+            if (player.GetModPlayer<QoLCPlayer>().bossToSpawn != 0 && player.GetModPlayer<QoLCPlayer>().bossSpawn)
+            {
+                if (player.GetModPlayer<QoLCPlayer>().bossToSpawn == NPCID.WallofFlesh)
+                    return false;
+
+                if (player.GetModPlayer<QoLCPlayer>().bossToSpawn == NPCID.Retinazer)
+                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), spawnPosition, Vector2.Zero, ModContent.ProjectileType<NPCSpawner>(), 0, 0f, player.whoAmI, NPCID.Spazmatism);
+
+                Projectile.NewProjectile(player.GetSource_ItemUse(Item), spawnPosition, Vector2.Zero, ModContent.ProjectileType<NPCSpawner>(), 0, 0f, player.whoAmI, player.GetModPlayer<QoLCPlayer>().bossToSpawn);
+                SoundEngine.PlaySound(SoundID.Roar, player.position);
+            }
+
+            if (player.GetModPlayer<QoLCPlayer>().eventToSpawn != 0 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
+            {
+                if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 14)
+                {
+                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), spawnPosition, Vector2.Zero, ModContent.ProjectileType<NPCSpawner>(), 0, 0f, player.whoAmI, NPCID.LunarTowerNebula);
+                    SoundEngine.PlaySound(SoundID.Roar, player.position);
+                }
+                if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 15)
+                {
+                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), spawnPosition, Vector2.Zero, ModContent.ProjectileType<NPCSpawner>(), 0, 0f, player.whoAmI, NPCID.LunarTowerSolar);
+                    SoundEngine.PlaySound(SoundID.Roar, player.position);
+                }
+                if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 16)
+                {
+                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), spawnPosition, Vector2.Zero, ModContent.ProjectileType<NPCSpawner>(), 0, 0f, player.whoAmI, NPCID.LunarTowerStardust);
+                    SoundEngine.PlaySound(SoundID.Roar, player.position);
+                }
+                if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 17)
+                {
+                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), spawnPosition, Vector2.Zero, ModContent.ProjectileType<NPCSpawner>(), 0, 0f, player.whoAmI, NPCID.LunarTowerVortex);
+                    SoundEngine.PlaySound(SoundID.Roar, player.position);
+                }
+            }
+            return false;
         }
 
         public override bool? UseItem(Player player)
@@ -44,19 +92,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             }
             else
             {
-                if (player.GetModPlayer<QoLCPlayer>().bossToSpawn != 0 && player.GetModPlayer<QoLCPlayer>().bossSpawn)
+                if (player.GetModPlayer<QoLCPlayer>().bossToSpawn != 0 && player.GetModPlayer<QoLCPlayer>().bossSpawn && player.GetModPlayer<QoLCPlayer>().bossToSpawn == NPCID.WallofFlesh)
                 {
-                    if (player.GetModPlayer<QoLCPlayer>().bossToSpawn == NPCID.WallofFlesh)
-                    {
-                        NPC.SpawnWOF(player.Center);
-                        SoundEngine.PlaySound(SoundID.Roar, player.position);
-                        return true;
-                    }
-                    if (player.GetModPlayer<QoLCPlayer>().bossToSpawn == NPCID.Retinazer)
-                    {
-                        Common.SpawnBoss(player, NPCID.Spazmatism);
-                    }
-                    Common.SpawnBoss(player, player.GetModPlayer<QoLCPlayer>().bossToSpawn);
+                    NPC.SpawnWOF(player.Center);
+                    SoundEngine.PlaySound(SoundID.Roar, player.position);
+                    return true;
                 }
                 if (player.GetModPlayer<QoLCPlayer>().eventToSpawn != 0 && player.GetModPlayer<QoLCPlayer>().eventSpawn)
                 {
@@ -104,11 +144,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
                         if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
-                            int num = 0;
-                            while (num < 100 && !BirthdayParty.PartyIsUp)
+                            int checks = 0;
+                            while (checks < 100 && !BirthdayParty.PartyIsUp)
                             {
                                 BirthdayParty.CheckMorning();
-                                num++;
+                                checks++;
                             }
                         }
 
@@ -117,7 +157,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 5)
                     {
-                        Main.StartSlimeRain();
+                        Main.StartSlimeRain(true);
                         Main.slimeWarningDelay = 1;
                         Main.slimeWarningTime = 1;
                         SoundEngine.PlaySound(SoundID.Roar, player.position);
@@ -190,22 +230,6 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                         Main.StartInvasion(InvasionID.MartianMadness);
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.WorldData);
-                    }
-                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 14)
-                    {
-                        Common.SpawnBoss(player, NPCID.LunarTowerNebula);
-                    }
-                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 15)
-                    {
-                        Common.SpawnBoss(player, NPCID.LunarTowerSolar);
-                    }
-                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 16)
-                    {
-                        Common.SpawnBoss(player, NPCID.LunarTowerStardust);
-                    }
-                    if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 17)
-                    {
-                        Common.SpawnBoss(player, NPCID.LunarTowerVortex);
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 18)
                     {

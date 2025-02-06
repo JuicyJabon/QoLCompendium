@@ -1,7 +1,4 @@
-﻿using Aequus.Common.Tiles;
-using QoLCompendium.Core.Changes;
-using QoLCompendium.Core.UI.Buttons;
-using Terraria;
+﻿using QoLCompendium.Core.UI.Buttons;
 
 namespace QoLCompendium.Core.UI.Panels
 {

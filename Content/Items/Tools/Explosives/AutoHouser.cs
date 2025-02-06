@@ -36,9 +36,9 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
         public override void AddRecipes()
         {
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AutoStructures, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-            r.AddIngredient(ItemID.GrayBrick, 25);
+            r.AddIngredient(ItemID.Wood, 100);
             r.AddIngredient(ItemID.Torch);
-            r.AddTile(TileID.Anvils);
+            r.AddTile(TileID.WorkBenches);
             r.Register();
         }
 
@@ -50,9 +50,8 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
         public void HandleShadow(Player player)
         {
             if (player.ownedProjectileCounts[ModContent.ProjectileType<BuildIndicatorProjectile>()] > 50)
-            {
                 return;
-            }
+
             if (player.direction < 0)
             {
                 for (int x = -9; x <= 0; x++)
@@ -65,16 +64,18 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
                         Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(0, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
                     }
                 }
-                return;
-            }
-            for (int x = 0; x <= 9; x++)
+            } 
+            else
             {
-                for (int y = -5; y <= 0; y++)
+                for (int x = 0; x <= 9; x++)
                 {
-                    Vector2 mouse = Main.MouseWorld;
-                    mouse.X += x * 16;
-                    mouse.Y += y * 16;
-                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(0, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
+                    for (int y = -5; y <= 0; y++)
+                    {
+                        Vector2 mouse = Main.MouseWorld;
+                        mouse.X += x * 16;
+                        mouse.Y += y * 16;
+                        Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(0, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
+                    }
                 }
             }
         }

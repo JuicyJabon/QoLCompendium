@@ -33,5 +33,10 @@ namespace QoLCompendium.Content.Projectiles.Dedicated
                 Projectile.timeLeft = 2;
             }
         }
+
+        public override bool? CanCutTiles()
+        {
+            return false;
+        }
     }
 }

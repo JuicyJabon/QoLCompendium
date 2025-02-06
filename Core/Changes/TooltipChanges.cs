@@ -1,5 +1,4 @@
-﻿using QoLCompendium.Content.Items.InformationAccessories;
-using QoLCompendium.Content.Items.Mirrors;
+﻿using Humanizer;
 using Terraria.DataStructures;
 using Terraria.Enums;
 
@@ -23,6 +22,9 @@ namespace QoLCompendium.Core.Changes
             TooltipLine favDescr = tooltips.Find(l => l.Name == "FavoriteDesc");
             TooltipLine oneDropLogo = tooltips.Find(l => l.Name == "OneDropLogo");
 
+            TooltipLine id = tooltips.Find(l => l.Mod == "AfterYM");
+            tooltips.Remove(id);
+
             if (QoLCompendium.tooltipConfig.NoFavoriteTooltip) tooltips.Remove(fav);
             if (QoLCompendium.tooltipConfig.NoFavoriteTooltip) tooltips.Remove(favDescr);
             if (QoLCompendium.tooltipConfig.ShimmerableTooltip) ShimmmerableTooltips(item, tooltips);
@@ -33,6 +35,8 @@ namespace QoLCompendium.Core.Changes
             if (QoLCompendium.tooltipConfig.AmmoTooltip) AmmoTooltip(item, tooltips);
             if (QoLCompendium.tooltipConfig.ActiveTooltip) ActiveTooltip(item, tooltips);
             if (QoLCompendium.tooltipConfig.NoYoyoTooltip) tooltips.Remove(oneDropLogo);
+            if (QoLCompendium.tooltipConfig.FromModTooltip) ItemModTooltip(item, tooltips);
+            if (QoLCompendium.tooltipConfig.ClassTagTooltip) ItemClassTooltip(item, tooltips);
         }
 #pragma warning disable
         public void ShimmmerableTooltips(Item item, List<TooltipLine> tooltips)
@@ -100,148 +104,9 @@ namespace QoLCompendium.Core.Changes
 
         public void WorksInBankTooltip(Item item, List<TooltipLine> tooltips)
         {
-            List<int> ItemsForBanks = new()
-            {
-                ItemID.DiscountCard,
-                ItemID.LuckyCoin,
-                ItemID.GoldRing,
-                ItemID.CoinRing,
-                ItemID.GreedyRing,
-                ItemID.MechanicalLens,
-                ItemID.LaserRuler,
-                ItemID.WireKite,
-                ItemID.PDA,
-                ItemID.CellPhone,
-                ItemID.ShellphoneDummy,
-                ItemID.Shellphone,
-                ItemID.ShellphoneSpawn,
-                ItemID.ShellphoneOcean,
-                ItemID.ShellphoneHell,
-                ItemID.GPS,
-                ItemID.REK,
-                ItemID.GoblinTech,
-                ItemID.FishFinder,
-                ItemID.CopperWatch,
-                ItemID.TinWatch,
-                ItemID.SilverWatch,
-                ItemID.TungstenWatch,
-                ItemID.GoldWatch,
-                ItemID.PlatinumWatch,
-                ItemID.DepthMeter,
-                ItemID.Compass,
-                ItemID.Radar,
-                ItemID.LifeformAnalyzer,
-                ItemID.TallyCounter,
-                ItemID.MetalDetector,
-                ItemID.Stopwatch,
-                ItemID.DPSMeter,
-                ItemID.FishermansGuide,
-                ItemID.WeatherRadio,
-                ItemID.Sextant,
-                ItemID.AncientChisel,
-                ItemID.Toolbelt,
-                ItemID.Toolbox,
-                ItemID.ExtendoGrip,
-                ItemID.PortableCementMixer,
-                ItemID.PaintSprayer,
-                ItemID.BrickLayer,
-                ItemID.ArchitectGizmoPack,
-                ItemID.HandOfCreation,
-                ItemID.ActuationAccessory,
-                ItemID.HighTestFishingLine,
-                ItemID.AnglerEarring,
-                ItemID.TackleBox,
-                ItemID.LavaFishingHook,
-                ItemID.AnglerTackleBag,
-                ItemID.LavaproofTackleBag,
-                ItemID.FishingBobber,
-                ItemID.FishingBobberGlowingStar,
-                ItemID.FishingBobberGlowingLava,
-                ItemID.FishingBobberGlowingKrypton,
-                ItemID.FishingBobberGlowingXenon,
-                ItemID.FishingBobberGlowingArgon,
-                ItemID.FishingBobberGlowingViolet,
-                ItemID.FishingBobberGlowingRainbow,
-                ItemID.TreasureMagnet,
-                ItemID.RoyalGel,
-                ItemID.SpectreGoggles,
-                ItemID.DontHurtCrittersBook,
-                ItemID.DontHurtNatureBook,
-                ItemID.DontHurtComboBook,
-                ItemID.ShimmerCloak,
-                ItemID.DontStarveShaderItem,
-                ModContent.ItemType<BattalionLog>(),
-                ModContent.ItemType<HarmInducer>(),
-                ModContent.ItemType<HeadCounter>(),
-                ModContent.ItemType<Kettlebell>(),
-                ModContent.ItemType<LuckyDie>(),
-                ModContent.ItemType<MetallicClover>(),
-                ModContent.ItemType<PlateCracker>(),
-                ModContent.ItemType<Regenerator>(),
-                ModContent.ItemType<ReinforcedPanel>(),
-                ModContent.ItemType<Replenisher>(),
-                ModContent.ItemType<TrackingDevice>(),
-                ModContent.ItemType<WingTimer>(),
-                ModContent.ItemType<Fitbit>(),
-                ModContent.ItemType<HeartbeatSensor>(),
-                ModContent.ItemType<ToleranceDetector>(),
-                ModContent.ItemType<VitalDisplay>(),
-                ModContent.ItemType<IAH>(),
-                ModContent.ItemType<MosaicMirror>(),
-                ModContent.ItemType<SkullWatch>(),
-                Common.GetModItem(ModConditions.aequusMod, "AnglerBroadcaster"),
-                Common.GetModItem(ModConditions.aequusMod, "Calendar"),
-                Common.GetModItem(ModConditions.aequusMod, "GeigerCounter"),
-                Common.GetModItem(ModConditions.aequusMod, "HoloLens"),
-                Common.GetModItem(ModConditions.aequusMod, "RichMansMonocle"),
-                Common.GetModItem(ModConditions.aequusMod, "DevilsTongue"),
-                Common.GetModItem(ModConditions.aequusMod, "NeonGenesis"),
-                Common.GetModItem(ModConditions.aequusMod, "RadonFishingBobber"),
-                Common.GetModItem(ModConditions.aequusMod, "Ramishroom"),
-                Common.GetModItem(ModConditions.aequusMod, "RegrowingBait"),
-                Common.GetModItem(ModConditions.aequusMod, "LavaproofMitten"),
-                Common.GetModItem(ModConditions.aequusMod, "BusinessCard"),
-                Common.GetModItem(ModConditions.aequusMod, "HaltingMachine"),
-                Common.GetModItem(ModConditions.aequusMod, "HaltingMagnet"),
-                Common.GetModItem(ModConditions.aequusMod, "HyperJet"),
-                Common.GetModItem(ModConditions.afkpetsMod, "FishermansPride"),
-                Common.GetModItem(ModConditions.afkpetsMod, "LampyridaeHairpin"),
-                Common.GetModItem(ModConditions.afkpetsMod, "Piracy"),
-                Common.GetModItem(ModConditions.afkpetsMod, "PortableSonar"),
-                Common.GetModItem(ModConditions.afkpetsMod, "TheHandyman"),
-                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "AttendanceLog"),
-                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "BiomeCrystal"),
-                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "EngiRegistry"),
-                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "FortuneMirror"),
-                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "HitMarker"),
-                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "Magimeter"),
-                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "RSH"),
-                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "SafteyScanner"),
-                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "ScryingMirror"),
-                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "SmartHeart"),
-                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "ThreatAnalyzer"),
-                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "WantedPoster"),
-                Common.GetModItem(ModConditions.calamityMod, "AlluringBait"),
-                Common.GetModItem(ModConditions.calamityMod, "EnchantedPearl"),
-                Common.GetModItem(ModConditions.calamityMod, "SupremeBaitTackleBoxFishingStation"),
-                Common.GetModItem(ModConditions.calamityMod, "AncientFossil"),
-                Common.GetModItem(ModConditions.calamityMod, "OceanCrest"),
-                Common.GetModItem(ModConditions.calamityMod, "SpelunkersAmulet"),
-                //Common.GetModItem(ModConditions.martainsOrderMod, "Journal"),
-                //Common.GetModItem(ModConditions.moomoosUltimateYoyoRevampMod, "HitDisplay"),
-                //Common.GetModItem(ModConditions.moomoosUltimateYoyoRevampMod, "SpeedDisplay"),
-                Common.GetModItem(ModConditions.spiritMod, "MetalBand"),
-                Common.GetModItem(ModConditions.spiritMod, "MimicRepellent"),
-                Common.GetModItem(ModConditions.thoriumMod, "HeartRateMonitor"),
-                Common.GetModItem(ModConditions.thoriumMod, "HightechSonarDevice"),
-                Common.GetModItem(ModConditions.thoriumMod, "GlitteringChalice"),
-                Common.GetModItem(ModConditions.thoriumMod, "GreedyGoblet")
-            };
-
-            if (!ItemsForBanks.Contains(item.type))
-            {
+            if (!Common.BankItems.Contains(item.type))
                 return;
-            }
+
             var tooltipLine = new TooltipLine(Mod, "WorksInBanks", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.WorksInBanks"));
             tooltipLine.OverrideColor = Color.Gray;
             AddLastTooltip(tooltips, tooltipLine);
@@ -621,13 +486,44 @@ namespace QoLCompendium.Core.Changes
         public static void ItemDisabledTooltip(Item item, List<TooltipLine> tooltips, bool configOn)
         {
             TooltipLine name = tooltips.Find(l => l.Name == "ItemName");
-            var tooltipDisabled = new TooltipLine(QoLCompendium.instance, "ItemDisabled", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ItemDisabled"));
-            tooltipDisabled.OverrideColor = Common.ColorSwap(Color.Red, Color.DarkRed, 1);
-            if (configOn)
-                tooltips.Remove(tooltipDisabled);
-            else
-                tooltips.AddAfter(name, tooltipDisabled);
-            
+            if (!configOn)
+                name.Text += " " + Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ItemDisabled");
+        }
+
+        public static void ItemClassTooltip(Item item, List<TooltipLine> tooltips)
+        {
+            if (item.pick > 0 || item.hammer > 0 || item.axe > 0 || (item.damage > 0 && item.createTile > -1 && !item.IsCurrency))
+                tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.Tool")));
+            if (item.CountsAsClass(DamageClass.Melee) && item.pick <= 0 && item.axe <= 0 && item.hammer <= 0 && item.createTile == -1)
+                tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.WarriorClass")));
+            if (item.CountsAsClass(DamageClass.Ranged) && !item.IsCurrency)
+                tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.RangerClass")));
+            if (item.CountsAsClass(DamageClass.Magic) && item.type != ItemID.Dynamite && item.damage > 0)
+                tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.SorcererClass")));
+            if (item.CountsAsClass(DamageClass.Summon))
+            {
+                if (!ProjectileID.Sets.IsAWhip[item.shoot])
+                    tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.SummonerClass")));
+                else
+                    tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.SummonerClassWhip")));
+            }
+            if (item.CountsAsClass(DamageClass.Throwing) && !item.accessory && item.ModItem.Mod != ModConditions.thoriumMod && !item.CountsAsClass(Common.GetModDamageClass(ModConditions.calamityMod, "RogueDamageClass")))
+                tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ThrowerClass")));
+            if (item.CountsAsClass(DamageClass.Generic) && !item.accessory)
+                tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.Classless")));
+            if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.calamityMod, "RogueDamageClass")) && ModConditions.calamityLoaded)
+                tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.RogueClass")));
+        }
+
+        public static void ItemModTooltip(Item item, List<TooltipLine> tooltips)
+        {
+            if (item.ModItem != null)
+            {
+                TooltipLine name = tooltips.Find(l => l.Name == "ItemName");
+                var tooltipFromMod = new TooltipLine(QoLCompendium.instance, "FromMod", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.FromMod").FormatWith(item.ModItem.Mod.DisplayName));
+                tooltipFromMod.OverrideColor = Common.ColorSwap(Color.AliceBlue, Color.Azure, 1);
+                tooltips.AddAfter(name, tooltipFromMod);
+            }
         }
 
         public static string GetTooltipValue(string suffix, params object[] args)

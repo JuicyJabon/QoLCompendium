@@ -76,16 +76,18 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
                         Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(48, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
                     }
                 }
-                return;
             }
-            for (int x = 0; x <= 6; x++)
+            else
             {
-                for (int y = 0; y <= 100; y++)
+                for (int x = 0; x <= 6; x++)
                 {
-                    Vector2 mouse = Main.MouseWorld;
-                    mouse.X += x * 16;
-                    mouse.Y += y * 16;
-                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(-48, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
+                    for (int y = 0; y <= 100; y++)
+                    {
+                        Vector2 mouse = Main.MouseWorld;
+                        mouse.X += x * 16;
+                        mouse.Y += y * 16;
+                        Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(-48, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
+                    }
                 }
             }
         }

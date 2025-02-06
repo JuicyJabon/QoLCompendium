@@ -1,4 +1,5 @@
 ﻿using Humanizer;
+using QoLCompendium.Core.UI.Buttons;
 using static Terraria.ModLoader.ModContent;
 
 namespace QoLCompendium.Core.UI.Panels
@@ -22,6 +23,30 @@ namespace QoLCompendium.Core.UI.Panels
             BossPanel.OnLeftMouseDown += new MouseEvent(DragStart);
             BossPanel.OnLeftMouseUp += new MouseEvent(DragEnd);
 
+            /*
+            BossPanel = new UIPanel();
+            BossPanel.Top.Set(Main.screenHeight / 2, 0f);
+            BossPanel.Left.Set(Main.screenWidth / 2, 0f);
+            BossPanel.Width.Set(1000f, 0f);
+            BossPanel.Height.Set(1000f, 0f);
+            BossPanel.BackgroundColor *= 0f;
+            BossPanel.BorderColor *= 0f;
+            Append(BossPanel);
+
+            #region Bosses
+            BossButton.backgroundTexture = 0;
+            BossButton kingSlime = new(Common.GetAsset("Summons", "Boss_", BossButton.bossTexture = 0));
+            kingSlime.Left.Set(0f, 0f);
+            kingSlime.Top.Set(0f, 0f);
+            kingSlime.Width.Set(60f, 0f);
+            kingSlime.Height.Set(60f, 0f);
+            kingSlime.OnLeftClick += KingSlimeClicked;
+            kingSlime.Tooltip = UISystem.PiggyBankText;
+            BossPanel.Append(kingSlime);
+            #endregion
+            */
+
+            #region Bosses
             UIText BossText = new(UISystem.BossText);
             BossText.Left.Set(10f, 0f);
             BossText.Top.Set(10f, 0f);
@@ -193,7 +218,9 @@ namespace QoLCompendium.Core.UI.Panels
             MoonLord.Height.Set(36, 0f);
             MoonLord.OnLeftClick += new MouseEvent(MoonLordClicked);
             BossPanel.Append(MoonLord);
+            #endregion
 
+            #region Events
             UIText EventText = new(UISystem.EventText);
             EventText.Left.Set(10f, 0f);
             EventText.Top.Set(190f, 0f);
@@ -363,7 +390,9 @@ namespace QoLCompendium.Core.UI.Panels
             LunarEvent.Height.Set(26, 0f);
             LunarEvent.OnLeftClick += new MouseEvent(LunarEventClicked);
             BossPanel.Append(LunarEvent);
+            #endregion
 
+            #region Minibosses
             UIText MinibossesText = new(UISystem.MinibossText);
             MinibossesText.Left.Set(10f, 0f);
             MinibossesText.Top.Set(370f, 0f);
@@ -470,6 +499,7 @@ namespace QoLCompendium.Core.UI.Panels
             Betsy.Height.Set(30, 0f);
             Betsy.OnLeftClick += new MouseEvent(BetsyClicked);
             BossPanel.Append(Betsy);
+            #endregion
 
             UIImageButton closeButton = new(buttonDeleteTexture);
             closeButton.Left.Set(360, 0f);
@@ -1223,6 +1253,26 @@ namespace QoLCompendium.Core.UI.Panels
                 BossPanel.Left.Set(MousePosition.X - offset.X, 0f);
                 BossPanel.Top.Set(MousePosition.Y - offset.Y, 0f);
                 Recalculate();
+            }
+        }
+
+        public static void BossClick(int bossID, SoundStyle sound)
+        {
+            if (Main.GameUpdateCount - timeStart >= 10)
+            {
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossToSpawn = bossID;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = true;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = false;
+            }
+        }
+
+        public static void EventClick(int eventID, SoundStyle sound)
+        {
+            if (Main.GameUpdateCount - timeStart >= 10)
+            {
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventToSpawn = eventID;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bossSpawn = false;
+                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eventSpawn = true;
             }
         }
     }

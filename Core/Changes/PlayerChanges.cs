@@ -1,5 +1,6 @@
 ﻿using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using QoLCompendium.Content.Items.Accessories;
 using QoLCompendium.Content.Items.InformationAccessories;
 using QoLCompendium.Content.Items.Mirrors;
 using QoLCompendium.Content.Projectiles.MobileStorages;
@@ -266,10 +267,6 @@ namespace QoLCompendium.Core.Changes
                     return;
 
                 CheckStations(player.inventory);
-                CheckStations(player.bank.item);
-                CheckStations(player.bank2.item);
-                CheckStations(player.bank3.item);
-                CheckStations(player.bank4.item);
             });
         }
 
@@ -357,7 +354,7 @@ namespace QoLCompendium.Core.Changes
 
     public class RespawnPlayer : ModPlayer
     {
-        public int respawnFullHealthTimer = 0;
+        //public int respawnFullHealthTimer = 0;
 
         private (int type, int time)[] buffCache;
 
@@ -367,7 +364,7 @@ namespace QoLCompendium.Core.Changes
             {
                 for (int k = 0; k < Main.maxNPCs; k++)
                 {
-                    if (!Main.npc[k].friendly && Main.npc[k].active)
+                    if (!Main.npc[k].friendly && Main.npc[k].active && !Common.LunarPillarIDs.Contains(Main.npc[k].type))
                         DespawnNPC(k);
                     Player.respawnTimer = 60;
                 }
@@ -385,7 +382,11 @@ namespace QoLCompendium.Core.Changes
 
         public override void OnRespawn()
         {
-            respawnFullHealthTimer = 1;
+            if (QoLCompendium.mainConfig.FullHealthRespawn)
+            {
+                Player.statLife = Player.statLifeMax2;
+                Player.statMana = Player.statManaMax2;
+            }
 
             if (QoLCompendium.mainConfig.KeepBuffsOnDeath)
             {
@@ -400,17 +401,6 @@ namespace QoLCompendium.Core.Changes
                     }
                 }
             }
-        }
-
-        public override void PostUpdate()
-        {
-            if (QoLCompendium.mainConfig.FullHealthRespawn && respawnFullHealthTimer == 0)
-            {
-                respawnFullHealthTimer = -1;
-                Player.statLife = Player.statLifeMax2;
-                Player.statMana = Player.statManaMax2;
-            }
-            respawnFullHealthTimer--;
         }
 
         public static void DespawnNPC(int npc)
@@ -463,25 +453,50 @@ namespace QoLCompendium.Core.Changes
             if (QoLCompendium.mainConfig.UtilityAccessoriesWorkInBanks)
             {
                 for (int i = 0; i < Player.bank.item.Length; i++)
-                    CheckAllAccessories(Player.bank.item[i]);
+                    CheckForBankItems(Player.bank.item[i]);
                 for (int j = 0; j < Player.bank2.item.Length; j++)
-                    CheckAllAccessories(Player.bank2.item[j]);
+                    CheckForBankItems(Player.bank2.item[j]);
                 for (int k = 0; k < Player.bank3.item.Length; k++)
-                    CheckAllAccessories(Player.bank3.item[k]);
+                    CheckForBankItems(Player.bank3.item[k]);
                 for (int l = 0; l < Player.bank4.item.Length; l++)
-                    CheckAllAccessories(Player.bank4.item[l]);
+                    CheckForBankItems(Player.bank4.item[l]);
             }
         }
 
-        public void CheckAllAccessories(Item item)
+        public void CheckForBankItems(Item item)
         {
+            if (Common.BankItems.Contains(item.type))
+            {
+                Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
+                Player.ApplyEquipFunctional(item, true);
+                Player.RefreshInfoAccsFromItemType(item);
+                Player.RefreshMechanicalAccsFromItemType(item.type);
+
+                if (item.type == ItemID.RoyalGel) //Royal Gel Compatibility
+                {
+                    //Thorium Slimes
+                    Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "Clot")] = true;
+                    Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GelatinousCube")] = true;
+                    Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GelatinousSludge")] = true;
+                    Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GildedSlime")] = true;
+                    Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GildedSlimeling")] = true;
+                    Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GraniteFusedSlime")] = true;
+                    Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "LivingHemorrhage")] = true;
+                    Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "SpaceSlime")] = true;
+                    Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "CrownofThorns")] = true;
+                    Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "BloodDrop")] = true;
+                }
+            }
+
             //CHECKS ALL ACCESSORY TYPES
+            /*
             CheckMoneyAccessories(item);
             CheckWireAccessories(item);
             CheckInformationAccessories(item);
             CheckBuildingAccessories(item);
             CheckFishingAccessories(item);
             CheckMiscAccessories(item);
+            */
 
             //FIX CALAMITY STAT INCREASES FOR DEFENSE PREFIXES
             if (ModConditions.calamityLoaded)
@@ -538,6 +553,14 @@ namespace QoLCompendium.Core.Changes
 
             #region AFKPETS
             if (item.type == Common.GetModItem(ModConditions.afkpetsMod, "Piracy"))
+            {
+                Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
+                Player.ApplyEquipFunctional(item, true);
+            }
+            #endregion
+
+            #region SPIRIT
+            if (item.type == Common.GetModItem(ModConditions.spiritMod, "FisheyeGem"))
             {
                 Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
                 Player.ApplyEquipFunctional(item, true);
@@ -829,7 +852,16 @@ namespace QoLCompendium.Core.Changes
                 Player.RefreshInfoAccsFromItemType(item);
             }
             #endregion
-            
+
+            #region CLICKER CLASS
+            if (item.type == Common.GetModItem(ModConditions.clickerClassMod, "ButtonMasher"))
+            {
+                Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
+                Player.ApplyEquipFunctional(item, true);
+                Player.RefreshInfoAccsFromItemType(item);
+            }
+            #endregion
+
             /*
             #region MARTAIN'S ORDER
             if (item.type == Common.GetModItem(ModConditions.martainsOrderMod, "Journal"))
@@ -982,6 +1014,11 @@ namespace QoLCompendium.Core.Changes
             }
 
             //OTHER
+            if (item.type == ModContent.ItemType<DeteriorationDisplay>()) //DETERIORATION DISPLAY
+            {
+                Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
+                Player.GetModPlayer<InfoPlayer>().deteriorationDisplay = true;
+            }
             if (item.type == ModContent.ItemType<SkullWatch>()) //SKULL WATCH
             {
                 Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
@@ -1139,6 +1176,42 @@ namespace QoLCompendium.Core.Changes
             }
             #endregion
 
+            #region LUIAFK
+            if (item.type == Common.GetModItem(ModConditions.luiAFKMod, "FasterMining"))
+            {
+                Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
+                Player.ApplyEquipFunctional(item, true);
+            }
+            if (item.type == Common.GetModItem(ModConditions.luiAFKMod, "SuperToolTime"))
+            {
+                Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
+                Player.ApplyEquipFunctional(item, true);
+            }
+            if (item.type == Common.GetModItem(ModConditions.luiAFKMod, "ToolTime"))
+            {
+                Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
+                Player.ApplyEquipFunctional(item, true);
+            }
+            #endregion
+
+            #region QUALITY OF LIFE COMPENDIUM
+            if (item.type == ModContent.ItemType<ConstructionEmblem>())
+            {
+                Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
+                Player.ApplyEquipFunctional(item, true);
+            }
+            if (item.type == ModContent.ItemType<MiningEmblem>())
+            {
+                Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
+                Player.ApplyEquipFunctional(item, true);
+            }
+            if (item.type == ModContent.ItemType<CreationClubMembersPass>())
+            {
+                Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
+                Player.ApplyEquipFunctional(item, true);
+            }
+            #endregion
+
             #region SPIRIT
             if (item.type == Common.GetModItem(ModConditions.spiritMod, "MetalBand"))
             {
@@ -1281,29 +1354,18 @@ namespace QoLCompendium.Core.Changes
             if (item.type == ItemID.RoyalGel) //ROYAL GEL
             {
                 Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
-                Player.npcTypeNoAggro[NPCID.BlueSlime] = true;
-                Player.npcTypeNoAggro[NPCID.MotherSlime] = true;
-                Player.npcTypeNoAggro[NPCID.LavaSlime] = true;
-                Player.npcTypeNoAggro[NPCID.DungeonSlime] = true;
-                Player.npcTypeNoAggro[NPCID.CorruptSlime] = true;
-                Player.npcTypeNoAggro[NPCID.IlluminantSlime] = true;
-                Player.npcTypeNoAggro[NPCID.Slimer] = true;
-                Player.npcTypeNoAggro[NPCID.Gastropod] = true;
-                Player.npcTypeNoAggro[NPCID.ToxicSludge] = true;
-                Player.npcTypeNoAggro[NPCID.IceSlime] = true;
-                Player.npcTypeNoAggro[NPCID.Crimslime] = true;
-                Player.npcTypeNoAggro[NPCID.SpikedIceSlime] = true;
-                Player.npcTypeNoAggro[NPCID.SpikedJungleSlime] = true;
-                Player.npcTypeNoAggro[NPCID.UmbrellaSlime] = true;
-                Player.npcTypeNoAggro[NPCID.RainbowSlime] = true;
-                Player.npcTypeNoAggro[NPCID.SlimeMasked] = true;
-                Player.npcTypeNoAggro[NPCID.SlimeRibbonWhite] = true;
-                Player.npcTypeNoAggro[NPCID.SlimeRibbonGreen] = true;
-                Player.npcTypeNoAggro[NPCID.SlimeRibbonYellow] = true;
-                Player.npcTypeNoAggro[NPCID.SlimeRibbonRed] = true;
-                Player.npcTypeNoAggro[NPCID.SandSlime] = true;
-                Player.npcTypeNoAggro[NPCID.ShimmerSlime] = true;
-                Player.npcTypeNoAggro[NPCID.GoldenSlime] = true;
+                Player.ApplyEquipFunctional(item, true);
+                //Thorium Slimes
+                Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "Clot")] = true;
+                Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GelatinousCube")] = true;
+                Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GelatinousSludge")] = true;
+                Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GildedSlime")] = true;
+                Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GildedSlimeling")] = true;
+                Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GraniteFusedSlime")] = true;
+                Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "LivingHemorrhage")] = true;
+                Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "SpaceSlime")] = true;
+                Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "CrownofThorns")] = true;
+                Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "BloodDrop")] = true;
             }
             if (item.type == ItemID.ShimmerCloak && !Player.controlDownHold) //CHROMATIC CLOAK
             {

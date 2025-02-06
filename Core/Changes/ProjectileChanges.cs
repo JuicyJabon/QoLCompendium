@@ -1,4 +1,5 @@
-﻿using Terraria.DataStructures;
+﻿using System.Reflection;
+using Terraria.DataStructures;
 
 namespace QoLCompendium.Core.Changes
 {
@@ -49,8 +50,8 @@ namespace QoLCompendium.Core.Changes
                 if (Main.player[projectile.owner].HasBuff(BuffID.Fishing))
                     split++;
 
-                if (split > 1)
-                    SplitProj(projectile, split);
+                if (split > 0)
+                    SplitProj(projectile, split + 1);
             }
         }
 
@@ -289,6 +290,123 @@ namespace QoLCompendium.Core.Changes
             {
                 orig(self, coinsOwned, deathText, hitDirection);
             }
+        }
+    }
+
+    public class NoAuraEffects : ModSystem
+    {
+        public const string TeslaTexturePath = @"Projectiles\Typeless\TeslaAura";
+
+        private static TimeSpan NextTextureUpdate = TimeSpan.Zero;
+
+        public static Asset<Texture2D> EmptyTexture => Common.GetAsset("Projectiles", "Invisible");
+        public static Asset<Texture2D> OrigFlameRing;
+        public static Asset<Texture2D> OrigTesla;
+
+        public static List<int> OriginalTeslaProjectiles = new();
+
+        public static bool WasTeslaEnabled = false;
+
+        public override void Load()
+        {
+            Main.OnPreDraw += UpdateTextures;
+        }
+        public override void Unload()
+        {
+            if (OrigFlameRing != null && TextureAssets.FlameRing == EmptyTexture) TextureAssets.FlameRing = OrigFlameRing;
+
+            if (OrigTesla != null)
+                foreach (var Index in OriginalTeslaProjectiles)
+                    TextureAssets.Projectile[Index] = OrigTesla;
+
+            Main.OnPreDraw -= UpdateTextures;
+        }
+
+        private static void UpdateTextures(GameTime Time)
+        {
+            if (!Main.gameMenu && Time.TotalGameTime > NextTextureUpdate)
+            {
+                NextTextureUpdate = Time.TotalGameTime.Add(TimeSpan.FromSeconds(1));
+
+                if (QoLCompendium.mainClientConfig.NoAuraVisuals && TextureAssets.FlameRing != EmptyTexture)
+                {
+                    if (OrigFlameRing == null) OrigFlameRing = TextureAssets.FlameRing;
+
+                    TextureAssets.FlameRing = EmptyTexture;
+                }
+                else if (!QoLCompendium.mainClientConfig.NoAuraVisuals && OrigFlameRing != null && TextureAssets.FlameRing != OrigFlameRing)
+                    TextureAssets.FlameRing = OrigFlameRing;
+
+                if (ModConditions.calamityLoaded)
+                {
+                    var AssetField = typeof(AssetRepository).GetField("_assets", BindingFlags.Instance | BindingFlags.NonPublic);
+
+                    Dictionary<string, IAsset> Assets = (Dictionary<string, IAsset>)AssetField.GetValue(ModConditions.calamityMod.Assets);
+
+                    if (AssetField != null && Assets != null && Assets.ContainsKey(TeslaTexturePath))
+                    {
+                        if (QoLCompendium.mainClientConfig.NoAuraVisuals && !WasTeslaEnabled)
+                        {
+                            if (OrigTesla == null) OrigTesla = (Asset<Texture2D>)Assets[TeslaTexturePath];
+
+                            for (int Index = TextureAssets.Projectile.Length - 1; Index >= 0; Index--)
+                            {
+                                var Texture = TextureAssets.Projectile[Index];
+
+                                if (Texture == OrigTesla)
+                                {
+                                    WasTeslaEnabled = true; // Only set to true if the texture was found
+
+                                    if (!OriginalTeslaProjectiles.Contains(Index))
+                                        OriginalTeslaProjectiles.Add(Index);
+
+                                    TextureAssets.Projectile[Index] = EmptyTexture;
+                                }
+                            }
+                        }
+                        else if (!QoLCompendium.mainClientConfig.NoAuraVisuals && OrigTesla != null && WasTeslaEnabled)
+                        {
+                            WasTeslaEnabled = false;
+
+                            foreach (var Index in OriginalTeslaProjectiles)
+                                TextureAssets.Projectile[Index] = OrigTesla;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public class FixMinionDamage : GlobalProjectile
+    {
+        public StatModifier originalDamage = new(1f, 1f);
+        public override bool InstancePerEntity => true;
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
+
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
+        {
+            return entity.minion || entity.sentry || entity.ContinuouslyUpdateDamageStats;
+        }
+
+        public override void OnSpawn(Projectile projectile, IEntitySource source)
+        {
+            if (source is IEntitySource_WithStatsFromItem statsSource)
+            {
+                Player player = Main.player[projectile.owner];
+                CombinedHooks.ModifyWeaponDamage(player, statsSource.Item, ref originalDamage);
+            }
+        }
+
+        public override bool PreAI(Projectile projectile)
+        {
+            Player player = Main.player[projectile.owner];
+            StatModifier finalModifier = originalDamage.CombineWith(player.GetTotalDamage(projectile.DamageType));
+            projectile.damage = (int)finalModifier.ApplyTo(projectile.originalDamage);
+            return true;
         }
     }
 }

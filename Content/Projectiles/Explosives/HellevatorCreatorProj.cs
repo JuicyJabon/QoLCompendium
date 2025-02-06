@@ -25,9 +25,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
             SoundEngine.PlaySound(SoundID.Item14, position);
 
             if (Main.netMode == NetmodeID.MultiplayerClient)
-            {
                 return;
-            }
 
             for (int x = -3; x <= 3; x++)
             {
@@ -51,28 +49,18 @@ namespace QoLCompendium.Content.Projectiles.Explosives
                     // Spawn structure
                     if (x == -3 || x == 3)
                     {
-                        WorldGen.PlaceTile(xPosition, y, 38, false, false, -1, 0);
+                        WorldGen.PlaceTile(xPosition, y, TileID.GrayBrick, false, false, -1, 0);
                     }
-                    else if (x == -2 || x == 2)
+                    else if (x == -2 || x == 2 || x == -1 || x == 1)
                     {
-                        WorldGen.PlaceWall(xPosition, y, 155, false);
-                    }
-                    else if ((x == -2 || x == 2) && y % 10 == 0)
-                    {
-                        WorldGen.PlaceTile(xPosition, y, 19, false, false, -1, 14);
-                    }
-                    else if (x == -1 || x == 1)
-                    {
-                        WorldGen.PlaceWall(xPosition, y, 1, false);
+                        WorldGen.PlaceWall(xPosition, y, WallID.GrayBrick, false);
                     }
                     else if (x == 0)
                     {
-                        WorldGen.PlaceTile(xPosition, y, 365, false, false, -1, 0);
-                        WorldGen.PlaceWall(xPosition, y, 5, false);
+                        WorldGen.PlaceTile(xPosition, y, TileID.Rope, false, false, -1, 0);
+                        WorldGen.PlaceWall(xPosition, y, WallID.DiamondGemspark, false);
                     }
                     NetMessage.SendTileSquare(-1, xPosition, y, 1, 0);
-
-                    NetMessage.SendTileSquare(-1, xPosition, y, 1);
                 }
             }
         }

@@ -1,3 +1,48 @@
+v2.2.9
+1. Added a config to disable the Inferno Aura visual
+ - Works with Calamity's Tesla Auras
+2. Added a config to increase the amount of combat texts that can be displayed
+3. Updated shops for:
+ - Depths (Hell Alternative)
+ - Exxo Avalon Origins
+ - Martin's Order
+ - Spooky Mod
+ - Thorium
+ - Universe of Swords
+4. Added a config to apply a glint effect to items with good prefixes
+5. Added a config to apply a glint effect to active buff items
+6. Re-added mosses to Black Market Dealer's shop, as I missed re-adding them when v2.2.5 broke
+7. Added a config to allow crafting Golden Delight with Golden Carp
+8. Added mod support when the Royal Gel is in banks
+9. Added support for the following mods:
+ - Calamity Entropy: NPC Sales
+ - Capture Discs Class: NPC Sales, Station Buffs
+10. Added gem stone blocks to vanilla ores & bars shop
+11. Fixed the Celestial Pillars despawning when using instant respawn
+12. Added a fix to Mr Plague's Races when used with Auto Reforge to disable inaccessible prefixes when Race Stats are turned off
+ - These prefixes are normally only available to the Goblin race, they are still accessible when race stats are enabled
+13. Moved extra accessory slot configs back to server-side
+14. Moved map teleporting config back to server-side
+15. Added a config to fully disable mod recipes
+
+v2.2.8
+1. Gave the Entity Manipulator new button sprites to better indicate what each button does
+2. Added a config to remove the logo from some yoyo's tooltips
+3. Endless Ammo items are now crafted at a Solidifier
+4. Added more clarity to which config needs to be enabled for a recipe to work
+5. Added a tooltip to tell if an item is disabled in the config
+6. Changed the Mod Support document into a spreadsheet, for easier editing and readability
+7. Improved Used Permanent Upgrade Tooltip tracking, it should now not persist between characters and worlds
+8. Added an indicator to most auto-structures to display where they are created
+9. Further improved most UI
+10. Added item shimmer conversions for sponges and bottomless buckets (Doesn't affect the Bottomless Shimmer Bucket)
+11. Added Bottomless Liquid Bucket
+12. Added a config to allow the Encumbering Stone to pickup coins
+13. Removed The Final List
+14. Added The Final List's effects to the Ultimate Checklist
+15. Added Golden Powder
+16. Fixed All In One Access being inconsistent to open
+
 v2.2.7
 1. Rewrote mod description
 2. Converted the Extra Lures config to a number allowing customizable lure counts

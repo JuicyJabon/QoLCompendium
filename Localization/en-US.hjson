@@ -34,7 +34,17 @@ Mods: {
 				Right click with an empty hand to retrieve deposited potions
 				Applies buffs from any storage
 				'''
-			ItemDisabled: (ITEM DISABLED)
+			ItemDisabled: "[c/cf1d1d:(ITEM DISABLED)]"
+			FromMod: From mod: {0}
+			WarriorClass: "[c/fe7902:-Warrior Class-]"
+			RangerClass: "[c/22dd97:-Ranger Class-]"
+			SorcererClass: "[c/fe7ee5:-Sorcerer Class-]"
+			SummonerClass: "[c/88e2ff:-Summoner Class-]"
+			SummonerClassWhip: "[c/88e2ff:-Summoner Class- (Whip)]"
+			ThrowerClass: "[c/a1724a:-Thrower Class-]"
+			Classless: "[c/623ea6:-Classless-]"
+			Tool: "[c/ffffff:-Tool-]"
+			RogueClass: "[c/ce84e3:-Rogue Class-]"
 		}
 
 		DedicatedTooltips: {
@@ -49,6 +59,7 @@ Mods: {
 
 		ItemToggledConditions: {
 			ItemEnabled: Item Enabled
+			RecipeEnabled: Recipe Enabled
 			ItemConversions: Item Conversions Enabled
 			BossBags: Boss Bag Recipes Enabled
 			Crates: Crate Recipes Enabled
@@ -81,6 +92,7 @@ Mods: {
 			WorldNormal: Difficulty changed to Normal Mode
 			WorldExpert: Difficulty changed to Expert Mode
 			WorldMaster: Difficulty changed to Master Mode
+			HostOnly: "[c/FF0000:Only the server host can change this!]"
 		}
 
 		RecipeGroupNames: {
@@ -95,6 +107,10 @@ Mods: {
 			AnySnowBanner: Snow Banner
 			AnyDesertBanner: Desert Banner
 			AnyUnderworldBanner: Underworld Banner
+			Tables: Table
+			Chairs: Chair
+			Sinks: Sink
+			Doors: Door
 		}
 
 		InfoDisplayText: {
@@ -115,6 +131,9 @@ Mods: {
 			FullMana: Full Mana
 			SpawnsDisabled: Spawns Disabled
 			InfiniteWingTime: Infinite Wing Time
+			DDPS: "{0} Debuff damage per second"
+			NoDPS: N/A
+			QuestFinished: Quest finished
 		}
 
 		UIText: {
@@ -185,7 +204,7 @@ Mods: {
 
 		ItemNames: {
 			MosaicMirror: {
-				CursedMirror: Mosaic Mirror (Cursed)
+				CursedMirror: Mosaic Mirror (Latest Death)
 				MirrorOfReturn: Mosaic Mirror (Return)
 				TeleportationMirror: Mosaic Mirror (Teleportation)
 			}
@@ -251,7 +270,7 @@ Mods: {
 				EventSlimeRain: Summoning Remote (Slime Rain)
 				EventBloodMoon: Summoning Remote (Blood Moon)
 				EventGoblinArmy: Summoning Remote (Goblin Army)
-				EventSnowLegion: Summoning Remote (Snow Legion)
+				EventSnowLegion: Summoning Remote (Frost Legion)
 				EventPirateInvasion: Summoning Remote (Pirate Invasion)
 				EventEclipse: Summoning Remote (Eclipse)
 				EventPumpkinMoon: Summoning Remote (Pumpkin Moon)
@@ -636,7 +655,7 @@ Mods: {
 			}
 
 			SpecializedCraftingMonolith: {
-				DisplayName: Specialized Crafting Monolithi looked
+				DisplayName: Specialized Crafting Monolith
 				Tooltip: Functions as many advanced crafting stations
 			}
 
@@ -963,44 +982,44 @@ Mods: {
 				Tooltip: ""
 			}
 
-			EndlessYellowSolutionBottle: {
+			EndlessYellowSolution: {
 				Tooltip: ""
-				DisplayName: Endless Yellow Solution Bottle
+				DisplayName: Endless Yellow Solution
 			}
 
-			EndlessWhiteSolutionBottle: {
+			EndlessWhiteSolution: {
 				Tooltip: ""
-				DisplayName: Endless White Solution Bottle
+				DisplayName: Endless White Solution
 			}
 
-			EndlessRedSolutionBottle: {
+			EndlessRedSolution: {
 				Tooltip: ""
-				DisplayName: Endless Red Solution Bottle
+				DisplayName: Endless Red Solution
 			}
 
-			EndlessPurpleSolutionBottle: {
+			EndlessPurpleSolution: {
 				Tooltip: ""
-				DisplayName: Endless Purple Solution Bottle
+				DisplayName: Endless Purple Solution
 			}
 
-			EndlessGreenSolutionBottle: {
+			EndlessGreenSolution: {
 				Tooltip: ""
-				DisplayName: Endless Green Solution Bottle
+				DisplayName: Endless Green Solution
 			}
 
-			EndlessDarkBlueSolutionBottle: {
+			EndlessDarkBlueSolution: {
 				Tooltip: ""
-				DisplayName: Endless Dark Blue Solution Bottle
+				DisplayName: Endless Dark Blue Solution
 			}
 
-			EndlessBrownSolutionBottle: {
+			EndlessBrownSolution: {
 				Tooltip: ""
-				DisplayName: Endless Brown Solution Bottle
+				DisplayName: Endless Brown Solution
 			}
 
-			EndlessBlueSolutionBottle: {
+			EndlessBlueSolution: {
 				Tooltip: ""
-				DisplayName: Endless Blue Solution Bottle
+				DisplayName: Endless Blue Solution
 			}
 
 			EndlessWetRocketPouch: {
@@ -1465,6 +1484,75 @@ Mods: {
 					The center of the platform is where it is used, 100 tiles on each side
 					'''
 			}
+
+			DeteriorationDisplay: {
+				DisplayName: Deterioration Display
+				Tooltip: Displays your debuff damage per second
+			}
+
+			MiningEmblem: {
+				DisplayName: Mining Emblem
+				Tooltip: 15% increased mining speed
+			}
+
+			ConstructionEmblem: {
+				DisplayName: Construction Emblem
+				Tooltip: 15% increased block and wall placement speed
+			}
+
+			CreationClubMembersPass: {
+				DisplayName: Creation Club Member's Pass
+				Tooltip:
+					'''
+					50% increased mining speed
+					75% increased block and wall placement speed
+					Increases block placement range by 5
+					Increases pickup range for items
+					Automatically paints or coats placed objects
+					Automatically places actuators on placed objects
+					Enables Echo Sight, showing hidden blocks
+					Hold Up to reach higher
+					'Included with your purchase of Skyrim deluxe edition remastered game of the year edition'
+					'''
+			}
+
+			AnglersDream: {
+				DisplayName: Angler's Dream
+				Tooltip:
+					'''
+					Fishing line will never break
+					Decreases chance of bait consumption 
+					Increases fishing power by 20
+					Allows fishing in lava
+					Detects hooked fish
+					Displays current quest fish
+					'''
+			}
+
+			SonarDevice: {
+				DisplayName: Sonar Device
+				Tooltip: Detects hooked fish
+			}
+
+			AnglerRadar: {
+				DisplayName: Angler Radar
+				Tooltip: Displays current quest fish
+			}
+
+			ForgottenOneSummon: {
+				DisplayName: Marine Egg
+				Tooltip: Summons the Forgotten One
+			}
+
+			GiantClamSummon: {
+				DisplayName: Navy Clam Shell
+				Tooltip: Summons a Giant Clam
+			}
+
+			LeviathanAnahitaSummon: {
+				DisplayName: Enthralling Pearl
+				Tooltip: Summons Leviathan and Anahita
+			}
 		}
 
 		NPCs: {
@@ -1576,6 +1664,7 @@ Mods: {
 			BuildIndicatorProjectile.DisplayName: Build Indicator
 			AllInOneAccessProjectile.DisplayName: All In One Access Projectile
 			GoldenPowderProjectile.DisplayName: Golden Powder Projectile
+			NPCSpawner.DisplayName: NPC Spawner
 		}
 
 		InfoDisplays: {
@@ -1592,6 +1681,8 @@ Mods: {
 			SpawnInfoDisplay.DisplayName: Spawn Rate
 			WingTimeInfoDisplay.DisplayName: Wing Time
 			DeathsInfoDisplay.DisplayName: Deaths
+			DebuffDamageInfoDisplay.DisplayName: Debuff Damage Per Second
+			QuestFishInfoDisplay.DisplayName: Quest Fish
 		}
 
 		BootSlot: {
@@ -1769,6 +1860,11 @@ Mods: {
 						'''
 				}
 
+				GoldenCarpDelight: {
+					Label: "[i:2308] Golden Carp Delight"
+					Tooltip: Toggles if Golden Delights can be crafted with Golden Carp
+				}
+
 				BlackMarketDealerCanSpawn: {
 					Label: "[i:4413] Black Market Dealer Can Spawn"
 					Tooltip: Toggles if the Black Market Dealer can spawn
@@ -1799,7 +1895,7 @@ Mods: {
 
 				FastTownNPCSpawns: {
 					Label: "[i:17] Fast Town NPC Spawns"
-					Tooltip: Toggles if Town NPCs spawn faster
+					Tooltip: Change the spawn rate of Town NPCs
 				}
 
 				TownNPCSpawnImprovements: {
@@ -2160,6 +2256,72 @@ Mods: {
 					Label: "[i:909] Fountains Work From Inventories"
 					Tooltip: Toggles if having fountains in your inventory/banks causes their biomes
 				}
+
+				ActiveBuffsHaveEnchantedEffects: {
+					Label: "[i:487] Active Buffs Have Enchanted Effects"
+					Tooltip: Toggles if active buff items have an enchanted effect, like Minecraft
+				}
+
+				GoodPrefixesHaveEnchantedEffects: {
+					Label: "[i:273] Good Prefixes Have Enchanted Effects"
+					Tooltip: Toggles if items with good prefixes have an enchanted effect, like Minecraft
+				}
+
+				AutoReuseHealthUpgrades: {
+					Label: "[i:29] Auto Reuse Health Upgrades"
+					Tooltip: Toggles if Life Crystals, Life Fruit, and Mana Crystals have auto reuse
+				}
+
+				MapTeleporting: {
+					Label: "[i:2351] Map Teleporting"
+					Tooltip: Toggles if you can right click on the map to teleport to that position
+				}
+
+				WingSlot: {
+					Label: "[i:4978] Wing Slot"
+					Tooltip: Toggles an accessory slot used for wings
+				}
+
+				BootSlot: {
+					Label: "[i:54] Boot Slot"
+					Tooltip: Toggles an accessory slot used for boots
+				}
+
+				ShieldSlot: {
+					Label: "[i:156] Shield Slot"
+					Tooltip: Toggles an accessory slot used for shields
+				}
+
+				ExpertSlot: {
+					Label: "[i:3335] Expert Slot"
+					Tooltip: Toggles an accessory slot used for expert exclusive accessories
+				}
+
+				FullyDisableRecipes: {
+					Label: "[i:3507] Fully Disable Recipes"
+					Tooltip:
+						'''
+						Toggles if mod recipes are loaded
+						Affects:
+						 - Aether Altar recipes
+						 - Boss Bag recipes
+						 - Crate recipes
+						 - Banner recipes
+						 - Grab Bag recipes
+						 - Parity recipes
+						 - Conversion recipes
+						'''
+				}
+
+				EndlessCraftingIngredients: {
+					Label: Endless Crafting Ingredients
+					Tooltip: ""
+				}
+
+				EndlessCraftingIngredientsAmount: {
+					Label: Endless Crafting Ingredients Amount
+					Tooltip: ""
+				}
 			}
 
 			ItemConfig: {
@@ -2172,7 +2334,7 @@ Mods: {
 
 				AutoStructures: {
 					Label: "[i:QoLCompendium/HellevatorCreator] Auto Structures"
-					Tooltip: Toggles Auto Structure related items
+					Tooltip: Toggles auto structure related items
 				}
 
 				BannerBox: {
@@ -2202,12 +2364,12 @@ Mods: {
 
 				Mirrors: {
 					Label: "[i:QoLCompendium/CursedMirror] Mirrors"
-					Tooltip: Toggles Mirror related items
+					Tooltip: Toggles mirror related items
 				}
 
 				DedicatedItems: {
 					Label: "[i:QoLCompendium/SillySlapper] Dedicated Items"
-					Tooltip: Toggles Dedicated items
+					Tooltip: Toggles dedicated items
 				}
 
 				EntityManipulator: {
@@ -2222,22 +2384,22 @@ Mods: {
 
 				InformationAccessories: {
 					Label: "[i:QoLCompendium/HeartbeatSensor] Information Accessories"
-					Tooltip: Toggles Information related items
+					Tooltip: Toggles information related items
 				}
 
 				Magnets: {
 					Label: "[i:QoLCompendium/Magnet] Magnets"
-					Tooltip: Toggles Magnet related items
+					Tooltip: Toggles magnet related items
 				}
 
 				MobileStorages: {
 					Label: "[i:QoLCompendium/FlyingSafe] Mobile Storages"
-					Tooltip: Toggles Mobile Storage related items
+					Tooltip: Toggles mobile storage related items
 				}
 
 				MoonPedestals: {
 					Label: "[i:QoLCompendium/MoonPedestal] Moon Pedestals"
-					Tooltip: Toggles Moon Pedestal related items
+					Tooltip: Toggles moon pedestal related items
 				}
 
 				Paperweight: {
@@ -2276,12 +2438,12 @@ Mods: {
 
 				RegrowthStaves: {
 					Label: "[i:QoLCompendium/Omnistaff] Regrowth Staves"
-					Tooltip: Toggles Regrowth Staff related items
+					Tooltip: Toggles regrowth staff related items
 				}
 
 				Pylons: {
 					Label: "[i:QoLCompendium/CorruptionPylon] Pylons"
-					Tooltip: Toggles Pylon related items
+					Tooltip: Toggles pylon related items
 				}
 
 				TheFinalList: {
@@ -2331,7 +2493,7 @@ Mods: {
 
 				EndlessAmmo: {
 					Label: "[i:QoLCompendium/EndlessFlareBox] Endless Ammo"
-					Tooltip: Toggles Endless Ammo related items
+					Tooltip: Toggles endless Ammo related items
 				}
 
 				GoldenLockpick: {
@@ -2352,6 +2514,21 @@ Mods: {
 				Eightworm: {
 					Label: "[i:QoLCompendium/Eightworm] Eightworm"
 					Tooltip: Toggles the Eightworm item
+				}
+
+				ConstructionAccessories: {
+					Tooltip: Toggles construction related items
+					Label: "[i:QoLCompendium/ConstructionEmblem] Construction Accessories"
+				}
+
+				FishingAccessories: {
+					Label: "[i:QoLCompendium/AnglerRadar] Fishing Accessories"
+					Tooltip: Toggles fishing related items
+				}
+
+				CrossModItems: {
+					Label: "[i:QoLCompendium/ForgottenOneSummon] Cross Mod Items"
+					Tooltip: Toggles cross mod items
 				}
 			}
 
@@ -2610,6 +2787,16 @@ Mods: {
 					Tooltip: Removes the logo tooltip from certain yoyos
 					Label: "[i:3285] No Yoyo Tooltip"
 				}
+
+				FromModTooltip: {
+					Tooltip: Adds a tooltip below item names showing what mod they are from
+					Label: "[i:3084] From Mod Tooltip"
+				}
+
+				ClassTagTooltip: {
+					Tooltip: Adds a tooltip below item names showing what class they are from
+					Label: "[i:3121] Class Tag Tooltip"
+				}
 			}
 
 			MainClientConfig: {
@@ -2620,30 +2807,42 @@ Mods: {
 					Label: "[i:75] Auto Research Favorited Items"
 				}
 
-				MapTeleporting: {
-					Label: "[i:2351] Map Teleporting"
-					Tooltip: Toggles if you can right click on the map to teleport to that position
+				NoAuraVisuals: {
+					Label: "[i:2348] No Aura Visuals"
+					Tooltip: Toggles if the Inferno Aura is visible
 				}
 
-				WingSlot: {
-					Label: "[i:4978] Wing Slot"
-					Tooltip: Toggles an accessory slot used for wings
+				CombatTextLimit: {
+					Label: "[i:3119] Combat Text Limit"
+					Tooltip: Change the limit of combat texts that can be displayed
 				}
 
-				BootSlot: {
-					Label: "[i:54] Boot Slot"
-					Tooltip: Toggles an accessory slot used for boots
+				DisableDashDoubleTap: {
+					Label: "[i:3097] Disable Dash Double Tap"
+					Tooltip: Toggles if you can double tap dash
 				}
 
-				ShieldSlot: {
-					Label: "[i:156] Shield Slot"
-					Tooltip: Toggles an accessory slot used for shields
+				GlintColor: {
+					Tooltip: Changes the color of the glint effect on items
+					Label: "[i:1067] Glint Color"
 				}
+			}
 
-				ExpertSlot: {
-					Label: "[i:3335] Expert Slot"
-					Tooltip: Toggles an accessory slot used for expert exclusive accessories
-				}
+			ConfigGlintID: {
+				Rainbow.Label: Rainbow
+				Pink.Label: Pink
+				Magenta.Label: Magenta
+				Purple.Label: Purple
+				SkyBlue.Label: Sky Blue
+				Cyan.Label: Cyan
+				Blue.Label: Blue
+				Lime.Label: Lime
+				Green.Label: Green
+				Yellow.Label: Yellow
+				Orange.Label: Orange
+				Red.Label: Red
+				White.Label: White
+				Tooltip: ""
 			}
 		}
 
@@ -3134,6 +3333,9 @@ Mods: {
 			downedBasan: Downed Basan
 			downedCockatrice: Downed Cockatrice
 			shimmerableAfterMoonLordOrSupremeCalamitas: Downed Moon Lord, or downed Supreme Calamitas with Calamity enabled
+			downedCruiser: Downed Cruiser
+			downedCursedCoffin: Downed Cursed Coffin
+			downedOrdealAny: Downed any Ordeal
 		}
 
 		Tiles: {
@@ -3199,7 +3401,7 @@ Mods: {
 
 			SnakeBuff: {
 				DisplayName: Snake
-				Description: How is he floating?
+				Description: Oh ok
 			}
 		}
 	}

@@ -1,4 +1,5 @@
 using QoLCompendium.Content.Tiles.Other;
+using QoLCompendium.Core;
 using Terraria.DataStructures;
 using Terraria.ObjectData;
 
@@ -30,9 +31,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
         {
             Tile tile = Main.tile[x, y];
             if (tile == null)
-            {
                 return false;
-            }
             return OkayToDestroyTile(tile);
         }
 
@@ -43,7 +42,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
 
         public static bool TileBelongsToMod(Tile tile)
         {
-            return (tile.TileType > TileID.Count || tile.WallType > WallID.Count) && tile.TileType != ModContent.TileType<AsphaltPlatformTile>();
+            return (tile.TileType > TileID.Count || tile.WallType > WallID.Count) && tile.TileType != ModContent.TileType<AsphaltPlatformTile>() && tile.TileType != Common.GetModTile(ModConditions.aequusMod, "Manacle") && tile.TileType != Common.GetModTile(ModConditions.aequusMod, "Mistral") && tile.TileType != Common.GetModTile(ModConditions.aequusMod, "Moonflower") && tile.TileType != Common.GetModTile(ModConditions.aequusMod, "Moray");
         }
     }
 

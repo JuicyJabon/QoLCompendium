@@ -1,4 +1,8 @@
 ﻿using MonoMod.RuntimeDetour;
+using QoLCompendium.Content.Items.Accessories;
+using QoLCompendium.Content.Items.CrossMod.Summons;
+using QoLCompendium.Content.Items.InformationAccessories;
+using QoLCompendium.Content.Items.Mirrors;
 using System.Reflection;
 using Terraria.DataStructures;
 using Terraria.ModLoader.Config;
@@ -13,9 +17,19 @@ namespace QoLCompendium.Core
 
         public static List<Hook> detours = [];
 
-        public static readonly List<int> TownSlimeIDs = new(Enumerable.Range(678, 688 - 678)) { 670 };
+        public static readonly HashSet<int> TownSlimeIDs = new(Enumerable.Range(678, 688 - 678)) { 670 };
 
-        public static readonly List<int> PermanentUpgrades = new()
+        public static readonly HashSet<int> LunarPillarIDs = new() { NPCID.LunarTowerNebula, NPCID.LunarTowerSolar, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex };
+
+        public static readonly HashSet<int> CoinIDs = new() { ItemID.CopperCoin, ItemID.SilverCoin, ItemID.GoldCoin, ItemID.PlatinumCoin };
+
+        public static int PlatinumMaxStack = 9999;
+        public const ulong CopperValue = 1;
+        public const ulong SilverValue = 100;
+        public const ulong GoldValue = 100 * 100;
+        public const ulong PlatinumValue = 100 * 100 * 100;
+
+        public static readonly HashSet<int> PermanentUpgrades = new()
         {
             ItemID.AegisCrystal,
             ItemID.ArcaneCrystal,
@@ -31,7 +45,30 @@ namespace QoLCompendium.Core
             ItemID.MinecartPowerup
         };
 
-        public static readonly List<int> VanillaBossAndEventSummons = new()
+        public static readonly int[] BossIDs = new int[]
+        {
+            NPCID.KingSlime,
+            NPCID.EyeofCthulhu,
+            NPCID.EaterofWorldsHead,
+            NPCID.BrainofCthulhu,
+            NPCID.QueenBee,
+            NPCID.Deerclops,
+            NPCID.SkeletronHead,
+            NPCID.WallofFlesh,
+            NPCID.QueenSlimeBoss,
+            NPCID.Retinazer,
+            NPCID.Spazmatism,
+            NPCID.TheDestroyer,
+            NPCID.SkeletronPrime,
+            NPCID.Plantera,
+            NPCID.Golem,
+            NPCID.DukeFishron,
+            NPCID.HallowBoss,
+            NPCID.CultistBoss,
+            NPCID.MoonLordCore,
+        };
+
+        public static readonly HashSet<int> VanillaBossAndEventSummons = new()
         {
             ItemID.SlimeCrown,
             ItemID.SuspiciousLookingEye,
@@ -54,7 +91,17 @@ namespace QoLCompendium.Core
             ItemID.NaughtyPresent
         };
 
-        public static readonly ushort[] EvilWallIDs = new ushort[47]
+        public static readonly HashSet<int> VanillaRightClickBossAndEventSummons = new()
+        {
+            ItemID.LihzahrdPowerCell,
+            ItemID.DD2ElderCrystal
+        };
+
+        public static HashSet<int> ModdedBossAndEventSummons = new();
+
+        public static HashSet<int> FargosBossAndEventSummons = new();
+
+        public static readonly ushort[] EvilWallIDs = new ushort[]
         {
             WallID.CorruptGrassEcho,
             WallID.CorruptGrassUnsafe,
@@ -105,7 +152,7 @@ namespace QoLCompendium.Core
             WallID.HallowUnsafe4
         };
 
-        public static readonly ushort[] PureWallIDs = new ushort[47]
+        public static readonly ushort[] PureWallIDs = new ushort[]
         {
             WallID.Grass, 
             WallID.GrassUnsafe, 
@@ -203,6 +250,18 @@ namespace QoLCompendium.Core
             ItemID.NebulaPickup3,
         };
 
+        public static readonly int[] VanillaFountains = new int[]
+        {
+            ItemID.PureWaterFountain,
+            ItemID.CorruptWaterFountain,
+            ItemID.JungleWaterFountain,
+            ItemID.HallowedWaterFountain,
+            ItemID.IcyWaterFountain,
+            ItemID.DesertWaterFountain,
+            ItemID.OasisFountain,
+            ItemID.CrimsonWaterFountain
+        };
+
         public static readonly bool[] NormalBunnies = NPCID.Sets.Factory.CreateBoolSet(NPCID.Bunny, NPCID.GemBunnyTopaz, NPCID.GemBunnySapphire, NPCID.GemBunnyRuby, NPCID.GemBunnyEmerald, NPCID.GemBunnyDiamond, NPCID.GemBunnyAmethyst, NPCID.GemBunnyAmber, NPCID.ExplosiveBunny, NPCID.BunnySlimed, NPCID.BunnyXmas, NPCID.CorruptBunny, NPCID.CrimsonBunny, NPCID.PartyBunny);
         
         public static readonly bool[] NormalSquirrels = NPCID.Sets.Factory.CreateBoolSet(NPCID.Squirrel, NPCID.SquirrelRed, NPCID.GemSquirrelTopaz, NPCID.GemSquirrelSapphire, NPCID.GemSquirrelRuby, NPCID.GemSquirrelEmerald, NPCID.GemSquirrelDiamond, NPCID.GemSquirrelAmethyst, NPCID.GemSquirrelAmber);
@@ -210,6 +269,98 @@ namespace QoLCompendium.Core
         public static readonly bool[] NormalButterflies = NPCID.Sets.Factory.CreateBoolSet(NPCID.Butterfly, NPCID.HellButterfly, NPCID.EmpressButterfly);
         
         public static readonly bool[] NormalBirds = NPCID.Sets.Factory.CreateBoolSet(NPCID.Bird, NPCID.BirdBlue, NPCID.BirdRed);
+
+        public static HashSet<int> Prefixes = new()
+        {
+            PrefixID.Legendary,
+            PrefixID.Legendary2,
+            PrefixID.Godly,
+            PrefixID.Light,
+            PrefixID.Rapid,
+            PrefixID.Demonic,
+            PrefixID.Unreal,
+            PrefixID.Mythical,
+            PrefixID.Ruthless,
+            PrefixID.Warding,
+            PrefixID.Arcane,
+            PrefixID.Lucky,
+            PrefixID.Menacing,
+            PrefixID.Quick2,
+            PrefixID.Violent
+        };
+
+        public static HashSet<int> BankItems = new() 
+        {
+            ItemID.DiscountCard,
+            ItemID.LuckyCoin,
+            ItemID.GoldRing,
+            ItemID.CoinRing,
+            ItemID.GreedyRing,
+            ItemID.MechanicalLens,
+            ItemID.LaserRuler,
+            ItemID.WireKite,
+            ItemID.PDA,
+            ItemID.CellPhone,
+            ItemID.ShellphoneDummy,
+            ItemID.Shellphone,
+            ItemID.ShellphoneSpawn,
+            ItemID.ShellphoneOcean,
+            ItemID.ShellphoneHell,
+            ItemID.GPS,
+            ItemID.REK,
+            ItemID.GoblinTech,
+            ItemID.FishFinder,
+            ItemID.CopperWatch,
+            ItemID.TinWatch,
+            ItemID.SilverWatch,
+            ItemID.TungstenWatch,
+            ItemID.GoldWatch,
+            ItemID.PlatinumWatch,
+            ItemID.DepthMeter,
+            ItemID.Compass,
+            ItemID.Radar,
+            ItemID.LifeformAnalyzer,
+            ItemID.TallyCounter,
+            ItemID.MetalDetector,
+            ItemID.Stopwatch,
+            ItemID.DPSMeter,
+            ItemID.FishermansGuide,
+            ItemID.WeatherRadio,
+            ItemID.Sextant,
+            ItemID.AncientChisel,
+            ItemID.Toolbelt,
+            ItemID.Toolbox,
+            ItemID.ExtendoGrip,
+            ItemID.PortableCementMixer,
+            ItemID.PaintSprayer,
+            ItemID.BrickLayer,
+            ItemID.ArchitectGizmoPack,
+            ItemID.HandOfCreation,
+            ItemID.ActuationAccessory,
+            ItemID.HighTestFishingLine,
+            ItemID.AnglerEarring,
+            ItemID.TackleBox,
+            ItemID.LavaFishingHook,
+            ItemID.AnglerTackleBag,
+            ItemID.LavaproofTackleBag,
+            ItemID.FishingBobber,
+            ItemID.FishingBobberGlowingStar,
+            ItemID.FishingBobberGlowingLava,
+            ItemID.FishingBobberGlowingKrypton,
+            ItemID.FishingBobberGlowingXenon,
+            ItemID.FishingBobberGlowingArgon,
+            ItemID.FishingBobberGlowingViolet,
+            ItemID.FishingBobberGlowingRainbow,
+            ItemID.TreasureMagnet,
+            ItemID.RoyalGel,
+            ItemID.SpectreGoggles,
+            ItemID.DontHurtCrittersBook,
+            ItemID.DontHurtNatureBook,
+            ItemID.DontHurtComboBook,
+            ItemID.ShimmerCloak,
+            ItemID.DontStarveShaderItem,
+            ItemID.EncumberingStone
+        };
 
         #region Boss Drops
         public static readonly int[] kingSlimeDrops = { 
@@ -365,17 +516,780 @@ namespace QoLCompendium.Core
 
         public static int AnyUnderworldBanner;
 
-#pragma warning restore CA2211
-        public static void Unload()
+        public enum PlacedPlatformStyles
+        {
+            Wood,
+            Ebonwood,
+            RichMahogany,
+            Pearlwood,
+            Bone,
+            Shadewood,
+            BlueBrick,
+            PinkBrick,
+            GreenBrick,
+            MetalShelf,
+            BrassShelf,
+            WoodShelf,
+            DungeonShelf,
+            Obsidian,
+            Glass,
+            Pumpkin,
+            SpookyWood,
+            PalmWood,
+            Mushroom,
+            BorealWood,
+            Slime,
+            Steampunk,
+            Skyware,
+            LivingWood,
+            Honey,
+            Cactus,
+            Martian,
+            Meteorite,
+            Granite,
+            Marble,
+            Crystal,
+            Golden,
+            DynastyWood,
+            Lihzahrd,
+            Flesh,
+            Frozen,
+            Spider,
+            Lesion,
+            Solar,
+            Vortex,
+            Nebula,
+            Stardust,
+            Sandstone,
+            Stone,
+            Bamboo,
+            Reef,
+            Balloon,
+            AshWood,
+            Echo,
+        }
+
+        public enum PlacedTableStyles1
+        {
+            Wooden,
+            Ebonwood,
+            RichMahogany,
+            Pearlwood,
+            Bone,
+            Flesh,
+            LivingWood,
+            Skyware,
+            Shadewood,
+            Lihzahrd,
+            BlueDungeon,
+            GreenDungeon,
+            PinkDungeon,
+            Obsidian,
+            Gothic,
+            Glass,
+            Banquet,
+            Bar,
+            Golden,
+            Honey,
+            Steampunk,
+            Pumpkin,
+            Spooky,
+            Pine,
+            Frozen,
+            Dynasty,
+            PalmWood,
+            Mushroom,
+            BorealWood,
+            Slime,
+            Cactus,
+            Martian,
+            Meteorite,
+            Granite,
+            Marble
+        }
+
+        public enum PlacedTableStyles2
+        {
+            Crystal,
+            Spider,
+            Lesion,
+            Solar,
+            Vortex,
+            Nebula,
+            Stardust,
+            Sandstone,
+            Bamboo,
+            Reef,
+            Balloon,
+            AshWood
+        }
+
+        public enum PlacedChairStyles
+        {
+            Wooden,
+            Tiolet,
+            Ebonwood,
+            RichMahogany,
+            Pearlwood,
+            LivingWood,
+            Cactus,
+            Bone,
+            Flesh,
+            Mushroom,
+            Skyware,
+            Shadewood,
+            Lihzahrd,
+            BlueDungeon,
+            GreenDungeon,
+            PinkDungeon,
+            Obsidian,
+            Gothic,
+            Glass,
+            Golden,
+            GoldenToilet,
+            BarStool,
+            Honey,
+            Steampunk,
+            Pumpkin,
+            Spooky,
+            Pine,
+            Dynasty,
+            Frozen,
+            PalmWood,
+            BorealWood,
+            Slime,
+            Martian,
+            Meteorite,
+            Granite,
+            Marble,
+            Crystal,
+            Spider,
+            Lesion,
+            Solar,
+            Vortex,
+            Nebula,
+            Stardust,
+            Sandstone,
+            Bamboo
+        }
+
+        public enum PlacedDoorStyles
+        {
+            Wooden,
+            Ebonwood,
+            RichMahogany,
+            Pearlwood,
+            Cactus,
+            Flesh,
+            Mushroom,
+            LivingWood,
+            Bone,
+            Skyware,
+            Shadewood,
+            LockedLihzahrd,
+            Lihzahrd,
+            Dungeon,
+            Lead,
+            Iron,
+            BlueDungeon,
+            GreenDungeon,
+            PinkDungeon,
+            Obsidian,
+            Glass,
+            Golden,
+            Honey,
+            Steampunk,
+            Pumpkin,
+            Spooky,
+            Pine,
+            Frozen,
+            Dynasty,
+            PalmWood,
+            BorealWood,
+            Slime,
+            Martian,
+            Meteorite,
+            Granite,
+            Marble,
+            Crystal,
+            Spider,
+            Lesion,
+            Solar,
+            Vortex,
+            Nebula,
+            Stardust,
+            Sandstone,
+            Stone,
+            Bamboo
+        }
+
+        public enum PlacedTorchStyles
+        {
+            Torch,
+            BlueTorch,
+            RedTorch,
+            GreenTorch,
+            PurpleTorch,
+            WhiteTorch,
+            YellowTorch,
+            DemonTorch,
+            CursedTorch,
+            IceTorch,
+            OrangeTorch,
+            IchorTorch,
+            UltrabrightTorch,
+            BoneTorch,
+            RainbowTorch,
+            PinkTorch,
+            DesertTorch,
+            CoralTorch,
+            CorruptTorch,
+            CrimsonTorch,
+            HallowedTorch,
+            JungleTorch,
+            MushroomTorch,
+            AetherTorch
+        }
+
+        public static void UnloadTasks()
         {
             foreach (var hook in detours)
                 hook.Undo();
+        }
+
+        public static void PostSetupTasks()
+        {
+            HashSet<int> ModBankItems = new()
+            {
+                ModContent.ItemType<BattalionLog>(),
+                ModContent.ItemType<HarmInducer>(),
+                ModContent.ItemType<HeadCounter>(),
+                ModContent.ItemType<Kettlebell>(),
+                ModContent.ItemType<LuckyDie>(),
+                ModContent.ItemType<MetallicClover>(),
+                ModContent.ItemType<PlateCracker>(),
+                ModContent.ItemType<Regenerator>(),
+                ModContent.ItemType<ReinforcedPanel>(),
+                ModContent.ItemType<Replenisher>(),
+                ModContent.ItemType<TrackingDevice>(),
+                ModContent.ItemType<WingTimer>(),
+                ModContent.ItemType<Fitbit>(),
+                ModContent.ItemType<HeartbeatSensor>(),
+                ModContent.ItemType<ToleranceDetector>(),
+                ModContent.ItemType<VitalDisplay>(),
+                ModContent.ItemType<IAH>(),
+                ModContent.ItemType<MosaicMirror>(),
+                ModContent.ItemType<SkullWatch>(),
+                ModContent.ItemType<DeteriorationDisplay>(),
+                ModContent.ItemType<MiningEmblem>(),
+                ModContent.ItemType<ConstructionEmblem>(),
+                ModContent.ItemType<CreationClubMembersPass>(),
+                ModContent.ItemType<SonarDevice>(),
+                ModContent.ItemType<AnglerRadar>(),
+                ModContent.ItemType<AnglersDream>(),
+                Common.GetModItem(ModConditions.aequusMod, "AnglerBroadcaster"),
+                Common.GetModItem(ModConditions.aequusMod, "Calendar"),
+                Common.GetModItem(ModConditions.aequusMod, "GeigerCounter"),
+                Common.GetModItem(ModConditions.aequusMod, "HoloLens"),
+                Common.GetModItem(ModConditions.aequusMod, "RichMansMonocle"),
+                Common.GetModItem(ModConditions.aequusMod, "DevilsTongue"),
+                Common.GetModItem(ModConditions.aequusMod, "NeonGenesis"),
+                Common.GetModItem(ModConditions.aequusMod, "RadonFishingBobber"),
+                Common.GetModItem(ModConditions.aequusMod, "Ramishroom"),
+                Common.GetModItem(ModConditions.aequusMod, "RegrowingBait"),
+                Common.GetModItem(ModConditions.aequusMod, "LavaproofMitten"),
+                Common.GetModItem(ModConditions.aequusMod, "BusinessCard"),
+                Common.GetModItem(ModConditions.aequusMod, "HaltingMachine"),
+                Common.GetModItem(ModConditions.aequusMod, "HaltingMagnet"),
+                Common.GetModItem(ModConditions.aequusMod, "HyperJet"),
+                Common.GetModItem(ModConditions.afkpetsMod, "FishermansPride"),
+                Common.GetModItem(ModConditions.afkpetsMod, "LampyridaeHairpin"),
+                Common.GetModItem(ModConditions.afkpetsMod, "Piracy"),
+                Common.GetModItem(ModConditions.afkpetsMod, "PortableSonar"),
+                Common.GetModItem(ModConditions.afkpetsMod, "TheHandyman"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "AttendanceLog"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "BiomeCrystal"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "EngiRegistry"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "FortuneMirror"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "HitMarker"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "Magimeter"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "RSH"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "SafteyScanner"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "ScryingMirror"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "ThreatAnalyzer"),
+                Common.GetModItem(ModConditions.blocksInfoAccessoriesMod, "WantedPoster"),
+                Common.GetModItem(ModConditions.calamityMod, "AlluringBait"),
+                Common.GetModItem(ModConditions.calamityMod, "EnchantedPearl"),
+                Common.GetModItem(ModConditions.calamityMod, "SupremeBaitTackleBoxFishingStation"),
+                Common.GetModItem(ModConditions.calamityMod, "AncientFossil"),
+                Common.GetModItem(ModConditions.calamityMod, "OceanCrest"),
+                Common.GetModItem(ModConditions.calamityMod, "SpelunkersAmulet"),
+                Common.GetModItem(ModConditions.clickerClassMod, "ButtonMasher"),
+                Common.GetModItem(ModConditions.luiAFKMod, "FasterMining"),
+                Common.GetModItem(ModConditions.luiAFKMod, "SuperToolTime"),
+                Common.GetModItem(ModConditions.luiAFKMod, "ToolTime"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "ArmorDisplayer"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "FlightTimer"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "Journal"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "IronWatch"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "LeadWatch"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "LeprechaunSensor"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "MinionCounter"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "SentryCounter"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "SummonersTracker"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "SurvivalTracker"),
+                //Common.GetModItem(ModConditions.moomoosUltimateYoyoRevampMod, "HitDisplay"),
+                //Common.GetModItem(ModConditions.moomoosUltimateYoyoRevampMod, "SpeedDisplay"),
+                Common.GetModItem(ModConditions.spiritMod, "FisheyeGem"),
+                Common.GetModItem(ModConditions.spiritMod, "MetalBand"),
+                Common.GetModItem(ModConditions.spiritMod, "MimicRepellent"),
+                Common.GetModItem(ModConditions.thoriumMod, "HeartRateMonitor"),
+                Common.GetModItem(ModConditions.thoriumMod, "HightechSonarDevice"),
+                Common.GetModItem(ModConditions.thoriumMod, "GlitteringChalice"),
+                Common.GetModItem(ModConditions.thoriumMod, "GreedyGoblet"),
+                Common.GetModItem(ModConditions.thoriumMod, "LuckyRabbitsFoot")
+            };
+            BankItems.UnionWith(ModBankItems);
+
+            HashSet<int> TempModdedBossAndEventSummons = new()
+            {
+                //QoLC
+                ModContent.ItemType<ForgottenOneSummon>(),
+                ModContent.ItemType<GiantClamSummon>(),
+                ModContent.ItemType<LeviathanAnahitaSummon>(),
+                //Aequus
+                Common.GetModItem(ModConditions.aequusMod, "GalacticStarfruit"),
+                //AFKPETS
+                Common.GetModItem(ModConditions.afkpetsMod, "AncientSand"),
+                Common.GetModItem(ModConditions.afkpetsMod, "BlackenedHeart"),
+                Common.GetModItem(ModConditions.afkpetsMod, "BrokenDelftPlate"),
+                Common.GetModItem(ModConditions.afkpetsMod, "CookingBook"),
+                Common.GetModItem(ModConditions.afkpetsMod, "CorruptedServer"),
+                Common.GetModItem(ModConditions.afkpetsMod, "DemonicAnalysis"),
+                Common.GetModItem(ModConditions.afkpetsMod, "DesertMirror"),
+                Common.GetModItem(ModConditions.afkpetsMod, "DuckWhistle"),
+                Common.GetModItem(ModConditions.afkpetsMod, "FallingSlimeReplica"),
+                Common.GetModItem(ModConditions.afkpetsMod, "FrozenSkull"),
+                Common.GetModItem(ModConditions.afkpetsMod, "GoldenKingSlimeIdol"),
+                Common.GetModItem(ModConditions.afkpetsMod, "GoldenSkull"),
+                Common.GetModItem(ModConditions.afkpetsMod, "HaniwaIdol"),
+                Common.GetModItem(ModConditions.afkpetsMod, "HolographicSlimeReplica"),
+                Common.GetModItem(ModConditions.afkpetsMod, "IceBossCrystal"),
+                Common.GetModItem(ModConditions.afkpetsMod, "MagicWand"),
+                Common.GetModItem(ModConditions.afkpetsMod, "NightmareFuel"),
+                Common.GetModItem(ModConditions.afkpetsMod, "PinkDiamond"),
+                Common.GetModItem(ModConditions.afkpetsMod, "PlantAshContainer"),
+                Common.GetModItem(ModConditions.afkpetsMod, "PreyTrackingChip"),
+                Common.GetModItem(ModConditions.afkpetsMod, "RoastChickenPlate"),
+                Common.GetModItem(ModConditions.afkpetsMod, "SeveredClothierHead"),
+                Common.GetModItem(ModConditions.afkpetsMod, "SeveredDryadHead"),
+                Common.GetModItem(ModConditions.afkpetsMod, "SeveredHarpyHead"),
+                Common.GetModItem(ModConditions.afkpetsMod, "ShogunSlimesHelmet"),
+                Common.GetModItem(ModConditions.afkpetsMod, "SlimeinaGlassCube"),
+                Common.GetModItem(ModConditions.afkpetsMod, "SlimyWarBanner"),
+                Common.GetModItem(ModConditions.afkpetsMod, "SoulofAgonyinaBottle"),
+                Common.GetModItem(ModConditions.afkpetsMod, "SpineWormFood"),
+                Common.GetModItem(ModConditions.afkpetsMod, "SpiritofFunPot"),
+                Common.GetModItem(ModConditions.afkpetsMod, "SpiritualHeart"),
+                Common.GetModItem(ModConditions.afkpetsMod, "StoryBook"),
+                Common.GetModItem(ModConditions.afkpetsMod, "SuspiciousLookingChest"),
+                Common.GetModItem(ModConditions.afkpetsMod, "SwissChocolate"),
+                Common.GetModItem(ModConditions.afkpetsMod, "TiedBunny"),
+                Common.GetModItem(ModConditions.afkpetsMod, "TinyMeatIdol"),
+                Common.GetModItem(ModConditions.afkpetsMod, "TradeDeal"),
+                Common.GetModItem(ModConditions.afkpetsMod, "UnstableRainbowCookie"),
+                Common.GetModItem(ModConditions.afkpetsMod, "UntoldBurial"),
+                //Awful Garbage
+                Common.GetModItem(ModConditions.awfulGarbageMod, "InsectOnAStick"),
+                Common.GetModItem(ModConditions.awfulGarbageMod, "PileOfFakeBones"),
+                //Blocks Core Boss
+                Common.GetModItem(ModConditions.blocksCoreBossMod, "ChargedOrb"),
+                Common.GetModItem(ModConditions.blocksCoreBossMod, "ChargedOrbCrim"),
+                //Consolaria
+                Common.GetModItem(ModConditions.consolariaMod, "SuspiciousLookingEgg"),
+                Common.GetModItem(ModConditions.consolariaMod, "CursedStuffing"),
+                Common.GetModItem(ModConditions.consolariaMod, "SuspiciousLookingSkull"),
+                Common.GetModItem(ModConditions.consolariaMod, "Wishbone"),
+                //Coralite
+                Common.GetModItem(ModConditions.coraliteMod, "RedBerry"),
+                //Edorbis
+                Common.GetModItem(ModConditions.edorbisMod, "BiomechanicalMatter"),
+                Common.GetModItem(ModConditions.edorbisMod, "CursedSoul"),
+                Common.GetModItem(ModConditions.edorbisMod, "KelviniteRadar"),
+                Common.GetModItem(ModConditions.edorbisMod, "SlayerTrophy"),
+                Common.GetModItem(ModConditions.edorbisMod, "ThePrettiestFlower"),
+                //Enchanted Moons
+                Common.GetModItem(ModConditions.enchantedMoonsMod, "BlueMedallion"),
+                Common.GetModItem(ModConditions.enchantedMoonsMod, "CherryAmulet"),
+                Common.GetModItem(ModConditions.enchantedMoonsMod, "HarvestLantern"),
+                Common.GetModItem(ModConditions.enchantedMoonsMod, "MintRing"),
+                //Everjade
+                Common.GetModItem(ModConditions.everjadeMod, "FestivalLantern"),
+                //Excelsior
+                Common.GetModItem(ModConditions.excelsiorMod, "ReflectiveIceShard"),
+                Common.GetModItem(ModConditions.excelsiorMod, "PlanetaryTrackingDevice"),
+                //Exxo Avalon Origins
+                Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "BloodyAmulet"),
+                Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "InfestedCarcass"),
+                Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "DesertHorn"),
+                Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "GoblinRetreatOrder"),
+                Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "FalseTreasureMap"),
+                Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "OddFertilizer"),
+                //Gensokyo
+                Common.GetModItem(ModConditions.gensokyoMod, "AliceMargatroidSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "CirnoSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "EternityLarvaSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "HinaKagiyamaSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "KaguyaHouraisanSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "LilyWhiteSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "MayumiJoutouguuSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "MedicineMelancholySpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "MinamitsuMurasaSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "NazrinSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "NitoriKawashiroSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "RumiaSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "SakuyaIzayoiSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "SeijaKijinSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "SeiranSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "SekibankiSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "TenshiHinanawiSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "ToyosatomimiNoMikoSpawner"),
+                Common.GetModItem(ModConditions.gensokyoMod, "UtsuhoReiujiSpawner"),
+                //Homeward Journey
+                Common.GetModItem(ModConditions.homewardJourneyMod, "CannedSoulofFlight"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "MetalSpine"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "SouthernPotting"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "SunlightCrown"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "UltimateTorch"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "UnstableGlobe"),
+                //Martains Order
+                Common.GetModItem(ModConditions.martainsOrderMod, "FrigidEgg"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "SuspiciousLookingCloud"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "Catnip"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "CarnageSuspiciousRazor"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "VoidWorm"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "LuminiteSlimeCrown"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "LuminiteEye"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "JunglesLastTreasure"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "TeslaRemote"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "BloodyNight"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "LucidDay"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "LucidFestival"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "LucidNight"),
+                //Medial Rift
+                Common.GetModItem(ModConditions.medialRiftMod, "RemoteOfTheMetalHeads"),
+                //Metroid Mod
+                Common.GetModItem(ModConditions.metroidMod, "GoldenTorizoSummon"),
+                Common.GetModItem(ModConditions.metroidMod, "KraidSummon"),
+                Common.GetModItem(ModConditions.metroidMod, "NightmareSummon"),
+                Common.GetModItem(ModConditions.metroidMod, "OmegaPirateSummon"),
+                Common.GetModItem(ModConditions.metroidMod, "PhantoonSummon"),
+                Common.GetModItem(ModConditions.metroidMod, "SerrisSummon"),
+                Common.GetModItem(ModConditions.metroidMod, "TorizoSummon"),
+                //Ophioid
+                Common.GetModItem(ModConditions.ophioidMod, "DeadFungusbug"),
+                Common.GetModItem(ModConditions.ophioidMod, "InfestedCompost"),
+                Common.GetModItem(ModConditions.ophioidMod, "LivingCarrion"),
+                //Qwerty
+                Common.GetModItem(ModConditions.qwertyMod, "AncientEmblem"),
+                Common.GetModItem(ModConditions.qwertyMod, "B4Summon"),
+                Common.GetModItem(ModConditions.qwertyMod, "BladeBossSummon"),
+                Common.GetModItem(ModConditions.qwertyMod, "DinoEgg"),
+                //Common.GetModItem(ModConditions.qwertyMod, "FortressBossSummon"),
+                //Common.GetModItem(ModConditions.qwertyMod, "GodSealKeycard"),
+                Common.GetModItem(ModConditions.qwertyMod, "HydraSummon"),
+                Common.GetModItem(ModConditions.qwertyMod, "RitualInterupter"),
+                Common.GetModItem(ModConditions.qwertyMod, "SummoningRune"),
+                //Redemption
+                Common.GetModItem(ModConditions.redemptionMod, "EaglecrestSpelltome"),
+                Common.GetModItem(ModConditions.redemptionMod, "EggCrown"),
+                Common.GetModItem(ModConditions.redemptionMod, "FowlWarHorn"),
+                //Secrets of the Shadows
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "ElectromagneticLure"),
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "SuspiciousLookingCandle"),
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "JarOfPeanuts"),
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "CatalystBomb"),
+                //Shadows of Abaddon
+                Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "PumpkinLantern"),
+                Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "PrimordiaSummon"),
+                Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "AbaddonSummon"),
+                Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "SerpentSummon"),
+                Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "SoranEmblem"),
+                Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "HeirsAuthority"),
+                Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "PigmanBanner"),
+                Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "SandstormMedallion"),
+                //Spirit
+                Common.GetModItem(ModConditions.spiritMod, "DistressJellyItem"),
+                Common.GetModItem(ModConditions.spiritMod, "GladeWreath"),
+                Common.GetModItem(ModConditions.spiritMod, "ReachBossSummon"),
+                Common.GetModItem(ModConditions.spiritMod, "JewelCrown"),
+                Common.GetModItem(ModConditions.spiritMod, "BlackPearl"),
+                Common.GetModItem(ModConditions.spiritMod, "BlueMoonSpawn"),
+                Common.GetModItem(ModConditions.spiritMod, "DuskCrown"),
+                Common.GetModItem(ModConditions.spiritMod, "CursedCloth"),
+                Common.GetModItem(ModConditions.spiritMod, "StoneSkin"),
+                Common.GetModItem(ModConditions.spiritMod, "MartianTransmitter"),
+                //Spooky
+                Common.GetModItem(ModConditions.spookyMod, "Fertilizer"),
+                Common.GetModItem(ModConditions.spookyMod, "RottenSeed"),
+                //Storms Additions
+                Common.GetModItem(ModConditions.stormsAdditionsMod, "AridBossSummon"),
+                Common.GetModItem(ModConditions.stormsAdditionsMod, "MoonlingSummoner"),
+                Common.GetModItem(ModConditions.stormsAdditionsMod, "StormBossSummoner"),
+                Common.GetModItem(ModConditions.stormsAdditionsMod, "UltimateBossSummoner"),
+                //Supernova
+                Common.GetModItem(ModConditions.supernovaMod, "BugOnAStick"),
+                Common.GetModItem(ModConditions.supernovaMod, "EerieCrystal"),
+                //Thorium
+                Common.GetModItem(ModConditions.thoriumMod, "StormFlare"),
+                Common.GetModItem(ModConditions.thoriumMod, "JellyfishResonator"),
+                Common.GetModItem(ModConditions.thoriumMod, "UnstableCore"),
+                Common.GetModItem(ModConditions.thoriumMod, "AncientBlade"),
+                Common.GetModItem(ModConditions.thoriumMod, "StarCaller"),
+                Common.GetModItem(ModConditions.thoriumMod, "StriderTear"),
+                Common.GetModItem(ModConditions.thoriumMod, "VoidLens"),
+                Common.GetModItem(ModConditions.thoriumMod, "AromaticBulb"),
+                Common.GetModItem(ModConditions.thoriumMod, "AbyssalShadow2"),
+                Common.GetModItem(ModConditions.thoriumMod, "DoomSayersCoin"),
+                Common.GetModItem(ModConditions.thoriumMod, "FreshBrain"),
+                Common.GetModItem(ModConditions.thoriumMod, "RottingSpore"),
+                Common.GetModItem(ModConditions.thoriumMod, "IllusionaryGlass"),
+                //Utric
+                Common.GetModItem(ModConditions.uhtricMod, "RareGeode"),
+                Common.GetModItem(ModConditions.uhtricMod, "SnowyCharcoal"),
+                Common.GetModItem(ModConditions.uhtricMod, "CosmicLure"),
+                //Universe of Swords
+                Common.GetModItem(ModConditions.universeOfSwordsMod, "SwordBossSummon"),
+                //Valhalla
+                Common.GetModItem(ModConditions.valhallaMod, "HeavensSeal"),
+                Common.GetModItem(ModConditions.valhallaMod, "HellishRadish"),
+                //Vitality
+                Common.GetModItem(ModConditions.vitalityMod, "CloudCore"),
+                Common.GetModItem(ModConditions.vitalityMod, "AncientCrown"),
+                Common.GetModItem(ModConditions.vitalityMod, "MultigemCluster"),
+                Common.GetModItem(ModConditions.vitalityMod, "MoonlightLotusFlower"),
+                Common.GetModItem(ModConditions.vitalityMod, "Dreadcandle"),
+                Common.GetModItem(ModConditions.vitalityMod, "MeatyMushroom"),
+                Common.GetModItem(ModConditions.vitalityMod, "AnarchyCrystal"),
+                Common.GetModItem(ModConditions.vitalityMod, "TotemofChaos"),
+                Common.GetModItem(ModConditions.vitalityMod, "MartianRadio"),
+                Common.GetModItem(ModConditions.vitalityMod, "SpiritBox"),
+                //Wayfair
+                Common.GetModItem(ModConditions.wayfairContentMod, "MagicFertilizer"),
+                //Zylon
+                Common.GetModItem(ModConditions.zylonMod, "ForgottenFlame"),
+                Common.GetModItem(ModConditions.zylonMod, "SlimyScepter")
+            };
+            ModdedBossAndEventSummons.UnionWith(TempModdedBossAndEventSummons);
+
+            HashSet<int> TempFargosBossAndEventSummons = new()
+            {
+                //Fargos Mutant
+                    //ABOMINATIONN NPC ITEMS
+                Common.GetModItem(ModConditions.fargosMutantMod, "Anemometer"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "BatteredClub"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "BetsyEgg"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "FestiveOrnament"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "ForbiddenScarab"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "ForbiddenTome"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "HeadofMan"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "IceKingsRemains"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "MartianMemoryStick"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "MatsuriLantern"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "NaughtyList"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "PartyInvite"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "PillarSummon"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "RunawayProbe"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "SlimyBarometer"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "SpentLantern"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "SpookyBranch"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "SuspiciousLookingScythe"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "WeatherBalloon"),
+                    //DEVIANTT NPC ITEMS
+                Common.GetModItem(ModConditions.fargosMutantMod, "AmalgamatedSkull"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "AmalgamatedSpirit"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "AthenianIdol"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "AttractiveOre"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "BloodSushiPlatter"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "BloodUrchin"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "CloudSnack"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "ClownLicense"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "CoreoftheFrostCore"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "CorruptChest"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "CrimsonChest"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "DemonicPlushie"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "DilutedRainbowMatter"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "Eggplant"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "ForbiddenForbiddenFragment"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "GnomeHat"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "GoblinScrap"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "GoldenSlimeCrown"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "GrandCross"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "HallowChest"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "HeartChocolate"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "HemoclawCrab"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "HolyGrail"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "JungleChest"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "LeesHeadband"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "MothLamp"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "MothronEgg"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "Pincushion"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "PinkSlimeCrown"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "PirateFlag"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "PlunderedBooty"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "RuneOrb"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "ShadowflameIcon"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "SlimyLockBox"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "SuspiciousLookingChest"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "SuspiciousLookingLure"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "WormSnack"),
+                    //MUTANT NPC ITEMS
+                Common.GetModItem(ModConditions.fargosMutantMod, "Abeemination2"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "AncientSeal"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "CelestialSigil2"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "CultistSummon"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "DeathBringerFairy"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "DeerThing2"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "FleshyDoll"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "GoreySpine"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "JellyCrystal"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "LihzahrdPowerCell2"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "MechanicalAmalgam"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "MechEye"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "MechSkull"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "MechWorm"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "MutantVoodoo"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "PlanterasFruit"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "PrismaticPrimrose"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "SlimyCrown"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "SuspiciousEye"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "SuspiciousSkull"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "TruffleWorm2"),
+                Common.GetModItem(ModConditions.fargosMutantMod, "WormyFood"),
+                //Fargos Souls
+                Common.GetModItem(ModConditions.fargosSoulsMod, "AbomsCurse"),
+                Common.GetModItem(ModConditions.fargosSoulsMod, "ChampionySigil"),
+                Common.GetModItem(ModConditions.fargosSoulsMod, "CoffinSummon"),
+                Common.GetModItem(ModConditions.fargosSoulsMod, "DevisCurse"),
+                Common.GetModItem(ModConditions.fargosSoulsMod, "FragilePixieLamp"),
+                Common.GetModItem(ModConditions.fargosSoulsMod, "MechLure"),
+                Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsCurse"),
+                Common.GetModItem(ModConditions.fargosSoulsMod, "SquirrelCoatofArms"),
+                //Fargos DLC
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "AbandonedRemote"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "ABombInMyNation"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "AstrumCor"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "BirbPheromones"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "BlightedEye"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "BloodyWorm"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "ChunkyStardust"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "ClamPearl"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "ColossalTentacle"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "CryingKey"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "DeepseaProteinShake"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "DefiledCore"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "DefiledShard"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "DragonEgg"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "EyeofExtinction"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "FriedDoll"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "HiveTumor"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "LetterofKos"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "MaulerSkull"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "MedallionoftheDesert"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "MurkySludge"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "NoisyWhistle"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "NuclearChunk"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "OphiocordycipitaceaeSprout"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "PlaguedWalkieTalkie"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "PolterplasmicBeacon"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "PortableCodebreaker"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "QuakeIdol"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "RedStainedWormFood"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "RiftofKos"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "SeeFood"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "SirensPearl"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "SomeKindofSpaceWorm"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "StormIdol"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "SulphurBearTrap"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "WormFoodofKos"),
+                Common.GetModItem(ModConditions.fargosSoulsDLCMod, "WyrmTablet"),
+                //Fargos Extras
+                Common.GetModItem(ModConditions.fargosSoulsExtrasMod, "PandorasBox")
+            };
+            FargosBossAndEventSummons.UnionWith(TempFargosBossAndEventSummons);
+
+            HashSet<int> ModPrefixes = new()
+            {
+                GetModPrefix(ModConditions.calamityMod, "Flawless"),
+                GetModPrefix(ModConditions.calamityMod, "Silent"),
+                GetModPrefix(ModConditions.clickerClassMod, "Elite"),
+                GetModPrefix(ModConditions.clickerClassMod, "ClickerRadius"),
+                GetModPrefix(ModConditions.martainsOrderMod, "StrikerPrefix"),
+                GetModPrefix(ModConditions.orchidMod, "EmpyreanPrefix"),
+                GetModPrefix(ModConditions.orchidMod, "EtherealPrefix"),
+                GetModPrefix(ModConditions.orchidMod, "BlockingPrefix"),
+                GetModPrefix(ModConditions.orchidMod, "BrewingPrefix"),
+                GetModPrefix(ModConditions.orchidMod, "LoadedPrefix"),
+                GetModPrefix(ModConditions.orchidMod, "SpiritualPrefix"),
+                GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Omnipotent"),
+                GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Omniscient"),
+                GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Soulbound"),
+                GetModPrefix(ModConditions.thoriumMod, "Fabled"),
+                GetModPrefix(ModConditions.thoriumMod, "Engrossing"),
+                GetModPrefix(ModConditions.thoriumMod, "Lucrative"),
+                GetModPrefix(ModConditions.vitalityMod, "MalevolentPrefix"),
+                GetModPrefix(ModConditions.vitalityMod, "RelentlessPrefix")
+            };
+            Prefixes.UnionWith(ModPrefixes);
+        }
+
+        public static void Reset()
+        {
+
         }
 
         public static Color ColorSwap(Color firstColor, Color secondColor, float seconds)
         {
             float num = (float)((Math.Sin(Math.PI * 2.0 / (double)seconds * Main.GlobalTimeWrappedHourly) + 1.0) * 0.5);
             return Color.Lerp(firstColor, secondColor, num);
+        }
+
+        public static bool IsCoin(int type)
+        {
+            return type is >= 71 and <= 74;
+        }
+
+        public static ulong CalculateCoinValue(int type, uint stack)
+        {
+            return type switch
+            {
+                ItemID.CopperCoin => stack * CopperValue,
+                ItemID.SilverCoin => stack * SilverValue,
+                ItemID.GoldCoin => stack * GoldValue,
+                ItemID.PlatinumCoin => stack * PlatinumValue,
+                _ => 0,
+            };
+        }
+
+        public static List<Item> ConvertCopperValueToCoins(ulong value)
+        {
+            (ulong plat, ulong plat_rem) = Math.DivRem(value, PlatinumValue);
+            (ulong gold, ulong gold_rem) = Math.DivRem(plat_rem, GoldValue);
+            (ulong silver, ulong copper) = Math.DivRem(gold_rem, SilverValue);
+
+            var toReturn = new List<Item>();
+
+            while (plat > 0)
+            {
+                toReturn.Add(new Item(ItemID.PlatinumCoin, Math.Min((int)plat, PlatinumMaxStack)));
+                plat -= Math.Min(plat, (ulong)PlatinumMaxStack);
+            }
+
+            toReturn.Add(new Item(ItemID.GoldCoin, (int)gold));
+            toReturn.Add(new Item(ItemID.SilverCoin, (int)silver));
+            toReturn.Add(new Item(ItemID.CopperCoin, (int)copper));
+
+            return toReturn;
         }
 
         public interface IRightClickOverrideWhenHeld
@@ -431,6 +1345,18 @@ namespace QoLCompendium.Core
             return -1;
         }
 
+        public static int GetModWall(Mod mod, string wallName)
+        {
+            if (mod != null)
+            {
+                if (mod.TryFind(wallName, out ModWall currWall) && currWall != null)
+                {
+                    return currWall.Type;
+                }
+            }
+            return WallID.None;
+        }
+
         public static int GetModBuff(Mod mod, string buffName)
         {
             if (mod != null)
@@ -455,51 +1381,73 @@ namespace QoLCompendium.Core
             return -1;
         }
 
-        public static ModBiome GetModBiome(Mod mod, string biomeName)
+        public static DamageClass GetModDamageClass(Mod mod, string className)
         {
             if (mod != null)
             {
-                if (mod.TryFind(biomeName, out ModBiome currBiome) && currBiome != null)
+                if (mod.TryFind(className, out DamageClass currClass) && currClass != null)
                 {
-                    return currBiome;
+                    return currClass;
                 }
             }
-            return null;
+            return DamageClass.Default;
         }
 
         public static void CreateBagRecipe(int[] items, int bagID)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                CreateSimpleRecipe(bagID, items[i], TileID.Solidifier, 1, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.BossBags", () => QoLCompendium.mainConfig.BossBagRecipes));
+                CreateSimpleRecipe(bagID, items[i], TileID.WorkBenches, 1, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.BossBags", () => QoLCompendium.mainConfig.BossBagRecipes));
             }
         }
 
-        public static void CreateCrateRecipe(int result, int crateID, int crateHardmodeID, int crateCount)
+        public static void CreateCrateRecipe(int result, int crateID, int crateHardmodeID, int crateCount, params Condition[] conditions)
         {
-            CreateSimpleRecipe(crateID, result, TileID.Solidifier, crateCount, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Crates", () => QoLCompendium.mainConfig.CrateRecipes));
+            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            recipe.AddIngredient(crateID, crateCount);
+            foreach (Condition condition in conditions)
+                recipe.AddCondition(condition);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.DisableDecraft();
+            recipe.Register();
 
-            CreateSimpleRecipe(crateHardmodeID, result, TileID.Solidifier, crateCount, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Crates", () => QoLCompendium.mainConfig.CrateRecipes));
+            recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            recipe.AddIngredient(crateHardmodeID, crateCount);
+            foreach (Condition condition in conditions)
+                recipe.AddCondition(condition);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.DisableDecraft();
+            recipe.Register();
         }
 
-        public static void CreateCrateHardmodeRecipe(int result, int crateHardmodeID, int crateCount)
+        public static void CreateCrateHardmodeRecipe(int result, int crateHardmodeID, int crateCount, params Condition[] conditions)
         {
-            CreateSimpleRecipe(crateHardmodeID, result, TileID.Solidifier, crateCount, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Crates", () => QoLCompendium.mainConfig.CrateRecipes));
+            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            recipe.AddIngredient(crateHardmodeID, crateCount);
+            foreach (Condition condition in conditions)
+                recipe.AddCondition(condition);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.DisableDecraft();
+            recipe.Register();
         }
 
-        public static void CreateCrateWithKeyRecipe(int item, int crateID, int crateHardmodeID, int crateCount, int keyID)
+        public static void CreateCrateWithKeyRecipe(int item, int crateID, int crateHardmodeID, int crateCount, int keyID, params Condition[] conditions)
         {
             Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateID, crateCount);
             recipe.AddIngredient(keyID);
-            recipe.AddTile(TileID.Solidifier);
+            foreach (Condition condition in conditions)
+                recipe.AddCondition(condition);
+            recipe.AddTile(TileID.WorkBenches);
             recipe.DisableDecraft();
             recipe.Register();
 
             recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateHardmodeID, crateCount);
             recipe.AddIngredient(keyID);
-            recipe.AddTile(TileID.Solidifier);
+            foreach (Condition condition in conditions)
+                recipe.AddCondition(condition);
+            recipe.AddTile(TileID.WorkBenches);
             recipe.DisableDecraft();
             recipe.Register();
         }
@@ -515,12 +1463,12 @@ namespace QoLCompendium.Core
 
         public static void AddBannerGroupToItemRecipe(int recipeGroupID, int resultID, int resultAmount = 1, int groupAmount = 1, params Condition[] conditions)
         {
-            CreateSimpleRecipe(recipeGroupID, resultID, TileID.Solidifier, groupAmount, resultAmount, disableDecraft: true, usesRecipeGroup: true, conditions);
+            CreateSimpleRecipe(recipeGroupID, resultID, TileID.WorkBenches, groupAmount, resultAmount, disableDecraft: true, usesRecipeGroup: true, conditions);
         }
 
         public static void AddBannerToItemRecipe(int bannerItemID, int resultID, int bannerAmount = 1, int resultAmount = 1, params Condition[] conditions)
         {
-            CreateSimpleRecipe(bannerItemID, resultID, TileID.Solidifier, bannerAmount, resultAmount, disableDecraft: true, usesRecipeGroup: false, conditions);
+            CreateSimpleRecipe(bannerItemID, resultID, TileID.WorkBenches, bannerAmount, resultAmount, disableDecraft: true, usesRecipeGroup: false, conditions);
         }
 
         public static void AddBannerSetToItemRecipe(bool[] set, int resultID)
@@ -531,7 +1479,7 @@ namespace QoLCompendium.Core
                 {
                     int num = Item.NPCtoBanner(i);
                     if (num > 0)
-                        CreateSimpleRecipe(Item.BannerToItem(num), resultID, TileID.Solidifier, 1, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+                        CreateSimpleRecipe(Item.BannerToItem(num), resultID, TileID.WorkBenches, 1, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
                 }
             }
         }
@@ -556,21 +1504,46 @@ namespace QoLCompendium.Core
             if (player.whoAmI == Main.myPlayer)
             {
                 SoundEngine.PlaySound(SoundID.Roar, player.position);
-                if (Main.netMode != NetmodeID.MultiplayerClient)
-                {
-                    Vector2 spawnPosition = player.Center - Vector2.UnitY * 800f;
-                    NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)spawnPosition.X, (int)spawnPosition.Y, bossType);
-                }
-                else
-                {
+
+                Vector2 spawnPosition = player.Center - Vector2.UnitY * 800f;
+                int npc = NPC.NewNPC(NPC.GetBossSpawnSource(Main.myPlayer), (int)spawnPosition.X, (int)spawnPosition.Y, bossType);
+                if (Main.netMode != NetmodeID.SinglePlayer)
                     NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: bossType);
-                }
+                if (npc != Main.maxNPCs && Main.netMode == NetmodeID.Server)
+                    NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npc);
             }
         }
 
-        public static Asset<Texture2D> GetAsset(string location, string filename, int fileNumber)
+        public static Asset<Texture2D> GetAsset(string location, string filename, int fileNumber = -1)
         {
-            return ModContent.Request<Texture2D>("QoLCompendium/Assets/" + location + "/" + filename + fileNumber);
+            if (fileNumber > -1)
+                return ModContent.Request<Texture2D>("QoLCompendium/Assets/" + location + "/" + filename + fileNumber);
+            else
+                return ModContent.Request<Texture2D>("QoLCompendium/Assets/" + location + "/" + filename);
+        }
+
+        public static void TransmuteItems(int[] items)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (i >= items.Length - 1)
+                    ItemID.Sets.ShimmerTransformToItem[items.Last()] = items.First();
+                else
+                    ItemID.Sets.ShimmerTransformToItem[items[i]] = items[i + 1];
+            }
+        }
+
+        public static bool CheckToActivateGlintEffect(Item item)
+        {
+            if (Main.gameMenu || !Main.LocalPlayer.active)
+                return false;
+
+            if (QoLCompendium.mainConfig.ActiveBuffsHaveEnchantedEffects && !item.IsAir && Main.LocalPlayer.GetModPlayer<QoLCPlayer>().activeBuffItems.Contains(item.type))
+                return true;
+            else if (QoLCompendium.mainConfig.GoodPrefixesHaveEnchantedEffects && !item.IsAir && Prefixes.Contains(item.prefix))
+                return true;
+
+            return false;
         }
 
         public static Point16 PlayerCenterTile(Player player)
@@ -684,36 +1657,45 @@ namespace QoLCompendium.Core
 
         public static bool SearchBelow(Player player, Func<int, int, bool> toSearch, int gap)
         {
-            int num = PlayerCenterTileX(player);
-            int num2 = PlayerCenterTileY(player);
+            int centerX = PlayerCenterTileX(player);
+            int centerY = PlayerCenterTileY(player);
             int num3 = 0;
-            while (InGameWorldLeft(num - num3) || InGameWorldRight(num + num3))
+            while (InGameWorldLeft(centerX - num3) || InGameWorldRight(centerX + num3))
             {
-                int num4 = num2;
-                while (InGameWorldBottom(num4))
+                int tempY = centerY;
+                while (InGameWorldBottom(tempY))
                 {
-                    int num5 = num - num3;
-                    int num6 = num + num3;
-                    if (InGameWorldLeft(num5))
+                    int nX = centerX - num3;
+                    int pX = centerX + num3;
+                    if (InGameWorldLeft(nX))
                     {
-                        TileSafe(num5, num4);
-                        if (toSearch.Invoke(num5, num4))
+                        TileSafe(nX, tempY);
+                        if (toSearch.Invoke(nX, tempY))
                         {
                             return true;
                         }
                     }
-                    if (InGameWorldRight(num6))
+                    if (InGameWorldRight(pX))
                     {
-                        TileSafe(num6, num4);
-                        if (toSearch.Invoke(num6, num4))
+                        TileSafe(pX, tempY);
+                        if (toSearch.Invoke(pX, tempY))
                         {
                             return true;
                         }
                     }
-                    num4 += gap;
+                    tempY += gap;
                 }
                 num3 += gap;
             }
+            return false;
+        }
+
+        public static bool TryAcceptChanges(int whoAmI, ref NetworkText message)
+        {
+            if (NetMessage.DoesPlayerSlotCountAsAHost(whoAmI))
+                return true;
+
+            message = NetworkText.FromKey(Language.GetTextValue("Mods.QoLCompendium.Messages.HostOnly"));
             return false;
         }
 #pragma warning restore IDE0028, IDE0300

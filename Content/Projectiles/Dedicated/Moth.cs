@@ -43,5 +43,10 @@ namespace QoLCompendium.Content.Projectiles.Dedicated
                     Projectile.frame = 0;
             }
         }
+
+        public override bool? CanCutTiles()
+        {
+            return false;
+        }
     }
 }

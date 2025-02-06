@@ -69,7 +69,7 @@ namespace QoLCompendium.Content.Items.Mirrors
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Glass, 10);
             r.AddRecipeGroup("QoLCompendium:GoldBars", 8);
-            r.AddRecipeGroup("QoLCompendium:Tombstones", 3);
+            r.AddRecipeGroup("QoLCompendium:AnyTombstone", 3);
             r.AddTile(TileID.Furnaces);
             r.Register();
         }

@@ -1,6 +1,7 @@
 ﻿using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System.Reflection;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent.Drawing;
@@ -61,44 +62,29 @@ namespace QoLCompendium.Core.Changes
 
             if (QoLCompendium.mainConfig.FountainsWorkFromInventories)
             {
-                CheckInventory(Player.inventory);
-                CheckInventory(Player.bank.item);
-                CheckInventory(Player.bank2.item);
-                CheckInventory(Player.bank3.item);
-                CheckInventory(Player.bank4.item);
-            }
-        }
+                if (Player.HasItemInAnyInventory(Common.VanillaFountains[0]))
+                    Player.ZoneBeach = true;
 
-        public void CheckInventory(Item[] inventory)
-        {
-            foreach (Item val in inventory)
-            {
-                if (!val.IsAir)
-                {
-                    if (val.type == ItemID.PureWaterFountain)
-                        Player.ZoneBeach = true;
+                if (Player.HasItemInAnyInventory(Common.VanillaFountains[1]))
+                    Player.ZoneCorrupt = true;
 
-                    if (val.type == ItemID.CorruptWaterFountain)
-                        Player.ZoneCorrupt = true;
+                if (Player.HasItemInAnyInventory(Common.VanillaFountains[2]))
+                    Player.ZoneJungle = true;
 
-                    if (val.type == ItemID.JungleWaterFountain)
-                        Player.ZoneJungle = true;
+                if (Player.HasItemInAnyInventory(Common.VanillaFountains[3]) && Main.hardMode)
+                    Player.ZoneHallow = true;
 
-                    if (val.type == ItemID.HallowedWaterFountain && Main.hardMode)
-                        Player.ZoneHallow = true;
+                if (Player.HasItemInAnyInventory(Common.VanillaFountains[4]))
+                    Player.ZoneSnow = true;
 
-                    if (val.type == ItemID.IcyWaterFountain)
-                        Player.ZoneSnow = true;
+                if ((Player.HasItemInAnyInventory(Common.VanillaFountains[5]) || Player.HasItemInAnyInventory(Common.VanillaFountains[6])))
+                    Player.ZoneDesert = true;
 
-                    if (val.type == ItemID.DesertWaterFountain || val.type == ItemID.OasisFountain)
-                        Player.ZoneDesert = true;
+                if ((Player.HasItemInAnyInventory(Common.VanillaFountains[5]) || Player.HasItemInAnyInventory(Common.VanillaFountains[6])) && Player.Center.Y > 3200f)
+                    Player.ZoneDesert = true;
 
-                    if ((val.type == ItemID.DesertWaterFountain || val.type == ItemID.OasisFountain) && Player.Center.Y > 3200f)
-                        Player.ZoneDesert = true;
-
-                    if (val.type == ItemID.CrimsonWaterFountain)
-                        Player.ZoneCrimson = true;
-                }
+                if (Player.HasItemInAnyInventory(Common.VanillaFountains[7]))
+                    Player.ZoneCrimson = true;
             }
         }
     }

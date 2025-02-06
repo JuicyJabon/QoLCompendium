@@ -5,7 +5,7 @@ using Terraria.GameContent.Events;
 
 namespace QoLCompendium.Core.Changes
 {
-    public class AlwaysEventSystem : ModSystem
+    public class AlwaysEvents : ModSystem
     {
         public override void ModifyTimeRate(ref double timeRate, ref double tileUpdateRate, ref double eventUpdateRate)
         {
@@ -55,7 +55,7 @@ namespace QoLCompendium.Core.Changes
         }
     }
 
-    public class DisableEvilSpreadSystem : ModSystem
+    public class DisableEvilSpread : ModSystem
     {
         public override void Load()
         {
@@ -154,7 +154,7 @@ namespace QoLCompendium.Core.Changes
         }
     }
 
-    public class MapSystem : ModSystem
+    public class MapTeleporting : ModSystem
     {
         public static void TryToTeleportPlayerOnMap()
         {
@@ -200,10 +200,8 @@ namespace QoLCompendium.Core.Changes
 
         public override void PostDrawFullscreenMap(ref string mouseText)
         {
-            if (QoLCompendium.mainClientConfig.MapTeleporting)
-            {
+            if (QoLCompendium.mainConfig.MapTeleporting)
                 TryToTeleportPlayerOnMap();
-            }
         }
     }
 
@@ -212,6 +210,58 @@ namespace QoLCompendium.Core.Changes
         public override void PostUpdateWorld()
         {
             Star.starfallBoost = QoLCompendium.mainConfig.MoreFallenStars;
+        }
+    }
+
+    public class MoreCombatTexts : ModSystem
+    {
+        public override void Load()
+        {
+            int maximumTexts = QoLCompendium.mainClientConfig.CombatTextLimit;
+            Array.Resize(ref Main.combatText, maximumTexts);
+            for (int i = 0; i < maximumTexts; i++)
+            {
+                Main.combatText[i] = new CombatText();
+            }
+            On_CombatText.UpdateCombatText += delegate
+            {
+                for (int k = 0; k < maximumTexts; k++)
+                {
+                    if (Main.combatText[k].active)
+                    {
+                        Main.combatText[k].Update();
+                    }
+                }
+            };
+            On_CombatText.clearAll += delegate
+            {
+                for (int j = 0; j < maximumTexts; j++)
+                {
+                    Main.combatText[j].active = false;
+                }
+            };
+            IL_CombatText.NewText_Rectangle_Color_string_bool_bool += delegate (ILContext il)
+            {
+                ILCursor val2 = new(il);
+                while (val2.TryGotoNext((MoveType)2, new Func<Instruction, bool>[1]
+                {
+                (Instruction x) => ILPatternMatchingExt.Match<sbyte>(x, OpCodes.Ldc_I4_S, 100)
+                }))
+                {
+                    val2.EmitDelegate((int _) => maximumTexts);
+                }
+            };
+            IL_Main.DoDraw += delegate (ILContext il)
+            {
+                ILCursor val = new ILCursor(il);
+                while (val.TryGotoNext((MoveType)2, new Func<Instruction, bool>[1]
+                {
+                (Instruction x) => ILPatternMatchingExt.Match<sbyte>(x, OpCodes.Ldc_I4_S, 100)
+                }))
+                {
+                    val.EmitDelegate((int _) => maximumTexts);
+                }
+            };
         }
     }
 }

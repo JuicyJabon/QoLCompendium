@@ -30,6 +30,12 @@ namespace QoLCompendium.Core
         [DefaultValue(true)]
         public bool EndlessWeapons { get; set; }
 
+        /*
+        [DefaultValue(false)]
+        [ReloadRequired]
+        public bool EndlessCraftingIngredients { get; set; }
+        */
+
         [DefaultValue(30)]
         [Range(1, 99999)]
         public int EndlessBuffAmount { get; set; }
@@ -58,8 +64,18 @@ namespace QoLCompendium.Core
         [Range(1, 99999)]
         public int EndlessBaitAmount { get; set; }
 
+        /*
+        [DefaultValue(999)]
+        [Range(1, 99999)]
+        [ReloadRequired]
+        public int EndlessCraftingIngredientsAmount { get; set; }
+        */
+
         [DefaultValue(false)]
         public bool EndlessBuffsOnlyFromCrate { get; set; }
+
+        [DefaultValue(false)]
+        public bool ActiveBuffsHaveEnchantedEffects { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Items2")]
         [DefaultValue(9999)]
@@ -80,9 +96,11 @@ namespace QoLCompendium.Core
         public bool NonConsumableKeys { get; set; }
 
         [DefaultValue(true)]
+        [ReloadRequired]
         public bool BossItemTransmutation { get; set; }
 
         [DefaultValue(true)]
+        [ReloadRequired]
         public bool ItemConversions { get; set; }
 
         [DefaultValue(true)]
@@ -108,11 +126,27 @@ namespace QoLCompendium.Core
         [DefaultValue(true)]
         public bool AutoMoneyQuickStack { get; set; }
 
+        [DefaultValue(true)]
+        public bool GoldenCarpDelight { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool AutoReuseHealthUpgrades { get; set; }
+
+        [DefaultValue(false)]
+        public bool GoodPrefixesHaveEnchantedEffects { get; set; }
+
+        [DefaultValue(false)]
+        [ReloadRequired]
+        public bool FullyDisableRecipes { get; set; }
+
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.NPCs")]
         [DefaultValue(true)]
+        [ReloadRequired]
         public bool BlackMarketDealerCanSpawn { get; set; }
 
         [DefaultValue(true)]
+        [ReloadRequired]
         public bool EtherealCollectorCanSpawn { get; set; }
 
         [DefaultValue(false)]
@@ -121,8 +155,10 @@ namespace QoLCompendium.Core
         [DefaultValue(true)]
         public bool TownNPCsDontDie { get; set; }
 
-        [DefaultValue(true)]
-        public bool FastTownNPCSpawns { get; set; }
+        [Slider]
+        [Range(1, 10)]
+        [DefaultValue(1)]
+        public int FastTownNPCSpawns { get; set; }
 
         [DefaultValue(true)]
         public bool TownNPCSpawnImprovements { get; set; }
@@ -169,10 +205,6 @@ namespace QoLCompendium.Core
 
         [DefaultValue(true)]
         public bool LavaSlimesDontDropLava { get; set; }
-
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool NoDoorBreaking { get; set; }
 
         [DefaultValue(true)]
         public bool ExtraDefenderMedalDrops { get; set; }
@@ -228,11 +260,12 @@ namespace QoLCompendium.Core
         [DefaultValue(true)]
         public bool FasterExtractinator { get; set; }
 
-        [Slider]
         [DefaultValue(44)]
         [Range(0, 132)]
+        [Slider]
         [Increment(22)]
-        public uint ExtraBuffSlots { get; set; }
+        [ReloadRequired]
+        public int ExtraBuffSlots { get; set; }
 
         [DefaultValue(true)]
         public bool KeepBuffsOnDeath { get; set; }
@@ -283,6 +316,21 @@ namespace QoLCompendium.Core
 
         [DefaultValue(true)]
         public bool FullHealthRespawn { get; set; }
+
+        [DefaultValue(false)]
+        public bool WingSlot { get; set; }
+
+        [DefaultValue(false)]
+        public bool BootSlot { get; set; }
+
+        [DefaultValue(false)]
+        public bool ShieldSlot { get; set; }
+
+        [DefaultValue(false)]
+        public bool ExpertSlot { get; set; }
+
+        [DefaultValue(false)]
+        public bool MapTeleporting { get; set; }
 
         [Header("$Mods.QoLCompendium.QoLCConfig.Headers.World")]
         [DefaultValue(true)]
@@ -337,6 +385,11 @@ namespace QoLCompendium.Core
             QoLCompendium.mainConfig = this;
         }
 
+        public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref NetworkText message)
+        {
+            return Common.TryAcceptChanges(whoAmI, ref message);
+        }
+
         [SeparatePage]
         public class MainClientConfig : ModConfig
         {
@@ -347,19 +400,36 @@ namespace QoLCompendium.Core
             public bool FavoriteResearching { get; set; }
 
             [DefaultValue(false)]
-            public bool WingSlot { get; set; }
+            public bool NoAuraVisuals { get; set; }
 
             [DefaultValue(false)]
-            public bool BootSlot { get; set; }
+            public bool DisableDashDoubleTap { get; set; }
 
-            [DefaultValue(false)]
-            public bool ShieldSlot { get; set; }
+            [DefaultValue(100)]
+            [Range(1, 100000)]
+            [ReloadRequired]
+            public int CombatTextLimit { get; set; }
 
-            [DefaultValue(false)]
-            public bool ExpertSlot { get; set; }
+            [DefaultValue(0)]
+            [DrawTicks]
+            public ConfigGlintID GlintColor { get; set; }
 
-            [DefaultValue(true)]
-            public bool MapTeleporting { get; set; }
+            public enum ConfigGlintID
+            {
+                White = 0,
+                Red = 1,
+                Orange = 2,
+                Yellow = 3,
+                Green = 4,
+                Lime = 5,
+                Blue = 6,
+                Cyan = 7,
+                SkyBlue = 8,
+                Purple = 9,
+                Magenta = 10,
+                Pink = 11,
+                Rainbow = 12
+            }
 
             public override void OnLoaded()
             {
@@ -391,6 +461,9 @@ namespace QoLCompendium.Core
             public bool ChallengersCoin { get; set; }
 
             [DefaultValue(true)]
+            public bool ConstructionAccessories { get; set; }
+
+            [DefaultValue(true)]
             public bool CraftingStations { get; set; }
 
             [DefaultValue(true)]
@@ -404,6 +477,9 @@ namespace QoLCompendium.Core
 
             [DefaultValue(true)]
             public bool EntityManipulator { get; set; }
+
+            [DefaultValue(true)]
+            public bool FishingAccessories { get; set; }
 
             [DefaultValue(true)]
             public bool GoldenLockpick { get; set; }
@@ -461,11 +537,6 @@ namespace QoLCompendium.Core
 
             [DefaultValue(true)]
             public bool SuperDummy { get; set; }
-
-            /*
-            [DefaultValue(true)]
-            public bool TheFinalList { get; set; }
-            */
             
             [DefaultValue(true)]
             public bool TravelersMannequin { get; set; }
@@ -479,6 +550,9 @@ namespace QoLCompendium.Core
             [DefaultValue(true)]
             public bool DedicatedItems { get; set; }
 
+            [DefaultValue(true)]
+            public bool CrossModItems { get; set; }
+
             public List<ItemDefinition> CustomItems { get; set; }
 
             [Range(1, 99999)]
@@ -487,6 +561,11 @@ namespace QoLCompendium.Core
             public override void OnLoaded()
             {
                 QoLCompendium.itemConfig = this;
+            }
+
+            public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref NetworkText message)
+            {
+                return Common.TryAcceptChanges(whoAmI, ref message);
             }
         }
 
@@ -678,6 +757,11 @@ namespace QoLCompendium.Core
             {
                 QoLCompendium.shopConfig = this;
             }
+
+            public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref NetworkText message)
+            {
+                return Common.TryAcceptChanges(whoAmI, ref message);
+            }
         }
 
         [SeparatePage]
@@ -713,6 +797,12 @@ namespace QoLCompendium.Core
 
             [DefaultValue(true)]
             public bool NoYoyoTooltip { get; set; }
+
+            [DefaultValue(false)]
+            public bool FromModTooltip { get; set; }
+
+            [DefaultValue(true)]
+            public bool ClassTagTooltip { get; set; }
 
             public override void OnLoaded()
             {

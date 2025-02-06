@@ -19,7 +19,7 @@
 
         public override bool IsEnabled()
         {
-            if (QoLCompendium.mainClientConfig.ExpertSlot && Main.expertMode) return true;
+            if (QoLCompendium.mainConfig.ExpertSlot && Main.expertMode) return true;
             return false;
         }
         public override bool IsVisibleWhenNotEnabled()

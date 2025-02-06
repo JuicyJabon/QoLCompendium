@@ -37,6 +37,7 @@ namespace QoLCompendium.Content.Items.Magnets
         {
             if (Item.favorited)
             {
+                player.GetModPlayer<QoLCPlayer>().activeItems.Add(Item.type);
                 player.GetModPlayer<MagnetPlayer>().BaseMagnet = true;
             }
         }

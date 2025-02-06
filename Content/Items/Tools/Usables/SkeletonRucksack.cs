@@ -1,5 +1,7 @@
-﻿using QoLCompendium.Core;
+﻿using QoLCompendium.Content.Projectiles.Other;
+using QoLCompendium.Core;
 using QoLCompendium.Core.Changes;
+using Terraria.DataStructures;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
@@ -19,6 +21,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.UseSound = SoundID.Item4;
             Item.useAnimation = 20;
             Item.useTime = 20;
+            Item.shoot = ModContent.ProjectileType<NPCSpawner>();
 
             Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 0, 75, 0));
         }
@@ -36,11 +39,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             r.Register();
         }
 
-        public override bool? UseItem(Player player)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (NPC.CountNPCS(NPCID.SkeletonMerchant) < 1)
-                Common.SpawnBoss(player, NPCID.SkeletonMerchant);
-            return true;
+            Vector2 spawnPosition = player.Center - Vector2.UnitY * 800f;
+            Projectile.NewProjectile(player.GetSource_ItemUse(Item), spawnPosition, Vector2.Zero, ModContent.ProjectileType<NPCSpawner>(), 0, 0f, Main.myPlayer, NPCID.SkeletonMerchant);
+            SoundEngine.PlaySound(SoundID.Roar, player.position);
+            return false;
         }
     }
 }

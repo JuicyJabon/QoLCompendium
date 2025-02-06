@@ -28,7 +28,7 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddRecipeGroup("QoLCompendium:HardmodeAnvils");
             r.AddRecipeGroup("QoLCompendium:HardmodeForges");
-            r.AddRecipeGroup("QoLCompendium:Bookcases");
+            r.AddRecipeGroup("QoLCompendium:AnyBookcase");
             r.AddIngredient(ItemID.CrystalBall);
             r.AddIngredient(ItemID.FleshCloningVaat);
             r.AddIngredient(ItemID.LesionStation);

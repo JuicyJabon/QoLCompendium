@@ -15,9 +15,13 @@
     <Folder Include="Assets\Minibosses\" />
     <Folder Include="Assets\InfoDisplayIcons\" />
     <Folder Include="Assets\Backgrounds\" />
+    <Folder Include="Assets\Effects\" />
+    <Folder Include="Assets\Summons\" />
+    <Folder Include="Assets\Projectiles\" />
     <Folder Include="Assets\SpawnModifiers\" />
     <Folder Include="Assets\Slots\" />
     <Folder Include="Assets\Storages\" />
+    <Folder Include="Content\Items\Summons\" />
     <Folder Include="Content\Projectiles\Fishing\" />
   </ItemGroup>
   <ItemGroup>
@@ -30,8 +34,20 @@
     <Reference Include="CalamityMod">
       <HintPath>..\..\..\..\..\Apps\dnSpy\CalamityMod.dll</HintPath>
     </Reference>
+    <Reference Include="ClickerClass">
+      <HintPath>..\..\ModReader\ClickerClass\ClickerClass.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDragons">
+      <HintPath>..\..\ModReader\CrystalDragons\CrystalDragons.dll</HintPath>
+    </Reference>
     <Reference Include="FargowiltasSouls">
       <HintPath>..\..\ModReader\FargowiltasSouls\FargowiltasSouls.dll</HintPath>
+    </Reference>
+    <Reference Include="MartainsOrder">
+      <HintPath>..\..\ModReader\MartainsOrder\MartainsOrder.dll</HintPath>
+    </Reference>
+    <Reference Include="MrPlagueRaces">
+      <HintPath>..\..\ModReader\MrPlagueRaces\MrPlagueRaces.dll</HintPath>
     </Reference>
     <Reference Include="Redemption">
       <HintPath>..\..\ModReader\Redemption\Redemption.dll</HintPath>

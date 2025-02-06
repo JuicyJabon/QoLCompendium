@@ -1,3 +1,4 @@
+using QoLCompendium.Content.Items.InformationAccessories;
 using QoLCompendium.Content.Items.Tools.Fishing;
 using QoLCompendium.Content.Items.Tools.Usables;
 using QoLCompendium.Core.UI.Panels;
@@ -51,15 +52,9 @@ namespace QoLCompendium.Core
             On_ItemSlot.RightClick_ItemArray_int_int -= ItemSlot_RightClick;
         }
 
-        public override void ResetEffects()
-        {
-            Reset();
-        }
+        public override void ResetEffects() { Reset(); }
 
-        public override void UpdateDead()
-        {
-            Reset();
-        }
+        public override void UpdateDead() { Reset(); }
 
         public override void SaveData(TagCompound tag)
         {
@@ -141,6 +136,28 @@ namespace QoLCompendium.Core
             }
         }
 
+        public override void AnglerQuestReward(float rareMultiplier, List<Item> rewardItems)
+        {
+            if (!QoLCompendium.itemConfig.FishingAccessories)
+                return;
+
+            if (Player.anglerQuestsFinished == 1)
+            {
+                Item item = new(ModContent.ItemType<AnglerRadar>());
+                item.stack = 1;
+                rewardItems.Add(item);
+            }
+            else
+            {
+                if (Player.anglerQuestsFinished >= 1 && Main.rand.NextBool(10))
+                {
+                    Item item = new(ModContent.ItemType<AnglerRadar>());
+                    item.stack = 1;
+                    rewardItems.Add(item);
+                }
+            }
+        }
+
         public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
         {
             bool inWater = !attempt.inLava && !attempt.inHoney;
@@ -166,9 +183,7 @@ namespace QoLCompendium.Core
         {
             if (QoLCompendium.itemConfig.StarterBag)
             {
-                return new[] {
-                new Item(ModContent.ItemType<StarterBag>())
-                };
+                return new[] { new Item(ModContent.ItemType<StarterBag>()) };
             }
             else
             {
@@ -214,6 +229,7 @@ namespace QoLCompendium.Core
             activeItems.Clear();
             activeBuffItems.Clear();
             activeCraftingStationItems.Clear();
+            Common.Reset();
 
             if (Main.netMode != NetmodeID.Server)
             {

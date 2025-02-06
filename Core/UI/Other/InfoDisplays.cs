@@ -237,6 +237,64 @@ namespace QoLCompendium.Core.UI.Other
         }
     }
 
+    public class DebuffDamageInfoDisplay : InfoDisplay
+    {
+        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/DebuffDamageInfoDisplay";
+
+        public override bool Active()
+        {
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().deteriorationDisplay;
+        }
+
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
+        {
+            int dps = GetDPS(Main.myPlayer);
+
+            if (dps > 0)
+            {
+                return Language.GetTextValue("Mods.QoLCompendium.InfoDisplayText.DDPS", dps);
+            }
+
+            displayColor = InactiveInfoTextColor;
+            return Language.GetTextValue("Mods.QoLCompendium.InfoDisplayText.NoDPS");
+        }
+
+        private static int GetDPS(int player)
+        {
+            double dps = 0.0;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC npc = Main.npc[i];
+                if (npc.active && npc.lifeRegen < 0 && npc.playerInteraction[player])
+                {
+                    dps -= npc.lifeRegen / 2.0;
+                }
+            }
+            return (int)dps;
+        }
+    }
+
+    public class QuestFishInfoDisplay : InfoDisplay
+    {
+        public override string Texture => "QoLCompendium/Assets/InfoDisplayIcons/QuestFishInfoDisplay";
+
+        public override bool Active()
+        {
+            return Main.LocalPlayer.GetModPlayer<InfoPlayer>().anglerRadar;
+        }
+
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
+        {
+            if (Main.anglerQuestFinished || Main.anglerQuest == -1 || Main.anglerQuest >= Main.anglerQuestItemNetIDs.Length || !NPC.AnyNPCs(NPCID.Angler))
+            {
+                displayColor = InactiveInfoTextColor;
+                return Language.GetTextValue("Mods.QoLCompendium.InfoDisplayText.QuestFinished");
+            }
+            return Lang.GetItemNameValue(Main.anglerQuestItemNetIDs[Main.anglerQuest]);
+        }
+    }
+
+
     public class InfoPlayer : ModPlayer
     {
         public bool battalionLog = false;
@@ -253,6 +311,8 @@ namespace QoLCompendium.Core.UI.Other
         public bool wingTimer = false;
 
         //EXTRA
+        public bool anglerRadar = false;
+        public bool deteriorationDisplay = false;
         public bool skullWatch = false;
 
         public float armorPenetrationStat;
@@ -305,6 +365,9 @@ namespace QoLCompendium.Core.UI.Other
             trackingDevice = false;
             wingTimer = false;
 
+            //EXTRA
+            anglerRadar = false;
+            deteriorationDisplay = false;
             skullWatch = false;
         }
     }

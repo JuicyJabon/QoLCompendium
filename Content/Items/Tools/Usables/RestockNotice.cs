@@ -34,6 +34,11 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             {
                 Chest.SetupTravelShop();
             }
+            if (Main.netMode is NetmodeID.MultiplayerClient)
+            {
+                Chest.SetupTravelShop();
+                NetMessage.SendTravelShop(Main.myPlayer);
+            }
             if (Main.netMode is NetmodeID.Server)
             {
                 Chest.SetupTravelShop();
@@ -46,8 +51,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         public override void AddRecipes()
         {
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.RestockNotice, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-            r.AddIngredient(ItemID.Silk, 8);
-            r.AddIngredient(ItemID.BlackDye, 1);
+            r.AddIngredient(ItemID.Silk, 12);
             r.AddTile(TileID.Anvils);
             r.Register();
         }

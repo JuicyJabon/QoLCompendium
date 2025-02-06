@@ -26,18 +26,18 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
         public override void AddRecipes()
         {
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-            r.AddIngredient(ItemID.WorkBench);
+            r.AddRecipeGroup("QoLCompendium:AnyWorkBench");
             r.AddIngredient(ItemID.Furnace);
             r.AddRecipeGroup("QoLCompendium:Anvils");
-            r.AddRecipeGroup("QoLCompendium:WoodenTables");
-            r.AddRecipeGroup("QoLCompendium:WoodenChairs");
-            r.AddIngredient(ItemID.CookingPot);
+            r.AddRecipeGroup("QoLCompendium:AnyTable");
+            r.AddRecipeGroup("QoLCompendium:AnyChair");
+            r.AddRecipeGroup("QoLCompendium:AnyCookingPot");
             r.AddIngredient(ItemID.HeavyWorkBench);
             r.AddIngredient(ItemID.Sawmill);
             r.AddIngredient(ItemID.Loom);
             r.AddIngredient(ItemID.Keg);
-            r.AddRecipeGroup("QoLCompendium:WoodenSinks");
-            r.AddIngredient(ItemID.Bottle);
+            r.AddRecipeGroup("QoLCompendium:AnySink");
+            r.AddRecipeGroup("QoLCompendium:AnyBottle");
             r.Register();
         }
     }

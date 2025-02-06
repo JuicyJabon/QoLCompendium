@@ -19,7 +19,7 @@
 
         public override bool IsEnabled()
         {
-            if (QoLCompendium.mainClientConfig.ShieldSlot) return true;
+            if (QoLCompendium.mainConfig.ShieldSlot) return true;
             return false;
         }
         public override bool IsVisibleWhenNotEnabled()

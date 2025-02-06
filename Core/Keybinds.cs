@@ -203,7 +203,7 @@ namespace QoLCompendium.Core
             AddTileToWhitelist = KeybindLoader.RegisterKeybind(Mod, "WhitelistTileBind", "O");
             RemoveTileFromWhitelist = KeybindLoader.RegisterKeybind(Mod, "RemoveWhitelistedTileBind", "P");
 
-            //On_Player.DoCommonDashHandle += OnVanillaDash;
+            On_Player.DoCommonDashHandle += OnVanillaDash;
         }
 
         public override void Unload()
@@ -214,11 +214,14 @@ namespace QoLCompendium.Core
             Dash = null;
             AddTileToWhitelist = null;
             RemoveTileFromWhitelist = null;
-            //On_Player.DoCommonDashHandle -= OnVanillaDash;
+            On_Player.DoCommonDashHandle -= OnVanillaDash;
         }
 
         public static void OnVanillaDash(On_Player.orig_DoCommonDashHandle orig, Player player, out int dir, out bool dashing, Player.DashStartAction dashStartAction)
         {
+            if (QoLCompendium.mainClientConfig.DisableDashDoubleTap)
+                player.dashTime = 0;
+
             orig.Invoke(player, out dir, out dashing, dashStartAction);
             if (player.whoAmI == Main.myPlayer && Dash.JustPressed && !player.CCed)
             {

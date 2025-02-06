@@ -16,6 +16,7 @@ global using Terraria.ModLoader;
 global using Terraria.UI;
 using QoLCompendium.Core;
 using System.Reflection;
+using QoLCompendium.Core.Changes.BuffChanges;
 
 namespace QoLCompendium
 {
@@ -33,7 +34,14 @@ namespace QoLCompendium
         internal static int? LastOpenedBank;
 #pragma warning restore CA2211
 
-        public override uint ExtraPlayerBuffSlots => mainConfig.ExtraBuffSlots;
+        public override uint ExtraPlayerBuffSlots => (uint)mainConfig.ExtraBuffSlots;
+
+        public override void PostSetupContent()
+        {
+            BuffSystem.DoBuffIntegration();
+            Common.PostSetupTasks();
+            LoadModSupport.PostSetupTasks();
+        }
 
         public override void Load()
         {
@@ -41,6 +49,8 @@ namespace QoLCompendium
             On_WorldGen.moveRoom += WorldGen_moveRoom;
             instance = this;
             Instance = this;
+            ModConditions.LoadSupportedMods();
+            LoadModSupport.LoadTasks();
         }
 
         public override void Unload()
@@ -54,15 +64,14 @@ namespace QoLCompendium
             tooltipConfig = null;
             On_Player.HandleBeingInChestRange -= ChestRange;
             On_WorldGen.moveRoom -= WorldGen_moveRoom;
-            Common.Unload();
+            Common.UnloadTasks();
+            LoadModSupport.UnloadTasks();
         }
 
         public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
             foreach (var npc in from n in Main.npc where n is not null && n.active && n.townNPC && !n.homeless select n)
-            {
                 TownEntitiesTeleportToHome(npc, npc.homeTileX, npc.homeTileY);
-            }
         }
 
         private void WorldGen_moveRoom(On_WorldGen.orig_moveRoom orig, int x, int y, int n)

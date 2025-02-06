@@ -14,6 +14,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.GoldenKey);
+            Item.maxStack = 1;
             Item.SetShopValues(ItemRarityColor.White0, Item.buyPrice(0, 1, 75, 0));
         }
 

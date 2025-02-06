@@ -13,12 +13,11 @@ namespace QoLCompendium.Content.NPCs
         public static string ShopName;
         #pragma warning restore CA2211
 
-        public override string Texture
+        public override string Texture => "QoLCompendium/Content/NPCs/BMDealerNPC";
+
+        public override bool IsLoadingEnabled(Mod mod)
         {
-            get
-            {
-                return "QoLCompendium/Content/NPCs/BMDealerNPC";
-            }
+            return QoLCompendium.mainConfig.BlackMarketDealerCanSpawn;
         }
 
         public override void SetStaticDefaults()
@@ -513,7 +512,8 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.ArchitectGizmoPack) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.NotDownedSkeletron)
                    .Add(new Item(ItemID.AncientChisel) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.NotDownedSkeletron, ModConditions.HasBeenToDesert)
                    .Add(new Item(ItemID.HandOfCreation) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedSkeletron)
-                   .Add(new Item(ItemID.ActuationAccessory) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
+                   .Add(new Item(ItemID.ActuationAccessory) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasTalkedToTravelingMerchant)
+                   .Add(new Item(ItemID.SpectreGoggles) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedPlantera)
                    .Add(new Item(ItemID.Paintbrush) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.NotDownedPlantera)
                    .Add(new Item(ItemID.PaintRoller) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.NotDownedPlantera)
                    .Add(new Item(ItemID.PaintScraper) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.NotDownedPlantera)
@@ -687,6 +687,13 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.Ruby) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(new Item(ItemID.Sapphire) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(new Item(ItemID.Topaz) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(new Item(ItemID.AmberStoneBlock) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(new Item(ItemID.AmethystStoneBlock) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(new Item(ItemID.DiamondStoneBlock) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(new Item(ItemID.EmeraldStoneBlock) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(new Item(ItemID.RubyStoneBlock) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(new Item(ItemID.SapphireStoneBlock) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
+                    .Add(new Item(ItemID.TopazStoneBlock) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(new Item(ItemID.Geode) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground);
             oreShop.Register();
 
@@ -816,6 +823,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.GraniteBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.MarbleBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.SunplateBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                    .Add(new Item(ItemID.EchoBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.DownedPlantera)
                     .Add(new Item(ItemID.MartianConduitPlating) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.DownedMartians)
                     .Add(new Item(ItemID.Glass) { shopCustomPrice = Item.buyPrice(copper: 10) }, ModConditions.HasBeenToDesert)
                     .Add(new Item(ItemID.AmberGemsparkBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
@@ -889,6 +897,17 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.CrimsonSeeds) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.DownedEyeOfCthulhu)
                     .Add(new Item(ItemID.AshGrassSeeds) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.HallowedSeeds) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
+                    .Add(new Item(ItemID.BlueMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                    .Add(new Item(ItemID.BrownMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                    .Add(new Item(ItemID.GreenMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                    .Add(new Item(ItemID.LavaMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                    .Add(new Item(ItemID.PurpleMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                    .Add(new Item(ItemID.RedMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                    .Add(new Item(ItemID.ArgonMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                    .Add(new Item(ItemID.KryptonMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                    .Add(new Item(ItemID.VioletMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                    .Add(new Item(ItemID.XenonMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                    .Add(new Item(ItemID.RainbowMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.Coral) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.Starfish) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.Seashell) { shopCustomPrice = Item.buyPrice(copper: 10) })

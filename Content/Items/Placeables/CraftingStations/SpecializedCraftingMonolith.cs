@@ -42,7 +42,7 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
             r.AddIngredient(ItemID.WaterBucket);
             r.AddIngredient(ItemID.LavaBucket);
             r.AddIngredient(ItemID.HoneyBucket);
-            r.AddRecipeGroup("QoLCompendium:Tombstones");
+            r.AddRecipeGroup("QoLCompendium:AnyTombstone");
             r.Register();
         }
     }

@@ -1,17 +1,16 @@
-v2.2.8
-1. Gave the Entity Manipulator new button sprites to better indicate what each button does
-2. Added a config to remove the logo from some yoyo's tooltips
-3. Endless Ammo items are now crafted at a Solidifier
-4. Added more clarity to which config needs to be enabled for a recipe to work
-5. Added a tooltip to tell if an item is disabled in the config
-6. Changed the Mod Support document into a spreadsheet, for easier editing and readability
-7. Improved Used Permanent Upgrade Tooltip tracking, it should now not persist between characters and worlds
-8. Added an indicator to most auto-structures to display where they are created
-9. Further improved most UI
-10. Added item shimmer conversions for sponges and bottomless buckets (Doesn't affect the Bottomless Shimmer Bucket)
-11. Added Bottomless Liquid Bucket
-12. Added a config to allow the Encumbering Stone to pickup coins
-13. Removed The Final List
-14. Added The Final List's effects to the Ultimate Checklist
-15. Added Golden Powder
-16. Fixed All In One Access being inconsistent to open
+v2.2.10
+1. Added Mining Emblem
+2. Added Construction Emblem
+3. Added Creation Club Member's Pass
+4. Added Utilities in Banks support for Martin's Order
+5. Added Permanent Upgrade Tooltip support for Martin's Order
+6. Made Fargo's Mods summons stackable even when they are non-consumable
+7. Added conversion recipes for mech boss souls, accessible after all 3 are beaten
+8. Fixed Traveler's Mannequin in multiplayer
+9. Fixed Skeleton Rucksack in multiplayer
+10. Fixed Restock Notice in multiplayer
+11. Added crate recipes for Calamity and Thorium
+12. Added herb replanting support for Thorium
+13. Added Sonar Device
+14. Added Angler Radar
+15. Added Angler's Dream

@@ -19,7 +19,7 @@
 
         public override bool IsEnabled()
         {
-            if (QoLCompendium.mainClientConfig.BootSlot) return true;
+            if (QoLCompendium.mainConfig.BootSlot) return true;
             return false;
         }
         public override bool IsVisibleWhenNotEnabled()
