@@ -18,12 +18,12 @@ namespace QoLCompendium.Core.Changes.ModChanges
 
             if (item.type == Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "StaminaCrystal"))
             {
-                tooltipLine.Text = TooltipChanges.GetTooltipValue("UsedItemCountable", (Main.LocalPlayer.GetModPlayer<AvalonStaminaPlayer>().StatStam / 30) - 1, 9);
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                tooltipLine.Text = Common.GetTooltipValue("UsedItemCountable", (Main.LocalPlayer.GetModPlayer<AvalonStaminaPlayer>().StatStam / 30) - 1, 9);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "EnergyCrystal") && Main.LocalPlayer.GetModPlayer<AvalonStaminaPlayer>().EnergyCrystal)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
         }
     }

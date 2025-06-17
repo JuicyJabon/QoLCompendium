@@ -1,13 +1,15 @@
 ﻿using QoLCompendium.Content.Buffs;
 using QoLCompendium.Content.Projectiles.Dedicated;
 using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Dedicated
 {
     public class Lamp : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.DedicatedItems;
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

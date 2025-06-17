@@ -54,7 +54,7 @@
                     if (tile == null)
                         continue;
 
-                    if (!CheckDestruction.OkayToDestroyTileAt(xPosition, yPosition) || CheckDestruction.TileIsLiterallyAir(tile))
+                    if (!CheckDestruction.OkayToDestroyTile(tile, false) || CheckDestruction.TileIsLiterallyAir(tile))
                         continue;
 
                     Destruction.ClearTileAndLiquid(xPosition, yPosition);

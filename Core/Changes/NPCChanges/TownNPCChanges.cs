@@ -4,7 +4,9 @@ using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using MonoMod.Utils;
 using QoLCompendium.Content.NPCs;
+using System.Reflection;
 using Terraria.GameContent.Bestiary;
+using Terraria.ID;
 
 namespace QoLCompendium.Core.Changes.NPCChanges
 {
@@ -33,7 +35,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
     public class ImprovedTownNPCSpawns : ModSystem
     {
         private static bool _isExtraUpdate;
-        private static HashSet<int> _activeTownNPCs = new();
+        private static HashSet<int> _activeTownNPCs = [];
         private static BestiaryUnlockProgressReport _cachedReport = new();
 
         public override void Load()
@@ -148,7 +150,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
 
         private static void SetupActiveTownNPCList()
         {
-            _activeTownNPCs = new HashSet<int>();
+            _activeTownNPCs = [];
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 var npc = Main.npc[i];

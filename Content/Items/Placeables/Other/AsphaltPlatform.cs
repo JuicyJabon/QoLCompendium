@@ -1,12 +1,14 @@
 ﻿using QoLCompendium.Content.Tiles.Other;
 using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.Other
 {
     public class AsphaltPlatform : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.AsphaltPlatform;
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 200;

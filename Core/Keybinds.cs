@@ -1,7 +1,9 @@
-﻿using QoLCompendium.Content.Items.Mirrors;
-using QoLCompendium.Core.Changes;
+﻿using QoLCompendium.Content.Items.Tools.Mirrors;
+using QoLCompendium.Core.Changes.PlayerChanges;
+using QoLCompendium.Core.UI.Panels;
 using Terraria.GameInput;
 using Terraria.ModLoader.Config;
+using Terraria.ObjectData;
 
 namespace QoLCompendium.Core
 {
@@ -12,6 +14,8 @@ namespace QoLCompendium.Core
         public bool autoRevertSelectedItem;
 
         public int dashTimeMod;
+
+        public static byte timeout;
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -30,78 +34,87 @@ namespace QoLCompendium.Core
             if (KeybindSystem.QuickMosaicMirror.JustPressed)
                 AutoUseMosaicMirror();
 
+            if (KeybindSystem.QuickRod.JustPressed)
+                AutoUseRod();
+
+            if (KeybindSystem.Dash.JustPressed)
+            {
+                Player.dashTime = 30;
+                if (Player.GetModPlayer<DashPlayer>().LeftLastPressed || (Player.direction == -1 && Player.velocity.X == 0))
+                {
+                    Player.controlLeft = true;
+                    Player.releaseLeft = true;
+                    for (int i = 0; i < 10; i++)
+                    {
+                        if (i >= 9)
+                        {
+                            Player.controlLeft = true;
+                            Player.releaseLeft = true;
+                        }
+                    }
+                }
+                if (Player.GetModPlayer<DashPlayer>().RightLastPressed || (Player.direction == 1 && Player.velocity.X == 0))
+                {
+                    Player.controlRight = true;
+                    Player.releaseRight = true;
+                    for (int i = 0; i < 10; i++)
+                    {
+                        if (i >= 9)
+                        {
+                            Player.controlRight = true;
+                            Player.releaseRight = true;
+                        }
+                    }
+                }
+            }
+
+            if (Main.netMode == NetmodeID.SinglePlayer && timeout > 0)
+                timeout--;
+
             if (KeybindSystem.AddTileToWhitelist.JustPressed)
             {
-                int tileTargetX = Player.tileTargetX;
-                int tileTargetY = Player.tileTargetY;
-                Tile target = Main.tile[tileTargetX, tileTargetY];
-                if (target != null && target.HasTile && !QoLCompendium.mainConfig.VeinMinerWhitelist.Contains(new TileDefinition(target.TileType)))
+                Tile target = Main.tile[Player.tileTargetX, Player.tileTargetY];
+                ModTile modTile = TileLoader.GetTile(target.TileType);
+                int style = TileObjectData.GetTileStyle(target);
+
+                if (target.HasTile)
                 {
-                    QoLCompendium.mainConfig.VeinMinerWhitelist.Add(new TileDefinition(target.TileType));
+                    Common.UpdateWhitelist(target.TileType, Common.GetFullNameById(target.TileType, style), style);
                     Main.NewText(Language.GetTextValue("Mods.QoLCompendium.TileStuff.Whitelisted") + " " + new TileDefinition(target.TileType).Name);
                 }
             }
 
             if (KeybindSystem.RemoveTileFromWhitelist.JustPressed)
             {
-                int tileTargetX = Player.tileTargetX;
-                int tileTargetY = Player.tileTargetY;
-                Tile target = Main.tile[tileTargetX, tileTargetY];
-                if (target != null && target.HasTile && QoLCompendium.mainConfig.VeinMinerWhitelist.Contains(new TileDefinition(target.TileType)))
+                Tile target = Main.tile[Player.tileTargetX, Player.tileTargetY];
+                ModTile modTile = TileLoader.GetTile(target.TileType);
+                int style = TileObjectData.GetTileStyle(target);
+
+                if (target.HasTile)
                 {
-                    QoLCompendium.mainConfig.VeinMinerWhitelist.Remove(new TileDefinition(target.TileType));
+                    Common.UpdateWhitelist(target.TileType, Common.GetFullNameById(target.TileType, style), style, remove: true);
                     Main.NewText(Language.GetTextValue("Mods.QoLCompendium.TileStuff.Removed") + " " + new TileDefinition(target.TileType).Name);
                 }
             }
 
-            if (KeybindSystem.Dash.JustPressed)
+            if (KeybindSystem.PermanentBuffUIToggle.JustPressed)
             {
-                int directionPressed = Player.GetModPlayer<DashPlayer>().latestXDirPressed;
-                int directionReleased = Player.GetModPlayer<DashPlayer>().latestXDirReleased;
-                //directionPressed == -1 || directionReleased == -1 || 
-                //directionPressed == 1 || directionReleased == 1 || 
-                if (Player.GetModPlayer<DashPlayer>().LeftLastPressed || (Player.direction == -1 && Player.velocity.X == 0))
+                PermanentBuffSelectorUI.timeStart = Main.GameUpdateCount;
+                PermanentBuffSelectorUI.visible = !PermanentBuffSelectorUI.visible;
+
+                if (PermanentBuffSelectorUI.visible)
+                    SoundEngine.PlaySound(SoundID.MenuOpen, Main.LocalPlayer.position, null);
+                else
+                    SoundEngine.PlaySound(SoundID.MenuClose, Main.LocalPlayer.position, null);
+
+                if (!PermanentBuffSelectorUI.visible)
                 {
-                    Player.doubleTapCardinalTimer[3] = 15;
-                    Player.KeyDoubleTap(3);
-                    bool flag = false;
-                    Player.dashTime = -15;
-                    Player.controlLeft = true;
-                    Player.releaseLeft = true;
-                    for (int i = 0; i < 10; i++)
-                    {
-                        if (flag)
-                            break;
-                        if (i >= 9)
-                            flag = true;
-                    }
-                    if (flag)
-                    {
-                        Player.controlLeft = true;
-                        Player.releaseLeft = true;
-                    }
-                }
-                if (Player.GetModPlayer<DashPlayer>().RightLastPressed || (Player.direction == 1 && Player.velocity.X == 0))
-                {
-                    Player.doubleTapCardinalTimer[2] = 15;
-                    Player.KeyDoubleTap(2);
-                    bool flag = false;
-                    Player.dashTime = 15;
-                    Player.controlRight = true;
-                    Player.releaseRight = true;
-                    for (int i = 0; i < 10; i++)
-                    {
-                        if (flag)
-                            break;
-                        if (i >= 9)
-                            flag = true;
-                    }
-                    if (flag)
-                    {
-                        Player.controlRight = true;
-                        Player.releaseRight = true;
-                    }
-                }
+                    PermanentBuffUI.visible = false;
+                    PermanentCalamityBuffUI.visible = false;
+                    PermanentMartinsOrderBuffUI.visible = false;
+                    PermanentSpiritClassicBuffUI.visible = false;
+                    PermanentThoriumBuffUI.visible = false;
+                } 
             }
         }
 
@@ -115,6 +128,14 @@ namespace QoLCompendium.Core
                     autoRevertSelectedItem = false;
                 }
             }
+        }
+
+        public void AutoUseRod()
+        {
+            if (Player.HasItem(ItemID.RodOfHarmony))
+                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.RodOfHarmony), Player.inventory));
+            if (Player.HasItem(ItemID.RodofDiscord))
+                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.RodofDiscord), Player.inventory));
         }
 
         public void AutoUseMirror()
@@ -193,6 +214,8 @@ namespace QoLCompendium.Core
         public static ModKeybind Dash { get; private set; }
         public static ModKeybind AddTileToWhitelist { get; private set; }
         public static ModKeybind RemoveTileFromWhitelist { get; private set; }
+        public static ModKeybind PermanentBuffUIToggle { get; private set; }
+        public static ModKeybind QuickRod { get; private set; }
 
         public override void Load()
         {
@@ -202,6 +225,8 @@ namespace QoLCompendium.Core
             Dash = KeybindLoader.RegisterKeybind(Mod, "DashBind", "C");
             AddTileToWhitelist = KeybindLoader.RegisterKeybind(Mod, "WhitelistTileBind", "O");
             RemoveTileFromWhitelist = KeybindLoader.RegisterKeybind(Mod, "RemoveWhitelistedTileBind", "P");
+            PermanentBuffUIToggle = KeybindLoader.RegisterKeybind(Mod, "PermanentBuffUIToggleBind", "L");
+            QuickRod = KeybindLoader.RegisterKeybind(Mod, "QuickRodBind", "Z");
 
             On_Player.DoCommonDashHandle += OnVanillaDash;
         }
@@ -214,6 +239,8 @@ namespace QoLCompendium.Core
             Dash = null;
             AddTileToWhitelist = null;
             RemoveTileFromWhitelist = null;
+            PermanentBuffUIToggle = null;
+            QuickRod = null;
             On_Player.DoCommonDashHandle -= OnVanillaDash;
         }
 

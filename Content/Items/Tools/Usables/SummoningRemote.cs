@@ -1,7 +1,7 @@
 ﻿using Humanizer;
 using QoLCompendium.Content.Projectiles.Other;
 using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using QoLCompendium.Core.UI.Panels;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -11,6 +11,8 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class SummoningRemote : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.SummoningRemote;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.SortingPriorityBossSpawns[Type] = 0;

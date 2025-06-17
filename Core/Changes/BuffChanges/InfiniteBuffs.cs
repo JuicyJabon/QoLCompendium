@@ -1,44 +1,23 @@
 ﻿using QoLCompendium.Content.Items.Tools.Usables;
-using ReLogic.Utilities;
+using Redemption.Globals;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
+using tModPorter;
 
 namespace QoLCompendium.Core.Changes.BuffChanges
 {
     public class BuffPlayer : ModPlayer
     {
-        public bool hasLuckyLesser;
-
-        public bool hasLucky;
-
-        public bool hasLuckyGreater;
-
-        public bool hasGardenGnome;
-
+        private bool hasLuckyLesser;
+        private bool hasLucky;
+        private bool hasLuckyGreater;
+        private bool hasGardenGnome;
         public byte oldLuckPotion;
 
-        public static readonly List<int> AvailableRedPotionBuffs = new() {
-            BuffID.ObsidianSkin,
-            BuffID.Regeneration,
-            BuffID.Swiftness,
-            BuffID.Ironskin,
-            BuffID.ManaRegeneration,
-            BuffID.MagicPower,
-            BuffID.Featherfall,
-            BuffID.Spelunker,
-            BuffID.Archery,
-            BuffID.Heartreach,
-            BuffID.Hunter,
-            BuffID.Endurance,
-            BuffID.Lifeforce,
-            BuffID.Inferno,
-            BuffID.Mining,
-            BuffID.Rage,
-            BuffID.Wrath,
-            BuffID.Dangersense
-        };
-        private readonly Dictionary<int, List<ItemInfo>> infoByItemType = new Dictionary<int, List<ItemInfo>>();
+        private readonly Dictionary<int, List<ItemInfo>> infoByItemType = [];
 
-        private readonly HashSet<int> infiniteStackedItems = new HashSet<int>();
+        private readonly HashSet<int> infiniteStackedItems = [];
 
         public override void PreUpdateBuffs()
         {
@@ -58,13 +37,13 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
         public override void PostUpdateBuffs()
         {
-            int num = hasLuckyGreater ? 3 : hasLucky ? 2 : hasLuckyLesser ? 1 : 0;
-            if (Player.whoAmI == Main.myPlayer && Player.luckPotion != num)
+            int luckLevel = hasLuckyGreater ? 3 : hasLucky ? 2 : hasLuckyLesser ? 1 : 0;
+            if (Player.whoAmI == Main.myPlayer && Player.luckPotion != luckLevel)
             {
-                if (Player.luckPotion < num)
+                if (Player.luckPotion < luckLevel)
                 {
                     Player.luckNeedsSync = true;
-                    Player.luckPotion = (byte)num;
+                    Player.luckPotion = (byte)luckLevel;
                 }
             }
             else if (Player.luckNeedsSync)
@@ -109,6 +88,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                 for (int i = 0; i < PotionCrate.BuffIDList.Count; i++)
                 {
                     Player.AddBuff(PotionCrate.BuffIDList[i], 2, true, false);
+                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(PotionCrate.BuffIDList[i]);
                     if (PotionCrate.ItemIDList.Contains(ItemID.LuckPotionLesser))
                         hasLuckyLesser = true;
                     if (PotionCrate.ItemIDList.Contains(ItemID.LuckPotion))
@@ -127,6 +107,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                     {
                         Player.HasNPCBannerBuff(bItem);
                         Player.AddBuff(BuffID.MonsterBanner, 2);
+                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.MonsterBanner);
                         Main.buffNoTimeDisplay[BuffID.MonsterBanner] = true;
                         Main.SceneMetrics.NPCBannerBuff[bItem] = true;
                         Main.SceneMetrics.hasBanner = true;
@@ -136,16 +117,20 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             if (item.type == ItemID.RedPotion && Main.getGoodWorld)
             {
                 Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
-                for (int i = 0; i < AvailableRedPotionBuffs.Count; i++)
+                for (int i = 0; i < Common.RedPotionBuffs.Count; i++)
                 {
                     if (!QoLCompendium.mainConfig.EndlessBuffsOnlyFromCrate)
-                        Player.AddBuff(AvailableRedPotionBuffs[i], 2, true, false);
+                    {
+                        Player.AddBuff(Common.RedPotionBuffs.ElementAt(i), 2, true, false);
+                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(Common.RedPotionBuffs.ElementAt(i));
+                    }
                 }
             }
             if (item.type == ItemID.HoneyBucket || item.type == ItemID.BottomlessHoneyBucket)
             {
                 Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
                 Player.AddBuff(BuffID.Honey, 2, true, false);
+                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Honey);
             }
             if (item.type == ItemID.GardenGnome)
             {
@@ -160,9 +145,9 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             {
                 if (!infoByItemType.ContainsKey(item.type))
                 {
-                    infoByItemType.Add(item.type, new List<ItemInfo>());
+                    infoByItemType.Add(item.type, []);
                 }
-                ItemInfo itemInfo = new ItemInfo(item);
+                ItemInfo itemInfo = new(item);
                 infoByItemType[item.type].Add(itemInfo);
                 if (QoLCompendium.mainConfig.EndlessBuffAmount > 0 && item.stack >= QoLCompendium.mainConfig.EndlessBuffAmount)
                 {
@@ -173,37 +158,30 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             }
         }
 
-        private bool CheckPotion_IsBuffPotion(Item item)
+        private static bool CheckPotion_IsBuffPotion(Item item)
         {
             if (item.healLife <= 0 && item.healMana <= 0 && item.buffType > 0)
-            {
                 return item.buffTime > 0;
-            }
             return false;
         }
 
         private void CheckPotion_AddBuff(ItemInfo info)
         {
-            if (ModConditions.calamityLoaded && info.buffType == Common.GetModBuff(ModConditions.calamityMod, "TeslaBuff") && !QoLCompendium.mainConfig.EndlessBuffsOnlyFromCrate)
+            if (!QoLCompendium.mainConfig.EndlessBuffsOnlyFromCrate && !Player.buffImmune[info.buffType])
             {
-                Player.AddBuff(info.buffType, 10, true, false);
+                if (ModConditions.calamityLoaded && info.buffType == Common.GetModBuff(ModConditions.calamityMod, "TeslaBuff"))
+                    Player.AddBuff(info.buffType, 10, true, false);
+                else
+                    Player.AddBuff(info.buffType, 2, true, false);
+                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(info.buffType);
             }
-            if (!QoLCompendium.mainConfig.EndlessBuffsOnlyFromCrate)
-            {
-                Player.AddBuff(info.buffType, 2, true, false);
-            }
+
             if (info.type == ItemID.LuckPotionLesser)
-            {
                 hasLuckyLesser = true;
-            }
             else if (info.type == ItemID.LuckPotion)
-            {
                 hasLucky = true;
-            }
             else if (info.type == ItemID.LuckPotionGreater)
-            {
                 hasLuckyGreater = true;
-            }
         }
 
         private void CheckEnvironment(Item item)
@@ -212,9 +190,9 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             {
                 if (!infoByItemType.ContainsKey(item.type))
                 {
-                    infoByItemType.Add(item.type, new List<ItemInfo>());
+                    infoByItemType.Add(item.type, []);
                 }
-                ItemInfo itemInfo = new ItemInfo(item);
+                ItemInfo itemInfo = new(item);
                 infoByItemType[item.type].Add(itemInfo);
                 int stackTarget = GetStackTarget(item, QoLCompendium.mainConfig.EndlessStationAmount);
                 if (stackTarget > 0 && item.stack >= stackTarget)
@@ -266,8 +244,8 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                     CheckEnvironment_CatBast();
                     break;
             }
-            List<int> nearbyEffects = new()
-            {
+            HashSet<int> nearbyEffects =
+            [
                 TileID.Campfire,
                 TileID.Sunflower,
                 //TileID.HangingLanterns,
@@ -275,7 +253,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                 TileID.PeaceCandle,
                 TileID.ShadowCandle,
                 TileID.CatBast
-            };
+            ];
             if (info.createTile == TileID.HangingLanterns && (info.placeStyle == 7 || info.placeStyle == 9) || nearbyEffects.Contains(info.createTile))
             {
                 Point16 val = Player.Center.ToTileCoordinates16();
@@ -336,9 +314,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         private static bool CheckEnvironment_ItemIsValidPlaceableTile(Item item)
         {
             if (item.createTile >= TileID.Dirt && item.type != ItemID.DirtBlock)
-            {
                 return Main.tileFrameImportant[item.createTile];
-            }
             return false;
         }
 
@@ -346,6 +322,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         {
             Main.SceneMetrics.HasCampfire = true;
             Player.AddBuff(BuffID.Campfire, 2, false, false);
+            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Campfire);
         }
 
         private void CheckEnvironment_Sunflower()
@@ -354,6 +331,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             {
                 Main.SceneMetrics.HasSunflower = true;
                 Player.AddBuff(BuffID.Sunflower, 2, false, false);
+                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Sunflower);
             }
         }
 
@@ -361,35 +339,37 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         {
             Main.SceneMetrics.HasHeartLantern = true;
             Player.AddBuff(BuffID.HeartLamp, 2, false, false);
+            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.HeartLamp);
         }
 
         private void CheckEnvironment_StarInABottle()
         {
             Main.SceneMetrics.HasStarInBottle = true;
             Player.AddBuff(BuffID.StarInBottle, 2, false, false);
+            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.StarInBottle);
         }
 
         private void CheckEnvironment_WaterCandle(int count)
         {
-            SceneMetrics sceneMetrics = Main.SceneMetrics;
-            sceneMetrics.WaterCandleCount += count;
+            Main.SceneMetrics.WaterCandleCount += count;
             Player.AddBuff(BuffID.WaterCandle, 2, false, false);
+            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.WaterCandle);
             Player.ZoneWaterCandle = true;
         }
 
         private void CheckEnvironment_PeaceCandle(int count)
         {
-            SceneMetrics sceneMetrics = Main.SceneMetrics;
-            sceneMetrics.PeaceCandleCount += count;
+            Main.SceneMetrics.PeaceCandleCount += count;
             Player.AddBuff(BuffID.PeaceCandle, 2, false, false);
+            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.PeaceCandle);
             Player.ZonePeaceCandle = true;
         }
 
         private void CheckEnvironment_ShadowCandle(int count)
         {
-            SceneMetrics sceneMetrics = Main.SceneMetrics;
-            sceneMetrics.ShadowCandleCount += count;
+            Main.SceneMetrics.ShadowCandleCount += count;
             Player.AddBuff(BuffID.ShadowCandle, 2, false, false);
+            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.ShadowCandle);
             Player.ZoneShadowCandle = true;
         }
 
@@ -397,18 +377,20 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         {
             Main.SceneMetrics.HasCatBast = true;
             Player.AddBuff(BuffID.CatBast, 2, false, false);
+            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.CatBast);
         }
 
         private void CheckStation(Item item)
         {
             if (CheckEnvironment_ItemIsValidPlaceableTile(item))
             {
-                if (!infoByItemType.ContainsKey(item.type))
+                if (!infoByItemType.TryGetValue(item.type, out List<ItemInfo> value))
                 {
-                    infoByItemType.Add(item.type, new List<ItemInfo>());
+                    value = [];
+                    infoByItemType.Add(item.type, value);
                 }
-                ItemInfo itemInfo = new ItemInfo(item);
-                infoByItemType[item.type].Add(itemInfo);
+                ItemInfo itemInfo = new(item);
+                value.Add(itemInfo);
                 int stackTarget = GetStackTarget(item, QoLCompendium.mainConfig.EndlessStationAmount);
                 if (stackTarget > 0 && item.stack >= stackTarget)
                 {
@@ -425,44 +407,48 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                 case TileID.AmmoBox:
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(BuffID.AmmoBox, 2, true, false);
+                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.AmmoBox);
                     return;
                 case TileID.BewitchingTable:
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(BuffID.Bewitched, 2, true, false);
+                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Bewitched);
                     return;
                 case TileID.CrystalBall:
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(BuffID.Clairvoyance, 2, true, false);
+                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Clairvoyance);
                     return;
                 case TileID.SharpeningStation:
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(BuffID.Sharpened, 2, true, false);
+                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Sharpened);
                     return;
                 case TileID.SliceOfCake:
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(BuffID.SugarRush, 2, true, false);
+                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.SugarRush);
                     return;
                 case TileID.WarTable:
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(BuffID.WarTable, 2, true, false);
+                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.WarTable);
                     return;
             }
-            /*
-            BlockSounds.DontCreateSound = true;
-            Point16 val = Player.Center.ToTileCoordinates16();
-            ModTile tile = TileLoader.GetTile(info.createTile);
-            if (tile != null && ModdedStationSupport.multitileAddsBuffsOnRightClick.Contains(info.createTile))
-            {
-                tile.RightClick(val.X, val.Y);
-            }
-            BlockSounds.DontCreateSound = false;
-            */
             foreach (var moddedBuff in BuffSystem.ModdedPlaceableItemBuffs)
             {
+                Item electroDeterrent = new();
+                if (ModConditions.secretsOfTheShadowsLoaded)
+                    electroDeterrent.type = Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "ElectromagneticDeterrent");
+
                 if (info.type == moddedBuff.Key)
                 {
+                    if (ModConditions.secretsOfTheShadowsLoaded && info.type == electroDeterrent.type && Player.HasItem(electroDeterrent.type) && !Player.inventory[Common.GetSlotItemIsIn(electroDeterrent, Player.inventory)].favorited)
+                        return;
+
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(moddedBuff.Value, 2);
+                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(moddedBuff.Value);
                 }
             }
         }
@@ -471,12 +457,13 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         {
             if (item.type == ItemID.BottledHoney)
             {
-                if (!infoByItemType.ContainsKey(item.type))
+                if (!infoByItemType.TryGetValue(item.type, out List<ItemInfo> value))
                 {
-                    infoByItemType.Add(item.type, new List<ItemInfo>());
+                    value = [];
+                    infoByItemType.Add(item.type, value);
                 }
-                ItemInfo item2 = new ItemInfo(item);
-                infoByItemType[item.type].Add(item2);
+                ItemInfo item2 = new(item);
+                value.Add(item2);
                 if (QoLCompendium.mainConfig.EndlessBuffAmount > 0 && item.stack >= QoLCompendium.mainConfig.EndlessBuffAmount)
                 {
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
@@ -489,12 +476,34 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         private void CheckHoney_AddBuff()
         {
             Player.AddBuff(BuffID.Honey, 2, true, false);
+            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Honey);
         }
     }
 
     public class BuffSystem : ModSystem
     {
-        internal static Dictionary<int, int> ModdedPlaceableItemBuffs = new();
+        public static bool[] BuffTypesToHide = new bool[BuffLoader.BuffCount];
+        internal static Dictionary<int, int> ModdedPlaceableItemBuffs = [];
+
+        public override void PostSetupContent()
+        {
+            Array.Resize(ref BuffTypesToHide, BuffLoader.BuffCount);
+        }
+
+        public override void PostDrawInterface(SpriteBatch spriteBatch)
+        {
+            Array.Clear(BuffTypesToHide, 0, BuffTypesToHide.Length);
+            SetupHideArray();
+        }
+
+
+        private static void SetupHideArray()
+        {
+            foreach (int buff in Main.LocalPlayer.GetModPlayer<QoLCPlayer>().activeBuffs)
+            {
+                BuffTypesToHide[buff] = true;
+            }
+        }
 
         public static void DoBuffIntegration()
         {
@@ -527,7 +536,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             //CLICKER CLASS
             AddBuffIntegration(ModConditions.clickerClassMod, "DesktopComputer", "DesktopComputerBuff");
             //CLASSICAL
-            AddBuffIntegration(ModConditions.classicalMod, "TrinketRack", "SleightOfHand");
+            AddBuffIntegration(ModConditions.ruptureMod, "TrinketRack", "SleightOfHand");
             //FARGOS
             AddBuffIntegration(ModConditions.fargosMutantMod, "Semistation", "Semistation");
             AddBuffIntegration(ModConditions.fargosMutantMod, "Omnistation", "Omnistation");
@@ -542,6 +551,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             AddBuffIntegration(ModConditions.redemptionMod, "EnergyStation", "EnergyStationBuff");
             //SECRETS OF THE SHADOWS
             AddBuffIntegration(ModConditions.secretsOfTheShadowsMod, "DigitalDisplay", "CyberneticEnhancements");
+            AddBuffIntegration(ModConditions.secretsOfTheShadowsMod, "ElectromagneticDeterrent", "DEFEBuff");
             //SHADOWS OF ABADDON
             AddBuffIntegration(ModConditions.shadowsOfAbaddonMod, "FruitLantern", "FruitBuff");
             //SPIRIT
@@ -567,44 +577,16 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         }
     }
 
-    internal struct ItemInfo
+    internal readonly struct ItemInfo(Item item)
     {
-        public readonly int type;
+        public readonly int type = item.type;
 
-        public readonly int buffType;
+        public readonly int buffType = item.buffType;
 
-        public readonly int stack;
+        public readonly int stack = item.stack;
 
-        public readonly int createTile;
+        public readonly int createTile = item.createTile;
 
-        public readonly int placeStyle;
-
-        public ItemInfo(Item item)
-        {
-            type = item.type;
-            buffType = item.buffType;
-            stack = item.stack;
-            createTile = item.createTile;
-            placeStyle = item.placeStyle;
-        }
-    }
-
-    public class BlockSounds : ModSystem
-    {
-        internal static bool DontCreateSound;
-
-        public override void Load()
-        {
-            On_SoundEngine.PlaySound_refSoundStyle_Nullable1_SoundUpdateCallback += new On_SoundEngine.hook_PlaySound_refSoundStyle_Nullable1_SoundUpdateCallback(Hook_SoundEngine_PlaySound_refSoundStyle_Nullable1);
-        }
-
-        private SlotId Hook_SoundEngine_PlaySound_refSoundStyle_Nullable1(On_SoundEngine.orig_PlaySound_refSoundStyle_Nullable1_SoundUpdateCallback orig, ref SoundStyle style, Vector2? position, SoundUpdateCallback updateCallback)
-        {
-            if (!DontCreateSound)
-            {
-                return orig.Invoke(ref style, position, updateCallback);
-            }
-            return SlotId.Invalid;
-        }
+        public readonly int placeStyle = item.placeStyle;
     }
 }

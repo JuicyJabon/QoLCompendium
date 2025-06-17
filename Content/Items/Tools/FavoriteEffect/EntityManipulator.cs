@@ -1,13 +1,15 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using QoLCompendium.Core.UI.Panels;
 using Terraria.Enums;
 using Terraria.GameContent.Events;
 
 namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 {
-    internal class EntityManipulator : ModItem
+    public class EntityManipulator : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EntityManipulator;
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

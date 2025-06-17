@@ -18,7 +18,7 @@ namespace QoLCompendium.Core.Changes.ModChanges
 
             if (item.type == Common.GetModItem(ModConditions.clickerClassMod, "HeavenlyChip") && Main.LocalPlayer.GetModPlayer<ClickerPlayer>().consumedHeavenlyChip)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
         }
     }

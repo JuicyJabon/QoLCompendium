@@ -1,4 +1,3 @@
-using QoLCompendium.Content.Tiles.Other;
 using QoLCompendium.Core;
 using Terraria.DataStructures;
 using Terraria.ObjectData;
@@ -21,7 +20,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
 
             if (noDungeon || noHMOre || noChloro || noLihzahrd)
                 return false;
-            if (TileBelongsToMod(tile) && ignoreModdedTiles)
+            if (ignoreModdedTiles && TileBelongsToMod(tile))
                 return false;
 
             return true;
@@ -42,7 +41,14 @@ namespace QoLCompendium.Content.Projectiles.Explosives
 
         public static bool TileBelongsToMod(Tile tile)
         {
-            return (tile.TileType > TileID.Count || tile.WallType > WallID.Count) && tile.TileType != ModContent.TileType<AsphaltPlatformTile>() && tile.TileType != Common.GetModTile(ModConditions.aequusMod, "Manacle") && tile.TileType != Common.GetModTile(ModConditions.aequusMod, "Mistral") && tile.TileType != Common.GetModTile(ModConditions.aequusMod, "Moonflower") && tile.TileType != Common.GetModTile(ModConditions.aequusMod, "Moray");
+            if (tile.HasTile && tile.TileType > TileID.Count)
+            {
+                if (Common.IgnoredTilesForExplosives.Contains(tile.TileType) || (Common.IgnoredModsForExplosives != null && Common.IgnoredModsForExplosives.Contains(TileLoader.GetTile(tile.TileType).Mod)))
+                    return false;
+                else
+                    return true;
+            }
+            return false;
         }
     }
 

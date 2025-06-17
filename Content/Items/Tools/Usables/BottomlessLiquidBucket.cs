@@ -1,5 +1,5 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
@@ -7,6 +7,8 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class BottomlessLiquidBucket : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.BottomlessBuckets;
+
         public int Mode = 0;
 
         internal enum LiquidTypes : byte
@@ -103,12 +105,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.BottomlessLiquidBucket);
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.BottomlessBuckets);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.BottomlessLiquidBucket, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.BottomlessBuckets, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.BottomlessBucket);
             r.AddIngredient(ItemID.BottomlessLavaBucket);
             r.AddIngredient(ItemID.BottomlessHoneyBucket);

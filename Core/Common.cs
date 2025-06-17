@@ -1,15 +1,20 @@
 ﻿using MonoMod.RuntimeDetour;
-using QoLCompendium.Content.Items.Accessories;
-using QoLCompendium.Content.Items.CrossMod.Summons;
-using QoLCompendium.Content.Items.InformationAccessories;
-using QoLCompendium.Content.Items.Mirrors;
+using QoLCompendium.Content.Items.Accessories.Construction;
+using QoLCompendium.Content.Items.Accessories.Fishing;
+using QoLCompendium.Content.Items.Accessories.InformationAccessories;
+using QoLCompendium.Content.Items.Tools.Mirrors;
+using QoLCompendium.Content.Items.Tools.Summons;
+using QoLCompendium.Content.Items.Tools.Summons.CrossMod;
+using QoLCompendium.Content.Projectiles.MobileStorages;
+using QoLCompendium.Content.Tiles.Other;
 using System.Reflection;
 using Terraria.DataStructures;
+using Terraria.Enums;
 using Terraria.ModLoader.Config;
 
 namespace QoLCompendium.Core
 {
-    public class Common
+    public static class Common
     {
 #pragma warning disable CA2211, IDE0028, IDE0300
 
@@ -22,6 +27,27 @@ namespace QoLCompendium.Core
         public static readonly HashSet<int> LunarPillarIDs = new() { NPCID.LunarTowerNebula, NPCID.LunarTowerSolar, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex };
 
         public static readonly HashSet<int> CoinIDs = new() { ItemID.CopperCoin, ItemID.SilverCoin, ItemID.GoldCoin, ItemID.PlatinumCoin };
+
+        public static readonly HashSet<int> RedPotionBuffs = new() {
+            BuffID.ObsidianSkin,
+            BuffID.Regeneration,
+            BuffID.Swiftness,
+            BuffID.Ironskin,
+            BuffID.ManaRegeneration,
+            BuffID.MagicPower,
+            BuffID.Featherfall,
+            BuffID.Spelunker,
+            BuffID.Archery,
+            BuffID.Heartreach,
+            BuffID.Hunter,
+            BuffID.Endurance,
+            BuffID.Lifeforce,
+            BuffID.Inferno,
+            BuffID.Mining,
+            BuffID.Rage,
+            BuffID.Wrath,
+            BuffID.Dangersense
+        };
 
         public static int PlatinumMaxStack = 9999;
         public const ulong CopperValue = 1;
@@ -154,87 +180,63 @@ namespace QoLCompendium.Core
 
         public static readonly ushort[] PureWallIDs = new ushort[]
         {
-            WallID.Grass, 
-            WallID.GrassUnsafe, 
-            WallID.Grass, 
-            WallID.GrassUnsafe, 
-            WallID.Grass, 
-            WallID.GrassUnsafe, 
-            WallID.Stone, 
-            WallID.Stone, 
-            WallID.Stone, 
+            WallID.Grass,
+            WallID.GrassUnsafe,
+            WallID.Grass,
+            WallID.GrassUnsafe,
+            WallID.Grass,
+            WallID.GrassUnsafe,
             WallID.Stone,
-            WallID.Stone, 
-            WallID.HardenedSandEcho, 
-            WallID.HardenedSand, 
-            WallID.HardenedSandEcho, 
-            WallID.HardenedSand, 
-            WallID.HardenedSandEcho, 
-            WallID.HardenedSand, 
-            WallID.SandstoneEcho, 
-            WallID.Sandstone, 
+            WallID.Stone,
+            WallID.Stone,
+            WallID.Stone,
+            WallID.Stone,
+            WallID.HardenedSandEcho,
+            WallID.HardenedSand,
+            WallID.HardenedSandEcho,
+            WallID.HardenedSand,
+            WallID.HardenedSandEcho,
+            WallID.HardenedSand,
             WallID.SandstoneEcho,
-            WallID.Sandstone, 
-            WallID.SandstoneEcho, 
-            WallID.Sandstone, 
-            WallID.Dirt1Echo, 
-            WallID.DirtUnsafe1, 
-            WallID.Dirt2Echo, 
-            WallID.DirtUnsafe2, 
-            WallID.Dirt3Echo, 
-            WallID.DirtUnsafe3, 
-            WallID.Dirt4Echo, 
-            WallID.DirtUnsafe4, 
-            WallID.Dirt1Echo, 
-            WallID.DirtUnsafe1, 
-            WallID.Dirt2Echo, 
-            WallID.DirtUnsafe2, 
-            WallID.Dirt3Echo, 
-            WallID.DirtUnsafe3, 
-            WallID.Dirt4Echo, 
-            WallID.DirtUnsafe4, 
-            WallID.Dirt1Echo, 
-            WallID.DirtUnsafe1, 
-            WallID.Dirt2Echo, 
-            WallID.DirtUnsafe2, 
-            WallID.Dirt3Echo, 
-            WallID.DirtUnsafe3, 
-            WallID.Dirt4Echo, 
+            WallID.Sandstone,
+            WallID.SandstoneEcho,
+            WallID.Sandstone,
+            WallID.SandstoneEcho,
+            WallID.Sandstone,
+            WallID.Dirt1Echo,
+            WallID.DirtUnsafe1,
+            WallID.Dirt2Echo,
+            WallID.DirtUnsafe2,
+            WallID.Dirt3Echo,
+            WallID.DirtUnsafe3,
+            WallID.Dirt4Echo,
+            WallID.DirtUnsafe4,
+            WallID.Dirt1Echo,
+            WallID.DirtUnsafe1,
+            WallID.Dirt2Echo,
+            WallID.DirtUnsafe2,
+            WallID.Dirt3Echo,
+            WallID.DirtUnsafe3,
+            WallID.Dirt4Echo,
+            WallID.DirtUnsafe4,
+            WallID.Dirt1Echo,
+            WallID.DirtUnsafe1,
+            WallID.Dirt2Echo,
+            WallID.DirtUnsafe2,
+            WallID.Dirt3Echo,
+            WallID.DirtUnsafe3,
+            WallID.Dirt4Echo,
             WallID.DirtUnsafe4
         };
 
-        public static readonly HashSet<TileDefinition> DefaultVeinMinerWhitelist = new()
+        public static readonly HashSet<int> FallingBlocks = new()
         {
-            new TileDefinition(TileID.Copper),
-            new TileDefinition(TileID.Tin),
-            new TileDefinition(TileID.Iron),
-            new TileDefinition(TileID.Lead),
-            new TileDefinition(TileID.Silver),
-            new TileDefinition(TileID.Tungsten),
-            new TileDefinition(TileID.Gold),
-            new TileDefinition(TileID.Platinum),
-            new TileDefinition(TileID.Meteorite),
-            new TileDefinition(TileID.Demonite),
-            new TileDefinition(TileID.Crimtane),
-            new TileDefinition(TileID.Obsidian),
-            new TileDefinition(TileID.Hellstone),
-            new TileDefinition(TileID.Cobalt),
-            new TileDefinition(TileID.Palladium),
-            new TileDefinition(TileID.Mythril),
-            new TileDefinition(TileID.Orichalcum),
-            new TileDefinition(TileID.Adamantite),
-            new TileDefinition(TileID.Titanium),
-            new TileDefinition(TileID.Chlorophyte),
-            new TileDefinition(TileID.LunarOre),
-            new TileDefinition(TileID.Amethyst),
-            new TileDefinition(TileID.Topaz),
-            new TileDefinition(TileID.Sapphire),
-            new TileDefinition(TileID.Emerald),
-            new TileDefinition(TileID.Ruby),
-            new TileDefinition(TileID.Diamond),
-            new TileDefinition(TileID.Silt),
-            new TileDefinition(TileID.Slush),
-            new TileDefinition(TileID.DesertFossil)
+            ProjectileID.SandBallFalling,
+            ProjectileID.EbonsandBallFalling,
+            ProjectileID.CrimsandBallFalling,
+            ProjectileID.PearlSandBallFalling,
+            ProjectileID.SiltBall,
+            ProjectileID.SlushBall
         };
 
         public static readonly List<int> PowerUpItems = new()
@@ -260,6 +262,14 @@ namespace QoLCompendium.Core
             ItemID.DesertWaterFountain,
             ItemID.OasisFountain,
             ItemID.CrimsonWaterFountain
+        };
+
+        public static readonly HashSet<int> MobileStorages = new()
+        {
+            ProjectileID.FlyingPiggyBank,
+            ProjectileID.VoidLens,
+            ModContent.ProjectileType<FlyingSafeProjectile>(),
+            ModContent.ProjectileType<EtherianConstructProjectile>()
         };
 
         public static readonly bool[] NormalBunnies = NPCID.Sets.Factory.CreateBoolSet(NPCID.Bunny, NPCID.GemBunnyTopaz, NPCID.GemBunnySapphire, NPCID.GemBunnyRuby, NPCID.GemBunnyEmerald, NPCID.GemBunnyDiamond, NPCID.GemBunnyAmethyst, NPCID.GemBunnyAmber, NPCID.ExplosiveBunny, NPCID.BunnySlimed, NPCID.BunnyXmas, NPCID.CorruptBunny, NPCID.CrimsonBunny, NPCID.PartyBunny);
@@ -361,6 +371,34 @@ namespace QoLCompendium.Core
             ItemID.DontStarveShaderItem,
             ItemID.EncumberingStone
         };
+
+        public static HashSet<int> IgnoredTilesForExplosives = new()
+        {
+            ModContent.TileType<AsphaltPlatformTile>()
+        };
+
+        public static HashSet<Mod> IgnoredModsForExplosives = new();
+
+        public static HashSet<int> IgnoredPermanentBuffs = new()
+        {
+            BuffID.Tipsy,
+            BuffID.WaterCandle,
+            BuffID.ShadowCandle
+        };
+
+        public static HashSet<int> FlaskBuffs = new()
+        {
+            BuffID.WeaponImbueConfetti,
+            BuffID.WeaponImbueCursedFlames,
+            BuffID.WeaponImbueFire,
+            BuffID.WeaponImbueGold,
+            BuffID.WeaponImbueIchor,
+            BuffID.WeaponImbueNanites,
+            BuffID.WeaponImbuePoison,
+            BuffID.WeaponImbueVenom
+        };
+
+        public static HashSet<int> ThoriumCoatings = new();
 
         #region Boss Drops
         public static readonly int[] kingSlimeDrops = { 
@@ -825,9 +863,15 @@ namespace QoLCompendium.Core
                 Common.GetModItem(ModConditions.calamityMod, "OceanCrest"),
                 Common.GetModItem(ModConditions.calamityMod, "SpelunkersAmulet"),
                 Common.GetModItem(ModConditions.clickerClassMod, "ButtonMasher"),
+                Common.GetModItem(ModConditions.depthsMod, "LodeStone"),
+                Common.GetModItem(ModConditions.depthsMod, "MercuryMossFishingBobber"),
+                Common.GetModItem(ModConditions.depthsMod, "QuicksilverproofFishingHook"),
+                Common.GetModItem(ModConditions.depthsMod, "QuicksilverproofTackleBag"),
                 Common.GetModItem(ModConditions.luiAFKMod, "FasterMining"),
                 Common.GetModItem(ModConditions.luiAFKMod, "SuperToolTime"),
                 Common.GetModItem(ModConditions.luiAFKMod, "ToolTime"),
+                Common.GetModItem(ModConditions.luiAFKDLCMod, "ArchitectHeavyEquipment"),
+                Common.GetModItem(ModConditions.luiAFKDLCMod, "EnchantedSupremeFishingBundle"),
                 Common.GetModItem(ModConditions.martainsOrderMod, "ArmorDisplayer"),
                 Common.GetModItem(ModConditions.martainsOrderMod, "FlightTimer"),
                 Common.GetModItem(ModConditions.martainsOrderMod, "Journal"),
@@ -840,6 +884,11 @@ namespace QoLCompendium.Core
                 Common.GetModItem(ModConditions.martainsOrderMod, "SurvivalTracker"),
                 //Common.GetModItem(ModConditions.moomoosUltimateYoyoRevampMod, "HitDisplay"),
                 //Common.GetModItem(ModConditions.moomoosUltimateYoyoRevampMod, "SpeedDisplay"),
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "AnomalyLocator"),
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "ArchaeologistToolbelt"),
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "ElectromagneticDeterrent"),
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "GoldenTrowel"),
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "InfiniteVoid"),
                 Common.GetModItem(ModConditions.spiritMod, "FisheyeGem"),
                 Common.GetModItem(ModConditions.spiritMod, "MetalBand"),
                 Common.GetModItem(ModConditions.spiritMod, "MimicRepellent"),
@@ -854,9 +903,16 @@ namespace QoLCompendium.Core
             HashSet<int> TempModdedBossAndEventSummons = new()
             {
                 //QoLC
+                ModContent.ItemType<CultistSummon>(),
+                ModContent.ItemType<DukeFishronSummon>(),
+                ModContent.ItemType<EmpressOfLightSummon>(),
+                ModContent.ItemType<PlanteraSummon>(),
+                ModContent.ItemType<SkeletronSummon>(),
+                ModContent.ItemType<WallOfFleshSummon>(),
                 ModContent.ItemType<ForgottenOneSummon>(),
                 ModContent.ItemType<GiantClamSummon>(),
                 ModContent.ItemType<LeviathanAnahitaSummon>(),
+                ModContent.ItemType<OldDukeSummon>(),
                 //Aequus
                 Common.GetModItem(ModConditions.aequusMod, "GalacticStarfruit"),
                 //AFKPETS
@@ -1241,6 +1297,66 @@ namespace QoLCompendium.Core
                 GetModPrefix(ModConditions.vitalityMod, "RelentlessPrefix")
             };
             Prefixes.UnionWith(ModPrefixes);
+
+            HashSet<int> ModIgnoredTiles = new()
+            {
+                GetModTile(ModConditions.aequusMod, "Manacle"),
+                GetModTile(ModConditions.aequusMod, "Mistral"),
+                GetModTile(ModConditions.aequusMod, "Moonflower"),
+                GetModTile(ModConditions.aequusMod, "Moray"),
+                GetModTile(ModConditions.thoriumMod, "IllumiteChunk"),
+                GetModTile(ModConditions.thoriumMod, "LifeQuartz"),
+                GetModTile(ModConditions.thoriumMod, "LodeStone"),
+                GetModTile(ModConditions.thoriumMod, "SmoothCoal"),
+                GetModTile(ModConditions.thoriumMod, "ThoriumOre"),
+                GetModTile(ModConditions.thoriumMod, "ValadiumChunk")
+            };
+            IgnoredTilesForExplosives.UnionWith(ModIgnoredTiles);
+
+            HashSet<Mod> TempIgnoredModsForExplosives = new();
+            if (ModConditions.confectionRebakedLoaded)
+                TempIgnoredModsForExplosives.Add(ModConditions.confectionRebakedMod);
+            if (ModConditions.depthsLoaded)
+                TempIgnoredModsForExplosives.Add(ModConditions.depthsMod);
+            if (ModConditions.infectedQualitiesLoaded)
+                TempIgnoredModsForExplosives.Add(ModConditions.infectedQualitiesMod);
+            if (ModConditions.martainsOrderLoaded)
+                TempIgnoredModsForExplosives.Add(ModConditions.martainsOrderMod);
+            if (ModConditions.orchidLoaded)
+                TempIgnoredModsForExplosives.Add(ModConditions.orchidMod);
+            if (ModConditions.remnantsLoaded)
+                TempIgnoredModsForExplosives.Add(ModConditions.remnantsMod);
+            IgnoredModsForExplosives.UnionWith(TempIgnoredModsForExplosives);
+
+            HashSet<int> ModIgnoredPermanentBuffs = new()
+            {
+                Common.GetModBuff(ModConditions.calamityMod, "ChaosCandleBuff"),
+                Common.GetModBuff(ModConditions.calamityMod, "CirrusBlueCandleBuff"),
+                Common.GetModBuff(ModConditions.calamityMod, "CirrusPinkCandleBuff"),
+                Common.GetModBuff(ModConditions.calamityMod, "CirrusPurpleCandleBuff"),
+                Common.GetModBuff(ModConditions.calamityMod, "CirrusYellowCandleBuff"),
+                Common.GetModBuff(ModConditions.calamityMod, "TranquilityCandleBuff"),
+            };
+            IgnoredPermanentBuffs.UnionWith(ModIgnoredPermanentBuffs);
+
+            for (int i = BuffID.Count; i < BuffLoader.BuffCount; i++)
+            {
+                if (BuffID.Sets.IsAFlaskBuff[BuffLoader.GetBuff(i).Type] && !Common.FlaskBuffs.Contains(BuffLoader.GetBuff(i).Type))
+                    Common.FlaskBuffs.Add(BuffLoader.GetBuff(i).Type);
+            }
+
+            if (ModConditions.thoriumLoaded)
+            {
+                HashSet<int> TempThoriumCoatings = new()
+                {
+                    Common.GetModBuff(ModConditions.thoriumMod, "DeepFreezeCoatingBuff"),
+                    Common.GetModBuff(ModConditions.thoriumMod, "ExplosiveCoatingBuff"),
+                    Common.GetModBuff(ModConditions.thoriumMod, "GorgonCoatingBuff"),
+                    Common.GetModBuff(ModConditions.thoriumMod, "SporeCoatingBuff"),
+                    Common.GetModBuff(ModConditions.thoriumMod, "ToxicCoatingBuff"),
+                };
+                ThoriumCoatings.UnionWith(TempThoriumCoatings);
+            }
         }
 
         public static void Reset()
@@ -1391,6 +1507,13 @@ namespace QoLCompendium.Core
                 }
             }
             return DamageClass.Default;
+        }
+
+        public static string ModBuffAsset(Mod mod, int buffType)
+        {
+            if (mod != null && BuffLoader.GetBuff(buffType) != null)
+                return BuffLoader.GetBuff(buffType).Texture;
+            return "QoLCompendium/Assets/Items/PermanentBuff";
         }
 
         public static void CreateBagRecipe(int[] items, int bagID)
@@ -1546,6 +1669,67 @@ namespace QoLCompendium.Core
             return false;
         }
 
+        public static int GetSlotItemIsIn(Item lookForThis, Item[] inventory)
+        {
+            for (int i = 0; i < inventory.Length; i++)
+            {
+                if (inventory[i].type == lookForThis.type)
+                    return i;
+            }
+            return -1;
+        }
+
+        public static void SetDefaultsToPermanentBuff(Item item)
+        {
+            item.width = item.height = 16;
+            item.consumable = false;
+            item.maxStack = 1;
+            item.SetShopValues(ItemRarityColor.Blue1, 0);
+        }
+
+        public static void HandleFlaskBuffs(Player player)
+        {
+            foreach (int buff in FlaskBuffs)
+                player.buffImmune[buff] = true;
+        }
+
+        public static void HandleCoatingBuffs(Player player)
+        {
+            foreach (int buff in ThoriumCoatings)
+                player.buffImmune[buff] = true;
+        }
+
+        public static StatModifier GetBestClassDamage(this Player player)
+        {
+            StatModifier ret = StatModifier.Default;
+            StatModifier classless = player.GetTotalDamage<GenericDamageClass>();
+
+            ret.Base = classless.Base;
+            ret *= classless.Multiplicative;
+            ret.Flat = classless.Flat;
+
+            float best = 1f;
+
+            float melee = player.GetTotalDamage<MeleeDamageClass>().Additive;
+            if (melee > best) best = melee;
+            float ranged = player.GetTotalDamage<RangedDamageClass>().Additive;
+            if (ranged > best) best = ranged;
+            float magic = player.GetTotalDamage<MagicDamageClass>().Additive;
+            if (magic > best) best = magic;
+            float summon = player.GetTotalDamage<SummonDamageClass>().Additive;
+            if (summon > best) best = summon;
+
+            for (int i = 0; i < DamageClassLoader.DamageClassCount; i++)
+            {
+                float dClass = player.GetTotalDamage(DamageClassLoader.GetDamageClass(i)).Additive;
+                if (dClass > best) best = dClass;
+            }
+
+            ret += best - 1f;
+            return ret;
+        }
+
+
         public static Point16 PlayerCenterTile(Player player)
         {
             return new Point16((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f));
@@ -1690,6 +1874,70 @@ namespace QoLCompendium.Core
             return false;
         }
 
+        public static void AddAfter<T>(this List<T> list, T element, T item)
+        {
+            var idx = list.IndexOf(element);
+            list.Insert(idx + 1, item);
+        }
+
+        public static string GetTooltipValue(string suffix, params object[] args)
+        {
+            return Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips." + suffix, args);
+        }
+
+        public static void AddLastTooltip(List<TooltipLine> tooltips, TooltipLine tooltip)
+        {
+            var last = tooltips.FindLast(t => t.Mod == "Terraria")!;
+            tooltips.AddAfter(last, tooltip);
+        }
+
+        public static string GetFullNameById(int id, int subtype = -1)
+        {
+            ModTile modTile = TileLoader.GetTile(id);
+            if (modTile != null)
+            {
+                return modTile.Mod.Name + ":" + modTile.Name + ((subtype >= 0) ? $":{subtype}" : "");
+            }
+            if (id < TileID.Count)
+            {
+                return "Terraria:" + TileID.Search.GetName(id) + ((subtype >= 0) ? $":{subtype}" : "");
+            }
+            return null;
+        }
+
+        public static void UpdateWhitelist(int typeId, string name, int style = -1, bool remove = false)
+        {
+            if (!remove)
+            {
+                if (!QoLCompendium.mainConfig.VeinMinerTileWhitelist.Contains(name))
+                {
+                    QoLCompendium.mainConfig.VeinMinerTileWhitelist.Add(name);
+                    SaveConfig(QoLCompendium.mainConfig);
+                }
+                if (Main.netMode == NetmodeID.SinglePlayer)
+                {
+                    if (KeybindPlayer.timeout <= 0)
+                    {
+                        KeybindPlayer.timeout = byte.MaxValue;
+                    }
+                    else
+                    {
+                        KeybindPlayer.timeout = 0;
+                        QoLCompendium.mainConfig.VeinMinerTileWhitelist.Add(name);
+                        SaveConfig(QoLCompendium.mainConfig);
+                    }
+                }
+            }
+            else
+            {
+                if (QoLCompendium.mainConfig.VeinMinerTileWhitelist.Contains(name))
+                {
+                    QoLCompendium.mainConfig.VeinMinerTileWhitelist.Remove(name);
+                    SaveConfig(QoLCompendium.mainConfig);
+                }
+            }
+        }
+
         public static bool TryAcceptChanges(int whoAmI, ref NetworkText message)
         {
             if (NetMessage.DoesPlayerSlotCountAsAHost(whoAmI))
@@ -1697,6 +1945,17 @@ namespace QoLCompendium.Core
 
             message = NetworkText.FromKey(Language.GetTextValue("Mods.QoLCompendium.Messages.HostOnly"));
             return false;
+        }
+
+        public static void SaveConfig(ModConfig config)
+        {
+            MethodInfo saveMethodInfo = typeof(ConfigManager).GetMethod("Save", BindingFlags.Static | BindingFlags.NonPublic);
+            if (saveMethodInfo is not null)
+            {
+                saveMethodInfo.Invoke(null, new object[1] { config });
+                return;
+            }
+            throw new Exception("Config file could not be created or updated at:\n'{path}'");
         }
 #pragma warning restore IDE0028, IDE0300
     }

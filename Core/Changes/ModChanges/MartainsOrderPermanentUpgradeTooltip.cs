@@ -18,27 +18,27 @@ namespace QoLCompendium.Core.Changes.ModChanges
 
             if (item.type == Common.GetModItem(ModConditions.martainsOrderMod, "FishOfPurity") && Main.LocalPlayer.GetModPlayer<MyPlayer>().fishOfPurity)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.martainsOrderMod, "FishOfSpirit") && Main.LocalPlayer.GetModPlayer<MyPlayer>().fishOfSpirit)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.martainsOrderMod, "FishOfWrath") && Main.LocalPlayer.GetModPlayer<MyPlayer>().fishOfWrath)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.martainsOrderMod, "ShimmerFish") && Main.LocalPlayer.GetModPlayer<MyPlayer>().shimmerFish)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.martainsOrderMod, "MerchantBag") && Main.LocalPlayer.GetModPlayer<MyPlayer>().shimmerMerchBag)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.martainsOrderMod, "FirstAidTreatments") && MartainWorld.firstAidTreatments)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
         }
     }

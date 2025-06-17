@@ -25,9 +25,9 @@ namespace QoLCompendium.Core
         public static Condition expertOrMaster = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.inExpertOrMaster"), () => Main.expertMode || Main.masterMode);
         //BOSSES
         public static bool downedDreadnautilus;
-        public static Condition DownedDreadnautilus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDreadnautilus"), () => downedDreadnautilus);
+        public static Condition DownedDreadnautilus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDreadnautilus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Dreadnautilus]);
         public static bool downedMartianSaucer;
-        public static Condition DownedMartianSaucer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMartianSaucer"), () => downedMartianSaucer);
+        public static Condition DownedMartianSaucer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMartianSaucer"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MartianSaucer]);
         public static Condition NotDownedMechBossAll = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.notDownedMechBossAll"), () => !(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3));
         //EVENTS
         public bool waitForBloodMoon;
@@ -117,42 +117,42 @@ namespace QoLCompendium.Core
         public static Mod afkpetsMod;
         //BOSSES
         public static bool downedSlayerOfEvil;
-        public static Condition DownedSlayerOfEvil = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSlayerOfEvil"), () => downedSlayerOfEvil);
+        public static Condition DownedSlayerOfEvil = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSlayerOfEvil"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SlayerOfEvil]);
         public static bool downedSATLA;
-        public static Condition DownedSATLA = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSATLA"), () => downedSATLA);
+        public static Condition DownedSATLA = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSATLA"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SATLA]);
         public static bool downedDrFetus;
-        public static Condition DownedDrFetus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDrFetus"), () => downedDrFetus);
+        public static Condition DownedDrFetus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDrFetus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.DrFetus]);
         public static bool downedSlimesHope;
-        public static Condition DownedSlimesHope = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSlimesHope"), () => downedSlimesHope);
+        public static Condition DownedSlimesHope = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSlimesHope"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SlimesHope]);
         public static bool downedPoliticianSlime;
-        public static Condition DownedPoliticianSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPoliticianSlime"), () => downedPoliticianSlime);
+        public static Condition DownedPoliticianSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPoliticianSlime"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PoliticianSlime]);
         public static bool downedAncientTrio;
-        public static Condition DownedAncientTrio = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientTrio"), () => downedAncientTrio);
+        public static Condition DownedAncientTrio = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientTrio"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AncientTrio]);
         public static bool downedLavalGolem;
-        public static Condition DownedLavalGolem = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLavalGolem"), () => downedLavalGolem);
+        public static Condition DownedLavalGolem = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLavalGolem"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.LavalGolem]);
         //MINIBOSSES
         public static bool downedAntony;
-        public static Condition DownedAntony = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAntony"), () => downedAntony);
+        public static Condition DownedAntony = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAntony"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Antony]);
         public static bool downedBunnyZeppelin;
-        public static Condition DownedBunnyZeppelin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBunnyZeppelin"), () => downedBunnyZeppelin);
+        public static Condition DownedBunnyZeppelin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBunnyZeppelin"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BunnyZeppelin]);
         public static bool downedOkiku;
-        public static Condition DownedOkiku = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOkiku"), () => downedOkiku);
+        public static Condition DownedOkiku = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOkiku"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Okiku]);
         public static bool downedHarpyAirforce;
-        public static Condition DownedHarpyAirforce = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHarpyAirforce"), () => downedHarpyAirforce);
+        public static Condition DownedHarpyAirforce = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHarpyAirforce"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HarpyAirforce]);
         public static bool downedIsaac;
-        public static Condition DownedIsaac = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedIsaac"), () => downedIsaac);
+        public static Condition DownedIsaac = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedIsaac"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Isaac]);
         public static bool downedAncientGuardian;
-        public static Condition DownedAncientGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientGuardian"), () => downedAncientGuardian);
+        public static Condition DownedAncientGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientGuardian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AncientGuardian]);
         public static bool downedHeroicSlime;
-        public static Condition DownedHeroicSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHeroicSlime"), () => downedHeroicSlime);
+        public static Condition DownedHeroicSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHeroicSlime"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HeroicSlime]);
         public static bool downedHoloSlime;
-        public static Condition DownedHoloSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHoloSlime"), () => downedHoloSlime);
+        public static Condition DownedHoloSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHoloSlime"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HoloSlime]);
         public static bool downedSecurityBot;
-        public static Condition DownedSecurityBot = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSecurityBot"), () => downedSecurityBot);
+        public static Condition DownedSecurityBot = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSecurityBot"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SecurityBot]);
         public static bool downedUndeadChef;
-        public static Condition DownedUndeadChef = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedUndeadChef"), () => downedUndeadChef);
+        public static Condition DownedUndeadChef = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedUndeadChef"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.UndeadChef]);
         public static bool downedGuardianOfFrost;
-        public static Condition DownedGuardianOfFrost = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGuardianOfFrost"), () => downedGuardianOfFrost);
+        public static Condition DownedGuardianOfFrost = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGuardianOfFrost"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GuardianOfFrost]);
 
 
         //AMULET OF MANY MINIONS
@@ -170,7 +170,7 @@ namespace QoLCompendium.Core
         public static Mod assortedCrazyThingsMod;
         //BOSSES
         public static bool downedSoulHarvester;
-        public static Condition DownedSoulHarvester = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSoulHarvester"), () => downedSoulHarvester);
+        public static Condition DownedSoulHarvester = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSoulHarvester"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SoulHarvester]);
 
 
         //AWFUL GARBAGE
@@ -178,13 +178,13 @@ namespace QoLCompendium.Core
         public static Mod awfulGarbageMod;
         //BOSSES
         public static bool downedTreeToad;
-        public static Condition DownedTreeToad = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTreeToad"), () => downedTreeToad);
+        public static Condition DownedTreeToad = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTreeToad"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TreeToad]);
         public static bool downedSeseKitsugai;
-        public static Condition DownedSeseKitsugai = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSeseKitsugai"), () => downedSeseKitsugai);
+        public static Condition DownedSeseKitsugai = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSeseKitsugai"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SeseKitsugai]);
         public static bool downedEyeOfTheStorm;
-        public static Condition DownedEyeOfTheStorm = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEyeOfTheStorm"), () => downedEyeOfTheStorm);
+        public static Condition DownedEyeOfTheStorm = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEyeOfTheStorm"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.EyeOfTheStorm]);
         public static bool downedFrigidius;
-        public static Condition DownedFrigidius = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFrigidius"), () => downedFrigidius);
+        public static Condition DownedFrigidius = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFrigidius"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Frigidius]);
 
 
         //BLOCK'S ARSENAL
@@ -202,7 +202,7 @@ namespace QoLCompendium.Core
         public static Mod blocksCoreBossMod;
         //BOSSES
         public static bool downedCoreBoss;
-        public static Condition DownedCoreBoss = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCoreBoss"), () => downedCoreBoss);
+        public static Condition DownedCoreBoss = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCoreBoss"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CoreBoss]);
 
 
         //BLOCK'S INFO ACCESSORIES
@@ -330,15 +330,19 @@ namespace QoLCompendium.Core
         public static Mod calamityCommunityRemixMod;
         //BOSSES
         public static bool downedWulfrumExcavator;
-        public static Condition DownedWulfrumExcavator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWulfrumExcavator"), () => downedWulfrumExcavator);
+        public static Condition DownedWulfrumExcavator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWulfrumExcavator"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.WulfrumExcavator]);
 
 
         //CALAMITY ENTROPY
         public static bool calamityEntropyLoaded;
         public static Mod calamityEntropyMod;
         //BOSSES
+        public static bool downedProphet;
+        public static Condition DownedProphet = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedProphet"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Prophet]);
+        public static bool downedNihilityTwin;
+        public static Condition DownedNihilityTwin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNihilityTwin"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.NihilityTwin]);
         public static bool downedCruiser;
-        public static Condition DownedCruiser = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCruiser"), () => downedCruiser);
+        public static Condition DownedCruiser = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCruiser"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Cruiser]);
 
 
         //CALAMITY OVERHAUL
@@ -364,7 +368,7 @@ namespace QoLCompendium.Core
         public static Mod catalystMod;
         //BOSSES
         public static bool downedAstrageldon;
-        public static Condition DownedAstrageldon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAstrageldon"), () => downedAstrageldon);
+        public static Condition DownedAstrageldon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAstrageldon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Astrageldon]);
 
 
         //CEREBRAL
@@ -377,16 +381,11 @@ namespace QoLCompendium.Core
         public static Mod clamityAddonMod;
         //BOSSES
         public static bool downedClamitas;
-        public static Condition DownedClamitas = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedClamitas"), () => downedClamitas);
+        public static Condition DownedClamitas = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedClamitas"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Clamitas]);
         public static bool downedPyrogen;
-        public static Condition DownedPyrogen = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPyrogen"), () => downedPyrogen);
+        public static Condition DownedPyrogen = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPyrogen"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Pyrogen]);
         public static bool downedWallOfBronze;
-        public static Condition DownedWallOfBronze = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWallOfBronze"), () => downedWallOfBronze);
-
-
-        //CLASSICAL
-        public static bool classicalLoaded;
-        public static Mod classicalMod;
+        public static Condition DownedWallOfBronze = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWallOfBronze"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.WallOfBronze]);
 
 
         //CLICKER CLASS
@@ -408,11 +407,11 @@ namespace QoLCompendium.Core
         public static Mod consolariaMod;
         //BOSSES
         public static bool downedLepus;
-        public static Condition DownedLepus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLepus"), () => downedLepus);
+        public static Condition DownedLepus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLepus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Lepus]);
         public static bool downedTurkor;
-        public static Condition DownedTurkor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTurkor"), () => downedTurkor);
+        public static Condition DownedTurkor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTurkor"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Turkor]);
         public static bool downedOcram;
-        public static Condition DownedOcram = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOcram"), () => downedOcram);
+        public static Condition DownedOcram = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOcram"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Ocram]);
 
 
         //CORALITE
@@ -420,17 +419,17 @@ namespace QoLCompendium.Core
         public static Mod coraliteMod;
         //BOSSES
         public static bool downedRediancie;
-        public static Condition DownedRediancie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRediancie"), () => downedRediancie);
+        public static Condition DownedRediancie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRediancie"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Rediancie]);
         public static bool downedBabyIceDragon;
-        public static Condition DownedBabyIceDragon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBabyIceDragon"), () => downedBabyIceDragon);
+        public static Condition DownedBabyIceDragon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBabyIceDragon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BabyIceDragon]);
         public static bool downedSlimeEmperor;
-        public static Condition DownedSlimeEmperor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSlimeEmperor"), () => downedSlimeEmperor);
+        public static Condition DownedSlimeEmperor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSlimeEmperor"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SlimeEmperor]);
         public static bool downedBloodiancie;
-        public static Condition DownedBloodiancie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBloodiancie"), () => downedBloodiancie);
+        public static Condition DownedBloodiancie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBloodiancie"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Bloodiancie]);
         public static bool downedThunderveinDragon;
-        public static Condition DownedThunderveinDragon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedThunderveinDragon"), () => downedThunderveinDragon);
+        public static Condition DownedThunderveinDragon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedThunderveinDragon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ThunderveinDragon]);
         public static bool downedNightmarePlantera;
-        public static Condition DownedNightmarePlantera = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNightmarePlantera"), () => downedNightmarePlantera);
+        public static Condition DownedNightmarePlantera = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNightmarePlantera"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.NightmarePlantera]);
 
 
         //DEPTHS
@@ -443,7 +442,7 @@ namespace QoLCompendium.Core
         public static Mod depthsMod;
         //BOSSES
         public static bool downedChasme;
-        public static Condition DownedChasme = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedChasme"), () => downedChasme);
+        public static Condition DownedChasme = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedChasme"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Chasme]);
         //BIOMES
         public static bool beenToDepths;
         public static Condition HasBeenToDepths = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToDepths"), () => beenToDepths);
@@ -455,20 +454,20 @@ namespace QoLCompendium.Core
         public static Mod dormantDawnMod;
         //BOSSES
         public static bool downedLifeGuardian;
-        public static Condition DownedLifeGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLifeGuardian"), () => downedLifeGuardian);
+        public static Condition DownedLifeGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLifeGuardian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.LifeGuardian]);
         public static bool downedManaGuardian;
-        public static Condition DownedManaGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedManaGuardian"), () => downedManaGuardian);
+        public static Condition DownedManaGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedManaGuardian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ManaGuardian]);
         public static bool downedMeteorExcavator;
-        public static Condition DownedMeteorExcavator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMeteorExcavator"), () => downedMeteorExcavator);
+        public static Condition DownedMeteorExcavator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMeteorExcavator"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MeteorExcavator]);
         public static bool downedMeteorAnnihilator;
-        public static Condition DownedMeteorAnnihilator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMeteorAnnihilator"), () => downedMeteorAnnihilator);
+        public static Condition DownedMeteorAnnihilator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMeteorAnnihilator"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MeteorAnnihilator]);
         public static bool downedHellfireSerpent;
-        public static Condition DownedHellfireSerpent = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHellfireSerpent"), () => downedHellfireSerpent);
+        public static Condition DownedHellfireSerpent = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHellfireSerpent"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HellfireSerpent]);
         //MINIBOSSES
         public static bool downedWitheredAcornSpirit;
-        public static Condition DownedWitheredAcornSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWitheredAcornSpirit"), () => downedWitheredAcornSpirit);
+        public static Condition DownedWitheredAcornSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWitheredAcornSpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.WitheredAcornSpirit]);
         public static bool downedGoblinSorcererChieftain;
-        public static Condition DownedGoblinSorcererChieftain = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGoblinSorcererChieftain"), () => downedGoblinSorcererChieftain);
+        public static Condition DownedGoblinSorcererChieftain = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGoblinSorcererChieftain"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GoblinSorcererChieftain]);
 
 
         //DRAEDON EXPANSION
@@ -486,11 +485,11 @@ namespace QoLCompendium.Core
         public static Mod echoesOfTheAncientsMod;
         //BOSSES
         public static bool downedGalahis;
-        public static Condition DownedGalahis = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGalahis"), () => downedGalahis);
+        public static Condition DownedGalahis = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGalahis"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Galahis]);
         public static bool downedCreation;
-        public static Condition DownedCreation = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCreation"), () => downedCreation);
+        public static Condition DownedCreation = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCreation"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Creation]);
         public static bool downedDestruction;
-        public static Condition DownedDestruction = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDestruction"), () => downedDestruction);
+        public static Condition DownedDestruction = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDestruction"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Destruction]);
 
 
         //EDORBIS
@@ -498,15 +497,15 @@ namespace QoLCompendium.Core
         public static Mod edorbisMod;
         //BOSSES
         public static bool downedBlightKing;
-        public static Condition DownedBlightKing = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBlightKing"), () => downedBlightKing);
+        public static Condition DownedBlightKing = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBlightKing"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BlightKing]);
         public static bool downedGardener;
-        public static Condition DownedGardener = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGardener"), () => downedGardener);
+        public static Condition DownedGardener = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGardener"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Gardener]);
         public static bool downedGlaciation;
-        public static Condition DownedGlaciation = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGlaciation"), () => downedGlaciation);
+        public static Condition DownedGlaciation = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGlaciation"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Glaciation]);
         public static bool downedHandOfCthulhu;
-        public static Condition DownedHandOfCthulhu = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHandOfCthulhu"), () => downedHandOfCthulhu);
+        public static Condition DownedHandOfCthulhu = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHandOfCthulhu"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HandOfCthulhu]);
         public static bool downedCursePreacher;
-        public static Condition DownedCursePreacher = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCursePreacher"), () => downedCursePreacher);
+        public static Condition DownedCursePreacher = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCursePreacher"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CursePreacher]);
 
 
         //ENCHANTED MOONS
@@ -527,9 +526,9 @@ namespace QoLCompendium.Core
         public static Mod exaltMod;
         //BOSSES
         public static bool downedEffulgence;
-        public static Condition DownedEffulgence = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEffulgence"), () => downedEffulgence);
+        public static Condition DownedEffulgence = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEffulgence"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Effulgence]);
         public static bool downedIceLich;
-        public static Condition DownedIceLich = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedIceLich"), () => downedIceLich);
+        public static Condition DownedIceLich = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedIceLich"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.IceLich]);
 
 
         //EXCELSIOR
@@ -537,9 +536,9 @@ namespace QoLCompendium.Core
         public static Mod excelsiorMod;
         //BOSSES
         public static bool downedNiflheim;
-        public static Condition DownedNiflheim = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNiflheim"), () => downedNiflheim);
+        public static Condition DownedNiflheim = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNiflheim"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Niflheim]);
         public static bool downedStellarStarship;
-        public static Condition DownedStellarStarship = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStellarStarship"), () => downedStellarStarship);
+        public static Condition DownedStellarStarship = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStellarStarship"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StellarStarship]);
 
 
         //EXXO AVALON
@@ -547,16 +546,16 @@ namespace QoLCompendium.Core
         public static Mod exxoAvalonOriginsMod;
         //BOSSES
         public static bool downedBacteriumPrime;
-        public static Condition DownedBacteriumPrime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBacteriumPrime"), () => downedBacteriumPrime);
-        public static Condition DownedAvalonEvilBosses = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAvalonEvilBosses"), () => downedBacteriumPrime || NPC.downedBoss2);
+        public static Condition DownedBacteriumPrime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBacteriumPrime"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BacteriumPrime]);
+        public static Condition DownedAvalonEvilBosses = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAvalonEvilBosses"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BacteriumPrime] || NPC.downedBoss2);
         public static bool downedDesertBeak;
-        public static Condition DownedDesertBeak = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDesertBeak"), () => downedDesertBeak);
+        public static Condition DownedDesertBeak = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDesertBeak"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.DesertBeak]);
         public static bool downedKingSting;
-        public static Condition DownedKingSting = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKingSting"), () => downedKingSting);
+        public static Condition DownedKingSting = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKingSting"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.KingSting]);
         public static bool downedMechasting;
-        public static Condition DownedMechasting = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMechasting"), () => downedMechasting);
+        public static Condition DownedMechasting = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMechasting"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Mechasting]);
         public static bool downedPhantasm;
-        public static Condition DownedPhantasm = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPhantasm"), () => downedPhantasm);
+        public static Condition DownedPhantasm = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPhantasm"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Phantasm]);
         //BIOMES
         public static bool beenToContagion;
         public static Condition HasBeenToContagion = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToContagion"), () => beenToContagion);
@@ -573,21 +572,21 @@ namespace QoLCompendium.Core
         public static Mod fargosSoulsMod;
         //BOSSES
         public static bool downedTrojanSquirrel;
-        public static Condition DownedTrojanSquirrel = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTrojanSquirrel"), () => downedTrojanSquirrel);
+        public static Condition DownedTrojanSquirrel = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTrojanSquirrel"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TrojanSquirrel]);
         public static bool downedCursedCoffin;
-        public static Condition DownedCursedCoffin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCursedCoffin"), () => downedCursedCoffin);
+        public static Condition DownedCursedCoffin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCursedCoffin"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CursedCoffin]);
         public static bool downedDeviantt;
-        public static Condition DownedDeviantt = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDeviantt"), () => downedDeviantt);
+        public static Condition DownedDeviantt = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDeviantt"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Deviantt]);
         public static bool downedLifelight;
-        public static Condition DownedLifelight = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLifelight"), () => downedLifelight);
+        public static Condition DownedLifelight = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLifelight"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Lifelight]);
         public static bool downedBanishedBaron;
-        public static Condition DownedBanishedBaron = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBanishedBaron"), () => downedBanishedBaron);
+        public static Condition DownedBanishedBaron = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBanishedBaron"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BanishedBaron]);
         public static bool downedEridanus;
-        public static Condition DownedEridanus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEridanus"), () => downedEridanus);
+        public static Condition DownedEridanus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEridanus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Eridanus]);
         public static bool downedAbominationn;
-        public static Condition DownedAbominationn = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAbominationn"), () => downedAbominationn);
+        public static Condition DownedAbominationn = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAbominationn"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Abominationn]);
         public static bool downedMutant;
-        public static Condition DownedMutant = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMutant"), () => downedMutant);
+        public static Condition DownedMutant = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMutant"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Mutant]);
 
 
         //FARGOS SOULS DLC
@@ -605,9 +604,9 @@ namespace QoLCompendium.Core
         public static Mod fracturesOfPenumbraMod;
         //BOSSES
         public static bool downedAlphaFrostjaw;
-        public static Condition DownedAlphaFrostjaw = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAlphaFrostjaw"), () => downedAlphaFrostjaw);
+        public static Condition DownedAlphaFrostjaw = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAlphaFrostjaw"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AlphaFrostjaw]);
         public static bool downedSanguineElemental;
-        public static Condition DownedSanguineElemental = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSanguineElemental"), () => downedSanguineElemental);
+        public static Condition DownedSanguineElemental = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSanguineElemental"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SanguineElemental]);
         //BIOMES
         public static bool beenToDread;
         public static Condition HasBeenToDread = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToDread"), () => beenToDread);
@@ -623,13 +622,13 @@ namespace QoLCompendium.Core
         public static Mod gameTerrariaMod;
         //BOSSES
         public static bool downedLad;
-        public static Condition DownedLad = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLad"), () => downedLad);
+        public static Condition DownedLad = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLad"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Lad]);
         public static bool downedHornlitz;
-        public static Condition DownedHornlitz = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHornlitz"), () => downedHornlitz);
+        public static Condition DownedHornlitz = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHornlitz"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Hornlitz]);
         public static bool downedSnowDon;
-        public static Condition DownedSnowDon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSnowDon"), () => downedSnowDon);
+        public static Condition DownedSnowDon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSnowDon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SnowDon]);
         public static bool downedStoffie;
-        public static Condition DownedStoffie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStoffie"), () => downedStoffie);
+        public static Condition DownedStoffie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStoffie"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Stoffie]);
 
 
         //GENSOKYO
@@ -637,46 +636,46 @@ namespace QoLCompendium.Core
         public static Mod gensokyoMod;
         //BOSSES
         public static bool downedLilyWhite;
-        public static Condition DownedLilyWhite = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLilyWhite"), () => downedLilyWhite);
+        public static Condition DownedLilyWhite = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLilyWhite"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.LilyWhite]);
         public static bool downedRumia;
-        public static Condition DownedRumia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRumia"), () => downedRumia);
+        public static Condition DownedRumia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRumia"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Rumia]);
         public static bool downedEternityLarva;
-        public static Condition DownedEternityLarva = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEternityLarva"), () => downedEternityLarva);
+        public static Condition DownedEternityLarva = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEternityLarva"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.EternityLarva]);
         public static bool downedNazrin;
-        public static Condition DownedNazrin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNazrin"), () => downedNazrin);
+        public static Condition DownedNazrin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNazrin"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Nazrin]);
         public static bool downedHinaKagiyama;
-        public static Condition DownedHinaKagiyama = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHinaKagiyama"), () => downedHinaKagiyama);
+        public static Condition DownedHinaKagiyama = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHinaKagiyama"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HinaKagiyama]);
         public static bool downedSekibanki;
-        public static Condition DownedSekibanki = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSekibanki"), () => downedSekibanki);
+        public static Condition DownedSekibanki = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSekibanki"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Sekibanki]);
         public static bool downedSeiran;
-        public static Condition DownedSeiran = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSeiran"), () => downedSeiran);
+        public static Condition DownedSeiran = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSeiran"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Seiran]);
         public static bool downedNitoriKawashiro;
-        public static Condition DownedNitoriKawashiro = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNitoriKawashiro"), () => downedNitoriKawashiro);
+        public static Condition DownedNitoriKawashiro = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNitoriKawashiro"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.NitoriKawashiro]);
         public static bool downedMedicineMelancholy;
-        public static Condition DownedMedicineMelancholy = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMedicineMelancholy"), () => downedMedicineMelancholy);
+        public static Condition DownedMedicineMelancholy = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMedicineMelancholy"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MedicineMelancholy]);
         public static bool downedCirno;
-        public static Condition DownedCirno = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCirno"), () => downedCirno);
+        public static Condition DownedCirno = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCirno"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Cirno]);
         public static bool downedMinamitsuMurasa;
-        public static Condition DownedMinamitsuMurasa = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMinamitsuMurasa"), () => downedMinamitsuMurasa);
+        public static Condition DownedMinamitsuMurasa = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMinamitsuMurasa"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MinamitsuMurasa]);
         public static bool downedAliceMargatroid;
-        public static Condition DownedAliceMargatroid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAliceMargatroid"), () => downedAliceMargatroid);
+        public static Condition DownedAliceMargatroid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAliceMargatroid"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AliceMargatroid]);
         public static bool downedSakuyaIzayoi;
-        public static Condition DownedSakuyaIzayoi = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSakuyaIzayoi"), () => downedSakuyaIzayoi);
+        public static Condition DownedSakuyaIzayoi = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSakuyaIzayoi"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SakuyaIzayoi]);
         public static bool downedSeijaKijin;
-        public static Condition DownedSeijaKijin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSeijaKijin"), () => downedSeijaKijin);
+        public static Condition DownedSeijaKijin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSeijaKijin"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SeijaKijin]);
         public static bool downedMayumiJoutouguu;
-        public static Condition DownedMayumiJoutouguu = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMayumiJoutouguu"), () => downedMayumiJoutouguu);
+        public static Condition DownedMayumiJoutouguu = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMayumiJoutouguu"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MayumiJoutouguu]);
         public static bool downedToyosatomimiNoMiko;
-        public static Condition DownedToyosatomimiNoMiko = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedToyosatomimiNoMiko"), () => downedToyosatomimiNoMiko);
+        public static Condition DownedToyosatomimiNoMiko = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedToyosatomimiNoMiko"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ToyosatomimiNoMiko]);
         public static bool downedKaguyaHouraisan;
-        public static Condition DownedKaguyaHouraisan = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKaguyaHouraisan"), () => downedKaguyaHouraisan);
+        public static Condition DownedKaguyaHouraisan = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKaguyaHouraisan"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.KaguyaHouraisan]);
         public static bool downedUtsuhoReiuji;
-        public static Condition DownedUtsuhoReiuji = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedUtsuhoReiuji"), () => downedUtsuhoReiuji);
+        public static Condition DownedUtsuhoReiuji = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedUtsuhoReiuji"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.UtsuhoReiuji]);
         public static bool downedTenshiHinanawi;
-        public static Condition DownedTenshiHinanawi = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTenshiHinanawi"), () => downedTenshiHinanawi);
+        public static Condition DownedTenshiHinanawi = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTenshiHinanawi"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TenshiHinanawi]);
         //MINIBOSSES
         public static bool downedKisume;
-        public static Condition DownedKisume = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKisume"), () => downedKisume);
+        public static Condition DownedKisume = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKisume"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Kisume]);
 
 
         //GMR
@@ -684,13 +683,13 @@ namespace QoLCompendium.Core
         public static Mod gerdsLabMod;
         //BOSSES
         public static bool downedTrerios;
-        public static Condition DownedTrerios = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTrerios"), () => downedTrerios);
+        public static Condition DownedTrerios = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTrerios"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Trerios]);
         public static bool downedMagmaEye;
-        public static Condition DownedMagmaEye = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMagmaEye"), () => downedMagmaEye);
+        public static Condition DownedMagmaEye = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMagmaEye"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MagmaEye]);
         public static bool downedJack;
-        public static Condition DownedJack = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedJack"), () => downedJack);
+        public static Condition DownedJack = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedJack"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Jack]);
         public static bool downedAcheron;
-        public static Condition DownedAcheron = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAcheron"), () => downedAcheron);
+        public static Condition DownedAcheron = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAcheron"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Acheron]);
 
 
         //HEARTBEATARIA
@@ -703,51 +702,51 @@ namespace QoLCompendium.Core
         public static Mod homewardJourneyMod;
         //BOSSES
         public static bool downedMarquisMoonsquid;
-        public static Condition DownedMarquisMoonsquid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMarquisMoonsquid"), () => downedMarquisMoonsquid);
+        public static Condition DownedMarquisMoonsquid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMarquisMoonsquid"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MarquisMoonsquid]);
         public static bool downedPriestessRod;
-        public static Condition DownedPriestessRod = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPriestessRod"), () => downedPriestessRod);
+        public static Condition DownedPriestessRod = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPriestessRod"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PriestessRod]);
         public static bool downedDiver;
-        public static Condition DownedDiver = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDiver"), () => downedDiver);
+        public static Condition DownedDiver = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDiver"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Diver]);
         public static bool downedMotherbrain;
-        public static Condition DownedMotherbrain = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMotherbrain"), () => downedMotherbrain);
+        public static Condition DownedMotherbrain = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMotherbrain"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Motherbrain]);
         public static bool downedWallOfShadow;
-        public static Condition DownedWallOfShadow = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWallOfShadow"), () => downedWallOfShadow);
+        public static Condition DownedWallOfShadow = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWallOfShadow"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.WallOfShadow]);
         public static bool downedSunSlimeGod;
-        public static Condition DownedSunSlimeGod = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSunSlimeGod"), () => downedSunSlimeGod);
+        public static Condition DownedSunSlimeGod = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSunSlimeGod"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SunSlimeGod]);
         public static bool downedOverwatcher;
-        public static Condition DownedOverwatcher = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOverwatcher"), () => downedOverwatcher);
+        public static Condition DownedOverwatcher = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOverwatcher"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Overwatcher]);
         public static bool downedLifebringer;
-        public static Condition DownedLifebringer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLifebringer"), () => downedLifebringer);
+        public static Condition DownedLifebringer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLifebringer"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Lifebringer]);
         public static bool downedMaterealizer;
-        public static Condition DownedMaterealizer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMaterealizer"), () => downedMaterealizer);
+        public static Condition DownedMaterealizer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMaterealizer"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Materealizer]);
         public static bool downedScarabBelief;
-        public static Condition DownedScarabBelief = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedScarabBelief"), () => downedScarabBelief);
+        public static Condition DownedScarabBelief = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedScarabBelief"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ScarabBelief]);
         public static bool downedWorldsEndWhale;
-        public static Condition DownedWorldsEndWhale = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWorldsEndWhale"), () => downedWorldsEndWhale);
+        public static Condition DownedWorldsEndWhale = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWorldsEndWhale"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.WorldsEndWhale]);
         public static bool downedSon;
-        public static Condition DownedSon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSon"), () => downedSon);
+        public static Condition DownedSon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Son]);
         //EVENTS
         public static bool downedCaveOrdeal;
-        public static Condition DownedCaveOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCaveOrdeal"), () => downedCaveOrdeal);
+        public static Condition DownedCaveOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCaveOrdeal"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CaveOrdeal]);
         public static bool downedCorruptOrdeal;
-        public static Condition DownedCorruptOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCorruptOrdeal"), () => downedCorruptOrdeal);
+        public static Condition DownedCorruptOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCorruptOrdeal"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CorruptOrdeal]);
         public static bool downedCrimsonOrdeal;
-        public static Condition DownedCrimsonOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCrimsonOrdeal"), () => downedCrimsonOrdeal);
+        public static Condition DownedCrimsonOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCrimsonOrdeal"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CrimsonOrdeal]);
         public static bool downedDesertOrdeal;
-        public static Condition DownedDesertOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDesertOrdeal"), () => downedDesertOrdeal);
+        public static Condition DownedDesertOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDesertOrdeal"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.DesertOrdeal]);
         public static bool downedForestOrdeal;
-        public static Condition DownedForestOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedForestOrdeal"), () => downedForestOrdeal);
+        public static Condition DownedForestOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedForestOrdeal"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ForestOrdeal]);
         public static bool downedHallowOrdeal;
-        public static Condition DownedHallowOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHallowOrdeal"), () => downedHallowOrdeal);
+        public static Condition DownedHallowOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHallowOrdeal"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HallowOrdeal]);
         public static bool downedJungleOrdeal;
-        public static Condition DownedJungleOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedJungleOrdeal"), () => downedJungleOrdeal);
+        public static Condition DownedJungleOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedJungleOrdeal"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.JungleOrdeal]);
         public static bool downedSkyOrdeal;
-        public static Condition DownedSkyOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSkyOrdeal"), () => downedSkyOrdeal);
+        public static Condition DownedSkyOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSkyOrdeal"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SkyOrdeal]);
         public static bool downedSnowOrdeal;
-        public static Condition DownedSnowOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSnowOrdeal"), () => downedSnowOrdeal);
+        public static Condition DownedSnowOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSnowOrdeal"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SnowOrdeal]);
         public static bool downedUnderworldOrdeal;
-        public static Condition DownedUnderworldOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedUnderworldOrdeal"), () => downedUnderworldOrdeal);
-        public static Condition DownedOrdealAny = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOrdealAny"), () => downedCaveOrdeal || downedCorruptOrdeal || downedCrimsonOrdeal || downedDesertOrdeal || downedForestOrdeal || downedHallowOrdeal || downedJungleOrdeal || downedSkyOrdeal || downedSnowOrdeal || downedUnderworldOrdeal);
+        public static Condition DownedUnderworldOrdeal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedUnderworldOrdeal"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.UnderworldOrdeal]);
+        public static Condition DownedOrdealAny = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOrdealAny"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CaveOrdeal] || ModConditions.DownedBoss[(int)ModConditions.Downed.CorruptOrdeal] || ModConditions.DownedBoss[(int)ModConditions.Downed.CrimsonOrdeal] || ModConditions.DownedBoss[(int)ModConditions.Downed.DesertOrdeal] || ModConditions.DownedBoss[(int)ModConditions.Downed.ForestOrdeal] || ModConditions.DownedBoss[(int)ModConditions.Downed.HallowOrdeal] || ModConditions.DownedBoss[(int)ModConditions.Downed.JungleOrdeal] || ModConditions.DownedBoss[(int)ModConditions.Downed.SkyOrdeal] || ModConditions.DownedBoss[(int)ModConditions.Downed.SnowOrdeal] || ModConditions.DownedBoss[(int)ModConditions.Downed.UnderworldOrdeal]);
         //BIOMES
         public static bool beenToHomewardAbyss;
         public static Condition HasBeenToHomewardAbyss = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToHomewardAbyss"), () => beenToHomewardAbyss);
@@ -758,7 +757,12 @@ namespace QoLCompendium.Core
         public static Mod huntOfTheOldGodMod;
         //BOSSES
         public static bool downedGoozma;
-        public static Condition DownedGoozma = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGoozma"), () => downedGoozma);
+        public static Condition DownedGoozma = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGoozma"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Goozma]);
+
+
+        //INFECTED QUALITIES
+        public static bool infectedQualitiesLoaded;
+        public static Mod infectedQualitiesMod;
 
 
         //INFERNUM
@@ -766,7 +770,7 @@ namespace QoLCompendium.Core
         public static Mod infernumMod;
         //BOSSES
         public static bool downedBereftVassal;
-        public static Condition DownedBereftVassal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBereftVassal"), () => downedBereftVassal);
+        public static Condition DownedBereftVassal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBereftVassal"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BereftVassal]);
         //BIOMES
         public static bool beenToProfanedGardens;
         public static Condition HasBeenToProfanedGardens = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToProfanedGardens"), () => beenToProfanedGardens);
@@ -777,53 +781,58 @@ namespace QoLCompendium.Core
         public static Mod luiAFKMod;
 
 
+        //LUIAFK DLC
+        public static bool luiAFKDLCLoaded;
+        public static Mod luiAFKDLCMod;
+
+
         //LUNAR VEIL
         public static bool lunarVeilLoaded;
         public static Mod lunarVeilMod;
         //BOSSES
         public static bool downedStoneGuardian;
-        public static Condition DownedStoneGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStoneGuardian"), () => downedStoneGuardian);
+        public static Condition DownedStoneGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStoneGuardian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StoneGuardian]);
         public static bool downedCommanderGintzia;
-        public static Condition DownedCommanderGintzia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCommanderGintzia"), () => downedCommanderGintzia);
+        public static Condition DownedCommanderGintzia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCommanderGintzia"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CommanderGintzia]);
         public static bool downedSunStalker;
-        public static Condition DownedSunStalker = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSunStalker"), () => downedSunStalker);
+        public static Condition DownedSunStalker = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSunStalker"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SunStalker]);
         public static bool downedPumpkinJack;
-        public static Condition DownedPumpkinJack = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPumpkinJack"), () => downedPumpkinJack);
+        public static Condition DownedPumpkinJack = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPumpkinJack"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PumpkinJack]);
         public static bool downedForgottenPuppetDaedus;
-        public static Condition DownedForgottenPuppetDaedus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedForgottenPuppetDaedus"), () => downedForgottenPuppetDaedus);
+        public static Condition DownedForgottenPuppetDaedus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedForgottenPuppetDaedus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ForgottenPuppetDaedus]);
         public static bool downedDreadMire;
-        public static Condition DownedDreadMire = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDreadMire"), () => downedDreadMire);
+        public static Condition DownedDreadMire = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDreadMire"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.DreadMire]);
         public static bool downedSingularityFragment;
-        public static Condition DownedSingularityFragment = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSingularityFragment"), () => downedSingularityFragment);
+        public static Condition DownedSingularityFragment = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSingularityFragment"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SingularityFragment]);
         public static bool downedVerlia;
-        public static Condition DownedVerlia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedVerlia"), () => downedVerlia);
+        public static Condition DownedVerlia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedVerlia"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Verlia]);
         public static bool downedIrradia;
-        public static Condition DownedIrradia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedIrradia"), () => downedIrradia);
+        public static Condition DownedIrradia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedIrradia"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Irradia]);
         public static bool downedSylia;
-        public static Condition DownedSylia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSylia"), () => downedSylia);
+        public static Condition DownedSylia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSylia"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Sylia]);
         public static bool downedFenix;
-        public static Condition DownedFenix = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFenix"), () => downedFenix);
+        public static Condition DownedFenix = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFenix"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Fenix]);
         //MINIBOSSES
         public static bool downedBlazingSerpent;
-        public static Condition DownedBlazingSerpent = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBlazingSerpent"), () => downedBlazingSerpent);
+        public static Condition DownedBlazingSerpent = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBlazingSerpent"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BlazingSerpent]);
         public static bool downedCogwork;
-        public static Condition DownedCogwork = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCogwork"), () => downedCogwork);
+        public static Condition DownedCogwork = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCogwork"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Cogwork]);
         public static bool downedWaterCogwork;
-        public static Condition DownedWaterCogwork = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWaterCogwork"), () => downedWaterCogwork);
+        public static Condition DownedWaterCogwork = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWaterCogwork"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.WaterCogwork]);
         public static bool downedWaterJellyfish;
-        public static Condition DownedWaterJellyfish = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWaterJellyfish"), () => downedWaterJellyfish);
+        public static Condition DownedWaterJellyfish = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWaterJellyfish"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.WaterJellyfish]);
         public static bool downedSparn;
-        public static Condition DownedSparn = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSparn"), () => downedSparn);
+        public static Condition DownedSparn = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSparn"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Sparn]);
         public static bool downedPandorasFlamebox;
-        public static Condition DownedPandorasFlamebox = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPandorasFlamebox"), () => downedPandorasFlamebox);
+        public static Condition DownedPandorasFlamebox = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPandorasFlamebox"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PandorasFlamebox]);
         public static bool downedSTARBOMBER;
-        public static Condition DownedSTARBOMBER = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSTARBOMBER"), () => downedSTARBOMBER);
-        public static Condition DownedWaterJellyfishOrWaterCogwork = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWaterJellyfishOrWaterCogwork"), () => downedWaterCogwork || downedWaterJellyfish);
-        public static Condition DownedCogworkOrSparn = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCogworkOrSparn"), () => downedCogwork || downedSparn);
-        public static Condition DownedBlazingSerpentOrPandorasFlamebox = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBlazingSerpentOrPandorasFlamebox"), () => downedBlazingSerpent || downedPandorasFlamebox);
+        public static Condition DownedSTARBOMBER = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSTARBOMBER"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.STARBOMBER]);
+        public static Condition DownedWaterJellyfishOrWaterCogwork = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWaterJellyfishOrWaterCogwork"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.WaterCogwork] || ModConditions.DownedBoss[(int)ModConditions.Downed.WaterJellyfish]);
+        public static Condition DownedCogworkOrSparn = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCogworkOrSparn"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Cogwork] || ModConditions.DownedBoss[(int)ModConditions.Downed.Sparn]);
+        public static Condition DownedBlazingSerpentOrPandorasFlamebox = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBlazingSerpentOrPandorasFlamebox"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BlazingSerpent] || ModConditions.DownedBoss[(int)ModConditions.Downed.PandorasFlamebox]);
         //EVENTS
         public static bool downedGintzeArmy;
-        public static Condition DownedGintzeArmy = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGintzeArmy"), () => downedGintzeArmy);
+        public static Condition DownedGintzeArmy = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGintzeArmy"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GintzeArmy]);
         //BIOMES
         public static bool beenToLunarVeilAbyss;
         public static Condition HasBeenToLunarVeilAbyss = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToLunarVeilAbyss"), () => beenToLunarVeilAbyss);
@@ -852,19 +861,19 @@ namespace QoLCompendium.Core
         public static bool martainsOrderLoaded;
         public static Mod martainsOrderMod;
         public static bool downedBritzz;
-        public static Condition DownedBritzz = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBritzz"), () => downedBritzz);
+        public static Condition DownedBritzz = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBritzz"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Britzz]);
         public static bool downedTheAlchemist;
-        public static Condition DownedTheAlchemist = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTheAlchemist"), () => downedTheAlchemist);
+        public static Condition DownedTheAlchemist = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTheAlchemist"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TheAlchemist]);
         public static bool downedCarnagePillar;
-        public static Condition DownedCarnagePillar = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCarnagePillar"), () => downedCarnagePillar);
+        public static Condition DownedCarnagePillar = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCarnagePillar"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CarnagePillar]);
         public static bool downedVoidDigger;
-        public static Condition DownedVoidDigger = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedVoidDigger"), () => downedVoidDigger);
+        public static Condition DownedVoidDigger = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedVoidDigger"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.VoidDigger]);
         public static bool downedPrinceSlime;
-        public static Condition DownedPrinceSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPrinceSlime"), () => downedPrinceSlime);
+        public static Condition DownedPrinceSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPrinceSlime"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PrinceSlime]);
         public static bool downedTriplets;
-        public static Condition DownedTriplets = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTriplets"), () => downedTriplets);
+        public static Condition DownedTriplets = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTriplets"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Triplets]);
         public static bool downedJungleDefenders;
-        public static Condition DownedJungleDefenders = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedJungleDefenders"), () => downedJungleDefenders);
+        public static Condition DownedJungleDefenders = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedJungleDefenders"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.JungleDefenders]);
 
 
         //MECH REWORK
@@ -872,13 +881,13 @@ namespace QoLCompendium.Core
         public static Mod mechReworkMod;
         //BOSSES
         public static bool downedSt4sys;
-        public static Condition DownedSt4sys = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSt4sys"), () => downedSt4sys);
+        public static Condition DownedSt4sys = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSt4sys"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.St4sys]);
         public static bool downedTerminator;
-        public static Condition DownedTerminator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTerminator"), () => downedTerminator);
+        public static Condition DownedTerminator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTerminator"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Terminator]);
         public static bool downedCaretaker;
-        public static Condition DownedCaretaker = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCaretaker"), () => downedCaretaker);
+        public static Condition DownedCaretaker = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCaretaker"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Caretaker]);
         public static bool downedSiegeEngine;
-        public static Condition DownedSiegeEngine = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSiegeEngine"), () => downedSiegeEngine);
+        public static Condition DownedSiegeEngine = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSiegeEngine"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SiegeEngine]);
 
 
         //MEDIAL RIFT
@@ -886,7 +895,7 @@ namespace QoLCompendium.Core
         public static Mod medialRiftMod;
         //BOSSES
         public static bool downedSuperVoltaicMotherSlime;
-        public static Condition DownedSuperVoltaicMotherSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSuperVoltaicMotherSlime"), () => downedSuperVoltaicMotherSlime);
+        public static Condition DownedSuperVoltaicMotherSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSuperVoltaicMotherSlime"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SuperVMS]);
 
 
         //METROID MOD
@@ -894,19 +903,19 @@ namespace QoLCompendium.Core
         public static Mod metroidMod;
         //BOSSES
         public static bool downedTorizo;
-        public static Condition DownedTorizo = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTorizo"), () => downedTorizo);
+        public static Condition DownedTorizo = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTorizo"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Torizo]);
         public static bool downedSerris;
-        public static Condition DownedSerris = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSerris"), () => downedSerris);
+        public static Condition DownedSerris = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSerris"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Serris]);
         public static bool downedKraid;
-        public static Condition DownedKraid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKraid"), () => downedKraid);
+        public static Condition DownedKraid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKraid"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Kraid]);
         public static bool downedPhantoon;
-        public static Condition DownedPhantoon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPhantoon"), () => downedPhantoon);
+        public static Condition DownedPhantoon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPhantoon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Phantoon]);
         public static bool downedOmegaPirate;
-        public static Condition DownedOmegaPirate = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOmegaPirate"), () => downedOmegaPirate);
+        public static Condition DownedOmegaPirate = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOmegaPirate"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OmegaPirate]);
         public static bool downedNightmare;
-        public static Condition DownedNightmare = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNightmare"), () => downedNightmare);
+        public static Condition DownedNightmare = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNightmare"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Nightmare]);
         public static bool downedGoldenTorizo;
-        public static Condition DownedGoldenTorizo = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGoldenTorizo"), () => downedGoldenTorizo);
+        public static Condition DownedGoldenTorizo = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGoldenTorizo"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GoldenTorizo]);
 
 
         //MOOMOO'S ULTIMATE YOYO REVAMP
@@ -929,11 +938,11 @@ namespace QoLCompendium.Core
         public static Mod ophioidMod;
         //BOSSES
         public static bool downedOphiopede;
-        public static Condition DownedOphiopede = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOphiopede"), () => downedOphiopede);
+        public static Condition DownedOphiopede = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOphiopede"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Ophiopede]);
         public static bool downedOphiocoon;
-        public static Condition DownedOphiocoon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOphiocoon"), () => downedOphiocoon);
+        public static Condition DownedOphiocoon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOphiocoon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Ophiocoon]);
         public static bool downedOphiofly;
-        public static Condition DownedOphiofly = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOphiofly"), () => downedOphiofly);
+        public static Condition DownedOphiofly = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOphiofly"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Ophiofly]);
 
 
         //POLARITIES
@@ -941,17 +950,17 @@ namespace QoLCompendium.Core
         public static Mod polaritiesMod;
         //BOSSES
         public static bool downedStormCloudfish;
-        public static Condition DownedStormCloudfish = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStormCloudfish"), () => downedStormCloudfish);
+        public static Condition DownedStormCloudfish = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStormCloudfish"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StormCloudfish]);
         public static bool downedStarConstruct;
-        public static Condition DownedStarConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStarConstruct"), () => downedStarConstruct);
+        public static Condition DownedStarConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStarConstruct"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StarConstruct]);
         public static bool downedGigabat;
-        public static Condition DownedGigabat = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGigabat"), () => downedGigabat);
+        public static Condition DownedGigabat = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGigabat"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Gigabat]);
         public static bool downedSunPixie;
-        public static Condition DownedSunPixie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSunPixie"), () => downedSunPixie);
+        public static Condition DownedSunPixie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSunPixie"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SunPixie]);
         public static bool downedEsophage;
-        public static Condition DownedEsophage = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEsophage"), () => downedEsophage);
+        public static Condition DownedEsophage = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEsophage"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Esophage]);
         public static bool downedConvectiveWanderer;
-        public static Condition DownedConvectiveWanderer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedConvectiveWanderer"), () => downedConvectiveWanderer);
+        public static Condition DownedConvectiveWanderer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedConvectiveWanderer"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ConvectiveWanderer]);
 
 
         //PROJECT ZERO
@@ -959,17 +968,17 @@ namespace QoLCompendium.Core
         public static Mod projectZeroMod;
         //BOSSES
         public static bool downedForestGuardian;
-        public static Condition DownedForestGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedForestGuardian"), () => downedForestGuardian);
+        public static Condition DownedForestGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedForestGuardian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ForestGuardian]);
         public static bool downedCryoGuardian;
-        public static Condition DownedCryoGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCryoGuardian"), () => downedCryoGuardian);
+        public static Condition DownedCryoGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCryoGuardian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CryoGuardian]);
         public static bool downedPrimordialWorm;
-        public static Condition DownedPrimordialWorm = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPrimordialWorm"), () => downedPrimordialWorm);
+        public static Condition DownedPrimordialWorm = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPrimordialWorm"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PrimordialWorm]);
         public static bool downedTheGuardianOfHell;
-        public static Condition DownedTheGuardianOfHell = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTheGuardianOfHell"), () => downedTheGuardianOfHell);
+        public static Condition DownedTheGuardianOfHell = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTheGuardianOfHell"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TheGuardianOfHell]);
         public static bool downedVoid;
-        public static Condition DownedVoid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedVoid"), () => downedVoid);
+        public static Condition DownedVoid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedVoid"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Void]);
         public static bool downedArmagem;
-        public static Condition DownedArmagem = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedArmagem"), () => downedArmagem);
+        public static Condition DownedArmagem = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedArmagem"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Armagem]);
 
 
         //QWERTY
@@ -977,36 +986,41 @@ namespace QoLCompendium.Core
         public static Mod qwertyMod;
         //BOSSES
         public static bool downedPolarExterminator;
-        public static Condition DownedPolarExterminator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPolarExterminator"), () => downedPolarExterminator);
+        public static Condition DownedPolarExterminator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPolarExterminator"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PolarExterminator]);
         public static bool downedDivineLight;
-        public static Condition DownedDivineLight = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDivineLight"), () => downedDivineLight);
+        public static Condition DownedDivineLight = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDivineLight"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.DivineLight]);
         public static bool downedAncientMachine;
-        public static Condition DownedAncientMachine = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientMachine"), () => downedAncientMachine);
+        public static Condition DownedAncientMachine = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientMachine"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AncientMachine]);
         public static bool downedNoehtnap;
-        public static Condition DownedNoehtnap = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNoehtnap"), () => downedNoehtnap);
+        public static Condition DownedNoehtnap = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNoehtnap"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Noehtnap]);
         public static bool downedHydra;
-        public static Condition DownedHydra = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHydra"), () => downedHydra);
+        public static Condition DownedHydra = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHydra"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Hydra]);
         public static bool downedImperious;
-        public static Condition DownedImperious = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedImperious"), () => downedImperious);
+        public static Condition DownedImperious = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedImperious"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Imperious]);
         public static bool downedRuneGhost;
-        public static Condition DownedRuneGhost = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRuneGhost"), () => downedRuneGhost);
+        public static Condition DownedRuneGhost = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRuneGhost"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.RuneGhost]);
         public static bool downedInvaderBattleship;
-        public static Condition DownedInvaderBattleship = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInvaderBattleship"), () => downedInvaderBattleship);
+        public static Condition DownedInvaderBattleship = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInvaderBattleship"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.InvaderBattleship]);
         public static bool downedInvaderNoehtnap;
-        public static Condition DownedInvaderNoehtnap = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInvaderNoehtnap"), () => downedInvaderNoehtnap);
+        public static Condition DownedInvaderNoehtnap = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInvaderNoehtnap"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.InvaderNoehtnap]);
         public static bool downedOLORD;
-        public static Condition DownedOLORD = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOLORD"), () => downedOLORD);
+        public static Condition DownedOLORD = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOLORD"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OLORD]);
         //MINIBOSSES
         public static bool downedGreatTyrannosaurus;
-        public static Condition DownedGreatTyrannosaurus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGreatTyrannosaurus"), () => downedGreatTyrannosaurus);
+        public static Condition DownedGreatTyrannosaurus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGreatTyrannosaurus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GreatTyrannosaurus]);
         //EVENTS
         public static bool downedDinoMilitia;
-        public static Condition DownedDinoMilitia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDinoMilitia"), () => downedDinoMilitia);
+        public static Condition DownedDinoMilitia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDinoMilitia"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.DinoMilitia]);
         public static bool downedInvaders;
-        public static Condition DownedInvaders = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInvaders"), () => downedInvaders);
+        public static Condition DownedInvaders = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInvaders"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Invaders]);
         //BIOMES
         public static bool beenToSkyFortress;
         public static Condition HasBeenToSkyFortress = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToSkyFortress"), () => beenToSkyFortress);
+
+
+        //RAGNAROK
+        public static bool ragnarokLoaded;
+        public static Mod ragnarokMod;
 
 
         //REDEMPTION
@@ -1014,59 +1028,59 @@ namespace QoLCompendium.Core
         public static Mod redemptionMod;
         //BOSSES
         public static bool downedThorn;
-        public static Condition DownedThorn = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedThorn"), () => downedThorn);
+        public static Condition DownedThorn = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedThorn"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Thorn]);
         public static bool downedErhan;
-        public static Condition DownedErhan = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedErhan"), () => downedErhan);
+        public static Condition DownedErhan = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedErhan"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Erhan]);
         public static bool downedKeeper;
-        public static Condition DownedKeeper = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKeeper"), () => downedKeeper);
+        public static Condition DownedKeeper = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKeeper"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Keeper]);
         public static bool downedSeedOfInfection;
-        public static Condition DownedSeedOfInfection = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSeedOfInfection"), () => downedSeedOfInfection);
+        public static Condition DownedSeedOfInfection = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSeedOfInfection"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SeedOfInfection]);
         public static bool downedKingSlayerIII;
-        public static Condition DownedKingSlayerIII = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKingSlayerIII"), () => downedKingSlayerIII);
+        public static Condition DownedKingSlayerIII = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKingSlayerIII"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.KingSlayerIII]);
         public static bool downedOmegaCleaver;
-        public static Condition DownedOmegaCleaver = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOmegaCleaver"), () => downedOmegaCleaver);
+        public static Condition DownedOmegaCleaver = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOmegaCleaver"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OmegaCleaver]);
         public static bool downedOmegaGigapora;
-        public static Condition DownedOmegaGigapora = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOmegaGigapora"), () => downedOmegaGigapora);
+        public static Condition DownedOmegaGigapora = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOmegaGigapora"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OmegaGigapora]);
         public static bool downedOmegaObliterator;
-        public static Condition DownedOmegaObliterator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOmegaObliterator"), () => downedOmegaObliterator);
+        public static Condition DownedOmegaObliterator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOmegaObliterator"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OmegaObliterator]);
         public static bool downedPatientZero;
-        public static Condition DownedPatientZero = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPatientZero"), () => downedPatientZero);
+        public static Condition DownedPatientZero = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPatientZero"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PatientZero]);
         public static bool downedAkka;
-        public static Condition DownedAkka = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAkka"), () => downedAkka);
+        public static Condition DownedAkka = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAkka"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Akka]);
         public static bool downedUkko;
-        public static Condition DownedUkko = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedUkko"), () => downedUkko);
+        public static Condition DownedUkko = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedUkko"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Ukko]);
         public static bool downedAncientDeityDuo;
-        public static Condition DownedAncientDeityDuo = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientDeityDuo"), () => downedAncientDeityDuo);
+        public static Condition DownedAncientDeityDuo = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientDeityDuo"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AncientDeityDuo]);
         public static bool downedNebuleus;
-        public static Condition DownedNebuleus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNebuleus"), () => downedNebuleus);
+        public static Condition DownedNebuleus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNebuleus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Nebuleus]);
         //MINIBOSSES
         public static bool downedFowlEmperor;
-        public static Condition DownedFowlEmperor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFowlEmperor"), () => downedFowlEmperor);
+        public static Condition DownedFowlEmperor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFowlEmperor"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.FowlEmperor]);
         public static bool downedCockatrice;
-        public static Condition DownedCockatrice = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCockatrice"), () => downedCockatrice);
+        public static Condition DownedCockatrice = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCockatrice"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Cockatrice]);
         public static bool downedBasan;
-        public static Condition DownedBasan = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBasan"), () => downedBasan);
+        public static Condition DownedBasan = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBasan"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Basan]);
         public static bool downedSkullDigger;
-        public static Condition DownedSkullDigger = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSkullDigger"), () => downedSkullDigger);
+        public static Condition DownedSkullDigger = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSkullDigger"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SkullDigger]);
         public static bool downedEaglecrestGolem;
-        public static Condition DownedEaglecrestGolem = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEaglecrestGolem"), () => downedEaglecrestGolem);
+        public static Condition DownedEaglecrestGolem = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEaglecrestGolem"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.EaglecrestGolem]);
         public static bool downedCalavia;
-        public static Condition DownedCalavia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCalavia"), () => downedCalavia);
+        public static Condition DownedCalavia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCalavia"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Calavia]);
         public static bool downedTheJanitor;
-        public static Condition DownedTheJanitor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTheJanitor"), () => downedTheJanitor);
+        public static Condition DownedTheJanitor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTheJanitor"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TheJanitor]);
         public static bool downedIrradiatedBehemoth;
-        public static Condition DownedIrradiatedBehemoth = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedIrradiatedBehemoth"), () => downedIrradiatedBehemoth);
+        public static Condition DownedIrradiatedBehemoth = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedIrradiatedBehemoth"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.IrradiatedBehemoth]);
         public static bool downedBlisterface;
-        public static Condition DownedBlisterface = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBlisterface"), () => downedBlisterface);
+        public static Condition DownedBlisterface = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBlisterface"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Blisterface]);
         public static bool downedProtectorVolt;
-        public static Condition DownedProtectorVolt = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedProtectorVolt"), () => downedProtectorVolt);
+        public static Condition DownedProtectorVolt = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedProtectorVolt"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ProtectorVolt]);
         public static bool downedMACEProject;
-        public static Condition DownedMACEProject = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMACEProject"), () => downedMACEProject);
+        public static Condition DownedMACEProject = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMACEProject"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MACEProject]);
         //EVENTS
         public static bool downedFowlMorning;
-        public static Condition DownedFowlMorning = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFowlMorning"), () => downedFowlMorning);
+        public static Condition DownedFowlMorning = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFowlMorning"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.FowlMorning]);
         public static bool downedRaveyard;
-        public static Condition DownedRaveyard = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRaveyard"), () => downedRaveyard);
+        public static Condition DownedRaveyard = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRaveyard"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Raveyard]);
         //BIOMES
         public static bool beenToLab;
         public static Condition HasBeenToLab = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToLab"), () => beenToLab);
@@ -1084,57 +1098,62 @@ namespace QoLCompendium.Core
         public static Mod remnantsMod;
 
 
+        //RUPTURE
+        public static bool ruptureLoaded;
+        public static Mod ruptureMod;
+
+
         //SECRETS OF THE SHADOWS
         public static bool secretsOfTheShadowsLoaded;
         public static Mod secretsOfTheShadowsMod;
         //BOSSES
         public static bool downedPutridPinky;
-        public static Condition DownedPutridPinky = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPutridPinky"), () => downedPutridPinky);
+        public static Condition DownedPutridPinky = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPutridPinky"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PutridPinky]);
         public static bool downedGlowmoth;
-        public static Condition DownedGlowmoth = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGlowmoth"), () => downedGlowmoth);
+        public static Condition DownedGlowmoth = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGlowmoth"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Glowmoth]);
         public static bool downedPharaohsCurse;
-        public static Condition DownedPharaohsCurse = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPharaohsCurse"), () => downedPharaohsCurse);
+        public static Condition DownedPharaohsCurse = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPharaohsCurse"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PharaohsCurse]);
         public static bool downedAdvisor;
-        public static Condition DownedAdvisor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAdvisor"), () => downedAdvisor);
+        public static Condition DownedAdvisor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAdvisor"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Advisor]);
         public static bool downedPolaris;
-        public static Condition DownedPolaris = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPolaris"), () => downedPolaris);
+        public static Condition DownedPolaris = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPolaris"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Polaris]);
         public static bool downedLux;
-        public static Condition DownedLux = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLux"), () => downedLux);
+        public static Condition DownedLux = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLux"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Lux]);
         public static bool downedSubspaceSerpent;
-        public static Condition DownedSubspaceSerpent = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSubspaceSerpent"), () => downedSubspaceSerpent);
+        public static Condition DownedSubspaceSerpent = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSubspaceSerpent"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SubspaceSerpent]);
         //MINIBOSSES
         public static bool downedNatureConstruct;
-        public static Condition DownedNatureConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNatureConstruct"), () => downedNatureConstruct);
+        public static Condition DownedNatureConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNatureConstruct"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.NatureConstruct]);
         public static bool downedEarthenConstruct;
-        public static Condition DownedEarthenConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEarthenConstruct"), () => downedEarthenConstruct);
+        public static Condition DownedEarthenConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEarthenConstruct"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.EarthenConstruct]);
         public static bool downedPermafrostConstruct;
-        public static Condition DownedPermafrostConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPermafrostConstruct"), () => downedPermafrostConstruct);
+        public static Condition DownedPermafrostConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPermafrostConstruct"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PermafrostConstruct]);
         public static bool downedTidalConstruct;
-        public static Condition DownedTidalConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTidalConstruct"), () => downedTidalConstruct);
+        public static Condition DownedTidalConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTidalConstruct"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TidalConstruct]);
         public static bool downedOtherworldlyConstruct;
-        public static Condition DownedOtherworldlyConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOtherworldlyConstruct"), () => downedOtherworldlyConstruct);
+        public static Condition DownedOtherworldlyConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOtherworldlyConstruct"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OtherworldlyConstruct]);
         public static bool downedEvilConstruct;
-        public static Condition DownedEvilConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEvilConstruct"), () => downedEvilConstruct);
+        public static Condition DownedEvilConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEvilConstruct"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.EvilConstruct]);
         public static bool downedInfernoConstruct;
-        public static Condition DownedInfernoConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInfernoConstruct"), () => downedInfernoConstruct);
+        public static Condition DownedInfernoConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInfernoConstruct"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.InfernoConstruct]);
         public static bool downedChaosConstruct;
-        public static Condition DownedChaosConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedChaosConstruct"), () => downedChaosConstruct);
+        public static Condition DownedChaosConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedChaosConstruct"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ChaosConstruct]);
         public static bool downedNatureSpirit;
-        public static Condition DownedNatureSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNatureSpirit"), () => downedNatureSpirit);
+        public static Condition DownedNatureSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNatureSpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.NatureSpirit]);
         public static bool downedEarthenSpirit;
-        public static Condition DownedEarthenSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEarthenSpirit"), () => downedEarthenSpirit);
+        public static Condition DownedEarthenSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEarthenSpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.EarthenSpirit]);
         public static bool downedPermafrostSpirit;
-        public static Condition DownedPermafrostSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPermafrostSpirit"), () => downedPermafrostSpirit);
+        public static Condition DownedPermafrostSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPermafrostSpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PermafrostSpirit]);
         public static bool downedTidalSpirit;
-        public static Condition DownedTidalSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTidalSpirit"), () => downedTidalSpirit);
+        public static Condition DownedTidalSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTidalSpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TidalSpirit]);
         public static bool downedOtherworldlySpirit;
-        public static Condition DownedOtherworldlySpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOtherworldlySpirit"), () => downedOtherworldlySpirit);
+        public static Condition DownedOtherworldlySpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOtherworldlySpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OtherworldlySpirit]);
         public static bool downedEvilSpirit;
-        public static Condition DownedEvilSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEvilSpirit"), () => downedEvilSpirit);
+        public static Condition DownedEvilSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEvilSpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.EvilSpirit]);
         public static bool downedInfernoSpirit;
-        public static Condition DownedInfernoSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInfernoSpirit"), () => downedInfernoSpirit);
+        public static Condition DownedInfernoSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInfernoSpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.InfernoSpirit]);
         public static bool downedChaosSpirit;
-        public static Condition DownedChaosSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedChaosSpirit"), () => downedChaosSpirit);
+        public static Condition DownedChaosSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedChaosSpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ChaosSpirit]);
         //BIOMES
         public static bool beenToPyramid;
         public static Condition HasBeenToPyramid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToPyramid"), () => beenToPyramid);
@@ -1147,29 +1166,29 @@ namespace QoLCompendium.Core
         public static Mod shadowsOfAbaddonMod;
         //BOSSES
         public static bool downedDecree;
-        public static Condition DownedDecree = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDecree"), () => downedDecree);
+        public static Condition DownedDecree = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDecree"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Decree]);
         public static bool downedFlamingPumpkin;
-        public static Condition DownedFlamingPumpkin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFlamingPumpkin"), () => downedFlamingPumpkin);
+        public static Condition DownedFlamingPumpkin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFlamingPumpkin"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.FlamingPumpkin]);
         public static bool downedZombiePiglinBrute;
-        public static Condition DownedZombiePiglinBrute = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedZombiePiglinBrute"), () => downedZombiePiglinBrute);
+        public static Condition DownedZombiePiglinBrute = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedZombiePiglinBrute"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ZombiePiglinBrute]);
         public static bool downedJensenTheGrandHarpy;
-        public static Condition DownedJensenTheGrandHarpy = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedJensenTheGrandHarpy"), () => downedJensenTheGrandHarpy);
+        public static Condition DownedJensenTheGrandHarpy = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedJensenTheGrandHarpy"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.JensenTheGrandHarpy]);
         public static bool downedAraneas;
-        public static Condition DownedAraneas = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAraneas"), () => downedAraneas);
+        public static Condition DownedAraneas = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAraneas"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Araneas]);
         public static bool downedHarpyQueenRaynare;
-        public static Condition DownedHarpyQueenRaynare = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHarpyQueenRaynare"), () => downedHarpyQueenRaynare);
+        public static Condition DownedHarpyQueenRaynare = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHarpyQueenRaynare"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HarpyQueenRaynare]);
         public static bool downedPrimordia;
-        public static Condition DownedPrimordia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPrimordia"), () => downedPrimordia);
+        public static Condition DownedPrimordia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPrimordia"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Primordia]);
         public static bool downedAbaddon;
-        public static Condition DownedAbaddon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAbaddon"), () => downedAbaddon);
+        public static Condition DownedAbaddon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAbaddon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Abaddon]);
         public static bool downedAraghur;
-        public static Condition DownedAraghur = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAraghur"), () => downedAraghur);
+        public static Condition DownedAraghur = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAraghur"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Araghur]);
         public static bool downedLostSiblings;
-        public static Condition DownedLostSiblings = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLostSiblings"), () => downedLostSiblings);
+        public static Condition DownedLostSiblings = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLostSiblings"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.LostSiblings]);
         public static bool downedErazor;
-        public static Condition DownedErazor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedErazor"), () => downedErazor);
+        public static Condition DownedErazor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedErazor"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Erazor]);
         public static bool downedNihilus;
-        public static Condition DownedNihilus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNihilus"), () => downedNihilus);
+        public static Condition DownedNihilus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNihilus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Nihilus]);
         //BIOMES
         public static bool beenToCinderForest;
         public static Condition HasBeenToCinderForest = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToCinderForest"), () => beenToCinderForest);
@@ -1180,7 +1199,7 @@ namespace QoLCompendium.Core
         public static Mod sloomeMod;
         //BOSSES
         public static bool downedExodygen;
-        public static Condition DownedExodygen = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedExodygen"), () => downedExodygen);
+        public static Condition DownedExodygen = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedExodygen"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Exodygen]);
 
 
         //SPIRIT
@@ -1188,30 +1207,30 @@ namespace QoLCompendium.Core
         public static Mod spiritMod;
         //BOSSES
         public static bool downedScarabeus;
-        public static Condition DownedScarabeus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedScarabeus"), () => downedScarabeus);
+        public static Condition DownedScarabeus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedScarabeus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Scarabeus]);
         public static bool downedMoonJellyWizard;
-        public static Condition DownedMoonJellyWizard = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMoonJellyWizard"), () => downedMoonJellyWizard);
+        public static Condition DownedMoonJellyWizard = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMoonJellyWizard"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MoonJellyWizard]);
         public static bool downedVinewrathBane;
-        public static Condition DownedVinewrathBane = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedVinewrathBane"), () => downedVinewrathBane);
+        public static Condition DownedVinewrathBane = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedVinewrathBane"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.VinewrathBane]);
         public static bool downedAncientAvian;
-        public static Condition DownedAncientAvian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientAvian"), () => downedAncientAvian);
+        public static Condition DownedAncientAvian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientAvian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AncientAvian]);
         public static bool downedStarplateVoyager;
-        public static Condition DownedStarplateVoyager = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStarplateVoyager"), () => downedStarplateVoyager);
+        public static Condition DownedStarplateVoyager = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStarplateVoyager"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StarplateVoyager]);
         public static bool downedInfernon;
-        public static Condition DownedInfernon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInfernon"), () => downedInfernon);
+        public static Condition DownedInfernon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInfernon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Infernon]);
         public static bool downedDusking;
-        public static Condition DownedDusking = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDusking"), () => downedDusking);
+        public static Condition DownedDusking = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDusking"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Dusking]);
         public static bool downedAtlas;
-        public static Condition DownedAtlas = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAtlas"), () => downedAtlas);
+        public static Condition DownedAtlas = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAtlas"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Atlas]);
         //EVENTS
         public bool waitForJellyDeluge;
         public static bool downedJellyDeluge;
-        public static Condition DownedJellyDeluge = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedJellyDeluge"), () => downedJellyDeluge);
+        public static Condition DownedJellyDeluge = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedJellyDeluge"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.JellyDeluge]);
         public static bool downedTide;
-        public static Condition DownedTide = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTide"), () => downedTide);
+        public static Condition DownedTide = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTide"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Tide]);
         public bool waitForMysticMoon;
         public static bool downedMysticMoon;
-        public static Condition DownedMysticMoon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMysticMoon"), () => downedMysticMoon);
+        public static Condition DownedMysticMoon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMysticMoon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MysticMoon]);
         //BIOMES
         public static bool beenToBriar;
         public static Condition HasBeenToBriar = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToBriar"), () => beenToBriar);
@@ -1224,19 +1243,19 @@ namespace QoLCompendium.Core
         public static Mod spookyMod;
         //BOSSES
         public static bool downedSpookySpirit;
-        public static Condition DownedSpookySpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSpookySpirit"), () => downedSpookySpirit);
+        public static Condition DownedSpookySpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSpookySpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SpookySpirit]);
         public static bool downedRotGourd;
-        public static Condition DownedRotGourd = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRotGourd"), () => downedRotGourd);
+        public static Condition DownedRotGourd = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRotGourd"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.RotGourd]);
         public static bool downedMoco;
-        public static Condition DownedMoco = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMoco"), () => downedMoco);
+        public static Condition DownedMoco = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMoco"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Moco]);
         public static bool downedDaffodil;
-        public static Condition DownedDaffodil = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDaffodil"), () => downedDaffodil);
+        public static Condition DownedDaffodil = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDaffodil"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Daffodil]);
         public static bool downedOrroBoro;
         public static bool downedOrro;
         public static bool downedBoro;
-        public static Condition DownedOrroBoro = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOrroBoro"), () => downedOrroBoro);
+        public static Condition DownedOrroBoro = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOrroBoro"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OrroBoro]);
         public static bool downedBigBone;
-        public static Condition DownedBigBone = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBigBone"), () => downedBigBone);
+        public static Condition DownedBigBone = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBigBone"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BigBone]);
         //BIOMES
         public static bool beenToSpookyForest;
         public static Condition HasBeenToSpookyForest = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToSpookyForest"), () => beenToSpookyForest);
@@ -1257,12 +1276,12 @@ namespace QoLCompendium.Core
         public static Mod starlightRiverMod;
         //BOSSES
         public static bool downedAuroracle;
-        public static Condition DownedAuroracle = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAuroracle"), () => downedAuroracle);
+        public static Condition DownedAuroracle = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAuroracle"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Auroracle]);
         public static bool downedCeiros;
-        public static Condition DownedCeiros = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCeiros"), () => downedCeiros);
+        public static Condition DownedCeiros = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCeiros"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Ceiros]);
         //MINIBOSSES
         public static bool downedGlassweaver;
-        public static Condition DownedGlassweaver = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGlassweaver"), () => downedGlassweaver);
+        public static Condition DownedGlassweaver = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGlassweaver"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Glassweaver]);
         //BIOMES
         public static bool beenToAuroracleTemple;
         public static Condition HasBeenToAuroracleTemple = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAuroracleTemple"), () => beenToAuroracleTemple);
@@ -1303,11 +1322,11 @@ namespace QoLCompendium.Core
         public static Mod stormsAdditionsMod;
         //BOSSES
         public static bool downedAncientHusk;
-        public static Condition DownedAncientHusk = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientHusk"), () => downedAncientHusk);
+        public static Condition DownedAncientHusk = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientHusk"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AncientHusk]);
         public static bool downedOverloadedScandrone;
-        public static Condition DownedOverloadedScandrone = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOverloadedScandrone"), () => downedOverloadedScandrone);
+        public static Condition DownedOverloadedScandrone = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOverloadedScandrone"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OverloadedScandrone]);
         public static bool downedPainbringer;
-        public static Condition DownedPainbringer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPainbringer"), () => downedPainbringer);
+        public static Condition DownedPainbringer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPainbringer"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Painbringer]);
 
 
         //STRAMS CLASSES
@@ -1320,14 +1339,14 @@ namespace QoLCompendium.Core
         public static Mod supernovaMod;
         //BOSSES
         public static bool downedHarbingerOfAnnihilation;
-        public static Condition DownedHarbingerOfAnnihilation = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHarbingerOfAnnihilation"), () => downedHarbingerOfAnnihilation);
+        public static Condition DownedHarbingerOfAnnihilation = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHarbingerOfAnnihilation"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HarbingerOfAnnihilation]);
         public static bool downedFlyingTerror;
-        public static Condition DownedFlyingTerror = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFlyingTerror"), () => downedFlyingTerror);
+        public static Condition DownedFlyingTerror = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFlyingTerror"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.FlyingTerror]);
         public static bool downedStoneMantaRay;
-        public static Condition DownedStoneMantaRay = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStoneMantaRay"), () => downedStoneMantaRay);
+        public static Condition DownedStoneMantaRay = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStoneMantaRay"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StoneMantaRay]);
         //MINIBOSSES
         public static bool downedBloodweaver;
-        public static Condition DownedBloodweaver = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBloodweaver"), () => downedBloodweaver);
+        public static Condition DownedBloodweaver = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBloodweaver"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Bloodweaver]);
 
 
         //TERRORBORN
@@ -1335,17 +1354,17 @@ namespace QoLCompendium.Core
         public static Mod terrorbornMod;
         //BOSSES
         public static bool downedInfectedIncarnate;
-        public static Condition DownedInfectedIncarnate = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInfectedIncarnate"), () => downedInfectedIncarnate);
+        public static Condition DownedInfectedIncarnate = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInfectedIncarnate"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.InfectedIncarnate]);
         public static bool downedTidalTitan;
-        public static Condition DownedTidalTitan = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTidalTitan"), () => downedTidalTitan);
+        public static Condition DownedTidalTitan = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTidalTitan"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TidalTitan]);
         public static bool downedDunestock;
-        public static Condition DownedDunestock = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDunestock"), () => downedDunestock);
+        public static Condition DownedDunestock = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDunestock"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Dunestock]);
         public static bool downedHexedConstructor;
-        public static Condition DownedHexedConstructor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHexedConstructor"), () => downedHexedConstructor);
+        public static Condition DownedHexedConstructor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHexedConstructor"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HexedConstructor]);
         public static bool downedShadowcrawler;
-        public static Condition DownedShadowcrawler = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedShadowcrawler"), () => downedShadowcrawler);
+        public static Condition DownedShadowcrawler = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedShadowcrawler"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Shadowcrawler]);
         public static bool downedPrototypeI;
-        public static Condition DownedPrototypeI = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPrototypeI"), () => downedPrototypeI);
+        public static Condition DownedPrototypeI = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPrototypeI"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PrototypeI]);
 
 
         //THORIUM
@@ -1386,31 +1405,41 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToAquaticDepths = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAquaticDepths"), () => beenToAquaticDepths);
 
 
+        //THORIUM BOSSES REWORK
+        public static bool thoriumBossReworkLoaded;
+        public static Mod thoriumBossReworkMod;
+
+
+        //THORIUM EXHAUSTION DISABLER
+        public static bool exhaustionDisablerLoaded;
+        public static Mod exhaustionDisablerMod;
+
+
         //TRAE
         public static bool traeLoaded;
         public static Mod traeMod;
         public static bool downedGraniteOvergrowth;
-        public static Condition DownedGraniteOvergrowth = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGraniteOvergrowth"), () => downedGraniteOvergrowth);
+        public static Condition DownedGraniteOvergrowth = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGraniteOvergrowth"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GraniteOvergrowth]);
         public static bool downedBeholder;
-        public static Condition DownedBeholder = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBeholder"), () => downedBeholder);
+        public static Condition DownedBeholder = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBeholder"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Beholder]);
 
 
         //UHTRIC
         public static bool uhtricLoaded;
         public static Mod uhtricMod;
         public static bool downedDredger;
-        public static Condition DownedDredger = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDredger"), () => downedDredger);
+        public static Condition DownedDredger = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDredger"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Dredger]);
         public static bool downedCharcoolSnowman;
-        public static Condition DownedCharcoolSnowman = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCharcoolSnowman"), () => downedCharcoolSnowman);
+        public static Condition DownedCharcoolSnowman = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCharcoolSnowman"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CharcoolSnowman]);
         public static bool downedCosmicMenace;
-        public static Condition DownedCosmicMenace = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCosmicMenace"), () => downedCosmicMenace);
+        public static Condition DownedCosmicMenace = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCosmicMenace"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CosmicMenace]);
 
 
         //UNIVERSE OF SWORDS
         public static bool universeOfSwordsLoaded;
         public static Mod universeOfSwordsMod;
         public static bool downedEvilFlyingBlade;
-        public static Condition DownedEvilFlyingBlade = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEvilFlyingBlade"), () => downedEvilFlyingBlade);
+        public static Condition DownedEvilFlyingBlade = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEvilFlyingBlade"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.EvilFlyingBlade]);
 
 
         //VALHALLA
@@ -1418,9 +1447,9 @@ namespace QoLCompendium.Core
         public static Mod valhallaMod;
         //BOSSES
         public static bool downedColossalCarnage;
-        public static Condition DownedColossalCarnage = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedColossalCarnage"), () => downedColossalCarnage);
+        public static Condition DownedColossalCarnage = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedColossalCarnage"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ColossalCarnage]);
         public static bool downedYurnero;
-        public static Condition DownedYurnero = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedYurnero"), () => downedYurnero);
+        public static Condition DownedYurnero = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedYurnero"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Yurnero]);
 
 
         //VERDANT
@@ -1436,23 +1465,23 @@ namespace QoLCompendium.Core
         public static Mod vitalityMod;
         //BOSSES
         public static bool downedStormCloud;
-        public static Condition DownedStormCloud = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStormCloud"), () => downedStormCloud);
+        public static Condition DownedStormCloud = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStormCloud"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StormCloud]);
         public static bool downedGrandAntlion;
-        public static Condition DownedGrandAntlion = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGrandAntlion"), () => downedGrandAntlion);
+        public static Condition DownedGrandAntlion = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGrandAntlion"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GrandAntlion]);
         public static bool downedGemstoneElemental;
-        public static Condition DownedGemstoneElemental = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGemstoneElemental"), () => downedGemstoneElemental);
+        public static Condition DownedGemstoneElemental = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGemstoneElemental"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GemstoneElemental]);
         public static bool downedMoonlightDragonfly;
-        public static Condition DownedMoonlightDragonfly = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMoonlightDragonfly"), () => downedMoonlightDragonfly);
+        public static Condition DownedMoonlightDragonfly = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMoonlightDragonfly"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MoonlightDragonfly]);
         public static bool downedDreadnaught;
-        public static Condition DownedDreadnaught = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDreadnaught"), () => downedDreadnaught);
+        public static Condition DownedDreadnaught = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDreadnaught"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Dreadnaught]);
         public static bool downedMosquitoMonarch;
-        public static Condition DownedMosquitoMonarch = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMosquitoMonarch"), () => downedMosquitoMonarch);
+        public static Condition DownedMosquitoMonarch = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMosquitoMonarch"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MosquitoMonarch]);
         public static bool downedAnarchulesBeetle;
-        public static Condition DownedAnarchulesBeetle = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAnarchulesBeetle"), () => downedAnarchulesBeetle);
+        public static Condition DownedAnarchulesBeetle = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAnarchulesBeetle"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AnarchulesBeetle]);
         public static bool downedChaosbringer;
-        public static Condition DownedChaosbringer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedChaosbringer"), () => downedChaosbringer);
+        public static Condition DownedChaosbringer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedChaosbringer"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Chaosbringer]);
         public static bool downedPaladinSpirit;
-        public static Condition DownedPaladinSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPaladinSpirit"), () => downedPaladinSpirit);
+        public static Condition DownedPaladinSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPaladinSpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PaladinSpirit]);
 
 
         //WAYFAIR CONTENT
@@ -1460,7 +1489,7 @@ namespace QoLCompendium.Core
         public static Mod wayfairContentMod;
         //BOSSES
         public static bool downedManaflora;
-        public static Condition DownedManaflora = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedManaflora"), () => downedManaflora);
+        public static Condition DownedManaflora = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedManaflora"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Manaflora]);
 
 
         //WRATH OF THE GODS
@@ -1468,9 +1497,9 @@ namespace QoLCompendium.Core
         public static Mod wrathOfTheGodsMod;
         //BOSSES
         public static bool downedNoxus;
-        public static Condition DownedNoxus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNoxus"), () => downedNoxus);
+        public static Condition DownedNoxus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNoxus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Noxus]);
         public static bool downedNamelessDeityOfLight;
-        public static Condition DownedNamelessDeityOfLight = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNamelessDeityOfLight"), () => downedNamelessDeityOfLight);
+        public static Condition DownedNamelessDeityOfLight = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNamelessDeityOfLight"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.NamelessDeityOfLight]);
 
 
         //ZYLON
@@ -1478,15 +1507,15 @@ namespace QoLCompendium.Core
         public static Mod zylonMod;
         //BOSSES
         public static bool downedDirtball;
-        public static Condition DownedDirtball = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDirtball"), () => downedDirtball);
+        public static Condition DownedDirtball = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDirtball"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Dirtball]);
         public static bool downedMetelord;
-        public static Condition DownedMetelord = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMetelord"), () => downedMetelord);
+        public static Condition DownedMetelord = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMetelord"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Metelord]);
         public static bool downedAdeneb;
-        public static Condition DownedAdeneb = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAdeneb"), () => downedAdeneb);
+        public static Condition DownedAdeneb = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAdeneb"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Adeneb]);
         public static bool downedEldritchJellyfish;
-        public static Condition DownedEldritchJellyfish = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEldritchJellyfish"), () => downedEldritchJellyfish);
+        public static Condition DownedEldritchJellyfish = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEldritchJellyfish"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.EldritchJellyfish]);
         public static bool downedSaburRex;
-        public static Condition DownedSaburRex = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSaburRex"), () => downedSaburRex);
+        public static Condition DownedSaburRex = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSaburRex"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SaburRex]);
 
 
         public enum Downed
@@ -1532,6 +1561,8 @@ namespace QoLCompendium.Core
             //calamity community remix
             WulfrumExcavator,
             //calamity entropy
+            Prophet,
+            NihilityTwin,
             Cruiser,
             //catalyst
             Astrageldon,
@@ -1884,9 +1915,9 @@ namespace QoLCompendium.Core
 
         public override void Unload() => DownedBoss = null;
 
-        public override void OnWorldLoad() => Resetdowned();
+        public override void OnWorldLoad() => ResetDowned();
 
-        public override void OnWorldUnload() => Resetdowned();
+        public override void OnWorldUnload() => ResetDowned();
 
         public override void PostUpdateEverything()
         {
@@ -2562,11 +2593,7 @@ namespace QoLCompendium.Core
 
         public override void SaveWorldData(TagCompound tag)
         {
-            /*
             //VANILLA
-            //BOSSES
-            tag.Add("downedDreadnautilus", downedDreadnautilus);
-            tag.Add("downedMartianSaucer", downedMartianSaucer);
             //EVENTS
             tag.Add("downedBloodMoon", downedBloodMoon);
             tag.Add("downedEclipse", downedEclipse);
@@ -2593,91 +2620,10 @@ namespace QoLCompendium.Core
             tag.Add("talkedToTravelingMerchant", talkedToTravelingMerchant);
 
             //AEQUUS
-            tag.Add("downedCrabson", downedCrabson);
-            tag.Add("downedOmegaStarite", downedOmegaStarite);
-            tag.Add("downedDustDevil", downedDustDevil);
-            tag.Add("downedRedSprite", downedRedSprite);
-            tag.Add("downedSpaceSquid", downedSpaceSquid);
-            tag.Add("downedHyperStarite", downedHyperStarite);
-            tag.Add("downedUltraStarite", downedUltraStarite);
-            //EVENTS
-            tag.Add("downedDemonSiege", downedDemonSiege);
-            tag.Add("downedGlimmer", downedGlimmer);
-            tag.Add("downedGaleStreams", downedGaleStreams);
             //BIOMES
             tag.Add("beenToCrabCrevice", beenToCrabCrevice);
 
-            //AFKPETS
-            tag.Add("downedSlayerOfEvil", downedSlayerOfEvil);
-            tag.Add("downedSATLA", downedSATLA);
-            tag.Add("downedDrFetus", downedDrFetus);
-            tag.Add("downedSlimesHope", downedSlimesHope);
-            tag.Add("downedPoliticianSlime", downedPoliticianSlime);
-            tag.Add("downedAncientTrio", downedAncientTrio);
-            tag.Add("downedLavalGolem", downedLavalGolem);
-            //MINIBOSSES
-            tag.Add("downedAntony", downedAntony);
-            tag.Add("downedBunnyZeppelin", downedBunnyZeppelin);
-            tag.Add("downedOkiku", downedOkiku);
-            tag.Add("downedHarpyAirforce", downedHarpyAirforce);
-            tag.Add("downedIsaac", downedIsaac);
-            tag.Add("downedAncientGuardian", downedAncientGuardian);
-            tag.Add("downedHeroicSlime", downedHeroicSlime);
-            tag.Add("downedHoloSlime", downedHoloSlime);
-            tag.Add("downedSecurityBot", downedSecurityBot);
-            tag.Add("downedUndeadChef", downedUndeadChef);
-            tag.Add("downedGuardianOfFrost", downedGuardianOfFrost);
-
-            //ASSORTED CRAZY THINGS
-            tag.Add("downedSoulHarvester", downedSoulHarvester);
-
-            //AWFUL GARBAGE
-            tag.Add("downedTreeToad", downedTreeToad);
-            tag.Add("downedSeseKitsugai", downedSeseKitsugai);
-            tag.Add("downedEyeOfTheStorm", downedEyeOfTheStorm);
-            tag.Add("downedFrigidius", downedFrigidius);
-
-            //BLOCK'S CORE BOSS
-            tag.Add("downedCoreBoss", downedCoreBoss);
-
             //CALAMITY
-            tag.Add("downedDesertScourge", downedDesertScourge);
-            tag.Add("downedCrabulon", downedCrabulon);
-            tag.Add("downedHiveMind", downedHiveMind);
-            tag.Add("downedPerforators", downedPerforators);
-            tag.Add("downedSlimeGod", downedSlimeGod);
-            tag.Add("downedCryogen", downedCryogen);
-            tag.Add("downedAquaticScourge", downedAquaticScourge);
-            tag.Add("downedBrimstoneElemental", downedBrimstoneElemental);
-            tag.Add("downedCalamitasClone", downedCalamitasClone);
-            tag.Add("downedLeviathanAndAnahita", downedLeviathanAndAnahita);
-            tag.Add("downedAstrumAureus", downedAstrumAureus);
-            tag.Add("downedPlaguebringerGoliath", downedPlaguebringerGoliath);
-            tag.Add("downedRavager", downedRavager);
-            tag.Add("downedAstrumDeus", downedAstrumDeus);
-            tag.Add("downedProfanedGuardians", downedProfanedGuardians);
-            tag.Add("downedDragonfolly", downedDragonfolly);
-            tag.Add("downedProvidence", downedProvidence);
-            tag.Add("downedStormWeaver", downedStormWeaver);
-            tag.Add("downedCeaselessVoid", downedCeaselessVoid);
-            tag.Add("downedSignus", downedSignus);
-            tag.Add("downedPolterghast", downedPolterghast);
-            tag.Add("downedOldDuke", downedOldDuke);
-            tag.Add("downedDevourerOfGods", downedDevourerOfGods);
-            tag.Add("downedYharon", downedYharon);
-            tag.Add("downedExoMechs", downedExoMechs);
-            tag.Add("downedSupremeCalamitas", downedSupremeCalamitas);
-            //MINIBOSSES
-            tag.Add("downedGiantClam", downedGiantClam);
-            tag.Add("downedCragmawMire", downedCragmawMire);
-            tag.Add("downedGreatSandShark", downedGreatSandShark);
-            tag.Add("downedNuclearTerror", downedNuclearTerror);
-            tag.Add("downedMauler", downedMauler);
-            tag.Add("downedEidolonWyrm", downedEidolonWyrm);
-            //EVENTS
-            tag.Add("downedAcidRain1", downedAcidRain1);
-            tag.Add("downedAcidRain2", downedAcidRain2);
-            tag.Add("downedBossRush", downedBossRush);
             //BIOMES
             tag.Add("beenToCrags", beenToCrags);
             tag.Add("beenToAstral", beenToAstral);
@@ -2689,182 +2635,31 @@ namespace QoLCompendium.Core
             tag.Add("beenToAbyssLayer3", beenToAbyssLayer3);
             tag.Add("beenToAbyssLayer4", beenToAbyssLayer4);
 
-            //CALAMITY COMMUNITY REMIX
-            tag.Add("downedWulfrumExcavator", downedWulfrumExcavator);
-
-            //CALAMITY ENTROPY
-            tag.Add("downedCruiser", downedCruiser);
-
             //CALAMITY VANITIES
             tag.Add("beenToAstralBlight", beenToAstralBlight);
 
-            //CATALYST
-            tag.Add("downedAstrageldon", downedAstrageldon);
-
-            //CLAMITY
-            tag.Add("downedClamitas", downedClamitas);
-            tag.Add("downedPyrogen", downedPyrogen);
-            tag.Add("downedWallOfBronze", downedWallOfBronze);
-
-            //CONSOLARIA
-            tag.Add("downedLepus", downedLepus);
-            tag.Add("downedTurkor", downedTurkor);
-            tag.Add("downedOcram", downedOcram);
-
-            //CORALITE
-            tag.Add("downedRediancie", downedRediancie);
-            tag.Add("downedBabyIceDragon", downedBabyIceDragon);
-            tag.Add("downedSlimeEmperor", downedSlimeEmperor);
-            tag.Add("downedBloodiancie", downedBloodiancie);
-            tag.Add("downedThunderveinDragon", downedThunderveinDragon);
-            tag.Add("downedNightmarePlantera", downedNightmarePlantera);
-
             //DEPTHS
-            tag.Add("downedChasme", downedChasme);
             tag.Add("beenToDepths", beenToDepths);
-
-            //DORMANT DAWN
-            tag.Add("downedLifeGuardian", downedLifeGuardian);
-            tag.Add("downedManaGuardian", downedManaGuardian);
-            tag.Add("downedMeteorExcavator", downedMeteorExcavator);
-            tag.Add("downedMeteorAnnihilator", downedMeteorAnnihilator);
-            tag.Add("downedHellfireSerpent", downedHellfireSerpent);
-            //MINIBOSSES
-            tag.Add("downedWitheredAcornSpirit", downedWitheredAcornSpirit);
-            tag.Add("downedGoblinSorcererChieftain", downedGoblinSorcererChieftain);
-
-            //ECHOES OF THE ANCIENTS
-            tag.Add("downedGalahis", downedGalahis);
-            tag.Add("downedCreation", downedCreation);
-            tag.Add("downedDestruction", downedDestruction);
 
             //EVERJADE
             tag.Add("beenToJadeLake", beenToJadeLake);
 
-            //EXALT
-            tag.Add("downedEffulgence", downedEffulgence);
-            tag.Add("downedIceLich", downedIceLich);
-
-            //EXCELSIOR
-            tag.Add("downedNiflheim", downedNiflheim);
-            tag.Add("downedStellarStarship", downedStellarStarship);
-
             //EXXO AVALON ORIGINS
-            tag.Add("downedBacteriumPrime", downedBacteriumPrime);
-            tag.Add("downedDesertBeak", downedDesertBeak);
-            tag.Add("downedKingSting", downedKingSting);
-            tag.Add("downedMechasting", downedMechasting);
-            tag.Add("downedPhantasm", downedPhantasm);
             tag.Add("beenToContagion", beenToContagion);
 
-            //FARGOS SOULS
-            tag.Add("downedTrojanSquirrel", downedTrojanSquirrel);
-            tag.Add("downedCursedCoffin", downedCursedCoffin);
-            tag.Add("downedDeviantt", downedDeviantt);
-            tag.Add("downedBanishedBaron", downedBanishedBaron);
-            tag.Add("downedLifelight", downedLifelight);
-            tag.Add("downedEridanus", downedEridanus);
-            tag.Add("downedAbominationn", downedAbominationn);
-            tag.Add("downedMutant", downedMutant);
-
             //FRACTURES OF PENUMBRA
-            tag.Add("downedAlphaFrostjaw", downedAlphaFrostjaw);
-            tag.Add("downedSanguineElemental", downedSanguineElemental);
             //BIOMES
             tag.Add("beenToDread", beenToDread);
 
-            //GAMETERRARIA
-            tag.Add("downedLad", downedLad);
-            tag.Add("downedHornlitz", downedHornlitz);
-            tag.Add("downedSnowDon", downedSnowDon);
-            tag.Add("downedStoffie", downedStoffie);
-
-            //GENSOKYO
-            tag.Add("downedLilyWhite", downedLilyWhite);
-            tag.Add("downedRumia", downedRumia);
-            tag.Add("downedEternityLarva", downedEternityLarva);
-            tag.Add("downedNazrin", downedNazrin);
-            tag.Add("downedHinaKagiyama", downedHinaKagiyama);
-            tag.Add("downedSekibanki", downedSekibanki);
-            tag.Add("downedSeiran", downedSeiran);
-            tag.Add("downedNitoriKawashiro", downedNitoriKawashiro);
-            tag.Add("downedMedicineMelancholy", downedMedicineMelancholy);
-            tag.Add("downedCirno", downedCirno);
-            tag.Add("downedMinamitsuMurasa", downedMinamitsuMurasa);
-            tag.Add("downedAliceMargatroid", downedAliceMargatroid);
-            tag.Add("downedSakuyaIzayoi", downedSakuyaIzayoi);
-            tag.Add("downedSeijaKijin", downedSeijaKijin);
-            tag.Add("downedMayumiJoutouguu", downedMayumiJoutouguu);
-            tag.Add("downedToyosatomimiNoMiko", downedToyosatomimiNoMiko);
-            tag.Add("downedKaguyaHouraisan", downedKaguyaHouraisan);
-            tag.Add("downedUtsuhoReiuji", downedUtsuhoReiuji);
-            tag.Add("downedTenshiHinanawi", downedTenshiHinanawi);
-            //MINIBOSSES
-            tag.Add("downedKisume", downedKisume);
-
-            //GMR
-            tag.Add("downedTrerios", downedTrerios);
-            tag.Add("downedMagmaEye", downedMagmaEye);
-            tag.Add("downedJack", downedJack);
-            tag.Add("downedAcheron", downedAcheron);
-
             //HOMEWARD JOURNEY
-            tag.Add("downedMarquisMoonsquid", downedMarquisMoonsquid);
-            tag.Add("downedPriestessRod", downedPriestessRod);
-            tag.Add("downedDiver", downedDiver);
-            tag.Add("downedMotherbrain", downedMotherbrain);
-            tag.Add("downedWallOfShadow", downedWallOfShadow);
-            tag.Add("downedSunSlimeGod", downedSunSlimeGod);
-            tag.Add("downedOverwatcher", downedOverwatcher);
-            tag.Add("downedLifebringer", downedLifebringer);
-            tag.Add("downedMaterealizer", downedMaterealizer);
-            tag.Add("downedScarabBelief", downedScarabBelief);
-            tag.Add("downedWorldsEndWhale", downedWorldsEndWhale);
-            tag.Add("downedSon", downedSon);
-            //EVENTS
-            tag.Add("downedCaveOrdeal", downedCaveOrdeal);
-            tag.Add("downedCorruptOrdeal", downedCorruptOrdeal);
-            tag.Add("downedCrimsonOrdeal", downedCrimsonOrdeal);
-            tag.Add("downedDesertOrdeal", downedDesertOrdeal);
-            tag.Add("downedForestOrdeal", downedForestOrdeal);
-            tag.Add("downedHallowOrdeal", downedHallowOrdeal);
-            tag.Add("downedJungleOrdeal", downedJungleOrdeal);
-            tag.Add("downedSkyOrdeal", downedSkyOrdeal);
-            tag.Add("downedSnowOrdeal", downedSnowOrdeal);
-            tag.Add("downedUnderworldOrdeal", downedUnderworldOrdeal);
             //BIOMES
             tag.Add("beenToHomewardAbyss", beenToHomewardAbyss);
 
-            //HUNT OF THE OLD GOD
-            tag.Add("downedGoozma", downedGoozma);
-
             //INFERNUM
-            tag.Add("downedBereftVassal", downedBereftVassal);
             //BIOMES
             tag.Add("beenToProfanedGardens", beenToProfanedGardens);
 
             //LUNAR VEIL
-            tag.Add("downedStoneGuardian", downedStoneGuardian);
-            tag.Add("downedCommanderGintzia", downedCommanderGintzia);
-            tag.Add("downedSunStalker", downedSunStalker);
-            tag.Add("downedPumpkinJack", downedPumpkinJack);
-            tag.Add("downedForgottenPuppetDaedus", downedForgottenPuppetDaedus);
-            tag.Add("downedDreadMire", downedDreadMire);
-            tag.Add("downedSingularityFragment", downedSingularityFragment);
-            tag.Add("downedVerlia", downedVerlia);
-            tag.Add("downedIrradia", downedIrradia);
-            tag.Add("downedSylia", downedSylia);
-            tag.Add("downedFenix", downedFenix);
-            //MINIBOSSSES
-            tag.Add("downedBlazingSerpent", downedBlazingSerpent);
-            tag.Add("downedCogwork", downedCogwork);
-            tag.Add("downedWaterCogwork", downedWaterCogwork);
-            tag.Add("downedWaterJellyfish", downedWaterJellyfish);
-            tag.Add("downedSparn", downedSparn);
-            tag.Add("downedPandorasFlamebox", downedPandorasFlamebox);
-            tag.Add("downedSTARBOMBER", downedSTARBOMBER);
-            //EVENT
-            tag.Add("downedGintzeArmy", downedGintzeArmy);
             //BIOMES
             tag.Add("beenToLunarVeilAbyss", beenToLunarVeilAbyss);
             tag.Add("beenToAcid", beenToAcid);
@@ -2875,177 +2670,30 @@ namespace QoLCompendium.Core
             tag.Add("beenToMarrowSurface", beenToMarrowSurface);
             tag.Add("beenToMorrowUnderground", beenToMorrowUnderground);
 
-            //MARTAINS ORDER
-            tag.Add("downedBritzz", downedBritzz);
-            tag.Add("downedTheAlchemist", downedTheAlchemist);
-            tag.Add("downedCarnagePillar", downedCarnagePillar);
-            tag.Add("downedVoidDigger", downedVoidDigger);
-            tag.Add("downedPrinceSlime", downedPrinceSlime);
-            tag.Add("downedTriplets", downedTriplets);
-            tag.Add("downedJungleDefenders", downedJungleDefenders);
-
-            //MECH REWORK
-            tag.Add("downedSt4sys", downedSt4sys);
-            tag.Add("downedTerminator", downedTerminator);
-            tag.Add("downedCaretaker", downedCaretaker);
-            tag.Add("downedSiegeEngine", downedSiegeEngine);
-
-            //MEDIAL RIFT
-            tag.Add("downedSuperVoltaicMotherSlime", downedSuperVoltaicMotherSlime);
-
-            //METROID
-            tag.Add("downedTorizo", downedTorizo);
-            tag.Add("downedSerris", downedSerris);
-            tag.Add("downedKraid", downedKraid);
-            tag.Add("downedPhantoon", downedPhantoon);
-            tag.Add("downedOmegaPirate", downedOmegaPirate);
-            tag.Add("downedNightmare", downedNightmare);
-            tag.Add("downedGoldenTorizo", downedGoldenTorizo);
-
-            //OPHIOID
-            tag.Add("downedOphiopede", downedOphiopede);
-            tag.Add("downedOphiocoon", downedOphiocoon);
-            tag.Add("downedOphiofly", downedOphiofly);
-
-            //POLARITIES
-            tag.Add("downedStormCloudfish", downedStormCloudfish);
-            tag.Add("downedStarConstruct", downedStarConstruct);
-            tag.Add("downedGigabat", downedGigabat);
-            tag.Add("downedSunPixie", downedSunPixie);
-            tag.Add("downedEsophage", downedEsophage);
-            tag.Add("downedConvectiveWanderer", downedConvectiveWanderer);
-
-            //PROJECT ZERO
-            tag.Add("downedForestGuardian", downedForestGuardian);
-            tag.Add("downedCryoGuardian", downedCryoGuardian);
-            tag.Add("downedPrimordialWorm", downedPrimordialWorm);
-            tag.Add("downedTheGuardianOfHell", downedTheGuardianOfHell);
-            tag.Add("downedVoid", downedVoid);
-            tag.Add("downedArmagem", downedArmagem);
-
             //QWERTY
-            tag.Add("downedPolarExterminator", downedPolarExterminator);
-            tag.Add("downedDivineLight", downedDivineLight);
-            tag.Add("downedAncientMachine", downedAncientMachine);
-            tag.Add("downedNoehtnap", downedNoehtnap);
-            tag.Add("downedHydra", downedHydra);
-            tag.Add("downedImperious", downedImperious);
-            tag.Add("downedRuneGhost", downedRuneGhost);
-            tag.Add("downedInvaderBattleship", downedInvaderBattleship);
-            tag.Add("downedInvaderNoehtnap", downedInvaderNoehtnap);
-            tag.Add("downedOLORD", downedOLORD);
-            //MINIBOSSES
-            tag.Add("downedGreatTyrannosaurus", downedGreatTyrannosaurus);
-            //EVENTS
-            tag.Add("downedDinoMilitia", downedDinoMilitia);
-            tag.Add("downedInvaders", downedInvaders);
             //BIOMES
             tag.Add("beenToSkyFortress", beenToSkyFortress);
 
             //REDEMPTION
-            tag.Add("downedThorn", downedThorn);
-            tag.Add("downedErhan", downedErhan);
-            tag.Add("downedKeeper", downedKeeper);
-            tag.Add("downedSeedOfInfection", downedSeedOfInfection);
-            tag.Add("downedKingSlayerIII", downedKingSlayerIII);
-            tag.Add("downedOmegaCleaver", downedOmegaCleaver);
-            tag.Add("downedOmegaGigapora", downedOmegaGigapora);
-            tag.Add("downedOmegaObliterator", downedOmegaObliterator);
-            tag.Add("downedPatientZero", downedPatientZero);
-            tag.Add("downedAkka", downedAkka);
-            tag.Add("downedUkko", downedUkko);
-            tag.Add("downedAncientDeityDuo", downedAncientDeityDuo);
-            tag.Add("downedNebuleus", downedNebuleus);
-            //MINIBOSSES
-            tag.Add("downedFowlEmperor", downedFowlEmperor);
-            tag.Add("downedCockatrice", downedCockatrice);
-            tag.Add("downedBasan", downedBasan);
-            tag.Add("downedSkullDigger", downedSkullDigger);
-            tag.Add("downedEaglecrestGolem", downedEaglecrestGolem);
-            tag.Add("downedCalavia", downedCalavia);
-            tag.Add("downedTheJanitor", downedTheJanitor);
-            tag.Add("downedIrradiatedBehemoth", downedIrradiatedBehemoth);
-            tag.Add("downedBlisterface", downedBlisterface);
-            tag.Add("downedProtectorVolt", downedProtectorVolt);
-            tag.Add("downedMACEProject", downedMACEProject);
-            //EVENTS
-            tag.Add("downedFowlMorning", downedFowlMorning);
-            tag.Add("downedRaveyard", downedRaveyard);
             //BIOMES
             tag.Add("beenToLab", beenToLab);
             tag.Add("beenToWasteland", beenToWasteland);
 
             //SOTS
-            tag.Add("downedGlowmoth", downedGlowmoth);
-            tag.Add("downedPutridPinky", downedPutridPinky);
-            tag.Add("downedPharaohsCurse", downedPharaohsCurse);
-            tag.Add("downedAdvisor", downedAdvisor);
-            tag.Add("downedPolaris", downedPolaris);
-            tag.Add("downedLux", downedLux);
-            tag.Add("downedSubspaceSerpent", downedSubspaceSerpent);
-            tag.Add("downedNatureConstruct", downedNatureConstruct);
-            tag.Add("downedEarthenConstruct", downedEarthenConstruct);
-            tag.Add("downedPermafrostConstruct", downedPermafrostConstruct);
-            tag.Add("downedTidalConstruct", downedTidalConstruct);
-            tag.Add("downedOtherworldlyConstruct", downedOtherworldlyConstruct);
-            tag.Add("downedEvilConstruct", downedEvilConstruct);
-            tag.Add("downedInfernoConstruct", downedInfernoConstruct);
-            tag.Add("downedChaosConstruct", downedChaosConstruct);
-            tag.Add("downedNatureSpirit", downedNatureSpirit);
-            tag.Add("downedEarthenSpirit", downedEarthenSpirit);
-            tag.Add("downedPermafrostSpirit", downedPermafrostSpirit);
-            tag.Add("downedTidalSpirit", downedTidalSpirit);
-            tag.Add("downedOtherworldlySpirit", downedOtherworldlySpirit);
-            tag.Add("downedEvilSpirit", downedEvilSpirit);
-            tag.Add("downedInfernoSpirit", downedInfernoSpirit);
-            tag.Add("downedChaosSpirit", downedChaosSpirit);
             //BIOMES
             tag.Add("beenToPyramid", beenToPyramid);
             tag.Add("beenToPlanetarium", beenToPlanetarium);
 
             //SHADOWS OF ABADDON
-            tag.Add("downedDecree", downedDecree);
-            tag.Add("downedFlamingPumpkin", downedFlamingPumpkin);
-            tag.Add("downedZombiePiglinBrute", downedZombiePiglinBrute);
-            tag.Add("downedJensenTheGrandHarpy", downedJensenTheGrandHarpy);
-            tag.Add("downedAraneas", downedAraneas);
-            tag.Add("downedHarpyQueenRaynare", downedHarpyQueenRaynare);
-            tag.Add("downedPrimordia", downedPrimordia);
-            tag.Add("downedAbaddon", downedAbaddon);
-            tag.Add("downedAraghur", downedAraghur);
-            tag.Add("downedLostSiblings", downedLostSiblings);
-            tag.Add("downedErazor", downedErazor);
-            tag.Add("downedNihilus", downedNihilus);
             //BIOMES
             tag.Add("beenToCinderForest", beenToCinderForest);
 
-            //SLOOME
-            tag.Add("downedExodygen", downedExodygen);
-
             //SPIRIT
-            tag.Add("downedScarabeus", downedScarabeus);
-            tag.Add("downedMoonJellyWizard", downedMoonJellyWizard);
-            tag.Add("downedVinewrathBane", downedVinewrathBane);
-            tag.Add("downedAncientAvian", downedAncientAvian);
-            tag.Add("downedStarplateVoyager", downedStarplateVoyager);
-            tag.Add("downedInfernon", downedInfernon);
-            tag.Add("downedDusking", downedDusking);
-            tag.Add("downedAtlas", downedAtlas);
-            //EVENTS
-            tag.Add("downedJellyDeluge", downedJellyDeluge);
-            tag.Add("downedTide", downedTide);
-            tag.Add("downedMysticMoon", downedMysticMoon);
             //BIOMES
             tag.Add("beenToBriar", beenToBriar);
             tag.Add("beenToSpirit", beenToSpirit);
 
             //SPOOKY
-            tag.Add("downedSpookySpirit", downedSpookySpirit);
-            tag.Add("downedRotGourd", downedRotGourd);
-            tag.Add("downedMoco", downedMoco);
-            tag.Add("downedDaffodil", downedDaffodil);
-            tag.Add("downedOrroBoro", downedOrroBoro);
-            tag.Add("downedBigBone", downedBigBone);
             //BIOMES
             tag.Add("beenToSpookyForest", beenToSpookyForest);
             tag.Add("beenToSpookyUnderground", beenToSpookyUnderground);
@@ -3055,107 +2703,17 @@ namespace QoLCompendium.Core
             tag.Add("beenToCemetery", beenToCemetery);
 
             //STARLIGHT RIVER
-            tag.Add("downedAuroracle", downedAuroracle);
-            tag.Add("downedCeiros", downedCeiros);
-            //MINIBOSSES
-            tag.Add("downedGlassweaver", downedGlassweaver);
             //BIOMES
             tag.Add("beenToAuroracleTemple", beenToAuroracleTemple);
             tag.Add("beenToVitricDesert", beenToVitricDesert);
             tag.Add("beenToVitricTemple", beenToVitricTemple);
 
-            //STARS ABOVE
-            tag.Add("downedVagrantofSpace", downedVagrantofSpace);
-            tag.Add("downedThespian", downedThespian);
-            tag.Add("downedDioskouroi", downedDioskouroi);
-            tag.Add("downedNalhaun", downedNalhaun);
-            tag.Add("downedStarfarers", downedStarfarers);
-            tag.Add("downedPenthesilea", downedPenthesilea);
-            tag.Add("downedArbitration", downedArbitration);
-            tag.Add("downedWarriorOfLight", downedWarriorOfLight);
-            tag.Add("downedTsukiyomi", downedTsukiyomi);
-
-            //STORM DIVERS MOD
-            tag.Add("downedAncientHusk", downedAncientHusk);
-            tag.Add("downedOverloadedScandrone", downedOverloadedScandrone);
-            tag.Add("downedPainbringer", downedPainbringer);
-
-            //SUPERNOVA
-            tag.Add("downedHarbingerOfAnnihilation", downedHarbingerOfAnnihilation);
-            tag.Add("downedFlyingTerror", downedFlyingTerror);
-            tag.Add("downedStoneMantaRay", downedStoneMantaRay);
-            //MINIBOSSES
-            tag.Add("downedBloodweaver", downedBloodweaver);
-
-            //TERRORBORN
-            tag.Add("downedInfectedIncarnate", downedInfectedIncarnate);
-            tag.Add("downedTidalTitan", downedTidalTitan);
-            tag.Add("downedDunestock", downedDunestock);
-            tag.Add("downedShadowcrawler", downedShadowcrawler);
-            tag.Add("downedHexedConstructor", downedHexedConstructor);
-            tag.Add("downedPrototypeI", downedPrototypeI);
-
             //THORIUM
-            tag.Add("downedGrandThunderBird", downedGrandThunderBird);
-            tag.Add("downedQueenJellyfish", downedQueenJellyfish);
-            tag.Add("downedViscount", downedViscount);
-            tag.Add("downedGraniteEnergyStorm", downedGraniteEnergyStorm);
-            tag.Add("downedBuriedChampion", downedBuriedChampion);
-            tag.Add("downedBoreanStrider", downedBoreanStrider);
-            tag.Add("downedFallenBeholder", downedFallenBeholder);
-            tag.Add("downedLich", downedLich);
-            tag.Add("downedForgottenOne", downedForgottenOne);
-            tag.Add("downedPrimordials", downedPrimordials);
-            tag.Add("downedPatchWerk", downedPatchWerk);
-            tag.Add("downedCorpseBloom", downedCorpseBloom);
-            tag.Add("downedIllusionist", downedIllusionist);
             //BIOMES
             tag.Add("beenToAquaticDepths", beenToAquaticDepths);
 
-            //TRAE
-            tag.Add("downedGraniteOvergrowth", downedGraniteOvergrowth);
-            tag.Add("downedBeholder", downedBeholder);
-
-            //UHTRIC
-            tag.Add("downedDredger", downedDredger);
-            tag.Add("downedCharcoolSnowman", downedCharcoolSnowman);
-            tag.Add("downedCosmicMenace", downedCosmicMenace);
-
-            //UNIVERSE OF SWORDS
-            tag.Add("downedEvilFlyingBlade", downedEvilFlyingBlade);
-
-            //VALHALLA
-            tag.Add("downedColossalCarnage", downedColossalCarnage);
-            tag.Add("downedYurnero", downedYurnero);
-
             //VERDANT
             tag.Add("beenToVerdant", beenToVerdant);
-
-            //VITALITY
-            tag.Add("downedStormCloud", downedStormCloud);
-            tag.Add("downedGrandAntlion", downedGrandAntlion);
-            tag.Add("downedGemstoneElemental", downedGemstoneElemental);
-            tag.Add("downedMoonlightDragonfly", downedMoonlightDragonfly);
-            tag.Add("downedDreadnaught", downedDreadnaught);
-            tag.Add("downedMosquitoMonarch", downedMosquitoMonarch);
-            tag.Add("downedAnarchulesBeetle", downedAnarchulesBeetle);
-            tag.Add("downedChaosbringer", downedChaosbringer);
-            tag.Add("downedPaladinSpirit", downedPaladinSpirit);
-
-            //WAYFAIR
-            tag.Add("downedManaflora", downedManaflora);
-
-            //WRATH OF THE GODS
-            tag.Add("downedNoxus", downedNoxus);
-            tag.Add("downedNamelessDeityOfLight", downedNamelessDeityOfLight);
-
-            //ZYLON
-            tag.Add("downedDirtball", downedDirtball);
-            tag.Add("downedMetelord", downedMetelord);
-            tag.Add("downedAdeneb", downedAdeneb);
-            tag.Add("downedEldritchJellyfish", downedEldritchJellyfish);
-            tag.Add("downedSaburRex", downedSaburRex);
-            */
 
             List<string> downed = new();
             for (int i = 0; i < DownedBoss.Length; i++)
@@ -3168,11 +2726,7 @@ namespace QoLCompendium.Core
 
         public override void LoadWorldData(TagCompound tag)
         {
-            /*
             //VANILLA
-            //BOSSES
-            downedDreadnautilus = tag.Get<bool>("downedDreadnautilus");
-            downedMartianSaucer = tag.Get<bool>("downedMartianSaucer");
             //EVENTS
             downedBloodMoon = tag.Get<bool>("downedBloodMoon");
             downedEclipse = tag.Get<bool>("downedEclipse");
@@ -3199,90 +2753,10 @@ namespace QoLCompendium.Core
             talkedToTravelingMerchant = tag.Get<bool>("talkedToTravelingMerchant");
 
             //AEQUUS
-            downedCrabson = tag.Get<bool>("downedCrabson");
-            downedOmegaStarite = tag.Get<bool>("downedOmegaStarite");
-            downedDustDevil = tag.Get<bool>("downedDustDevil");
-            downedRedSprite = tag.Get<bool>("downedRedSprite");
-            downedSpaceSquid = tag.Get<bool>("downedSpaceSquid");
-            downedHyperStarite = tag.Get<bool>("downedHyperStarite");
-            downedUltraStarite = tag.Get<bool>("downedUltraStarite");
-            //EVENTS
-            downedDemonSiege = tag.Get<bool>("downedDemonSiege");
-            downedGlimmer = tag.Get<bool>("downedGlimmer");
-            downedGaleStreams = tag.Get<bool>("downedGaleStreams");
             //BIOMES
             beenToCrabCrevice = tag.Get<bool>("beenToCrabCrevice");
 
-            //AFKPETS
-            downedSlayerOfEvil = tag.Get<bool>("downedSlayerOfEvil");
-            downedSATLA = tag.Get<bool>("downedSATLA");
-            downedDrFetus = tag.Get<bool>("downedDrFetus");
-            downedSlimesHope = tag.Get<bool>("downedSlimesHope");
-            downedPoliticianSlime = tag.Get<bool>("downedPoliticianSlime");
-            downedAncientTrio = tag.Get<bool>("downedAncientTrio");
-            downedLavalGolem = tag.Get<bool>("downedLavalGolem");
-            //MINIBOSSES
-            downedAntony = tag.Get<bool>("downedAntony");
-            downedBunnyZeppelin = tag.Get<bool>("downedBunnyZeppelin");
-            downedOkiku = tag.Get<bool>("downedOkiku");
-            downedHarpyAirforce = tag.Get<bool>("downedHarpyAirforce");
-            downedAncientGuardian = tag.Get<bool>("downedAncientGuardian");
-            downedHeroicSlime = tag.Get<bool>("downedHeroicSlime");
-            downedHoloSlime = tag.Get<bool>("downedHoloSlime");
-            downedSecurityBot = tag.Get<bool>("downedSecurityBot");
-            downedUndeadChef = tag.Get<bool>("downedUndeadChef");
-            downedGuardianOfFrost = tag.Get<bool>("downedGuardianOfFrost");
-
-            //ASSORTED CRAZY THINGS
-            downedSoulHarvester = tag.Get<bool>("downedSoulHarvester");
-
-            //AWFUL GARBAGE
-            downedTreeToad = tag.Get<bool>("downedTreeToad");
-            downedSeseKitsugai = tag.Get<bool>("downedSeseKitsugai");
-            downedEyeOfTheStorm = tag.Get<bool>("downedEyeOfTheStorm");
-            downedFrigidius = tag.Get<bool>("downedFrigidius");
-
-            //BLOCK'S CORE BOSS
-            downedCoreBoss = tag.Get<bool>("downedCoreBoss");
-
             //CALAMITY
-            downedDesertScourge = tag.Get<bool>("downedDesertScourge");
-            downedCrabulon = tag.Get<bool>("downedCrabulon");
-            downedHiveMind = tag.Get<bool>("downedHiveMind");
-            downedPerforators = tag.Get<bool>("downedPerforators");
-            downedSlimeGod = tag.Get<bool>("downedSlimeGod");
-            downedCryogen = tag.Get<bool>("downedCryogen");
-            downedAquaticScourge = tag.Get<bool>("downedAquaticScourge");
-            downedBrimstoneElemental = tag.Get<bool>("downedBrimstoneElemental");
-            downedCalamitasClone = tag.Get<bool>("downedCalamitasClone");
-            downedLeviathanAndAnahita = tag.Get<bool>("downedLeviathanAndAnahita");
-            downedAstrumAureus = tag.Get<bool>("downedAstrumAureus");
-            downedPlaguebringerGoliath = tag.Get<bool>("downedPlaguebringerGoliath");
-            downedRavager = tag.Get<bool>("downedRavager");
-            downedAstrumDeus = tag.Get<bool>("downedAstrumDeus");
-            downedProfanedGuardians = tag.Get<bool>("downedProfanedGuardians");
-            downedDragonfolly = tag.Get<bool>("downedDragonfolly");
-            downedProvidence = tag.Get<bool>("downedProvidence");
-            downedStormWeaver = tag.Get<bool>("downedStormWeaver");
-            downedCeaselessVoid = tag.Get<bool>("downedCeaselessVoid");
-            downedSignus = tag.Get<bool>("downedSignus");
-            downedPolterghast = tag.Get<bool>("downedPolterghast");
-            downedOldDuke = tag.Get<bool>("downedOldDuke");
-            downedDevourerOfGods = tag.Get<bool>("downedDevourerOfGods");
-            downedYharon = tag.Get<bool>("downedYharon");
-            downedExoMechs = tag.Get<bool>("downedExoMechs");
-            downedSupremeCalamitas = tag.Get<bool>("downedSupremeCalamitas");
-            //MINIBOSSES
-            downedGiantClam = tag.Get<bool>("downedGiantClam");
-            downedCragmawMire = tag.Get<bool>("downedCragmawMire");
-            downedGreatSandShark = tag.Get<bool>("downedGreatSandShark");
-            downedNuclearTerror = tag.Get<bool>("downedNuclearTerror");
-            downedMauler = tag.Get<bool>("downedMauler");
-            downedEidolonWyrm = tag.Get<bool>("downedEidolonWyrm");
-            //EVENTS
-            downedAcidRain1 = tag.Get<bool>("downedAcidRain1");
-            downedAcidRain2 = tag.Get<bool>("downedAcidRain2");
-            downedBossRush = tag.Get<bool>("downedBossRush");
             //BIOMES
             beenToCrags = tag.Get<bool>("beenToCrags");
             beenToAstral = tag.Get<bool>("beenToAstral");
@@ -3294,181 +2768,32 @@ namespace QoLCompendium.Core
             beenToAbyssLayer3 = tag.Get<bool>("beenToAbyssLayer3");
             beenToAbyssLayer4 = tag.Get<bool>("beenToAbyssLayer4");
 
-            //CALAMITY COMMUNITY REMIX
-            downedWulfrumExcavator = tag.Get<bool>("downedWulfrumExcavator");
-
-            //CALAMITY ENTROPY
-            downedCruiser = tag.Get<bool>("downedCruiser");
-
             //CALAMITY VANITIES
             beenToAstralBlight = tag.Get<bool>("beenToAstralBlight");
 
-            //CATALYST
-            downedAstrageldon = tag.Get<bool>("downedAstrageldon");
-
-            //CLAMITY
-            downedClamitas = tag.Get<bool>("downedClamitas");
-            downedPyrogen = tag.Get<bool>("downedPyrogen");
-            downedWallOfBronze = tag.Get<bool>("downedWallOfBronze");
-
-            //CONSOLARIA
-            downedLepus = tag.Get<bool>("downedLepus");
-            downedTurkor = tag.Get<bool>("downedTurkor");
-            downedOcram = tag.Get<bool>("downedOcram");
-
-            //CORALITE
-            downedRediancie = tag.Get<bool>("downedRediancie");
-            downedBabyIceDragon = tag.Get<bool>("downedBabyIceDragon");
-            downedSlimeEmperor = tag.Get<bool>("downedSlimeEmperor");
-            downedBloodiancie = tag.Get<bool>("downedBloodiancie");
-            downedThunderveinDragon = tag.Get<bool>("downedThunderveinDragon");
-            downedNightmarePlantera = tag.Get<bool>("downedNightmarePlantera");
-
             //DEPTHS
-            downedChasme = tag.Get<bool>("downedChasme");
             beenToDepths = tag.Get<bool>("beenToDepths");
-
-            //DORMANT DAWN
-            downedLifeGuardian = tag.Get<bool>("downedLifeGuardian");
-            downedManaGuardian = tag.Get<bool>("downedManaGuardian");
-            downedMeteorExcavator = tag.Get<bool>("downedMeteorExcavator");
-            downedMeteorAnnihilator = tag.Get<bool>("downedMeteorAnnihilator");
-            downedHellfireSerpent = tag.Get<bool>("downedHellfireSerpent");
-            downedWitheredAcornSpirit = tag.Get<bool>("downedWitheredAcornSpirit");
-            downedGoblinSorcererChieftain = tag.Get<bool>("downedGoblinSorcererChieftain");
-
-            //ECHOES OF THE ANCIENTS
-            downedGalahis = tag.Get<bool>("downedGalahis");
-            downedCreation = tag.Get<bool>("downedCreation");
-            downedDestruction = tag.Get<bool>("downedDestruction");
 
             //EVERJADE
             beenToJadeLake = tag.Get<bool>("beenToJadeLake");
 
-            //EXALT
-            downedEffulgence = tag.Get<bool>("downedEffulgence");
-            downedIceLich = tag.Get<bool>("downedIceLich");
-
-            //EXCELSIOR
-            downedNiflheim = tag.Get<bool>("downedNiflheim");
-            downedStellarStarship = tag.Get<bool>("downedStellarStarship");
-
             //EXXO AVALON ORIGINS
-            downedBacteriumPrime = tag.Get<bool>("downedBacteriumPrime");
-            downedDesertBeak = tag.Get<bool>("downedDesertBeak");
-            downedKingSting = tag.Get<bool>("downedKingSting");
-            downedMechasting = tag.Get<bool>("downedMechasting");
-            downedPhantasm = tag.Get<bool>("downedPhantasm");
             beenToContagion = tag.Get<bool>("beenToContagion");
 
-            //FARGOS SOULS
-            downedTrojanSquirrel = tag.Get<bool>("downedTrojanSquirrel");
-            downedCursedCoffin = tag.Get<bool>("downedCursedCoffin");
-            downedDeviantt = tag.Get<bool>("downedDeviantt");
-            downedBanishedBaron = tag.Get<bool>("downedBanishedBaron");
-            downedLifelight = tag.Get<bool>("downedLifelight");
-            downedEridanus = tag.Get<bool>("downedEridanus");
-            downedAbominationn = tag.Get<bool>("downedAbominationn");
-            downedMutant = tag.Get<bool>("downedMutant");
-
             //FRACTURES OF PENUMBRA
-            downedAlphaFrostjaw = tag.Get<bool>("downedAlphaFrostjaw");
-            downedSanguineElemental = tag.Get<bool>("downedSanguineElemental");
             //BIOMES
             beenToDread = tag.Get<bool>("beenToDread");
 
-            //GAMETERRARIA
-            downedLad = tag.Get<bool>("downedLad");
-            downedHornlitz = tag.Get<bool>("downedHornlitz");
-            downedSnowDon = tag.Get<bool>("downedSnowDon");
-            downedStoffie = tag.Get<bool>("downedStoffie");
-
-            //GENSOKYO
-            downedLilyWhite = tag.Get<bool>("downedLilyWhite");
-            downedRumia = tag.Get<bool>("downedRumia");
-            downedEternityLarva = tag.Get<bool>("downedEternityLarva");
-            downedNazrin = tag.Get<bool>("downedNazrin");
-            downedHinaKagiyama = tag.Get<bool>("downedHinaKagiyama");
-            downedSekibanki = tag.Get<bool>("downedSekibanki");
-            downedSeiran = tag.Get<bool>("downedSeiran");
-            downedNitoriKawashiro = tag.Get<bool>("downedNitoriKawashiro");
-            downedMedicineMelancholy = tag.Get<bool>("downedMedicineMelancholy");
-            downedCirno = tag.Get<bool>("downedCirno");
-            downedMinamitsuMurasa = tag.Get<bool>("downedMinamitsuMurasa");
-            downedAliceMargatroid = tag.Get<bool>("downedAliceMargatroid");
-            downedSakuyaIzayoi = tag.Get<bool>("downedSakuyaIzayoi");
-            downedSeijaKijin = tag.Get<bool>("downedSeijaKijin");
-            downedMayumiJoutouguu = tag.Get<bool>("downedMayumiJoutouguu");
-            downedToyosatomimiNoMiko = tag.Get<bool>("downedToyosatomimiNoMiko");
-            downedKaguyaHouraisan = tag.Get<bool>("downedKaguyaHouraisan");
-            downedUtsuhoReiuji = tag.Get<bool>("downedUtsuhoReiuji");
-            downedTenshiHinanawi = tag.Get<bool>("downedTenshiHinanawi");
-            //MINIBOSSES
-            downedKisume = tag.Get<bool>("downedKisume");
-
-            //GMR
-            downedTrerios = tag.Get<bool>("downedTrerios");
-            downedMagmaEye = tag.Get<bool>("downedMagmaEye");
-            downedJack = tag.Get<bool>("downedJack");
-            downedAcheron = tag.Get<bool>("downedAcheron");
-
             //HOMEWARD JOURNEY
-            downedMarquisMoonsquid = tag.Get<bool>("downedMarquisMoonsquid");
-            downedPriestessRod = tag.Get<bool>("downedPriestessRod");
-            downedDiver = tag.Get<bool>("downedDiver");
-            downedMotherbrain = tag.Get<bool>("downedMotherbrain");
-            downedWallOfShadow = tag.Get<bool>("downedWallOfShadow");
-            downedSunSlimeGod = tag.Get<bool>("downedSunSlimeGod");
-            downedOverwatcher = tag.Get<bool>("downedOverwatcher");
-            downedLifebringer = tag.Get<bool>("downedLifebringer");
-            downedMaterealizer = tag.Get<bool>("downedMaterealizer");
-            downedScarabBelief = tag.Get<bool>("downedScarabBelief");
-            downedWorldsEndWhale = tag.Get<bool>("downedWorldsEndWhale");
-            downedSon = tag.Get<bool>("downedSon");
-            //EVENTS
-            downedCaveOrdeal = tag.Get<bool>("downedCaveOrdeal");
-            downedCorruptOrdeal = tag.Get<bool>("downedCorruptOrdeal");
-            downedCrimsonOrdeal = tag.Get<bool>("downedCrimsonOrdeal");
-            downedDesertOrdeal = tag.Get<bool>("downedDesertOrdeal");
-            downedForestOrdeal = tag.Get<bool>("downedForestOrdeal");
-            downedHallowOrdeal = tag.Get<bool>("downedHallowOrdeal");
-            downedJungleOrdeal = tag.Get<bool>("downedJungleOrdeal");
-            downedSkyOrdeal = tag.Get<bool>("downedSkyOrdeal");
-            downedSnowOrdeal = tag.Get<bool>("downedSnowOrdeal");
-            downedUnderworldOrdeal = tag.Get<bool>("downedUnderworldOrdeal");
             //BIOMES
             beenToHomewardAbyss = tag.Get<bool>("beenToHomewardAbyss");
 
-            //HUNT OF THE OLD GOD
-            downedGoozma = tag.Get<bool>("downedGoozma");
 
             //INFERNUM
-            downedBereftVassal = tag.Get<bool>("downedBereftVassal");
             //BIOMES
             beenToProfanedGardens = tag.Get<bool>("beenToProfanedGardens");
 
             //LUNAR VEIL
-            downedStoneGuardian = tag.Get<bool>("downedStoneGuardian");
-            downedCommanderGintzia = tag.Get<bool>("downedCommanderGintzia");
-            downedSunStalker = tag.Get<bool>("downedSunStalker");
-            downedPumpkinJack = tag.Get<bool>("downedPumpkinJack");
-            downedForgottenPuppetDaedus = tag.Get<bool>("downedForgottenPuppetDaedus");
-            downedDreadMire = tag.Get<bool>("downedDreadMire");
-            downedSingularityFragment = tag.Get<bool>("downedSingularityFragment");
-            downedVerlia = tag.Get<bool>("downedVerlia");
-            downedIrradia = tag.Get<bool>("downedIrradia");
-            downedSylia = tag.Get<bool>("downedSylia");
-            downedFenix = tag.Get<bool>("downedFenix");
-            //MINIBOSSSES
-            downedBlazingSerpent = tag.Get<bool>("downedBlazingSerpent");
-            downedCogwork = tag.Get<bool>("downedCogwork");
-            downedWaterCogwork = tag.Get<bool>("downedWaterCogwork");
-            downedWaterJellyfish = tag.Get<bool>("downedWaterJellyfish");
-            downedSparn = tag.Get<bool>("downedSparn");
-            downedPandorasFlamebox = tag.Get<bool>("downedPandorasFlamebox");
-            downedSTARBOMBER = tag.Get<bool>("downedSTARBOMBER");
-            //EVENT
-            downedGintzeArmy = tag.Get<bool>("downedGintzeArmy");
             //BIOMES
             beenToLunarVeilAbyss = tag.Get<bool>("beenToLunarVeilAbyss");
             beenToAcid = tag.Get<bool>("beenToAcid");
@@ -3479,177 +2804,30 @@ namespace QoLCompendium.Core
             beenToMarrowSurface = tag.Get<bool>("beenToMarrowSurface");
             beenToMorrowUnderground = tag.Get<bool>("beenToMorrowUnderground");
 
-            //MARTAINS ORDER
-            downedBritzz = tag.Get<bool>("downedBritzz");
-            downedTheAlchemist = tag.Get<bool>("downedTheAlchemist");
-            downedCarnagePillar = tag.Get<bool>("downedCarnagePillar");
-            downedVoidDigger = tag.Get<bool>("downedVoidDigger");
-            downedPrinceSlime = tag.Get<bool>("downedPrinceSlime");
-            downedTriplets = tag.Get<bool>("downedTriplets");
-            downedJungleDefenders = tag.Get<bool>("downedJungleDefenders");
-
-            //MECH REWORK
-            downedSt4sys = tag.Get<bool>("downedSt4sys");
-            downedTerminator = tag.Get<bool>("downedTerminator");
-            downedCaretaker = tag.Get<bool>("downedCaretaker");
-            downedSiegeEngine = tag.Get<bool>("downedSiegeEngine");
-
-            //MEDIAL RIFT
-            downedSuperVoltaicMotherSlime = tag.Get<bool>("downedSuperVoltaicMotherSlime");
-
-            //METROID
-            downedTorizo = tag.Get<bool>("downedTorizo");
-            downedSerris = tag.Get<bool>("downedSerris");
-            downedKraid = tag.Get<bool>("downedKraid");
-            downedPhantoon = tag.Get<bool>("downedPhantoon");
-            downedOmegaPirate = tag.Get<bool>("downedOmegaPirate");
-            downedNightmare = tag.Get<bool>("downedNightmare");
-            downedGoldenTorizo = tag.Get<bool>("downedGoldenTorizo");
-
-            //OPHIOID
-            downedOphiopede = tag.Get<bool>("downedOphiopede");
-            downedOphiocoon = tag.Get<bool>("downedOphiocoon");
-            downedOphiofly = tag.Get<bool>("downedOphiofly");
-
-            //POLARITIES
-            downedStormCloudfish = tag.Get<bool>("downedStormCloudfish");
-            downedStarConstruct = tag.Get<bool>("downedStarConstruct");
-            downedGigabat = tag.Get<bool>("downedGigabat");
-            downedSunPixie = tag.Get<bool>("downedSunPixie");
-            downedEsophage = tag.Get<bool>("downedEsophage");
-            downedConvectiveWanderer = tag.Get<bool>("downedConvectiveWanderer");
-
-            //PROJECT ZERO
-            downedForestGuardian = tag.Get<bool>("downedForestGuardian");
-            downedCryoGuardian = tag.Get<bool>("downedCryoGuardian");
-            downedPrimordialWorm = tag.Get<bool>("downedPrimordialWorm");
-            downedTheGuardianOfHell = tag.Get<bool>("downedTheGuardianOfHell");
-            downedVoid = tag.Get<bool>("downedVoid");
-            downedArmagem = tag.Get<bool>("downedArmagem");
-
             //QWERTY
-            downedPolarExterminator = tag.Get<bool>("downedPolarExterminator");
-            downedDivineLight = tag.Get<bool>("downedDivineLight");
-            downedAncientMachine = tag.Get<bool>("downedAncientMachine");
-            downedNoehtnap = tag.Get<bool>("downedNoehtnap");
-            downedHydra = tag.Get<bool>("downedHydra");
-            downedImperious = tag.Get<bool>("downedImperious");
-            downedRuneGhost = tag.Get<bool>("downedRuneGhost");
-            downedInvaderBattleship = tag.Get<bool>("downedInvaderBattleship");
-            downedInvaderNoehtnap = tag.Get<bool>("downedInvaderNoehtnap");
-            downedOLORD = tag.Get<bool>("downedOLORD");
-            //MINIBOSSES
-            downedGreatTyrannosaurus = tag.Get<bool>("downedGreatTyrannosaurus");
-            //EVENTS
-            downedDinoMilitia = tag.Get<bool>("downedDinoMilitia");
-            downedInvaders = tag.Get<bool>("downedInvaders");
             //BIOMES
             beenToSkyFortress = tag.Get<bool>("beenToSkyFortress");
 
             //REDEMPTION
-            downedThorn = tag.Get<bool>("downedThorn");
-            downedErhan = tag.Get<bool>("downedErhan");
-            downedKeeper = tag.Get<bool>("downedKeeper");
-            downedSeedOfInfection = tag.Get<bool>("downedSeedOfInfection");
-            downedKingSlayerIII = tag.Get<bool>("downedKingSlayerIII");
-            downedOmegaCleaver = tag.Get<bool>("downedOmegaCleaver");
-            downedOmegaGigapora = tag.Get<bool>("downedOmegaGigapora");
-            downedOmegaObliterator = tag.Get<bool>("downedOmegaObliterator");
-            downedPatientZero = tag.Get<bool>("downedPatientZero");
-            downedAkka = tag.Get<bool>("downedAkka");
-            downedUkko = tag.Get<bool>("downedUkko");
-            downedAncientDeityDuo = tag.Get<bool>("downedAncientDeityDuo");
-            downedNebuleus = tag.Get<bool>("downedNebuleus");
-            //MINIBOSSES
-            downedFowlEmperor = tag.Get<bool>("downedFowlEmperor");
-            downedCockatrice = tag.Get<bool>("downedCockatrice");
-            downedBasan = tag.Get<bool>("downedBasan");
-            downedSkullDigger = tag.Get<bool>("downedSkullDigger");
-            downedEaglecrestGolem = tag.Get<bool>("downedEaglecrestGolem");
-            downedCalavia = tag.Get<bool>("downedCalavia");
-            downedTheJanitor = tag.Get<bool>("downedTheJanitor");
-            downedIrradiatedBehemoth = tag.Get<bool>("downedIrradiatedBehemoth");
-            downedBlisterface = tag.Get<bool>("downedBlisterface");
-            downedProtectorVolt = tag.Get<bool>("downedProtectorVolt");
-            downedMACEProject = tag.Get<bool>("downedMACEProject");
-            //EVENTS
-            downedFowlMorning = tag.Get<bool>("downedFowlMorning");
-            downedRaveyard = tag.Get<bool>("downedRaveyard");
             //BIOMES
             beenToLab = tag.Get<bool>("beenToLab");
             beenToWasteland = tag.Get<bool>("beenToWasteland");
 
             //SOTS
-            downedGlowmoth = tag.Get<bool>("downedGlowmoth");
-            downedPutridPinky = tag.Get<bool>("downedPutridPinky");
-            downedPharaohsCurse = tag.Get<bool>("downedPharaohsCurse");
-            downedAdvisor = tag.Get<bool>("downedAdvisor");
-            downedPolaris = tag.Get<bool>("downedPolaris");
-            downedLux = tag.Get<bool>("downedLux");
-            downedSubspaceSerpent = tag.Get<bool>("downedSubspaceSerpent");
-            downedNatureConstruct = tag.Get<bool>("downedNatureConstruct");
-            downedEarthenConstruct = tag.Get<bool>("downedEarthenConstruct");
-            downedPermafrostConstruct = tag.Get<bool>("downedPermafrostConstruct");
-            downedTidalConstruct = tag.Get<bool>("downedTidalConstruct");
-            downedOtherworldlyConstruct = tag.Get<bool>("downedOtherworldlyConstruct");
-            downedEvilConstruct = tag.Get<bool>("downedEvilConstruct");
-            downedInfernoConstruct = tag.Get<bool>("downedInfernoConstruct");
-            downedChaosConstruct = tag.Get<bool>("downedChaosConstruct");
-            downedNatureSpirit = tag.Get<bool>("downedNatureSpirit");
-            downedEarthenSpirit = tag.Get<bool>("downedEarthenSpirit");
-            downedPermafrostSpirit = tag.Get<bool>("downedPermafrostSpirit");
-            downedTidalSpirit = tag.Get<bool>("downedTidalSpirit");
-            downedOtherworldlySpirit = tag.Get<bool>("downedOtherworldlySpirit");
-            downedEvilSpirit = tag.Get<bool>("downedEvilSpirit");
-            downedInfernoSpirit = tag.Get<bool>("downedInfernoSpirit");
-            downedChaosSpirit = tag.Get<bool>("downedChaosSpirit");
             //BIOMES
             beenToPyramid = tag.Get<bool>("beenToPyramid");
             beenToPlanetarium = tag.Get<bool>("beenToPlanetarium");
 
             //SHADOWS OF ABADDON
-            downedDecree = tag.Get<bool>("downedDecree");
-            downedFlamingPumpkin = tag.Get<bool>("downedFlamingPumpkin");
-            downedZombiePiglinBrute = tag.Get<bool>("downedZombiePiglinBrute");
-            downedJensenTheGrandHarpy = tag.Get<bool>("downedJensenTheGrandHarpy");
-            downedAraneas = tag.Get<bool>("downedAraneas");
-            downedHarpyQueenRaynare = tag.Get<bool>("downedHarpyQueenRaynare");
-            downedPrimordia = tag.Get<bool>("downedPrimordia");
-            downedAbaddon = tag.Get<bool>("downedAbaddon");
-            downedAraghur = tag.Get<bool>("downedAraghur");
-            downedLostSiblings = tag.Get<bool>("downedLostSiblings");
-            downedErazor = tag.Get<bool>("downedErazor");
-            downedNihilus = tag.Get<bool>("downedNihilus");
             //BIOMES
             beenToCinderForest = tag.Get<bool>("beenToCinderForest");
 
-            //SLOOME
-            downedExodygen = tag.Get<bool>("downedExodygen");
-
             //SPIRIT
-            downedScarabeus = tag.Get<bool>("downedScarabeus");
-            downedMoonJellyWizard = tag.Get<bool>("downedMoonJellyWizard");
-            downedVinewrathBane = tag.Get<bool>("downedVinewrathBane");
-            downedAncientAvian = tag.Get<bool>("downedAncientAvian");
-            downedStarplateVoyager = tag.Get<bool>("downedStarplateVoyager");
-            downedInfernon = tag.Get<bool>("downedInfernon");
-            downedDusking = tag.Get<bool>("downedDusking");
-            downedAtlas = tag.Get<bool>("downedAtlas");
-            //EVENTS
-            downedJellyDeluge = tag.Get<bool>("downedJellyDeluge");
-            downedTide = tag.Get<bool>("downedTide");
-            downedMysticMoon = tag.Get<bool>("downedMysticMoon");
             //BIOMES
             beenToBriar = tag.Get<bool>("beenToBriar");
             beenToSpirit = tag.Get<bool>("beenToSpirit");
 
             //SPOOKY
-            downedSpookySpirit = tag.Get<bool>("downedSpookySpirit");
-            downedRotGourd = tag.Get<bool>("downedRotGourd");
-            downedMoco = tag.Get<bool>("downedMoco");
-            downedDaffodil = tag.Get<bool>("downedDaffodil");
-            downedOrroBoro = tag.Get<bool>("downedOrroBoro");
-            downedBigBone = tag.Get<bool>("downedBigBone");
             //BIOMES
             beenToSpookyForest = tag.Get<bool>("beenToSpookyForest");
             beenToSpookyUnderground = tag.Get<bool>("beenToSpookyUnderground");
@@ -3659,107 +2837,17 @@ namespace QoLCompendium.Core
             beenToCemetery = tag.Get<bool>("beenToCemetery");
 
             //STARLIGHT RIVER
-            downedAuroracle = tag.Get<bool>("downedAuroracle");
-            downedCeiros = tag.Get<bool>("downedCeiros");
-            //MINIBOSSES
-            downedGlassweaver = tag.Get<bool>("downedGlassweaver");
             //BIOMES
             beenToAuroracleTemple = tag.Get<bool>("beenToAuroracleTemple");
             beenToVitricDesert = tag.Get<bool>("beenToVitricDesert");
             beenToVitricTemple = tag.Get<bool>("beenToVitricTemple");
 
-            //STARS ABOVE
-            downedVagrantofSpace = tag.Get<bool>("downedVagrantofSpace");
-            downedThespian = tag.Get<bool>("downedThespian");
-            downedDioskouroi = tag.Get<bool>("downedDioskouroi");
-            downedNalhaun = tag.Get<bool>("downedNalhaun");
-            downedStarfarers = tag.Get<bool>("downedStarfarers");
-            downedPenthesilea = tag.Get<bool>("downedPenthesilea");
-            downedArbitration = tag.Get<bool>("downedArbitration");
-            downedWarriorOfLight = tag.Get<bool>("downedWarriorOfLight");
-            downedTsukiyomi = tag.Get<bool>("downedTsukiyomi");
-
-            //STORM DIVERS MOD
-            downedAncientHusk = tag.Get<bool>("downedAncientHusk");
-            downedOverloadedScandrone = tag.Get<bool>("downedOverloadedScandrone");
-            downedPainbringer = tag.Get<bool>("downedPainbringer");
-
-            //SUPERNOVA
-            downedHarbingerOfAnnihilation = tag.Get<bool>("downedHarbingerOfAnnihilation");
-            downedFlyingTerror = tag.Get<bool>("downedFlyingTerror");
-            downedStoneMantaRay = tag.Get<bool>("downedStoneMantaRay");
-            //MINIBOSSES
-            downedBloodweaver = tag.Get<bool>("downedBloodweaver");
-
-            //TERRORBORN
-            downedInfectedIncarnate = tag.Get<bool>("downedInfectedIncarnate");
-            downedTidalTitan = tag.Get<bool>("downedTidalTitan");
-            downedDunestock = tag.Get<bool>("downedDunestock");
-            downedShadowcrawler = tag.Get<bool>("downedShadowcrawler");
-            downedHexedConstructor = tag.Get<bool>("downedHexedConstructor");
-            downedPrototypeI = tag.Get<bool>("downedPrototypeI");
-
             //THORIUM
-            downedGrandThunderBird = tag.Get<bool>("downedGrandThunderBird");
-            downedQueenJellyfish = tag.Get<bool>("downedQueenJellyfish");
-            downedViscount = tag.Get<bool>("downedViscount");
-            downedGraniteEnergyStorm = tag.Get<bool>("downedGraniteEnergyStorm");
-            downedBuriedChampion = tag.Get<bool>("downedBuriedChampion");
-            downedBoreanStrider = tag.Get<bool>("downedBoreanStrider");
-            downedFallenBeholder = tag.Get<bool>("downedFallenBeholder");
-            downedLich = tag.Get<bool>("downedLich");
-            downedForgottenOne = tag.Get<bool>("downedForgottenOne");
-            downedPrimordials = tag.Get<bool>("downedPrimordials");
-            downedPatchWerk = tag.Get<bool>("downedPatchWerk");
-            downedCorpseBloom = tag.Get<bool>("downedCorpseBloom");
-            downedIllusionist = tag.Get<bool>("downedIllusionist");
             //BIOMES
             beenToAquaticDepths = tag.Get<bool>("beenToAquaticDepths");
 
-            //TRAE
-            downedGraniteOvergrowth = tag.Get<bool>("downedGraniteOvergrowth");
-            downedBeholder = tag.Get<bool>("downedBeholder");
-
-            //UHTRIC
-            downedDredger = tag.Get<bool>("downedDredger");
-            downedCharcoolSnowman = tag.Get<bool>("downedCharcoolSnowman");
-            downedCosmicMenace = tag.Get<bool>("downedCosmicMenace");
-
-            //UNIVERSE OF SWORDS
-            downedEvilFlyingBlade = tag.Get<bool>("downedEvilFlyingBlade");
-
-            //VALHALLA
-            downedColossalCarnage = tag.Get<bool>("downedColossalCarnage");
-            downedYurnero = tag.Get<bool>("downedYurnero");
-
             //VERDANT
             beenToVerdant = tag.Get<bool>("beenToVerdant");
-
-            //VITALITY
-            downedStormCloud = tag.Get<bool>("downedStormCloud");
-            downedGrandAntlion = tag.Get<bool>("downedGrandAntlion");
-            downedGemstoneElemental = tag.Get<bool>("downedGemstoneElemental");
-            downedMoonlightDragonfly = tag.Get<bool>("downedMoonlightDragonfly");
-            downedDreadnaught = tag.Get<bool>("downedDreadnaught");
-            downedMosquitoMonarch = tag.Get<bool>("downedMosquitoMonarch");
-            downedAnarchulesBeetle = tag.Get<bool>("downedAnarchulesBeetle");
-            downedChaosbringer = tag.Get<bool>("downedChaosbringer");
-            downedPaladinSpirit = tag.Get<bool>("downedPaladinSpirit");
-
-            //WAYFAIR
-            downedManaflora = tag.Get<bool>("downedManaflora");
-
-            //WRATH OF THE GODS
-            downedNoxus = tag.Get<bool>("downedNoxus");
-            downedNamelessDeityOfLight = tag.Get<bool>("downedNamelessDeityOfLight");
-
-            //ZYLON
-            downedDirtball = tag.Get<bool>("downedDirtball");
-            downedMetelord = tag.Get<bool>("downedMetelord");
-            downedAdeneb = tag.Get<bool>("downedAdeneb");
-            downedEldritchJellyfish = tag.Get<bool>("downedEldritchJellyfish");
-            downedSaburRex = tag.Get<bool>("downedSaburRex");
-            */
 
             IList<string> downed = tag.GetList<string>("QoLCdowned");
             for (int i = 0; i < DownedBoss.Length; i++)
@@ -4967,7 +4055,7 @@ namespace QoLCompendium.Core
             }
         }
 
-        public static void Resetdowned()
+        public static void ResetDowned()
         {
             //VANILLA
             //BOSSES
@@ -5642,9 +4730,6 @@ namespace QoLCompendium.Core
             clamityAddonLoaded = ModLoader.TryGetMod("Clamity", out Mod Clamity);
             clamityAddonMod = Clamity;
 
-            classicalLoaded = ModLoader.TryGetMod("Classical", out Mod Classical);
-            classicalMod = Classical;
-
             clickerClassLoaded = ModLoader.TryGetMod("ClickerClass", out Mod ClickerClass);
             clickerClassMod = ClickerClass;
 
@@ -5729,11 +4814,17 @@ namespace QoLCompendium.Core
             huntOfTheOldGodLoaded = ModLoader.TryGetMod("CalamityHunt", out Mod CalamityHunt);
             huntOfTheOldGodMod = CalamityHunt;
 
+            infectedQualitiesLoaded = ModLoader.TryGetMod("InfectedQualities", out Mod InfectedQualities);
+            infectedQualitiesMod = InfectedQualities;
+
             infernumLoaded = ModLoader.TryGetMod("InfernumMode", out Mod InfernumMode);
             infernumMod = InfernumMode;
 
             luiAFKLoaded = ModLoader.TryGetMod("miningcracks_take_on_luiafk", out Mod miningcracks_take_on_luiafk);
             luiAFKMod = miningcracks_take_on_luiafk;
+
+            luiAFKDLCLoaded = ModLoader.TryGetMod("UnofficialLuiAFKDLC", out Mod UnofficialLuiAFKDLC);
+            luiAFKDLCMod = UnofficialLuiAFKDLC;
 
             lunarVeilLoaded = ModLoader.TryGetMod("Stellamod", out Mod Stellamod);
             lunarVeilMod = Stellamod;
@@ -5774,6 +4865,9 @@ namespace QoLCompendium.Core
             qwertyLoaded = ModLoader.TryGetMod("QwertyMod", out Mod QwertyMod);
             qwertyMod = QwertyMod;
 
+            ragnarokLoaded = ModLoader.TryGetMod("RagnarokMod", out Mod RagnarokMod);
+            ragnarokMod = RagnarokMod;
+
             redemptionLoaded = ModLoader.TryGetMod("Redemption", out Mod Redemption);
             redemptionMod = Redemption;
 
@@ -5782,6 +4876,9 @@ namespace QoLCompendium.Core
 
             remnantsLoaded = ModLoader.TryGetMod("Remnants", out Mod Remnants);
             remnantsMod = Remnants;
+
+            ruptureLoaded = ModLoader.TryGetMod("Rupture", out Mod Rupture);
+            ruptureMod = Rupture;
 
             secretsOfTheShadowsLoaded = ModLoader.TryGetMod("SOTS", out Mod SOTS);
             secretsOfTheShadowsMod = SOTS;
@@ -5818,6 +4915,12 @@ namespace QoLCompendium.Core
 
             thoriumLoaded = ModLoader.TryGetMod("ThoriumMod", out Mod ThoriumMod);
             thoriumMod = ThoriumMod;
+
+            thoriumBossReworkLoaded = ModLoader.TryGetMod("ThoriumRework", out Mod ThoriumRework);
+            thoriumBossReworkMod = ThoriumRework;
+
+            exhaustionDisablerLoaded = ModLoader.TryGetMod("ExhaustionDisabler", out Mod ExhaustionDisabler);
+            exhaustionDisablerMod = ExhaustionDisabler;
 
             traeLoaded = ModLoader.TryGetMod("TRAEProject", out Mod TRAEProject);
             traeMod = TRAEProject;

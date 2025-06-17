@@ -1,4 +1,5 @@
-using QoLCompendium.Content.Items.InformationAccessories;
+using Humanizer;
+using QoLCompendium.Content.Items.Accessories.Fishing;
 using QoLCompendium.Content.Items.Tools.Fishing;
 using QoLCompendium.Content.Items.Tools.Usables;
 using QoLCompendium.Core.UI.Panels;
@@ -32,12 +33,14 @@ namespace QoLCompendium.Core
         public bool eventSpawn = false;
 
         //Items
+        public int flaskEffectMode = 0;
+        public int thoriumCoatingMode = 0;
         public bool sillySlapper = false;
         public bool warpMirror = false;
         public bool HasGoldenLockpick = false;
-        public List<int> activeItems = new();
-        public List<int> activeBuffItems = new();
-        public List<int> activeCraftingStationItems = new();
+        public List<int> activeItems = [];
+        public List<int> activeBuffItems = [];
+        public List<int> activeBuffs = [];
 
         //Biomes
         public int selectedBiome = 0;
@@ -58,6 +61,8 @@ namespace QoLCompendium.Core
 
         public override void SaveData(TagCompound tag)
         {
+            tag.Add("flaskEffectMode", flaskEffectMode);
+            tag.Add("thoriumCoatingMode", thoriumCoatingMode);
             tag.Add("SelectedBiome", selectedBiome);
             tag.Add("SelectedSpawnModifier", selectedSpawnModifier);
             tag.Add("bossToSpawn", bossToSpawn);
@@ -68,6 +73,8 @@ namespace QoLCompendium.Core
 
         public override void LoadData(TagCompound tag)
         {
+            flaskEffectMode = tag.GetInt("flaskEffectMode");
+            thoriumCoatingMode = tag.GetInt("thoriumCoatingMode");
             selectedBiome = tag.GetInt("SelectedBiome");
             selectedSpawnModifier = tag.GetInt("SelectedSpawnModifier");
             bossToSpawn = tag.GetInt("bossToSpawn");
@@ -161,7 +168,7 @@ namespace QoLCompendium.Core
         public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
         {
             bool inWater = !attempt.inLava && !attempt.inHoney;
-            if (inWater && Main.bloodMoon && attempt.crate && QoLCompendium.itemConfig.BottomlessChumBucket)
+            if (inWater && Main.bloodMoon && attempt.crate && QoLCompendium.itemConfig.BottomlessBuckets)
             {
                 if (!attempt.uncommon && !attempt.rare && (attempt.veryrare || attempt.legendary) && Main.rand.NextBool())
                 {
@@ -174,21 +181,15 @@ namespace QoLCompendium.Core
         public override void OnHurt(Player.HurtInfo info)
         {
             if (sillySlapper)
-            {
-                Player.KillMe(PlayerDeathReason.ByCustomReason(Player.name + " was slapped too silly"), 666666, 0);
-            }
+                Player.KillMe(PlayerDeathReason.ByCustomReason(NetworkText.FromKey(Language.GetTextValue("Mods.QoLCompendium.Messages.SillySlapper").FormatWith(Player.name))), int.MaxValue, 0);
         }
 
         public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
         {
             if (QoLCompendium.itemConfig.StarterBag)
-            {
-                return new[] { new Item(ModContent.ItemType<StarterBag>()) };
-            }
+                return [new Item(ModContent.ItemType<StarterBag>())];
             else
-            {
-                return Enumerable.Empty<Item>();
-            }
+                return [];
         }
 
         private static void ItemSlot_RightClick(On_ItemSlot.orig_RightClick_ItemArray_int_int orig, Item[] inv, int context, int slot)
@@ -228,7 +229,7 @@ namespace QoLCompendium.Core
             HasGoldenLockpick = false;
             activeItems.Clear();
             activeBuffItems.Clear();
-            activeCraftingStationItems.Clear();
+            activeBuffs.Clear();
             Common.Reset();
 
             if (Main.netMode != NetmodeID.Server)

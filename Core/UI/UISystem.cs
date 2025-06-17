@@ -34,6 +34,30 @@ namespace QoLCompendium.Core.UI
         public SummoningRemoteUI summoningRemoteUI;
         public UserInterface summoningRemoteInterface;
 
+        //Permanent Buff Selector UI
+        public PermanentBuffSelectorUI permanentBuffSelectorUI;
+        public UserInterface permanentBuffSelectorInterface;
+
+        //Permanent Buff UI
+        public PermanentBuffUI permanentBuffUI;
+        public UserInterface permanentBuffInterface;
+
+        //Permanent Calamity Buff UI
+        public PermanentCalamityBuffUI permanentCalamityBuffUI;
+        public UserInterface permanentCalamityBuffInterface;
+
+        //Permanent Martin's Order Buff UI
+        public PermanentMartinsOrderBuffUI permanentMartinsOrderBuffUI;
+        public UserInterface permanentMartinsOrderBuffInterface;
+
+        //Permanent Spirit Classic Buff UI
+        public PermanentSpiritClassicBuffUI permanentSpiritClassicBuffUI;
+        public UserInterface permanentSpiritClassicBuffInterface;
+
+        //Permanent Thorium Buff UI
+        public PermanentThoriumBuffUI permanentThoriumBuffUI;
+        public UserInterface permanentThoriumBuffInterface;
+
         #region UI TEXT
         //BLACK MARKET DEALER
         public static LocalizedText BMPotionText { get; private set; }
@@ -104,9 +128,25 @@ namespace QoLCompendium.Core.UI
         public static LocalizedText FirstQuarterText { get; private set; }
         public static LocalizedText WaxingGibbousText { get; private set; }
 
+        //PERMANENT BUFF SELECTOR UI
+        public static LocalizedText VanillaText { get; private set; }
+        public static LocalizedText CalamityText { get; private set; }
+        public static LocalizedText MartinsOrderText { get; private set; }
+        public static LocalizedText SpiritClassicText { get; private set; }
+        public static LocalizedText ThoriumText { get; private set; }
+
+        //PERMANENT BUFF UI
+        public static LocalizedText ArenaText { get; private set; }
+        public static LocalizedText PotionText { get; private set; }
+        public static LocalizedText StationText { get; private set; }
+        public static LocalizedText AddonText { get; private set; }
+        public static LocalizedText RepellentText { get; private set; }
+
+
         //GENERIC
         public static LocalizedText CloseText { get; private set; }
         public static LocalizedText ResetText { get; private set; }
+        public static LocalizedText UnloadedText { get; private set; }
         #endregion
 
         public override void Load()
@@ -181,9 +221,24 @@ namespace QoLCompendium.Core.UI
             FirstQuarterText = Mod.GetLocalization($"UIText.FirstQuarterText");
             WaxingGibbousText = Mod.GetLocalization($"UIText.WaxingGibbousText");
 
+            //PERMANENT BUFF SELECTOR UI
+            VanillaText = Mod.GetLocalization($"UIText.VanillaText");
+            CalamityText = Mod.GetLocalization($"UIText.CalamityText");
+            MartinsOrderText = Mod.GetLocalization($"UIText.MartinsOrderText");
+            SpiritClassicText = Mod.GetLocalization($"UIText.SpiritClassicText");
+            ThoriumText = Mod.GetLocalization($"UIText.ThoriumText");
+
+            //PERMANENT BUFFS
+            ArenaText = Mod.GetLocalization($"UIText.ArenaText");
+            PotionText = Mod.GetLocalization($"UIText.PotionText");
+            StationText = Mod.GetLocalization($"UIText.StationText");
+            AddonText = Mod.GetLocalization($"UIText.AddonText");
+            RepellentText = Mod.GetLocalization($"UIText.RepellentText");
+
             //GENERIC
             CloseText = Mod.GetLocalization($"UIText.CloseText");
             ResetText = Mod.GetLocalization($"UIText.ResetText");
+            UnloadedText = Mod.GetLocalization($"UIText.UnloadedText");
             #endregion
 
             if (!Main.dedServ)
@@ -222,6 +277,36 @@ namespace QoLCompendium.Core.UI
                 summoningRemoteUI.Activate();
                 summoningRemoteInterface = new UserInterface();
                 summoningRemoteInterface.SetState(summoningRemoteUI);
+
+                permanentBuffUI = new PermanentBuffUI();
+                permanentBuffUI.Activate();
+                permanentBuffInterface = new UserInterface();
+                permanentBuffInterface.SetState(permanentBuffUI);
+
+                permanentCalamityBuffUI = new PermanentCalamityBuffUI();
+                permanentCalamityBuffUI.Activate();
+                permanentCalamityBuffInterface = new UserInterface();
+                permanentCalamityBuffInterface.SetState(permanentCalamityBuffUI);
+
+                permanentMartinsOrderBuffUI = new PermanentMartinsOrderBuffUI();
+                permanentMartinsOrderBuffUI.Activate();
+                permanentMartinsOrderBuffInterface = new UserInterface();
+                permanentMartinsOrderBuffInterface.SetState(permanentMartinsOrderBuffUI);
+
+                permanentSpiritClassicBuffUI = new PermanentSpiritClassicBuffUI();
+                permanentSpiritClassicBuffUI.Activate();
+                permanentSpiritClassicBuffInterface = new UserInterface();
+                permanentSpiritClassicBuffInterface.SetState(permanentSpiritClassicBuffUI);
+
+                permanentThoriumBuffUI = new PermanentThoriumBuffUI();
+                permanentThoriumBuffUI.Activate();
+                permanentThoriumBuffInterface = new UserInterface();
+                permanentThoriumBuffInterface.SetState(permanentThoriumBuffUI);
+
+                permanentBuffSelectorUI = new PermanentBuffSelectorUI();
+                permanentBuffSelectorUI.Activate();
+                permanentBuffSelectorInterface = new UserInterface();
+                permanentBuffSelectorInterface.SetState(permanentBuffSelectorUI);
             }
         }
 
@@ -230,6 +315,7 @@ namespace QoLCompendium.Core.UI
             int MouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
             if (MouseTextIndex != -1)
             {
+                //BLACK MARKET DEALER
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
                     "QoLC: Shop Selector",
                     delegate
@@ -242,9 +328,7 @@ namespace QoLCompendium.Core.UI
                     },
                     InterfaceScaleType.UI)
                 );
-            }
-            if (MouseTextIndex != -1)
-            {
+                //ETHEREAL COLLECTOR
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
                     "QoLC: Modded Shop Selector",
                     delegate
@@ -257,9 +341,7 @@ namespace QoLCompendium.Core.UI
                     },
                     InterfaceScaleType.UI)
                 );
-            }
-            if (MouseTextIndex != -1)
-            {
+                //ALL IN ONE ACCESS
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
                     "QoLC: Storage Selector",
                     delegate
@@ -272,9 +354,7 @@ namespace QoLCompendium.Core.UI
                     },
                     InterfaceScaleType.UI)
                 );
-            }
-            if (MouseTextIndex != -1)
-            {
+                //DESTINATION GLOBE
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
                     "QoLC: Biome Selector",
                     delegate
@@ -287,9 +367,7 @@ namespace QoLCompendium.Core.UI
                     },
                     InterfaceScaleType.UI)
                 );
-            }
-            if (MouseTextIndex != -1)
-            {
+                //ENTITY MANIPULATOR
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
                     "QoLC: Spawn Selector",
                     delegate
@@ -302,9 +380,7 @@ namespace QoLCompendium.Core.UI
                     },
                     InterfaceScaleType.UI)
                 );
-            }
-            if (MouseTextIndex != -1)
-            {
+                //PHASE INTERRUPTER
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
                     "QoLC: Moon Selector",
                     delegate
@@ -317,16 +393,92 @@ namespace QoLCompendium.Core.UI
                     },
                     InterfaceScaleType.UI)
                 );
-            }
-            if (MouseTextIndex != -1)
-            {
+                //SUMMONING REMOTE
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-                    "QoLC: Moon Selector",
+                    "QoLC: Summon Selector",
                     delegate
                     {
                         if (SummoningRemoteUI.visible)
                         {
                             summoningRemoteUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                //PERMANENT BUFF SELECTOR
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "QoLC: Buff Selector",
+                    delegate
+                    {
+                        if (PermanentBuffSelectorUI.visible)
+                        {
+                            permanentBuffSelectorUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                //PERMANENT BUFFS
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "QoLC: Buff Toggles",
+                    delegate
+                    {
+                        if (PermanentBuffUI.visible)
+                        {
+                            permanentBuffUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                //PERMANENT CALAMITY BUFFS
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "QoLC: Calamity Buff Toggles",
+                    delegate
+                    {
+                        if (PermanentCalamityBuffUI.visible)
+                        {
+                            permanentCalamityBuffUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                //PERMANENT MARTIN'S ORDER BUFFS
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "QoLC: Calamity Buff Toggles",
+                    delegate
+                    {
+                        if (PermanentMartinsOrderBuffUI.visible)
+                        {
+                            permanentMartinsOrderBuffUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                //PERMANENT SPIRIT CLASSIC BUFFS
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "QoLC: Calamity Buff Toggles",
+                    delegate
+                    {
+                        if (PermanentSpiritClassicBuffUI.visible)
+                        {
+                            permanentSpiritClassicBuffUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                //PERMANENT THORIUM BUFFS
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "QoLC: Thorium Buff Toggles",
+                    delegate
+                    {
+                        if (PermanentThoriumBuffUI.visible)
+                        {
+                            permanentThoriumBuffUI.Draw(Main.spriteBatch);
                         }
                         return true;
                     },
@@ -359,6 +511,24 @@ namespace QoLCompendium.Core.UI
 
             if (summoningRemoteInterface.CurrentState is not null && SummoningRemoteUI.visible)
                 summoningRemoteInterface.Update(gameTime);
+
+            if (permanentBuffInterface.CurrentState is not null && PermanentBuffUI.visible)
+                permanentBuffInterface.Update(gameTime);
+            
+            if (permanentCalamityBuffInterface.CurrentState is not null && PermanentCalamityBuffUI.visible)
+                permanentCalamityBuffInterface.Update(gameTime);
+
+            if (permanentMartinsOrderBuffInterface.CurrentState is not null && PermanentMartinsOrderBuffUI.visible)
+                permanentMartinsOrderBuffInterface.Update(gameTime);
+
+            if (permanentSpiritClassicBuffInterface.CurrentState is not null && PermanentSpiritClassicBuffUI.visible)
+                permanentSpiritClassicBuffInterface.Update(gameTime);
+
+            if (permanentThoriumBuffInterface.CurrentState is not null && PermanentThoriumBuffUI.visible)
+                permanentThoriumBuffInterface.Update(gameTime);
+
+            if (permanentBuffSelectorInterface.CurrentState is not null && PermanentBuffSelectorUI.visible)
+                permanentBuffSelectorInterface.Update(gameTime);
         }
     }
 }

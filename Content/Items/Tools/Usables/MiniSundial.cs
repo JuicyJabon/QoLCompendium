@@ -1,5 +1,5 @@
 using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 using Terraria.GameContent.Events;
 
@@ -7,6 +7,8 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class MiniSundial : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.MiniSundial;
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

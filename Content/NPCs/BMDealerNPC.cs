@@ -84,7 +84,6 @@ namespace QoLCompendium.Content.NPCs
                 "Ned",
                 "Jay",
                 "Jack",
-                "Frank",
                 "Jabon"
             };
             return list;

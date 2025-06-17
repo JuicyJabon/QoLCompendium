@@ -1,13 +1,15 @@
 ﻿using QoLCompendium.Content.Projectiles.Other;
 using QoLCompendium.Content.Tiles.AutoStructures;
 using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Explosives
 {
     public class AutoHouser : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.AutoStructures;
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -16,7 +18,7 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
         public override void SetDefaults()
         {
             Item.width = 17;
-            Item.height = 19;
+            Item.height = 13;
             Item.maxStack = 1;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = SoundID.Item1;
@@ -64,18 +66,16 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
                         Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(0, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
                     }
                 }
-            } 
-            else
+                return;
+            }
+            for (int x = 0; x <= 9; x++)
             {
-                for (int x = 0; x <= 9; x++)
+                for (int y = -5; y <= 0; y++)
                 {
-                    for (int y = -5; y <= 0; y++)
-                    {
-                        Vector2 mouse = Main.MouseWorld;
-                        mouse.X += x * 16;
-                        mouse.Y += y * 16;
-                        Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(0, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
-                    }
+                    Vector2 mouse = Main.MouseWorld;
+                    mouse.X += x * 16;
+                    mouse.Y += y * 16;
+                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(0, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
                 }
             }
         }

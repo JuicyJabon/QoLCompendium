@@ -1,11 +1,13 @@
 using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class BannerBox : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.BannerBox;
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

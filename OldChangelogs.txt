@@ -1,3 +1,62 @@
+v2.2.12
+1. Added permanent buff items for Spirit Classic & Consolaria
+2. Fixed Calamity update issues
+3. Added the ability to shimmer the Corruption Pylon into the Crimson Pylon and vice-versa
+4. Updated shops for:
+ - Calamity Entropy
+5. Fixed biome visiting not tracking through world reload
+6. Added new Permanent Buff UI to toggle buffs (Default Keybind: 'L')
+7. Removed Permanent Buff Config
+
+v2.2.11
+1. Fixed time issues
+2. Fixed Permanent Thorium Coatings localization
+
+v2.2.10
+1. Added Mining Emblem
+2. Added Construction Emblem
+3. Added Creation Club Member's Pass
+4. Added Utilities in Banks support for Martin's Order
+5. Added Permanent Upgrade Tooltip support for Martin's Order
+6. Made Fargo's Mods summons stackable even when they are non-consumable
+7. Added conversion recipes for mech boss souls, accessible after all 3 are beaten
+8. Fixed Traveler's Mannequin in multiplayer
+9. Fixed Skeleton Rucksack in multiplayer
+10. Fixed Restock Notice in multiplayer
+11. Added crate recipes for Calamity and Thorium
+12. Added herb replanting support for Thorium
+13. Added Sonar Device
+14. Added Angler Radar
+15. Added Angler's Dream
+16. Added a permanent buff system like LuiAFK's mod has
+17. Added permanent buffs for the following mods:
+ - Calamity
+ - Catalyst
+ - Clamity Addon
+ - Clicker Class
+ - Martin's Order
+ - Thorium
+ - Thorium Boss Rework
+18. Added a config to unload mod items instead of disabling their recipe
+19. Many resprites
+20. Added herb replanting support for Redemption, Spirit Classic, and The Depths
+21. Added a fix for AFKPets that prevented miracle fruit from growing
+22. Removed Portable Stations config
+23. Internal optimizations/cleanup
+24. Added boss summon items for the following bosses:
+ - Skeletron
+ - Wall of Flesh
+ - Plantera
+ - Duke Fishron
+ - Empress of Light
+ - Lunatic Cultist
+25. Added cross mod boss summon items for the following bosses:
+ - Forgotten One (Thorium)
+ - Giant Clam (Calamity)
+ - Leviathan and Anahita (Calamity)
+ - Old Duke (Calamity)
+26. Added a right click ability to mobile storages to despawn active storages
+
 v2.2.9
 1. Added a config to disable the Inferno Aura visual
  - Works with Calamity's Tesla Auras

@@ -6,6 +6,8 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class GoldenPowder : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.GoldenPowder;
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 99;

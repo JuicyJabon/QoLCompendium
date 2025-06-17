@@ -1,13 +1,16 @@
 ﻿using QoLCompendium.Content.Tiles.Pylons;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.Pylons
 {
     public class CorruptionPylon : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.Pylons;
+
         public override void SetStaticDefaults()
         {
+            ItemID.Sets.ShimmerTransformToItem[Item.type] = ModContent.ItemType<CrimsonPylon>();
             Item.ResearchUnlockCount = 1;
         }
 

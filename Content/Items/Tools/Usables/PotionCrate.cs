@@ -1,6 +1,6 @@
 ﻿using Humanizer;
 using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
@@ -8,6 +8,8 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class PotionCrate : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.PotionCrate;
+
 #pragma warning disable CA2211
         public static List<int> BuffIDList = new() { };
         public static List<int> ItemIDList = new() { };

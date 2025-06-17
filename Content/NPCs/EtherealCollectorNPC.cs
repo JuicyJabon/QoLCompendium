@@ -59,9 +59,9 @@ namespace QoLCompendium.Content.NPCs
             NPC.damage = 15;
             NPC.defense = 25;
             NPC.lifeMax = 500;
-            NPC.alpha = Item.buyPrice(silver: 1);
-            NPC.HitSound = new SoundStyle?(SoundID.NPCHit1);
-            NPC.DeathSound = new SoundStyle?(SoundID.NPCDeath1);
+            NPC.alpha = 100;
+            NPC.HitSound = SoundID.NPCHit1;
+            NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0.5f;
             AnimationType = 22;
         }
@@ -363,8 +363,8 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.clamityAddonMod, "SupremeLuckPotion", Item.buyPrice(silver: 75), ModConditions.DownedClamitas)
                 .AddModItemToShop(ModConditions.clamityAddonMod, "TitanScalePotion", Item.buyPrice(silver: 75), Condition.DownedGolem)
             //Classical
-                .AddModItemToShop(ModConditions.classicalMod, "DeadshotPotion", Item.buyPrice(silver: 75), Condition.Hardmode, Condition.DownedGoblinArmy)
-                .AddModItemToShop(ModConditions.classicalMod, "StrongArmPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.ruptureMod, "DeadshotPotion", Item.buyPrice(silver: 75), Condition.Hardmode, Condition.DownedGoblinArmy)
+                .AddModItemToShop(ModConditions.ruptureMod, "StrongArmPotion", Item.buyPrice(silver: 75))
             //Clicker Class
                 .AddModItemToShop(ModConditions.clickerClassMod, "InfluencePotion", Item.buyPrice(silver: 75))
             //Consolaria
@@ -379,6 +379,9 @@ namespace QoLCompendium.Content.NPCs
             //Edorbis
                 .AddModItemToShop(ModConditions.edorbisMod, "CapacityPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.edorbisMod, "EnergyRegenerationPotion", Item.buyPrice(silver: 75), ModConditions.DownedGlaciation)
+            //Entropy
+                .AddModItemToShop(ModConditions.calamityEntropyMod, "SoyMilk", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
+                .AddModItemToShop(ModConditions.calamityEntropyMod, "YharimsStimulants", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
             //Everjade
                 .AddModItemToShop(ModConditions.everjadeMod, "HeartbeatPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.everjadeMod, "SpinePotion", Item.buyPrice(silver: 75))
@@ -642,6 +645,9 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.thoriumMod, "SkeletonRepellent", Item.buyPrice(silver: 75), ModConditions.DownedBloodMoon, ModConditions.DownedPatchWerk)
                 .AddModItemToShop(ModConditions.thoriumMod, "WarmongerPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
                 .AddModItemToShop(ModConditions.thoriumMod, "ZombieRepellent", Item.buyPrice(silver: 75), ModConditions.DownedBloodMoon, ModConditions.DownedPatchWerk)
+            //Thorium Boss Rework
+                .AddModItemToShop(ModConditions.thoriumBossReworkMod, "DeathsingerPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToAquaticDepths)
+                .AddModItemToShop(ModConditions.thoriumBossReworkMod, "InspirationRegenerationPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
             //Uhtric
                 .AddModItemToShop(ModConditions.uhtricMod, "PotionOfTheHealthy", Item.buyPrice(silver: 75), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.uhtricMod, "PuncturePotion", Item.buyPrice(silver: 75), Condition.Hardmode)
@@ -753,7 +759,7 @@ namespace QoLCompendium.Content.NPCs
             //Clamity
                 .AddModItemToShop(ModConditions.clamityAddonMod, "ExoBaguette", Item.buyPrice(silver: 75), ModConditions.DownedExoMechs)
             //Classical
-                .AddModItemToShop(ModConditions.classicalMod, "TrinketRack", Item.buyPrice(gold: 15))
+                .AddModItemToShop(ModConditions.ruptureMod, "TrinketRack", Item.buyPrice(gold: 15))
             //Clicker Class
                 .AddModItemToShop(ModConditions.clickerClassMod, "DesktopComputer", Item.buyPrice(gold: 15), Condition.DownedPlantera)
                 .AddModItemToShop(ModConditions.clickerClassMod, "HeavenlyChip", Item.buyPrice(gold: 15), ModConditions.HasBeenToAether)
@@ -772,6 +778,8 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.edorbisMod, "EnergyPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
                 .AddModItemToShop(ModConditions.edorbisMod, "GreaterEnergyPotion", Item.buyPrice(silver: 75), Condition.DownedMechBossAny)
                 .AddModItemToShop(ModConditions.edorbisMod, "SuperEnergyPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera)
+            //Entropy
+                .AddModItemToShop(ModConditions.calamityEntropyMod, "VoidCandle", Item.buyPrice(silver: 75), ModConditions.DownedCruiser)
             //Everjade
                 .AddModItemToShop(ModConditions.everjadeMod, "JasmineTea", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.everjadeMod, "SpringWater", Item.buyPrice(silver: 75))
@@ -1081,6 +1089,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.calamityCommunityRemixMod, "UnholyBloodCells", Item.buyPrice(silver: 25), ModConditions.DownedCalamitasClone)
             //Calamity Entropy
                 .AddModItemToShop(ModConditions.calamityEntropyMod, "VoidScales", Item.buyPrice(silver: 25), ModConditions.DownedCruiser)
+                .AddModItemToShop(ModConditions.calamityEntropyMod, "WyrmTooth", Item.buyPrice(silver: 25), ModConditions.DownedEidolonWyrm)
             //Calamity Overhaul
                 .AddModItemToShop(ModConditions.calamityOverhaulMod, "MurasamaMould", Item.buyPrice(silver: 25), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
                 .AddModItemToShop(ModConditions.calamityOverhaulMod, "DarkMatterBall", Item.buyPrice(silver: 25), ModConditions.DownedExoMechs, ModConditions.DownedSupremeCalamitas)
@@ -1151,10 +1160,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.clamityAddonMod, "EssenceOfFlame", Item.buyPrice(silver: 25), Condition.Hardmode, ModConditions.HasBeenToDesert)
                 .AddModItemToShop(ModConditions.clamityAddonMod, "HuskOfCalamity", Item.buyPrice(silver: 25), ModConditions.DownedClamitas)
             //Classical
-                .AddModItemToShop(ModConditions.classicalMod, "AshDust", Item.buyPrice(silver: 25), Condition.DownedSkeletron)
-                .AddModItemToShop(ModConditions.classicalMod, "Bluefire", Item.buyPrice(silver: 25), Condition.DownedSkeletron)
-                .AddModItemToShop(ModConditions.classicalMod, "RiftFragment", Item.buyPrice(silver: 25), ModConditions.DownedLunarPillarAny)
-                .AddModItemToShop(ModConditions.classicalMod, "Shadowflame", Item.buyPrice(silver: 25), Condition.Hardmode, Condition.DownedGoblinArmy)
+                .AddModItemToShop(ModConditions.ruptureMod, "RiftFragment", Item.buyPrice(silver: 25), ModConditions.DownedLunarPillarAny)
             //Clicker Class
                 .AddModItemToShop(ModConditions.clickerClassMod, "MiceFragment", Item.buyPrice(silver: 25), ModConditions.DownedLunarPillarAny)
             //Confection
@@ -1964,6 +1970,8 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.calamityMod, "DraedonBag", Item.buyPrice(gold: 25), ModConditions.DownedExoMechs, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.calamityMod, "CalamitasCoffer", Item.buyPrice(gold: 25), ModConditions.DownedSupremeCalamitas, ModConditions.expertOrMaster)
             //Calamity Entropy
+                .AddModItemToShop(ModConditions.calamityEntropyMod, "ProphetBag", Item.buyPrice(gold: 25), ModConditions.DownedProphet, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.calamityEntropyMod, "NihilityTwinBag", Item.buyPrice(gold: 25), ModConditions.DownedNihilityTwin, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.calamityEntropyMod, "CruiserBag", Item.buyPrice(gold: 25), ModConditions.DownedCruiser, ModConditions.expertOrMaster)
             //Catalyst
                 .AddModItemToShop(ModConditions.catalystMod, "AstrageldonBag", Item.buyPrice(gold: 25), ModConditions.DownedAstrageldon, ModConditions.expertOrMaster)
@@ -3231,8 +3239,8 @@ namespace QoLCompendium.Content.NPCs
             //Clamity
                 .AddModItemToShop(ModConditions.clamityAddonMod, "Pyroplate", Item.buyPrice(copper: 10), Condition.Hardmode, ModConditions.HasBeenToDesert)
             //Classical
-                .AddModItemToShop(ModConditions.classicalMod, "RiftBrick", Item.buyPrice(copper: 10), ModConditions.DownedLunarPillarAny)
-                .AddModItemToShop(ModConditions.classicalMod, "RiftFragmentBlock", Item.buyPrice(copper: 10), ModConditions.DownedLunarPillarAny)
+                .AddModItemToShop(ModConditions.ruptureMod, "RiftBrick", Item.buyPrice(copper: 10), ModConditions.DownedLunarPillarAny)
+                .AddModItemToShop(ModConditions.ruptureMod, "RiftFragmentBlock", Item.buyPrice(copper: 10), ModConditions.DownedLunarPillarAny)
             //Clicker Class
                 .AddModItemToShop(ModConditions.clickerClassMod, "MiceBrick", Item.buyPrice(copper: 10), ModConditions.DownedLunarPillarAny)
             //Confection

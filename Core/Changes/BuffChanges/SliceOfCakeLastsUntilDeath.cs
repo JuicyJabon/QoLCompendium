@@ -2,24 +2,16 @@
 {
     public class SliceOfCakeLastsUntilDeath : GlobalBuff
     {
-        public bool defaultTimeLeft = BuffID.Sets.TimeLeftDoesNotDecrease[BuffID.SugarRush];
-        public bool defaultTimeDisplay = Main.buffNoTimeDisplay[BuffID.SugarRush];
-        public bool defaultNoSave = Main.buffNoSave[BuffID.SugarRush];
+        private readonly bool _defaultTimeLeft = BuffID.Sets.TimeLeftDoesNotDecrease[BuffID.SugarRush];
+        private readonly bool _defaultTimeDisplay = Main.buffNoTimeDisplay[BuffID.SugarRush];
+        private readonly bool _defaultNoSave = Main.buffNoSave[BuffID.SugarRush];
 
-        public override void Update(int type, Player player, ref int buffIndex)
+        public override void SetStaticDefaults()
         {
-            if (QoLCompendium.mainConfig.InfiniteSliceOfCake)
-            {
-                BuffID.Sets.TimeLeftDoesNotDecrease[BuffID.SugarRush] = true;
-                Main.buffNoTimeDisplay[BuffID.SugarRush] = true;
-                Main.buffNoSave[BuffID.SugarRush] = true;
-            }
-            else
-            {
-                BuffID.Sets.TimeLeftDoesNotDecrease[BuffID.SugarRush] = defaultTimeLeft;
-                Main.buffNoTimeDisplay[BuffID.SugarRush] = defaultTimeDisplay;
-                Main.buffNoSave[BuffID.SugarRush] = defaultNoSave;
-            }
+            bool infinite = QoLCompendium.mainConfig.InfiniteSliceOfCake;
+            BuffID.Sets.TimeLeftDoesNotDecrease[BuffID.SugarRush] = infinite || _defaultTimeLeft;
+            Main.buffNoTimeDisplay[BuffID.SugarRush] = infinite || _defaultTimeDisplay;
+            Main.buffNoSave[BuffID.SugarRush] = infinite || _defaultNoSave;
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.DataStructures;
 using Terraria.Enums;
 
@@ -7,6 +7,8 @@ namespace QoLCompendium.Content.Items.Dedicated
 {
     public class RangedAbsolution : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.DedicatedItems;
+
         public int shootType = 0;
 
         public override void SetStaticDefaults()

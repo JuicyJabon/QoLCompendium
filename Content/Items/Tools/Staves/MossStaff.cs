@@ -1,5 +1,5 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
@@ -7,6 +7,8 @@ namespace QoLCompendium.Content.Items.Tools.Staves
 {
     public class MossStaff : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.RegrowthStaves;
+
         public int Mode = 0;
 
         public override void SetStaticDefaults()

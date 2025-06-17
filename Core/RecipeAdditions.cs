@@ -1,8 +1,16 @@
-﻿using QoLCompendium.Content.Items.Placeables.CraftingStations;
+﻿using QoLCompendium.Content.Items.Accessories.InformationAccessories;
+using QoLCompendium.Content.Items.Placeables.CraftingStations;
 using QoLCompendium.Content.Items.Placeables.Pylons;
+using QoLCompendium.Content.Items.Tools.Mirrors;
+using QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Catalyst;
+using QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.ThoriumBossRework;
+using QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Calamity;
+using QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Clamity;
+using QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Thorium;
 using QoLCompendium.Content.Items.Tools.Usables;
 using QoLCompendium.Content.Tiles.CraftingStations;
 using System.Text.RegularExpressions;
+using ThoriumRework;
 using static QoLCompendium.Core.Common;
 
 
@@ -17,6 +25,9 @@ namespace QoLCompendium.Core
         public static readonly Regex chairItemRegex = new(@"\b(.*chair)\b", RegexOptions.Compiled);
         public static readonly Regex bookcaseItemRegex = new(@"\b(.*bookcase)\b", RegexOptions.Compiled);
         public static readonly Regex campfireItemRegex = new(@"\b(.*campfire)\b", RegexOptions.Compiled);
+
+        [JITWhenModsEnabled("ThoriumRework")]
+        public static bool ThoriumReworkPotionsEnabled => ModContent.GetInstance<CompatConfig>().extraPotions;
 
         public override void PostAddRecipes()
         {
@@ -38,7 +49,7 @@ namespace QoLCompendium.Core
 
                 if (Main.recipe[i].HasIngredient(ModContent.ItemType<GoldenLockpick>()) && QoLCompendium.mainConfig.NonConsumableKeys)
                 {
-                    Main.recipe[i].AddConsumeItemCallback((Recipe recipe, int type, ref int amount) => {
+                    Main.recipe[i].AddConsumeIngredientCallback((Recipe recipe, int type, ref int amount, bool isDecrafting) => {
                         if (type == ModContent.ItemType<GoldenLockpick>())
                             amount = 0;
                     });
@@ -46,10 +57,37 @@ namespace QoLCompendium.Core
 
                 if (Main.recipe[i].HasIngredient(ItemID.ShadowKey) && QoLCompendium.mainConfig.NonConsumableKeys)
                 {
-                    Main.recipe[i].AddConsumeItemCallback((Recipe recipe, int type, ref int amount) => {
+                    Main.recipe[i].AddConsumeIngredientCallback((Recipe recipe, int type, ref int amount, bool isDecrafting) => {
                         if (type == ItemID.ShadowKey)
                             amount = 0;
                     });
+                }
+
+                if (ModConditions.calamityLoaded && ModConditions.catalystLoaded)
+                {
+                    if (Main.recipe[i].HasResult(ModContent.ItemType<PermanentCalamity>()))
+                        Main.recipe[i].AddIngredient(ModContent.ItemType<PermanentAstracola>());
+                }
+
+                if (ModConditions.calamityLoaded && ModConditions.clamityAddonLoaded)
+                {
+                    if (Main.recipe[i].HasResult(ModContent.ItemType<PermanentCalamity>()))
+                        Main.recipe[i].AddIngredient(ModContent.ItemType<PermanentClamity>());
+                }
+
+                if (ModConditions.thoriumLoaded && ModConditions.thoriumBossReworkLoaded && ThoriumReworkPotionsEnabled)
+                {
+                    if (Main.recipe[i].HasResult(ModContent.ItemType<PermanentThoriumBard>()))
+                    {
+                        Main.recipe[i].AddIngredient(ModContent.ItemType<PermanentDeathsinger>());
+                        Main.recipe[i].AddIngredient(ModContent.ItemType<PermanentInspirationRegeneration>());
+                    }
+                }
+
+                if (QoLCompendium.itemConfig.Mirrors && QoLCompendium.itemConfig.InformationAccessories)
+                {
+                    if (Main.recipe[i].HasResult(ModContent.ItemType<MosaicMirror>()))
+                        Main.recipe[i].AddIngredient(ModContent.ItemType<IAH>());
                 }
             }
         }
@@ -94,6 +132,24 @@ namespace QoLCompendium.Core
                 }
             }
 
+            //Calamity Effigy Recipes
+            if (ModConditions.calamityLoaded)
+            {
+                Recipe crimsonEffigy = Recipe.Create(Common.GetModItem(ModConditions.calamityMod, "CrimsonEffigy"), 1);
+                crimsonEffigy.AddIngredient(Common.GetModItem(ModConditions.calamityMod, "BloodSample"), 10);
+                crimsonEffigy.AddIngredient(ItemID.Vertebrae, 10);
+                crimsonEffigy.AddIngredient(ItemID.CrimtaneBar, 6);
+                crimsonEffigy.AddTile(TileID.DemonAltar);
+                crimsonEffigy.Register();
+
+                Recipe corruptionEffigy = Recipe.Create(Common.GetModItem(ModConditions.calamityMod, "CorruptionEffigy"), 1);
+                corruptionEffigy.AddIngredient(Common.GetModItem(ModConditions.calamityMod, "RottenMatter"), 10);
+                corruptionEffigy.AddIngredient(ItemID.RottenChunk, 10);
+                corruptionEffigy.AddIngredient(ItemID.DemoniteBar, 6);
+                corruptionEffigy.AddTile(TileID.DemonAltar);
+                corruptionEffigy.Register();
+            }
+
             //Major Recipe Creation
             ConversionRecipes();
             CrateRecipes();
@@ -102,28 +158,32 @@ namespace QoLCompendium.Core
             GrabBagRecipes();
 
             //Mobile Storage Parity
-            Common.CreateSimpleRecipe(ItemID.PiggyBank, ItemID.MoneyTrough, TileID.Anvils, 1, 1, false, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.MobileStorages", () => QoLCompendium.itemConfig.MobileStorages));
+            if (!QoLCompendium.itemConfig.DisableModdedItems)
+                Common.CreateSimpleRecipe(ItemID.PiggyBank, ItemID.MoneyTrough, TileID.Anvils, 1, 1, false, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.MobileStorages", () => QoLCompendium.itemConfig.MobileStorages));
 
             //Golden Delight With Golden Carp
             Common.CreateSimpleRecipe(ItemID.GoldenCarp, ItemID.GoldenDelight, TileID.CookingPots, 1, 1, false, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.RecipeEnabled", () => QoLCompendium.mainConfig.GoldenCarpDelight));
 
             //Easier Universal Pylon
-            Recipe universalPylon = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Pylons, ItemID.TeleportationPylonVictory, 1, "Mods.QoLCompendium.ItemToggledConditions.Pylons");
-            universalPylon.AddIngredient(ModContent.ItemType<AetherPylon>());
-            universalPylon.AddIngredient(ItemID.TeleportationPylonUnderground); //Cavern
-            universalPylon.AddIngredient(ModContent.ItemType<CorruptionPylon>());
-            universalPylon.AddIngredient(ModContent.ItemType<CrimsonPylon>());
+            Recipe universalPylon = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.EasierUniversalPylon, ItemID.TeleportationPylonVictory, 1, "Mods.QoLCompendium.ItemToggledConditions.Pylons");
+            universalPylon.AddIngredient(ItemID.TeleportationPylonUnderground);
             universalPylon.AddIngredient(ItemID.TeleportationPylonDesert);
-            universalPylon.AddIngredient(ModContent.ItemType<DungeonPylon>());
-            universalPylon.AddIngredient(ItemID.TeleportationPylonPurity); //Forest
+            universalPylon.AddIngredient(ItemID.TeleportationPylonPurity);
             universalPylon.AddIngredient(ItemID.TeleportationPylonHallow);
             universalPylon.AddIngredient(ItemID.TeleportationPylonJungle);
             universalPylon.AddIngredient(ItemID.TeleportationPylonMushroom);
             universalPylon.AddIngredient(ItemID.TeleportationPylonOcean);
-            universalPylon.AddIngredient(ModContent.ItemType<SkyPylon>());
             universalPylon.AddIngredient(ItemID.TeleportationPylonSnow);
-            universalPylon.AddIngredient(ModContent.ItemType<TemplePylon>());
-            universalPylon.AddIngredient(ModContent.ItemType<HellPylon>()); //Underworld
+            if (!QoLCompendium.itemConfig.DisableModdedItems)
+            {
+                universalPylon.AddIngredient(ModContent.ItemType<AetherPylon>());
+                universalPylon.AddIngredient(ModContent.ItemType<CorruptionPylon>());
+                universalPylon.AddIngredient(ModContent.ItemType<CrimsonPylon>());
+                universalPylon.AddIngredient(ModContent.ItemType<DungeonPylon>());
+                universalPylon.AddIngredient(ModContent.ItemType<SkyPylon>());
+                universalPylon.AddIngredient(ModContent.ItemType<TemplePylon>());
+                universalPylon.AddIngredient(ModContent.ItemType<HellPylon>());
+            }
             universalPylon.AddTile(TileID.Anvils);
             universalPylon.Register();
         }
@@ -162,6 +222,7 @@ namespace QoLCompendium.Core
             Common.CreateSimpleRecipe(ItemID.SoulofMight, ItemID.SoulofSight, TileID.MythrilAnvil, 1, 1, false, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.ItemConversions", () => QoLCompendium.mainConfig.ItemConversions), Condition.DownedMechBossAll);
             Common.CreateSimpleRecipe(ItemID.SoulofSight, ItemID.SoulofFright, TileID.MythrilAnvil, 1, 1, false, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.ItemConversions", () => QoLCompendium.mainConfig.ItemConversions), Condition.DownedMechBossAll);
             //Blocks
+            Common.ConversionRecipe(ItemID.Ebonwood, ItemID.Shadewood, TileID.Anvils);
             Common.ConversionRecipe(ItemID.EbonstoneBlock, ItemID.CrimstoneBlock, TileID.Anvils);
             Common.ConversionRecipe(ItemID.EbonsandBlock, ItemID.CrimsandBlock, TileID.Anvils);
             Common.ConversionRecipe(ItemID.CorruptSandstone, ItemID.CrimsonSandstone, TileID.Anvils);
@@ -182,6 +243,59 @@ namespace QoLCompendium.Core
             Common.ConversionRecipe(ItemID.EatersBone, ItemID.BoneRattle, TileID.Anvils);
             //Misc
             Common.ConversionRecipe(ItemID.CorruptionKey, ItemID.CrimsonKey, TileID.MythrilAnvil);
+
+            #region Calamity
+            if (ModConditions.calamityLoaded)
+            {
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.calamityMod, "RottenMatter"), Common.GetModItem(ModConditions.calamityMod, "BloodSample"), TileID.DemonAltar);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.calamityMod, "FilthyGlove"), Common.GetModItem(ModConditions.calamityMod, "BloodstainedGlove"), TileID.DemonAltar);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.calamityMod, "RottenBrain"), Common.GetModItem(ModConditions.calamityMod, "BloodyWormTooth"), TileID.DemonAltar);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.calamityMod, "RottingEyeball"), Common.GetModItem(ModConditions.calamityMod, "BloodyVein"), TileID.DemonAltar);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.calamityMod, "CorruptionEffigy"), Common.GetModItem(ModConditions.calamityMod, "CrimsonEffigy"), TileID.DemonAltar);
+            }
+            #endregion
+
+            #region Confection
+            if (ModConditions.confectionRebakedLoaded)
+            {
+                //Common.ConversionRecipe(Common.GetModItem(ModConditions.confectionRebakedMod, ""), Common.GetModItem(ModConditions.confectionRebakedMod, ""), TileID.Anvils);
+            }
+            #endregion
+
+            #region Depths
+            if (ModConditions.depthsLoaded)
+            {
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ShadowShrub"), ItemID.Fireblossom, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ShadowShrubSeeds"), ItemID.FireblossomSeeds, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ShadowShrubPlanterBox"), ItemID.FireBlossomPlanterBox, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "Quartz"), ItemID.Obsidian, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ArqueriteOre"), ItemID.Hellstone, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "QuartzCrate"), ItemID.LavaCrate, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ArqueriteCrate"), ItemID.LavaCrateHard, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ShadowFightingFish"), ItemID.FlarefinKoi, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "QuartzFeeder"), ItemID.Obsidifish, TileID.Anvils);
+
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "LodeStone"), ItemID.TreasureMagnet, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "StoneRose"), ItemID.ObsidianRose, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "AmalgamAmulet"), ItemID.LavaCharm, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "CrystalSkull"), ItemID.ObsidianSkull, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "QuicksilverproofFishingHook"), ItemID.LavaFishingHook, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "QuicksilverproofTackleBag"), ItemID.LavaproofTackleBag, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "PalladiumShield"), ItemID.CobaltShield, TileID.Anvils);
+
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "CrystalCrown"), Common.GetModItem(ModConditions.depthsMod, "CharredCrown"), TileID.Anvils);
+
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "WhiteLightning"), ItemID.Flamelash, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "Skyfall"), ItemID.Cascade, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "BlueSphere"), ItemID.HelFire, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "SilverStar"), ItemID.Sunfury, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "NightFury"), ItemID.HellwingBow, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ShadowSphere"), ItemID.DemonScythe, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "Steelocanth"), ItemID.ObsidianSwordfish, TileID.Anvils);
+
+                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ChasmeBag"), ItemID.WallOfFleshBossBag, TileID.Anvils);
+            }
+            #endregion
         }
 
         public static void BagRecipes()
@@ -1168,10 +1282,24 @@ namespace QoLCompendium.Core
             List<int> chairItems = new();
             List<int> doorItems = new();
             List<int> torchItems = new();
+            List<int> wellFedItems = new();
+            List<int> plentySatisfiedItems = new();
+            List<int> exquisitelyStuffedItems = new();
+            List<int> gourmetFlavorItems = new();
             for (int i = 0; i < TextureAssets.Item.Length; i++)
             {
-                Item item = new Item();
+                Item item = new();
                 item.SetDefaults(i);
+
+                if (item.buffType == BuffID.WellFed)
+                    wellFedItems.Add(item.type);
+                else if (item.buffType == BuffID.WellFed2)
+                    plentySatisfiedItems.Add(item.type);
+                else if (item.buffType == BuffID.WellFed3)
+                    exquisitelyStuffedItems.Add(item.type);
+                else if (ModConditions.martainsOrderLoaded && item.buffType == Common.GetModBuff(ModConditions.martainsOrderMod, "Gourmet"))
+                    gourmetFlavorItems.Add(item.type);
+
                 if (!item.consumable || item.createTile < TileID.Dirt || (item.ModItem != null && item.ModItem.Mod == Mod))
                     continue;
 
@@ -1563,6 +1691,12 @@ namespace QoLCompendium.Core
                 ItemID.FishingBobberGlowingViolet,
                 ItemID.FishingBobberGlowingXenon);
             RecipeGroup.RegisterGroup("QoLCompendium:FishingBobbers", fishingBobbers);
+
+            RecipeGroup.RegisterGroup("QoLCompendium:WellFed", new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.WellFed")}", wellFedItems.ToArray()));
+            RecipeGroup.RegisterGroup("QoLCompendium:PlentySatisfied", new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.PlentySatisfied")}", plentySatisfiedItems.ToArray()));
+            RecipeGroup.RegisterGroup("QoLCompendium:ExquisitelyStuffed", new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.ExquisitelyStuffed")}", exquisitelyStuffedItems.ToArray()));
+            if (ModConditions.martainsOrderLoaded && gourmetFlavorItems.Count > 0)
+                RecipeGroup.RegisterGroup("QoLCompendium:GourmetFlavor", new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.GourmetFlavor")}", gourmetFlavorItems.ToArray()));
             #endregion
         }
 

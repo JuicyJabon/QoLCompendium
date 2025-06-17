@@ -18,19 +18,19 @@ namespace QoLCompendium.Core.Changes.ModChanges
 
             if (item.type == Common.GetModItem(ModConditions.aequusMod, "CosmicChest") && Main.LocalPlayer.Aequus().usedPermaLootLuck)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.aequusMod, "TinkerersGuidebook") && AequusWorld.UsedTinkererBook)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.aequusMod, "MoneyTrashcan") && Main.LocalPlayer.Aequus().usedPermaTrashMoney)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.aequusMod, "VictorsReward") && Main.LocalPlayer.Aequus().maxLifeRespawnReward)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
         }
     }

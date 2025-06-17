@@ -160,6 +160,8 @@ namespace QoLCompendium.Content.Projectiles.Explosives
                 {
                     if (inModdedBiome)
                     {
+                        if (side == -1 && modChairID == Common.GetModTile(ModConditions.calamityMod, "AcidwoodChairTile"))
+                            xPosition += 1;
                         WorldGen.PlaceObject(xPosition, yPosition, modChairID, direction: side);
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 1, xPosition, yPosition, modChairID);

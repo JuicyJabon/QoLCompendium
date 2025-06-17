@@ -1,5 +1,5 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
@@ -36,57 +36,20 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
             public override int AmmunitionItem => ItemID.PlatinumCoin;
         }
 
-        public class EndlessBonePouch : ModItem
-        {
-            public override void SetStaticDefaults()
-            {
-                Item.ResearchUnlockCount = 1;
-            }
-
-            public override void SetDefaults()
-            {
-                Item.CloneDefaults(ItemID.Bone);
-                Item.consumable = false;
-                Item.maxStack = 1;
-                Item.shoot = ProjectileID.None;
-                Item.useAnimation = 0;
-                Item.useTime = 0;
-                Item.useStyle = ItemUseStyleID.None;
-                Item.DamageType = DamageClass.Ranged;
-                Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
-            }
-
-            public override bool CanUseItem(Player player)
-            {
-                return false;
-            }
-
-            public override void ModifyTooltips(List<TooltipLine> tooltips)
-            {
-                TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
-            }
-
-            public override void AddRecipes()
-            {
-                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-                r.AddIngredient(ItemID.Bone, 3996);
-                r.AddTile(TileID.Solidifier);
-                r.Register();
-            }
-        }
-
-        public class EndlessCandyCornPouch : BaseAmmo
+        public class EndlessCandyCornPie : BaseAmmo
         {
             public override int AmmunitionItem => ItemID.CandyCorn;
         }
 
-        public class EndlessExplosiveJackOLanternPouch : BaseAmmo
+        public class EndlessExplosiveJackOLantern : BaseAmmo
         {
             public override int AmmunitionItem => ItemID.ExplosiveJackOLantern;
         }
 
         public class EndlessGelTank : ModItem
         {
+            public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
+
             public override void SetStaticDefaults()
             {
                 Item.ResearchUnlockCount = 1;
@@ -121,6 +84,8 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
         public class EndlessSandPouch : ModItem
         {
+            public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
+
             public override void SetStaticDefaults()
             {
                 Item.ResearchUnlockCount = 1;
@@ -161,6 +126,8 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
         public class EndlessSnowballPouch : ModItem
         {
+            public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
+
             public override void SetStaticDefaults()
             {
                 Item.ResearchUnlockCount = 1;
@@ -198,13 +165,15 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
             }
         }
 
-        public class EndlessStakePouch : BaseAmmo
+        public class EndlessStakeBundle : BaseAmmo
         {
             public override int AmmunitionItem => ItemID.Stake;
         }
 
         public class EndlessStarPouch : ModItem
         {
+            public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
+
             public override void SetStaticDefaults()
             {
                 Item.ResearchUnlockCount = 1;

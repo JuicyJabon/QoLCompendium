@@ -4,7 +4,6 @@
   <PropertyGroup>
     <AssemblyName>QoLCompendium</AssemblyName>
     <LangVersion>latest</LangVersion>
-    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Content\Items\Placeables\HellBridger.png" />
@@ -21,7 +20,6 @@
     <Folder Include="Assets\SpawnModifiers\" />
     <Folder Include="Assets\Slots\" />
     <Folder Include="Assets\Storages\" />
-    <Folder Include="Content\Items\Summons\" />
     <Folder Include="Content\Projectiles\Fishing\" />
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +34,9 @@
     </Reference>
     <Reference Include="ClickerClass">
       <HintPath>..\..\ModReader\ClickerClass\ClickerClass.dll</HintPath>
+    </Reference>
+    <Reference Include="ContinentOfJourney">
+      <HintPath>..\..\ModReader\ContinentOfJourney\ContinentOfJourney.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDragons">
       <HintPath>..\..\ModReader\CrystalDragons\CrystalDragons.dll</HintPath>
@@ -52,8 +53,17 @@
     <Reference Include="Redemption">
       <HintPath>..\..\ModReader\Redemption\Redemption.dll</HintPath>
     </Reference>
+    <Reference Include="SOTS">
+      <HintPath>..\..\ModReader\SOTS\SOTS.dll</HintPath>
+    </Reference>
     <Reference Include="ThoriumMod">
       <HintPath>..\..\ModReader\ThoriumMod\ThoriumMod.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoriumRework">
+      <HintPath>..\..\ModReader\ThoriumRework\ThoriumRework.dll</HintPath>
+    </Reference>
+    <Reference Include="VanillaQoL">
+      <HintPath>..\..\ModReader\VanillaQoL\VanillaQoL.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

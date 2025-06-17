@@ -47,7 +47,7 @@
             ModConditions.catalystLoaded.AddLoadedMod(ref ModConditions.catalystMod);
             ModConditions.cerebralLoaded.AddLoadedMod(ref ModConditions.cerebralMod);
             ModConditions.clamityAddonLoaded.AddLoadedMod(ref ModConditions.clamityAddonMod);
-            ModConditions.classicalLoaded.AddLoadedMod(ref ModConditions.classicalMod);
+            ModConditions.ruptureLoaded.AddLoadedMod(ref ModConditions.ruptureMod);
             ModConditions.clickerClassLoaded.AddLoadedMod(ref ModConditions.clickerClassMod);
             ModConditions.confectionRebakedLoaded.AddLoadedMod(ref ModConditions.confectionRebakedMod);
             ModConditions.consolariaLoaded.AddLoadedMod(ref ModConditions.consolariaMod);
@@ -63,6 +63,7 @@
             ModConditions.everjadeLoaded.AddLoadedMod(ref ModConditions.everjadeMod);
             ModConditions.exaltLoaded.AddLoadedMod(ref ModConditions.exaltMod);
             ModConditions.excelsiorLoaded.AddLoadedMod(ref ModConditions.excelsiorMod);
+            ModConditions.exhaustionDisablerLoaded.AddLoadedMod(ref ModConditions.exhaustionDisablerMod);
             ModConditions.exxoAvalonOriginsLoaded.AddLoadedMod(ref ModConditions.exxoAvalonOriginsMod);
             ModConditions.fargosMutantLoaded.AddLoadedMod(ref ModConditions.fargosMutantMod);
             ModConditions.fargosSoulsLoaded.AddLoadedMod(ref ModConditions.fargosSoulsMod);
@@ -76,8 +77,10 @@
             ModConditions.heartbeatariaLoaded.AddLoadedMod(ref ModConditions.heartbeatariaMod);
             ModConditions.homewardJourneyLoaded.AddLoadedMod(ref ModConditions.homewardJourneyMod);
             ModConditions.huntOfTheOldGodLoaded.AddLoadedMod(ref ModConditions.huntOfTheOldGodMod);
+            ModConditions.infectedQualitiesLoaded.AddLoadedMod(ref ModConditions.infectedQualitiesMod);
             ModConditions.infernumLoaded.AddLoadedMod(ref ModConditions.infernumMod);
             ModConditions.luiAFKLoaded.AddLoadedMod(ref ModConditions.luiAFKMod);
+            ModConditions.luiAFKDLCLoaded.AddLoadedMod(ref ModConditions.luiAFKDLCMod);
             ModConditions.lunarVeilLoaded.AddLoadedMod(ref ModConditions.lunarVeilMod);
             ModConditions.magicStorageLoaded.AddLoadedMod(ref ModConditions.magicStorageMod);
             ModConditions.martainsOrderLoaded.AddLoadedMod(ref ModConditions.martainsOrderMod);
@@ -91,6 +94,7 @@
             ModConditions.polaritiesLoaded.AddLoadedMod(ref ModConditions.polaritiesMod);
             ModConditions.projectZeroLoaded.AddLoadedMod(ref ModConditions.projectZeroMod);
             ModConditions.qwertyLoaded.AddLoadedMod(ref ModConditions.qwertyMod);
+            ModConditions.ragnarokLoaded.AddLoadedMod(ref ModConditions.ragnarokMod);
             ModConditions.redemptionLoaded.AddLoadedMod(ref ModConditions.redemptionMod);
             ModConditions.reforgedLoaded.AddLoadedMod(ref ModConditions.reforgedMod);
             ModConditions.remnantsLoaded.AddLoadedMod(ref ModConditions.remnantsMod);
@@ -106,6 +110,7 @@
             ModConditions.supernovaLoaded.AddLoadedMod(ref ModConditions.supernovaMod);
             ModConditions.terrorbornLoaded.AddLoadedMod(ref ModConditions.terrorbornMod);
             ModConditions.thoriumLoaded.AddLoadedMod(ref ModConditions.thoriumMod);
+            ModConditions.thoriumBossReworkLoaded.AddLoadedMod(ref ModConditions.thoriumBossReworkMod);
             ModConditions.traeLoaded.AddLoadedMod(ref ModConditions.traeMod);
             ModConditions.uhtricLoaded.AddLoadedMod(ref ModConditions.uhtricMod);
             ModConditions.universeOfSwordsLoaded.AddLoadedMod(ref ModConditions.universeOfSwordsMod);

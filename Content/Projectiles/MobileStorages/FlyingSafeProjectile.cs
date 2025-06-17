@@ -1,5 +1,5 @@
-﻿using QoLCompendium.Content.Items.MobileStorages;
-using QoLCompendium.Core.Changes;
+﻿using QoLCompendium.Content.Items.Tools.MobileStorages;
+using QoLCompendium.Core.Changes.PlayerChanges;
 
 namespace QoLCompendium.Content.Projectiles.MobileStorages
 {

@@ -1,10 +1,12 @@
-﻿using QoLCompendium.Core.Changes;
+﻿using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Fishing
 {
     public class BottomlessChumBucket : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.BottomlessBuckets;
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -22,7 +24,7 @@ namespace QoLCompendium.Content.Items.Tools.Fishing
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.BottomlessChumBucket);
+            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.BottomlessBuckets);
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿using QoLCompendium.Core.Changes;
+﻿using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
     public class StarterBag : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.StarterBag;
+
         public int type;
         public int curItem;
         public bool loadCount;

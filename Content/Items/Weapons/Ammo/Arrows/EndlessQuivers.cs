@@ -49,6 +49,11 @@
     {
         public override int AmmunitionItem => ItemID.MoonlordArrow;
     }
+    
+    public class EndlessShimmerQuiver : BaseAmmo
+    {
+        public override int AmmunitionItem => ItemID.ShimmerArrow;
+    }
 
     public class EndlessUnholyQuiver : BaseAmmo
     {

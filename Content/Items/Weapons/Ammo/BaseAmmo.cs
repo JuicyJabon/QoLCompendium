@@ -1,11 +1,13 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo
 {
     public abstract class BaseAmmo : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
+
         public abstract int AmmunitionItem { get; }
 
         public override void SetStaticDefaults()

@@ -18,23 +18,23 @@ namespace QoLCompendium.Core.Changes.ModChanges
 
             if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "DeerSinew") && Main.LocalPlayer.FargoSouls().DeerSinew)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsCreditCard") && Main.LocalPlayer.FargoSouls().MutantsCreditCard)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsDiscountCard") && Main.LocalPlayer.FargoSouls().MutantsDiscountCard)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsPact") && Main.LocalPlayer.FargoSouls().MutantsPactSlot)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "RabiesVaccine") && Main.LocalPlayer.FargoSouls().RabiesVaccine)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
         }
     }

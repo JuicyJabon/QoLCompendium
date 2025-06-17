@@ -6,23 +6,21 @@
         {
             if (QoLCompendium.mainConfig.EndlessBuffs)
             {
-                if (item.buffTime > 0 && item.stack >= QoLCompendium.mainConfig.EndlessBuffAmount)
-                {
+                bool isBuff = item.buffTime > 0;
+                bool isSpecialBuffItem = item.type is ItemID.RecallPotion or ItemID.TeleportationPotion or ItemID.WormholePotion or ItemID.PotionOfReturn or ItemID.GenderChangePotion or ItemID.RedPotion;
+
+                if ((isBuff || isSpecialBuffItem) && item.stack >= QoLCompendium.mainConfig.EndlessBuffAmount)
                     return false;
-                }
-                else if ((item.type == ItemID.RecallPotion || item.type == ItemID.TeleportationPotion || item.type == ItemID.WormholePotion || item.type == ItemID.PotionOfReturn || item.type == ItemID.GenderChangePotion || item.type == ItemID.RedPotion) && item.stack >= QoLCompendium.mainConfig.EndlessBuffAmount)
-                {
-                    return false;
-                }
             }
 
             if (QoLCompendium.mainConfig.EndlessHealing)
             {
-                if ((item.healLife > 0 || item.healMana > 0) && item.stack >= QoLCompendium.mainConfig.EndlessHealingAmount)
-                {
+                bool isHealing = item.healLife > 0 || item.healMana > 0;
+
+                if (isHealing && item.stack >= QoLCompendium.mainConfig.EndlessHealingAmount)
                     return false;
-                }
             }
+
             return true;
         }
     }

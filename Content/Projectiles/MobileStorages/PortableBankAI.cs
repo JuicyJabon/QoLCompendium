@@ -1,5 +1,5 @@
 ﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.PlayerChanges;
 using Terraria.GameInput;
 
 namespace QoLCompendium.Content.Projectiles.MobileStorages

@@ -1,16 +1,2 @@
-v2.2.10
-1. Added Mining Emblem
-2. Added Construction Emblem
-3. Added Creation Club Member's Pass
-4. Added Utilities in Banks support for Martin's Order
-5. Added Permanent Upgrade Tooltip support for Martin's Order
-6. Made Fargo's Mods summons stackable even when they are non-consumable
-7. Added conversion recipes for mech boss souls, accessible after all 3 are beaten
-8. Fixed Traveler's Mannequin in multiplayer
-9. Fixed Skeleton Rucksack in multiplayer
-10. Fixed Restock Notice in multiplayer
-11. Added crate recipes for Calamity and Thorium
-12. Added herb replanting support for Thorium
-13. Added Sonar Device
-14. Added Angler Radar
-15. Added Angler's Dream
+v2.2.13
+1. Fixed Tesla Aura from Calamity duplicating itself when active

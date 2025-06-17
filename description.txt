@@ -74,7 +74,6 @@ Current Features:
  - Trees drop more fruits when shook
  - Fallen star rate multiplier
  - No meteor spawns
- - Hellstone ore works with speluker potion
  - Always Christmas season
  - Always Halloween season
  - No credits on beating the game

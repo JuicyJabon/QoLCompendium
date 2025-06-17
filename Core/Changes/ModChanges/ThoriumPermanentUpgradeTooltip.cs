@@ -18,16 +18,16 @@ namespace QoLCompendium.Core.Changes.ModChanges
 
             if (item.type == Common.GetModItem(ModConditions.thoriumMod, "CrystalWave"))
             {
-                tooltipLine.Text = TooltipChanges.GetTooltipValue("UsedItemCountable", Main.LocalPlayer.GetThoriumPlayer().consumedCrystalWaveCount, 5);
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                tooltipLine.Text = Common.GetTooltipValue("UsedItemCountable", Main.LocalPlayer.GetThoriumPlayer().consumedCrystalWaveCount, 5);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.thoriumMod, "AstralWave") && Main.LocalPlayer.GetThoriumPlayer().consumedAstralWave)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.thoriumMod, "InspirationGem") && Main.LocalPlayer.GetThoriumPlayer().consumedInspirationGem)
             {
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             int bardResourceMax = (int)ModConditions.thoriumMod.Call("GetBardInspirationMax", Main.LocalPlayer);
             int fragmentMax = 10;
@@ -35,18 +35,18 @@ namespace QoLCompendium.Core.Changes.ModChanges
             int crystalMax = 30;
             if (item.type == Common.GetModItem(ModConditions.thoriumMod, "InspirationFragment"))
             {
-                tooltipLine.Text = TooltipChanges.GetTooltipValue("UsedItemCountable", Math.Clamp(Math.Max(bardResourceMax - fragmentMax, 0), 0, 10), 10);
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                tooltipLine.Text = Common.GetTooltipValue("UsedItemCountable", Math.Clamp(Math.Max(bardResourceMax - fragmentMax, 0), 0, 10), 10);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.thoriumMod, "InspirationShard"))
             {
-                tooltipLine.Text = TooltipChanges.GetTooltipValue("UsedItemCountable", Math.Clamp(Math.Max(bardResourceMax - shardMax, 0), 0, 10), 10);
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                tooltipLine.Text = Common.GetTooltipValue("UsedItemCountable", Math.Clamp(Math.Max(bardResourceMax - shardMax, 0), 0, 10), 10);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
             if (item.type == Common.GetModItem(ModConditions.thoriumMod, "InspirationCrystalNew"))
             {
-                tooltipLine.Text = TooltipChanges.GetTooltipValue("UsedItemCountable", Math.Clamp(Math.Max(bardResourceMax - crystalMax, 0), 0, 10), 10);
-                TooltipChanges.AddLastTooltip(tooltips, tooltipLine);
+                tooltipLine.Text = Common.GetTooltipValue("UsedItemCountable", Math.Clamp(Math.Max(bardResourceMax - crystalMax, 0), 0, 10), 10);
+                Common.AddLastTooltip(tooltips, tooltipLine);
             }
         }
     }

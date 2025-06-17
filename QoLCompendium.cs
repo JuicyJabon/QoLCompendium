@@ -17,6 +17,7 @@ global using Terraria.UI;
 using QoLCompendium.Core;
 using System.Reflection;
 using QoLCompendium.Core.Changes.BuffChanges;
+using QoLCompendium.Core.UI.Panels;
 
 namespace QoLCompendium
 {
@@ -41,6 +42,10 @@ namespace QoLCompendium
             BuffSystem.DoBuffIntegration();
             Common.PostSetupTasks();
             LoadModSupport.PostSetupTasks();
+            PermanentCalamityBuffUI.GetCalamityBuffData();
+            PermanentMartinsOrderBuffUI.GetMartinsOrderBuffData();
+            PermanentSpiritClassicBuffUI.GetSpiritClassicBuffData();
+            PermanentThoriumBuffUI.GetThoriumBuffData();
         }
 
         public override void Load()

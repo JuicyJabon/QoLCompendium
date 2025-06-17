@@ -1,11 +1,13 @@
 ﻿using QoLCompendium.Content.Tiles.Pylons;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.Pylons
 {
     public class TemplePylon : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.Pylons;
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

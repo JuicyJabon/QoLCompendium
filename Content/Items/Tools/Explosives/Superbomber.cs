@@ -1,12 +1,14 @@
 using QoLCompendium.Content.Projectiles.Explosives;
 using QoLCompendium.Core;
-using QoLCompendium.Core.Changes;
+using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Explosives
 {
     public class Superbomber : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.AutoStructures;
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
