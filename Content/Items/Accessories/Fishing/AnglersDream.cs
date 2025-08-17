@@ -34,6 +34,9 @@ namespace QoLCompendium.Content.Items.Accessories.Fishing
 
             //Angler Radar
             player.GetModPlayer<InfoPlayer>().anglerRadar = true;
+
+            //Duplication Bobber
+            player.GetModPlayer<QoLCPlayer>().duplicationBobber = true;
         }
 
         public override void UpdateInfoAccessory(Player player)
@@ -53,6 +56,7 @@ namespace QoLCompendium.Content.Items.Accessories.Fishing
             r.AddRecipeGroup("QoLCompendium:FishingBobbers");
             r.AddIngredient(ModContent.ItemType<SonarDevice>());
             r.AddIngredient(ModContent.ItemType<AnglerRadar>());
+            r.AddIngredient(ModContent.ItemType<DuplicationBobber>());
             r.AddTile(TileID.Anvils);
             r.Register();
         }

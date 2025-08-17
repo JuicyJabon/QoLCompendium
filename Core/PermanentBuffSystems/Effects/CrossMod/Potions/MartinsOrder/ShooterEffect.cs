@@ -7,7 +7,7 @@
             if (!ModConditions.martainsOrderLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.martainsOrderMod, "ShooterBuff")] && !PermanentBuffPlayer.PermanentMartinsOrderBuffsBools[(int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Shooter])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.martainsOrderMod, "ShooterBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentMartinsOrderBuffsBools[(int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Shooter])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "ShooterBuff"));
                 buffToApply.Update(player.Player, ref index);

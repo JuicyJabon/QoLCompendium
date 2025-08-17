@@ -7,9 +7,11 @@ using QoLCompendium.Content.Items.Tools.Summons;
 using QoLCompendium.Content.Items.Tools.Summons.CrossMod;
 using QoLCompendium.Content.Projectiles.MobileStorages;
 using QoLCompendium.Content.Tiles.Other;
+using QoLCompendium.Core.Changes.ModChanges;
 using System.Reflection;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader.Config;
 
 namespace QoLCompendium.Core
@@ -55,7 +57,7 @@ namespace QoLCompendium.Core
         public const ulong GoldValue = 100 * 100;
         public const ulong PlatinumValue = 100 * 100 * 100;
 
-        public static readonly HashSet<int> PermanentUpgrades = new()
+        public static HashSet<int> PermanentUpgrades = new()
         {
             ItemID.AegisCrystal,
             ItemID.ArcaneCrystal,
@@ -69,6 +71,13 @@ namespace QoLCompendium.Core
             ItemID.CombatBookVolumeTwo,
             ItemID.TorchGodsFavor,
             ItemID.MinecartPowerup
+        };
+
+        public static HashSet<int> PermanentMultiUseUpgrades = new()
+        {
+            ItemID.LifeCrystal,
+            ItemID.ManaCrystal,
+            ItemID.LifeFruit
         };
 
         public static readonly int[] BossIDs = new int[]
@@ -239,7 +248,15 @@ namespace QoLCompendium.Core
             ProjectileID.SlushBall
         };
 
-        public static readonly List<int> PowerUpItems = new()
+        public static HashSet<int> Emblems = new()
+        {
+            ItemID.WarriorEmblem,
+            ItemID.RangerEmblem,
+            ItemID.SorcererEmblem,
+            ItemID.SummonerEmblem
+        };
+
+        public static HashSet<int> PowerUpItems = new()
         {
             ItemID.Heart,
             ItemID.CandyApple,
@@ -378,13 +395,6 @@ namespace QoLCompendium.Core
         };
 
         public static HashSet<Mod> IgnoredModsForExplosives = new();
-
-        public static HashSet<int> IgnoredPermanentBuffs = new()
-        {
-            BuffID.Tipsy,
-            BuffID.WaterCandle,
-            BuffID.ShadowCandle
-        };
 
         public static HashSet<int> FlaskBuffs = new()
         {
@@ -789,6 +799,17 @@ namespace QoLCompendium.Core
             AetherTorch
         }
 
+        public enum AlchemyHerbStyles
+        {
+            Daybloom,
+            Moonglow,
+            Blinkroot,
+            Deathweed,
+            Waterleaf,
+            Fireblossom,
+            Shiverthorn
+        }
+
         public static void UnloadTasks()
         {
             foreach (var hook in detours)
@@ -797,6 +818,21 @@ namespace QoLCompendium.Core
 
         public static void PostSetupTasks()
         {
+            HashSet<int> ModPowerUpItems = new()
+            {
+                Common.GetModItem(ModConditions.orchidMod, "Chip"),
+                Common.GetModItem(ModConditions.orchidMod, "Guard"),
+                Common.GetModItem(ModConditions.orchidMod, "Potency"),
+                Common.GetModItem(ModConditions.thoriumMod, "InspirationNote"),
+                Common.GetModItem(ModConditions.thoriumMod, "InspirationNoteStatue"),
+                Common.GetModItem(ModConditions.thoriumMod, "InspirationNoteNoble"),
+                Common.GetModItem(ModConditions.thoriumMod, "InspirationNoteRhapsodist"),
+                Common.GetModItem(ModConditions.thoriumMod, "MeatSlab"),
+                Common.GetModItem(ModConditions.thoriumMod, "GreatFlesh"),
+                Common.GetModItem(ModConditions.vitalityMod, "BloodClot"),
+            };
+            PowerUpItems.UnionWith(ModPowerUpItems);
+
             HashSet<int> ModBankItems = new()
             {
                 ModContent.ItemType<BattalionLog>(),
@@ -824,6 +860,7 @@ namespace QoLCompendium.Core
                 ModContent.ItemType<CreationClubMembersPass>(),
                 ModContent.ItemType<SonarDevice>(),
                 ModContent.ItemType<AnglerRadar>(),
+                ModContent.ItemType<DuplicationBobber>(),
                 ModContent.ItemType<AnglersDream>(),
                 Common.GetModItem(ModConditions.aequusMod, "AnglerBroadcaster"),
                 Common.GetModItem(ModConditions.aequusMod, "Calendar"),
@@ -867,6 +904,9 @@ namespace QoLCompendium.Core
                 Common.GetModItem(ModConditions.depthsMod, "MercuryMossFishingBobber"),
                 Common.GetModItem(ModConditions.depthsMod, "QuicksilverproofFishingHook"),
                 Common.GetModItem(ModConditions.depthsMod, "QuicksilverproofTackleBag"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "GoblinVoodooDoll"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "NerveFibre"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "Squidfood"),
                 Common.GetModItem(ModConditions.luiAFKMod, "FasterMining"),
                 Common.GetModItem(ModConditions.luiAFKMod, "SuperToolTime"),
                 Common.GetModItem(ModConditions.luiAFKMod, "ToolTime"),
@@ -1012,13 +1052,23 @@ namespace QoLCompendium.Core
                 Common.GetModItem(ModConditions.gensokyoMod, "ToyosatomimiNoMikoSpawner"),
                 Common.GetModItem(ModConditions.gensokyoMod, "UtsuhoReiujiSpawner"),
                 //Homeward Journey
+                Common.GetModItem(ModConditions.homewardJourneyMod, "PurpleFlareGun"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "BeeLarva"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "MaliciousPacket"),
                 Common.GetModItem(ModConditions.homewardJourneyMod, "CannedSoulofFlight"),
                 Common.GetModItem(ModConditions.homewardJourneyMod, "MetalSpine"),
                 Common.GetModItem(ModConditions.homewardJourneyMod, "SouthernPotting"),
                 Common.GetModItem(ModConditions.homewardJourneyMod, "SunlightCrown"),
                 Common.GetModItem(ModConditions.homewardJourneyMod, "UltimateTorch"),
                 Common.GetModItem(ModConditions.homewardJourneyMod, "UnstableGlobe"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "CapricornMedal"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "GeminiMedal"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "LibraMedal"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "ScorpioMedal"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "TaurusMedal"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "VirgoMedal"),
                 //Martains Order
+                Common.GetModItem(ModConditions.martainsOrderMod, "AntRubble"),
                 Common.GetModItem(ModConditions.martainsOrderMod, "FrigidEgg"),
                 Common.GetModItem(ModConditions.martainsOrderMod, "SuspiciousLookingCloud"),
                 Common.GetModItem(ModConditions.martainsOrderMod, "Catnip"),
@@ -1298,6 +1348,82 @@ namespace QoLCompendium.Core
             };
             Prefixes.UnionWith(ModPrefixes);
 
+            HashSet<int> ModPermanentUpgrades = new()
+            {
+                Common.GetModItem(ModConditions.aequusMod, "CosmicChest"),
+                Common.GetModItem(ModConditions.aequusMod, "TinkerersGuidebook"),
+                Common.GetModItem(ModConditions.aequusMod, "MoneyTrashcan"),
+                Common.GetModItem(ModConditions.aequusMod, "VictorsReward"),
+                Common.GetModItem(ModConditions.calamityMod, "MushroomPlasmaRoot"),
+                Common.GetModItem(ModConditions.calamityMod, "InfernalBlood"),
+                Common.GetModItem(ModConditions.calamityMod, "RedLightningContainer"),
+                Common.GetModItem(ModConditions.calamityMod, "ElectrolyteGelPack"),
+                Common.GetModItem(ModConditions.calamityMod, "StarlightFuelCell"),
+                Common.GetModItem(ModConditions.calamityMod, "Ectoheart"),
+                Common.GetModItem(ModConditions.calamityMod, "CelestialOnion"),
+                Common.GetModItem(ModConditions.clickerClassMod, "HeavenlyChip"),
+                Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "EnergyCrystal"),
+                Common.GetModItem(ModConditions.fargosSoulsMod, "DeerSinew"),
+                Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsCreditCard"),
+                Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsDiscountCard"),
+                Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsPact"),
+                Common.GetModItem(ModConditions.fargosSoulsMod, "RabiesVaccine"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "Americano"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "Latte"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "Mocha"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "Cappuccino"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "AirHandcanon"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "HotCase"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "GreatCrystal"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "WhimInABottle"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "SunsHeart"),
+                Common.GetModItem(ModConditions.homewardJourneyMod, "TheSwitch"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "FishOfPurity"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "FishOfSpirit"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "FishOfWrath"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "ShimmerFish"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "MerchantBag"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "FirstAidTreatments"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "MartiniteBless"),
+                Common.GetModItem(ModConditions.redemptionMod, "GalaxyHeart"),
+                Common.GetModItem(ModConditions.redemptionMod, "MedicKit"),
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "ScarletStar"),
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "VioletStar"),
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "SoulHeart"),
+                Common.GetModItem(ModConditions.thoriumMod, "AstralWave"),
+                Common.GetModItem(ModConditions.thoriumMod, "InspirationGem")
+            };
+            PermanentUpgrades.UnionWith(ModPermanentUpgrades);
+
+            HashSet<int> ModPermanentMultiUseUpgrades = new()
+            {
+                Common.GetModItem(ModConditions.calamityMod, "EnchantedStarfish"),
+                Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "StaminaCrystal"),
+                Common.GetModItem(ModConditions.ragnarokMod, "InspirationEssence"),
+                Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "VoidenAnkh"),
+                Common.GetModItem(ModConditions.thoriumMod, "CrystalWave"),
+                Common.GetModItem(ModConditions.thoriumMod, "InspirationFragment"),
+                Common.GetModItem(ModConditions.thoriumMod, "InspirationShard"),
+                Common.GetModItem(ModConditions.thoriumMod, "InspirationCrystalNew")
+            };
+            PermanentMultiUseUpgrades.UnionWith(ModPermanentMultiUseUpgrades);
+
+            HashSet<int> ModEmblems = new()
+            {
+                Common.GetModItem(ModConditions.calamityMod, "RogueEmblem"),
+                Common.GetModItem(ModConditions.clickerClassMod, "ClickerEmblem"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "ThrowerEmblem"),
+                Common.GetModItem(ModConditions.martainsOrderMod, "NeutralEmblem"),
+                //Common.GetModItem(ModConditions.orchidMod, "AlchemistEmblem"),
+                Common.GetModItem(ModConditions.orchidMod, "GuardianEmblem"),
+                Common.GetModItem(ModConditions.orchidMod, "ShamanEmblem"),
+                Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "NinjaEmblem"),
+                Common.GetModItem(ModConditions.thoriumMod, "BardEmblem"),
+                Common.GetModItem(ModConditions.thoriumMod, "ClericEmblem"),
+                Common.GetModItem(ModConditions.thoriumMod, "NinjaEmblem"),
+            };
+            Emblems.UnionWith(ModEmblems);
+
             HashSet<int> ModIgnoredTiles = new()
             {
                 GetModTile(ModConditions.aequusMod, "Manacle"),
@@ -1327,17 +1453,6 @@ namespace QoLCompendium.Core
             if (ModConditions.remnantsLoaded)
                 TempIgnoredModsForExplosives.Add(ModConditions.remnantsMod);
             IgnoredModsForExplosives.UnionWith(TempIgnoredModsForExplosives);
-
-            HashSet<int> ModIgnoredPermanentBuffs = new()
-            {
-                Common.GetModBuff(ModConditions.calamityMod, "ChaosCandleBuff"),
-                Common.GetModBuff(ModConditions.calamityMod, "CirrusBlueCandleBuff"),
-                Common.GetModBuff(ModConditions.calamityMod, "CirrusPinkCandleBuff"),
-                Common.GetModBuff(ModConditions.calamityMod, "CirrusPurpleCandleBuff"),
-                Common.GetModBuff(ModConditions.calamityMod, "CirrusYellowCandleBuff"),
-                Common.GetModBuff(ModConditions.calamityMod, "TranquilityCandleBuff"),
-            };
-            IgnoredPermanentBuffs.UnionWith(ModIgnoredPermanentBuffs);
 
             for (int i = BuffID.Count; i < BuffLoader.BuffCount; i++)
             {
@@ -1411,6 +1526,11 @@ namespace QoLCompendium.Core
         public interface IRightClickOverrideWhenHeld
         {
             bool RightClickOverrideWhileHeld(ref Item heldItem, Item[] inv, int context, int slot, Player player, QoLCPlayer qPlayer);
+        }
+
+        public static bool IsNotATool(this Item item)
+        {
+            return item.pick == 0 && item.axe == 0 && item.hammer == 0 && item.createTile == -1 && item.createWall == -1;
         }
 
         public static int GetModItem(Mod mod, string itemName)
@@ -1520,13 +1640,13 @@ namespace QoLCompendium.Core
         {
             for (int i = 0; i < items.Length; i++)
             {
-                CreateSimpleRecipe(bagID, items[i], TileID.WorkBenches, 1, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.BossBags", () => QoLCompendium.mainConfig.BossBagRecipes));
+                CreateSimpleRecipe(bagID, items[i], TileID.WorkBenches, 1, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.BossBags", () => QoLCompendium.mainConfig.EasierRecipes));
             }
         }
 
         public static void CreateCrateRecipe(int result, int crateID, int crateHardmodeID, int crateCount, params Condition[] conditions)
         {
-            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateID, crateCount);
             foreach (Condition condition in conditions)
                 recipe.AddCondition(condition);
@@ -1534,7 +1654,7 @@ namespace QoLCompendium.Core
             recipe.DisableDecraft();
             recipe.Register();
 
-            recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateHardmodeID, crateCount);
             foreach (Condition condition in conditions)
                 recipe.AddCondition(condition);
@@ -1545,7 +1665,7 @@ namespace QoLCompendium.Core
 
         public static void CreateCrateHardmodeRecipe(int result, int crateHardmodeID, int crateCount, params Condition[] conditions)
         {
-            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateHardmodeID, crateCount);
             foreach (Condition condition in conditions)
                 recipe.AddCondition(condition);
@@ -1556,7 +1676,7 @@ namespace QoLCompendium.Core
 
         public static void CreateCrateWithKeyRecipe(int item, int crateID, int crateHardmodeID, int crateCount, int keyID, params Condition[] conditions)
         {
-            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateID, crateCount);
             recipe.AddIngredient(keyID);
             foreach (Condition condition in conditions)
@@ -1565,7 +1685,7 @@ namespace QoLCompendium.Core
             recipe.DisableDecraft();
             recipe.Register();
 
-            recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.CrateRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateHardmodeID, crateCount);
             recipe.AddIngredient(keyID);
             foreach (Condition condition in conditions)
@@ -1602,8 +1722,29 @@ namespace QoLCompendium.Core
                 {
                     int num = Item.NPCtoBanner(i);
                     if (num > 0)
-                        CreateSimpleRecipe(Item.BannerToItem(num), resultID, TileID.WorkBenches, 1, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.BannerRecipes));
+                        CreateSimpleRecipe(Item.BannerToItem(num), resultID, TileID.WorkBenches, 1, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.EasierRecipes));
                 }
+            }
+        }
+
+        public static void CreateLoopingRecipe(int[] items, int tileType)
+        {
+            List<int> newItems = [];
+            for (int j = 0; j < items.Length; j++)
+            {
+                if (items[j] != 0)
+                    newItems.Add(items[j]);
+            }
+
+            int firstID = GetFirstNonZeroValue(newItems.ToArray());
+            int lastID = GetLastNonZeroValue(newItems.ToArray());
+
+            for (int i = 0; i < newItems.Count; i++)
+            {
+                if (i >= newItems.Count - 1)
+                    CreateSimpleRecipe(lastID, firstID, tileType);
+                else
+                    CreateSimpleRecipe(newItems[i], newItems[i + 1], tileType);
             }
         }
 
@@ -1647,13 +1788,70 @@ namespace QoLCompendium.Core
 
         public static void TransmuteItems(int[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            List<int> newItems = [];
+            for (int j = 0; j < items.Length; j++)
             {
-                if (i >= items.Length - 1)
-                    ItemID.Sets.ShimmerTransformToItem[items.Last()] = items.First();
-                else
-                    ItemID.Sets.ShimmerTransformToItem[items[i]] = items[i + 1];
+                if (items[j] != 0)
+                    newItems.Add(items[j]);
             }
+
+            int firstID = GetFirstNonZeroValue(newItems.ToArray());
+            int lastID = GetLastNonZeroValue(newItems.ToArray());
+
+            for (int i = 0; i < newItems.Count; i++)
+            {
+                if (i >= newItems.Count - 1)
+                    ItemID.Sets.ShimmerTransformToItem[lastID] = firstID;
+                else
+                {
+                    if (newItems[i] != ItemID.None && newItems[i + 1] != ItemID.None)
+                    {
+                        ItemID.Sets.ShimmerTransformToItem[newItems[i]] = newItems[i + 1];
+                    }
+                }
+            }
+        }
+
+        public static int GetFirstNonZeroValue(int[] values)
+        {
+            int firstID = 0;
+            if (values[0] != 0)
+            {
+                firstID = values.First();
+            }
+            else
+            {
+                for (int i = 0; i < values.Length - 1; i++)
+                {
+                    if (values[i] != 0)
+                    {
+                        firstID = values[i];
+                        break;
+                    }
+                }
+            }
+            return firstID;
+        }
+
+        public static int GetLastNonZeroValue(int[] values)
+        {
+            int lastID = 0;
+            if (values.Last() != 0)
+            {
+                lastID = values.Last();
+            }
+            else
+            {
+                for (int i = values.Length - 1; i > 0; i--)
+                {
+                    if (values[i] != 0)
+                    {
+                        lastID = values[i];
+                        break;
+                    }
+                }
+            }
+            return lastID;
         }
 
         public static bool CheckToActivateGlintEffect(Item item)
@@ -1665,7 +1863,12 @@ namespace QoLCompendium.Core
                 return true;
             else if (QoLCompendium.mainConfig.GoodPrefixesHaveEnchantedEffects && !item.IsAir && Prefixes.Contains(item.prefix))
                 return true;
-
+            else if (ModConditions.calamityEntropyLoaded && QoLCompendium.crossModConfig.CalamityEntropyArmorPrefixesHaveEnchantedEffects)
+            {
+                if (QoLCompendium.mainConfig.GoodPrefixesHaveEnchantedEffects && !item.IsAir && CalamityEntropyArmorGlint.ArmorHasEntropyPrefix(item))
+                    return true;
+            }
+            
             return false;
         }
 
@@ -1729,6 +1932,25 @@ namespace QoLCompendium.Core
             return ret;
         }
 
+        public static int ToFrames(float seconds, int extraUpdates = 0)
+        {
+            return (int)(seconds * 60 * (extraUpdates + 1));
+        }
+
+        public static int ToPixels(float blocks)
+        {
+            return (int)(blocks * 16);
+        }
+
+        public static float ToSeconds(float frames, int extraUpdates = 0)
+        {
+            return frames / (60 * (extraUpdates + 1));
+        }
+
+        public static float ToBlocks(float pixels)
+        {
+            return pixels / 16;
+        }
 
         public static Point16 PlayerCenterTile(Player player)
         {
@@ -1874,6 +2096,16 @@ namespace QoLCompendium.Core
             return false;
         }
 
+        public static NPCLoot GetNPCLoot(int npcId, ItemDropDatabase database = null)
+        {
+            return new NPCLoot(npcId, database ?? Main.ItemDropsDB);
+        }
+
+        public static NPCLoot GetNPCLoot(this NPC npc, ItemDropDatabase database = null)
+        {
+            return GetNPCLoot(npc.netID, database);
+        }
+
         public static void AddAfter<T>(this List<T> list, T element, T item)
         {
             var idx = list.IndexOf(element);
@@ -1909,10 +2141,10 @@ namespace QoLCompendium.Core
         {
             if (!remove)
             {
-                if (!QoLCompendium.mainConfig.VeinMinerTileWhitelist.Contains(name))
+                if (!QoLCompendium.veinminerConfig.VeinMinerTileWhitelist.Contains(name))
                 {
-                    QoLCompendium.mainConfig.VeinMinerTileWhitelist.Add(name);
-                    SaveConfig(QoLCompendium.mainConfig);
+                    QoLCompendium.veinminerConfig.VeinMinerTileWhitelist.Add(name);
+                    SaveConfig(QoLCompendium.veinminerConfig);
                 }
                 if (Main.netMode == NetmodeID.SinglePlayer)
                 {
@@ -1923,17 +2155,17 @@ namespace QoLCompendium.Core
                     else
                     {
                         KeybindPlayer.timeout = 0;
-                        QoLCompendium.mainConfig.VeinMinerTileWhitelist.Add(name);
-                        SaveConfig(QoLCompendium.mainConfig);
+                        QoLCompendium.veinminerConfig.VeinMinerTileWhitelist.Add(name);
+                        SaveConfig(QoLCompendium.veinminerConfig);
                     }
                 }
             }
             else
             {
-                if (QoLCompendium.mainConfig.VeinMinerTileWhitelist.Contains(name))
+                if (QoLCompendium.veinminerConfig.VeinMinerTileWhitelist.Contains(name))
                 {
-                    QoLCompendium.mainConfig.VeinMinerTileWhitelist.Remove(name);
-                    SaveConfig(QoLCompendium.mainConfig);
+                    QoLCompendium.veinminerConfig.VeinMinerTileWhitelist.Remove(name);
+                    SaveConfig(QoLCompendium.veinminerConfig);
                 }
             }
         }

@@ -7,7 +7,7 @@
             if (!ModConditions.thoriumLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.thoriumMod, "EarwormPotionBuff")] && !PermanentBuffPlayer.PermanentThoriumBuffsBools[(int)PermanentBuffPlayer.PermanentThoriumBuffs.Earworm])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.thoriumMod, "EarwormPotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentThoriumBuffsBools[(int)PermanentBuffPlayer.PermanentThoriumBuffs.Earworm])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.thoriumMod, "EarwormPotionBuff"));
                 buffToApply.Update(player.Player, ref index);

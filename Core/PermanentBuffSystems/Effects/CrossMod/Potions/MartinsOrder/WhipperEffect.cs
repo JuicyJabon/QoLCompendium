@@ -7,7 +7,7 @@
             if (!ModConditions.martainsOrderLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.martainsOrderMod, "WhipperBuff")] && !PermanentBuffPlayer.PermanentMartinsOrderBuffsBools[(int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Whipper])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.martainsOrderMod, "WhipperBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentMartinsOrderBuffsBools[(int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Whipper])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "WhipperBuff"));
                 buffToApply.Update(player.Player, ref index);

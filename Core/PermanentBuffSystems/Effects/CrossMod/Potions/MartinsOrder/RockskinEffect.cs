@@ -7,7 +7,7 @@
             if (!ModConditions.martainsOrderLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.martainsOrderMod, "RockskinBuff")] && !PermanentBuffPlayer.PermanentMartinsOrderBuffsBools[(int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Rockskin])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.martainsOrderMod, "RockskinBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentMartinsOrderBuffsBools[(int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Rockskin])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "RockskinBuff"));
                 buffToApply.Update(player.Player, ref index);

@@ -47,7 +47,12 @@ namespace QoLCompendium.Core.UI.Panels
         public static PermanentBuffButton SupremeLuckButton = new(ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.clamityAddonMod, Common.GetModBuff(ModConditions.clamityAddonMod, "SupremeLucky"))));
         public static PermanentBuffButton TitanScaleButton = new(ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.clamityAddonMod, Common.GetModBuff(ModConditions.clamityAddonMod, "TitanScalePotionBuff"))));
 
-        HashSet<PermanentBuffButton> allBuffButtons = new();
+        //CALAMITY ENTROPY
+        public static PermanentBuffButton VoidCandleButton = new(ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.calamityEntropyMod, Common.GetModBuff(ModConditions.calamityEntropyMod, "VoidCandleBuff"))));
+        public static PermanentBuffButton SoyMilkButton = new(ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.calamityEntropyMod, Common.GetModBuff(ModConditions.calamityEntropyMod, "SoyMilkBuff"))));
+        public static PermanentBuffButton YharimsStimulantsButton = new(ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.calamityEntropyMod, Common.GetModBuff(ModConditions.calamityEntropyMod, "YharimPower"))));
+
+        public static HashSet<PermanentBuffButton> allBuffButtons = new();
 
         public override void OnInitialize()
         {
@@ -247,6 +252,25 @@ namespace QoLCompendium.Core.UI.Panels
             TitanScaleButton.OnLeftClick += TitanScaleClicked;
             TitanScaleButton.ModTooltip = UISystem.UnloadedText;
             BuffPanel.Append(TitanScaleButton);
+
+            //CALAMITY ENTROPY
+            //Void Candle
+            CreateBuffButton(VoidCandleButton, 176f, 192f);
+            VoidCandleButton.OnLeftClick += VoidCandleClicked;
+            VoidCandleButton.ModTooltip = UISystem.UnloadedText;
+            BuffPanel.Append(VoidCandleButton);
+
+            //Soy Milk
+            CreateBuffButton(SoyMilkButton, 208f, 192f);
+            SoyMilkButton.OnLeftClick += SoyMilkClicked;
+            SoyMilkButton.ModTooltip = UISystem.UnloadedText;
+            BuffPanel.Append(SoyMilkButton);
+
+            //Yharim's Stimulants
+            CreateBuffButton(YharimsStimulantsButton, 240f, 192f);
+            YharimsStimulantsButton.OnLeftClick += YharimsStimulantsClicked;
+            YharimsStimulantsButton.ModTooltip = UISystem.UnloadedText;
+            BuffPanel.Append(YharimsStimulantsButton);
             #endregion
 
             HashSet<PermanentBuffButton> buttons = new()
@@ -287,7 +311,12 @@ namespace QoLCompendium.Core.UI.Panels
                 //clamity
                 ExoBaguetteButton,
                 SupremeLuckButton,
-                TitanScaleButton
+                TitanScaleButton,
+
+                //calamity entropy
+                VoidCandleButton,
+                SoyMilkButton,
+                YharimsStimulantsButton
             };
             allBuffButtons.UnionWith(buttons);
 
@@ -334,6 +363,11 @@ namespace QoLCompendium.Core.UI.Panels
         private void ExoBaguetteClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentCalamityBuffs.ExoBaguette, ExoBaguetteButton);
         private void SupremeLuckClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentCalamityBuffs.SupremeLuck, SupremeLuckButton);
         private void TitanScaleClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentCalamityBuffs.TitanScale, TitanScaleButton);
+        
+        //CALAMITY ENTROPY
+        private void VoidCandleClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentCalamityBuffs.VoidCandle, VoidCandleButton);
+        private void SoyMilkClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentCalamityBuffs.SoyMilk, SoyMilkButton);
+        private void YharimsStimulantsClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentCalamityBuffs.YharimsStimulants, YharimsStimulantsButton);
         #endregion
 
         public static void GetCalamityBuffData()
@@ -383,6 +417,13 @@ namespace QoLCompendium.Core.UI.Panels
                 SupremeLuckButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.clamityAddonMod, "SupremeLucky")).DisplayName;
                 TitanScaleButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.clamityAddonMod, "TitanScalePotionBuff")).DisplayName;
             }
+            //CALAMITY ENTROPY
+            if (ModConditions.calamityEntropyLoaded)
+            {
+                VoidCandleButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.calamityEntropyMod, "VoidCandleBuff")).DisplayName;
+                SoyMilkButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.calamityEntropyMod, "SoyMilkBuff")).DisplayName;
+                YharimsStimulantsButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.calamityEntropyMod, "YharimPower")).DisplayName;
+            }
 
             //SPRITES
             //ARENA
@@ -426,6 +467,13 @@ namespace QoLCompendium.Core.UI.Panels
                 SupremeLuckButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.calamityMod, Common.GetModBuff(ModConditions.clamityAddonMod, "SupremeLucky")));
                 TitanScaleButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.calamityMod, Common.GetModBuff(ModConditions.clamityAddonMod, "TitanScalePotionBuff")));
             }
+            //CALAMITY ENTROPY
+            if (ModConditions.calamityEntropyLoaded)
+            {
+                VoidCandleButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.calamityEntropyMod, Common.GetModBuff(ModConditions.calamityEntropyMod, "VoidCandleBuff")));
+                SoyMilkButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.calamityEntropyMod, Common.GetModBuff(ModConditions.calamityEntropyMod, "SoyMilkBuff")));
+                YharimsStimulantsButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.calamityEntropyMod, Common.GetModBuff(ModConditions.calamityEntropyMod, "YharimPower")));
+            }
         }
 
         public override void Update(GameTime gameTime)
@@ -433,9 +481,9 @@ namespace QoLCompendium.Core.UI.Panels
             if (!visible)
                 return;
 
-            for (int i = 0; i < PermanentBuffPlayer.PermanentCalamityBuffsBools.Length; i++)
+            for (int i = 0; i < Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools.Length; i++)
             {
-                allBuffButtons.ElementAt(i).disabled = PermanentBuffPlayer.PermanentCalamityBuffsBools[i];
+                allBuffButtons.ElementAt(i).disabled = Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[i];
                 allBuffButtons.ElementAt(i).moddedBuff = true;
             }
         }
@@ -444,8 +492,8 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                PermanentBuffPlayer.PermanentCalamityBuffsBools[buff] = !PermanentBuffPlayer.PermanentCalamityBuffsBools[buff];
-                button.disabled = PermanentBuffPlayer.PermanentCalamityBuffsBools[buff];
+                Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[buff] = !Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[buff];
+                button.disabled = Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[buff];
             }
         }
 

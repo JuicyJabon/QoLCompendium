@@ -91,94 +91,117 @@
 
                 #region Other
                 Common.TransmuteItems(new int[] { ItemID.HelFire, ItemID.Cascade });
+
+                Common.TransmuteItems(new int[] { ItemID.GladiatorHelmet, ItemID.GladiatorBreastplate, ItemID.GladiatorLeggings });
                 #endregion
 
                 //Calamity [WIP]
-                #region Bosses
+                if (ModConditions.calamityLoaded)
+                {
+                    #region Bosses
 
-                #endregion
+                    #endregion
 
-                #region Event Bosses
+                    #region Event Bosses
 
-                #endregion
+                    #endregion
 
-                #region Enemies
+                    #region Enemies
 
-                #endregion
+                    #endregion
+                }
 
                 //Thorium
-                #region Bosses
-                //Grand Thunder Bird
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "Didgeridoo"), Common.GetModItem(ModConditions.thoriumMod, "StormHatchlingStaff"), Common.GetModItem(ModConditions.thoriumMod, "TalonBurst"), Common.GetModItem(ModConditions.thoriumMod, "ThunderTalon") });
+                if (ModConditions.thoriumLoaded)
+                {
+                    #region Bosses
+                    //Grand Thunder Bird
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "Didgeridoo"), Common.GetModItem(ModConditions.thoriumMod, "StormHatchlingStaff"), Common.GetModItem(ModConditions.thoriumMod, "TalonBurst"), Common.GetModItem(ModConditions.thoriumMod, "ThunderTalon") });
 
-                //Queen Jellyfish
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "BuccaneerBlunderBuss"), Common.GetModItem(ModConditions.thoriumMod, "ConchShell"), Common.GetModItem(ModConditions.thoriumMod, "GiantGlowstick"), Common.GetModItem(ModConditions.thoriumMod, "JellyPondWand"), Common.GetModItem(ModConditions.thoriumMod, "SparkingJellyBall") });
+                    //Queen Jellyfish
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "BuccaneerBlunderBuss"), Common.GetModItem(ModConditions.thoriumMod, "ConchShell"), Common.GetModItem(ModConditions.thoriumMod, "GiantGlowstick"), Common.GetModItem(ModConditions.thoriumMod, "JellyPondWand"), Common.GetModItem(ModConditions.thoriumMod, "SparkingJellyBall") });
 
-                //Viscount
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "BatScythe"), Common.GetModItem(ModConditions.thoriumMod, "BatWing"), Common.GetModItem(ModConditions.thoriumMod, "GuanoGunner"), Common.GetModItem(ModConditions.thoriumMod, "SonarCannon"), Common.GetModItem(ModConditions.thoriumMod, "VampireScepter"), Common.GetModItem(ModConditions.thoriumMod, "ViscountCane") });
+                    //Viscount
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "BatScythe"), Common.GetModItem(ModConditions.thoriumMod, "BatWing"), Common.GetModItem(ModConditions.thoriumMod, "GuanoGunner"), Common.GetModItem(ModConditions.thoriumMod, "SonarCannon"), Common.GetModItem(ModConditions.thoriumMod, "VampireScepter"), Common.GetModItem(ModConditions.thoriumMod, "ViscountCane") });
 
-                //Granite Energy Storm
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "BoulderProbeStaff"), Common.GetModItem(ModConditions.thoriumMod, "EnergyProjector"), Common.GetModItem(ModConditions.thoriumMod, "EnergyStormBolter"), Common.GetModItem(ModConditions.thoriumMod, "EnergyStormPartisan"), Common.GetModItem(ModConditions.thoriumMod, "ShockAbsorber") });
+                    //Granite Energy Storm
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "BoulderProbeStaff"), Common.GetModItem(ModConditions.thoriumMod, "EnergyProjector"), Common.GetModItem(ModConditions.thoriumMod, "EnergyStormBolter"), Common.GetModItem(ModConditions.thoriumMod, "EnergyStormPartisan"), Common.GetModItem(ModConditions.thoriumMod, "ShockAbsorber") });
 
-                //Buried Champion
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "ChampionBomberStaff"), Common.GetModItem(ModConditions.thoriumMod, "ChampionsGodHand"), Common.GetModItem(ModConditions.thoriumMod, "ChampionsRebuttal"), Common.GetModItem(ModConditions.thoriumMod, "AncientBlade"), Common.GetModItem(ModConditions.thoriumMod, "ChampionsTrifectaShot") });
+                    //Buried Champion
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "ChampionBomberStaff"), Common.GetModItem(ModConditions.thoriumMod, "ChampionsGodHand"), Common.GetModItem(ModConditions.thoriumMod, "ChampionsRebuttal"), Common.GetModItem(ModConditions.thoriumMod, "ChampionSwiftBlade"), Common.GetModItem(ModConditions.thoriumMod, "ChampionsTrifectaShot") });
 
-                //Star Scouter
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "DistressCaller"), Common.GetModItem(ModConditions.thoriumMod, "GaussFlinger"), Common.GetModItem(ModConditions.thoriumMod, "HitScanner"), Common.GetModItem(ModConditions.thoriumMod, "ParticleWhip"), Common.GetModItem(ModConditions.thoriumMod, "Roboboe"), Common.GetModItem(ModConditions.thoriumMod, "StarRod"), Common.GetModItem(ModConditions.thoriumMod, "StarTrail") });
+                    //Star Scouter
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "DistressCaller"), Common.GetModItem(ModConditions.thoriumMod, "GaussFlinger"), Common.GetModItem(ModConditions.thoriumMod, "HitScanner"), Common.GetModItem(ModConditions.thoriumMod, "ParticleWhip"), Common.GetModItem(ModConditions.thoriumMod, "Roboboe"), Common.GetModItem(ModConditions.thoriumMod, "StarRod"), Common.GetModItem(ModConditions.thoriumMod, "StarTrail") });
 
-                //Borean Strider
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "BoreanFangStaff"), Common.GetModItem(ModConditions.thoriumMod, "FreezeRay"), Common.GetModItem(ModConditions.thoriumMod, "GlacialSting"), Common.GetModItem(ModConditions.thoriumMod, "Glacier"), Common.GetModItem(ModConditions.thoriumMod, "TheCryoFang") });
+                    //Borean Strider
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "BoreanFangStaff"), Common.GetModItem(ModConditions.thoriumMod, "FreezeRay"), Common.GetModItem(ModConditions.thoriumMod, "GlacialSting"), Common.GetModItem(ModConditions.thoriumMod, "Glacier"), Common.GetModItem(ModConditions.thoriumMod, "TheCryoFang") });
 
-                //Fallen Beholder
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "BeholderGaze"), Common.GetModItem(ModConditions.thoriumMod, "BeholderStaff"), Common.GetModItem(ModConditions.thoriumMod, "Cello"), Common.GetModItem(ModConditions.thoriumMod, "HellishHalberd"), Common.GetModItem(ModConditions.thoriumMod, "HellRoller"), Common.GetModItem(ModConditions.thoriumMod, "Obliterator"), Common.GetModItem(ModConditions.thoriumMod, "PyroclastStaff"), Common.GetModItem(ModConditions.thoriumMod, "VoidPlanter") });
+                    //Fallen Beholder
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "BeholderGaze"), Common.GetModItem(ModConditions.thoriumMod, "BeholderStaff"), Common.GetModItem(ModConditions.thoriumMod, "Cello"), Common.GetModItem(ModConditions.thoriumMod, "HellishHalberd"), Common.GetModItem(ModConditions.thoriumMod, "HellRoller"), Common.GetModItem(ModConditions.thoriumMod, "Obliterator"), Common.GetModItem(ModConditions.thoriumMod, "PyroclastStaff"), Common.GetModItem(ModConditions.thoriumMod, "VoidPlanter") });
 
-                //Lich
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "CadaverCornet"), Common.GetModItem(ModConditions.thoriumMod, "PhantomWand"), Common.GetModItem(ModConditions.thoriumMod, "SoulCleaver"), Common.GetModItem(ModConditions.thoriumMod, "SoulRender"), Common.GetModItem(ModConditions.thoriumMod, "WitherStaff"), Common.GetModItem(ModConditions.thoriumMod, "TheLostCross") });
+                    //Lich
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "CadaverCornet"), Common.GetModItem(ModConditions.thoriumMod, "PhantomWand"), Common.GetModItem(ModConditions.thoriumMod, "SoulCleaver"), Common.GetModItem(ModConditions.thoriumMod, "SoulRender"), Common.GetModItem(ModConditions.thoriumMod, "WitherStaff"), Common.GetModItem(ModConditions.thoriumMod, "TheLostCross") });
 
-                //Forgotten One
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "MantisShrimpPunch"), Common.GetModItem(ModConditions.thoriumMod, "OldGodsVision"), Common.GetModItem(ModConditions.thoriumMod, "RlyehLostRod"), Common.GetModItem(ModConditions.thoriumMod, "SirensLyre"), Common.GetModItem(ModConditions.thoriumMod, "TheIncubator"), Common.GetModItem(ModConditions.thoriumMod, "TrenchSpitter") });
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "WhisperingHood"), Common.GetModItem(ModConditions.thoriumMod, "WhisperingTabard"), Common.GetModItem(ModConditions.thoriumMod, "WhisperingLeggings") });
+                    //Forgotten One
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "MantisShrimpPunch"), Common.GetModItem(ModConditions.thoriumMod, "OldGodsVision"), Common.GetModItem(ModConditions.thoriumMod, "RlyehLostRod"), Common.GetModItem(ModConditions.thoriumMod, "SirensLyre"), Common.GetModItem(ModConditions.thoriumMod, "TheIncubator"), Common.GetModItem(ModConditions.thoriumMod, "TrenchSpitter") });
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "WhisperingHood"), Common.GetModItem(ModConditions.thoriumMod, "WhisperingTabard"), Common.GetModItem(ModConditions.thoriumMod, "WhisperingLeggings") });
 
-                //The Primordials
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "DeathEssence"), Common.GetModItem(ModConditions.thoriumMod, "InfernoEssence"), Common.GetModItem(ModConditions.thoriumMod, "OceanEssence") });
+                    //The Primordials
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "DeathEssence"), Common.GetModItem(ModConditions.thoriumMod, "InfernoEssence"), Common.GetModItem(ModConditions.thoriumMod, "OceanEssence") });
 
-                //Lunatic Cultist
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "AncientFlame"), Common.GetModItem(ModConditions.thoriumMod, "AncientFrost"), Common.GetModItem(ModConditions.thoriumMod, "AncientSpark"), Common.GetModItem(ModConditions.thoriumMod, "EclipseFang"), Common.GetModItem(ModConditions.thoriumMod, "CosmicFluxStaff") });
-                #endregion
+                    //Lunatic Cultist
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "AncientFlame"), Common.GetModItem(ModConditions.thoriumMod, "AncientFrost"), Common.GetModItem(ModConditions.thoriumMod, "AncientSpark"), Common.GetModItem(ModConditions.thoriumMod, "EclipseFang"), Common.GetModItem(ModConditions.thoriumMod, "CosmicFluxStaff") });
+                    #endregion
 
-                #region Mini and Event Bosses
-                //Patch Werk
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "GraveBuster"), Common.GetModItem(ModConditions.thoriumMod, "TheGoodBook") });
+                    #region Mini and Event Bosses
+                    //Patch Werk
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "GraveBuster"), Common.GetModItem(ModConditions.thoriumMod, "TheGoodBook") });
 
-                //Corpse Bloom
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "BloomGuard"), Common.GetModItem(ModConditions.thoriumMod, "WeedEater") });
+                    //Corpse Bloom
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "BloomGuard"), Common.GetModItem(ModConditions.thoriumMod, "WeedEater") });
 
-                //Illusionist
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "MageHand"), Common.GetModItem(ModConditions.thoriumMod, "ScryingGlass") });
+                    //Illusionist
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "MageHand"), Common.GetModItem(ModConditions.thoriumMod, "ScryingGlass") });
 
-                //Dark Mage
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "DarkMageStaff"), Common.GetModItem(ModConditions.thoriumMod, "DarkTome"), Common.GetModItem(ModConditions.thoriumMod, "TabooWand") });
+                    //Dark Mage
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "DarkMageStaff"), Common.GetModItem(ModConditions.thoriumMod, "DarkTome"), Common.GetModItem(ModConditions.thoriumMod, "TabooWand") });
 
-                //Ogre
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "Hippocraticrossbow"), Common.GetModItem(ModConditions.thoriumMod, "OgreSnotGun"), Common.GetModItem(ModConditions.thoriumMod, "OgreSandal") });
+                    //Ogre
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "Hippocraticrossbow"), Common.GetModItem(ModConditions.thoriumMod, "OgreSnotGun"), Common.GetModItem(ModConditions.thoriumMod, "OgreSandal") });
 
-                //Flying Dutchman
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "TwentyFourCaratTuba"), Common.GetModItem(ModConditions.thoriumMod, "DutchmansAvarice"), Common.GetModItem(ModConditions.thoriumMod, "GreedfulGurdy"), Common.GetModItem(ModConditions.thoriumMod, "GreedyMagnet"), Common.GetModItem(ModConditions.thoriumMod, "HandCannon"), Common.GetModItem(ModConditions.thoriumMod, "ShipsHelm"), Common.GetModItem(ModConditions.thoriumMod, "TheJuggernaut") });
+                    //Flying Dutchman
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "TwentyFourCaratTuba"), Common.GetModItem(ModConditions.thoriumMod, "DutchmansAvarice"), Common.GetModItem(ModConditions.thoriumMod, "GreedfulGurdy"), Common.GetModItem(ModConditions.thoriumMod, "GreedyMagnet"), Common.GetModItem(ModConditions.thoriumMod, "HandCannon"), Common.GetModItem(ModConditions.thoriumMod, "ShipsHelm"), Common.GetModItem(ModConditions.thoriumMod, "TheJuggernaut") });
 
-                //Martian Saucer
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "CosmicDagger"), Common.GetModItem(ModConditions.thoriumMod, "Kinetoscythe"), Common.GetModItem(ModConditions.thoriumMod, "LivewireCrasher"), Common.GetModItem(ModConditions.thoriumMod, "MolecularStabilizer"), Common.GetModItem(ModConditions.thoriumMod, "SuperPlasmaCannon"), Common.GetModItem(ModConditions.thoriumMod, "TheTriangle"), Common.GetModItem(ModConditions.thoriumMod, "Turntable") });
-                #endregion
+                    //Martian Saucer
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "CosmicDagger"), Common.GetModItem(ModConditions.thoriumMod, "Kinetoscythe"), Common.GetModItem(ModConditions.thoriumMod, "LivewireCrasher"), Common.GetModItem(ModConditions.thoriumMod, "MolecularStabilizer"), Common.GetModItem(ModConditions.thoriumMod, "SuperPlasmaCannon"), Common.GetModItem(ModConditions.thoriumMod, "TheTriangle"), Common.GetModItem(ModConditions.thoriumMod, "Turntable") });
+                    #endregion
 
-                #region Enemies
-                //Hell Bringer Mimic
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "DevilDagger"), Common.GetModItem(ModConditions.thoriumMod, "DevilsReach"), Common.GetModItem(ModConditions.thoriumMod, "Schmelze"), Common.GetModItem(ModConditions.thoriumMod, "Scorn") });
+                    #region Enemies
+                    //Hell Bringer Mimic
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "DevilDagger"), Common.GetModItem(ModConditions.thoriumMod, "DevilsReach"), Common.GetModItem(ModConditions.thoriumMod, "Schmelze"), Common.GetModItem(ModConditions.thoriumMod, "Scorn") });
 
-                //Mycelium Mimic
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "FungalCane"), Common.GetModItem(ModConditions.thoriumMod, "FungalHook"), Common.GetModItem(ModConditions.thoriumMod, "Funggat"), Common.GetModItem(ModConditions.thoriumMod, "MyceliumWhip") });
+                    //Mycelium Mimic
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "FungalCane"), Common.GetModItem(ModConditions.thoriumMod, "FungalHook"), Common.GetModItem(ModConditions.thoriumMod, "Funggat"), Common.GetModItem(ModConditions.thoriumMod, "MyceliumWhip") });
 
-                //Submerged Mimic
-                Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "HydromancerCatalyst"), Common.GetModItem(ModConditions.thoriumMod, "NeptuneGrasp"), Common.GetModItem(ModConditions.thoriumMod, "PoseidonCharge"), Common.GetModItem(ModConditions.thoriumMod, "SSDevastator") });
-                #endregion
+                    //Submerged Mimic
+                    Common.TransmuteItems(new int[] { Common.GetModItem(ModConditions.thoriumMod, "HydromancerCatalyst"), Common.GetModItem(ModConditions.thoriumMod, "NeptuneGrasp"), Common.GetModItem(ModConditions.thoriumMod, "PoseidonCharge"), Common.GetModItem(ModConditions.thoriumMod, "SSDevastator") });
+                    #endregion
+                }
+            }
+
+            if (QoLCompendium.mainConfig.ItemConversions)
+            {
+                //Architect Gizmo Pack Accessories
+                Common.TransmuteItems([ItemID.BrickLayer, ItemID.ExtendoGrip, ItemID.PaintSprayer, ItemID.PortableCementMixer]);
+
+                //Toolbelt / Toolbox
+                Common.TransmuteItems([ItemID.Toolbelt, ItemID.Toolbox]);
+
+                //Bottomless Buckets
+                Common.TransmuteItems([ItemID.BottomlessBucket, ItemID.BottomlessLavaBucket, ItemID.BottomlessHoneyBucket]);
+
+                //Sponges
+                Common.TransmuteItems([ItemID.SuperAbsorbantSponge, ItemID.LavaAbsorbantSponge, ItemID.HoneyAbsorbantSponge]);
             }
         }
     }

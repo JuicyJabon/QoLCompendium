@@ -7,7 +7,7 @@
             if (!ModConditions.calamityLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.calamityMod, "AstralInjectionBuff")] && !PermanentBuffPlayer.PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.AstralInjection])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.calamityMod, "AstralInjectionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.AstralInjection])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.calamityMod, "AstralInjectionBuff"));
                 buffToApply.Update(player.Player, ref index);

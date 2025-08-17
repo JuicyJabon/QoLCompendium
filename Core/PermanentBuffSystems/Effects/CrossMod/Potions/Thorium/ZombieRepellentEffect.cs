@@ -7,7 +7,7 @@
             if (!ModConditions.thoriumLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.thoriumMod, "ZombieRepellentBuff")] && !PermanentBuffPlayer.PermanentThoriumBuffsBools[(int)PermanentBuffPlayer.PermanentThoriumBuffs.ZombieRepellent])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.thoriumMod, "ZombieRepellentBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentThoriumBuffsBools[(int)PermanentBuffPlayer.PermanentThoriumBuffs.ZombieRepellent])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.thoriumMod, "ZombieRepellentBuff"));
                 buffToApply.Update(player.Player, ref index);

@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Tiles.CraftingStations;
+using QoLCompendium.Content.Tiles.CraftingStations.CrossMod;
 using QoLCompendium.Core;
 using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;

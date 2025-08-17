@@ -10,11 +10,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Cons
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.consolariaMod, Common.GetModBuff(ModConditions.consolariaMod, "Drunk"));
 
-        public override void SetDefaults()
-        {
-            Common.SetDefaultsToPermanentBuff(Item);
-        }
-
         public override void UpdateInventory(Player player)
         {
             if (player.TryGetModPlayer(out PermanentBuffPlayer pBuffPlayer))

@@ -1,4 +1,5 @@
-﻿using Aequus;
+﻿/*
+using Aequus;
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
@@ -35,3 +36,4 @@ namespace QoLCompendium.Core.Changes.ModChanges
         }
     }
 }
+*/

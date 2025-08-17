@@ -46,9 +46,17 @@ namespace QoLCompendium.Core.UI
         public PermanentCalamityBuffUI permanentCalamityBuffUI;
         public UserInterface permanentCalamityBuffInterface;
 
+        //Permanent Homeward Journey Buff UI
+        public PermanentHomewardJourneyBuffUI permanentHomewardJourneyBuffUI;
+        public UserInterface permanentHomewardJourneyBuffInterface;
+
         //Permanent Martin's Order Buff UI
         public PermanentMartinsOrderBuffUI permanentMartinsOrderBuffUI;
         public UserInterface permanentMartinsOrderBuffInterface;
+
+        //Permanent SOTS Buff UI
+        public PermanentSOTSBuffUI permanentSOTSBuffUI;
+        public UserInterface permanentSOTSBuffInterface;
 
         //Permanent Spirit Classic Buff UI
         public PermanentSpiritClassicBuffUI permanentSpiritClassicBuffUI;
@@ -131,7 +139,9 @@ namespace QoLCompendium.Core.UI
         //PERMANENT BUFF SELECTOR UI
         public static LocalizedText VanillaText { get; private set; }
         public static LocalizedText CalamityText { get; private set; }
+        public static LocalizedText HomewardJourneyText { get; private set; }
         public static LocalizedText MartinsOrderText { get; private set; }
+        public static LocalizedText SOTSText { get; private set; }
         public static LocalizedText SpiritClassicText { get; private set; }
         public static LocalizedText ThoriumText { get; private set; }
 
@@ -224,7 +234,9 @@ namespace QoLCompendium.Core.UI
             //PERMANENT BUFF SELECTOR UI
             VanillaText = Mod.GetLocalization($"UIText.VanillaText");
             CalamityText = Mod.GetLocalization($"UIText.CalamityText");
+            HomewardJourneyText = Mod.GetLocalization($"UIText.HomewardJourneyText");
             MartinsOrderText = Mod.GetLocalization($"UIText.MartinsOrderText");
+            SOTSText = Mod.GetLocalization($"UIText.SOTSText");
             SpiritClassicText = Mod.GetLocalization($"UIText.SpiritClassicText");
             ThoriumText = Mod.GetLocalization($"UIText.ThoriumText");
 
@@ -288,10 +300,20 @@ namespace QoLCompendium.Core.UI
                 permanentCalamityBuffInterface = new UserInterface();
                 permanentCalamityBuffInterface.SetState(permanentCalamityBuffUI);
 
+                permanentHomewardJourneyBuffUI = new PermanentHomewardJourneyBuffUI();
+                permanentHomewardJourneyBuffUI.Activate();
+                permanentHomewardJourneyBuffInterface = new UserInterface();
+                permanentHomewardJourneyBuffInterface.SetState(permanentHomewardJourneyBuffUI);
+
                 permanentMartinsOrderBuffUI = new PermanentMartinsOrderBuffUI();
                 permanentMartinsOrderBuffUI.Activate();
                 permanentMartinsOrderBuffInterface = new UserInterface();
                 permanentMartinsOrderBuffInterface.SetState(permanentMartinsOrderBuffUI);
+                
+                permanentSOTSBuffUI = new PermanentSOTSBuffUI();
+                permanentSOTSBuffUI.Activate();
+                permanentSOTSBuffInterface = new UserInterface();
+                permanentSOTSBuffInterface.SetState(permanentSOTSBuffUI);
 
                 permanentSpiritClassicBuffUI = new PermanentSpiritClassicBuffUI();
                 permanentSpiritClassicBuffUI.Activate();
@@ -445,9 +467,22 @@ namespace QoLCompendium.Core.UI
                     },
                     InterfaceScaleType.UI)
                 );
-                //PERMANENT MARTIN'S ORDER BUFFS
+                //PERMANENT HOMEWARD JOURNEY BUFFS
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
                     "QoLC: Calamity Buff Toggles",
+                    delegate
+                    {
+                        if (PermanentHomewardJourneyBuffUI.visible)
+                        {
+                            permanentHomewardJourneyBuffUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                //PERMANENT MARTIN'S ORDER BUFFS
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "QoLC: Martins Order Buff Toggles",
                     delegate
                     {
                         if (PermanentMartinsOrderBuffUI.visible)
@@ -458,9 +493,22 @@ namespace QoLCompendium.Core.UI
                     },
                     InterfaceScaleType.UI)
                 );
+                //PERMANENT SOTS BUFFS
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "QoLC: SOTS Buff Toggles",
+                    delegate
+                    {
+                        if (PermanentSOTSBuffUI.visible)
+                        {
+                            permanentSOTSBuffUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
                 //PERMANENT SPIRIT CLASSIC BUFFS
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-                    "QoLC: Calamity Buff Toggles",
+                    "QoLC: Spirit Classic Buff Toggles",
                     delegate
                     {
                         if (PermanentSpiritClassicBuffUI.visible)
@@ -518,8 +566,14 @@ namespace QoLCompendium.Core.UI
             if (permanentCalamityBuffInterface.CurrentState is not null && PermanentCalamityBuffUI.visible)
                 permanentCalamityBuffInterface.Update(gameTime);
 
+            if (permanentHomewardJourneyBuffInterface.CurrentState is not null && PermanentHomewardJourneyBuffUI.visible)
+                permanentHomewardJourneyBuffInterface.Update(gameTime);
+
             if (permanentMartinsOrderBuffInterface.CurrentState is not null && PermanentMartinsOrderBuffUI.visible)
                 permanentMartinsOrderBuffInterface.Update(gameTime);
+
+            if (permanentSOTSBuffInterface.CurrentState is not null && PermanentSOTSBuffUI.visible)
+                permanentSOTSBuffInterface.Update(gameTime);
 
             if (permanentSpiritClassicBuffInterface.CurrentState is not null && PermanentSpiritClassicBuffUI.visible)
                 permanentSpiritClassicBuffInterface.Update(gameTime);

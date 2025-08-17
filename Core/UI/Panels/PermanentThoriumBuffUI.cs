@@ -47,7 +47,7 @@ namespace QoLCompendium.Core.UI.Panels
         public static PermanentBuffButton DeathsingerButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
         public static PermanentBuffButton InspirationRegenerationButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
 
-        HashSet<PermanentBuffButton> allBuffButtons = new();
+        public static HashSet<PermanentBuffButton> allBuffButtons = new();
 
         public override void OnInitialize()
         {
@@ -425,9 +425,9 @@ namespace QoLCompendium.Core.UI.Panels
             if (!visible)
                 return;
 
-            for (int i = 0; i < PermanentBuffPlayer.PermanentThoriumBuffsBools.Length; i++)
+            for (int i = 0; i < Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentThoriumBuffsBools.Length; i++)
             {
-                allBuffButtons.ElementAt(i).disabled = PermanentBuffPlayer.PermanentThoriumBuffsBools[i];
+                allBuffButtons.ElementAt(i).disabled = Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentThoriumBuffsBools[i];
                 allBuffButtons.ElementAt(i).moddedBuff = true;
             }
         }
@@ -436,8 +436,8 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                PermanentBuffPlayer.PermanentThoriumBuffsBools[buff] = !PermanentBuffPlayer.PermanentThoriumBuffsBools[buff];
-                button.disabled = PermanentBuffPlayer.PermanentThoriumBuffsBools[buff];
+                Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentThoriumBuffsBools[buff] = !Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentThoriumBuffsBools[buff];
+                button.disabled = Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentThoriumBuffsBools[buff];
             }
         }
 

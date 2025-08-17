@@ -7,7 +7,7 @@
             if (!ModConditions.calamityLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.calamityMod, "AnechoicCoatingBuff")] && !PermanentBuffPlayer.PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.AnechoicCoating])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.calamityMod, "AnechoicCoatingBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.AnechoicCoating])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.calamityMod, "AnechoicCoatingBuff"));
                 buffToApply.Update(player.Player, ref index);

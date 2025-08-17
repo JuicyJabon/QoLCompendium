@@ -8,7 +8,7 @@
             if (!ModConditions.spiritLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "StarPotionBuff")] && !PermanentBuffPlayer.PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Starburn])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "StarPotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Starburn])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "StarPotionBuff"));
                 buffToApply.Update(player.Player, ref index);

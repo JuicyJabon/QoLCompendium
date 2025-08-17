@@ -7,7 +7,7 @@
             if (!ModConditions.thoriumLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.thoriumMod, "GlowingPotionBuff")] && !PermanentBuffPlayer.PermanentThoriumBuffsBools[(int)PermanentBuffPlayer.PermanentThoriumBuffs.Glowing])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.thoriumMod, "GlowingPotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentThoriumBuffsBools[(int)PermanentBuffPlayer.PermanentThoriumBuffs.Glowing])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.thoriumMod, "GlowingPotionBuff"));
                 buffToApply.Update(player.Player, ref index);

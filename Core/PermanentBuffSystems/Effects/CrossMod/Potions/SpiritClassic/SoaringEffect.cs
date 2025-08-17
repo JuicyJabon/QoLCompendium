@@ -8,7 +8,7 @@
             if (!ModConditions.spiritLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "FlightPotionBuff")] && !PermanentBuffPlayer.PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Soaring])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "FlightPotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Soaring])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "FlightPotionBuff"));
                 buffToApply.Update(player.Player, ref index);

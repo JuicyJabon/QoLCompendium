@@ -5,9 +5,8 @@
         public override void RandomUpdate(int i, int j, int type)
         {
             if (!QoLCompendium.mainConfig.FastTreeGrowth || !Main.tile[i, j].HasTile)
-            {
                 return;
-            }
+
             for (int time = 0; time < 4; time++)
             {
                 switch (type)

@@ -8,7 +8,7 @@
             if (!ModConditions.spiritLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "TurtlePotionBuff")] && !PermanentBuffPlayer.PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Steadfast])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "TurtlePotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Steadfast])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "TurtlePotionBuff"));
                 buffToApply.Update(player.Player, ref index);

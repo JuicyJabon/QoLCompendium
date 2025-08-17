@@ -11,11 +11,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Mar
     {
         public override string Texture => "QoLCompendium/Assets/Items/PermanentMartinsOrderDamage";
 
-        public override void SetDefaults()
-        {
-            Common.SetDefaultsToPermanentBuff(Item);
-        }
-
         public override void UpdateInventory(Player player)
         {
             if (player.TryGetModPlayer(out PermanentBuffPlayer pBuffPlayer))

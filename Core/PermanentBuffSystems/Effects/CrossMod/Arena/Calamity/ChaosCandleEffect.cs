@@ -7,7 +7,7 @@
             if (!ModConditions.calamityLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.calamityMod, "ChaosCandleBuff")] && !PermanentBuffPlayer.PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.ChaosCandle])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.calamityMod, "ChaosCandleBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.ChaosCandle])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.calamityMod, "ChaosCandleBuff"));
                 buffToApply.Update(player.Player, ref index);

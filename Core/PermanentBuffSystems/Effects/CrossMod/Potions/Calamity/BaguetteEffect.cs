@@ -7,7 +7,7 @@
             if (!ModConditions.calamityLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.calamityMod, "BaguetteBuff")] && !PermanentBuffPlayer.PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.Baguette])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.calamityMod, "BaguetteBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.Baguette])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.calamityMod, "BaguetteBuff"));
                 buffToApply.Update(player.Player, ref index);

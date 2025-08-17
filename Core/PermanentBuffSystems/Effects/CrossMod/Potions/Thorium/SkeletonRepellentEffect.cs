@@ -7,7 +7,7 @@
             if (!ModConditions.thoriumLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.thoriumMod, "SkeletonRepellentBuff")] && !PermanentBuffPlayer.PermanentThoriumBuffsBools[(int)PermanentBuffPlayer.PermanentThoriumBuffs.SkeletonRepellent])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.thoriumMod, "SkeletonRepellentBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentThoriumBuffsBools[(int)PermanentBuffPlayer.PermanentThoriumBuffs.SkeletonRepellent])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.thoriumMod, "SkeletonRepellentBuff"));
                 buffToApply.Update(player.Player, ref index);

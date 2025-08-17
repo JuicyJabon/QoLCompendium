@@ -7,7 +7,7 @@
             if (!ModConditions.martainsOrderLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.martainsOrderMod, "ZincPillBuff")] && !PermanentBuffPlayer.PermanentMartinsOrderBuffsBools[(int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.ZincPill])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.martainsOrderMod, "ZincPillBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentMartinsOrderBuffsBools[(int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.ZincPill])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "ZincPillBuff"));
                 buffToApply.Update(player.Player, ref index);

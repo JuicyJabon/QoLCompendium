@@ -7,7 +7,7 @@
             if (!ModConditions.thoriumLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.thoriumMod, "FishRepellentBuff")] && !PermanentBuffPlayer.PermanentThoriumBuffsBools[(int)PermanentBuffPlayer.PermanentThoriumBuffs.FishRepellent])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.thoriumMod, "FishRepellentBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentThoriumBuffsBools[(int)PermanentBuffPlayer.PermanentThoriumBuffs.FishRepellent])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.thoriumMod, "FishRepellentBuff"));
                 buffToApply.Update(player.Player, ref index);

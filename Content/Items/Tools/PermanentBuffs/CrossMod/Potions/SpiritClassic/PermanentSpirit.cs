@@ -10,11 +10,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Spir
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "SpiritBuff"));
 
-        public override void SetDefaults()
-        {
-            Common.SetDefaultsToPermanentBuff(Item);
-        }
-
         public override void UpdateInventory(Player player)
         {
             if (player.TryGetModPlayer(out PermanentBuffPlayer pBuffPlayer))

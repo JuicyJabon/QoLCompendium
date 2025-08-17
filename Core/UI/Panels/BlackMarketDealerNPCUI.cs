@@ -142,7 +142,7 @@ namespace QoLCompendium.Core.UI.Panels
             ShopPanel.Append(potionButton);
 
             UIImageButton stationButton = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.BMMaterialShop == false)
+            if (QoLCompendium.shopConfig.BMStationShop == false)
             {
                 stationButton = new(buttonDeleteTexture);
             }

@@ -17,7 +17,7 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
         public override void SetDefaults()
         {
             Item.DefaultToPlaceableTile(ModContent.TileType<HardmodeMonolithTile>());
-            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 10, 0, 0));
+            Item.SetShopValues(ItemRarityColor.Pink5, Item.buyPrice(0, 10, 0, 0));
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)

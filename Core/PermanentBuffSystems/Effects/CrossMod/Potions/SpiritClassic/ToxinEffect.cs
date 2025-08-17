@@ -8,7 +8,7 @@
             if (!ModConditions.spiritLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "BismitePotionBuff")] && !PermanentBuffPlayer.PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Toxin])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "BismitePotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Toxin])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "BismitePotionBuff"));
                 buffToApply.Update(player.Player, ref index);

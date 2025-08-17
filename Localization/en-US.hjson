@@ -2,7 +2,7 @@ Mods: {
 	QoLCompendium: {
 		CommonItemTooltips: {
 			NotConsumable: Not Consumable
-			WorksInBanks: Works from inside banks
+			WorksInBanks: Works from inside personal storages
 			StaffOfAshingPlaceable: Creates ash grass on ash
 			StaffOfCystingPlaceable: Creates corrupt grass on dirt
 			StaffOfHallowingPlaceable: Creates hallowed grass on dirt
@@ -68,15 +68,16 @@ Mods: {
 			ItemEnabled: Item Enabled
 			RecipeEnabled: Recipe Enabled
 			ItemConversions: Item Conversions Enabled
-			BossBags: Boss Bag Recipes Enabled
-			Crates: Crate Recipes Enabled
-			Banners: Banner Recipes Enabled
+			BossBags: Easier Recipes Enabled
+			Crates: Easier Recipes Enabled
+			Banners: Easier Recipes Enabled
+			EasierRecipes: Easier Recipes Enabled
 			CraftingStations: Crafting Stations Enabled
 			MobileStorages: Mobile Storages Enabled
 			Pylons: Pylons Enabled
 		}
 
-		NPCDropConditions.ExpertNotMaster: Drops in Expert Mode
+		NPCDropConditions.ExpertNotMaster: This is an Expert Mode drop rate
 
 		Messages: {
 			MeteorStopped: "[c/32FF82:A meteorite burned up in the atmosphere!]"
@@ -101,6 +102,7 @@ Mods: {
 			WorldMaster: Difficulty changed to Master Mode
 			HostOnly: "[c/FF0000:Only the server host can change this!]"
 			SillySlapper: "{0} was slapped too silly"
+			THEButton: We ascending into the stratosphere with this one [i:2701][i:2701][i:2701]
 		}
 
 		RecipeGroupNames: {
@@ -215,7 +217,9 @@ Mods: {
 			RepellentText: Repellent Buffs
 			VanillaText: Open Vanilla Buffs
 			CalamityText: Open Calamity Buffs
+			HomewardJourneyText: Open Homeward Journey Buffs
 			MartinsOrderText: Open Martin's Order Buffs
+			SOTSText: Open Secrets of the Shadows Buffs
 			SpiritClassicText: Open Spirit Classic Buffs
 			ThoriumText: Open Thorium Buffs
 			UnloadedText: Mod Unloaded
@@ -405,16 +409,12 @@ Mods: {
 
 			CursedMirror: {
 				DisplayName: Cursed Mirror
-				Tooltip: Gaze into the mirror to materialize at your last death
+				Tooltip: Teleports you to your latest death
 			}
 
 			EtherianConstruct: {
 				DisplayName: Etherian Construct
-				Tooltip:
-					'''
-					Summons a floating etherian construct to store your items
-					Works as a portable Defender's Forge
-					'''
+				Tooltip: Summons a floating etherian construct to store your items
 			}
 
 			EclipsePedestal: {
@@ -522,7 +522,11 @@ Mods: {
 
 			MirrorOfReturn: {
 				DisplayName: Mirror Of Return
-				Tooltip: Gaze into the mirror to materialize at home with a return portal
+				Tooltip:
+					'''
+					Teleports you home and creates a portal
+					Use the portal to return when you are done
+					'''
 			}
 
 			MoonPedestal: {
@@ -534,7 +538,7 @@ Mods: {
 				DisplayName: Mosaic Mirror
 				Tooltip:
 					'''
-					Right click to toggle destination
+					Right click to cycle destination
 					Displays all modded information
 					Teleports you to a party member or town NPC
 					Click their head on the fullscreen map
@@ -616,7 +620,7 @@ Mods: {
 
 			TeleportationMirror: {
 				DisplayName: Teleportation Mirror
-				Tooltip: Gaze into the mirror to materialize at a random location
+				Tooltip: Teleports you to a random location
 			}
 
 			ToleranceDetector: {
@@ -651,11 +655,7 @@ Mods: {
 
 			FlyingSafe: {
 				DisplayName: Flying Safe
-				Tooltip:
-					'''
-					Summons a floating safe to store your items
-					Works as a portable Safe
-					'''
+				Tooltip: Summons a floating safe to store your items
 			}
 
 			WingTimer: {
@@ -704,12 +704,20 @@ Mods: {
 			}
 
 			DemonAltar: {
-				Tooltip: Functions as a demon altar
+				Tooltip:
+					'''
+					Functions as an evil altar
+					Cannot be mined for hardmode ores
+					'''
 				DisplayName: Demon Altar
 			}
 
 			CrimsonAltar: {
-				Tooltip: Functions as a crimson altar
+				Tooltip:
+					'''
+					Functions as an evil altar
+					Cannot be mined for hardmode ores
+					'''
 				DisplayName: Crimson Altar
 			}
 
@@ -718,7 +726,7 @@ Mods: {
 					'''
 					Summons a floating super dummy at your cursor
 					Minions and homing projectiles will detect and attack it
-					On hit effects get triggered as well
+					Triggers on hit effects
 					Right click to remove all active super dummies
 					Can spawn up to 100 super dummies at once
 					'''
@@ -856,15 +864,6 @@ Mods: {
 				Tooltip: Summons a Yagi
 			}
 
-			TheFinalList: {
-				DisplayName: The Final List
-				Tooltip:
-					'''
-					Unlocks the entire bestiary
-					Cannot be undone
-					'''
-			}
-
 			UltimateChecklist: {
 				DisplayName: Ultimate Checklist
 				Tooltip:
@@ -916,6 +915,11 @@ Mods: {
 				Tooltip: Summons a Moth
 			}
 
+			THEButton: {
+				DisplayName: THE Button
+				Tooltip: Press for a permanent new world perspective!
+			}
+
 			OwlNest: {
 				DisplayName: Owl Nest
 				Tooltip: Summons an Owl
@@ -927,72 +931,72 @@ Mods: {
 			}
 
 			EndlessChlorophytePouch: {
-				DisplayName: Endless Chlorophyte Pouch
+				DisplayName: Endless Chlorophyte Bullet Pouch
 				Tooltip: ""
 			}
 
 			EndlessCrystalPouch: {
-				DisplayName: Endless Crystal Pouch
+				DisplayName: Endless Crystal Bullet Pouch
 				Tooltip: ""
 			}
 
 			EndlessCursedPouch: {
-				DisplayName: Endless Cursed Pouch
+				DisplayName: Endless Cursed Bullet Pouch
 				Tooltip: ""
 			}
 
 			EndlessExplodingPouch: {
-				DisplayName: Endless Exploding Pouch
+				DisplayName: Endless Exploding Bullet Pouch
 				Tooltip: ""
 			}
 
 			EndlessGoldenPouch: {
-				DisplayName: Endless Golden Pouch
+				DisplayName: Endless Golden Bullet Pouch
 				Tooltip: ""
 			}
 
 			EndlessHighVelocityPouch: {
-				DisplayName: Endless High Velocity Pouch
+				DisplayName: Endless High Velocity Bullet Pouch
 				Tooltip: ""
 			}
 
 			EndlessIchorPouch: {
-				DisplayName: Endless Ichor Pouch
+				DisplayName: Endless Ichor Bullet Pouch
 				Tooltip: ""
 			}
 
 			EndlessLuminitePouch: {
-				DisplayName: Endless Luminite Pouch
+				DisplayName: Endless Luminite Bullet Pouch
 				Tooltip: ""
 			}
 
 			EndlessMeteorPouch: {
-				DisplayName: Endless Meteor Pouch
+				DisplayName: Endless Meteor Shot Pouch
 				Tooltip: ""
 			}
 
 			EndlessNanoPouch: {
-				DisplayName: Endless Nano Pouch
+				DisplayName: Endless Nano Bullet Pouch
 				Tooltip: ""
 			}
 
 			EndlessPartyPouch: {
-				DisplayName: Endless Party Pouch
+				DisplayName: Endless Party Bullet Pouch
 				Tooltip: ""
 			}
 
 			EndlessSilverPouch: {
-				DisplayName: Endless Silver Pouch
+				DisplayName: Endless Silver Bullet Pouch
 				Tooltip: ""
 			}
 
 			EndlessTungstenPouch: {
-				DisplayName: Endless Tungsten Pouch
+				DisplayName: Endless Tungsten Bullet Pouch
 				Tooltip: ""
 			}
 
 			EndlessVenomPouch: {
-				DisplayName: Endless Venom Pouch
+				DisplayName: Endless Venom Bullet Pouch
 				Tooltip: ""
 			}
 
@@ -1223,62 +1227,62 @@ Mods: {
 
 			EndlessVenomQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Venom Quiver
+				DisplayName: Endless Venom Arrow Quiver
 			}
 
 			EndlessUnholyQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Unholy Quiver
+				DisplayName: Endless Unholy Arrow Quiver
 			}
 
 			EndlessLuminiteQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Luminite Quiver
+				DisplayName: Endless Luminite Arrow Quiver
 			}
 
 			EndlessJestersQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Jesters Quiver
+				DisplayName: Endless Jester's Arrow Quiver
 			}
 
 			EndlessIchorQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Ichor Quiver
+				DisplayName: Endless Ichor Arrow Quiver
 			}
 
 			EndlessHolyQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Holy Quiver
+				DisplayName: Endless Holy Arrow Quiver
 			}
 
 			EndlessHellfireQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Hellfire Quiver
+				DisplayName: Endless Hellfire Arrow Quiver
 			}
 
 			EndlessFrostburnQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Frostburn Quiver
+				DisplayName: Endless Frostburn Arrow Quiver
 			}
 
 			EndlessFlamingQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Flaming Quiver
+				DisplayName: Endless Flaming Arrow Quiver
 			}
 
 			EndlessCursedQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Cursed Quiver
+				DisplayName: Endless Cursed Arrow Quiver
 			}
 
 			EndlessChlorophyteQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Chlorophyte Quiver
+				DisplayName: Endless Chlorophyte Arrow Quiver
 			}
 
 			EndlessBoneQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Bone Quiver
+				DisplayName: Endless Bone Arrow Quiver
 			}
 
 			PausePedestal: {
@@ -1556,7 +1560,7 @@ Mods: {
 					Automatically places actuators on placed objects
 					Enables Echo Sight, showing hidden blocks
 					Hold Up to reach higher
-					'Included with your purchase of Skyrim deluxe edition remastered game of the year edition'
+					'Included with your purchase of Skyrim Deluxe Edition Remastered Game of the Year Edition'
 					'''
 			}
 
@@ -1570,6 +1574,7 @@ Mods: {
 					Allows fishing in lava
 					Detects hooked fish
 					Displays current quest fish
+					50% chance to duplicate caught fish
 					'''
 			}
 
@@ -1635,7 +1640,7 @@ Mods: {
 
 			EndlessShimmerQuiver: {
 				Tooltip: ""
-				DisplayName: Endless Shimmer Quiver
+				DisplayName: Endless Shimmer Arrow Quiver
 			}
 
 			PermanentAmmoReservation: {
@@ -2008,9 +2013,9 @@ Mods: {
 				Tooltip: Grants all defense buffs
 			}
 
-			PermanentEverything: {
-				DisplayName: Permanent Everything
-				Tooltip: Grants all buffs
+			PermanentVanilla: {
+				DisplayName: Permanent Vanilla
+				Tooltip: Grants all Vanilla buffs
 			}
 
 			PermanentMovement: {
@@ -2595,7 +2600,26 @@ Mods: {
 
 			PermanentRockskin: {
 				DisplayName: Permanent Rockskin
-				Tooltip: Temporal immunity to Knockback
+				Tooltip:
+					'''
+					Grants temporal immunity to knockback
+					Increased falling speed by 15%
+					+6 defense
+					'''
+			}
+
+			PermanentShielding: {
+				DisplayName: Permanent Shielding
+				Tooltip: Increases deterrence's defense boost
+			}
+
+			PermanentBody: {
+				DisplayName: Permanent Body
+				Tooltip:
+					'''
+					Increased mana and breath regen rate
+					Overflow of life regen boosts movement
+					'''
 			}
 
 			PermanentMartinsOrder: {
@@ -2955,6 +2979,374 @@ Mods: {
 				Tooltip: Increased movement and melee speed
 				DisplayName: Permanent Coiled Energizer
 			}
+
+			PermanentCandy: {
+				DisplayName: Permanent Candy
+				Tooltip: Increases all stats slightly
+			}
+
+			PermanentChocolateBar: {
+				DisplayName: Permanent Chocolate Bar
+				Tooltip: Increases speed
+			}
+
+			PermanentHealthCandy: {
+				DisplayName: Permanent Health Candy
+				Tooltip: Increases Health
+			}
+
+			PermanentLollipop: {
+				DisplayName: Permanent Lollipop
+				Tooltip: Increases life regeneration
+			}
+
+			PermanentManaCandy: {
+				DisplayName: Permanent Mana Candy
+				Tooltip: Increases mana
+			}
+
+			PermanentTaffy: {
+				DisplayName: Permanent Taffy
+				Tooltip: Increases defense
+			}
+
+			PermanentSpiritClassicCandies: {
+				DisplayName: Permanent Spirit Classic Candies
+				Tooltip: Grants all Spirit Classic candy buffs
+			}
+
+			PermanentVoidCandle: {
+				DisplayName: Permanent Void Candle
+				Tooltip: Attacks apply Void Touch
+			}
+
+			PermanentSoyMilk: {
+				DisplayName: Permanent Soy Milk
+				Tooltip: More attack speed, less damage
+			}
+
+			PermanentYharimsStimulants: {
+				DisplayName: Permanent Yharim's Stimulants
+				Tooltip: Gives decent buffs to ALL offensive and defensive stats
+			}
+
+			PermanentCalamityEntropy: {
+				DisplayName: Permanent Calamity Entropy
+				Tooltip: Grants all Calamity Entropy buffs
+			}
+
+			PermanentDigitalDisplay: {
+				Tooltip: Increases void damage by 10%
+				DisplayName: Permanent Digital Display
+			}
+
+			PermanentVibe: {
+				Tooltip:
+					'''
+					Increases attack speed by 20% while not moving and by 5% while moving
+					Increases life regeneration by 4 while not moving
+					'''
+				DisplayName: Permanent Vibe
+			}
+
+			PermanentSoulAccess: {
+				Tooltip: Increases void regeneration speed by 10%
+				DisplayName: Permanent Soul Access
+			}
+
+			PermanentRoughskin: {
+				Tooltip: Increases defense by 4 and damage by 4%
+				DisplayName: Permanent Roughskin
+			}
+
+			PermanentRipple: {
+				Tooltip: Releases waves of damage periodically
+				DisplayName: Permanent Ripple
+			}
+
+			PermanentNightmare: {
+				Tooltip: Critical strikes unleash Nightmare Arms that do 10% damage and pull enemies together
+				DisplayName: Permanent Nightmare
+			}
+
+			PermanentHarmony: {
+				Tooltip:
+					'''
+					Prevents other buffs from decaying while active
+					Doesn't work on most buffs with below 30 seconds remaining
+					'''
+				DisplayName: Permanent Harmony
+			}
+
+			PermanentDoubleVision: {
+				Tooltip: Adds additional lines to your fishing rod
+				DisplayName: Permanent Double Vision
+			}
+
+			PermanentBrittle: {
+				Tooltip: Getting hit surrounds you with ice shards
+				DisplayName: Permanent Brittle
+			}
+
+			PermanentBluefire: {
+				Tooltip: Killed enemies explode into flames for 40% of the damage dealt to them on the killing blow
+				DisplayName: Permanent Bluefire
+			}
+
+			PermanentAssassination: {
+				Tooltip: Execute enemies below 10% health
+				DisplayName: Permanent Assassination
+			}
+
+			PermanentSecretsOfTheShadows: {
+				DisplayName: Permanent Secrets of the Shadows
+				Tooltip: Grants all Secrets of the Shadows buffs
+			}
+
+			BasicCalamityCraftingMonolith: {
+				DisplayName: Basic Calamity Crafting Monolith
+				Tooltip: Functions as basic Calamity crafting stations
+			}
+
+			CalamityCraftingMonolith: {
+				DisplayName: Calamity Crafting Monolith
+				Tooltip: Functions as all Calamity crafting stations
+			}
+
+			HardmodeCalamityCraftingMonolith: {
+				DisplayName: Hardmode Calamity Crafting Monolith
+				Tooltip: Functions as hardmode Calamity crafting stations
+			}
+
+			ThoriumCraftingMonolith: {
+				Tooltip: Functions as all Thorium crafting stations
+				DisplayName: Thorium Crafting Monolith
+			}
+
+			BasicThoriumCraftingMonolith: {
+				Tooltip: Functions as basic Thorium crafting stations
+				DisplayName: Basic Thorium Crafting Monolith
+			}
+
+			PermanentEverything: {
+				DisplayName: Permanent Everything
+				Tooltip: Grants all buffs
+			}
+
+			DuplicationBobber: {
+				DisplayName: Duplication Bobber
+				Tooltip: 50% chance to duplicate caught fish
+			}
+
+			PermanentFlaskOfSteel: {
+				Tooltip: Melee attacks shatter enemies defense
+				DisplayName: Permanent Flask of Steel
+			}
+
+			PermanentFlaskOfPlague: {
+				Tooltip: Melee attacks turn enemies away from Gods' arms
+				DisplayName: Permanent Flask of Plague
+			}
+
+			PermanentFlaskOfDivineFire: {
+				Tooltip: Melee attacks make enemies bask in Gods' grace
+				DisplayName: Permanent Flask of Divine Fire
+			}
+
+			PermanentBushOfLife: {
+				Tooltip: Increases maximum life and mana by 20
+				DisplayName: Permanent Bush of Life
+			}
+
+			PermanentLifeLantern: {
+				DisplayName: Permanent Life Lantern
+				Tooltip: Increases life regeneration
+			}
+
+			PermanentFlight: {
+				DisplayName: Permanent Flight
+				Tooltip: Increases flight time by 5 seconds
+			}
+
+			PermanentFluorescentBerry: {
+				DisplayName: Permanent Fluorescent Berry
+				Tooltip: Reveals the screen
+			}
+
+			PermanentHJHaste: {
+				DisplayName: Permanent Haste
+				Tooltip: Greatly increases movement and jump speed
+			}
+
+			PermanentReanimation: {
+				DisplayName: Permanent Reanimation
+				Tooltip: Greatly increases life regen
+			}
+
+			PermanentYang: {
+				DisplayName: Permanent Yang
+				Tooltip: Greatly increases enemy spawn rate
+			}
+
+			PermanentYin: {
+				DisplayName: Permanent Yin
+				Tooltip: Greatly decreases enemy spawn rate
+			}
+
+			PermanentHomewardJourney: {
+				DisplayName: Permanent Homeward Journey
+				Tooltip: Grants all Homeward Journey buffs
+			}
+
+			PermanentHomewardJourneyArena: {
+				DisplayName: Permanent Homeward Journey Arena
+				Tooltip: Grants all Homeward Journey arena buffs
+			}
+
+			PermanentHomewardJourneyFarming: {
+				DisplayName: Permanent Homeward Journey Farming
+				Tooltip: Grants all Homeward Journey farming buffs
+			}
+
+			PermanentHomewardJourneyMovement: {
+				DisplayName: Permanent Homeward Journey Movement
+				Tooltip: Grants all Homeward Journey movement buffs
+			}
+
+			WoodenClub: {
+				DisplayName: Wooden Club
+				Tooltip: Pairs well with the Sea Scarf
+			}
+
+			EndlessVeriumQuiver: {
+				DisplayName: Endless Verium Bolt Quiver
+				Tooltip: ""
+			}
+
+			EndlessVanquisherQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Vanquisher Arrow Quiver
+			}
+
+			EndlessSproutingQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Sprouting Arrow Quiver
+			}
+
+			EndlessIcicleQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Icicle Arrow Quiver
+			}
+
+			EndlessElysianQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Elysian Arrow Quiver
+			}
+
+			EndlessCinderQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Cinder Arrow Quiver
+			}
+
+			EndlessBloodfireQuiver: {
+				Tooltip: ""
+				DisplayName: Endless Bloodfire Arrow Quiver
+			}
+
+			EndlessMartyrQuiver: {
+				DisplayName: Endless Martyr's Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessDivineFireQuiver: {
+				DisplayName: Endless Divine Fire Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessPlagueQuiver: {
+				DisplayName: Endless Plague Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessSteelQuiver: {
+				DisplayName: Endless Steel Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessBouncyQuiver: {
+				DisplayName: Endless Bouncy Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessGlowingQuiver: {
+				DisplayName: Endless Glowing Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessHyperQuiver: {
+				DisplayName: Endless Hyper Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessPoisonQuiver: {
+				DisplayName: Endless Poison Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessSeaQuiver: {
+				DisplayName: Endless Sea Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessShadowflameQuiver: {
+				DisplayName: Endless Shadowflame Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessStickyQuiver: {
+				DisplayName: Endless Sticky Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessTectonicQuiver: {
+				DisplayName: Endless Tectonic Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessTrojanQuiver: {
+				DisplayName: Endless Trojan Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessUltraGlowingQuiver: {
+				DisplayName: Endless Ultra Glowing Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessZincQuiver: {
+				DisplayName: Endless Zinc Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessAnnihilateQuiver: {
+				DisplayName: Endless Annihilate Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessHiveQuiver: {
+				DisplayName: Endless Hive Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessFrostfireQuiver: {
+				DisplayName: Endless Frostfire Arrow Quiver
+				Tooltip: ""
+			}
+
+			EndlessBewitchedQuiver: {
+				DisplayName: Endless Bewitched Arrow Quiver
+				Tooltip: ""
+			}
 		}
 
 		NPCs: {
@@ -3046,7 +3438,6 @@ Mods: {
 			HellevatorCreatorProj.DisplayName: Hellevator Creator
 			LifeformLocator.DisplayName: Lifeform Locator
 			SillySlapperWhip.DisplayName: Silly Slapper
-			RangedAbsolutionProj.DisplayName: Ranged Absolution
 			HellbridgerProj.DisplayName: Hellbridger
 			HellbridgerSingleProj.DisplayName: Hellbridger Single
 			SkybridgerProj.DisplayName: Skybridger
@@ -3064,8 +3455,7 @@ Mods: {
 			FlyingSafeProjectile.DisplayName: Flying Safe
 			MinibridgeProj.DisplayName: Minibridge
 			BuildIndicatorProjectile.DisplayName: Build Indicator
-			AllInOneAccessProjectile.DisplayName: All In One Access Projectile
-			GoldenPowderProjectile.DisplayName: Golden Powder Projectile
+			GoldenPowderProjectile.DisplayName: Golden Powder
 			NPCSpawner.DisplayName: NPC Spawner
 		}
 
@@ -3116,28 +3506,51 @@ Mods: {
 				DisplayName: Central Config
 
 				EndlessBuffs: {
-					Label: "[i:292][i:3198] Endless Buffs"
-					Tooltip: Toggles endless buffs
+					Label: "[i:292] Endless Buffs"
+					Tooltip:
+						'''
+						Toggles endless buffs
+						Works for potions and buff stations
+						You can change the required stack count with the "Endless Amount" configs
+						'''
 				}
 
 				EndlessHealing: {
-					Label: "[i:188] Endless Healing And Mana"
-					Tooltip: Toggles endless healing and mana items
+					Label: "[i:188] Endless Healing And Mana Potions"
+					Tooltip:
+						'''
+						Toggles endless healing and mana potions
+						You can change the required stack count with the "Endless Amount" configs
+						'''
 				}
 
 				EndlessAmmo: {
 					Label: "[i:2177] Endless Ammo"
-					Tooltip: Toggles endless ammo
+					Tooltip:
+						'''
+						Toggles endless ammo
+						Works for all ammo types
+						You can change the required stack count with the "Endless Amount" configs
+						'''
 				}
 
 				EndlessBait: {
-					Label: "[i:2676] Endless Bait"
-					Tooltip: Toggles endless bait
+					Label: "[i:2676] Endless Fishing Bait"
+					Tooltip:
+						'''
+						Toggles endless fishing bait
+						You can change the required stack count with the "Endless Amount" configs
+						'''
 				}
 
 				EndlessBossSummons: {
 					Label: "[i:43] Endless Boss Summons"
-					Tooltip: Toggles endless boss summons
+					Tooltip:
+						'''
+						Toggles endless boss summon items
+						Makes boss summon items non-consumable
+						Sets boss summon items' max stack to 1
+						'''
 				}
 
 				EndlessConsumables: {
@@ -3145,53 +3558,53 @@ Mods: {
 					Tooltip:
 						'''
 						Toggles endless consumables
-						Includes tiles, walls, and other misc items
+						Includes tiles, walls, and other miscellaneous items
+						You can change the required stack count with the "Endless Amount" configs
 						'''
 				}
 
 				EndlessWeapons: {
-					Label: "[i:42] Endless Weapons"
-					Tooltip: Toggles endless weapons
+					Label: "[i:42] Endless Consumable Weapons"
+					Tooltip:
+						'''
+						Toggles endless consumable weapons
+						You can change the required stack count with the "Endless Amount" configs
+						'''
 				}
 
 				EndlessBuffAmount: {
-					Label: "[i:3119] Endless Potion Amount"
-					Tooltip: Change the amount needed for endless potions
+					Label: "[i:3119] Stack Requirement for Endless Potion Buffs"
+					Tooltip: Change the amount of items needed for endless potion buffs
 				}
 
 				EndlessStationAmount: {
-					Label: "[i:3119] Endless Station Amount"
-					Tooltip: Change the amount needed for endless stations
+					Label: "[i:3119] Stack Requirement for Endless Buff Stations"
+					Tooltip: Change the amount of items needed for endless buff stations
 				}
 
 				EndlessHealingAmount: {
-					Label: "[i:3119] Endless Healing Amount"
-					Tooltip: Change the amount needed for endless healing
+					Label: "[i:3119] Stack Requirement for Endless Healing and Mana Potions"
+					Tooltip: Change the amount of items needed for endless healing and mana potions
 				}
 
 				EndlessItemAmount: {
-					Label: "[i:3119] Endless Item Amount"
-					Tooltip: Change the amount needed for endless items
+					Label: "[i:3119] Stack Requirement for Endless Consumables"
+					Tooltip: Change the amount of items needed for endless consumables
 				}
 
 				EndlessWeaponAmount: {
-					Label: "[i:3119] Endless Weapon Amount"
-					Tooltip: Change the amount needed for endless weapons
+					Label: "[i:3119] Stack Requirement for Endless Consumable Weapons"
+					Tooltip: Change the amount of items needed for endless consumable weapons
 				}
 
 				EndlessAmmoAmount: {
-					Tooltip: Change the amount needed for endless ammo
-					Label: "[i:3119] Endless Ammo Amount"
+					Tooltip: Change the amount of items needed for endless ammo
+					Label: "[i:3119] Stack Requirement for Endless Ammo"
 				}
 
 				EndlessBaitAmount: {
-					Tooltip: Change the amount needed for endless bait
-					Label: "[i:3119] Endless Bait Amount"
-				}
-
-				EndlessBuffsOnlyFromCrate: {
-					Label: "[i:292] Endless Buffs Only Work From Potion Crate"
-					Tooltip: Toggles if endless buffs only work when put into the Potion Crate
+					Tooltip: Change the amount of items needed for endless fishing bait
+					Label: "[i:3119] Stack Requirement for Endless Fishing Bait"
 				}
 
 				IncreaseMaxStack: {
@@ -3204,8 +3617,18 @@ Mods: {
 				}
 
 				UtilityAccessoriesWorkInBanks: {
-					Label: "[i:3084] Utility Accessories Work In Banks"
-					Tooltip: Toggles if informational, fishing, mining, and building accessories work in banks
+					Label: "[i:3084] Utility Accessories Work In Personal Storages"
+					Tooltip:
+						'''
+						Toggles if utility accessories work in personal storages
+						Works with:
+						 - Informational accessories
+						 - Wiring accessories & the Grand Design
+						 - Construction accessories
+						 - Fishing accessories
+						 - Certain miscellaneous accessories
+						 - Many modded accessories that fit into these categories
+						'''
 				}
 
 				StackableQuestItems: {
@@ -3214,79 +3637,96 @@ Mods: {
 				}
 
 				BossItemTransmutation: {
-					Label: "[i:5349] Boss Item Transmutation"
-					Tooltip: Toggles if boss items can be transmutated with shimmer
+					Label: "[i:5349] Boss Drop Shimmer Transmutation"
+					Tooltip: Toggles if boss drops can be cycled with shimmer
 				}
 
 				ItemConversions: {
-					Label: "[i:86] Item Conversions"
-					Tooltip: Toggles if recipes are added for item conversion
+					Label: "[i:86] Item Conversion Recipes and Transmutations"
+					Tooltip:
+						'''
+						Toggles if recipes are added for easy item conversion
+						Some item shimmer conversions are also available with this config
+						'''
 				}
 
 				BossBagRecipes: {
-					Label: "[i:3318] Boss Bag Recipes"
-					Tooltip: Toggles if recipes are added for boss drops using their bag
+					Label: "[i:3318] Boss Treasure Bag Recipes"
+					Tooltip: Toggles if recipes are added for boss drops using their treasure bag
 				}
 
 				CrateRecipes: {
-					Label: "[i:2334] Crate Recipes"
-					Tooltip: Toggles if recipes are added for crate drops using crates
+					Label: "[i:2334] Fishing Crate Recipes"
+					Tooltip: Toggles if recipes are added for fishing crate drops using fishing crates
 				}
 
 				BannerRecipes: {
-					Label: "[i:1683] Banner Recipes"
-					Tooltip: Toggles if recipes are added for enemy drops using banners
+					Label: "[i:1683] Enemy Banner Recipes"
+					Tooltip: Toggles if recipes are added for enemy drops using their banners
+				}
+
+				EasierRecipes: {
+					Label: "[i:1683] Easier Recipes"
+					Tooltip:
+						'''
+						Toggles if recipes are added for easier item obtainability
+						Adds recipes for:
+						 - Boss Drops: Using Boss Bags
+						 - Enemy Drops: Using Banners
+						 - Chest Loot: Using Crates/Keys
+						 - Crate Loot: Using Crates
+						'''
 				}
 
 				NoDeveloperSetsFromBossBags: {
-					Label: "[i:3287] No Developer Sets From Boss Bags"
-					Tooltip: Toggles if boss bags can drop developer sets
+					Label: "[i:3287] No Developer Sets From Boss Treasure Bags"
+					Tooltip: Toggles if boss treasure bags can drop developer sets
 				}
 
 				EnemiesDropMoreCoins: {
 					Label: "[i:855] Enemies Drop More Coins"
-					Tooltip: Multiplies the amount of dropped coins
+					Tooltip: Multiplies the amount of dropped coins from enemies
 				}
 
 				EncumberingStoneAllowsCoins: {
 					Label: "[i:4346] Encumbering Stone Allows Coins"
-					Tooltip: Toggles if the Encumbering Stone allows coin pickups even when enabled
+					Tooltip: Toggles if the Encumbering Stone allows coin pickups when activated
 				}
 
 				AutoMoneyQuickStack: {
-					Label: "[i:87] Auto Quick Stack Money"
+					Label: "[i:87] Automatic Coin Quick Stacking"
 					Tooltip:
 						'''
-						Toggles if money automatically goes into the piggy bank
-						Requires at least 1 copper in the piggy bank to function
+						Toggles if coins are automatically placed into the piggy bank
+						Merchant can still move in, even when no money is inside your inventory
 						'''
 				}
 
 				GoldenCarpDelight: {
-					Label: "[i:2308] Golden Carp Delight"
-					Tooltip: Toggles if Golden Delights can be crafted with Golden Carp
+					Label: "[i:2308] Golden Carp Can Craft Golden Delight"
+					Tooltip: Toggles if Golden Carp can be used to craft Golden Delight
 				}
 
 				EasierUniversalPylon: {
-					Label: "[i:4951] Easier Universal Pylon"
+					Label: "[i:4951] Craftable Universal Pylon"
 					Tooltip: Toggles if the Universal Pylon can be crafted
 				}
 
 				BlackMarketDealerCanSpawn: {
-					Label: "[i:4413] Black Market Dealer Can Spawn"
-					Tooltip: Toggles if the Black Market Dealer can spawn
+					Label: "[i:4413] Black Market Dealer Can Move In"
+					Tooltip: Toggles if the Black Market Dealer can move in
 				}
 
 				EtherealCollectorCanSpawn: {
-					Label: "[i:4412] Ethereal Collector Can Spawn"
-					Tooltip: Toggles if the Ethereal Collector can spawn
+					Label: "[i:4412] Ethereal Collector Can Move In"
+					Tooltip: Toggles if the Ethereal Collector can move in
 				}
 
 				RemoveBiomeShopRequirements: {
-					Label: "[i:4766] Remove Biome Requirements For Shops"
+					Label: "[i:4766] Biome Visiting Requirements For Shops"
 					Tooltip:
 						'''
-						Toggles if shop items require visiting a biome to unlock
+						Toggles if some shop items require visiting a specific biome to unlock
 						This is permanent when turned on for a world
 						'''
 				}
@@ -3295,7 +3735,7 @@ Mods: {
 					Label: "[i:1175] Town NPCs Don't Take Damage"
 					Tooltip:
 						'''
-						Toggles whether town NPCs take damage
+						Toggles whether town NPCs can take damage
 						They can still die to lava and player attacks
 						'''
 				}
@@ -3305,16 +3745,11 @@ Mods: {
 					Tooltip: Change the spawn rate of Town NPCs
 				}
 
-				TownNPCsSpawnAtNight: {
-					Label: "[i:521] Town NPCs Can Spawn at Night"
-					Tooltip: Toggles if town npcs can spawn at night
-				}
-
 				TownNPCSpawnImprovements: {
-					Label: "[i:985] Town NPC Spawn Improvement"
+					Label: "[i:985] NPCs Can Move in Without Being Saved"
 					Tooltip:
 						'''
-						Allows town NPCs to spawn without being saved
+						Allows town NPCs to move in without being saved
 						Affects:
 						- Angler
 						- Golfer
@@ -3328,7 +3763,7 @@ Mods: {
 				}
 
 				NoTownSlimes: {
-					Label: "[i:23] No Town Slimes"
+					Label: "[i:23] Remove Town Slimes"
 					Tooltip: Prevents town slimes from moving in
 				}
 
@@ -3339,12 +3774,12 @@ Mods: {
 
 				DisableHappiness: {
 					Label: "[i:58] Disable Town NPC Happiness"
-					Tooltip: Toggles if town NPCs should have happiness or not
+					Tooltip: Toggles the NPC happiness mechanic
 				}
 
 				OverridePylonSales: {
 					Label: "[i:4876] Override Pylon Sales"
-					Tooltip: Toggles if NPCs always sell pylons
+					Tooltip: Toggles if NPCs will always sell pylons
 				}
 
 				HappinessPriceChange: {
@@ -3353,18 +3788,18 @@ Mods: {
 						'''
 						Change the price multiplier for town NPCs
 						Lower number is happier
-						Only Active if Happiness is disabled
+						Only Active if happiness is disabled
 						'''
 				}
 
 				ReforgePriceChange: {
-					Label: "[i:73] Reforge Price Change"
-					Tooltip: Change the price multiplier when reforging items
+					Label: "[i:73] Change Reforge Price"
+					Tooltip: Changes the price multiplier when reforging items
 				}
 
 				AnglerQuestInstantReset: {
-					Label: "[i:2374] Angler Quest Instant Reset"
-					Tooltip: Toggles if the Angler's quests will instantly reset on completion
+					Label: "[i:2374] Angler Quests Reset Instantly"
+					Tooltip: Toggles if the Angler's quests will instantly reset upon completion
 				}
 
 				LunarPillarShieldHeath: {
@@ -3392,23 +3827,22 @@ Mods: {
 					Tooltip: Toggles if Lava Slimes drop lava in Expert+
 				}
 
-				NoDoorBreaking: {
-					Tooltip: Toggles if enemies can break down doors
-					Label: "[i:25] No Door Breaking"
-				}
-
 				ExtraDefenderMedalDrops: {
 					Tooltip: Toggles if Old One's Army minibosses drop defender medals
 					Label: "[i:3817] Extra Defender Medal Drops"
 				}
 
 				RelicsInExpert: {
-					Tooltip: Toggles if Master Mode relics can drop in Expert Mode
-					Label: "[i:4924] Relics Can Drop In Expert"
+					Tooltip:
+						'''
+						Toggles if Master Mode items can drop in Expert Mode
+						Affects all Master Mode exclusive items
+						'''
+					Label: "[i:4924] Master Mode Items Drop In Expert Mode"
 				}
 
 				NoSpawnsDuringBosses: {
-					Label: "[i:2324] No Spawns During Bosses"
+					Label: "[i:2324] No Enemy Spawns During Boss Fights"
 					Tooltip: Toggles if enemies can spawn during boss fights
 				}
 
@@ -3426,17 +3860,13 @@ Mods: {
 				}
 
 				ExtraLures: {
-					Label: "[i:5139] Extra Lures"
-					Tooltip:
-						'''
-						Change the amount of bobbers fishing rods cast
-						1 = disabled
-						'''
+					Label: "[i:5139] Extra Fishing Lines"
+					Tooltip: Change the amount of bobbers fishing rods cast
 				}
 
 				MobileStoragesFollowThePlayer: {
-					Label: "[i:3213] Mobile Storages Follow The Player"
-					Tooltip: Toggles if mobile storages will follow the player
+					Label: "[i:3213] Mobile Storages Follow You"
+					Tooltip: Toggles if mobile storages will follow you
 				}
 
 				NoFallingSandDamage: {
@@ -3450,38 +3880,42 @@ Mods: {
 				}
 
 				NoLarvaBreak: {
-					Label: "[i:1133] No Larva Break"
-					Tooltip: Toggles if the Queen's Larva is breakable with projectiles
+					Label: "[i:1133] Queen Bee's Larva Can Only Be Mined"
+					Tooltip: Toggles if Queen Bee's larva is only breakable by being mined directly
 				}
 
 				PurificationPowderCleansesWalls: {
 					Label: "[i:66] Purification Powder Cleanses Walls"
-					Tooltip: Toggles if Purification Powder works on walls
+					Tooltip:
+						'''
+						Toggles if Purification Powder works on walls
+						Only vanilla walls can be purified
+						'''
 				}
 
 				IncreasePlaceSpeed: {
-					Label: "[i:2214] Increase Place Speed"
-					Tooltip: Increases placement speed
+					Label: "[i:2214] Increase Tile Placement Speed"
+					Tooltip: Increases tile placement speed
 				}
 
 				IncreasePlaceRange: {
-					Label: "[i:2215] Increase Place Range"
-					Tooltip: Increases placement range
+					Label: "[i:2215] Increase Tile Placement Range"
+					Tooltip: Increases tile placement range
 				}
 
 				IncreaseToolSpeed: {
-					Label: "[i:1] Increase Tool Speed"
-					Tooltip: Changes how fast tools are used
+					Label: "[i:1] Increase Tool Use Speed"
+					Tooltip: Increases tool use speed
 				}
 
 				FasterExtractinator: {
 					Label: "[i:997] Faster Extractinator"
-					Tooltip: Toggles faster Extractinator use speed
+					Tooltip: Toggles faster extractinating
 				}
 
 				ExtraBuffSlots: {
 					Label: "[i:296] Extra Buff Slots"
-					Tooltip: The amount of extra buff slots
+					Tooltip: Changes the amount of buff slots that are available
 				}
 
 				KeepBuffsOnDeath: {
@@ -3496,11 +3930,11 @@ Mods: {
 
 				InfiniteSliceOfCake: {
 					Tooltip: Toggles if the Sugar Rush buff is infinite like other station buffs
-					Label: "[i:3750] Infinite Slice Of Cake"
+					Label: "[i:3750] Infinite Slice Of Cake Buff"
 				}
 
 				RegrowthAutoReplant: {
-					Label: "[i:213] Regrowth Auto-Plant"
+					Label: "[i:213] Staff of Regrowth Herb Replanting"
 					Tooltip:
 						'''
 						Allows Staff of Regrowth & Axe of Regrowth to replace the herb it just harvested
@@ -3514,13 +3948,13 @@ Mods: {
 				}
 
 				NoExpertIceWaterChilled: {
-					Label: "[i:664] No Expert Ice Water Chilled"
+					Label: "[i:664] No Expert+ Ice Water Chilled"
 					Tooltip: Makes you immune to expert+ ice biome water
 				}
 
 				NoShimmerSink: {
-					Tooltip: Toggles if you can sink through blocks when in shimmer
-					Label: "[i:5364] No Shimmer Sink"
+					Tooltip: Toggles if you can sink through blocks when submerged in shimmer
+					Label: "[i:5364] No Shimmer Sinking"
 				}
 
 				AutoTeams: {
@@ -3538,7 +3972,7 @@ Mods: {
 				}
 
 				AllHairStylesAvailable: {
-					Label: "[i:1990] All Hairstyles Available"
+					Label: "[i:1990] All Hairstyles Are Unlocked"
 					Tooltip: Toggles if all hairstyles are available on character creation
 				}
 
@@ -3552,9 +3986,9 @@ Mods: {
 					Tooltip: Toggles auto fishing
 				}
 
-				PortableCraftingStations: {
-					Tooltip: Toggles if crafting stations work from the inventory
-					Label: "[i:36] Portable Crafting Stations"
+				NoLakeSizePenalty: {
+					Label: "[i:3031] No Lake Size Penalty"
+					Tooltip: Toggles if fish can be caugh in any size lake
 				}
 
 				NoPylonTeleportRestrictions: {
@@ -3564,7 +3998,11 @@ Mods: {
 
 				InstantRespawn: {
 					Label: "[i:583] Instant Respawn"
-					Tooltip: Toggles instant respawns, will despawn all hostile NPCs on death if enabled
+					Tooltip:
+						'''
+						Toggles instant respawns, will despawn all hostile NPCs on death if enabled
+						Only works in singleplayer!
+						'''
 				}
 
 				FullHealthRespawn: {
@@ -3589,7 +4027,7 @@ Mods: {
 
 				TreesDropMoreWhenShook: {
 					Label: "[i:4856] Trees Drop More When Shook"
-					Tooltip: Toggles if trees drop more fruits and gems when shaken
+					Tooltip: Toggles if trees drop more fruits and gems when shook
 				}
 
 				MoreFallenStars: {
@@ -3610,11 +4048,6 @@ Mods: {
 					Label: "[i:116] No Meteor Spawns"
 				}
 
-				HellstoneWorksWithSpelunker: {
-					Label: "[i:174] Hellstone Works With Spelunker Potion"
-					Tooltip: Toggles if Hellstone is lit up when using a spelunker potion
-				}
-
 				ChristmasActive: {
 					Tooltip: Toggles the Christmas seasonal event
 					Label: "[i:1958] Christmas Seasonal Event"
@@ -3630,33 +4063,9 @@ Mods: {
 					Label: "[i:264] Disable Credits"
 				}
 
-				VeinMiner: {
-					Label: "[i:3509] Vein Mining"
-					Tooltip: Toggles the ability to vein mine
-				}
-
-				VeinMinerSpeed: {
-					Label: "[i:3509] Vein Miner Speed"
-					Tooltip:
-						'''
-						Sets the speed at which tiles are broken when vein mined
-						Smaller numbers means faster
-						'''
-				}
-
-				VeinMinerTileLimit: {
-					Tooltip: Sets how many tiles can be vein mined at a time
-					Label: "[i:3509] Vein Miner Tile Limit"
-				}
-
-				VeinMinerWhitelist: {
-					Label: "[i:3509] Vein Miner Whitelist"
-					Tooltip: Sets which tiles can be vein mined
-				}
-
 				FountainsCauseBiomes: {
-					Label: "[i:909] Fountains Cause Biomes"
-					Tooltip: Toggles if being near fountains causes their biomes
+					Label: "[i:909] Fountains Activate Their Biomes"
+					Tooltip: Toggles if being near fountains activates their biomes
 				}
 
 				NonConsumableKeys: {
@@ -3666,11 +4075,11 @@ Mods: {
 
 				FountainsWorkFromInventories: {
 					Label: "[i:909] Fountains Work From Inventories"
-					Tooltip: Toggles if having fountains in your inventory/banks causes their biomes
+					Tooltip: Toggles if having fountains in your inventory/personal storages activates their biomes
 				}
 
 				ActiveBuffsHaveEnchantedEffects: {
-					Label: "[i:487] Active Buffs Have Enchanted Effects"
+					Label: "[i:487] Active Buff Items Have Enchanted Effects"
 					Tooltip: Toggles if active buff items have an enchanted effect, like Minecraft
 				}
 
@@ -3679,14 +4088,14 @@ Mods: {
 					Tooltip: Toggles if items with good prefixes have an enchanted effect, like Minecraft
 				}
 
-				AutoReuseHealthUpgrades: {
-					Label: "[i:29] Auto Reuse Health Upgrades"
-					Tooltip: Toggles if Life Crystals, Life Fruit, and Mana Crystals have auto reuse
+				AutoReuseUpgrades: {
+					Label: "[i:29] Auto-Reuse Permanent Upgrades"
+					Tooltip: Toggles if autofire works with multi-use permanent upgrades, such as Life Crystals
 				}
 
 				MapTeleporting: {
 					Label: "[i:2351] Map Teleporting"
-					Tooltip: Toggles if you can right click on the map to teleport to that position
+					Tooltip: Toggles if you can right click on the fullscreen map to teleport to that position
 				}
 
 				WingSlot: {
@@ -3715,7 +4124,6 @@ Mods: {
 						'''
 						Toggles if mod recipes are loaded
 						Affects:
-						 - Aether Altar recipes
 						 - Boss Bag recipes
 						 - Crate recipes
 						 - Banner recipes
@@ -3725,21 +4133,6 @@ Mods: {
 						'''
 				}
 
-				EndlessCraftingIngredients: {
-					Label: Endless Crafting Ingredients
-					Tooltip: ""
-				}
-
-				EndlessCraftingIngredientsAmount: {
-					Label: Endless Crafting Ingredients Amount
-					Tooltip: ""
-				}
-
-				VeinMinerTileWhitelist: {
-					Tooltip: List of tiles that can be vein mined
-					Label: "[i:3509] Vein Miner Whitelist"
-				}
-
 				HideBuffs: {
 					Label: "[i:298] Hide Buffs"
 					Tooltip:
@@ -3747,6 +4140,50 @@ Mods: {
 						Toggles if buffs are hidden under the hotbar
 						Debuffs, minions, mounts, and pets are still shown
 						'''
+				}
+
+				HellstoneSpelunker: {
+					Label: "[i:174] Hellstone Works With Spelunker Buff"
+					Tooltip: Toggles if Hellstone is highlighted with the Spelunker buff
+				}
+
+				DangersenseIgnoresThinIce: {
+					Label: "[i:4391] Dangersense Ignores Thin Ice"
+					Tooltip: Toggles if thin ice is highlighted with the Dangersense buff
+				}
+
+				DangersenseHighlightsSiltAndSlush: {
+					Label: "[i:424] Dangersense Highlights Silt And Slush"
+					Tooltip: Toggles if silt And slush are highlighted with the Dangersense buff
+				}
+
+				BreakAllDungeonBricks: {
+					Label: "[i:134] Cracked Dungeon Bricks All Fall At Once"
+					Tooltip: Toggles if cracked dungeon bricks all fall when one is broken
+				}
+
+				RequireItemObtainedForShops: {
+					Tooltip: ""
+					Label: Require Item Obtained For Shops
+				}
+
+				EmblemLooping: {
+					Label: "[i:490] Class Emblem Looping"
+					Tooltip:
+						'''
+						Toggles if recipes are created for looping through class emblems
+						Can take a while to get the one you want if a lot of mods are enabled
+						'''
+				}
+
+				HeartCrystalGlow: {
+					Label: "[i:29] Heart Crystals Glow"
+					Tooltip: Toggles if placed Heart Crystals glow
+				}
+
+				LifeFruitGlow: {
+					Label: "[i:1291] Life Fruits Glow"
+					Tooltip: Toggles if placed Life Fruits glow
 				}
 			}
 
@@ -4285,23 +4722,90 @@ Mods: {
 				Tooltip: ""
 			}
 
-			PermanentBuffsConfig: {
-				DisplayName: Permanent Buffs Config
+			CrossModConfig: {
+				DisplayName: Cross Mod Config
 
-				ImmuneBuffs: {
-					Label: "[i:QoLCompendium/PermanentEverything] Permanent Immune Buffs"
+				AFKPetsCropFix: {
+					Label: "[i:369] AFKPets Crops No Tile Cut"
+					Tooltip: Toggles if AFKPets crops can be broken by projectiles or melee swings
+				}
+
+				AFKPetsFasterCropGrowth: {
+					Label: "[i:369] AFKPets Faster Crop Growth"
+					Tooltip: Toggles if AFKPets crops grow faster
+				}
+
+				AFKPetsRegrowthReplant: {
+					Label: "[i:369] AFKPets Crop Replanting"
+					Tooltip: Toggles if AFKPets crops are able to be replanted when harvested by the Staff or Axe of Regrowth
+				}
+
+				CrystalDragonsTopazPrefixFix: {
+					Label: "[i:509] Crystal Dragons Topaz Prefix Fix"
 					Tooltip:
 						'''
-						Buffs to be immune to when using Permanent Buff items
-						DISCLAIMER:
-						Despite that any buff can be added, only positive non-mount buffs will be forced immune!
+						Toggles if Topaz Dragon prefixes are removed when not using the Topaz race
+						Only really noticeable with mods such as AutoReforge
 						'''
 				}
+
+				MrPlagueRacesPrefixFix: {
+					Label: "[i:509] Mr Plague's Races Goblin Prefix Fix"
+					Tooltip:
+						'''
+						Toggles if Goblin race prefixes are removed when not using race stats
+						Only really noticeable with mods such as AutoReforge
+						'''
+				}
+
+				CalamityEffigyRecipes: {
+					Label: "[i:35] Calamity Effigy Recipes"
+					Tooltip: Toggles if recipes are added for the Crimson and Corruption Effigies
+				}
+
+				RemoveThoriumExhaustionTooltip: {
+					Label: "[i:509] Remove Thorium Exhaustion Tooltip"
+					Tooltip: Toggles if Thorium thrower weapons have the exhaustion tooltip removed when using the Exhaustion Disabler mod
+				}
+
+				CalamityEntropyArmorPrefixesHaveEnchantedEffects: {
+					Label: "[i:1067] Calamity Entropy Armor Prefixes Have Enchanted Effects"
+					Tooltip: Toggles if Calamity Entropy Armor Prefixes have an enchanted effect, like Minecraft
+				}
+			}
+
+			VeinminerConfig: {
+				VeinMiner: {
+					Label: "[i:3509] Vein Mining"
+					Tooltip: Toggles the ability to vein mine
+				}
+
+				VeinMinerSpeed: {
+					Label: "[i:3509] Vein Miner Speed"
+					Tooltip:
+						'''
+						Sets the speed at which tiles are broken when vein mined
+						Smaller numbers means faster
+						'''
+				}
+
+				VeinMinerTileLimit: {
+					Tooltip: Sets how many tiles can be vein mined at a time
+					Label: "[i:3509] Vein Miner Tile Limit"
+				}
+
+				VeinMinerTileWhitelist: {
+					Tooltip: List of tiles that can be vein mined
+					Label: "[i:3509] Vein Miner Whitelist"
+				}
+
+				DisplayName: Veinminer Config
 			}
 		}
 
 		QoLCConfig: {
 			Headers: {
+				CrossMod: Cross Mod Fixes/Changes
 				Endless: Endless Changes
 				Items: Item Toggles
 				Items2: Item Changes
@@ -4314,6 +4818,7 @@ Mods: {
 				Prices: Price Modifiers
 				Tooltips: Tooltip Toggles
 				PermanentBuffs: Permanent Buff Toggles
+				Veinminer: Vein Mining Toggles
 			}
 		}
 
@@ -4326,13 +4831,14 @@ Mods: {
 			DashBind.DisplayName: Dash
 			PermanentBuffUIToggleBind.DisplayName: Permanent Buff UI Toggle
 			QuickRodBind.DisplayName: Quick Rod of Discord
+			VeinmineBind.DisplayName: Veinmine Bind
 		}
 
 		ModConditions: {
-			beenThroughNight: Nighttime occurred at least once
-			downedLunarEvent: Completed Lunar Event
-			downedEclipse: Completed Solar Eclipse
-			downedBloodMoon: Completed Blood Moon
+			beenThroughNight: Night has occurred at least once
+			downedLunarEvent: Completed the Lunar Event
+			downedEclipse: Completed a Solar Eclipse
+			downedBloodMoon: Completed a Blood Moon
 			downedLunarPillarAny: Downed any Lunar Pillar
 			downedMartianSaucer: Downed Martian Saucer
 			downedDreadnautilus: Downed Dreadnautilus
@@ -4612,8 +5118,8 @@ Mods: {
 			downedDusking: Downed Dusking
 			downedAtlas: Downed Atlas
 			downedJellyDeluge: Downed Jelly Deluge
-			downedTide: Downed Tide
-			downedMysticMoon: Downed Mystic Moon
+			downedTide: Downed the Tide
+			downedMysticMoon: Downed a Mystic Moon
 			beenToBriar: Been to the Briar biome
 			beenToSpirit: Been to the Spirit biome
 			downedSpookySpirit: Downed Spooky Spirit
@@ -4795,6 +5301,16 @@ Mods: {
 			downedOrdealAny: Downed any Ordeal
 			downedNihilityTwin: Downed Nihility Twin
 			downedProphet: Downed Prophet
+			ItemObtained: Sold when item is obtained at a stack of {0}
+			downedLuminaris: Downed Luminaris
+			downedExcavator: Downed the Excavator
+			downedHauntedRainforest: Completed the Haunted Rainforest event
+			downedCactusCat: Downed Cactus Cat
+			downedNekoSlime: Downed Neko Slime
+			downedNightmareAmplifierSlime: Downed Nightmare Amplifier Slime
+			downedGoblinChariot: Downed Goblin Chariot
+			downedBigDipper: Downed Big Dipper
+			downedPuppetOpera: Downed Puppet Opera
 		}
 
 		Tiles: {
@@ -4840,6 +5356,11 @@ Mods: {
 			TempleCollectorTile.MapEntry: Temple Collector
 			TreeCollectorTile.MapEntry: Tree Collector
 			UnderworldCollectorTile.MapEntry: Underworld Collector
+			BasicThoriumMonolithTile.MapEntry: Basic Thorium Crafting Monolith
+			ThoriumMonolithTile.MapEntry: Thorium Crafting Monolith
+			HardmodeCalamityMonolithTile.MapEntry: Hardmode Calamity Crafting Monolith
+			CalamityMonolithTile.MapEntry: Calamity Crafting Monolith
+			BasicCalamityMonolithTile.MapEntry: Basic Calamity Crafting Monolith
 		}
 
 		Buffs: {

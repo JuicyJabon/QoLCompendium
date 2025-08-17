@@ -10,11 +10,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Stations.Tho
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.thoriumMod, Common.GetModBuff(ModConditions.thoriumMod, "ConductorsStandBuff"));
 
-        public override void SetDefaults()
-        {
-            Common.SetDefaultsToPermanentBuff(Item);
-        }
-
         public override void UpdateInventory(Player player)
         {
             if (player.TryGetModPlayer(out PermanentBuffPlayer pBuffPlayer))

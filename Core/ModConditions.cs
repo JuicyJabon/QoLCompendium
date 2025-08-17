@@ -1,3 +1,4 @@
+using Humanizer;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Core
@@ -19,6 +20,19 @@ namespace QoLCompendium.Core
             obj.AddCondition(ItemToggled(displayText, toggle));
             return obj;
         }
+
+        /*
+        //SHOP STACK CONDITION
+        public static bool[] ItemHasBeenOwned;
+        public static Condition ItemObtained(Item item)
+        {
+            //if (!QoLCompendium.mainConfig.RequireItemObtainedForShops)
+                //return null;
+
+            return new Condition(Language.GetTextValue("Mods.QoLCompendium.ModConditions.ItemObtained").FormatWith(item.ResearchUnlockCount), ()=> ItemHasBeenOwned[item.type]);
+        }
+        */
+
 
         //VANILLA
         //EXPERT/MASTER
@@ -151,6 +165,10 @@ namespace QoLCompendium.Core
         public static Condition DownedSecurityBot = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSecurityBot"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SecurityBot]);
         public static bool downedUndeadChef;
         public static Condition DownedUndeadChef = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedUndeadChef"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.UndeadChef]);
+        public static bool downedNekoSlime;
+        public static Condition DownedNekoSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNekoSlime"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.NekoSlime]);
+        public static bool downedNightmareAmplifierSlime;
+        public static Condition DownedNightmareAmplifierSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNightmareAmplifierSlime"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.NightmareAmplifierSlime]);
         public static bool downedGuardianOfFrost;
         public static Condition DownedGuardianOfFrost = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGuardianOfFrost"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GuardianOfFrost]);
 
@@ -337,6 +355,8 @@ namespace QoLCompendium.Core
         public static bool calamityEntropyLoaded;
         public static Mod calamityEntropyMod;
         //BOSSES
+        public static bool downedLuminaris;
+        public static Condition DownedLuminaris = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLuminaris"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Luminaris]);
         public static bool downedProphet;
         public static Condition DownedProphet = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedProphet"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Prophet]);
         public static bool downedNihilityTwin;
@@ -701,6 +721,12 @@ namespace QoLCompendium.Core
         public static bool homewardJourneyLoaded;
         public static Mod homewardJourneyMod;
         //BOSSES
+        public static bool downedGoblinChariot;
+        public static Condition DownedGoblinChariot = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGoblinChariot"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GoblinChariot]);
+        public static bool downedBigDipper;
+        public static Condition DownedBigDipper = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBigDipper"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BigDipper]);
+        public static bool downedPuppetOpera;
+        public static Condition DownedPuppetOpera = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPuppetOpera"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PuppetOpera]);
         public static bool downedMarquisMoonsquid;
         public static Condition DownedMarquisMoonsquid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMarquisMoonsquid"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MarquisMoonsquid]);
         public static bool downedPriestessRod;
@@ -862,6 +888,8 @@ namespace QoLCompendium.Core
         public static Mod martainsOrderMod;
         public static bool downedBritzz;
         public static Condition DownedBritzz = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBritzz"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Britzz]);
+        public static bool downedCactusCat;
+        public static Condition DownedCactusCat = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCactusCat"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CactusCat]);
         public static bool downedTheAlchemist;
         public static Condition DownedTheAlchemist = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTheAlchemist"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TheAlchemist]);
         public static bool downedCarnagePillar;
@@ -874,6 +902,9 @@ namespace QoLCompendium.Core
         public static Condition DownedTriplets = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTriplets"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Triplets]);
         public static bool downedJungleDefenders;
         public static Condition DownedJungleDefenders = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedJungleDefenders"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.JungleDefenders]);
+        //EVENTS
+        public static bool downedHauntedRainforest;
+        public static Condition DownedHauntedRainforest = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHauntedRainforest"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HauntedRainforest]);
 
 
         //MECH REWORK
@@ -1113,6 +1144,8 @@ namespace QoLCompendium.Core
         public static Condition DownedGlowmoth = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGlowmoth"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Glowmoth]);
         public static bool downedPharaohsCurse;
         public static Condition DownedPharaohsCurse = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPharaohsCurse"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PharaohsCurse]);
+        public static bool downedExcavator;
+        public static Condition DownedExcavator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedExcavator"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Excavator]);
         public static bool downedAdvisor;
         public static Condition DownedAdvisor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAdvisor"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Advisor]);
         public static bool downedPolaris;
@@ -1544,6 +1577,8 @@ namespace QoLCompendium.Core
             HoloSlime,
             SecurityBot,
             UndeadChef,
+            NekoSlime,
+            NightmareAmplifierSlime,
             GuardianOfFrost,
             //assorted crazy things
             SoulHarvester,
@@ -1561,6 +1596,7 @@ namespace QoLCompendium.Core
             //calamity community remix
             WulfrumExcavator,
             //calamity entropy
+            Luminaris,
             Prophet,
             NihilityTwin,
             Cruiser,
@@ -1657,6 +1693,9 @@ namespace QoLCompendium.Core
             Jack,
             Acheron,
             //homeward journey
+            GoblinChariot,
+            BigDipper,
+            PuppetOpera,
             MarquisMoonsquid,
             PriestessRod,
             Diver,
@@ -1705,12 +1744,14 @@ namespace QoLCompendium.Core
             GintzeArmy,
             //martains order
             Britzz,
+            CactusCat,
             TheAlchemist,
             CarnagePillar,
             VoidDigger,
             PrinceSlime,
             Triplets,
             JungleDefenders,
+            HauntedRainforest,
             //mech rework
             St4sys,
             Terminator,
@@ -1789,6 +1830,7 @@ namespace QoLCompendium.Core
             PutridPinky,
             Glowmoth,
             PharaohsCurse,
+            Excavator,
             Advisor,
             Polaris,
             Lux,
@@ -2722,6 +2764,26 @@ namespace QoLCompendium.Core
                     downed.Add("QoLCdownedBoss" + i);
             }
             tag.Add("QoLCdowned", downed);
+
+            /*
+            List<string> ownedItemsData = [];
+            for (int i = 0; i < ItemHasBeenOwned.Length; i++)
+            {
+                if (ItemHasBeenOwned[i])
+                {
+                    if (i > ItemID.Count) // modded item
+                    {
+                        if (ItemLoader.GetItem(i) is ModItem modItem && modItem != null)
+                            ownedItemsData.Add($"{modItem.FullName}");
+                    }
+                    else // vanilla item
+                    {
+                        ownedItemsData.Add($"{i}");
+                    }
+                }
+            }
+            tag.Add("OwnedItemsList", ownedItemsData);
+            */
         }
 
         public override void LoadWorldData(TagCompound tag)
@@ -2788,7 +2850,6 @@ namespace QoLCompendium.Core
             //BIOMES
             beenToHomewardAbyss = tag.Get<bool>("beenToHomewardAbyss");
 
-
             //INFERNUM
             //BIOMES
             beenToProfanedGardens = tag.Get<bool>("beenToProfanedGardens");
@@ -2852,6 +2913,23 @@ namespace QoLCompendium.Core
             IList<string> downed = tag.GetList<string>("QoLCdowned");
             for (int i = 0; i < DownedBoss.Length; i++)
                 DownedBoss[i] = downed.Contains($"QoLCdownedBoss{i}");
+
+            /*
+            ItemHasBeenOwned = ItemID.Sets.Factory.CreateBoolSet(false);
+            var ownedItemsData = tag.GetList<string>("OwnedItemsList");
+            foreach (var entry in ownedItemsData)
+            {
+                if (int.TryParse(entry, out int type) && type < ItemID.Count)
+                {
+                    ItemHasBeenOwned[type] = true;
+                }
+                else
+                {
+                    if (ModContent.TryFind(entry, out ModItem item))
+                        ItemHasBeenOwned[item.Type] = true;
+                }
+            }
+            */
         }
 
         public override void NetSend(BinaryWriter writer)
@@ -2892,7 +2970,9 @@ namespace QoLCompendium.Core
             writer.Write(new BitsByte
             {
                 [0] = downedUndeadChef,
-                [1] = downedGuardianOfFrost
+                [1] = downedNekoSlime,
+                [2] = downedNightmareAmplifierSlime,
+                [3] = downedGuardianOfFrost
             });
 
             //assorted crazy things
@@ -3101,34 +3181,40 @@ namespace QoLCompendium.Core
             //homeward journey
             writer.Write(new BitsByte
             {
-                [0] = downedMarquisMoonsquid,
-                [1] = downedPriestessRod,
-                [2] = downedDiver,
-                [3] = downedMotherbrain,
-                [4] = downedWallOfShadow,
-                [5] = downedSunSlimeGod,
-                [6] = downedOverwatcher,
-                [7] = downedLifebringer
+                [0] = downedGoblinChariot,
+                [1] = downedBigDipper,
+                [2] = downedPuppetOpera,
+                [3] = downedMarquisMoonsquid,
+                [4] = downedPriestessRod,
+                [5] = downedDiver,
+                [6] = downedMotherbrain,
+                [7] = downedWallOfShadow
             });
             writer.Write(new BitsByte
             {
-                [0] = downedMaterealizer,
-                [1] = downedScarabBelief,
-                [2] = downedWorldsEndWhale,
-                [3] = downedSon,
-                [4] = downedCaveOrdeal,
-                [5] = downedCorruptOrdeal,
-                [6] = downedCrimsonOrdeal,
-                [7] = downedDesertOrdeal
+                [0] = downedSunSlimeGod,
+                [1] = downedOverwatcher,
+                [2] = downedLifebringer,
+                [3] = downedMaterealizer,
+                [4] = downedScarabBelief,
+                [5] = downedWorldsEndWhale,
+                [6] = downedSon,
+                [7] = downedCaveOrdeal
             });
             writer.Write(new BitsByte
             {
-                [0] = downedForestOrdeal,
-                [1] = downedHallowOrdeal,
-                [2] = downedJungleOrdeal,
-                [3] = downedSkyOrdeal,
-                [4] = downedSnowOrdeal,
-                [5] = downedUnderworldOrdeal
+                [0] = downedCorruptOrdeal,
+                [1] = downedCrimsonOrdeal,
+                [2] = downedDesertOrdeal,
+                [3] = downedForestOrdeal,
+                [4] = downedHallowOrdeal,
+                [5] = downedJungleOrdeal,
+                [6] = downedSkyOrdeal,
+                [7] = downedSnowOrdeal
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = downedUnderworldOrdeal
             });
 
             //hunt of the old god
@@ -3177,12 +3263,17 @@ namespace QoLCompendium.Core
             writer.Write(new BitsByte
             {
                 [0] = downedBritzz,
-                [1] = downedTheAlchemist,
-                [2] = downedCarnagePillar,
-                [3] = downedVoidDigger,
-                [4] = downedPrinceSlime,
-                [5] = downedTriplets,
-                [6] = downedJungleDefenders
+                [1] = downedCactusCat,
+                [2] = downedTheAlchemist,
+                [3] = downedCarnagePillar,
+                [4] = downedVoidDigger,
+                [5] = downedPrinceSlime,
+                [6] = downedTriplets,
+                [7] = downedJungleDefenders
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = downedHauntedRainforest
             });
 
             //mech rework
@@ -3334,7 +3425,8 @@ namespace QoLCompendium.Core
                 [3] = downedOtherworldlySpirit,
                 [4] = downedEvilSpirit,
                 [5] = downedInfernoSpirit,
-                [6] = downedChaosSpirit
+                [6] = downedChaosSpirit,
+                [7] = downedExcavator
             });
 
             //shadows of abaddon
@@ -3561,8 +3653,9 @@ namespace QoLCompendium.Core
             downedSecurityBot = flags[7];
             flags = reader.ReadByte();
             downedUndeadChef = flags[0];
-            downedGuardianOfFrost = flags[1];
-            downedGuardianOfFrost = flags[1];
+            downedNekoSlime = flags[1];
+            downedNightmareAmplifierSlime = flags[2];
+            downedGuardianOfFrost = flags[3];
 
             //assorted crazy things
             flags = reader.ReadByte();
@@ -3721,30 +3814,34 @@ namespace QoLCompendium.Core
 
             //homeward journey
             flags = reader.ReadByte();
-            downedMarquisMoonsquid = flags[0];
-            downedPriestessRod = flags[1];
-            downedDiver = flags[2];
-            downedMotherbrain = flags[3];
-            downedWallOfShadow = flags[4];
-            downedSunSlimeGod = flags[5];
-            downedOverwatcher = flags[6];
-            downedLifebringer = flags[7];
+            downedGoblinChariot = flags[0];
+            downedBigDipper = flags[1];
+            downedPuppetOpera = flags[2];
+            downedMarquisMoonsquid = flags[3];
+            downedPriestessRod = flags[4];
+            downedDiver = flags[5];
+            downedMotherbrain = flags[6];
+            downedWallOfShadow = flags[7];
             flags = reader.ReadByte();
-            downedMaterealizer = flags[0];
-            downedScarabBelief = flags[1];
-            downedWorldsEndWhale = flags[2];
-            downedSon = flags[3];
-            downedCaveOrdeal = flags[4];
-            downedCorruptOrdeal = flags[5];
-            downedCrimsonOrdeal = flags[6];
-            downedDesertOrdeal = flags[7];
+            downedSunSlimeGod = flags[0];
+            downedOverwatcher = flags[1];
+            downedLifebringer = flags[2];
+            downedMaterealizer = flags[3];
+            downedScarabBelief = flags[4];
+            downedWorldsEndWhale = flags[5];
+            downedSon = flags[6];
+            downedCaveOrdeal = flags[7];
             flags = reader.ReadByte();
-            downedForestOrdeal = flags[0];
-            downedHallowOrdeal = flags[1];
-            downedJungleOrdeal = flags[2];
-            downedSkyOrdeal = flags[3];
-            downedSnowOrdeal = flags[4];
-            downedUnderworldOrdeal = flags[5];
+            downedCorruptOrdeal = flags[0];
+            downedCrimsonOrdeal = flags[1];
+            downedDesertOrdeal = flags[2];
+            downedForestOrdeal = flags[3];
+            downedHallowOrdeal = flags[4];
+            downedJungleOrdeal = flags[5];
+            downedSkyOrdeal = flags[6];
+            downedSnowOrdeal = flags[7];
+            flags = reader.ReadByte();
+            downedUnderworldOrdeal = flags[0];
 
             //hunt of the old god
             flags = reader.ReadByte();
@@ -3781,12 +3878,15 @@ namespace QoLCompendium.Core
             //martains order
             flags = reader.ReadByte();
             downedBritzz = flags[0];
-            downedTheAlchemist = flags[1];
-            downedCarnagePillar = flags[2];
-            downedVoidDigger = flags[3];
-            downedPrinceSlime = flags[4];
-            downedTriplets = flags[5];
-            downedJungleDefenders = flags[6];
+            downedCactusCat = flags[1];
+            downedTheAlchemist = flags[2];
+            downedCarnagePillar = flags[3];
+            downedVoidDigger = flags[4];
+            downedPrinceSlime = flags[5];
+            downedTriplets = flags[6];
+            downedJungleDefenders = flags[7];
+            flags = reader.ReadByte();
+            downedHauntedRainforest = flags[0];
 
             //mech rework
             flags = reader.ReadByte();
@@ -3909,6 +4009,7 @@ namespace QoLCompendium.Core
             downedEvilSpirit = flags[4];
             downedInfernoSpirit = flags[5];
             downedChaosSpirit = flags[6];
+            downedExcavator = flags[7];
 
             //shadows of abaddon
             flags = reader.ReadByte();
@@ -4057,6 +4158,8 @@ namespace QoLCompendium.Core
 
         public static void ResetDowned()
         {
+            //ItemHasBeenOwned = ItemID.Sets.Factory.CreateBoolSet(false);
+
             //VANILLA
             //BOSSES
             downedDreadnautilus = false;
@@ -4120,6 +4223,8 @@ namespace QoLCompendium.Core
             downedHoloSlime = false;
             downedSecurityBot = false;
             downedUndeadChef = false;
+            downedNekoSlime = false;
+            downedNightmareAmplifierSlime = false;
             downedGuardianOfFrost = false;
 
             //ASSORTED CRAZY THINGS
@@ -4307,6 +4412,9 @@ namespace QoLCompendium.Core
             downedAcheron = false;
 
             //HOMEWARD JOURNEY
+            downedGoblinChariot = false;
+            downedBigDipper = false;
+            downedPuppetOpera = false;
             downedMarquisMoonsquid = false;
             downedPriestessRod = false;
             downedDiver = false;
@@ -4375,12 +4483,14 @@ namespace QoLCompendium.Core
 
             //MARTAINS ORDER
             downedBritzz = false;
+            downedCactusCat = false;
             downedTheAlchemist = false;
             downedCarnagePillar = false;
             downedVoidDigger = false;
             downedPrinceSlime = false;
             downedTriplets = false;
             downedJungleDefenders = false;
+            downedHauntedRainforest = false;
 
             //MECH REWORK
             downedSt4sys = false;
@@ -4477,6 +4587,7 @@ namespace QoLCompendium.Core
             downedGlowmoth = false;
             downedPutridPinky = false;
             downedPharaohsCurse = false;
+            downedExcavator = false;
             downedAdvisor = false;
             downedPolaris = false;
             downedLux = false;

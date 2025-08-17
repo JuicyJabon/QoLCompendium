@@ -25,14 +25,16 @@ namespace QoLCompendium
     {
         #pragma warning disable CA2211
         public static Mod Instance;
-        internal static QoLCompendium instance;
-        internal static QoLCConfig mainConfig;
-        internal static MainClientConfig mainClientConfig;
-        internal static ItemConfig itemConfig;
-        internal static ShopConfig shopConfig;
-        internal static TooltipConfig tooltipConfig;
+        public static QoLCompendium instance;
+        public static QoLCConfig mainConfig;
+        public static MainClientConfig mainClientConfig;
+        public static ItemConfig itemConfig;
+        public static ShopConfig shopConfig;
+        public static TooltipConfig tooltipConfig;
+        public static CrossModConfig crossModConfig;
+        public static VeinminerConfig veinminerConfig;
 
-        internal static int? LastOpenedBank;
+        public static int? LastOpenedBank;
 #pragma warning restore CA2211
 
         public override uint ExtraPlayerBuffSlots => (uint)mainConfig.ExtraBuffSlots;
@@ -43,7 +45,9 @@ namespace QoLCompendium
             Common.PostSetupTasks();
             LoadModSupport.PostSetupTasks();
             PermanentCalamityBuffUI.GetCalamityBuffData();
+            PermanentHomewardJourneyBuffUI.GetHomewardJourneyBuffData();
             PermanentMartinsOrderBuffUI.GetMartinsOrderBuffData();
+            PermanentSOTSBuffUI.GetSOTSBuffData();
             PermanentSpiritClassicBuffUI.GetSpiritClassicBuffData();
             PermanentThoriumBuffUI.GetThoriumBuffData();
         }
@@ -67,6 +71,8 @@ namespace QoLCompendium
             itemConfig = null;
             shopConfig = null;
             tooltipConfig = null;
+            crossModConfig = null;
+            veinminerConfig = null;
             On_Player.HandleBeingInChestRange -= ChestRange;
             On_WorldGen.moveRoom -= WorldGen_moveRoom;
             Common.UnloadTasks();

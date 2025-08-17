@@ -30,12 +30,6 @@ namespace QoLCompendium.Core
         [DefaultValue(true)]
         public bool EndlessWeapons { get; set; }
 
-        /*
-        [DefaultValue(false)]
-        [ReloadRequired]
-        public bool EndlessCraftingIngredients { get; set; }
-        */
-
         [DefaultValue(30)]
         [Range(1, 99999)]
         public int EndlessBuffAmount { get; set; }
@@ -63,16 +57,6 @@ namespace QoLCompendium.Core
         [DefaultValue(999)]
         [Range(1, 99999)]
         public int EndlessBaitAmount { get; set; }
-
-        /*
-        [DefaultValue(999)]
-        [Range(1, 99999)]
-        [ReloadRequired]
-        public int EndlessCraftingIngredientsAmount { get; set; }
-        */
-
-        [DefaultValue(false)]
-        public bool EndlessBuffsOnlyFromCrate { get; set; }
 
         [DefaultValue(false)]
         public bool ActiveBuffsHaveEnchantedEffects { get; set; }
@@ -104,13 +88,11 @@ namespace QoLCompendium.Core
         public bool ItemConversions { get; set; }
 
         [DefaultValue(true)]
-        public bool BossBagRecipes { get; set; }
+        public bool EasierRecipes { get; set; }
 
         [DefaultValue(true)]
-        public bool CrateRecipes { get; set; }
-
-        [DefaultValue(true)]
-        public bool BannerRecipes { get; set; }
+        [ReloadRequired]
+        public bool EmblemLooping { get; set; }
 
         [DefaultValue(true)]
         public bool NoDeveloperSetsFromBossBags { get; set; }
@@ -134,7 +116,7 @@ namespace QoLCompendium.Core
 
         [DefaultValue(true)]
         [ReloadRequired]
-        public bool AutoReuseHealthUpgrades { get; set; }
+        public bool AutoReuseUpgrades { get; set; }
 
         [DefaultValue(false)]
         public bool GoodPrefixesHaveEnchantedEffects { get; set; }
@@ -152,6 +134,12 @@ namespace QoLCompendium.Core
         [ReloadRequired]
         public bool EtherealCollectorCanSpawn { get; set; }
 
+        /*
+        [DefaultValue(false)]
+        [ReloadRequired]
+        public bool RequireItemObtainedForShops { get; set; }
+        */
+
         [DefaultValue(false)]
         public bool RemoveBiomeShopRequirements { get; set; }
 
@@ -162,11 +150,6 @@ namespace QoLCompendium.Core
         [Range(1, 10)]
         [DefaultValue(1)]
         public int FastTownNPCSpawns { get; set; }
-
-        /*
-        [DefaultValue(true)]
-        public bool TownNPCsSpawnAtNight { get; set; }
-        */
 
         [DefaultValue(true)]
         public bool TownNPCSpawnImprovements { get; set; }
@@ -285,6 +268,9 @@ namespace QoLCompendium.Core
         [ReloadRequired]
         public bool InfiniteSliceOfCake { get; set; }
 
+        [DefaultValue(false)]
+        public bool HideBuffs { get; set; }
+
         [DefaultValue(true)]
         public bool RegrowthAutoReplant { get; set; }
 
@@ -311,10 +297,19 @@ namespace QoLCompendium.Core
         public bool NoTombstoneDrops { get; set; }
 
         [DefaultValue(true)]
+        public bool HellstoneSpelunker { get; set; }
+
+        [DefaultValue(true)]
+        public bool DangersenseIgnoresThinIce { get; set; }
+
+        [DefaultValue(true)]
+        public bool DangersenseHighlightsSiltAndSlush { get; set; }
+
+        [DefaultValue(true)]
         public bool AutoFishing { get; set; }
 
-        //[DefaultValue(true)]
-        //public bool PortableCraftingStations { get; set; }
+        [DefaultValue(true)]
+        public bool NoLakeSizePenalty { get; set; }
 
         [DefaultValue(false)]
         public bool NoPylonTeleportRestrictions { get; set; }
@@ -356,6 +351,15 @@ namespace QoLCompendium.Core
         [DefaultValue(true)]
         public bool TreesDropMoreWhenShook { get; set; }
 
+        [DefaultValue(true)]
+        public bool HeartCrystalGlow { get; set; }
+
+        [DefaultValue(true)]
+        public bool LifeFruitGlow { get; set; }
+
+        [DefaultValue(true)]
+        public bool BreakAllDungeonBricks { get; set; }
+
         [DefaultValue(2)]
         [Range(1, 500)]
         public int MoreFallenStars { get; set; }
@@ -371,62 +375,6 @@ namespace QoLCompendium.Core
 
         [DefaultValue(false)]
         public bool DisableCredits { get; set; }
-
-        [DefaultValue(true)]
-        public bool VeinMiner { get; set; }
-
-        [DefaultValue(3)]
-        [Range(0, 15)]
-        public int VeinMinerSpeed { get; set; }
-
-        [DefaultValue(120)]
-        [Range(1, 750)]
-        public int VeinMinerTileLimit { get; set; }
-
-        //public List<TileDefinition> VeinMinerWhitelist { get; set; }
-
-        [DefaultListValue("Terraria:")]
-        public HashSet<string> VeinMinerTileWhitelist =
-        [
-            "Terraria:" + TileID.Search.GetName(6),
-            "Terraria:" + TileID.Search.GetName(7),
-            "Terraria:" + TileID.Search.GetName(8),
-            "Terraria:" + TileID.Search.GetName(9),
-            "Terraria:" + TileID.Search.GetName(22),
-            "Terraria:" + TileID.Search.GetName(37),
-            "Terraria:" + TileID.Search.GetName(40),
-            "Terraria:" + TileID.Search.GetName(56),
-            "Terraria:" + TileID.Search.GetName(58),
-            "Terraria:" + TileID.Search.GetName(63),
-            "Terraria:" + TileID.Search.GetName(64),
-            "Terraria:" + TileID.Search.GetName(65),
-            "Terraria:" + TileID.Search.GetName(66),
-            "Terraria:" + TileID.Search.GetName(67),
-            "Terraria:" + TileID.Search.GetName(68),
-            "Terraria:" + TileID.Search.GetName(107),
-            "Terraria:" + TileID.Search.GetName(108),
-            "Terraria:" + TileID.Search.GetName(111),
-            "Terraria:" + TileID.Search.GetName(123),
-            "Terraria:" + TileID.Search.GetName(162),
-            "Terraria:" + TileID.Search.GetName(166),
-            "Terraria:" + TileID.Search.GetName(167),
-            "Terraria:" + TileID.Search.GetName(168),
-            "Terraria:" + TileID.Search.GetName(169),
-            "Terraria:" + TileID.Search.GetName(178),
-            "Terraria:" + TileID.Search.GetName(204),
-            "Terraria:" + TileID.Search.GetName(211),
-            "Terraria:" + TileID.Search.GetName(221),
-            "Terraria:" + TileID.Search.GetName(222),
-            "Terraria:" + TileID.Search.GetName(223),
-            "Terraria:" + TileID.Search.GetName(224),
-            "Terraria:" + TileID.Search.GetName(404),
-            "Terraria:" + TileID.Search.GetName(407),
-            "Terraria:" + TileID.Search.GetName(408),
-            "Terraria:" + TileID.Search.GetName(481),
-            "Terraria:" + TileID.Search.GetName(482),
-            "Terraria:" + TileID.Search.GetName(483),
-            "Terraria:" + TileID.Search.GetName(48)
-        ];
 
         public override void OnLoaded()
         {
@@ -862,6 +810,111 @@ namespace QoLCompendium.Core
             public override void OnLoaded()
             {
                 QoLCompendium.tooltipConfig = this;
+            }
+        }
+
+        [SeparatePage]
+        public class CrossModConfig : ModConfig
+        {
+            public override ConfigScope Mode => ConfigScope.ServerSide;
+
+            [Header("$Mods.QoLCompendium.QoLCConfig.Headers.CrossMod")]
+
+            [DefaultValue(true)]
+            public bool AFKPetsCropFix { get; set; }
+
+            [DefaultValue(true)]
+            public bool AFKPetsFasterCropGrowth { get; set; }
+
+            [DefaultValue(true)]
+            public bool AFKPetsRegrowthReplant { get; set; }
+
+            [DefaultValue(true)]
+            public bool CrystalDragonsTopazPrefixFix { get; set; }
+
+            [DefaultValue(true)]
+            public bool MrPlagueRacesPrefixFix { get; set; }
+
+            [DefaultValue(true)]
+            [ReloadRequired]
+            public bool CalamityEffigyRecipes { get; set; }
+
+            [DefaultValue(true)]
+            public bool RemoveThoriumExhaustionTooltip { get; set; }
+
+            [DefaultValue(true)]
+            public bool CalamityEntropyArmorPrefixesHaveEnchantedEffects { get; set; }
+
+            public override void OnLoaded()
+            {
+                QoLCompendium.crossModConfig = this;
+            }
+        }
+
+        [SeparatePage]
+        public class VeinminerConfig : ModConfig
+        {
+            public override ConfigScope Mode => ConfigScope.ServerSide;
+
+            [Header("$Mods.QoLCompendium.QoLCConfig.Headers.Veinminer")]
+
+            [DefaultValue(true)]
+            public bool VeinMiner { get; set; }
+
+            [DefaultValue(3)]
+            [Range(0, 15)]
+            public int VeinMinerSpeed { get; set; }
+
+            [DefaultValue(120)]
+            [Range(1, 750)]
+            public int VeinMinerTileLimit { get; set; }
+
+            [DefaultListValue("Terraria:")]
+            public HashSet<string> VeinMinerTileWhitelist =
+            [
+                "Terraria:" + TileID.Search.GetName(6),
+                "Terraria:" + TileID.Search.GetName(7),
+                "Terraria:" + TileID.Search.GetName(8),
+                "Terraria:" + TileID.Search.GetName(9),
+                "Terraria:" + TileID.Search.GetName(22),
+                "Terraria:" + TileID.Search.GetName(37),
+                "Terraria:" + TileID.Search.GetName(40),
+                "Terraria:" + TileID.Search.GetName(56),
+                "Terraria:" + TileID.Search.GetName(58),
+                "Terraria:" + TileID.Search.GetName(63),
+                "Terraria:" + TileID.Search.GetName(64),
+                "Terraria:" + TileID.Search.GetName(65),
+                "Terraria:" + TileID.Search.GetName(66),
+                "Terraria:" + TileID.Search.GetName(67),
+                "Terraria:" + TileID.Search.GetName(68),
+                "Terraria:" + TileID.Search.GetName(107),
+                "Terraria:" + TileID.Search.GetName(108),
+                "Terraria:" + TileID.Search.GetName(111),
+                "Terraria:" + TileID.Search.GetName(123),
+                "Terraria:" + TileID.Search.GetName(162),
+                "Terraria:" + TileID.Search.GetName(166),
+                "Terraria:" + TileID.Search.GetName(167),
+                "Terraria:" + TileID.Search.GetName(168),
+                "Terraria:" + TileID.Search.GetName(169),
+                "Terraria:" + TileID.Search.GetName(178),
+                "Terraria:" + TileID.Search.GetName(204),
+                "Terraria:" + TileID.Search.GetName(211),
+                "Terraria:" + TileID.Search.GetName(221),
+                "Terraria:" + TileID.Search.GetName(222),
+                "Terraria:" + TileID.Search.GetName(223),
+                "Terraria:" + TileID.Search.GetName(224),
+                "Terraria:" + TileID.Search.GetName(404),
+                "Terraria:" + TileID.Search.GetName(407),
+                "Terraria:" + TileID.Search.GetName(408),
+                "Terraria:" + TileID.Search.GetName(481),
+                "Terraria:" + TileID.Search.GetName(482),
+                "Terraria:" + TileID.Search.GetName(483),
+                "Terraria:" + TileID.Search.GetName(48)
+            ];
+
+            public override void OnLoaded()
+            {
+                QoLCompendium.veinminerConfig = this;
             }
         }
     }

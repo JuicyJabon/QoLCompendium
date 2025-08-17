@@ -11,6 +11,7 @@ namespace QoLCompendium.Core.UI.Panels
 
         //POTIONS
         public static PermanentBuffButton BlackHoleButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
+        public static PermanentBuffButton BodyButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
         public static PermanentBuffButton ChargingButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
         public static PermanentBuffButton DefenderButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
         public static PermanentBuffButton EmpowermentButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
@@ -19,6 +20,7 @@ namespace QoLCompendium.Core.UI.Panels
         public static PermanentBuffButton HasteButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
         public static PermanentBuffButton HealingButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
         public static PermanentBuffButton RockskinButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
+        public static PermanentBuffButton ShieldingButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
         public static PermanentBuffButton ShooterButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
         public static PermanentBuffButton SoulButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
         public static PermanentBuffButton SpellCasterButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
@@ -32,7 +34,7 @@ namespace QoLCompendium.Core.UI.Panels
         public static PermanentBuffButton ArcheologyButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
         public static PermanentBuffButton SporeFarmButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
 
-        HashSet<PermanentBuffButton> allBuffButtons = new();
+        public static HashSet<PermanentBuffButton> allBuffButtons = new();
 
         public override void OnInitialize()
         {
@@ -67,85 +69,95 @@ namespace QoLCompendium.Core.UI.Panels
             BlackHoleButton.OnLeftClick += BlackHoleClicked;
             BuffPanel.Append(BlackHoleButton);
 
+            //Body
+            CreateBuffButton(BodyButton, 48f, 32f);
+            BodyButton.OnLeftClick += BodyClicked;
+            BuffPanel.Append(BodyButton);
+
             //Charging
-            CreateBuffButton(ChargingButton, 48f, 32f);
+            CreateBuffButton(ChargingButton, 80f, 32f);
             ChargingButton.OnLeftClick += ChargingClicked;
             BuffPanel.Append(ChargingButton);
 
             //Defender
-            CreateBuffButton(DefenderButton, 80f, 32f);
+            CreateBuffButton(DefenderButton, 112f, 32f);
             DefenderButton.OnLeftClick += DefenderClicked;
             BuffPanel.Append(DefenderButton);
 
             //Empowerment
-            CreateBuffButton(EmpowermentButton, 112f, 32f);
+            CreateBuffButton(EmpowermentButton, 144f, 32f);
             EmpowermentButton.OnLeftClick += EmpowermentClicked;
             BuffPanel.Append(EmpowermentButton);
 
             //Evocation
-            CreateBuffButton(EvocationButton, 144f, 32f);
+            CreateBuffButton(EvocationButton, 176f, 32f);
             EvocationButton.OnLeftClick += EvocationClicked;
             BuffPanel.Append(EvocationButton);
 
             //Gourmet Flavor
-            CreateBuffButton(GourmetFlavorButton, 176f, 32f);
+            CreateBuffButton(GourmetFlavorButton, 208f, 32f);
             GourmetFlavorButton.OnLeftClick += GourmetFlavorClicked;
             BuffPanel.Append(GourmetFlavorButton);
 
             //Haste
-            CreateBuffButton(HasteButton, 208f, 32f);
+            CreateBuffButton(HasteButton, 240f, 32f);
             HasteButton.OnLeftClick += HasteClicked;
             BuffPanel.Append(HasteButton);
 
             //Healing
-            CreateBuffButton(HealingButton, 240f, 32f);
+            CreateBuffButton(HealingButton, 272f, 32f);
             HealingButton.OnLeftClick += HealingClicked;
             BuffPanel.Append(HealingButton);
 
             //Rockskin
-            CreateBuffButton(RockskinButton, 272f, 32f);
+            CreateBuffButton(RockskinButton, 304f, 32f);
             RockskinButton.OnLeftClick += RockskinClicked;
             BuffPanel.Append(RockskinButton);
 
+            //10
+
+            //Shielding
+            CreateBuffButton(ShieldingButton, 16f, 64f);
+            ShieldingButton.OnLeftClick += ShieldingClicked;
+            BuffPanel.Append(ShieldingButton);
+
             //Shooter
-            CreateBuffButton(ShooterButton, 304f, 32f);
+            CreateBuffButton(ShooterButton, 48f, 64f);
             ShooterButton.OnLeftClick += ShooterClicked;
             BuffPanel.Append(ShooterButton);
 
-            //10
-
             //Soul
-            CreateBuffButton(SoulButton, 16f, 64f);
+            CreateBuffButton(SoulButton, 80f, 64f);
             SoulButton.OnLeftClick += SoulClicked;
             BuffPanel.Append(SoulButton);
 
             //Spell Caster
-            CreateBuffButton(SpellCasterButton, 48f, 64f);
+            CreateBuffButton(SpellCasterButton, 112f, 64f);
             SpellCasterButton.OnLeftClick += SpellCasterClicked;
             BuffPanel.Append(SpellCasterButton);
 
             //Starreach
-            CreateBuffButton(StarreachButton, 80f, 64f);
+            CreateBuffButton(StarreachButton, 144f, 64f);
             StarreachButton.OnLeftClick += StarreachClicked;
             BuffPanel.Append(StarreachButton);
 
             //Sweeper
-            CreateBuffButton(SweeperButton, 112f, 64f);
+            CreateBuffButton(SweeperButton, 176f, 64f);
             SweeperButton.OnLeftClick += SweeperClicked;
             BuffPanel.Append(SweeperButton);
 
             //Thrower
-            CreateBuffButton(ThrowerButton, 144f, 64f);
+            CreateBuffButton(ThrowerButton, 208f, 64f);
             ThrowerButton.OnLeftClick += ThrowerClicked;
             BuffPanel.Append(ThrowerButton);
 
             //Whipper
-            CreateBuffButton(WhipperButton, 176f, 64f);
+            CreateBuffButton(WhipperButton, 240f, 64f);
             WhipperButton.OnLeftClick += WhipperClicked;
             BuffPanel.Append(WhipperButton);
 
-            //Warmonger
-            CreateBuffButton(ZincPillButton, 208f, 64f);
+            //Zinc Pill
+            CreateBuffButton(ZincPillButton, 272f, 64f);
             ZincPillButton.OnLeftClick += ZincPillClicked;
             BuffPanel.Append(ZincPillButton);
             #endregion
@@ -166,6 +178,7 @@ namespace QoLCompendium.Core.UI.Panels
             {
                 //potion
                 BlackHoleButton,
+                BodyButton,
                 ChargingButton,
                 DefenderButton,
                 EmpowermentButton,
@@ -174,6 +187,7 @@ namespace QoLCompendium.Core.UI.Panels
                 HasteButton,
                 HealingButton,
                 RockskinButton,
+                ShieldingButton,
                 ShooterButton,
                 SoulButton,
                 SpellCasterButton,
@@ -193,6 +207,7 @@ namespace QoLCompendium.Core.UI.Panels
 
         #region Potions
         private void BlackHoleClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.BlackHole, BlackHoleButton);
+        private void BodyClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Body, BodyButton);
         private void ChargingClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Charging, ChargingButton);
         private void DefenderClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Defender, DefenderButton);
         private void EmpowermentClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Empowerment, EmpowermentButton);
@@ -201,6 +216,7 @@ namespace QoLCompendium.Core.UI.Panels
         private void HasteClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Haste, HasteButton);
         private void HealingClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Healing, HealingButton);
         private void RockskinClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Rockskin, RockskinButton);
+        private void ShieldingClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Shielding, ShieldingButton);
         private void ShooterClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Shooter, ShooterButton);
         private void SoulClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.Soul, SoulButton);
         private void SpellCasterClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentMartinsOrderBuffs.SpellCaster, SpellCasterButton);
@@ -224,6 +240,7 @@ namespace QoLCompendium.Core.UI.Panels
             //TOOLTIPS
             //POTIONS
             BlackHoleButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "BlackHoleBuff")).DisplayName;
+            BodyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "BodyBuff")).DisplayName;
             ChargingButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "Charging")).DisplayName;
             DefenderButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "TurretBuff")).DisplayName;
             EmpowermentButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "EmpowermentBuff")).DisplayName;
@@ -232,6 +249,7 @@ namespace QoLCompendium.Core.UI.Panels
             HasteButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "HasteBuff")).DisplayName;
             HealingButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "Healing")).DisplayName;
             RockskinButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "RockskinBuff")).DisplayName;
+            ShieldingButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "Shielding")).DisplayName;
             ShooterButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "ShooterBuff")).DisplayName;
             SoulButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "SoulBuff")).DisplayName;
             SpellCasterButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.martainsOrderMod, "CasterBuff")).DisplayName;
@@ -247,6 +265,7 @@ namespace QoLCompendium.Core.UI.Panels
             //SPRITES
             //POTIONS
             BlackHoleButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "BlackHoleBuff")));
+            BodyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "BodyBuff")));
             ChargingButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "Charging")));
             DefenderButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "TurretBuff")));
             EmpowermentButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "EmpowermentBuff")));
@@ -255,6 +274,7 @@ namespace QoLCompendium.Core.UI.Panels
             HasteButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "HasteBuff")));
             HealingButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "Healing")));
             RockskinButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "RockskinBuff")));
+            ShieldingButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "Shielding")));
             ShooterButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "ShooterBuff")));
             SoulButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "SoulBuff")));
             SpellCasterButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "CasterBuff")));
@@ -273,9 +293,9 @@ namespace QoLCompendium.Core.UI.Panels
             if (!visible)
                 return;
 
-            for (int i = 0; i < PermanentBuffPlayer.PermanentMartinsOrderBuffsBools.Length; i++)
+            for (int i = 0; i < Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentMartinsOrderBuffsBools.Length; i++)
             {
-                allBuffButtons.ElementAt(i).disabled = PermanentBuffPlayer.PermanentMartinsOrderBuffsBools[i];
+                allBuffButtons.ElementAt(i).disabled = Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentMartinsOrderBuffsBools[i];
                 allBuffButtons.ElementAt(i).moddedBuff = true;
             }
         }
@@ -284,8 +304,8 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                PermanentBuffPlayer.PermanentMartinsOrderBuffsBools[buff] = !PermanentBuffPlayer.PermanentMartinsOrderBuffsBools[buff];
-                button.disabled = PermanentBuffPlayer.PermanentMartinsOrderBuffsBools[buff];
+                Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentMartinsOrderBuffsBools[buff] = !Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentMartinsOrderBuffsBools[buff];
+                button.disabled = Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentMartinsOrderBuffsBools[buff];
             }
         }
 

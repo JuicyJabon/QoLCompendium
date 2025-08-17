@@ -12,27 +12,13 @@ namespace QoLCompendium.Content.Items.Tools.Magnets
 
         public override void Update(Item item, ref float gravity, ref float maxFallSpeed)
         {
-            List<int> OrchidPowerUpItems = new()
-            {
-                Common.GetModItem(ModConditions.orchidMod, "Chip"),
-                Common.GetModItem(ModConditions.orchidMod, "Guard"),
-                Common.GetModItem(ModConditions.orchidMod, "Potency")
-            };
-            List<int> ThoriumPowerUpItems = new()
-            {
-                Common.GetModItem(ModConditions.thoriumMod, "InspirationNote"),
-                Common.GetModItem(ModConditions.thoriumMod, "InspirationNoteStatue"),
-                Common.GetModItem(ModConditions.thoriumMod, "InspirationNoteNoble"),
-                Common.GetModItem(ModConditions.thoriumMod, "InspirationNoteRhapsodist"),
-                Common.GetModItem(ModConditions.thoriumMod, "MeatSlab"),
-                Common.GetModItem(ModConditions.thoriumMod, "GreatFlesh")
-            };
-            List<int> VitalityPowerUpItems = new() { Common.GetModItem(ModConditions.vitalityMod, "BloodClot") };
+            if (!QoLCompendium.itemConfig.Magnets)
+                return;
 
             MagnetPlayer mPlayer = Main.LocalPlayer.GetModPlayer<MagnetPlayer>();
             if (item.active && Main.LocalPlayer.whoAmI == Main.myPlayer)
             {
-                if (Common.PowerUpItems.Contains(item.type) || ThoriumPowerUpItems.Contains(item.type) || VitalityPowerUpItems.Contains(item.type) || OrchidPowerUpItems.Contains(item.type))
+                if (Common.PowerUpItems.Contains(item.type))
                     return;
 
                 if (item.noGrabDelay != 0 || item.playerIndexTheItemIsReservedFor != Main.LocalPlayer.whoAmI)

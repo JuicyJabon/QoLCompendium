@@ -22,7 +22,6 @@ namespace QoLCompendium.Core.Changes.TileChanges
 
         private void OnPlayerMiningToolUse(On_Player.orig_ItemCheck_UseMiningTools_ActuallyUseMiningTool orig, Player self, Item sItem, out bool canHitWalls, int x, int y)
         {
-            // Check if should replant gemcorns.
             if (!QoLCompendium.mainConfig.RegrowthAutoReplant)
             {
                 orig.Invoke(self, sItem, out canHitWalls, x, y);

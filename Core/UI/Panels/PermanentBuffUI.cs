@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Core.PermanentBuffSystems;
 using QoLCompendium.Core.UI.Buttons;
+using Terraria;
 
 namespace QoLCompendium.Core.UI.Panels
 {
@@ -73,7 +74,7 @@ namespace QoLCompendium.Core.UI.Panels
         PermanentBuffButton SliceOfCakeButton = new(ModContent.Request<Texture2D>("Terraria/Images/Buff_" + BuffID.SugarRush));
         PermanentBuffButton WarTableButton = new(ModContent.Request<Texture2D>("Terraria/Images/Buff_" + BuffID.WarTable));
 
-        HashSet<PermanentBuffButton> allBuffButtons = new();
+        public static HashSet<PermanentBuffButton> allBuffButtons = new();
 
         public override void OnInitialize()
         {
@@ -612,16 +613,16 @@ namespace QoLCompendium.Core.UI.Panels
             if (!visible)
                 return;
 
-            for (int i = 0; i < PermanentBuffPlayer.PermanentBuffsBools.Length; i++)
-                allBuffButtons.ElementAt(i).disabled = PermanentBuffPlayer.PermanentBuffsBools[i];
+            for (int i = 0; i < Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentBuffsBools.Length; i++)
+                allBuffButtons.ElementAt(i).disabled = Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentBuffsBools[i];
         }
 
         public static void BuffClick(int buff, PermanentBuffButton button, string name)
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                PermanentBuffPlayer.PermanentBuffsBools[buff] = !PermanentBuffPlayer.PermanentBuffsBools[buff];
-                button.disabled = PermanentBuffPlayer.PermanentBuffsBools[buff];
+                Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentBuffsBools[buff] = !Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentBuffsBools[buff];
+                button.disabled = Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentBuffsBools[buff];
             }
         }
 

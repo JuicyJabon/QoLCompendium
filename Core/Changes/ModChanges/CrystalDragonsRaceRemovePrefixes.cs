@@ -10,6 +10,9 @@ namespace QoLCompendium.Core.Changes.ModChanges
 
         public override bool AllowPrefix(Item item, int pre)
         {
+            if (!QoLCompendium.crossModConfig.CrystalDragonsTopazPrefixFix)
+                return base.AllowPrefix(item, pre);
+
             HashSet<int> prefixes = new()
             {
                 Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazHardened"),

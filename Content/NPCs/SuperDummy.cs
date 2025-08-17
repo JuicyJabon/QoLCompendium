@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Core.Changes.NPCChanges;
 using Terraria.DataStructures;
+using Terraria.GameContent.Bestiary;
 
 namespace QoLCompendium.Content.NPCs
 {
@@ -19,10 +20,17 @@ namespace QoLCompendium.Content.NPCs
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
+
         public override void OnSpawn(IEntitySource source)
         {
             NPC.life = NPC.lifeMax = int.MaxValue;
         }
+
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], true);
+        }
+
         public override void AI()
         {
             NPC.life = NPC.lifeMax = int.MaxValue;

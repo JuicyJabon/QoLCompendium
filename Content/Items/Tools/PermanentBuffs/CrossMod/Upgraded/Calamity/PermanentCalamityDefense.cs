@@ -11,11 +11,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Cal
     {
         public override string Texture => "QoLCompendium/Assets/Items/PermanentCalamityDefense";
 
-        public override void SetDefaults()
-        {
-            Common.SetDefaultsToPermanentBuff(Item);
-        }
-
         public override void UpdateInventory(Player player)
         {
             if (player.TryGetModPlayer(out PermanentBuffPlayer pBuffPlayer))
@@ -24,9 +19,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Cal
 
         public override void AddRecipes()
         {
-            if (!ModConditions.calamityLoaded)
-                return;
-
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentBaguette>());
             r.AddIngredient(ModContent.ItemType<PermanentBloodfin>());

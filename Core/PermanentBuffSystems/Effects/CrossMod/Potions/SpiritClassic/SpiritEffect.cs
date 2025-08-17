@@ -8,7 +8,7 @@
             if (!ModConditions.spiritLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "SpiritBuff")] && !PermanentBuffPlayer.PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Spirit])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "SpiritBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Spirit])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "SpiritBuff"));
                 buffToApply.Update(player.Player, ref index);

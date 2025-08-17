@@ -1,4 +1,12 @@
-﻿using Terraria.ModLoader.IO;
+﻿using ClickerClass;
+using QoLCompendium.Content.Items.Tools.PermanentBuffs.All;
+using QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Clicker;
+using QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.HomewardJourney;
+using QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.SOTS;
+using QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Calamity;
+using QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.SOTS;
+using SOTS;
+using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Core.PermanentBuffSystems
 {
@@ -9,125 +17,6 @@ namespace QoLCompendium.Core.PermanentBuffSystems
         public SortedSet<IPermanentBuff> potionEffects = new();
 
         public SortedSet<IPermanentModdedBuff> modPotionEffects = new();
-
-        public override void ResetEffects() => ResetValues();
-
-        public override void UpdateDead() => ResetValues();
-
-        public override void Unload() => PermanentBuffsBools = null;
-
-        public void ResetValues()
-        {
-            buffActive = false;
-            potionEffects.Clear();
-            modPotionEffects.Clear();
-        }
-
-        public override void PostUpdateEquips()
-        {
-            CheckForPotions(Player.bank.item);
-            CheckForPotions(Player.bank2.item);
-            CheckForPotions(Player.bank3.item);
-            CheckForPotions(Player.bank4.item);
-            UpdatePotions();
-        }
-
-        public void UpdatePotions()
-        {
-            foreach (IPermanentBuff potionEffect in potionEffects)
-                potionEffect.ApplyEffect(this);
-
-            foreach (IPermanentModdedBuff modPotionEffect in modPotionEffects)
-                modPotionEffect.ApplyEffect(this);
-        }
-        
-        public void CheckForPotions(Item[] inventory)
-        {
-            foreach(Item item in inventory)
-            {
-                if (!item.IsAir && item.ModItem is IPermanentBuffItem pBuffItem)
-                    pBuffItem.ApplyBuff(this);
-
-                if (!item.IsAir && item.ModItem is IPermanentModdedBuffItem pModBuffItem)
-                    pModBuffItem.ApplyBuff(this);
-            }
-        }
-
-        public override void SaveData(TagCompound tag)
-        {
-            //VANILLA
-            List<string> buffsEnabled = [];
-            for (int i = 0; i < PermanentBuffsBools.Length; i++)
-            {
-                if (PermanentBuffsBools[i])
-                    buffsEnabled.Add("QoLCPBuff" + i);
-            }
-            tag.Add("QoLCPBuff", buffsEnabled);
-
-            //CALAMITY
-            List<string> calamityBuffsEnabled = [];
-            for (int i = 0; i < PermanentCalamityBuffsBools.Length; i++)
-            {
-                if (PermanentCalamityBuffsBools[i])
-                    calamityBuffsEnabled.Add("QoLCPCalamityBuff" + i);
-            }
-            tag.Add("QoLCPCalamityBuff", calamityBuffsEnabled);
-
-            //MARTIN'S ORDER
-            List<string> martinsOrderBuffsEnabled = [];
-            for (int i = 0; i < PermanentMartinsOrderBuffsBools.Length; i++)
-            {
-                if (PermanentMartinsOrderBuffsBools[i])
-                    martinsOrderBuffsEnabled.Add("QoLCPMartinsOrderBuff" + i);
-            }
-            tag.Add("QoLCPMartinsOrderBuff", martinsOrderBuffsEnabled);
-
-            //SPIRIT CLASSIC
-            List<string> spiritClassicBuffsEnabled = [];
-            for (int i = 0; i < PermanentSpiritClassicBuffsBools.Length; i++)
-            {
-                if (PermanentSpiritClassicBuffsBools[i])
-                    spiritClassicBuffsEnabled.Add("QoLCPSpiritClassicBuff" + i);
-            }
-            tag.Add("QoLCPSpiritClassicBuff", spiritClassicBuffsEnabled);
-
-            //THORIUM
-            List<string> thoriumBuffsEnabled = [];
-            for (int i = 0; i < PermanentThoriumBuffsBools.Length; i++)
-            {
-                if (PermanentThoriumBuffsBools[i])
-                    thoriumBuffsEnabled.Add("QoLCPThoriumBuff" + i);
-            }
-            tag.Add("QoLCPThoriumBuff", thoriumBuffsEnabled);
-        }
-
-        public override void LoadData(TagCompound tag)
-        {
-            //VANILLA
-            IList<string> buffsEnabled = tag.GetList<string>("QoLCPBuff");
-            for (int i = 0; i < PermanentBuffsBools.Length; i++)
-                PermanentBuffsBools[i] = buffsEnabled.Contains($"QoLCPBuff{i}");
-
-            //CALAMITY
-            IList<string> calamityBuffsEnabled = tag.GetList<string>("QoLCPCalamityBuff");
-            for (int i = 0; i < PermanentCalamityBuffsBools.Length; i++)
-                PermanentCalamityBuffsBools[i] = calamityBuffsEnabled.Contains($"QoLCPCalamityBuff{i}");
-
-            //MARTIN'S ORDER
-            IList<string> martinsOrderBuffsEnabled = tag.GetList<string>("QoLCPMartinsOrderBuff");
-            for (int i = 0; i < PermanentMartinsOrderBuffsBools.Length; i++)
-                PermanentMartinsOrderBuffsBools[i] = martinsOrderBuffsEnabled.Contains($"QoLCPMartinsOrderBuff{i}");
-
-            //SPIRIT CLASSIC
-            IList<string> spiritClassicBuffsEnabled = tag.GetList<string>("QoLCPSpiritClassicBuff");
-            for (int i = 0; i < PermanentSpiritClassicBuffsBools.Length; i++)
-                PermanentSpiritClassicBuffsBools[i] = spiritClassicBuffsEnabled.Contains($"QoLCPSpiritClassicBuff{i}");
-
-            //THORIUM
-            IList<string> thoriumBuffsEnabled = tag.GetList<string>("QoLCPThoriumBuff");
-            for (int i = 0; i < PermanentThoriumBuffsBools.Length; i++)
-                PermanentThoriumBuffsBools[i] = thoriumBuffsEnabled.Contains($"QoLCPThoriumBuff{i}");
-        }
 
         public enum PermanentBuffs
         {
@@ -194,9 +83,9 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             WarTable,
         }
 
-        public static bool[] permanentBuffsBools = new bool[Enum.GetValues(typeof(PermanentBuffs)).Length];
+        public bool[] permanentBuffsBools = new bool[Enum.GetValues(typeof(PermanentBuffs)).Length];
 
-        public static bool[] PermanentBuffsBools { get => permanentBuffsBools; set => permanentBuffsBools = value; }
+        public bool[] PermanentBuffsBools { get => permanentBuffsBools; set => permanentBuffsBools = value; }
 
         public enum PermanentCalamityBuffs
         {
@@ -239,16 +128,42 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             ExoBaguette,
             SupremeLuck,
             TitanScale,
+
+            //Calamity Entropy
+            //Arena
+            VoidCandle,
+            //Potions
+            SoyMilk,
+            YharimsStimulants
         }
 
-        public static bool[] permanentCalamityBuffsBools = new bool[Enum.GetValues(typeof(PermanentCalamityBuffs)).Length];
+        public bool[] permanentCalamityBuffsBools = new bool[Enum.GetValues(typeof(PermanentCalamityBuffs)).Length];
 
-        public static bool[] PermanentCalamityBuffsBools { get => permanentCalamityBuffsBools; set => permanentCalamityBuffsBools = value; }
+        public bool[] PermanentCalamityBuffsBools { get => permanentCalamityBuffsBools; set => permanentCalamityBuffsBools = value; }
+
+        public enum PermanentHomewardJourneyBuffs
+        {
+            //Arena
+            BushOfLife,
+            LifeLantern,
+            //Potions
+            Flight,
+            FluorescentBerry,
+            Haste,
+            Reanimation,
+            Yang,
+            Yin
+        }
+
+        public bool[] permanentHomewardJourneyBuffsBools = new bool[Enum.GetValues(typeof(PermanentHomewardJourneyBuffs)).Length];
+
+        public bool[] PermanentHomewardJourneyBuffsBools { get => permanentHomewardJourneyBuffsBools; set => permanentHomewardJourneyBuffsBools = value; }
 
         public enum PermanentMartinsOrderBuffs
         {
             //Potions
             BlackHole,
+            Body,
             Charging,
             Defender,
             Empowerment,
@@ -257,6 +172,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             Haste,
             Healing,
             Rockskin,
+            Shielding,
             Shooter,
             Soul,
             SpellCaster,
@@ -270,9 +186,30 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             SporeFarm
         }
 
-        public static bool[] permanentMartinsOrderBuffsBools = new bool[Enum.GetValues(typeof(PermanentMartinsOrderBuffs)).Length];
+        public bool[] permanentMartinsOrderBuffsBools = new bool[Enum.GetValues(typeof(PermanentMartinsOrderBuffs)).Length];
 
-        public static bool[] PermanentMartinsOrderBuffsBools { get => permanentMartinsOrderBuffsBools; set => permanentMartinsOrderBuffsBools = value; }
+        public bool[] PermanentMartinsOrderBuffsBools { get => permanentMartinsOrderBuffsBools; set => permanentMartinsOrderBuffsBools = value; }
+
+        public enum PermanentSOTSBuffs
+        {
+            //Potions
+            Assassination,
+            Bluefire,
+            Brittle,
+            DoubleVision,
+            Harmony,
+            Nightmare,
+            Ripple,
+            Roughskin,
+            SoulAccess,
+            Vibe,
+            //Stations
+            DigitalDisplay
+        }
+
+        public bool[] permanentSOTSBuffsBools = new bool[Enum.GetValues(typeof(PermanentSOTSBuffs)).Length];
+
+        public bool[] PermanentSOTSBuffsBools { get => permanentSOTSBuffsBools; set => permanentSOTSBuffsBools = value; }
 
         public enum PermanentSpiritClassicBuffs
         {
@@ -296,9 +233,9 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             Zephyr,
         }
 
-        public static bool[] permanentSpiritClassicBuffsBools = new bool[Enum.GetValues(typeof(PermanentSpiritClassicBuffs)).Length];
+        public bool[] permanentSpiritClassicBuffsBools = new bool[Enum.GetValues(typeof(PermanentSpiritClassicBuffs)).Length];
 
-        public static bool[] PermanentSpiritClassicBuffsBools { get => permanentSpiritClassicBuffsBools; set => permanentSpiritClassicBuffsBools = value; }
+        public bool[] PermanentSpiritClassicBuffsBools { get => permanentSpiritClassicBuffsBools; set => permanentSpiritClassicBuffsBools = value; }
 
         public enum PermanentThoriumBuffs
         {
@@ -337,8 +274,148 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             InspirationRegeneration
         }
 
-        public static bool[] permanentThoriumBuffsBools = new bool[Enum.GetValues(typeof(PermanentThoriumBuffs)).Length];
+        public bool[] permanentThoriumBuffsBools = new bool[Enum.GetValues(typeof(PermanentThoriumBuffs)).Length];
 
-        public static bool[] PermanentThoriumBuffsBools { get => permanentThoriumBuffsBools; set => permanentThoriumBuffsBools = value; }
+        public bool[] PermanentThoriumBuffsBools { get => permanentThoriumBuffsBools; set => permanentThoriumBuffsBools = value; }
+
+
+        public override void ResetEffects() => ResetValues();
+
+        public override void UpdateDead() => ResetValues();
+
+        public void ResetValues()
+        {
+            buffActive = false;
+            potionEffects.Clear();
+            modPotionEffects.Clear();
+        }
+
+        public override void PostUpdateEquips()
+        {
+            CheckForPotions(Player.bank.item);
+            CheckForPotions(Player.bank2.item);
+            CheckForPotions(Player.bank3.item);
+            CheckForPotions(Player.bank4.item);
+            UpdatePotions();
+        }
+
+        public void UpdatePotions()
+        {
+            foreach (IPermanentBuff potionEffect in potionEffects)
+                potionEffect.ApplyEffect(this);
+
+            foreach (IPermanentModdedBuff modPotionEffect in modPotionEffects)
+                modPotionEffect.ApplyEffect(this);
+        }
+        
+        public void CheckForPotions(Item[] inventory)
+        {
+            foreach(Item item in inventory)
+            {
+                if (!item.IsAir && item.ModItem is IPermanentBuffItem pBuffItem)
+                    pBuffItem.ApplyBuff(this);
+
+                if (!item.IsAir && item.ModItem is IPermanentModdedBuffItem pModBuffItem)
+                    pModBuffItem.ApplyBuff(this);
+            }
+        }
+
+        public override void SaveData(TagCompound tag)
+        {
+            //Tag Adding
+            tag.Add("QoLCEnabledPermanentBuffs", PermanentBuffsBools);
+            tag.Add("QoLCEnabledPermanentCalamityBuffs", PermanentCalamityBuffsBools);
+            tag.Add("QoLCEnabledPermanentHomewardJourneyBuffs", PermanentHomewardJourneyBuffsBools);
+            tag.Add("QoLCEnabledPermanentMartinsOrderBuffs", PermanentMartinsOrderBuffsBools);
+            tag.Add("QoLCEnabledPermanentSOTSBuffs", PermanentSOTSBuffsBools);
+            tag.Add("QoLCEnabledPermanentSpiritClassicBuffs", PermanentSpiritClassicBuffsBools);
+            tag.Add("QoLCEnabledPermanentThoriumBuffs", PermanentThoriumBuffsBools);
+        }
+
+        public override void LoadData(TagCompound tag)
+        {
+            PermanentBuffsBools = tag.Get<bool[]>("QoLCEnabledPermanentBuffs");
+            PermanentCalamityBuffsBools = tag.Get<bool[]>("QoLCEnabledPermanentCalamityBuffs");
+            PermanentHomewardJourneyBuffsBools = tag.Get<bool[]>("QoLCEnabledPermanentHomewardJourneyBuffs");
+            PermanentMartinsOrderBuffsBools = tag.Get<bool[]>("QoLCEnabledPermanentMartinsOrderBuffs");
+            PermanentSOTSBuffsBools = tag.Get<bool[]>("QoLCEnabledPermanentSOTSBuffs");
+            PermanentSpiritClassicBuffsBools = tag.Get<bool[]>("QoLCEnabledPermanentSpiritClassicBuffs");
+            PermanentThoriumBuffsBools = tag.Get<bool[]>("QoLCEnabledPermanentThoriumBuffs");
+        }
+    }
+
+    [JITWhenModsEnabled("SOTS")]
+    [ExtendsFromMod("SOTS")]
+    public class SOTSRippleEffect : ModPlayer
+    {
+        public override void PreUpdateBuffs()
+        {
+            if (Player.GetModPlayer<PermanentBuffPlayer>().PermanentSOTSBuffsBools[(int)PermanentBuffPlayer.PermanentSOTSBuffs.Ripple])
+                return;
+
+            if (Player.HasItemInAnyInventory(ModContent.ItemType<PermanentRipple>()) || Player.HasItemInAnyInventory(ModContent.ItemType<PermanentSecretsOfTheShadows>()) || Player.HasItemInAnyInventory(ModContent.ItemType<PermanentEverything>()))
+            {
+                SOTSPlayer modPlayer = SOTSPlayer.ModPlayer(Player);
+                modPlayer.rippleBonusDamage += 2;
+                modPlayer.rippleEffect = true;
+                modPlayer.rippleTimer++;
+            }
+        }
+    }
+
+    [JITWhenModsEnabled("ClickerClass")]
+    [ExtendsFromMod("ClickerClass")]
+    public class ClickerClassInfluenceEffect : ModPlayer
+    {
+        public readonly int RadiusIncrease = 20;
+
+        public override void PreUpdateBuffs()
+        {
+            if (Player.HasItemInAnyInventory(ModContent.ItemType<PermanentInfluence>()))
+                Player.GetModPlayer<ClickerPlayer>().clickerRadius += (float)(2 * RadiusIncrease) / 100f;
+        }
+    }
+
+    [JITWhenModsEnabled("ContinentOfJourney")]
+    [ExtendsFromMod("ContinentOfJourney")]
+    public class HomewardJourneyFluorescentBerryEffect : GlobalWall
+    {
+        public override void ModifyLight(int i, int j, int type, ref float r, ref float g, ref float b)
+        {
+            if (Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentHomewardJourneyBuffsBools[(int)PermanentBuffPlayer.PermanentHomewardJourneyBuffs.FluorescentBerry])
+                return;
+
+            if (Main.LocalPlayer.HasItemInAnyInventory(ModContent.ItemType<PermanentFluorescentBerry>()) || Main.LocalPlayer.HasItemInAnyInventory(ModContent.ItemType<PermanentHomewardJourneyFarming>()) || Main.LocalPlayer.HasItemInAnyInventory(ModContent.ItemType<PermanentHomewardJourney>()) || Main.LocalPlayer.HasItemInAnyInventory(ModContent.ItemType<PermanentEverything>()))
+            {
+                r = Utils.Clamp(r + 0.7f, 0f, 1f);
+                g = Utils.Clamp(g + 0.7f, 0f, 1f);
+                b = Utils.Clamp(b + 0.7f, 0f, 1f);
+            }
+        }
+    }
+
+    [JITWhenModsEnabled("ContinentOfJourney")]
+    [ExtendsFromMod("ContinentOfJourney")]
+    public class HomewardJourneyYinYangEffect : GlobalNPC
+    {
+        public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
+        {
+            if (Main.LocalPlayer.HasItemInAnyInventory(ModContent.ItemType<PermanentYin>()) || Main.LocalPlayer.HasItemInAnyInventory(ModContent.ItemType<PermanentHomewardJourneyFarming>()) || Main.LocalPlayer.HasItemInAnyInventory(ModContent.ItemType<PermanentHomewardJourney>()) || Main.LocalPlayer.HasItemInAnyInventory(ModContent.ItemType<PermanentEverything>()))
+            {
+                if (Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentHomewardJourneyBuffsBools[(int)PermanentBuffPlayer.PermanentHomewardJourneyBuffs.Yin])
+                    return;
+
+                spawnRate *= 10;
+                maxSpawns /= 5;
+            }
+            if (Main.LocalPlayer.HasItemInAnyInventory(ModContent.ItemType<PermanentYang>()) || Main.LocalPlayer.HasItemInAnyInventory(ModContent.ItemType<PermanentHomewardJourneyFarming>()) || Main.LocalPlayer.HasItemInAnyInventory(ModContent.ItemType<PermanentHomewardJourney>()) || Main.LocalPlayer.HasItemInAnyInventory(ModContent.ItemType<PermanentEverything>()))
+            {
+                if (Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentHomewardJourneyBuffsBools[(int)PermanentBuffPlayer.PermanentHomewardJourneyBuffs.Yang])
+                    return;
+
+                spawnRate = (int)((float)spawnRate * 0.08f);
+                maxSpawns = (int)((float)maxSpawns * 2.4f);
+            }
+        }
     }
 }

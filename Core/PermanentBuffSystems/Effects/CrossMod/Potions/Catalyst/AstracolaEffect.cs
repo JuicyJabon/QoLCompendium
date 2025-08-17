@@ -1,4 +1,4 @@
-﻿using QoLCompendium.Core.PermanentBuffSystems.Effects.Potions;
+﻿using QoLCompendium.Core.PermanentBuffSystems.Effects.Vanilla.Potions;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.Catalyst
 {
@@ -9,7 +9,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.Catal
             if (!ModConditions.catalystLoaded)
                 return;
 
-            if (!PermanentBuffPlayer.PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.Astracola])
+            if (!player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.Astracola])
             {
                 new AstraJellyEffect().ApplyEffect(player);
                 new MagicPowerEffect().ApplyEffect(player);

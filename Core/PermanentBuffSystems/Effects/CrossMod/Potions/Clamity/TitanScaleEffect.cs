@@ -7,7 +7,7 @@
             if (!ModConditions.clamityAddonLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.clamityAddonMod, "TitanScalePotionBuff")] && !PermanentBuffPlayer.PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.TitanScale])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.clamityAddonMod, "TitanScalePotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.TitanScale])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.clamityAddonMod, "TitanScalePotionBuff"));
                 buffToApply.Update(player.Player, ref index);

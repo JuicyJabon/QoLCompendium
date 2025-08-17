@@ -7,7 +7,7 @@
             if (!ModConditions.catalystLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.catalystMod, "AstralJellyBuff")] && !PermanentBuffPlayer.PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.AstraJelly])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.catalystMod, "AstralJellyBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.AstraJelly])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.catalystMod, "AstralJellyBuff"));
                 buffToApply.Update(player.Player, ref index);

@@ -10,7 +10,9 @@ namespace QoLCompendium.Core.UI.Panels
 
         PermanentUpgradedBuffButton VanillaButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentEverything"));
         PermanentUpgradedBuffButton CalamityButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentCalamity"));
+        PermanentUpgradedBuffButton HomewardJourneyButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentHomewardJourney"));
         PermanentUpgradedBuffButton MartinsOrderButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentMartinsOrder"));
+        PermanentUpgradedBuffButton SOTSButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentSecretsOfTheShadows"));
         PermanentUpgradedBuffButton SpiritButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentSpiritClassic"));
         PermanentUpgradedBuffButton ThoriumButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentThorium"));
 
@@ -18,10 +20,10 @@ namespace QoLCompendium.Core.UI.Panels
         {
             SelectorPanel = new UIPanel();
             SelectorPanel.SetPadding(0);
-            SelectorPanel.Top.Set(Main.screenHeight / 2, 0f);
-            SelectorPanel.Left.Set(Main.screenWidth / 2 + 35f, 0f);
-            SelectorPanel.Width.Set(256f, 0f);
-            SelectorPanel.Height.Set(64f, 0f);
+            SelectorPanel.Top.Set(Main.screenHeight / 2 - 60, 0f);
+            SelectorPanel.Left.Set(Main.screenWidth / 2 + 10f, 0f);
+            SelectorPanel.Width.Set(304f, 0f);
+            SelectorPanel.Height.Set(112f, 0f);
             SelectorPanel.BackgroundColor = new Color(73, 94, 171);
 
             //Vanilla
@@ -36,20 +38,34 @@ namespace QoLCompendium.Core.UI.Panels
             CalamityButton.Tooltip = UISystem.CalamityText;
             SelectorPanel.Append(CalamityButton);
 
+            //Homeward Journey
+            CreateBuffButton(HomewardJourneyButton, 112f, 16f);
+            HomewardJourneyButton.OnLeftClick += HomewardJourneyClicked;
+            HomewardJourneyButton.Tooltip = UISystem.HomewardJourneyText;
+            SelectorPanel.Append(HomewardJourneyButton);
+
             //Martin's Order
-            CreateBuffButton(MartinsOrderButton, 112f, 16f);
+            CreateBuffButton(MartinsOrderButton, 160f, 16f);
             MartinsOrderButton.OnLeftClick += MartinsOrderClicked;
             MartinsOrderButton.Tooltip = UISystem.MartinsOrderText;
             SelectorPanel.Append(MartinsOrderButton);
 
+            //SOTS
+            CreateBuffButton(SOTSButton, 208f, 16f);
+            SOTSButton.OnLeftClick += SOTSClicked;
+            SOTSButton.Tooltip = UISystem.SOTSText;
+            SelectorPanel.Append(SOTSButton);
+
             //Spirit Classic
-            CreateBuffButton(SpiritButton, 160f, 16f);
+            CreateBuffButton(SpiritButton, 256f, 16f);
             SpiritButton.OnLeftClick += SpiritClicked;
             SpiritButton.Tooltip = UISystem.SpiritClassicText;
             SelectorPanel.Append(SpiritButton);
 
+            //ROW 2
+
             //Thorium
-            CreateBuffButton(ThoriumButton, 208f, 16f);
+            CreateBuffButton(ThoriumButton, 16f, 64f);
             ThoriumButton.OnLeftClick += ThoriumClicked;
             ThoriumButton.Tooltip = UISystem.ThoriumText;
             SelectorPanel.Append(ThoriumButton);
@@ -59,9 +75,11 @@ namespace QoLCompendium.Core.UI.Panels
 
         private void VanillaClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick(0);
         private void CalamityClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick(1);
-        private void MartinsOrderClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick(2);
-        private void SpiritClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick(3);
-        private void ThoriumClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick(4);
+        private void HomewardJourneyClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick(2);
+        private void MartinsOrderClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick(3);
+        private void SOTSClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick(4);
+        private void SpiritClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick(5);
+        private void ThoriumClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick(6);
 
         public static void BuffClick(int ui)
         {
@@ -79,17 +97,27 @@ namespace QoLCompendium.Core.UI.Panels
                     PermanentCalamityBuffUI.timeStart = Main.GameUpdateCount;
                     PermanentCalamityBuffUI.visible = !PermanentCalamityBuffUI.visible;
                 }
-                else if (ui == 2 && ModConditions.martainsOrderLoaded) // Martin's Order
+                else if (ui == 2 && ModConditions.homewardJourneyLoaded) // Homeward Journey
+                {
+                    PermanentHomewardJourneyBuffUI.timeStart = Main.GameUpdateCount;
+                    PermanentHomewardJourneyBuffUI.visible = !PermanentHomewardJourneyBuffUI.visible;
+                }
+                else if (ui == 3 && ModConditions.martainsOrderLoaded) // Martin's Order
                 {
                     PermanentMartinsOrderBuffUI.timeStart = Main.GameUpdateCount;
                     PermanentMartinsOrderBuffUI.visible = !PermanentMartinsOrderBuffUI.visible;
                 }
-                else if (ui == 3 && ModConditions.spiritLoaded) // Spirit
+                else if (ui == 4 && ModConditions.secretsOfTheShadowsLoaded) // SOTS
+                {
+                    PermanentSOTSBuffUI.timeStart = Main.GameUpdateCount;
+                    PermanentSOTSBuffUI.visible = !PermanentSOTSBuffUI.visible;
+                }
+                else if (ui == 5 && ModConditions.spiritLoaded) // Spirit
                 {
                     PermanentSpiritClassicBuffUI.timeStart = Main.GameUpdateCount;
                     PermanentSpiritClassicBuffUI.visible = !PermanentSpiritClassicBuffUI.visible;
                 }
-                else if (ui == 4 && ModConditions.thoriumLoaded) // Thorium
+                else if (ui == 6 && ModConditions.thoriumLoaded) // Thorium
                 {
                     PermanentThoriumBuffUI.timeStart = Main.GameUpdateCount;
                     PermanentThoriumBuffUI.visible = !PermanentThoriumBuffUI.visible;

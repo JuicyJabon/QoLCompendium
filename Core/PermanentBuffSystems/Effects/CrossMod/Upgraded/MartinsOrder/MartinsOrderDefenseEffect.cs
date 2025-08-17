@@ -10,10 +10,12 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.Mart
                 return;
 
             new BlackHoleEffect().ApplyEffect(player);
+            new BodyEffect().ApplyEffect(player);
             new ChargingEffect().ApplyEffect(player);
             new GourmetFlavorEffect().ApplyEffect(player);
             new HealingEffect().ApplyEffect(player);
             new RockskinEffect().ApplyEffect(player);
+            new ShieldingEffect().ApplyEffect(player);
             new SoulEffect().ApplyEffect(player);
             new ZincPillEffect().ApplyEffect(player);
         }

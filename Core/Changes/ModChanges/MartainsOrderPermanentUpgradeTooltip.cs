@@ -40,6 +40,10 @@ namespace QoLCompendium.Core.Changes.ModChanges
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
+            if (item.type == Common.GetModItem(ModConditions.martainsOrderMod, "MartiniteBless") && MartainWorld.martiniteBless)
+            {
+                Common.AddLastTooltip(tooltips, tooltipLine);
+            }
         }
     }
 }

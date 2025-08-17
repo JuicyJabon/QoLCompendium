@@ -1,5 +1,6 @@
 using Humanizer;
 using QoLCompendium.Content.Items.Accessories.Fishing;
+using QoLCompendium.Content.Items.Dedicated;
 using QoLCompendium.Content.Items.Tools.Fishing;
 using QoLCompendium.Content.Items.Tools.Usables;
 using QoLCompendium.Core.UI.Panels;
@@ -38,9 +39,11 @@ namespace QoLCompendium.Core
         public bool sillySlapper = false;
         public bool warpMirror = false;
         public bool HasGoldenLockpick = false;
+        public bool duplicationBobber = false;
         public List<int> activeItems = [];
         public List<int> activeBuffItems = [];
         public List<int> activeBuffs = [];
+        
 
         //Biomes
         public int selectedBiome = 0;
@@ -88,6 +91,15 @@ namespace QoLCompendium.Core
             if (spawnRateUpdateTimer > 0)
             {
                 spawnRateUpdateTimer--;
+            } 
+        }
+
+        public override void PostUpdateBuffs()
+        {
+            if (THEButton.used)
+            {
+                Player.forcedGravity = 1;
+                Player.gravDir = -1f;
             }
         }
 
@@ -178,6 +190,12 @@ namespace QoLCompendium.Core
             }
         }
 
+        public override void ModifyCaughtFish(Item fish)
+        {
+            if (duplicationBobber && Main.rand.NextBool() && fish.createTile == -1 && !fish.accessory && fish.damage == -1 && fish.mountType == -1 && fish.maxStack > 1 && fish.rare != ItemRarityID.Gray)
+                fish.stack += 1;
+        }
+
         public override void OnHurt(Player.HurtInfo info)
         {
             if (sillySlapper)
@@ -227,6 +245,7 @@ namespace QoLCompendium.Core
             sillySlapper = false;
             warpMirror = false;
             HasGoldenLockpick = false;
+            duplicationBobber = false;
             activeItems.Clear();
             activeBuffItems.Clear();
             activeBuffs.Clear();

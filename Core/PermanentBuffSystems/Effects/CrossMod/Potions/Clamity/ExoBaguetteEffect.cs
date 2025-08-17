@@ -7,7 +7,7 @@
             if (!ModConditions.clamityAddonLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.clamityAddonMod, "ExoBaguetteBuff")] && !PermanentBuffPlayer.PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.ExoBaguette])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.clamityAddonMod, "ExoBaguetteBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.ExoBaguette])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.clamityAddonMod, "ExoBaguetteBuff"));
                 buffToApply.Update(player.Player, ref index);

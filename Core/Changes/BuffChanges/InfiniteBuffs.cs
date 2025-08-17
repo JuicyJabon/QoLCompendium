@@ -119,11 +119,8 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                 Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
                 for (int i = 0; i < Common.RedPotionBuffs.Count; i++)
                 {
-                    if (!QoLCompendium.mainConfig.EndlessBuffsOnlyFromCrate)
-                    {
-                        Player.AddBuff(Common.RedPotionBuffs.ElementAt(i), 2, true, false);
-                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(Common.RedPotionBuffs.ElementAt(i));
-                    }
+                    Player.AddBuff(Common.RedPotionBuffs.ElementAt(i), 2, true, false);
+                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(Common.RedPotionBuffs.ElementAt(i));
                 }
             }
             if (item.type == ItemID.HoneyBucket || item.type == ItemID.BottomlessHoneyBucket)
@@ -167,7 +164,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
         private void CheckPotion_AddBuff(ItemInfo info)
         {
-            if (!QoLCompendium.mainConfig.EndlessBuffsOnlyFromCrate && !Player.buffImmune[info.buffType])
+            if (!Player.buffImmune[info.buffType])
             {
                 if (ModConditions.calamityLoaded && info.buffType == Common.GetModBuff(ModConditions.calamityMod, "TeslaBuff"))
                     Player.AddBuff(info.buffType, 10, true, false);
@@ -482,28 +479,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
     public class BuffSystem : ModSystem
     {
-        public static bool[] BuffTypesToHide = new bool[BuffLoader.BuffCount];
         internal static Dictionary<int, int> ModdedPlaceableItemBuffs = [];
-
-        public override void PostSetupContent()
-        {
-            Array.Resize(ref BuffTypesToHide, BuffLoader.BuffCount);
-        }
-
-        public override void PostDrawInterface(SpriteBatch spriteBatch)
-        {
-            Array.Clear(BuffTypesToHide, 0, BuffTypesToHide.Length);
-            SetupHideArray();
-        }
-
-
-        private static void SetupHideArray()
-        {
-            foreach (int buff in Main.LocalPlayer.GetModPlayer<QoLCPlayer>().activeBuffs)
-            {
-                BuffTypesToHide[buff] = true;
-            }
-        }
 
         public static void DoBuffIntegration()
         {
@@ -517,10 +493,10 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             //BLOCKS THROWER
             AddBuffIntegration(ModConditions.blocksThrowerMod, "ThrowingBoard", "DeadlyPrecision");
             //CALAMITY
-            AddBuffIntegration(ModConditions.calamityMod, "WeightlessCandle", "CirrusBlueCandleBuff");
-            AddBuffIntegration(ModConditions.calamityMod, "VigorousCandle", "CirrusPinkCandleBuff");
-            AddBuffIntegration(ModConditions.calamityMod, "SpitefulCandle", "CirrusYellowCandleBuff");
-            AddBuffIntegration(ModConditions.calamityMod, "ResilientCandle", "CirrusPurpleCandleBuff");
+            AddBuffIntegration(ModConditions.calamityMod, "WeightlessCandle", "BlueCandleBuff");
+            AddBuffIntegration(ModConditions.calamityMod, "VigorousCandle", "PinkCandleBuff");
+            AddBuffIntegration(ModConditions.calamityMod, "SpitefulCandle", "YellowCandleBuff");
+            AddBuffIntegration(ModConditions.calamityMod, "ResilientCandle", "PurpleCandleBuff");
             AddBuffIntegration(ModConditions.calamityMod, "ChaosCandle", "ChaosCandleBuff");
             AddBuffIntegration(ModConditions.calamityMod, "TranquilityCandle", "TranquilityCandleBuff");
             AddBuffIntegration(ModConditions.calamityMod, "EffigyOfDecay", "EffigyOfDecayBuff");

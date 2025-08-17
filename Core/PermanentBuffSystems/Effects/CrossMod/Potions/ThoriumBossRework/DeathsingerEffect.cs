@@ -14,7 +14,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.Thori
             if (!ModContent.GetInstance<CompatConfig>().extraPotions)
                 return;
 
-            if (!player.Player.buffImmune[ModContent.BuffType<Deathsinger>()] && !PermanentBuffPlayer.PermanentThoriumBuffsBools[(int)PermanentBuffPlayer.PermanentThoriumBuffs.Deathsinger])
+            if (!player.Player.buffImmune[ModContent.BuffType<Deathsinger>()] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentThoriumBuffsBools[(int)PermanentBuffPlayer.PermanentThoriumBuffs.Deathsinger])
             {
                 buffToApply = BuffLoader.GetBuff(ModContent.BuffType<Deathsinger>());
                 buffToApply.Update(player.Player, ref index);

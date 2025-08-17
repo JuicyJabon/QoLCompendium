@@ -1,3 +1,84 @@
+v2.2.17
+1. Added a config page for mod specific toggles
+2. Updated shops for the following mods:
+ - AFKPets
+ - Homeward Journey
+ - Martin's Order
+ - Secrets of the Shadows
+3. Added permanent upgrade tooltips for Ragnarok Mod
+4. Updated support for the following mods:
+ - AFKPets
+ - Homeward Journey
+ - Martin's Order
+ - Secrets of the Shadows
+5. Added THE Button
+6. Added Duplication Bobber
+7. Added a config for removing lake size requirements for fishing
+8. Added Wooden Club (This item is only obtainable through cheats)
+9. Added a Keybind to activate Veinminer, now you can only Veinmine when the key is held
+10. Moved Veinmining configs to their own page
+11. Fully Disable Recipes config no longer affects Aether Altar recipes
+12. Banner, Boss Bag, and Crate recipes are now under one config option, "Easier Recipes"
+13. Added vanilla biome key recipes
+14. Added biome key recipes for the following mods:
+ - Spooky Mod
+ - Thorium Mod
+15. Added Permanent Buff items for Homeward Journey
+16. Added a debug command to disable THE Button's effect
+17. Added a config to remove tile cutting from AFKPets crops
+18. Added a config to increase the growth rate of AFKPets crops
+19. Added a config to auto replant AFKPets crops
+20. Added a config to disable Crystal Dragons Topaz race prefixes from appearing in reforge menus when not using the Topaz race
+21. Added a config to disable Mr. Plague's Races Goblin race prefixes from appearing in reforge menus when not using the Goblin race
+22. Added a config to add recipes for Calamity's Effigies
+23. Added a config to disable the exhaustion tooltip on Thorium thrower weapons when using the Exhaustion Disabler mod
+24. Added a config to add enchanted glint effects to Calamity Entropy armor prefixes
+25. Added a config to add a glow to Heart Crystals and Life Fruit
+26. Added a config to add recipes to loop through Class Emblems
+27. Fixed the Super Dummy bestiary entry never unlocking
+28. Fixed compatibility with new Thorium Bosses Rework update
+29. Fixed Permanent Buff UIs not saving correctly, might cause issues with old characters
+
+v2.2.16
+1. Fixed Permanent Ripple (SOTS) not working in Permanent Everything
+2. Fixed Calamity Candles not applying correctly when using infinite buffs
+
+v2.2.15
+1. Rewrote herb auto-replanting, now works with the following mods:
+ - The Depths
+ - Redemption
+ - Shadows of Abaddon
+ - Spirit Classic
+ - Thorium
+2. Multitude of internal changes
+3. Auto-Reuse Upgrades now works with the following mods:
+ - Calamity
+ - Exxo Avalon Origins
+ - Ragnarok
+ - Secrets of the Shadows
+ - Thorium
+4. Fixed master items being dropped twice in Revengeance, Death, or Eternity modes when using expert relic drops
+5. Removed the "Endless Buffs Only Work From Potion Crate" config option
+6. Rewrote a lot of the Config options to be more clear on what they do
+7. Added a config to break all cracked dungeon bricks when one is broken
+8. Added back Hellstone works with Spelunker Potion
+9. Added a config to allow Silt and Slush to appear with Dangersense active
+10. Added a config to disable thin ice from appearing with Dangersense active
+11. Updated Calamity Entropy support
+12. Added combined crafting stations for Calamity and Thorium
+13. Added a config to allow hiding of buffs provided by infinite potions/stations
+14. Renamed Permanent Everything to Permanent Vanilla
+15. Reworked Permanent Everything, now it's a combination of all permanent buff items
+16. Added Permanent Secrets of the Shadows buff items
+17. Added Permanent Calamity Entropy buff items
+
+v2.2.14
+1. Added permanent buffs for Spirit Candies (not added to the UI yet!!)
+2. Reorganized permanent buff items to not be jumbled
+
+v2.2.13
+1. Fixed Tesla Aura from Calamity duplicating itself when active
+
 v2.2.12
 1. Added permanent buff items for Spirit Classic & Consolaria
 2. Fixed Calamity update issues

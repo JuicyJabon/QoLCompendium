@@ -1,2 +1,2 @@
-v2.2.13
-1. Fixed Tesla Aura from Calamity duplicating itself when active
+v2.2.18
+1. 

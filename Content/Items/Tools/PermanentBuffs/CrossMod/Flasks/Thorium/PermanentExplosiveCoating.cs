@@ -9,10 +9,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Flasks.Thori
     public class PermanentExplosiveCoating : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.thoriumMod, Common.GetModBuff(ModConditions.thoriumMod, "ExplosiveCoatingBuff"));
-        public override void SetDefaults()
-        {
-            Common.SetDefaultsToPermanentBuff(Item);
-        }
 
         public override void UpdateInventory(Player player)
         {

@@ -11,11 +11,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Spi
     {
         public override string Texture => "QoLCompendium/Assets/Items/PermanentSpiritClassicDefense";
 
-        public override void SetDefaults()
-        {
-            Common.SetDefaultsToPermanentBuff(Item);
-        }
-
         public override void UpdateInventory(Player player)
         {
             if (player.TryGetModPlayer(out PermanentBuffPlayer pBuffPlayer))
@@ -26,7 +21,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Spi
         {
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentMirrorCoat>());
-            //r.AddIngredient(ModContent.ItemType<PermanentMoonJelly>());
+            r.AddIngredient(ModContent.ItemType<PermanentMoonJelly>());
             r.AddIngredient(ModContent.ItemType<PermanentSporecoid>());
             r.AddIngredient(ModContent.ItemType<PermanentSteadfast>());
             r.AddTile(TileID.CookingPots);

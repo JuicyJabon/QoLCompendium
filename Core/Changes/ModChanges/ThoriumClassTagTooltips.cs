@@ -1,5 +1,6 @@
 ﻿using ThoriumMod;
 using ThoriumMod.Items;
+using ThoriumMod.Utilities;
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
@@ -13,18 +14,18 @@ namespace QoLCompendium.Core.Changes.ModChanges
             if (QoLCompendium.tooltipConfig.ClassTagTooltip) ThrowerClassTooltip(item, tooltips);
         }
 
-
         public static void ItemClassTooltip(Item item, List<TooltipLine> tooltips)
         {
             if (ModConditions.thoriumLoaded && item.ModItem is ThoriumItem throwerItem && throwerItem.isThrower && !item.CountsAsClass(Common.GetModDamageClass(ModConditions.calamityMod, "RogueDamageClass")))
                 tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ThrowerClass")));
 
-            if (ModConditions.thoriumLoaded && item.ModItem is ThoriumItem healerItem && healerItem.isHealer)
-                tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HealerClass")));
-
-            if (ModConditions.thoriumLoaded && item.ModItem is ThoriumItem darkHealerItem && darkHealerItem.isDarkHealer)
-                tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.DarkHealerClass")));
-
+            if (ModConditions.thoriumLoaded && item.ModItem is ThoriumItem healerItem)
+            {
+                if (healerItem.isHealer && !healerItem.isDarkHealer && !Main.LocalPlayer.GetThoriumPlayer().darkAura)
+                    tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HealerClass")));
+                if (healerItem.isDarkHealer || Main.LocalPlayer.GetThoriumPlayer().darkAura)
+                    tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.DarkHealerClass")));
+            }
             if (ModConditions.thoriumLoaded && item.ModItem is BardItem)
                 tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.BardClass")));
         }

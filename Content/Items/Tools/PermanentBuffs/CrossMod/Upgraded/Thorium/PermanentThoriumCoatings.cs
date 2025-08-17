@@ -11,11 +11,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Tho
     {
         public override string Texture => "QoLCompendium/Assets/Items/PermanentThoriumCoatings";
 
-        public override void SetDefaults()
-        {
-            Common.SetDefaultsToPermanentBuff(Item);
-        }
-
         public override void UpdateInventory(Player player)
         {
             if (player.TryGetModPlayer(out PermanentBuffPlayer pBuffPlayer))

@@ -40,7 +40,7 @@ namespace QoLCompendium.Core.Changes.TooltipChanges
             if (QoLCompendium.tooltipConfig.NoYoyoTooltip) tooltips.Remove(oneDropLogo);
             if (QoLCompendium.tooltipConfig.FromModTooltip) ItemModTooltip(item, tooltips);
             if (QoLCompendium.tooltipConfig.ClassTagTooltip) ItemClassTooltip(item, tooltips);
-            if (ModConditions.thoriumLoaded && ModConditions.exhaustionDisablerLoaded) RemoveExhaustionToolTip(item, tooltips);
+            if (ModConditions.thoriumLoaded && ModConditions.exhaustionDisablerLoaded && QoLCompendium.crossModConfig.RemoveThoriumExhaustionTooltip) RemoveExhaustionToolTip(item, tooltips);
         }
 
         public void ShimmmerableTooltips(Item item, List<TooltipLine> tooltips)

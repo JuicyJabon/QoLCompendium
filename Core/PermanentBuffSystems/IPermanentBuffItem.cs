@@ -19,6 +19,11 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             Item.ResearchUnlockCount = 1;
         }
 
+        public override void SetDefaults()
+        {
+            Common.SetDefaultsToPermanentBuff(Item);
+        }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PermanentBuffs);

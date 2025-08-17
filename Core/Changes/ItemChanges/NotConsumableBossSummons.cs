@@ -23,10 +23,7 @@
                 item.maxStack = 1;
         }
 
-        public override bool ConsumeItem(Item item, Player player)
-        {
-            return false;
-        }
+        public override bool ConsumeItem(Item item, Player player) => false;
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {

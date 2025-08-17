@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
         public override void SetDefaults()
         {
             Item.DefaultToPlaceableTile(ModContent.TileType<CrimsonAltarTile>());
-            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(0, 1, 0, 0));
+            Item.SetShopValues(ItemRarityColor.Green2, Item.buyPrice(0, 1, 0, 0));
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)

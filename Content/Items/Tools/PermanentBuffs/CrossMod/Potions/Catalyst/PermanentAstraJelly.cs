@@ -10,11 +10,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Cata
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.catalystMod, Common.GetModBuff(ModConditions.catalystMod, "AstralJellyBuff"));
 
-        public override void SetDefaults()
-        {
-            Common.SetDefaultsToPermanentBuff(Item);
-        }
-
         public override void UpdateInventory(Player player)
         {
             if (player.TryGetModPlayer(out PermanentBuffPlayer pBuffPlayer))
@@ -23,9 +18,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Cata
 
         public override void AddRecipes()
         {
-            if (!ModConditions.catalystLoaded)
-                return;
-
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.catalystMod, "AstraJelly"), 30);
             r.AddTile(TileID.CookingPots);

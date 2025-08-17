@@ -29,7 +29,7 @@ namespace QoLCompendium.Core.UI.Panels
         public static PermanentBuffButton ToxinButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
         public static PermanentBuffButton ZephyrButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
 
-        HashSet<PermanentBuffButton> allBuffButtons = new();
+        public static HashSet<PermanentBuffButton> allBuffButtons = new();
 
         public override void OnInitialize()
         {
@@ -243,9 +243,9 @@ namespace QoLCompendium.Core.UI.Panels
             if (!visible)
                 return;
 
-            for (int i = 0; i < PermanentBuffPlayer.PermanentSpiritClassicBuffsBools.Length; i++)
+            for (int i = 0; i < Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools.Length; i++)
             {
-                allBuffButtons.ElementAt(i).disabled = PermanentBuffPlayer.PermanentSpiritClassicBuffsBools[i];
+                allBuffButtons.ElementAt(i).disabled = Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[i];
                 allBuffButtons.ElementAt(i).moddedBuff = true;
             }
         }
@@ -254,8 +254,8 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                PermanentBuffPlayer.PermanentSpiritClassicBuffsBools[buff] = !PermanentBuffPlayer.PermanentSpiritClassicBuffsBools[buff];
-                button.disabled = PermanentBuffPlayer.PermanentSpiritClassicBuffsBools[buff];
+                Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[buff] = !Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[buff];
+                button.disabled = Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[buff];
             }
         }
 

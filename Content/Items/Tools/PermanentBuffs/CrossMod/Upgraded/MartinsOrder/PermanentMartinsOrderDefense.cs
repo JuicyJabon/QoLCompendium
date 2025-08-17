@@ -11,11 +11,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Mar
     {
         public override string Texture => "QoLCompendium/Assets/Items/PermanentMartinsOrderDefense";
 
-        public override void SetDefaults()
-        {
-            Common.SetDefaultsToPermanentBuff(Item);
-        }
-
         public override void UpdateInventory(Player player)
         {
             if (player.TryGetModPlayer(out PermanentBuffPlayer pBuffPlayer))
@@ -26,10 +21,12 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Mar
         {
             Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentBlackHole>());
+            r.AddIngredient(ModContent.ItemType<PermanentBody>());
             r.AddIngredient(ModContent.ItemType<PermanentCharging>());
             r.AddIngredient(ModContent.ItemType<PermanentGourmetFlavor>());
             r.AddIngredient(ModContent.ItemType<PermanentHealing>());
             r.AddIngredient(ModContent.ItemType<PermanentRockskin>());
+            r.AddIngredient(ModContent.ItemType<PermanentShielding>());
             r.AddIngredient(ModContent.ItemType<PermanentSoul>());
             r.AddIngredient(ModContent.ItemType<PermanentZincPill>());
             r.AddTile(TileID.CookingPots);

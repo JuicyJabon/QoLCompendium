@@ -111,7 +111,9 @@ namespace QoLCompendium.Core
                 {
                     PermanentBuffUI.visible = false;
                     PermanentCalamityBuffUI.visible = false;
+                    PermanentHomewardJourneyBuffUI.visible = false;
                     PermanentMartinsOrderBuffUI.visible = false;
+                    PermanentSOTSBuffUI.visible = false;
                     PermanentSpiritClassicBuffUI.visible = false;
                     PermanentThoriumBuffUI.visible = false;
                 } 
@@ -216,6 +218,7 @@ namespace QoLCompendium.Core
         public static ModKeybind RemoveTileFromWhitelist { get; private set; }
         public static ModKeybind PermanentBuffUIToggle { get; private set; }
         public static ModKeybind QuickRod { get; private set; }
+        public static ModKeybind Veinmine { get; private set; }
 
         public override void Load()
         {
@@ -227,6 +230,7 @@ namespace QoLCompendium.Core
             RemoveTileFromWhitelist = KeybindLoader.RegisterKeybind(Mod, "RemoveWhitelistedTileBind", "P");
             PermanentBuffUIToggle = KeybindLoader.RegisterKeybind(Mod, "PermanentBuffUIToggleBind", "L");
             QuickRod = KeybindLoader.RegisterKeybind(Mod, "QuickRodBind", "Z");
+            Veinmine = KeybindLoader.RegisterKeybind(Mod, "VeinmineBind", "^");
 
             On_Player.DoCommonDashHandle += OnVanillaDash;
         }
@@ -241,6 +245,7 @@ namespace QoLCompendium.Core
             RemoveTileFromWhitelist = null;
             PermanentBuffUIToggle = null;
             QuickRod = null;
+            Veinmine = null;
             On_Player.DoCommonDashHandle -= OnVanillaDash;
         }
 

@@ -7,7 +7,7 @@
             if (!ModConditions.clamityAddonLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.clamityAddonMod, "SupremeLucky")] && !PermanentBuffPlayer.PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.SupremeLuck])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.clamityAddonMod, "SupremeLucky")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentCalamityBuffsBools[(int)PermanentBuffPlayer.PermanentCalamityBuffs.SupremeLuck])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.clamityAddonMod, "SupremeLucky"));
                 buffToApply.Update(player.Player, ref index);

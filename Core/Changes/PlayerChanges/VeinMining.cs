@@ -13,7 +13,7 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
         private int cd;
         private int mcd;
 
-        public static int MiningSpeed = QoLCompendium.mainConfig.VeinMinerSpeed;
+        public static int MiningSpeed = QoLCompendium.veinminerConfig.VeinMinerSpeed;
 
         private readonly PriorityQueue<Point16, double> picks = new();
 
@@ -37,7 +37,7 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
 
         public override void PreUpdate()
         {
-            MiningSpeed = QoLCompendium.mainConfig.VeinMinerSpeed;
+            MiningSpeed = QoLCompendium.veinminerConfig.VeinMinerSpeed;
 
             var GetPickaxeDamage =
                 typeof(Player).GetMethod("GetPickaxeDamage", BindingFlags.Instance | BindingFlags.NonPublic)!;
@@ -95,7 +95,7 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
 
     public class VeinMiningSystem : ModSystem
     {
-        public static int threshold = QoLCompendium.mainConfig.VeinMinerTileLimit;
+        public static int threshold = QoLCompendium.veinminerConfig.VeinMinerTileLimit;
 
         [JITWhenModsEnabled("VanillaQoL")]
         public static bool VanillaQoLVeinminer => QoLConfig.Instance.veinMining;
@@ -112,7 +112,7 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
 
         public override void PreUpdateWorld()
         {
-            threshold = QoLCompendium.mainConfig.VeinMinerTileLimit;
+            threshold = QoLCompendium.veinminerConfig.VeinMinerTileLimit;
         }
 
         public static void PickTilePatch(ILContext il)
@@ -175,17 +175,17 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
 
         public static bool CanVeinMine(Tile tile)
         {
-            if (VanillaQoLLoaded() || !QoLCompendium.mainConfig.VeinMiner)
+            if (VanillaQoLLoaded() || !QoLCompendium.veinminerConfig.VeinMiner)
                 return false;
 
-            if (QoLCompendium.mainConfig.VeinMinerTileWhitelist != null)
+            if (KeybindSystem.Veinmine.Current && QoLCompendium.veinminerConfig.VeinMinerTileWhitelist != null)
             {
                 string fullName = Common.GetFullNameById(tile.TileType);
                 if (fullName == null)
                     return false;
                 else
                 {
-                    if (QoLCompendium.mainConfig.VeinMinerTileWhitelist.Contains(fullName))
+                    if (QoLCompendium.veinminerConfig.VeinMinerTileWhitelist.Contains(fullName))
                         return true;
                 }
             }
@@ -219,7 +219,6 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
 
     public static class VeinMinerExtension
     {
-        public static ILCursor EmitCall<T>(this ILCursor ilCursor, string memberName) =>
-        ilCursor.Emit<T>(OpCodes.Call, memberName);
+        public static ILCursor EmitCall<T>(this ILCursor ilCursor, string memberName) => ilCursor.Emit<T>(OpCodes.Call, memberName);
     }
 }

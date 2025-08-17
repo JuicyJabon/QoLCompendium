@@ -10,11 +10,6 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Mart
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "Charging"));
 
-        public override void SetDefaults()
-        {
-            Common.SetDefaultsToPermanentBuff(Item);
-        }
-
         public override void UpdateInventory(Player player)
         {
             if (player.TryGetModPlayer(out PermanentBuffPlayer pBuffPlayer))

@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.Catalyst;
+using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.CalamityEntropy;
 using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.Clamity;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.Calamity
@@ -22,6 +23,9 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.Cala
 
             if (ModConditions.clamityAddonLoaded)
                 new ClamityEffect().ApplyEffect(player);
+
+            if (ModConditions.calamityEntropyLoaded)
+                new CalamityEntropyEffect().ApplyEffect(player);
         }
     }
 }

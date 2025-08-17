@@ -3,7 +3,15 @@
   <Import Project="..\tModLoader.targets" />
   <PropertyGroup>
     <AssemblyName>QoLCompendium</AssemblyName>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
+    <TargetFramework>net8.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>7</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>7</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Content\Items\Placeables\HellBridger.png" />
@@ -20,6 +28,9 @@
     <Folder Include="Assets\SpawnModifiers\" />
     <Folder Include="Assets\Slots\" />
     <Folder Include="Assets\Storages\" />
+    <Folder Include="Content\Items\Weapons\Ammo\Arrows\SpiritClassic\" />
+    <Folder Include="Content\Items\Weapons\Ammo\Arrows\SOTS\" />
+    <Folder Include="Content\Items\Weapons\Ammo\Arrows\Thorium\" />
     <Folder Include="Content\Projectiles\Fishing\" />
   </ItemGroup>
   <ItemGroup>
@@ -29,8 +40,17 @@
     <Reference Include="Avalon">
       <HintPath>..\..\ModReader\Avalon\Avalon.dll</HintPath>
     </Reference>
+    <Reference Include="CalamityEntropy">
+      <HintPath>..\..\ModReader\CalamityEntropy\CalamityEntropy.dll</HintPath>
+    </Reference>
     <Reference Include="CalamityMod">
       <HintPath>..\..\..\..\..\Apps\dnSpy\CalamityMod.dll</HintPath>
+    </Reference>
+    <Reference Include="CatalystMod">
+      <HintPath>..\..\ModReader\CatalystMod\CatalystMod.dll</HintPath>
+    </Reference>
+    <Reference Include="Clamity">
+      <HintPath>..\..\ModReader\Clamity\Clamity.dll</HintPath>
     </Reference>
     <Reference Include="ClickerClass">
       <HintPath>..\..\ModReader\ClickerClass\ClickerClass.dll</HintPath>
@@ -53,8 +73,14 @@
     <Reference Include="Redemption">
       <HintPath>..\..\ModReader\Redemption\Redemption.dll</HintPath>
     </Reference>
+    <Reference Include="SacredTools">
+      <HintPath>..\..\ModReader\SacredTools\SacredTools.dll</HintPath>
+    </Reference>
     <Reference Include="SOTS">
       <HintPath>..\..\ModReader\SOTS\SOTS.dll</HintPath>
+    </Reference>
+    <Reference Include="TheDepths">
+      <HintPath>..\..\ModReader\TheDepths\TheDepths.dll</HintPath>
     </Reference>
     <Reference Include="ThoriumMod">
       <HintPath>..\..\ModReader\ThoriumMod\ThoriumMod.dll</HintPath>

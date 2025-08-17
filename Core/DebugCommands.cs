@@ -1,4 +1,5 @@
-﻿using QoLCompendium.Core.PermanentBuffSystems;
+﻿using QoLCompendium.Content.Items.Dedicated;
+using QoLCompendium.Core.PermanentBuffSystems;
 
 namespace QoLCompendium.Core
 {
@@ -32,18 +33,32 @@ namespace QoLCompendium.Core
         }
     }
 
-    public class DisplaySavedBuffData : ModCommand
+    public class TheConsequences : ModCommand
     {
         public override CommandType Type => CommandType.Chat;
 
-        public override string Command => "displaySavedBuffData";
+        public override string Command => "ICannotAcceptTheConsequencesOfMyActions";
 
-        public override string Description => "Displays all saved buff bools";
+        public override string Description => "Resets THE Button";
 
         public override void Action(CommandCaller caller, string input, string[] args)
         {
-            for (int i = 0; i < PermanentBuffPlayer.PermanentBuffsBools.Length; i++)
-                Main.NewText("Buff: " + Enum.GetName(typeof(PermanentBuffPlayer.PermanentBuffs), i) + " | Value: " + PermanentBuffPlayer.PermanentBuffsBools[i] + " | Saved at: " + i.ToString());
+            THEButton.used = false;
+        }
+    }
+
+    public class PermanentBuffCommand : ModCommand
+    {
+        public override CommandType Type => CommandType.Chat;
+
+        public override string Command => "PermanentBuffCommand";
+
+        public override string Description => "displays buff data";
+
+        public override void Action(CommandCaller caller, string input, string[] args)
+        {
+            for (int i = 0; i < Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentBuffsBools.Length; i++)
+                Main.NewText(Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentBuffsBools.ToString() + " " + i);
         }
     }
 }

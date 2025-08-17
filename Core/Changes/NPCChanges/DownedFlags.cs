@@ -72,10 +72,16 @@
             if (npc.type == Common.GetModNPC(ModConditions.afkpetsMod, "SecurityBot"))
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.SecurityBot], -1);
 
-            if (npc.type == Common.GetModNPC(ModConditions.afkpetsMod, "UndeadChef"))
+            if (npc.type == Common.GetModNPC(ModConditions.afkpetsMod, "UndeadChef") || npc.type == Common.GetModNPC(ModConditions.afkpetsMod, "ChefEnergy"))
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.UndeadChef], -1);
 
-            if (npc.type == Common.GetModNPC(ModConditions.afkpetsMod, "IceGuardian"))
+            if (npc.type == Common.GetModNPC(ModConditions.afkpetsMod, "NekoSlime"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.NekoSlime], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.afkpetsMod, "NightmareAmplifierSlime") || npc.type == Common.GetModNPC(ModConditions.afkpetsMod, "NightmareAmplifierSlimeDeath"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.NightmareAmplifierSlime], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.afkpetsMod, "IceGuardian") || npc.type == Common.GetModNPC(ModConditions.afkpetsMod, "IceWormH"))
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.GuardianOfFrost], -1);
             #endregion
 
@@ -109,6 +115,9 @@
             #endregion
 
             #region Calamity Entropy
+            if (npc.type == Common.GetModNPC(ModConditions.calamityEntropyMod, "Luminaris"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Luminaris], -1);
+
             if (npc.type == Common.GetModNPC(ModConditions.calamityEntropyMod, "TheProphet"))
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Prophet], -1);
 
@@ -402,6 +411,18 @@
             #endregion
 
             #region Homeward Journey
+            if (npc.type == Common.GetModNPC(ModConditions.homewardJourneyMod, "GoblinChariot"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.GoblinChariot], -1);
+            }
+            if (npc.type == Common.GetModNPC(ModConditions.homewardJourneyMod, "BigDipper"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.BigDipper], -1);
+            }
+            if (npc.type == Common.GetModNPC(ModConditions.homewardJourneyMod, "PuppetOpera"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.PuppetOpera], -1);
+            }
             if (npc.type == Common.GetModNPC(ModConditions.homewardJourneyMod, "MarquisMoonsquid"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.MarquisMoonsquid], -1);
@@ -588,6 +609,10 @@
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Britzz], -1);
             }
+            if (npc.type == Common.GetModNPC(ModConditions.martainsOrderMod, "CactusCat"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.CactusCat], -1);
+            }
             if (npc.type == Common.GetModNPC(ModConditions.martainsOrderMod, "Alchemist"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.TheAlchemist], -1);
@@ -619,6 +644,20 @@
             if (npc.type == Common.GetModNPC(ModConditions.martainsOrderMod, "MechPlantera"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.JungleDefenders], -1);
+            }
+            //EVENTS
+            List<int> hauntedRainforestNPCs = new()
+            {
+                    Common.GetModNPC(ModConditions.martainsOrderMod, "BunnySpirit"),
+                    Common.GetModNPC(ModConditions.martainsOrderMod, "EagleSpirit"),
+                    Common.GetModNPC(ModConditions.martainsOrderMod, "NaiveSpirit"),
+                    Common.GetModNPC(ModConditions.martainsOrderMod, "SlimeSpirit"),
+                    Common.GetModNPC(ModConditions.martainsOrderMod, "TreeSpirit"),
+                    Common.GetModNPC(ModConditions.martainsOrderMod, "WolfSpirit")
+            };
+            if (hauntedRainforestNPCs.Contains(npc.type))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.HauntedRainforest], -1);
             }
             #endregion
 
@@ -931,6 +970,10 @@
             if (npc.type == Common.GetModNPC(ModConditions.secretsOfTheShadowsMod, "PharaohsCurse"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.PharaohsCurse], -1);
+            }
+            if (npc.type == Common.GetModNPC(ModConditions.secretsOfTheShadowsMod, "Excavator") || npc.type == Common.GetModNPC(ModConditions.secretsOfTheShadowsMod, "GulaSpirit"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Excavator], -1);
             }
             if (npc.type == Common.GetModNPC(ModConditions.secretsOfTheShadowsMod, "TheAdvisorHead"))
             {
