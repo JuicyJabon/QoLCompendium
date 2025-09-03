@@ -17,15 +17,14 @@ namespace QoLCompendium.Core
 
         public bool CanDrop(DropAttemptInfo info)
         {
-            if (info.npc.boss && QoLCompendium.mainConfig.RelicsInExpert && !Main.masterMode && !CalamityDifficultyEnabled() && !FargoSoulsDifficultyEnabled())
+            if (info.npc.boss && QoLCompendium.mainConfig.RelicsInExpert && !Main.masterMode && (!CalamityDifficultyEnabled() || !FargoSoulsDifficultyEnabled()))
                 return Main.expertMode;
-
             return false;
         }
 
         public bool CanShowItemDropInUI()
         {
-            return Main.expertMode && QoLCompendium.mainConfig.RelicsInExpert && !Main.masterMode && !CalamityDifficultyEnabled() && !FargoSoulsDifficultyEnabled();
+            return Main.expertMode && QoLCompendium.mainConfig.RelicsInExpert && !Main.masterMode && (!CalamityDifficultyEnabled() || !FargoSoulsDifficultyEnabled());
         }
 
         public string GetConditionDescription()

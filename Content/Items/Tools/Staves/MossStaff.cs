@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Core;
 using QoLCompendium.Core.Changes.TooltipChanges;
+using System.Collections.ObjectModel;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
@@ -10,6 +11,24 @@ namespace QoLCompendium.Content.Items.Tools.Staves
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.RegrowthStaves;
 
         public int Mode = 0;
+
+        public readonly HashSet<int> MossTypes = new()
+        {
+            TileID.BlueMoss,
+            TileID.BrownMoss,
+            TileID.GreenMoss,
+            TileID.PurpleMoss,
+            TileID.RedMoss
+        };
+
+        public readonly HashSet<int> BrickMossTypes = new()
+        {
+            TileID.BlueMossBrick,
+            TileID.BrownMossBrick,
+            TileID.GreenMossBrick,
+            TileID.PurpleMossBrick,
+            TileID.RedMossBrick
+        };
 
         public override void SetStaticDefaults()
         {
@@ -50,72 +69,24 @@ namespace QoLCompendium.Content.Items.Tools.Staves
 
         public override void HoldItem(Player player)
         {
-            if (Mode == 0)
-            {
-                Item.createTile = TileID.BlueMoss;
-                if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
-                    Item.createTile = TileID.BlueMossBrick;
-            }
-            if (Mode == 1)
-            {
-                Item.createTile = TileID.BrownMoss;
-                if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
-                    Item.createTile = TileID.BrownMossBrick;
-            }
-            if (Mode == 2)
-            {
-                Item.createTile = TileID.GreenMoss;
-                if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
-                    Item.createTile = TileID.GreenMossBrick;
-            }
-            if (Mode == 3)
-            {
-                Item.createTile = TileID.PurpleMoss;
-                if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
-                    Item.createTile = TileID.PurpleMossBrick;
-            }
-            if (Mode == 4)
-            {
-                Item.createTile = TileID.RedMoss;
-                if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
-                    Item.createTile = TileID.RedMossBrick;
-            }
-        }
-
-        public override void UpdateInventory(Player player)
-        {
-            if (Mode == 0)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.MossStaff.BlueMoss"));
-            }
-            if (Mode == 1)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.MossStaff.BrownMoss"));
-            }
-            if (Mode == 2)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.MossStaff.GreenMoss"));
-            }
-            if (Mode == 3)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.MossStaff.PurpleMoss"));
-            }
-            if (Mode == 4)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.MossStaff.RedMoss"));
-            }
+            Item.createTile = MossTypes.ElementAt(Mode);
+            if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
+                Item.createTile = BrickMossTypes.ElementAt(Mode);
         }
 
         public override void RightClick(Player player)
         {
             Mode++;
             if (Mode > 4)
-            {
                 Mode = 0;
-            }
         }
 
         public override void OnConsumeItem(Player player) => Item.stack++;
+
+        public override void UpdateInventory(Player player)
+        {
+            Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.MossStaff.Moss" + Mode.ToString()));
+        }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -124,7 +95,7 @@ namespace QoLCompendium.Content.Items.Tools.Staves
             tooltips.Insert(tooltips.IndexOf(placeable), text);
             tooltips.RemoveAll((x) => x.Name == "Placeable" && x.Mod == "Terraria");
 
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
         }
 
         public override void AddRecipes()

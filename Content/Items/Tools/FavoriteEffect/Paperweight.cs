@@ -24,7 +24,7 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Paperweight);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Paperweight);
         }
 
         public override void AddRecipes()

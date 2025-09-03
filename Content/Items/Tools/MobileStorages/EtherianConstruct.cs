@@ -24,7 +24,7 @@ namespace QoLCompendium.Content.Items.Tools.MobileStorages
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.MobileStorages);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.MobileStorages);
         }
 
         public override void AddRecipes()

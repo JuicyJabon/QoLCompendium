@@ -4,8 +4,6 @@
   <PropertyGroup>
     <AssemblyName>QoLCompendium</AssemblyName>
     <LangVersion>preview</LangVersion>
-    <TargetFramework>net8.0</TargetFramework>
-    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>7</WarningLevel>

@@ -30,7 +30,7 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DestinationGlobe);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DestinationGlobe);
         }
 
         public override bool? UseItem(Player player)
@@ -62,32 +62,7 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void UpdateInventory(Player player)
         {
-            if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 0)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.NoModifier"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 1)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.Desert"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 2)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.Snow"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 3)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.Jungle"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 4)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.GlowingMushroom"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 5)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.Corruption"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 6)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.Crimson"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 7 && Main.hardMode)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.Hallow"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 8)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.Purity"));
+            Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.Biome" + player.GetModPlayer<QoLCPlayer>().selectedBiome.ToString()));
 
             if (Item.favorited)
             {

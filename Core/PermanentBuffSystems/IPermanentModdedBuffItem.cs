@@ -29,7 +29,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems
                 tooltips.AddAfter(name, tooltipAssetNotFound);
             }
 
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PermanentBuffs);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PermanentBuffs);
         }
     }
 }

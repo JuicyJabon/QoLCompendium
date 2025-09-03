@@ -151,6 +151,7 @@ namespace QoLCompendium.Core.UI
         public static LocalizedText StationText { get; private set; }
         public static LocalizedText AddonText { get; private set; }
         public static LocalizedText RepellentText { get; private set; }
+        public static LocalizedText CandyText { get; private set; }
 
 
         //GENERIC
@@ -246,6 +247,7 @@ namespace QoLCompendium.Core.UI
             StationText = Mod.GetLocalization($"UIText.StationText");
             AddonText = Mod.GetLocalization($"UIText.AddonText");
             RepellentText = Mod.GetLocalization($"UIText.RepellentText");
+            CandyText = Mod.GetLocalization($"UIText.CandyText");
 
             //GENERIC
             CloseText = Mod.GetLocalization($"UIText.CloseText");

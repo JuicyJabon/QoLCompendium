@@ -4,17 +4,17 @@ namespace QoLCompendium.Core.UI.Panels
 {
     public class DestinationGlobeUI : UIState
     {
-        public UIPanel GlobePanel;
         public static bool visible = false;
         public static uint timeStart;
 
         public override void OnInitialize()
         {
-            GlobePanel = new UIPanel();
-            GlobePanel.Top.Set(Main.screenHeight / 2, 0f);
-            GlobePanel.Left.Set(Main.screenWidth / 2 - 32, 0f);
-            GlobePanel.Width.Set(400f, 0f);
-            GlobePanel.Height.Set(400f, 0f);
+            UIPanel GlobePanel = new();
+            GlobePanel.SetPadding(0);
+            GlobePanel.HAlign = 0.628f;
+            GlobePanel.VAlign = 0.53f;
+            GlobePanel.Width.Set(360f, 0f);
+            GlobePanel.Height.Set(40f, 0f);
             GlobePanel.BackgroundColor *= 0f;
             GlobePanel.BorderColor *= 0f;
             Append(GlobePanel);

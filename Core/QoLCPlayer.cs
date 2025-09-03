@@ -5,7 +5,9 @@ using QoLCompendium.Content.Items.Tools.Fishing;
 using QoLCompendium.Content.Items.Tools.Usables;
 using QoLCompendium.Core.UI.Panels;
 using System.Reflection;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent.Events;
 using Terraria.GameInput;
 using Terraria.ModLoader.IO;
 

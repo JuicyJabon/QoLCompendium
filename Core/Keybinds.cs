@@ -142,53 +142,24 @@ namespace QoLCompendium.Core
 
         public void AutoUseMirror()
         {
-            int potionofReturn = -1;
-            int recallPotion = -1;
-            int magicMirror = -1;
-            for (int i = 0; i < Player.inventory.Length; i++)
-            {
-                switch (Player.inventory[i].type)
-                {
-                    case ItemID.PotionOfReturn:
-                        potionofReturn = i;
-                        break;
-
-                    case ItemID.RecallPotion:
-                        recallPotion = i;
-                        break;
-
-                    case ItemID.MagicMirror:
-                    case ItemID.IceMirror:
-                    case ItemID.CellPhone:
-                    case ItemID.Shellphone:
-                        magicMirror = i;
-                        break;
-                }
-            }
-
-            if (potionofReturn != -1)
-                QuickUseItemAt(potionofReturn);
-            else if (recallPotion != -1)
-                QuickUseItemAt(recallPotion);
-            else if (magicMirror != -1)
-                QuickUseItemAt(magicMirror);
+            if (Player.HasItem(ItemID.PotionOfReturn))
+                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.PotionOfReturn), Player.inventory));
+            else if (Player.HasItem(ItemID.RecallPotion))
+                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.RecallPotion), Player.inventory));
+            else if (Player.HasItem(ItemID.MagicMirror))
+                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.MagicMirror), Player.inventory));
+            else if (Player.HasItem(ItemID.IceMirror))
+                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.IceMirror), Player.inventory));
+            else if (Player.HasItem(ItemID.CellPhone))
+                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.CellPhone), Player.inventory));
+            else if (Player.HasItem(ItemID.Shellphone))
+                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.Shellphone), Player.inventory));
         }
 
         public void AutoUseMosaicMirror()
         {
-            int mosaicMirror = -1;
-
-            for (int i = 0; i < Player.inventory.Length; i++)
-            {
-                if (Player.inventory[i].type == ModContent.ItemType<MosaicMirror>())
-                {
-                    mosaicMirror = i;
-                    break;
-                }
-            }
-
-            if (mosaicMirror != -1)
-                QuickUseItemAt(mosaicMirror);
+            if (Player.HasItem(ModContent.ItemType<MosaicMirror>()))
+                QuickUseItemAt(Common.GetSlotItemIsIn(new(ModContent.ItemType<MosaicMirror>()), Player.inventory));
         }
 
         public void QuickUseItemAt(int index, bool use = true)

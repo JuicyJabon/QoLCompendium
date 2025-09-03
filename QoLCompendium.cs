@@ -1,6 +1,6 @@
-global using static QoLCompendium.Core.QoLCConfig;
 global using Microsoft.Xna.Framework;
 global using Microsoft.Xna.Framework.Graphics;
+global using QoLCompendium.Core;
 global using ReLogic.Content;
 global using System;
 global using System.Collections.Generic;
@@ -14,10 +14,10 @@ global using Terraria.ID;
 global using Terraria.Localization;
 global using Terraria.ModLoader;
 global using Terraria.UI;
-using QoLCompendium.Core;
-using System.Reflection;
+global using static QoLCompendium.Core.QoLCConfig;
 using QoLCompendium.Core.Changes.BuffChanges;
 using QoLCompendium.Core.UI.Panels;
+using System.Reflection;
 
 namespace QoLCompendium
 {

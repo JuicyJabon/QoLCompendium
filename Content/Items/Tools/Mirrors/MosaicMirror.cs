@@ -25,7 +25,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Mirrors);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Mirrors);
             if (!QoLCompendium.itemConfig.InformationAccessories)
             {
                 TooltipLine tip1 = tooltips.Find(l => l.Name == "Tooltip1");
@@ -50,19 +50,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
         public override void UpdateInventory(Player player)
         {
             player.GetModPlayer<QoLCPlayer>().warpMirror = true;
-
-            if (Mode == 0)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.MosaicMirror.CursedMirror"));
-            }
-            if (Mode == 1)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.MosaicMirror.MirrorOfReturn"));
-            }
-            if (Mode == 2)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.MosaicMirror.TeleportationMirror"));
-            }
+            Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.MosaicMirror.Mirror" + Mode.ToString()));
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -213,9 +201,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
         {
             Mode++;
             if (Mode > 2)
-            {
                 Mode = 0;
-            }
         }
 
         public override void UpdateInfoAccessory(Player player)

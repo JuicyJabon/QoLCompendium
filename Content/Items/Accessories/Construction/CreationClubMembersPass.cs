@@ -44,7 +44,7 @@ namespace QoLCompendium.Content.Items.Accessories.Construction
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.ConstructionAccessories);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.ConstructionAccessories);
         }
 
         public override void AddRecipes()

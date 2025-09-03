@@ -22,7 +22,7 @@ namespace QoLCompendium.Content.Items.Placeables.Pylons
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Pylons);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Pylons);
         }
     }
 }

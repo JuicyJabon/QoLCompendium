@@ -2,7 +2,6 @@
 using QoLCompendium.Core.Changes.TooltipChanges;
 using QoLCompendium.Core.UI.Panels;
 using Terraria.Enums;
-using Terraria.GameContent.Events;
 
 namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 {
@@ -31,7 +30,7 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EntityManipulator);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EntityManipulator);
         }
 
         public override bool? UseItem(Player player)
@@ -55,23 +54,7 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void UpdateInventory(Player player)
         {
-            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 0)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.NoModifier"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 1)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.SpawnIncrease"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 2)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.SpawnDecrease"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 3)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.CanceledSpawns"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 4)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.CanceledEvents"));
-
-            if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 5)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.CanceledSpawnsAndEvents"));
+            Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.SpawnModifier" + player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier.ToString()));
 
             if (Item.favorited)
             {
@@ -87,152 +70,12 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
                     player.GetModPlayer<QoLCPlayer>().noSpawns = true;
 
                 if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 4)
-                {
-                    if (Main.invasionType != 0)
-                    {
-                        Main.invasionType = 0;
-                    }
-                    if (Main.pumpkinMoon)
-                    {
-                        Main.pumpkinMoon = false;
-                    }
-                    if (Main.snowMoon)
-                    {
-                        Main.snowMoon = false;
-                    }
-                    if (Main.eclipse)
-                    {
-                        Main.eclipse = false;
-                    }
-                    if (Main.bloodMoon)
-                    {
-                        Main.bloodMoon = false;
-                    }
-                    if (Main.WindyEnoughForKiteDrops)
-                    {
-                        Main.windSpeedTarget = 0f;
-                        Main.windSpeedCurrent = 0f;
-                    }
-                    if (Main.slimeRain)
-                    {
-                        Main.StopSlimeRain(true);
-                        Main.slimeWarningDelay = 1;
-                        Main.slimeWarningTime = 1;
-                    }
-                    if (BirthdayParty.PartyIsUp)
-                    {
-                        BirthdayParty.CheckNight();
-                    }
-                    if (DD2Event.Ongoing && Main.netMode != NetmodeID.MultiplayerClient)
-                    {
-                        DD2Event.StopInvasion(false);
-                    }
-                    if (Sandstorm.Happening)
-                    {
-                        Sandstorm.Happening = false;
-                        Sandstorm.TimeLeft = 0.0;
-                        Sandstorm.IntendedSeverity = 0f;
-                    }
-                    if (NPC.downedTowers && (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0))
-                    {
-                        NPC.LunarApocalypseIsUp = false;
-                        NPC.ShieldStrengthTowerNebula = 0;
-                        NPC.ShieldStrengthTowerSolar = 0;
-                        NPC.ShieldStrengthTowerStardust = 0;
-                        NPC.ShieldStrengthTowerVortex = 0;
-                        for (int i = 0; i < 200; i++)
-                        {
-                            if (Main.npc[i].active && (Main.npc[i].type == NPCID.LunarTowerNebula || Main.npc[i].type == NPCID.LunarTowerSolar || Main.npc[i].type == NPCID.LunarTowerStardust || Main.npc[i].type == NPCID.LunarTowerVortex))
-                            {
-                                Main.npc[i].dontTakeDamage = false;
-                                Main.npc[i].StrikeInstantKill();
-                            }
-                        }
-                    }
-                    if (Main.IsItRaining || Main.IsItStorming)
-                    {
-                        Main.StopRain();
-                        Main.cloudAlpha = 0f;
-                        if (Main.netMode == NetmodeID.Server)
-                        {
-                            Main.SyncRain();
-                        }
-                    }
-                }
+                    Common.DisableEvents();
 
                 if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 5)
                 {
                     player.GetModPlayer<QoLCPlayer>().noSpawns = true;
-                    if (Main.invasionType != 0)
-                    {
-                        Main.invasionType = 0;
-                    }
-                    if (Main.pumpkinMoon)
-                    {
-                        Main.pumpkinMoon = false;
-                    }
-                    if (Main.snowMoon)
-                    {
-                        Main.snowMoon = false;
-                    }
-                    if (Main.eclipse)
-                    {
-                        Main.eclipse = false;
-                    }
-                    if (Main.bloodMoon)
-                    {
-                        Main.bloodMoon = false;
-                    }
-                    if (Main.WindyEnoughForKiteDrops)
-                    {
-                        Main.windSpeedTarget = 0f;
-                        Main.windSpeedCurrent = 0f;
-                    }
-                    if (Main.slimeRain)
-                    {
-                        Main.StopSlimeRain(true);
-                        Main.slimeWarningDelay = 1;
-                        Main.slimeWarningTime = 1;
-                    }
-                    if (BirthdayParty.PartyIsUp)
-                    {
-                        BirthdayParty.CheckNight();
-                    }
-                    if (DD2Event.Ongoing && Main.netMode != NetmodeID.MultiplayerClient)
-                    {
-                        DD2Event.StopInvasion(false);
-                    }
-                    if (Sandstorm.Happening)
-                    {
-                        Sandstorm.Happening = false;
-                        Sandstorm.TimeLeft = 0.0;
-                        Sandstorm.IntendedSeverity = 0f;
-                    }
-                    if (NPC.downedTowers && (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0))
-                    {
-                        NPC.LunarApocalypseIsUp = false;
-                        NPC.ShieldStrengthTowerNebula = 0;
-                        NPC.ShieldStrengthTowerSolar = 0;
-                        NPC.ShieldStrengthTowerStardust = 0;
-                        NPC.ShieldStrengthTowerVortex = 0;
-                        for (int i = 0; i < 200; i++)
-                        {
-                            if (Main.npc[i].active && (Main.npc[i].type == NPCID.LunarTowerNebula || Main.npc[i].type == NPCID.LunarTowerSolar || Main.npc[i].type == NPCID.LunarTowerStardust || Main.npc[i].type == NPCID.LunarTowerVortex))
-                            {
-                                Main.npc[i].dontTakeDamage = false;
-                                Main.npc[i].StrikeInstantKill();
-                            }
-                        }
-                    }
-                    if (Main.IsItRaining || Main.IsItStorming)
-                    {
-                        Main.StopRain();
-                        Main.cloudAlpha = 0f;
-                        if (Main.netMode == NetmodeID.Server)
-                        {
-                            Main.SyncRain();
-                        }
-                    }
+                    Common.DisableEvents();
                 }
             }
         }

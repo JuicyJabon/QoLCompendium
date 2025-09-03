@@ -27,7 +27,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.WatchingEye);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.WatchingEye);
         }
 
         public override void AddRecipes()

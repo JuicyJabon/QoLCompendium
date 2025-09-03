@@ -85,27 +85,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void UpdateInventory(Player player)
         {
-            if (Mode == 0)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.BottomlessLiquidBucket.Water"));
-            }
-            if (Mode == 1)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.BottomlessLiquidBucket.Lava"));
-            }
-            if (Mode == 2)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.BottomlessLiquidBucket.Honey"));
-            }
-            if (Mode == 3)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.BottomlessLiquidBucket.Shimmer"));
-            }
+            Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.BottomlessLiquidBucket.Liquid" + Mode.ToString()));
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.BottomlessBuckets);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.BottomlessBuckets);
         }
 
         public override void AddRecipes()

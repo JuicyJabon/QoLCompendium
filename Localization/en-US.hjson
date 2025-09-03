@@ -4,9 +4,9 @@ Mods: {
 			NotConsumable: Not Consumable
 			WorksInBanks: Works from inside personal storages
 			StaffOfAshingPlaceable: Creates ash grass on ash
-			StaffOfCystingPlaceable: Creates corrupt grass on dirt
+			StaffOfCystingPlaceable: Creates corrupt grass on dirt or mud
 			StaffOfHallowingPlaceable: Creates hallowed grass on dirt
-			StaffOfHemorrhagingPlaceable: Creates crimson grass on dirt
+			StaffOfHemorrhagingPlaceable: Creates crimson grass on dirt or mud
 			StaffOfOvergrownCystingPlaceable: Creates corrupt grass on mud
 			StaffOfOvergrownHemorrhagingPlaceable: Creates crimson grass on mud
 			StaffOfOvergrowthPlaceable: Creates jungle grass on mud
@@ -215,6 +215,7 @@ Mods: {
 			StationText: Station Buffs
 			AddonText: Addon Buffs
 			RepellentText: Repellent Buffs
+			CandyText: Candy Buffs
 			VanillaText: Open Vanilla Buffs
 			CalamityText: Open Calamity Buffs
 			HomewardJourneyText: Open Homeward Journey Buffs
@@ -233,59 +234,57 @@ Mods: {
 
 		ItemNames: {
 			MosaicMirror: {
-				CursedMirror: Mosaic Mirror (Latest Death)
-				MirrorOfReturn: Mosaic Mirror (Return)
-				TeleportationMirror: Mosaic Mirror (Teleportation)
+				Mirror0: Mosaic Mirror (Latest Death)
+				Mirror1: Mosaic Mirror (Return)
+				Mirror2: Mosaic Mirror (Teleportation)
 			}
 
 			Omnistaff: {
-				StaffOfAshing: Omnistaff (Ash Grass)
-				StaffOfCysting: Omnistaff (Corrupt Grass)
-				StaffOfHallowing: Omnistaff (Hallowed Grass)
-				StaffOfHemorrhaging: Omnistaff (Crimson Grass)
-				StaffOfOvergrowth: Omnistaff (Jungle Grass)
-				StaffOfOvergrownCysting: Omnistaff (Corrupt Jungle Grass)
-				StaffOfOvergrownHemorrhaging: Omnistaff (Crimson Jungle Grass)
-				StaffOfRegrowth: Omnistaff (Grass)
-				StaffOfShrooming: Omnistaff (Mushroom Grass)
+				Grass0: Omnistaff (Grass)
+				Grass1: Omnistaff (Corrupt Grass)
+				Grass2: Omnistaff (Crimson Grass)
+				Grass3: Omnistaff (Hallowed Grass)
+				Grass4: Omnistaff (Jungle Grass)
+				Grass5: Omnistaff (Mushroom Grass)
+				Grass6: Omnistaff (Ash Grass)
 			}
 
 			MossStaff: {
-				BlueMoss: Moss Staff (Blue)
-				BrownMoss: Moss Staff (Brown)
-				GreenMoss: Moss Staff (Green)
-				PurpleMoss: Moss Staff (Purple)
-				RedMoss: Moss Staff (Red)
+				Moss0: Moss Staff (Blue)
+				Moss1: Moss Staff (Brown)
+				Moss2: Moss Staff (Green)
+				Moss3: Moss Staff (Purple)
+				Moss4: Moss Staff (Red)
 			}
 
 			GlowingMossStaff: {
-				ArgonMoss: Glowing Moss Staff (Argon)
-				KryptonMoss: Glowing Moss Staff (Krypton)
-				LavaMoss: Glowing Moss Staff (Lava)
-				NeonMoss: Glowing Moss Staff (Neon)
-				XenonMoss: Glowing Moss Staff (Xenon)
-				HeliumMoss: Glowing Moss Staff (Helium)
+				Moss0: Glowing Moss Staff (Argon)
+				Moss1: Glowing Moss Staff (Krypton)
+				Moss2: Glowing Moss Staff (Lava)
+				Moss3: Glowing Moss Staff (Neon)
+				Moss4: Glowing Moss Staff (Xenon)
+				Moss5: Glowing Moss Staff (Helium)
 			}
 
 			DestinationGlobe: {
-				NoModifier: Destination Globe (No Selection)
-				Desert: Destination Globe (Desert)
-				Snow: Destination Globe (Snow)
-				Jungle: Destination Globe (Jungle)
-				GlowingMushroom: Destination Globe (Glowing Mushroom)
-				Corruption: Destination Globe (Corruption)
-				Crimson: Destination Globe (Crimson)
-				Hallow: Destination Globe (Hallow)
-				Purity: Destination Globe (Purity)
+				Biome0: Destination Globe (No Selection)
+				Biome1: Destination Globe (Desert)
+				Biome2: Destination Globe (Snow)
+				Biome3: Destination Globe (Jungle)
+				Biome4: Destination Globe (Glowing Mushroom)
+				Biome5: Destination Globe (Corruption)
+				Biome6: Destination Globe (Crimson)
+				Biome7: Destination Globe (Hallow)
+				Biome8: Destination Globe (Purity)
 			}
 
 			EntityManipulator: {
-				SpawnIncrease: Entity Manipulator (Increased Spawns)
-				SpawnDecrease: Entity Manipulator (Decreased Spawns)
-				CanceledSpawns: Entity Manipulator (Canceled Spawns)
-				CanceledEvents: Entity Manipulator (Canceled Events)
-				CanceledSpawnsAndEvents: Entity Manipulator (Canceled Spawns & Events)
-				NoModifier: Entity Manipulator (No Selection)
+				SpawnModifier0: Entity Manipulator (No Selection)
+				SpawnModifier1: Entity Manipulator (Increased Spawns)
+				SpawnModifier2: Entity Manipulator (Decreased Spawns)
+				SpawnModifier3: Entity Manipulator (Canceled Spawns)
+				SpawnModifier4: Entity Manipulator (Canceled Events)
+				SpawnModifier5: Entity Manipulator (Canceled Spawns & Events)
 			}
 
 			SummoningRemote: {
@@ -314,21 +313,21 @@ Mods: {
 			}
 
 			ChallengersCoin: {
-				Journey: Challenger's Coin (Mode: Journey)
-				Normal: Challenger's Coin (Mode: Normal)
-				Expert: Challenger's Coin (Mode: Expert)
-				Master: Challenger's Coin (Mode: Master)
+				Difficulty0: Challenger's Coin (Mode: Normal)
+				Difficulty1: Challenger's Coin (Mode: Expert)
+				Difficulty2: Challenger's Coin (Mode: Master)
+				Difficulty3: Challenger's Coin (Mode: Journey)
 			}
 
 			PhaseInterrupter: {
-				FullMoon: Phase Interrupter (Full Moon)
-				WaningGibbous: Phase Interrupter (Waning Gibbous)
-				ThirdQuarter: Phase Interrupter (Third Quarter)
-				WaningCrescent: Phase Interrupter (Waning Crescent)
-				NewMoon: Phase Interrupter (New Moon)
-				WaxingCrescent: Phase Interrupter (Waxing Crescent)
-				FirstQuarter: Phase Interrupter (First Quarter)
-				WaxingGibbous: Phase Interrupter (Waxing Gibbous)
+				Moon0: Phase Interrupter (Full Moon)
+				Moon1: Phase Interrupter (Waning Gibbous)
+				Moon2: Phase Interrupter (Third Quarter)
+				Moon3: Phase Interrupter (Waning Crescent)
+				Moon4: Phase Interrupter (New Moon)
+				Moon5: Phase Interrupter (Waxing Crescent)
+				Moon6: Phase Interrupter (First Quarter)
+				Moon7: Phase Interrupter (Waxing Gibbous)
 			}
 
 			AllInOneAccess: {
@@ -337,10 +336,10 @@ Mods: {
 			}
 
 			BottomlessLiquidBucket: {
-				Water: Bottomless Liquid Bucket (Water)
-				Lava: Bottomless Liquid Bucket (Lava)
-				Honey: Bottomless Liquid Bucket (Honey)
-				Shimmer: Bottomless Liquid Bucket (Shimmer)
+				Liquid0: Bottomless Liquid Bucket (Water)
+				Liquid1: Bottomless Liquid Bucket (Lava)
+				Liquid2: Bottomless Liquid Bucket (Honey)
+				Liquid3: Bottomless Liquid Bucket (Shimmer)
 			}
 
 			PermanentFlasks: {
@@ -3347,6 +3346,31 @@ Mods: {
 				DisplayName: Endless Bewitched Arrow Quiver
 				Tooltip: ""
 			}
+
+			LifebringerSummon: {
+				DisplayName: Green Apple
+				Tooltip: Summons the Lifebringer
+			}
+
+			MaterealizerSummon: {
+				DisplayName: Tesseract
+				Tooltip: Summons the Materealizer
+			}
+
+			OverwatcherSummon: {
+				DisplayName: Overstopwatch
+				Tooltip: Summons the Overwatcher
+			}
+
+			ScarabBeliefSummon: {
+				DisplayName: Nothingness Butterfly
+				Tooltip: Summons Scarab Belief
+			}
+
+			WorldsEndWhaleSummon: {
+				DisplayName: Fallen Halo
+				Tooltip: Summons World's End Everlasting Falling Whale
+			}
 		}
 
 		NPCs: {
@@ -4174,6 +4198,11 @@ Mods: {
 						Toggles if recipes are created for looping through class emblems
 						Can take a while to get the one you want if a lot of mods are enabled
 						'''
+				}
+
+				PortableStations: {
+					Label: "[i:36] Portable Crafting Stations"
+					Tooltip: Toggles if crafting stations work from the inventory or banks
 				}
 
 				HeartCrystalGlow: {
@@ -5311,6 +5340,13 @@ Mods: {
 			downedGoblinChariot: Downed Goblin Chariot
 			downedBigDipper: Downed Big Dipper
 			downedPuppetOpera: Downed Puppet Opera
+			downedAvatarOfEmptiness: Downed Avatar of Emptiness
+			DownedXG07Mars: Downed XG-07 Mars
+			beenToSpiritUnderground: Been to the Spirit underground biome
+			beenToInfernalDepths: Been to the Infernal Depths biome
+			beenToMaze: Been to the Maze biome
+			beenToFrozenHell: Been to the Frozen Hell biome
+			downedPrimordialWyrm: Downed Primordial Wyrm
 		}
 
 		Tiles: {

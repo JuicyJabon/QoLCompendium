@@ -65,7 +65,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
             public override void ModifyTooltips(List<TooltipLine> tooltips)
             {
-                TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+                Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
             }
 
             public override void AddRecipes()
@@ -107,7 +107,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
             public override void ModifyTooltips(List<TooltipLine> tooltips)
             {
-                TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+                Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
             }
 
             public override bool CanUseItem(Player player)
@@ -148,7 +148,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
             public override void ModifyTooltips(List<TooltipLine> tooltips)
             {
-                TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+                Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
             }
 
             public override bool CanUseItem(Player player)
@@ -188,7 +188,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
             public override void ModifyTooltips(List<TooltipLine> tooltips)
             {
-                TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+                Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
             }
 
             public override bool CanUseItem(Player player)

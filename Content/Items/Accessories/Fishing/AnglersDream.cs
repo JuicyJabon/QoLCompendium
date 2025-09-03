@@ -46,7 +46,7 @@ namespace QoLCompendium.Content.Items.Accessories.Fishing
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.FishingAccessories);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.FishingAccessories);
         }
 
         public override void AddRecipes()

@@ -51,7 +51,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     plentySatisfiedItems.Add(item.type);
                 else if (item.buffType == BuffID.WellFed3)
                     exquisitelyStuffedItems.Add(item.type);
-                else if (ModConditions.martainsOrderLoaded && item.buffType == Common.GetModBuff(ModConditions.martainsOrderMod, "Gourmet"))
+                if (ModConditions.martainsOrderLoaded && item.buffType == Common.GetModBuff(ModConditions.martainsOrderMod, "Gourmet"))
                     gourmetFlavorItems.Add(item.type);
 
                 if (!item.consumable || item.createTile < TileID.Dirt || item.ModItem != null && item.ModItem.Mod == Mod)
@@ -66,7 +66,6 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 if (TileID.Sets.RoomNeeds.CountsAsTorch.Contains(item.createTile))
                     torchItems.Add(item.type);
             }
-
             #endregion
 
             #region Anvils
@@ -202,77 +201,18 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             RegisterGroupClone(campfires, nameof(ItemID.Bookcase));
 
             RecipeGroup tombstones = new(() => $"{any} {Lang.GetItemNameValue(ItemID.Tombstone)}",
-                ItemID.Tombstone, ItemID.GraveMarker,
-                ItemID.CrossGraveMarker, ItemID.Headstone,
-                ItemID.Gravestone, ItemID.Obelisk,
-                ItemID.RichGravestone1, ItemID.RichGravestone2,
-                ItemID.RichGravestone3, ItemID.RichGravestone4,
+                ItemID.Tombstone, 
+                ItemID.GraveMarker,
+                ItemID.CrossGraveMarker, 
+                ItemID.Headstone,
+                ItemID.Gravestone, 
+                ItemID.Obelisk,
+                ItemID.RichGravestone1, 
+                ItemID.RichGravestone2,
+                ItemID.RichGravestone3, 
+                ItemID.RichGravestone4,
                 ItemID.RichGravestone5);
             RecipeGroup.RegisterGroup("QoLCompendium:AnyTombstone", tombstones);
-
-            /*
-            RecipeGroup bookcases = new(() => $"{any} {Lang.GetItemNameValue(ItemID.Bookcase)}",
-                ItemID.Bookcase, ItemID.BlueDungeonBookcase, ItemID.BoneBookcase, ItemID.BorealWoodBookcase,
-                ItemID.CactusBookcase, ItemID.CrystalBookCase, ItemID.DynastyBookcase, ItemID.EbonwoodBookcase,
-                ItemID.FleshBookcase, ItemID.FrozenBookcase, ItemID.GlassBookcase, ItemID.GoldenBookcase,
-                ItemID.GothicBookcase, ItemID.GraniteBookcase, ItemID.GreenDungeonBookcase, ItemID.HoneyBookcase,
-                ItemID.LivingWoodBookcase, ItemID.MarbleBookcase, ItemID.MeteoriteBookcase, ItemID.MushroomBookcase,
-                ItemID.ObsidianBookcase, ItemID.PalmWoodBookcase, ItemID.PearlwoodBookcase, ItemID.PinkDungeonBookcase,
-                ItemID.PumpkinBookcase, ItemID.RichMahoganyBookcase, ItemID.ShadewoodBookcase, ItemID.SkywareBookcase,
-                ItemID.SlimeBookcase, ItemID.SpookyBookcase, ItemID.SteampunkBookcase, ItemID.AshWoodBookcase);
-            RecipeGroup.RegisterGroup("QoLCompendium:Bookcases", bookcases);
-            */
-
-            /*
-            RecipeGroup tables = new(() => $"{any} {Lang.GetItemNameValue(ItemID.WoodenTable)}",
-                ItemID.WoodenTable,
-                ItemID.BorealWoodTable,
-                ItemID.AshWoodTable,
-                ItemID.RichMahoganyTable,
-                ItemID.LivingWoodTable,
-                ItemID.PearlwoodTable,
-                ItemID.SpookyTable,
-                ItemID.EbonwoodTable,
-                ItemID.ShadewoodTable,
-                ItemID.PalmWoodTable,
-                ItemID.DynastyTable,
-                ItemID.BambooTable);
-            RecipeGroup.RegisterGroup("QoLCompendium:WoodenTables", tables);
-            */
-
-            /*
-            RecipeGroup chairs = new(() => $"{any} {Lang.GetItemNameValue(ItemID.WoodenChair)}",
-                ItemID.WoodenChair,
-                ItemID.BorealWoodChair,
-                ItemID.AshWoodChair,
-                ItemID.RichMahoganyChair,
-                ItemID.LivingWoodChair,
-                ItemID.PearlwoodChair,
-                ItemID.SpookyChair,
-                ItemID.EbonwoodChair,
-                ItemID.ShadewoodChair,
-                ItemID.PalmWoodChair,
-                ItemID.DynastyChair,
-                ItemID.BambooChair);
-            RecipeGroup.RegisterGroup("QoLCompendium:WoodenChairs", chairs);
-            */
-
-            /*
-            RecipeGroup sinks = new(() => $"{any} {Lang.GetItemNameValue(ItemID.WoodenSink)}",
-                ItemID.WoodenSink,
-                ItemID.BorealWoodSink,
-                ItemID.AshWoodSink,
-                ItemID.RichMahoganySink,
-                ItemID.LivingWoodSink,
-                ItemID.PearlwoodSink,
-                ItemID.SpookySink,
-                ItemID.EbonwoodSink,
-                ItemID.ShadewoodSink,
-                ItemID.PalmWoodSink,
-                ItemID.DynastySink,
-                ItemID.BambooSink);
-            RecipeGroup.RegisterGroup("QoLCompendium:WoodenSinks", sinks);
-            */
 
             RecipeGroup goldBars = new(() => $"{any} {Lang.GetItemNameValue(ItemID.GoldBar)}",
                 ItemID.GoldBar, ItemID.PlatinumBar);

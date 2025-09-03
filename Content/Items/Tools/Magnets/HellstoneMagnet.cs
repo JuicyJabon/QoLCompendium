@@ -24,7 +24,7 @@ namespace QoLCompendium.Content.Items.Tools.Magnets
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Magnets);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Magnets);
         }
 
         public override void AddRecipes()

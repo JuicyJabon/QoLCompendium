@@ -64,7 +64,7 @@ namespace QoLCompendium.Content.Items.Dedicated
             };
             tooltips.Add(dedicated);
 
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DedicatedItems);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DedicatedItems);
         }
 
         public override void AddRecipes()

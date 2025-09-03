@@ -202,6 +202,12 @@
 
                 //Sponges
                 Common.TransmuteItems([ItemID.SuperAbsorbantSponge, ItemID.LavaAbsorbantSponge, ItemID.HoneyAbsorbantSponge]);
+
+                //Mimic
+                Common.TransmuteItems([ItemID.DualHook, ItemID.MagicDagger, ItemID.PhilosophersStone, ItemID.TitanGlove, ItemID.StarCloak, ItemID.CrossNecklace]);
+
+                //Ice Mimic
+                Common.TransmuteItems([ItemID.ToySled, ItemID.Frostbrand, ItemID.IceBow, ItemID.FlowerofFrost]);
             }
         }
     }

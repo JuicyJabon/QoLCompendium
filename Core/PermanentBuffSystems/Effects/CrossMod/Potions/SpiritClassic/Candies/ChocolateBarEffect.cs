@@ -8,8 +8,7 @@
             if (!ModConditions.spiritLoaded)
                 return;
 
-            // && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Jump]
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "ChocolateBuff")])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "ChocolateBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.ChocolateBar])
             {
                 buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "ChocolateBuff"));
                 buffToApply.Update(player.Player, ref index);

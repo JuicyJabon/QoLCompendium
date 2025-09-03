@@ -27,14 +27,17 @@ namespace QoLCompendium.Content.Tiles.Other
             DustType = 54;
             AdjTiles = new int[] { TileID.Platforms };
         }
+
         public override void PostSetDefaults()
         {
             Main.tileNoSunLight[Type] = false;
         }
+
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = 10;
         }
+
         public override void FloorVisuals(Player player)
         {
             player.powerrun = true;

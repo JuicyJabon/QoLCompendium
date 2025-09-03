@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Core;
 using QoLCompendium.Core.Changes.TooltipChanges;
+using System.Collections.ObjectModel;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
@@ -10,6 +11,26 @@ namespace QoLCompendium.Content.Items.Tools.Staves
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.RegrowthStaves;
 
         public int Mode = 0;
+
+        public readonly HashSet<int> MossTypes = new()
+        {
+            TileID.ArgonMoss,
+            TileID.KryptonMoss,
+            TileID.LavaMoss,
+            TileID.VioletMoss,
+            TileID.XenonMoss,
+            TileID.RainbowMoss
+        };
+
+        public readonly HashSet<int> BrickMossTypes = new()
+        {
+            TileID.ArgonMossBrick,
+            TileID.KryptonMossBrick,
+            TileID.LavaMossBrick,
+            TileID.VioletMossBrick,
+            TileID.XenonMossBrick,
+            TileID.RainbowMossBrick
+        };
 
         public override void SetStaticDefaults()
         {
@@ -50,82 +71,24 @@ namespace QoLCompendium.Content.Items.Tools.Staves
 
         public override void HoldItem(Player player)
         {
-            if (Mode == 0)
-            {
-                Item.createTile = TileID.ArgonMoss;
-                if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
-                    Item.createTile = TileID.ArgonMossBrick;
-            }
-            if (Mode == 1)
-            {
-                Item.createTile = TileID.KryptonMoss;
-                if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
-                    Item.createTile = TileID.KryptonMossBrick;
-            }
-            if (Mode == 2)
-            {
-                Item.createTile = TileID.LavaMoss;
-                if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
-                    Item.createTile = TileID.LavaMossBrick;
-            }
-            if (Mode == 3)
-            {
-                Item.createTile = TileID.VioletMoss;
-                if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
-                    Item.createTile = TileID.VioletMossBrick;
-            }
-            if (Mode == 4)
-            {
-                Item.createTile = TileID.XenonMoss;
-                if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
-                    Item.createTile = TileID.XenonMossBrick;
-            }
-            if (Mode == 5)
-            {
-                Item.createTile = TileID.RainbowMoss;
-                if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
-                    Item.createTile = TileID.RainbowMossBrick;
-            }
-        }
-
-        public override void UpdateInventory(Player player)
-        {
-            if (Mode == 0)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.GlowingMossStaff.ArgonMoss"));
-            }
-            if (Mode == 1)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.GlowingMossStaff.KryptonMoss"));
-            }
-            if (Mode == 2)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.GlowingMossStaff.LavaMoss"));
-            }
-            if (Mode == 3)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.GlowingMossStaff.NeonMoss"));
-            }
-            if (Mode == 4)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.GlowingMossStaff.XenonMoss"));
-            }
-            if (Mode == 5)
-            {
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.GlowingMossStaff.HeliumMoss"));
-            }
+            Item.createTile = MossTypes.ElementAt(Mode);
+            if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.GrayBrick)
+                Item.createTile = BrickMossTypes.ElementAt(Mode);
         }
 
         public override void RightClick(Player player)
         {
             Mode++;
             if (Mode > 5)
-            {
                 Mode = 0;
-            }
         }
 
         public override void OnConsumeItem(Player player) => Item.stack++;
+
+        public override void UpdateInventory(Player player)
+        {
+            Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.GlowingMossStaff.Moss" + Mode.ToString()));
+        }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -134,7 +97,7 @@ namespace QoLCompendium.Content.Items.Tools.Staves
             tooltips.Insert(tooltips.IndexOf(placeable), text);
             tooltips.RemoveAll((x) => x.Name == "Placeable" && x.Mod == "Terraria");
 
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
         }
 
         public override void AddRecipes()

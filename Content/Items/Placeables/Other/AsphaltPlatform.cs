@@ -22,7 +22,7 @@ namespace QoLCompendium.Content.Items.Placeables.Other
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.AsphaltPlatform);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.AsphaltPlatform);
         }
 
         public override void AddRecipes()

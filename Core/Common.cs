@@ -11,6 +11,7 @@ using QoLCompendium.Core.Changes.ModChanges;
 using System.Reflection;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.GameContent.Events;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader.Config;
 
@@ -289,6 +290,10 @@ namespace QoLCompendium.Core
             ModContent.ProjectileType<EtherianConstructProjectile>()
         };
 
+        public static readonly HashSet<int> GraveStones = [ItemID.Tombstone, ItemID.GraveMarker, ItemID.CrossGraveMarker, ItemID.Headstone, ItemID.Gravestone, ItemID.Obelisk, ItemID.RichGravestone1, ItemID.RichGravestone2, ItemID.RichGravestone3, ItemID.RichGravestone4, ItemID.RichGravestone5];
+
+        public static readonly HashSet<int> SnowBiomeBlocks = [ItemID.SnowBlock, ItemID.SnowBrick, ItemID.IceBlock, ItemID.PinkIceBlock, ItemID.PurpleIceBlock, ItemID.RedIceBlock];
+
         public static readonly bool[] NormalBunnies = NPCID.Sets.Factory.CreateBoolSet(NPCID.Bunny, NPCID.GemBunnyTopaz, NPCID.GemBunnySapphire, NPCID.GemBunnyRuby, NPCID.GemBunnyEmerald, NPCID.GemBunnyDiamond, NPCID.GemBunnyAmethyst, NPCID.GemBunnyAmber, NPCID.ExplosiveBunny, NPCID.BunnySlimed, NPCID.BunnyXmas, NPCID.CorruptBunny, NPCID.CrimsonBunny, NPCID.PartyBunny);
         
         public static readonly bool[] NormalSquirrels = NPCID.Sets.Factory.CreateBoolSet(NPCID.Squirrel, NPCID.SquirrelRed, NPCID.GemSquirrelTopaz, NPCID.GemSquirrelSapphire, NPCID.GemSquirrelRuby, NPCID.GemSquirrelEmerald, NPCID.GemSquirrelDiamond, NPCID.GemSquirrelAmethyst, NPCID.GemSquirrelAmber);
@@ -381,6 +386,7 @@ namespace QoLCompendium.Core
             ItemID.TreasureMagnet,
             ItemID.RoyalGel,
             ItemID.SpectreGoggles,
+            ItemID.CordageGuide,
             ItemID.DontHurtCrittersBook,
             ItemID.DontHurtNatureBook,
             ItemID.DontHurtComboBook,
@@ -953,6 +959,11 @@ namespace QoLCompendium.Core
                 ModContent.ItemType<GiantClamSummon>(),
                 ModContent.ItemType<LeviathanAnahitaSummon>(),
                 ModContent.ItemType<OldDukeSummon>(),
+                ModContent.ItemType<LifebringerSummon>(),
+                ModContent.ItemType<MaterealizerSummon>(),
+                ModContent.ItemType<OverwatcherSummon>(),
+                ModContent.ItemType<ScarabBeliefSummon>(),
+                ModContent.ItemType<WorldsEndWhaleSummon>(),
                 //Aequus
                 Common.GetModItem(ModConditions.aequusMod, "GalacticStarfruit"),
                 //AFKPETS
@@ -1533,6 +1544,17 @@ namespace QoLCompendium.Core
             return item.pick == 0 && item.axe == 0 && item.hammer == 0 && item.createTile == -1 && item.createWall == -1;
         }
 
+        public static void ItemDisabledTooltip(Item item, List<TooltipLine> tooltips, bool configOn)
+        {
+            TooltipLine name = tooltips.Find(l => l.Name == "ItemName");
+            if (!configOn)
+            {
+                name.Text += " " + Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ItemDisabled");
+                name.OverrideColor = Color.Red;
+            }
+
+        }
+
         public static int GetModItem(Mod mod, string itemName)
         {
             if (mod != null)
@@ -1763,21 +1785,6 @@ namespace QoLCompendium.Core
             recipe.Register();
         }
 
-        public static void SpawnBoss(Player player, int bossType)
-        {
-            if (player.whoAmI == Main.myPlayer)
-            {
-                SoundEngine.PlaySound(SoundID.Roar, player.position);
-
-                Vector2 spawnPosition = player.Center - Vector2.UnitY * 800f;
-                int npc = NPC.NewNPC(NPC.GetBossSpawnSource(Main.myPlayer), (int)spawnPosition.X, (int)spawnPosition.Y, bossType);
-                if (Main.netMode != NetmodeID.SinglePlayer)
-                    NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: bossType);
-                if (npc != Main.maxNPCs && Main.netMode == NetmodeID.Server)
-                    NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npc);
-            }
-        }
-
         public static Asset<Texture2D> GetAsset(string location, string filename, int fileNumber = -1)
         {
             if (fileNumber > -1)
@@ -1865,7 +1872,7 @@ namespace QoLCompendium.Core
                 return true;
             else if (ModConditions.calamityEntropyLoaded && QoLCompendium.crossModConfig.CalamityEntropyArmorPrefixesHaveEnchantedEffects)
             {
-                if (QoLCompendium.mainConfig.GoodPrefixesHaveEnchantedEffects && !item.IsAir && CalamityEntropyArmorGlint.ArmorHasEntropyPrefix(item))
+                if (!item.IsAir && CalamityEntropyArmorGlint.ArmorHasEntropyPrefix(item))
                     return true;
             }
             
@@ -1880,6 +1887,35 @@ namespace QoLCompendium.Core
                     return i;
             }
             return -1;
+        }
+
+        public static List<Item> GetAllInventoryItemsList(Player player, string ignores = "", int estimatedCapacity = 80)
+        {
+            ignores = ignores.Replace("portable", "piggy safe forge void", StringComparison.Ordinal);
+            var itemList = new List<Item>(estimatedCapacity);
+            var items = GetAllInventoryItems(player);
+            foreach ((string name, Item[] itemArray) in items)
+            {
+                if (ignores.Contains(name, StringComparison.Ordinal))
+                    continue;
+                itemList.AddRange(itemArray);
+            }
+
+            return itemList;
+        }
+
+        public static Dictionary<string, Item[]> GetAllInventoryItems(Player player)
+        {
+            var items = new Dictionary<string, Item[]>
+            {
+                {"inv", player.inventory},
+                {"piggy", player.bank.item},
+                {"safe", player.bank2.item},
+                {"forge", player.bank3.item},
+                {"void", player.bank4.item}
+            };
+
+            return items;
         }
 
         public static void SetDefaultsToPermanentBuff(Item item)
@@ -1930,6 +1966,64 @@ namespace QoLCompendium.Core
 
             ret += best - 1f;
             return ret;
+        }
+
+        public static void DisableEvents()
+        {
+            if (Main.invasionType != 0)
+                Main.invasionType = 0;
+            if (Main.pumpkinMoon)
+                Main.pumpkinMoon = false;
+            if (Main.snowMoon)
+                Main.snowMoon = false;
+            if (Main.eclipse)
+                Main.eclipse = false;
+            if (Main.bloodMoon)
+                Main.bloodMoon = false;
+            if (Main.WindyEnoughForKiteDrops)
+            {
+                Main.windSpeedTarget = 0f;
+                Main.windSpeedCurrent = 0f;
+            }
+            if (Main.slimeRain)
+            {
+                Main.StopSlimeRain(true);
+                Main.slimeWarningDelay = 1;
+                Main.slimeWarningTime = 1;
+            }
+            if (BirthdayParty.PartyIsUp)
+                BirthdayParty.CheckNight();
+            if (DD2Event.Ongoing && Main.netMode != NetmodeID.MultiplayerClient)
+                DD2Event.StopInvasion(false);
+            if (Sandstorm.Happening)
+            {
+                Sandstorm.Happening = false;
+                Sandstorm.TimeLeft = 0.0;
+                Sandstorm.IntendedSeverity = 0f;
+            }
+            if (NPC.downedTowers && (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0))
+            {
+                NPC.LunarApocalypseIsUp = false;
+                NPC.ShieldStrengthTowerNebula = 0;
+                NPC.ShieldStrengthTowerSolar = 0;
+                NPC.ShieldStrengthTowerStardust = 0;
+                NPC.ShieldStrengthTowerVortex = 0;
+                for (int i = 0; i < 200; i++)
+                {
+                    if (Main.npc[i].active && (Main.npc[i].type == NPCID.LunarTowerNebula || Main.npc[i].type == NPCID.LunarTowerSolar || Main.npc[i].type == NPCID.LunarTowerStardust || Main.npc[i].type == NPCID.LunarTowerVortex))
+                    {
+                        Main.npc[i].dontTakeDamage = false;
+                        Main.npc[i].StrikeInstantKill();
+                    }
+                }
+            }
+            if (Main.IsItRaining || Main.IsItStorming)
+            {
+                Main.StopRain();
+                Main.cloudAlpha = 0f;
+                if (Main.netMode == NetmodeID.Server)
+                    Main.SyncRain();
+            }
         }
 
         public static int ToFrames(float seconds, int extraUpdates = 0)

@@ -4,17 +4,17 @@ namespace QoLCompendium.Core.UI.Panels
 {
     public class EntityManipulatorUI : UIState
     {
-        public UIPanel ManipulatorPanel;
         public static bool visible = false;
         public static uint timeStart;
 
         public override void OnInitialize()
         {
-            ManipulatorPanel = new UIPanel();
-            ManipulatorPanel.Top.Set(Main.screenHeight / 2, 0f);
-            ManipulatorPanel.Left.Set(Main.screenWidth / 2 + 7, 0f);
-            ManipulatorPanel.Width.Set(400f, 0f);
-            ManipulatorPanel.Height.Set(400f, 0f);
+            UIPanel ManipulatorPanel = new();
+            ManipulatorPanel.SetPadding(0);
+            ManipulatorPanel.HAlign = 0.62f;
+            ManipulatorPanel.VAlign = 0.53f;
+            ManipulatorPanel.Width.Set(280f, 0f);
+            ManipulatorPanel.Height.Set(40f, 0f);
             ManipulatorPanel.BackgroundColor *= 0f;
             ManipulatorPanel.BorderColor *= 0f;
             Append(ManipulatorPanel);

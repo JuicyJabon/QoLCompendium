@@ -4,17 +4,17 @@ namespace QoLCompendium.Core.UI.Panels
 {
     public class AllInOneAccessUI : UIState
     {
-        public UIPanel StoragePanel;
         public static bool visible = false;
         public static uint timeStart;
 
         public override void OnInitialize()
         {
-            StoragePanel = new UIPanel();
-            StoragePanel.Top.Set(Main.screenHeight / 2, 0f);
-            StoragePanel.Left.Set(Main.screenWidth / 2 + 47, 0f);
+            UIPanel StoragePanel = new();
+            StoragePanel.SetPadding(0);
+            StoragePanel.HAlign = 0.615f;
+            StoragePanel.VAlign = 0.53f;
             StoragePanel.Width.Set(200f, 0f);
-            StoragePanel.Height.Set(200f, 0f);
+            StoragePanel.Height.Set(40f, 0f);
             StoragePanel.BackgroundColor *= 0f;
             StoragePanel.BorderColor *= 0f;
             Append(StoragePanel);

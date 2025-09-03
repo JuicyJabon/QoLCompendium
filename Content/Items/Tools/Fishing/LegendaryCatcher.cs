@@ -32,7 +32,7 @@ namespace QoLCompendium.Content.Items.Tools.Fishing
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.LegendaryCatcher);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.LegendaryCatcher);
         }
 
         public override void HoldItem(Player player)

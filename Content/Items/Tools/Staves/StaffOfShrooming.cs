@@ -37,7 +37,7 @@ namespace QoLCompendium.Content.Items.Tools.Staves
             tooltips.Insert(tooltips.IndexOf(placeable), text);
             tooltips.RemoveAll((x) => x.Name == "Placeable" && x.Mod == "Terraria");
 
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
         }
 
         public override void AddRecipes()

@@ -21,7 +21,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Mirrors);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Mirrors);
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)

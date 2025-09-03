@@ -24,7 +24,7 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.CraftingStations);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.CraftingStations);
         }
 
         public override void AddRecipes()

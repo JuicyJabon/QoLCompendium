@@ -28,7 +28,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.ChallengersCoin);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.ChallengersCoin);
         }
 
         public override bool AltFunctionUse(Player player)
@@ -115,17 +115,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void UpdateInventory(Player player)
         {
-            if (Main.GameMode == 0)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.ChallengersCoin.Normal"));
-
-            if (Main.GameMode == 1)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.ChallengersCoin.Expert"));
-
-            if (Main.GameMode == 2)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.ChallengersCoin.Master"));
-
-            if (Main.GameMode == 3)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.ChallengersCoin.Journey"));
+            Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.ChallengersCoin.Difficulty" + Main.GameMode.ToString()));
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

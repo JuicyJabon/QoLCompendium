@@ -44,7 +44,7 @@ namespace QoLCompendium.Content.Items.Tools.Summons.CrossMod
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.CrossModItems);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.CrossModItems);
         }
 
         public override void AddRecipes()

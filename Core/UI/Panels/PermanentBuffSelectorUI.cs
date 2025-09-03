@@ -4,7 +4,6 @@ namespace QoLCompendium.Core.UI.Panels
 {
     public class PermanentBuffSelectorUI : UIState
     {
-        public UIPanel SelectorPanel;
         public static bool visible = false;
         public static uint timeStart;
 
@@ -18,10 +17,10 @@ namespace QoLCompendium.Core.UI.Panels
 
         public override void OnInitialize()
         {
-            SelectorPanel = new UIPanel();
+            UIPanel SelectorPanel = new();
             SelectorPanel.SetPadding(0);
-            SelectorPanel.Top.Set(Main.screenHeight / 2 - 60, 0f);
-            SelectorPanel.Left.Set(Main.screenWidth / 2 + 10f, 0f);
+            SelectorPanel.HAlign = 0.625f;
+            SelectorPanel.VAlign = 0.5f;
             SelectorPanel.Width.Set(304f, 0f);
             SelectorPanel.Height.Set(112f, 0f);
             SelectorPanel.BackgroundColor = new Color(73, 94, 171);

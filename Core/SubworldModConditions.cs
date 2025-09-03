@@ -9,9 +9,9 @@
     {
         public override void OnEnterWorld()
         {
-            if (SubworldModConditions.downedBereftVassal)
+            if (SubworldModConditions.downedBereftVassal || ModConditions.DownedBoss[(int)ModConditions.Downed.BereftVassal])
             {
-                ModConditions.downedBereftVassal = true;
+                ModConditions.DownedBoss[(int)ModConditions.Downed.BereftVassal] = true;
             }
         }
     }

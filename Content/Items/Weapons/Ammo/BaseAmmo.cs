@@ -27,7 +27,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
         }
 
         public override void AddRecipes()

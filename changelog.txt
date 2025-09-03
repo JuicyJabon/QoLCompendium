@@ -1,2 +1,5 @@
-v2.2.18
-1. 
+v2.2.19
+1. Added Spirit Classic Candy buffs to the permanent buff UI
+2. Added a config for Portable Stations (Can be laggy when enabled!)
+3. Fixed Permanent Buff UI softlocking the game when clicking on buffs that weren't saved properly
+4. Added 5 boss summons for the Hallowed Altar riddle bosses from Homeward Journey

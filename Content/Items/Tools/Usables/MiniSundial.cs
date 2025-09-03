@@ -28,7 +28,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.MiniSundial);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.MiniSundial);
         }
 
         public override void AddRecipes()

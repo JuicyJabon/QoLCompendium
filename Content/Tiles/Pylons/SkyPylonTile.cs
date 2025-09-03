@@ -10,6 +10,8 @@ namespace QoLCompendium.Content.Tiles.Pylons
 {
     public class SkyPylonTile : ModPylon
     {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.Pylons;
+
         public int CrystalVerticalFrameCount = 8;
 
         public Asset<Texture2D> crystalTexture;

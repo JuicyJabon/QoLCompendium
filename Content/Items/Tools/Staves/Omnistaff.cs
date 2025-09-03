@@ -1,5 +1,6 @@
 ﻿using QoLCompendium.Core;
 using QoLCompendium.Core.Changes.TooltipChanges;
+using System.Collections.ObjectModel;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
@@ -10,6 +11,17 @@ namespace QoLCompendium.Content.Items.Tools.Staves
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.RegrowthStaves;
 
         public int Mode = 0;
+
+        public readonly HashSet<int> GrassTypes = new()
+        {
+            TileID.Grass,
+            TileID.CorruptGrass,
+            TileID.CrimsonGrass,
+            TileID.HallowedGrass,
+            TileID.JungleGrass,
+            TileID.MushroomGrass,
+            TileID.AshGrass,
+        };
 
         public override void SetStaticDefaults()
         {
@@ -26,7 +38,7 @@ namespace QoLCompendium.Content.Items.Tools.Staves
             Item.width = 24;
             Item.height = 28;
             Item.damage = 14;
-            Item.createTile = TileID.AshGrass;
+            Item.createTile = TileID.Grass;
             Item.UseSound = SoundID.Item1;
             Item.knockBack = 3f;
             Item.SetShopValues(ItemRarityColor.LightPurple6, Item.sellPrice(0, 0, 50));
@@ -43,70 +55,30 @@ namespace QoLCompendium.Content.Items.Tools.Staves
             Mode = tag.GetInt("OmnistaffMode");
         }
 
-        public override bool CanRightClick()
-        {
-            return true;
-        }
+        public override bool CanRightClick() => true;
 
-        public override void UpdateInventory(Player player)
+        public override void HoldItem(Player player)
         {
-            if (Mode == 0)
-            {
-                Item.createTile = TileID.Grass;
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.Omnistaff.StaffOfRegrowth"));
-            }
-            if (Mode == 1)
-            {
-                Item.createTile = TileID.CorruptGrass;
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.Omnistaff.StaffOfCysting"));
-            }
-            if (Mode == 2)
-            {
-                Item.createTile = TileID.CrimsonGrass;
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.Omnistaff.StaffOfHemorrhaging"));
-            }
-            if (Mode == 3)
-            {
-                Item.createTile = TileID.HallowedGrass;
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.Omnistaff.StaffOfHallowing"));
-            }
-            if (Mode == 4)
-            {
-                Item.createTile = TileID.JungleGrass;
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.Omnistaff.StaffOfOvergrowth"));
-            }
-            if (Mode == 5)
-            {
+            Item.createTile = GrassTypes.ElementAt(Mode);
+            if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.Mud && GrassTypes.ElementAt(Mode) == TileID.CorruptGrass)
                 Item.createTile = TileID.CorruptJungleGrass;
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.Omnistaff.StaffOfOvergrownCysting"));
-            }
-            if (Mode == 6)
-            {
+            else if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.Mud && GrassTypes.ElementAt(Mode) == TileID.CrimsonGrass)
                 Item.createTile = TileID.CrimsonJungleGrass;
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.Omnistaff.StaffOfOvergrownHemorrhaging"));
-            }
-            if (Mode == 7)
-            {
-                Item.createTile = TileID.MushroomGrass;
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.Omnistaff.StaffOfShrooming"));
-            }
-            if (Mode == 8)
-            {
-                Item.createTile = TileID.AshGrass;
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.Omnistaff.StaffOfAshing"));
-            }
         }
 
         public override void RightClick(Player player)
         {
             Mode++;
-            if (Mode > 8)
-            {
+            if (Mode > 6)
                 Mode = 0;
-            }
         }
 
         public override void OnConsumeItem(Player player) => Item.stack++;
+
+        public override void UpdateInventory(Player player)
+        {
+            Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.Omnistaff.Grass" + Mode.ToString()));
+        }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -115,7 +87,7 @@ namespace QoLCompendium.Content.Items.Tools.Staves
             tooltips.Insert(tooltips.IndexOf(placeable), text);
             tooltips.RemoveAll((x) => x.Name == "Placeable" && x.Mod == "Terraria");
 
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
         }
 
         public override void AddRecipes()
@@ -125,8 +97,6 @@ namespace QoLCompendium.Content.Items.Tools.Staves
             r.AddIngredient(ModContent.ItemType<StaffOfCysting>());
             r.AddIngredient(ModContent.ItemType<StaffOfHallowing>());
             r.AddIngredient(ModContent.ItemType<StaffOfHemorrhaging>());
-            r.AddIngredient(ModContent.ItemType<StaffOfOvergrownCysting>());
-            r.AddIngredient(ModContent.ItemType<StaffOfOvergrownHemorrhaging>());
             r.AddIngredient(ModContent.ItemType<StaffOfOvergrowth>());
             r.AddIngredient(ItemID.StaffofRegrowth);
             r.AddIngredient(ModContent.ItemType<StaffOfShrooming>());

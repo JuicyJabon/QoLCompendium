@@ -29,6 +29,14 @@ namespace QoLCompendium.Core.UI.Panels
         public static PermanentBuffButton ToxinButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
         public static PermanentBuffButton ZephyrButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
 
+        //CANDIES
+        public static PermanentBuffButton CandyButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
+        public static PermanentBuffButton ChocolateBarButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
+        public static PermanentBuffButton HealthCandyButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
+        public static PermanentBuffButton LollipopButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
+        public static PermanentBuffButton ManaCandyButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
+        public static PermanentBuffButton TaffyButton = new(ModContent.Request<Texture2D>("QoLCompendium/Assets/Items/PermanentBuff"));
+
         public static HashSet<PermanentBuffButton> allBuffButtons = new();
 
         public override void OnInitialize()
@@ -38,7 +46,7 @@ namespace QoLCompendium.Core.UI.Panels
             BuffPanel.Left.Set(575f, 0f);
             BuffPanel.Top.Set(275f, 0f);
             BuffPanel.Width.Set(352f, 0f);
-            BuffPanel.Height.Set(176f, 0f);
+            BuffPanel.Height.Set(240f, 0f);
             BuffPanel.BackgroundColor = new Color(73, 94, 171);
 
             BuffPanel.OnLeftMouseDown += new MouseEvent(DragStart);
@@ -57,6 +65,13 @@ namespace QoLCompendium.Core.UI.Panels
             potionText.Width.Set(64f, 0f);
             potionText.Height.Set(32f, 0f);
             BuffPanel.Append(potionText);
+
+            UIText candyText = new(UISystem.CandyText);
+            candyText.Left.Set(16f, 0f);
+            candyText.Top.Set(168f, 0f);
+            candyText.Width.Set(64f, 0f);
+            candyText.Height.Set(32f, 0f);
+            BuffPanel.Append(candyText);
 
             #region Arena
             //Coiled Energizer
@@ -144,6 +159,38 @@ namespace QoLCompendium.Core.UI.Panels
             BuffPanel.Append(ZephyrButton);
             #endregion
 
+            #region Candies
+            //Candy
+            CreateBuffButton(CandyButton, 16f, 192f);
+            CandyButton.OnLeftClick += CandyClicked;
+            BuffPanel.Append(CandyButton);
+
+            //Chocolate Bar
+            CreateBuffButton(ChocolateBarButton, 48f, 192f);
+            ChocolateBarButton.OnLeftClick += ChocolateBarClicked;
+            BuffPanel.Append(ChocolateBarButton);
+
+            //Health Candy
+            CreateBuffButton(HealthCandyButton, 80f, 192f);
+            HealthCandyButton.OnLeftClick += HealthCandyClicked;
+            BuffPanel.Append(HealthCandyButton);
+
+            //Lollipop
+            CreateBuffButton(LollipopButton, 112f, 192f);
+            LollipopButton.OnLeftClick += LollipopClicked;
+            BuffPanel.Append(LollipopButton);
+
+            //Mana Candy
+            CreateBuffButton(ManaCandyButton, 144f, 192f);
+            ManaCandyButton.OnLeftClick += ManaCandyClicked;
+            BuffPanel.Append(ManaCandyButton);
+
+            //Taffy
+            CreateBuffButton(TaffyButton, 176f, 192f);
+            TaffyButton.OnLeftClick += TaffyClicked;
+            BuffPanel.Append(TaffyButton);
+            #endregion
+
             HashSet<PermanentBuffButton> buttons = new()
             {
                 //arena
@@ -163,7 +210,14 @@ namespace QoLCompendium.Core.UI.Panels
                 StarburnButton,
                 SteadfastButton,
                 ToxinButton,
-                ZephyrButton
+                ZephyrButton,
+                //Candies
+                CandyButton,
+                ChocolateBarButton,
+                HealthCandyButton,
+                LollipopButton,
+                ManaCandyButton,
+                TaffyButton
             };
             allBuffButtons.UnionWith(buttons);
 
@@ -192,6 +246,16 @@ namespace QoLCompendium.Core.UI.Panels
         private void ZephyrClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Zephyr, ZephyrButton);
         #endregion
 
+        #region Candies
+        private void CandyClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Candy, CandyButton);
+        private void ChocolateBarClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.ChocolateBar, ChocolateBarButton);
+        private void HealthCandyClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.HealthCandy, HealthCandyButton);
+        private void LollipopClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Lollipop, LollipopButton);
+        private void ManaCandyClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.ManaCandy, ManaCandyButton);
+        private void TaffyClicked(UIMouseEvent evt, UIElement listeningElement) => BuffClick((int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Taffy, TaffyButton);
+
+        #endregion
+
         public static void GetSpiritClassicBuffData()
         {
             if (!ModConditions.spiritLoaded)
@@ -216,6 +280,13 @@ namespace QoLCompendium.Core.UI.Panels
             SteadfastButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "TurtlePotionBuff")).DisplayName;
             ToxinButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "BismitePotionBuff")).DisplayName;
             ZephyrButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "DoubleJumpPotionBuff")).DisplayName;
+            //CANDIES
+            CandyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "CandyBuff")).DisplayName;
+            ChocolateBarButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "ChocolateBuff")).DisplayName;
+            HealthCandyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "HealthBuffC")).DisplayName;
+            LollipopButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "LollipopBuff")).DisplayName;
+            ManaCandyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "ManaBuffC")).DisplayName;
+            TaffyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "TaffyBuff")).DisplayName;
 
             //SPRITES
             //ARENA
@@ -236,6 +307,13 @@ namespace QoLCompendium.Core.UI.Panels
             SteadfastButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "TurtlePotionBuff")));
             ToxinButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "BismitePotionBuff")));
             ZephyrButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "DoubleJumpPotionBuff")));
+            //CANDIES
+            CandyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "CandyBuff")));
+            ChocolateBarButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "ChocolateBuff")));
+            HealthCandyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "HealthBuffC")));
+            LollipopButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "LollipopBuff")));
+            ManaCandyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "ManaBuffC")));
+            TaffyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "TaffyBuff")));
         }
 
         public override void Update(GameTime gameTime)

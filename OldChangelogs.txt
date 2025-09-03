@@ -1,3 +1,11 @@
+v2.2.18
+1. Fixed Golden Lockpick recipes erroring when the item is unloaded
+2. Changed how UI positioning is handled
+3. Fixed Bereft Vassal's downed tracking not working
+4. Removed Overgrown variants of Staff of Cysting & Hemorrhaging
+ - The normal variants now can place on dirt & mud simultaneously
+5. Fixed Spooky Mod recipe error
+
 v2.2.17
 1. Added a config page for mod specific toggles
 2. Updated shops for the following mods:

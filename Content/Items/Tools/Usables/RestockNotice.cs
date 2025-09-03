@@ -27,7 +27,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RestockNotice);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RestockNotice);
         }
 
         public override bool? UseItem(Player player)

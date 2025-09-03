@@ -25,7 +25,7 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.MoonPedestals);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.MoonPedestals);
         }
 
         public override void AddRecipes()

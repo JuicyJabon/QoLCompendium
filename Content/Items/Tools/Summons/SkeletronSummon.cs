@@ -44,7 +44,7 @@ namespace QoLCompendium.Content.Items.Tools.Summons
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.BossSummons);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.BossSummons);
         }
 
         public override void AddRecipes()

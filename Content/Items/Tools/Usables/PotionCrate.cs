@@ -73,7 +73,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             TooltipLine text = new(Mod, "PotionCrateTooltip", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.PotionCrateTooltip").FormatWith(QoLCompendium.mainConfig.EndlessBuffAmount));
             tooltips.Insert(tooltips.IndexOf(tip0) + 1, text);
 
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PotionCrate);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PotionCrate);
     }
 
         public override void AddRecipes()

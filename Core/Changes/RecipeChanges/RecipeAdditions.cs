@@ -184,6 +184,8 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             Common.CreateCrateRecipe(ItemID.CordageGuide, ItemID.WoodenCrate, ItemID.WoodenCrateHard, 1);
             Common.CreateCrateRecipe(ItemID.Radar, ItemID.WoodenCrate, ItemID.WoodenCrateHard, 1);
             Common.CreateCrateHardmodeRecipe(ItemID.Anchor, ItemID.WoodenCrateHard, 1);
+            Common.CreateCrateRecipe(ItemID.Extractinator, ItemID.WoodenCrate, ItemID.WoodenCrateHard, 1);
+            Common.CreateCrateRecipe(ItemID.LivingLoom, ItemID.WoodenCrate, ItemID.WoodenCrateHard, 1);
             //Wooden Chest Loot
             Common.CreateCrateRecipe(ItemID.Spear, ItemID.WoodenCrate, ItemID.WoodenCrateHard, 1);
             Common.CreateCrateRecipe(ItemID.Blowpipe, ItemID.WoodenCrate, ItemID.WoodenCrateHard, 1);
@@ -204,6 +206,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             //Golden Crate
             Common.CreateCrateRecipe(ItemID.HardySaddle, ItemID.GoldenCrate, ItemID.GoldenCrateHard, 1);
             Common.CreateCrateRecipe(ItemID.EnchantedSword, ItemID.GoldenCrate, ItemID.GoldenCrateHard, 1);
+            Common.CreateCrateHardmodeRecipe(ItemID.Sundial, ItemID.GoldenCrateHard, 1);
             //Golden Chest Loot
             Common.CreateCrateRecipe(ItemID.BandofRegeneration, ItemID.GoldenCrate, ItemID.GoldenCrateHard, 1);
             Common.CreateCrateRecipe(ItemID.MagicMirror, ItemID.GoldenCrate, ItemID.GoldenCrateHard, 1);
@@ -221,6 +224,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             Common.CreateCrateRecipe(ItemID.StaffofRegrowth, ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);
             Common.CreateCrateRecipe(ItemID.FiberglassFishingPole, ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);
             Common.CreateCrateRecipe(ItemID.Seaweed, ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);
+            Common.CreateCrateRecipe(ItemID.HoneyDispenser, ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);
             //Ivy Chest Loot
             Common.CreateCrateRecipe(ItemID.LivingMahoganyWand, ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);
             Common.CreateCrateRecipe(ItemID.LivingMahoganyLeafWand, ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);
@@ -232,6 +236,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             Common.CreateCrateRecipe(ItemID.ShinyRedBalloon, ItemID.FloatingIslandFishingCrate, ItemID.FloatingIslandFishingCrateHard, 1);
             Common.CreateCrateRecipe(ItemID.CelestialMagnet, ItemID.FloatingIslandFishingCrate, ItemID.FloatingIslandFishingCrateHard, 1);
             Common.CreateCrateRecipe(ItemID.CreativeWings, ItemID.FloatingIslandFishingCrate, ItemID.FloatingIslandFishingCrateHard, 1);
+            Common.CreateCrateRecipe(ItemID.SkyMill, ItemID.FloatingIslandFishingCrate, ItemID.FloatingIslandFishingCrateHard, 1);
 
             //Frozen Crate
             Common.CreateCrateRecipe(ItemID.IceBoomerang, ItemID.FrozenCrate, ItemID.FrozenCrateHard, 1);
@@ -240,6 +245,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             Common.CreateCrateRecipe(ItemID.SnowballCannon, ItemID.FrozenCrate, ItemID.FrozenCrateHard, 1, Condition.NotRemixWorld, Condition.NotZenithWorld);
             Common.CreateCrateRecipe(ItemID.BlizzardinaBottle, ItemID.FrozenCrate, ItemID.FrozenCrateHard, 1);
             Common.CreateCrateRecipe(ItemID.FlurryBoots, ItemID.FrozenCrate, ItemID.FrozenCrateHard, 1);
+            Common.CreateCrateRecipe(ItemID.IceMachine, ItemID.FrozenCrate, ItemID.FrozenCrateHard, 1);
 
             //Oasis Crate
             Common.CreateCrateRecipe(ItemID.AncientChisel, ItemID.OasisCrate, ItemID.OasisCrateHard, 1);
@@ -252,6 +258,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             Common.CreateCrateRecipe(ItemID.SandstorminaBottle, ItemID.OasisCrate, ItemID.OasisCrateHard, 1);
             Common.CreateCrateRecipe(ItemID.PharaohsMask, ItemID.OasisCrate, ItemID.OasisCrateHard, 1);
             Common.CreateCrateRecipe(ItemID.PharaohsRobe, ItemID.OasisCrate, ItemID.OasisCrateHard, 1);
+            Common.CreateCrateRecipe(ItemID.CatBast, ItemID.OasisCrate, ItemID.OasisCrateHard, 1);
 
             //Corrupt Crate
             Common.CreateCrateRecipe(ItemID.BallOHurt, ItemID.CorruptFishingCrate, ItemID.CorruptFishingCrateHard, 1);
@@ -318,28 +325,22 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             Common.CreateCrateWithKeyRecipe(ItemID.MagicMissile, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ItemID.GoldenKey);
             Common.CreateCrateWithKeyRecipe(ItemID.Handgun, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ItemID.GoldenKey);
             Common.CreateCrateWithKeyRecipe(ItemID.ShadowKey, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ItemID.GoldenKey);
-            //Dungeon Crate Lockpick
-            Common.CreateCrateWithKeyRecipe(ItemID.Valor, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
-            Common.CreateCrateWithKeyRecipe(ItemID.Muramasa, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
-            Common.CreateCrateWithKeyRecipe(ItemID.CobaltShield, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
-            Common.CreateCrateWithKeyRecipe(ItemID.AquaScepter, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>(), Condition.NotRemixWorld, Condition.NotZenithWorld);
-            Common.CreateCrateWithKeyRecipe(ItemID.BlueMoon, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
-            Common.CreateCrateWithKeyRecipe(ItemID.MagicMissile, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
-            Common.CreateCrateWithKeyRecipe(ItemID.Handgun, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
-            Common.CreateCrateWithKeyRecipe(ItemID.ShadowKey, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
-
-            //Stations
-            Common.CreateCrateRecipe(ItemID.Extractinator, ItemID.WoodenCrate, ItemID.WoodenCrateHard, 1);
-            Common.CreateCrateRecipe(ItemID.LivingLoom, ItemID.WoodenCrate, ItemID.WoodenCrateHard, 1);
-            Common.CreateCrateRecipe(ItemID.HoneyDispenser, ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);
-            Common.CreateCrateRecipe(ItemID.SkyMill, ItemID.FloatingIslandFishingCrate, ItemID.FloatingIslandFishingCrateHard, 1);
-            Common.CreateCrateRecipe(ItemID.IceMachine, ItemID.FrozenCrate, ItemID.FrozenCrateHard, 1);
-            Common.CreateCrateRecipe(ItemID.CatBast, ItemID.OasisCrate, ItemID.OasisCrateHard, 1);
             Common.CreateCrateWithKeyRecipe(ItemID.AlchemyTable, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ItemID.GoldenKey);
             Common.CreateCrateWithKeyRecipe(ItemID.BoneWelder, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ItemID.GoldenKey);
-            Common.CreateCrateWithKeyRecipe(ItemID.AlchemyTable, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
-            Common.CreateCrateWithKeyRecipe(ItemID.BoneWelder, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
-            Common.CreateCrateHardmodeRecipe(ItemID.Sundial, ItemID.GoldenCrateHard, 1);
+            //Dungeon Crate Lockpick
+            if (!QoLCompendium.itemConfig.DisableModdedItems)
+            {
+                Common.CreateCrateWithKeyRecipe(ItemID.Valor, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
+                Common.CreateCrateWithKeyRecipe(ItemID.Muramasa, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
+                Common.CreateCrateWithKeyRecipe(ItemID.CobaltShield, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
+                Common.CreateCrateWithKeyRecipe(ItemID.AquaScepter, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>(), Condition.NotRemixWorld, Condition.NotZenithWorld);
+                Common.CreateCrateWithKeyRecipe(ItemID.BlueMoon, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
+                Common.CreateCrateWithKeyRecipe(ItemID.MagicMissile, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
+                Common.CreateCrateWithKeyRecipe(ItemID.Handgun, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
+                Common.CreateCrateWithKeyRecipe(ItemID.ShadowKey, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
+                Common.CreateCrateWithKeyRecipe(ItemID.AlchemyTable, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
+                Common.CreateCrateWithKeyRecipe(ItemID.BoneWelder, ItemID.DungeonFishingCrate, ItemID.DungeonFishingCrateHard, 1, ModContent.ItemType<GoldenLockpick>());
+            }
             #endregion
 
             #region Modded
@@ -1144,7 +1145,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #region Spooky
             if (ModConditions.spookyLoaded)
             {
-                Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.spookyMod, "SpookyBiomeKe"), Common.GetModItem(ModConditions.spookyMod, "ElGourdo"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
+                Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.spookyMod, "SpookyBiomeKey"), Common.GetModItem(ModConditions.spookyMod, "ElGourdo"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
                 Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.spookyMod, "CemeteryKey"), Common.GetModItem(ModConditions.spookyMod, "DiscoSkull"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
                 Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.spookyMod, "SpiderKey"), Common.GetModItem(ModConditions.spookyMod, "VenomHarpoon"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
                 Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.spookyMod, "SpookyHellKey"), Common.GetModItem(ModConditions.spookyMod, "BrainJar"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);

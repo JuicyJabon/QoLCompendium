@@ -25,7 +25,7 @@ namespace QoLCompendium.Content.Items.Accessories.InformationAccessories
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.InformationAccessories);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.InformationAccessories);
         }
 
         public override void AddRecipes()

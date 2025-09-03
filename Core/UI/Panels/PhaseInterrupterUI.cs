@@ -4,17 +4,17 @@ namespace QoLCompendium.Core.UI.Panels
 {
     public class PhaseInterrupterUI : UIState
     {
-        public UIPanel MoonPanel;
         public static bool visible = false;
         public static uint timeStart;
 
         public override void OnInitialize()
         {
-            MoonPanel = new UIPanel();
-            MoonPanel.Top.Set(Main.screenHeight / 2, 0f);
-            MoonPanel.Left.Set(Main.screenWidth / 2 - 32, 0f);
-            MoonPanel.Width.Set(400f, 0f);
-            MoonPanel.Height.Set(400f, 0f);
+            UIPanel MoonPanel = new();
+            MoonPanel.SetPadding(0);
+            MoonPanel.HAlign = 0.628f;
+            MoonPanel.VAlign = 0.53f;
+            MoonPanel.Width.Set(360f, 0f);
+            MoonPanel.Height.Set(40f, 0f);
             MoonPanel.BackgroundColor *= 0f;
             MoonPanel.BorderColor *= 0f;
             Append(MoonPanel);

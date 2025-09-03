@@ -36,7 +36,7 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.AutoStructures);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.AutoStructures);
         }
 
         public override bool AltFunctionUse(Player player)

@@ -57,8 +57,9 @@ namespace QoLCompendium.Core
 
         public override void Action(CommandCaller caller, string input, string[] args)
         {
-            for (int i = 0; i < Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentBuffsBools.Length; i++)
-                Main.NewText(Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentBuffsBools.ToString() + " " + i);
+            Main.NewText(Enum.GetValues<PermanentBuffPlayer.PermanentSpiritClassicBuffs>().Length);
+            for (int i = 0; i < Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools.Length; i++)
+                Main.NewText(Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools.ToString() + " " + i);
         }
     }
 }

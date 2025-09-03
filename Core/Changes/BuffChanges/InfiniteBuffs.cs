@@ -1,9 +1,5 @@
 ﻿using QoLCompendium.Content.Items.Tools.Usables;
-using Redemption.Globals;
-using Terraria;
 using Terraria.DataStructures;
-using Terraria.ID;
-using tModPorter;
 
 namespace QoLCompendium.Core.Changes.BuffChanges
 {
@@ -27,11 +23,11 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             infiniteStackedItems.Clear();
             if (QoLCompendium.mainConfig.EndlessBuffs)
             {
-                CheckInventory(Player.inventory);
-                CheckInventory(Player.bank.item);
-                CheckInventory(Player.bank2.item);
-                CheckInventory(Player.bank3.item);
-                CheckInventory(Player.bank4.item);
+                CheckInventory(Common.GetAllInventoryItemsList(Player).ToArray());
+                //CheckInventory(Player.bank.item);
+                //CheckInventory(Player.bank2.item);
+                //CheckInventory(Player.bank3.item);
+                //CheckInventory(Player.bank4.item);
             }
         }
 
@@ -512,7 +508,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             //CLICKER CLASS
             AddBuffIntegration(ModConditions.clickerClassMod, "DesktopComputer", "DesktopComputerBuff");
             //CLASSICAL
-            AddBuffIntegration(ModConditions.ruptureMod, "TrinketRack", "SleightOfHand");
+            AddBuffIntegration(ModConditions.ruptureMod, "TrinketRack", "SleightOfHandBuff");
             //FARGOS
             AddBuffIntegration(ModConditions.fargosMutantMod, "Semistation", "Semistation");
             AddBuffIntegration(ModConditions.fargosMutantMod, "Omnistation", "Omnistation");

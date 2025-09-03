@@ -6,9 +6,7 @@
         public override bool PreAI(NPC npc)
         {
             if (npc.type == Common.GetModNPC(ModConditions.starlightRiverMod, "Glassweaver") && npc.life <= 1)
-            {
-                NPC.SetEventFlagCleared(ref ModConditions.downedGlassweaver, -1);
-            }
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Glassweaver], -1);
             return base.PreAI(npc);
         }
 
@@ -536,7 +534,7 @@
             if (npc.type == Common.GetModNPC(ModConditions.lunarVeilMod, "CommanderGintzia"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.CommanderGintzia], -1);
-                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.GintzeArmy], -1);
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.GintzeArmy], -1);
             }
             if (npc.type == Common.GetModNPC(ModConditions.lunarVeilMod, "SunStalker"))
             {
@@ -657,7 +655,7 @@
             };
             if (hauntedRainforestNPCs.Contains(npc.type))
             {
-                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.HauntedRainforest], -1);
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.HauntedRainforest], -1);
             }
             #endregion
 
@@ -823,7 +821,7 @@
             if (npc.type == Common.GetModNPC(ModConditions.qwertyMod, "InvaderNoehtnap"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.InvaderNoehtnap], -1);
-                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Invaders], -1);
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.SpaceInvaders], -1);
             }
             if (npc.type == Common.GetModNPC(ModConditions.qwertyMod, "OLORDv2"))
             {
@@ -832,7 +830,7 @@
             if (npc.type == Common.GetModNPC(ModConditions.qwertyMod, "TheGreatTyrannosaurus"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.GreatTyrannosaurus], -1);
-                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.DinoMilitia], -1);
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.DinoMilitia], -1);
             }
             #endregion
 
@@ -903,7 +901,7 @@
             if (npc.type == Common.GetModNPC(ModConditions.redemptionMod, "Basan"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Basan], -1);
-                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.FowlMorning], -1);
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.FowlMorning], -1);
             }
             if (npc.type == Common.GetModNPC(ModConditions.redemptionMod, "SkullDigger"))
             {
@@ -954,7 +952,7 @@
                 };
             if (raveyardNPCs.Contains(npc.type))
             {
-                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Raveyard], -1);
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.Raveyard], -1);
             }
             #endregion
 
@@ -1125,7 +1123,7 @@
             if (npc.type == Common.GetModNPC(ModConditions.spiritMod, "MoonWizard"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.MoonJellyWizard], -1);
-                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.JellyDeluge], -1);
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.JellyDeluge], -1);
             }
             if (npc.type == Common.GetModNPC(ModConditions.spiritMod, "ReachBoss"))
             {
@@ -1160,11 +1158,11 @@
                 };
             if (jellyDelugeNPCs.Contains(npc.type))
             {
-                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.JellyDeluge], -1);
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.JellyDeluge], -1);
             }
             if (npc.type == Common.GetModNPC(ModConditions.spiritMod, "Rylheian"))
             {
-                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Tide], -1);
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.TheTide], -1);
             }
             List<int> mysticMoonNPCs = new()
                 {
@@ -1177,7 +1175,7 @@
                 };
             if (mysticMoonNPCs.Contains(npc.type))
             {
-                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.MysticMoon], -1);
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.MysticMoon], -1);
             }
             #endregion
 

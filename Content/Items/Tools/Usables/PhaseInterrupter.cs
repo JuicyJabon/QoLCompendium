@@ -28,34 +28,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PhaseInterrupter);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PhaseInterrupter);
         }
 
         public override void UpdateInventory(Player player)
         {
-            if (Main.moonPhase == 0)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.FullMoon"));
-
-            if (Main.moonPhase == 1)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.WaningGibbous"));
-
-            if (Main.moonPhase == 2)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.ThirdQuarter"));
-
-            if (Main.moonPhase == 3)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.WaningCrescent"));
-
-            if (Main.moonPhase == 4)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.NewMoon"));
-
-            if (Main.moonPhase == 5)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.WaxingCrescent"));
-
-            if (Main.moonPhase == 6)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.FirstQuarter"));
-
-            if (Main.moonPhase == 7)
-                Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.WaxingGibbous"));
+            Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.Moon" + Main.moonPhase.ToString()));
         }
 
         public override void AddRecipes()

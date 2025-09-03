@@ -30,6 +30,13 @@ namespace QoLCompendium.Content.Items.Tools.Staves
             Item.DamageType = DamageClass.Melee;
         }
 
+        public override void HoldItem(Player player)
+        {
+            Item.createTile = TileID.CrimsonGrass;
+            if (Main.tile[Main.mouseX, Main.mouseY].TileType == TileID.Mud)
+                Item.createTile = TileID.CrimsonJungleGrass;
+        }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             TooltipLine placeable = tooltips.Find(l => l.Name == "Placeable");
@@ -37,7 +44,7 @@ namespace QoLCompendium.Content.Items.Tools.Staves
             tooltips.Insert(tooltips.IndexOf(placeable), text);
             tooltips.RemoveAll((x) => x.Name == "Placeable" && x.Mod == "Terraria");
 
-            TooltipChanges.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
         }
 
         public override void AddRecipes()

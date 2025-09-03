@@ -107,10 +107,12 @@
             ModConditions.starsAboveLoaded.AddLoadedMod(ref ModConditions.starsAboveMod);
             ModConditions.stormsAdditionsLoaded.AddLoadedMod(ref ModConditions.stormsAdditionsMod);
             ModConditions.stramsClassesLoaded.AddLoadedMod(ref ModConditions.stramsClassesMod);
+            ModConditions.stramsSurvivalLoaded.AddLoadedMod(ref ModConditions.stramsSurvivalMod);
             ModConditions.supernovaLoaded.AddLoadedMod(ref ModConditions.supernovaMod);
             ModConditions.terrorbornLoaded.AddLoadedMod(ref ModConditions.terrorbornMod);
             ModConditions.thoriumLoaded.AddLoadedMod(ref ModConditions.thoriumMod);
             ModConditions.thoriumBossReworkLoaded.AddLoadedMod(ref ModConditions.thoriumBossReworkMod);
+            ModConditions.throwerUnificationLoaded.AddLoadedMod(ref ModConditions.throwerUnificationMod);
             ModConditions.traeLoaded.AddLoadedMod(ref ModConditions.traeMod);
             ModConditions.uhtricLoaded.AddLoadedMod(ref ModConditions.uhtricMod);
             ModConditions.universeOfSwordsLoaded.AddLoadedMod(ref ModConditions.universeOfSwordsMod);

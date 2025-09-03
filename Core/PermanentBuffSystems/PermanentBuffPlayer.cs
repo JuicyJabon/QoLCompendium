@@ -80,12 +80,10 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             CrystalBall,
             SharpeningStation,
             SliceOfCake,
-            WarTable,
+            WarTable
         }
 
-        public bool[] permanentBuffsBools = new bool[Enum.GetValues(typeof(PermanentBuffs)).Length];
-
-        public bool[] PermanentBuffsBools { get => permanentBuffsBools; set => permanentBuffsBools = value; }
+        public bool[] PermanentBuffsBools =  new bool[Enum.GetValues(typeof(PermanentBuffs)).Length];
 
         public enum PermanentCalamityBuffs
         {
@@ -137,9 +135,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             YharimsStimulants
         }
 
-        public bool[] permanentCalamityBuffsBools = new bool[Enum.GetValues(typeof(PermanentCalamityBuffs)).Length];
-
-        public bool[] PermanentCalamityBuffsBools { get => permanentCalamityBuffsBools; set => permanentCalamityBuffsBools = value; }
+        public bool[] PermanentCalamityBuffsBools = new bool[Enum.GetValues(typeof(PermanentCalamityBuffs)).Length];
 
         public enum PermanentHomewardJourneyBuffs
         {
@@ -155,9 +151,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             Yin
         }
 
-        public bool[] permanentHomewardJourneyBuffsBools = new bool[Enum.GetValues(typeof(PermanentHomewardJourneyBuffs)).Length];
-
-        public bool[] PermanentHomewardJourneyBuffsBools { get => permanentHomewardJourneyBuffsBools; set => permanentHomewardJourneyBuffsBools = value; }
+        public bool[] PermanentHomewardJourneyBuffsBools = new bool[Enum.GetValues(typeof(PermanentHomewardJourneyBuffs)).Length];
 
         public enum PermanentMartinsOrderBuffs
         {
@@ -186,9 +180,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             SporeFarm
         }
 
-        public bool[] permanentMartinsOrderBuffsBools = new bool[Enum.GetValues(typeof(PermanentMartinsOrderBuffs)).Length];
-
-        public bool[] PermanentMartinsOrderBuffsBools { get => permanentMartinsOrderBuffsBools; set => permanentMartinsOrderBuffsBools = value; }
+        public bool[] PermanentMartinsOrderBuffsBools = new bool[Enum.GetValues(typeof(PermanentMartinsOrderBuffs)).Length];
 
         public enum PermanentSOTSBuffs
         {
@@ -207,9 +199,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             DigitalDisplay
         }
 
-        public bool[] permanentSOTSBuffsBools = new bool[Enum.GetValues(typeof(PermanentSOTSBuffs)).Length];
-
-        public bool[] PermanentSOTSBuffsBools { get => permanentSOTSBuffsBools; set => permanentSOTSBuffsBools = value; }
+        public bool[] PermanentSOTSBuffsBools = new bool[Enum.GetValues(typeof(PermanentSOTSBuffs)).Length];
 
         public enum PermanentSpiritClassicBuffs
         {
@@ -231,11 +221,16 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             Steadfast,
             Toxin,
             Zephyr,
+            //Candies
+            Candy,
+            ChocolateBar,
+            HealthCandy,
+            Lollipop,
+            ManaCandy,
+            Taffy
         }
 
-        public bool[] permanentSpiritClassicBuffsBools = new bool[Enum.GetValues(typeof(PermanentSpiritClassicBuffs)).Length];
-
-        public bool[] PermanentSpiritClassicBuffsBools { get => permanentSpiritClassicBuffsBools; set => permanentSpiritClassicBuffsBools = value; }
+        public bool[] PermanentSpiritClassicBuffsBools = new bool[Enum.GetValues(typeof(PermanentSpiritClassicBuffs)).Length];
 
         public enum PermanentThoriumBuffs
         {
@@ -274,10 +269,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             InspirationRegeneration
         }
 
-        public bool[] permanentThoriumBuffsBools = new bool[Enum.GetValues(typeof(PermanentThoriumBuffs)).Length];
-
-        public bool[] PermanentThoriumBuffsBools { get => permanentThoriumBuffsBools; set => permanentThoriumBuffsBools = value; }
-
+        public bool[] PermanentThoriumBuffsBools = new bool[Enum.GetValues(typeof(PermanentThoriumBuffs)).Length];
 
         public override void ResetEffects() => ResetValues();
 
@@ -292,10 +284,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems
 
         public override void PostUpdateEquips()
         {
-            CheckForPotions(Player.bank.item);
-            CheckForPotions(Player.bank2.item);
-            CheckForPotions(Player.bank3.item);
-            CheckForPotions(Player.bank4.item);
+            CheckForPotions(Common.GetAllInventoryItemsList(Player).ToArray());
             UpdatePotions();
         }
 
@@ -322,7 +311,6 @@ namespace QoLCompendium.Core.PermanentBuffSystems
 
         public override void SaveData(TagCompound tag)
         {
-            //Tag Adding
             tag.Add("QoLCEnabledPermanentBuffs", PermanentBuffsBools);
             tag.Add("QoLCEnabledPermanentCalamityBuffs", PermanentCalamityBuffsBools);
             tag.Add("QoLCEnabledPermanentHomewardJourneyBuffs", PermanentHomewardJourneyBuffsBools);
@@ -341,6 +329,27 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             PermanentSOTSBuffsBools = tag.Get<bool[]>("QoLCEnabledPermanentSOTSBuffs");
             PermanentSpiritClassicBuffsBools = tag.Get<bool[]>("QoLCEnabledPermanentSpiritClassicBuffs");
             PermanentThoriumBuffsBools = tag.Get<bool[]>("QoLCEnabledPermanentThoriumBuffs");
+
+            if (PermanentBuffsBools.Length < Enum.GetValues(typeof(PermanentBuffs)).Length)
+                Array.Resize(ref PermanentBuffsBools, Enum.GetValues(typeof(PermanentBuffs)).Length);
+
+            if (PermanentCalamityBuffsBools.Length < Enum.GetValues(typeof(PermanentCalamityBuffs)).Length)
+                Array.Resize(ref PermanentCalamityBuffsBools, Enum.GetValues(typeof(PermanentCalamityBuffs)).Length);
+
+            if (PermanentHomewardJourneyBuffsBools.Length < Enum.GetValues(typeof(PermanentHomewardJourneyBuffs)).Length)
+                Array.Resize(ref PermanentHomewardJourneyBuffsBools, Enum.GetValues(typeof(PermanentHomewardJourneyBuffs)).Length);
+
+            if (PermanentMartinsOrderBuffsBools.Length < Enum.GetValues(typeof(PermanentMartinsOrderBuffs)).Length)
+                Array.Resize(ref PermanentMartinsOrderBuffsBools, Enum.GetValues(typeof(PermanentMartinsOrderBuffs)).Length);
+
+            if (PermanentSOTSBuffsBools.Length < Enum.GetValues(typeof(PermanentSOTSBuffs)).Length)
+                Array.Resize(ref PermanentSOTSBuffsBools, Enum.GetValues(typeof(PermanentSOTSBuffs)).Length);
+
+            if (PermanentSpiritClassicBuffsBools.Length < Enum.GetValues(typeof(PermanentSpiritClassicBuffs)).Length)
+                Array.Resize(ref PermanentSpiritClassicBuffsBools, Enum.GetValues(typeof(PermanentSpiritClassicBuffs)).Length);
+
+            if (PermanentThoriumBuffsBools.Length < Enum.GetValues(typeof(PermanentThoriumBuffs)).Length)
+                Array.Resize(ref PermanentThoriumBuffsBools, Enum.GetValues(typeof(PermanentThoriumBuffs)).Length);
         }
     }
 
