@@ -1,7 +1,7 @@
 ﻿namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [ExtendsFromMod("RagnarokMod")]
-    [JITWhenModsEnabled("RagnarokMod")]
+    [ExtendsFromMod(ModConditions.ragnarokName)]
+    [JITWhenModsEnabled(ModConditions.ragnarokName)]
     public class RagnarokPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

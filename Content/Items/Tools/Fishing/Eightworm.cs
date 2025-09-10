@@ -29,7 +29,7 @@ namespace QoLCompendium.Content.Items.Tools.Fishing
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Eightworm, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.Eightworm, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Worm, 8);
             r.AddIngredient(ItemID.PlatinumCoin, 1);
             r.AddTile(TileID.Anvils);

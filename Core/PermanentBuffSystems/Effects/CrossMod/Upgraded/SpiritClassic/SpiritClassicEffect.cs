@@ -4,7 +4,7 @@
     {
         internal override void ApplyEffect(PermanentBuffPlayer player)
         {
-            if (!ModConditions.spiritLoaded)
+            if (!ModConditions.spiritClassicLoaded)
                 return;
 
             new SpiritClassicArenaEffect().ApplyEffect(player);

@@ -30,7 +30,7 @@ namespace QoLCompendium.Content.Items.Accessories.Construction
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.ConstructionAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.ConstructionAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.CopperBar, 5);
             r.AddIngredient(ItemID.TinBar, 5);
             r.AddIngredient(ItemID.IronBar, 5);

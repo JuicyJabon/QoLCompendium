@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [ExtendsFromMod("FargowiltasSouls")]
-    [JITWhenModsEnabled("FargowiltasSouls")]
+    [ExtendsFromMod(ModConditions.fargosSoulsName)]
+    [JITWhenModsEnabled(ModConditions.fargosSoulsName)]
     public class FargosPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

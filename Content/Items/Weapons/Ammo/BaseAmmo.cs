@@ -32,7 +32,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(AmmunitionItem, 3996);
             r.AddTile(TileID.Solidifier);
             r.Register();

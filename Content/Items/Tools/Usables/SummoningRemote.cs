@@ -319,7 +319,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.SummoningRemote, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.SummoningRemote, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddRecipeGroup(RecipeGroupID.IronBar, 12);
             r.AddIngredient(ItemID.Ruby, 5);
             r.AddIngredient(ItemID.Lens, 2);

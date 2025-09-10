@@ -5,8 +5,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.Calamity;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Calamity
 {
-    [JITWhenModsEnabled("CalamityMod")]
-    [ExtendsFromMod("CalamityMod")]
+    [JITWhenModsEnabled(ModConditions.calamityName)]
+    [ExtendsFromMod(ModConditions.calamityName)]
     public class PermanentOmniscience : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.calamityMod, Common.GetModBuff(ModConditions.calamityMod, "Omniscience"));
@@ -19,19 +19,19 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Cala
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.calamityMod, "PotionofOmniscience"), 30);
             r.AddTile(TileID.CookingPots);
             r.Register();
 
-            r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.HunterPotion, 30);
             r.AddIngredient(ItemID.SpelunkerPotion, 30);
             r.AddIngredient(ItemID.TrapsightPotion, 30);
             r.AddTile(TileID.CookingPots);
             r.Register();
 
-            r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentHunter>());
             r.AddIngredient(ModContent.ItemType<PermanentSpelunker>());
             r.AddIngredient(ModContent.ItemType<PermanentDangersense>());

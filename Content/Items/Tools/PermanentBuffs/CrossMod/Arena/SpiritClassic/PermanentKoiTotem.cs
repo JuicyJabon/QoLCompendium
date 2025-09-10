@@ -4,11 +4,11 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Arena.SpiritClass
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Arena.SpiritClassic
 {
-    [JITWhenModsEnabled("SpiritMod")]
-    [ExtendsFromMod("SpiritMod")]
+    [JITWhenModsEnabled(ModConditions.spiritClassicName)]
+    [ExtendsFromMod(ModConditions.spiritClassicName)]
     public class PermanentKoiTotem : IPermanentModdedBuffItem
     {
-        public override string Texture => Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "KoiTotemBuff"));
+        public override string Texture => Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "KoiTotemBuff"));
 
         public override void UpdateInventory(Player player)
         {
@@ -18,8 +18,8 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Arena.Spirit
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-            r.AddIngredient(Common.GetModItem(ModConditions.spiritMod, "KoiTotem"), 3);
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            r.AddIngredient(Common.GetModItem(ModConditions.spiritClassicMod, "KoiTotem"), 3);
             r.AddTile(TileID.CookingPots);
             r.Register();
         }

@@ -41,7 +41,7 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
         public override void UpdateEquips()
         {
             if (QoLCompendium.mainConfig.UtilityAccessoriesWorkInBanks)
-                CheckForBankItems(Common.GetAllInventoryItemsList(Player).ToArray());
+                CheckForBankItems(Common.GetAllInventoryItemsList(Player, "inv").ToArray());
         }
 
         public void CheckForBankItems(Item[] items)

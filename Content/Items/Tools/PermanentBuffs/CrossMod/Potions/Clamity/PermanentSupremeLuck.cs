@@ -4,8 +4,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.Clamity;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Clamity
 {
-    [JITWhenModsEnabled("Clamity")]
-    [ExtendsFromMod("Clamity")]
+    [JITWhenModsEnabled(ModConditions.clamityAddonName)]
+    [ExtendsFromMod(ModConditions.clamityAddonName)]
     public class PermanentSupremeLuck : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.clamityAddonMod, Common.GetModBuff(ModConditions.clamityAddonMod, "SupremeLucky"));
@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Clam
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.clamityAddonMod, "SupremeLuckPotion"), 30);
             r.AddTile(TileID.CookingPots);
             r.Register();

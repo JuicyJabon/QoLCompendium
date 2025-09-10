@@ -1,11 +1,10 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.PermanentBuffSystems;
+﻿using QoLCompendium.Core.PermanentBuffSystems;
 using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Arena.CalamityEntropy;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Arena.CalamityEntropy
 {
-    [JITWhenModsEnabled("CalamityEntropy")]
-    [ExtendsFromMod("CalamityEntropy")]
+    [JITWhenModsEnabled(ModConditions.calamityEntropyName)]
+    [ExtendsFromMod(ModConditions.calamityEntropyName)]
     public class PermanentVoidCandle : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.calamityEntropyMod, Common.GetModBuff(ModConditions.calamityEntropyMod, "VoidCandleBuff"));
@@ -18,7 +17,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Arena.Calami
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.calamityEntropyMod, "VoidCandle"), 3);
             r.AddTile(TileID.CookingPots);
             r.Register();

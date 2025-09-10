@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [ExtendsFromMod("Avalon")]
-    [JITWhenModsEnabled("Avalon")]
+    [ExtendsFromMod(ModConditions.exxoAvalonOriginsName)]
+    [JITWhenModsEnabled(ModConditions.exxoAvalonOriginsName)]
     public class ExxoAvalonPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

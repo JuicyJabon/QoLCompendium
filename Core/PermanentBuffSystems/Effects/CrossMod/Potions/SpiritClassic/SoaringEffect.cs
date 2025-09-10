@@ -5,14 +5,14 @@
         //Item Name = FlightPotion
         internal override void ApplyEffect(PermanentBuffPlayer player)
         {
-            if (!ModConditions.spiritLoaded)
+            if (!ModConditions.spiritClassicLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "FlightPotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Soaring])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritClassicMod, "FlightPotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Soaring])
             {
-                buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "FlightPotionBuff"));
+                buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "FlightPotionBuff"));
                 buffToApply.Update(player.Player, ref index);
-                player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "FlightPotionBuff")] = true;
+                player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritClassicMod, "FlightPotionBuff")] = true;
             }
         }
     }

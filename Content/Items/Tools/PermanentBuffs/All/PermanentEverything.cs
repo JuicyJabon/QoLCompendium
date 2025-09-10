@@ -1,5 +1,4 @@
 ﻿using QoLCompendium.Content.Items.Tools.PermanentBuffs.Vanilla.Upgraded;
-using QoLCompendium.Core;
 using QoLCompendium.Core.PermanentBuffSystems;
 using QoLCompendium.Core.PermanentBuffSystems.Effects.All;
 
@@ -17,7 +16,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.All
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentVanilla>());
             r.AddTile(TileID.CookingPots);
             r.Register();

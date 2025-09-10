@@ -70,7 +70,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
             public override void AddRecipes()
             {
-                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+                Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
                 r.AddIngredient(ItemID.Gel, 3996);
                 r.AddTile(TileID.Solidifier);
                 r.Register();
@@ -117,7 +117,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
             public override void AddRecipes()
             {
-                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+                Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
                 r.AddIngredient(ItemID.SandBlock, 3996);
                 r.AddTile(TileID.Solidifier);
                 r.Register();
@@ -158,7 +158,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
             public override void AddRecipes()
             {
-                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+                Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
                 r.AddIngredient(ItemID.Snowball, 3996);
                 r.AddTile(TileID.Solidifier);
                 r.Register();
@@ -198,7 +198,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
             public override void AddRecipes()
             {
-                Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+                Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
                 r.AddIngredient(ItemID.FallenStar, 3996);
                 r.AddTile(TileID.Solidifier);
                 r.Register();

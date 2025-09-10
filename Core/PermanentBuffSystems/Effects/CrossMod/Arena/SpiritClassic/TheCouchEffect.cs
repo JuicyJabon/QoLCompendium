@@ -5,14 +5,14 @@
         //Item Name = TheCouch
         internal override void ApplyEffect(PermanentBuffPlayer player)
         {
-            if (!ModConditions.spiritLoaded)
+            if (!ModConditions.spiritClassicLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "CouchPotato")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.TheCouch])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritClassicMod, "CouchPotato")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.TheCouch])
             {
-                buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "CouchPotato"));
+                buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "CouchPotato"));
                 buffToApply.Update(player.Player, ref index);
-                player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "CouchPotato")] = true;
+                player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritClassicMod, "CouchPotato")] = true;
             }
         }
     }

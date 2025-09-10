@@ -33,7 +33,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Glass, 10);
             r.AddRecipeGroup(RecipeGroupID.IronBar, 8);
             r.AddIngredient(ItemID.GoldCoin, 3);

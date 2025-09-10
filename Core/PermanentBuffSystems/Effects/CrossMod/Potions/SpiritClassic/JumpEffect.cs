@@ -5,14 +5,14 @@
         //Item Name = PinkPotion
         internal override void ApplyEffect(PermanentBuffPlayer player)
         {
-            if (!ModConditions.spiritLoaded)
+            if (!ModConditions.spiritClassicLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "PinkPotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Jump])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritClassicMod, "PinkPotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Jump])
             {
-                buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "PinkPotionBuff"));
+                buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "PinkPotionBuff"));
                 buffToApply.Update(player.Player, ref index);
-                player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "PinkPotionBuff")] = true;
+                player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritClassicMod, "PinkPotionBuff")] = true;
             }
         }
     }

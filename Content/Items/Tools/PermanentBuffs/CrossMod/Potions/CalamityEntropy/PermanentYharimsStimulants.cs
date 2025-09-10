@@ -4,8 +4,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.CalamityE
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.CalamityEntropy
 {
-    [JITWhenModsEnabled("CalamityEntropy")]
-    [ExtendsFromMod("CalamityEntropy")]
+    [JITWhenModsEnabled(ModConditions.calamityEntropyName)]
+    [ExtendsFromMod(ModConditions.calamityEntropyName)]
     public class PermanentYharimsStimulants : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.calamityEntropyMod, Common.GetModBuff(ModConditions.calamityEntropyMod, "YharimPower"));
@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Cala
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.calamityEntropyMod, "YharimsStimulants"), 30);
             r.AddTile(TileID.CookingPots);
             r.Register();

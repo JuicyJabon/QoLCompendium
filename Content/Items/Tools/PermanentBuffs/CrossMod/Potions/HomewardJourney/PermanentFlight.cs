@@ -4,8 +4,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.HomewardJ
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.HomewardJourney
 {
-    [JITWhenModsEnabled("ContinentOfJourney")]
-    [ExtendsFromMod("ContinentOfJourney")]
+    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
+    [ExtendsFromMod(ModConditions.homewardJourneyName)]
     public class PermanentFlight : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.homewardJourneyMod, Common.GetModBuff(ModConditions.homewardJourneyMod, "FlightBuff"));
@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Home
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.homewardJourneyMod, "FlightPotion"), 30);
             r.AddTile(TileID.CookingPots);
             r.Register();

@@ -3,3 +3,13 @@ v2.2.19
 2. Added a config for Portable Stations (Can be laggy when enabled!)
 3. Fixed Permanent Buff UI softlocking the game when clicking on buffs that weren't saved properly
 4. Added 5 boss summons for the Hallowed Altar riddle bosses from Homeward Journey
+5. Updated support for the following mods:
+ - Spooky Mod
+6. Updated shops for the following mods:
+ - Spooky Mod
+7. Added Ultimate Crafting Monolith, a combination of all final crafting monoliths
+8. Resprited Lunar Crafting Monolith
+9. Added crafting monoliths for Homeward Journey
+10. Added unsafe Marble and Granite walls
+11. Added class tags for Secrets of the Shadows Void class, works with Bard/Healer addon and Infernal Eclipse of Ragnarok
+12. Fixed the wrong Soul Forge being used in the Thorium crafting monoliths

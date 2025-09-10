@@ -5,14 +5,14 @@
         //Item Name = MushroomPotion
         internal override void ApplyEffect(PermanentBuffPlayer player)
         {
-            if (!ModConditions.spiritLoaded)
+            if (!ModConditions.spiritClassicLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "MushroomPotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Sporecoid])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritClassicMod, "MushroomPotionBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.Sporecoid])
             {
-                buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "MushroomPotionBuff"));
+                buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "MushroomPotionBuff"));
                 buffToApply.Update(player.Player, ref index);
-                player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "MushroomPotionBuff")] = true;
+                player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritClassicMod, "MushroomPotionBuff")] = true;
             }
         }
     }

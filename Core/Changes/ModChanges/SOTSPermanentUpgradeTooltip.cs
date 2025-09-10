@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [ExtendsFromMod("SOTS")]
-    [JITWhenModsEnabled("SOTS")]
+    [ExtendsFromMod(ModConditions.secretsOfTheShadowsName)]
+    [JITWhenModsEnabled(ModConditions.secretsOfTheShadowsName)]
     public class SOTSPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

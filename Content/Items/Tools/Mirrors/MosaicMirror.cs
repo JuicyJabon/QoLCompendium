@@ -225,7 +225,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<CursedMirror>());
             r.AddIngredient(ModContent.ItemType<MirrorOfReturn>());
             r.AddIngredient(ModContent.ItemType<TeleportationMirror>());

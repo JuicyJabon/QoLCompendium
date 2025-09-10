@@ -63,7 +63,7 @@ namespace QoLCompendium.Content.Items.Tools.Fishing
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.LegendaryCatcher, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.LegendaryCatcher, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddRecipeGroup(RecipeGroupID.IronBar, 12);
             r.AddIngredient(ItemID.Amber, 6);
             r.AddIngredient(ItemID.PlatinumCoin, 1);

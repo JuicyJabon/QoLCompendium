@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [ExtendsFromMod("MartainsOrder")]
-    [JITWhenModsEnabled("MartainsOrder")]
+    [ExtendsFromMod(ModConditions.martainsOrderName)]
+    [JITWhenModsEnabled(ModConditions.martainsOrderName)]
     public class MartainsOrderPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

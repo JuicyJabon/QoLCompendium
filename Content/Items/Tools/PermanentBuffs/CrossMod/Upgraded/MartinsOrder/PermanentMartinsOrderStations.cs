@@ -5,8 +5,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.MartinsO
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.MartinsOrder
 {
-    [JITWhenModsEnabled("MartainsOrder")]
-    [ExtendsFromMod("MartainsOrder")]
+    [JITWhenModsEnabled(ModConditions.martainsOrderName)]
+    [ExtendsFromMod(ModConditions.martainsOrderName)]
     public class PermanentMartinsOrderStations : IPermanentModdedBuffItem
     {
         public override string Texture => "QoLCompendium/Assets/Items/PermanentMartinsOrderStations";
@@ -19,7 +19,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Mar
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentArcheology>());
             r.AddIngredient(ModContent.ItemType<PermanentSporeFarm>());
             r.AddTile(TileID.CookingPots);

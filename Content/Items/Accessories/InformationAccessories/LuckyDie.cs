@@ -30,7 +30,7 @@ namespace QoLCompendium.Content.Items.Accessories.InformationAccessories
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.MarbleBlock, 12);
             r.AddIngredient(ItemID.BlackDye, 1);
             r.AddTile(TileID.Anvils);

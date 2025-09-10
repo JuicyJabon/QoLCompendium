@@ -3,8 +3,8 @@ using Terraria.ObjectData;
 
 namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod
 {
-    [JITWhenModsEnabled("CalamityMod")]
-    [ExtendsFromMod("CalamityMod")]
+    [JITWhenModsEnabled(ModConditions.calamityName)]
+    [ExtendsFromMod(ModConditions.calamityName)]
     public class CalamityMonolithTile : ModTile
     {
         public override void SetStaticDefaults()

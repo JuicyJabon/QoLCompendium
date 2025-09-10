@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [JITWhenModsEnabled("CalamityEntropy")]
-    [ExtendsFromMod("CalamityEntropy")]
+    [JITWhenModsEnabled(ModConditions.calamityEntropyName)]
+    [ExtendsFromMod(ModConditions.calamityEntropyName)]
     public class CalamityEntropyArmorGlint : GlobalItem
     {
         public static bool ArmorHasEntropyPrefix(Item item)

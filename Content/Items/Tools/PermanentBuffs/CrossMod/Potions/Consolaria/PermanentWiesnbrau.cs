@@ -1,11 +1,10 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.PermanentBuffSystems;
+﻿using QoLCompendium.Core.PermanentBuffSystems;
 using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.Consolaria;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Consolaria
 {
-    [JITWhenModsEnabled("Consolaria")]
-    [ExtendsFromMod("Consolaria")]
+    [JITWhenModsEnabled(ModConditions.consolariaName)]
+    [ExtendsFromMod(ModConditions.consolariaName)]
     public class PermanentWiesnbrau : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.consolariaMod, Common.GetModBuff(ModConditions.consolariaMod, "Drunk"));
@@ -18,7 +17,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Cons
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.consolariaMod, "Wiesnbrau"), 30);
             r.AddTile(TileID.CookingPots);
             r.Register();

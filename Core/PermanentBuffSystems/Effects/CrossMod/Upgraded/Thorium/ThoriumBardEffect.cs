@@ -6,7 +6,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.Thor
 {
     public class ThoriumBardEffect : IPermanentModdedBuff
     {
-        [JITWhenModsEnabled("ThoriumRework")]
+        [JITWhenModsEnabled(ModConditions.thoriumBossReworkName)]
         public static bool ThoriumReworkPotionsEnabled => ModContent.GetInstance<CompatConfig>().extraPotions;
 
         internal override void ApplyEffect(PermanentBuffPlayer player)

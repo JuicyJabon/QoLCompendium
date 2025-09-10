@@ -4,8 +4,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Stations.Clicker;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Stations.Clicker
 {
-    [JITWhenModsEnabled("ClickerClass")]
-    [ExtendsFromMod("ClickerClass")]
+    [JITWhenModsEnabled(ModConditions.clickerClassName)]
+    [ExtendsFromMod(ModConditions.clickerClassName)]
     public class PermanentDesktopComputer : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.clickerClassMod, Common.GetModBuff(ModConditions.clickerClassMod, "DesktopComputerBuff"));
@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Stations.Cli
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.clickerClassMod, "DesktopComputer"), 3);
             r.AddTile(TileID.CookingPots);
             r.Register();

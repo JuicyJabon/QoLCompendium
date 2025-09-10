@@ -49,7 +49,7 @@ namespace QoLCompendium.Content.Items.Tools.Summons
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.LihzahrdBrick, 5);
             r.AddIngredient(ItemID.Ectoplasm, 5);
             r.AddTile(TileID.MythrilAnvil);

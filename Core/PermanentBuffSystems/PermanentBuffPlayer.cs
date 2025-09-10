@@ -353,8 +353,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems
         }
     }
 
-    [JITWhenModsEnabled("SOTS")]
-    [ExtendsFromMod("SOTS")]
+    [JITWhenModsEnabled(ModConditions.secretsOfTheShadowsName)]
+    [ExtendsFromMod(ModConditions.secretsOfTheShadowsName)]
     public class SOTSRippleEffect : ModPlayer
     {
         public override void PreUpdateBuffs()
@@ -372,8 +372,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems
         }
     }
 
-    [JITWhenModsEnabled("ClickerClass")]
-    [ExtendsFromMod("ClickerClass")]
+    [JITWhenModsEnabled(ModConditions.clickerClassName)]
+    [ExtendsFromMod(ModConditions.clickerClassName)]
     public class ClickerClassInfluenceEffect : ModPlayer
     {
         public readonly int RadiusIncrease = 20;
@@ -385,8 +385,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems
         }
     }
 
-    [JITWhenModsEnabled("ContinentOfJourney")]
-    [ExtendsFromMod("ContinentOfJourney")]
+    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
+    [ExtendsFromMod(ModConditions.homewardJourneyName)]
     public class HomewardJourneyFluorescentBerryEffect : GlobalWall
     {
         public override void ModifyLight(int i, int j, int type, ref float r, ref float g, ref float b)
@@ -403,8 +403,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems
         }
     }
 
-    [JITWhenModsEnabled("ContinentOfJourney")]
-    [ExtendsFromMod("ContinentOfJourney")]
+    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
+    [ExtendsFromMod(ModConditions.homewardJourneyName)]
     public class HomewardJourneyYinYangEffect : GlobalNPC
     {
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)

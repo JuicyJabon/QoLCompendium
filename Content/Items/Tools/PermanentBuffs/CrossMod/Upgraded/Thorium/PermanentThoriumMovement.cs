@@ -5,8 +5,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.Thorium;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Thorium
 {
-    [JITWhenModsEnabled("ThoriumMod")]
-    [ExtendsFromMod("ThoriumMod")]
+    [JITWhenModsEnabled(ModConditions.thoriumName)]
+    [ExtendsFromMod(ModConditions.thoriumName)]
     public class PermanentThoriumMovement : IPermanentModdedBuffItem
     {
         public override string Texture => "QoLCompendium/Assets/Items/PermanentThoriumMovement";
@@ -19,7 +19,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Tho
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentAquaAffinity>());
             r.AddIngredient(ModContent.ItemType<PermanentBloodRush>());
             r.AddIngredient(ModContent.ItemType<PermanentKinetic>());

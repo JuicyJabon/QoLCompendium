@@ -4,8 +4,8 @@ using QoLCompendium.Core;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Stations.Thorium
 {
-    [JITWhenModsEnabled("ThoriumMod")]
-    [ExtendsFromMod("ThoriumMod")]
+    [JITWhenModsEnabled(ModConditions.thoriumName)]
+    [ExtendsFromMod(ModConditions.thoriumName)]
     public class PermanentConductorsStand : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.thoriumMod, Common.GetModBuff(ModConditions.thoriumMod, "ConductorsStandBuff"));
@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Stations.Tho
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.thoriumMod, "ConductorsStand"), 3);
             r.AddTile(TileID.CookingPots);
             r.Register();

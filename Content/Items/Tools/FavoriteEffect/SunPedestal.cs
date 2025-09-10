@@ -30,7 +30,7 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.MoonPedestals, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.MoonPedestals, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.GrayBrick, 10);
             r.AddIngredient(ItemID.SunplateBlock, 8);
             r.AddTile(TileID.Anvils);

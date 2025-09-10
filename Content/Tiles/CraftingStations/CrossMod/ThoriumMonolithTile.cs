@@ -3,8 +3,8 @@ using ThoriumMod.Tiles;
 
 namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod
 {
-    [JITWhenModsEnabled("ThoriumMod")]
-    [ExtendsFromMod("ThoriumMod")]
+    [JITWhenModsEnabled(ModConditions.thoriumName)]
+    [ExtendsFromMod(ModConditions.thoriumName)]
     public class ThoriumMonolithTile : ModTile
     {
         public override void SetStaticDefaults()
@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod
             AddMapEntry(new Color(200, 200, 200), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
             //counts as
-            AdjTiles = new int[] { ModContent.TileType<ThoriumAnvil>(), ModContent.TileType<ArcaneArmorFabricator>(), ModContent.TileType<GrimPedestal>(), ModContent.TileType<SoulForge>(), ModContent.TileType<GuidesFinalGiftTile>() };
+            AdjTiles = new int[] { ModContent.TileType<ThoriumAnvil>(), ModContent.TileType<ArcaneArmorFabricator>(), ModContent.TileType<GrimPedestal>(), ModContent.TileType<SoulForgeNew>(), ModContent.TileType<GuidesFinalGiftTile>() };
             DustType = -1;
         }
     }

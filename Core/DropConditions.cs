@@ -6,10 +6,10 @@ namespace QoLCompendium.Core
 {
     public class ExpertOnlyDropCondition : IItemDropRuleCondition, IProvideItemConditionDescription
     {
-        [JITWhenModsEnabled("CalamityMod")]
+        [JITWhenModsEnabled(ModConditions.calamityName)]
         public static bool RevengeanceMode => CalamityWorld.revenge;
 
-        [JITWhenModsEnabled("CalamityMod")]
+        [JITWhenModsEnabled(ModConditions.calamityName)]
         public static bool DeathMode => CalamityWorld.death;
 
         [JITWhenModsEnabled("FargowiltasSouls")]

@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [ExtendsFromMod("Redemption")]
-    [JITWhenModsEnabled("Redemption")]
+    [ExtendsFromMod(ModConditions.redemptionName)]
+    [JITWhenModsEnabled(ModConditions.redemptionName)]
     public class RedemptionPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

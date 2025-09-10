@@ -5,14 +5,14 @@
         //Item Name = SunPot
         internal override void ApplyEffect(PermanentBuffPlayer player)
         {
-            if (!ModConditions.spiritLoaded)
+            if (!ModConditions.spiritClassicLoaded)
                 return;
 
-            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "SunPotBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.SunPot])
+            if (!player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritClassicMod, "SunPotBuff")] && !player.Player.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools[(int)PermanentBuffPlayer.PermanentSpiritClassicBuffs.SunPot])
             {
-                buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "SunPotBuff"));
+                buffToApply = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "SunPotBuff"));
                 buffToApply.Update(player.Player, ref index);
-                player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritMod, "SunPotBuff")] = true;
+                player.Player.buffImmune[Common.GetModBuff(ModConditions.spiritClassicMod, "SunPotBuff")] = true;
             }
         }
     }

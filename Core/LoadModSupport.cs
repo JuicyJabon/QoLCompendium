@@ -47,7 +47,6 @@
             ModConditions.catalystLoaded.AddLoadedMod(ref ModConditions.catalystMod);
             ModConditions.cerebralLoaded.AddLoadedMod(ref ModConditions.cerebralMod);
             ModConditions.clamityAddonLoaded.AddLoadedMod(ref ModConditions.clamityAddonMod);
-            ModConditions.ruptureLoaded.AddLoadedMod(ref ModConditions.ruptureMod);
             ModConditions.clickerClassLoaded.AddLoadedMod(ref ModConditions.clickerClassMod);
             ModConditions.confectionRebakedLoaded.AddLoadedMod(ref ModConditions.confectionRebakedMod);
             ModConditions.consolariaLoaded.AddLoadedMod(ref ModConditions.consolariaMod);
@@ -79,6 +78,7 @@
             ModConditions.huntOfTheOldGodLoaded.AddLoadedMod(ref ModConditions.huntOfTheOldGodMod);
             ModConditions.infectedQualitiesLoaded.AddLoadedMod(ref ModConditions.infectedQualitiesMod);
             ModConditions.infernumLoaded.AddLoadedMod(ref ModConditions.infernumMod);
+            ModConditions.infernalEclipseLoaded.AddLoadedMod(ref ModConditions.infernalEclipseMod);
             ModConditions.luiAFKLoaded.AddLoadedMod(ref ModConditions.luiAFKMod);
             ModConditions.luiAFKDLCLoaded.AddLoadedMod(ref ModConditions.luiAFKDLCMod);
             ModConditions.lunarVeilLoaded.AddLoadedMod(ref ModConditions.lunarVeilMod);
@@ -98,10 +98,12 @@
             ModConditions.redemptionLoaded.AddLoadedMod(ref ModConditions.redemptionMod);
             ModConditions.reforgedLoaded.AddLoadedMod(ref ModConditions.reforgedMod);
             ModConditions.remnantsLoaded.AddLoadedMod(ref ModConditions.remnantsMod);
+            ModConditions.ruptureLoaded.AddLoadedMod(ref ModConditions.ruptureMod);
             ModConditions.secretsOfTheShadowsLoaded.AddLoadedMod(ref ModConditions.secretsOfTheShadowsMod);
+            ModConditions.secretsOfTheShadowsBardHealerLoaded.AddLoadedMod(ref ModConditions.secretsOfTheShadowsBardHealerMod);
             ModConditions.shadowsOfAbaddonLoaded.AddLoadedMod(ref ModConditions.shadowsOfAbaddonMod);
             ModConditions.sloomeLoaded.AddLoadedMod(ref ModConditions.sloomeMod);
-            ModConditions.spiritLoaded.AddLoadedMod(ref ModConditions.spiritMod);
+            ModConditions.spiritClassicLoaded.AddLoadedMod(ref ModConditions.spiritClassicMod);
             ModConditions.spookyLoaded.AddLoadedMod(ref ModConditions.spookyMod);
             ModConditions.starlightRiverLoaded.AddLoadedMod(ref ModConditions.starlightRiverMod);
             ModConditions.starsAboveLoaded.AddLoadedMod(ref ModConditions.starsAboveMod);

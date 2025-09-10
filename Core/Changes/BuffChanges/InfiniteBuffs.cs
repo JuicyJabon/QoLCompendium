@@ -22,13 +22,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             infoByItemType.Clear();
             infiniteStackedItems.Clear();
             if (QoLCompendium.mainConfig.EndlessBuffs)
-            {
                 CheckInventory(Common.GetAllInventoryItemsList(Player).ToArray());
-                //CheckInventory(Player.bank.item);
-                //CheckInventory(Player.bank2.item);
-                //CheckInventory(Player.bank3.item);
-                //CheckInventory(Player.bank4.item);
-            }
         }
 
         public override void PostUpdateBuffs()
@@ -527,10 +521,10 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             //SHADOWS OF ABADDON
             AddBuffIntegration(ModConditions.shadowsOfAbaddonMod, "FruitLantern", "FruitBuff");
             //SPIRIT
-            AddBuffIntegration(ModConditions.spiritMod, "SunPot", "SunPotBuff");
-            AddBuffIntegration(ModConditions.spiritMod, "CoilEnergizerItem", "OverDrive");
-            AddBuffIntegration(ModConditions.spiritMod, "TheCouch", "CouchPotato");
-            AddBuffIntegration(ModConditions.spiritMod, "KoiTotem", "KoiTotemBuff");
+            AddBuffIntegration(ModConditions.spiritClassicMod, "SunPot", "SunPotBuff");
+            AddBuffIntegration(ModConditions.spiritClassicMod, "CoilEnergizerItem", "OverDrive");
+            AddBuffIntegration(ModConditions.spiritClassicMod, "TheCouch", "CouchPotato");
+            AddBuffIntegration(ModConditions.spiritClassicMod, "KoiTotem", "KoiTotemBuff");
             //THORIUM
             AddBuffIntegration(ModConditions.thoriumMod, "Altar", "AltarBuff");
             AddBuffIntegration(ModConditions.thoriumMod, "ConductorsStand", "ConductorsStandBuff");

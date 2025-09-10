@@ -1,14 +1,12 @@
 Mods: {
 	QoLCompendium: {
 		CommonItemTooltips: {
-			NotConsumable: Not Consumable
+			NotConsumable: Not consumable
 			WorksInBanks: Works from inside personal storages
 			StaffOfAshingPlaceable: Creates ash grass on ash
 			StaffOfCystingPlaceable: Creates corrupt grass on dirt or mud
 			StaffOfHallowingPlaceable: Creates hallowed grass on dirt
 			StaffOfHemorrhagingPlaceable: Creates crimson grass on dirt or mud
-			StaffOfOvergrownCystingPlaceable: Creates corrupt grass on mud
-			StaffOfOvergrownHemorrhagingPlaceable: Creates crimson grass on mud
 			StaffOfOvergrowthPlaceable: Creates jungle grass on mud
 			StaffOfShroomingPlaceable: Creates mushroom grass on mud
 			OmnistaffPlaceable: Creates grasses on dirt, mud, or ash
@@ -50,6 +48,15 @@ Mods: {
 			BardClass: "[c/00ff80:-Bard Class-]"
 			HealerClass: "[c/ffff5b:-Healer Class-]"
 			DarkHealerClass: "[c/b266ff:-Healer Class-]"
+			VoidWarriorClass: "[c/51257d:-Void Warrior Class-]"
+			VoidRangerClass: "[c/51257d:-Void Ranger Class-]"
+			VoidSorcererClass: "[c/51257d:-Void Sorcerer Class-]"
+			VoidSummonerClass: "[c/51257d:-Void Summoner Class-]"
+			VoidThrowerClass: "[c/51257d:-Void Thrower Class-]"
+			VoidRogueClass: "[c/51257d:-Void Rogue Class-]"
+			VoidBardClass: "[c/51257d:-Void Bard Class-]"
+			VoidHealerClass: "[c/51257d:-Void Healer Class-]"
+			VoidGenericClass: "[c/51257d:-Void Class-]"
 			KillMobileStorage: Right click in inventory to despawn all active mobile storages
 			AssetNotFound: "[c/cf1d1d:Mod asset not found, default asset applied]"
 		}
@@ -229,7 +236,7 @@ Mods: {
 		TileStuff: {
 			Whitelisted: Whitelisted:
 			Removed: Removed from Whitelist:
-			Failed: "[c/ff1919:Failed to Whitelist! Please activate the Whitelist inside the Main Config]"
+			Failed: "[c/ff1919:Failed to Whitelist! Please activate the Whitelist inside the Veinminer Config]"
 		}
 
 		ItemNames: {
@@ -684,22 +691,22 @@ Mods: {
 
 			BasicCraftingMonolith: {
 				DisplayName: Basic Crafting Monolith
-				Tooltip: Functions as many basic crafting stations
+				Tooltip: Functions as many basic vanilla crafting stations
 			}
 
 			HardmodeCraftingMonolith: {
 				DisplayName: Hardmode Crafting Monolith
-				Tooltip: Functions as many hardmode crafting stations
+				Tooltip: Functions as many hardmode vanilla crafting stations
 			}
 
 			LunarCraftingMonolith: {
 				DisplayName: Lunar Crafting Monolith
-				Tooltip: Functions as every crafting station
+				Tooltip: Functions as every vanilla crafting station
 			}
 
 			SpecializedCraftingMonolith: {
 				DisplayName: Specialized Crafting Monolith
-				Tooltip: Functions as many advanced crafting stations
+				Tooltip: Functions as many advanced vanilla crafting stations
 			}
 
 			DemonAltar: {
@@ -871,16 +878,6 @@ Mods: {
 					Right click to unlock the entire bestiary
 					Cannot be undone
 					'''
-			}
-
-			StaffOfOvergrownCysting: {
-				DisplayName: Staff of Overgrown Cysting
-				Tooltip: ""
-			}
-
-			StaffOfOvergrownHemorrhaging: {
-				DisplayName: Staff of Overgrown Hemorrhaging
-				Tooltip: ""
 			}
 
 			AsphaltAutohighway: {
@@ -1309,146 +1306,6 @@ Mods: {
 					Increases fishing power of the rod during rain or at night
 					Requires 1 bait for infinite uses
 					'''
-			}
-
-			BaitCollector: {
-				DisplayName: Bait Collector
-				Tooltip: ""
-			}
-
-			BossCollector: {
-				DisplayName: Boss Collector
-				Tooltip: ""
-			}
-
-			CavernCollector: {
-				DisplayName: Cavern Collector
-				Tooltip: ""
-			}
-
-			CorruptionCollector: {
-				DisplayName: Corruption Collector
-				Tooltip: ""
-			}
-
-			CrimsonCollector: {
-				DisplayName: Crimson Collector
-				Tooltip: ""
-			}
-
-			DesertCollector: {
-				DisplayName: Desert Collector
-				Tooltip: ""
-			}
-
-			DungeonCollector: {
-				DisplayName: Dungeon Collector
-				Tooltip: ""
-			}
-
-			DyePlantCollector: {
-				DisplayName: Dye Plant Collector
-				Tooltip: ""
-			}
-
-			EnemyCollector: {
-				DisplayName: Enemy Collector
-				Tooltip: ""
-			}
-
-			FishCollector: {
-				DisplayName: Fish Collector
-				Tooltip: ""
-			}
-
-			ForestCollector: {
-				DisplayName: Forest Collector
-				Tooltip: ""
-			}
-
-			GemCollector: {
-				DisplayName: Gem Collector
-				Tooltip: ""
-			}
-
-			HallowCollector: {
-				DisplayName: Hallow Collector
-				Tooltip: ""
-			}
-
-			HerbCollector: {
-				DisplayName: Herb Collector
-				Tooltip: ""
-			}
-
-			JungleCollector: {
-				DisplayName: Jungle Collector
-				Tooltip: ""
-			}
-
-			LiquidCollector: {
-				DisplayName: Liquid Collector
-				Tooltip: ""
-			}
-
-			LunarCollector: {
-				DisplayName: Lunar Collector
-				Tooltip: ""
-			}
-
-			MeteorCollector: {
-				DisplayName: Meteor Collector
-				Tooltip: ""
-			}
-
-			ModBiomeCollector: {
-				DisplayName: Mod Biome Collector
-				Tooltip: ""
-			}
-
-			MushroomCollector: {
-				DisplayName: Mushroom Collector
-				Tooltip: ""
-			}
-
-			NaturalBlockCollector: {
-				DisplayName: Natural Block Collector
-				Tooltip: ""
-			}
-
-			OceanCollector: {
-				DisplayName: Ocean Collector
-				Tooltip: ""
-			}
-
-			OreCollector: {
-				DisplayName: Ore Collector
-				Tooltip: ""
-			}
-
-			SkyCollector: {
-				DisplayName: Sky Collector
-				Tooltip: ""
-			}
-
-			SnowCollector: {
-				DisplayName: Snow Collector
-				Tooltip: ""
-			}
-
-			TempleCollector: {
-				DisplayName: Temple Collector
-				Tooltip: ""
-			}
-
-			TreeCollector: {
-				DisplayName: Tree Collector
-				Tooltip: ""
-			}
-
-			UnderworldCollector: {
-				DisplayName: Underworld Collector
-				Tooltip: ""
 			}
 
 			WormholeMirror: {
@@ -3370,6 +3227,31 @@ Mods: {
 			WorldsEndWhaleSummon: {
 				DisplayName: Fallen Halo
 				Tooltip: Summons World's End Everlasting Falling Whale
+			}
+
+			UltimateCraftingMonolith: {
+				DisplayName: Ultimate Crafting Monolith
+				Tooltip: Functions as every crafting station
+			}
+
+			BasicHomewardJourneyCraftingMonolith: {
+				DisplayName: Basic Homeward Journey Crafting Monolith
+				Tooltip: Functions as basic Homeward Journey crafting stations
+			}
+
+			HomewardJourneyCraftingMonolith: {
+				DisplayName: Homeward Journey Crafting Monolith
+				Tooltip: Functions as all Homeward Journey crafting stations
+			}
+
+			TreacherousGraniteWall: {
+				DisplayName: Treacherous Granite Wall
+				Tooltip: A dangerous slab of granite wall that will spawn monsters
+			}
+
+			TreacherousMarbleWall: {
+				DisplayName: Treacherous Marble Wall
+				Tooltip: A dangerous slab of marble wall that will spawn monsters
 			}
 		}
 
@@ -5347,6 +5229,11 @@ Mods: {
 			beenToMaze: Been to the Maze biome
 			beenToFrozenHell: Been to the Frozen Hell biome
 			downedPrimordialWyrm: Downed Primordial Wyrm
+			downedSpookFishron: Mods.QoLCompendium.ModConditions.downedSpookFishron
+			beenToLowerCatacombs: Mods.QoLCompendium.ModConditions.beenToLowerCatacombs
+			beenToTempleOfMoco: Mods.QoLCompendium.ModConditions.beenToTempleOfMoco
+			downedEggIncursion: Mods.QoLCompendium.ModConditions.downedEggIncursion
+			downedPandorasBox: Mods.QoLCompendium.ModConditions.downedPandorasBox
 		}
 
 		Tiles: {
@@ -5364,39 +5251,14 @@ Mods: {
 			AetherAltarTile.MapEntry: Aether Altar
 			AetherPylonTile.MapEntry: Aether Pylon
 			TemplePylonTile.MapEntry: Temple Pylon
-			BaitCollectorTile.MapEntry: Bait Collector
-			BossCollectorTile.MapEntry: Boss Collector
-			CavernCollectorTile.MapEntry: Cavern Collector
-			CorruptionCollectorTile.MapEntry: Corruption Collector
-			CrimsonCollectorTile.MapEntry: Crimson Collector
-			DesertCollectorTile.MapEntry: Desert Collector
-			DungeonCollectorTile.MapEntry: Dungeon Collector
-			DyePlantCollectorTile.MapEntry: Dye Plant Collector
-			EnemyCollectorTile.MapEntry: Enemy Collector
-			FishCollectorTile.MapEntry: Fish Collector
-			ForestCollectorTile.MapEntry: Forest Collector
-			GemCollectorTile.MapEntry: Gem Collector
-			HallowCollectorTile.MapEntry: Hallow Collector
-			HerbCollectorTile.MapEntry: Herb Collector
-			JungleCollectorTile.MapEntry: Jungle Collector
-			LiquidCollectorTile.MapEntry: Liquid Collector
-			LunarCollectorTile.MapEntry: Lunar Collector
-			MeteorCollectorTile.MapEntry: Meteor Collector
-			ModBiomeCollectorTile.MapEntry: Mod Biome Collector
-			MushroomCollectorTile.MapEntry: Mushroom Collector
-			NaturalBlockCollectorTile.MapEntry: Natural Block Collector
-			OceanCollectorTile.MapEntry: Ocean Collector
-			OreCollectorTile.MapEntry: Ore Collector
-			SkyCollectorTile.MapEntry: Sky Collector
-			SnowCollectorTile.MapEntry: Snow Collector
-			TempleCollectorTile.MapEntry: Temple Collector
-			TreeCollectorTile.MapEntry: Tree Collector
-			UnderworldCollectorTile.MapEntry: Underworld Collector
 			BasicThoriumMonolithTile.MapEntry: Basic Thorium Crafting Monolith
 			ThoriumMonolithTile.MapEntry: Thorium Crafting Monolith
 			HardmodeCalamityMonolithTile.MapEntry: Hardmode Calamity Crafting Monolith
 			CalamityMonolithTile.MapEntry: Calamity Crafting Monolith
 			BasicCalamityMonolithTile.MapEntry: Basic Calamity Crafting Monolith
+			UltimateMonolithTile.MapEntry: Ultimate Crafting Monolith
+			BasicHomewardJourneyMonolithTile.MapEntry: Basic Homeward Journey Crafting Monolith
+			HomewardJourneyMonolithTile.MapEntry: Homeward Journey Crafting Monolith
 		}
 
 		Buffs: {

@@ -52,7 +52,7 @@ namespace QoLCompendium.Content.Items.Tools.Summons.CrossMod
             if (!ModConditions.calamityLoaded)
                 return;
 
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CrossModItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.CrossModItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.WhitePearl, 3);
             r.AddIngredient(ItemID.Ectoplasm, 5);
             r.AddTile(TileID.MythrilAnvil);

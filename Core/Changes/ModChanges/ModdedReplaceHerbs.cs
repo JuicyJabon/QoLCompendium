@@ -63,16 +63,16 @@ namespace QoLCompendium.Core.Changes.ModChanges
             #endregion
 
             #region Spirit
-            if (ModConditions.spiritLoaded)
+            if (ModConditions.spiritClassicLoaded)
             {
-                if (tile.TileType == Common.GetModTile(ModConditions.spiritMod, "Cloudstalk"))
+                if (tile.TileType == Common.GetModTile(ModConditions.spiritClassicMod, "Cloudstalk"))
                 {
-                    DropItems(stage, Common.GetModItem(ModConditions.spiritMod, "CloudstalkItem"), Common.GetModItem(ModConditions.spiritMod, "CloudstalkSeed"));
+                    DropItems(stage, Common.GetModItem(ModConditions.spiritClassicMod, "CloudstalkItem"), Common.GetModItem(ModConditions.spiritClassicMod, "CloudstalkSeed"));
                     ResetTileFrame(tile);
                 }
-                if (tile.TileType == Common.GetModTile(ModConditions.spiritMod, "SoulBloomTile"))
+                if (tile.TileType == Common.GetModTile(ModConditions.spiritClassicMod, "SoulBloomTile"))
                 {
-                    DropItems(stage, Common.GetModItem(ModConditions.spiritMod, "SoulBloom"), Common.GetModItem(ModConditions.spiritMod, "SoulSeeds"));
+                    DropItems(stage, Common.GetModItem(ModConditions.spiritClassicMod, "SoulBloom"), Common.GetModItem(ModConditions.spiritClassicMod, "SoulSeeds"));
                     ResetTileFrame(tile);
                 }
             }
@@ -133,8 +133,8 @@ namespace QoLCompendium.Core.Changes.ModChanges
                         Common.GetModTile(ModConditions.shadowsOfAbaddonMod, "Welkinbell"),
                         Common.GetModTile(ModConditions.shadowsOfAbaddonMod, "Illumifern"),
                         Common.GetModTile(ModConditions.shadowsOfAbaddonMod, "Enduflora"),
-                        Common.GetModTile(ModConditions.spiritMod, "Cloudstalk"),
-                        Common.GetModTile(ModConditions.spiritMod, "SoulBloomTile"),
+                        Common.GetModTile(ModConditions.spiritClassicMod, "Cloudstalk"),
+                        Common.GetModTile(ModConditions.spiritClassicMod, "SoulBloomTile"),
                         Common.GetModTile(ModConditions.thoriumMod, "MarineKelp2")
                     };
 

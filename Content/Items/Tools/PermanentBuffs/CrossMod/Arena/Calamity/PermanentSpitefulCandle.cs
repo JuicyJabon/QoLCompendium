@@ -4,8 +4,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Arena.Calamity;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Arena.Calamity
 {
-    [JITWhenModsEnabled("CalamityMod")]
-    [ExtendsFromMod("CalamityMod")]
+    [JITWhenModsEnabled(ModConditions.calamityName)]
+    [ExtendsFromMod(ModConditions.calamityName)]
     public class PermanentSpitefulCandle : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.calamityMod, Common.GetModBuff(ModConditions.calamityMod, "YellowCandleBuff"));
@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Arena.Calami
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.calamityMod, "SpitefulCandle"), 3);
             r.AddTile(TileID.CookingPots);
             r.Register();

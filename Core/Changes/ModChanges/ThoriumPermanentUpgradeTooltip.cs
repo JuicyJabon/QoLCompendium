@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [ExtendsFromMod("ThoriumMod")]
-    [JITWhenModsEnabled("ThoriumMod")]
+    [ExtendsFromMod(ModConditions.thoriumName)]
+    [JITWhenModsEnabled(ModConditions.thoriumName)]
     public class ThoriumPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

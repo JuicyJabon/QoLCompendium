@@ -5,8 +5,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.Clamity;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Clamity
 {
-    [JITWhenModsEnabled("Clamity")]
-    [ExtendsFromMod("Clamity")]
+    [JITWhenModsEnabled(ModConditions.clamityAddonName)]
+    [ExtendsFromMod(ModConditions.clamityAddonName)]
     public class PermanentClamity : IPermanentModdedBuffItem
     {
         public override string Texture => "QoLCompendium/Assets/Items/PermanentClamity";
@@ -19,7 +19,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Cla
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentExoBaguette>());
             r.AddIngredient(ModContent.ItemType<PermanentSupremeLuck>());
             r.AddIngredient(ModContent.ItemType<PermanentTitanScale>());

@@ -6,8 +6,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.Calamity
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.CalamityEntropy
 {
-    [JITWhenModsEnabled("CalamityEntropy")]
-    [ExtendsFromMod("CalamityEntropy")]
+    [JITWhenModsEnabled(ModConditions.calamityEntropyName)]
+    [ExtendsFromMod(ModConditions.calamityEntropyName)]
     public class PermanentCalamityEntropy : IPermanentModdedBuffItem
     {
         public override string Texture => "QoLCompendium/Assets/Items/PermanentCalamityEntropy";
@@ -20,7 +20,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Cal
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentVoidCandle>());
             r.AddIngredient(ModContent.ItemType<PermanentYharimsStimulants>());
             r.AddIngredient(ModContent.ItemType<PermanentSoyMilk>());

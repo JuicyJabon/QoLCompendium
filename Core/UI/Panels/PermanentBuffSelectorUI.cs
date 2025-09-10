@@ -111,7 +111,7 @@ namespace QoLCompendium.Core.UI.Panels
                     PermanentSOTSBuffUI.timeStart = Main.GameUpdateCount;
                     PermanentSOTSBuffUI.visible = !PermanentSOTSBuffUI.visible;
                 }
-                else if (ui == 5 && ModConditions.spiritLoaded) // Spirit
+                else if (ui == 5 && ModConditions.spiritClassicLoaded) // Spirit
                 {
                     PermanentSpiritClassicBuffUI.timeStart = Main.GameUpdateCount;
                     PermanentSpiritClassicBuffUI.visible = !PermanentSpiritClassicBuffUI.visible;

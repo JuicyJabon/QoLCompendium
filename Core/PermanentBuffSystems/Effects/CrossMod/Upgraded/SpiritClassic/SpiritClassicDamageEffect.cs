@@ -6,7 +6,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.Spir
     {
         internal override void ApplyEffect(PermanentBuffPlayer player)
         {
-            if (!ModConditions.spiritLoaded)
+            if (!ModConditions.spiritClassicLoaded)
                 return;
 
             new RunescribeEffect().ApplyEffect(player);

@@ -1,6 +1,4 @@
 ﻿using QoLCompendium.Content.Tiles.Other;
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.Other
@@ -27,11 +25,11 @@ namespace QoLCompendium.Content.Items.Placeables.Other
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, Type, 2, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, Type, 2, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.AsphaltBlock);
             r.Register();
 
-            r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, ItemID.AsphaltBlock, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, ItemID.AsphaltBlock, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<AsphaltPlatform>(), 2);
             r.Register();
         }

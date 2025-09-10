@@ -1,12 +1,10 @@
 ﻿using QoLCompendium.Content.Tiles.CraftingStations.CrossMod;
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod
 {
-    [JITWhenModsEnabled("ThoriumMod")]
-    [ExtendsFromMod("ThoriumMod")]
+    [JITWhenModsEnabled(ModConditions.thoriumName)]
+    [ExtendsFromMod(ModConditions.thoriumName)]
     public class ThoriumCraftingMonolith : ModItem
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.CraftingStations;
@@ -29,7 +27,7 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<BasicThoriumCraftingMonolith>());
             r.AddIngredient(Common.GetModItem(ModConditions.thoriumMod, "SoulForge"));
             r.AddIngredient(Common.GetModItem(ModConditions.thoriumMod, "GuidesFinalGift"));

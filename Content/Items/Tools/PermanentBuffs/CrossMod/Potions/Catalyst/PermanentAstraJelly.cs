@@ -4,8 +4,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.Catalyst;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Catalyst
 {
-    [JITWhenModsEnabled("CatalystMod")]
-    [ExtendsFromMod("CatalystMod")]
+    [JITWhenModsEnabled(ModConditions.catalystName)]
+    [ExtendsFromMod(ModConditions.catalystName)]
     public class PermanentAstraJelly : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.catalystMod, Common.GetModBuff(ModConditions.catalystMod, "AstralJellyBuff"));
@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Cata
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.catalystMod, "AstraJelly"), 30);
             r.AddTile(TileID.CookingPots);
             r.Register();

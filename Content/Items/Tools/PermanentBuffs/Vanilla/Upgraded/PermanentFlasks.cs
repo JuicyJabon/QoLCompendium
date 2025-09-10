@@ -50,7 +50,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.Vanilla.Upgraded
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentFlaskOfCursedFlames>());
             r.AddIngredient(ModContent.ItemType<PermanentFlaskOfFire>());
             r.AddIngredient(ModContent.ItemType<PermanentFlaskOfGold>());

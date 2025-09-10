@@ -30,7 +30,7 @@ namespace QoLCompendium.Content.Items.Accessories.InformationAccessories
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<BattalionLog>());
             r.AddIngredient(ModContent.ItemType<HeadCounter>());
             r.AddIngredient(ModContent.ItemType<TrackingDevice>());

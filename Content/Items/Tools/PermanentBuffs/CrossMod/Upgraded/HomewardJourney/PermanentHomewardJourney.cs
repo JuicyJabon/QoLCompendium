@@ -4,8 +4,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.Homeward
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Calamity
 {
-    [JITWhenModsEnabled("ContinentOfJourney")]
-    [ExtendsFromMod("ContinentOfJourney")]
+    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
+    [ExtendsFromMod(ModConditions.homewardJourneyName)]
     public class PermanentHomewardJourney : IPermanentModdedBuffItem
     {
         public override string Texture => "QoLCompendium/Assets/Items/PermanentHomewardJourney";
@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Cal
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentHomewardJourneyArena>());
             r.AddIngredient(ModContent.ItemType<PermanentHomewardJourneyFarming>());
             r.AddIngredient(ModContent.ItemType<PermanentHomewardJourneyMovement>());

@@ -6,8 +6,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.SOTS;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.SOTS
 {
-    [JITWhenModsEnabled("SOTS")]
-    [ExtendsFromMod("SOTS")]
+    [JITWhenModsEnabled(ModConditions.secretsOfTheShadowsName)]
+    [ExtendsFromMod(ModConditions.secretsOfTheShadowsName)]
     public class PermanentSecretsOfTheShadows : IPermanentModdedBuffItem
     {
         public override string Texture => "QoLCompendium/Assets/Items/PermanentSecretsOfTheShadows";
@@ -20,7 +20,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.SOT
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentAssassination>());
             r.AddIngredient(ModContent.ItemType<PermanentBluefire>());
             r.AddIngredient(ModContent.ItemType<PermanentBrittle>());

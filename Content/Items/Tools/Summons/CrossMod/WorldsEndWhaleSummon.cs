@@ -52,7 +52,7 @@ namespace QoLCompendium.Content.Items.Tools.Summons.CrossMod
             if (!ModConditions.homewardJourneyLoaded)
                 return;
 
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CrossModItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.CrossModItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.homewardJourneyMod, "FinalBar"), 3);
             r.AddTile(TileID.LunarCraftingStation);
             r.Register();

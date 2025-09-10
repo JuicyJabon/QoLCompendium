@@ -3,8 +3,8 @@ using ContinentOfJourney.Items.Accessories.PermanentUpgradesSystem;
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [ExtendsFromMod("ContinentOfJourney")]
-    [JITWhenModsEnabled("ContinentOfJourney")]
+    [ExtendsFromMod(ModConditions.homewardJourneyName)]
+    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
     public class HomewardJourneyPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

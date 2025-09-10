@@ -95,7 +95,6 @@ namespace QoLCompendium.Core
         public bool EmblemLooping { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool PortableStations { get; set; }
 
         [DefaultValue(true)]

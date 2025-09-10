@@ -3,8 +3,8 @@ using ThoriumMod.Tiles;
 
 namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod
 {
-    [JITWhenModsEnabled("ThoriumMod")]
-    [ExtendsFromMod("ThoriumMod")]
+    [JITWhenModsEnabled(ModConditions.thoriumName)]
+    [ExtendsFromMod(ModConditions.thoriumName)]
     public class BasicThoriumMonolithTile : ModTile
     {
         public override void SetStaticDefaults()

@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [ExtendsFromMod("ClickerClass")]
-    [JITWhenModsEnabled("ClickerClass")]
+    [ExtendsFromMod(ModConditions.clickerClassName)]
+    [JITWhenModsEnabled(ModConditions.clickerClassName)]
     public class ClickerPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

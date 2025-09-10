@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [ExtendsFromMod("CrystalDragons")]
-    [JITWhenModsEnabled("CrystalDragons")]
+    [ExtendsFromMod(ModConditions.crystalDragonsName)]
+    [JITWhenModsEnabled(ModConditions.crystalDragonsName)]
     public class CrystalDragonsRaceRemovePrefixes : GlobalItem
     {
         private static int infiniteLoopHackFix;

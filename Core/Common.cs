@@ -935,9 +935,9 @@ namespace QoLCompendium.Core
                 Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "ElectromagneticDeterrent"),
                 Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "GoldenTrowel"),
                 Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "InfiniteVoid"),
-                Common.GetModItem(ModConditions.spiritMod, "FisheyeGem"),
-                Common.GetModItem(ModConditions.spiritMod, "MetalBand"),
-                Common.GetModItem(ModConditions.spiritMod, "MimicRepellent"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "FisheyeGem"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "MetalBand"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "MimicRepellent"),
                 Common.GetModItem(ModConditions.thoriumMod, "HeartRateMonitor"),
                 Common.GetModItem(ModConditions.thoriumMod, "HightechSonarDevice"),
                 Common.GetModItem(ModConditions.thoriumMod, "GlitteringChalice"),
@@ -1136,16 +1136,16 @@ namespace QoLCompendium.Core
                 Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "PigmanBanner"),
                 Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "SandstormMedallion"),
                 //Spirit
-                Common.GetModItem(ModConditions.spiritMod, "DistressJellyItem"),
-                Common.GetModItem(ModConditions.spiritMod, "GladeWreath"),
-                Common.GetModItem(ModConditions.spiritMod, "ReachBossSummon"),
-                Common.GetModItem(ModConditions.spiritMod, "JewelCrown"),
-                Common.GetModItem(ModConditions.spiritMod, "BlackPearl"),
-                Common.GetModItem(ModConditions.spiritMod, "BlueMoonSpawn"),
-                Common.GetModItem(ModConditions.spiritMod, "DuskCrown"),
-                Common.GetModItem(ModConditions.spiritMod, "CursedCloth"),
-                Common.GetModItem(ModConditions.spiritMod, "StoneSkin"),
-                Common.GetModItem(ModConditions.spiritMod, "MartianTransmitter"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "DistressJellyItem"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "GladeWreath"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "ReachBossSummon"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "JewelCrown"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "BlackPearl"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "BlueMoonSpawn"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "DuskCrown"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "CursedCloth"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "StoneSkin"),
+                Common.GetModItem(ModConditions.spiritClassicMod, "MartianTransmitter"),
                 //Spooky
                 Common.GetModItem(ModConditions.spookyMod, "Fertilizer"),
                 Common.GetModItem(ModConditions.spookyMod, "RottenSeed"),
@@ -1351,6 +1351,7 @@ namespace QoLCompendium.Core
                 GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Omnipotent"),
                 GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Omniscient"),
                 GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Soulbound"),
+                GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Omnipotent"),
                 GetModPrefix(ModConditions.thoriumMod, "Fabled"),
                 GetModPrefix(ModConditions.thoriumMod, "Engrossing"),
                 GetModPrefix(ModConditions.thoriumMod, "Lucrative"),
@@ -1446,7 +1447,9 @@ namespace QoLCompendium.Core
                 GetModTile(ModConditions.thoriumMod, "LodeStone"),
                 GetModTile(ModConditions.thoriumMod, "SmoothCoal"),
                 GetModTile(ModConditions.thoriumMod, "ThoriumOre"),
-                GetModTile(ModConditions.thoriumMod, "ValadiumChunk")
+                GetModTile(ModConditions.thoriumMod, "ValadiumChunk"),
+                GetModTile(ModConditions.thoriumMod, "Aquamarine"),
+                GetModTile(ModConditions.thoriumMod, "Opal"),
             };
             IgnoredTilesForExplosives.UnionWith(ModIgnoredTiles);
 
@@ -1488,6 +1491,18 @@ namespace QoLCompendium.Core
         public static void Reset()
         {
 
+        }
+
+        public static Condition ItemToggled(string displayText, Func<bool> toggle)
+        {
+            return new Condition(Language.GetTextValue(displayText), toggle);
+        }
+
+        public static Recipe GetItemRecipe(Func<bool> toggle, int itemType, int amount = 1, string displayText = "")
+        {
+            Recipe obj = Recipe.Create(itemType, amount);
+            obj.AddCondition(ItemToggled(displayText, toggle));
+            return obj;
         }
 
         public static Color ColorSwap(Color firstColor, Color secondColor, float seconds)
@@ -1662,13 +1677,13 @@ namespace QoLCompendium.Core
         {
             for (int i = 0; i < items.Length; i++)
             {
-                CreateSimpleRecipe(bagID, items[i], TileID.WorkBenches, 1, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.BossBags", () => QoLCompendium.mainConfig.EasierRecipes));
+                CreateSimpleRecipe(bagID, items[i], TileID.WorkBenches, 1, 1, true, false, Common.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.BossBags", () => QoLCompendium.mainConfig.EasierRecipes));
             }
         }
 
         public static void CreateCrateRecipe(int result, int crateID, int crateHardmodeID, int crateCount, params Condition[] conditions)
         {
-            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            Recipe recipe = Common.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateID, crateCount);
             foreach (Condition condition in conditions)
                 recipe.AddCondition(condition);
@@ -1676,7 +1691,7 @@ namespace QoLCompendium.Core
             recipe.DisableDecraft();
             recipe.Register();
 
-            recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            recipe = Common.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateHardmodeID, crateCount);
             foreach (Condition condition in conditions)
                 recipe.AddCondition(condition);
@@ -1687,7 +1702,7 @@ namespace QoLCompendium.Core
 
         public static void CreateCrateHardmodeRecipe(int result, int crateHardmodeID, int crateCount, params Condition[] conditions)
         {
-            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            Recipe recipe = Common.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateHardmodeID, crateCount);
             foreach (Condition condition in conditions)
                 recipe.AddCondition(condition);
@@ -1698,7 +1713,7 @@ namespace QoLCompendium.Core
 
         public static void CreateCrateWithKeyRecipe(int item, int crateID, int crateHardmodeID, int crateCount, int keyID, params Condition[] conditions)
         {
-            Recipe recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            Recipe recipe = Common.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateID, crateCount);
             recipe.AddIngredient(keyID);
             foreach (Condition condition in conditions)
@@ -1707,7 +1722,7 @@ namespace QoLCompendium.Core
             recipe.DisableDecraft();
             recipe.Register();
 
-            recipe = ModConditions.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
+            recipe = Common.GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
             recipe.AddIngredient(crateHardmodeID, crateCount);
             recipe.AddIngredient(keyID);
             foreach (Condition condition in conditions)
@@ -1720,10 +1735,10 @@ namespace QoLCompendium.Core
         public static void ConversionRecipe(int item1, int item2, int station)
         {
             //Item 1 -> Item 2
-            CreateSimpleRecipe(item1, item2, station, 1, 1, false, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.ItemConversions", () => QoLCompendium.mainConfig.ItemConversions));
+            CreateSimpleRecipe(item1, item2, station, 1, 1, false, false, Common.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.ItemConversions", () => QoLCompendium.mainConfig.ItemConversions));
 
             //Item 2 -> Item 1
-            CreateSimpleRecipe(item2, item1, station, 1, 1, false, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.ItemConversions", () => QoLCompendium.mainConfig.ItemConversions));
+            CreateSimpleRecipe(item2, item1, station, 1, 1, false, false, Common.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.ItemConversions", () => QoLCompendium.mainConfig.ItemConversions));
         }
 
         public static void AddBannerGroupToItemRecipe(int recipeGroupID, int resultID, int resultAmount = 1, int groupAmount = 1, params Condition[] conditions)
@@ -1744,7 +1759,7 @@ namespace QoLCompendium.Core
                 {
                     int num = Item.NPCtoBanner(i);
                     if (num > 0)
-                        CreateSimpleRecipe(Item.BannerToItem(num), resultID, TileID.WorkBenches, 1, 1, true, false, ModConditions.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.EasierRecipes));
+                        CreateSimpleRecipe(Item.BannerToItem(num), resultID, TileID.WorkBenches, 1, 1, true, false, Common.ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.EasierRecipes));
                 }
             }
         }
@@ -1891,7 +1906,7 @@ namespace QoLCompendium.Core
 
         public static List<Item> GetAllInventoryItemsList(Player player, string ignores = "", int estimatedCapacity = 80)
         {
-            ignores = ignores.Replace("portable", "piggy safe forge void", StringComparison.Ordinal);
+            ignores = ignores.Replace("portable", "inv piggy safe forge void", StringComparison.Ordinal);
             var itemList = new List<Item>(estimatedCapacity);
             var items = GetAllInventoryItems(player);
             foreach ((string name, Item[] itemArray) in items)

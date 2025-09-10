@@ -5,8 +5,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Upgraded.SpiritCl
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.SpiritClassic
 {
-    [JITWhenModsEnabled("SpiritMod")]
-    [ExtendsFromMod("SpiritMod")]
+    [JITWhenModsEnabled(ModConditions.spiritClassicName)]
+    [ExtendsFromMod(ModConditions.spiritClassicName)]
     public class PermanentSpiritClassicMovement : IPermanentModdedBuffItem
     {
         public override string Texture => "QoLCompendium/Assets/Items/PermanentSpiritClassicMovement";
@@ -19,7 +19,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Upgraded.Spi
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<PermanentJump>());
             r.AddIngredient(ModContent.ItemType<PermanentSpiritSoaring>());
             r.AddIngredient(ModContent.ItemType<PermanentZephyr>());

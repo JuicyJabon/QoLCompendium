@@ -52,7 +52,7 @@ namespace QoLCompendium.Content.Items.Tools.Summons.CrossMod
             if (!ModConditions.calamityLoaded)
                 return;
 
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CrossModItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.CrossModItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.calamityMod, "BloodwormItem"));
             r.AddIngredient(ItemID.Bowl);
             r.AddTile(TileID.LunarCraftingStation);

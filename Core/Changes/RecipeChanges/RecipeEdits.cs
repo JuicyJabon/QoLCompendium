@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Items.Accessories.InformationAccessories;
+using QoLCompendium.Content.Items.Placeables.CraftingStations;
 using QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod;
 using QoLCompendium.Content.Items.Tools.Mirrors;
 using QoLCompendium.Content.Items.Tools.PermanentBuffs.All;
@@ -18,7 +19,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
 {
     public class RecipeEdits : ModSystem
     {
-        [JITWhenModsEnabled("ThoriumRework")]
+        [JITWhenModsEnabled(ModConditions.thoriumBossReworkName)]
         public static bool ThoriumReworkPotionsEnabled => ModContent.GetInstance<CompatConfig>().extraPotions;
 
         public override void PostAddRecipes()
@@ -106,7 +107,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                         Main.recipe[i].AddIngredient(ModContent.ItemType<PermanentSecretsOfTheShadows>());
                 }
 
-                if (ModConditions.spiritLoaded)
+                if (ModConditions.spiritClassicLoaded)
                 {
                     if (Main.recipe[i].HasResult(ModContent.ItemType<PermanentEverything>()))
                         Main.recipe[i].AddIngredient(ModContent.ItemType<PermanentSpiritClassic>());
@@ -116,6 +117,24 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 {
                     if (Main.recipe[i].HasResult(ModContent.ItemType<PermanentEverything>()))
                         Main.recipe[i].AddIngredient(ModContent.ItemType<PermanentThorium>());
+                }
+                #endregion
+
+                #region Ultimate Crafting Monolith
+                if (ModConditions.calamityLoaded)
+                {
+                    if (Main.recipe[i].HasResult(ModContent.ItemType<UltimateCraftingMonolith>()))
+                        Main.recipe[i].AddIngredient(ModContent.ItemType<CalamityCraftingMonolith>());
+                }
+                if (ModConditions.homewardJourneyLoaded)
+                {
+                    if (Main.recipe[i].HasResult(ModContent.ItemType<UltimateCraftingMonolith>()))
+                        Main.recipe[i].AddIngredient(ModContent.ItemType<HomewardJourneyCraftingMonolith>());
+                }
+                if (ModConditions.thoriumLoaded)
+                {
+                    if (Main.recipe[i].HasResult(ModContent.ItemType<UltimateCraftingMonolith>()))
+                        Main.recipe[i].AddIngredient(ModContent.ItemType<ThoriumCraftingMonolith>());
                 }
                 #endregion
             }

@@ -4,11 +4,11 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.SpiritCla
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.SpiritClassic.Candies
 {
-    [JITWhenModsEnabled("SpiritMod")]
-    [ExtendsFromMod("SpiritMod")]
+    [JITWhenModsEnabled(ModConditions.spiritClassicName)]
+    [ExtendsFromMod(ModConditions.spiritClassicName)]
     public class PermanentTaffy : IPermanentModdedBuffItem
     {
-        public override string Texture => Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "TaffyBuff"));
+        public override string Texture => Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "TaffyBuff"));
 
         public override void UpdateInventory(Player player)
         {
@@ -18,8 +18,8 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Spir
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-            r.AddIngredient(Common.GetModItem(ModConditions.spiritMod, "Taffy"), 30);
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            r.AddIngredient(Common.GetModItem(ModConditions.spiritClassicMod, "Taffy"), 30);
             r.AddTile(TileID.CookingPots);
             r.Register();
         }

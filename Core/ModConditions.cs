@@ -6,20 +6,6 @@ namespace QoLCompendium.Core
     {
         #pragma warning disable
         #region Conditions
-
-        //RECIPE CONDITIONS
-        public static Condition ItemToggled(string displayText, Func<bool> toggle)
-        {
-            return new Condition(Language.GetTextValue(displayText), toggle);
-        }
-
-        public static Recipe GetItemRecipe(Func<bool> toggle, int itemType, int amount = 1, string displayText = "")
-        {
-            Recipe obj = Recipe.Create(itemType, amount);
-            obj.AddCondition(ItemToggled(displayText, toggle));
-            return obj;
-        }
-
         //VANILLA
         //EXPERT/MASTER
         public static Condition expertOrMaster = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.inExpertOrMaster"), () => Main.expertMode || Main.masterMode);
@@ -61,6 +47,7 @@ namespace QoLCompendium.Core
 
 
         //AEQUUS
+        public const string aequusName = "Aequus";
         public static bool aequusLoaded;
         public static Mod aequusMod;
         //BOSSES
@@ -81,6 +68,7 @@ namespace QoLCompendium.Core
 
 
         //AFKPETS
+        public const string afkpetsName = "AFKPETS";
         public static bool afkpetsLoaded;
         public static Mod afkpetsMod;
         //BOSSES
@@ -108,16 +96,19 @@ namespace QoLCompendium.Core
 
 
         //AMULET OF MANY MINIONS
+        public const string amuletOfManyMinionsName = "AmuletOfManyMinions";
         public static bool amuletOfManyMinionsLoaded;
         public static Mod amuletOfManyMinionsMod;
 
 
         //ARBOUR
+        public const string arbourName = "Arbour";
         public static bool arbourLoaded;
         public static Mod arbourMod;
 
 
         //ASSORTED CRAZY THINGS
+        public const string assortedCrazyThingsName = "AssortedCrazyThings";
         public static bool assortedCrazyThingsLoaded;
         public static Mod assortedCrazyThingsMod;
         //BOSSES
@@ -125,6 +116,7 @@ namespace QoLCompendium.Core
 
 
         //AWFUL GARBAGE
+        public const string awfulGarbageName = "AwfulGarbageMod";
         public static bool awfulGarbageLoaded;
         public static Mod awfulGarbageMod;
         //BOSSES
@@ -135,16 +127,19 @@ namespace QoLCompendium.Core
 
 
         //BLOCK'S ARSENAL
+        public const string blocksArsenalName = "Arsenal_Mod";
         public static bool blocksArsenalLoaded;
         public static Mod blocksArsenalMod;
 
 
         //BLOCK'S ARTIFICER
+        public const string blocksArtificerName = "ArtificerMod";
         public static bool blocksArtificerLoaded;
         public static Mod blocksArtificerMod;
 
 
         //BLOCK'S CORE BOSS
+        public const string blocksCoreBossName = "CorruptionBoss";
         public static bool blocksCoreBossLoaded;
         public static Mod blocksCoreBossMod;
         //BOSSES
@@ -152,26 +147,31 @@ namespace QoLCompendium.Core
 
 
         //BLOCK'S INFO ACCESSORIES
+        public const string blocksInfoAccessoriesName = "BInfoAcc";
         public static bool blocksInfoAccessoriesLoaded;
         public static Mod blocksInfoAccessoriesMod;
 
 
         //BLOCK'S THROWER
+        public const string blocksThrowerName = "BCThrower";
         public static bool blocksThrowerLoaded;
         public static Mod blocksThrowerMod;
 
 
         //BOMBUS APIS
+        public const string bombusApisName = "BombusApisBee";
         public static bool bombusApisLoaded;
         public static Mod bombusApisMod;
 
 
         //BUFFARIA
+        public const string buffariaName = "Buffaria";
         public static bool buffariaLoaded;
         public static Mod buffariaMod;
 
 
         //CALAMITY
+        public const string calamityName = "CalamityMod";
         public static bool calamityLoaded;
         public static Mod calamityMod;
         //BOSSES
@@ -228,6 +228,7 @@ namespace QoLCompendium.Core
 
 
         //CALAMITY COMMUNITY REMIX
+        public const string calamityCommunityRemixName = "CalRemix";
         public static bool calamityCommunityRemixLoaded;
         public static Mod calamityCommunityRemixMod;
         //BOSSES
@@ -235,6 +236,7 @@ namespace QoLCompendium.Core
 
 
         //CALAMITY ENTROPY
+        public const string calamityEntropyName = "CalamityEntropy";
         public static bool calamityEntropyLoaded;
         public static Mod calamityEntropyMod;
         //BOSSES
@@ -245,11 +247,13 @@ namespace QoLCompendium.Core
 
 
         //CALAMITY OVERHAUL
+        public const string calamityOverhaulName = "CalamityOverhaul";
         public static bool calamityOverhaulLoaded;
         public static Mod calamityOverhaulMod;
 
 
         //CALAMITY VANITIES
+        public const string calamityVanitiesName = "CalValEX";
         public static bool calamityVanitiesLoaded;
         public static Mod calamityVanitiesMod;
         //BIOMES
@@ -257,11 +261,13 @@ namespace QoLCompendium.Core
 
 
         //CAPTURE DISCS CLASS
+        public const string captureDiscsClassName = "CaptureDiscClass";
         public static bool captureDiscsClassLoaded;
         public static Mod captureDiscsClassMod;
 
 
         //CATALYST
+        public const string catalystName = "CatalystMod";
         public static bool catalystLoaded;
         public static Mod catalystMod;
         //BOSSES
@@ -269,11 +275,13 @@ namespace QoLCompendium.Core
 
 
         //CEREBRAL
+        public const string cerebralName = "CerebralMod";
         public static bool cerebralLoaded;
         public static Mod cerebralMod;
 
 
         //CLAMITY
+        public const string clamityAddonName = "Clamity";
         public static bool clamityAddonLoaded;
         public static Mod clamityAddonMod;
         //BOSSES
@@ -286,11 +294,13 @@ namespace QoLCompendium.Core
 
 
         //CLICKER CLASS
+        public const string clickerClassName = "ClickerClass";
         public static bool clickerClassLoaded;
         public static Mod clickerClassMod;
 
 
         //CONFECTION
+        public const string confectionRebakedName = "TheConfectionRebirth";
         public static bool confectionRebakedLoaded;
         public static Mod confectionRebakedMod;
         //BIOMES
@@ -299,6 +309,7 @@ namespace QoLCompendium.Core
 
 
         //CONSOLARIA
+        public const string consolariaName = "Consolaria";
         public static bool consolariaLoaded;
         public static Mod consolariaMod;
         //BOSSES
@@ -308,6 +319,7 @@ namespace QoLCompendium.Core
 
 
         //CORALITE
+        public const string coraliteName = "Coralite";
         public static bool coraliteLoaded;
         public static Mod coraliteMod;
         //BOSSES
@@ -319,12 +331,14 @@ namespace QoLCompendium.Core
         public static Condition DownedNightmarePlantera = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNightmarePlantera"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.NightmarePlantera]);
 
 
-        //DEPTHS
+        //CRYSTAL DRAGONS
+        public const string crystalDragonsName = "CrystalDragons";
         public static bool crystalDragonsLoaded;
         public static Mod crystalDragonsMod;
 
 
         //DEPTHS
+        public const string depthsName = "TheDepths";
         public static bool depthsLoaded;
         public static Mod depthsMod;
         //BOSSES
@@ -335,6 +349,7 @@ namespace QoLCompendium.Core
 
 
         //DORMANT DAWN
+        public const string dormantDawnName = "DDmod";
         public static bool dormantDawnLoaded;
         public static Mod dormantDawnMod;
         //BOSSES
@@ -349,16 +364,19 @@ namespace QoLCompendium.Core
 
 
         //DRAEDON EXPANSION
+        public const string draedonExpansionName = "DraedonExpansion";
         public static bool draedonExpansionLoaded;
         public static Mod draedonExpansionMod;
 
 
         //DBZMOD
+        public const string dragonBallTerrariaName = "DBZMODPORT";
         public static bool dragonBallTerrariaLoaded;
         public static Mod dragonBallTerrariaMod;
 
 
         //ECHOES OF THE ANCIENTS
+        public const string echoesOfTheAncientsName = "EchoesoftheAncients";
         public static bool echoesOfTheAncientsLoaded;
         public static Mod echoesOfTheAncientsMod;
         //BOSSES
@@ -368,6 +386,7 @@ namespace QoLCompendium.Core
 
 
         //EDORBIS
+        public const string edorbisName = "Edorbis";
         public static bool edorbisLoaded;
         public static Mod edorbisMod;
         //BOSSES
@@ -379,11 +398,13 @@ namespace QoLCompendium.Core
 
 
         //ENCHANTED MOONS
+        public const string enchantedMoonsName = "BlueMoon";
         public static bool enchantedMoonsLoaded;
         public static Mod enchantedMoonsMod;
 
 
         //EVERJADE
+        public const string everjadeName = "JadeFables";
         public static bool everjadeLoaded;
         public static Mod everjadeMod;
         //BIOMES
@@ -391,6 +412,7 @@ namespace QoLCompendium.Core
 
 
         //EXALT
+        public const string exaltName = "ExaltMod";
         public static bool exaltLoaded;
         public static Mod exaltMod;
         //BOSSES
@@ -399,6 +421,7 @@ namespace QoLCompendium.Core
 
 
         //EXCELSIOR
+        public const string excelsiorName = "excels";
         public static bool excelsiorLoaded;
         public static Mod excelsiorMod;
         //BOSSES
@@ -407,6 +430,7 @@ namespace QoLCompendium.Core
 
 
         //EXXO AVALON
+        public const string exxoAvalonOriginsName = "Avalon";
         public static bool exxoAvalonOriginsLoaded;
         public static Mod exxoAvalonOriginsMod;
         //BOSSES
@@ -422,11 +446,13 @@ namespace QoLCompendium.Core
 
 
         //FARGOS
+        public const string fargosMutantName = "Fargowiltas";
         public static bool fargosMutantLoaded;
         public static Mod fargosMutantMod;
 
 
         //FARGOS SOULS
+        public const string fargosSoulsName = "FargowiltasSouls";
         public static bool fargosSoulsLoaded;
         public static Mod fargosSoulsMod;
         //BOSSES
@@ -441,16 +467,19 @@ namespace QoLCompendium.Core
 
 
         //FARGOS SOULS DLC
+        public const string fargosSoulsDLCName = "FargowiltasCrossmod";
         public static bool fargosSoulsDLCLoaded;
         public static Mod fargosSoulsDLCMod;
 
 
         //FARGOS SOULS EXTRAS
+        public const string fargosSoulsExtrasName = "FargowiltasSoulsDLC";
         public static bool fargosSoulsExtrasLoaded;
         public static Mod fargosSoulsExtrasMod;
 
 
         //FRACTURES OF PENUMBRA
+        public const string fracturesOfPenumbraName = "FPenumbra";
         public static bool fracturesOfPenumbraLoaded;
         public static Mod fracturesOfPenumbraMod;
         //BOSSES
@@ -461,11 +490,13 @@ namespace QoLCompendium.Core
 
 
         //FURNITURE FOOD & FUN
+        public const string furnitureFoodAndFunName = "CosmeticVariety";
         public static bool furnitureFoodAndFunLoaded;
         public static Mod furnitureFoodAndFunMod;
 
 
         //GAMETERRARIA
+        public const string gameTerrariaName = "GMT";
         public static bool gameTerrariaLoaded;
         public static Mod gameTerrariaMod;
         //BOSSES
@@ -476,6 +507,7 @@ namespace QoLCompendium.Core
 
 
         //GENSOKYO
+        public const string gensokyoName = "Gensokyo";
         public static bool gensokyoLoaded;
         public static Mod gensokyoMod;
         //BOSSES
@@ -502,7 +534,8 @@ namespace QoLCompendium.Core
         public static Condition DownedKisume = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedKisume"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Kisume]);
 
 
-        //GMR
+        //GERDS LAB
+        public const string gerdsLabName = "GMR";
         public static bool gerdsLabLoaded;
         public static Mod gerdsLabMod;
         //BOSSES
@@ -513,11 +546,13 @@ namespace QoLCompendium.Core
 
 
         //HEARTBEATARIA
+        public const string heartbeatariaName = "XDContentMod";
         public static bool heartbeatariaLoaded;
         public static Mod heartbeatariaMod;
 
 
         //HOMEWARD JOURNEY
+        public const string homewardJourneyName = "ContinentOfJourney";
         public static bool homewardJourneyLoaded;
         public static Mod homewardJourneyMod;
         //BOSSES
@@ -554,6 +589,7 @@ namespace QoLCompendium.Core
 
 
         //HUNT OF THE OLD GOD
+        public const string huntOfTheOldGodName = "CalamityHunt";
         public static bool huntOfTheOldGodLoaded;
         public static Mod huntOfTheOldGodMod;
         //BOSSES
@@ -561,11 +597,13 @@ namespace QoLCompendium.Core
 
 
         //INFECTED QUALITIES
+        public const string infectedQualitiesName = "InfectedQualities";
         public static bool infectedQualitiesLoaded;
         public static Mod infectedQualitiesMod;
 
 
         //INFERNUM
+        public const string infernumName = "InfernumMode";
         public static bool infernumLoaded;
         public static Mod infernumMod;
         //BOSSES
@@ -574,17 +612,26 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToProfanedGardens = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToProfanedGardens"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.ProfanedGardens]);
 
 
+        //INFERNAL ECLIPSE
+        public const string infernalEclipseName = "InfernalEclipseAPI";
+        public static bool infernalEclipseLoaded;
+        public static Mod infernalEclipseMod;
+
+
         //LUIAFK
+        public const string luiAFKName = "miningcracks_take_on_luiafk";
         public static bool luiAFKLoaded;
         public static Mod luiAFKMod;
 
 
         //LUIAFK DLC
+        public const string luiAFKDLCName = "UnofficialLuiAFKDLC";
         public static bool luiAFKDLCLoaded;
         public static Mod luiAFKDLCMod;
 
 
         //LUNAR VEIL
+        public const string lunarVeilName = "Stellamod";
         public static bool lunarVeilLoaded;
         public static Mod lunarVeilMod;
         //BOSSES
@@ -617,11 +664,13 @@ namespace QoLCompendium.Core
 
 
         //MAGIC STORAGE
+        public const string magicStorageName = "MagicStorage";
         public static bool magicStorageLoaded;
         public static Mod magicStorageMod;
 
 
-        //MARTAINS ORDER
+        //MARTINS ORDER
+        public const string martainsOrderName = "MartainsOrder";
         public static bool martainsOrderLoaded;
         public static Mod martainsOrderMod;
         //BOSSES
@@ -638,6 +687,7 @@ namespace QoLCompendium.Core
 
 
         //MECH REWORK
+        public const string mechReworkName = "PrimeRework";
         public static bool mechReworkLoaded;
         public static Mod mechReworkMod;
         //BOSSES
@@ -648,6 +698,7 @@ namespace QoLCompendium.Core
 
 
         //MEDIAL RIFT
+        public const string medialRiftName = "MedRift";
         public static bool medialRiftLoaded;
         public static Mod medialRiftMod;
         //BOSSES
@@ -655,6 +706,7 @@ namespace QoLCompendium.Core
 
 
         //METROID MOD
+        public const string metroidName = "MetroidMod";
         public static bool metroidLoaded;
         public static Mod metroidMod;
         //BOSSES
@@ -668,21 +720,25 @@ namespace QoLCompendium.Core
 
 
         //MOOMOO'S ULTIMATE YOYO REVAMP
+        public const string moomoosUltimateYoyoRevampName = "CombinationsMod";
         public static bool moomoosUltimateYoyoRevampLoaded;
         public static Mod moomoosUltimateYoyoRevampMod;
 
 
         //MR PLAGUE'S RACES
+        public const string mrPlagueRacesName = "MrPlagueRaces";
         public static bool mrPlagueRacesLoaded;
         public static Mod mrPlagueRacesMod;
 
 
         //ORCHID MOD
+        public const string orchidName = "OrchidMod";
         public static bool orchidLoaded;
         public static Mod orchidMod;
 
 
         //OPHIOID MOD
+        public const string ophioidName = "OphioidMod";
         public static bool ophioidLoaded;
         public static Mod ophioidMod;
         //BOSSES
@@ -692,6 +748,7 @@ namespace QoLCompendium.Core
 
 
         //POLARITIES
+        public const string polaritiesName = "Polarities";
         public static bool polaritiesLoaded;
         public static Mod polaritiesMod;
         //BOSSES
@@ -704,6 +761,7 @@ namespace QoLCompendium.Core
 
 
         //PROJECT ZERO
+        public const string projectZeroName = "FM";
         public static bool projectZeroLoaded;
         public static Mod projectZeroMod;
         //BOSSES
@@ -716,6 +774,7 @@ namespace QoLCompendium.Core
 
 
         //QWERTY
+        public const string qwertyName = "QwertyMod";
         public static bool qwertyLoaded;
         public static Mod qwertyMod;
         //BOSSES
@@ -739,11 +798,13 @@ namespace QoLCompendium.Core
 
 
         //RAGNAROK
+        public const string ragnarokName = "RagnarokMod";
         public static bool ragnarokLoaded;
         public static Mod ragnarokMod;
 
 
         //REDEMPTION
+        public const string redemptionName = "Redemption";
         public static bool redemptionLoaded;
         public static Mod redemptionMod;
         //BOSSES
@@ -782,21 +843,25 @@ namespace QoLCompendium.Core
 
 
         //REFORGED - DURABILITY MOD
+        public const string reforgedName = "ReforgeOverhaul";
         public static bool reforgedLoaded;
         public static Mod reforgedMod;
 
 
         //REMNANTS
+        public const string remnantsName = "Remnants";
         public static bool remnantsLoaded;
         public static Mod remnantsMod;
 
 
         //RUPTURE
+        public const string ruptureName = "Rupture";
         public static bool ruptureLoaded;
         public static Mod ruptureMod;
 
 
         //SECRETS OF THE SHADOWS
+        public const string secretsOfTheShadowsName = "SOTS";
         public static bool secretsOfTheShadowsLoaded;
         public static Mod secretsOfTheShadowsMod;
         //BOSSES
@@ -830,7 +895,14 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToPlanetarium = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToPlanetarium"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Planetarium]);
 
 
+        //SECRETS OF THE SHADOWS BARD HEALER
+        public const string secretsOfTheShadowsBardHealerName = "SOTSBardHealer";
+        public static bool secretsOfTheShadowsBardHealerLoaded;
+        public static Mod secretsOfTheShadowsBardHealerMod;
+
+
         //SHADOWS OF ABADDON
+        public const string shadowsOfAbaddonName = "SacredTools";
         public static bool shadowsOfAbaddonLoaded;
         public static Mod shadowsOfAbaddonMod;
         //BOSSES
@@ -852,15 +924,17 @@ namespace QoLCompendium.Core
 
 
         //SLOOME
+        public const string sloomeName = "Bloopsitems";
         public static bool sloomeLoaded;
         public static Mod sloomeMod;
         //BOSSES
         public static Condition DownedExodygen = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedExodygen"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Exodygen]);
 
 
-        //SPIRIT
-        public static bool spiritLoaded;
-        public static Mod spiritMod;
+        //SPIRIT CLASSIC
+        public const string spiritClassicName = "SpiritMod";
+        public static bool spiritClassicLoaded;
+        public static Mod spiritClassicMod;
         //BOSSES
         public static Condition DownedScarabeus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedScarabeus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Scarabeus]);
         public static Condition DownedMoonJellyWizard = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMoonJellyWizard"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MoonJellyWizard]);
@@ -883,6 +957,7 @@ namespace QoLCompendium.Core
 
 
         //SPOOKY
+        public const string spookyName = "Spooky";
         public static bool spookyLoaded;
         public static Mod spookyMod;
         //BOSSES
@@ -892,16 +967,23 @@ namespace QoLCompendium.Core
         public static Condition DownedDaffodil = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDaffodil"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Daffodil]);
         public static Condition DownedOrroBoro = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOrroBoro"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OrroBoro]);
         public static Condition DownedBigBone = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBigBone"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BigBone]);
+        public static Condition DownedSpookFishron = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSpookFishron"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SpookFishron]);
         //BIOMES
         public static Condition HasBeenToSpookyForest = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToSpookyForest"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SpookyForest]);
         public static Condition HasBeenToSpookyUnderground = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToSpookyUnderground"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SpookyUnderground]);
         public static Condition HasBeenToEyeValley = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToEyeValley"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.ValleyOfEyes]);
         public static Condition HasBeenToSpiderCave = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToSpiderCave"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SpiderGrotto]);
         public static Condition HasBeenToCatacombs = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToCatacombs"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CreepyCatacombs]);
+        public static Condition HasBeenToLowerCatacombs = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToLowerCatacombs"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.LowerCatacombs]);
         public static Condition HasBeenToCemetery = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToCemetery"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SwampyCemetery]);
+        public static Condition HasBeenToTempleOfMoco = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToTempleOfMoco"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.TempleOfMoco]);
+        //EVENTS
+        public static Condition DownedEggIncursion = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEggIncursion"), () => ModConditions.DownedEvents[(int)ModConditions.DownedEvent.EggIncursion]);
+        public static Condition DownedPandorasBox = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPandorasBox"), () => ModConditions.DownedEvents[(int)ModConditions.DownedEvent.PandorasBox]);
 
 
         //STARLIGHT RIVER
+        public const string starlightRiverName = "StarlightRiver";
         public static bool starlightRiverLoaded;
         public static Mod starlightRiverMod;
         //BOSSES
@@ -916,6 +998,7 @@ namespace QoLCompendium.Core
 
 
         //STARS ABOVE
+        public const string starsAboveName = "StarsAbove";
         public static bool starsAboveLoaded;
         public static Mod starsAboveMod;
         //BOSSES
@@ -931,6 +1014,7 @@ namespace QoLCompendium.Core
 
 
         //STORM DIVERS MOD
+        public const string stormsAdditionsName = "StormDiversMod";
         public static bool stormsAdditionsLoaded;
         public static Mod stormsAdditionsMod;
         //BOSSES
@@ -940,16 +1024,19 @@ namespace QoLCompendium.Core
 
 
         //STRAMS CLASSES
+        public const string stramsClassesName = "StramClasses";
         public static bool stramsClassesLoaded;
         public static Mod stramsClassesMod;
 
 
         //STRAMS SURVIVAL
+        public const string stramsSurvivalName = "StramsSurvival";
         public static bool stramsSurvivalLoaded;
         public static Mod stramsSurvivalMod;
 
 
         //SUPERNOVA
+        public const string supernovaName = "SupernovaMod";
         public static bool supernovaLoaded;
         public static Mod supernovaMod;
         //BOSSES
@@ -961,6 +1048,7 @@ namespace QoLCompendium.Core
 
 
         //TERRORBORN
+        public const string terrorbornName = "TerrorbornMod";
         public static bool terrorbornLoaded;
         public static Mod terrorbornMod;
         //BOSSES
@@ -973,6 +1061,7 @@ namespace QoLCompendium.Core
 
 
         //THORIUM
+        public const string thoriumName = "ThoriumMod";
         public static bool thoriumLoaded;
         public static Mod thoriumMod;
         //BOSSES
@@ -996,21 +1085,25 @@ namespace QoLCompendium.Core
 
 
         //THORIUM BOSSES REWORK
+        public const string thoriumBossReworkName = "ThoriumRework";
         public static bool thoriumBossReworkLoaded;
         public static Mod thoriumBossReworkMod;
 
 
         //THORIUM EXHAUSTION DISABLER
+        public const string exhaustionDisablerName = "ExhaustionDisabler";
         public static bool exhaustionDisablerLoaded;
         public static Mod exhaustionDisablerMod;
 
 
         //THROWER UNIFICATION
+        public const string throwerUnificationName = "ThrowerUnification";
         public static bool throwerUnificationLoaded;
         public static Mod throwerUnificationMod;
 
 
         //TRAE
+        public const string traeName = "TRAEProject";
         public static bool traeLoaded;
         public static Mod traeMod;
         //MINIBOSSES
@@ -1019,6 +1112,7 @@ namespace QoLCompendium.Core
 
 
         //UHTRIC
+        public const string uhtricName = "Uhtric";
         public static bool uhtricLoaded;
         public static Mod uhtricMod;
         //BOSSES
@@ -1028,6 +1122,7 @@ namespace QoLCompendium.Core
 
 
         //UNIVERSE OF SWORDS
+        public const string universeOfSwordsName = "UniverseOfSwordsMod";
         public static bool universeOfSwordsLoaded;
         public static Mod universeOfSwordsMod;
         //BOSSES
@@ -1035,6 +1130,7 @@ namespace QoLCompendium.Core
 
 
         //VALHALLA
+        public const string valhallaName = "ValhallaMod";
         public static bool valhallaLoaded;
         public static Mod valhallaMod;
         //BOSSES
@@ -1043,6 +1139,7 @@ namespace QoLCompendium.Core
 
 
         //VERDANT
+        public const string verdantName = "Verdant";
         public static bool verdantLoaded;
         public static Mod verdantMod;
         //BIOMES
@@ -1050,6 +1147,7 @@ namespace QoLCompendium.Core
 
 
         //VITALITY
+        public const string vitalityName = "VitalityMod";
         public static bool vitalityLoaded;
         public static Mod vitalityMod;
         //BOSSES
@@ -1065,6 +1163,7 @@ namespace QoLCompendium.Core
 
 
         //WAYFAIR CONTENT
+        public const string wayfairContentName = "WAYFAIRContent";
         public static bool wayfairContentLoaded;
         public static Mod wayfairContentMod;
         //BOSSES
@@ -1072,6 +1171,7 @@ namespace QoLCompendium.Core
 
 
         //WRATH OF THE GODS
+        public const string wrathOfTheGodsName = "NoxusBoss";
         public static bool wrathOfTheGodsLoaded;
         public static Mod wrathOfTheGodsMod;
         //BOSSES
@@ -1081,6 +1181,7 @@ namespace QoLCompendium.Core
 
 
         //ZYLON
+        public const string zylonName = "Zylon";
         public static bool zylonLoaded;
         public static Mod zylonMod;
         //BOSSES
@@ -1450,6 +1551,7 @@ namespace QoLCompendium.Core
             Daffodil,
             OrroBoro,
             BigBone,
+            SpookFishron,
             //starlight river
             Auroracle,
             Ceiros,
@@ -2049,18 +2151,18 @@ namespace QoLCompendium.Core
                 }
             }
 
-            if (spiritLoaded)
+            if (spiritClassicLoaded)
             {
-                if ((spiritMod.TryFind("BriarSurfaceBiome", out ModBiome BriarSurfaceBiome) && Main.LocalPlayer.InModBiome(BriarSurfaceBiome))
-                    || (spiritMod.TryFind("BriarUndergroundBiome", out ModBiome BriarUndergroundBiome) && Main.LocalPlayer.InModBiome(BriarUndergroundBiome)))
+                if ((spiritClassicMod.TryFind("BriarSurfaceBiome", out ModBiome BriarSurfaceBiome) && Main.LocalPlayer.InModBiome(BriarSurfaceBiome))
+                    || (spiritClassicMod.TryFind("BriarUndergroundBiome", out ModBiome BriarUndergroundBiome) && Main.LocalPlayer.InModBiome(BriarUndergroundBiome)))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Briar] = true;
                 }
-                if (spiritMod.TryFind("SpiritSurfaceBiome", out ModBiome SpiritSurfaceBiome) && Main.LocalPlayer.InModBiome(SpiritSurfaceBiome))
+                if (spiritClassicMod.TryFind("SpiritSurfaceBiome", out ModBiome SpiritSurfaceBiome) && Main.LocalPlayer.InModBiome(SpiritSurfaceBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SpiritSurface] = true;
                 }
-                if (spiritMod.TryFind("SpiritUndergroundBiome", out ModBiome SpiritUndergroundBiome) && Main.LocalPlayer.InModBiome(SpiritUndergroundBiome))
+                if (spiritClassicMod.TryFind("SpiritUndergroundBiome", out ModBiome SpiritUndergroundBiome) && Main.LocalPlayer.InModBiome(SpiritUndergroundBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SpiritUnderground] = true;
                 }
@@ -2303,295 +2405,301 @@ namespace QoLCompendium.Core
 
         public static void LoadSupportedMods()
         {
-            aequusLoaded = ModLoader.TryGetMod("Aequus", out Mod Aequus);
+            aequusLoaded = ModLoader.TryGetMod(aequusName, out Mod Aequus);
             aequusMod = Aequus;
 
-            afkpetsLoaded = ModLoader.TryGetMod("AFKPETS", out Mod AFKPETS);
+            afkpetsLoaded = ModLoader.TryGetMod(afkpetsName, out Mod AFKPETS);
             afkpetsMod = AFKPETS;
 
-            amuletOfManyMinionsLoaded = ModLoader.TryGetMod("AmuletOfManyMinions", out Mod AmuletOfManyMinions);
+            amuletOfManyMinionsLoaded = ModLoader.TryGetMod(amuletOfManyMinionsName, out Mod AmuletOfManyMinions);
             amuletOfManyMinionsMod = AmuletOfManyMinions;
 
-            arbourLoaded = ModLoader.TryGetMod("Arbour", out Mod Arbour);
+            arbourLoaded = ModLoader.TryGetMod(arbourName, out Mod Arbour);
             arbourMod = Arbour;
 
-            assortedCrazyThingsLoaded = ModLoader.TryGetMod("AssortedCrazyThings", out Mod AssortedCrazyThings);
+            assortedCrazyThingsLoaded = ModLoader.TryGetMod(assortedCrazyThingsName, out Mod AssortedCrazyThings);
             assortedCrazyThingsMod = AssortedCrazyThings;
 
-            awfulGarbageLoaded = ModLoader.TryGetMod("AwfulGarbageMod", out Mod AwfulGarbageMod);
+            awfulGarbageLoaded = ModLoader.TryGetMod(awfulGarbageName, out Mod AwfulGarbageMod);
             awfulGarbageMod = AwfulGarbageMod;
 
-            blocksArsenalLoaded = ModLoader.TryGetMod("Arsenal_Mod", out Mod Arsenal_Mod);
+            blocksArsenalLoaded = ModLoader.TryGetMod(blocksArsenalName, out Mod Arsenal_Mod);
             blocksArsenalMod = Arsenal_Mod;
 
-            blocksArtificerLoaded = ModLoader.TryGetMod("ArtificerMod", out Mod ArtificerMod);
+            blocksArtificerLoaded = ModLoader.TryGetMod(blocksArtificerName, out Mod ArtificerMod);
             blocksArtificerMod = ArtificerMod;
 
-            blocksCoreBossLoaded = ModLoader.TryGetMod("CorruptionBoss", out Mod CorruptionBoss);
+            blocksCoreBossLoaded = ModLoader.TryGetMod(blocksCoreBossName, out Mod CorruptionBoss);
             blocksCoreBossMod = CorruptionBoss;
 
-            blocksInfoAccessoriesLoaded = ModLoader.TryGetMod("BInfoAcc", out Mod BInfoAcc);
+            blocksInfoAccessoriesLoaded = ModLoader.TryGetMod(blocksInfoAccessoriesName, out Mod BInfoAcc);
             blocksInfoAccessoriesMod = BInfoAcc;
 
-            blocksThrowerLoaded = ModLoader.TryGetMod("BCThrower", out Mod BCThrower);
+            blocksThrowerLoaded = ModLoader.TryGetMod(blocksThrowerName, out Mod BCThrower);
             blocksThrowerMod = BCThrower;
 
-            bombusApisLoaded = ModLoader.TryGetMod("BombusApisBee", out Mod BombusApisBee);
+            bombusApisLoaded = ModLoader.TryGetMod(bombusApisName, out Mod BombusApisBee);
             bombusApisMod = BombusApisBee;
 
-            buffariaLoaded = ModLoader.TryGetMod("Buffaria", out Mod Buffaria);
+            buffariaLoaded = ModLoader.TryGetMod(buffariaName, out Mod Buffaria);
             buffariaMod = Buffaria;
 
-            calamityLoaded = ModLoader.TryGetMod("CalamityMod", out Mod CalamityMod);
+            calamityLoaded = ModLoader.TryGetMod(calamityName, out Mod CalamityMod);
             calamityMod = CalamityMod;
 
-            calamityCommunityRemixLoaded = ModLoader.TryGetMod("CalRemix", out Mod CalRemix);
+            calamityCommunityRemixLoaded = ModLoader.TryGetMod(calamityCommunityRemixName, out Mod CalRemix);
             calamityCommunityRemixMod = CalRemix;
 
-            calamityEntropyLoaded = ModLoader.TryGetMod("CalamityEntropy", out Mod CalamityEntropy);
+            calamityEntropyLoaded = ModLoader.TryGetMod(calamityEntropyName, out Mod CalamityEntropy);
             calamityEntropyMod = CalamityEntropy;
 
-            calamityOverhaulLoaded = ModLoader.TryGetMod("CalamityOverhaul", out Mod CalamityOverhaul);
+            calamityOverhaulLoaded = ModLoader.TryGetMod(calamityOverhaulName, out Mod CalamityOverhaul);
             calamityOverhaulMod = CalamityOverhaul;
 
-            calamityVanitiesLoaded = ModLoader.TryGetMod("CalValEX", out Mod CalValEX);
+            calamityVanitiesLoaded = ModLoader.TryGetMod(calamityVanitiesName, out Mod CalValEX);
             calamityVanitiesMod = CalValEX;
 
-            captureDiscsClassLoaded = ModLoader.TryGetMod("CaptureDiscClass", out Mod CaptureDiscClass);
+            captureDiscsClassLoaded = ModLoader.TryGetMod(captureDiscsClassName, out Mod CaptureDiscClass);
             captureDiscsClassMod = CaptureDiscClass;
 
-            catalystLoaded = ModLoader.TryGetMod("CatalystMod", out Mod CatalystMod);
+            catalystLoaded = ModLoader.TryGetMod(catalystName, out Mod CatalystMod);
             catalystMod = CatalystMod;
 
-            cerebralLoaded = ModLoader.TryGetMod("CerebralMod", out Mod CerebralMod);
+            cerebralLoaded = ModLoader.TryGetMod(cerebralName, out Mod CerebralMod);
             cerebralMod = CerebralMod;
 
-            clamityAddonLoaded = ModLoader.TryGetMod("Clamity", out Mod Clamity);
+            clamityAddonLoaded = ModLoader.TryGetMod(clamityAddonName, out Mod Clamity);
             clamityAddonMod = Clamity;
 
-            clickerClassLoaded = ModLoader.TryGetMod("ClickerClass", out Mod ClickerClass);
+            clickerClassLoaded = ModLoader.TryGetMod(clickerClassName, out Mod ClickerClass);
             clickerClassMod = ClickerClass;
 
-            confectionRebakedLoaded = ModLoader.TryGetMod("TheConfectionRebirth", out Mod TheConfectionRebirth);
+            confectionRebakedLoaded = ModLoader.TryGetMod(confectionRebakedName, out Mod TheConfectionRebirth);
             confectionRebakedMod = TheConfectionRebirth;
 
-            consolariaLoaded = ModLoader.TryGetMod("Consolaria", out Mod Consolaria);
+            consolariaLoaded = ModLoader.TryGetMod(consolariaName, out Mod Consolaria);
             consolariaMod = Consolaria;
 
-            coraliteLoaded = ModLoader.TryGetMod("Coralite", out Mod Coralite);
+            coraliteLoaded = ModLoader.TryGetMod(coraliteName, out Mod Coralite);
             coraliteMod = Coralite;
 
-            crystalDragonsLoaded = ModLoader.TryGetMod("CrystalDragons", out Mod CrystalDragons);
+            crystalDragonsLoaded = ModLoader.TryGetMod(crystalDragonsName, out Mod CrystalDragons);
             crystalDragonsMod = CrystalDragons;
 
-            depthsLoaded = ModLoader.TryGetMod("TheDepths", out Mod TheDepths);
+            depthsLoaded = ModLoader.TryGetMod(depthsName, out Mod TheDepths);
             depthsMod = TheDepths;
 
-            dormantDawnLoaded = ModLoader.TryGetMod("DDmod", out Mod DDmod);
+            dormantDawnLoaded = ModLoader.TryGetMod(dormantDawnName, out Mod DDmod);
             dormantDawnMod = DDmod;
 
-            draedonExpansionLoaded = ModLoader.TryGetMod("DraedonExpansion", out Mod DraedonExpansion);
+            draedonExpansionLoaded = ModLoader.TryGetMod(draedonExpansionName, out Mod DraedonExpansion);
             draedonExpansionMod = DraedonExpansion;
 
-            dragonBallTerrariaLoaded = ModLoader.TryGetMod("DBZMODPORT", out Mod DBZMODPORT);
+            dragonBallTerrariaLoaded = ModLoader.TryGetMod(dragonBallTerrariaName, out Mod DBZMODPORT);
             dragonBallTerrariaMod = DBZMODPORT;
 
-            echoesOfTheAncientsLoaded = ModLoader.TryGetMod("EchoesoftheAncients", out Mod EchoesoftheAncients);
+            echoesOfTheAncientsLoaded = ModLoader.TryGetMod(echoesOfTheAncientsName, out Mod EchoesoftheAncients);
             echoesOfTheAncientsMod = EchoesoftheAncients;
 
-            edorbisLoaded = ModLoader.TryGetMod("Edorbis", out Mod Edorbis);
+            edorbisLoaded = ModLoader.TryGetMod(edorbisName, out Mod Edorbis);
             edorbisMod = Edorbis;
 
-            enchantedMoonsLoaded = ModLoader.TryGetMod("BlueMoon", out Mod BlueMoon);
+            enchantedMoonsLoaded = ModLoader.TryGetMod(enchantedMoonsName, out Mod BlueMoon);
             enchantedMoonsMod = BlueMoon;
 
-            everjadeLoaded = ModLoader.TryGetMod("JadeFables", out Mod JadeFables);
+            everjadeLoaded = ModLoader.TryGetMod(everjadeName, out Mod JadeFables);
             everjadeMod = JadeFables;
 
-            exaltLoaded = ModLoader.TryGetMod("ExaltMod", out Mod ExaltMod);
+            exaltLoaded = ModLoader.TryGetMod(exaltName, out Mod ExaltMod);
             exaltMod = ExaltMod;
 
-            excelsiorLoaded = ModLoader.TryGetMod("excels", out Mod excels);
+            excelsiorLoaded = ModLoader.TryGetMod(excelsiorName, out Mod excels);
             excelsiorMod = excels;
 
-            exxoAvalonOriginsLoaded = ModLoader.TryGetMod("Avalon", out Mod Avalon);
+            exxoAvalonOriginsLoaded = ModLoader.TryGetMod(exxoAvalonOriginsName, out Mod Avalon);
             exxoAvalonOriginsMod = Avalon;
 
-            fargosMutantLoaded = ModLoader.TryGetMod("Fargowiltas", out Mod Fargowiltas);
+            fargosMutantLoaded = ModLoader.TryGetMod(fargosMutantName, out Mod Fargowiltas);
             fargosMutantMod = Fargowiltas;
 
-            fargosSoulsLoaded = ModLoader.TryGetMod("FargowiltasSouls", out Mod FargowiltasSouls);
+            fargosSoulsLoaded = ModLoader.TryGetMod(fargosSoulsName, out Mod FargowiltasSouls);
             fargosSoulsMod = FargowiltasSouls;
 
-            fargosSoulsDLCLoaded = ModLoader.TryGetMod("FargowiltasCrossmod", out Mod FargowiltasCrossmod);
+            fargosSoulsDLCLoaded = ModLoader.TryGetMod(fargosSoulsDLCName, out Mod FargowiltasCrossmod);
             fargosSoulsDLCMod = FargowiltasCrossmod;
 
-            fargosSoulsExtrasLoaded = ModLoader.TryGetMod("FargowiltasSoulsDLC", out Mod FargowiltasSoulsDLC);
+            fargosSoulsExtrasLoaded = ModLoader.TryGetMod(fargosSoulsExtrasName, out Mod FargowiltasSoulsDLC);
             fargosSoulsExtrasMod = FargowiltasSoulsDLC;
 
-            fracturesOfPenumbraLoaded = ModLoader.TryGetMod("FPenumbra", out Mod FPenumbra);
+            fracturesOfPenumbraLoaded = ModLoader.TryGetMod(fracturesOfPenumbraName, out Mod FPenumbra);
             fracturesOfPenumbraMod = FPenumbra;
 
-            furnitureFoodAndFunLoaded = ModLoader.TryGetMod("CosmeticVariety", out Mod CosmeticVariety);
+            furnitureFoodAndFunLoaded = ModLoader.TryGetMod(furnitureFoodAndFunName, out Mod CosmeticVariety);
             furnitureFoodAndFunMod = CosmeticVariety;
 
-            gameTerrariaLoaded = ModLoader.TryGetMod("GMT", out Mod GMT);
+            gameTerrariaLoaded = ModLoader.TryGetMod(gameTerrariaName, out Mod GMT);
             gameTerrariaMod = GMT;
 
-            gensokyoLoaded = ModLoader.TryGetMod("Gensokyo", out Mod Gensokyo);
+            gensokyoLoaded = ModLoader.TryGetMod(gensokyoName, out Mod Gensokyo);
             gensokyoMod = Gensokyo;
 
-            gerdsLabLoaded = ModLoader.TryGetMod("GMR", out Mod GMR);
+            gerdsLabLoaded = ModLoader.TryGetMod(gerdsLabName, out Mod GMR);
             gerdsLabMod = GMR;
 
-            heartbeatariaLoaded = ModLoader.TryGetMod("XDContentMod", out Mod XDContentMod);
+            heartbeatariaLoaded = ModLoader.TryGetMod(heartbeatariaName, out Mod XDContentMod);
             heartbeatariaMod = XDContentMod;
 
-            homewardJourneyLoaded = ModLoader.TryGetMod("ContinentOfJourney", out Mod ContinentOfJourney);
+            homewardJourneyLoaded = ModLoader.TryGetMod(homewardJourneyName, out Mod ContinentOfJourney);
             homewardJourneyMod = ContinentOfJourney;
 
-            huntOfTheOldGodLoaded = ModLoader.TryGetMod("CalamityHunt", out Mod CalamityHunt);
+            huntOfTheOldGodLoaded = ModLoader.TryGetMod(huntOfTheOldGodName, out Mod CalamityHunt);
             huntOfTheOldGodMod = CalamityHunt;
 
-            infectedQualitiesLoaded = ModLoader.TryGetMod("InfectedQualities", out Mod InfectedQualities);
+            infectedQualitiesLoaded = ModLoader.TryGetMod(infectedQualitiesName, out Mod InfectedQualities);
             infectedQualitiesMod = InfectedQualities;
 
-            infernumLoaded = ModLoader.TryGetMod("InfernumMode", out Mod InfernumMode);
+            infernumLoaded = ModLoader.TryGetMod(infernumName, out Mod InfernumMode);
             infernumMod = InfernumMode;
 
-            luiAFKLoaded = ModLoader.TryGetMod("miningcracks_take_on_luiafk", out Mod miningcracks_take_on_luiafk);
+            infernalEclipseLoaded = ModLoader.TryGetMod(infernalEclipseName, out Mod InfernalEclipseAPI);
+            infernalEclipseMod = InfernalEclipseAPI;
+
+            luiAFKLoaded = ModLoader.TryGetMod(luiAFKName, out Mod miningcracks_take_on_luiafk);
             luiAFKMod = miningcracks_take_on_luiafk;
 
-            luiAFKDLCLoaded = ModLoader.TryGetMod("UnofficialLuiAFKDLC", out Mod UnofficialLuiAFKDLC);
+            luiAFKDLCLoaded = ModLoader.TryGetMod(luiAFKDLCName, out Mod UnofficialLuiAFKDLC);
             luiAFKDLCMod = UnofficialLuiAFKDLC;
 
-            lunarVeilLoaded = ModLoader.TryGetMod("Stellamod", out Mod Stellamod);
+            lunarVeilLoaded = ModLoader.TryGetMod(lunarVeilName, out Mod Stellamod);
             lunarVeilMod = Stellamod;
 
-            magicStorageLoaded = ModLoader.TryGetMod("MagicStorage", out Mod MagicStorage);
+            magicStorageLoaded = ModLoader.TryGetMod(magicStorageName, out Mod MagicStorage);
             magicStorageMod = MagicStorage;
 
-            martainsOrderLoaded = ModLoader.TryGetMod("MartainsOrder", out Mod MartainsOrder);
+            martainsOrderLoaded = ModLoader.TryGetMod(martainsOrderName, out Mod MartainsOrder);
             martainsOrderMod = MartainsOrder;
 
-            mechReworkLoaded = ModLoader.TryGetMod("PrimeRework", out Mod PrimeRework);
+            mechReworkLoaded = ModLoader.TryGetMod(mechReworkName, out Mod PrimeRework);
             mechReworkMod = PrimeRework;
 
-            medialRiftLoaded = ModLoader.TryGetMod("MedRift", out Mod MedRift);
+            medialRiftLoaded = ModLoader.TryGetMod(medialRiftName, out Mod MedRift);
             medialRiftMod = MedRift;
 
-            metroidLoaded = ModLoader.TryGetMod("MetroidMod", out Mod MetroidMod);
+            metroidLoaded = ModLoader.TryGetMod(metroidName, out Mod MetroidMod);
             metroidMod = MetroidMod;
 
-            moomoosUltimateYoyoRevampLoaded = ModLoader.TryGetMod("CombinationsMod", out Mod CombinationsMod);
+            moomoosUltimateYoyoRevampLoaded = ModLoader.TryGetMod(moomoosUltimateYoyoRevampName, out Mod CombinationsMod);
             moomoosUltimateYoyoRevampMod = CombinationsMod;
 
-            mrPlagueRacesLoaded = ModLoader.TryGetMod("MrPlagueRaces", out Mod MrPlagueRaces);
+            mrPlagueRacesLoaded = ModLoader.TryGetMod(mrPlagueRacesName, out Mod MrPlagueRaces);
             mrPlagueRacesMod = MrPlagueRaces;
 
-            orchidLoaded = ModLoader.TryGetMod("OrchidMod", out Mod OrchidMod);
+            orchidLoaded = ModLoader.TryGetMod(orchidName, out Mod OrchidMod);
             orchidMod = OrchidMod;
 
-            ophioidLoaded = ModLoader.TryGetMod("OphioidMod", out Mod OphioidMod);
+            ophioidLoaded = ModLoader.TryGetMod(ophioidName, out Mod OphioidMod);
             ophioidMod = OphioidMod;
 
-            polaritiesLoaded = ModLoader.TryGetMod("Polarities", out Mod Polarities);
+            polaritiesLoaded = ModLoader.TryGetMod(polaritiesName, out Mod Polarities);
             polaritiesMod = Polarities;
 
-            projectZeroLoaded = ModLoader.TryGetMod("FM", out Mod FM);
+            projectZeroLoaded = ModLoader.TryGetMod(projectZeroName, out Mod FM);
             projectZeroMod = FM;
 
-            qwertyLoaded = ModLoader.TryGetMod("QwertyMod", out Mod QwertyMod);
+            qwertyLoaded = ModLoader.TryGetMod(qwertyName, out Mod QwertyMod);
             qwertyMod = QwertyMod;
 
-            ragnarokLoaded = ModLoader.TryGetMod("RagnarokMod", out Mod RagnarokMod);
+            ragnarokLoaded = ModLoader.TryGetMod(ragnarokName, out Mod RagnarokMod);
             ragnarokMod = RagnarokMod;
 
-            redemptionLoaded = ModLoader.TryGetMod("Redemption", out Mod Redemption);
+            redemptionLoaded = ModLoader.TryGetMod(redemptionName, out Mod Redemption);
             redemptionMod = Redemption;
 
-            reforgedLoaded = ModLoader.TryGetMod("ReforgeOverhaul", out Mod ReforgeOverhaul);
+            reforgedLoaded = ModLoader.TryGetMod(reforgedName, out Mod ReforgeOverhaul);
             reforgedMod = ReforgeOverhaul;
 
-            remnantsLoaded = ModLoader.TryGetMod("Remnants", out Mod Remnants);
+            remnantsLoaded = ModLoader.TryGetMod(remnantsName, out Mod Remnants);
             remnantsMod = Remnants;
 
-            ruptureLoaded = ModLoader.TryGetMod("Rupture", out Mod Rupture);
+            ruptureLoaded = ModLoader.TryGetMod(ruptureName, out Mod Rupture);
             ruptureMod = Rupture;
 
-            secretsOfTheShadowsLoaded = ModLoader.TryGetMod("SOTS", out Mod SOTS);
+            secretsOfTheShadowsLoaded = ModLoader.TryGetMod(secretsOfTheShadowsName, out Mod SOTS);
             secretsOfTheShadowsMod = SOTS;
 
-            shadowsOfAbaddonLoaded = ModLoader.TryGetMod("SacredTools", out Mod SacredTools);
+            secretsOfTheShadowsBardHealerLoaded = ModLoader.TryGetMod(secretsOfTheShadowsBardHealerName, out Mod SOTSBardHealer);
+            secretsOfTheShadowsBardHealerMod = SOTSBardHealer;
+
+            shadowsOfAbaddonLoaded = ModLoader.TryGetMod(shadowsOfAbaddonName, out Mod SacredTools);
             shadowsOfAbaddonMod = SacredTools;
 
-            sloomeLoaded = ModLoader.TryGetMod("Bloopsitems", out Mod Bloopsitems);
+            sloomeLoaded = ModLoader.TryGetMod(sloomeName, out Mod Bloopsitems);
             sloomeMod = Bloopsitems;
 
-            spiritLoaded = ModLoader.TryGetMod("SpiritMod", out Mod SpiritMod);
-            spiritMod = SpiritMod;
+            spiritClassicLoaded = ModLoader.TryGetMod(spiritClassicName, out Mod SpiritMod);
+            spiritClassicMod = SpiritMod;
 
-            spookyLoaded = ModLoader.TryGetMod("Spooky", out Mod Spooky);
+            spookyLoaded = ModLoader.TryGetMod(spookyName, out Mod Spooky);
             spookyMod = Spooky;
 
-            starlightRiverLoaded = ModLoader.TryGetMod("StarlightRiver", out Mod StarlightRiver);
+            starlightRiverLoaded = ModLoader.TryGetMod(starlightRiverName, out Mod StarlightRiver);
             starlightRiverMod = StarlightRiver;
 
-            starsAboveLoaded = ModLoader.TryGetMod("StarsAbove", out Mod StarsAbove);
+            starsAboveLoaded = ModLoader.TryGetMod(starsAboveName, out Mod StarsAbove);
             starsAboveMod = StarsAbove;
 
-            stormsAdditionsLoaded = ModLoader.TryGetMod("StormDiversMod", out Mod StormDiversMod);
+            stormsAdditionsLoaded = ModLoader.TryGetMod(stormsAdditionsName, out Mod StormDiversMod);
             stormsAdditionsMod = StormDiversMod;
 
-            stramsClassesLoaded = ModLoader.TryGetMod("StramClasses", out Mod StramClasses);
+            stramsClassesLoaded = ModLoader.TryGetMod(stramsClassesName, out Mod StramClasses);
             stramsClassesMod = StramClasses;
 
-            stramsSurvivalLoaded = ModLoader.TryGetMod("StramsSurvival", out Mod StramsSurvival);
+            stramsSurvivalLoaded = ModLoader.TryGetMod(stramsSurvivalName, out Mod StramsSurvival);
             stramsSurvivalMod = StramsSurvival;
 
-            supernovaLoaded = ModLoader.TryGetMod("SupernovaMod", out Mod SupernovaMod);
+            supernovaLoaded = ModLoader.TryGetMod(supernovaName, out Mod SupernovaMod);
             supernovaMod = SupernovaMod;
 
-            terrorbornLoaded = ModLoader.TryGetMod("TerrorbornMod", out Mod TerrorbornMod);
+            terrorbornLoaded = ModLoader.TryGetMod(terrorbornName, out Mod TerrorbornMod);
             terrorbornMod = TerrorbornMod;
 
-            thoriumLoaded = ModLoader.TryGetMod("ThoriumMod", out Mod ThoriumMod);
+            thoriumLoaded = ModLoader.TryGetMod(thoriumName, out Mod ThoriumMod);
             thoriumMod = ThoriumMod;
 
-            thoriumBossReworkLoaded = ModLoader.TryGetMod("ThoriumRework", out Mod ThoriumRework);
+            thoriumBossReworkLoaded = ModLoader.TryGetMod(thoriumBossReworkName, out Mod ThoriumRework);
             thoriumBossReworkMod = ThoriumRework;
 
-            exhaustionDisablerLoaded = ModLoader.TryGetMod("ExhaustionDisabler", out Mod ExhaustionDisabler);
+            exhaustionDisablerLoaded = ModLoader.TryGetMod(exhaustionDisablerName, out Mod ExhaustionDisabler);
             exhaustionDisablerMod = ExhaustionDisabler;
 
-            throwerUnificationLoaded = ModLoader.TryGetMod("ThrowerUnification", out Mod ThrowerUnification);
+            throwerUnificationLoaded = ModLoader.TryGetMod(throwerUnificationName, out Mod ThrowerUnification);
             throwerUnificationMod = ThrowerUnification;
 
-            traeLoaded = ModLoader.TryGetMod("TRAEProject", out Mod TRAEProject);
+            traeLoaded = ModLoader.TryGetMod(traeName, out Mod TRAEProject);
             traeMod = TRAEProject;
 
-            uhtricLoaded = ModLoader.TryGetMod("Uhtric", out Mod Uhtric);
+            uhtricLoaded = ModLoader.TryGetMod(uhtricName, out Mod Uhtric);
             uhtricMod = Uhtric;
 
-            universeOfSwordsLoaded = ModLoader.TryGetMod("UniverseOfSwordsMod", out Mod UniverseOfSwordsMod);
+            universeOfSwordsLoaded = ModLoader.TryGetMod(universeOfSwordsName, out Mod UniverseOfSwordsMod);
             universeOfSwordsMod = UniverseOfSwordsMod;
 
-            valhallaLoaded = ModLoader.TryGetMod("ValhallaMod", out Mod ValhallaMod);
+            valhallaLoaded = ModLoader.TryGetMod(valhallaName, out Mod ValhallaMod);
             valhallaMod = ValhallaMod;
 
-            verdantLoaded = ModLoader.TryGetMod("Verdant", out Mod Verdant);
+            verdantLoaded = ModLoader.TryGetMod(verdantName, out Mod Verdant);
             verdantMod = Verdant;
 
-            vitalityLoaded = ModLoader.TryGetMod("VitalityMod", out Mod VitalityMod);
+            vitalityLoaded = ModLoader.TryGetMod(vitalityName, out Mod VitalityMod);
             vitalityMod = VitalityMod;
 
-            wayfairContentLoaded = ModLoader.TryGetMod("WAYFAIRContent", out Mod WAYFAIRContent);
+            wayfairContentLoaded = ModLoader.TryGetMod(wayfairContentName, out Mod WAYFAIRContent);
             wayfairContentMod = WAYFAIRContent;
 
-            wrathOfTheGodsLoaded = ModLoader.TryGetMod("NoxusBoss", out Mod NoxusBoss);
+            wrathOfTheGodsLoaded = ModLoader.TryGetMod(wrathOfTheGodsName, out Mod NoxusBoss);
             wrathOfTheGodsMod = NoxusBoss;
 
-            zylonLoaded = ModLoader.TryGetMod("Zylon", out Mod Zylon);
+            zylonLoaded = ModLoader.TryGetMod(zylonName, out Mod Zylon);
             zylonMod = Zylon;
         }
     }

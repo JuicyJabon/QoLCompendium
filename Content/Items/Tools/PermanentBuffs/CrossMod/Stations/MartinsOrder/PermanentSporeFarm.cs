@@ -4,8 +4,8 @@ using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Stations.MartinsO
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Stations.MartinsOrder
 {
-    [JITWhenModsEnabled("MartainsOrder")]
-    [ExtendsFromMod("MartainsOrder")]
+    [JITWhenModsEnabled(ModConditions.martainsOrderName)]
+    [ExtendsFromMod(ModConditions.martainsOrderName)]
     public class PermanentSporeFarm : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.martainsOrderMod, Common.GetModBuff(ModConditions.martainsOrderMod, "SporeSave"));
@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Stations.Mar
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.martainsOrderMod, "SporeFarm"), 3);
             r.AddTile(TileID.CookingPots);
             r.Register();

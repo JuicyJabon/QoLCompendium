@@ -937,19 +937,19 @@
             }
             //EVENTS
             List<int> raveyardNPCs = new()
-                {
-                    Common.GetModNPC(ModConditions.redemptionMod, "CorpseWalkerPriest"),
-                    Common.GetModNPC(ModConditions.redemptionMod, "DancingSkeleton"),
-                    Common.GetModNPC(ModConditions.redemptionMod, "EpidotrianSkeleton"),
-                    Common.GetModNPC(ModConditions.redemptionMod, "JollyMadman"),
-                    Common.GetModNPC(ModConditions.redemptionMod, "RaveyardSkeleton"),
-                    Common.GetModNPC(ModConditions.redemptionMod, "SkeletonAssassin"),
-                    Common.GetModNPC(ModConditions.redemptionMod, "SkeletonDuelist"),
-                    Common.GetModNPC(ModConditions.redemptionMod, "SkeletonFlagbearer"),
-                    Common.GetModNPC(ModConditions.redemptionMod, "SkeletonNoble"),
-                    Common.GetModNPC(ModConditions.redemptionMod, "SkeletonWanderer"),
-                    Common.GetModNPC(ModConditions.redemptionMod, "SkeletonWarden"),
-                };
+            {
+                Common.GetModNPC(ModConditions.redemptionMod, "CorpseWalkerPriest"),
+                Common.GetModNPC(ModConditions.redemptionMod, "DancingSkeleton"),
+                Common.GetModNPC(ModConditions.redemptionMod, "EpidotrianSkeleton"),
+                Common.GetModNPC(ModConditions.redemptionMod, "JollyMadman"),
+                Common.GetModNPC(ModConditions.redemptionMod, "RaveyardSkeleton"),
+                Common.GetModNPC(ModConditions.redemptionMod, "SkeletonAssassin"),
+                Common.GetModNPC(ModConditions.redemptionMod, "SkeletonDuelist"),
+                Common.GetModNPC(ModConditions.redemptionMod, "SkeletonFlagbearer"),
+                Common.GetModNPC(ModConditions.redemptionMod, "SkeletonNoble"),
+                Common.GetModNPC(ModConditions.redemptionMod, "SkeletonWanderer"),
+                Common.GetModNPC(ModConditions.redemptionMod, "SkeletonWarden"),
+            };
             if (raveyardNPCs.Contains(npc.type))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.Raveyard], -1);
@@ -1116,62 +1116,62 @@
             #endregion
 
             #region Spirit
-            if (npc.type == Common.GetModNPC(ModConditions.spiritMod, "Scarabeus"))
+            if (npc.type == Common.GetModNPC(ModConditions.spiritClassicMod, "Scarabeus"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Scarabeus], -1);
             }
-            if (npc.type == Common.GetModNPC(ModConditions.spiritMod, "MoonWizard"))
+            if (npc.type == Common.GetModNPC(ModConditions.spiritClassicMod, "MoonWizard"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.MoonJellyWizard], -1);
                 NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.JellyDeluge], -1);
             }
-            if (npc.type == Common.GetModNPC(ModConditions.spiritMod, "ReachBoss"))
+            if (npc.type == Common.GetModNPC(ModConditions.spiritClassicMod, "ReachBoss"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.VinewrathBane], -1);
             }
-            if (npc.type == Common.GetModNPC(ModConditions.spiritMod, "AncientFlyer"))
+            if (npc.type == Common.GetModNPC(ModConditions.spiritClassicMod, "AncientFlyer"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.AncientAvian], -1);
             }
-            if (npc.type == Common.GetModNPC(ModConditions.spiritMod, "SteamRaiderHead"))
+            if (npc.type == Common.GetModNPC(ModConditions.spiritClassicMod, "SteamRaiderHead"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.StarplateVoyager], -1);
             }
-            if (npc.type == Common.GetModNPC(ModConditions.spiritMod, "Infernon"))
+            if (npc.type == Common.GetModNPC(ModConditions.spiritClassicMod, "Infernon"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Infernon], -1);
             }
-            if (npc.type == Common.GetModNPC(ModConditions.spiritMod, "Dusking"))
+            if (npc.type == Common.GetModNPC(ModConditions.spiritClassicMod, "Dusking"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Dusking], -1);
             }
-            if (npc.type == Common.GetModNPC(ModConditions.spiritMod, "Atlas"))
+            if (npc.type == Common.GetModNPC(ModConditions.spiritClassicMod, "Atlas"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Atlas], -1);
             }
             //EVENTS
             List<int> jellyDelugeNPCs = new()
                 {
-                    Common.GetModNPC(ModConditions.spiritMod, "MoonlightPreserver"),
-                    Common.GetModNPC(ModConditions.spiritMod, "ExplodingMoonjelly"),
-                    Common.GetModNPC(ModConditions.spiritMod, "MoonjellyGiant")
+                    Common.GetModNPC(ModConditions.spiritClassicMod, "MoonlightPreserver"),
+                    Common.GetModNPC(ModConditions.spiritClassicMod, "ExplodingMoonjelly"),
+                    Common.GetModNPC(ModConditions.spiritClassicMod, "MoonjellyGiant")
                 };
             if (jellyDelugeNPCs.Contains(npc.type))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.JellyDeluge], -1);
             }
-            if (npc.type == Common.GetModNPC(ModConditions.spiritMod, "Rylheian"))
+            if (npc.type == Common.GetModNPC(ModConditions.spiritClassicMod, "Rylheian"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.TheTide], -1);
             }
             List<int> mysticMoonNPCs = new()
                 {
-                    Common.GetModNPC(ModConditions.spiritMod, "Bloomshroom"),
-                    Common.GetModNPC(ModConditions.spiritMod, "Glitterfly"),
-                    Common.GetModNPC(ModConditions.spiritMod, "GlowToad"),
-                    Common.GetModNPC(ModConditions.spiritMod, "Lumantis"),
-                    Common.GetModNPC(ModConditions.spiritMod, "LunarSlime"),
-                    Common.GetModNPC(ModConditions.spiritMod, "MadHatter")
+                    Common.GetModNPC(ModConditions.spiritClassicMod, "Bloomshroom"),
+                    Common.GetModNPC(ModConditions.spiritClassicMod, "Glitterfly"),
+                    Common.GetModNPC(ModConditions.spiritClassicMod, "GlowToad"),
+                    Common.GetModNPC(ModConditions.spiritClassicMod, "Lumantis"),
+                    Common.GetModNPC(ModConditions.spiritClassicMod, "LunarSlime"),
+                    Common.GetModNPC(ModConditions.spiritClassicMod, "MadHatter")
                 };
             if (mysticMoonNPCs.Contains(npc.type))
             {
@@ -1207,6 +1207,32 @@
             if (npc.type == Common.GetModNPC(ModConditions.spookyMod, "BigBone"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.BigBone], -1);
+            }
+            if (npc.type == Common.GetModNPC(ModConditions.spookyMod, "SpookFishron"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.SpookFishron], -1);
+            }
+            if (npc.type == Common.GetModNPC(ModConditions.spookyMod, "Chester"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.PandorasBox], -1);
+            }
+            List<int> eggIncursionNPCs = new()
+            {
+                Common.GetModNPC(ModConditions.spookyMod, "Biojetter"),
+                Common.GetModNPC(ModConditions.spookyMod, "BiojetterEye"),
+                Common.GetModNPC(ModConditions.spookyMod, "CoughLungs"),
+                Common.GetModNPC(ModConditions.spookyMod, "CruxBat"),
+                Common.GetModNPC(ModConditions.spookyMod, "EarWorm"),
+                Common.GetModNPC(ModConditions.spookyMod, "ExplodingAppendix"),
+                Common.GetModNPC(ModConditions.spookyMod, "FleshBolster"),
+                Common.GetModNPC(ModConditions.spookyMod, "GooSlug"),
+                Common.GetModNPC(ModConditions.spookyMod, "HoppingHeart"),
+                Common.GetModNPC(ModConditions.spookyMod, "HoverBrain"),
+                Common.GetModNPC(ModConditions.spookyMod, "TongueBiter")
+            };
+            if (eggIncursionNPCs.Contains(npc.type))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.EggIncursion], -1);
             }
             #endregion
 

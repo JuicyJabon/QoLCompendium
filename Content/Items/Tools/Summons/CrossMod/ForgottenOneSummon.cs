@@ -52,7 +52,7 @@ namespace QoLCompendium.Content.Items.Tools.Summons.CrossMod
             if (!ModConditions.thoriumLoaded)
                 return;
 
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.CrossModItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.CrossModItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.thoriumMod, "MarineBlock"), 12);
             r.AddIngredient(Common.GetModItem(ModConditions.thoriumMod, "MossyMarineBlock"), 12);
             r.AddIngredient(ItemID.Ectoplasm, 5);

@@ -198,7 +198,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             items = GetItems(ItemID.Campfire, campfireItemRegex);
             RecipeGroup campfires = new RecipeGroup(() => $"{any} {Lang.GetItemNameValue(ItemID.Campfire)}", items);
             RecipeGroup.RegisterGroup("QoLCompendium:AnyCampfire", campfires);
-            RegisterGroupClone(campfires, nameof(ItemID.Bookcase));
+            RegisterGroupClone(campfires, nameof(ItemID.Campfire));
 
             RecipeGroup tombstones = new(() => $"{any} {Lang.GetItemNameValue(ItemID.Tombstone)}",
                 ItemID.Tombstone, 

@@ -21,7 +21,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.Vanilla.Arena
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.GardenGnome, 3);
             r.AddTile(TileID.CookingPots);
             r.Register();

@@ -30,7 +30,7 @@ namespace QoLCompendium.Content.Items.Accessories.InformationAccessories
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Glass, 8);
             r.AddRecipeGroup(RecipeGroupID.IronBar, 12);
             r.AddIngredient(ItemID.Lens, 2);

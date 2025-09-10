@@ -69,7 +69,7 @@ namespace QoLCompendium.Content.Items.Dedicated
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Gel, 100);
             r.AddIngredient(ItemID.FallenStar, 50);
             r.AddTile(TileID.Anvils);

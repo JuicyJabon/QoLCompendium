@@ -39,7 +39,7 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.AutoStructures, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.AutoStructures, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Bomb, 50);
             r.AddIngredient(ItemID.Diamond, 5);
             r.AddRecipeGroup(RecipeGroupID.IronBar, 10);

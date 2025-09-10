@@ -26,7 +26,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Effects.All
             if (ModConditions.secretsOfTheShadowsLoaded)
                 new SecretsOfTheShadowsEffect().ApplyEffect(player);
 
-            if (ModConditions.spiritLoaded)
+            if (ModConditions.spiritClassicLoaded)
                 new SpiritClassicEffect().ApplyEffect(player);
 
             if (ModConditions.thoriumLoaded)

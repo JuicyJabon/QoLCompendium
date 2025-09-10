@@ -56,7 +56,7 @@ namespace QoLCompendium.Content.Items.Dedicated
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.RottenEgg);
             r.AddIngredient(ItemID.PurificationPowder, 10);
             r.AddTile(TileID.Anvils);

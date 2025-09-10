@@ -1,11 +1,10 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.PermanentBuffSystems;
+﻿using QoLCompendium.Core.PermanentBuffSystems;
 using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.HomewardJourney;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Arena.HomewardJourney
 {
-    [JITWhenModsEnabled("ContinentOfJourney")]
-    [ExtendsFromMod("ContinentOfJourney")]
+    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
+    [ExtendsFromMod(ModConditions.homewardJourneyName)]
     public class PermanentBushOfLife : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.homewardJourneyMod, Common.GetModBuff(ModConditions.homewardJourneyMod, "BushOfLifeBuff"));
@@ -18,7 +17,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Arena.Homewa
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.homewardJourneyMod, "BushOfLife"), 3);
             r.AddTile(TileID.CookingPots);
             r.Register();

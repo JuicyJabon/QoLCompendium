@@ -1,11 +1,10 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.PermanentBuffSystems;
+﻿using QoLCompendium.Core.PermanentBuffSystems;
 using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Potions.Clicker;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Clicker
 {
-    [JITWhenModsEnabled("ClickerClass")]
-    [ExtendsFromMod("ClickerClass")]
+    [JITWhenModsEnabled(ModConditions.clickerClassName)]
+    [ExtendsFromMod(ModConditions.clickerClassName)]
     public class PermanentInfluence : IPermanentModdedBuffItem
     {
         public override string Texture => Common.ModBuffAsset(ModConditions.clickerClassMod, Common.GetModBuff(ModConditions.clickerClassMod, "InfluenceBuff"));
@@ -18,7 +17,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Potions.Clic
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(ModConditions.clickerClassMod, "InfluencePotion"), 30);
             r.AddTile(TileID.CookingPots);
             r.Register();

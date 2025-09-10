@@ -49,7 +49,7 @@ namespace QoLCompendium.Content.Items.Accessories.Construction
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.ConstructionAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.ConstructionAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<MiningEmblem>());
             r.AddIngredient(ModContent.ItemType<ConstructionEmblem>());
             r.AddIngredient(ItemID.HandOfCreation);

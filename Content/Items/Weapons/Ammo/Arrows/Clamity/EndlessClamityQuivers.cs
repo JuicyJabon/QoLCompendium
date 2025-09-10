@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Arrows.Clamity
 {
-    [JITWhenModsEnabled("Clamity")]
-    [ExtendsFromMod("Clamity")]
+    [JITWhenModsEnabled(ModConditions.clamityAddonName)]
+    [ExtendsFromMod(ModConditions.clamityAddonName)]
     public class EndlessFrostfireQuiver : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<FrostfireArrow>();

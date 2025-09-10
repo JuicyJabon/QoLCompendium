@@ -2,14 +2,14 @@
 
 namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod.AddonChanges
 {
-    [JITWhenModsEnabled("CatalystMod")]
-    [ExtendsFromMod("CatalystMod")]
+    [JITWhenModsEnabled(ModConditions.catalystName)]
+    [ExtendsFromMod(ModConditions.catalystName)]
     public class CatalystMonolith : GlobalTile
     {
         public override int[] AdjTiles(int type)
         {
             HashSet<int> newAdjTiles = base.AdjTiles(type).ToHashSet();
-            if (type == ModContent.TileType<CalamityMonolithTile>())
+            if (type == ModContent.TileType<CalamityMonolithTile>() || type == ModContent.TileType<UltimateMonolithTile>())
                 newAdjTiles.Add(ModContent.TileType<AstralTransmogrifier>());
             return newAdjTiles.ToArray();
         }

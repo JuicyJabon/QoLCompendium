@@ -51,7 +51,7 @@ namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.DestinationGlobe, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.DestinationGlobe, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Glass, 15);
             r.AddIngredient(ItemID.DirtBlock, 5);
             r.AddIngredient(ItemID.GrassSeeds, 5);

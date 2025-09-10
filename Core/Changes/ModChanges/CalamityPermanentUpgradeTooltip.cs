@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [ExtendsFromMod("CalamityMod")]
-    [JITWhenModsEnabled("CalamityMod")]
+    [ExtendsFromMod(ModConditions.calamityName)]
+    [JITWhenModsEnabled(ModConditions.calamityName)]
     public class CalamityPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

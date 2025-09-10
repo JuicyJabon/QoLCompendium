@@ -20,7 +20,7 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.Vanilla.Stations
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.AmmoBox, 3);
             r.AddTile(TileID.CookingPots);
             r.Register();

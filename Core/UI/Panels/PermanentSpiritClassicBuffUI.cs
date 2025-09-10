@@ -258,62 +258,62 @@ namespace QoLCompendium.Core.UI.Panels
 
         public static void GetSpiritClassicBuffData()
         {
-            if (!ModConditions.spiritLoaded)
+            if (!ModConditions.spiritClassicLoaded)
                 return;
 
             //TOOLTIPS
             //ARENA
-            CoiledEnergizerButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "OverDrive")).DisplayName;
-            KoiTotemButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "KoiTotemBuff")).DisplayName;
-            SunPotButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "SunPotBuff")).DisplayName;
-            TheCouchButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "CouchPotato")).DisplayName;
+            CoiledEnergizerButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "OverDrive")).DisplayName;
+            KoiTotemButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "KoiTotemBuff")).DisplayName;
+            SunPotButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "SunPotBuff")).DisplayName;
+            TheCouchButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "CouchPotato")).DisplayName;
             //POTIONS
-            JumpButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "PinkPotionBuff")).DisplayName;
-            MirrorCoatButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "MirrorCoatBuff")).DisplayName;
-            MoonJellyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "MoonBlessing")).DisplayName;
-            RunescribeButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "RunePotionBuff")).DisplayName;
-            SoulguardButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "SoulPotionBuff")).DisplayName;
-            SpiritButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "SpiritBuff")).DisplayName;
-            SoaringButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "FlightPotionBuff")).DisplayName;
-            SporecoidButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "MushroomPotionBuff")).DisplayName;
-            StarburnButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "StarPotionBuff")).DisplayName;
-            SteadfastButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "TurtlePotionBuff")).DisplayName;
-            ToxinButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "BismitePotionBuff")).DisplayName;
-            ZephyrButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "DoubleJumpPotionBuff")).DisplayName;
+            JumpButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "PinkPotionBuff")).DisplayName;
+            MirrorCoatButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "MirrorCoatBuff")).DisplayName;
+            MoonJellyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "MoonBlessing")).DisplayName;
+            RunescribeButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "RunePotionBuff")).DisplayName;
+            SoulguardButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "SoulPotionBuff")).DisplayName;
+            SpiritButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "SpiritBuff")).DisplayName;
+            SoaringButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "FlightPotionBuff")).DisplayName;
+            SporecoidButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "MushroomPotionBuff")).DisplayName;
+            StarburnButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "StarPotionBuff")).DisplayName;
+            SteadfastButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "TurtlePotionBuff")).DisplayName;
+            ToxinButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "BismitePotionBuff")).DisplayName;
+            ZephyrButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "DoubleJumpPotionBuff")).DisplayName;
             //CANDIES
-            CandyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "CandyBuff")).DisplayName;
-            ChocolateBarButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "ChocolateBuff")).DisplayName;
-            HealthCandyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "HealthBuffC")).DisplayName;
-            LollipopButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "LollipopBuff")).DisplayName;
-            ManaCandyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "ManaBuffC")).DisplayName;
-            TaffyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritMod, "TaffyBuff")).DisplayName;
+            CandyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "CandyBuff")).DisplayName;
+            ChocolateBarButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "ChocolateBuff")).DisplayName;
+            HealthCandyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "HealthBuffC")).DisplayName;
+            LollipopButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "LollipopBuff")).DisplayName;
+            ManaCandyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "ManaBuffC")).DisplayName;
+            TaffyButton.ModTooltip = BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritClassicMod, "TaffyBuff")).DisplayName;
 
             //SPRITES
             //ARENA
-            CoiledEnergizerButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "OverDrive")));
-            KoiTotemButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "KoiTotemBuff")));
-            SunPotButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "SunPotBuff")));
-            TheCouchButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "CouchPotato")));
+            CoiledEnergizerButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "OverDrive")));
+            KoiTotemButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "KoiTotemBuff")));
+            SunPotButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "SunPotBuff")));
+            TheCouchButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "CouchPotato")));
             //POTIONS
-            JumpButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "PinkPotionBuff")));
-            MirrorCoatButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "MirrorCoatBuff")));
-            MoonJellyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "MoonBlessing")));
-            RunescribeButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "RunePotionBuff")));
-            SoulguardButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "SoulPotionBuff")));
-            SpiritButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "SpiritBuff")));
-            SoaringButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "FlightPotionBuff")));
-            SporecoidButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "MushroomPotionBuff")));
-            StarburnButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "StarPotionBuff")));
-            SteadfastButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "TurtlePotionBuff")));
-            ToxinButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "BismitePotionBuff")));
-            ZephyrButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "DoubleJumpPotionBuff")));
+            JumpButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "PinkPotionBuff")));
+            MirrorCoatButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "MirrorCoatBuff")));
+            MoonJellyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "MoonBlessing")));
+            RunescribeButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "RunePotionBuff")));
+            SoulguardButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "SoulPotionBuff")));
+            SpiritButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "SpiritBuff")));
+            SoaringButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "FlightPotionBuff")));
+            SporecoidButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "MushroomPotionBuff")));
+            StarburnButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "StarPotionBuff")));
+            SteadfastButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "TurtlePotionBuff")));
+            ToxinButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "BismitePotionBuff")));
+            ZephyrButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "DoubleJumpPotionBuff")));
             //CANDIES
-            CandyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "CandyBuff")));
-            ChocolateBarButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "ChocolateBuff")));
-            HealthCandyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "HealthBuffC")));
-            LollipopButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "LollipopBuff")));
-            ManaCandyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "ManaBuffC")));
-            TaffyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "TaffyBuff")));
+            CandyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "CandyBuff")));
+            ChocolateBarButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "ChocolateBuff")));
+            HealthCandyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "HealthBuffC")));
+            LollipopButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "LollipopBuff")));
+            ManaCandyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "ManaBuffC")));
+            TaffyButton.drawTexture = ModContent.Request<Texture2D>(Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "TaffyBuff")));
         }
 
         public override void Update(GameTime gameTime)

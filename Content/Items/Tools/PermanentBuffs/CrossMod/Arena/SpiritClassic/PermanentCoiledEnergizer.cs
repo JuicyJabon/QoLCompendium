@@ -1,14 +1,13 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.PermanentBuffSystems;
+﻿using QoLCompendium.Core.PermanentBuffSystems;
 using QoLCompendium.Core.PermanentBuffSystems.Effects.CrossMod.Arena.SpiritClassic;
 
 namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Arena.SpiritClassic
 {
-    [JITWhenModsEnabled("SpiritMod")]
-    [ExtendsFromMod("SpiritMod")]
+    [JITWhenModsEnabled(ModConditions.spiritClassicName)]
+    [ExtendsFromMod(ModConditions.spiritClassicName)]
     public class PermanentCoiledEnergizer : IPermanentModdedBuffItem
     {
-        public override string Texture => Common.ModBuffAsset(ModConditions.spiritMod, Common.GetModBuff(ModConditions.spiritMod, "OverDrive"));
+        public override string Texture => Common.ModBuffAsset(ModConditions.spiritClassicMod, Common.GetModBuff(ModConditions.spiritClassicMod, "OverDrive"));
 
         public override void UpdateInventory(Player player)
         {
@@ -18,8 +17,8 @@ namespace QoLCompendium.Content.Items.Tools.PermanentBuffs.CrossMod.Arena.Spirit
 
         public override void AddRecipes()
         {
-            Recipe r = ModConditions.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-            r.AddIngredient(Common.GetModItem(ModConditions.spiritMod, "CoilEnergizerItem"), 3);
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            r.AddIngredient(Common.GetModItem(ModConditions.spiritClassicMod, "CoilEnergizerItem"), 3);
             r.AddTile(TileID.CookingPots);
             r.Register();
         }

@@ -2,36 +2,36 @@
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Arrows.HomewardJourney
 {
-    [JITWhenModsEnabled("ContinentOfJourney")]
-    [ExtendsFromMod("ContinentOfJourney")]
+    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
+    [ExtendsFromMod(ModConditions.homewardJourneyName)]
     public class EndlessBewitchedQuiver : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<BewitchedArrow>();
     }
 
-    [JITWhenModsEnabled("ContinentOfJourney")]
-    [ExtendsFromMod("ContinentOfJourney")]
+    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
+    [ExtendsFromMod(ModConditions.homewardJourneyName)]
     public class EndlessDivineFireQuiver : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<DivineFireArrow>();
     }
 
-    [JITWhenModsEnabled("ContinentOfJourney")]
-    [ExtendsFromMod("ContinentOfJourney")]
+    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
+    [ExtendsFromMod(ModConditions.homewardJourneyName)]
     public class EndlessMartyrQuiver : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<ChampionArrow>();
     }
 
-    [JITWhenModsEnabled("ContinentOfJourney")]
-    [ExtendsFromMod("ContinentOfJourney")]
+    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
+    [ExtendsFromMod(ModConditions.homewardJourneyName)]
     public class EndlessPlagueQuiver : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<PlagueArrow>();
     }
 
-    [JITWhenModsEnabled("ContinentOfJourney")]
-    [ExtendsFromMod("ContinentOfJourney")]
+    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
+    [ExtendsFromMod(ModConditions.homewardJourneyName)]
     public class EndlessSteelQuiver : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<SteelArrow>();

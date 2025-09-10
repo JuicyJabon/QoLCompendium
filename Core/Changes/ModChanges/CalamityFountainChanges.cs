@@ -6,8 +6,8 @@ using System.Reflection;
 
 namespace QoLCompendium.Core.Changes.ModChanges
 {
-    [ExtendsFromMod("CalamityMod")]
-    [JITWhenModsEnabled("CalamityMod")]
+    [ExtendsFromMod(ModConditions.calamityName)]
+    [JITWhenModsEnabled(ModConditions.calamityName)]
     public class CalamityFountainChanges : ModSystem
     {
         public delegate bool Orig_AstralInfectionActive(AstralInfectionBiome self, Player player);
