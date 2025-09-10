@@ -4096,6 +4096,11 @@ Mods: {
 					Label: "[i:1291] Life Fruits Glow"
 					Tooltip: Toggles if placed Life Fruits glow
 				}
+
+				ReworkReforging: {
+					Label: "[i:1291] Rework Reforging"
+					Tooltip: Toggles if reforging is reworked to function like Calamity's version
+				}
 			}
 
 			ItemConfig: {

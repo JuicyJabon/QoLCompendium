@@ -13,3 +13,9 @@ v2.2.19
 10. Added unsafe Marble and Granite walls
 11. Added class tags for Secrets of the Shadows Void class, works with Bard/Healer addon and Infernal Eclipse of Ragnarok
 12. Fixed the wrong Soul Forge being used in the Thorium crafting monoliths
+13. Added Calamity's reworked reforging, with support for the following mods:
+ - Calamity
+ - Infernal Eclipse of Ragnarok
+ - Secrets of the Shadows
+ - Thorium
+ - Thorium Bard/Healer/Thrower Addons (Calamity, Redemption, Secrets of the Shadows, Spirit, Spooky)

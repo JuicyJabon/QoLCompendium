@@ -124,6 +124,9 @@ namespace QoLCompendium.Core
         [DefaultValue(false)]
         public bool GoodPrefixesHaveEnchantedEffects { get; set; }
 
+        [DefaultValue(true)]
+        public bool ReworkReforging { get; set; }
+
         [DefaultValue(false)]
         [ReloadRequired]
         public bool FullyDisableRecipes { get; set; }
