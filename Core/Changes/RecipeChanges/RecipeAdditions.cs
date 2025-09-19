@@ -9,14 +9,17 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
         public override void AddRecipes()
         {
             //Aether Altar Recipe Creation
-            for (int i = 0; i < ItemLoader.ItemCount; i++)
+            if (!QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.CraftingStations)
             {
-                if (ItemID.Sets.ShimmerTransformToItem[i] > ItemID.None)
+                for (int i = 0; i < ItemLoader.ItemCount; i++)
                 {
-                    Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, ItemID.Sets.ShimmerTransformToItem[i], 1, "Mods.QoLCompendium.ItemToggledConditions.CraftingStations");
-                    r.AddIngredient(i);
-                    r.AddTile(ModContent.TileType<AetherAltarTile>());
-                    r.Register();
+                    if (ItemID.Sets.ShimmerTransformToItem[i] > ItemID.None)
+                    {
+                        Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, ItemID.Sets.ShimmerTransformToItem[i], 1, "Mods.QoLCompendium.ItemToggledConditions.CraftingStations");
+                        r.AddIngredient(i);
+                        r.AddTile(ModContent.TileType<AetherAltarTile>());
+                        r.Register();
+                    }
                 }
             }
 
