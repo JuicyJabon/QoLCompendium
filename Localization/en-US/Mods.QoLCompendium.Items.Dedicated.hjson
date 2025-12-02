@@ -1,0 +1,29 @@
+LittleEgg: {
+	DisplayName: Little Egg
+	Tooltip: Summons a Yagi
+}
+
+Lamp: {
+	DisplayName: Lamp
+	Tooltip: Summons a Moth
+}
+
+THEButton: {
+	DisplayName: THE Button
+	Tooltip: Press for a permanent new world perspective!
+}
+
+OwlNest: {
+	DisplayName: Owl Nest
+	Tooltip: Summons an Owl
+}
+
+Flute: {
+	DisplayName: Flute
+	Tooltip: Summons a Snake
+}
+
+WoodenClub: {
+	DisplayName: Wooden Club
+	Tooltip: Pairs well with the Sea Scarf
+}

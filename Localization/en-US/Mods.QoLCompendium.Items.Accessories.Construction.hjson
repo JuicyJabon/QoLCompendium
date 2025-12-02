@@ -1,0 +1,25 @@
+ConstructionEmblem: {
+	DisplayName: Construction Emblem
+	Tooltip: 15% increased block and wall placement speed
+}
+
+CreationClubMembersPass: {
+	DisplayName: Creation Club Member's Pass
+	Tooltip:
+		'''
+		50% increased mining speed
+		75% increased block and wall placement speed
+		Increases block placement range by 5
+		Increases pickup range for items
+		Automatically paints or coats placed objects
+		Automatically places actuators on placed objects
+		Enables Echo Sight, showing hidden blocks
+		Hold Up to reach higher
+		'Included with your purchase of Skyrim Deluxe Edition Remastered Game of the Year Edition'
+		'''
+}
+
+MiningEmblem: {
+	DisplayName: Mining Emblem
+	Tooltip: 15% increased mining speed
+}

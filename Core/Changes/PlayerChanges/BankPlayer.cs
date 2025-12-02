@@ -48,7 +48,7 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
         {
             foreach (Item item in items)
             {
-                if (Common.BankItems.Contains(item.type))
+                if (Common.BankItems.Contains(item.type) && !item.IsAir)
                 {
                     if (item.type == Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "ElectromagneticDeterrent"))
                         return;

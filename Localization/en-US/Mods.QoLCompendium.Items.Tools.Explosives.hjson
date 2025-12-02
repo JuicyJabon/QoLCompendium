@@ -1,0 +1,70 @@
+AsphaltAutohighway: {
+	DisplayName: Asphalt Autohighway
+	Tooltip:
+		'''
+		Creates an asphalt platform highway across the entire world
+		Will destroy everything in it's way
+		Left click for a double row of platforms
+		Right click for a single row of platforms
+		'''
+}
+
+AutoHouser: {
+	DisplayName: Auto Houser
+	Tooltip: Places a town NPC house
+}
+
+Hellbridger: {
+	DisplayName: Hellbridger
+	Tooltip:
+		'''
+		Creates a drill bomb that carves a hellbridge across the entire world
+		Will not destroy modded structures
+		Left click for a double row of platforms
+		Right click for a single row of platforms
+		'''
+}
+
+HellevatorCreator: {
+	DisplayName: Hellevator Creator
+	Tooltip:
+		'''
+		Creates a drill bomb that carves a hellevator 
+		Will destroy anything in it's path directly below the impact
+		'''
+}
+
+Lakemaker: {
+	DisplayName: Lakemaker
+	Tooltip:
+		'''
+		Creates a bomb that creates a 50x50 body of water below it
+		Will destroy everything below
+		'''
+}
+
+Minibridge: {
+	DisplayName: Minibridge
+	Tooltip: Creates a 400 tile long platform
+}
+
+Skybridger: {
+	DisplayName: Skybridger
+	Tooltip:
+		'''
+		Creates a drill bomb that creates a skybridge across the entire world
+		Will destroy everything in it's way
+		Left click for a double row of platforms
+		Right click for a single row of platforms
+		'''
+}
+
+Superbomber: {
+	DisplayName: Superbomber
+	Tooltip:
+		'''
+		Destroys a large square area
+		Doesn't remove background walls
+		Will destroy everything above the impact
+		'''
+}

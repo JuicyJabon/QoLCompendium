@@ -1,4 +1,6 @@
-﻿namespace QoLCompendium.Content.Projectiles.Explosives
+﻿using FargowiltasSouls.Content.Tiles;
+
+namespace QoLCompendium.Content.Projectiles.Explosives
 {
     public class MinibridgeProj : ModProjectile
     {
@@ -21,68 +23,38 @@
 
         public override void OnKill(int timeLeft)
         {
-            Vector2 center = Projectile.Center;
-            SoundEngine.PlaySound(SoundID.Item14, center, null);
+            Vector2 position = Projectile.Center;
+            SoundEngine.PlaySound(SoundID.Item14, position, null);
+            
             if (Main.netMode == NetmodeID.MultiplayerClient)
                 return;
-            bool centerX = Projectile.Center.X < Main.player[Projectile.owner].Center.X;
-            int[] source = { 80, 5, 32, 352, 69 };
 
-            Tile tileCenter = Main.tile[(int)(center.X / 16f), (int)(center.Y / 16f)];
-            if (!(tileCenter == null))
-            {
-                if (source.Contains(tileCenter.TileType))
-                {
-                    Destruction.ClearEverything((int)(center.X / 16f), (int)(center.Y / 16f));
-                }
-                WorldGen.PlaceTile((int)(center.X / 16f), (int)(center.Y / 16f), TileID.Platforms, false, false, -1, 0);
-                NetMessage.SendTileSquare(-1, (int)(center.X / 16f), (int)(center.Y / 16f), 1, TileChangeType.None);
-            }
+            bool goLeft = Projectile.Center.X < Main.player[Projectile.owner].Center.X;
+            int[] deletableTiles = [TileID.Cactus, TileID.Trees, TileID.CorruptThorns, TileID.CrimsonThorns, TileID.JungleThorns];
+            int length = 400;
+            int min = goLeft ? -length : 0;
+            int max = goLeft ? 0 : length;
 
             //Make Bridges
-            int startLeft = centerX ? (-100) : 0;
-            int endLeft = (!centerX) ? 100 : 0;
-            for (int i = startLeft; i < endLeft; i++)
+            for (int x = min; x < max; x++)
             {
-                int posX = (int)(i + center.X / 16f);
-                int posY = (int)(center.Y / 16f);
-                if (posX < 0 || posX >= Main.maxTilesX || posY < 0 || posY >= Main.maxTilesY)
-                {
-                    continue;
-                }
-                Tile tile = Main.tile[posX, posY];
-                if (!(tile == null))
-                {
-                    if (source.Contains(tile.TileType))
-                    {
-                        Destruction.ClearEverything(posX, posY);
-                    }
-                    WorldGen.PlaceTile(posX, posY, TileID.Platforms, false, false, -1, 0);
-                    NetMessage.SendTileSquare(-1, posX, posY, 1, TileChangeType.None);
-                }
-            }
+                int xPosition = (int)(x + position.X / 16.0f);
+                int yPosition = (int)(position.Y / 16.0f);
 
-
-            int startRight = centerX ? 100 : 0;
-            int endRight = (!centerX) ? -100 : 0;
-            for (int i = startRight; i > endRight; i--)
-            {
-                int posX = (int)(i + center.X / 16f);
-                int posY = (int)(center.Y / 16f);
-                if (posX < 0 || posX >= Main.maxTilesX || posY < 0 || posY >= Main.maxTilesY)
-                {
+                if (xPosition < 0 || xPosition >= Main.maxTilesX || yPosition < 0 || yPosition >= Main.maxTilesY)
                     continue;
-                }
-                Tile tile = Main.tile[posX, posY];
-                if (!(tile == null))
-                {
-                    if (source.Contains(tile.TileType))
-                    {
-                        Destruction.ClearEverything(posX, posY);
-                    }
-                    WorldGen.PlaceTile(posX, posY, TileID.Platforms, false, false, -1, 0);
-                    NetMessage.SendTileSquare(-1, posX, posY, 1, TileChangeType.None);
-                }
+
+                Tile tile = Main.tile[xPosition, yPosition];
+
+                if (Common.TileNull(xPosition, yPosition))
+                    continue;
+
+                if (deletableTiles.Contains(tile.TileType))
+                    Destruction.ClearEverything(xPosition, yPosition);
+
+                // Spawn platforms
+                WorldGen.PlaceTile(xPosition, yPosition, TileID.Platforms);
+                NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
             }
         }
     }

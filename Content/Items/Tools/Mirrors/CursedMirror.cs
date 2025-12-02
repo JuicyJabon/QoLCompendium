@@ -1,12 +1,12 @@
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Mirrors
 {
-    public class CursedMirror : ModItem
+    public class CursedMirror : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.Mirrors;
+
+        public new string LocalizationCategory => "Items.Tools.Mirrors";
 
         public override void SetStaticDefaults()
         {

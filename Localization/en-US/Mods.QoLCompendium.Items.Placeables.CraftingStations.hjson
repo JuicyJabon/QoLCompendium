@@ -1,0 +1,101 @@
+AetherAltar: {
+	DisplayName: Aether Altar
+	Tooltip:
+		'''
+		Allows crafting shimmerable items into their results
+		Obtained by throwing a Demon/Crimson altar into shimmer
+		'''
+}
+
+DemonAltar: {
+	DisplayName: Demon Altar
+	Tooltip:
+		'''
+		Functions as an evil altar
+		Cannot be mined for hardmode ores
+		'''
+}
+
+CrimsonAltar: {
+	DisplayName: Crimson Altar
+	Tooltip:
+		'''
+		Functions as an evil altar
+		Cannot be mined for hardmode ores
+		'''
+}
+
+BasicCraftingMonolith: {
+	DisplayName: Basic Crafting Monolith
+	Tooltip: Functions as many basic vanilla crafting stations
+}
+
+HardmodeCraftingMonolith: {
+	DisplayName: Hardmode Crafting Monolith
+	Tooltip: Functions as many hardmode vanilla crafting stations
+}
+
+LunarCraftingMonolith: {
+	DisplayName: Lunar Crafting Monolith
+	Tooltip: Functions as every vanilla crafting station
+}
+
+SpecializedCraftingMonolith: {
+	DisplayName: Specialized Crafting Monolith
+	Tooltip: Functions as many advanced vanilla crafting stations
+}
+
+BasicMartinsOrderCraftingMonolith: {
+	DisplayName: Basic Martin's Order Crafting Monolith
+	Tooltip: Functions as basic Martin's Order crafting stations
+}
+
+HardmodeMartinsOrderCraftingMonolith: {
+	DisplayName: Hardmode Martin's Order Crafting Monolith
+	Tooltip: Functions as hardmode Martin's Order crafting stations
+}
+
+MartinsOrderCraftingMonolith: {
+	DisplayName: Martin's Order Crafting Monolith
+	Tooltip: Functions as all Martin's Order crafting stations
+}
+
+BasicCalamityCraftingMonolith: {
+	DisplayName: Basic Calamity Crafting Monolith
+	Tooltip: Functions as basic Calamity crafting stations
+}
+
+CalamityCraftingMonolith: {
+	DisplayName: Calamity Crafting Monolith
+	Tooltip: Functions as all Calamity crafting stations
+}
+
+HardmodeCalamityCraftingMonolith: {
+	DisplayName: Hardmode Calamity Crafting Monolith
+	Tooltip: Functions as hardmode Calamity crafting stations
+}
+
+ThoriumCraftingMonolith: {
+	Tooltip: Functions as all Thorium crafting stations
+	DisplayName: Thorium Crafting Monolith
+}
+
+BasicThoriumCraftingMonolith: {
+	Tooltip: Functions as basic Thorium crafting stations
+	DisplayName: Basic Thorium Crafting Monolith
+}
+
+BasicHomewardJourneyCraftingMonolith: {
+	DisplayName: Basic Homeward Journey Crafting Monolith
+	Tooltip: Functions as basic Homeward Journey crafting stations
+}
+
+HomewardJourneyCraftingMonolith: {
+	DisplayName: Homeward Journey Crafting Monolith
+	Tooltip: Functions as all Homeward Journey crafting stations
+}
+
+UltimateCraftingMonolith: {
+	DisplayName: Ultimate Crafting Monolith
+	Tooltip: Functions as every crafting station
+}

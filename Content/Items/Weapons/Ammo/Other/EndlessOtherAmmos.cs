@@ -1,6 +1,4 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using Terraria.Enums;
+﻿using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 {
@@ -14,199 +12,207 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
             Item.useAnimation = 0;
             Item.createTile = -1;
             Item.shoot = ProjectileID.None;
+            Item.DamageType = DamageClass.Ranged;
         }
 
-        class EndlessCopperCoinPouch : CoinBag
+        class EndlessCopperCoinBag : CoinBag
         {
             public override int AmmunitionItem => ItemID.CopperCoin;
         }
 
-        class EndlessSilverCoinPouch : CoinBag
+        class EndlessSilverCoinBag : CoinBag
         {
             public override int AmmunitionItem => ItemID.SilverCoin;
         }
 
-        class EndlessGoldCoinPouch : CoinBag
+        class EndlessGoldCoinBag : CoinBag
         {
             public override int AmmunitionItem => ItemID.GoldCoin;
         }
 
-        class EndlessPlatinumCoinPouch : CoinBag
+        class EndlessPlatinumCoinBag : CoinBag
         {
             public override int AmmunitionItem => ItemID.PlatinumCoin;
         }
+    }
 
-        public class EndlessCandyCornPie : BaseAmmo
+    public class EndlessCandyCornPie : BaseAmmo
+    {
+        public override int AmmunitionItem => ItemID.CandyCorn;
+    }
+
+    public class EndlessExplosiveJackOLantern : BaseAmmo
+    {
+        public override int AmmunitionItem => ItemID.ExplosiveJackOLantern;
+    }
+
+    public class EndlessGelTank : ModItem, ILocalizedModType
+    {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
+
+        public new string LocalizationCategory => "Items.Weapons.Ammo";
+
+        public override void SetStaticDefaults()
         {
-            public override int AmmunitionItem => ItemID.CandyCorn;
+            Item.ResearchUnlockCount = 1;
         }
 
-        public class EndlessExplosiveJackOLantern : BaseAmmo
+        public override void SetDefaults()
         {
-            public override int AmmunitionItem => ItemID.ExplosiveJackOLantern;
+            Item.ammo = AmmoID.Gel;
+            Item.knockBack = 0.5f;
+            Item.DamageType = DamageClass.Ranged;
+            Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
         }
 
-        public class EndlessGelTank : ModItem
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
-
-            public override void SetStaticDefaults()
-            {
-                Item.ResearchUnlockCount = 1;
-            }
-
-            public override void SetDefaults()
-            {
-                Item.ammo = AmmoID.Gel;
-                Item.knockBack = 0.5f;
-                Item.DamageType = DamageClass.Ranged;
-                Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
-            }
-
-            public override void ModifyTooltips(List<TooltipLine> tooltips)
-            {
-                Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
-            }
-
-            public override void AddRecipes()
-            {
-                Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-                r.AddIngredient(ItemID.Gel, 3996);
-                r.AddTile(TileID.Solidifier);
-                r.Register();
-            }
-        }
-        
-        public class EndlessNailPouch : BaseAmmo
-        {
-            public override int AmmunitionItem => ItemID.Nail;
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
         }
 
-        public class EndlessSandPouch : ModItem
+        public override void AddRecipes()
         {
-            public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            r.AddIngredient(ItemID.Gel, 3996);
+            r.AddTile(TileID.Solidifier);
+            r.Register();
+        }
+    }
 
-            public override void SetStaticDefaults()
-            {
-                Item.ResearchUnlockCount = 1;
-            }
+    public class EndlessNailPouch : BaseAmmo
+    {
+        public override int AmmunitionItem => ItemID.Nail;
+    }
 
-            public override void SetDefaults()
-            {
-                Item.CloneDefaults(ItemID.SandBlock);
-                Item.consumable = false;
-                Item.maxStack = 1;
+    public class EndlessSandPouch : ModItem, ILocalizedModType
+    {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
 
-                Item.useStyle = ItemUseStyleID.None;
-                Item.useTime = 0;
-                Item.useAnimation = 0;
-                Item.createTile = -1;
-                Item.shoot = ProjectileID.None;
-                Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
-            }
+        public new string LocalizationCategory => "Items.Weapons.Ammo";
 
-            public override void ModifyTooltips(List<TooltipLine> tooltips)
-            {
-                Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
-            }
-
-            public override bool CanUseItem(Player player)
-            {
-                return false;
-            }
-
-            public override void AddRecipes()
-            {
-                Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-                r.AddIngredient(ItemID.SandBlock, 3996);
-                r.AddTile(TileID.Solidifier);
-                r.Register();
-            }
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
         }
 
-        public class EndlessSnowballPouch : ModItem
+        public override void SetDefaults()
         {
-            public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
-
-            public override void SetStaticDefaults()
-            {
-                Item.ResearchUnlockCount = 1;
-            }
-
-            public override void SetDefaults()
-            {
-                Item.CloneDefaults(ItemID.Snowball);
-                Item.consumable = false;
-                Item.maxStack = 1;
-
-                Item.shoot = ProjectileID.None;
-                Item.useAnimation = 0;
-                Item.useTime = 0;
-                Item.useStyle = ItemUseStyleID.None;
-                Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
-            }
-
-            public override void ModifyTooltips(List<TooltipLine> tooltips)
-            {
-                Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
-            }
-
-            public override bool CanUseItem(Player player)
-            {
-                return false;
-            }
-
-            public override void AddRecipes()
-            {
-                Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-                r.AddIngredient(ItemID.Snowball, 3996);
-                r.AddTile(TileID.Solidifier);
-                r.Register();
-            }
+            Item.CloneDefaults(ItemID.SandBlock);
+            Item.consumable = false;
+            Item.maxStack = 1;
+            Item.useStyle = ItemUseStyleID.None;
+            Item.useTime = 0;
+            Item.useAnimation = 0;
+            Item.createTile = -1;
+            Item.shoot = ProjectileID.None;
+            Item.DamageType = DamageClass.Ranged;
+            Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
         }
 
-        public class EndlessStakeBundle : BaseAmmo
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            public override int AmmunitionItem => ItemID.Stake;
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
         }
 
-        public class EndlessStarPouch : ModItem
+        public override bool CanUseItem(Player player)
         {
-            public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
-
-            public override void SetStaticDefaults()
-            {
-                Item.ResearchUnlockCount = 1;
-            }
-
-            public override void SetDefaults()
-            {
-                Item.ammo = AmmoID.FallenStar;
-                Item.DamageType = DamageClass.Ranged;
-                Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
-            }
-
-            public override void ModifyTooltips(List<TooltipLine> tooltips)
-            {
-                Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
-            }
-
-            public override bool CanUseItem(Player player)
-            {
-                return false;
-            }
-
-            public override void AddRecipes()
-            {
-                Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-                r.AddIngredient(ItemID.FallenStar, 3996);
-                r.AddTile(TileID.Solidifier);
-                r.Register();
-            }
+            return false;
         }
-        public class EndlessStyngerBoltQuiver : BaseAmmo
+
+        public override void AddRecipes()
         {
-            public override int AmmunitionItem => ItemID.StyngerBolt;
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            r.AddIngredient(ItemID.SandBlock, 3996);
+            r.AddTile(TileID.Solidifier);
+            r.Register();
         }
+    }
+
+    public class EndlessSnowballPouch : ModItem, ILocalizedModType
+    {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
+
+        public new string LocalizationCategory => "Items.Weapons.Ammo";
+
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
+
+        public override void SetDefaults()
+        {
+            Item.CloneDefaults(ItemID.Snowball);
+            Item.consumable = false;
+            Item.maxStack = 1;
+            Item.shoot = ProjectileID.None;
+            Item.useAnimation = 0;
+            Item.useTime = 0;
+            Item.useStyle = ItemUseStyleID.None;
+            Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            return false;
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            r.AddIngredient(ItemID.Snowball, 3996);
+            r.AddTile(TileID.Solidifier);
+            r.Register();
+        }
+    }
+
+    public class EndlessStakeBundle : BaseAmmo
+    {
+        public override int AmmunitionItem => ItemID.Stake;
+    }
+
+    public class EndlessStarPouch : ModItem, ILocalizedModType
+    {
+        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
+
+        public new string LocalizationCategory => "Items.Weapons.Ammo";
+
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
+
+        public override void SetDefaults()
+        {
+            Item.ammo = AmmoID.FallenStar;
+            Item.DamageType = DamageClass.Ranged;
+            Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            return false;
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            r.AddIngredient(ItemID.FallenStar, 3996);
+            r.AddTile(TileID.Solidifier);
+            r.Register();
+        }
+    }
+    public class EndlessStyngerBoltQuiver : BaseAmmo
+    {
+        public override int AmmunitionItem => ItemID.StyngerBolt;
     }
 }

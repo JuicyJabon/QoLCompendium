@@ -1,0 +1,127 @@
+MosaicMirror: {
+	Mirror0: Mosaic Mirror (Latest Death)
+	Mirror1: Mosaic Mirror (Return)
+	Mirror2: Mosaic Mirror (Teleportation)
+}
+
+Omnistaff: {
+	Grass0: Omnistaff (Grass)
+	Grass1: Omnistaff (Corrupt Grass)
+	Grass2: Omnistaff (Crimson Grass)
+	Grass3: Omnistaff (Hallowed Grass)
+	Grass4: Omnistaff (Jungle Grass)
+	Grass5: Omnistaff (Mushroom Grass)
+	Grass6: Omnistaff (Ash Grass)
+}
+
+MossStaff: {
+	Moss0: Moss Staff (Blue)
+	Moss1: Moss Staff (Brown)
+	Moss2: Moss Staff (Green)
+	Moss3: Moss Staff (Purple)
+	Moss4: Moss Staff (Red)
+}
+
+GlowingMossStaff: {
+	Moss0: Glowing Moss Staff (Argon)
+	Moss1: Glowing Moss Staff (Krypton)
+	Moss2: Glowing Moss Staff (Lava)
+	Moss3: Glowing Moss Staff (Neon)
+	Moss4: Glowing Moss Staff (Xenon)
+	Moss5: Glowing Moss Staff (Helium)
+}
+
+DestinationGlobe: {
+	Biome0: Destination Globe (No Selection)
+	Biome1: Destination Globe (Desert)
+	Biome2: Destination Globe (Snow)
+	Biome3: Destination Globe (Jungle)
+	Biome4: Destination Globe (Glowing Mushroom)
+	Biome5: Destination Globe (Corruption)
+	Biome6: Destination Globe (Crimson)
+	Biome7: Destination Globe (Hallow)
+	Biome8: Destination Globe (Purity)
+}
+
+EntityManipulator: {
+	SpawnModifier0: Entity Manipulator (No Selection)
+	SpawnModifier1: Entity Manipulator (Increased Spawns)
+	SpawnModifier2: Entity Manipulator (Decreased Spawns)
+	SpawnModifier3: Entity Manipulator (Canceled Spawns)
+	SpawnModifier4: Entity Manipulator (Canceled Events)
+	SpawnModifier5: Entity Manipulator (Canceled Spawns & Events)
+}
+
+SummoningRemote: {
+	Boss: Summoning Remote ({0})
+	BossTwins: Summoning Remote (The Twins)
+	BossMoonLord: Summoning Remote (Moon Lord)
+	EventRain: Summoning Remote (Rain)
+	EventWind: Summoning Remote (Wind)
+	EventSandstorm: Summoning Remote (Sandstorm)
+	EventParty: Summoning Remote (Party)
+	EventSlimeRain: Summoning Remote (Slime Rain)
+	EventBloodMoon: Summoning Remote (Blood Moon)
+	EventGoblinArmy: Summoning Remote (Goblin Army)
+	EventSnowLegion: Summoning Remote (Frost Legion)
+	EventPirateInvasion: Summoning Remote (Pirate Invasion)
+	EventEclipse: Summoning Remote (Eclipse)
+	EventPumpkinMoon: Summoning Remote (Pumpkin Moon)
+	EventFrostMoon: Summoning Remote (Frost Moon)
+	EventMartianMadness: Summoning Remote (Martian Madness)
+	EventNebulaPillar: Summoning Remote (Nebula Pillar)
+	EventSolarPillar: Summoning Remote (Solar Pillar)
+	EventStardustPillar: Summoning Remote (Stardust Pillar)
+	EventVortexPillar: Summoning Remote (Vortex Pillar)
+	EventLunar: Summoning Remote (Lunar Event)
+	NoModifier: Summoning Remote (No Selection)
+}
+
+ChallengersCoin: {
+	Difficulty0: Challenger's Coin (Mode: Normal)
+	Difficulty1: Challenger's Coin (Mode: Expert)
+	Difficulty2: Challenger's Coin (Mode: Master)
+	Difficulty3: Challenger's Coin (Mode: Journey)
+}
+
+PhaseInterrupter: {
+	Moon0: Phase Interrupter (Full Moon)
+	Moon1: Phase Interrupter (Waning Gibbous)
+	Moon2: Phase Interrupter (Third Quarter)
+	Moon3: Phase Interrupter (Waning Crescent)
+	Moon4: Phase Interrupter (New Moon)
+	Moon5: Phase Interrupter (Waxing Crescent)
+	Moon6: Phase Interrupter (First Quarter)
+	Moon7: Phase Interrupter (Waxing Gibbous)
+}
+
+AllInOneAccess: {
+	Open: All In One Access (Void Vault Open)
+	Closed: All In One Access (Void Vault Closed)
+}
+
+BottomlessLiquidBucket: {
+	Liquid0: Bottomless Liquid Bucket (Water)
+	Liquid1: Bottomless Liquid Bucket (Lava)
+	Liquid2: Bottomless Liquid Bucket (Honey)
+	Liquid3: Bottomless Liquid Bucket (Shimmer)
+}
+
+PermanentFlasks: {
+	FlaskOfCursedFlames: Permanent Flasks (Cursed Flames)
+	FlaskOfFire: Permanent Flasks (Fire)
+	FlaskOfGold: Permanent Flasks (Gold)
+	FlaskOfIchor: Permanent Flasks (Ichor)
+	FlaskOfNanites: Permanent Flasks (Nanites)
+	FlaskOfParty: Permanent Flasks (Party)
+	FlaskOfPoison: Permanent Flasks (Poison)
+	FlaskOfVenom: Permanent Flasks (Venom)
+}
+
+PermanentThoriumCoatings: {
+	DeepFreezeCoating: Permanent Thorium Coatings (Deep Freeze)
+	ExplosiveCoating: Permanent Thorium Coatings (Explosive)
+	GorgonCoating: Permanent Thorium Coatings (Gorgon)
+	SporeCoating: Permanent Thorium Coatings (Spore)
+	ToxicCoating: Permanent Thorium Coatings (Toxic)
+}

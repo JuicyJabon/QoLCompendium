@@ -15,12 +15,15 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
         private readonly HashSet<int> infiniteStackedItems = [];
 
+        public static BuffPlayer Get(Player player) => player.GetModPlayer<BuffPlayer>();
+
         public override void PreUpdateBuffs()
         {
             hasLuckyLesser = hasLucky = hasLuckyGreater = false;
             oldLuckPotion = Player.oldLuckPotion;
             infoByItemType.Clear();
             infiniteStackedItems.Clear();
+
             if (QoLCompendium.mainConfig.EndlessBuffs)
                 CheckInventory(Common.GetAllInventoryItemsList(Player).ToArray());
         }
@@ -72,18 +75,18 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
         private void CheckExtras(Item item)
         {
-            if (item.type == ModContent.ItemType<PotionCrate>())
+            if (item.ModItem is PotionCrate potionCrate)
             {
                 Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
-                for (int i = 0; i < PotionCrate.BuffIDList.Count; i++)
+                for (int i = 0; i < potionCrate.BuffIDList.Count; i++)
                 {
-                    Player.AddBuff(PotionCrate.BuffIDList[i], 2, true, false);
-                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(PotionCrate.BuffIDList[i]);
-                    if (PotionCrate.ItemIDList.Contains(ItemID.LuckPotionLesser))
+                    Player.AddBuff(potionCrate.BuffIDList[i], 2, true, false);
+                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(potionCrate.BuffIDList[i]);
+                    if (potionCrate.ItemIDList.Contains(ItemID.LuckPotionLesser))
                         hasLuckyLesser = true;
-                    if (PotionCrate.ItemIDList.Contains(ItemID.LuckPotion))
+                    if (potionCrate.ItemIDList.Contains(ItemID.LuckPotion))
                         hasLucky = true;
-                    if (PotionCrate.ItemIDList.Contains(ItemID.LuckPotionGreater))
+                    if (potionCrate.ItemIDList.Contains(ItemID.LuckPotionGreater))
                         hasLuckyGreater = true;
                 }
             }
@@ -154,14 +157,11 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
         private void CheckPotion_AddBuff(ItemInfo info)
         {
-            if (!Player.buffImmune[info.buffType])
-            {
-                if (ModConditions.calamityLoaded && info.buffType == Common.GetModBuff(ModConditions.calamityMod, "TeslaBuff"))
-                    Player.AddBuff(info.buffType, 10, true, false);
-                else
-                    Player.AddBuff(info.buffType, 2, true, false);
-                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(info.buffType);
-            }
+            if (ModConditions.calamityLoaded && info.buffType == Common.GetModBuff(ModConditions.calamityMod, "TeslaBuff"))
+                Player.AddBuff(info.buffType, 10, true, false);
+            else
+                Player.AddBuff(info.buffType, 2, true, false);
+            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(info.buffType);
 
             if (info.type == ItemID.LuckPotionLesser)
                 hasLuckyLesser = true;
@@ -515,16 +515,21 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             AddBuffIntegration(ModConditions.martainsOrderMod, "SporeFarm", "SporeSave");
             //REDEMPTION
             AddBuffIntegration(ModConditions.redemptionMod, "EnergyStation", "EnergyStationBuff");
+            AddBuffIntegration(ModConditions.redemptionMod, "MoonflareCandle", "MoonflareCandleBuff");
+            AddBuffIntegration(ModConditions.redemptionMod, "SoulCandle", "SoulboundBuff");
             //SECRETS OF THE SHADOWS
             AddBuffIntegration(ModConditions.secretsOfTheShadowsMod, "DigitalDisplay", "CyberneticEnhancements");
             AddBuffIntegration(ModConditions.secretsOfTheShadowsMod, "ElectromagneticDeterrent", "DEFEBuff");
             //SHADOWS OF ABADDON
             AddBuffIntegration(ModConditions.shadowsOfAbaddonMod, "FruitLantern", "FruitBuff");
-            //SPIRIT
+            //SPIRIT CLASSIC
             AddBuffIntegration(ModConditions.spiritClassicMod, "SunPot", "SunPotBuff");
             AddBuffIntegration(ModConditions.spiritClassicMod, "CoilEnergizerItem", "OverDrive");
             AddBuffIntegration(ModConditions.spiritClassicMod, "TheCouch", "CouchPotato");
             AddBuffIntegration(ModConditions.spiritClassicMod, "KoiTotem", "KoiTotemBuff");
+            //SPIRIT REFORGED
+            AddBuffIntegration(ModConditions.spiritReforgedMod, "AncientKoiTotem", "KoiTotemBuff");
+            AddBuffIntegration(ModConditions.spiritReforgedMod, "KoiTotem", "KoiTotemBuff");
             //THORIUM
             AddBuffIntegration(ModConditions.thoriumMod, "Altar", "AltarBuff");
             AddBuffIntegration(ModConditions.thoriumMod, "ConductorsStand", "ConductorsStandBuff");

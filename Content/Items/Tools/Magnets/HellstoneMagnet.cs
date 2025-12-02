@@ -1,12 +1,12 @@
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Magnets
 {
-    public class HellstoneMagnet : ModItem
+    public class HellstoneMagnet : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.Magnets;
+
+        public new string LocalizationCategory => "Items.Tools.Magnets";
 
         public override void SetStaticDefaults()
         {

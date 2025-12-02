@@ -2,9 +2,11 @@
 
 namespace QoLCompendium.Content.Items.Placeables.Other
 {
-    public class TreacherousGraniteWall : ModItem
+    public class TreacherousGraniteWall : ModItem, ILocalizedModType
     {
         public override string Texture => "Terraria/Images/Item_" + ItemID.GraniteWall;
+
+        public new string LocalizationCategory => "Items.Placeables.Other";
 
         public override void SetStaticDefaults()
         {

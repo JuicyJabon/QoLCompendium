@@ -1,3 +1,95 @@
+v2.3.0
+1. Entirely reworked Permanent Buff Items
+ - New UI now affects both Permanent Buff Items and normal 30-stack buffs
+ - UI auto-populates with every effect you have enabled
+ - UI is sorted by type, unsupported mods are defaulted to potion sorting
+2. Added a config to remove the Exhaustion mechanic used by the Thorium Thrower class
+3. Added Permanent Buff items for the following mods:
+ - Calamity Rekindled
+ - Redemption
+ - Shadows of Abaddon
+ - Spirit Reforged
+4. Added a config to correctly classify Spirit Classic boss summons as boss summons
+5. Removed summoner whip designation for class tags, it didn't make sense to have only 1 subclass get a special tag
+6. Fixed herb auto-replant working regardless of player block range
+7. Added a config to allow bombing hardmode ores
+
+v2.2.22
+1. Added endless arrows for the following mods:
+ - Macrocosm
+ - Mod of Redemption
+ - Shadows of Abaddon
+2. Added herb replanting support for Spirit Reforged
+3. Added a class tag for Revenant class from Shadows of Abaddon
+4. Fixed hook and wing stats breaking tooltips
+5. Fixed Chromatic Cloak being unobtainable
+
+v2.2.21
+1. Fixed Void Rogue class tags appearing on items when Secrets of the Shadows is unloaded when using Infernal Eclipse of Ragnarok
+2. Disable credits now actually respects the config option instead of always being on
+3. Fixed housing saying its corrupted even when using Town NPCs can live in evil biomes
+4. Fixed endless void consumables not working when used manually
+5. Fixed endless void consumables not working in stacks greater than specified for endless consumables
+6. Seperated endless void consumables from endless buffs and added a config in the Cross Mod config
+7. Rewrote a lot of localization
+8. Added a config to allow shimmering Homeward Journey Gold Angler Coins into Silver Angler Coins
+9. Added Death Work Bench and Nothingness Work Bench to the Homeward Journey Crafting Monolith
+10. Added Firefly in a Bottle to the Basic Martin's Order Crafting Monolith
+11. Added support for Elements Awoken
+ - Added boss bags to Ethereal Collector's shop
+12. Boss bag price scaling now works with all supported bosses and mods, price increases by 10 gold per boss defeated
+13. Added a config to allow Puff Slimes from Elements Awoken to spawn
+14. Updated shops for the following mods:
+ - Vitality
+
+v2.2.20
+1. Fixed Homeward Journey Steel Quiver conflicting with Thorium Steel Quiver
+2. Minor localization changes
+
+v2.2.19
+1. Added Spirit Classic Candy buffs to the permanent buff UI
+2. Added a config for Portable Stations (Can be laggy when enabled!)
+3. Fixed Permanent Buff UI softlocking the game when clicking on buffs that weren't saved properly
+4. Added 5 boss summons for the Hallowed Altar riddle bosses from Homeward Journey
+5. Updated support for the following mods:
+ - Spooky Mod
+6. Updated shops for the following mods:
+ - Spooky Mod
+7. Added Ultimate Crafting Monolith, a combination of all final crafting monoliths
+8. Resprited Lunar Crafting Monolith
+9. Added crafting monoliths for Homeward Journey
+10. Added unsafe Marble and Granite walls
+11. Added class tags for Secrets of the Shadows Void class, works with Bard/Healer addon and Infernal Eclipse of Ragnarok
+12. Fixed the wrong Soul Forge being used in the Thorium crafting monoliths
+13. Added Calamity's reworked reforging, with support for the following mods:
+ - Calamity
+ - Calamity Entropy
+ - Clicker Class
+ - Infernal Eclipse of Ragnarok
+ - Secrets of the Shadows
+ - Thorium
+ - Thorium Bard/Healer/Thrower Addons (Calamity, Redemption, Secrets of the Shadows, Spirit, Spooky)
+ - Vitality
+14. Added 7 Calamity boss/miniboss summons
+15. Added a class tag for Engineer class from Edorbis
+16. Added crafting monoliths for Martin's Order
+17. Added endless ammos for the following mods:
+ - Calamity (All)
+ - Calamity Entropy (Arrows only!)
+ - Clamity (Arrows only!)
+ - Homeward Journey (Arrows only!)
+ - Martin's Order (Arrows only!)
+ - Secrets of the Shadows (Arrows only!)
+ - Spirit Classic (Arrows only!)
+ - Thorium (Arrows only!)
+Endless ammos are being worked on for mods with only arrows as of now!
+18. Added Permanent Buffs for Vitality Mod
+19. Made the Minibrigde face the player's direction instead of going both ways
+20. Added new conversion recipes for Corruption/Crimson items
+21. Disabled Aether Altar recipes when the item is unloaded
+22. Finally fixed the Potion Crate being inconsistent with saving
+23. Made Secrets of the Shadows void consumables work with non consumable buff potions (they no longer consume in stacks greater than specified for buffs)
+
 v2.2.18
 1. Fixed Golden Lockpick recipes erroring when the item is unloaded
 2. Changed how UI positioning is handled

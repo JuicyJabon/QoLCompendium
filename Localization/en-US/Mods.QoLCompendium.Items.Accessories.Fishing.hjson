@@ -1,0 +1,28 @@
+AnglerRadar: {
+	DisplayName: Angler Radar
+	Tooltip: Displays current quest fish
+}
+
+AnglersDream: {
+	DisplayName: Angler's Dream
+	Tooltip:
+		'''
+		Fishing line will never break
+		Decreases chance of bait consumption 
+		Increases fishing power by 20
+		Allows fishing in lava
+		Detects hooked fish
+		Displays current quest fish
+		50% chance to duplicate caught fish
+		'''
+}
+
+DuplicationBobber: {
+	DisplayName: Duplication Bobber
+	Tooltip: 50% chance to duplicate caught fish
+}
+
+SonarDevice: {
+	DisplayName: Sonar Device
+	Tooltip: Detects hooked fish
+}

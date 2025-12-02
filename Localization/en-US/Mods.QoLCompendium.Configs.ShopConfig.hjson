@@ -1,0 +1,201 @@
+DisplayName: Shop Config
+
+BMPotionShop: {
+	Label: "[i:28] Potion Shop"
+	Tooltip: ""
+}
+
+BMStationShop: {
+	Label: "[i:3198] Station Shop"
+	Tooltip: ""
+}
+
+BMMaterialShop: {
+	Label: "[i:23] Material Shop"
+	Tooltip: ""
+}
+
+BMMovementAccessoryShop: {
+	Label: "[i:54] Movement Accessory Shop"
+	Tooltip: ""
+}
+
+BMCombatAccessoryShop: {
+	Label: "[i:3212] Combat Accessory Shop"
+	Tooltip: ""
+}
+
+BMInformationShop: {
+	Label: "[i:3123] Information Shop"
+	Tooltip: ""
+}
+
+BMBagShop: {
+	Label: "[i:3332] Bag Shop"
+	Tooltip: ""
+}
+
+BMCrateShop: {
+	Label: "[i:2334] Crate Shop"
+	Tooltip: ""
+}
+
+BMOreShop: {
+	Label: "[i:11] Ore Shop"
+	Tooltip: ""
+}
+
+BMNaturalBlockShop: {
+	Label: "[i:2] Natural Block Shop"
+	Tooltip: ""
+}
+
+BMBuildingBlockShop: {
+	Label: "[i:129] Building Block Shop"
+	Tooltip: ""
+}
+
+BMHerbShop: {
+	Label: "[i:313] Herb Shop"
+	Tooltip: ""
+}
+
+BMFishShop: {
+	Label: "[i:2290] Fish Shop"
+	Tooltip: ""
+}
+
+BMMountShop: {
+	Label: "[i:2430] Mount Shop"
+	Tooltip: ""
+}
+
+BMAmmoShop: {
+	Label: "[i:3104] Ammo Shop"
+	Tooltip: ""
+}
+
+ECPotionShop: {
+	Label: "[i:28] Potion Shop"
+	Tooltip: ""
+}
+
+ECStationShop: {
+	Label: "[i:3198] Station Shop"
+	Tooltip: ""
+}
+
+ECMaterialShop: {
+	Label: "[i:23] Material Shop"
+	Tooltip: ""
+}
+
+ECBagShop: {
+	Label: "[i:3332] Bag Shop"
+	Tooltip: ""
+}
+
+ECCrateShop: {
+	Label: "[i:2334] Crate Shop"
+	Tooltip: ""
+}
+
+ECOreShop: {
+	Label: "[i:11] Ore Shop"
+	Tooltip: ""
+}
+
+ECNaturalBlocksShop: {
+	Label: "[i:2] Natural Block Shop"
+	Tooltip: ""
+}
+
+ECBuildingBlocksShop: {
+	Label: "[i:129] Building Block Shop"
+	Tooltip: ""
+}
+
+ECHerbShop: {
+	Label: "[i:313] Herb Shop"
+	Tooltip: ""
+}
+
+ECFishShop: {
+	Label: "[i:2290] Fish Shop"
+	Tooltip: ""
+}
+
+GlobalPriceMultiplier: {
+	Label: "[i:161] Global Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+PotionPriceMultiplier: {
+	Label: "[i:161] Potion Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+StationPriceMultiplier: {
+	Label: "[i:161] Station Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+MaterialPriceMultiplier: {
+	Label: "[i:161] Material Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+AccessoryPriceMultiplier: {
+	Label: "[i:161] Accessory Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+BagPriceMultiplier: {
+	Label: "[i:161] Bag Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+CratePriceMultiplier: {
+	Label: "[i:161] Crate Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+OrePriceMultiplier: {
+	Label: "[i:161] Ore Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+NaturalBlockPriceMultiplier: {
+	Label: "[i:161] Natural Block Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+BuildingBlockPriceMultiplier: {
+	Label: "[i:161] Building Block Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+HerbPriceMultiplier: {
+	Label: "[i:161] Herb Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+FishPriceMultiplier: {
+	Label: "[i:161] Fish Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+MountPriceMultiplier: {
+	Label: "[i:161] Mount Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+AmmoPriceMultiplier: {
+	Label: "[i:161] Ammo Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+BossScaling: {
+	Label: "[i:560] Boss Scaling"
+	Tooltip: Toggles if treasure bags will increase in price per defeated boss
+}

@@ -51,7 +51,7 @@
                 Common.TransmuteItems(new int[] { ItemID.SpookyHook, ItemID.SpookyTwig, ItemID.StakeLauncher, ItemID.CursedSapling, ItemID.NecromanticScroll });
 
                 //Pumpking
-                Common.TransmuteItems(new int[] { ItemID.CandyCornRifle, ItemID.JackOLanternLauncher, ItemID.BlackFairyDust, ItemID.TheHorsemansBlade, ItemID.BatScepter, ItemID.RavenStaff, ItemID.ScytheWhip, ItemID.SpiderEgg });
+                Common.TransmuteItems(new int[] { ItemID.CandyCornRifle, ItemID.JackOLanternLauncher, ItemID.BlackFairyDust, ItemID.TheHorsemansBlade, ItemID.BatScepter, ItemID.RavenStaff, ItemID.ScytheWhip });
 
                 //Everscream
                 Common.TransmuteItems(new int[] { ItemID.ChristmasTreeSword, ItemID.ChristmasHook, ItemID.Razorpine, ItemID.FestiveWings });
@@ -204,7 +204,7 @@
                 Common.TransmuteItems([ItemID.SuperAbsorbantSponge, ItemID.LavaAbsorbantSponge, ItemID.HoneyAbsorbantSponge]);
 
                 //Mimic
-                Common.TransmuteItems([ItemID.DualHook, ItemID.MagicDagger, ItemID.PhilosophersStone, ItemID.TitanGlove, ItemID.StarCloak, ItemID.CrossNecklace]);
+                //Common.TransmuteItems([ItemID.DualHook, ItemID.MagicDagger, ItemID.PhilosophersStone, ItemID.TitanGlove, ItemID.StarCloak, ItemID.CrossNecklace]);
 
                 //Ice Mimic
                 Common.TransmuteItems([ItemID.ToySled, ItemID.Frostbrand, ItemID.IceBow, ItemID.FlowerofFrost]);

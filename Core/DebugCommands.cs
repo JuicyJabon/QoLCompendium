@@ -1,5 +1,4 @@
 ﻿using QoLCompendium.Content.Items.Dedicated;
-using QoLCompendium.Core.PermanentBuffSystems;
 
 namespace QoLCompendium.Core
 {
@@ -47,19 +46,18 @@ namespace QoLCompendium.Core
         }
     }
 
-    public class PermanentBuffCommand : ModCommand
+    public class AllEffects : ModCommand
     {
         public override CommandType Type => CommandType.Chat;
 
-        public override string Command => "PermanentBuffCommand";
+        public override string Command => "ListBuffEffects";
 
-        public override string Description => "displays buff data";
+        public override string Description => "Lists buffs and their sort type";
 
         public override void Action(CommandCaller caller, string input, string[] args)
         {
-            Main.NewText(Enum.GetValues<PermanentBuffPlayer.PermanentSpiritClassicBuffs>().Length);
-            for (int i = 0; i < Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools.Length; i++)
-                Main.NewText(Main.LocalPlayer.GetModPlayer<PermanentBuffPlayer>().PermanentSpiritClassicBuffsBools.ToString() + " " + i);
+            for (int i = 0; i < Common.AllEffects.Count; i++)
+                Main.NewText("Buff: " + Lang.GetBuffName(Common.AllEffects.ElementAt(i).Key) + ", Type: " + Common.AllEffects.ElementAt(i).Value.EffectType);
         }
     }
 }

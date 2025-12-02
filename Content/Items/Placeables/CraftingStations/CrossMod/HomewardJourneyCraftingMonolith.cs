@@ -5,9 +5,11 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod
 {
     [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
     [ExtendsFromMod(ModConditions.homewardJourneyName)]
-    public class HomewardJourneyCraftingMonolith : ModItem
+    public class HomewardJourneyCraftingMonolith : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.CraftingStations;
+
+        public new string LocalizationCategory => "Items.Placeables.CraftingStations";
 
         public override void SetStaticDefaults()
         {
@@ -34,6 +36,8 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod
             r.AddIngredient(Common.GetModItem(ModConditions.homewardJourneyMod, "FountainofLife"));
             r.AddIngredient(Common.GetModItem(ModConditions.homewardJourneyMod, "FountainofMatter"));
             r.AddIngredient(Common.GetModItem(ModConditions.homewardJourneyMod, "FountainofTime"));
+            r.AddIngredient(Common.GetModItem(ModConditions.homewardJourneyMod, "ItemDeathWorkbench"));
+            r.AddIngredient(Common.GetModItem(ModConditions.homewardJourneyMod, "ItemNothingnessWorkbench"));
             r.Register();
         }
     }

@@ -15,45 +15,49 @@ namespace QoLCompendium.Core.Changes.TooltipChanges
             int wingsID = item.wingSlot;
             if (wingsID != -1 && !item.social)
             {
+                //DO NOT DO VANILLA WINGS IF CALAMITY IS LOADED
                 if (ModConditions.calamityLoaded && item.type <= ItemID.Count)
                     return;
 
-                //Don't do cal wing stats
-                if (ModConditions.calamityLoaded)
+                //SKIP CALAMITY STATS
+                if (ModConditions.calamityLoaded && item.type > ItemID.Count)
                 {
-                    List<int> CalamityWings =
-                    [
-                        Common.GetModItem(ModConditions.calamityMod, "AureateBooster"),
-                        Common.GetModItem(ModConditions.calamityMod, "DrewsWings"),
-                        Common.GetModItem(ModConditions.calamityMod, "ElysianWings"),
-                        Common.GetModItem(ModConditions.calamityMod, "ExodusWings"),
-                        Common.GetModItem(ModConditions.calamityMod, "HadalMantle"),
-                        Common.GetModItem(ModConditions.calamityMod, "HadarianWings"),
-                        Common.GetModItem(ModConditions.calamityMod, "MOAB"),
-                        Common.GetModItem(ModConditions.calamityMod, "SilvaWings"),
-                        Common.GetModItem(ModConditions.calamityMod, "SkylineWings"),
-                        Common.GetModItem(ModConditions.calamityMod, "SoulofCryogen"),
-                        Common.GetModItem(ModConditions.calamityMod, "StarlightWings"),
-                        Common.GetModItem(ModConditions.calamityMod, "TarragonWings"),
-                        Common.GetModItem(ModConditions.calamityMod, "TracersCelestial"),
-                        Common.GetModItem(ModConditions.calamityMod, "TracersElysian"),
-                        Common.GetModItem(ModConditions.calamityMod, "TracersSeraph")
-                    ];
-                    if (CalamityWings.Contains(item.type))
+                    if (item.ModItem.Mod == ModConditions.calamityMod)
                         return;
                 }
 
-                if (ModConditions.fargosSoulsLoaded)
+                //SKIP CALAMITY ENTROPY STATS
+                if (ModConditions.calamityEntropyLoaded && item.type > ItemID.Count)
                 {
-                    if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "FlightMasterySoul")
-                        || item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "DimensionSoul")
-                        || item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "EternitySoul"))
+                    if (item.ModItem.Mod == ModConditions.calamityEntropyMod)
                         return;
                 }
 
-                if (ModConditions.wrathOfTheGodsLoaded)
+                //SKIP CATALYST STATS
+                if (ModConditions.catalystLoaded && item.type > ItemID.Count)
                 {
-                    if (item.type == Common.GetModItem(ModConditions.wrathOfTheGodsMod, "DivineWings"))
+                    if (item.ModItem.Mod == ModConditions.catalystMod)
+                        return;
+                }
+
+                //SKIP FARGOS STATS
+                if (ModConditions.fargosSoulsLoaded && item.type > ItemID.Count)
+                {
+                    if (item.ModItem.Mod == ModConditions.fargosSoulsMod)
+                        return;
+                }
+
+                //SKIP HUNT OF THE OLD GOD STATS
+                if (ModConditions.huntOfTheOldGodLoaded && item.type > ItemID.Count)
+                {
+                    if (item.ModItem.Mod == ModConditions.huntOfTheOldGodMod)
+                        return;
+                }
+
+                //SKIP WRATH OF THE GODS STATS
+                if (ModConditions.wrathOfTheGodsLoaded && item.type > ItemID.Count)
+                {
+                    if (item.ModItem.Mod == ModConditions.wrathOfTheGodsMod)
                         return;
                 }
 
@@ -61,14 +65,13 @@ namespace QoLCompendium.Core.Changes.TooltipChanges
                 float flyTime = wingStats.FlyTime / 60f;
 
                 TooltipLine equip = tooltips.Find(l => l.Name == "Equipable");
-
+                TooltipLine horizontalSpeed = new(Mod, "HorizontalSpeed", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HorizontalSpeed", wingStats.AccRunSpeedOverride.ToString("0.##")));
+                TooltipLine verticalSpeedMul = new(Mod, "VerticalSpeedMul", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.VerticalSpeedMul", wingStats.AccRunAccelerationMult.ToString("0.##")));
                 TooltipLine flightTime = new(Mod, "FlightTime", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.FlightTime", flyTime.ToString("0.##")));
-                TooltipLine horizontalSpeed = new(Mod, "HorizontalSpeed", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.HorizontalSpeed", wingStats.AccRunSpeedOverride.ToString("~0.##")));
-                TooltipLine verticalSpeedMul = new(Mod, "VerticalSpeedMul", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.VerticalSpeedMul", wingStats.AccRunAccelerationMult.ToString("~0.##")));
 
-                tooltips.Insert(tooltips.IndexOf(equip) + 1, flightTime);
-                tooltips.Insert(tooltips.IndexOf(flightTime) + 1, horizontalSpeed);
+                tooltips.Insert(tooltips.IndexOf(equip) + 1, horizontalSpeed);
                 tooltips.Insert(tooltips.IndexOf(horizontalSpeed) + 1, verticalSpeedMul);
+                tooltips.Insert(tooltips.IndexOf(verticalSpeedMul) + 1, flightTime);
             }
         }
 
@@ -193,8 +196,26 @@ namespace QoLCompendium.Core.Changes.TooltipChanges
             float hookReach = float.NegativeInfinity;
             float hookSpeed = 11;
 
-            if (ModConditions.calamityLoaded && (item.type == Common.GetModItem(ModConditions.calamityMod, "SerpentsBite") || item.type == Common.GetModItem(ModConditions.calamityMod, "BobbitHook")))
-                return;
+            //SKIP CALAMITY STATS
+            if (ModConditions.calamityLoaded && item.type > ItemID.Count)
+            {
+                if (item.ModItem.Mod == ModConditions.calamityMod)
+                    return;
+            }
+
+            //SKIP CATALYST STATS
+            if (ModConditions.catalystLoaded && item.type > ItemID.Count)
+            {
+                if (item.ModItem.Mod == ModConditions.catalystMod)
+                    return;
+            }
+
+            //SKIP HUNT OF THE OLD GOD STATS
+            if (ModConditions.huntOfTheOldGodLoaded && item.type > ItemID.Count)
+            {
+                if (item.ModItem.Mod == ModConditions.huntOfTheOldGodMod)
+                    return;
+            }
 
             if (item.shoot != ProjectileID.None && Main.projHook[item.shoot] && item.type > ItemID.Count)
             {

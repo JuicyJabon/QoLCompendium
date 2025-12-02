@@ -3,9 +3,11 @@ using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.Other
 {
-    public class AsphaltPlatform : ModItem
+    public class AsphaltPlatform : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.AsphaltPlatform;
+
+        public new string LocalizationCategory => "Items.Placeables.Other";
 
         public override void SetStaticDefaults()
         {

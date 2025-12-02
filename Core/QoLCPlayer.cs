@@ -5,9 +5,7 @@ using QoLCompendium.Content.Items.Tools.Fishing;
 using QoLCompendium.Content.Items.Tools.Usables;
 using QoLCompendium.Core.UI.Panels;
 using System.Reflection;
-using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent.Events;
 using Terraria.GameInput;
 using Terraria.ModLoader.IO;
 
@@ -15,6 +13,8 @@ namespace QoLCompendium.Core
 {
     public class QoLCPlayer : ModPlayer
     {
+        public static QoLCPlayer Get(Player player) => player.GetModPlayer<QoLCPlayer>();
+
         //Pedestals
         public bool sunPedestal = false;
         public bool moonPedestal = false;
@@ -45,7 +45,6 @@ namespace QoLCompendium.Core
         public List<int> activeItems = [];
         public List<int> activeBuffItems = [];
         public List<int> activeBuffs = [];
-        
 
         //Biomes
         public int selectedBiome = 0;
@@ -93,7 +92,7 @@ namespace QoLCompendium.Core
             if (spawnRateUpdateTimer > 0)
             {
                 spawnRateUpdateTimer--;
-            } 
+            }
         }
 
         public override void PostUpdateBuffs()

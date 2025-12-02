@@ -1,0 +1,62 @@
+SkyPylon: {
+	DisplayName: Sky Pylon
+	Tooltip:
+		'''
+		Allows teleporting without requiring villagers
+		You can only place one per type and in the matching biome
+		'''
+}
+
+HellPylon: {
+	DisplayName: Underworld Pylon
+	Tooltip:
+		'''
+		Allows teleporting without requiring villagers
+		You can only place one per type and in the matching biome
+		'''
+}
+
+DungeonPylon: {
+	DisplayName: Dungeon Pylon
+	Tooltip:
+		'''
+		Allows teleporting without requiring villagers
+		You can only place one per type and in the matching biome
+		'''
+}
+
+CrimsonPylon: {
+	DisplayName: Crimson Pylon
+	Tooltip:
+		'''
+		Allows teleporting without requiring villagers
+		You can only place one per type and in the matching biome
+		'''
+}
+
+CorruptionPylon: {
+	DisplayName: Corruption Pylon
+	Tooltip:
+		'''
+		Allows teleporting without requiring villagers
+		You can only place one per type and in the matching biome
+		'''
+}
+
+TemplePylon: {
+	DisplayName: Temple Pylon
+	Tooltip:
+		'''
+		Allows teleporting without requiring villagers
+		You can only place one per type and in the matching biome
+		'''
+}
+
+AetherPylon: {
+	DisplayName: Aether Pylon
+	Tooltip:
+		'''
+		Allows teleporting without requiring villagers
+		You can only place one per type and in the matching biome
+		'''
+}

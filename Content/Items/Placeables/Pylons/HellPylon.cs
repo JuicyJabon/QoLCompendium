@@ -1,12 +1,13 @@
 ﻿using QoLCompendium.Content.Tiles.Pylons;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.Pylons
 {
-    public class HellPylon : ModItem
+    public class HellPylon : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.Pylons;
+
+        public new string LocalizationCategory => "Items.Placeables.Pylons";
 
         public override void SetStaticDefaults()
         {

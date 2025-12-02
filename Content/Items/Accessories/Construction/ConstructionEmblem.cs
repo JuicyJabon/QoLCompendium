@@ -1,12 +1,12 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using Terraria.Enums;
+﻿using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Accessories.Construction
 {
-    public class ConstructionEmblem : ModItem
+    public class ConstructionEmblem : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.ConstructionAccessories;
+
+        public new string LocalizationCategory => "Items.Accessories.Construction";
 
         public override void SetDefaults()
         {

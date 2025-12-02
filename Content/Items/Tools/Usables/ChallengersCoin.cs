@@ -1,13 +1,13 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using Terraria.Chat;
+﻿using Terraria.Chat;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
-    public class ChallengersCoin : ModItem
+    public class ChallengersCoin : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.ChallengersCoin;
+
+        public new string LocalizationCategory => "Items.Tools.Usables";
 
         public override void SetStaticDefaults()
         {

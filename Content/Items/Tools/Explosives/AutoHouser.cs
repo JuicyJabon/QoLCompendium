@@ -1,14 +1,14 @@
 ﻿using QoLCompendium.Content.Projectiles.Other;
 using QoLCompendium.Content.Tiles.AutoStructures;
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Explosives
 {
-    public class AutoHouser : ModItem
+    public class AutoHouser : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.AutoStructures;
+
+        public new string LocalizationCategory => "Items.Tools.Explosives";
 
         public override void SetStaticDefaults()
         {

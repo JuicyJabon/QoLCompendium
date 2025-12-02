@@ -1,0 +1,56 @@
+NotConsumable: Not consumable
+WorksInBanks: Works from inside personal storages
+StaffOfAshingPlaceable: Creates ash grass on ash
+StaffOfCystingPlaceable: Creates corrupt grass on dirt or mud
+StaffOfHallowingPlaceable: Creates hallowed grass on dirt
+StaffOfHemorrhagingPlaceable: Creates crimson grass on dirt or mud
+StaffOfOvergrowthPlaceable: Creates jungle grass on mud
+StaffOfShroomingPlaceable: Creates mushroom grass on mud
+OmnistaffPlaceable: Creates grasses on dirt, mud, or ash
+MossStaffPlaceable: Creates mosses on stone or gray brick
+GlowingMossStaffPlaceable: Creates glowing mosses on stone or gray brick
+FlightTime: Flight Time: {0}s
+HorizontalSpeed: Horizontal Speed: {0}
+VerticalSpeedMul: Vertical Speed Multiplier: {0}
+HookReach: Reach: {0}
+HookPullSpeed: Pull Speed: {0}
+UsedItem: You have used this upgrade
+UsedItemCountable: You have used {0}/{1}
+Shimmerable: Shimmerable
+ShimmerCoinLuck: Shimmerable into coin luck: {0}
+ShimmerableIntoItem: Shimmerable into item: [i:{0}] ({1})
+ShimmerableIntoNPC: Shimmerable into NPC: {0}
+UseAmmo: Uses [i:{0}] ({1}) as ammo
+Active: Item Activated
+ActiveBuff: Buff Activated
+PotionCrateTooltip: Right click while holding a stack of {0} potions to deposit them
+ItemDisabled: (ITEM DISABLED)
+Disabled: (DISABLED)
+FromMod: From mod: {0}
+WarriorClass: "[c/fe7902:-Warrior Class-]"
+RangerClass: "[c/22dd97:-Ranger Class-]"
+SorcererClass: "[c/fe7ee5:-Sorcerer Class-]"
+SummonerClass: "[c/88e2ff:-Summoner Class-]"
+SummonerClassWhip: "[c/88e2ff:-Summoner Class- (Whip)]"
+ThrowerClass: "[c/a1724a:-Thrower Class-]"
+Classless: "[c/623ea6:-Classless-]"
+Tool: "[c/ffffff:-Tool-]"
+RogueClass: "[c/ce84e3:-Rogue Class-]"
+DruidClass: "[c/c4f129:-Druid Class-]"
+BardClass: "[c/00ff80:-Bard Class-]"
+HealerClass: "[c/ffff5b:-Healer Class-]"
+DarkHealerClass: "[c/b266ff:-Healer Class-]"
+EngineerClass: "[c/6dd450:-Engineer Class-]"
+ArtistClass: "[c/ff7d8e:-Artist Class-]"
+RevenantClass: "[c/42305b:-Revenant Class-]"
+VoidWarriorClass: "[c/51257d:-Void Warrior Class-]"
+VoidRangerClass: "[c/51257d:-Void Ranger Class-]"
+VoidSorcererClass: "[c/51257d:-Void Sorcerer Class-]"
+VoidSummonerClass: "[c/51257d:-Void Summoner Class-]"
+VoidThrowerClass: "[c/51257d:-Void Thrower Class-]"
+VoidRogueClass: "[c/51257d:-Void Rogue Class-]"
+VoidBardClass: "[c/51257d:-Void Bard Class-]"
+VoidHealerClass: "[c/51257d:-Void Healer Class-]"
+VoidGenericClass: "[c/51257d:-Void Class-]"
+KillMobileStorage: Right click in inventory to despawn all active mobile storages
+AssetNotFound: "[c/cf1d1d:Mod asset not found, default asset applied]"

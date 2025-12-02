@@ -1,0 +1,79 @@
+DisplayName: Cross Mod Config
+
+AFKPetsCropFix: {
+	Label: "[i:369] AFKPets Crops No Tile Cut"
+	Tooltip: Toggles if AFKPets crops can be broken by projectiles or melee swings
+}
+
+AFKPetsFasterCropGrowth: {
+	Label: "[i:369] AFKPets Faster Crop Growth"
+	Tooltip: Toggles if AFKPets crops grow faster
+}
+
+AFKPetsRegrowthReplant: {
+	Label: "[i:369] AFKPets Crop Replanting"
+	Tooltip: Toggles if AFKPets crops are able to be replanted when harvested by the Staff or Axe of Regrowth
+}
+
+CrystalDragonsTopazPrefixFix: {
+	Label: "[i:509] Crystal Dragons Topaz Prefix Fix"
+	Tooltip:
+		'''
+		Toggles if Topaz Dragon prefixes are removed when not using the Topaz race
+		Only really noticeable with mods such as AutoReforge
+		'''
+}
+
+MrPlagueRacesPrefixFix: {
+	Label: "[i:509] Mr Plague's Races Goblin Prefix Fix"
+	Tooltip:
+		'''
+		Toggles if Goblin race prefixes are removed when not using race stats
+		Only really noticeable with mods such as AutoReforge
+		'''
+}
+
+CalamityEffigyRecipes: {
+	Label: "[i:35] Calamity Effigy Recipes"
+	Tooltip: Toggles if recipes are added for the Crimson and Corruption Effigies
+}
+
+RemoveThoriumExhaustion: {
+	Label: "[i:3119] Remove Thorium Exhaustion"
+	Tooltip: Toggles if Thorium thrower weapons have the exhaustion mechanic removed
+}
+
+RemoveThoriumExhaustionTooltip: {
+	Label: "[i:509] Remove Thorium Exhaustion Tooltip"
+	Tooltip: Toggles if Thorium thrower weapons have the exhaustion tooltip removed
+}
+
+CalamityEntropyArmorPrefixesHaveEnchantedEffects: {
+	Label: "[i:1067] Calamity Entropy Armor Prefixes Have Enchanted Effects"
+	Tooltip: Toggles if Calamity Entropy Armor Prefixes have an enchanted effect, like Minecraft
+}
+
+ShimmerableAnglerCoins: {
+	Label: "[i:73] Shimmerable Homeward Journey Angler Coins"
+	Tooltip: Toggles if Gold Angler Coins can be shimmered into Silver Angler Coins
+}
+
+EndlessVoidConsumables: {
+	Label: "[i:5041] Endless Secrets of the Shadows Void Consumables"
+	Tooltip: Toggles endless void consumables
+}
+
+EndlessVoidConsumablesAmount: {
+	Label: "[i:3119] Endless Secrets of the Shadows Void Consumables Amount"
+	Tooltip: Change the amount of items needed for endless void consumables
+}
+
+ElementsAwokenPuffSlimes: {
+	Label: "[i:440] Elements Awoken Puff Slimes"
+	Tooltip: Toggles if Puff Slimes from Elements Awoken can spawn naturally in the forest
+}
+
+SpiritClassicBossSummonClassificationFix: {
+	Label: "[i:560] Spirit Classic Boss Summon Classification Fix"
+	Tooltip: Toggles if Spirit Classic boss summon items are correctly classified as boss summons
+}

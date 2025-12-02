@@ -1,0 +1,33 @@
+BloodMoonPedestal: {
+	DisplayName: Blood Moon Pedestal
+	Tooltip: Favorite this item to have a blood moon occur every night
+}
+
+EclipsePedestal: {
+	DisplayName: Eclipse Pedestal
+	Tooltip: Favorite this item to have an eclipse occur every morning
+}
+
+MoonPedestal: {
+	DisplayName: Moon Pedestal
+	Tooltip: Favorite this item to have it always be night
+}
+
+PausePedestal: {
+	DisplayName: Pause Pedestal
+	Tooltip: Favorite this item to pause time
+}
+
+SunPedestal: {
+	DisplayName: Sun Pedestal
+	Tooltip: Favorite this item to have it always be day
+}
+
+Paperweight: {
+	DisplayName: Paperweight
+	Tooltip:
+		'''
+		Auto-uses your held item when favorited
+		Disabled when inventory is open
+		'''
+}

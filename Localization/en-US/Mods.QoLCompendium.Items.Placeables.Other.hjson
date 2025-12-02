@@ -1,0 +1,14 @@
+AsphaltPlatform: {
+	DisplayName: Asphalt Platform
+	Tooltip: Increases running speed
+}
+
+TreacherousGraniteWall: {
+	DisplayName: Treacherous Granite Wall
+	Tooltip: A dangerous slab of granite wall that will spawn monsters
+}
+
+TreacherousMarbleWall: {
+	DisplayName: Treacherous Marble Wall
+	Tooltip: A dangerous slab of marble wall that will spawn monsters
+}

@@ -1,13 +1,13 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using QoLCompendium.Core.UI.Panels;
+﻿using QoLCompendium.Core.UI.Panels;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
-    public class PhaseInterrupter : ModItem
+    public class PhaseInterrupter : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.PhaseInterrupter;
+
+        public new string LocalizationCategory => "Items.Tools.Usables";
 
         public override void SetStaticDefaults()
         {

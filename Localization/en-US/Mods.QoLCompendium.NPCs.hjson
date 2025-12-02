@@ -1,0 +1,79 @@
+SuperDummy.DisplayName: Super Dummy
+
+BMDealerNPC: {
+	DisplayName: Black Market Dealer
+	Census.SpawnCondition: No condition
+
+	TownNPCMood: {
+		Content: This place is pretty alright.
+		NoHome: Can you please make me a house?
+		FarFromHome: How did I get here?
+		LoveSpace: This is the best place to be for sure.
+		DislikeCrowded: Too many people.
+		HateCrowded: Please move some of these people out.
+		LoveBiome: This {BiomeName} is pretty chill.
+		LikeBiome: I like {BiomeName}.
+		DislikeBiome: This {BiomeName} is too dry.
+		LoveNPC: I love when {NPCName} hands out shots.
+		LikeNPC: My friend {NPCName} has a lot of cool stuff.
+		DislikeNPC: That girl {NPCName} is too loud.
+		HateNPC: The Tax Collector, {NPCName}, gets in the way of profit.
+		LikeNPC_Princess: The Princess is cool.
+		Princess_LovesNPC: "{NPCName} is awesome!"
+	}
+
+	ShopName: {
+		Potions: Black Market Dealer: Potions
+		"Flasks, Stations & Foods": Black Market Dealer: Flasks, Stations & Foods
+		Materials: Black Market Dealer: Materials
+		"Movement Accessories": Black Market Dealer: Movement Accessories
+		"Combat Accessories": Black Market Dealer: Combat Accessories
+		"Informative/Building Gear": Black Market Dealer: Informative/Building Gear
+		"Treasure Bags": Black Market Dealer: Treasure Bags
+		"Crates & Grab Bags": Black Market Dealer: Crates & Grab Bags
+		"Ores & Bars": Black Market Dealer: Ores & Bars
+		"Natural Blocks": Black Market Dealer: Natural Blocks
+		"Building Blocks": Black Market Dealer: Building Blocks
+		"Herbs & Plants": Black Market Dealer: Herbs & Plants
+		"Fish & Fishing Gear": Black Market Dealer: Fish & Fishing Gear
+		"Mounts & Hooks": Black Market Dealer: Mounts & Hooks
+		Ammo: Black Market Dealer: Ammo
+	}
+}
+
+EtherealCollectorNPC: {
+	DisplayName: Ethereal Collector
+	Census.SpawnCondition: No condition
+
+	TownNPCMood: {
+		Content: This place is pretty alright.
+		NoHome: Can you please make me a house?
+		FarFromHome: How did I get here?
+		LoveSpace: This is the best place to be for sure.
+		DislikeCrowded: Too many people.
+		HateCrowded: Please move some of these people out.
+		LoveBiome: This {BiomeName} is pretty chill.
+		LikeBiome: I like {BiomeName}.
+		DislikeBiome: This {BiomeName} is too dry.
+		LoveNPC: I love when {NPCName} does her incantations.
+		LikeNPC: My friend {NPCName} has a lot of cool stuff.
+		DislikeNPC: That guy {NPCName} is too loud.
+		HateNPC: The Tax Collector, {NPCName}, gets in the way of profit.
+		LikeNPC_Princess: The Princess is cool.
+		Princess_LovesNPC: "{NPCName} is awesome!"
+	}
+
+	ShopName: {
+		"Modded Potions": Ethereal Collector: Modded Potions
+		"Modded Flasks, Stations & Foods": Ethereal Collector: Modded Flasks, Stations & Foods
+		"Modded Materials": Ethereal Collector: Modded Materials
+		"Modded Materials 2": Ethereal Collector: Modded Materials 2
+		"Modded Treasure Bags": Ethereal Collector: Modded Treasure Bags
+		"Modded Crates & Grab Bags": Ethereal Collector: Modded Crates & Grab Bags
+		"Modded Ores & Bars": Ethereal Collector: Modded Ores & Bars
+		"Modded Natural Blocks": Ethereal Collector: Modded Natural Blocks
+		"Modded Building Blocks": Ethereal Collector: Modded Building Blocks
+		"Modded Herbs & Plants": Ethereal Collector: Modded Herbs & Plants
+		"Modded Fish & Fishing Gear": Ethereal Collector: Modded Fish & Fishing Gear
+	}
+}

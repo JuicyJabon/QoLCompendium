@@ -1,0 +1,26 @@
+MeteorStopped: "[c/32FF82:A meteorite burned up in the atmosphere!]"
+MeteoriteGiven: "[c/FFF014:Collected {0} {$ItemName.Meteorite}] [i/s{0}:116]"
+TeleportNPCsHome: "[c/32FF82:Town NPCs have been teleported home!]"
+EventRain: The skies darken
+EventWind: The wind has been stirred
+EventSandstorm: The desert winds are howling
+EventBloodMoon: The Blood Moon is rising...
+EventEclipse: A solar eclipse is happening!
+EventPumpkinMoon: The Pumpkin Moon is rising...
+EventFrostMoon: The Frost Moon is rising...
+LockedBoss: Defeat {0} to unlock
+LockedBossWithTwoRequirements: Defeat {0} and {1} to unlock
+LockedBossWithTwoOptions: Defeat {0} or {1} to unlock
+LockedHardmode: Enter Hardmode to unlock
+LockedOneMech: Defeat 1 mechanical boss to unlock
+LockedThreeMechs: Defeat all 3 mechanical bosses to unlock
+WorldJourney: Difficulty changed to Journey Mode
+WorldNormal: Difficulty changed to Normal Mode
+WorldExpert: Difficulty changed to Expert Mode
+WorldMaster: Difficulty changed to Master Mode
+HostOnly: "[c/FF0000:Only the server host can change this!]"
+SillySlapper: "{0} was slapped too silly"
+THEButton: We ascending into the stratosphere with this one [i:2701][i:2701][i:2701]
+Whitelisted: Whitelisted:
+Removed: Removed from Whitelist:
+Failed: "[c/ff1919:Failed to Whitelist! Please activate the Whitelist inside the Veinminer Config]"

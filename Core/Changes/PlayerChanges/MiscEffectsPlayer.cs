@@ -1,4 +1,6 @@
-﻿namespace QoLCompendium.Core.Changes.PlayerChanges
+﻿using QoLCompendium.Core.Configs;
+
+namespace QoLCompendium.Core.Changes.PlayerChanges
 {
     public class MiscEffectsPlayer : ModPlayer
     {
@@ -31,14 +33,14 @@
         public override void PostUpdateEquips()
         {
             //REMOVES ICE BIOME EXPERT CHANGE
-            if (ModContent.GetInstance<QoLCConfig>().NoExpertIceWaterChilled && Player.wet && Player.ZoneSnow && Main.expertMode)
+            if (QoLCompendium.mainConfig.NoExpertIceWaterChilled && Player.wet && Player.ZoneSnow && Main.expertMode)
             {
                 Player.buffImmune[BuffID.Chilled] = true;
                 Player.chilled = false;
             }
 
             //REMOVES SHIMMER SINKING
-            if (ModContent.GetInstance<QoLCConfig>().NoShimmerSink && Player.wet)
+            if (QoLCompendium.mainConfig.NoShimmerSink && Player.wet)
             {
                 Player.buffImmune[BuffID.Shimmer] = true;
                 Player.shimmerImmune = true;

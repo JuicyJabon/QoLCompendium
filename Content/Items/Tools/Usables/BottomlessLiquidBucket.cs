@@ -1,13 +1,13 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using Terraria.Enums;
+﻿using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
-    public class BottomlessLiquidBucket : ModItem
+    public class BottomlessLiquidBucket : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.BottomlessBuckets;
+
+        public new string LocalizationCategory => "Items.Tools.Usables";
 
         public int Mode = 0;
 
@@ -33,6 +33,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.autoReuse = true;
             Item.width = 15;
             Item.height = 14;
+            Item.tileBoost += 3;
             Item.SetShopValues(ItemRarityColor.Yellow8, Item.sellPrice(0, 20, 0, 0));
         }
 

@@ -54,6 +54,13 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 if (ModConditions.martainsOrderLoaded && item.buffType == Common.GetModBuff(ModConditions.martainsOrderMod, "Gourmet"))
                     gourmetFlavorItems.Add(item.type);
 
+                if (ModConditions.stramsSurvivalLoaded)
+                {
+                    wellFedItems.Add(ItemID.FruitJuice);
+                    plentySatisfiedItems.Add(ItemID.PumpkinPie);
+                    exquisitelyStuffedItems.Add(ItemID.GoldenDelight);
+                }
+
                 if (!item.consumable || item.createTile < TileID.Dirt || item.ModItem != null && item.ModItem.Mod == Mod)
                     continue;
 
@@ -401,6 +408,9 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 RecipeGroup.RegisterGroup("QoLCompendium:GrimPedestals", new(() => $"{any} {Lang.GetItemNameValue(Common.GetModItem(ModConditions.thoriumMod, "GrimPedestal"))}", Common.GetModItem(ModConditions.thoriumMod, "GrimPedestal"), Common.GetModItem(ModConditions.thoriumMod, "GrimPedestalCrimson")));
 
             RecipeGroup.RegisterGroup("QoLCompendium:Ale", new(() => $"{any} {Lang.GetItemNameValue(ItemID.Ale)}", ItemID.Ale, ItemID.Sake));
+
+            if (ModConditions.spiritReforgedLoaded)
+                RecipeGroup.RegisterGroup("QoLCompendium:KoiTotem", new(() => $"{any} {Lang.GetItemNameValue(Common.GetModItem(ModConditions.spiritReforgedMod, "KoiTotem"))}", Common.GetModItem(ModConditions.spiritReforgedMod, "KoiTotem"), Common.GetModItem(ModConditions.spiritReforgedMod, "AncientKoiTotem")));
             #endregion
         }
 

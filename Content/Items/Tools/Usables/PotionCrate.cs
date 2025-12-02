@@ -1,19 +1,17 @@
 ﻿using Humanizer;
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
-    public class PotionCrate : ModItem
+    public class PotionCrate : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.PotionCrate;
 
-#pragma warning disable CA2211
-        public static List<int> BuffIDList = new() { };
-        public static List<int> ItemIDList = new() { };
-#pragma warning restore CA2211
+        public new string LocalizationCategory => "Items.Tools.Usables";
+
+        public List<int> BuffIDList = [];
+        public List<int> ItemIDList = [];
 
         public override void SetStaticDefaults()
         {
@@ -71,7 +69,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         {
             TooltipLine tip0 = tooltips.Find(l => l.Name == "Tooltip0");
             TooltipLine text = new(Mod, "PotionCrateTooltip", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.PotionCrateTooltip").FormatWith(QoLCompendium.mainConfig.EndlessBuffAmount));
-            tooltips.Insert(tooltips.IndexOf(tip0) + 1, text);
+            tooltips.Insert(tooltips.IndexOf(tip0), text);
 
             Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PotionCrate);
     }

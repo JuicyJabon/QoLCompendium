@@ -1,13 +1,13 @@
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 using Terraria.GameContent.Events;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
-    public class MiniSundial : ModItem
+    public class MiniSundial : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.MiniSundial;
+
+        public new string LocalizationCategory => "Items.Tools.Usables";
 
         public override void SetStaticDefaults()
         {

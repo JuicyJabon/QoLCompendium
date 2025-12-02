@@ -42,6 +42,7 @@
             ModConditions.calamityCommunityRemixLoaded.AddLoadedMod(ref ModConditions.calamityCommunityRemixMod);
             ModConditions.calamityEntropyLoaded.AddLoadedMod(ref ModConditions.calamityEntropyMod);
             ModConditions.calamityOverhaulLoaded.AddLoadedMod(ref ModConditions.calamityOverhaulMod);
+            ModConditions.calamityRekindledLoaded.AddLoadedMod(ref ModConditions.calamityRekindledMod);
             ModConditions.calamityVanitiesLoaded.AddLoadedMod(ref ModConditions.calamityVanitiesMod);
             ModConditions.captureDiscsClassLoaded.AddLoadedMod(ref ModConditions.captureDiscsClassMod);
             ModConditions.catalystLoaded.AddLoadedMod(ref ModConditions.catalystMod);
@@ -58,6 +59,7 @@
             ModConditions.dragonBallTerrariaLoaded.AddLoadedMod(ref ModConditions.dragonBallTerrariaMod);
             ModConditions.echoesOfTheAncientsLoaded.AddLoadedMod(ref ModConditions.echoesOfTheAncientsMod);
             ModConditions.edorbisLoaded.AddLoadedMod(ref ModConditions.edorbisMod);
+            ModConditions.elementsAwokenLoaded.AddLoadedMod(ref ModConditions.elementsAwokenMod);
             ModConditions.enchantedMoonsLoaded.AddLoadedMod(ref ModConditions.enchantedMoonsMod);
             ModConditions.everjadeLoaded.AddLoadedMod(ref ModConditions.everjadeMod);
             ModConditions.exaltLoaded.AddLoadedMod(ref ModConditions.exaltMod);
@@ -82,6 +84,7 @@
             ModConditions.luiAFKLoaded.AddLoadedMod(ref ModConditions.luiAFKMod);
             ModConditions.luiAFKDLCLoaded.AddLoadedMod(ref ModConditions.luiAFKDLCMod);
             ModConditions.lunarVeilLoaded.AddLoadedMod(ref ModConditions.lunarVeilMod);
+            ModConditions.macrocosmLoaded.AddLoadedMod(ref ModConditions.macrocosmMod);
             ModConditions.magicStorageLoaded.AddLoadedMod(ref ModConditions.magicStorageMod);
             ModConditions.martainsOrderLoaded.AddLoadedMod(ref ModConditions.martainsOrderMod);
             ModConditions.mechReworkLoaded.AddLoadedMod(ref ModConditions.mechReworkMod);
@@ -104,6 +107,7 @@
             ModConditions.shadowsOfAbaddonLoaded.AddLoadedMod(ref ModConditions.shadowsOfAbaddonMod);
             ModConditions.sloomeLoaded.AddLoadedMod(ref ModConditions.sloomeMod);
             ModConditions.spiritClassicLoaded.AddLoadedMod(ref ModConditions.spiritClassicMod);
+            ModConditions.spiritReforgedLoaded.AddLoadedMod(ref ModConditions.spiritReforgedMod);
             ModConditions.spookyLoaded.AddLoadedMod(ref ModConditions.spookyMod);
             ModConditions.starlightRiverLoaded.AddLoadedMod(ref ModConditions.starlightRiverMod);
             ModConditions.starsAboveLoaded.AddLoadedMod(ref ModConditions.starsAboveMod);
@@ -119,6 +123,7 @@
             ModConditions.uhtricLoaded.AddLoadedMod(ref ModConditions.uhtricMod);
             ModConditions.universeOfSwordsLoaded.AddLoadedMod(ref ModConditions.universeOfSwordsMod);
             ModConditions.valhallaLoaded.AddLoadedMod(ref ModConditions.valhallaMod);
+            ModConditions.vanillaQoLLoaded.AddLoadedMod(ref ModConditions.vanillaQoLMod);
             ModConditions.verdantLoaded.AddLoadedMod(ref ModConditions.verdantMod);
             ModConditions.vitalityLoaded.AddLoadedMod(ref ModConditions.vitalityMod);
             ModConditions.wayfairContentLoaded.AddLoadedMod(ref ModConditions.wayfairContentMod);

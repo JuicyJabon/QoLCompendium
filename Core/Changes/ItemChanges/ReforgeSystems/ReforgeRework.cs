@@ -26,6 +26,48 @@ namespace QoLCompendium.Core.Changes.ItemChanges.ReforgeSystems
                 } while (accRerolls < 20);
             }
 
+            //VOID MELEE
+            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidMelee")))
+                prefix = IteratePrefix(rand, Prefixes.VoidMeleeReforgeTiers, currentPrefix);
+
+
+            //VOID RANGED
+            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidRanged")))
+                prefix = IteratePrefix(rand, Prefixes.VoidRangedReforgeTiers, currentPrefix);
+
+
+            //VOID MAGIC
+            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidMagic")))
+                prefix = IteratePrefix(rand, Prefixes.VoidMagicReforgeTiers, currentPrefix);
+
+
+            //VOID SUMMON
+            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidSummon")))
+                prefix = IteratePrefix(rand, Prefixes.VoidSummonReforgeTiers, currentPrefix);
+
+
+            //VOID BARD
+            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidSymphonic")))
+                prefix = IteratePrefix(rand, Prefixes.VoidBardReforgeTiers, currentPrefix);
+
+
+            //VOID HEALER
+            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidRadiant")))
+            {
+                if (item.ModItem.MeleePrefix() && item.ModItem.Mod.Name == "SOTSBardHealer")
+                    prefix = IteratePrefix(rand, Prefixes.VoidMeleeHealerReforgeTiers, currentPrefix);
+                else
+                    prefix = IteratePrefix(rand, Prefixes.VoidHealerReforgeTiers, currentPrefix);
+            }
+
+            //VOID THROWER
+            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidThrowing")))
+                prefix = IteratePrefix(rand, Prefixes.VoidThrowerReforgeTiers, currentPrefix);
+
+            //VOID ROGUE
+            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.infernalEclipseMod, "VoidRogue")))
+                prefix = IteratePrefix(rand, Prefixes.VoidRogueReforgeTiers, currentPrefix);
+
             // MELEE (includes tools and whips)
             else if ((item.CountsAsClass<MeleeDamageClass>() || item.CountsAsClass(Common.GetModDamageClass(ModConditions.calamityMod, "MeleeRangedHybridDamageClass")) || item.CountsAsClass<SummonMeleeSpeedDamageClass>()) && !item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidMelee")))
             {
@@ -37,7 +79,7 @@ namespace QoLCompendium.Core.Changes.ItemChanges.ReforgeSystems
                 }
 
                 // Swords, Whips, Tools, other items that support the Legendary modifier
-                else if (PrefixLegacy.ItemSets.SwordsHammersAxesPicks[item.type] || item.ModItem != null && item.ModItem.MeleePrefix())
+                else if (PrefixLegacy.ItemSets.SwordsHammersAxesPicks[item.type] || (item.ModItem != null && item.ModItem.MeleePrefix()) || item.IsATool())
                 {
                     var tierListToUse = item.pick > 0 || item.axe > 0 || item.hammer > 0 ? Prefixes.ToolReforgeTiers : Prefixes.MeleeReforgeTiers;
                     prefix = IteratePrefix(rand, tierListToUse, currentPrefix);
@@ -76,54 +118,21 @@ namespace QoLCompendium.Core.Changes.ItemChanges.ReforgeSystems
             //HEALER
             else if ((item.CountsAsClass(Common.GetModDamageClass(ModConditions.thoriumMod, "HealerDamage")) || item.CountsAsClass(Common.GetModDamageClass(ModConditions.thoriumMod, "HealerToolDamageHybrid"))) && !item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidRadiant")))
             {
-                if (item.ModItem.MeleePrefix() && item.ModItem.Mod.Name == "CalamityBardHealer" || item.ModItem.Mod.Name == "SOTSBardHealer" || item.ModItem.Mod.Name == "SpookyBardHealer" || item.ModItem.Mod.Name == "SpiritBardHealer" || item.ModItem.Mod.Name == "MacroBardHealer" || item.ModItem.Mod.Name == "RedemptionBardHealer")
+                if (item.ModItem.MeleePrefix() && item.ModItem.Mod.Name == "CalamityBardHealer" || item.ModItem.Mod.Name == "SOTSBardHealer" || item.ModItem.Mod.Name == "SpookyBardHealer" || item.ModItem.Mod.Name == "SpiritBardHealer" || item.ModItem.Mod.Name == "MacroBardHealer" || item.ModItem.Mod.Name == "RedemptionBardHealer" || item.ModItem.Mod.Name == ModConditions.thoriumBossReworkName)
                     prefix = IteratePrefix(rand, Prefixes.MeleeReforgeTiers, currentPrefix);
-                else
+                else if (item.mana > 0 || item.ModItem.MagicPrefix())
                     prefix = IteratePrefix(rand, Prefixes.MagicReforgeTiers, currentPrefix);
-            }
-
-            //VOID MELEE
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidMelee")))
-                prefix = IteratePrefix(rand, Prefixes.VoidMeleeReforgeTiers, currentPrefix);
-
-
-            //VOID RANGED
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidRanged")))
-                prefix = IteratePrefix(rand, Prefixes.VoidRangedReforgeTiers, currentPrefix);
-
-
-            //VOID MAGIC
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidMagic")))
-                prefix = IteratePrefix(rand, Prefixes.VoidMagicReforgeTiers, currentPrefix);
-
-
-            //VOID SUMMON
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidSummon")))
-                prefix = IteratePrefix(rand, Prefixes.VoidSummonReforgeTiers, currentPrefix);
-
-
-            //VOID BARD
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidSymphonic")))
-                prefix = IteratePrefix(rand, Prefixes.VoidBardReforgeTiers, currentPrefix);
-
-
-            //VOID HEALER
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidRadiant")))
-            {
-                if (item.ModItem.MeleePrefix() || item.ModItem.Mod.Name == "SOTSBardHealer")
-                    prefix = IteratePrefix(rand, Prefixes.VoidMeleeHealerReforgeTiers, currentPrefix);
                 else
-                    prefix = IteratePrefix(rand, Prefixes.VoidHealerReforgeTiers, currentPrefix);
+                    prefix = IteratePrefix(rand, Prefixes.GenericReforgeTiers, currentPrefix);
             }
 
-            //VOID THROWER
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidThrowing")))
-                prefix = IteratePrefix(rand, Prefixes.VoidThrowerReforgeTiers, currentPrefix);
-
-            //VOID ROGUE
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.infernalEclipseMod, "VoidRogue")))
-                prefix = IteratePrefix(rand, Prefixes.VoidRogueReforgeTiers, currentPrefix);
-
+            //BLOOD HUNTER
+            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.vitalityMod, "BloodHunterClass")))
+                prefix = IteratePrefix(rand, Prefixes.BloodHunterReforgeTiers, currentPrefix);
+            
+            //CLICKER
+            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.clickerClassMod, "ClickerDamage")))
+                prefix = IteratePrefix(rand, Prefixes.ClickerReforgeTiers, currentPrefix);
 
             return prefix;
         }
@@ -139,7 +148,7 @@ namespace QoLCompendium.Core.Changes.ItemChanges.ReforgeSystems
             }
 
             // If an invalid or modded prefix is detected, return -1.
-            // This will give a random tier 0 prefix (the "next tier"), starting fresh with a low-tier vanilla or Calamity prefix.
+            // This will give a random tier 0 prefix (the "next tier"), starting fresh with a low-tier prefix.
             return -1;
         }
 

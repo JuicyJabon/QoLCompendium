@@ -1,13 +1,13 @@
 using QoLCompendium.Content.Projectiles.Explosives;
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Explosives
 {
-    public class Superbomber : ModItem
+    public class Superbomber : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.AutoStructures;
+
+        public new string LocalizationCategory => "Items.Tools.Explosives";
 
         public override void SetStaticDefaults()
         {

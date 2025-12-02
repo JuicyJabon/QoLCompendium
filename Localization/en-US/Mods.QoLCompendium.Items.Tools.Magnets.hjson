@@ -1,0 +1,24 @@
+Magnet: {
+	DisplayName: Magnet
+	Tooltip: Favorite this item to increase grab range by 525 tiles
+}
+
+HellstoneMagnet: {
+	DisplayName: Hellstone Magnet
+	Tooltip: Favorite this item to increase grab range by 1050 tiles
+}
+
+SoulMagnet: {
+	DisplayName: Soul Magnet
+	Tooltip: Favorite this item to increase grab range by 2100 tiles
+}
+
+SpectreMagnet: {
+	DisplayName: Spectre Magnet
+	Tooltip: Favorite this item to increase grab range by 2100 tiles
+}
+
+LunarMagnet: {
+	DisplayName: Lunar Magnet
+	Tooltip: Favorite this item to increase grab range by 16800 tiles
+}

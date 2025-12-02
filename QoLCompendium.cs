@@ -14,10 +14,10 @@ global using Terraria.ID;
 global using Terraria.Localization;
 global using Terraria.ModLoader;
 global using Terraria.UI;
-global using static QoLCompendium.Core.QoLCConfig;
 using QoLCompendium.Core.Changes.BuffChanges;
 using QoLCompendium.Core.Changes.ItemChanges.ReforgeSystems;
-using QoLCompendium.Core.UI.Panels;
+using QoLCompendium.Core.Configs;
+using QoLCompendium.Core.PermanentBuffSystems;
 using System.Reflection;
 
 namespace QoLCompendium
@@ -27,7 +27,7 @@ namespace QoLCompendium
         #pragma warning disable CA2211
         public static Mod Instance;
         public static QoLCompendium instance;
-        public static QoLCConfig mainConfig;
+        public static MainConfig mainConfig;
         public static MainClientConfig mainClientConfig;
         public static ItemConfig itemConfig;
         public static ShopConfig shopConfig;
@@ -45,12 +45,6 @@ namespace QoLCompendium
             BuffSystem.DoBuffIntegration();
             Common.PostSetupTasks();
             LoadModSupport.PostSetupTasks();
-            PermanentCalamityBuffUI.GetCalamityBuffData();
-            PermanentHomewardJourneyBuffUI.GetHomewardJourneyBuffData();
-            PermanentMartinsOrderBuffUI.GetMartinsOrderBuffData();
-            PermanentSOTSBuffUI.GetSOTSBuffData();
-            PermanentSpiritClassicBuffUI.GetSpiritClassicBuffData();
-            PermanentThoriumBuffUI.GetThoriumBuffData();
             Prefixes.PostSetupTasks();
         }
 
@@ -62,6 +56,10 @@ namespace QoLCompendium
             Instance = this;
             ModConditions.LoadSupportedMods();
             LoadModSupport.LoadTasks();
+
+            //Permanent Buffs
+            if (!itemConfig.DisableModdedItems || itemConfig.PermanentBuffs)
+                PermanentBuffLoader.LoadTasks();
         }
 
         public override void Unload()

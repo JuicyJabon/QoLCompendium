@@ -5,14 +5,14 @@ namespace QoLCompendium.Core.Changes.WorldChanges
 {
     public class DisableCredits : ModSystem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            ModLoader.TryGetMod("VanillaQoL", out Mod VanillaQoL);
-            return VanillaQoL == null;
-        }
-
         public override void Load()
         {
+            if (ModConditions.vanillaQoLLoaded)
+                return;
+
+            if (!QoLCompendium.mainConfig.DisableCredits)
+                return;
+
             IL_NPC.OnGameEventClearedForTheFirstTime += NoCredits;
         }
 

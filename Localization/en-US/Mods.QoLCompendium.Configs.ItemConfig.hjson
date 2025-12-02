@@ -1,0 +1,219 @@
+DisplayName: Item Config
+
+DisableModdedItems: {
+	Label: "[i:509] Disable Modded Items"
+	Tooltip:
+		'''
+		Toggles if Quality of Life Compendium items are fully disabled when toggled, meaning not obtainable at all
+		Item icons will not display in this config if items are disabled!
+		'''
+}
+
+AsphaltPlatform: {
+	Label: "[i:QoLCompendium/AsphaltPlatform] Asphalt Platform"
+	Tooltip: Toggles the Asphalt Platform item
+}
+
+AutoStructures: {
+	Label: "[i:QoLCompendium/HellevatorCreator] Auto Structures"
+	Tooltip: Toggles auto structure related items
+}
+
+BannerBox: {
+	Label: "[i:QoLCompendium/BannerBox] Banner Box"
+	Tooltip: Toggles the Banner Box item
+}
+
+BottomlessBuckets: {
+	Label: "[i:QoLCompendium/BottomlessChumBucket] Bottomless Buckets"
+	Tooltip: Toggles bottomless bucket related items
+}
+
+ChallengersCoin: {
+	Label: "[i:QoLCompendium/ChallengersCoin] Challenger's Coin"
+	Tooltip: Toggles the Challenger's Coin item
+}
+
+SummoningRemote: {
+	Label: "[i:QoLCompendium/SummoningRemote] Summoning Remote"
+	Tooltip: Toggles the Summoning Remote item
+}
+
+Mirrors: {
+	Label: "[i:QoLCompendium/CursedMirror] Mirrors"
+	Tooltip: Toggles mirror related items
+}
+
+DedicatedItems: {
+	Label: "[i:QoLCompendium/WoodenClub] Dedicated Items"
+	Tooltip: Toggles dedicated items
+}
+
+EntityManipulator: {
+	Label: "[i:QoLCompendium/EntityManipulator] Entity Manipulator"
+	Tooltip: Toggles the Entity Manipulator item
+}
+
+MiniSundial: {
+	Label: "[i:QoLCompendium/MiniSundial] Mini Sundial"
+	Tooltip: Toggles the Mini Sundial item
+}
+
+InformationAccessories: {
+	Label: "[i:QoLCompendium/HeartbeatSensor] Information Accessories"
+	Tooltip: Toggles information related items
+}
+
+Magnets: {
+	Label: "[i:QoLCompendium/Magnet] Magnets"
+	Tooltip: Toggles magnet related items
+}
+
+MobileStorages: {
+	Label: "[i:QoLCompendium/FlyingSafe] Mobile Storages"
+	Tooltip: Toggles mobile storage related items
+}
+
+MoonPedestals: {
+	Label: "[i:QoLCompendium/MoonPedestal] Moon Pedestals"
+	Tooltip: Toggles moon pedestal related items
+}
+
+Paperweight: {
+	Label: "[i:QoLCompendium/Paperweight] Paperweight"
+	Tooltip: Toggles the Paperweight item
+}
+
+StarterBag: {
+	Label: "[i:QoLCompendium/StarterBag] Starter Bag"
+	Tooltip:
+		'''
+		Toggles the Starter Bag item
+		Make sure to set what items you want before opening!
+		'''
+}
+
+WatchingEye: {
+	Label: "[i:QoLCompendium/WatchingEye] Watching Eye"
+	Tooltip: Toggles the Watching Eye item
+}
+
+DestinationGlobe: {
+	Label: "[i:QoLCompendium/DestinationGlobe] Destination Globe"
+	Tooltip: Toggles the Destination Globe item
+}
+
+PotionCrate: {
+	Label: "[i:QoLCompendium/PotionCrate] Potion Crate"
+	Tooltip: Toggles the Potion Crate item
+}
+
+CraftingStations: {
+	Tooltip: Toggles crafting station related items
+	Label: "[i:QoLCompendium/BasicCraftingMonolith] Crafting Stations"
+}
+
+RegrowthStaves: {
+	Label: "[i:QoLCompendium/Omnistaff] Regrowth Staves"
+	Tooltip: Toggles regrowth staff related items
+}
+
+Pylons: {
+	Label: "[i:QoLCompendium/CorruptionPylon] Pylons"
+	Tooltip: Toggles pylon related items
+}
+
+TheFinalList: {
+	Label: "[i:QoLCompendium/TheFinalList] The Final List"
+	Tooltip: Toggles the Final List item
+}
+
+UltimateChecklist: {
+	Label: "[i:QoLCompendium/UltimateChecklist] Ultimate Checklist"
+	Tooltip: Toggles the Ultimate Checklist item
+}
+
+CustomItems: {
+	Label: "[i:QoLCompendium/StarterBag] Custom Items"
+	Tooltip: Items added to this list will be given to the player when opening the Starter Bag
+}
+
+CustomItemQuantities: {
+	Label: "[i:3119] Custom Item Quantities"
+	Tooltip: Each number corrosponds to the amount of each item added. Items with an undefined count will be given as a quantity of 1
+}
+
+PhaseInterrupter: {
+	Label: "[i:QoLCompendium/PhaseInterrupter] Phase Interrupter"
+	Tooltip: Toggles the Phase Interrupter item
+}
+
+SuperDummy: {
+	Label: "[i:QoLCompendium/SuperDummy] Super Dummy"
+	Tooltip: Toggles the Super Dummy item
+}
+
+RestockNotice: {
+	Label: "[i:QoLCompendium/RestockNotice] Restock Notice"
+	Tooltip: Toggles the Restock Notice item
+}
+
+SkeletonRucksack: {
+	Label: "[i:QoLCompendium/SkeletonRucksack] Skeleton Rucksack"
+	Tooltip: Toggles the Skeleton Rucksack item
+}
+
+TravelersMannequin: {
+	Label: "[i:QoLCompendium/TravelersMannequin] Traveler's Mannequin"
+	Tooltip: Toggles the Traveler's Mannequin item
+}
+
+EndlessAmmo: {
+	Label: "[i:QoLCompendium/EndlessFlareBox] Endless Ammo"
+	Tooltip: Toggles endless Ammo related items
+}
+
+GoldenLockpick: {
+	Tooltip: Toggles the Golden Lockpick item
+	Label: "[i:QoLCompendium/GoldenLockpick] Golden Lockpick"
+}
+
+GoldenPowder: {
+	Tooltip: Toggles the Golden Powder item
+	Label: "[i:QoLCompendium/GoldenPowder] Golden Powder"
+}
+
+LegendaryCatcher: {
+	Label: "[i:QoLCompendium/LegendaryCatcher] Legendary Catcher"
+	Tooltip: Toggles the Legendary Catcher item
+}
+
+Eightworm: {
+	Label: "[i:QoLCompendium/Eightworm] Eightworm"
+	Tooltip: Toggles the Eightworm item
+}
+
+ConstructionAccessories: {
+	Tooltip: Toggles construction related items
+	Label: "[i:QoLCompendium/ConstructionEmblem] Construction Accessories"
+}
+
+FishingAccessories: {
+	Label: "[i:QoLCompendium/AnglerRadar] Fishing Accessories"
+	Tooltip: Toggles fishing related items
+}
+
+CrossModItems: {
+	Label: "[i:QoLCompendium/ForgottenOneSummon] Cross Mod Items"
+	Tooltip: Toggles cross mod items
+}
+
+BossSummons: {
+	Tooltip: Toggles boss summon items
+	Label: "[i:QoLCompendium/CultistSummon] Boss Summons"
+}
+
+PermanentBuffs: {
+	Label: "[i:QoLCompendium/PermanentIronskin] Permanent Buffs"
+	Tooltip: Toggles permanent buff items
+}

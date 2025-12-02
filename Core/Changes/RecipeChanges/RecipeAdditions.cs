@@ -9,16 +9,23 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
         public override void AddRecipes()
         {
             //Aether Altar Recipe Creation
-            for (int i = 0; i < ItemLoader.ItemCount; i++)
+            if (!QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.CraftingStations)
             {
-                if (ItemID.Sets.ShimmerTransformToItem[i] > ItemID.None)
+                for (int i = 0; i < ItemLoader.ItemCount; i++)
                 {
-                    Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, ItemID.Sets.ShimmerTransformToItem[i], 1, "Mods.QoLCompendium.ItemToggledConditions.CraftingStations");
-                    r.AddIngredient(i);
-                    r.AddTile(ModContent.TileType<AetherAltarTile>());
-                    r.Register();
+                    if (ItemID.Sets.ShimmerTransformToItem[i] > ItemID.None)
+                    {
+                        Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, ItemID.Sets.ShimmerTransformToItem[i], 1, "Mods.QoLCompendium.ItemToggledConditions.CraftingStations");
+                        r.AddIngredient(i);
+                        r.AddTile(ModContent.TileType<AetherAltarTile>());
+                        r.Register();
+                    }
                 }
             }
+
+            //Permanent Buffs
+            if (!QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.PermanentBuffs)
+                CombinedBuffItemRecipes();
 
             if (QoLCompendium.mainConfig.FullyDisableRecipes)
                 return;
@@ -31,6 +38,507 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             GrabBagRecipes();
             OtherRecipes();
             NewRecipes();
+        }
+
+        public static void CombinedBuffItemRecipes()
+        {
+            #region Vanilla
+            //AQUATIC
+            Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentFlipper"), Common.GetModItem(QoLCompendium.Instance, "PermanentGills"), Common.GetModItem(QoLCompendium.Instance, "PermanentWaterWalking")], Common.GetModItem(QoLCompendium.Instance, "PermanentAquatic"));
+
+            //CONSTRUCTION
+            Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentBuilder"), Common.GetModItem(QoLCompendium.Instance, "PermanentCalm"), Common.GetModItem(QoLCompendium.Instance, "PermanentMining")], Common.GetModItem(QoLCompendium.Instance, "PermanentConstruction"));
+
+            //DAMAGE
+            Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentAmmoReservation"), Common.GetModItem(QoLCompendium.Instance, "PermanentArchery"), Common.GetModItem(QoLCompendium.Instance, "PermanentBattle"), Common.GetModItem(QoLCompendium.Instance, "PermanentLucky"), Common.GetModItem(QoLCompendium.Instance, "PermanentMagicPower"), Common.GetModItem(QoLCompendium.Instance, "PermanentManaRegeneration"), Common.GetModItem(QoLCompendium.Instance, "PermanentSummoning"), Common.GetModItem(QoLCompendium.Instance, "PermanentTipsy"), Common.GetModItem(QoLCompendium.Instance, "PermanentTitan"), Common.GetModItem(QoLCompendium.Instance, "PermanentRage"), Common.GetModItem(QoLCompendium.Instance, "PermanentWrath")], Common.GetModItem(QoLCompendium.Instance, "PermanentDamage"));
+
+            //DEFENSE
+            Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentEndurance"), Common.GetModItem(QoLCompendium.Instance, "PermanentExquisitelyStuffed"), Common.GetModItem(QoLCompendium.Instance, "PermanentHeartreach"), Common.GetModItem(QoLCompendium.Instance, "PermanentInferno"), Common.GetModItem(QoLCompendium.Instance, "PermanentIronskin"), Common.GetModItem(QoLCompendium.Instance, "PermanentLifeforce"), Common.GetModItem(QoLCompendium.Instance, "PermanentObsidianSkin"), Common.GetModItem(QoLCompendium.Instance, "PermanentRegeneration"), Common.GetModItem(QoLCompendium.Instance, "PermanentThorns"), Common.GetModItem(QoLCompendium.Instance, "PermanentWarmth")], Common.GetModItem(QoLCompendium.Instance, "PermanentDefense"));
+
+            //MOVEMENT
+            Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentFeatherfall"), Common.GetModItem(QoLCompendium.Instance, "PermanentGravitation"), Common.GetModItem(QoLCompendium.Instance, "PermanentSwiftness")], Common.GetModItem(QoLCompendium.Instance, "PermanentMovement"));
+
+            //TRAWLER
+            Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentCrate"), Common.GetModItem(QoLCompendium.Instance, "PermanentFishing"), Common.GetModItem(QoLCompendium.Instance, "PermanentSonar")], Common.GetModItem(QoLCompendium.Instance, "PermanentTrawler"));
+
+            //VISION
+            Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentBiomeSight"), Common.GetModItem(QoLCompendium.Instance, "PermanentDangersense"), Common.GetModItem(QoLCompendium.Instance, "PermanentHunter"), Common.GetModItem(QoLCompendium.Instance, "PermanentInvisibility"), Common.GetModItem(QoLCompendium.Instance, "PermanentNightOwl"), Common.GetModItem(QoLCompendium.Instance, "PermanentShine"), Common.GetModItem(QoLCompendium.Instance, "PermanentSpelunker")], Common.GetModItem(QoLCompendium.Instance, "PermanentVision"));
+
+            //ARENA
+            Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentBastStatue"), Common.GetModItem(QoLCompendium.Instance, "PermanentCampfire"), Common.GetModItem(QoLCompendium.Instance, "PermanentHeartLantern"), Common.GetModItem(QoLCompendium.Instance, "PermanentHoney"), Common.GetModItem(QoLCompendium.Instance, "PermanentPeaceCandle"), Common.GetModItem(QoLCompendium.Instance, "PermanentShadowCandle"), Common.GetModItem(QoLCompendium.Instance, "PermanentStarInABottle"), Common.GetModItem(QoLCompendium.Instance, "PermanentSunflower"), Common.GetModItem(QoLCompendium.Instance, "PermanentWaterCandle")], Common.GetModItem(QoLCompendium.Instance, "PermanentArena"));
+
+            //STATION
+            Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentAmmoBox"), Common.GetModItem(QoLCompendium.Instance, "PermanentBewitchingTable"), Common.GetModItem(QoLCompendium.Instance, "PermanentCrystalBall"), Common.GetModItem(QoLCompendium.Instance, "PermanentSharpeningStation"), Common.GetModItem(QoLCompendium.Instance, "PermanentSliceOfCake"), Common.GetModItem(QoLCompendium.Instance, "PermanentWarTable")], Common.GetModItem(QoLCompendium.Instance, "PermanentStation"));
+
+            //FLASKS
+            Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskofParty"), Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskofCursedFlames"), Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskofFire"), Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskofGold"), Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskofIchor"), Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskofNanites"), Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskofPoison"), Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskofVenom")], Common.GetModItem(QoLCompendium.Instance, "PermanentFlasks"));
+
+            //ALL
+            Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentAquatic"), Common.GetModItem(QoLCompendium.Instance, "PermanentConstruction"), Common.GetModItem(QoLCompendium.Instance, "PermanentDamage"), Common.GetModItem(QoLCompendium.Instance, "PermanentDefense"), Common.GetModItem(QoLCompendium.Instance, "PermanentMovement"), Common.GetModItem(QoLCompendium.Instance, "PermanentTrawler"), Common.GetModItem(QoLCompendium.Instance, "PermanentVision"), Common.GetModItem(QoLCompendium.Instance, "PermanentArena"), Common.GetModItem(QoLCompendium.Instance, "PermanentStation"), Common.GetModItem(QoLCompendium.Instance, "PermanentFlasks")], Common.GetModItem(QoLCompendium.Instance, "PermanentVanilla"));
+            #endregion
+
+            #region Calamity
+            if (ModConditions.calamityLoaded)
+            {
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBloodyMary"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCaribbeanRum"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCinnamonRoll"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEverclear"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEvergreenGin"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFireball"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentGrapeBeer"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMargarita"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMoonshine"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMoscowMule"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentOldFashioned"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentPurpleHaze"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRedWine"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRum"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentScrewdriver"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentStarBeamRye"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTequila"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTequilaSunrise"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTrippy"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentVodka"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentWhiskey"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentWhiteWine")], 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityAlcohols"));
+
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAnechoicCoating"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentOmniscience"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSulphurskin")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityAbyss"));
+
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAstralInjection"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadow")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDamage"));
+
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBaguette"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBloodfin"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentPhotosynthesis"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTesla")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDefense"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentZen"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentZerg"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCeaselessHunger")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityFarming"));
+
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBounding"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalcium"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentGravityNormalizer"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSoaring")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityMovement"));
+
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCorruptionEffigy"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCrimsonEffigy"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEffigyOfDecay"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentChaosCandle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTranquilityCandle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentResilientCandle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpitefulCandle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentVigorousCandle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentWeightlessCandle")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityArena"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfBrimstone"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfCrumbling"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfHolyFlames")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityFlasks"));
+
+                if (ModConditions.calamityEntropyLoaded)
+                {
+                    Common.CombinedPermanentBuffRecipe([
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentSoyMilk"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentYharimsStimulants"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentVoidCandle")],
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityEntropy"));
+                }
+
+                if (ModConditions.calamityRekindledLoaded)
+                {
+                    Common.CombinedPermanentBuffRecipe([
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentBeetleJuice"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentCadence"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentDraconicElixir"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentPenumbra"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentProfanedRage"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentProfanedWrath"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentRevivify"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentShattering"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentCRTitanScale"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentTriumph"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentCRYharimsStimulants")],
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityRekindled"));
+                }
+
+                if (ModConditions.clamityAddonLoaded)
+                {
+                    Common.CombinedPermanentBuffRecipe([
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentExoBaguette"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentSupremeLuck"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentTitanScale")],
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentClamity"));
+                }
+
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityAlcohols"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityAbyss"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDamage"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDefense"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityFarming"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityMovement"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityArena"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityFlasks")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamity"));
+            }
+            #endregion
+
+            #region Clicker Class
+            if (ModConditions.clickerClassLoaded)
+            {
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentInfluence"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDesktopComputer")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentClickerClass"));
+            }
+            #endregion
+
+            #region Homeward Journey
+            if (ModConditions.homewardJourneyLoaded)
+            {
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFluorescentBerry"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentReanimation"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentYin"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentYang")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyFarming"));
+
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlight"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHJHaste")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyMovement"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBushOfLife"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentLifeLantern")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyArena"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfDivineFire"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfPlague"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfSteel")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyFlasks"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAntiEncirclement"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAttract"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBrave"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlappy"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentGreed"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHighway"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHyperopia"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentKiwi"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentLeap"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentLeftist"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMermaid"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentNuke"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentParasite"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRightist"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSignal")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyStrangePotions"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyFarming"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyMovement"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyArena"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyFlasks"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyStrangePotions")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourney"));
+            }
+            #endregion
+
+            #region Martin's Order
+            if (ModConditions.martainsOrderLoaded)
+            {
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDefender"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEmpowerment"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEvocation"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHaste"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShooter"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpellCaster"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentStarreach"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSweeper"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentThrower"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentWhipper")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMartinsOrderDamage"));
+
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBlackHole"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBody"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCharging"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentGourmetFlavor"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHealing"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRockskin"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShielding"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSoul"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentZincPill")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMartinsOrderDefense"));
+
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentArcheology"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSporeFarm")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMartinsOrderStations"));
+
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMartinsOrderDamage"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMartinsOrderDefense"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMartinsOrderStations")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMartinsOrder"));
+            }
+            #endregion
+
+            #region Redemption
+            if (ModConditions.redemptionLoaded)
+            {
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCharisma"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEvilJelly"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHydricAcid"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSkirmish"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentVendetta"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentVigourous"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMoonflareCandle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSoulCandle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEnergyStation"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfBile"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfNitroglycerine")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRedemption"));
+            }
+            #endregion
+
+            #region Secrets of the Shadows
+            if (ModConditions.secretsOfTheShadowsLoaded)
+            {
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAssassination"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBluefire"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBrittle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDoubleVision"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHarmony"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentNightmare"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRipple"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRoughskin"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSoulAccess"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentVibe"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentVigor"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDigitalDisplay")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSecretsOfTheShadows"));
+            }
+            #endregion
+
+            #region Shadows of Abaddon
+            if (ModConditions.shadowsOfAbaddonLoaded)
+            {
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCommanding"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDawn"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDusk"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFrenziedAnimosity"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentH"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMilk"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMoonlight"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentNightmareFuel")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonDamage"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDraconiumSkin"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEssenceOfFury"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlareElixir"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentNumberOne"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSuppression"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentLifeFruitLantern")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonDefense"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentNinjaFocus"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRobustMuscle")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonRevenant"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHeavyFall"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSeriousSyrusianSyrup"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTowerSurmount"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentWindResistance")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonMovement"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlariumFlurry"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHolyLight"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSerene"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShoalFishing")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonFarming"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonDamage"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonDefense"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonRevenant"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonMovement"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonFarming")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddon"));
+            }
+            #endregion
+
+            #region Spirit Classic
+            if (ModConditions.spiritClassicLoaded)
+            {
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRunescribe"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSoulguard"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpirit"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentStarburn"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentToxin")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassicDamage"));
+
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMirrorCoat"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMoonJelly"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentOliveBranch"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSporecoid"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSteadfast")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassicDefense"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentJump"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritSoaring"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentZephyr")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassicMovement"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCandy"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentChocolateBar"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHealthCandy"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentLollipop"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentManaCandy"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTaffy")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassicCandies"));
+                
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCoiledEnergizer"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentKoiTotem"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSunPot"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCouchPotato")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassicArena"));
+
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassicDamage"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassicDefense"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassicMovement"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassicCandies"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassicArena")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassic"));
+            }
+            #endregion
+
+            #region Spirit Reforged
+            if (ModConditions.spiritReforgedLoaded)
+            {
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentQuenched"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRemedy"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSRSoaring"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSRZephyr"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSRKoiTotem"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfFrost")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritReforged"));
+            }
+            #endregion
+
+            #region Thorium
+            if (ModConditions.thoriumLoaded)
+            {
+                //BARD
+                Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentCreativity"), Common.GetModItem(QoLCompendium.Instance, "PermanentEarworm"), Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationalReach")], Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumBard"));
+
+                //HEALER
+                Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentArcane"), Common.GetModItem(QoLCompendium.Instance, "PermanentGlowing"), Common.GetModItem(QoLCompendium.Instance, "PermanentHoly")], Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumHealer"));
+
+                //THROWER
+                Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentAssassin"), Common.GetModItem(QoLCompendium.Instance, "PermanentHydration")], Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumThrower"));
+
+                //DAMAGE
+                Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentArtillery"), Common.GetModItem(QoLCompendium.Instance, "PermanentBouncingFlames"), Common.GetModItem(QoLCompendium.Instance, "PermanentCactusFruit"), Common.GetModItem(QoLCompendium.Instance, "PermanentConflagration"), Common.GetModItem(QoLCompendium.Instance, "PermanentFrenzy"), Common.GetModItem(QoLCompendium.Instance, "PermanentWarmonger")], Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumDamage"));
+
+                //MOVEMENT
+                Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentAquaAffinity"), Common.GetModItem(QoLCompendium.Instance, "PermanentBloodRush"), Common.GetModItem(QoLCompendium.Instance, "PermanentKinetic")], Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumMovement"));
+
+                //REPELLANT
+                Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentBatRepellent"), Common.GetModItem(QoLCompendium.Instance, "PermanentFishRepellent"), Common.GetModItem(QoLCompendium.Instance, "PermanentInsectRepellent"), Common.GetModItem(QoLCompendium.Instance, "PermanentSkeletonRepellent"), Common.GetModItem(QoLCompendium.Instance, "PermanentZombieRepellent")], Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumRepellent"));
+
+                //STATIONS
+                Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentMistletoe"), Common.GetModItem(QoLCompendium.Instance, "PermanentAltar"), Common.GetModItem(QoLCompendium.Instance, "PermanentConductorsStand"), Common.GetModItem(QoLCompendium.Instance, "PermanentNinjaRack")], Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumStations"));
+
+                //COATINGS
+                Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentDeepFreezeCoating"), Common.GetModItem(QoLCompendium.Instance, "PermanentExplosiveCoating"), Common.GetModItem(QoLCompendium.Instance, "PermanentGorgonCoating"), Common.GetModItem(QoLCompendium.Instance, "PermanentSporeCoating"), Common.GetModItem(QoLCompendium.Instance, "PermanentToxicCoating")], Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumCoatings"));
+
+                //ALL
+                Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumBard"), Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumHealer"), Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumThrower"), Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumDamage"), Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumMovement"), Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumRepellent"), Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumStations"), Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumCoatings")], Common.GetModItem(QoLCompendium.Instance, "PermanentThorium"));
+            }
+            #endregion
+
+            #region Vitality
+            if (ModConditions.vitalityLoaded)
+            {
+                Common.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentArmorPiercing"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCranberrySoda"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentLeaping"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTranquility"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTravelsense"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentWarrior")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentVitality"));
+            }
+            #endregion
+
+            #region Everything
+            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Common.GetModItem(QoLCompendium.Instance, "PermanentEverything"), 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentVanilla"));
+            if (ModConditions.calamityLoaded)
+                r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamity"));
+            if (ModConditions.clickerClassLoaded)
+                r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentClickerClass"));
+            if (ModConditions.homewardJourneyLoaded)
+                r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourney"));
+            if (ModConditions.martainsOrderLoaded)
+                r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentMartinsOrder"));
+            if (ModConditions.redemptionLoaded)
+                r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentRedemption"));
+            if (ModConditions.secretsOfTheShadowsLoaded)
+                r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentSecretsOfTheShadows"));
+            if (ModConditions.shadowsOfAbaddonLoaded)
+                r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddon"));
+            if (ModConditions.spiritClassicLoaded)
+                r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassic"));
+            if (ModConditions.spiritReforgedLoaded)
+                r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritReforged"));
+            if (ModConditions.thoriumLoaded)
+                r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentThorium"));
+            if (ModConditions.vitalityLoaded)
+                r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentVitality"));
+            if (ModConditions.consolariaLoaded)
+                r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentWiesnbrau"));
+            r.AddTile(TileID.CookingPots);
+            r.Register();
+            #endregion
         }
 
         public static void ConversionRecipes()
@@ -77,6 +585,8 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             //Tiles
             Common.ConversionRecipe(ItemID.CorruptFishingCrate, ItemID.CrimsonFishingCrate, TileID.Anvils);
             Common.ConversionRecipe(ItemID.CorruptFishingCrateHard, ItemID.CrimsonFishingCrateHard, TileID.Anvils);
+            Common.ConversionRecipe(ItemID.EaterofWorldsTrophy, ItemID.BrainofCthulhuTrophy, TileID.Anvils);
+            Common.ConversionRecipe(ItemID.EaterofWorldsMasterTrophy, ItemID.BrainofCthulhuMasterTrophy, TileID.Anvils);
             //Weapons
             Common.ConversionRecipe(ItemID.Terragrim, ItemID.Arkhalis, TileID.CrystalBall);
             Common.ConversionRecipe(ItemID.DartRifle, ItemID.DartPistol, TileID.Anvils);
@@ -84,9 +594,13 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             Common.ConversionRecipe(ItemID.ChainGuillotines, ItemID.FetidBaghnakhs, TileID.Anvils);
             //Equipables
             Common.ConversionRecipe(ItemID.PutridScent, ItemID.FleshKnuckles, TileID.Anvils);
+            Common.ConversionRecipe(ItemID.WormScarf, ItemID.BrainOfConfusion, TileID.Anvils);
             Common.ConversionRecipe(ItemID.WormHook, ItemID.TendonHook, TileID.Anvils);
             Common.ConversionRecipe(ItemID.EatersBone, ItemID.BoneRattle, TileID.Anvils);
+            Common.ConversionRecipe(ItemID.EaterOfWorldsPetItem, ItemID.BrainOfCthulhuPetItem, TileID.Anvils);
+            Common.ConversionRecipe(ItemID.EaterMask, ItemID.BrainMask, TileID.Anvils);
             //Misc
+            Common.ConversionRecipe(ItemID.EaterOfWorldsBossBag, ItemID.BrainOfCthulhuBossBag, TileID.Anvils);
             Common.ConversionRecipe(ItemID.CorruptionKey, ItemID.CrimsonKey, TileID.MythrilAnvil);
 
             #region Calamity
@@ -1156,8 +1670,15 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             if (ModConditions.thoriumLoaded)
             {
                 Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.thoriumMod, "AquaticDepthsBiomeKey"), Common.GetModItem(ModConditions.thoriumMod, "Fishbone"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
-                Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.thoriumMod, "DesertBiomeKey"), Common.GetModItem(ModConditions.thoriumMod, "PharaohsSlab"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
+                Common.CreateSimpleRecipe(ItemID.DungeonDesertKey, Common.GetModItem(ModConditions.thoriumMod, "PharaohsSlab"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
                 Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.thoriumMod, "UnderworldBiomeKey"), Common.GetModItem(ModConditions.thoriumMod, "PhoenixStaff"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
+            }
+            #endregion
+
+            #region Vitality
+            if (ModConditions.vitalityLoaded)
+            {
+                Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.vitalityMod, "GlowingMossKey"), Common.GetModItem(ModConditions.vitalityMod, "GlowingMothShiv"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
             }
             #endregion
             #endregion
@@ -1209,6 +1730,26 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             }
             #endregion
 
+            #region Calamity Entropy Yharim's Stimulants
+            if (ModConditions.calamityLoaded && ModConditions.calamityEntropyLoaded)
+            {
+                Recipe yharimsStimulants = Recipe.Create(Common.GetModItem(ModConditions.calamityEntropyMod, "YharimsStimulants"), 1);
+                yharimsStimulants.AddRecipeGroup("QoLCompendium:WellFed");
+                yharimsStimulants.AddIngredient(ItemID.EndurancePotion);
+                yharimsStimulants.AddIngredient(ItemID.IronskinPotion);
+                yharimsStimulants.AddIngredient(ItemID.SwiftnessPotion);
+                yharimsStimulants.AddIngredient(ItemID.TitanPotion);
+                yharimsStimulants.AddTile(TileID.AlchemyTable);
+                yharimsStimulants.Register();
+
+                Recipe yharimsStimulantsBO = Recipe.Create(Common.GetModItem(ModConditions.calamityEntropyMod, "YharimsStimulants"), 1);
+                yharimsStimulantsBO.AddIngredient(ItemID.BottledWater);
+                yharimsStimulantsBO.AddIngredient(Common.GetModItem(ModConditions.calamityMod, "BloodOrb"), 50);
+                yharimsStimulantsBO.AddTile(TileID.AlchemyTable);
+                yharimsStimulantsBO.Register();
+            }
+            #endregion
+
             #region Parity
             //Mobile Storage
             if (!QoLCompendium.itemConfig.DisableModdedItems)
@@ -1242,6 +1783,102 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             universalPylon.AddTile(TileID.Anvils);
             universalPylon.Register();
             #endregion
+
+            /*
+            #region Obsidian Furniture
+            Recipe obsidianWorkBench = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianWorkBench, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianWorkBench.AddIngredient(ItemID.ObsidianBrick, 10);
+            obsidianWorkBench.Register();
+
+            Recipe obsidianChandelier = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianChandelier, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianChandelier.AddIngredient(ItemID.ObsidianBrick, 4);
+            obsidianChandelier.AddIngredient(ItemID.Torch, 4);
+            obsidianChandelier.AddIngredient(ItemID.Chain);
+            obsidianChandelier.AddTile(TileID.Anvils);
+            obsidianChandelier.Register();
+
+            Recipe obsidianClock = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianClock, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianClock.AddIngredient(ItemID.ObsidianBrick, 10);
+            obsidianClock.AddIngredient(ItemID.Glass, 6);
+            obsidianClock.AddRecipeGroup(RecipeGroupID.IronBar, 3);
+            obsidianClock.AddTile(TileID.Sawmill);
+            obsidianClock.Register();
+
+            Recipe obsidianBathtub = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianBathtub, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianBathtub.AddIngredient(ItemID.ObsidianBrick, 14);
+            obsidianBathtub.AddTile(TileID.Sawmill);
+            obsidianBathtub.Register();
+
+            Recipe obsidianBed = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianBed, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianBed.AddIngredient(ItemID.ObsidianBrick, 15);
+            obsidianBed.AddIngredient(ItemID.Silk, 5);
+            obsidianBed.AddTile(TileID.Sawmill);
+            obsidianBed.Register();
+
+            Recipe obsidianDresser = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianDresser, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianDresser.AddIngredient(ItemID.ObsidianBrick, 16);
+            obsidianDresser.AddTile(TileID.Sawmill);
+            obsidianDresser.Register();
+
+            Recipe obsidianBookcase = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianBookcase, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianBookcase.AddIngredient(ItemID.ObsidianBrick, 20);
+            obsidianBookcase.AddIngredient(ItemID.Book, 10);
+            obsidianBookcase.AddTile(TileID.Sawmill);
+            obsidianBookcase.Register();
+
+            Recipe obsidianPiano = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianPiano, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianPiano.AddIngredient(ItemID.ObsidianBrick, 15);
+            obsidianPiano.AddIngredient(ItemID.Bone, 4);
+            obsidianPiano.AddIngredient(ItemID.Book);
+            obsidianPiano.AddTile(TileID.Sawmill);
+            obsidianPiano.Register();
+
+            Recipe obsidianSofa = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianSofa, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianSofa.AddIngredient(ItemID.ObsidianBrick, 5);
+            obsidianSofa.AddIngredient(ItemID.Silk, 2);
+            obsidianSofa.AddTile(TileID.Sawmill);
+            obsidianSofa.Register();
+
+            Recipe obsidianDoor = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianDoor, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianDoor.AddIngredient(ItemID.ObsidianBrick, 6);
+            obsidianDoor.AddTile(TileID.WorkBenches);
+            obsidianDoor.Register();
+
+            Recipe obsidianCandle = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianCandle, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianCandle.AddIngredient(ItemID.ObsidianBrick, 4);
+            obsidianCandle.AddIngredient(ItemID.Torch);
+            obsidianCandle.AddTile(TileID.WorkBenches);
+            obsidianCandle.Register();
+
+            Recipe obsidianChair = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianChair, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianChair.AddIngredient(ItemID.ObsidianBrick, 4);
+            obsidianChair.AddTile(TileID.WorkBenches);
+            obsidianChair.Register();
+
+            Recipe obsidianLamp = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianLamp, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianLamp.AddIngredient(ItemID.ObsidianBrick, 3);
+            obsidianLamp.AddIngredient(ItemID.Torch);
+            obsidianLamp.AddTile(TileID.WorkBenches);
+            obsidianLamp.Register();
+
+            Recipe obsidianLantern = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianLantern, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianLantern.AddIngredient(ItemID.ObsidianBrick, 6);
+            obsidianLantern.AddIngredient(ItemID.Torch);
+            obsidianLantern.AddTile(TileID.WorkBenches);
+            obsidianLantern.Register();
+
+            Recipe obsidianTable = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianTable, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianTable.AddIngredient(ItemID.ObsidianBrick, 8);
+            obsidianTable.AddTile(TileID.WorkBenches);
+            obsidianTable.Register();
+
+            Recipe obsidianCandelabra = Common.GetItemRecipe(() => QoLCompendium.mainConfig.FurnitureRecipes, ItemID.ObsidianCandelabra, 1, "Mods.QoLCompendium.ItemToggledConditions.FurnitureRecipes");
+            obsidianCandelabra.AddIngredient(ItemID.ObsidianBrick, 5);
+            obsidianCandelabra.AddIngredient(ItemID.Torch, 3);
+            obsidianCandelabra.AddTile(TileID.WorkBenches);
+            obsidianCandelabra.Register();
+            #endregion
+            */
         }
     }
 }

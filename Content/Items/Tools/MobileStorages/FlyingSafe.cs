@@ -1,13 +1,13 @@
 ﻿using QoLCompendium.Content.Projectiles.MobileStorages;
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.MobileStorages
 {
-    public class FlyingSafe : ModItem
+    public class FlyingSafe : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.MobileStorages;
+
+        public new string LocalizationCategory => "Items.Tools.MobileStorages";
 
         public override void SetStaticDefaults()
         {

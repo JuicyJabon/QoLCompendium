@@ -39,31 +39,20 @@ namespace QoLCompendium.Core
 
             if (KeybindSystem.Dash.JustPressed)
             {
-                Player.dashTime = 30;
                 if (Player.GetModPlayer<DashPlayer>().LeftLastPressed || (Player.direction == -1 && Player.velocity.X == 0))
                 {
-                    Player.controlLeft = true;
-                    Player.releaseLeft = true;
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 60; i++)
                     {
-                        if (i >= 9)
-                        {
-                            Player.controlLeft = true;
-                            Player.releaseLeft = true;
-                        }
+                        if (i < 2 || i > 58)
+                            Player.controlLeft = Player.releaseLeft = true;
                     }
                 }
                 if (Player.GetModPlayer<DashPlayer>().RightLastPressed || (Player.direction == 1 && Player.velocity.X == 0))
                 {
-                    Player.controlRight = true;
-                    Player.releaseRight = true;
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 60; i++)
                     {
-                        if (i >= 9)
-                        {
-                            Player.controlRight = true;
-                            Player.releaseRight = true;
-                        }
+                        if (i < 2 || i > 58)
+                            Player.controlRight = Player.releaseRight = true;
                     }
                 }
             }
@@ -80,7 +69,7 @@ namespace QoLCompendium.Core
                 if (target.HasTile)
                 {
                     Common.UpdateWhitelist(target.TileType, Common.GetFullNameById(target.TileType, style), style);
-                    Main.NewText(Language.GetTextValue("Mods.QoLCompendium.TileStuff.Whitelisted") + " " + new TileDefinition(target.TileType).Name);
+                    Main.NewText(Language.GetTextValue("Mods.QoLCompendium.Messages.Whitelisted") + " " + new TileDefinition(target.TileType).Name);
                 }
             }
 
@@ -93,30 +82,19 @@ namespace QoLCompendium.Core
                 if (target.HasTile)
                 {
                     Common.UpdateWhitelist(target.TileType, Common.GetFullNameById(target.TileType, style), style, remove: true);
-                    Main.NewText(Language.GetTextValue("Mods.QoLCompendium.TileStuff.Removed") + " " + new TileDefinition(target.TileType).Name);
+                    Main.NewText(Language.GetTextValue("Mods.QoLCompendium.Messages.Removed") + " " + new TileDefinition(target.TileType).Name);
                 }
             }
 
             if (KeybindSystem.PermanentBuffUIToggle.JustPressed)
             {
-                PermanentBuffSelectorUI.timeStart = Main.GameUpdateCount;
-                PermanentBuffSelectorUI.visible = !PermanentBuffSelectorUI.visible;
+                PermanentBuffTogglerUI.timeStart = Main.GameUpdateCount;
+                PermanentBuffTogglerUI.visible = !PermanentBuffTogglerUI.visible;
 
-                if (PermanentBuffSelectorUI.visible)
+                if (PermanentBuffTogglerUI.visible)
                     SoundEngine.PlaySound(SoundID.MenuOpen, Main.LocalPlayer.position, null);
                 else
                     SoundEngine.PlaySound(SoundID.MenuClose, Main.LocalPlayer.position, null);
-
-                if (!PermanentBuffSelectorUI.visible)
-                {
-                    PermanentBuffUI.visible = false;
-                    PermanentCalamityBuffUI.visible = false;
-                    PermanentHomewardJourneyBuffUI.visible = false;
-                    PermanentMartinsOrderBuffUI.visible = false;
-                    PermanentSOTSBuffUI.visible = false;
-                    PermanentSpiritClassicBuffUI.visible = false;
-                    PermanentThoriumBuffUI.visible = false;
-                } 
             }
         }
 

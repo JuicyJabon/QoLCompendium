@@ -9,7 +9,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
         public override void ModifyActiveShop(NPC npc, string shopName, Item[] items)
         {
             Player player = Main.LocalPlayer;
-            if (npc.type == ModContent.NPCType<BMDealerNPC>() && player.active && player == Main.player[Main.myPlayer])
+            if (npc.type == ModContent.NPCType<BMDealerNPC>() && player.active && player == Main.LocalPlayer)
             {
                 if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Potions")
                 {
@@ -71,39 +71,15 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                     foreach (Item item in items)
                     {
                         if (item == null || item.type == ItemID.None) continue;
-                        if (NPC.downedBoss1 && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
-                        if (NPC.downedBoss2 && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
-                        if (NPC.downedBoss3 && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
-                        if (Main.hardMode && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 50000;
-                        }
-                        if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
-                        if (NPC.downedPlantBoss && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
-                        if (NPC.downedGolemBoss && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
-                        if (NPC.downedMoonlord && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
+
                         item.shopCustomPrice *= QoLCompendium.shopConfig.BagPriceMultiplier;
+
+                        if (!QoLCompendium.shopConfig.BossScaling) continue;
+
+                        int countBossesDefeated = Common.GetBoolCount(Common.DownedVanillaBosses) + Common.GetBoolCount(ModConditions.DownedBoss);
+
+                        for (int i = 0; i < countBossesDefeated; i++)
+                            item.shopCustomPrice += (int)Common.GoldValue * 10;
                     }
                 }
                 if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Crates & Grab Bags")
@@ -172,7 +148,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                 }
             }
 
-            if (npc.type == ModContent.NPCType<EtherealCollectorNPC>() && player.active && player == Main.player[Main.myPlayer])
+            if (npc.type == ModContent.NPCType<EtherealCollectorNPC>() && player.active && player == Main.LocalPlayer)
             {
                 if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Potions")
                 {
@@ -210,39 +186,15 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                     foreach (Item item in items)
                     {
                         if (item == null || item.type == ItemID.None) continue;
-                        if (NPC.downedBoss1 && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
-                        if (NPC.downedBoss2 && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
-                        if (NPC.downedBoss3 && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
-                        if (Main.hardMode && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 50000;
-                        }
-                        if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
-                        if (NPC.downedPlantBoss && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
-                        if (NPC.downedGolemBoss && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
-                        if (NPC.downedMoonlord && QoLCompendium.shopConfig.BossScaling)
-                        {
-                            item.shopCustomPrice += 25000;
-                        }
+
                         item.shopCustomPrice *= QoLCompendium.shopConfig.BagPriceMultiplier;
+
+                        if (!QoLCompendium.shopConfig.BossScaling) continue;
+
+                        int countBossesDefeated = Common.GetBoolCount(Common.DownedVanillaBosses) + Common.GetBoolCount(ModConditions.DownedBoss);
+
+                        for (int i = 0; i < countBossesDefeated; i++)
+                            item.shopCustomPrice += (int)Common.GoldValue * 10;
                     }
                 }
                 if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Crates & Grab Bags")
@@ -295,7 +247,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                 }
             }
 
-            if ((npc.type == ModContent.NPCType<BMDealerNPC>() || npc.type == ModContent.NPCType<EtherealCollectorNPC>()) && player.active && player == Main.player[Main.myPlayer])
+            if ((npc.type == ModContent.NPCType<BMDealerNPC>() || npc.type == ModContent.NPCType<EtherealCollectorNPC>()) && player.active && player == Main.LocalPlayer)
             {
                 foreach (Item item in items)
                 {

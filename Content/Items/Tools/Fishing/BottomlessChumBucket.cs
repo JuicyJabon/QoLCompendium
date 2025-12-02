@@ -1,11 +1,12 @@
-﻿using QoLCompendium.Core.Changes.TooltipChanges;
-using Terraria.Enums;
+﻿using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Fishing
 {
-    public class BottomlessChumBucket : ModItem
+    public class BottomlessChumBucket : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.BottomlessBuckets;
+
+        public new string LocalizationCategory => "Items.Tools.Fishing";
 
         public override void SetStaticDefaults()
         {

@@ -1,14 +1,14 @@
 ﻿using QoLCompendium.Content.Projectiles.Fishing;
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.DataStructures;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Fishing
 {
-    public class LegendaryCatcher : ModItem
+    public class LegendaryCatcher : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.LegendaryCatcher;
+
+        public new string LocalizationCategory => "Items.Tools.Fishing";
 
         public override void SetStaticDefaults()
         {

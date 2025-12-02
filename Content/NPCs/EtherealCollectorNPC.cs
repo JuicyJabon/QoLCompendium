@@ -216,15 +216,8 @@ namespace QoLCompendium.Content.NPCs
             }
             else
             {
-                if (Main.LocalPlayer.HasItem(ItemID.SilverShortsword) && QoLCompendium.itemConfig.DedicatedItems)
-                {
-                    Item.NewItem(null, Main.LocalPlayer.getRect(), ModContent.ItemType<Burger>(), 100);
-                }
-                else
-                {
-                    if (!EtherealCollectorNPCUI.visible) EtherealCollectorNPCUI.timeStart = Main.GameUpdateCount;
-                    EtherealCollectorNPCUI.visible = true;
-                }
+                if (!EtherealCollectorNPCUI.visible) EtherealCollectorNPCUI.timeStart = Main.GameUpdateCount;
+                EtherealCollectorNPCUI.visible = true;
             }
         }
 
@@ -535,6 +528,8 @@ namespace QoLCompendium.Content.NPCs
             //Polarities
                 .AddModItemToShop(ModConditions.polaritiesMod, "PiercingPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(ModConditions.polaritiesMod, "TolerancePotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalizationPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalAntidote", Item.buyPrice(silver: 75), Condition.Hardmode)
             //Redemption
                 .AddModItemToShop(ModConditions.redemptionMod, "CharismaPotion", Item.buyPrice(silver: 75), ModConditions.DownedThorn, ModConditions.HasBeenToCavernsOrUnderground)
                 .AddModItemToShop(ModConditions.redemptionMod, "HydraCorrosionPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToWasteland)
@@ -1546,11 +1541,15 @@ namespace QoLCompendium.Content.NPCs
             //Polarities
                 .AddModItemToShop(ModConditions.polaritiesMod, "AlkalineFluid", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.polaritiesMod, "CongealedBrine", Item.buyPrice(silver: 25), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.polaritiesMod, "EclipxieDust", Item.buyPrice(silver: 25), ModConditions.DownedEclipxie)
                 .AddModItemToShop(ModConditions.polaritiesMod, "EvilDNA", Item.buyPrice(silver: 25), ModConditions.DownedEsophage)
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalResidue", Item.buyPrice(silver: 25), ModConditions.DownedRiftDenizen)
+                .AddModItemToShop(ModConditions.polaritiesMod, "HemorrhagicFluid", Item.buyPrice(silver: 25), ModConditions.DownedHemorrphage)
                 .AddModItemToShop(ModConditions.polaritiesMod, "LimestoneCarapace", Item.buyPrice(silver: 25), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.polaritiesMod, "Rattle", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.polaritiesMod, "SaltCrystals", Item.buyPrice(silver: 25))
                 .AddModItemToShop(ModConditions.polaritiesMod, "SerpentScale", Item.buyPrice(silver: 25), Condition.Hardmode)
+                .AddModItemToShop(ModConditions.polaritiesMod, "SmiteSoul", Item.buyPrice(silver: 25), ModConditions.DownedPolarities)
                 .AddModItemToShop(ModConditions.polaritiesMod, "StormChunk", Item.buyPrice(silver: 25), ModConditions.DownedStormCloudfish)
                 .AddModItemToShop(ModConditions.polaritiesMod, "Tentacle", Item.buyPrice(silver: 25), Condition.Hardmode)
                 .AddModItemToShop(ModConditions.polaritiesMod, "VenomGland", Item.buyPrice(silver: 25), Condition.Hardmode)
@@ -1855,19 +1854,19 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.vitalityMod, "BloodCandy", Item.buyPrice(silver: 25), ModConditions.DownedLunarPillarAny)
                 .AddModItemToShop(ModConditions.vitalityMod, "BloodSac", Item.buyPrice(silver: 25), ModConditions.DownedMosquitoMonarch)
                 .AddModItemToShop(ModConditions.vitalityMod, "BloodVial", Item.buyPrice(silver: 25), Condition.DownedEyeOfCthulhu, ModConditions.HasBeenToEvil)
-                .AddModItemToShop(ModConditions.vitalityMod, "BrokenScubaHelmet", Item.buyPrice(silver: 25), ModConditions.HasBeenThroughNight)
-                .AddModItemToShop(ModConditions.vitalityMod, "BrokenScubaLeggings", Item.buyPrice(silver: 25), ModConditions.HasBeenThroughNight)
-                .AddModItemToShop(ModConditions.vitalityMod, "BrokenScubaSuit", Item.buyPrice(silver: 25), ModConditions.HasBeenThroughNight)
                 .AddModItemToShop(ModConditions.vitalityMod, "BronzeShard", Item.buyPrice(silver: 25), ModConditions.HasBeenToCavernsOrUnderground)
                 .AddModItemToShop(ModConditions.vitalityMod, "ChaosCrystal", Item.buyPrice(silver: 25), Condition.Hardmode, ModConditions.HasBeenToHallow)
                 .AddModItemToShop(ModConditions.vitalityMod, "ChaosDust", Item.buyPrice(silver: 25), Condition.Hardmode, ModConditions.HasBeenToHallow)
                 .AddModItemToShop(ModConditions.vitalityMod, "Charcoal", Item.buyPrice(silver: 25))
+                .AddModItemToShop(ModConditions.vitalityMod, "CinderScale", Item.buyPrice(silver: 25), Condition.Hardmode, ModConditions.HasBeenToUnderworld)
                 .AddModItemToShop(ModConditions.vitalityMod, "CloudVapor", Item.buyPrice(silver: 25), ModConditions.DownedStormCloud)
                 .AddModItemToShop(ModConditions.vitalityMod, "DarkLeather", Item.buyPrice(silver: 25), ModConditions.HasBeenToEvil)
                 .AddModItemToShop(ModConditions.vitalityMod, "Ectosoul", Item.buyPrice(silver: 25), ModConditions.DownedPaladinSpirit, ModConditions.HasBeenToDungeon)
                 .AddModItemToShop(ModConditions.vitalityMod, "EquityCore", Item.buyPrice(silver: 25), ModConditions.DownedPaladinSpirit, ModConditions.HasBeenToDungeon)
                 .AddModItemToShop(ModConditions.vitalityMod, "EssenceofFire", Item.buyPrice(silver: 25), Condition.Hardmode, ModConditions.HasBeenToUnderworld)
                 .AddModItemToShop(ModConditions.vitalityMod, "EssenceofFrost", Item.buyPrice(silver: 25), Condition.Hardmode, ModConditions.HasBeenToSnow)
+                .AddModItemToShop(ModConditions.vitalityMod, "EssenceofNature", Item.buyPrice(silver: 25), Condition.Hardmode, ModConditions.HasBeenToJungle)
+                .AddModItemToShop(ModConditions.vitalityMod, "EssenceofWater", Item.buyPrice(silver: 25), Condition.Hardmode, ModConditions.HasBeenToOcean)
                 .AddModItemToShop(ModConditions.vitalityMod, "ForbiddenFeather", Item.buyPrice(silver: 25), Condition.Hardmode, ModConditions.HasBeenToDesert)
                 .AddModItemToShop(ModConditions.vitalityMod, "GlacialChunk", Item.buyPrice(silver: 25), ModConditions.HasBeenToSnow)
                 .AddModItemToShop(ModConditions.vitalityMod, "GlowingGranitePowder", Item.buyPrice(silver: 25), ModConditions.HasBeenToCavernsOrUnderground)
@@ -1881,6 +1880,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.vitalityMod, "Paper", Item.buyPrice(silver: 25), ModConditions.HasBeenToJungle)
                 .AddModItemToShop(ModConditions.vitalityMod, "PurifiedSpore", Item.buyPrice(silver: 25), ModConditions.HasBeenToJungle)
                 .AddModItemToShop(ModConditions.vitalityMod, "SanguineVial", Item.buyPrice(silver: 25), ModConditions.DownedBloodMoon)
+                .AddModItemToShop(ModConditions.vitalityMod, "ScubaFabric", Item.buyPrice(silver: 25), ModConditions.HasBeenToOcean)
                 .AddModItemToShop(ModConditions.vitalityMod, "ShiverFragment", Item.buyPrice(silver: 25), Condition.DownedEverscream, Condition.DownedSantaNK1, Condition.DownedIceQueen)
                 .AddModItemToShop(ModConditions.vitalityMod, "SoulofVitality", Item.buyPrice(silver: 25), Condition.DownedPlantera, ModConditions.HasBeenToDungeon)
                 .AddModItemToShop(ModConditions.vitalityMod, "TornPage", Item.buyPrice(silver: 25))
@@ -2014,6 +2014,20 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.edorbisMod, "GlaciationBag", Item.buyPrice(gold: 25), ModConditions.DownedGlaciation, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.edorbisMod, "HocBag", Item.buyPrice(gold: 25), ModConditions.DownedHandOfCthulhu, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.edorbisMod, "CursedLordBag", Item.buyPrice(gold: 25), ModConditions.DownedCursePreacher, ModConditions.expertOrMaster)
+            //Elements Awoken
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "WastelandBag", Item.buyPrice(gold: 25), ModConditions.DownedWasteland, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "InfernaceBag", Item.buyPrice(gold: 25), ModConditions.DownedInfernace, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "ScourgeFighterBag", Item.buyPrice(gold: 25), ModConditions.DownedScourgeFighter, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "RegarothBag", Item.buyPrice(gold: 25), ModConditions.DownedRegaroth, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "PermafrostBag", Item.buyPrice(gold: 25), ModConditions.DownedPermafrost, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "ObsidiousBag", Item.buyPrice(gold: 25), ModConditions.DownedObsidious, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "AqueousBag", Item.buyPrice(gold: 25), ModConditions.DownedAqueous, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "TempleKeepersBag", Item.buyPrice(gold: 25), ModConditions.DownedTheTempleKeepers, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "GuardianBag", Item.buyPrice(gold: 25), ModConditions.DownedTheGuardian, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "VolcanoxBag", Item.buyPrice(gold: 25), ModConditions.DownedVolcanox, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "VoidLeviathanBag", Item.buyPrice(gold: 25), ModConditions.DownedVoidLeviathan, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "AzanaBag", Item.buyPrice(gold: 25), ModConditions.DownedAzana, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.elementsAwokenMod, "AncientsBag", Item.buyPrice(gold: 25), ModConditions.DownedTheAncients, ModConditions.expertOrMaster)
             //Exalt
                 .AddModItemToShop(ModConditions.exaltMod, "EffulgenceBossBag", Item.buyPrice(gold: 25), ModConditions.DownedEffulgence, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.exaltMod, "IceLichBossBag", Item.buyPrice(gold: 25), ModConditions.DownedIceLich, ModConditions.expertOrMaster)
@@ -2126,9 +2140,14 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.polaritiesMod, "StormCloudfishBag", Item.buyPrice(gold: 25), ModConditions.DownedStormCloudfish, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.polaritiesMod, "StarConstructBag", Item.buyPrice(gold: 25), ModConditions.DownedStarConstruct, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.polaritiesMod, "GigabatBag", Item.buyPrice(gold: 25), ModConditions.DownedGigabat, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.polaritiesMod, "RiftDenizenBag", Item.buyPrice(gold: 25), ModConditions.DownedRiftDenizen, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.polaritiesMod, "SunPixieBag", Item.buyPrice(gold: 25), ModConditions.DownedSunPixie, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.polaritiesMod, "EsophageBag", Item.buyPrice(gold: 25), ModConditions.DownedEsophage, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.polaritiesMod, "ConvectiveWandererBag", Item.buyPrice(gold: 25), ModConditions.DownedConvectiveWanderer, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.polaritiesMod, "SelfsimilarSentinelBag", Item.buyPrice(gold: 25), ModConditions.DownedSelfsimilarSentinel, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.polaritiesMod, "EclipxieBag", Item.buyPrice(gold: 25), ModConditions.DownedEclipxie, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.polaritiesMod, "HemorrphageBag", Item.buyPrice(gold: 25), ModConditions.DownedHemorrphage, ModConditions.expertOrMaster)
+                .AddModItemToShop(ModConditions.polaritiesMod, "PolaritiesBag", Item.buyPrice(gold: 25), ModConditions.DownedPolarities, ModConditions.expertOrMaster)
             //Project Zero
                 .AddModItemToShop(ModConditions.projectZeroMod, "ForestGuardianBag", Item.buyPrice(gold: 25), ModConditions.DownedForestGuardian, ModConditions.expertOrMaster)
                 .AddModItemToShop(ModConditions.projectZeroMod, "CryoGuardianBag", Item.buyPrice(gold: 25), ModConditions.DownedCryoGuardian, ModConditions.expertOrMaster)
@@ -2323,6 +2342,9 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.martainsOrderMod, "MoltenBag", Item.buyPrice(gold: 5))
             //Polarities
                 .AddModItemToShop(ModConditions.polaritiesMod, "SaltCrate", Item.buyPrice(gold: 5), ModConditions.HasBeenToCavernsOrUnderground)
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalCrate", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.DownedRiftDenizen)
+                .AddModItemToShop(ModConditions.polaritiesMod, "SelfsimilarCrate", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.DownedSelfsimilarSentinel)
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalLockbox", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.DownedSelfsimilarSentinel)
             //Redemption
                 .AddModItemToShop(ModConditions.redemptionMod, "PetrifiedCrate", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.HasBeenToWasteland)
                 .AddModItemToShop(ModConditions.redemptionMod, "LabCrate", Item.buyPrice(gold: 5), Condition.DownedMechBossAll, ModConditions.HasBeenToLab)
@@ -2355,6 +2377,11 @@ namespace QoLCompendium.Content.NPCs
             //Verdant
                 .AddModItemToShop(ModConditions.verdantMod, "LushWoodCrateItem", Item.buyPrice(gold: 5), ModConditions.HasBeenToVerdant)
                 .AddModItemToShop(ModConditions.verdantMod, "MysteriaCrateItem", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.HasBeenToVerdant)
+            //Vitality
+                .AddModItemToShop(ModConditions.vitalityMod, "BeeCrate", Item.buyPrice(gold: 5), ModConditions.HasBeenToJungle)
+                .AddModItemToShop(ModConditions.vitalityMod, "WaspCrate", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.HasBeenToJungle)
+                .AddModItemToShop(ModConditions.vitalityMod, "ShimmerCrate", Item.buyPrice(gold: 5), ModConditions.HasBeenToAether)
+                .AddModItemToShop(ModConditions.vitalityMod, "AetherCrate", Item.buyPrice(gold: 5), Condition.Hardmode, ModConditions.HasBeenToAether)
             //Zylon
                 .AddModItemToShop(ModConditions.zylonMod, "BagofFruits", Item.buyPrice(gold: 5), ModConditions.DownedDirtball);
             modCratesShop.Register();
@@ -2596,9 +2623,14 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.metroidMod, "ChoziteBar", Item.buyPrice(silver: 50), ModConditions.DownedTorizo)
                 .AddModItemToShop(ModConditions.metroidMod, "PhazonBar", Item.buyPrice(silver: 50), Condition.DownedPlantera)
             //Polarities
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalOre", Item.buyPrice(silver: 25), ModConditions.DownedRiftDenizen)
                 .AddModItemToShop(ModConditions.polaritiesMod, "MantellarOre", Item.buyPrice(silver: 25), Condition.DownedGolem, ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(ModConditions.polaritiesMod, "SelfsimilarOre", Item.buyPrice(silver: 25), ModConditions.DownedSelfsimilarSentinel)
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalBar", Item.buyPrice(silver: 50), ModConditions.DownedRiftDenizen)
                 .AddModItemToShop(ModConditions.polaritiesMod, "MantellarBar", Item.buyPrice(silver: 50), Condition.DownedGolem, ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(ModConditions.polaritiesMod, "SelfsimilarBar", Item.buyPrice(silver: 50), ModConditions.DownedSelfsimilarSentinel)
                 .AddModItemToShop(ModConditions.polaritiesMod, "SunplateBar", Item.buyPrice(silver: 50), ModConditions.DownedStarConstruct)
+                .AddModItemToShop(ModConditions.polaritiesMod, "PolarizedBar", Item.buyPrice(silver: 50), ModConditions.DownedPolarities)
             //Project Zero
                 .AddModItemToShop(ModConditions.projectZeroMod, "DarkOre", Item.buyPrice(silver: 50), Condition.DownedEowOrBoc)
                 .AddModItemToShop(ModConditions.projectZeroMod, "ElectroOre", Item.buyPrice(silver: 50), Condition.DownedMechBossAll)
@@ -2996,6 +3028,12 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.metroidMod, "RedBrinstone", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.metroidMod, "TanglevineTile", Item.buyPrice(copper: 10))
             //Polarities
+                .AddModItemToShop(ModConditions.polaritiesMod, "DendriticEnergy", Item.buyPrice(copper: 10), ModConditions.DownedRiftDenizen)
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalDust", Item.buyPrice(copper: 10), ModConditions.DownedRiftDenizen)
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalDuststone", Item.buyPrice(copper: 10), ModConditions.DownedRiftDenizen)
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalMatter", Item.buyPrice(copper: 10), ModConditions.DownedRiftDenizen)
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalStrands", Item.buyPrice(copper: 10), ModConditions.DownedRiftDenizen)
+                .AddModItemToShop(ModConditions.polaritiesMod, "Lightslate", Item.buyPrice(copper: 10), ModConditions.DownedRiftDenizen)
                 .AddModItemToShop(ModConditions.polaritiesMod, "Limestone", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.polaritiesMod, "RockSalt", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.polaritiesMod, "Salt", Item.buyPrice(copper: 10))
@@ -3503,6 +3541,9 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.metroidMod, "TourianPipeAccentNatural", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.metroidMod, "TourianPipeNatural", Item.buyPrice(copper: 10))
             //Polarities
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalBrick", Item.buyPrice(copper: 10), ModConditions.DownedRiftDenizen)
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalEnergyTrap", Item.buyPrice(copper: 10), ModConditions.DownedRiftDenizen)
+                .AddModItemToShop(ModConditions.polaritiesMod, "FractalLaserTrap", Item.buyPrice(copper: 10), ModConditions.DownedRiftDenizen)
                 .AddModItemToShop(ModConditions.polaritiesMod, "GlowingLimestoneBrick", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.polaritiesMod, "HaliteBrick", Item.buyPrice(copper: 10))
                 .AddModItemToShop(ModConditions.polaritiesMod, "LimestoneBrick", Item.buyPrice(copper: 10))
@@ -3915,6 +3956,19 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(ModConditions.thoriumMod, "HightechSonarDevice", Item.buyPrice(gold: 2))
                 .AddModItemToShop(ModConditions.thoriumMod, "FlamingCrackGut", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
                 .AddModItemToShop(ModConditions.thoriumMod, "MagmaGill", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
+            //Vitality
+                .AddModItemToShop(ModConditions.vitalityMod, "ShimmerFishingHook", Item.buyPrice(gold: 2), Condition.DownedEowOrBoc, ModConditions.HasBeenToAether)
+                .AddModItemToShop(ModConditions.vitalityMod, "CrystallineBass", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToAether)
+                .AddModItemToShop(ModConditions.vitalityMod, "EmberscaleGuppy", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(ModConditions.vitalityMod, "EtherealMinnow", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToAether)
+                .AddModItemToShop(ModConditions.vitalityMod, "Faefish", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToAether)
+                .AddModItemToShop(ModConditions.vitalityMod, "GlimmerEel", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToAether)
+                .AddModItemToShop(ModConditions.vitalityMod, "Hivetail", Item.buyPrice(silver: 10), ModConditions.HasBeenToJungle)
+                .AddModItemToShop(ModConditions.vitalityMod, "IgneousEel", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(ModConditions.vitalityMod, "MagmaDrifter", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(ModConditions.vitalityMod, "NectaRay", Item.buyPrice(silver: 10), ModConditions.HasBeenToJungle)
+                .AddModItemToShop(ModConditions.vitalityMod, "PancakeFish", Item.buyPrice(silver: 10), ModConditions.HasBeenToJungle)
+                .AddModItemToShop(ModConditions.vitalityMod, "Stonefish", Item.buyPrice(silver: 10), Condition.DownedEowOrBoc, ModConditions.HasBeenToAether)
             //Zylon
                 .AddModItemToShop(ModConditions.zylonMod, "PaintedGlassTetra", Item.buyPrice(silver: 10));
             modFishShop.Register();

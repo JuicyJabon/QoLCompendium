@@ -1,0 +1,98 @@
+BattalionLog: {
+	DisplayName: Battalion Log
+	Tooltip: Displays sentry slots
+}
+
+DeteriorationDisplay: {
+	DisplayName: Deterioration Display
+	Tooltip: Displays your debuff damage per second
+}
+
+Fitbit: {
+	DisplayName: Fitbit
+	Tooltip: Displays endurance, pickaxe speed, and wing time
+}
+
+HarmInducer: {
+	DisplayName: Harm Inducer
+	Tooltip: Displays the damage multiplier for your held weapon
+}
+
+HeadCounter: {
+	DisplayName: Head Counter
+	Tooltip: Displays spawn rate
+}
+
+HeartbeatSensor: {
+	DisplayName: Heartbeat Sensor
+	Tooltip: Displays minion slots, sentry slots, and spawn rate
+}
+
+IAH: {
+	DisplayName: IAH
+	Tooltip:
+		'''
+		Displays all modded information
+		'Information Accessory Hotline'
+		'''
+}
+
+Kettlebell: {
+	DisplayName: Kettlebell
+	Tooltip: Displays pickaxe speed
+}
+
+LuckyDie: {
+	DisplayName: Lucky Die
+	Tooltip: Displays crit chance
+}
+
+MetallicClover: {
+	DisplayName: Metallic Clover
+	Tooltip: Displays luck
+}
+
+PlateCracker: {
+	DisplayName: Plate Cracker
+	Tooltip: Displays armor penetration
+}
+
+Regenerator: {
+	DisplayName: Regenerator
+	Tooltip: Displays life regen
+}
+
+ReinforcedPanel: {
+	DisplayName: Reinforced Panel
+	Tooltip: Displays endurance
+}
+
+Replenisher: {
+	DisplayName: Replenisher
+	Tooltip: Displays mana regen
+}
+
+SkullWatch: {
+	DisplayName: Skull Watch
+	Tooltip: Displays death count
+}
+
+ToleranceDetector: {
+	DisplayName: Tolerance Detector
+	Tooltip: Displays armor penetration, crit chance, and the damage multiplier for your held weapon
+}
+
+TrackingDevice: {
+	DisplayName: Tracking Device
+	Tooltip: Displays minion slots
+}
+
+VitalDisplay: {
+	DisplayName: Vital Display
+	Tooltip: Displays luck, life regen, and mana regen
+}
+
+WingTimer: {
+	DisplayName: Wing Timer
+	Tooltip: Displays wing time
+}

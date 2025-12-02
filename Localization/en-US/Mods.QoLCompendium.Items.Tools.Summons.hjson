@@ -1,0 +1,119 @@
+ForgottenOneSummon: {
+	DisplayName: Marine Egg
+	Tooltip: Summons the Forgotten One
+}
+
+GiantClamSummon: {
+	DisplayName: Navy Clam Shell
+	Tooltip: Summons a Giant Clam
+}
+
+LeviathanAnahitaSummon: {
+	DisplayName: Enthralling Pearl
+	Tooltip: Summons Leviathan and Anahita
+}
+
+OldDukeSummon: {
+	DisplayName: Bloodworm Bowl
+	Tooltip: Summons the Old Duke
+}
+
+CultistSummon: {
+	DisplayName: Lunar Sigil
+	Tooltip: Summons the Lunatic Cultist
+}
+
+DukeFishronSummon: {
+	DisplayName: Truffle Bowl
+	Tooltip: Summons Duke Fishron
+}
+
+EmpressOfLightSummon: {
+	DisplayName: Hallowed Crystal
+	Tooltip: Summons the Empress of Light
+}
+
+PlanteraSummon: {
+	DisplayName: Lush Hibiscus
+	Tooltip: Summons Plantera
+}
+
+SkeletronSummon: {
+	DisplayName: Old Man Voodoo Doll
+	Tooltip: Summons Skeletron
+}
+
+WallOfFleshSummon: {
+	DisplayName: Flesh Pepper
+	Tooltip: Summons the Wall of Flesh
+}
+
+LifebringerSummon: {
+	DisplayName: Green Apple
+	Tooltip: Summons the Lifebringer
+}
+
+MaterealizerSummon: {
+	DisplayName: Tesseract
+	Tooltip: Summons the Materealizer
+}
+
+OverwatcherSummon: {
+	DisplayName: Overstopwatch
+	Tooltip: Summons the Overwatcher
+}
+
+ScarabBeliefSummon: {
+	DisplayName: Nothingness Butterfly
+	Tooltip: Summons Scarab Belief
+}
+
+WorldsEndWhaleSummon: {
+	DisplayName: Fallen Halo
+	Tooltip: Summons World's End Everlasting Falling Whale
+}
+
+CragmawMireSummon: {
+	DisplayName: Sulphuric Trap
+	Tooltip: Summons a Cragmaw Mire
+}
+
+EidolonWyrmSummon: {
+	DisplayName: Lumenyl Crystal
+	Tooltip: Summons an Eidolon Wyrm
+}
+
+GiantSquidSummon: {
+	DisplayName: Baby Squid
+	Tooltip: Summons a Giant Squid
+}
+
+MaulerSummon: {
+	DisplayName: Sulphuric Shark Fin
+	Tooltip: Summons a Mauler
+}
+
+NuclearTerrorSummon: {
+	DisplayName: Nuclear Flame
+	Tooltip: Summons a Nuclear Terror
+}
+
+PrimordialWyrmSummon: {
+	DisplayName: Primal Crystal
+	Tooltip: Summons the Primordial Wyrm
+}
+
+ReaperSharkSummon: {
+	DisplayName: Reaper Scale
+	Tooltip: Summons a Reaper Shark
+}
+
+SummoningRemote: {
+	DisplayName: Summoning Remote
+	Tooltip:
+		'''
+		Right click while holding to open the selector UI
+		Left click to summon the selected boss or event
+		Restrictions apply based on progression
+		'''
+}

@@ -1,0 +1,60 @@
+DisplayName: Tooltip Config
+
+ShimmerableTooltip: {
+	Tooltip: Adds a tooltip to indicate if an item is shimmerable
+	Label: "[i:5342] Shimmerable Tooltip"
+}
+
+NoFavoriteTooltip: {
+	Label: "[i:75] No Favorite Tooltip"
+	Tooltip: Removes the favorite tooltip
+}
+
+WorksInBanksTooltip: {
+	Tooltip:
+		'''
+		Adds a tooltip to indicate if an item works from banks
+		Requires "Information In Banks" to be turned on to work
+		'''
+	Label: "[i:87] Works In Banks Tooltip"
+}
+
+WingStatsTooltips: {
+	Label: "[i:493] Wing Stats Tooltips"
+	Tooltip: Adds 3 tooltips to display wing stats
+}
+
+HookStatsTooltips: {
+	Label: "[i:84] Hook Stats Tooltips"
+	Tooltip: Adds 2 tooltips to display hook stats
+}
+
+UsedPermanentUpgradeTooltip: {
+	Tooltip: Adds a tooltip to display if a permanent upgrade has been used
+	Label: "[i:5337] Used Permanent Upgrade Tooltip"
+}
+
+AmmoTooltip: {
+	Tooltip: Adds a tooltip to display what ammo an item uses
+	Label: "[i:3104] Use Ammo Tooltip"
+}
+
+ActiveTooltip: {
+	Tooltip: Adds a tooltip to display if an item is providing it's effects
+	Label: "[i:292] Item Active Tooltip"
+}
+
+NoYoyoTooltip: {
+	Tooltip: Removes the logo tooltip from certain yoyos
+	Label: "[i:3285] No Yoyo Tooltip"
+}
+
+FromModTooltip: {
+	Tooltip: Adds a tooltip below item names showing what mod they are from
+	Label: "[i:3084] From Mod Tooltip"
+}
+
+ClassTagTooltip: {
+	Tooltip: Adds a tooltip below item names showing what class they are from
+	Label: "[i:3121] Class Tag Tooltip"
+}

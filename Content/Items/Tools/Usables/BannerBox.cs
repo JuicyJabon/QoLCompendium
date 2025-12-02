@@ -1,12 +1,12 @@
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
-    public class BannerBox : ModItem
+    public class BannerBox : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.BannerBox;
+
+        public new string LocalizationCategory => "Items.Tools.Usables";
 
         public override void SetStaticDefaults()
         {

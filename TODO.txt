@@ -1,0 +1,32 @@
+1. Finish Endless Ammo Items
+COMPLETED AMMOS:
+Calamity
+Calamity Entropy
+Clamity
+
+2. Loot Multiplier (Maybe)
+3. Shimmer Locator Item
+4. Temple Locator Item
+5. SOTS Worldgen tester thingy but for other structures
+6. Expert+ debuffs arent increased in time
+7. Infinite Pylon placement
+8. Always sell Pylons
+9. Shop condition removal (biome, happiness, etc.)
+10. Bombable hardmode ores (DONE)
+11. Boom shuriken type item
+12. Glowing player
+13. Shell phone upgrade
+14. Omni painting tool
+15. Auto-whitelist ores for veinminer
+16. Instant respawn to a slider
+17. Faster sleeping
+18. Bed requirements removal
+19. Config Presets
+20. Statue enemies drop items
+21. Prevent voodoo demons accidentally spawning WoF
+22. LuiAFK Combo Rod
+23. Accessory slot whitelist
+24. Eternia crystal wave speed increase with right click
+25. Time multipliers for beds/sundials
+26. Smart cursor herbs (TESTING)
+27. More permanent buff items

@@ -1,13 +1,13 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using Terraria.Enums;
+﻿using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Dedicated
 {
-    public class THEButton : ModItem
+    public class THEButton : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.DedicatedItems;
+
+        public new string LocalizationCategory => "Items.Dedicated";
 
         public static bool used;
 

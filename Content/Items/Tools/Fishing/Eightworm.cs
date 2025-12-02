@@ -1,12 +1,12 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using Terraria.Enums;
+﻿using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Fishing
 {
-    public class Eightworm : ModItem
+    public class Eightworm : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.Eightworm;
+
+        public new string LocalizationCategory => "Items.Tools.Fishing";
 
         public override void SetStaticDefaults()
         {

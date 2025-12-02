@@ -1,0 +1,694 @@
+DisplayName: Main Config
+
+EndlessBuffs: {
+	Label: "[i:292] Endless Buffs"
+	Tooltip:
+		'''
+		Toggles endless buffs
+		Works for potions and buff stations
+		You can change the required stack count with the "Endless Amount" configs
+		'''
+}
+
+EndlessHealing: {
+	Label: "[i:188] Endless Healing And Mana Potions"
+	Tooltip:
+		'''
+		Toggles endless healing and mana potions
+		You can change the required stack count with the "Endless Amount" configs
+		'''
+}
+
+EndlessAmmo: {
+	Label: "[i:2177] Endless Ammo"
+	Tooltip:
+		'''
+		Toggles endless ammo
+		Works for all ammo types
+		You can change the required stack count with the "Endless Amount" configs
+		'''
+}
+
+EndlessBait: {
+	Label: "[i:2676] Endless Fishing Bait"
+	Tooltip:
+		'''
+		Toggles endless fishing bait
+		You can change the required stack count with the "Endless Amount" configs
+		'''
+}
+
+EndlessBossSummons: {
+	Label: "[i:43] Endless Boss Summons"
+	Tooltip:
+		'''
+		Toggles endless boss summon items
+		Makes boss summon items non-consumable
+		Sets boss summon items' max stack to 1
+		'''
+}
+
+EndlessConsumables: {
+	Label: "[i:3] Endless Consumables"
+	Tooltip:
+		'''
+		Toggles endless consumables
+		Includes tiles, walls, and other miscellaneous items
+		You can change the required stack count with the "Endless Amount" configs
+		'''
+}
+
+EndlessWeapons: {
+	Label: "[i:42] Endless Consumable Weapons"
+	Tooltip:
+		'''
+		Toggles endless consumable weapons
+		You can change the required stack count with the "Endless Amount" configs
+		'''
+}
+
+EndlessBuffAmount: {
+	Label: "[i:3119] Stack Requirement for Endless Potion Buffs"
+	Tooltip: Change the amount of items needed for endless potion buffs
+}
+
+EndlessStationAmount: {
+	Label: "[i:3119] Stack Requirement for Endless Buff Stations"
+	Tooltip: Change the amount of items needed for endless buff stations
+}
+
+EndlessHealingAmount: {
+	Label: "[i:3119] Stack Requirement for Endless Healing and Mana Potions"
+	Tooltip: Change the amount of items needed for endless healing and mana potions
+}
+
+EndlessItemAmount: {
+	Label: "[i:3119] Stack Requirement for Endless Consumables"
+	Tooltip: Change the amount of items needed for endless consumables
+}
+
+EndlessWeaponAmount: {
+	Label: "[i:3119] Stack Requirement for Endless Consumable Weapons"
+	Tooltip: Change the amount of items needed for endless consumable weapons
+}
+
+EndlessAmmoAmount: {
+	Tooltip: Change the amount of items needed for endless ammo
+	Label: "[i:3119] Stack Requirement for Endless Ammo"
+}
+
+EndlessBaitAmount: {
+	Tooltip: Change the amount of items needed for endless fishing bait
+	Label: "[i:3119] Stack Requirement for Endless Fishing Bait"
+}
+
+ActiveBuffsHaveEnchantedEffects: {
+	Label: "[i:487] Active Buff Items Have Enchanted Effects"
+	Tooltip: Toggles if active buff items have an enchanted effect, like Minecraft
+}
+
+IncreaseMaxStack: {
+	Label: "[i:2] Item Max Stack"
+	Tooltip:
+		'''
+		Change the max stack of stackable items
+		Maximum stack is 99999
+		'''
+}
+
+UtilityAccessoriesWorkInBanks: {
+	Label: "[i:3084] Utility Accessories Work In Personal Storages"
+	Tooltip:
+		'''
+		Toggles if utility accessories work in personal storages
+		Works with:
+		 - Informational accessories
+		 - Wiring accessories & the Grand Design
+		 - Construction accessories
+		 - Fishing accessories
+		 - Certain miscellaneous accessories
+		 - Many modded accessories that fit into these categories
+		'''
+}
+
+FountainsWorkFromInventories: {
+	Label: "[i:909] Fountains Work From Inventories"
+	Tooltip: Toggles if having fountains in your inventory/personal storages activates their biomes
+}
+
+StackableQuestItems: {
+	Label: "[i:2452] Stackable Quest Items"
+	Tooltip: Toggles if quest items can be stacked
+}
+
+NonConsumableKeys: {
+	Label: "[i:329] Non Consumable Keys"
+	Tooltip: Toggles if Shadow Keys/Golden Lockpicks are consumed when used as crafting ingredients
+}
+
+BossItemTransmutation: {
+	Label: "[i:5349] Boss Drop Shimmer Transmutation"
+	Tooltip: Toggles if boss drops can be cycled with shimmer
+}
+
+ItemConversions: {
+	Label: "[i:86] Item Conversion Recipes and Transmutations"
+	Tooltip:
+		'''
+		Toggles if recipes are added for easy item conversion
+		Some item shimmer conversions are also available with this config
+		'''
+}
+
+EasierRecipes: {
+	Label: "[i:1683] Easier Recipes"
+	Tooltip:
+		'''
+		Toggles if recipes are added for easier item obtainability
+		Adds recipes for:
+		 - Boss Drops: Using Boss Bags
+		 - Enemy Drops: Using Banners
+		 - Chest Loot: Using Crates/Keys
+		 - Crate Loot: Using Crates
+		'''
+}
+
+EmblemLooping: {
+	Label: "[i:490] Class Emblem Looping"
+	Tooltip:
+		'''
+		Toggles if recipes are created for looping through class emblems
+		Can take a while to get the one you want if a lot of mods are enabled
+		'''
+}
+
+PortableStations: {
+	Label: "[i:36] Portable Crafting Stations"
+	Tooltip: Toggles if crafting stations work from the inventory or banks
+}
+
+NoDeveloperSetsFromBossBags: {
+	Label: "[i:3287] No Developer Sets From Boss Treasure Bags"
+	Tooltip: Toggles if boss treasure bags can drop developer sets
+}
+
+EnemiesDropMoreCoins: {
+	Label: "[i:855] Enemies Drop More Coins"
+	Tooltip: Multiplies the amount of dropped coins from enemies
+}
+
+EncumberingStoneAllowsCoins: {
+	Label: "[i:4346] Encumbering Stone Allows Coins"
+	Tooltip: Toggles if the Encumbering Stone allows coin pickups when activated
+}
+
+AutoMoneyQuickStack: {
+	Label: "[i:87] Automatic Coin Quick Stacking"
+	Tooltip:
+		'''
+		Toggles if coins are automatically placed into the piggy bank
+		Merchant can still move in, even when no money is inside your inventory
+		'''
+}
+
+GoldenCarpDelight: {
+	Label: "[i:2308] Golden Carp Can Craft Golden Delight"
+	Tooltip: Toggles if Golden Carp can be used to craft Golden Delight
+}
+
+EasierUniversalPylon: {
+	Label: "[i:4951] Craftable Universal Pylon"
+	Tooltip: Toggles if the Universal Pylon can be crafted
+}
+
+FurnitureRecipes: {
+	Label: "[i:1461] Missing Furniture Recipes"
+	Tooltip:
+		'''
+		Toggles if recipes are added for the following furniture sets:
+		- Obsidian
+		- Blue Dungeon
+		- Green Dungeon
+		- Pink Dungeon
+		- Golden
+		'''
+}
+
+AutoReuseUpgrades: {
+	Label: "[i:29] Auto-Reuse Permanent Upgrades"
+	Tooltip: Toggles if autofire works with multi-use permanent upgrades, such as Life Crystals
+}
+
+GoodPrefixesHaveEnchantedEffects: {
+	Label: "[i:273] Good Prefixes Have Enchanted Effects"
+	Tooltip: Toggles if items with good prefixes have an enchanted effect, like Minecraft
+}
+
+ReworkReforging: {
+	Label: "[i:1291] Rework Reforging"
+	Tooltip: Toggles if reforging is reworked to function like Calamity's version
+}
+
+FullyDisableRecipes: {
+	Label: "[i:3507] Fully Disable Recipes"
+	Tooltip:
+		'''
+		Toggles if mod recipes are loaded
+		Affects:
+		 - Boss Bag recipes
+		 - Crate recipes
+		 - Banner recipes
+		 - Grab Bag recipes
+		 - Parity recipes
+		 - Conversion recipes
+		'''
+}
+
+BlackMarketDealerCanSpawn: {
+	Label: "[i:4413] Black Market Dealer Can Move In"
+	Tooltip: Toggles if the Black Market Dealer can move in
+}
+
+EtherealCollectorCanSpawn: {
+	Label: "[i:4412] Ethereal Collector Can Move In"
+	Tooltip: Toggles if the Ethereal Collector can move in
+}
+
+RemoveBiomeShopRequirements: {
+	Label: "[i:4766] Biome Visiting Requirements For Shops"
+	Tooltip:
+		'''
+		Toggles if some shop items require visiting a specific biome to unlock
+		This is permanent when turned on for a world
+		'''
+}
+
+TownNPCsDontDie: {
+	Label: "[i:1175] Town NPCs Don't Take Damage"
+	Tooltip:
+		'''
+		Toggles whether town NPCs can take damage
+		They can still die to lava and player attacks
+		'''
+}
+
+FastTownNPCSpawns: {
+	Label: "[i:17] Fast Town NPC Spawns"
+	Tooltip: Change the spawn rate of Town NPCs
+}
+
+TownNPCSpawnImprovements: {
+	Label: "[i:985] NPCs Can Move in Without Being Saved"
+	Tooltip:
+		'''
+		Allows town NPCs to move in without being saved
+		Affects:
+		- Angler
+		- Golfer
+		- Stylist
+		- Goblin Tinkerer
+		- Tavernkeep
+		- Mechanic
+		- Wizard
+		- Tax Collector
+		'''
+}
+
+NoTownSlimes: {
+	Label: "[i:23] Remove Town Slimes"
+	Tooltip: Prevents town slimes from moving in
+}
+
+TownNPCsLiveInEvil: {
+	Label: "[i:61] Town NPCs Can Live In Evil Biomes"
+	Tooltip: Toggles if town NPCs can live in the corruption or crimson biomes
+}
+
+DisableHappiness: {
+	Label: "[i:58] Disable Town NPC Happiness"
+	Tooltip: Toggles the NPC happiness mechanic
+}
+
+OverridePylonSales: {
+	Label: "[i:4876] Override Pylon Sales"
+	Tooltip: Toggles if NPCs will always sell pylons
+}
+
+HappinessPriceChange: {
+	Label: "[i:74] Happiness Price Change"
+	Tooltip:
+		'''
+		Change the price multiplier for town NPCs
+		Lower number is happier
+		Only Active if happiness is disabled
+		'''
+}
+
+ReforgePriceChange: {
+	Label: "[i:73] Change Reforge Price"
+	Tooltip: Changes the price multiplier when reforging items
+}
+
+AnglerQuestInstantReset: {
+	Label: "[i:2374] Angler Quests Reset Instantly"
+	Tooltip: Toggles if the Angler's quests will instantly reset upon completion
+}
+
+LunarPillarShieldHeath: {
+	Label: "[i:3539] Lunar Pillar Shield Health"
+	Tooltip: Changes the shield health of the Lunar Pillars
+}
+
+LunarPillarsDropMoreFragments: {
+	Label: "[i:3458] More Lunar Fragments"
+	Tooltip: Toggles if the Lunar Pillars drop way more fragments
+}
+
+LunarEnemiesDropFragments: {
+	Label: "[i:3456] Lunar Enemies Drop Fragments"
+	Tooltip: Toggles if Lunar enemies can drop fragments
+}
+
+OneKillForBestiaryEntries: {
+	Label: "[i:583] One Kill For Bestiary Entries"
+	Tooltip: Toggles if one kill unlocks the entire bestiary entry for that enemy
+}
+
+LavaSlimesDontDropLava: {
+	Label: "[i:207] Lava Slimes Dont Drop Lava"
+	Tooltip: Toggles if Lava Slimes drop lava in Expert+
+}
+
+ExtraDefenderMedalDrops: {
+	Tooltip: Toggles if Old One's Army minibosses drop defender medals
+	Label: "[i:3817] Extra Defender Medal Drops"
+}
+
+RelicsInExpert: {
+	Tooltip:
+		'''
+		Toggles if Master Mode items can drop in Expert Mode
+		Affects all Master Mode exclusive items
+		'''
+	Label: "[i:4924] Master Mode Items Drop In Expert Mode"
+}
+
+NoSpawnsDuringBosses: {
+	Label: "[i:2324] No Enemy Spawns During Boss Fights"
+	Tooltip: Toggles if enemies can spawn during boss fights
+}
+
+NoNaturalBossSpawns: {
+	Label: "[i:560] No Natural Boss Spawns"
+	Tooltip:
+		'''
+		Toggles if bosses can spawn naturally
+		Disables natural spawns for:
+		 - Eye of Cthulhu
+		 - The Twins
+		 - The Destroyer
+		 - Skeletron Prime
+		'''
+}
+
+ExtraLures: {
+	Label: "[i:5139] Extra Fishing Lines"
+	Tooltip: Change the amount of bobbers fishing rods cast
+}
+
+MobileStoragesFollowThePlayer: {
+	Label: "[i:3213] Mobile Storages Follow You"
+	Tooltip: Toggles if mobile storages will follow you
+}
+
+NoFallingSandDamage: {
+	Label: "[i:169] No Falling Block Damage"
+	Tooltip: Toggles if falling blocks can hurt the player
+}
+
+NoLittering: {
+	Label: "[i:169] No Block Litter"
+	Tooltip: Toggles if sand, snow, and tombstone projectiles can place their tile
+}
+
+NoLarvaBreak: {
+	Label: "[i:1133] Queen Bee's Larva Can Only Be Mined"
+	Tooltip: Toggles if Queen Bee's larva is only breakable by being mined directly
+}
+
+PurificationPowderCleansesWalls: {
+	Label: "[i:66] Purification Powder Cleanses Walls"
+	Tooltip:
+		'''
+		Toggles if Purification Powder works on walls
+		Only vanilla walls can be purified
+		'''
+}
+
+IncreasePlaceSpeed: {
+	Label: "[i:2214] Increase Tile Placement Speed"
+	Tooltip: Increases tile placement speed
+}
+
+IncreasePlaceRange: {
+	Label: "[i:2215] Increase Tile Placement Range"
+	Tooltip: Increases tile placement range
+}
+
+IncreaseToolSpeed: {
+	Label: "[i:1] Increase Tool Use Speed"
+	Tooltip: Increases tool use speed
+}
+
+FasterExtractinator: {
+	Label: "[i:997] Faster Extractinator"
+	Tooltip: Toggles faster extractinating
+}
+
+ExtraBuffSlots: {
+	Label: "[i:296] Extra Buff Slots"
+	Tooltip: Changes the amount of buff slots that are available
+}
+
+KeepBuffsOnDeath: {
+	Tooltip: Toggles if buffs are persistent through death
+	Label: "[i:4870] Keep Buffs On Death"
+}
+
+KeepDebuffsOnDeath: {
+	Tooltip: Toggles if debuffs are persistent through death
+	Label: "[i:4870] Keep Debuffs On Death"
+}
+
+InfiniteSliceOfCake: {
+	Tooltip: Toggles if the Sugar Rush buff is infinite like other station buffs
+	Label: "[i:3750] Infinite Slice Of Cake Buff"
+}
+
+HideBuffs: {
+	Label: "[i:298] Hide Buffs"
+	Tooltip:
+		'''
+		Toggles if buffs are hidden under the hotbar
+		Debuffs, minions, mounts, and pets are still shown
+		'''
+}
+
+RegrowthAutoReplant: {
+	Label: "[i:213] Staff of Regrowth Herb Replanting"
+	Tooltip:
+		'''
+		Allows Staff of Regrowth & Axe of Regrowth to replace the herb it just harvested
+		Allows Axe of Regrowth to replace the gemcorn it just harvested
+		'''
+}
+
+LifeformAnalyzerPointer: {
+	Label: "[i:3118] Lifeform Analyzer Pointer"
+	Tooltip: Toggles an arrow that points towards rare creatures when using a Lifeform Analyzer
+}
+
+NoExpertIceWaterChilled: {
+	Label: "[i:664] No Expert+ Ice Water Chilled"
+	Tooltip: Makes you immune to expert+ ice biome water
+}
+
+NoShimmerSink: {
+	Tooltip: Toggles if you can sink through blocks when submerged in shimmer
+	Label: "[i:5364] No Shimmer Sinking"
+}
+
+AutoTeams: {
+	Label: "[i:3621] Auto Join Team"
+	Tooltip:
+		'''
+		Automatically joins the selected team when connecting to multiplayer
+		0 = Disabled
+		1 = Red
+		2 = Green
+		3 = Blue
+		4 = Yellow
+		5 = Pink
+		'''
+}
+
+AllHairStylesAvailable: {
+	Label: "[i:1990] All Hairstyles Are Unlocked"
+	Tooltip: Toggles if all hairstyles are available on character creation
+}
+
+NoTombstoneDrops: {
+	Label: "[i:321] No Tombstone Drops"
+	Tooltip: Toggles if tombstones drop on death
+}
+
+HellstoneSpelunker: {
+	Label: "[i:174] Hellstone Works With Spelunker Buff"
+	Tooltip: Toggles if Hellstone is highlighted with the Spelunker buff
+}
+
+DangersenseIgnoresThinIce: {
+	Label: "[i:4391] Dangersense Ignores Thin Ice"
+	Tooltip: Toggles if thin ice is highlighted with the Dangersense buff
+}
+
+DangersenseHighlightsSiltAndSlush: {
+	Label: "[i:424] Dangersense Highlights Silt And Slush"
+	Tooltip: Toggles if silt And slush are highlighted with the Dangersense buff
+}
+
+AutoFishing: {
+	Label: "[i:2294] Auto Fishing"
+	Tooltip: Toggles auto fishing
+}
+
+NoLakeSizePenalty: {
+	Label: "[i:3031] No Lake Size Penalty"
+	Tooltip: Toggles if fish can be caugh in any size lake
+}
+
+NoPylonTeleportRestrictions: {
+	Label: "[i:4951] No Pylon Teleport Restrictions"
+	Tooltip: Toggles if there are pylon teleportation restrictions
+}
+
+InstantRespawn: {
+	Label: "[i:583] Instant Respawn"
+	Tooltip:
+		'''
+		Toggles instant respawns, will despawn all hostile NPCs on death if enabled
+		Only works in singleplayer!
+		'''
+}
+
+FullHealthRespawn: {
+	Label: "[i:29] Full Health On Respawn"
+	Tooltip: Toggles if you respawn with max health and mana
+}
+
+WingSlot: {
+	Label: "[i:4978] Wing Slot"
+	Tooltip: Toggles an accessory slot used for wings
+}
+
+BootSlot: {
+	Label: "[i:54] Boot Slot"
+	Tooltip: Toggles an accessory slot used for boots
+}
+
+ShieldSlot: {
+	Label: "[i:156] Shield Slot"
+	Tooltip: Toggles an accessory slot used for shields
+}
+
+ExpertSlot: {
+	Label: "[i:3335] Expert Slot"
+	Tooltip: Toggles an accessory slot used for expert exclusive accessories
+}
+
+MapTeleporting: {
+	Label: "[i:2351] Map Teleporting"
+	Tooltip: Toggles if you can right click on the fullscreen map to teleport to that position
+}
+
+DisableEvilBiomeSpread: {
+	Label: "[i:59] Disable Evil Biome Spread"
+	Tooltip: Toggles the spread of the Corruption, Crimson, and Hallow
+}
+
+FountainsCauseBiomes: {
+	Label: "[i:909] Fountains Activate Their Biomes"
+	Tooltip: Toggles if being near fountains activates their biomes
+}
+
+FastTreeGrowth: {
+	Label: "[i:27] Fast Tree Growth"
+	Tooltip: Toggles if trees grow faster
+}
+
+FastHerbGrowth: {
+	Label: "[i:313] Fast Herb Growth"
+	Tooltip: Toggles if herbs grow faster
+}
+
+TreesDropMoreWhenShook: {
+	Label: "[i:4856] Trees Drop More When Shook"
+	Tooltip: Toggles if trees drop more fruits and gems when shook
+}
+
+HeartCrystalGlow: {
+	Label: "[i:29] Heart Crystals Glow"
+	Tooltip: Toggles if placed Heart Crystals glow
+}
+
+LifeFruitGlow: {
+	Label: "[i:1291] Life Fruits Glow"
+	Tooltip: Toggles if placed Life Fruits glow
+}
+
+BreakAllDungeonBricks: {
+	Label: "[i:134] Cracked Dungeon Bricks All Fall At Once"
+	Tooltip: Toggles if cracked dungeon bricks all fall when one is broken
+}
+
+BombableHardmodeOres: {
+	Label: "[i:167] Bombable Hardmode Ores"
+	Tooltip:
+		'''
+		Toggles if Hardmode ores can be blown up after all mech bosses are defeated
+		Chlorophyte can be bombed after Plantera
+		'''
+}
+
+MoreFallenStars: {
+	Label: "[i:75] More Fallen Stars"
+	Tooltip:
+		'''
+		Increase the amount of fallen stars
+		Ranges from 1 to 500, with 1 being the normal rate
+		'''
+}
+
+NoMeteorSpawns: {
+	Tooltip:
+		'''
+		Toggles if meteors can fall
+		If one attempts to fall you are granted meteorite instead
+		'''
+	Label: "[i:116] No Meteor Spawns"
+}
+
+ChristmasActive: {
+	Tooltip: Toggles the Christmas seasonal event
+	Label: "[i:1958] Christmas Seasonal Event"
+}
+
+HalloweenActive: {
+	Tooltip: Toggles the Halloween seasonal event
+	Label: "[i:1844] Halloween Seasonal Event"
+}
+
+DisableCredits: {
+	Tooltip: Toggles if credits will roll after the defeat of the Moon Lord
+	Label: "[i:264] Disable Credits"
+}

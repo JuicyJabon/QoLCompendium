@@ -252,6 +252,12 @@ namespace QoLCompendium.Core
         public static Mod calamityOverhaulMod;
 
 
+        //CALAMITY REKINDLED
+        public const string calamityRekindledName = "CalamityLegacy";
+        public static bool calamityRekindledLoaded;
+        public static Mod calamityRekindledMod;
+
+
         //CALAMITY VANITIES
         public const string calamityVanitiesName = "CalValEX";
         public static bool calamityVanitiesLoaded;
@@ -395,6 +401,33 @@ namespace QoLCompendium.Core
         public static Condition DownedGlaciation = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGlaciation"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Glaciation]);
         public static Condition DownedHandOfCthulhu = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHandOfCthulhu"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HandOfCthulhu]);
         public static Condition DownedCursePreacher = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCursePreacher"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CursePreacher]);
+
+
+        //ELEMENTS AWOKEN
+        public const string elementsAwokenName = "ElementsAwoken";
+        public static bool elementsAwokenLoaded;
+        public static Mod elementsAwokenMod;
+        //BOSSES
+        public static Condition DownedWasteland = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedWasteland"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Wasteland]);
+        public static Condition DownedInfernace = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedInfernace"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Infernace]);
+        public static Condition DownedScourgeFighter = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedScourgeFighter"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ScourgeFighter]);
+        public static Condition DownedRegaroth = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedRegaroth"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Regaroth]);
+        public static Condition DownedPermafrost = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedPermafrost"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Permafrost]);
+        public static Condition DownedObsidious = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedObsidious"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Obsidious]);
+        public static Condition DownedAqueous = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedAqueous"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Aqueous]);
+        public static Condition DownedTheTempleKeepers = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedTheTempleKeepers"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TheTempleKeepers]);
+        public static Condition DownedTheGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedTheGuardian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TheGuardian]);
+        public static Condition DownedVolcanox = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedVolcanox"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Volcanox]);
+        public static Condition DownedVoidLeviathan = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedVoidLeviathan"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.VoidLeviathan]);
+        public static Condition DownedAzana = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedAzana"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Azana]);
+        public static Condition DownedTheAncients = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedTheAncients"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TheAncients]);
+        //MINIBOSSES
+        public static Condition DownedCosmicObserver = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedCosmicObserver"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CosmicObserver]);
+        public static Condition DownedShadeWyrm = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedShadeWyrm"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ShadeWyrm]);
+        public static Condition DownedRadiantMaster = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedRadiantMaster"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.RadiantMaster]);
+        //EVENTS
+        public static Condition DownedDawnOfTheVoid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedDawnOfTheVoid"), () => ModConditions.DownedEvents[(int)ModConditions.DownedEvent.DawnOfTheVoid]);
+        public static Condition DownedRadiantRain = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedRadiantRain"), () => ModConditions.DownedEvents[(int)ModConditions.DownedEvent.RadiantRain]);
 
 
         //ENCHANTED MOONS
@@ -663,6 +696,12 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToLunarVeilAbyss = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToLunarVeilAbyss"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Abysm]);
 
 
+        //MACROCOSM
+        public const string macrocosmName = "Macrocosm";
+        public static bool macrocosmLoaded;
+        public static Mod macrocosmMod;
+
+
         //MAGIC STORAGE
         public const string magicStorageName = "MagicStorage";
         public static bool magicStorageLoaded;
@@ -755,9 +794,14 @@ namespace QoLCompendium.Core
         public static Condition DownedStormCloudfish = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStormCloudfish"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StormCloudfish]);
         public static Condition DownedStarConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStarConstruct"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StarConstruct]);
         public static Condition DownedGigabat = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGigabat"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Gigabat]);
+        public static Condition DownedRiftDenizen = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRiftDenizen"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.RiftDenizen]);
         public static Condition DownedSunPixie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSunPixie"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SunPixie]);
         public static Condition DownedEsophage = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEsophage"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Esophage]);
         public static Condition DownedConvectiveWanderer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedConvectiveWanderer"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ConvectiveWanderer]);
+        public static Condition DownedSelfsimilarSentinel = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSelfsimilarSentinel"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SelfsimilarSentinel]);
+        public static Condition DownedEclipxie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEclipxie"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Eclipxie]);
+        public static Condition DownedHemorrphage = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHemorrphage"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Hemorrphage]);
+        public static Condition DownedPolarities = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPolarities"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Polarities]);
 
 
         //PROJECT ZERO
@@ -956,6 +1000,14 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToSpiritUnderground = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToSpiritUnderground"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SpiritUnderground]);
 
 
+        //SPIRIT REFORGED
+        public const string spiritReforgedName = "SpiritReforged";
+        public static bool spiritReforgedLoaded;
+        public static Mod spiritReforgedMod;
+        //BIOMES
+        public static Condition HasBeenToSavanna = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.HasBeenToSavanna"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Savanna]);
+
+
         //SPOOKY
         public const string spookyName = "Spooky";
         public static bool spookyLoaded;
@@ -1138,6 +1190,12 @@ namespace QoLCompendium.Core
         public static Condition DownedYurnero = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedYurnero"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Yurnero]);
 
 
+        //VanillaQoL
+        public const string vanillaQoLName = "VanillaQoL";
+        public static bool vanillaQoLLoaded;
+        public static Mod vanillaQoLMod;
+
+
         //VERDANT
         public const string verdantName = "Verdant";
         public static bool verdantLoaded;
@@ -1312,6 +1370,23 @@ namespace QoLCompendium.Core
             Glaciation,
             HandOfCthulhu,
             CursePreacher,
+            //elements awoken
+            Wasteland,
+            Infernace,
+            ScourgeFighter,
+            Regaroth,
+            Permafrost,
+            Obsidious,
+            Aqueous,
+            TheTempleKeepers,
+            TheGuardian,
+            Volcanox,
+            VoidLeviathan,
+            Azana,
+            TheAncients,
+            CosmicObserver,
+            ShadeWyrm,
+            RadiantMaster,
             //exalt
             Effulgence,
             IceLich,
@@ -1448,9 +1523,14 @@ namespace QoLCompendium.Core
             StormCloudfish,
             StarConstruct,
             Gigabat,
+            RiftDenizen,
             SunPixie,
             Esophage,
             ConvectiveWanderer,
+            SelfsimilarSentinel,
+            Eclipxie,
+            Hemorrphage,
+            Polarities,
             //project zero
             ForestGuardian,
             CryoGuardian,
@@ -1651,6 +1731,9 @@ namespace QoLCompendium.Core
             AcidRainTier1,
             AcidRainTier2,
             BossRush,
+            //elements awoken
+            DawnOfTheVoid,
+            RadiantRain,
             //Lunar Veil
             GintzeArmy,
             //Martin's Order
@@ -1753,6 +1836,8 @@ namespace QoLCompendium.Core
             Briar,
             SpiritSurface,
             SpiritUnderground,
+            //Spirit Reforged
+            Savanna,
             //Spooky
             SpookyForest,
             SpookyUnderground,
@@ -2456,6 +2541,9 @@ namespace QoLCompendium.Core
             calamityOverhaulLoaded = ModLoader.TryGetMod(calamityOverhaulName, out Mod CalamityOverhaul);
             calamityOverhaulMod = CalamityOverhaul;
 
+            calamityRekindledLoaded = ModLoader.TryGetMod(calamityRekindledName, out Mod CalamityLegacy);
+            calamityRekindledMod = CalamityLegacy;
+
             calamityVanitiesLoaded = ModLoader.TryGetMod(calamityVanitiesName, out Mod CalValEX);
             calamityVanitiesMod = CalValEX;
 
@@ -2503,6 +2591,9 @@ namespace QoLCompendium.Core
 
             edorbisLoaded = ModLoader.TryGetMod(edorbisName, out Mod Edorbis);
             edorbisMod = Edorbis;
+
+            elementsAwokenLoaded = ModLoader.TryGetMod(elementsAwokenName, out Mod ElementsAwoken);
+            elementsAwokenMod = ElementsAwoken;
 
             enchantedMoonsLoaded = ModLoader.TryGetMod(enchantedMoonsName, out Mod BlueMoon);
             enchantedMoonsMod = BlueMoon;
@@ -2573,6 +2664,9 @@ namespace QoLCompendium.Core
             lunarVeilLoaded = ModLoader.TryGetMod(lunarVeilName, out Mod Stellamod);
             lunarVeilMod = Stellamod;
 
+            macrocosmLoaded = ModLoader.TryGetMod(macrocosmName, out Mod Macrocosm);
+            macrocosmMod = Macrocosm;
+
             magicStorageLoaded = ModLoader.TryGetMod(magicStorageName, out Mod MagicStorage);
             magicStorageMod = MagicStorage;
 
@@ -2639,6 +2733,9 @@ namespace QoLCompendium.Core
             spiritClassicLoaded = ModLoader.TryGetMod(spiritClassicName, out Mod SpiritMod);
             spiritClassicMod = SpiritMod;
 
+            spiritReforgedLoaded = ModLoader.TryGetMod(spiritReforgedName, out Mod SpiritReforged);
+            spiritReforgedMod = SpiritReforged;
+
             spookyLoaded = ModLoader.TryGetMod(spookyName, out Mod Spooky);
             spookyMod = Spooky;
 
@@ -2686,6 +2783,9 @@ namespace QoLCompendium.Core
 
             valhallaLoaded = ModLoader.TryGetMod(valhallaName, out Mod ValhallaMod);
             valhallaMod = ValhallaMod;
+            
+            vanillaQoLLoaded = ModLoader.TryGetMod(vanillaQoLName, out Mod VanillaQoL);
+            vanillaQoLMod = VanillaQoL;
 
             verdantLoaded = ModLoader.TryGetMod(verdantName, out Mod Verdant);
             verdantMod = Verdant;

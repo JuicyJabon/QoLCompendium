@@ -1,15 +1,15 @@
 using QoLCompendium.Content.Projectiles.Explosives;
 using QoLCompendium.Content.Projectiles.Other;
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.DataStructures;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Explosives
 {
-    public class Skybridger : ModItem
+    public class Skybridger : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.AutoStructures;
+
+        public new string LocalizationCategory => "Items.Tools.Explosives";
 
         public override void SetStaticDefaults()
         {

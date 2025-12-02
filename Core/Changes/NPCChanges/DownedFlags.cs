@@ -231,6 +231,90 @@
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.CursePreacher], -1);
             #endregion
 
+            #region Elements Awoken
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "Wasteland"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Wasteland], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "Infernace"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Infernace], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "ScourgeFighter"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.ScourgeFighter], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "RegarothHead"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Regaroth], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "Permafrost"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Permafrost], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "Obsidious"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Obsidious], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "Aqueous"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Aqueous], -1);
+
+            if ((npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "AncientWyrmHead") && !NPC.AnyNPCs(Common.GetModNPC(ModConditions.elementsAwokenMod, "TheEye"))) || npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "TheEye") && !NPC.AnyNPCs(Common.GetModNPC(ModConditions.elementsAwokenMod, "AncientWyrmHead")))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.TheTempleKeepers], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "TheGuardianFly"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.TheGuardian], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "Volcanox"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Volcanox], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "VoidLeviathanHead"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.VoidLeviathan], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "Azana"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Azana], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "AncientAmalgam"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.TheAncients], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "CosmicObserver"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.CosmicObserver], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "ShadeWyrmHead") || npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "ShadeWyrmBody") || npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "ShadeWyrmTail"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.ShadeWyrm], -1);
+
+            if (npc.type == Common.GetModNPC(ModConditions.elementsAwokenMod, "RadiantMaster"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.RadiantMaster], -1);
+
+            List<int> dawnOfTheVoidNPCs = new()
+                {
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "Immolator"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "ReaverSlime"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "VoidKnight"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "VoidElemental"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "AbyssSkull"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "AbyssSkullette"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "VoidFly"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "AccursedFlier"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "DimensionalHive"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "ZergCaster"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "ShadeWyrmHead"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "ShadeWyrmBody"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "ShadeWyrmTail"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "EtherealHunter"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "VoidCrawler"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "VoidGolem")
+                };
+            if (dawnOfTheVoidNPCs.Contains(npc.type))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.DawnOfTheVoid], -1);
+
+            List<int> radiantRainNPCs = new()
+                {
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "SparklingSlime"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "RadiantWarrior"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "StellarStarfish"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "AllKnowerHead"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "StarlightGlobule"),
+                    Common.GetModNPC(ModConditions.elementsAwokenMod, "RadiantMaster")
+                };
+            if (radiantRainNPCs.Contains(npc.type))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.RadiantRain], -1);
+            #endregion
+
             #region Exalt
             if (npc.type == Common.GetModNPC(ModConditions.exaltMod, "Effulgence"))
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Effulgence], -1);
@@ -744,6 +828,10 @@
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Gigabat], -1);
             }
+            if (npc.type == Common.GetModNPC(ModConditions.polaritiesMod, "RiftDenizen"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.RiftDenizen], -1);
+            }
             if (npc.type == Common.GetModNPC(ModConditions.polaritiesMod, "SunPixie"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.SunPixie], -1);
@@ -755,6 +843,23 @@
             if (npc.type == Common.GetModNPC(ModConditions.polaritiesMod, "ConvectiveWanderer"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.ConvectiveWanderer], -1);
+            }
+            if (npc.type == Common.GetModNPC(ModConditions.polaritiesMod, "SelfsimilarSentinel"))
+            {
+                SubworldModConditions.downedSelfsimilarSentinel = true;
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.SelfsimilarSentinel], -1);
+            }
+            if (npc.type == Common.GetModNPC(ModConditions.polaritiesMod, "Eclipxie"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Eclipxie], -1);
+            }
+            if (npc.type == Common.GetModNPC(ModConditions.polaritiesMod, "Hemorrphage"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Hemorrphage], -1);
+            }
+            if (npc.type == Common.GetModNPC(ModConditions.polaritiesMod, "Electris") || npc.type == Common.GetModNPC(ModConditions.polaritiesMod, "Magneton"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Polarities], -1);
             }
             #endregion
 

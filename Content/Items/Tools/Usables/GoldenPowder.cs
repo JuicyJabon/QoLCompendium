@@ -1,12 +1,13 @@
 ﻿using QoLCompendium.Content.Projectiles.Other;
-using QoLCompendium.Core;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
-    public class GoldenPowder : ModItem
+    public class GoldenPowder : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.GoldenPowder;
+
+        public new string LocalizationCategory => "Items.Tools.Usables";
 
         public override void SetStaticDefaults()
         {

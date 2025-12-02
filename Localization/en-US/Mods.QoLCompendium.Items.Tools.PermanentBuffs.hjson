@@ -1,0 +1,1574 @@
+PermanentAmmoReservation: {
+	DisplayName: Permanent Ammo Reservation
+	Tooltip: 20% chance to save ammo
+}
+
+PermanentAquaAffinity: {
+	Tooltip: Movement is increased while you're wet
+	DisplayName: Permanent Aqua Affinity
+}
+
+PermanentAnechoicCoating: {
+	DisplayName: Permanent Anechoic Coating
+	Tooltip: Abyssal creatures' detection ranges reduced
+}
+
+PermanentAstralInjection: {
+	DisplayName: Permanent Astral Injection
+	Tooltip: Extreme mana recovery
+}
+
+PermanentFeatherfall: {
+	Tooltip: Press UP or DOWN to control speed of descent
+	DisplayName: Permanent Featherfall
+}
+
+PermanentExquisitelyStuffed: {
+	Tooltip: Major improvements to all stats
+	DisplayName: Permanent Exquisitely Stuffed
+}
+
+PermanentEndurance: {
+	Tooltip: 10% reduced damage taken
+	DisplayName: Permanent Endurance
+}
+
+PermanentDangersense: {
+	Tooltip: You can see nearby hazards
+	DisplayName: Permanent Dangersense
+}
+
+PermanentCrate: {
+	Tooltip: Greater chance of fishing up a crate
+	DisplayName: Permanent Crate
+}
+
+PermanentCalm: {
+	Tooltip: Decreased enemy spawn rate
+	DisplayName: Permanent Calm
+}
+
+PermanentBuilder: {
+	Tooltip: Increased placement speed and range
+	DisplayName: Permanent Builder
+}
+
+PermanentBiomeSight: {
+	Tooltip: Shows the location of infected blocks
+	DisplayName: Permanent Biome Sight
+}
+
+PermanentBattle: {
+	Tooltip: Increased enemy spawn rate
+	DisplayName: Permanent Battle
+}
+
+PermanentArchery: {
+	Tooltip: 10% increased bow damage and 20% increased arrow speed
+	DisplayName: Permanent Archery
+}
+
+PermanentFishing: {
+	DisplayName: Permanent Fishing
+	Tooltip: Increased fishing power
+}
+
+PermanentFlipper: {
+	DisplayName: Permanent Flipper
+	Tooltip: Move like normal in water
+}
+
+PermanentGills: {
+	DisplayName: Permanent Gills
+	Tooltip: Breathe water instead of air
+}
+
+PermanentGravitation: {
+	DisplayName: Permanent Gravitation
+	Tooltip: Press UP to reverse gravity
+}
+
+PermanentHeartreach: {
+	DisplayName: Permanent Heartreach
+	Tooltip: Increased heart pickup range
+}
+
+PermanentHunter: {
+	DisplayName: Permanent Hunter
+	Tooltip: Shows the location of enemies
+}
+
+PermanentInferno: {
+	DisplayName: Permanent Inferno
+	Tooltip: Nearby enemies are ignited
+}
+
+PermanentInvisibility: {
+	DisplayName: Permanent Invisibility
+	Tooltip: Grants invisibility
+}
+
+PermanentIronskin: {
+	DisplayName: Permanent Ironskin
+	Tooltip: Increase defense by 8
+}
+
+PermanentLifeforce: {
+	DisplayName: Permanent Lifeforce
+	Tooltip: 20% increased max life
+}
+
+PermanentLucky: {
+	DisplayName: Permanent Lucky
+	Tooltip: You are feeling pretty lucky
+}
+
+PermanentMagicPower: {
+	DisplayName: Permanent Magic Power
+	Tooltip: 20% increased magic damage
+}
+
+PermanentManaRegeneration: {
+	DisplayName: Permanent Mana Regeneration
+	Tooltip: Increased mana regeneration
+}
+
+PermanentMining: {
+	DisplayName: Permanent Mining
+	Tooltip: 25% increased mining speed
+}
+
+PermanentNightOwl: {
+	DisplayName: Permanent Night Owl
+	Tooltip: Increased night vision
+}
+
+PermanentObsidianSkin: {
+	DisplayName: Permanent Obsidian Skin
+	Tooltip: Immune to lava
+}
+
+PermanentPlentySatisfied: {
+	DisplayName: Permanent Plenty Satisfied
+	Tooltip: Medium improvements to all stats
+}
+
+PermanentRage: {
+	DisplayName: Permanent Rage
+	Tooltip: 10% increased critical chance
+}
+
+PermanentRegeneration: {
+	DisplayName: Permanent Regeneration
+	Tooltip: Provides life regeneration
+}
+
+PermanentShine: {
+	DisplayName: Permanent Shine
+	Tooltip: Emitting light
+}
+
+PermanentSonar: {
+	DisplayName: Permanent Sonar
+	Tooltip: You can see what's biting your hook
+}
+
+PermanentSpelunker: {
+	DisplayName: Permanent Spelunker
+	Tooltip: Shows the location of treasure and ore
+}
+
+PermanentSummoning: {
+	DisplayName: Permanent Summoning
+	Tooltip: Increased max number of minions
+}
+
+PermanentSwiftness: {
+	DisplayName: Permanent Swiftness
+	Tooltip: 25% increased movement speed
+}
+
+PermanentThorns: {
+	DisplayName: Permanent Thorns
+	Tooltip: Attackers also take damage
+}
+
+PermanentTipsy: {
+	DisplayName: Permanent Tipsy
+	Tooltip: Increased melee abilities, lowered defense
+}
+
+PermanentTitan: {
+	DisplayName: Permanent Titan
+	Tooltip: Increased knockback
+}
+
+PermanentWarmth: {
+	DisplayName: Permanent Warmth
+	Tooltip: Reduced damage from cold sources
+}
+
+PermanentWaterWalking: {
+	DisplayName: Permanent Water Walking
+	Tooltip: Press DOWN to enter water
+}
+
+PermanentWellFed: {
+	DisplayName: Permanent Well Fed
+	Tooltip: Minor improvements to all stats
+}
+
+PermanentWrath: {
+	DisplayName: Permanent Wrath
+	Tooltip: 10% increased damage
+}
+
+PermanentWarTable: {
+	Tooltip: Increased max number of sentries
+	DisplayName: Permanent War Table
+}
+
+PermanentSliceOfCake: {
+	Tooltip: 20% increased movement and mining speed
+	DisplayName: Permanent Slice of Cake
+}
+
+PermanentSharpeningStation: {
+	Tooltip: Melee weapons have armor penetration
+	DisplayName: Permanent Sharpening Station
+}
+
+PermanentCrystalBall: {
+	Tooltip: Magic powers are increased
+	DisplayName: Permanent Crystal Ball
+}
+
+PermanentBewitchingTable: {
+	Tooltip: Increased max number of minions
+	DisplayName: Permanent Bewitching Table
+}
+
+PermanentAmmoBox: {
+	Tooltip: 20% chance to save ammo
+	DisplayName: Permanent Ammo Box
+}
+
+PermanentFlaskOfVenom: {
+	Tooltip: Melee attacks inflict acid venom on your targets
+	DisplayName: Permanent Flask of Venom
+}
+
+PermanentFlaskOfPoison: {
+	Tooltip: Melee attacks poison enemies
+	DisplayName: Permanent Flask of Poison
+}
+
+PermanentFlaskOfParty: {
+	Tooltip: Melee attacks cause confetti to appear
+	DisplayName: Permanent Flask of Party
+}
+
+PermanentFlaskOfNanites: {
+	Tooltip: Melee attacks confuse enemies
+	DisplayName: Permanent Flask of Nanites
+}
+
+PermanentFlaskOfIchor: {
+	Tooltip: Melee attacks decrease enemies defense
+	DisplayName: Permanent Flask of Ichor
+}
+
+PermanentFlaskOfGold: {
+	Tooltip: Melee attacks make enemies drop more gold
+	DisplayName: Permanent Flask of Gold
+}
+
+PermanentFlaskOfFire: {
+	Tooltip: Melee attacks set enemies on fire
+	DisplayName: Permanent Flask of Fire
+}
+
+PermanentFlaskOfCursedFlames: {
+	Tooltip: Melee attacks inflict enemies with cursed flames
+	DisplayName: Permanent Flask of Cursed Flames
+}
+
+PermanentWaterCandle: {
+	Tooltip: Increased monster spawn rate
+	DisplayName: Permanent Water Candle
+}
+
+PermanentShadowCandle: {
+	Tooltip: Dispels the peace of towns
+	DisplayName: Permanent Shadow Candle
+}
+
+PermanentSunflower: {
+	Tooltip: Movement speed increased and monster spawns reduced
+	DisplayName: Permanent Sunflower
+}
+
+PermanentStarInABottle: {
+	Tooltip: Increased mana regeneration
+	DisplayName: Permanent Star in a Bottle
+}
+
+PermanentPeaceCandle: {
+	Tooltip: Decreased monster spawn rate
+	DisplayName: Permanent Peace Candle
+}
+
+PermanentBastStatue: {
+	DisplayName: Permanent Bast Statue
+	Tooltip: Defense is increased by 5
+}
+
+PermanentCampfire: {
+	DisplayName: Permanent Campfire
+	Tooltip: Life regen is slightly increased
+}
+
+PermanentGardenGnome: {
+	DisplayName: Permanent Garden Gnome
+	Tooltip: "'Said to bring good fortune and keep evil spirits at bay'"
+}
+
+PermanentHeartLantern: {
+	DisplayName: Permanent Heart Lantern
+	Tooltip: Life regen is increased
+}
+
+PermanentHoney: {
+	DisplayName: Permanent Honey
+	Tooltip: Life regeneration is increased
+}
+
+PermanentAquatic: {
+	DisplayName: Permanent Aquatic
+	Tooltip: Grants all aquatic buffs
+}
+
+PermanentArena: {
+	DisplayName: Permanent Arena
+	Tooltip: Grants all arena buffs
+}
+
+PermanentConstruction: {
+	DisplayName: Permanent Construction
+	Tooltip: Grants all construction buffs
+}
+
+PermanentDamage: {
+	DisplayName: Permanent Damage
+	Tooltip: Grants all damage buffs
+}
+
+PermanentDefense: {
+	DisplayName: Permanent Defense
+	Tooltip: Grants all defense buffs
+}
+
+PermanentVanilla: {
+	DisplayName: Permanent Vanilla
+	Tooltip: Grants all Vanilla buffs
+}
+
+PermanentMovement: {
+	DisplayName: Permanent Movement
+	Tooltip: Grants all movement buffs
+}
+
+PermanentStation: {
+	DisplayName: Permanent Station
+	Tooltip: Grants all station buffs
+}
+
+PermanentTrawler: {
+	DisplayName: Permanent Trawler
+	Tooltip: Grants all fishing buffs
+}
+
+PermanentVision: {
+	DisplayName: Permanent Vision
+	Tooltip: Grants all vision buffs
+}
+
+PermanentChaosCandle: {
+	DisplayName: Permanent Chaos Candle
+	Tooltip: Increases all spawn rates by 66.67% and maximum spawn count by 150%
+}
+
+PermanentCorruptionEffigy: {
+	DisplayName: Permanent Corruption Effigy
+	Tooltip: Increases movement speed by 10% and crit chance by 10%. Decreases damage reduction by 5%
+}
+
+PermanentCrimsonEffigy: {
+	DisplayName: Permanent Crimson Effigy
+	Tooltip: Increases damage by 15% and defense by 10. Decreases maximum health by 10%
+}
+
+PermanentEffigyOfDecay: {
+	DisplayName: Permanent Effigy Of Decay
+	Tooltip: Grants immunity to the water of the Sulphurous Sea and the ability to breathe underwater
+}
+
+PermanentResilientCandle: {
+	DisplayName: Permanent Resilient Candle
+	Tooltip: Increases the effectiveness of defense by 10%
+}
+
+PermanentSpitefulCandle: {
+	DisplayName: Permanent Spiteful Candle
+	Tooltip: Enemy damage taken is increased by 0.07x, bypassing enemy defense and damage reduction
+}
+
+PermanentTranquilityCandle: {
+	DisplayName: Permanent Tranquility Candle
+	Tooltip: Decreases enemy spawn rates by 28.57% and maximum spawn count by 60%
+}
+
+PermanentTranquility: {
+	Tooltip: Prevents enemies from spawning
+	DisplayName: Permanent Tranquility
+}
+
+PermanentVigorousCandle: {
+	DisplayName: Permanent Vigorous Candle
+	Tooltip: Boost life regeneration by 0.4% of the player's maximum health per second, regardless of the player's actions
+}
+
+PermanentWeightlessCandle: {
+	DisplayName: Permanent Weightless Candle
+	Tooltip: Boost movement speed, flight time, and acceleration by 10%
+}
+
+PermanentFlaskOfBrimstone: {
+	DisplayName: Permanent Flask Of Brimstone
+	Tooltip: Melee, Whip, and Rogue attacks ignite enemies with brimstone flames
+}
+
+PermanentFlaskOfCrumbling: {
+	DisplayName: Permanent Flask Of Crumbling
+	Tooltip: Melee, Whip, and Rogue attacks reduce enemy damage reduction
+}
+
+PermanentFlaskOfHolyFlames: {
+	DisplayName: Permanent Flask Of Holy Flames
+	Tooltip: Melee, Whip, and Rogue attacks dissolve enemies with holy flames
+}
+
+PermanentBaguette: {
+	DisplayName: Permanent Baguette
+	Tooltip: Red Wine heals 250 HP, but reduces life regen by 2 HP/s
+}
+
+PermanentBloodfin: {
+	DisplayName: Permanent Bloodfin
+	Tooltip: Increases life regen by 5, if under the effects of a damaging debuff, increases life regen by 10 instead
+}
+
+PermanentBounding: {
+	DisplayName: Permanent Bounding
+	Tooltip: Increased jump height, jump speed, and fall damage resistance
+}
+
+PermanentCalcium: {
+	DisplayName: Permanent Calcium
+	Tooltip: You are immune to fall damage
+}
+
+PermanentCeaselessHunger: {
+	DisplayName: Permanent Ceaseless Hunger
+	Tooltip: You are sucking up all the items
+}
+
+PermanentGravityNormalizer: {
+	DisplayName: Permanent Gravity Normalizer
+	Tooltip: Gravity is now normal in space, immunity to distorted
+}
+
+PermanentOmniscience: {
+	DisplayName: Permanent Omniscience
+	Tooltip: You can see everything
+}
+
+PermanentPhotosynthesis: {
+	DisplayName: Permanent Photosynthesis
+	Tooltip: Life regen boosted, more during daytime, and hearts heal more HP
+}
+
+PermanentShadow: {
+	DisplayName: Permanent Shadow
+	Tooltip:
+		'''
+		You are a shadow
+		Rogue weapons spawn projectiles on hit
+		8% boosted stealth generation
+		'''
+}
+
+PermanentSoaring: {
+	DisplayName: Permanent Soaring
+	Tooltip:
+		'''
+		10% increased wing flight time and speed
+		True melee hits restore some wing flight time
+		'''
+}
+
+PermanentSulphurskin: {
+	DisplayName: Permanent Sulphurskin
+	Tooltip: The sulphuric waters have a lesser effect on you
+}
+
+PermanentTesla: {
+	DisplayName: Permanent Tesla
+	Tooltip: Summons an aura of electricity
+}
+
+PermanentTrippy: {
+	DisplayName: Permanent Trippy
+	Tooltip: You see the world for what it truly is... and you also have a 50% increase to all damage
+}
+
+PermanentZen: {
+	DisplayName: Permanent Zen
+	Tooltip: Spawn rates are greatly reduced
+}
+
+PermanentZerg: {
+	DisplayName: Permanent Zerg
+	Tooltip: Spawn rates are greatly boosted
+}
+
+PermanentCalamityAbyss: {
+	DisplayName: Permanent Calamity Abyss
+	Tooltip: Grants all Calamity abyss buffs
+}
+
+PermanentCalamity: {
+	DisplayName: Permanent Calamity
+	Tooltip: Grants all Calamity buffs
+}
+
+PermanentCalamityArena: {
+	DisplayName: Permanent Calamity Arena
+	Tooltip: Grants all Calamity arena buffs
+}
+
+PermanentCalamityDamage: {
+	DisplayName: Permanent Calamity Damage
+	Tooltip: Grants all Calamity damage buffs
+}
+
+PermanentCalamityDefense: {
+	DisplayName: Permanent Calamity Defense
+	Tooltip: Grants all Calamity defense buffs
+}
+
+PermanentCalamityFarming: {
+	DisplayName: Permanent Calamity Farming
+	Tooltip: Grants all Calamity farming buffs
+}
+
+PermanentCalamityMovement: {
+	DisplayName: Permanent Calamity Movement
+	Tooltip: Grants all Calamity movement buffs
+}
+
+PermanentAstracola: {
+	DisplayName: Permanent Astracola
+	Tooltip:
+		'''
+		Increased maximum mana
+		20% increased magic damage
+		Increased mana regeneration
+		'''
+}
+
+PermanentAstraJelly: {
+	DisplayName: Permanent Astra Jelly
+	Tooltip: Increased maximum mana and mana regeneration
+}
+
+PermanentDeepFreezeCoating: {
+	DisplayName: Permanent Deep Freeze Coating
+	Tooltip: Throwing damage has a chance to significantly hinder the hit enemies movement
+}
+
+PermanentExplosiveCoating: {
+	DisplayName: Permanent Explosive Coating
+	Tooltip: Throwing damage has a chance to burst, setting nearby enemies on fire
+}
+
+PermanentGorgonCoating: {
+	DisplayName: Permanent Gorgon Coating
+	Tooltip: Throwing damage has a chance to petrify hit enemies
+}
+
+PermanentSporeCoating: {
+	DisplayName: Permanent Spore Coating
+	Tooltip: Throwing damage has a chance to infect enemies with mycelium
+}
+
+PermanentToxicCoating: {
+	DisplayName: Permanent Toxic Coating
+	Tooltip: Throwing damage has a chance to poison hit enemies
+}
+
+PermanentFlasks: {
+	DisplayName: Permanent Flasks
+	Tooltip:
+		'''
+		Melee attacks inflict enemies with the selected debuff
+		Right click in inventory to cycle flasks
+		'''
+}
+
+PermanentBloodyMary: {
+	Tooltip:
+		'''
+		10% increased damage and movement speed during a Blood Moon
+		Reduces life regen by 2 HP/s and defense by 4%
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+	DisplayName: Permanent Bloody Mary
+}
+
+PermanentWhiteWine: {
+	Tooltip:
+		'''
+		Increases magic damage by 8%
+		Reduces defense by 6% and life regen by 0.5 HP/s
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+	DisplayName: Permanent White Wine
+}
+
+PermanentWhiskey: {
+	Tooltip:
+		'''
+		Increases damage by 4%, knockback by 20% and critical strike chance by 2%
+		Reduces defense by 5%
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+	DisplayName: Permanent Whiskey
+}
+
+PermanentVodka: {
+	Tooltip:
+		'''
+		Increases damage by 6% and critical strike chance by 2%
+		Reduces life regen by 0.5 HP/s and defense by 5%
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+	DisplayName: Permanent Vodka
+}
+
+PermanentTequilaSunrise: {
+	Tooltip:
+		'''
+		Increases knockback by 20%, crit chance by 8% and defense by 10 during daytime
+		Reduces life regen by 1 HP/s
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+	DisplayName: Permanent Tequila Sunrise
+}
+
+PermanentTequila: {
+	Tooltip:
+		'''
+		Increases knockback by 10%, crit chance by 4% and defense by 5 during daytime
+		Reduces life regen by 0.5 HP/s
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+	DisplayName: Permanent Tequila
+}
+
+PermanentStarBeamRye: {
+	Tooltip:
+		'''
+		Increases max mana by 50, magic damage by 8%,
+		and reduces mana usage by 10%
+		Reduces defense by 6% and life regen by 1 HP/s
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+	DisplayName: Permanent Star Beam Rye
+}
+
+PermanentCaribbeanRum: {
+	DisplayName: Permanent Caribbean Rum
+	Tooltip:
+		'''
+		Increases life regen by 1 HP/s, movement speed by 10% and wing flight time by 20%
+		Makes you floaty and reduces defense by 10%
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentCinnamonRoll: {
+	DisplayName: Permanent Cinnamon Roll
+	Tooltip:
+		'''
+		Increases mana regeneration rate and multiplies all fire-based debuff damage by 1.5x
+		Reduces defense by 10%
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentEverclear: {
+	DisplayName: Permanent Everclear
+	Tooltip:
+		'''
+		25% increased damage
+		Reduces life regen by 5 HP/s and defense by 30%
+		Counts as 2 alcohols for Alcohol Poisoning
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentEvergreenGin: {
+	DisplayName: Permanent Evergreen Gin
+	Tooltip:
+		'''
+		Multiplies all sickness and water-related debuff damage by 1.25x
+		Reduces life regen by 0.5 HP/s
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentPurpleHaze: {
+	DisplayName: Permanent Purple Haze
+	Tooltip:
+		'''
+		8% increased damage, but lowers defense by 5%
+		Increases immune time after being struck
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentFireball: {
+	DisplayName: Permanent Fireball
+	Tooltip:
+		'''
+		Multiplies all fire-based debuff damage by 1.25x
+		Reduces life regen by 0.5 HP/s
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentGrapeBeer: {
+	DisplayName: Permanent Grape Beer
+	Tooltip:
+		'''
+		Reduces defense by 3% for 15 seconds
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentMargarita: {
+	DisplayName: Permanent Margarita
+	Tooltip:
+		'''
+		Halves the duration of most harmful debuffs
+		Reduces defense by 6% and life regen by 0.5 HP/s
+		Drinking more than 3 different alcohols might not end well with your liver
+		3 minute duration
+		'''
+}
+
+PermanentMoonshine: {
+	DisplayName: Permanent Moonshine
+	Tooltip:
+		'''
+		Increases defense by 10 and damage reduction by 3%
+		Reduces life regen by 0.5 HP/s
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentMoscowMule: {
+	DisplayName: Permanent Moscow Mule
+	Tooltip:
+		'''
+		Increases damage by 9%, knockback by 50% and critical strike chance by 3%
+		Reduces life regen by 2 HP/s
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentOldFashioned: {
+	DisplayName: Permanent Old Fashioned
+	Tooltip:
+		'''
+		Multiplies all accessory and set bonus damage by 1.5x
+		Decreases all damage by 25%
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentRedWine: {
+	DisplayName: Permanent Red Wine
+	Tooltip:
+		'''
+		Reduces life regen by 0.5 HP/s for 15 seconds
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentRum: {
+	DisplayName: Permanent Rum
+	Tooltip:
+		'''
+		Increases life regen by 1 HP/s and movement speed by 10%
+		Reduces defense by 5%
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentScrewdriver: {
+	DisplayName: Permanent Screwdriver
+	Tooltip:
+		'''
+		Multiplies piercing projectile damage by 1.05x
+		Reduces life regen by 0.5 HP/s
+		Drinking more than 3 different alcohols might not end well with your liver
+		'''
+}
+
+PermanentTitanScale: {
+	Tooltip:
+		'''
+		Increases knockback, defense by 5 and damage reduction by 5%
+		Increases defense by 20 and damage reduction by 5% for a few seconds after a true melee strike
+		'''
+	DisplayName: Permanent Titan Scale
+}
+
+PermanentSupremeLuck: {
+	Tooltip: Greatly increases the Luck of the user
+	DisplayName: Permanent Supreme Luck
+}
+
+PermanentExoBaguette: {
+	Tooltip:
+		'''
+		Boosts the effects of Red Wine
+		Increase threshold of alchohol poisoning by 1 buff
+		'''
+	DisplayName: Permanent Exo Baguette
+}
+
+PermanentSporeFarm: {
+	Tooltip: Chance to not consume ammo and throwing weapons
+	DisplayName: Permanent Spore Farm
+}
+
+PermanentArcheology: {
+	Tooltip: Increased exploration abilities
+	DisplayName: Permanent Archeology
+}
+
+PermanentZincPill: {
+	Tooltip:
+		'''
+		Increased Defense and Damage reduction
+		In Hero mode, temporal immunity to Fracture
+		'''
+	DisplayName: Permanent Zinc Pill
+}
+
+PermanentWhipper: {
+	Tooltip: Increased Whip range
+	DisplayName: Permanent Whipper
+}
+
+PermanentThrower: {
+	Tooltip: Increased Throwing velocity
+	DisplayName: Permanent Thrower
+}
+
+PermanentSweeper: {
+	Tooltip: Increased Melee speed
+	DisplayName: Permanent Sweeper
+}
+
+PermanentStarreach: {
+	Tooltip: Increased star pickup range
+	DisplayName: Permanent Starreach
+}
+
+PermanentSpellCaster: {
+	Tooltip: Reduced mana usage
+	DisplayName: Permanent Spell Caster
+}
+
+PermanentSoul: {
+	Tooltip: Increased All Stats
+	DisplayName: Permanent Soul
+}
+
+PermanentShooter: {
+	Tooltip: Increased ranged Critical strike chance
+	DisplayName: Permanent Shooter
+}
+
+PermanentBlackHole: {
+	DisplayName: Permanent Black Hole
+	Tooltip: Greatly increased item pickup range
+}
+
+PermanentCharging: {
+	DisplayName: Permanent Charging
+	Tooltip: Charging mana...
+}
+
+PermanentDefender: {
+	DisplayName: Permanent Defender
+	Tooltip: Increased max number of sentries
+}
+
+PermanentEmpowerment: {
+	DisplayName: Permanent Empowerment
+	Tooltip: 20% increased maximum mana
+}
+
+PermanentEvocation: {
+	DisplayName: Permanent Evocation
+	Tooltip: Increased summoning speed
+}
+
+PermanentGourmetFlavor: {
+	DisplayName: Permanent Gourmet Flavor
+	Tooltip:
+		'''
+		Gourmet improvements to all stats
+		Increased Life and Mana regeneration
+		'''
+}
+
+PermanentHaste: {
+	DisplayName: Permanent Haste
+	Tooltip: Increased item use speed
+}
+
+PermanentHealing: {
+	DisplayName: Permanent Healing
+	Tooltip: Healing life...
+}
+
+PermanentRockskin: {
+	DisplayName: Permanent Rockskin
+	Tooltip:
+		'''
+		Grants temporal immunity to knockback
+		Increased falling speed by 15%
+		+6 defense
+		'''
+}
+
+PermanentShielding: {
+	DisplayName: Permanent Shielding
+	Tooltip: Increases deterrence's defense boost
+}
+
+PermanentBody: {
+	DisplayName: Permanent Body
+	Tooltip:
+		'''
+		Increased mana and breath regen rate
+		Overflow of life regen boosts movement
+		'''
+}
+
+PermanentMartinsOrder: {
+	DisplayName: Permanent Martin's Order
+	Tooltip: Grants all Martin's Order buffs
+}
+
+PermanentMartinsOrderDamage: {
+	DisplayName: Permanent Martin's Order Damage
+	Tooltip: Grants all Martin's Order damage buffs
+}
+
+PermanentMartinsOrderDefense: {
+	DisplayName: Permanent Martin's Order Defense
+	Tooltip: Grants all Martin's Order defense buffs
+}
+
+PermanentMartinsOrderStations: {
+	DisplayName: Permanent Martin's Order Stations
+	Tooltip: Grants all Martin's Order station buffs
+}
+
+PermanentMistletoe: {
+	DisplayName: Permanent Mistletoe
+	Tooltip: Life, mana and inspiration regeneration increased
+}
+
+PermanentArcane: {
+	DisplayName: Permanent Arcane
+	Tooltip: Magic and radiant damage generates mini stars
+}
+
+PermanentArtillery: {
+	DisplayName: Permanent Artillery
+	Tooltip: Increases your max number of sentries
+}
+
+PermanentAssassin: {
+	DisplayName: Permanent Assassin
+	Tooltip: Out of combat throwing attacks will crit for x4 damage
+}
+
+PermanentBatRepellent: {
+	DisplayName: Permanent Bat Repellent
+	Tooltip: Most bats will become friendly to you
+}
+
+PermanentBloodRush: {
+	DisplayName: Permanent Blood Rush
+	Tooltip: Increases mining and movement speed by 15%
+}
+
+PermanentBouncingFlames: {
+	DisplayName: Permanent Bouncing Flames
+	Tooltip: Your flaming debuffs will spread to nearby enemies
+}
+
+PermanentCactusFruit: {
+	DisplayName: Permanent Cactus Fruit
+	Tooltip: Immune to most status effect debuffs
+}
+
+PermanentConflagration: {
+	DisplayName: Permanent Conflagration
+	Tooltip: Your insides are burning up, but you deal more damage
+}
+
+PermanentCreativity: {
+	DisplayName: Permanent Creativity
+	Tooltip: Your base inspiration drop chance is doubled
+}
+
+PermanentEarworm: {
+	DisplayName: Permanent Earworm
+	Tooltip: Your empowerments last an additional 2 seconds
+}
+
+PermanentFishRepellent: {
+	DisplayName: Permanent Fish Repellent
+	Tooltip: Most fish will become friendly to you
+}
+
+PermanentFrenzy: {
+	DisplayName: Permanent Frenzy
+	Tooltip: Your attack speed is increased by 8%
+}
+
+PermanentGlowing: {
+	DisplayName: Permanent Glowing
+	Tooltip: Radiant damage increased by 10%
+}
+
+PermanentHoly: {
+	DisplayName: Permanent Holy
+	Tooltip: Healing spells will heal an additional 1 life
+}
+
+PermanentHydration: {
+	DisplayName: Permanent Hydration
+	Tooltip: Your exhaustion and technique points are regenerating faster
+}
+
+PermanentInsectRepellent: {
+	DisplayName: Permanent Insect Repellent
+	Tooltip: Most insects will become friendly to you
+}
+
+PermanentInspirationalReach: {
+	DisplayName: Permanent Inspirational Reach
+	Tooltip: Increased inspiration note pickup range
+}
+
+PermanentKinetic: {
+	DisplayName: Permanent Kinetic
+	Tooltip: Allows you to double tap to dash
+}
+
+PermanentPotentExtract: {
+	DisplayName: Permanent Potent Extract
+	Tooltip: Something's not right...
+}
+
+PermanentSkeletonRepellent: {
+	DisplayName: Permanent Skeleton Repellent
+	Tooltip: Most skeletons will become friendly to you
+}
+
+PermanentWarmonger: {
+	DisplayName: Permanent Warmonger
+	Tooltip: Increased enemy spawn rates
+}
+
+PermanentZombieRepellent: {
+	DisplayName: Permanent Zombie Repellent
+	Tooltip: Most zombies will become friendly to you
+}
+
+PermanentAltar: {
+	DisplayName: Permanent Altar
+	Tooltip: Your healing spells will heal additional life
+}
+
+PermanentConductorsStand: {
+	DisplayName: Permanent Conductors Stand
+	Tooltip: Empowerment duration and effect radius increased
+}
+
+PermanentNinjaRack: {
+	DisplayName: Permanent Ninja Rack
+	Tooltip: Throwing velocity, speed and critical strike chance increased
+}
+
+PermanentThorium: {
+	DisplayName: Permanent Thorium
+	Tooltip: Grants all Thorium buffs
+}
+
+PermanentThoriumBard: {
+	DisplayName: Permanent Thorium Bard
+	Tooltip: Grants all Thorium bard buffs
+}
+
+PermanentThoriumCoatings: {
+	DisplayName: Permanent Thorium Coatings
+	Tooltip:
+		'''
+		Throwing attacks inflict enemies with the selected coating
+		Right click in inventory to cycle coatings
+		'''
+}
+
+PermanentThoriumDamage: {
+	DisplayName: Permanent Thorium Damage
+	Tooltip: Grants all Thorium damage buffs
+}
+
+PermanentThoriumHealer: {
+	DisplayName: Permanent Thorium Healer
+	Tooltip: Grants all Thorium healer buffs
+}
+
+PermanentThoriumMovement: {
+	DisplayName: Permanent Thorium Movement
+	Tooltip: Grants all Thorium movement buffs
+}
+
+PermanentThoriumRepellent: {
+	DisplayName: Permanent Thorium Repellent
+	Tooltip: Grants all Thorium repellent buffs
+}
+
+PermanentThoriumStations: {
+	DisplayName: Permanent Thorium Stations
+	Tooltip: Grants all Thorium station buffs
+}
+
+PermanentThoriumThrower: {
+	DisplayName: Permanent Thorium Thrower
+	Tooltip: Grants all Thorium thrower buffs
+}
+
+PermanentInfluence: {
+	DisplayName: Permanent Influence
+	Tooltip: Increases your base click radius by 20%
+}
+
+PermanentDesktopComputer: {
+	DisplayName: Permanent Desktop Computer
+	Tooltip: Reduces the amount of clicks required for a click effect by 10%
+}
+
+PermanentClamity: {
+	DisplayName: Permanent Clamity
+	Tooltip: Grants all Clamity buffs
+}
+
+PermanentInspirationRegeneration: {
+	Tooltip: Increased inspiration regeneration
+	DisplayName: Permanent Inspiration Regeneration
+}
+
+PermanentDeathsinger: {
+	Tooltip: 7% increased symphonic damage and playing speed
+	DisplayName: Permanent Deathsinger
+}
+
+PermanentSpiritClassicMovement: {
+	Tooltip: Grants all Spirit Classic movement buffs
+	DisplayName: Permanent Spirit Classic Movement
+}
+
+PermanentSpiritClassicDefense: {
+	Tooltip: Grants all Spirit Classic defense buffs
+	DisplayName: Permanent Spirit Classic Defense
+}
+
+PermanentSpiritClassicDamage: {
+	Tooltip: Grants all Spirit Classic damage buffs
+	DisplayName: Permanent Spirit Classic Damage
+}
+
+PermanentSpiritClassic: {
+	Tooltip: Grants all Spirit Classic buffs
+	DisplayName: Permanent Spirit Classic
+}
+
+PermanentSpirit: {
+	Tooltip:
+		'''
+		Increases damage and critical strike chance by 5%
+		Getting hurt occasionally spawns a damaging bolt to chase enemies
+		'''
+	DisplayName: Permanent Spirit
+}
+
+PermanentSpiritSoaring: {
+	Tooltip: Increases flight duration by 25%
+	DisplayName: Permanent Soaring
+}
+
+PermanentZephyr: {
+	Tooltip: Grants an additional jump
+	DisplayName: Permanent Zephyr
+}
+
+PermanentToxin: {
+	Tooltip:
+		'''
+		Critical strikes inflict Festering Wounds
+		4% increased critical strike chance
+		'''
+	DisplayName: Permanent Toxin
+}
+
+PermanentSteadfast: {
+	Tooltip:
+		'''
+		Increases defense as health wanes
+		Reduces damage taken by 5%
+		'''
+	DisplayName: Permanent Steadfast
+}
+
+PermanentStarburn: {
+	Tooltip:
+		'''
+		Critical hits may cause stars to fall from the sky
+		4% increased ranged damage and critical strike chance when moving
+		'''
+	DisplayName: Permanent Starburn
+}
+
+PermanentSporecoid: {
+	Tooltip: Leave behind a trail of damaging mushrooms
+	DisplayName: Permanent Sporecoid
+}
+
+PermanentSoulguard: {
+	Tooltip:
+		'''
+		Reduces damage taken by 5%
+		Getting hurt may cause all enemies to suffer 'Soul Burn' for a short time
+		'''
+	DisplayName: Permanent Soulguard
+}
+
+PermanentRunescribe: {
+	Tooltip:
+		'''
+		Magic attacks may cause enemies to erupt into runes
+		5% increased magic damage
+		'''
+	DisplayName: Permanent Runescribe
+}
+
+PermanentJump: {
+	DisplayName: Permanent Jump
+	Tooltip: Increases jump height
+}
+
+PermanentMirrorCoat: {
+	DisplayName: Permanent Mirror Coat
+	Tooltip: Immunity to Stoned
+}
+
+PermanentMoonJelly: {
+	DisplayName: Permanent Moon Jelly
+	Tooltip: Extreme regeneration
+}
+
+PermanentWiesnbrau: {
+	DisplayName: Permanent Wiesnbrau
+	Tooltip: Numbs the user from damage taken but also reduces damage inflicted
+}
+
+PermanentSpiritClassicArena: {
+	Tooltip: Grants all Spirit Classic arena buffs
+	DisplayName: Permanent Spirit Classic Arena
+}
+
+PermanentTheCouch: {
+	Tooltip: Defense is increased, but movement speed is reduced
+	DisplayName: Permanent The Couch
+}
+
+PermanentSunPot: {
+	Tooltip: Increased life regeneration
+	DisplayName: Permanent Sun Pot
+}
+
+PermanentKoiTotem: {
+	Tooltip: Increased fishing skill
+	DisplayName: Permanent Koi Totem
+}
+
+PermanentCoiledEnergizer: {
+	Tooltip: Increased movement and melee speed
+	DisplayName: Permanent Coiled Energizer
+}
+
+PermanentCandy: {
+	DisplayName: Permanent Candy
+	Tooltip: Increases all stats slightly
+}
+
+PermanentChocolateBar: {
+	DisplayName: Permanent Chocolate Bar
+	Tooltip: Increases speed
+}
+
+PermanentHealthCandy: {
+	DisplayName: Permanent Health Candy
+	Tooltip: Increases Health
+}
+
+PermanentLollipop: {
+	DisplayName: Permanent Lollipop
+	Tooltip: Increases life regeneration
+}
+
+PermanentManaCandy: {
+	DisplayName: Permanent Mana Candy
+	Tooltip: Increases mana
+}
+
+PermanentTaffy: {
+	DisplayName: Permanent Taffy
+	Tooltip: Increases defense
+}
+
+PermanentSpiritClassicCandies: {
+	DisplayName: Permanent Spirit Classic Candies
+	Tooltip: Grants all Spirit Classic candy buffs
+}
+
+PermanentVoidCandle: {
+	DisplayName: Permanent Void Candle
+	Tooltip: Attacks apply Void Touch
+}
+
+PermanentSoyMilk: {
+	DisplayName: Permanent Soy Milk
+	Tooltip: More attack speed, less damage
+}
+
+PermanentYharimsStimulants: {
+	DisplayName: Permanent Yharim's Stimulants
+	Tooltip: Gives decent buffs to ALL offensive and defensive stats
+}
+
+PermanentCalamityEntropy: {
+	DisplayName: Permanent Calamity Entropy
+	Tooltip: Grants all Calamity Entropy buffs
+}
+
+PermanentDigitalDisplay: {
+	Tooltip: Increases void damage by 10%
+	DisplayName: Permanent Digital Display
+}
+
+PermanentVibe: {
+	Tooltip:
+		'''
+		Increases attack speed by 20% while not moving and by 5% while moving
+		Increases life regeneration by 4 while not moving
+		'''
+	DisplayName: Permanent Vibe
+}
+
+PermanentSoulAccess: {
+	Tooltip: Increases void regeneration speed by 10%
+	DisplayName: Permanent Soul Access
+}
+
+PermanentRoughskin: {
+	Tooltip: Increases defense by 4 and damage by 4%
+	DisplayName: Permanent Roughskin
+}
+
+PermanentRipple: {
+	Tooltip: Releases waves of damage periodically
+	DisplayName: Permanent Ripple
+}
+
+PermanentNightmare: {
+	Tooltip: Critical strikes unleash Nightmare Arms that do 10% damage and pull enemies together
+	DisplayName: Permanent Nightmare
+}
+
+PermanentHarmony: {
+	Tooltip:
+		'''
+		Prevents other buffs from decaying while active
+		Doesn't work on most buffs with below 30 seconds remaining
+		'''
+	DisplayName: Permanent Harmony
+}
+
+PermanentDoubleVision: {
+	Tooltip: Adds additional lines to your fishing rod
+	DisplayName: Permanent Double Vision
+}
+
+PermanentBrittle: {
+	Tooltip: Getting hit surrounds you with ice shards
+	DisplayName: Permanent Brittle
+}
+
+PermanentBluefire: {
+	Tooltip: Killed enemies explode into flames for 40% of the damage dealt to them on the killing blow
+	DisplayName: Permanent Bluefire
+}
+
+PermanentAssassination: {
+	Tooltip: Execute enemies below 10% health
+	DisplayName: Permanent Assassination
+}
+
+PermanentSecretsOfTheShadows: {
+	DisplayName: Permanent Secrets of the Shadows
+	Tooltip: Grants all Secrets of the Shadows buffs
+}
+
+PermanentEverything: {
+	DisplayName: Permanent Everything
+	Tooltip: Grants all buffs
+}
+
+PermanentFlaskOfSteel: {
+	Tooltip: Melee attacks shatter enemies defense
+	DisplayName: Permanent Flask of Steel
+}
+
+PermanentFlaskOfPlague: {
+	Tooltip: Melee attacks turn enemies away from Gods' arms
+	DisplayName: Permanent Flask of Plague
+}
+
+PermanentFlaskOfDivineFire: {
+	Tooltip: Melee attacks make enemies bask in Gods' grace
+	DisplayName: Permanent Flask of Divine Fire
+}
+
+PermanentBushOfLife: {
+	Tooltip: Increases maximum life and mana by 20
+	DisplayName: Permanent Bush of Life
+}
+
+PermanentLifeLantern: {
+	DisplayName: Permanent Life Lantern
+	Tooltip: Increases life regeneration
+}
+
+PermanentFlight: {
+	DisplayName: Permanent Flight
+	Tooltip: Increases flight time by 5 seconds
+}
+
+PermanentFluorescentBerry: {
+	DisplayName: Permanent Fluorescent Berry
+	Tooltip: Reveals the screen
+}
+
+PermanentHJHaste: {
+	DisplayName: Permanent Haste
+	Tooltip: Greatly increases movement and jump speed
+}
+
+PermanentReanimation: {
+	DisplayName: Permanent Reanimation
+	Tooltip: Greatly increases life regen
+}
+
+PermanentYang: {
+	DisplayName: Permanent Yang
+	Tooltip: Greatly increases enemy spawn rate
+}
+
+PermanentYin: {
+	DisplayName: Permanent Yin
+	Tooltip: Greatly decreases enemy spawn rate
+}
+
+PermanentHomewardJourney: {
+	DisplayName: Permanent Homeward Journey
+	Tooltip: Grants all Homeward Journey buffs
+}
+
+PermanentHomewardJourneyArena: {
+	DisplayName: Permanent Homeward Journey Arena
+	Tooltip: Grants all Homeward Journey arena buffs
+}
+
+PermanentHomewardJourneyFarming: {
+	DisplayName: Permanent Homeward Journey Farming
+	Tooltip: Grants all Homeward Journey farming buffs
+}
+
+PermanentHomewardJourneyMovement: {
+	DisplayName: Permanent Homeward Journey Movement
+	Tooltip: Grants all Homeward Journey movement buffs
+}
+
+PermanentVitality: {
+	Tooltip: Grants all Vitality buffs
+	DisplayName: Permanent Vitality
+}
+
+PermanentWarrior: {
+	Tooltip: 15% increased melee damage and speed
+	DisplayName: Permanent Warrior
+}
+
+PermanentTravelsense: {
+	Tooltip: Allows you to sense your position and tell the time
+	DisplayName: Permanent Travelsense
+}
+
+PermanentLeaping: {
+	Tooltip: Increases jump height and enables auto-jumping
+	DisplayName: Permanent Leaping
+}
+
+PermanentCranberrySoda: {
+	Tooltip: Minor improvements to melee stats & lowered defense
+	DisplayName: Permanent Cranberry Soda
+}
+
+PermanentArmorPiercing: {
+	Tooltip: Increases armor penetration by 5
+	DisplayName: Permanent Armor Piercing
+}

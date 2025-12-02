@@ -1,0 +1,19 @@
+LittleYagiBuff: {
+	Description: She so eepy
+	DisplayName: Little Yagi
+}
+
+MothBuff: {
+	DisplayName: Moth
+	Description: Permanently increases all stats?
+}
+
+OwlBuff: {
+	DisplayName: Owl
+	Description: Hooter
+}
+
+SnakeBuff: {
+	DisplayName: Snake
+	Description: Oh ok
+}

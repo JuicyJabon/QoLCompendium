@@ -26,23 +26,20 @@
     <Folder Include="Assets\SpawnModifiers\" />
     <Folder Include="Assets\Slots\" />
     <Folder Include="Assets\Storages\" />
-    <Folder Include="Content\Items\Weapons\Ammo\Arrows\SpiritClassic\" />
-    <Folder Include="Content\Items\Weapons\Ammo\Arrows\SOTS\" />
-    <Folder Include="Content\Items\Weapons\Ammo\Arrows\Thorium\" />
     <Folder Include="Content\Projectiles\Fishing\" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Aequus">
-      <HintPath>..\..\ModReader\Aequus\Aequus.dll</HintPath>
-    </Reference>
     <Reference Include="Avalon">
       <HintPath>..\..\ModReader\Avalon\Avalon.dll</HintPath>
     </Reference>
     <Reference Include="CalamityEntropy">
       <HintPath>..\..\ModReader\CalamityEntropy\CalamityEntropy.dll</HintPath>
     </Reference>
+    <Reference Include="CalamityLegacy">
+      <HintPath>..\..\ModReader\CalamityLegacy\CalamityLegacy.dll</HintPath>
+    </Reference>
     <Reference Include="CalamityMod">
-      <HintPath>..\..\..\..\..\Apps\dnSpy\CalamityMod.dll</HintPath>
+      <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
     </Reference>
     <Reference Include="CatalystMod">
       <HintPath>..\..\ModReader\CatalystMod\CatalystMod.dll</HintPath>
@@ -53,14 +50,26 @@
     <Reference Include="ClickerClass">
       <HintPath>..\..\ModReader\ClickerClass\ClickerClass.dll</HintPath>
     </Reference>
+    <Reference Include="Consolaria">
+      <HintPath>..\..\ModReader\Consolaria\Consolaria.dll</HintPath>
+    </Reference>
     <Reference Include="ContinentOfJourney">
       <HintPath>..\..\ModReader\ContinentOfJourney\ContinentOfJourney.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDragons">
       <HintPath>..\..\ModReader\CrystalDragons\CrystalDragons.dll</HintPath>
     </Reference>
+    <Reference Include="DraedonExpansion">
+      <HintPath>..\..\ModReader\DraedonExpansion\DraedonExpansion.dll</HintPath>
+    </Reference>
+    <Reference Include="ElementsAwoken">
+      <HintPath>..\..\ModReader\ElementsAwoken\ElementsAwoken.dll</HintPath>
+    </Reference>
     <Reference Include="FargowiltasSouls">
       <HintPath>..\..\ModReader\FargowiltasSouls\FargowiltasSouls.dll</HintPath>
+    </Reference>
+    <Reference Include="Macrocosm">
+      <HintPath>..\..\ModReader\Macrocosm\Macrocosm.dll</HintPath>
     </Reference>
     <Reference Include="MartainsOrder">
       <HintPath>..\..\ModReader\MartainsOrder\MartainsOrder.dll</HintPath>
@@ -77,6 +86,12 @@
     <Reference Include="SOTS">
       <HintPath>..\..\ModReader\SOTS\SOTS.dll</HintPath>
     </Reference>
+    <Reference Include="SpiritMod">
+      <HintPath>..\..\ModReader\SpiritMod\SpiritMod.dll</HintPath>
+    </Reference>
+    <Reference Include="SpiritReforged">
+      <HintPath>..\..\ModReader\SpiritReforged\SpiritReforged.dll</HintPath>
+    </Reference>
     <Reference Include="TheDepths">
       <HintPath>..\..\ModReader\TheDepths\TheDepths.dll</HintPath>
     </Reference>
@@ -88,6 +103,9 @@
     </Reference>
     <Reference Include="VanillaQoL">
       <HintPath>..\..\ModReader\VanillaQoL\VanillaQoL.dll</HintPath>
+    </Reference>
+    <Reference Include="VitalityMod">
+      <HintPath>..\..\ModReader\VitalityMod\VitalityMod.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

@@ -1,13 +1,13 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using Terraria.Enums;
+﻿using Terraria.Enums;
 using Terraria.GameContent.Creative;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
-    public class UltimateChecklist : ModItem
+    public class UltimateChecklist : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.UltimateChecklist;
+
+        public new string LocalizationCategory => "Items.Tools.Usables";
 
         public override void SetStaticDefaults()
         {

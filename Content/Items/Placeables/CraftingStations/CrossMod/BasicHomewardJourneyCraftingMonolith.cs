@@ -5,9 +5,11 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod
 {
     [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
     [ExtendsFromMod(ModConditions.homewardJourneyName)]
-    public class BasicHomewardJourneyCraftingMonolith : ModItem
+    public class BasicHomewardJourneyCraftingMonolith : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.CraftingStations;
+
+        public new string LocalizationCategory => "Items.Placeables.CraftingStations";
 
         public override void SetStaticDefaults()
         {

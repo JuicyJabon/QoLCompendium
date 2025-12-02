@@ -1,0 +1,47 @@
+CursedMirror: {
+	DisplayName: Cursed Mirror
+	Tooltip: Teleports you to your latest death
+}
+
+MirrorOfReturn: {
+	DisplayName: Mirror Of Return
+	Tooltip:
+		'''
+		Teleports you home and creates a portal
+		Use the portal to return when you are done
+		'''
+}
+
+MosaicMirror: {
+	DisplayName: Mosaic Mirror
+	Tooltip:
+		'''
+		Right click to cycle destination
+		Displays all modded information
+		Teleports you to a party member or town NPC
+		Click their head on the fullscreen map
+		'''
+}
+
+TeleportationMirror: {
+	DisplayName: Teleportation Mirror
+	Tooltip: Teleports you to a random location
+}
+
+WarpMirror: {
+	DisplayName: Warp Mirror
+	Tooltip:
+		'''
+		Teleports you to a town NPC
+		Click their head on the fullscreen map
+		'''
+}
+
+WormholeMirror: {
+	DisplayName: Wormhole Mirror
+	Tooltip:
+		'''
+		Teleports you to a party member
+		Click their head on the fullscreen map
+		'''
+}

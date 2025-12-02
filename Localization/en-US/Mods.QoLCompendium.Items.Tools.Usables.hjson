@@ -1,0 +1,130 @@
+BannerBox: {
+	DisplayName: Banner Box
+	Tooltip:
+		'''
+		Automatically applies banner buffs for recieved banners
+		Works from any storage
+		'''
+}
+
+BottomlessLiquidBucket: {
+	DisplayName: Bottomless Liquid Bucket
+	Tooltip:
+		'''
+		Contains an endless amount of liquids
+		Can be poured out
+		Right click to cycle liquids
+		'''
+}
+
+ChallengersCoin: {
+	DisplayName: Challenger's Coin
+	Tooltip:
+		'''
+		Changes the difficulty of the world
+		Right click to toggle Journey Mode
+		'''
+}
+
+DestinationGlobe: {
+	DisplayName: Destination Globe
+	Tooltip:
+		'''
+		Use to select a biome to be in
+		Favorite this item to always be in the selected biome
+		'''
+}
+
+EntityManipulator: {
+	DisplayName: Entity Manipulator
+	Tooltip:
+		'''
+		Use to select a spawn rate modifier
+		Favorite this item to activate the selected spawn rate modifier
+		'''
+}
+
+GoldenLockpick: {
+	DisplayName: Golden Lockpick
+	Tooltip: Opens all Golden Chests and Golden Lock Boxes
+}
+
+GoldenPowder: {
+	DisplayName: Golden Powder
+	Tooltip: Turns critters into their gold variants
+}
+
+MiniSundial: {
+	DisplayName: Mini Sundial
+	Tooltip:
+		'''
+		Use to change time
+		Cycles between dawn, noon, dusk, and midnight
+		Right click to fast forward time
+		'''
+}
+
+PhaseInterrupter: {
+	DisplayName: Phase Interrupter
+	Tooltip: Use to select the Moon's phase
+}
+
+PotionCrate: {
+	DisplayName: Potion Crate
+	Tooltip:
+		'''
+		Right click with an empty hand to retrieve deposited potions
+		Applies buffs from any storage
+		'''
+}
+
+RestockNotice: {
+	DisplayName: Restock Notice
+	Tooltip: Refreshes the Traveling Merchant's shop
+}
+
+SkeletonRucksack: {
+	DisplayName: Skeleton Rucksack
+	Tooltip: Summons a Skeleton Merchant
+}
+
+StarterBag: {
+	DisplayName: Starter Bag
+	Tooltip:
+		'''
+		Right click to recieve your starting gear
+		Make sure to set starting items in the config!
+		'''
+}
+
+SuperDummy: {
+	DisplayName: Super Dummy
+	Tooltip:
+		'''
+		Summons a floating super dummy at your cursor
+		Minions and homing projectiles will detect and attack it
+		Triggers on hit effects
+		Right click to remove all active super dummies
+		Can spawn up to 100 super dummies at once
+		'''
+}
+
+TravelersMannequin: {
+	DisplayName: Traveler's Mannequin
+	Tooltip: Summons a Traveling Merchant
+}
+
+UltimateChecklist: {
+	DisplayName: Ultimate Checklist
+	Tooltip:
+		'''
+		Left click to unlock the entire research duplication menu
+		Right click to unlock the entire bestiary
+		Cannot be undone
+		'''
+}
+
+WatchingEye: {
+	DisplayName: Watching Eye
+	Tooltip: Reveals the whole map
+}

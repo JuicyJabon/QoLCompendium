@@ -1,4 +1,6 @@
-﻿using ContinentOfJourney.Tiles;
+﻿using ContinentOfJourney.Items.Placables.Furniture.Death;
+using ContinentOfJourney.Items.Placables.Furniture.Nothingness;
+using ContinentOfJourney.Tiles;
 
 namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod.AddonChanges
 {
@@ -22,6 +24,8 @@ namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod.AddonChanges
                 newAdjTiles.Add(ModContent.TileType<FountainofLife>());
                 newAdjTiles.Add(ModContent.TileType<FountainofMatter>());
                 newAdjTiles.Add(ModContent.TileType<FountainofTime>());
+                newAdjTiles.Add(ModContent.TileType<DeathWorkbench>());
+                newAdjTiles.Add(ModContent.TileType<NothingnessWorkbench>());
             }
             if (type == ModContent.TileType<BasicHomewardJourneyMonolithTile>() || type == ModContent.TileType<HomewardJourneyMonolithTile>())
             {

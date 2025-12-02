@@ -48,7 +48,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             foreach (int buff in reapplyBuffs)
             {
                 Player.ClearBuff(buff);
-                Player.AddBuff(buff, 2);
+                Player.AddBuff(buff, 10);
             }
         }
     }

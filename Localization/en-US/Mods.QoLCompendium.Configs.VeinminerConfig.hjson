@@ -1,0 +1,25 @@
+DisplayName: Veinminer Config
+
+VeinMiner: {
+	Label: "[i:3509] Vein Mining"
+	Tooltip: Toggles the ability to vein mine
+}
+
+VeinMinerSpeed: {
+	Label: "[i:3509] Vein Miner Speed"
+	Tooltip:
+		'''
+		Sets the speed at which tiles are broken when vein mined
+		Smaller numbers means faster
+		'''
+}
+
+VeinMinerTileLimit: {
+	Tooltip: Sets how many tiles can be vein mined at a time
+	Label: "[i:3509] Vein Miner Tile Limit"
+}
+
+VeinMinerTileWhitelist: {
+	Tooltip: List of tiles that can be vein mined
+	Label: "[i:3509] Vein Miner Whitelist"
+}

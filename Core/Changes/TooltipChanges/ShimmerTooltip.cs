@@ -22,13 +22,13 @@ namespace QoLCompendium.Core.Changes.TooltipChanges
         public void ShimmmerableTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (!item.CanShimmer())
-            {
                 return;
-            }
+
             int countsAsIem = ItemID.Sets.ShimmerCountsAsItem[item.type];
             int type = countsAsIem != -1 ? countsAsIem : item.type;
             int transformsToItem = ItemID.Sets.ShimmerTransformToItem[type];
             int npcID = -1;
+
             if (type == ItemID.GelBalloon && !NPC.unlockedSlimeRainbowSpawn && !QoLCompendium.mainConfig.NoTownSlimes)
             {
                 npcID = NPCID.TownSlimeRainbow;
@@ -57,6 +57,8 @@ namespace QoLCompendium.Core.Changes.TooltipChanges
             {
                 transformsToItem = ItemID.MusicBox;
             }
+
+
             string shimmerTextValue = Common.GetTooltipValue("Shimmerable");
             if (transformsToItem != -1)
             {
@@ -72,14 +74,11 @@ namespace QoLCompendium.Core.Changes.TooltipChanges
             {
                 int coinLuck = ItemID.Sets.CoinLuckValue[type];
                 if (coinLuck <= 0)
-                {
                     return;
-                }
                 shimmerTextValue = Common.GetTooltipValue("ShimmerCoinLuck", $"+{coinLuck:##,###}");
             }
             var tooltipLine = new TooltipLine(Mod, "ShimmerInfo", shimmerTextValue) { OverrideColor = Color.Plum };
             Common.AddLastTooltip(tooltips, tooltipLine);
         }
-
     }
 }

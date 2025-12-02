@@ -1,14 +1,15 @@
 ﻿using QoLCompendium.Content.Projectiles.Other;
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.DataStructures;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
 {
-    public class TravelersMannequin : ModItem
+    public class TravelersMannequin : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.TravelersMannequin;
+
+        public new string LocalizationCategory => "Items.Tools.Usables";
+
 
         public override void SetStaticDefaults()
         {

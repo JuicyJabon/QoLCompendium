@@ -1,0 +1,43 @@
+DisplayName: Main Client Config
+
+FavoriteResearching: {
+	Tooltip: Toggles if favorited items are auto-researched if they meet the stack requirements
+	Label: "[i:75] Auto Research Favorited Items"
+}
+
+NoAuraVisuals: {
+	Label: "[i:2348] No Aura Visuals"
+	Tooltip: Toggles if the Inferno Aura is visible
+}
+
+CombatTextLimit: {
+	Label: "[i:3119] Combat Text Limit"
+	Tooltip: Change the limit of combat texts that can be displayed
+}
+
+DisableDashDoubleTap: {
+	Label: "[i:3097] Disable Dash Double Tap"
+	Tooltip: Toggles if you can double tap dash
+}
+
+GlintColor: {
+	Tooltip: Changes the color of the glint effect on items
+	Label: "[i:1067] Glint Color"
+}
+
+ConfigGlintID: {
+	Rainbow.Label: Rainbow
+	Pink.Label: Pink
+	Magenta.Label: Magenta
+	Purple.Label: Purple
+	SkyBlue.Label: Sky Blue
+	Cyan.Label: Cyan
+	Blue.Label: Blue
+	Lime.Label: Lime
+	Green.Label: Green
+	Yellow.Label: Yellow
+	Orange.Label: Orange
+	Red.Label: Red
+	White.Label: White
+	Tooltip: ""
+}

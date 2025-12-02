@@ -1,14 +1,14 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using QoLCompendium.Core.UI.Other;
+﻿using QoLCompendium.Core.UI.Other;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Tools.Mirrors
 {
-    public class MosaicMirror : ModItem
+    public class MosaicMirror : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.Mirrors;
+
+        public new string LocalizationCategory => "Items.Tools.Mirrors";
 
         public int Mode = 0;
 

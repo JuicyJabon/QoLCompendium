@@ -1,0 +1,78 @@
+BMPotionText: Potions
+BMStationText: Flasks, Stations & Foods
+BMMaterialText: Materials
+BMMovementAccessoryText: Movement Accessories
+BMCombatAccessoryText: Combat Accessories
+BMInformativeText: Informative/Building Gear
+BMBagText: Treasure Bags
+BMCrateText: Crates & Grab Bags
+BMOreText: Ores & Bars
+BMNaturalBlockText: Natural Blocks
+BMBuildingBlockText: Building Blocks
+BMHerbText: Herbs & Plants
+BMFishText: Fish & Fishing Gear
+BMMountText: Mounts & Hooks
+BMAmmoText: Ammo
+ECPotionText: Modded Potions
+ECStationText: Modded Flasks, Stations & Foods
+ECMaterialText: Modded Materials (Mods: A-M)
+ECMaterial2Text: Modded Materials (Mods: N-Z)
+ECBagText: Modded Treasure Bags
+ECCrateText: Modded Crates & Grab Bags
+ECOreText: Modded Ores & Bars
+ECNaturalBlockText: Modded Natural Blocks
+ECBuildingBlockText: Modded Building Blocks
+ECHerbText: Modded Herbs & Plants
+ECFishText: Modded Fish & Fishing Gear
+BossText: Bosses
+EventText: Events
+MinibossText: Minibosses
+IncreaseSpawnText: Increase Spawns
+DecreaseSpawnText: Decrease Spawns
+CancelSpawnText: No Spawns
+CancelEventText: No Events
+CancelSpawnAndEventText: No Spawns or Events
+RevertText: Revert Changes
+FullMoonText: Full Moon
+WaningGibbousText: Waning Gibbous
+ThirdQuarterText: Third Quarter
+WaningCrescentText: Waning Crescent
+NewMoonText: New Moon
+WaxingCrescentText: Waxing Crescent
+FirstQuarterText: First Quarter
+WaxingGibbousText: Waxing Gibbous
+PiggyBankText: Piggy Bank
+SafeText: Safe
+DefendersForgeText: Defender's Forge
+VoidVaultText: Void Vault
+DesertText: Desert
+SnowText: Snow
+JungleText: Jungle
+GlowingMushroomText: Glowing Mushroom
+CorruptionText: Corruption
+CrimsonText: Crimson
+HallowText: Hallow (Requires Hardmode)
+PurityText: Purity
+CloseText: Close
+ResetText: Reset Selection
+DisabledText: "{0} [c/cf1d1d:(DISABLED)]"
+GardenGnomeText: Garden Gnome
+ArenaText: Arena Buffs
+PotionText: Potion Buffs
+StationText: Station Buffs
+AddonText: Addon Buffs
+RepellentText: Repellent Buffs
+CandyText: Candy Buffs
+VanillaText: Open Vanilla Buffs
+CalamityText: Open Calamity Buffs
+HomewardJourneyText: Open Homeward Journey Buffs
+MartinsOrderText: Open Martin's Order Buffs
+SOTSText: Open Secrets of the Shadows Buffs
+SpiritClassicText: Open Spirit Classic Buffs
+ThoriumText: Open Thorium Buffs
+VitalityText: Open Vitality Buffs
+UnloadedText: Mod Unloaded
+EnableText: Left click to enable
+DisableText: Left click to disable
+NoBuffText: No active buffs
+BuffTogglerText: Permanent Buff Toggler

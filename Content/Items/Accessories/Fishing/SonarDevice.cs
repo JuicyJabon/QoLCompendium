@@ -1,12 +1,12 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using Terraria.Enums;
+﻿using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Accessories.Fishing
 {
-    public class SonarDevice : ModItem
+    public class SonarDevice : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.FishingAccessories;
+
+        public new string LocalizationCategory => "Items.Accessories.Fishing";
 
         public override void SetDefaults()
         {

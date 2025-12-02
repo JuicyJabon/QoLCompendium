@@ -1,0 +1,361 @@
+DefaultPermanent: "Permanent "
+PermanentAmmoBox.DisplayName: Permanent Ammo Box
+PermanentAmmoReservation.DisplayName: Permanent Ammo Reservation
+PermanentArchery.DisplayName: Permanent Archery
+PermanentBattle.DisplayName: Permanent Battle
+PermanentBewitchingTable.DisplayName: Permanent Bewitching Table
+PermanentBiomeSight.DisplayName: Permanent Biome Sight
+PermanentBuilder.DisplayName: Permanent Builder
+PermanentCalm.DisplayName: Permanent Calm
+PermanentCampfire.DisplayName: Permanent Campfire
+PermanentBastStatue.DisplayName: Permanent Bast Statue
+PermanentCrystalBall.DisplayName: Permanent Crystal Ball
+PermanentCrate.DisplayName: Permanent Crate
+PermanentDangersense.DisplayName: Permanent Dangersense
+PermanentEndurance.DisplayName: Permanent Endurance
+PermanentFeatherfall.DisplayName: Permanent Featherfall
+PermanentFishing.DisplayName: Permanent Fishing
+PermanentFlipper.DisplayName: Permanent Flipper
+PermanentGills.DisplayName: Permanent Gills
+PermanentGravitation.DisplayName: Permanent Gravitation
+PermanentLucky.DisplayName: Permanent Lucky
+PermanentHeartLantern.DisplayName: Permanent Heart Lantern
+PermanentHeartreach.DisplayName: Permanent Heartreach
+PermanentHoney.DisplayName: Permanent Honey
+PermanentHunter.DisplayName: Permanent Hunter
+PermanentInferno.DisplayName: Permanent Inferno
+PermanentInvisibility.DisplayName: Permanent Invisibility
+PermanentIronskin.DisplayName: Permanent Ironskin
+PermanentLifeforce.DisplayName: Permanent Lifeforce
+PermanentMagicPower.DisplayName: Permanent Magic Power
+PermanentManaRegeneration.DisplayName: Permanent Mana Regeneration
+PermanentMining.DisplayName: Permanent Mining
+PermanentNightOwl.DisplayName: Permanent Night Owl
+PermanentObsidianSkin.DisplayName: Permanent Obsidian Skin
+PermanentPeaceCandle.DisplayName: Permanent Peace Candle
+PermanentRage.DisplayName: Permanent Rage
+PermanentRegeneration.DisplayName: Permanent Regeneration
+PermanentShadowCandle.DisplayName: Permanent Shadow Candle
+PermanentShadow.DisplayName: Permanent Shadow
+PermanentSharpeningStation.DisplayName: Permanent Sharpening Station
+PermanentShine.DisplayName: Permanent Shine
+PermanentSonar.DisplayName: Permanent Sonar
+PermanentSpelunker.DisplayName: Permanent Spelunker
+PermanentStarInABottle.DisplayName: Permanent Star in a Bottle
+PermanentSliceOfCake.DisplayName: Permanent Slice of Cake
+PermanentSummoning.DisplayName: Permanent Summoning
+PermanentSunflower.DisplayName: Permanent Sunflower
+PermanentSwiftness.DisplayName: Permanent Swiftness
+PermanentThorns.DisplayName: Permanent Thorns
+PermanentTipsy.DisplayName: Permanent Tipsy
+PermanentTitan.DisplayName: Permanent Titan
+PermanentWarmth.DisplayName: Permanent Warmth
+PermanentWarTable.DisplayName: Permanent War Table
+PermanentWaterCandle.DisplayName: Permanent Water Candle
+PermanentWaterWalking.DisplayName: Permanent Water Walking
+PermanentFlaskofParty.DisplayName: Permanent Flask of Party
+PermanentFlaskofCursedFlames.DisplayName: Permanent Flask of Cursed Flames
+PermanentFlaskofFire.DisplayName: Permanent Flask of Fire
+PermanentFlaskofGold.DisplayName: Permanent Flask of Gold
+PermanentFlaskofIchor.DisplayName: Permanent Flask of Ichor
+PermanentFlaskofNanites.DisplayName: Permanent Flask of Nanites
+PermanentFlaskofPoison.DisplayName: Permanent Flask of Poison
+PermanentFlaskofVenom.DisplayName: Permanent Flask of Venom
+PermanentWellFed.DisplayName: Permanent Well Fed
+PermanentPlentySatisfied.DisplayName: Permanent Plenty Satisfied
+PermanentExquisitelyStuffed.DisplayName: Permanent Exquisitely Stuffed
+PermanentWrath.DisplayName: Permanent Wrath
+PermanentAquatic.DisplayName: Permanent Aquatic
+PermanentArena.DisplayName: Permanent Arena
+PermanentEverything.DisplayName: Permanent Everything
+PermanentThorium.DisplayName: Permanent Thorium
+PermanentThoriumCoatings.DisplayName: Permanent Thorium Coatings
+PermanentThoriumStations.DisplayName: Permanent Thorium Stations
+PermanentThoriumRepellent.DisplayName: Permanent Thorium Repellent
+PermanentThoriumMovement.DisplayName: Permanent Thorium Movement
+PermanentThoriumDamage.DisplayName: Permanent Thorium Damage
+PermanentThoriumThrower.DisplayName: Permanent Thorium Thrower
+PermanentThoriumHealer.DisplayName: Permanent Thorium Healer
+PermanentThoriumBard.DisplayName: Permanent Thorium Bard
+PermanentNinjaRack.DisplayName: Permanent Ninja Rack
+PermanentConductorsStand.DisplayName: Permanent Conductors Stand
+PermanentAltar.DisplayName: Permanent Altar
+PermanentZombieRepellent.DisplayName: Permanent Zombie Repellent
+PermanentWarmonger.DisplayName: Permanent Warmonger
+PermanentSkeletonRepellent.DisplayName: Permanent Skeleton Repellent
+PermanentPotentExtract.DisplayName: Permanent Potent Extract
+PermanentKinetic.DisplayName: Permanent Kinetic
+PermanentInspirationalReach.DisplayName: Permanent Inspirational Reach
+PermanentInsectRepellent.DisplayName: Permanent Insect Repellent
+PermanentHydration.DisplayName: Permanent Hydration
+PermanentHoly.DisplayName: Permanent Holy
+PermanentGlowing.DisplayName: Permanent Glowing
+PermanentFrenzy.DisplayName: Permanent Frenzy
+PermanentFishRepellent.DisplayName: Permanent Fish Repellent
+PermanentEarworm.DisplayName: Permanent Earworm
+PermanentCreativity.DisplayName: Permanent Creativity
+PermanentConflagration.DisplayName: Permanent Conflagration
+PermanentCactusFruit.DisplayName: Permanent Cactus Fruit
+PermanentBouncingFlames.DisplayName: Permanent Bouncing Flames
+PermanentBloodRush.DisplayName: Permanent Blood Rush
+PermanentBatRepellent.DisplayName: Permanent Bat Repellent
+PermanentAssassin.DisplayName: Permanent Assassin
+PermanentArtillery.DisplayName: Permanent Artillery
+PermanentArcane.DisplayName: Permanent Arcane
+PermanentAquaAffinity.DisplayName: Permanent Aqua Affinity
+PermanentToxicCoating.DisplayName: Permanent Toxic Coating
+PermanentSporeCoating.DisplayName: Permanent Spore Coating
+PermanentGorgonCoating.DisplayName: Permanent Gorgon Coating
+PermanentExplosiveCoating.DisplayName: Permanent Explosive Coating
+PermanentDeepFreezeCoating.DisplayName: Permanent Deep Freeze Coating
+PermanentMistletoe.DisplayName: Permanent Mistletoe
+PermanentVanilla.DisplayName: Permanent Vanilla
+PermanentFlasks.DisplayName: Permanent Flasks
+PermanentStation.DisplayName: Permanent Station
+PermanentVision.DisplayName: Permanent Vision
+PermanentTrawler.DisplayName: Permanent Trawler
+PermanentMovement.DisplayName: Permanent Movement
+PermanentDefense.DisplayName: Permanent Defense
+PermanentDamage.DisplayName: Permanent Damage
+PermanentConstruction.DisplayName: Permanent Construction
+PermanentBloodyMary.DisplayName: Permanent Bloody Mary
+PermanentCaribbeanRum.DisplayName: Permanent Caribbean Rum
+PermanentCinnamonRoll.DisplayName: Permanent Cinnamon Roll
+PermanentEverclear.DisplayName: Permanent Everclear
+PermanentEvergreenGin.DisplayName: Permanent Evergreen Gin
+PermanentFireball.DisplayName: Permanent Fireball
+PermanentGrapeBeer.DisplayName: Permanent Grape Beer
+PermanentMargarita.DisplayName: Permanent Margarita
+PermanentMoonshine.DisplayName: Permanent Moonshine
+PermanentMoscowMule.DisplayName: Permanent Moscow Mule
+PermanentOldFashioned.DisplayName: Permanent Old Fashioned
+PermanentPurpleHaze.DisplayName: Permanent Purple Haze
+PermanentRedWine.DisplayName: Permanent Red Wine
+PermanentRum.DisplayName: Permanent Rum
+PermanentScrewdriver.DisplayName: Permanent Screwdriver
+PermanentStarBeamRye.DisplayName: Permanent Star Beam Rye
+PermanentTequila.DisplayName: Permanent Tequila
+PermanentTequilaSunrise.DisplayName: Permanent Tequila Sunrise
+PermanentTrippy.DisplayName: Permanent Trippy
+PermanentVodka.DisplayName: Permanent Vodka
+PermanentWhiskey.DisplayName: Permanent Whiskey
+PermanentWhiteWine.DisplayName: Permanent White Wine
+PermanentChaosCandle.DisplayName: Permanent Chaos Candle
+PermanentCorruptionEffigy.DisplayName: Permanent Corruption Effigy
+PermanentCrimsonEffigy.DisplayName: Permanent Crimson Effigy
+PermanentEffigyOfDecay.DisplayName: Permanent Effigy Of Decay
+PermanentResilientCandle.DisplayName: Permanent Resilient Candle
+PermanentSpitefulCandle.DisplayName: Permanent Spiteful Candle
+PermanentTranquilityCandle.DisplayName: Permanent Tranquility Candle
+PermanentTranquility.DisplayName: Permanent Tranquility
+PermanentVigorousCandle.DisplayName: Permanent Vigorous Candle
+PermanentVigor.DisplayName: Permanent Vigor
+PermanentWeightlessCandle.DisplayName: Permanent Weightless Candle
+PermanentAnechoicCoating.DisplayName: Permanent Anechoic Coating
+PermanentAstralInjection.DisplayName: Permanent Astral Injection
+PermanentBaguette.DisplayName: Permanent Baguette
+PermanentBloodfin.DisplayName: Permanent Bloodfin
+PermanentBounding.DisplayName: Permanent Bounding
+PermanentCalcium.DisplayName: Permanent Calcium
+PermanentCeaselessHunger.DisplayName: Permanent Ceaseless Hunger
+PermanentGravityNormalizer.DisplayName: Permanent Gravity Normalizer
+PermanentOmniscience.DisplayName: Permanent Omniscience
+PermanentPhotosynthesis.DisplayName: Permanent Photosynthesis
+PermanentSoaring.DisplayName: Permanent Soaring
+PermanentSulphurskin.DisplayName: Permanent Sulphurskin
+PermanentTesla.DisplayName: Permanent Tesla
+PermanentZen.DisplayName: Permanent Zen
+PermanentZerg.DisplayName: Permanent Zerg
+PermanentFlaskOfBrimstone.DisplayName: Permanent Flask of Brimstone
+PermanentFlaskOfCrumbling.DisplayName: Permanent Flask of Crumbling
+PermanentFlaskOfHolyFlames.DisplayName: Permanent Flask of Holy Flames
+PermanentSoyMilk.DisplayName: Permanent Soy Milk
+PermanentYharimsStimulants.DisplayName: Permanent Yharim's Stimulants
+PermanentVoidCandle.DisplayName: Permanent Void Candle
+PermanentCalamityEntropy.DisplayName: Permanent Calamity Entropy
+PermanentAstracola.DisplayName: Permanent Astracola
+PermanentExoBaguette.DisplayName: Permanent Exo Baguette
+PermanentSupremeLuck.DisplayName: Permanent Supreme Luck
+PermanentTitanScale.DisplayName: Permanent Titan Scale
+PermanentClamity.DisplayName: Permanent Clamity
+PermanentCalamityAlcohols.DisplayName: Permanent Calamity Alcohols
+PermanentCalamityAbyss.DisplayName: Permanent Calamity Abyss
+PermanentCalamityDamage.DisplayName: Permanent Calamity Damage
+PermanentCalamityDefense.DisplayName: Permanent Calamity Defense
+PermanentCalamityFarming.DisplayName: Permanent Calamity Farming
+PermanentCalamityMovement.DisplayName: Permanent Calamity Movement
+PermanentCalamityArena.DisplayName: Permanent Calamity Arena
+PermanentCalamityFlasks.DisplayName: Permanent Calamity Flasks
+PermanentCalamity.DisplayName: Permanent Calamity
+PermanentFlaskOfElectricity.DisplayName: Permanent Flask of Electricity
+PermanentBushOfLife.DisplayName: Permanent Bush of Life
+PermanentLifeLantern.DisplayName: Permanent Life Lantern
+PermanentFlight.DisplayName: Permanent Flight
+PermanentFluorescentBerry.DisplayName: Permanent Fluorescent Berry
+PermanentHJHaste.DisplayName: Permanent Haste
+PermanentReanimation.DisplayName: Permanent Reanimation
+PermanentYin.DisplayName: Permanent Yin
+PermanentYang.DisplayName: Permanent Yang
+PermanentFlaskOfDivineFire.DisplayName: Permanent Flask of Divine Fire
+PermanentFlaskOfPlague.DisplayName: Permanent Flask of Plague
+PermanentFlaskOfSteel.DisplayName: Permanent Flask of Steel
+PermanentAntiEncirclement.DisplayName: Permanent Anti Encirclement
+PermanentAttract.DisplayName: Permanent Attract
+PermanentBrave.DisplayName: Permanent Brave
+PermanentFlappy.DisplayName: Permanent Flappy
+PermanentGreed.DisplayName: Permanent Greed
+PermanentHighway.DisplayName: Permanent Highway
+PermanentHyperopia.DisplayName: Permanent Hyperopia
+PermanentKiwi.DisplayName: Permanent Kiwi
+PermanentLeap.DisplayName: Permanent Leap
+PermanentLeftist.DisplayName: Permanent Leftist
+PermanentMermaid.DisplayName: Permanent Mermaid
+PermanentNuke.DisplayName: Permanent Nuke
+PermanentParasite.DisplayName: Permanent Parasite
+PermanentRightist.DisplayName: Permanent Rightist
+PermanentSignal.DisplayName: Permanent Signal
+PermanentHomewardJourneyFarming.DisplayName: Permanent Homeward Journey Farming
+PermanentHomewardJourneyMovement.DisplayName: Permanent Homeward Journey Movement
+PermanentHomewardJourneyArena.DisplayName: Permanent Homeward Journey Arena
+PermanentHomewardJourneyFlasks.DisplayName: Permanent Homeward Journey Flasks
+PermanentHomewardJourneyStrangePotions.DisplayName: Permanent Homeward Journey Strange Potions
+PermanentHomewardJourney.DisplayName: Permanent Homeward Journey
+PermanentBlackHole.DisplayName: Permanent Black Hole
+PermanentBody.DisplayName: Permanent Body
+PermanentCharging.DisplayName: Permanent Charging
+PermanentDefender.DisplayName: Permanent Defender
+PermanentEmpowerment.DisplayName: Permanent Empowerment
+PermanentEvocation.DisplayName: Permanent Evocation
+PermanentGourmetFlavor.DisplayName: Permanent Gourmet Flavor
+PermanentHaste.DisplayName: Permanent Haste
+PermanentHealing.DisplayName: Permanent Healing
+PermanentRockskin.DisplayName: Permanent Rockskin
+PermanentShielding.DisplayName: Permanent Shielding
+PermanentShooter.DisplayName: Permanent Shooter
+PermanentSoul.DisplayName: Permanent Soul
+PermanentSpellCaster.DisplayName: Permanent Spell Caster
+PermanentStarreach.DisplayName: Permanent Starreach
+PermanentSweeper.DisplayName: Permanent Sweeper
+PermanentThrower.DisplayName: Permanent Thrower
+PermanentWhipper.DisplayName: Permanent Whipper
+PermanentZincPill.DisplayName: Permanent Zinc Pill
+PermanentArcheology.DisplayName: Permanent Archeology
+PermanentSporeFarm.DisplayName: Permanent Spore Farm
+PermanentMartinsOrderDamage.DisplayName: Permanent Martin's Order Damage
+PermanentMartinsOrderDefense.DisplayName: Permanent Martin's Order Defense
+PermanentMartinsOrderStations.DisplayName: Permanent Martin's Order Stations
+PermanentMartinsOrder.DisplayName: Permanent Martin's Order
+PermanentInfluence.DisplayName: Permanent Influence
+PermanentDesktopComputer.DisplayName: Permanent Desktop Computer
+PermanentClickerClass.DisplayName: Permanent Clicker Class
+PermanentWiesnbrau.DisplayName: Permanent Wiesnbrau
+PermanentAssassination.DisplayName: Permanent Assassination
+PermanentBluefire.DisplayName: Permanent Bluefire
+PermanentBrittle.DisplayName: Permanent Brittle
+PermanentDoubleVision.DisplayName: Permanent Double Vision
+PermanentHarmony.DisplayName: Permanent Harmony
+PermanentNightmare.DisplayName: Permanent Nightmare
+PermanentRipple.DisplayName: Permanent Ripple
+PermanentRoughskin.DisplayName: Permanent Roughskin
+PermanentSoulAccess.DisplayName: Permanent Soul Access
+PermanentVibe.DisplayName: Permanent Vibe
+PermanentDigitalDisplay.DisplayName: Permanent Digital Display
+PermanentSecretsOfTheShadows.DisplayName: Permanent Secrets of the Shadows
+PermanentArmorPiercing.DisplayName: Permanent Armor Piercing
+PermanentCranberrySoda.DisplayName: Permanent Cranberry Soda
+PermanentLeaping.DisplayName: Permanent Leaping
+PermanentTravelsense.DisplayName: Permanent Travelsense
+PermanentWarrior.DisplayName: Permanent Warrior
+PermanentVitality.DisplayName: Permanent Vitality
+PermanentRedemption.DisplayName: Permanent Redemption
+PermanentEnergyStation.DisplayName: Permanent Energy Station
+PermanentSoulCandle.DisplayName: Permanent Soul Candle
+PermanentMoonflareCandle.DisplayName: Permanent Moonflare Candle
+PermanentFlaskOfNitroglycerine.DisplayName: Permanent Flask of Nitroglycerine
+PermanentFlaskOfBile.DisplayName: Permanent Flask of Bile
+PermanentVigourous.DisplayName: Permanent Vigourous
+PermanentVendetta.DisplayName: Permanent Vendetta
+PermanentSkirmish.DisplayName: Permanent Skirmish
+PermanentHydricAcid.DisplayName: Permanent Hydric Acid
+PermanentH.DisplayName: Permanent H
+PermanentEvilJelly.DisplayName: Permanent Evil Jelly
+PermanentCharisma.DisplayName: Permanent Charisma
+PermanentCommanding.DisplayName: Permanent Commanding
+PermanentDawn.DisplayName: Permanent Dawn
+PermanentDusk.DisplayName: Permanent Dusk
+PermanentDraconiumSkin.DisplayName: Permanent Draconium Skin
+PermanentEssenceOfFury.DisplayName: Permanent Essence Of Fury
+PermanentFlareElixir.DisplayName: Permanent Flare Elixir
+PermanentFlariumFlurry.DisplayName: Permanent Flarium Flurry
+PermanentFrenziedAnimosity.DisplayName: Permanent Frenzied Animosity
+PermanentHeavyFall.DisplayName: Permanent Heavy Fall
+PermanentHolyLight.DisplayName: Permanent Holy Light
+PermanentMilk.DisplayName: Permanent Milk
+PermanentMoonlight.DisplayName: Permanent Moonlight
+PermanentNightmareFuel.DisplayName: Permanent Nightmare Fuel
+PermanentNinjaFocus.DisplayName: Permanent Ninja Focus
+PermanentNumberOne.DisplayName: Permanent Number One
+PermanentRobustMuscle.DisplayName: Permanent Robust Muscle
+PermanentSerene.DisplayName: Permanent Serene
+PermanentSeriousSyrusianSyrup.DisplayName: Permanent Serious Syrusian Syrup
+PermanentShoalFishing.DisplayName: Permanent Shoal Fishing
+PermanentSuppression.DisplayName: Permanent Suppression
+PermanentTowerSurmount.DisplayName: Permanent Tower Surmount
+PermanentWindResistance.DisplayName: Permanent Wind Resistance
+PermanentLifeFruitLantern.DisplayName: Permanent Life Fruit Lantern
+PermanentShadowsOfAbaddonDamage.DisplayName: Permanent Shadows Of Abaddon Damage
+PermanentShadowsOfAbaddonDefense.DisplayName: Permanent Shadows Of Abaddon Defense
+PermanentShadowsOfAbaddonRevenant.DisplayName: Permanent Shadows Of Abaddon Revenant
+PermanentShadowsOfAbaddonMovement.DisplayName: Permanent Shadows Of Abaddon Movement
+PermanentShadowsOfAbaddonFarming.DisplayName: Permanent Shadows Of Abaddon Farming
+PermanentShadowsOfAbaddon.DisplayName: Permanent Shadows Of Abaddon
+PermanentDeathsinger.DisplayName: Permanent Deathsinger
+PermanentInspirationRegeneration.DisplayName: Permanent Inspiration Regeneration
+PermanentJump.DisplayName: Permanent Jump
+PermanentMirrorCoat.DisplayName: Permanent Mirror Coat
+PermanentMoonJelly.DisplayName: Permanent Moon Jelly
+PermanentOliveBranch.DisplayName: Permanent Olive Branch
+PermanentRunescribe.DisplayName: Permanent Runescribe
+PermanentSoulguard.DisplayName: Permanent Soulguard
+PermanentSpirit.DisplayName: Permanent Spirit
+PermanentSpiritSoaring.DisplayName: Permanent Soaring
+PermanentSporecoid.DisplayName: Permanent Sporecoid
+PermanentStarburn.DisplayName: Permanent Starburn
+PermanentSteadfast.DisplayName: Permanent Steadfast
+PermanentToxin.DisplayName: Permanent Toxin
+PermanentZephyr.DisplayName: Permanent Zephyr
+PermanentCandy.DisplayName: Permanent Candy
+PermanentChocolateBar.DisplayName: Permanent Chocolate Bar
+PermanentHealthCandy.DisplayName: Permanent Health Candy
+PermanentLollipop.DisplayName: Permanent Lollipop
+PermanentManaCandy.DisplayName: Permanent Mana Candy
+PermanentTaffy.DisplayName: Permanent Taffy
+PermanentCoiledEnergizer.DisplayName: Permanent Coiled Energizer
+PermanentKoiTotem.DisplayName: Permanent Koi Totem
+PermanentSunPot.DisplayName: Permanent Sun Pot
+PermanentCouchPotato.DisplayName: Permanent Couch Potato
+PermanentSpiritClassicDamage.DisplayName: Permanent Spirit Classic Damage
+PermanentSpiritClassicDefense.DisplayName: Permanent Spirit Classic Defense
+PermanentSpiritClassicMovement.DisplayName: Permanent Spirit Classic Movement
+PermanentSpiritClassicCandies.DisplayName: Permanent Spirit Classic Candies
+PermanentSpiritClassicArena.DisplayName: Permanent Spirit Classic Arena
+PermanentSpiritClassic.DisplayName: Permanent Spirit Classic
+PermanentCalamityRekindled.DisplayName: Permanent Calamity Rekindled
+PermanentCRYharimsStimulants.DisplayName: Permanent Yharim's Stimulants
+PermanentTriumph.DisplayName: Permanent Triumph
+PermanentCRTitanScale.DisplayName: Permanent Titan Scale
+PermanentShattering.DisplayName: Permanent Shattering
+PermanentRevivify.DisplayName: Permanent Revivify
+PermanentProfanedWrath.DisplayName: Permanent Profaned Wrath
+PermanentProfanedRage.DisplayName: Permanent Profaned Rage
+PermanentPenumbra.DisplayName: Permanent Penumbra
+PermanentDraconicElixir.DisplayName: Permanent Draconic Elixir
+PermanentCadence.DisplayName: Permanent Cadence
+PermanentBeetleJuice.DisplayName: Permanent Beetle Juice
+PermanentQuenched.DisplayName: Permanent Quenched
+PermanentRemedy.DisplayName: Permanent Remedy
+PermanentSRSoaring.DisplayName: Permanent Soaring
+PermanentSRZephyr.DisplayName: Permanent Zephyr
+PermanentFlaskOfFrost.DisplayName: Permanent Flask of Frost
+PermanentSRKoiTotem.DisplayName: Permanent Koi Totem
+PermanentSpiritReforged.DisplayName: Permanent Spirit Reforged

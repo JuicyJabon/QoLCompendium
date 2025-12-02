@@ -3,9 +3,11 @@ using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 {
-    public class UltimateCraftingMonolith : ModItem
+    public class UltimateCraftingMonolith : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.CraftingStations;
+
+        public new string LocalizationCategory => "Items.Placeables.CraftingStations";
 
         public override void SetStaticDefaults()
         {

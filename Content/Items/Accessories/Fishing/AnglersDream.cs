@@ -1,13 +1,13 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using QoLCompendium.Core.UI.Other;
+﻿using QoLCompendium.Core.UI.Other;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Accessories.Fishing
 {
-    public class AnglersDream : ModItem
+    public class AnglersDream : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.FishingAccessories;
+
+        public new string LocalizationCategory => "Items.Accessories.Fishing";
 
         public override void SetDefaults()
         {

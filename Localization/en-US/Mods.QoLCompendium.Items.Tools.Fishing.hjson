@@ -1,0 +1,26 @@
+BottomlessChumBucket: {
+	DisplayName: Bottomless Chum Bucket
+	Tooltip:
+		'''
+		Contains an endless amount of chum
+		Toss in water up to 3 times to increase fishing power
+		Obtained through Blood Moon fishing
+		'''
+}
+
+Eightworm: {
+	DisplayName: Eightworm
+	Tooltip: "'Infinity + worms'"
+}
+
+LegendaryCatcher: {
+	DisplayName: Legendary Catcher
+	Tooltip:
+		'''
+		Casts a ridiculous amount of lines
+		Can fish in lava
+		Fishing line never snaps
+		Increases fishing power of the rod during rain or at night
+		Requires 1 bait for infinite uses
+		'''
+}

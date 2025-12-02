@@ -1,0 +1,44 @@
+StaffOfShrooming: {
+	DisplayName: Staff of Shrooming
+	Tooltip: ""
+}
+
+StaffOfHallowing: {
+	DisplayName: Staff of Hallowing
+	Tooltip: ""
+}
+
+StaffOfAshing: {
+	DisplayName: Staff of Ashing
+	Tooltip: ""
+}
+
+StaffOfCysting: {
+	DisplayName: Staff of Cysting
+	Tooltip: ""
+}
+
+StaffOfHemorrhaging: {
+	DisplayName: Staff of Hemorrhaging
+	Tooltip: ""
+}
+
+StaffOfOvergrowth: {
+	DisplayName: Staff of Overgrowth
+	Tooltip: ""
+}
+
+Omnistaff: {
+	DisplayName: Omnistaff
+	Tooltip: Right Click to cycle grass type
+}
+
+MossStaff: {
+	DisplayName: Moss Staff
+	Tooltip: ""
+}
+
+GlowingMossStaff: {
+	DisplayName: Glowing Moss Staff
+	Tooltip: ""
+}

@@ -1,0 +1,18 @@
+AllInOneAccess: {
+	DisplayName: All In One Access
+	Tooltip:
+		'''
+		Opens a menu for mobile access to all personal storages
+		Right click to open/close the Void Vault
+		'''
+}
+
+EtherianConstruct: {
+	DisplayName: Etherian Construct
+	Tooltip: Summons a floating etherian construct to store your items
+}
+
+FlyingSafe: {
+	DisplayName: Flying Safe
+	Tooltip: Summons a floating safe to store your items
+}

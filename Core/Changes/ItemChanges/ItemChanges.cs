@@ -1,3 +1,5 @@
+using SOTS.Items.Void;
+
 namespace QoLCompendium.Core.Changes.ItemChanges
 {
     public class ItemChanges : GlobalItem
@@ -17,7 +19,7 @@ namespace QoLCompendium.Core.Changes.ItemChanges
             if (QoLCompendium.mainConfig.NoDeveloperSetsFromBossBags && ItemID.Sets.BossBag[item.type])
                 ItemID.Sets.PreHardmodeLikeBossBag[item.type] = true;
 
-            if (QoLCompendium.mainConfig.IncreaseMaxStack > 0 && item.maxStack > 10 && item.maxStack != 100 && !Common.IsCoin(item.type))
+            if (QoLCompendium.mainConfig.IncreaseMaxStack > 0 && item.maxStack > 10 && item.maxStack != 100 && !item.IsACoin())
                 item.maxStack = QoLCompendium.mainConfig.IncreaseMaxStack;
 
             if (QoLCompendium.mainConfig.StackableQuestItems && item.questItem && QoLCompendium.mainConfig.IncreaseMaxStack > 0)
@@ -52,6 +54,10 @@ namespace QoLCompendium.Core.Changes.ItemChanges
 
         public override bool ConsumeItem(Item item, Player player)
         {
+            if (ModConditions.secretsOfTheShadowsLoaded)
+                if (item.IsAVoidConsumable())
+                    return base.ConsumeItem(item, player);
+
             if (item.consumable == true && item.damage == -1 && item.stack >= QoLCompendium.mainConfig.EndlessItemAmount && QoLCompendium.mainConfig.EndlessConsumables)
                 return false;
 
@@ -75,6 +81,16 @@ namespace QoLCompendium.Core.Changes.ItemChanges
                 return false;
 
             return base.CanConsumeBait(player, bait);
+        }
+    }
+
+    [JITWhenModsEnabled(ModConditions.secretsOfTheShadowsName)]
+    [ExtendsFromMod(ModConditions.secretsOfTheShadowsName)]
+    public static class IsVoidConsumable
+    {
+        public static bool IsAVoidConsumable(this Item item)
+        {
+            return item.ModItem is VoidConsumable;
         }
     }
 }

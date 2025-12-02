@@ -1,12 +1,12 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using Terraria.Enums;
+﻿using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.FavoriteEffect
 {
-    public class PausePedestal : ModItem
+    public class PausePedestal : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.MoonPedestals;
+
+        public new string LocalizationCategory => "Items.Tools.FavoriteEffect";
 
         public override void SetStaticDefaults()
         {

@@ -1,15 +1,15 @@
 ﻿using QoLCompendium.Content.Projectiles.Explosives;
 using QoLCompendium.Content.Projectiles.Other;
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.DataStructures;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Explosives
 {
-    public class Minibridge : ModItem
+    public class Minibridge : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.AutoStructures;
+
+        public new string LocalizationCategory => "Items.Tools.Explosives";
 
         public override void SetStaticDefaults()
         {
@@ -67,10 +67,14 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
             if (player.ownedProjectileCounts[ModContent.ProjectileType<BuildIndicatorProjectile>()] > 200)
                 return;
 
-            for (int i = -100; i <= 100; i++)
+            int length = 200;
+            bool goLeft = player.direction < 1;
+            int min = goLeft ? -length : 0;
+            int max = goLeft ? 1 : length;
+            for (int x = min; x < max; x++)
             {
                 Vector2 mouse = Main.MouseWorld;
-                mouse.X += i * 16;
+                mouse.X += x * 16;
                 Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse, Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
             }
         }

@@ -1,12 +1,12 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using Terraria.Enums;
+﻿using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Dedicated
 {
-    public class WoodenClub : ModItem
+    public class WoodenClub : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.DedicatedItems;
+
+        public new string LocalizationCategory => "Items.Dedicated";
 
         public override void SetStaticDefaults()
         {

@@ -1,6 +1,4 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.PlayerChanges;
-using QoLCompendium.Core.Changes.TooltipChanges;
+﻿using QoLCompendium.Core.Changes.PlayerChanges;
 using QoLCompendium.Core.UI.Panels;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -8,9 +6,11 @@ using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Tools.MobileStorages
 {
-    public class AllInOneAccess : ModItem
+    public class AllInOneAccess : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.MobileStorages;
+
+        public new string LocalizationCategory => "Items.Tools.MobileStorages";
 
         public int Mode = 0;
 

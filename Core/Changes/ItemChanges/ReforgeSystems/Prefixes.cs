@@ -85,7 +85,16 @@
             /* 4 */ [PrefixID.Masterful, PrefixID.Godly],
             /* 5 */ [PrefixID.Mythical, PrefixID.Ruthless]
         ];
-        
+
+        public static int[][] GenericReforgeTiers =
+        [
+            /* 0 */ [PrefixID.Broken, PrefixID.Damaged, PrefixID.Shoddy, PrefixID.Weak, PrefixID.Lazy, PrefixID.Slow, PrefixID.Sluggish, PrefixID.Annoying],
+            /* 1 */ [PrefixID.Zealous, PrefixID.Keen, PrefixID.Forceful, PrefixID.Strong, PrefixID.Nimble, PrefixID.Quick],
+            /* 2 */ [PrefixID.Hurtful, PrefixID.Unpleasant, PrefixID.Nasty, PrefixID.Agile],
+            /* 3 */ [PrefixID.Superior, PrefixID.Deadly2, PrefixID.Murderous],
+            /* 4 */ [PrefixID.Godly, PrefixID.Demonic, PrefixID.Ruthless]
+        ];
+
         public static int[][] RogueReforgeTiers;
 
         public static int[][] BardReforgeTiers;
@@ -110,6 +119,8 @@
 
         public static int[][] BloodHunterReforgeTiers;
 
+        public static int[][] ClickerReforgeTiers;
+
         public static void PostSetupTasks()
         {
             if (ModConditions.calamityLoaded)
@@ -117,6 +128,8 @@
                 //ACCESSORIES
                 AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.calamityMod, "Cloaked")], 1);
                 AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.calamityMod, "Silent")], 3);
+                if (ModConditions.calamityEntropyLoaded)
+                    AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.calamityEntropyMod, "Enchanted")], 3);
 
                 //TIERS
                 RogueReforgeTiers =
@@ -140,6 +153,21 @@
                     AddPrefixesToArrays(VoidRogueReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Chthonic")], 4);
                     AddPrefixesToArrays(VoidRogueReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Omnipotent")], 5);
                 }
+            }
+
+            if (ModConditions.clickerClassLoaded)
+            {
+                //ACCESSORIES
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.clickerClassMod, "ClickerRadius")], 3);
+
+                ClickerReforgeTiers =
+                    [
+                    /* 0 */ [Common.GetModPrefix(ModConditions.clickerClassMod, "Disconnected"), Common.GetModPrefix(ModConditions.clickerClassMod, "Laggy")],
+                    /* 1 */ [Common.GetModPrefix(ModConditions.clickerClassMod, "Novice")],
+                    /* 2 */ [Common.GetModPrefix(ModConditions.clickerClassMod, "Amateur")],
+                    /* 3 */ [Common.GetModPrefix(ModConditions.clickerClassMod, "Pro")],
+                    /* 4 */ [Common.GetModPrefix(ModConditions.clickerClassMod, "Elite")]
+                    ];
             }
 
             if (ModConditions.secretsOfTheShadowsLoaded)
@@ -236,75 +264,31 @@
                     AddPrefixesToArrays(VoidThrowerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Omnipotent")], 5);
                 }
             }
+
+            if (ModConditions.vitalityLoaded)
+            {
+                //ACCESSORIES
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.vitalityMod, "CruelPrefix")], 0);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.vitalityMod, "FiendishPrefix")], 1);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.vitalityMod, "BrutalPrefix")], 2);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.vitalityMod, "RelentlessPrefix")], 3);
+
+                BloodHunterReforgeTiers =
+                    [
+                    /* 0 */ [PrefixID.Broken, PrefixID.Shoddy, Common.GetModPrefix(ModConditions.vitalityMod, "SpitefulPrefix"), Common.GetModPrefix(ModConditions.vitalityMod, "DeprecatingPrefix"),Common.GetModPrefix(ModConditions.vitalityMod, "CrudePrefix")],
+                    /* 1 */ [PrefixID.Damaged, PrefixID.Weak, Common.GetModPrefix(ModConditions.vitalityMod, "DishonestPrefix")],
+                    /* 2 */ [PrefixID.Keen, PrefixID.Ruthless, PrefixID.Zealous, PrefixID.Hurtful, PrefixID.Strong, PrefixID.Forceful, Common.GetModPrefix(ModConditions.vitalityMod, "DeceitfulPrefix"), Common.GetModPrefix(ModConditions.vitalityMod, "BarbedPrefix")],
+                    /* 3 */ [PrefixID.Unpleasant, PrefixID.Demonic, PrefixID.Superior, PrefixID.Godly, Common.GetModPrefix(ModConditions.vitalityMod, "ViciousPrefix"), Common.GetModPrefix(ModConditions.vitalityMod, "MaliciousPrefix"), Common.GetModPrefix(ModConditions.vitalityMod, "BloodthirstyPrefix"), Common.GetModPrefix(ModConditions.vitalityMod, "WoundingPrefix") ],
+                    /* 4 */ [Common.GetModPrefix(ModConditions.vitalityMod, "MalevolentPrefix")]
+                    ];
+            }
         }
 
         public static int[][] AddPrefixesToArrays(int[][] prefixList, int[] prefixesToAdd, int index)
         {
             Array.Resize(ref prefixList[index], prefixList[index].Length + prefixesToAdd.Length);
-            for (int i = prefixesToAdd.Length; i > 0; i--)
-                prefixList[index][^i] = prefixesToAdd[i];
+            Array.Copy(prefixesToAdd, 0, prefixList[index], prefixList[index].Length - prefixesToAdd.Length, prefixesToAdd.Length);
             return prefixList;
         }
-
-        #region Rogue Prefixes
-        public static int RandomRoguePrefix()
-        {
-            int roguePrefix = Utils.SelectRandom(Main.rand, new int[]
-            {
-                Common.GetModPrefix(ModConditions.calamityMod, "Radical"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Pointy"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Sharp"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Glorious"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Feathered"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Sleek"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Hefty"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Mighty"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Serrated"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Vicious"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Lethal"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Flawless"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Blunt"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Flimsy"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Unbalanced"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Atrocious"),
-                PrefixID.Keen,
-                PrefixID.Superior,
-                PrefixID.Forceful,
-                PrefixID.Broken,
-                PrefixID.Damaged,
-                PrefixID.Hurtful,
-                PrefixID.Strong,
-                PrefixID.Unpleasant,
-                PrefixID.Weak,
-                PrefixID.Ruthless,
-                PrefixID.Godly,
-                PrefixID.Demonic,
-                PrefixID.Zealous,
-                PrefixID.Quick,
-                PrefixID.Deadly2,
-                PrefixID.Agile,
-                PrefixID.Nimble,
-                PrefixID.Murderous,
-                PrefixID.Slow,
-                PrefixID.Sluggish,
-                PrefixID.Lazy,
-                PrefixID.Annoying,
-                PrefixID.Nasty
-            });
-            return roguePrefix;
-        }
-
-        public static bool NegativeRoguePrefix(int prefix)
-        {
-            List<int> badPrefixes = new List<int>()
-            {
-                Common.GetModPrefix(ModConditions.calamityMod, "Blunt"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Flimsy"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Unbalanced"),
-                Common.GetModPrefix(ModConditions.calamityMod, "Atrocious")
-            };
-            return badPrefixes.Contains(prefix);
-        }
-        #endregion
     }
 }

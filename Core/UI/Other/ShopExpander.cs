@@ -16,11 +16,7 @@ namespace QoLCompendium.Core.UI.Other
 
         public Item[] currentItems = new Item[Chest.maxItems];
 
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            ModLoader.TryGetMod("VanillaQoL", out Mod VanillaQoL);
-            return VanillaQoL == null;
-        }
+        public override bool IsLoadingEnabled(Mod mod) => !ModLoader.HasMod(ModConditions.vanillaQoLName);
 
         public override void Load()
         {

@@ -1,0 +1,20 @@
+ArmorPenetration: Armor penetration
+CriticalStrikeChance: % Critical strike chance
+DamageMultiplier: x Damage
+DeathCount: Total Deaths
+Endurance: % Damage reduction
+Luck: Luck
+ManaRegeneration: Mana per second
+MiningSpeed: % Mining speed
+MinionSlots: Minion Slots
+Regeneration: Health per second
+SentrySlots: Sentry Slots
+SpawnRate: Spawns per second
+WingTime: s Wing Time
+FullHealth: Full Health
+FullMana: Full Mana
+SpawnsDisabled: Spawns Disabled
+InfiniteWingTime: Infinite Wing Time
+DDPS: "{0} Debuff damage per second"
+NoDPS: N/A
+QuestFinished: Quest finished

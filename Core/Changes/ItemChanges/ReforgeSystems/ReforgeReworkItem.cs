@@ -18,15 +18,13 @@ namespace QoLCompendium.Core.Changes.ItemChanges.ReforgeSystems
             storedPrefix = item.prefix;
         }
 
+        public override void PostReforge(Item item)
+        {
+            storedPrefix = -1;
+        }
+
         public override int ChoosePrefix(Item item, UnifiedRandom rand)
         {
-            if (storedPrefix == -1 && item.CountsAsClass(Common.GetModDamageClass(ModConditions.calamityMod, "RogueDamageClass")) && (item.maxStack == 1 || item.AllowReforgeForStackableItem))
-            {
-                int prefix = Prefixes.RandomRoguePrefix();
-                bool keepPrefix = !Prefixes.NegativeRoguePrefix(prefix) || Main.rand.NextBool(3);
-                return keepPrefix ? prefix : 0;
-            }
-
             if (!QoLCompendium.mainConfig.ReworkReforging || Main.gameMenu || storedPrefix == -1)
                 return -1;
 

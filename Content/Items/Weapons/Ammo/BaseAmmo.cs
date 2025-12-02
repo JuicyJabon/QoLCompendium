@@ -1,14 +1,16 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
-using Terraria.Enums;
+﻿using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo
 {
-    public abstract class BaseAmmo : ModItem
+    public abstract class BaseAmmo : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.EndlessAmmo;
 
+        public new string LocalizationCategory => "Items.Weapons.Ammo";
+
         public abstract int AmmunitionItem { get; }
+
+        public int IngredientStackCount = 3996;
 
         public override void SetStaticDefaults()
         {
@@ -33,7 +35,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo
         public override void AddRecipes()
         {
             Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-            r.AddIngredient(AmmunitionItem, 3996);
+            r.AddIngredient(AmmunitionItem, IngredientStackCount);
             r.AddTile(TileID.Solidifier);
             r.Register();
         }

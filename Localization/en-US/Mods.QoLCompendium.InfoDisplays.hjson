@@ -1,0 +1,15 @@
+ArmorPenetrationInfoDisplay.DisplayName: Armor Penetration
+CritInfoDisplay.DisplayName: Crit Chance
+DamageInfoDisplay.DisplayName: Damage Multiplier
+EnduranceInfoDisplay.DisplayName: Endurance
+LuckInfoDisplay.DisplayName: Luck
+ManaRegenInfoDisplay.DisplayName: Mana Regen
+MiningSpeedInfoDisplay.DisplayName: Mining Speed
+MinionInfoDisplay.DisplayName: Minion Slots
+RegenInfoDisplay.DisplayName: Life Regen
+SentryInfoDisplay.DisplayName: Sentry Slots
+SpawnInfoDisplay.DisplayName: Spawn Rate
+WingTimeInfoDisplay.DisplayName: Wing Time
+DeathsInfoDisplay.DisplayName: Deaths
+DebuffDamageInfoDisplay.DisplayName: Debuff Damage Per Second
+QuestFishInfoDisplay.DisplayName: Quest Fish

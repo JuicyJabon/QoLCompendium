@@ -1,14 +1,13 @@
 ﻿using QoLCompendium.Content.Tiles.CraftingStations;
-using QoLCompendium.Content.Tiles.CraftingStations.CrossMod;
-using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.TooltipChanges;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 {
-    public class BasicCraftingMonolith : ModItem
+    public class BasicCraftingMonolith : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.CraftingStations;
+
+        public new string LocalizationCategory => "Items.Placeables.CraftingStations";
 
         public override void SetStaticDefaults()
         {
