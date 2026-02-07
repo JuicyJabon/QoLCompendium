@@ -1742,14 +1742,12 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             if (CrossModSupport.Calamity.Loaded && QoLCompendium.crossModConfig.CalamityEffigyRecipes)
             {
                 Recipe crimsonEffigy = Recipe.Create(Common.GetModItem(CrossModSupport.Calamity.Mod, "CrimsonEffigy"), 1);
-                crimsonEffigy.AddIngredient(Common.GetModItem(CrossModSupport.Calamity.Mod, "BloodSample"), 10);
                 crimsonEffigy.AddIngredient(ItemID.Vertebrae, 10);
                 crimsonEffigy.AddIngredient(ItemID.CrimtaneBar, 6);
                 crimsonEffigy.AddTile(TileID.DemonAltar);
                 crimsonEffigy.Register();
 
                 Recipe corruptionEffigy = Recipe.Create(Common.GetModItem(CrossModSupport.Calamity.Mod, "CorruptionEffigy"), 1);
-                corruptionEffigy.AddIngredient(Common.GetModItem(CrossModSupport.Calamity.Mod, "RottenMatter"), 10);
                 corruptionEffigy.AddIngredient(ItemID.RottenChunk, 10);
                 corruptionEffigy.AddIngredient(ItemID.DemoniteBar, 6);
                 corruptionEffigy.AddTile(TileID.DemonAltar);

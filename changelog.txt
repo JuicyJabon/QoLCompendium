@@ -7,4 +7,6 @@ v2.4.1
 6. Clarified where boss summon items can be used
 7. Made endless ammo items the same rarity as their base ammo, unless the rarity is less than green (2)
 8. Moved permanent buff tooltips below the "Material" tooltip for consistency with every other item
-9. Endless ammos now recieve their base ammo's tooltip
+9. Endless ammos now receive their base ammo's tooltip
+10. Fixed Magic Storage recipe error
+11. Fixed Calamity Entropy load error
