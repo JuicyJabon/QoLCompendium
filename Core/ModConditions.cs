@@ -46,31 +46,7 @@ namespace QoLCompendium.Core
         public static Condition HasTalkedToTravelingMerchant = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.talkedToTravelingMerchant"), () => talkedToTravelingMerchant);
 
 
-        //AEQUUS
-        public const string aequusName = "Aequus";
-        public static bool aequusLoaded;
-        public static Mod aequusMod;
-        //BOSSES
-        public static Condition DownedCrabson = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCrabson"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Crabson]);
-        public static Condition DownedOmegaStarite = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOmegaStarite"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OmegaStarite]);
-        public static Condition DownedDustDevil = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDustDevil"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.DustDevil]);
-        //MINIBOSSES
-        public static Condition DownedHyperStarite = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHyperStarite"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HyperStarite]);
-        public static Condition DownedUltraStarite = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedUltraStarite"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.UltraStarite]);
-        public static Condition DownedRedSprite = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRedSprite"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.RedSprite]);
-        public static Condition DownedSpaceSquid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSpaceSquid"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SpaceSquid]);
-        //EVENTS
-        public static Condition DownedDemonSiege = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDemonSiege"), () => ModConditions.DownedEvents[(int)ModConditions.DownedEvent.DemonSiege]);
-        public static Condition DownedGlimmer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGlimmer"), () => ModConditions.DownedEvents[(int)ModConditions.DownedEvent.Glimmer]);
-        public static Condition DownedGaleStreams = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGaleStreams"), () => ModConditions.DownedEvents[(int)ModConditions.DownedEvent.GaleStreams]);
-        //BIOMES
-        public static Condition HasBeenToCrabCrevice = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToCrabCrevice"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CrabCrevice]);
-
-
         //AFKPETS
-        public const string afkpetsName = "AFKPETS";
-        public static bool afkpetsLoaded;
-        public static Mod afkpetsMod;
         //BOSSES
         public static Condition DownedSlayerOfEvil = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSlayerOfEvil"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SlayerOfEvil]);
         public static Condition DownedSATLA = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSATLA"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SATLA]);
@@ -95,30 +71,12 @@ namespace QoLCompendium.Core
         public static Condition DownedGuardianOfFrost = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGuardianOfFrost"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GuardianOfFrost]);
 
 
-        //AMULET OF MANY MINIONS
-        public const string amuletOfManyMinionsName = "AmuletOfManyMinions";
-        public static bool amuletOfManyMinionsLoaded;
-        public static Mod amuletOfManyMinionsMod;
-
-
-        //ARBOUR
-        public const string arbourName = "Arbour";
-        public static bool arbourLoaded;
-        public static Mod arbourMod;
-
-
         //ASSORTED CRAZY THINGS
-        public const string assortedCrazyThingsName = "AssortedCrazyThings";
-        public static bool assortedCrazyThingsLoaded;
-        public static Mod assortedCrazyThingsMod;
         //BOSSES
         public static Condition DownedSoulHarvester = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSoulHarvester"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SoulHarvester]);
 
 
         //AWFUL GARBAGE
-        public const string awfulGarbageName = "AwfulGarbageMod";
-        public static bool awfulGarbageLoaded;
-        public static Mod awfulGarbageMod;
         //BOSSES
         public static Condition DownedTreeToad = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTreeToad"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TreeToad]);
         public static Condition DownedSeseKitsugai = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSeseKitsugai"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SeseKitsugai]);
@@ -126,54 +84,12 @@ namespace QoLCompendium.Core
         public static Condition DownedFrigidius = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFrigidius"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Frigidius]);
 
 
-        //BLOCK'S ARSENAL
-        public const string blocksArsenalName = "Arsenal_Mod";
-        public static bool blocksArsenalLoaded;
-        public static Mod blocksArsenalMod;
-
-
-        //BLOCK'S ARTIFICER
-        public const string blocksArtificerName = "ArtificerMod";
-        public static bool blocksArtificerLoaded;
-        public static Mod blocksArtificerMod;
-
-
         //BLOCK'S CORE BOSS
-        public const string blocksCoreBossName = "CorruptionBoss";
-        public static bool blocksCoreBossLoaded;
-        public static Mod blocksCoreBossMod;
         //BOSSES
         public static Condition DownedCoreBoss = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCoreBoss"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CoreBoss]);
 
 
-        //BLOCK'S INFO ACCESSORIES
-        public const string blocksInfoAccessoriesName = "BInfoAcc";
-        public static bool blocksInfoAccessoriesLoaded;
-        public static Mod blocksInfoAccessoriesMod;
-
-
-        //BLOCK'S THROWER
-        public const string blocksThrowerName = "BCThrower";
-        public static bool blocksThrowerLoaded;
-        public static Mod blocksThrowerMod;
-
-
-        //BOMBUS APIS
-        public const string bombusApisName = "BombusApisBee";
-        public static bool bombusApisLoaded;
-        public static Mod bombusApisMod;
-
-
-        //BUFFARIA
-        public const string buffariaName = "Buffaria";
-        public static bool buffariaLoaded;
-        public static Mod buffariaMod;
-
-
         //CALAMITY
-        public const string calamityName = "CalamityMod";
-        public static bool calamityLoaded;
-        public static Mod calamityMod;
         //BOSSES
         public static Condition DownedDesertScourge = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDesertScourge"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.DesertScourge]);
         public static Condition DownedCrabulon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCrabulon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Crabulon]);
@@ -224,21 +140,15 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToAbyssLayer3 = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAbyssLayer3"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyssLayer3]);
         public static Condition HasBeenToAbyssLayer4 = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAbyssLayer4"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyssLayer4]);
         //POST SUPREME CALAMITAS SHIMMER
-        public static Condition ShimmerableAfterMoonLordOrSupremeCalamitas = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.shimmerableAfterMoonLordOrSupremeCalamitas"), () => (calamityLoaded && ModConditions.DownedBoss[(int)ModConditions.Downed.SupremeCalamitas] && NPC.downedMoonlord) || (!calamityLoaded && NPC.downedMoonlord));
+        public static Condition ShimmerableAfterMoonLordOrSupremeCalamitas = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.shimmerableAfterMoonLordOrSupremeCalamitas"), () => (CrossModSupport.Calamity.Loaded && ModConditions.DownedBoss[(int)ModConditions.Downed.SupremeCalamitas] && NPC.downedMoonlord) || (!CrossModSupport.Calamity.Loaded && NPC.downedMoonlord));
 
 
         //CALAMITY COMMUNITY REMIX
-        public const string calamityCommunityRemixName = "CalRemix";
-        public static bool calamityCommunityRemixLoaded;
-        public static Mod calamityCommunityRemixMod;
         //BOSSES
         public static Condition DownedWulfrumExcavator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedWulfrumExcavator"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.WulfrumExcavator]);
 
 
         //CALAMITY ENTROPY
-        public const string calamityEntropyName = "CalamityEntropy";
-        public static bool calamityEntropyLoaded;
-        public static Mod calamityEntropyMod;
         //BOSSES
         public static Condition DownedLuminaris = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLuminaris"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Luminaris]);
         public static Condition DownedProphet = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedProphet"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Prophet]);
@@ -246,50 +156,12 @@ namespace QoLCompendium.Core
         public static Condition DownedCruiser = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCruiser"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Cruiser]);
 
 
-        //CALAMITY OVERHAUL
-        public const string calamityOverhaulName = "CalamityOverhaul";
-        public static bool calamityOverhaulLoaded;
-        public static Mod calamityOverhaulMod;
-
-
-        //CALAMITY REKINDLED
-        public const string calamityRekindledName = "CalamityLegacy";
-        public static bool calamityRekindledLoaded;
-        public static Mod calamityRekindledMod;
-
-
-        //CALAMITY VANITIES
-        public const string calamityVanitiesName = "CalValEX";
-        public static bool calamityVanitiesLoaded;
-        public static Mod calamityVanitiesMod;
-        //BIOMES
-        public static Condition HasBeenToAstralBlight = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAstralBlight"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.AstralBlight]);
-
-
-        //CAPTURE DISCS CLASS
-        public const string captureDiscsClassName = "CaptureDiscClass";
-        public static bool captureDiscsClassLoaded;
-        public static Mod captureDiscsClassMod;
-
-
         //CATALYST
-        public const string catalystName = "CatalystMod";
-        public static bool catalystLoaded;
-        public static Mod catalystMod;
         //BOSSES
         public static Condition DownedAstrageldon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAstrageldon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Astrageldon]);
 
 
-        //CEREBRAL
-        public const string cerebralName = "CerebralMod";
-        public static bool cerebralLoaded;
-        public static Mod cerebralMod;
-
-
         //CLAMITY
-        public const string clamityAddonName = "Clamity";
-        public static bool clamityAddonLoaded;
-        public static Mod clamityAddonMod;
         //BOSSES
         public static Condition DownedClamitas = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedClamitas"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Clamitas]);
         public static Condition DownedPyrogen = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPyrogen"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Pyrogen]);
@@ -298,26 +170,13 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToFrozenHell = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToFrozenHell"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.FrozenHell]);
 
 
-
-        //CLICKER CLASS
-        public const string clickerClassName = "ClickerClass";
-        public static bool clickerClassLoaded;
-        public static Mod clickerClassMod;
-
-
         //CONFECTION
-        public const string confectionRebakedName = "TheConfectionRebirth";
-        public static bool confectionRebakedLoaded;
-        public static Mod confectionRebakedMod;
         //BIOMES
         public static Condition HasBeenToConfection = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToConfection"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Confection]);
         public static Condition HasBeenToConfectionOrHallow = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToConfectionOrHallow"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Confection] || ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Hallow]);
 
 
         //CONSOLARIA
-        public const string consolariaName = "Consolaria";
-        public static bool consolariaLoaded;
-        public static Mod consolariaMod;
         //BOSSES
         public static Condition DownedLepus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLepus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Lepus]);
         public static Condition DownedTurkor = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTurkor"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Turkor]);
@@ -325,9 +184,6 @@ namespace QoLCompendium.Core
 
 
         //CORALITE
-        public const string coraliteName = "Coralite";
-        public static bool coraliteLoaded;
-        public static Mod coraliteMod;
         //BOSSES
         public static Condition DownedRediancie = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRediancie"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Rediancie]);
         public static Condition DownedBabyIceDragon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBabyIceDragon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BabyIceDragon]);
@@ -337,16 +193,7 @@ namespace QoLCompendium.Core
         public static Condition DownedNightmarePlantera = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNightmarePlantera"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.NightmarePlantera]);
 
 
-        //CRYSTAL DRAGONS
-        public const string crystalDragonsName = "CrystalDragons";
-        public static bool crystalDragonsLoaded;
-        public static Mod crystalDragonsMod;
-
-
         //DEPTHS
-        public const string depthsName = "TheDepths";
-        public static bool depthsLoaded;
-        public static Mod depthsMod;
         //BOSSES
         public static Condition DownedChasme = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedChasme"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Chasme]);
         //BIOMES
@@ -355,9 +202,6 @@ namespace QoLCompendium.Core
 
 
         //DORMANT DAWN
-        public const string dormantDawnName = "DDmod";
-        public static bool dormantDawnLoaded;
-        public static Mod dormantDawnMod;
         //BOSSES
         public static Condition DownedLifeGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLifeGuardian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.LifeGuardian]);
         public static Condition DownedManaGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedManaGuardian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ManaGuardian]);
@@ -369,22 +213,7 @@ namespace QoLCompendium.Core
         public static Condition DownedGoblinSorcererChieftain = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGoblinSorcererChieftain"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GoblinSorcererChieftain]);
 
 
-        //DRAEDON EXPANSION
-        public const string draedonExpansionName = "DraedonExpansion";
-        public static bool draedonExpansionLoaded;
-        public static Mod draedonExpansionMod;
-
-
-        //DBZMOD
-        public const string dragonBallTerrariaName = "DBZMODPORT";
-        public static bool dragonBallTerrariaLoaded;
-        public static Mod dragonBallTerrariaMod;
-
-
         //ECHOES OF THE ANCIENTS
-        public const string echoesOfTheAncientsName = "EchoesoftheAncients";
-        public static bool echoesOfTheAncientsLoaded;
-        public static Mod echoesOfTheAncientsMod;
         //BOSSES
         public static Condition DownedGalahis = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGalahis"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Galahis]);
         public static Condition DownedCreation = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCreation"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Creation]);
@@ -392,9 +221,6 @@ namespace QoLCompendium.Core
 
 
         //EDORBIS
-        public const string edorbisName = "Edorbis";
-        public static bool edorbisLoaded;
-        public static Mod edorbisMod;
         //BOSSES
         public static Condition DownedBlightKing = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBlightKing"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BlightKing]);
         public static Condition DownedGardener = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGardener"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Gardener]);
@@ -404,9 +230,6 @@ namespace QoLCompendium.Core
 
 
         //ELEMENTS AWOKEN
-        public const string elementsAwokenName = "ElementsAwoken";
-        public static bool elementsAwokenLoaded;
-        public static Mod elementsAwokenMod;
         //BOSSES
         public static Condition DownedWasteland = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedWasteland"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Wasteland]);
         public static Condition DownedInfernace = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedInfernace"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Infernace]);
@@ -430,42 +253,24 @@ namespace QoLCompendium.Core
         public static Condition DownedRadiantRain = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedRadiantRain"), () => ModConditions.DownedEvents[(int)ModConditions.DownedEvent.RadiantRain]);
 
 
-        //ENCHANTED MOONS
-        public const string enchantedMoonsName = "BlueMoon";
-        public static bool enchantedMoonsLoaded;
-        public static Mod enchantedMoonsMod;
-
-
         //EVERJADE
-        public const string everjadeName = "JadeFables";
-        public static bool everjadeLoaded;
-        public static Mod everjadeMod;
         //BIOMES
         public static Condition HasBeenToJadeLake = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToJadeLake"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.JadeLake]);
 
 
         //EXALT
-        public const string exaltName = "ExaltMod";
-        public static bool exaltLoaded;
-        public static Mod exaltMod;
         //BOSSES
         public static Condition DownedEffulgence = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEffulgence"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Effulgence]);
         public static Condition DownedIceLich = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedIceLich"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.IceLich]);
 
 
         //EXCELSIOR
-        public const string excelsiorName = "excels";
-        public static bool excelsiorLoaded;
-        public static Mod excelsiorMod;
         //BOSSES
         public static Condition DownedNiflheim = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNiflheim"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Niflheim]);
         public static Condition DownedStellarStarship = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStellarStarship"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StellarStarship]);
 
 
         //EXXO AVALON
-        public const string exxoAvalonOriginsName = "Avalon";
-        public static bool exxoAvalonOriginsLoaded;
-        public static Mod exxoAvalonOriginsMod;
         //BOSSES
         public static Condition DownedBacteriumPrime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBacteriumPrime"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BacteriumPrime]);
         public static Condition DownedAvalonEvilBosses = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAvalonEvilBosses"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BacteriumPrime] || NPC.downedBoss2);
@@ -478,16 +283,7 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToAvalonEvilBiomes = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAvalonEvilBiomes"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Contagion] || ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Corruption] || ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Crimson]);
 
 
-        //FARGOS
-        public const string fargosMutantName = "Fargowiltas";
-        public static bool fargosMutantLoaded;
-        public static Mod fargosMutantMod;
-
-
         //FARGOS SOULS
-        public const string fargosSoulsName = "FargowiltasSouls";
-        public static bool fargosSoulsLoaded;
-        public static Mod fargosSoulsMod;
         //BOSSES
         public static Condition DownedTrojanSquirrel = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTrojanSquirrel"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TrojanSquirrel]);
         public static Condition DownedCursedCoffin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCursedCoffin"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CursedCoffin]);
@@ -499,22 +295,7 @@ namespace QoLCompendium.Core
         public static Condition DownedMutant = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMutant"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Mutant]);
 
 
-        //FARGOS SOULS DLC
-        public const string fargosSoulsDLCName = "FargowiltasCrossmod";
-        public static bool fargosSoulsDLCLoaded;
-        public static Mod fargosSoulsDLCMod;
-
-
-        //FARGOS SOULS EXTRAS
-        public const string fargosSoulsExtrasName = "FargowiltasSoulsDLC";
-        public static bool fargosSoulsExtrasLoaded;
-        public static Mod fargosSoulsExtrasMod;
-
-
         //FRACTURES OF PENUMBRA
-        public const string fracturesOfPenumbraName = "FPenumbra";
-        public static bool fracturesOfPenumbraLoaded;
-        public static Mod fracturesOfPenumbraMod;
         //BOSSES
         public static Condition DownedAlphaFrostjaw = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAlphaFrostjaw"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AlphaFrostjaw]);
         public static Condition DownedSanguineElemental = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSanguineElemental"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SanguineElemental]);
@@ -522,16 +303,7 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToDread = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToDread"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Dread]);
 
 
-        //FURNITURE FOOD & FUN
-        public const string furnitureFoodAndFunName = "CosmeticVariety";
-        public static bool furnitureFoodAndFunLoaded;
-        public static Mod furnitureFoodAndFunMod;
-
-
         //GAMETERRARIA
-        public const string gameTerrariaName = "GMT";
-        public static bool gameTerrariaLoaded;
-        public static Mod gameTerrariaMod;
         //BOSSES
         public static Condition DownedLad = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLad"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Lad]);
         public static Condition DownedHornlitz = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHornlitz"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Hornlitz]);
@@ -540,9 +312,6 @@ namespace QoLCompendium.Core
 
 
         //GENSOKYO
-        public const string gensokyoName = "Gensokyo";
-        public static bool gensokyoLoaded;
-        public static Mod gensokyoMod;
         //BOSSES
         public static Condition DownedLilyWhite = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLilyWhite"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.LilyWhite]);
         public static Condition DownedRumia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRumia"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Rumia]);
@@ -568,9 +337,6 @@ namespace QoLCompendium.Core
 
 
         //GERDS LAB
-        public const string gerdsLabName = "GMR";
-        public static bool gerdsLabLoaded;
-        public static Mod gerdsLabMod;
         //BOSSES
         public static Condition DownedTrerios = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTrerios"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Trerios]);
         public static Condition DownedMagmaEye = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMagmaEye"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MagmaEye]);
@@ -578,16 +344,7 @@ namespace QoLCompendium.Core
         public static Condition DownedAcheron = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAcheron"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Acheron]);
 
 
-        //HEARTBEATARIA
-        public const string heartbeatariaName = "XDContentMod";
-        public static bool heartbeatariaLoaded;
-        public static Mod heartbeatariaMod;
-
-
         //HOMEWARD JOURNEY
-        public const string homewardJourneyName = "ContinentOfJourney";
-        public static bool homewardJourneyLoaded;
-        public static Mod homewardJourneyMod;
         //BOSSES
         public static Condition DownedGoblinChariot = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGoblinChariot"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GoblinChariot]);
         public static Condition DownedBigDipper = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBigDipper"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BigDipper]);
@@ -622,51 +379,18 @@ namespace QoLCompendium.Core
 
 
         //HUNT OF THE OLD GOD
-        public const string huntOfTheOldGodName = "CalamityHunt";
-        public static bool huntOfTheOldGodLoaded;
-        public static Mod huntOfTheOldGodMod;
         //BOSSES
         public static Condition DownedGoozma = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGoozma"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Goozma]);
 
 
-        //INFECTED QUALITIES
-        public const string infectedQualitiesName = "InfectedQualities";
-        public static bool infectedQualitiesLoaded;
-        public static Mod infectedQualitiesMod;
-
-
         //INFERNUM
-        public const string infernumName = "InfernumMode";
-        public static bool infernumLoaded;
-        public static Mod infernumMod;
         //BOSSES
         public static Condition DownedBereftVassal = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBereftVassal"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.BereftVassal]);
         //BIOMES
         public static Condition HasBeenToProfanedGardens = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToProfanedGardens"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.ProfanedGardens]);
 
 
-        //INFERNAL ECLIPSE
-        public const string infernalEclipseName = "InfernalEclipseAPI";
-        public static bool infernalEclipseLoaded;
-        public static Mod infernalEclipseMod;
-
-
-        //LUIAFK
-        public const string luiAFKName = "miningcracks_take_on_luiafk";
-        public static bool luiAFKLoaded;
-        public static Mod luiAFKMod;
-
-
-        //LUIAFK DLC
-        public const string luiAFKDLCName = "UnofficialLuiAFKDLC";
-        public static bool luiAFKDLCLoaded;
-        public static Mod luiAFKDLCMod;
-
-
         //LUNAR VEIL
-        public const string lunarVeilName = "Stellamod";
-        public static bool lunarVeilLoaded;
-        public static Mod lunarVeilMod;
         //BOSSES
         public static Condition DownedStoneGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStoneGuardian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StoneGuardian]);
         public static Condition DownedCommanderGintzia = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCommanderGintzia"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CommanderGintzia]);
@@ -696,22 +420,7 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToLunarVeilAbyss = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToLunarVeilAbyss"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Abysm]);
 
 
-        //MACROCOSM
-        public const string macrocosmName = "Macrocosm";
-        public static bool macrocosmLoaded;
-        public static Mod macrocosmMod;
-
-
-        //MAGIC STORAGE
-        public const string magicStorageName = "MagicStorage";
-        public static bool magicStorageLoaded;
-        public static Mod magicStorageMod;
-
-
         //MARTINS ORDER
-        public const string martainsOrderName = "MartainsOrder";
-        public static bool martainsOrderLoaded;
-        public static Mod martainsOrderMod;
         //BOSSES
         public static Condition DownedBritzz = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBritzz"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Britzz]);
         public static Condition DownedCactusCat = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCactusCat"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CactusCat]);
@@ -726,9 +435,6 @@ namespace QoLCompendium.Core
 
 
         //MECH REWORK
-        public const string mechReworkName = "PrimeRework";
-        public static bool mechReworkLoaded;
-        public static Mod mechReworkMod;
         //BOSSES
         public static Condition DownedSt4sys = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSt4sys"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.St4sys]);
         public static Condition DownedTerminator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTerminator"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Terminator]);
@@ -737,17 +443,11 @@ namespace QoLCompendium.Core
 
 
         //MEDIAL RIFT
-        public const string medialRiftName = "MedRift";
-        public static bool medialRiftLoaded;
-        public static Mod medialRiftMod;
         //BOSSES
         public static Condition DownedSuperVoltaicMotherSlime = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSuperVoltaicMotherSlime"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SuperVMS]);
 
 
         //METROID MOD
-        public const string metroidName = "MetroidMod";
-        public static bool metroidLoaded;
-        public static Mod metroidMod;
         //BOSSES
         public static Condition DownedTorizo = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTorizo"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Torizo]);
         public static Condition DownedSerris = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSerris"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Serris]);
@@ -758,28 +458,7 @@ namespace QoLCompendium.Core
         public static Condition DownedGoldenTorizo = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGoldenTorizo"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GoldenTorizo]);
 
 
-        //MOOMOO'S ULTIMATE YOYO REVAMP
-        public const string moomoosUltimateYoyoRevampName = "CombinationsMod";
-        public static bool moomoosUltimateYoyoRevampLoaded;
-        public static Mod moomoosUltimateYoyoRevampMod;
-
-
-        //MR PLAGUE'S RACES
-        public const string mrPlagueRacesName = "MrPlagueRaces";
-        public static bool mrPlagueRacesLoaded;
-        public static Mod mrPlagueRacesMod;
-
-
-        //ORCHID MOD
-        public const string orchidName = "OrchidMod";
-        public static bool orchidLoaded;
-        public static Mod orchidMod;
-
-
         //OPHIOID MOD
-        public const string ophioidName = "OphioidMod";
-        public static bool ophioidLoaded;
-        public static Mod ophioidMod;
         //BOSSES
         public static Condition DownedOphiopede = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOphiopede"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Ophiopede]);
         public static Condition DownedOphiocoon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOphiocoon"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Ophiocoon]);
@@ -787,9 +466,6 @@ namespace QoLCompendium.Core
 
 
         //POLARITIES
-        public const string polaritiesName = "Polarities";
-        public static bool polaritiesLoaded;
-        public static Mod polaritiesMod;
         //BOSSES
         public static Condition DownedStormCloudfish = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStormCloudfish"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StormCloudfish]);
         public static Condition DownedStarConstruct = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStarConstruct"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StarConstruct]);
@@ -805,9 +481,6 @@ namespace QoLCompendium.Core
 
 
         //PROJECT ZERO
-        public const string projectZeroName = "FM";
-        public static bool projectZeroLoaded;
-        public static Mod projectZeroMod;
         //BOSSES
         public static Condition DownedForestGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedForestGuardian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ForestGuardian]);
         public static Condition DownedCryoGuardian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCryoGuardian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CryoGuardian]);
@@ -818,9 +491,6 @@ namespace QoLCompendium.Core
 
 
         //QWERTY
-        public const string qwertyName = "QwertyMod";
-        public static bool qwertyLoaded;
-        public static Mod qwertyMod;
         //BOSSES
         public static Condition DownedPolarExterminator = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPolarExterminator"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PolarExterminator]);
         public static Condition DownedDivineLight = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDivineLight"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.DivineLight]);
@@ -841,16 +511,7 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToSkyFortress = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToSkyFortress"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SkyFortress]);
 
 
-        //RAGNAROK
-        public const string ragnarokName = "RagnarokMod";
-        public static bool ragnarokLoaded;
-        public static Mod ragnarokMod;
-
-
         //REDEMPTION
-        public const string redemptionName = "Redemption";
-        public static bool redemptionLoaded;
-        public static Mod redemptionMod;
         //BOSSES
         public static Condition DownedThorn = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedThorn"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Thorn]);
         public static Condition DownedErhan = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedErhan"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Erhan]);
@@ -886,28 +547,7 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToWasteland = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToWasteland"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Wasteland]);
 
 
-        //REFORGED - DURABILITY MOD
-        public const string reforgedName = "ReforgeOverhaul";
-        public static bool reforgedLoaded;
-        public static Mod reforgedMod;
-
-
-        //REMNANTS
-        public const string remnantsName = "Remnants";
-        public static bool remnantsLoaded;
-        public static Mod remnantsMod;
-
-
-        //RUPTURE
-        public const string ruptureName = "Rupture";
-        public static bool ruptureLoaded;
-        public static Mod ruptureMod;
-
-
         //SECRETS OF THE SHADOWS
-        public const string secretsOfTheShadowsName = "SOTS";
-        public static bool secretsOfTheShadowsLoaded;
-        public static Mod secretsOfTheShadowsMod;
         //BOSSES
         public static Condition DownedPutridPinky = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPutridPinky"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.PutridPinky]);
         public static Condition DownedGlowmoth = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGlowmoth"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Glowmoth]);
@@ -939,16 +579,7 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToPlanetarium = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToPlanetarium"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Planetarium]);
 
 
-        //SECRETS OF THE SHADOWS BARD HEALER
-        public const string secretsOfTheShadowsBardHealerName = "SOTSBardHealer";
-        public static bool secretsOfTheShadowsBardHealerLoaded;
-        public static Mod secretsOfTheShadowsBardHealerMod;
-
-
         //SHADOWS OF ABADDON
-        public const string shadowsOfAbaddonName = "SacredTools";
-        public static bool shadowsOfAbaddonLoaded;
-        public static Mod shadowsOfAbaddonMod;
         //BOSSES
         public static Condition DownedDecree = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDecree"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Decree]);
         public static Condition DownedFlamingPumpkin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFlamingPumpkin"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.FlamingPumpkin]);
@@ -968,17 +599,11 @@ namespace QoLCompendium.Core
 
 
         //SLOOME
-        public const string sloomeName = "Bloopsitems";
-        public static bool sloomeLoaded;
-        public static Mod sloomeMod;
         //BOSSES
         public static Condition DownedExodygen = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedExodygen"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Exodygen]);
 
 
         //SPIRIT CLASSIC
-        public const string spiritClassicName = "SpiritMod";
-        public static bool spiritClassicLoaded;
-        public static Mod spiritClassicMod;
         //BOSSES
         public static Condition DownedScarabeus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedScarabeus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Scarabeus]);
         public static Condition DownedMoonJellyWizard = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMoonJellyWizard"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MoonJellyWizard]);
@@ -1001,17 +626,11 @@ namespace QoLCompendium.Core
 
 
         //SPIRIT REFORGED
-        public const string spiritReforgedName = "SpiritReforged";
-        public static bool spiritReforgedLoaded;
-        public static Mod spiritReforgedMod;
         //BIOMES
         public static Condition HasBeenToSavanna = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.HasBeenToSavanna"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Savanna]);
 
 
         //SPOOKY
-        public const string spookyName = "Spooky";
-        public static bool spookyLoaded;
-        public static Mod spookyMod;
         //BOSSES
         public static Condition DownedSpookySpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedSpookySpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.SpookySpirit]);
         public static Condition DownedRotGourd = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedRotGourd"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.RotGourd]);
@@ -1035,9 +654,6 @@ namespace QoLCompendium.Core
 
 
         //STARLIGHT RIVER
-        public const string starlightRiverName = "StarlightRiver";
-        public static bool starlightRiverLoaded;
-        public static Mod starlightRiverMod;
         //BOSSES
         public static Condition DownedAuroracle = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAuroracle"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Auroracle]);
         public static Condition DownedCeiros = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCeiros"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Ceiros]);
@@ -1050,9 +666,6 @@ namespace QoLCompendium.Core
 
 
         //STARS ABOVE
-        public const string starsAboveName = "StarsAbove";
-        public static bool starsAboveLoaded;
-        public static Mod starsAboveMod;
         //BOSSES
         public static Condition DownedVagrantofSpace = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedVagrantofSpace"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.VagrantofSpace]);
         public static Condition DownedThespian = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedThespian"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Thespian]);
@@ -1066,31 +679,13 @@ namespace QoLCompendium.Core
 
 
         //STORM DIVERS MOD
-        public const string stormsAdditionsName = "StormDiversMod";
-        public static bool stormsAdditionsLoaded;
-        public static Mod stormsAdditionsMod;
         //BOSSES
         public static Condition DownedAncientHusk = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAncientHusk"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AncientHusk]);
         public static Condition DownedOverloadedScandrone = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedOverloadedScandrone"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OverloadedScandrone]);
         public static Condition DownedPainbringer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedPainbringer"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Painbringer]);
 
 
-        //STRAMS CLASSES
-        public const string stramsClassesName = "StramClasses";
-        public static bool stramsClassesLoaded;
-        public static Mod stramsClassesMod;
-
-
-        //STRAMS SURVIVAL
-        public const string stramsSurvivalName = "StramsSurvival";
-        public static bool stramsSurvivalLoaded;
-        public static Mod stramsSurvivalMod;
-
-
         //SUPERNOVA
-        public const string supernovaName = "SupernovaMod";
-        public static bool supernovaLoaded;
-        public static Mod supernovaMod;
         //BOSSES
         public static Condition DownedHarbingerOfAnnihilation = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedHarbingerOfAnnihilation"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.HarbingerOfAnnihilation]);
         public static Condition DownedFlyingTerror = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedFlyingTerror"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.FlyingTerror]);
@@ -1100,9 +695,6 @@ namespace QoLCompendium.Core
 
 
         //TERRORBORN
-        public const string terrorbornName = "TerrorbornMod";
-        public static bool terrorbornLoaded;
-        public static Mod terrorbornMod;
         //BOSSES
         public static Condition DownedInfectedIncarnate = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedInfectedIncarnate"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.InfectedIncarnate]);
         public static Condition DownedTidalTitan = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedTidalTitan"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.TidalTitan]);
@@ -1113,9 +705,6 @@ namespace QoLCompendium.Core
 
 
         //THORIUM
-        public const string thoriumName = "ThoriumMod";
-        public static bool thoriumLoaded;
-        public static Mod thoriumMod;
         //BOSSES
         public static Condition DownedGrandThunderBird = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGrandThunderBird"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GrandThunderBird]);
         public static Condition DownedQueenJellyfish = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedQueenJellyfish"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.QueenJellyfish]);
@@ -1136,37 +725,13 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToAquaticDepths = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAquaticDepths"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.AquaticDepths]);
 
 
-        //THORIUM BOSSES REWORK
-        public const string thoriumBossReworkName = "ThoriumRework";
-        public static bool thoriumBossReworkLoaded;
-        public static Mod thoriumBossReworkMod;
-
-
-        //THORIUM EXHAUSTION DISABLER
-        public const string exhaustionDisablerName = "ExhaustionDisabler";
-        public static bool exhaustionDisablerLoaded;
-        public static Mod exhaustionDisablerMod;
-
-
-        //THROWER UNIFICATION
-        public const string throwerUnificationName = "ThrowerUnification";
-        public static bool throwerUnificationLoaded;
-        public static Mod throwerUnificationMod;
-
-
         //TRAE
-        public const string traeName = "TRAEProject";
-        public static bool traeLoaded;
-        public static Mod traeMod;
         //MINIBOSSES
         public static Condition DownedGraniteOvergrowth = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGraniteOvergrowth"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GraniteOvergrowth]);
         public static Condition DownedBeholder = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedBeholder"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Beholder]);
 
 
         //UHTRIC
-        public const string uhtricName = "Uhtric";
-        public static bool uhtricLoaded;
-        public static Mod uhtricMod;
         //BOSSES
         public static Condition DownedDredger = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDredger"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Dredger]);
         public static Condition DownedCharcoolSnowman = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCharcoolSnowman"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CharcoolSnowman]);
@@ -1174,40 +739,22 @@ namespace QoLCompendium.Core
 
 
         //UNIVERSE OF SWORDS
-        public const string universeOfSwordsName = "UniverseOfSwordsMod";
-        public static bool universeOfSwordsLoaded;
-        public static Mod universeOfSwordsMod;
         //BOSSES
         public static Condition DownedEvilFlyingBlade = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEvilFlyingBlade"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.EvilFlyingBlade]);
 
 
         //VALHALLA
-        public const string valhallaName = "ValhallaMod";
-        public static bool valhallaLoaded;
-        public static Mod valhallaMod;
         //BOSSES
         public static Condition DownedColossalCarnage = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedColossalCarnage"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ColossalCarnage]);
         public static Condition DownedYurnero = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedYurnero"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Yurnero]);
 
 
-        //VanillaQoL
-        public const string vanillaQoLName = "VanillaQoL";
-        public static bool vanillaQoLLoaded;
-        public static Mod vanillaQoLMod;
-
-
         //VERDANT
-        public const string verdantName = "Verdant";
-        public static bool verdantLoaded;
-        public static Mod verdantMod;
         //BIOMES
         public static Condition HasBeenToVerdant = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToVerdant"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Verdant]);
 
 
         //VITALITY
-        public const string vitalityName = "VitalityMod";
-        public static bool vitalityLoaded;
-        public static Mod vitalityMod;
         //BOSSES
         public static Condition DownedStormCloud = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedStormCloud"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.StormCloud]);
         public static Condition DownedGrandAntlion = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedGrandAntlion"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.GrandAntlion]);
@@ -1221,17 +768,11 @@ namespace QoLCompendium.Core
 
 
         //WAYFAIR CONTENT
-        public const string wayfairContentName = "WAYFAIRContent";
-        public static bool wayfairContentLoaded;
-        public static Mod wayfairContentMod;
         //BOSSES
         public static Condition DownedManaflora = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedManaflora"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Manaflora]);
 
 
         //WRATH OF THE GODS
-        public const string wrathOfTheGodsName = "NoxusBoss";
-        public static bool wrathOfTheGodsLoaded;
-        public static Mod wrathOfTheGodsMod;
         //BOSSES
         public static Condition DownedXG07Mars = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedXG07Mars"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.XG07Mars]);
         public static Condition DownedAvatarOfEmptiness = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedAvatarOfEmptiness"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AvatarOfEmptiness]);
@@ -1239,9 +780,6 @@ namespace QoLCompendium.Core
 
 
         //ZYLON
-        public const string zylonName = "Zylon";
-        public static bool zylonLoaded;
-        public static Mod zylonMod;
         //BOSSES
         public static Condition DownedDirtball = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedDirtball"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Dirtball]);
         public static Condition DownedMetelord = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedMetelord"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Metelord]);
@@ -1974,390 +1512,367 @@ namespace QoLCompendium.Core
             }
             #endregion
 
-            if (aequusLoaded)
-            {
-                #region Bosses & Events
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Crabson] = (bool)aequusMod.Call("downedCrabson");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.OmegaStarite] = (bool)aequusMod.Call("downedOmegaStarite");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.DustDevil] = (bool)aequusMod.Call("downedDustDevil");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.RedSprite] = (bool)aequusMod.Call("downedRedSprite");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.SpaceSquid] = (bool)aequusMod.Call("downedSpaceSquid");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.HyperStarite] = (bool)aequusMod.Call("downedHyperStarite");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.UltraStarite] = (bool)aequusMod.Call("downedUltraStarite");
-                //Events
-                ModConditions.DownedEvents[(int)ModConditions.DownedEvent.DemonSiege] = (bool)aequusMod.Call("downedEventDemon");
-                ModConditions.DownedEvents[(int)ModConditions.DownedEvent.Glimmer] = (bool)aequusMod.Call("downedEventCosmic");
-                ModConditions.DownedEvents[(int)ModConditions.DownedEvent.GaleStreams] = (bool)aequusMod.Call("downedEventAtmosphere");
-                #endregion
-
-                #region Biomes
-                if (aequusMod.TryFind("CrabCreviceBiome", out ModBiome CrabCreviceBiome) && Main.LocalPlayer.InModBiome(CrabCreviceBiome))
-                    ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CrabCrevice] = true;
-                #endregion
-            }
-
-            if (calamityLoaded)
+            if (CrossModSupport.Calamity.Loaded)
             {
                 #region Bosses & Events
                 //Bosses
-                ModConditions.DownedBoss[(int)ModConditions.Downed.DesertScourge] = (bool)calamityMod.Call("GetBossDowned", "DesertScourge");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Crabulon] = (bool)calamityMod.Call("GetBossDowned", "Crabulon");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.HiveMind] = (bool)calamityMod.Call("GetBossDowned", "HiveMind");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Perforators] = (bool)calamityMod.Call("GetBossDowned", "Perforator");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.SlimeGod] = (bool)calamityMod.Call("GetBossDowned", "SlimeGod");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Cryogen] = (bool)calamityMod.Call("GetBossDowned", "Cryogen");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.AquaticScourge] = (bool)calamityMod.Call("GetBossDowned", "AquaticScourge");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.BrimstoneElemental] = (bool)calamityMod.Call("GetBossDowned", "BrimstoneElemental");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.CalamitasClone] = (bool)calamityMod.Call("GetBossDowned", "CalamitasClone");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.LeviathanAndAnahita] = (bool)calamityMod.Call("GetBossDowned", "AnahitaLeviathan");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.AstrumAureus] = (bool)calamityMod.Call("GetBossDowned", "AstrumAureus");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.PlaguebringerGoliath] = (bool)calamityMod.Call("GetBossDowned", "PlaguebringerGoliath");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Ravager] = (bool)calamityMod.Call("GetBossDowned", "Ravager");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.AstrumDeus] = (bool)calamityMod.Call("GetBossDowned", "AstrumDeus");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.ProfanedGuardians] = (bool)calamityMod.Call("GetBossDowned", "Guardians");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Dragonfolly] = (bool)calamityMod.Call("GetBossDowned", "Dragonfolly");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Providence] = (bool)calamityMod.Call("GetBossDowned", "Providence");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.StormWeaver] = (bool)calamityMod.Call("GetBossDowned", "StormWeaver");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.CeaselessVoid] = (bool)calamityMod.Call("GetBossDowned", "CeaselessVoid");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Signus] = (bool)calamityMod.Call("GetBossDowned", "Signus");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Polterghast] = (bool)calamityMod.Call("GetBossDowned", "Polterghast");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.OldDuke] = (bool)calamityMod.Call("GetBossDowned", "OldDuke");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.DevourerOfGods] = (bool)calamityMod.Call("GetBossDowned", "DevourerOfGods");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Yharon] = (bool)calamityMod.Call("GetBossDowned", "Yharon");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.ExoMechs] = (bool)calamityMod.Call("GetBossDowned", "ExoMechs");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.SupremeCalamitas] = (bool)calamityMod.Call("GetBossDowned", "SupremeCalamitas");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.DesertScourge] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "DesertScourge");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Crabulon] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "Crabulon");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.HiveMind] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "HiveMind");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Perforators] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "Perforator");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.SlimeGod] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "SlimeGod");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Cryogen] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "Cryogen");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.AquaticScourge] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "AquaticScourge");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.BrimstoneElemental] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "BrimstoneElemental");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.CalamitasClone] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "CalamitasClone");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.LeviathanAndAnahita] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "AnahitaLeviathan");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.AstrumAureus] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "AstrumAureus");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.PlaguebringerGoliath] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "PlaguebringerGoliath");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Ravager] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "Ravager");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.AstrumDeus] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "AstrumDeus");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.ProfanedGuardians] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "Guardians");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Dragonfolly] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "Dragonfolly");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Providence] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "Providence");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.StormWeaver] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "StormWeaver");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.CeaselessVoid] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "CeaselessVoid");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Signus] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "Signus");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Polterghast] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "Polterghast");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.OldDuke] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "OldDuke");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.DevourerOfGods] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "DevourerOfGods");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Yharon] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "Yharon");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.ExoMechs] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "ExoMechs");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.SupremeCalamitas] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "SupremeCalamitas");
                 //Minibosses
-                ModConditions.DownedBoss[(int)ModConditions.Downed.GiantClam] = (bool)calamityMod.Call("GetBossDowned", "GiantClam");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.CragmawMire] = (bool)calamityMod.Call("GetBossDowned", "cragmawmire");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.GreatSandShark] = (bool)calamityMod.Call("GetBossDowned", "GreatSandShark");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Mauler] = (bool)calamityMod.Call("GetBossDowned", "mauler");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.NuclearTerror] = (bool)calamityMod.Call("GetBossDowned", "nuclearterror");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.PrimordialWyrm] = (bool)calamityMod.Call("GetBossDowned", "primordialwyrm");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.GiantClam] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "GiantClam");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.CragmawMire] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "cragmawmire");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.GreatSandShark] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "GreatSandShark");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Mauler] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "mauler");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.NuclearTerror] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "nuclearterror");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.PrimordialWyrm] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "primordialwyrm");
                 //Events
-                ModConditions.DownedEvents[(int)ModConditions.DownedEvent.AcidRainTier1] = (bool)calamityMod.Call("GetBossDowned", "acidraineoc");
-                ModConditions.DownedEvents[(int)ModConditions.DownedEvent.AcidRainTier2] = (bool)calamityMod.Call("GetBossDowned", "acidrainscourge");
-                ModConditions.DownedEvents[(int)ModConditions.DownedEvent.BossRush] = (bool)calamityMod.Call("GetBossDowned", "bossrush");
+                ModConditions.DownedEvents[(int)ModConditions.DownedEvent.AcidRainTier1] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "acidraineoc");
+                ModConditions.DownedEvents[(int)ModConditions.DownedEvent.AcidRainTier2] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "acidrainscourge");
+                ModConditions.DownedEvents[(int)ModConditions.DownedEvent.BossRush] = (bool)CrossModSupport.Calamity.Mod.Call("GetBossDowned", "bossrush");
                 #endregion
 
                 #region Biomes
-                if (calamityMod.TryFind("AstralInfectionBiome", out ModBiome AstralInfectionBiome) && Main.LocalPlayer.InModBiome(AstralInfectionBiome))
+                if (CrossModSupport.Calamity.Mod.TryFind("AstralInfectionBiome", out ModBiome AstralInfectionBiome) && Main.LocalPlayer.InModBiome(AstralInfectionBiome))
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.AstralInfection] = true;
 
-                if (calamityMod.TryFind("AbyssLayer1Biome", out ModBiome AbyssLayer1Biome) && Main.LocalPlayer.InModBiome(AbyssLayer1Biome))
+                if (CrossModSupport.Calamity.Mod.TryFind("AbyssLayer1Biome", out ModBiome AbyssLayer1Biome) && Main.LocalPlayer.InModBiome(AbyssLayer1Biome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyss] = true;
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyssLayer1] = true;
                 }
-                if (calamityMod.TryFind("AbyssLayer2Biome", out ModBiome AbyssLayer2Biome) && Main.LocalPlayer.InModBiome(AbyssLayer2Biome))
+                if (CrossModSupport.Calamity.Mod.TryFind("AbyssLayer2Biome", out ModBiome AbyssLayer2Biome) && Main.LocalPlayer.InModBiome(AbyssLayer2Biome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyss] = true;
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyssLayer2] = true;
                 }
 
-                if (calamityMod.TryFind("AbyssLayer3Biome", out ModBiome AbyssLayer3Biome) && Main.LocalPlayer.InModBiome(AbyssLayer3Biome))
+                if (CrossModSupport.Calamity.Mod.TryFind("AbyssLayer3Biome", out ModBiome AbyssLayer3Biome) && Main.LocalPlayer.InModBiome(AbyssLayer3Biome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyss] = true;
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyssLayer3] = true;
                 }
-                if (calamityMod.TryFind("AbyssLayer4Biome", out ModBiome AbyssLayer4Biome) && Main.LocalPlayer.InModBiome(AbyssLayer4Biome))
+                if (CrossModSupport.Calamity.Mod.TryFind("AbyssLayer4Biome", out ModBiome AbyssLayer4Biome) && Main.LocalPlayer.InModBiome(AbyssLayer4Biome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyss] = true;
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyssLayer4] = true;
                 }
 
-                if (calamityMod.TryFind("BrimstoneCragsBiome", out ModBiome BrimstoneCragsBiome) && Main.LocalPlayer.InModBiome(BrimstoneCragsBiome))
+                if (CrossModSupport.Calamity.Mod.TryFind("BrimstoneCragsBiome", out ModBiome BrimstoneCragsBiome) && Main.LocalPlayer.InModBiome(BrimstoneCragsBiome))
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.BrimstoneCrags] = true;
 
-                if (calamityMod.TryFind("SulphurousSeaBiome", out ModBiome SulphurousSeaBiome) && Main.LocalPlayer.InModBiome(SulphurousSeaBiome))
+                if (CrossModSupport.Calamity.Mod.TryFind("SulphurousSeaBiome", out ModBiome SulphurousSeaBiome) && Main.LocalPlayer.InModBiome(SulphurousSeaBiome))
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SulphurSea] = true;
 
-                if (calamityMod.TryFind("SunkenSeaBiome", out ModBiome SunkenSeaBiome) && Main.LocalPlayer.InModBiome(SunkenSeaBiome))
+                if (CrossModSupport.Calamity.Mod.TryFind("SunkenSeaBiome", out ModBiome SunkenSeaBiome) && Main.LocalPlayer.InModBiome(SunkenSeaBiome))
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SunkenSea] = true;
                 #endregion
             }
 
-            if (calamityVanitiesLoaded)
+            if (CrossModSupport.CalamityVanities.Loaded)
             {
-                if (calamityVanitiesMod.TryFind("AstralBlight", out ModBiome AstralBlight) && Main.LocalPlayer.InModBiome(AstralBlight))
+                if (CrossModSupport.CalamityVanities.Mod.TryFind("AstralBlight", out ModBiome AstralBlight) && Main.LocalPlayer.InModBiome(AstralBlight))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.AstralBlight] = true;
                 }
             }
 
-            if (confectionRebakedLoaded)
+            if (CrossModSupport.ConfectionRebaked.Loaded)
             {
-                if ((confectionRebakedMod.TryFind("ConfectionBiome", out ModBiome ConfectionBiome) && Main.LocalPlayer.InModBiome(ConfectionBiome))
-                    || (confectionRebakedMod.TryFind("ConfectionUndergroundBiome", out ModBiome ConfectionUndergroundBiome) && Main.LocalPlayer.InModBiome(ConfectionUndergroundBiome))
-                    || (confectionRebakedMod.TryFind("IceConfectionSurfaceBiome", out ModBiome IceConfectionSurfaceBiome) && Main.LocalPlayer.InModBiome(IceConfectionSurfaceBiome))
-                    || (confectionRebakedMod.TryFind("IceConfectionUndergroundBiome", out ModBiome IceConfectionUndergroundBiome) && Main.LocalPlayer.InModBiome(IceConfectionUndergroundBiome))
-                    || (confectionRebakedMod.TryFind("SandConfectionSurfaceBiome", out ModBiome SandConfectionSurfaceBiome) && Main.LocalPlayer.InModBiome(SandConfectionSurfaceBiome))
-                    || (confectionRebakedMod.TryFind("SandConfectionUndergroundBiome", out ModBiome SandConfectionUndergroundBiome) && Main.LocalPlayer.InModBiome(SandConfectionUndergroundBiome)))
+                if ((CrossModSupport.ConfectionRebaked.Mod.TryFind("ConfectionBiome", out ModBiome ConfectionBiome) && Main.LocalPlayer.InModBiome(ConfectionBiome))
+                    || (CrossModSupport.ConfectionRebaked.Mod.TryFind("ConfectionUndergroundBiome", out ModBiome ConfectionUndergroundBiome) && Main.LocalPlayer.InModBiome(ConfectionUndergroundBiome))
+                    || (CrossModSupport.ConfectionRebaked.Mod.TryFind("IceConfectionSurfaceBiome", out ModBiome IceConfectionSurfaceBiome) && Main.LocalPlayer.InModBiome(IceConfectionSurfaceBiome))
+                    || (CrossModSupport.ConfectionRebaked.Mod.TryFind("IceConfectionUndergroundBiome", out ModBiome IceConfectionUndergroundBiome) && Main.LocalPlayer.InModBiome(IceConfectionUndergroundBiome))
+                    || (CrossModSupport.ConfectionRebaked.Mod.TryFind("SandConfectionSurfaceBiome", out ModBiome SandConfectionSurfaceBiome) && Main.LocalPlayer.InModBiome(SandConfectionSurfaceBiome))
+                    || (CrossModSupport.ConfectionRebaked.Mod.TryFind("SandConfectionUndergroundBiome", out ModBiome SandConfectionUndergroundBiome) && Main.LocalPlayer.InModBiome(SandConfectionUndergroundBiome)))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Confection] = true;
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Hallow] = true;
                 }
             }
 
-            if (depthsLoaded)
+            if (CrossModSupport.Depths.Loaded)
             {
-                if (depthsMod.TryFind("DepthsBiome", out ModBiome DepthsBiome) && Main.LocalPlayer.InModBiome(DepthsBiome))
+                if (CrossModSupport.Depths.Mod.TryFind("DepthsBiome", out ModBiome DepthsBiome) && Main.LocalPlayer.InModBiome(DepthsBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Depths] = true;
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Underworld] = true;
                 }
             }
 
-            if (everjadeLoaded)
+            if (CrossModSupport.Everjade.Loaded)
             {
-                if (everjadeMod.TryFind("JadeLakeBiome", out ModBiome JadeLakeBiome) && Main.LocalPlayer.InModBiome(JadeLakeBiome))
+                if (CrossModSupport.Everjade.Mod.TryFind("JadeLakeBiome", out ModBiome JadeLakeBiome) && Main.LocalPlayer.InModBiome(JadeLakeBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.JadeLake] = true;
                 }
             }
 
-            if (exxoAvalonOriginsLoaded)
+            if (CrossModSupport.ExxoAvalonOrigins.Loaded)
             {
-                if ((exxoAvalonOriginsMod.TryFind("Contagion", out ModBiome Contagion) && Main.LocalPlayer.InModBiome(Contagion))
-                    || (exxoAvalonOriginsMod.TryFind("UndergroundContagion", out ModBiome UndergroundContagion) && Main.LocalPlayer.InModBiome(UndergroundContagion))
-                    || (exxoAvalonOriginsMod.TryFind("ContagionDesert", out ModBiome ContagionDesert) && Main.LocalPlayer.InModBiome(ContagionDesert))
-                    || (exxoAvalonOriginsMod.TryFind("ContagionCaveDesert", out ModBiome ContagionCaveDesert) && Main.LocalPlayer.InModBiome(ContagionCaveDesert)))
+                if ((CrossModSupport.ExxoAvalonOrigins.Mod.TryFind("Contagion", out ModBiome Contagion) && Main.LocalPlayer.InModBiome(Contagion))
+                    || (CrossModSupport.ExxoAvalonOrigins.Mod.TryFind("UndergroundContagion", out ModBiome UndergroundContagion) && Main.LocalPlayer.InModBiome(UndergroundContagion))
+                    || (CrossModSupport.ExxoAvalonOrigins.Mod.TryFind("ContagionDesert", out ModBiome ContagionDesert) && Main.LocalPlayer.InModBiome(ContagionDesert))
+                    || (CrossModSupport.ExxoAvalonOrigins.Mod.TryFind("ContagionCaveDesert", out ModBiome ContagionCaveDesert) && Main.LocalPlayer.InModBiome(ContagionCaveDesert)))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Contagion] = true;
                 }
             }
 
-            if (fracturesOfPenumbraLoaded)
+            if (CrossModSupport.FracturesOfPenumbra.Loaded)
             {
-                if ((fracturesOfPenumbraMod.TryFind("DreadSurfaceBiome", out ModBiome DreadSurfaceBiome) && Main.LocalPlayer.InModBiome(DreadSurfaceBiome))
-                    || (fracturesOfPenumbraMod.TryFind("DreadUndergroundBiome", out ModBiome DreadUndergroundBiome) && Main.LocalPlayer.InModBiome(DreadUndergroundBiome)))
+                if ((CrossModSupport.FracturesOfPenumbra.Mod.TryFind("DreadSurfaceBiome", out ModBiome DreadSurfaceBiome) && Main.LocalPlayer.InModBiome(DreadSurfaceBiome))
+                    || (CrossModSupport.FracturesOfPenumbra.Mod.TryFind("DreadUndergroundBiome", out ModBiome DreadUndergroundBiome) && Main.LocalPlayer.InModBiome(DreadUndergroundBiome)))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Dread] = true;
                 }
             }
 
-            if (homewardJourneyLoaded)
+            if (CrossModSupport.HomewardJourney.Loaded)
             {
-                if (homewardJourneyMod.TryFind("AbyssUndergroundBiome", out ModBiome AbyssUndergroundBiome) && Main.LocalPlayer.InModBiome(AbyssUndergroundBiome))
+                if (CrossModSupport.HomewardJourney.Mod.TryFind("AbyssUndergroundBiome", out ModBiome AbyssUndergroundBiome) && Main.LocalPlayer.InModBiome(AbyssUndergroundBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.HomewardJourneyAbyss] = true;
                 }
-                if (homewardJourneyMod.TryFind("MazeBiome", out ModBiome MazeBiome) && Main.LocalPlayer.InModBiome(MazeBiome))
+                if (CrossModSupport.HomewardJourney.Mod.TryFind("MazeBiome", out ModBiome MazeBiome) && Main.LocalPlayer.InModBiome(MazeBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Maze] = true;
                 }
             }
 
-            if (infernumLoaded)
+            if (CrossModSupport.Infernum.Loaded)
             {
-                if (infernumMod.TryFind("ProfanedTempleBiome", out ModBiome ProfanedTempleBiome) && Main.LocalPlayer.InModBiome(ProfanedTempleBiome))
+                if (CrossModSupport.Infernum.Mod.TryFind("ProfanedTempleBiome", out ModBiome ProfanedTempleBiome) && Main.LocalPlayer.InModBiome(ProfanedTempleBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.ProfanedGardens] = true;
                 }
             }
 
-            if (lunarVeilLoaded)
+            if (CrossModSupport.LunarVeil.Loaded)
             {
-                if (lunarVeilMod.TryFind("AbyssBiome", out ModBiome AbyssBiome) && Main.LocalPlayer.InModBiome(AbyssBiome))
+                if (CrossModSupport.LunarVeil.Mod.TryFind("AbyssBiome", out ModBiome AbyssBiome) && Main.LocalPlayer.InModBiome(AbyssBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Abysm] = true;
                 }
             }
 
-            if (martainsOrderLoaded)
+            if (CrossModSupport.MartinsOrder.Loaded)
             {
-                if (martainsOrderMod.TryFind("RainforestBiome", out ModBiome RainforestBiome) && Main.LocalPlayer.InModBiome(RainforestBiome))
+                if (CrossModSupport.MartinsOrder.Mod.TryFind("RainforestBiome", out ModBiome RainforestBiome) && Main.LocalPlayer.InModBiome(RainforestBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Rainforest] = true;
                 }
-                if (martainsOrderMod.TryFind("DepthsBiome", out ModBiome DepthsBiome) && Main.LocalPlayer.InModBiome(DepthsBiome))
+                if (CrossModSupport.MartinsOrder.Mod.TryFind("DepthsBiome", out ModBiome DepthsBiome) && Main.LocalPlayer.InModBiome(DepthsBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.DeepCaves] = true;
                 }
-                if (martainsOrderMod.TryFind("ColdDesertBiome", out ModBiome ColdDesertBiome) && Main.LocalPlayer.InModBiome(ColdDesertBiome))
+                if (CrossModSupport.MartinsOrder.Mod.TryFind("ColdDesertBiome", out ModBiome ColdDesertBiome) && Main.LocalPlayer.InModBiome(ColdDesertBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.ColdDesert] = true;
                 }
-                if ((martainsOrderMod.TryFind("VoidBiome", out ModBiome VoidBiome) && Main.LocalPlayer.InModBiome(VoidBiome)) || (martainsOrderMod.TryFind("VoidDBiome", out ModBiome VoidDBiome) && Main.LocalPlayer.InModBiome(VoidDBiome)) || (martainsOrderMod.TryFind("VoidIceBiome", out ModBiome VoidIceBiome) && Main.LocalPlayer.InModBiome(VoidIceBiome)) || (martainsOrderMod.TryFind("VoidUGBiome", out ModBiome VoidUGBiome) && Main.LocalPlayer.InModBiome(VoidUGBiome)) || (martainsOrderMod.TryFind("VoidUGDBiome", out ModBiome VoidUGDBiome) && Main.LocalPlayer.InModBiome(VoidUGDBiome)))
+                if ((CrossModSupport.MartinsOrder.Mod.TryFind("VoidBiome", out ModBiome VoidBiome) && Main.LocalPlayer.InModBiome(VoidBiome)) || (CrossModSupport.MartinsOrder.Mod.TryFind("VoidDBiome", out ModBiome VoidDBiome) && Main.LocalPlayer.InModBiome(VoidDBiome)) || (CrossModSupport.MartinsOrder.Mod.TryFind("VoidIceBiome", out ModBiome VoidIceBiome) && Main.LocalPlayer.InModBiome(VoidIceBiome)) || (CrossModSupport.MartinsOrder.Mod.TryFind("VoidUGBiome", out ModBiome VoidUGBiome) && Main.LocalPlayer.InModBiome(VoidUGBiome)) || (CrossModSupport.MartinsOrder.Mod.TryFind("VoidUGDBiome", out ModBiome VoidUGDBiome) && Main.LocalPlayer.InModBiome(VoidUGDBiome)))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Void] = true;
                 }
             }
 
-            if (qwertyLoaded)
+            if (CrossModSupport.Qwerty.Loaded)
             {
-                if (qwertyMod.TryFind("FortressBiome", out ModBiome FortressBiome) && Main.LocalPlayer.InModBiome(FortressBiome))
+                if (CrossModSupport.Qwerty.Mod.TryFind("FortressBiome", out ModBiome FortressBiome) && Main.LocalPlayer.InModBiome(FortressBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SkyFortress] = true;
                 }
             }
 
-            if (redemptionLoaded)
+            if (CrossModSupport.Redemption.Loaded)
             {
-                if (redemptionMod.TryFind("LabBiome", out ModBiome LabBiome) && Main.LocalPlayer.InModBiome(LabBiome))
+                if (CrossModSupport.Redemption.Mod.TryFind("LabBiome", out ModBiome LabBiome) && Main.LocalPlayer.InModBiome(LabBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.AbandonedLab] = true;
                 }
-                if (redemptionMod.TryFind("WastelandPurityBiome", out ModBiome WastelandPurityBiome) && Main.LocalPlayer.InModBiome(WastelandPurityBiome))
+                if (CrossModSupport.Redemption.Mod.TryFind("WastelandPurityBiome", out ModBiome WastelandPurityBiome) && Main.LocalPlayer.InModBiome(WastelandPurityBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Wasteland] = true;
                 }
             }
 
-            if (secretsOfTheShadowsLoaded)
+            if (CrossModSupport.SecretsOfTheShadows.Loaded)
             {
-                if (secretsOfTheShadowsMod.TryFind("PyramidBiome", out ModBiome PyramidBiome) && Main.LocalPlayer.InModBiome(PyramidBiome))
+                if (CrossModSupport.SecretsOfTheShadows.Mod.TryFind("PyramidBiome", out ModBiome PyramidBiome) && Main.LocalPlayer.InModBiome(PyramidBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CursedPyramid] = true;
                 }
-                if (secretsOfTheShadowsMod.TryFind("PlanetariumBiome", out ModBiome PlanetariumBiome) && Main.LocalPlayer.InModBiome(PlanetariumBiome))
+                if (CrossModSupport.SecretsOfTheShadows.Mod.TryFind("PlanetariumBiome", out ModBiome PlanetariumBiome) && Main.LocalPlayer.InModBiome(PlanetariumBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Planetarium] = true;
                 }
-                if (secretsOfTheShadowsMod.TryFind("AbandonedVillageBiome", out ModBiome AbandonedVillageBiome) && Main.LocalPlayer.InModBiome(AbandonedVillageBiome))
+                if (CrossModSupport.SecretsOfTheShadows.Mod.TryFind("AbandonedVillageBiome", out ModBiome AbandonedVillageBiome) && Main.LocalPlayer.InModBiome(AbandonedVillageBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.AbandonedVillage] = true;
                 }
-                if (secretsOfTheShadowsMod.TryFind("SanctuaryBiome", out ModBiome SanctuaryBiome) && Main.LocalPlayer.InModBiome(SanctuaryBiome))
+                if (CrossModSupport.SecretsOfTheShadows.Mod.TryFind("SanctuaryBiome", out ModBiome SanctuaryBiome) && Main.LocalPlayer.InModBiome(SanctuaryBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Sanctuary] = true;
                 }
             }
 
-            if (shadowsOfAbaddonLoaded)
+            if (CrossModSupport.ShadowsOfAbaddon.Loaded)
             {
-                if ((shadowsOfAbaddonMod.TryFind("CinderDesertBiome", out ModBiome CinderDesertBiome) && Main.LocalPlayer.InModBiome(CinderDesertBiome)) || (shadowsOfAbaddonMod.TryFind("CinderForestBiome", out ModBiome CinderForestBiome) && Main.LocalPlayer.InModBiome(CinderForestBiome)))
+                if ((CrossModSupport.ShadowsOfAbaddon.Mod.TryFind("CinderDesertBiome", out ModBiome CinderDesertBiome) && Main.LocalPlayer.InModBiome(CinderDesertBiome)) || (CrossModSupport.ShadowsOfAbaddon.Mod.TryFind("CinderForestBiome", out ModBiome CinderForestBiome) && Main.LocalPlayer.InModBiome(CinderForestBiome)))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CinderForest] = true;
                 }
 
-                if ((shadowsOfAbaddonMod.TryFind("CinderForestUndergroundBiome", out ModBiome CinderForestUndergroundBiome) && Main.LocalPlayer.InModBiome(CinderForestUndergroundBiome)))
+                if ((CrossModSupport.ShadowsOfAbaddon.Mod.TryFind("CinderForestUndergroundBiome", out ModBiome CinderForestUndergroundBiome) && Main.LocalPlayer.InModBiome(CinderForestUndergroundBiome)))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.InfernalDepths] = true;
                 }
             }
 
-            if (spiritClassicLoaded)
+            if (CrossModSupport.SpiritClassic.Loaded)
             {
-                if ((spiritClassicMod.TryFind("BriarSurfaceBiome", out ModBiome BriarSurfaceBiome) && Main.LocalPlayer.InModBiome(BriarSurfaceBiome))
-                    || (spiritClassicMod.TryFind("BriarUndergroundBiome", out ModBiome BriarUndergroundBiome) && Main.LocalPlayer.InModBiome(BriarUndergroundBiome)))
+                if ((CrossModSupport.SpiritClassic.Mod.TryFind("BriarSurfaceBiome", out ModBiome BriarSurfaceBiome) && Main.LocalPlayer.InModBiome(BriarSurfaceBiome))
+                    || (CrossModSupport.SpiritClassic.Mod.TryFind("BriarUndergroundBiome", out ModBiome BriarUndergroundBiome) && Main.LocalPlayer.InModBiome(BriarUndergroundBiome)))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Briar] = true;
                 }
-                if (spiritClassicMod.TryFind("SpiritSurfaceBiome", out ModBiome SpiritSurfaceBiome) && Main.LocalPlayer.InModBiome(SpiritSurfaceBiome))
+                if (CrossModSupport.SpiritClassic.Mod.TryFind("SpiritSurfaceBiome", out ModBiome SpiritSurfaceBiome) && Main.LocalPlayer.InModBiome(SpiritSurfaceBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SpiritSurface] = true;
                 }
-                if (spiritClassicMod.TryFind("SpiritUndergroundBiome", out ModBiome SpiritUndergroundBiome) && Main.LocalPlayer.InModBiome(SpiritUndergroundBiome))
+                if (CrossModSupport.SpiritClassic.Mod.TryFind("SpiritUndergroundBiome", out ModBiome SpiritUndergroundBiome) && Main.LocalPlayer.InModBiome(SpiritUndergroundBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SpiritUnderground] = true;
                 }
             }
 
-            if (spookyLoaded)
+            if (CrossModSupport.Spooky.Loaded)
             {
-                if (spookyMod.TryFind("SpookyBiome", out ModBiome SpookyBiome) && Main.LocalPlayer.InModBiome(SpookyBiome))
+                if (CrossModSupport.Spooky.Mod.TryFind("SpookyBiome", out ModBiome SpookyBiome) && Main.LocalPlayer.InModBiome(SpookyBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SpookyForest] = true;
                 }
-                if (spookyMod.TryFind("SpookyBiomeUg", out ModBiome SpookyBiomeUg) && Main.LocalPlayer.InModBiome(SpookyBiomeUg))
+                if (CrossModSupport.Spooky.Mod.TryFind("SpookyBiomeUg", out ModBiome SpookyBiomeUg) && Main.LocalPlayer.InModBiome(SpookyBiomeUg))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SpookyUnderground] = true;
                 }
-                if (spookyMod.TryFind("SpookyHellBiome", out ModBiome SpookyHellBiome) && Main.LocalPlayer.InModBiome(SpookyHellBiome))
+                if (CrossModSupport.Spooky.Mod.TryFind("SpookyHellBiome", out ModBiome SpookyHellBiome) && Main.LocalPlayer.InModBiome(SpookyHellBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.ValleyOfEyes] = true;
                 }
-                if (spookyMod.TryFind("SpiderCaveBiome", out ModBiome SpiderCaveBiome) && Main.LocalPlayer.InModBiome(SpiderCaveBiome))
+                if (CrossModSupport.Spooky.Mod.TryFind("SpiderCaveBiome", out ModBiome SpiderCaveBiome) && Main.LocalPlayer.InModBiome(SpiderCaveBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SpiderGrotto] = true;
                 }
-                if (spookyMod.TryFind("CatacombBiome", out ModBiome CatacombBiome) && Main.LocalPlayer.InModBiome(CatacombBiome))
+                if (CrossModSupport.Spooky.Mod.TryFind("CatacombBiome", out ModBiome CatacombBiome) && Main.LocalPlayer.InModBiome(CatacombBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CreepyCatacombs] = true;
                 }
-                if (spookyMod.TryFind("CatacombBiome2", out ModBiome CatacombBiome2) && Main.LocalPlayer.InModBiome(CatacombBiome2))
+                if (CrossModSupport.Spooky.Mod.TryFind("CatacombBiome2", out ModBiome CatacombBiome2) && Main.LocalPlayer.InModBiome(CatacombBiome2))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.LowerCatacombs] = true;
                 }
-                if (spookyMod.TryFind("CemeteryBiome", out ModBiome CemeteryBiome) && Main.LocalPlayer.InModBiome(CemeteryBiome))
+                if (CrossModSupport.Spooky.Mod.TryFind("CemeteryBiome", out ModBiome CemeteryBiome) && Main.LocalPlayer.InModBiome(CemeteryBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SwampyCemetery] = true;
                 }
-                if (spookyMod.TryFind("NoseTempleBiome", out ModBiome NoseTempleBiome) && Main.LocalPlayer.InModBiome(NoseTempleBiome))
+                if (CrossModSupport.Spooky.Mod.TryFind("NoseTempleBiome", out ModBiome NoseTempleBiome) && Main.LocalPlayer.InModBiome(NoseTempleBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.TempleOfMoco] = true;
                 }
             }
 
-            if (starlightRiverLoaded)
+            if (CrossModSupport.StarlightRiver.Loaded)
             {
-                if (starlightRiverMod.TryFind("PermafrostTempleBiome", out ModBiome PermafrostTempleBiome) && Main.LocalPlayer.InModBiome(PermafrostTempleBiome))
+                if (CrossModSupport.StarlightRiver.Mod.TryFind("PermafrostTempleBiome", out ModBiome PermafrostTempleBiome) && Main.LocalPlayer.InModBiome(PermafrostTempleBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.AuroraTemple] = true;
                 }
-                if (starlightRiverMod.TryFind("VitricDesertBiome", out ModBiome VitricDesertBiome) && Main.LocalPlayer.InModBiome(VitricDesertBiome))
+                if (CrossModSupport.StarlightRiver.Mod.TryFind("VitricDesertBiome", out ModBiome VitricDesertBiome) && Main.LocalPlayer.InModBiome(VitricDesertBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.VitricDesert] = true;
                 }
-                if (starlightRiverMod.TryFind("VitricTempleBiome", out ModBiome VitricTempleBiome) && Main.LocalPlayer.InModBiome(VitricTempleBiome))
+                if (CrossModSupport.StarlightRiver.Mod.TryFind("VitricTempleBiome", out ModBiome VitricTempleBiome) && Main.LocalPlayer.InModBiome(VitricTempleBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.VitricTemple] = true;
                 }
             }
 
-            if (starsAboveLoaded)
+            if (CrossModSupport.StarsAbove.Loaded)
             {
-                ModConditions.DownedBoss[(int)ModConditions.Downed.VagrantofSpace] = (bool)starsAboveMod.Call("downedVagrant", Mod);
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Thespian] = (bool)starsAboveMod.Call("downedThespian", Mod);
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Dioskouroi] = (bool)starsAboveMod.Call("downedDioskouroi", Mod);
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Nalhaun] = (bool)starsAboveMod.Call("downedNalhaun", Mod);
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Starfarers] = (bool)starsAboveMod.Call("downedStarfarers", Mod);
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Penthesilea] = (bool)starsAboveMod.Call("downedPenthesilea", Mod);
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Arbitration] = (bool)starsAboveMod.Call("downedArbitration", Mod);
-                ModConditions.DownedBoss[(int)ModConditions.Downed.WarriorOfLight] = (bool)starsAboveMod.Call("downedWarriorOfLight", Mod);
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Tsukiyomi] = (bool)starsAboveMod.Call("downedTsukiyomi", Mod);
+                ModConditions.DownedBoss[(int)ModConditions.Downed.VagrantofSpace] = (bool)CrossModSupport.StarsAbove.Mod.Call("downedVagrant", Mod);
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Thespian] = (bool)CrossModSupport.StarsAbove.Mod.Call("downedThespian", Mod);
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Dioskouroi] = (bool)CrossModSupport.StarsAbove.Mod.Call("downedDioskouroi", Mod);
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Nalhaun] = (bool)CrossModSupport.StarsAbove.Mod.Call("downedStarfarers", Mod);
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Penthesilea] = (bool)CrossModSupport.StarsAbove.Mod.Call("downedPenthesilea", Mod);
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Arbitration] = (bool)CrossModSupport.StarsAbove.Mod.Call("downedArbitration", Mod);
+                ModConditions.DownedBoss[(int)ModConditions.Downed.WarriorOfLight] = (bool)CrossModSupport.StarsAbove.Mod.Call("downedWarriorOfLight", Mod);
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Tsukiyomi] = (bool)CrossModSupport.StarsAbove.Mod.Call("downedTsukiyomi", Mod);
             }
 
-            if (thoriumLoaded)
+            if (CrossModSupport.Thorium.Loaded)
             {
                 #region Bosses
-                ModConditions.DownedBoss[(int)ModConditions.Downed.GrandThunderBird] = (bool)thoriumMod.Call("GetDownedBoss", "TheGrandThunderBird");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.QueenJellyfish] = (bool)thoriumMod.Call("GetDownedBoss", "QueenJellyfish");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Viscount] = (bool)thoriumMod.Call("GetDownedBoss", "Viscount");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.GraniteEnergyStorm] = (bool)thoriumMod.Call("GetDownedBoss", "GraniteEnergyStorm");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.BuriedChampion] = (bool)thoriumMod.Call("GetDownedBoss", "BuriedChampion");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.StarScouter] = (bool)thoriumMod.Call("GetDownedBoss", "StarScouter");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.BoreanStrider] = (bool)thoriumMod.Call("GetDownedBoss", "BoreanStrider");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.FallenBeholder] = (bool)thoriumMod.Call("GetDownedBoss", "FallenBeholder");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Lich] = (bool)thoriumMod.Call("GetDownedBoss", "Lich");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.ForgottenOne] = (bool)thoriumMod.Call("GetDownedBoss", "ForgottenOne");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Primordials] = (bool)thoriumMod.Call("GetDownedBoss", "ThePrimordials");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.PatchWerk] = (bool)thoriumMod.Call("GetDownedBoss", "PatchWerk");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.CorpseBloom] = (bool)thoriumMod.Call("GetDownedBoss", "CorpseBloom");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.Illusionist] = (bool)thoriumMod.Call("GetDownedBoss", "Illusionist");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.GrandThunderBird] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "TheGrandThunderBird");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.QueenJellyfish] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "QueenJellyfish");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Viscount] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "Viscount");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.GraniteEnergyStorm] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "GraniteEnergyStorm");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.BuriedChampion] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "BuriedChampion");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.StarScouter] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "StarScouter");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.BoreanStrider] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "BoreanStrider");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.FallenBeholder] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "FallenBeholder");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Lich] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "Lich");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.ForgottenOne] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "ForgottenOne");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Primordials] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "ThePrimordials");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.PatchWerk] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "PatchWerk");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.CorpseBloom] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "CorpseBloom");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.Illusionist] = (bool)CrossModSupport.Thorium.Mod.Call("GetDownedBoss", "Illusionist");
                 #endregion
 
                 #region Biomes
-                if (thoriumMod.TryFind("DepthsBiome", out ModBiome DepthsBiome) && Main.LocalPlayer.InModBiome(DepthsBiome))
+                if (CrossModSupport.Thorium.Mod.TryFind("DepthsBiome", out ModBiome DepthsBiome) && Main.LocalPlayer.InModBiome(DepthsBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.AquaticDepths] = true;
                 }
                 #endregion
             }
 
-            if (verdantLoaded)
+            if (CrossModSupport.Verdant.Loaded)
             {
-                if (verdantMod.TryFind("VerdantBiome", out ModBiome VerdantBiome) && Main.LocalPlayer.InModBiome(VerdantBiome))
+                if (CrossModSupport.Verdant.Mod.TryFind("VerdantBiome", out ModBiome VerdantBiome) && Main.LocalPlayer.InModBiome(VerdantBiome))
                 {
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Verdant] = true;
                 }
             }
 
-            if (wrathOfTheGodsLoaded)
+            if (CrossModSupport.WrathOfTheGods.Loaded)
             {
-                ModConditions.DownedBoss[(int)ModConditions.Downed.XG07Mars] = (bool)wrathOfTheGodsMod.Call("GetBossDefeated", "mars");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.AvatarOfEmptiness] = (bool)wrathOfTheGodsMod.Call("GetBossDefeated", "avatarofemptiness");
-                ModConditions.DownedBoss[(int)ModConditions.Downed.NamelessDeityOfLight] = (bool)wrathOfTheGodsMod.Call("GetBossDefeated", "namelessdeity");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.XG07Mars] = (bool)CrossModSupport.WrathOfTheGods.Mod.Call("GetBossDefeated", "mars");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.AvatarOfEmptiness] = (bool)CrossModSupport.WrathOfTheGods.Mod.Call("GetBossDefeated", "avatarofemptiness");
+                ModConditions.DownedBoss[(int)ModConditions.Downed.NamelessDeityOfLight] = (bool)CrossModSupport.WrathOfTheGods.Mod.Call("GetBossDefeated", "namelessdeity");
             }
         }
 
@@ -2486,321 +2001,6 @@ namespace QoLCompendium.Core
 
             for (int i = 0; i < VisitedBiomes.Length; i++)
                 VisitedBiomes[i] = false;
-        }
-
-        public static void LoadSupportedMods()
-        {
-            aequusLoaded = ModLoader.TryGetMod(aequusName, out Mod Aequus);
-            aequusMod = Aequus;
-
-            afkpetsLoaded = ModLoader.TryGetMod(afkpetsName, out Mod AFKPETS);
-            afkpetsMod = AFKPETS;
-
-            amuletOfManyMinionsLoaded = ModLoader.TryGetMod(amuletOfManyMinionsName, out Mod AmuletOfManyMinions);
-            amuletOfManyMinionsMod = AmuletOfManyMinions;
-
-            arbourLoaded = ModLoader.TryGetMod(arbourName, out Mod Arbour);
-            arbourMod = Arbour;
-
-            assortedCrazyThingsLoaded = ModLoader.TryGetMod(assortedCrazyThingsName, out Mod AssortedCrazyThings);
-            assortedCrazyThingsMod = AssortedCrazyThings;
-
-            awfulGarbageLoaded = ModLoader.TryGetMod(awfulGarbageName, out Mod AwfulGarbageMod);
-            awfulGarbageMod = AwfulGarbageMod;
-
-            blocksArsenalLoaded = ModLoader.TryGetMod(blocksArsenalName, out Mod Arsenal_Mod);
-            blocksArsenalMod = Arsenal_Mod;
-
-            blocksArtificerLoaded = ModLoader.TryGetMod(blocksArtificerName, out Mod ArtificerMod);
-            blocksArtificerMod = ArtificerMod;
-
-            blocksCoreBossLoaded = ModLoader.TryGetMod(blocksCoreBossName, out Mod CorruptionBoss);
-            blocksCoreBossMod = CorruptionBoss;
-
-            blocksInfoAccessoriesLoaded = ModLoader.TryGetMod(blocksInfoAccessoriesName, out Mod BInfoAcc);
-            blocksInfoAccessoriesMod = BInfoAcc;
-
-            blocksThrowerLoaded = ModLoader.TryGetMod(blocksThrowerName, out Mod BCThrower);
-            blocksThrowerMod = BCThrower;
-
-            bombusApisLoaded = ModLoader.TryGetMod(bombusApisName, out Mod BombusApisBee);
-            bombusApisMod = BombusApisBee;
-
-            buffariaLoaded = ModLoader.TryGetMod(buffariaName, out Mod Buffaria);
-            buffariaMod = Buffaria;
-
-            calamityLoaded = ModLoader.TryGetMod(calamityName, out Mod CalamityMod);
-            calamityMod = CalamityMod;
-
-            calamityCommunityRemixLoaded = ModLoader.TryGetMod(calamityCommunityRemixName, out Mod CalRemix);
-            calamityCommunityRemixMod = CalRemix;
-
-            calamityEntropyLoaded = ModLoader.TryGetMod(calamityEntropyName, out Mod CalamityEntropy);
-            calamityEntropyMod = CalamityEntropy;
-
-            calamityOverhaulLoaded = ModLoader.TryGetMod(calamityOverhaulName, out Mod CalamityOverhaul);
-            calamityOverhaulMod = CalamityOverhaul;
-
-            calamityRekindledLoaded = ModLoader.TryGetMod(calamityRekindledName, out Mod CalamityLegacy);
-            calamityRekindledMod = CalamityLegacy;
-
-            calamityVanitiesLoaded = ModLoader.TryGetMod(calamityVanitiesName, out Mod CalValEX);
-            calamityVanitiesMod = CalValEX;
-
-            captureDiscsClassLoaded = ModLoader.TryGetMod(captureDiscsClassName, out Mod CaptureDiscClass);
-            captureDiscsClassMod = CaptureDiscClass;
-
-            catalystLoaded = ModLoader.TryGetMod(catalystName, out Mod CatalystMod);
-            catalystMod = CatalystMod;
-
-            cerebralLoaded = ModLoader.TryGetMod(cerebralName, out Mod CerebralMod);
-            cerebralMod = CerebralMod;
-
-            clamityAddonLoaded = ModLoader.TryGetMod(clamityAddonName, out Mod Clamity);
-            clamityAddonMod = Clamity;
-
-            clickerClassLoaded = ModLoader.TryGetMod(clickerClassName, out Mod ClickerClass);
-            clickerClassMod = ClickerClass;
-
-            confectionRebakedLoaded = ModLoader.TryGetMod(confectionRebakedName, out Mod TheConfectionRebirth);
-            confectionRebakedMod = TheConfectionRebirth;
-
-            consolariaLoaded = ModLoader.TryGetMod(consolariaName, out Mod Consolaria);
-            consolariaMod = Consolaria;
-
-            coraliteLoaded = ModLoader.TryGetMod(coraliteName, out Mod Coralite);
-            coraliteMod = Coralite;
-
-            crystalDragonsLoaded = ModLoader.TryGetMod(crystalDragonsName, out Mod CrystalDragons);
-            crystalDragonsMod = CrystalDragons;
-
-            depthsLoaded = ModLoader.TryGetMod(depthsName, out Mod TheDepths);
-            depthsMod = TheDepths;
-
-            dormantDawnLoaded = ModLoader.TryGetMod(dormantDawnName, out Mod DDmod);
-            dormantDawnMod = DDmod;
-
-            draedonExpansionLoaded = ModLoader.TryGetMod(draedonExpansionName, out Mod DraedonExpansion);
-            draedonExpansionMod = DraedonExpansion;
-
-            dragonBallTerrariaLoaded = ModLoader.TryGetMod(dragonBallTerrariaName, out Mod DBZMODPORT);
-            dragonBallTerrariaMod = DBZMODPORT;
-
-            echoesOfTheAncientsLoaded = ModLoader.TryGetMod(echoesOfTheAncientsName, out Mod EchoesoftheAncients);
-            echoesOfTheAncientsMod = EchoesoftheAncients;
-
-            edorbisLoaded = ModLoader.TryGetMod(edorbisName, out Mod Edorbis);
-            edorbisMod = Edorbis;
-
-            elementsAwokenLoaded = ModLoader.TryGetMod(elementsAwokenName, out Mod ElementsAwoken);
-            elementsAwokenMod = ElementsAwoken;
-
-            enchantedMoonsLoaded = ModLoader.TryGetMod(enchantedMoonsName, out Mod BlueMoon);
-            enchantedMoonsMod = BlueMoon;
-
-            everjadeLoaded = ModLoader.TryGetMod(everjadeName, out Mod JadeFables);
-            everjadeMod = JadeFables;
-
-            exaltLoaded = ModLoader.TryGetMod(exaltName, out Mod ExaltMod);
-            exaltMod = ExaltMod;
-
-            excelsiorLoaded = ModLoader.TryGetMod(excelsiorName, out Mod excels);
-            excelsiorMod = excels;
-
-            exxoAvalonOriginsLoaded = ModLoader.TryGetMod(exxoAvalonOriginsName, out Mod Avalon);
-            exxoAvalonOriginsMod = Avalon;
-
-            fargosMutantLoaded = ModLoader.TryGetMod(fargosMutantName, out Mod Fargowiltas);
-            fargosMutantMod = Fargowiltas;
-
-            fargosSoulsLoaded = ModLoader.TryGetMod(fargosSoulsName, out Mod FargowiltasSouls);
-            fargosSoulsMod = FargowiltasSouls;
-
-            fargosSoulsDLCLoaded = ModLoader.TryGetMod(fargosSoulsDLCName, out Mod FargowiltasCrossmod);
-            fargosSoulsDLCMod = FargowiltasCrossmod;
-
-            fargosSoulsExtrasLoaded = ModLoader.TryGetMod(fargosSoulsExtrasName, out Mod FargowiltasSoulsDLC);
-            fargosSoulsExtrasMod = FargowiltasSoulsDLC;
-
-            fracturesOfPenumbraLoaded = ModLoader.TryGetMod(fracturesOfPenumbraName, out Mod FPenumbra);
-            fracturesOfPenumbraMod = FPenumbra;
-
-            furnitureFoodAndFunLoaded = ModLoader.TryGetMod(furnitureFoodAndFunName, out Mod CosmeticVariety);
-            furnitureFoodAndFunMod = CosmeticVariety;
-
-            gameTerrariaLoaded = ModLoader.TryGetMod(gameTerrariaName, out Mod GMT);
-            gameTerrariaMod = GMT;
-
-            gensokyoLoaded = ModLoader.TryGetMod(gensokyoName, out Mod Gensokyo);
-            gensokyoMod = Gensokyo;
-
-            gerdsLabLoaded = ModLoader.TryGetMod(gerdsLabName, out Mod GMR);
-            gerdsLabMod = GMR;
-
-            heartbeatariaLoaded = ModLoader.TryGetMod(heartbeatariaName, out Mod XDContentMod);
-            heartbeatariaMod = XDContentMod;
-
-            homewardJourneyLoaded = ModLoader.TryGetMod(homewardJourneyName, out Mod ContinentOfJourney);
-            homewardJourneyMod = ContinentOfJourney;
-
-            huntOfTheOldGodLoaded = ModLoader.TryGetMod(huntOfTheOldGodName, out Mod CalamityHunt);
-            huntOfTheOldGodMod = CalamityHunt;
-
-            infectedQualitiesLoaded = ModLoader.TryGetMod(infectedQualitiesName, out Mod InfectedQualities);
-            infectedQualitiesMod = InfectedQualities;
-
-            infernumLoaded = ModLoader.TryGetMod(infernumName, out Mod InfernumMode);
-            infernumMod = InfernumMode;
-
-            infernalEclipseLoaded = ModLoader.TryGetMod(infernalEclipseName, out Mod InfernalEclipseAPI);
-            infernalEclipseMod = InfernalEclipseAPI;
-
-            luiAFKLoaded = ModLoader.TryGetMod(luiAFKName, out Mod miningcracks_take_on_luiafk);
-            luiAFKMod = miningcracks_take_on_luiafk;
-
-            luiAFKDLCLoaded = ModLoader.TryGetMod(luiAFKDLCName, out Mod UnofficialLuiAFKDLC);
-            luiAFKDLCMod = UnofficialLuiAFKDLC;
-
-            lunarVeilLoaded = ModLoader.TryGetMod(lunarVeilName, out Mod Stellamod);
-            lunarVeilMod = Stellamod;
-
-            macrocosmLoaded = ModLoader.TryGetMod(macrocosmName, out Mod Macrocosm);
-            macrocosmMod = Macrocosm;
-
-            magicStorageLoaded = ModLoader.TryGetMod(magicStorageName, out Mod MagicStorage);
-            magicStorageMod = MagicStorage;
-
-            martainsOrderLoaded = ModLoader.TryGetMod(martainsOrderName, out Mod MartainsOrder);
-            martainsOrderMod = MartainsOrder;
-
-            mechReworkLoaded = ModLoader.TryGetMod(mechReworkName, out Mod PrimeRework);
-            mechReworkMod = PrimeRework;
-
-            medialRiftLoaded = ModLoader.TryGetMod(medialRiftName, out Mod MedRift);
-            medialRiftMod = MedRift;
-
-            metroidLoaded = ModLoader.TryGetMod(metroidName, out Mod MetroidMod);
-            metroidMod = MetroidMod;
-
-            moomoosUltimateYoyoRevampLoaded = ModLoader.TryGetMod(moomoosUltimateYoyoRevampName, out Mod CombinationsMod);
-            moomoosUltimateYoyoRevampMod = CombinationsMod;
-
-            mrPlagueRacesLoaded = ModLoader.TryGetMod(mrPlagueRacesName, out Mod MrPlagueRaces);
-            mrPlagueRacesMod = MrPlagueRaces;
-
-            orchidLoaded = ModLoader.TryGetMod(orchidName, out Mod OrchidMod);
-            orchidMod = OrchidMod;
-
-            ophioidLoaded = ModLoader.TryGetMod(ophioidName, out Mod OphioidMod);
-            ophioidMod = OphioidMod;
-
-            polaritiesLoaded = ModLoader.TryGetMod(polaritiesName, out Mod Polarities);
-            polaritiesMod = Polarities;
-
-            projectZeroLoaded = ModLoader.TryGetMod(projectZeroName, out Mod FM);
-            projectZeroMod = FM;
-
-            qwertyLoaded = ModLoader.TryGetMod(qwertyName, out Mod QwertyMod);
-            qwertyMod = QwertyMod;
-
-            ragnarokLoaded = ModLoader.TryGetMod(ragnarokName, out Mod RagnarokMod);
-            ragnarokMod = RagnarokMod;
-
-            redemptionLoaded = ModLoader.TryGetMod(redemptionName, out Mod Redemption);
-            redemptionMod = Redemption;
-
-            reforgedLoaded = ModLoader.TryGetMod(reforgedName, out Mod ReforgeOverhaul);
-            reforgedMod = ReforgeOverhaul;
-
-            remnantsLoaded = ModLoader.TryGetMod(remnantsName, out Mod Remnants);
-            remnantsMod = Remnants;
-
-            ruptureLoaded = ModLoader.TryGetMod(ruptureName, out Mod Rupture);
-            ruptureMod = Rupture;
-
-            secretsOfTheShadowsLoaded = ModLoader.TryGetMod(secretsOfTheShadowsName, out Mod SOTS);
-            secretsOfTheShadowsMod = SOTS;
-
-            secretsOfTheShadowsBardHealerLoaded = ModLoader.TryGetMod(secretsOfTheShadowsBardHealerName, out Mod SOTSBardHealer);
-            secretsOfTheShadowsBardHealerMod = SOTSBardHealer;
-
-            shadowsOfAbaddonLoaded = ModLoader.TryGetMod(shadowsOfAbaddonName, out Mod SacredTools);
-            shadowsOfAbaddonMod = SacredTools;
-
-            sloomeLoaded = ModLoader.TryGetMod(sloomeName, out Mod Bloopsitems);
-            sloomeMod = Bloopsitems;
-
-            spiritClassicLoaded = ModLoader.TryGetMod(spiritClassicName, out Mod SpiritMod);
-            spiritClassicMod = SpiritMod;
-
-            spiritReforgedLoaded = ModLoader.TryGetMod(spiritReforgedName, out Mod SpiritReforged);
-            spiritReforgedMod = SpiritReforged;
-
-            spookyLoaded = ModLoader.TryGetMod(spookyName, out Mod Spooky);
-            spookyMod = Spooky;
-
-            starlightRiverLoaded = ModLoader.TryGetMod(starlightRiverName, out Mod StarlightRiver);
-            starlightRiverMod = StarlightRiver;
-
-            starsAboveLoaded = ModLoader.TryGetMod(starsAboveName, out Mod StarsAbove);
-            starsAboveMod = StarsAbove;
-
-            stormsAdditionsLoaded = ModLoader.TryGetMod(stormsAdditionsName, out Mod StormDiversMod);
-            stormsAdditionsMod = StormDiversMod;
-
-            stramsClassesLoaded = ModLoader.TryGetMod(stramsClassesName, out Mod StramClasses);
-            stramsClassesMod = StramClasses;
-
-            stramsSurvivalLoaded = ModLoader.TryGetMod(stramsSurvivalName, out Mod StramsSurvival);
-            stramsSurvivalMod = StramsSurvival;
-
-            supernovaLoaded = ModLoader.TryGetMod(supernovaName, out Mod SupernovaMod);
-            supernovaMod = SupernovaMod;
-
-            terrorbornLoaded = ModLoader.TryGetMod(terrorbornName, out Mod TerrorbornMod);
-            terrorbornMod = TerrorbornMod;
-
-            thoriumLoaded = ModLoader.TryGetMod(thoriumName, out Mod ThoriumMod);
-            thoriumMod = ThoriumMod;
-
-            thoriumBossReworkLoaded = ModLoader.TryGetMod(thoriumBossReworkName, out Mod ThoriumRework);
-            thoriumBossReworkMod = ThoriumRework;
-
-            exhaustionDisablerLoaded = ModLoader.TryGetMod(exhaustionDisablerName, out Mod ExhaustionDisabler);
-            exhaustionDisablerMod = ExhaustionDisabler;
-
-            throwerUnificationLoaded = ModLoader.TryGetMod(throwerUnificationName, out Mod ThrowerUnification);
-            throwerUnificationMod = ThrowerUnification;
-
-            traeLoaded = ModLoader.TryGetMod(traeName, out Mod TRAEProject);
-            traeMod = TRAEProject;
-
-            uhtricLoaded = ModLoader.TryGetMod(uhtricName, out Mod Uhtric);
-            uhtricMod = Uhtric;
-
-            universeOfSwordsLoaded = ModLoader.TryGetMod(universeOfSwordsName, out Mod UniverseOfSwordsMod);
-            universeOfSwordsMod = UniverseOfSwordsMod;
-
-            valhallaLoaded = ModLoader.TryGetMod(valhallaName, out Mod ValhallaMod);
-            valhallaMod = ValhallaMod;
-            
-            vanillaQoLLoaded = ModLoader.TryGetMod(vanillaQoLName, out Mod VanillaQoL);
-            vanillaQoLMod = VanillaQoL;
-
-            verdantLoaded = ModLoader.TryGetMod(verdantName, out Mod Verdant);
-            verdantMod = Verdant;
-
-            vitalityLoaded = ModLoader.TryGetMod(vitalityName, out Mod VitalityMod);
-            vitalityMod = VitalityMod;
-
-            wayfairContentLoaded = ModLoader.TryGetMod(wayfairContentName, out Mod WAYFAIRContent);
-            wayfairContentMod = WAYFAIRContent;
-
-            wrathOfTheGodsLoaded = ModLoader.TryGetMod(wrathOfTheGodsName, out Mod NoxusBoss);
-            wrathOfTheGodsMod = NoxusBoss;
-
-            zylonLoaded = ModLoader.TryGetMod(zylonName, out Mod Zylon);
-            zylonMod = Zylon;
         }
     }
 }

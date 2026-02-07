@@ -7,58 +7,58 @@
             List<Mod> SupportedMods = [];
 
             //Calamity + Addons
-            if (ModConditions.calamityLoaded)
-                SupportedMods.Add(ModConditions.calamityMod);
-            if (ModConditions.calamityEntropyLoaded)
-                SupportedMods.Add(ModConditions.calamityEntropyMod);
-            if (ModConditions.calamityRekindledLoaded)
-                SupportedMods.Add(ModConditions.calamityRekindledMod);
-            if (ModConditions.catalystLoaded)
-                SupportedMods.Add(ModConditions.catalystMod);
-            if (ModConditions.clamityAddonLoaded)
-                SupportedMods.Add(ModConditions.clamityAddonMod);
-            if (ModConditions.draedonExpansionLoaded)
-                SupportedMods.Add(ModConditions.draedonExpansionMod);
+            if (CrossModSupport.Calamity.Loaded)
+                SupportedMods.Add(CrossModSupport.Calamity.Mod);
+            if (CrossModSupport.CalamityEntropy.Loaded)
+                SupportedMods.Add(CrossModSupport.CalamityEntropy.Mod);
+            if (CrossModSupport.CalamityRekindled.Loaded)
+                SupportedMods.Add(CrossModSupport.CalamityRekindled.Mod);
+            if (CrossModSupport.Catalyst.Loaded)
+                SupportedMods.Add(CrossModSupport.Catalyst.Mod);
+            if (CrossModSupport.Clamity.Loaded)
+                SupportedMods.Add(CrossModSupport.Clamity.Mod);
+            if (CrossModSupport.DraedonExpansion.Loaded)
+                SupportedMods.Add(CrossModSupport.DraedonExpansion.Mod);
 
             //Clicker
-            if (ModConditions.clickerClassLoaded)
-                SupportedMods.Add(ModConditions.clickerClassMod);
+            if (CrossModSupport.ClickerClass.Loaded)
+                SupportedMods.Add(CrossModSupport.ClickerClass.Mod);
 
             //Consolaria
-            if (ModConditions.consolariaLoaded)
-                SupportedMods.Add(ModConditions.consolariaMod);
+            if (CrossModSupport.Consolaria.Loaded)
+                SupportedMods.Add(CrossModSupport.Consolaria.Mod);
 
             //Homeward Journey
-            if (ModConditions.homewardJourneyLoaded)
-                SupportedMods.Add(ModConditions.homewardJourneyMod);
+            if (CrossModSupport.HomewardJourney.Loaded)
+                SupportedMods.Add(CrossModSupport.HomewardJourney.Mod);
 
             //Martin's Order
-            if (ModConditions.martainsOrderLoaded)
-                SupportedMods.Add(ModConditions.martainsOrderMod);
+            if (CrossModSupport.MartinsOrder.Loaded)
+                SupportedMods.Add(CrossModSupport.MartinsOrder.Mod);
 
             //Redemption
-            if (ModConditions.redemptionLoaded)
-                SupportedMods.Add(ModConditions.redemptionMod);
+            if (CrossModSupport.Redemption.Loaded)
+                SupportedMods.Add(CrossModSupport.Redemption.Mod);
 
             //Shadows of Abaddon
-            if (ModConditions.shadowsOfAbaddonLoaded)
-                SupportedMods.Add(ModConditions.shadowsOfAbaddonMod);
+            if (CrossModSupport.ShadowsOfAbaddon.Loaded)
+                SupportedMods.Add(CrossModSupport.ShadowsOfAbaddon.Mod);
 
             //Secrets of the Shadows
-            if (ModConditions.secretsOfTheShadowsLoaded)
-                SupportedMods.Add(ModConditions.secretsOfTheShadowsMod);
+            if (CrossModSupport.SecretsOfTheShadows.Loaded)
+                SupportedMods.Add(CrossModSupport.SecretsOfTheShadows.Mod);
 
             //Spirit Classic
-            if (ModConditions.spiritClassicLoaded)
-                SupportedMods.Add(ModConditions.spiritClassicMod);
+            if (CrossModSupport.SpiritClassic.Loaded)
+                SupportedMods.Add(CrossModSupport.SpiritClassic.Mod);
 
             //Thorium
-            if (ModConditions.thoriumLoaded)
-                SupportedMods.Add(ModConditions.thoriumMod);
+            if (CrossModSupport.Thorium.Loaded)
+                SupportedMods.Add(CrossModSupport.Thorium.Mod);
 
             //Vitality
-            if (ModConditions.vitalityLoaded)
-                SupportedMods.Add(ModConditions.vitalityMod);
+            if (CrossModSupport.Vitality.Loaded)
+                SupportedMods.Add(CrossModSupport.Vitality.Mod);
 
             if (SupportedMods.Contains(item.ModItem.Mod) && SupportedMods.Count > 0)
                 return true;

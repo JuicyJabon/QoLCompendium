@@ -4,7 +4,7 @@
     {
         public override bool ConsumeItem(Item item, Player player)
         {
-            if (QoLCompendium.mainConfig.EndlessBuffs)
+            if (QoLCompendium.mainConfig.EndlessPotionBuffs)
             {
                 bool isBuff = item.buffTime > 0;
                 bool isSpecialBuffItem = item.type is ItemID.RecallPotion or ItemID.TeleportationPotion or ItemID.WormholePotion or ItemID.PotionOfReturn or ItemID.GenderChangePotion or ItemID.RedPotion;
@@ -21,7 +21,7 @@
                     return false;
             }
 
-            return true;
+            return base.ConsumeItem(item, player);
         }
     }
 }

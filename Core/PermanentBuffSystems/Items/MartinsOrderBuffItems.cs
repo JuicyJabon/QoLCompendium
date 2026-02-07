@@ -9,8 +9,8 @@ using MartainsOrder.Items.Zinc;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(ModConditions.martainsOrderName)]
-    [ExtendsFromMod(ModConditions.martainsOrderName)]
+    [JITWhenModsEnabled(CrossModSupport.MartinsOrder.Name)]
+    [ExtendsFromMod(CrossModSupport.MartinsOrder.Name)]
     public static class MartinsOrderBuffItems
     {
         public static NewBuffEffect[] MartinsOrderEffects = [

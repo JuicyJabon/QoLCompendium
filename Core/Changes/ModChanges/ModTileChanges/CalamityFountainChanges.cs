@@ -6,8 +6,8 @@ using System.Reflection;
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModTileChanges
 {
-    [ExtendsFromMod(ModConditions.calamityName)]
-    [JITWhenModsEnabled(ModConditions.calamityName)]
+    [ExtendsFromMod(CrossModSupport.Calamity.Name)]
+    [JITWhenModsEnabled(CrossModSupport.Calamity.Name)]
     public class CalamityFountainChanges : ModSystem
     {
         public delegate bool Orig_AstralInfectionActive(AstralInfectionBiome self, Player player);
@@ -94,13 +94,13 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTileChanges
         internal static bool SunkenSeaActive_Detour(Orig_SunkenSeaActive orig, SunkenSeaBiome self, Player player)
         {
             bool result = orig(self, player);
-            if (QoLCompendium.mainConfig.FountainsCauseBiomes && Main.SceneMetrics.ActiveFountainColor == ModContent.Find<ModWaterStyle>("CalamityMod/SunkenSeaWater").Slot)
+            if (QoLCompendium.mainConfig.FountainsCauseBiomes && Main.SceneMetrics.ActiveFountainColor == ModContent.Find<ModWaterStyle>("CalamityMod/BasaltGullyWater").Slot)
             {
                 return true;
             }
             if (QoLCompendium.mainConfig.FountainsWorkFromInventories && player.HasItemInAnyInventory(ModContent.ItemType<SunkenSeaFountain>()))
             {
-                Main.SceneMetrics.ActiveFountainColor = ModContent.Find<ModWaterStyle>("CalamityMod/SunkenSeaWater").Slot;
+                Main.SceneMetrics.ActiveFountainColor = ModContent.Find<ModWaterStyle>("CalamityMod/BasaltGullyWater").Slot;
                 return true;
             }
             return result;

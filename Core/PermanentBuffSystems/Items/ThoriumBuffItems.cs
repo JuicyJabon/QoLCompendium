@@ -14,8 +14,8 @@ using ThoriumRework.Items;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(ModConditions.thoriumName)]
-    [ExtendsFromMod(ModConditions.thoriumName)]
+    [JITWhenModsEnabled(CrossModSupport.Thorium.Name)]
+    [ExtendsFromMod(CrossModSupport.Thorium.Name)]
     public static class ThoriumBuffItems
     {
         public static NewBuffEffect[] ThoriumEffects = [
@@ -60,7 +60,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
         public static void LoadTasks()
         {
             BaseItems();
-            if (ModConditions.thoriumBossReworkLoaded)
+            if (CrossModSupport.ThoriumHelheim.Loaded)
                 ThoriumBossReworkBuffItems.LoadTasks();
             CombinedItems();
         }
@@ -124,7 +124,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<InspirationReachPotionBuff>()], ModContent.BuffType<InspirationReachPotionBuff>() }
             };
 
-            if (ModConditions.thoriumBossReworkLoaded)
+            if (CrossModSupport.ThoriumHelheim.Loaded)
             {
                 if (ThoriumBossReworkBuffItems.ConfigOn)
                 {
@@ -224,7 +224,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<ToxicCoatingBuff>()], ModContent.BuffType<ToxicCoatingBuff>() }
             };
 
-            if (ModConditions.thoriumBossReworkLoaded)
+            if (CrossModSupport.ThoriumHelheim.Loaded)
             {
                 if (ThoriumBossReworkBuffItems.ConfigOn)
                 {
@@ -253,8 +253,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
         }
     }
 
-    [JITWhenModsEnabled(ModConditions.thoriumBossReworkName)]
-    [ExtendsFromMod(ModConditions.thoriumBossReworkName)]
+    [JITWhenModsEnabled(CrossModSupport.ThoriumHelheim.Name)]
+    [ExtendsFromMod(CrossModSupport.ThoriumHelheim.Name)]
     public static class ThoriumBossReworkBuffItems
     {
         public static NewBuffEffect[] ThoriumBossReworkEffects = [];

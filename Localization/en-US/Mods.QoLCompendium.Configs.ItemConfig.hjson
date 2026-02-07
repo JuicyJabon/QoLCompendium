@@ -208,6 +208,11 @@ CrossModItems: {
 	Tooltip: Toggles cross mod items
 }
 
+UnsafeWalls: {
+	Label: "[i:3088] Unsafe Walls"
+	Tooltip: Toggles unsafe wall variants
+}
+
 BossSummons: {
 	Tooltip: Toggles boss summon items
 	Label: "[i:QoLCompendium/CultistSummon] Boss Summons"
@@ -216,4 +221,9 @@ BossSummons: {
 PermanentBuffs: {
 	Label: "[i:QoLCompendium/PermanentIronskin] Permanent Buffs"
 	Tooltip: Toggles permanent buff items
+}
+
+RepairedLifeFruit: {
+	Label: "[i:QoLCompendium/RepairedLifeFruit] Repaired Life Fruit"
+	Tooltip: Toggles the Repaired Life Fruit item
 }

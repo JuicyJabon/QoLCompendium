@@ -36,6 +36,24 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.PhaseInterrupter.Moon" + Main.moonPhase.ToString()));
         }
 
+        public override bool? UseItem(Player player)
+        {
+            if (!PhaseInterrupterUI.visible) PhaseInterrupterUI.timeStart = Main.GameUpdateCount;
+            PhaseInterrupterUI.visible = true;
+
+            return base.UseItem(player);
+        }
+
+        public override void RightClick(Player player)
+        {
+            if (!PhaseInterrupterUI.visible)
+                PhaseInterrupterUI.timeStart = Main.GameUpdateCount;
+            PhaseInterrupterUI.visible = !PhaseInterrupterUI.visible;
+        }
+
+        public override bool CanRightClick() => true;
+        public override bool ConsumeItem(Player player) => false;
+
         public override void AddRecipes()
         {
             Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PhaseInterrupter, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
@@ -44,14 +62,6 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             r.AddIngredient(ItemID.BlackLens, 1);
             r.AddTile(TileID.Anvils);
             r.Register();
-        }
-
-        public override bool? UseItem(Player player)
-        {
-            if (!PhaseInterrupterUI.visible) PhaseInterrupterUI.timeStart = Main.GameUpdateCount;
-            PhaseInterrupterUI.visible = true;
-
-            return base.UseItem(player);
         }
     }
 }

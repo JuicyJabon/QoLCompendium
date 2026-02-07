@@ -27,78 +27,78 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTileChanges
             int stage = tile.TileFrameX / GrowthSize;
 
             #region Depths
-            if (ModConditions.depthsLoaded && tile.TileType == Common.GetModTile(ModConditions.depthsMod, "ShadowShrub"))
+            if (CrossModSupport.Depths.Loaded && tile.TileType == Common.GetModTile(CrossModSupport.Depths.Mod, "ShadowShrub"))
             {
-                DropItems(stage, Common.GetModItem(ModConditions.depthsMod, "ShadowShrub"), Common.GetModItem(ModConditions.depthsMod, "ShadowShrubSeeds"));
+                DropItems(stage, Common.GetModItem(CrossModSupport.Depths.Mod, "ShadowShrub"), Common.GetModItem(CrossModSupport.Depths.Mod, "ShadowShrubSeeds"));
                 ResetTileFrame(tile);
             }
             #endregion
 
             #region Redemption
-            if (ModConditions.redemptionLoaded && tile.TileType == Common.GetModTile(ModConditions.redemptionMod, "NightshadeTile"))
+            if (CrossModSupport.Redemption.Loaded && tile.TileType == Common.GetModTile(CrossModSupport.Redemption.Mod, "NightshadeTile"))
             {
-                DropItems(stage, Common.GetModItem(ModConditions.redemptionMod, "Nightshade"), Common.GetModItem(ModConditions.redemptionMod, "NightshadeSeeds"));
+                DropItems(stage, Common.GetModItem(CrossModSupport.Redemption.Mod, "Nightshade"), Common.GetModItem(CrossModSupport.Redemption.Mod, "NightshadeSeeds"));
                 ResetTileFrame(tile);
             }
             #endregion
 
             #region Shadows of Abaddon
-            if (ModConditions.shadowsOfAbaddonLoaded)
+            if (CrossModSupport.ShadowsOfAbaddon.Loaded)
             {
-                if (tile.TileType == Common.GetModTile(ModConditions.shadowsOfAbaddonMod, "Welkinbell"))
+                if (tile.TileType == Common.GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Welkinbell"))
                 {
-                    DropItems(stage, Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "Welkinbell"), Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "WelkinbellSeeds"));
+                    DropItems(stage, Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "Welkinbell"), Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "WelkinbellSeeds"));
                     ResetTileFrame(tile);
                 }
-                if (tile.TileType == Common.GetModTile(ModConditions.shadowsOfAbaddonMod, "Illumifern"))
+                if (tile.TileType == Common.GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Illumifern"))
                 {
-                    DropItems(stage, Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "Illumifern"), Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "IllumifernSeeds"));
+                    DropItems(stage, Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "Illumifern"), Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "IllumifernSeeds"));
                     ResetTileFrame(tile);
                 }
-                if (tile.TileType == Common.GetModTile(ModConditions.shadowsOfAbaddonMod, "Enduflora"))
+                if (tile.TileType == Common.GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Enduflora"))
                 {
-                    DropItems(stage, Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "Enduflora"), Common.GetModItem(ModConditions.shadowsOfAbaddonMod, "EndufloraSeeds"));
+                    DropItems(stage, Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "Enduflora"), Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "EndufloraSeeds"));
                     ResetTileFrame(tile);
                 }
             }
             #endregion
 
             #region Spirit Classic
-            if (ModConditions.spiritClassicLoaded)
+            if (CrossModSupport.SpiritClassic.Loaded)
             {
-                if (tile.TileType == Common.GetModTile(ModConditions.spiritClassicMod, "Cloudstalk"))
+                if (tile.TileType == Common.GetModTile(CrossModSupport.SpiritClassic.Mod, "Cloudstalk"))
                 {
-                    DropItems(stage, Common.GetModItem(ModConditions.spiritClassicMod, "CloudstalkItem"), Common.GetModItem(ModConditions.spiritClassicMod, "CloudstalkSeed"));
+                    DropItems(stage, Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "CloudstalkItem"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "CloudstalkSeed"));
                     ResetTileFrame(tile);
                 }
-                if (tile.TileType == Common.GetModTile(ModConditions.spiritClassicMod, "SoulBloomTile"))
+                if (tile.TileType == Common.GetModTile(CrossModSupport.SpiritClassic.Mod, "SoulBloomTile"))
                 {
-                    DropItems(stage, Common.GetModItem(ModConditions.spiritClassicMod, "SoulBloom"), Common.GetModItem(ModConditions.spiritClassicMod, "SoulSeeds"));
+                    DropItems(stage, Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "SoulBloom"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "SoulSeeds"));
                     ResetTileFrame(tile);
                 }
             }
             #endregion
 
             #region Spirit Reforged
-            if (ModConditions.spiritReforgedLoaded)
+            if (CrossModSupport.SpiritReforged.Loaded)
             {
-                if (tile.TileType == Common.GetModTile(ModConditions.spiritReforgedMod, "CloudstalkTile"))
+                if (tile.TileType == Common.GetModTile(CrossModSupport.SpiritReforged.Mod, "CloudstalkTile"))
                 {
-                    DropItems(stage, Common.GetModItem(ModConditions.spiritReforgedMod, "Cloudstalk"), Common.GetModItem(ModConditions.spiritReforgedMod, "CloudstalkSeed"));
+                    DropItems(stage, Common.GetModItem(CrossModSupport.SpiritReforged.Mod, "Cloudstalk"), Common.GetModItem(CrossModSupport.SpiritReforged.Mod, "CloudstalkSeed"));
                     ResetTileFrame(tile);
                 }
             }
             #endregion
 
             #region Thorium
-            if (ModConditions.thoriumLoaded && tile.TileType == Common.GetModTile(ModConditions.thoriumMod, "MarineKelp"))
+            if (CrossModSupport.Thorium.Loaded && tile.TileType == Common.GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp"))
             {
-                DropItems(stage, Common.GetModItem(ModConditions.thoriumMod, "MarineKelp"), Common.GetModItem(ModConditions.thoriumMod, "MarineKelpSeeds"));
+                DropItems(stage, Common.GetModItem(CrossModSupport.Thorium.Mod, "MarineKelp"), Common.GetModItem(CrossModSupport.Thorium.Mod, "MarineKelpSeeds"));
                 ResetTileFrame(tile);
             }
-            if (ModConditions.thoriumLoaded && tile.TileType == Common.GetModTile(ModConditions.thoriumMod, "MarineKelp2"))
+            if (CrossModSupport.Thorium.Loaded && tile.TileType == Common.GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp2"))
             {
-                DropItems(stage, Common.GetModItem(ModConditions.thoriumMod, "MarineKelp"), Common.GetModItem(ModConditions.thoriumMod, "MarineKelpSeeds"));
+                DropItems(stage, Common.GetModItem(CrossModSupport.Thorium.Mod, "MarineKelp"), Common.GetModItem(CrossModSupport.Thorium.Mod, "MarineKelpSeeds"));
                 ResetTileFrame(tile);
             }
             #endregion
@@ -145,16 +145,16 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTileChanges
                 {
                     HashSet<int> herbTiles = new()
                     {
-                        Common.GetModTile(ModConditions.depthsMod, "ShadowShrub"),
-                        Common.GetModTile(ModConditions.redemptionMod, "NightshadeTile"),
-                        Common.GetModTile(ModConditions.shadowsOfAbaddonMod, "Welkinbell"),
-                        Common.GetModTile(ModConditions.shadowsOfAbaddonMod, "Illumifern"),
-                        Common.GetModTile(ModConditions.shadowsOfAbaddonMod, "Enduflora"),
-                        Common.GetModTile(ModConditions.spiritClassicMod, "Cloudstalk"),
-                        Common.GetModTile(ModConditions.spiritClassicMod, "SoulBloomTile"),
-                        Common.GetModTile(ModConditions.spiritReforgedMod, "CloudstalkTile"),
-                        Common.GetModTile(ModConditions.thoriumMod, "MarineKelp"),
-                        Common.GetModTile(ModConditions.thoriumMod, "MarineKelp2")
+                        Common.GetModTile(CrossModSupport.Depths.Mod, "ShadowShrub"),
+                        Common.GetModTile(CrossModSupport.Redemption.Mod, "NightshadeTile"),
+                        Common.GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Welkinbell"),
+                        Common.GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Illumifern"),
+                        Common.GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Enduflora"),
+                        Common.GetModTile(CrossModSupport.SpiritClassic.Mod, "Cloudstalk"),
+                        Common.GetModTile(CrossModSupport.SpiritClassic.Mod, "SoulBloomTile"),
+                        Common.GetModTile(CrossModSupport.SpiritReforged.Mod, "CloudstalkTile"),
+                        Common.GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp"),
+                        Common.GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp2")
                     };
 
                     if (herbTiles.Contains(type))

@@ -127,7 +127,7 @@ namespace QoLCompendium.Core.UI.Other
             /*
             for (int i = 3; i < Main.LocalPlayer.armor.Length; i++)
             {
-                if (Main.LocalPlayer.armor[i].netID == ItemID.EmpressFlightBooster && !ModConditions.calamityLoaded)
+                if (Main.LocalPlayer.armor[i].netID == ItemID.EmpressFlightBooster && !CrossModSupport.Calamity.Loaded)
                 {
                     if (i < 13)
                     {
@@ -137,7 +137,7 @@ namespace QoLCompendium.Core.UI.Other
             }
             */
 
-            if (Main.LocalPlayer.empressBrooch && !ModConditions.calamityLoaded)
+            if (Main.LocalPlayer.empressBrooch && !CrossModSupport.Calamity.Loaded)
                 return Language.GetTextValue("Mods.QoLCompendium.InfoDisplayText.InfiniteWingTime");
 
             return num.ToString("0.00") + Language.GetTextValue("Mods.QoLCompendium.InfoDisplayText.WingTime");

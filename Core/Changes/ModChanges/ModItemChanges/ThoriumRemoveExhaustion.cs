@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
 {
-    [JITWhenModsEnabled(ModConditions.thoriumName)]
-    [ExtendsFromMod(ModConditions.thoriumName)]
+    [JITWhenModsEnabled(CrossModSupport.Thorium.Name)]
+    [ExtendsFromMod(CrossModSupport.Thorium.Name)]
     public class ThoriumRemoveExhaustion : ModPlayer
     {
         public override void PreUpdate()
@@ -17,8 +17,8 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
         }
     }
 
-    [JITWhenModsEnabled(ModConditions.thoriumName)]
-    [ExtendsFromMod(ModConditions.thoriumName)]
+    [JITWhenModsEnabled(CrossModSupport.Thorium.Name)]
+    [ExtendsFromMod(CrossModSupport.Thorium.Name)]
     public class ThoriumRemoveExhaustionUI : ModSystem
     {
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)

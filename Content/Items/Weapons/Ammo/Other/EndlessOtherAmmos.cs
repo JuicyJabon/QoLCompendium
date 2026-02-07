@@ -4,8 +4,15 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 {
     public abstract class CoinBag : BaseAmmo
     {
+        public override void SetStaticDefaults()
+        {
+            base.SetStaticDefaults();
+            IngredientStackCount = 396;
+        }
+
         public override void SetDefaults()
         {
+            base.SetDefaults();
             Item.notAmmo = false;
             Item.useStyle = ItemUseStyleID.None;
             Item.useTime = 0;
@@ -73,7 +80,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
         public override void AddRecipes()
         {
             Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-            r.AddIngredient(ItemID.Gel, 3996);
+            r.AddIngredient(ItemID.Gel, 396);
             r.AddTile(TileID.Solidifier);
             r.Register();
         }
@@ -98,6 +105,10 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.SandBlock);
+            Item.ammo = AmmoID.Sand;
+            Item.notAmmo = false;
+            Item.width = 26;
+            Item.height = 26;
             Item.consumable = false;
             Item.maxStack = 1;
             Item.useStyle = ItemUseStyleID.None;
@@ -142,6 +153,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.Snowball);
+            Item.ammo = AmmoID.Snowball;
             Item.consumable = false;
             Item.maxStack = 1;
             Item.shoot = ProjectileID.None;
@@ -206,7 +218,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
         public override void AddRecipes()
         {
             Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-            r.AddIngredient(ItemID.FallenStar, 3996);
+            r.AddIngredient(ItemID.FallenStar, 396);
             r.AddTile(TileID.Solidifier);
             r.Register();
         }

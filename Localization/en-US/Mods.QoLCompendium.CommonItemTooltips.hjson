@@ -23,6 +23,8 @@ ShimmerableIntoNPC: Shimmerable into NPC: {0}
 UseAmmo: Uses [i:{0}] ({1}) as ammo
 Active: Item Activated
 ActiveBuff: Buff Activated
+ActiveBanner: Banner Activated
+ActiveCraftingStation: Crafting Station Activated
 PotionCrateTooltip: Right click while holding a stack of {0} potions to deposit them
 ItemDisabled: (ITEM DISABLED)
 Disabled: (DISABLED)

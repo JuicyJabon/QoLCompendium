@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
 {
-    [ExtendsFromMod(ModConditions.redemptionName)]
-    [JITWhenModsEnabled(ModConditions.redemptionName)]
+    [ExtendsFromMod(CrossModSupport.Redemption.Name)]
+    [JITWhenModsEnabled(CrossModSupport.Redemption.Name)]
     public class RedemptionPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -16,11 +16,11 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
             var tooltipLine = new TooltipLine(Mod, "UsedItem", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.UsedItem"));
             tooltipLine.OverrideColor = Color.LightGreen;
 
-            if (item.type == Common.GetModItem(ModConditions.redemptionMod, "GalaxyHeart") && Main.LocalPlayer.Redemption().galaxyHeart)
+            if (item.type == Common.GetModItem(CrossModSupport.Redemption.Mod, "GalaxyHeart") && Main.LocalPlayer.Redemption().galaxyHeart)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.redemptionMod, "MedicKit") && Main.LocalPlayer.Redemption().medKit)
+            if (item.type == Common.GetModItem(CrossModSupport.Redemption.Mod, "MedicKit") && Main.LocalPlayer.Redemption().medKit)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }

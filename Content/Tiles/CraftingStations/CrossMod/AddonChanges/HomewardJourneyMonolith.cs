@@ -1,11 +1,12 @@
 ﻿using ContinentOfJourney.Items.Placables.Furniture.Death;
 using ContinentOfJourney.Items.Placables.Furniture.Nothingness;
 using ContinentOfJourney.Tiles;
+using QoLCompendium.Content.Tiles.CraftingStations.CrossMod.HomewardJourney;
 
 namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod.AddonChanges
 {
-    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
-    [ExtendsFromMod(ModConditions.homewardJourneyName)]
+    [JITWhenModsEnabled(CrossModSupport.HomewardJourney.Name)]
+    [ExtendsFromMod(CrossModSupport.HomewardJourney.Name)]
     public class HomewardJourneyMonolith : GlobalTile
     {
         public override int[] AdjTiles(int type)
@@ -16,7 +17,7 @@ namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod.AddonChanges
                 //Pre Hardmode
                 newAdjTiles.Add(TileID.BubbleMachine);
                 newAdjTiles.Add(ModContent.TileType<FishmenFreeMarketTradingSystem>());
-                newAdjTiles.Add(Common.GetModTile(ModConditions.homewardJourneyMod, "StrangeDripMachine"));
+                newAdjTiles.Add(Common.GetModTile(CrossModSupport.HomewardJourney.Mod, "StrangeDripMachine"));
                 //Hardmode
                 //Post Moon Lord
                 newAdjTiles.Add(ModContent.TileType<FinalAnvil>());
@@ -30,7 +31,7 @@ namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod.AddonChanges
             if (type == ModContent.TileType<BasicHomewardJourneyMonolithTile>() || type == ModContent.TileType<HomewardJourneyMonolithTile>())
             {
                 //Pre Hardmode
-                newAdjTiles.Add(Common.GetModTile(ModConditions.homewardJourneyMod, "StrangeDripMachine"));
+                newAdjTiles.Add(Common.GetModTile(CrossModSupport.HomewardJourney.Mod, "StrangeDripMachine"));
             }
             return newAdjTiles.ToArray();
         }

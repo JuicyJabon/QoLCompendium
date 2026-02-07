@@ -3,8 +3,8 @@ using Consolaria.Content.Items.Consumables;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(ModConditions.consolariaName)]
-    [ExtendsFromMod(ModConditions.consolariaName)]
+    [JITWhenModsEnabled(CrossModSupport.Consolaria.Name)]
+    [ExtendsFromMod(CrossModSupport.Consolaria.Name)]
     public static class ConsolariaBuffItems
     {
         public static NewBuffEffect[] ConsolariaEffects = [

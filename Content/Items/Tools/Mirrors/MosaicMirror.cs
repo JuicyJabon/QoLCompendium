@@ -49,7 +49,9 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
 
         public override void UpdateInventory(Player player)
         {
-            player.GetModPlayer<QoLCPlayer>().warpMirror = true;
+            if (Mode == 3)
+                player.GetModPlayer<QoLCPlayer>().warpMirror = true;
+
             Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.MosaicMirror.Mirror" + Mode.ToString()));
         }
 
@@ -77,7 +79,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
                     player.grapCount = 0;
                     for (int j = 0; j < 1000; j++)
                     {
-                        if (Main.projectile[j].active && Main.projectile[j].owner == player.whoAmI && Main.projectile[j].aiStyle == 7)
+                        if (Main.projectile[j].active && Main.projectile[j].owner == player.whoAmI && Main.projectile[j].aiStyle == ProjAIStyleID.Hook)
                         {
                             Main.projectile[j].Kill();
                         }
@@ -127,7 +129,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
                     player.grapCount = 0;
                     for (int i = 0; i < Main.projectile.Length; i++)
                     {
-                        if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI && Main.projectile[i].aiStyle == 7)
+                        if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI && Main.projectile[i].aiStyle == ProjAIStyleID.Hook)
                         {
                             Main.projectile[i].Kill();
                         }
@@ -173,7 +175,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
                     player.grapCount = 0;
                     for (int i = 0; i < Main.projectile.Length; i++)
                     {
-                        if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI && Main.projectile[i].aiStyle == 7)
+                        if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI && Main.projectile[i].aiStyle == ProjAIStyleID.Hook)
                         {
                             Main.projectile[i].Kill();
                         }
@@ -200,7 +202,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
         public override void RightClick(Player player)
         {
             Mode++;
-            if (Mode > 2)
+            if (Mode > 3)
                 Mode = 0;
         }
 

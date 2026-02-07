@@ -4,24 +4,27 @@ using CalamityMod.Items.Weapons.Ranged;
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Other.Calamity
 {
-    [JITWhenModsEnabled(ModConditions.calamityName)]
-    [ExtendsFromMod(ModConditions.calamityName)]
+    [JITWhenModsEnabled(CrossModSupport.Calamity.Name)]
+    [ExtendsFromMod(CrossModSupport.Calamity.Name)]
     public class EndlessBloodRune : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<BloodRune>();
     }
 
-    [JITWhenModsEnabled(ModConditions.calamityName)]
-    [ExtendsFromMod(ModConditions.calamityName)]
+    [JITWhenModsEnabled(CrossModSupport.Calamity.Name)]
+    [ExtendsFromMod(CrossModSupport.Calamity.Name)]
     public class EndlessWulfrumCogworkShard : BaseAmmo
     {
+        public override void SetStaticDefaults()
+        {
+            base.SetStaticDefaults();
+            IngredientStackCount = 396;
+        }
         public override int AmmunitionItem => ModContent.ItemType<WulfrumMetalScrap>();
-
-        public override void SetStaticDefaults() => IngredientStackCount = 396;
     }
 
-    [JITWhenModsEnabled(ModConditions.calamityName)]
-    [ExtendsFromMod(ModConditions.calamityName)]
+    [JITWhenModsEnabled(CrossModSupport.Calamity.Name)]
+    [ExtendsFromMod(CrossModSupport.Calamity.Name)]
     public class WulfrumBlunderbussEndless : GlobalItem
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)

@@ -78,7 +78,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #endregion
 
             #region Calamity
-            if (ModConditions.calamityLoaded)
+            if (CrossModSupport.Calamity.Loaded)
             {
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentBloodyMary"), 
@@ -117,10 +117,8 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDamage"));
 
                 Common.CombinedPermanentBuffRecipe([
-                    Common.GetModItem(QoLCompendium.Instance, "PermanentBaguette"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentBloodfin"),
-                    Common.GetModItem(QoLCompendium.Instance, "PermanentPhotosynthesis"),
-                    Common.GetModItem(QoLCompendium.Instance, "PermanentTesla")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentPhotosynthesis")],
                     Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDefense"));
                 
                 Common.CombinedPermanentBuffRecipe([
@@ -154,7 +152,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfHolyFlames")],
                     Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityFlasks"));
 
-                if (ModConditions.calamityEntropyLoaded)
+                if (CrossModSupport.CalamityEntropy.Loaded)
                 {
                     Common.CombinedPermanentBuffRecipe([
                         Common.GetModItem(QoLCompendium.Instance, "PermanentSoyMilk"),
@@ -163,7 +161,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                         Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityEntropy"));
                 }
 
-                if (ModConditions.calamityRekindledLoaded)
+                if (CrossModSupport.CalamityRekindled.Loaded)
                 {
                     Common.CombinedPermanentBuffRecipe([
                         Common.GetModItem(QoLCompendium.Instance, "PermanentBeetleJuice"),
@@ -180,7 +178,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                         Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityRekindled"));
                 }
 
-                if (ModConditions.clamityAddonLoaded)
+                if (CrossModSupport.Clamity.Loaded)
                 {
                     Common.CombinedPermanentBuffRecipe([
                         Common.GetModItem(QoLCompendium.Instance, "PermanentExoBaguette"),
@@ -203,7 +201,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #endregion
 
             #region Clicker Class
-            if (ModConditions.clickerClassLoaded)
+            if (CrossModSupport.ClickerClass.Loaded)
             {
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentInfluence"),
@@ -213,7 +211,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #endregion
 
             #region Homeward Journey
-            if (ModConditions.homewardJourneyLoaded)
+            if (CrossModSupport.HomewardJourney.Loaded)
             {
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentFluorescentBerry"),
@@ -234,6 +232,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfDivineFire"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfForceBreak"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfPlague"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfSteel")],
                     Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyFlasks"));
@@ -255,19 +254,19 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     Common.GetModItem(QoLCompendium.Instance, "PermanentRightist"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentSignal")],
                     Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyStrangePotions"));
-                
+
+                //Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyStrangePotions")
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyFarming"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyMovement"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyArena"),
-                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyFlasks"),
-                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyStrangePotions")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyFlasks")],
                     Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourney"));
             }
             #endregion
 
             #region Martin's Order
-            if (ModConditions.martainsOrderLoaded)
+            if (CrossModSupport.MartinsOrder.Loaded)
             {
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentDefender"),
@@ -308,7 +307,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #endregion
 
             #region Redemption
-            if (ModConditions.redemptionLoaded)
+            if (CrossModSupport.Redemption.Loaded)
             {
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentCharisma"),
@@ -327,7 +326,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #endregion
 
             #region Secrets of the Shadows
-            if (ModConditions.secretsOfTheShadowsLoaded)
+            if (CrossModSupport.SecretsOfTheShadows.Loaded)
             {
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentAssassination"),
@@ -341,13 +340,14 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     Common.GetModItem(QoLCompendium.Instance, "PermanentSoulAccess"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentVibe"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentVigor"),
-                    Common.GetModItem(QoLCompendium.Instance, "PermanentDigitalDisplay")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDigitalDisplay"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentElectromagneticDeterrent")],
                     Common.GetModItem(QoLCompendium.Instance, "PermanentSecretsOfTheShadows"));
             }
             #endregion
 
             #region Shadows of Abaddon
-            if (ModConditions.shadowsOfAbaddonLoaded)
+            if (CrossModSupport.ShadowsOfAbaddon.Loaded)
             {
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentCommanding"),
@@ -399,7 +399,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #endregion
 
             #region Spirit Classic
-            if (ModConditions.spiritClassicLoaded)
+            if (CrossModSupport.SpiritClassic.Loaded)
             {
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentRunescribe"),
@@ -450,7 +450,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #endregion
 
             #region Spirit Reforged
-            if (ModConditions.spiritReforgedLoaded)
+            if (CrossModSupport.SpiritReforged.Loaded)
             {
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentQuenched"),
@@ -464,7 +464,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #endregion
 
             #region Thorium
-            if (ModConditions.thoriumLoaded)
+            if (CrossModSupport.Thorium.Loaded)
             {
                 //BARD
                 Common.CombinedPermanentBuffRecipe([Common.GetModItem(QoLCompendium.Instance, "PermanentCreativity"), Common.GetModItem(QoLCompendium.Instance, "PermanentEarworm"), Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationalReach")], Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumBard"));
@@ -496,7 +496,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #endregion
 
             #region Vitality
-            if (ModConditions.vitalityLoaded)
+            if (CrossModSupport.Vitality.Loaded)
             {
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentArmorPiercing"),
@@ -512,29 +512,29 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #region Everything
             Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Common.GetModItem(QoLCompendium.Instance, "PermanentEverything"), 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentVanilla"));
-            if (ModConditions.calamityLoaded)
+            if (CrossModSupport.Calamity.Loaded)
                 r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamity"));
-            if (ModConditions.clickerClassLoaded)
+            if (CrossModSupport.ClickerClass.Loaded)
                 r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentClickerClass"));
-            if (ModConditions.homewardJourneyLoaded)
+            if (CrossModSupport.HomewardJourney.Loaded)
                 r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourney"));
-            if (ModConditions.martainsOrderLoaded)
+            if (CrossModSupport.MartinsOrder.Loaded)
                 r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentMartinsOrder"));
-            if (ModConditions.redemptionLoaded)
+            if (CrossModSupport.Redemption.Loaded)
                 r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentRedemption"));
-            if (ModConditions.secretsOfTheShadowsLoaded)
+            if (CrossModSupport.SecretsOfTheShadows.Loaded)
                 r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentSecretsOfTheShadows"));
-            if (ModConditions.shadowsOfAbaddonLoaded)
+            if (CrossModSupport.ShadowsOfAbaddon.Loaded)
                 r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddon"));
-            if (ModConditions.spiritClassicLoaded)
+            if (CrossModSupport.SpiritClassic.Loaded)
                 r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritClassic"));
-            if (ModConditions.spiritReforgedLoaded)
+            if (CrossModSupport.SpiritReforged.Loaded)
                 r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentSpiritReforged"));
-            if (ModConditions.thoriumLoaded)
+            if (CrossModSupport.Thorium.Loaded)
                 r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentThorium"));
-            if (ModConditions.vitalityLoaded)
+            if (CrossModSupport.Vitality.Loaded)
                 r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentVitality"));
-            if (ModConditions.consolariaLoaded)
+            if (CrossModSupport.Consolaria.Loaded)
                 r.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentWiesnbrau"));
             r.AddTile(TileID.CookingPots);
             r.Register();
@@ -604,63 +604,62 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             Common.ConversionRecipe(ItemID.CorruptionKey, ItemID.CrimsonKey, TileID.MythrilAnvil);
 
             #region Calamity
-            if (ModConditions.calamityLoaded)
+            if (CrossModSupport.Calamity.Loaded)
             {
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.calamityMod, "RottenMatter"), Common.GetModItem(ModConditions.calamityMod, "BloodSample"), TileID.DemonAltar);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.calamityMod, "FilthyGlove"), Common.GetModItem(ModConditions.calamityMod, "BloodstainedGlove"), TileID.DemonAltar);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.calamityMod, "RottenBrain"), Common.GetModItem(ModConditions.calamityMod, "BloodyWormTooth"), TileID.DemonAltar);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.calamityMod, "RottingEyeball"), Common.GetModItem(ModConditions.calamityMod, "BloodyVein"), TileID.DemonAltar);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.calamityMod, "CorruptionEffigy"), Common.GetModItem(ModConditions.calamityMod, "CrimsonEffigy"), TileID.DemonAltar);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "FilthyGlove"), Common.GetModItem(CrossModSupport.Calamity.Mod, "BloodstainedGlove"), TileID.DemonAltar);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "RottenBrain"), Common.GetModItem(CrossModSupport.Calamity.Mod, "BloodyWormTooth"), TileID.DemonAltar);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "RottingEyeball"), Common.GetModItem(CrossModSupport.Calamity.Mod, "BloodyVein"), TileID.DemonAltar);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "CorruptionEffigy"), Common.GetModItem(CrossModSupport.Calamity.Mod, "CrimsonEffigy"), TileID.DemonAltar);
             }
             #endregion
 
             #region Confection
-            if (ModConditions.confectionRebakedLoaded)
+            if (CrossModSupport.ConfectionRebaked.Loaded)
             {
-                //Common.Common.ConversionRecipe(Common.Common.GetModItem(ModConditions.confectionRebakedMod, ""), Common.Common.GetModItem(ModConditions.confectionRebakedMod, ""), TileID.Anvils);
+                //Common.Common.ConversionRecipe(Common.Common.GetModItem(CrossModSupport.ConfectionRebaked.Mod, ""), Common.Common.GetModItem(CrossModSupport.ConfectionRebaked.Mod, ""), TileID.Anvils);
             }
             #endregion
 
             #region Depths
-            if (ModConditions.depthsLoaded)
+            if (CrossModSupport.Depths.Loaded)
             {
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ShadowShrub"), ItemID.Fireblossom, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ShadowShrubSeeds"), ItemID.FireblossomSeeds, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ShadowShrubPlanterBox"), ItemID.FireBlossomPlanterBox, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "Quartz"), ItemID.Obsidian, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ArqueriteOre"), ItemID.Hellstone, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "QuartzCrate"), ItemID.LavaCrate, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ArqueriteCrate"), ItemID.LavaCrateHard, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ShadowFightingFish"), ItemID.FlarefinKoi, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "QuartzFeeder"), ItemID.Obsidifish, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "ShadowShrub"), ItemID.Fireblossom, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "ShadowShrubSeeds"), ItemID.FireblossomSeeds, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "ShadowShrubPlanterBox"), ItemID.FireBlossomPlanterBox, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "Quartz"), ItemID.Obsidian, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "ArqueriteOre"), ItemID.Hellstone, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "QuartzCrate"), ItemID.LavaCrate, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "ArqueriteCrate"), ItemID.LavaCrateHard, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "ShadowFightingFish"), ItemID.FlarefinKoi, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "QuartzFeeder"), ItemID.Obsidifish, TileID.Anvils);
 
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "LodeStone"), ItemID.TreasureMagnet, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "StoneRose"), ItemID.ObsidianRose, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "AmalgamAmulet"), ItemID.LavaCharm, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "CrystalSkull"), ItemID.ObsidianSkull, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "QuicksilverproofFishingHook"), ItemID.LavaFishingHook, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "QuicksilverproofTackleBag"), ItemID.LavaproofTackleBag, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "PalladiumShield"), ItemID.CobaltShield, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "LodeStone"), ItemID.TreasureMagnet, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "StoneRose"), ItemID.ObsidianRose, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "AmalgamAmulet"), ItemID.LavaCharm, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "CrystalSkull"), ItemID.ObsidianSkull, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "QuicksilverproofFishingHook"), ItemID.LavaFishingHook, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "QuicksilverproofTackleBag"), ItemID.LavaproofTackleBag, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "PalladiumShield"), ItemID.CobaltShield, TileID.Anvils);
 
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "CrystalCrown"), Common.GetModItem(ModConditions.depthsMod, "CharredCrown"), TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "CrystalCrown"), Common.GetModItem(CrossModSupport.Depths.Mod, "CharredCrown"), TileID.Anvils);
 
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "WhiteLightning"), ItemID.Flamelash, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "Skyfall"), ItemID.Cascade, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "BlueSphere"), ItemID.HelFire, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "SilverStar"), ItemID.Sunfury, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "NightFury"), ItemID.HellwingBow, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ShadowSphere"), ItemID.DemonScythe, TileID.Anvils);
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "Steelocanth"), ItemID.ObsidianSwordfish, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "WhiteLightning"), ItemID.Flamelash, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "Skyfall"), ItemID.Cascade, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "BlueSphere"), ItemID.HelFire, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "SilverStar"), ItemID.Sunfury, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "NightFury"), ItemID.HellwingBow, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "ShadowSphere"), ItemID.DemonScythe, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "Steelocanth"), ItemID.ObsidianSwordfish, TileID.Anvils);
 
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.depthsMod, "ChasmeBag"), ItemID.WallOfFleshBossBag, TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.Depths.Mod, "ChasmeBag"), ItemID.WallOfFleshBossBag, TileID.Anvils);
             }
             #endregion
 
             #region Martin's Order
-            if (ModConditions.martainsOrderLoaded)
+            if (CrossModSupport.MartinsOrder.Loaded)
             {
-                Common.ConversionRecipe(Common.GetModItem(ModConditions.martainsOrderMod, "CorruptedHerb"), Common.GetModItem(ModConditions.martainsOrderMod, "CrimsonHerb"), TileID.Anvils);
-                Common.ConversionRecipe(ItemID.WormTooth, Common.GetModItem(ModConditions.martainsOrderMod, "BloodVein"), TileID.Anvils);
+                Common.ConversionRecipe(Common.GetModItem(CrossModSupport.MartinsOrder.Mod, "CorruptedHerb"), Common.GetModItem(CrossModSupport.MartinsOrder.Mod, "CrimsonHerb"), TileID.Anvils);
+                Common.ConversionRecipe(ItemID.WormTooth, Common.GetModItem(CrossModSupport.MartinsOrder.Mod, "BloodVein"), TileID.Anvils);
             }
             #endregion
         }
@@ -858,116 +857,144 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #endregion
 
             #region Modded
+            /*
             #region Calamity
-            if (ModConditions.calamityLoaded)
+            if (CrossModSupport.Calamity.Loaded)
             {
                 //Astral Crates
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "AstrophageItem"), Common.GetModItem(ModConditions.calamityMod, "MonolithCrate"), Common.GetModItem(ModConditions.calamityMod, "AstralCrate"), 1);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "AstralScythe"), Common.GetModItem(ModConditions.calamityMod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "TitanArm"), Common.GetModItem(ModConditions.calamityMod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "StellarCannon"), Common.GetModItem(ModConditions.calamityMod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "AstralachneaStaff"), Common.GetModItem(ModConditions.calamityMod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "HivePod"), Common.GetModItem(ModConditions.calamityMod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "StellarKnife"), Common.GetModItem(ModConditions.calamityMod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "StarbusterCore"), Common.GetModItem(ModConditions.calamityMod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "AstrophageItem"), Common.GetModItem(CrossModSupport.Calamity.Mod, "MonolithCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "PolarisParrotfish"), Common.GetModItem(CrossModSupport.Calamity.Mod, "MonolithCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "GacruxianMollusk"), Common.GetModItem(CrossModSupport.Calamity.Mod, "MonolithCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "UrsaSergeant"), Common.GetModItem(CrossModSupport.Calamity.Mod, "MonolithCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralScythe"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "TitanArm"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "StellarCannon"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralachneaStaff"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "HivePod"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "StellarKnife"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "AbandonedSlimeStaff"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "GloriousEnd"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
+                //Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "StarbusterCore"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
+                //Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "HadarianWings"), Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"), 1, ModConditions.DownedAstrumAureus);
 
                 //Brimstone Crag Crates
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "AshenStalactite"), Common.GetModItem(ModConditions.calamityMod, "SlagCrate"), Common.GetModItem(ModConditions.calamityMod, "BrimstoneCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "BladecrestOathsword"), Common.GetModItem(ModConditions.calamityMod, "SlagCrate"), Common.GetModItem(ModConditions.calamityMod, "BrimstoneCrate"), 1);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "LiliesOfFinality"), Common.GetModItem(ModConditions.calamityMod, "BrimstoneCrate"), 1, ModConditions.DownedYharon);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "AshenStalactite"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SlagCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "BrimstoneCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "BladecrestOathsword"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SlagCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "BrimstoneCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "DragoonDrizzlefish"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SlagCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "BrimstoneCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "SlurperPole"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SlagCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "BrimstoneCrate"), 1);
+                //Post-ML
+                //Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "GuidelightofOblivion"), Common.GetModItem(CrossModSupport.Calamity.Mod, "BrimstoneCrate"), 1, ModConditions.DownedProvidence);
+                //Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "LiliesOfFinality"), Common.GetModItem(CrossModSupport.Calamity.Mod, "BrimstoneCrate"), 1, ModConditions.DownedYharon);
 
                 //Sulphurous Sea Crates
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "AbyssalAmulet"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "AlluringBait"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "BrokenWaterFilter"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "EffigyOfDecay"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "RustyBeaconPrototype"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "RustyMedallion"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1);
-                Common.CreateCrateRecipe(ItemID.ReaverShark, Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1);
-                Common.CreateCrateRecipe(ItemID.SawtoothShark, Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1);
-                Common.CreateCrateRecipe(ItemID.Swordfish, Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1);
+                //Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "AbyssalAmulet"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "AlluringBait"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "BrokenWaterFilter"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "EffigyOfDecay"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "RustyBeaconPrototype"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "RustyMedallion"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1);
+                Common.CreateCrateRecipe(ItemID.ReaverShark, Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1);
+                Common.CreateCrateRecipe(ItemID.SawtoothShark, Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1);
+                Common.CreateCrateRecipe(ItemID.Swordfish, Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "CausticCroakerStaff"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain1);
                 //Post Slime God
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "BallOFugu"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "Archerfish"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "BlackAnurian"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "HerringStaff"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "Lionfish"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "AnechoicPlating"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "DepthCharm"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "IronBoots"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "StrangeOrb"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "TorrentialTear"), Common.GetModItem(ModConditions.calamityMod, "SulphurousCrate"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
-                //Hardmode Post Acid Rain
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "SulphurousGrabber"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "FlakToxicannon"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "BelchingSaxophone"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "SlitheringEels"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "SkyfinBombers"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "SpentFuelContainer"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "NuclearFuelRod"), Common.GetModItem(ModConditions.calamityMod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "BallOFugu"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "Archerfish"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "BlackAnurian"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "HerringStaff"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "Lionfish"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "AnechoicPlating"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "DepthCharm"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "IronBoots"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "StrangeOrb"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "TorrentialTear"), Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedSlimeGod);
+                //Hardmode, Post Acid Rain
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "OrthoceraShell"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousGrabber"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "FlakToxicannon"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "BelchingSaxophone"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "SlitheringEels"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "SkyfinBombers"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedAcidRain2);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "SpentFuelContainer"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedCragmawMire);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "NuclearFuelRod"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedCragmawMire);
+                //Post-ML
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphuricAcidCannon"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedMauler);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "GammaHeart"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedNuclearTerror);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "PhosphorescentGauntlet"), Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"), 1, ModConditions.DownedNuclearTerror);
 
                 //Sunken Sea Crates
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "RustedJingleBell"), Common.GetModItem(ModConditions.calamityMod, "EutrophicCrate"), Common.GetModItem(ModConditions.calamityMod, "PrismCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "RustedJingleBell"), Common.GetModItem(CrossModSupport.Calamity.Mod, "EutrophicCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"), 1);
                 //Post Desert Scourge
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.calamityMod, "SparklingEmpress"), Common.GetModItem(ModConditions.calamityMod, "EutrophicCrate"), Common.GetModItem(ModConditions.calamityMod, "PrismCrate"), 1, ModConditions.DownedDesertScourge);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "SparklingEmpress"), Common.GetModItem(CrossModSupport.Calamity.Mod, "EutrophicCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"), 1, ModConditions.DownedDesertScourge);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "VoltaicJelly"), Common.GetModItem(CrossModSupport.Calamity.Mod, "EutrophicCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"), 1, ModConditions.DownedDesertScourge);
+                //Post Clam
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "GiantPearl"), Common.GetModItem(CrossModSupport.Calamity.Mod, "EutrophicCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"), 1, ModConditions.DownedGiantClam);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "AmidiasSpark"), Common.GetModItem(CrossModSupport.Calamity.Mod, "EutrophicCrate"), Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"), 1, ModConditions.DownedGiantClam);
                 //Hardmode
-                Common.CreateCrateHardmodeRecipe(Common.GetModItem(ModConditions.calamityMod, "SerpentsBite"), Common.GetModItem(ModConditions.calamityMod, "PrismCrate"), 1);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "Serpentine"), Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"), 1);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "SerpentsBite"), Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"), 1);
+                //Hardmode Clam
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "Poseidon"), Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"), 1, ModConditions.DownedGiantClam);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "ClamCrusher"), Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"), 1, ModConditions.DownedGiantClam);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "ClamorRifle"), Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"), 1, ModConditions.DownedGiantClam);
+                Common.CreateCrateHardmodeRecipe(Common.GetModItem(CrossModSupport.Calamity.Mod, "ShellfishStaff"), Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"), 1, ModConditions.DownedGiantClam);
             }
             #endregion
+            */
 
             #region Spirit
-            if (ModConditions.spiritClassicLoaded)
+            if (CrossModSupport.SpiritClassic.Loaded)
             {
                 //Briar Crates
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.spiritClassicMod, "ReachBrooch"), Common.GetModItem(ModConditions.spiritClassicMod, "ReachCrate"), Common.GetModItem(ModConditions.spiritClassicMod, "BriarCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.spiritClassicMod, "ReachBoomerang"), Common.GetModItem(ModConditions.spiritClassicMod, "ReachCrate"), Common.GetModItem(ModConditions.spiritClassicMod, "BriarCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.spiritClassicMod, "ThornHook"), Common.GetModItem(ModConditions.spiritClassicMod, "ReachCrate"), Common.GetModItem(ModConditions.spiritClassicMod, "BriarCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.spiritClassicMod, "ReachChestMagic"), Common.GetModItem(ModConditions.spiritClassicMod, "ReachCrate"), Common.GetModItem(ModConditions.spiritClassicMod, "BriarCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.spiritClassicMod, "LivingElderbarkWand"), Common.GetModItem(ModConditions.spiritClassicMod, "ReachCrate"), Common.GetModItem(ModConditions.spiritClassicMod, "BriarCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.spiritClassicMod, "ThornyRod"), Common.GetModItem(ModConditions.spiritClassicMod, "ReachCrate"), Common.GetModItem(ModConditions.spiritClassicMod, "BriarCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "ReachBrooch"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "ReachCrate"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "BriarCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "ReachBoomerang"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "ReachCrate"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "BriarCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "ThornHook"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "ReachCrate"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "BriarCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "ReachChestMagic"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "ReachCrate"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "BriarCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "LivingElderbarkWand"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "ReachCrate"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "BriarCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "ThornyRod"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "ReachCrate"), Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "BriarCrate"), 1);
             }
             #endregion
 
             #region Thorium
-            if (ModConditions.thoriumLoaded)
+            if (CrossModSupport.Thorium.Loaded)
             {
                 //Aquatic Depths Crates
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "MagicConch"), Common.GetModItem(ModConditions.thoriumMod, "AquaticDepthsCrate"), Common.GetModItem(ModConditions.thoriumMod, "AbyssalCrate"), 1, Condition.DownedEowOrBoc);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "AnglerBowl"), Common.GetModItem(ModConditions.thoriumMod, "AquaticDepthsCrate"), Common.GetModItem(ModConditions.thoriumMod, "AbyssalCrate"), 1, Condition.DownedEowOrBoc);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "RainStone"), Common.GetModItem(ModConditions.thoriumMod, "AquaticDepthsCrate"), Common.GetModItem(ModConditions.thoriumMod, "AbyssalCrate"), 1, Condition.DownedEowOrBoc);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "SteelDrum"), Common.GetModItem(ModConditions.thoriumMod, "AquaticDepthsCrate"), Common.GetModItem(ModConditions.thoriumMod, "AbyssalCrate"), 1, Condition.DownedEowOrBoc);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "SeaTurtlesBulwark"), Common.GetModItem(ModConditions.thoriumMod, "AquaticDepthsCrate"), Common.GetModItem(ModConditions.thoriumMod, "AbyssalCrate"), 1, Condition.DownedEowOrBoc);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "MagicConch"), Common.GetModItem(CrossModSupport.Thorium.Mod, "AquaticDepthsCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "AbyssalCrate"), 1, Condition.DownedEowOrBoc);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "AnglerBowl"), Common.GetModItem(CrossModSupport.Thorium.Mod, "AquaticDepthsCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "AbyssalCrate"), 1, Condition.DownedEowOrBoc);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "RainStone"), Common.GetModItem(CrossModSupport.Thorium.Mod, "AquaticDepthsCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "AbyssalCrate"), 1, Condition.DownedEowOrBoc);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "SteelDrum"), Common.GetModItem(CrossModSupport.Thorium.Mod, "AquaticDepthsCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "AbyssalCrate"), 1, Condition.DownedEowOrBoc);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "SeaTurtlesBulwark"), Common.GetModItem(CrossModSupport.Thorium.Mod, "AquaticDepthsCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "AbyssalCrate"), 1, Condition.DownedEowOrBoc);
 
                 //Scarlet Crates
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "MixTape"), Common.GetModItem(ModConditions.thoriumMod, "ScarletCrate"), Common.GetModItem(ModConditions.thoriumMod, "SinisterCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "LootRang"), Common.GetModItem(ModConditions.thoriumMod, "ScarletCrate"), Common.GetModItem(ModConditions.thoriumMod, "SinisterCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "MagmaCharm"), Common.GetModItem(ModConditions.thoriumMod, "ScarletCrate"), Common.GetModItem(ModConditions.thoriumMod, "SinisterCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "SpringSteps"), Common.GetModItem(ModConditions.thoriumMod, "ScarletCrate"), Common.GetModItem(ModConditions.thoriumMod, "SinisterCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "DeepStaff"), Common.GetModItem(ModConditions.thoriumMod, "ScarletCrate"), Common.GetModItem(ModConditions.thoriumMod, "SinisterCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "MagmaLocket"), Common.GetModItem(ModConditions.thoriumMod, "ScarletCrate"), Common.GetModItem(ModConditions.thoriumMod, "SinisterCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "SpringHook"), Common.GetModItem(ModConditions.thoriumMod, "ScarletCrate"), Common.GetModItem(ModConditions.thoriumMod, "SinisterCrate"), 1);
-                Common.CreateCrateRecipe(ItemID.LavaCharm, Common.GetModItem(ModConditions.thoriumMod, "ScarletCrate"), Common.GetModItem(ModConditions.thoriumMod, "SinisterCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "MixTape"), Common.GetModItem(CrossModSupport.Thorium.Mod, "ScarletCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "SinisterCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "LootRang"), Common.GetModItem(CrossModSupport.Thorium.Mod, "ScarletCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "SinisterCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "MagmaCharm"), Common.GetModItem(CrossModSupport.Thorium.Mod, "ScarletCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "SinisterCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "SpringSteps"), Common.GetModItem(CrossModSupport.Thorium.Mod, "ScarletCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "SinisterCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "DeepStaff"), Common.GetModItem(CrossModSupport.Thorium.Mod, "ScarletCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "SinisterCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "MagmaLocket"), Common.GetModItem(CrossModSupport.Thorium.Mod, "ScarletCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "SinisterCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "SpringHook"), Common.GetModItem(CrossModSupport.Thorium.Mod, "ScarletCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "SinisterCrate"), 1);
+                Common.CreateCrateRecipe(ItemID.LavaCharm, Common.GetModItem(CrossModSupport.Thorium.Mod, "ScarletCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "SinisterCrate"), 1);
 
                 //Strange Crates
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "HightechSonarDevice"), Common.GetModItem(ModConditions.thoriumMod, "StrangeCrate"), Common.GetModItem(ModConditions.thoriumMod, "WondrousCrate"), 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "DrownedDoubloon"), Common.GetModItem(ModConditions.thoriumMod, "StrangeCrate"), Common.GetModItem(ModConditions.thoriumMod, "WondrousCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "HightechSonarDevice"), Common.GetModItem(CrossModSupport.Thorium.Mod, "StrangeCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "WondrousCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "DrownedDoubloon"), Common.GetModItem(CrossModSupport.Thorium.Mod, "StrangeCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "WondrousCrate"), 1);
 
                 //Vanilla Crate Drops
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "FrozenTiara"), ItemID.FrozenCrate, ItemID.FrozenCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "ForestOcarina"), ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "TheDigester"), ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "FanLetter2"), ItemID.CorruptFishingCrate, ItemID.CorruptFishingCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "FanLetter"), ItemID.CrimsonFishingCrate, ItemID.CrimsonFishingCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "DarkHeart"), ItemID.CorruptFishingCrate, ItemID.CorruptFishingCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "DarkHeart"), ItemID.CrimsonFishingCrate, ItemID.CrimsonFishingCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "LightningClaves"), ItemID.OasisCrate, ItemID.OasisCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "BubbleMagnet"), ItemID.OceanCrate, ItemID.OceanCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "Flute"), ItemID.WoodenCrate, ItemID.WoodenCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "RecoveryWand"), ItemID.WoodenCrate, ItemID.WoodenCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "EnchantedPickaxe"), ItemID.GoldenCrate, ItemID.GoldenCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "EnchantedCane"), ItemID.GoldenCrate, ItemID.GoldenCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "EnchantedStaff"), ItemID.GoldenCrate, ItemID.GoldenCrateHard, 1);
-                Common.CreateCrateRecipe(Common.GetModItem(ModConditions.thoriumMod, "FishHat"), ItemID.GoldenCrate, ItemID.GoldenCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "FrozenTiara"), ItemID.FrozenCrate, ItemID.FrozenCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "ForestOcarina"), ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "TheDigester"), ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "FanLetter2"), ItemID.CorruptFishingCrate, ItemID.CorruptFishingCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "FanLetter"), ItemID.CrimsonFishingCrate, ItemID.CrimsonFishingCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "DarkHeart"), ItemID.CorruptFishingCrate, ItemID.CorruptFishingCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "DarkHeart"), ItemID.CrimsonFishingCrate, ItemID.CrimsonFishingCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "LightningClaves"), ItemID.OasisCrate, ItemID.OasisCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "BubbleMagnet"), ItemID.OceanCrate, ItemID.OceanCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "Flute"), ItemID.WoodenCrate, ItemID.WoodenCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "RecoveryWand"), ItemID.WoodenCrate, ItemID.WoodenCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "EnchantedPickaxe"), ItemID.GoldenCrate, ItemID.GoldenCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "EnchantedCane"), ItemID.GoldenCrate, ItemID.GoldenCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "EnchantedStaff"), ItemID.GoldenCrate, ItemID.GoldenCrateHard, 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "FishHat"), ItemID.GoldenCrate, ItemID.GoldenCrateHard, 1);
             }
             #endregion
             #endregion
@@ -1657,28 +1684,28 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
 
             #region Modded
             #region Spooky
-            if (ModConditions.spookyLoaded)
+            if (CrossModSupport.Spooky.Loaded)
             {
-                Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.spookyMod, "SpookyBiomeKey"), Common.GetModItem(ModConditions.spookyMod, "ElGourdo"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
-                Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.spookyMod, "CemeteryKey"), Common.GetModItem(ModConditions.spookyMod, "DiscoSkull"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
-                Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.spookyMod, "SpiderKey"), Common.GetModItem(ModConditions.spookyMod, "VenomHarpoon"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
-                Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.spookyMod, "SpookyHellKey"), Common.GetModItem(ModConditions.spookyMod, "BrainJar"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
+                Common.CreateSimpleRecipe(Common.GetModItem(CrossModSupport.Spooky.Mod, "SpookyBiomeKey"), Common.GetModItem(CrossModSupport.Spooky.Mod, "ElGourdo"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
+                Common.CreateSimpleRecipe(Common.GetModItem(CrossModSupport.Spooky.Mod, "CemeteryKey"), Common.GetModItem(CrossModSupport.Spooky.Mod, "DiscoSkull"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
+                Common.CreateSimpleRecipe(Common.GetModItem(CrossModSupport.Spooky.Mod, "SpiderKey"), Common.GetModItem(CrossModSupport.Spooky.Mod, "VenomHarpoon"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
+                Common.CreateSimpleRecipe(Common.GetModItem(CrossModSupport.Spooky.Mod, "SpookyHellKey"), Common.GetModItem(CrossModSupport.Spooky.Mod, "BrainJar"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
             }
             #endregion
 
             #region Thorium
-            if (ModConditions.thoriumLoaded)
+            if (CrossModSupport.Thorium.Loaded)
             {
-                Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.thoriumMod, "AquaticDepthsBiomeKey"), Common.GetModItem(ModConditions.thoriumMod, "Fishbone"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
-                Common.CreateSimpleRecipe(ItemID.DungeonDesertKey, Common.GetModItem(ModConditions.thoriumMod, "PharaohsSlab"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
-                Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.thoriumMod, "UnderworldBiomeKey"), Common.GetModItem(ModConditions.thoriumMod, "PhoenixStaff"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
+                Common.CreateSimpleRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "AquaticDepthsBiomeKey"), Common.GetModItem(CrossModSupport.Thorium.Mod, "Fishbone"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
+                Common.CreateSimpleRecipe(ItemID.DungeonDesertKey, Common.GetModItem(CrossModSupport.Thorium.Mod, "PharaohsSlab"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
+                Common.CreateSimpleRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "UnderworldBiomeKey"), Common.GetModItem(CrossModSupport.Thorium.Mod, "PhoenixStaff"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
             }
             #endregion
 
             #region Vitality
-            if (ModConditions.vitalityLoaded)
+            if (CrossModSupport.Vitality.Loaded)
             {
-                Common.CreateSimpleRecipe(Common.GetModItem(ModConditions.vitalityMod, "GlowingMossKey"), Common.GetModItem(ModConditions.vitalityMod, "GlowingMothShiv"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
+                Common.CreateSimpleRecipe(Common.GetModItem(CrossModSupport.Vitality.Mod, "GlowingMossKey"), Common.GetModItem(CrossModSupport.Vitality.Mod, "GlowingMothShiv"), TileID.MythrilAnvil, 1, 1, true, false, Condition.DownedPlantera);
             }
             #endregion
             #endregion
@@ -1688,9 +1715,9 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
         public static void NewRecipes()
         {
             #region Prime Rework / Confection Fix
-            if (ModConditions.confectionRebakedLoaded && ModConditions.mechReworkLoaded)
+            if (CrossModSupport.ConfectionRebaked.Loaded && CrossModSupport.MechBossRework.Loaded)
             {
-                Recipe deathsRaze = Recipe.Create(Common.GetModItem(ModConditions.confectionRebakedMod, "DeathsRaze"), 1);
+                Recipe deathsRaze = Recipe.Create(Common.GetModItem(CrossModSupport.ConfectionRebaked.Mod, "DeathsRaze"), 1);
                 deathsRaze.AddIngredient(ItemID.BloodButcherer);
                 deathsRaze.AddIngredient(ItemID.Muramasa);
                 deathsRaze.AddIngredient(ItemID.BladeofGrass);
@@ -1698,13 +1725,13 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 deathsRaze.AddTile(TileID.DemonAltar);
                 deathsRaze.Register();
 
-                if (ModConditions.depthsLoaded)
+                if (CrossModSupport.Depths.Loaded)
                 {
-                    Recipe deathsRaze2 = Recipe.Create(Common.GetModItem(ModConditions.confectionRebakedMod, "DeathsRaze"), 1);
+                    Recipe deathsRaze2 = Recipe.Create(Common.GetModItem(CrossModSupport.ConfectionRebaked.Mod, "DeathsRaze"), 1);
                     deathsRaze2.AddIngredient(ItemID.BloodButcherer);
                     deathsRaze2.AddIngredient(ItemID.Muramasa);
                     deathsRaze2.AddIngredient(ItemID.BladeofGrass);
-                    deathsRaze2.AddIngredient(Common.GetModItem(ModConditions.depthsMod, "Terminex"));
+                    deathsRaze2.AddIngredient(Common.GetModItem(CrossModSupport.Depths.Mod, "Terminex"));
                     deathsRaze2.AddTile(TileID.DemonAltar);
                     deathsRaze2.Register();
                 }
@@ -1712,17 +1739,17 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #endregion
 
             #region Calamity Effigy Recipes
-            if (ModConditions.calamityLoaded && QoLCompendium.crossModConfig.CalamityEffigyRecipes)
+            if (CrossModSupport.Calamity.Loaded && QoLCompendium.crossModConfig.CalamityEffigyRecipes)
             {
-                Recipe crimsonEffigy = Recipe.Create(Common.GetModItem(ModConditions.calamityMod, "CrimsonEffigy"), 1);
-                crimsonEffigy.AddIngredient(Common.GetModItem(ModConditions.calamityMod, "BloodSample"), 10);
+                Recipe crimsonEffigy = Recipe.Create(Common.GetModItem(CrossModSupport.Calamity.Mod, "CrimsonEffigy"), 1);
+                crimsonEffigy.AddIngredient(Common.GetModItem(CrossModSupport.Calamity.Mod, "BloodSample"), 10);
                 crimsonEffigy.AddIngredient(ItemID.Vertebrae, 10);
                 crimsonEffigy.AddIngredient(ItemID.CrimtaneBar, 6);
                 crimsonEffigy.AddTile(TileID.DemonAltar);
                 crimsonEffigy.Register();
 
-                Recipe corruptionEffigy = Recipe.Create(Common.GetModItem(ModConditions.calamityMod, "CorruptionEffigy"), 1);
-                corruptionEffigy.AddIngredient(Common.GetModItem(ModConditions.calamityMod, "RottenMatter"), 10);
+                Recipe corruptionEffigy = Recipe.Create(Common.GetModItem(CrossModSupport.Calamity.Mod, "CorruptionEffigy"), 1);
+                corruptionEffigy.AddIngredient(Common.GetModItem(CrossModSupport.Calamity.Mod, "RottenMatter"), 10);
                 corruptionEffigy.AddIngredient(ItemID.RottenChunk, 10);
                 corruptionEffigy.AddIngredient(ItemID.DemoniteBar, 6);
                 corruptionEffigy.AddTile(TileID.DemonAltar);
@@ -1731,9 +1758,9 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             #endregion
 
             #region Calamity Entropy Yharim's Stimulants
-            if (ModConditions.calamityLoaded && ModConditions.calamityEntropyLoaded)
+            if (CrossModSupport.Calamity.Loaded && CrossModSupport.CalamityEntropy.Loaded)
             {
-                Recipe yharimsStimulants = Recipe.Create(Common.GetModItem(ModConditions.calamityEntropyMod, "YharimsStimulants"), 1);
+                Recipe yharimsStimulants = Recipe.Create(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "YharimsStimulants"), 1);
                 yharimsStimulants.AddRecipeGroup("QoLCompendium:WellFed");
                 yharimsStimulants.AddIngredient(ItemID.EndurancePotion);
                 yharimsStimulants.AddIngredient(ItemID.IronskinPotion);
@@ -1742,9 +1769,9 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 yharimsStimulants.AddTile(TileID.AlchemyTable);
                 yharimsStimulants.Register();
 
-                Recipe yharimsStimulantsBO = Recipe.Create(Common.GetModItem(ModConditions.calamityEntropyMod, "YharimsStimulants"), 1);
+                Recipe yharimsStimulantsBO = Recipe.Create(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "YharimsStimulants"), 1);
                 yharimsStimulantsBO.AddIngredient(ItemID.BottledWater);
-                yharimsStimulantsBO.AddIngredient(Common.GetModItem(ModConditions.calamityMod, "BloodOrb"), 50);
+                yharimsStimulantsBO.AddIngredient(Common.GetModItem(CrossModSupport.Calamity.Mod, "BloodOrb"), 50);
                 yharimsStimulantsBO.AddTile(TileID.AlchemyTable);
                 yharimsStimulantsBO.Register();
             }

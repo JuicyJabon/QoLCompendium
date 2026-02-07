@@ -45,16 +45,21 @@
                 //Item.SetNameOverride(displayName);
 
             Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PermanentBuffs);
+            TooltipLine material = tooltips.Find(l => l.Name == "Material");
 
             if (buffID < BuffID.Count)
             {
                 TooltipLine text = new(Mod, "BuffDescription", Lang.GetBuffDescription(buffID));
-                tooltips.Insert(1, text);
+                
+                if (material != null)
+                    tooltips.AddAfter(material, text);
             }
             else
             {
                 TooltipLine text = new(Mod, "BuffDescription", BuffLoader.GetBuff(buffID).Description.ToString());
-                tooltips.Insert(1, text);
+                
+                if (material != null)
+                    tooltips.AddAfter(material, text);
             }
         }
     }

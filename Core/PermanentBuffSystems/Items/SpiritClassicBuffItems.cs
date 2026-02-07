@@ -12,8 +12,8 @@ using SpiritMod.Items.Sets.CoilSet;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(ModConditions.spiritClassicName)]
-    [ExtendsFromMod(ModConditions.spiritClassicName)]
+    [JITWhenModsEnabled(CrossModSupport.SpiritClassic.Name)]
+    [ExtendsFromMod(CrossModSupport.SpiritClassic.Name)]
     public static class SpiritClassicBuffItems
     {
         public static NewBuffEffect[] SpiritClassicEffects = [

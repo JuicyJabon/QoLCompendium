@@ -15,32 +15,32 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
 
             HashSet<int> prefixes = new()
             {
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Accelerative"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Bewitched"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Bombarding"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Combustible"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Constructive"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Explosive"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Flawless"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Fortunate"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Hexed"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Immolating"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Impactful"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Luminescent"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Recreational"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Regenerative"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Reinforced"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Resilient"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Revitalizing"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Streamlined"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Trailblazing"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Tranquilizing"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Undying"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Volatile"),
-                Common.GetModPrefix(ModConditions.mrPlagueRacesMod, "Warping")
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Accelerative"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Bewitched"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Bombarding"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Combustible"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Constructive"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Explosive"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Flawless"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Fortunate"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Hexed"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Immolating"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Impactful"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Luminescent"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Recreational"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Regenerative"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Reinforced"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Resilient"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Revitalizing"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Streamlined"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Trailblazing"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Tranquilizing"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Undying"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Volatile"),
+                Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Warping")
             };
 
-            if (!Main.gameMenu && Main.LocalPlayer.active && ModConditions.mrPlagueRacesLoaded && !MrPlagueRacesConfig.Instance.raceStats)
+            if (!Main.gameMenu && Main.LocalPlayer.active && CrossModSupport.MrPlagueRaces.Loaded && !MrPlagueRacesConfig.Instance.raceStats)
             {
                 if (prefixes.Contains(pre) && ++infiniteLoopHackFix < 30)
                     return false;

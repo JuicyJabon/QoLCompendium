@@ -6,18 +6,18 @@ using SpiritReforged.Content.Snow;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(ModConditions.spiritReforgedName)]
-    [ExtendsFromMod(ModConditions.spiritReforgedName)]
+    [JITWhenModsEnabled(CrossModSupport.SpiritReforged.Name)]
+    [ExtendsFromMod(CrossModSupport.SpiritReforged.Name)]
     public static class SpiritReforgedBuffItems
     {
         public static NewBuffEffect[] SpiritReforgedEffects = [
             //potions
-            new NewBuffEffect(Common.GetModBuff(ModConditions.spiritReforgedMod, "QuenchPotion_Buff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "QuenchPotion_Buff")),
             new NewBuffEffect(ModContent.BuffType<RemedyPotionBuff>()),
             new NewBuffEffect(ModContent.BuffType<FlightPotionBuff>()),
             new NewBuffEffect(ModContent.BuffType<DoubleJumpPotionBuff>()),
             //flasks
-            new NewBuffEffect(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff"), (int) Common.EffectTypes.Flask),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff"), (int) Common.EffectTypes.Flask),
             //arena
             new NewBuffEffect(ModContent.BuffType<KoiTotemBuff>(), (int) Common.EffectTypes.Arena),
         ];
@@ -39,12 +39,12 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
             NewBuffItem[] BuffItems = [
                 //potions
-                new NewBuffItem(ModContent.ItemType<QuenchPotion>(), Common.GetModBuff(ModConditions.spiritReforgedMod, "QuenchPotion_Buff"), Common.AllEffects[Common.GetModBuff(ModConditions.spiritReforgedMod, "QuenchPotion_Buff")], 30, "PermanentQuenched", "Permanent Quenched"),
+                new NewBuffItem(ModContent.ItemType<QuenchPotion>(), Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "QuenchPotion_Buff"), Common.AllEffects[Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "QuenchPotion_Buff")], 30, "PermanentQuenched", "Permanent Quenched"),
                 new NewBuffItem(ModContent.ItemType<RemedyPotion>(), ModContent.BuffType<RemedyPotionBuff>(), Common.AllEffects[ModContent.BuffType<RemedyPotionBuff>()], 30, "PermanentRemedy", "Permanent Remedy"),
                 new NewBuffItem(ModContent.ItemType<FlightPotion>(), ModContent.BuffType<FlightPotionBuff>(), Common.AllEffects[ModContent.BuffType<FlightPotionBuff>()], 30, "PermanentSRSoaring", "Permanent Soaring"),
                 new NewBuffItem(ModContent.ItemType<DoubleJumpPotion>(), ModContent.BuffType<DoubleJumpPotionBuff>(), Common.AllEffects[ModContent.BuffType<DoubleJumpPotionBuff>()], 30, "PermanentSRZephyr", "Permanent Zephyr"),
                 //flasks
-                new NewBuffItem(ModContent.ItemType<FlaskOfFrost>(), Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff"), Common.AllEffects[Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")], 30, "PermanentFlaskOfFrost", "Permanent Flask of Frost"),
+                new NewBuffItem(ModContent.ItemType<FlaskOfFrost>(), Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff"), Common.AllEffects[Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")], 30, "PermanentFlaskOfFrost", "Permanent Flask of Frost"),
                 //arena
                 new NewBuffItem(ModContent.ItemType<KoiTotem>(), ModContent.BuffType<KoiTotemBuff>(), Common.AllEffects[ModContent.BuffType<KoiTotemBuff>()], 3, "PermanentSRKoiTotem", "Permanent Koi Totem")
             ];
@@ -60,11 +60,11 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
         {
             Dictionary<BuffEffect, int> PermanentSpiritReforged = new()
             {
-                { Common.AllEffects[Common.GetModBuff(ModConditions.spiritReforgedMod, "QuenchPotion_Buff")], Common.GetModBuff(ModConditions.spiritReforgedMod, "QuenchPotion_Buff") },
+                { Common.AllEffects[Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "QuenchPotion_Buff")], Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "QuenchPotion_Buff") },
                 { Common.AllEffects[ModContent.BuffType<RemedyPotionBuff>()], ModContent.BuffType<RemedyPotionBuff>() },
                 { Common.AllEffects[ModContent.BuffType<FlightPotionBuff>()], ModContent.BuffType<FlightPotionBuff>() },
                 { Common.AllEffects[ModContent.BuffType<DoubleJumpPotionBuff>()], ModContent.BuffType<DoubleJumpPotionBuff>() },
-                { Common.AllEffects[Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")], Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff") },
+                { Common.AllEffects[Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")], Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff") },
                 { Common.AllEffects[ModContent.BuffType<KoiTotemBuff>()], ModContent.BuffType<KoiTotemBuff>() }
             };
 

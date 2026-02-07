@@ -23,6 +23,11 @@ SunPedestal: {
 	Tooltip: Favorite this item to have it always be day
 }
 
+MysticMoonPedestal: {
+	DisplayName: Mystic Moon Pedestal
+	Tooltip: Favorite this item to have a mystic moon occur every night
+}
+
 Paperweight: {
 	DisplayName: Paperweight
 	Tooltip:

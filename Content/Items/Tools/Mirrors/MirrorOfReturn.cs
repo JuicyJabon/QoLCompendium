@@ -53,7 +53,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
                 player.grapCount = 0;
                 for (int i = 0; i < Main.projectile.Length; i++)
                 {
-                    if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI && Main.projectile[i].aiStyle == 7)
+                    if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI && Main.projectile[i].aiStyle == ProjAIStyleID.Hook)
                     {
                         Main.projectile[i].Kill();
                     }

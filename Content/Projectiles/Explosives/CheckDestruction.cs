@@ -36,7 +36,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
 
         public static bool TileIsLiterallyAir(Tile tile)
         {
-            return tile.TileType == 0 && tile.WallType == 0 && tile.LiquidAmount == 0 && tile.TileFrameX == 0 && tile.TileFrameY == 0;
+            return tile.TileType == TileID.Dirt && tile.WallType == WallID.None && tile.LiquidAmount == 0 && tile.TileFrameX == 0 && tile.TileFrameY == 0;
         }
 
         public static bool TileBelongsToMod(Tile tile)
@@ -83,7 +83,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
             {
                 for (int j = y; j < y + 2; j++)
                 {
-                    Main.tile[i, j].TileType = 0;
+                    Main.tile[i, j].TileType = TileID.Dirt;
                     Main.tile[i, j].TileFrameX = 0;
                     Main.tile[i, j].TileFrameY = 0;
                 }

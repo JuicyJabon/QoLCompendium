@@ -97,7 +97,7 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
     {
         public static int threshold = QoLCompendium.veinminerConfig.VeinMinerTileLimit;
 
-        [JITWhenModsEnabled(ModConditions.vanillaQoLName)]
+        [JITWhenModsEnabled(CrossModSupport.VanillaQoL.Name)]
         public static bool VanillaQoLVeinminer => QoLConfig.Instance.veinMining;
 
         public override void Load()
@@ -208,7 +208,7 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
 
         public static bool VanillaQoLLoaded()
         {
-            if (ModConditions.vanillaQoLLoaded)
+            if (CrossModSupport.VanillaQoL.Loaded)
             {
                 if (VanillaQoLVeinminer)
                     return true;

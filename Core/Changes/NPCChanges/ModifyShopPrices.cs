@@ -11,7 +11,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
             Player player = Main.LocalPlayer;
             if (npc.type == ModContent.NPCType<BMDealerNPC>() && player.active && player == Main.LocalPlayer)
             {
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Potions")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/PotionShop")
                 {
                     foreach (Item item in items)
                     {
@@ -19,7 +19,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.PotionPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Flasks, Stations & Foods")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/StationsAndUpgradesShop")
                 {
                     foreach (Item item in items)
                     {
@@ -34,7 +34,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         }
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Materials")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/MaterialShop")
                 {
                     foreach (Item item in items)
                     {
@@ -42,7 +42,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.MaterialPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Movement Accessories")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/MobilityAccessoryShop")
                 {
                     foreach (Item item in items)
                     {
@@ -50,7 +50,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.AccessoryPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Combat Accessories")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/CombatAccessoryShop")
                 {
                     foreach (Item item in items)
                     {
@@ -58,7 +58,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.AccessoryPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Informative/Building Gear")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ToolsAndInfoShop")
                 {
                     foreach (Item item in items)
                     {
@@ -66,7 +66,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.AccessoryPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Treasure Bags")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/TreasureBagShop")
                 {
                     foreach (Item item in items)
                     {
@@ -79,10 +79,10 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         int countBossesDefeated = Common.GetBoolCount(Common.DownedVanillaBosses) + Common.GetBoolCount(ModConditions.DownedBoss);
 
                         for (int i = 0; i < countBossesDefeated; i++)
-                            item.shopCustomPrice += (int)Common.GoldValue * 10;
+                            item.shopCustomPrice += (int)Common.GoldValue * 5;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Crates & Grab Bags")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/CratesAndGrabBagsShop")
                 {
                     foreach (Item item in items)
                     {
@@ -90,7 +90,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.CratePriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Ores & Bars")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/OresAndBarsShop")
                 {
                     foreach (Item item in items)
                     {
@@ -98,7 +98,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.OrePriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Natural Blocks")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/NaturalBlockShop")
                 {
                     foreach (Item item in items)
                     {
@@ -106,7 +106,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.NaturalBlockPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Building Blocks")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/BuildingBlockShop")
                 {
                     foreach (Item item in items)
                     {
@@ -114,7 +114,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.BuildingBlockPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Herbs & Plants")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/HerbsAndPlantsShop")
                 {
                     foreach (Item item in items)
                     {
@@ -122,7 +122,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.HerbPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Fish & Fishing Gear")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/FishShop")
                 {
                     foreach (Item item in items)
                     {
@@ -130,7 +130,15 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.FishPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Mounts & Hooks")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/CritterShop")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.CritterPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/MountsAndHooksShop")
                 {
                     foreach (Item item in items)
                     {
@@ -138,7 +146,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.MountPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Ammo")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/AmmoShop")
                 {
                     foreach (Item item in items)
                     {
@@ -194,7 +202,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         int countBossesDefeated = Common.GetBoolCount(Common.DownedVanillaBosses) + Common.GetBoolCount(ModConditions.DownedBoss);
 
                         for (int i = 0; i < countBossesDefeated; i++)
-                            item.shopCustomPrice += (int)Common.GoldValue * 10;
+                            item.shopCustomPrice += (int)Common.GoldValue * 5;
                     }
                 }
                 if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Crates & Grab Bags")

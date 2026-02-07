@@ -65,6 +65,11 @@ BMFishShop: {
 	Tooltip: ""
 }
 
+BMCritterShop: {
+	Label: "[i:2019] Critter Shop"
+	Tooltip: ""
+}
+
 BMMountShop: {
 	Label: "[i:2430] Mount Shop"
 	Tooltip: ""
@@ -182,6 +187,11 @@ HerbPriceMultiplier: {
 
 FishPriceMultiplier: {
 	Label: "[i:161] Fish Price Multiplier"
+	Tooltip: Ranges from 1 to 1000
+}
+
+CritterPriceMultiplier: {
+	Label: "[i:161] Critter Price Multiplier"
 	Tooltip: Ranges from 1 to 1000
 }
 

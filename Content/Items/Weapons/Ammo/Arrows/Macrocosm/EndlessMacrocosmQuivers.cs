@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Arrows.Macrocosm
 {
-    [JITWhenModsEnabled(ModConditions.macrocosmName)]
-    [ExtendsFromMod(ModConditions.macrocosmName)]
+    [JITWhenModsEnabled(CrossModSupport.Macrocosm.Name)]
+    [ExtendsFromMod(CrossModSupport.Macrocosm.Name)]
     public class EndlessInvarQuiver : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<InvarArrow>();

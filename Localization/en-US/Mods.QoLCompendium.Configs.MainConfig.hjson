@@ -1,11 +1,19 @@
 DisplayName: Main Config
 
-EndlessBuffs: {
-	Label: "[i:292] Endless Buffs"
+EndlessPotionBuffs: {
+	Label: "[i:292] Endless Potion Buffs"
 	Tooltip:
 		'''
-		Toggles endless buffs
-		Works for potions and buff stations
+		Toggles endless potion buffs
+		You can change the required stack count with the "Endless Amount" configs
+		'''
+}
+
+EndlessStationBuffs: {
+	Label: "[i:3198] Endless Station Buffs"
+	Tooltip:
+		'''
+		Toggles endless station/arena buffs
 		You can change the required stack count with the "Endless Amount" configs
 		'''
 }
@@ -19,8 +27,17 @@ EndlessHealing: {
 		'''
 }
 
+EndlessBanners: {
+	Label: "[i:1683] Endless Banners"
+	Tooltip:
+		'''
+		Toggles endless banners
+		You can change the required stack count with the "Endless Amount" configs
+		'''
+}
+
 EndlessAmmo: {
-	Label: "[i:2177] Endless Ammo"
+	Label: "[i:97] Endless Ammo"
 	Tooltip:
 		'''
 		Toggles endless ammo
@@ -68,43 +85,53 @@ EndlessWeapons: {
 }
 
 EndlessBuffAmount: {
-	Label: "[i:3119] Stack Requirement for Endless Potion Buffs"
+	Label: "[i:161] Stack Requirement for Endless Potion Buffs"
 	Tooltip: Change the amount of items needed for endless potion buffs
 }
 
 EndlessStationAmount: {
-	Label: "[i:3119] Stack Requirement for Endless Buff Stations"
+	Label: "[i:161] Stack Requirement for Endless Buff Stations"
 	Tooltip: Change the amount of items needed for endless buff stations
 }
 
 EndlessHealingAmount: {
-	Label: "[i:3119] Stack Requirement for Endless Healing and Mana Potions"
+	Label: "[i:161] Stack Requirement for Endless Healing and Mana Potions"
 	Tooltip: Change the amount of items needed for endless healing and mana potions
 }
 
+EndlessBannerAmount: {
+	Label: "[i:161] Stack Requirement for Endless Banners"
+	Tooltip: Change the amount of items needed for endless banners
+}
+
 EndlessItemAmount: {
-	Label: "[i:3119] Stack Requirement for Endless Consumables"
+	Label: "[i:161] Stack Requirement for Endless Consumables"
 	Tooltip: Change the amount of items needed for endless consumables
 }
 
 EndlessWeaponAmount: {
-	Label: "[i:3119] Stack Requirement for Endless Consumable Weapons"
+	Label: "[i:161] Stack Requirement for Endless Consumable Weapons"
 	Tooltip: Change the amount of items needed for endless consumable weapons
 }
 
 EndlessAmmoAmount: {
 	Tooltip: Change the amount of items needed for endless ammo
-	Label: "[i:3119] Stack Requirement for Endless Ammo"
+	Label: "[i:161] Stack Requirement for Endless Ammo"
 }
 
 EndlessBaitAmount: {
 	Tooltip: Change the amount of items needed for endless fishing bait
-	Label: "[i:3119] Stack Requirement for Endless Fishing Bait"
+	Label: "[i:161] Stack Requirement for Endless Fishing Bait"
 }
 
 ActiveBuffsHaveEnchantedEffects: {
-	Label: "[i:487] Active Buff Items Have Enchanted Effects"
+	Label: "[i:1067] Active Buff Items Have Enchanted Effects"
 	Tooltip: Toggles if active buff items have an enchanted effect, like Minecraft
+}
+
+ActiveBannersHaveEnchantedEffects: {
+	Label: "[i:1067] Active Banners Have Enchanted Effects"
+	Tooltip: Toggles if active banners have an enchanted effect, like Minecraft
 }
 
 IncreaseMaxStack: {
@@ -240,7 +267,7 @@ AutoReuseUpgrades: {
 }
 
 GoodPrefixesHaveEnchantedEffects: {
-	Label: "[i:273] Good Prefixes Have Enchanted Effects"
+	Label: "[i:1067] Good Prefixes Have Enchanted Effects"
 	Tooltip: Toggles if items with good prefixes have an enchanted effect, like Minecraft
 }
 
@@ -367,6 +394,16 @@ LunarPillarsDropMoreFragments: {
 LunarEnemiesDropFragments: {
 	Label: "[i:3456] Lunar Enemies Drop Fragments"
 	Tooltip: Toggles if Lunar enemies can drop fragments
+}
+
+JellyfishDropGel: {
+	Label: "[i:2436] Jellyfish Drop Gel"
+	Tooltip: Toggles if jellyfish drop gel
+}
+
+PinkJellyfishDropPinkGel: {
+	Label: "[i:2438] Pink Jellyfish Drop Pink Gel"
+	Tooltip: Toggles if pink jellyfish drop pink gel
 }
 
 OneKillForBestiaryEntries: {
@@ -570,6 +607,11 @@ NoLakeSizePenalty: {
 NoPylonTeleportRestrictions: {
 	Label: "[i:4951] No Pylon Teleport Restrictions"
 	Tooltip: Toggles if there are pylon teleportation restrictions
+}
+
+NoPylonPlacementRestrictions: {
+	Label: "[i:4951] No Pylon Placement Restrictions"
+	Tooltip: Toggles if there are pylon placement restrictions
 }
 
 InstantRespawn: {

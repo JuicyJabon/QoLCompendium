@@ -39,7 +39,7 @@ EndlessIchorQuiver: {
 }
 
 EndlessJestersQuiver: {
-	DisplayName: Endless Jesters Quiver
+	DisplayName: Endless Jester's Quiver
 	Tooltip: ""
 }
 
@@ -155,7 +155,7 @@ EndlessPoisonDartPouch: {
 
 EndlessSeedPouch: {
 	DisplayName: Endless Seed Pouch
-	Tooltip: For use with Blowpipe
+	Tooltip: ""
 }
 
 EndlessBlueFlareBox: {
@@ -250,139 +250,107 @@ EndlessStarPouch: {
 
 EndlessStyngerBoltQuiver: {
 	DisplayName: Endless Stynger Bolt Quiver
-	Tooltip: Explodes into deadly shrapnel
+	Tooltip: ""
 }
 
 EndlessClusterRocketIIPouch: {
 	DisplayName: Endless Cluster Rocket II Pouch
-	Tooltip: Will destroy tiles
+	Tooltip: ""
 }
 
 EndlessClusterRocketIPouch: {
 	DisplayName: Endless Cluster Rocket I Pouch
-	Tooltip: Will not destroy tiles
+	Tooltip: ""
 }
 
 EndlessDryRocketPouch: {
 	DisplayName: Endless Dry Rocket Pouch
-	Tooltip: Absorbs liquid on impact
+	Tooltip: ""
 }
 
 EndlessHoneyRocketPouch: {
 	DisplayName: Endless Honey Rocket Pouch
-	Tooltip: Spreads honey on impact
+	Tooltip: ""
 }
 
 EndlessLavaRocketPouch: {
 	DisplayName: Endless Lava Rocket Pouch
-	Tooltip: Spreads lava on impact
+	Tooltip: ""
 }
 
 EndlessMiniNukeIIPouch: {
 	DisplayName: Endless Mini Nuke II Pouch
-	Tooltip: Huge blast radius. Will destroy tiles
+	Tooltip: ""
 }
 
 EndlessMiniNukeIPouch: {
 	DisplayName: Endless Mini Nuke I Pouch
-	Tooltip: Huge blast radius. Will not destroy tiles
+	Tooltip: ""
 }
 
 EndlessRocketIIIPouch: {
 	DisplayName: Endless Rocket III Pouch
-	Tooltip: Large blast radius. Will not destroy tiles
+	Tooltip: ""
 }
 
 EndlessRocketIIPouch: {
 	DisplayName: Endless Rocket II Pouch
-	Tooltip: Small blast radius. Will destroy tiles
+	Tooltip: ""
 }
 
 EndlessRocketIPouch: {
 	DisplayName: Endless Rocket I Pouch
-	Tooltip: Small blast radius. Will not destroy tiles
+	Tooltip: ""
 }
 
 EndlessRocketIVPouch: {
 	DisplayName: Endless Rocket IV Pouch
-	Tooltip: Large blast radius. Will destroy tiles
+	Tooltip: ""
 }
 
 EndlessWetRocketPouch: {
 	DisplayName: Endless Wet Rocket Pouch
-	Tooltip: Spreads water on impact
+	Tooltip: ""
 }
 
 EndlessBlueSolution: {
 	DisplayName: Endless Blue Solution
-	Tooltip:
-		'''
-		Used by the Clentaminator
-		Spreads the Hallow
-		'''
+	Tooltip: ""
 }
 
 EndlessBrownSolution: {
 	DisplayName: Endless Brown Solution
-	Tooltip:
-		'''
-		Used by the Clentaminator
-		Spreads the Forest
-		'''
+	Tooltip: ""
 }
 
 EndlessDarkBlueSolution: {
 	DisplayName: Endless Dark Blue Solution
-	Tooltip:
-		'''
-		Used by the Clentaminator
-		Spreads Glowing Mushrooms
-		'''
+	Tooltip: ""
 }
 
 EndlessGreenSolution: {
 	DisplayName: Endless Green Solution
-	Tooltip:
-		'''
-		Used by the Clentaminator
-		Spreads the Purity
-		'''
+	Tooltip: ""
 }
 
 EndlessPurpleSolution: {
 	DisplayName: Endless Purple Solution
-	Tooltip:
-		'''
-		Used by the Clentaminator
-		Spreads the Corruption
-		'''
+	Tooltip: ""
 }
 
 EndlessRedSolution: {
 	DisplayName: Endless Red Solution
-	Tooltip:
-		'''
-		Used by the Clentaminator
-		Spreads the Crimson
-		'''
+	Tooltip: ""
 }
 
 EndlessWhiteSolution: {
 	DisplayName: Endless White Solution
-	Tooltip:
-		'''
-		Used by the Clentaminator
-		Spreads the Snow
-		'''
+	Tooltip: ""
 }
 
 EndlessYellowSolution: {
 	DisplayName: Endless Yellow Solution
-	Tooltip:
-		'''
-		Used by the Clentaminator
-		Spreads the Desert
-		'''
+	Tooltip: ""
 }
 
 EndlessScrapMetalQuiver: {
@@ -576,7 +544,7 @@ EndlessBubonicRoundPouch: {
 }
 
 EndlessDryadsTearPouch: {
-	DisplayName: Endless Dryads Tear Pouch
+	DisplayName: Endless Dryad's Tear Pouch
 	Tooltip: ""
 }
 
@@ -637,11 +605,7 @@ EndlessWulfrumCogworkShard: {
 
 EndlessAstralSolution: {
 	DisplayName: Endless Astral Solution
-	Tooltip:
-		'''
-		Used by the Clentaminator
-		Spreads the Astral Infection
-		'''
+	Tooltip: ""
 }
 
 EndlessOblivionQuiver: {
@@ -685,11 +649,7 @@ EndlessInvarQuiver: {
 }
 
 EndlessCyanSolution: {
-	Tooltip:
-		'''
-		Used by the Clentaminator
-		Spreads the Frozen Hell
-		'''
+	Tooltip: ""
 	DisplayName: Endless Cyan Solution
 }
 
@@ -730,5 +690,230 @@ EndlessAccursedQuiver: {
 
 EndlessBeetleQuiver: {
 	DisplayName: Endless Beetle Quiver
+	Tooltip: ""
+}
+
+EndlessCompressedAirCapsulePouch: {
+	DisplayName: Endless Compressed Air Capsule Pouch
+	Tooltip: ""
+}
+
+EndlessFishyumCoinBag: {
+	DisplayName: Endless Fishyum Coin Bag
+	Tooltip: ""
+}
+
+EndlessHayBale: {
+	DisplayName: Endless Hay Bale
+	Tooltip: ""
+}
+
+EndlessWoodSplinterBundle: {
+	DisplayName: Endless Wood Splinter Bundle
+	Tooltip: ""
+}
+
+EndlessDiggerRocketPouch: {
+	DisplayName: Endless Digger Rocket Pouch
+	Tooltip: ""
+}
+
+EndlessDrillRocketPouch: {
+	DisplayName: Endless Drill Rocket Pouch
+	Tooltip: ""
+}
+
+EndlessMakeshiftProximityMinePouch: {
+	DisplayName: Endless Makeshift Proximity Mine Pouch
+	Tooltip: ""
+}
+
+EndlessMissile03Pouch: {
+	DisplayName: Endless Missile 03 Pouch
+	Tooltip: ""
+}
+
+EndlessMissile05Pouch: {
+	DisplayName: Endless Missile 05 Pouch
+	Tooltip: ""
+}
+
+EndlessMissile07Pouch: {
+	DisplayName: Endless Missile 07 Pouch
+	Tooltip: ""
+}
+
+EndlessPrototypeRocketPouch: {
+	DisplayName: Endless Prototype Rocket Pouch
+	Tooltip: ""
+}
+
+EndlessBlackSolution: {
+	DisplayName: Endless Black Solution
+	Tooltip: ""
+}
+
+EndlessGraySolution: {
+	DisplayName: Endless Gray Solution
+	Tooltip: ""
+}
+
+EndlessMeanSolution: {
+	DisplayName: Endless Mean Solution
+	Tooltip: ""
+}
+
+EndlessTealSolution: {
+	DisplayName: Endless Teal Solution
+	Tooltip: ""
+}
+
+EndlessZincBulletPouch: {
+	Tooltip: ""
+	DisplayName: Endless Zinc Bullet Pouch
+}
+
+EndlessTrojanBulletPouch: {
+	Tooltip: ""
+	DisplayName: Endless Trojan Bullet Pouch
+}
+
+EndlessTectonicBulletPouch: {
+	Tooltip: ""
+	DisplayName: Endless Tectonic Bullet Pouch
+}
+
+EndlessStickyBulletPouch: {
+	Tooltip: ""
+	DisplayName: Endless Sticky Bullet Pouch
+}
+
+EndlessShimmerBulletPouch: {
+	Tooltip: ""
+	DisplayName: Endless Shimmer Bullet Pouch
+}
+
+EndlessShadowflameBulletPouch: {
+	Tooltip: ""
+	DisplayName: Endless Shadowflame Bullet Pouch
+}
+
+EndlessSeashellBulletPouch: {
+	Tooltip: ""
+	DisplayName: Endless Seashell Bullet Pouch
+}
+
+EndlessPoisonBulletPouch: {
+	Tooltip: ""
+	DisplayName: Endless Poison Bullet Pouch
+}
+
+EndlessJestersBulletPouch: {
+	Tooltip: ""
+	DisplayName: Endless Jester's Bullet Pouch
+}
+
+EndlessHyperBulletPouch: {
+	Tooltip: ""
+	DisplayName: Endless Hyper Bullet Pouch
+}
+
+EndlessBouncyBulletPouch: {
+	Tooltip: ""
+	DisplayName: Endless Bouncy Bullet Pouch
+}
+
+EndlessBloodshotPouch: {
+	Tooltip: ""
+	DisplayName: Endless Bloodshot Pouch
+}
+
+EndlessForceBreakQuiver: {
+	DisplayName: Endless Force Break Quiver
+	Tooltip: ""
+}
+
+EndlessDivineFireBulletPouch: {
+	DisplayName: Endless Divine Fire Bullet Pouch
+	Tooltip: ""
+}
+
+EndlessForceBreakBulletPouch: {
+	DisplayName: Endless Force Break Bullet Pouch
+	Tooltip: ""
+}
+
+EndlessMartyrBulletPouch: {
+	DisplayName: Endless Martyr's Bullet Pouch
+	Tooltip: ""
+}
+
+EndlessPlagueBulletPouch: {
+	DisplayName: Endless Plague Bullet Pouch
+	Tooltip: ""
+}
+
+EndlessSteelBulletPouch: {
+	DisplayName: Endless Steel Bullet Pouch
+	Tooltip: ""
+}
+
+EndlessRailgunBattery: {
+	DisplayName: Endless Railgun Battery
+	Tooltip: ""
+}
+
+EndlessMiniNukeIIIPouch: {
+	DisplayName: Endless Mini Nuke III Pouch
+	Tooltip: ""
+}
+
+EndlessMiniNukeIVPouch: {
+	DisplayName: Endless Mini Nuke IV Pouch
+	Tooltip: ""
+}
+
+EndlessShellIIIPouch: {
+	DisplayName: Endless Shell III Pouch
+	Tooltip: ""
+}
+
+EndlessShellIIPouch: {
+	DisplayName: Endless Shell II Pouch
+	Tooltip: ""
+}
+
+EndlessShellIPouch: {
+	DisplayName: Endless Shell I Pouch
+	Tooltip: ""
+}
+
+EndlessShellIVPouch: {
+	DisplayName: Endless Shell IV Pouch
+	Tooltip: ""
+}
+
+EndlessShellVPouch: {
+	DisplayName: Endless Shell V Pouch
+	Tooltip: ""
+}
+
+EndlessT1MissilePouch: {
+	DisplayName: Endless T.1 Missile Pouch
+	Tooltip: ""
+}
+
+EndlessT2MissilePouch: {
+	DisplayName: Endless T.2 Missile Pouch
+	Tooltip: ""
+}
+
+EndlessT3MissilePouch: {
+	DisplayName: Endless T.3 Missile Pouch
+	Tooltip: ""
+}
+
+EndlessT4MissilePouch: {
+	DisplayName: Endless T.4 Missile Pouch
 	Tooltip: ""
 }

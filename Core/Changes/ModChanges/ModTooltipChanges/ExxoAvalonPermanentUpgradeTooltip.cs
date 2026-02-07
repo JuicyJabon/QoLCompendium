@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
 {
-    [ExtendsFromMod(ModConditions.exxoAvalonOriginsName)]
-    [JITWhenModsEnabled(ModConditions.exxoAvalonOriginsName)]
+    [ExtendsFromMod(CrossModSupport.ExxoAvalonOrigins.Name)]
+    [JITWhenModsEnabled(CrossModSupport.ExxoAvalonOrigins.Name)]
     public class ExxoAvalonPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -16,12 +16,12 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
             var tooltipLine = new TooltipLine(Mod, "UsedItem", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.UsedItem"));
             tooltipLine.OverrideColor = Color.LightGreen;
 
-            if (item.type == Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "StaminaCrystal"))
+            if (item.type == Common.GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "StaminaCrystal"))
             {
                 tooltipLine.Text = Common.GetTooltipValue("UsedItemCountable", Main.LocalPlayer.GetModPlayer<AvalonStaminaPlayer>().StatStam / 30 - 1, 9);
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "EnergyCrystal") && Main.LocalPlayer.GetModPlayer<AvalonStaminaPlayer>().EnergyCrystal)
+            if (item.type == Common.GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "EnergyCrystal") && Main.LocalPlayer.GetModPlayer<AvalonStaminaPlayer>().EnergyCrystal)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }

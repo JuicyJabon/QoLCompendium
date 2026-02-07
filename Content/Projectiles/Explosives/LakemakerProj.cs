@@ -8,7 +8,7 @@
         {
             Projectile.width = 19;
             Projectile.height = 31;
-            Projectile.aiStyle = 16;
+            Projectile.aiStyle = ProjAIStyleID.Explosive;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 170;

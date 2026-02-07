@@ -4,8 +4,8 @@ using ClickerClass.Items.Placeable;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(ModConditions.clickerClassName)]
-    [ExtendsFromMod(ModConditions.clickerClassName)]
+    [JITWhenModsEnabled(CrossModSupport.ClickerClass.Name)]
+    [ExtendsFromMod(CrossModSupport.ClickerClass.Name)]
     public static class ClickerClassBuffItems
     {
         public static NewBuffEffect[] ClickerClassEffects = [

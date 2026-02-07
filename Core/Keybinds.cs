@@ -1,9 +1,12 @@
 ﻿using QoLCompendium.Content.Items.Tools.Mirrors;
+using QoLCompendium.Core.Changes.NPCChanges;
 using QoLCompendium.Core.Changes.PlayerChanges;
 using QoLCompendium.Core.UI.Panels;
 using Terraria.GameInput;
 using Terraria.ModLoader.Config;
 using Terraria.ObjectData;
+using ThoriumMod.Items.Donate;
+using ThoriumMod.Utilities;
 
 namespace QoLCompendium.Core
 {
@@ -23,7 +26,7 @@ namespace QoLCompendium.Core
             {
                 foreach (var npc in from n in Main.npc where n is not null && n.active && n.townNPC && !n.homeless select n)
                 {
-                    QoLCompendium.TownEntitiesTeleportToHome(npc, npc.homeTileX, npc.homeTileY);
+                    TeleportNPCsHome.TownEntitiesTeleportToHome(npc, npc.homeTileX, npc.homeTileY);
                 }
                 Main.NewText(Language.GetTextValue("Mods.QoLCompendium.Messages.TeleportNPCsHome"));
             }
@@ -132,6 +135,11 @@ namespace QoLCompendium.Core
                 QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.CellPhone), Player.inventory));
             else if (Player.HasItem(ItemID.Shellphone))
                 QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.Shellphone), Player.inventory));
+            else if (CrossModSupport.Thorium.Loaded)
+            {
+                if (WishingGlassAutoUse.HasWishingGlass(Player) && WishingGlassAutoUse.CanUseWishingGlass(Player))
+                    QuickUseItemAt(WishingGlassAutoUse.WishingGlassSlot(Player));
+            }
         }
 
         public void AutoUseMosaicMirror()
@@ -154,6 +162,26 @@ namespace QoLCompendium.Core
                         Player.ItemCheck();
                 }
             }
+        }
+    }
+
+    [JITWhenModsEnabled(CrossModSupport.Thorium.Name)]
+    [ExtendsFromMod(CrossModSupport.Thorium.Name)]
+    public static class WishingGlassAutoUse
+    {
+        public static bool HasWishingGlass(Player player)
+        {
+            return player.HasItem(ModContent.ItemType<WishingGlass>());
+        }
+
+        public static bool CanUseWishingGlass(Player player)
+        {
+            return player.GetThoriumPlayer().itemWishingGlassChoice == ThoriumMod.UI.ResourceBars.WishingGlassChoice.Home;
+        }
+
+        public static int WishingGlassSlot(Player player)
+        {
+            return Common.GetSlotItemIsIn(new(ModContent.ItemType<WishingGlass>()), player.inventory);
         }
     }
 

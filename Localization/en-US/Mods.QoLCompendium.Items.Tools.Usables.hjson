@@ -128,3 +128,12 @@ WatchingEye: {
 	DisplayName: Watching Eye
 	Tooltip: Reveals the whole map
 }
+
+SuperchargedSuperCell: {
+	DisplayName: Supercharged Super Cell
+	Tooltip:
+		'''
+		Keeps Draedon's Arsenal items at 100% charge
+		Works from any storage
+		'''
+}

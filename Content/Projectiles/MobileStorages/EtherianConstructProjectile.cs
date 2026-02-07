@@ -9,7 +9,7 @@ namespace QoLCompendium.Content.Projectiles.MobileStorages
         {
             Projectile.width = 22;
             Projectile.height = 36;
-            Projectile.aiStyle = 97;
+            Projectile.aiStyle = ProjAIStyleID.FlyingPiggyBank;
             Projectile.tileCollide = false;
             Projectile.timeLeft = 10800;
         }
@@ -25,7 +25,7 @@ namespace QoLCompendium.Content.Projectiles.MobileStorages
             {
                 Player player = Main.player[Main.myPlayer];
                 BankPlayer modPlayer = player.GetModPlayer<BankPlayer>();
-                PortableBankAI.BankAI(Projectile, ModContent.ItemType<EtherianConstruct>(), -4, ref modPlayer.defenders, player, modPlayer);
+                PortableBankAI.BankAI(Projectile, ModContent.ItemType<EtherianConstruct>(), BankRange.DefendersForge, player);
             }
         }
     }

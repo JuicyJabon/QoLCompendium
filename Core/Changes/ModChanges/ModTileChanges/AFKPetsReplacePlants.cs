@@ -13,7 +13,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTileChanges
                 if (Player.HeldItem.type == ItemID.StaffofRegrowth || Player.HeldItem.type == ItemID.AcornAxe || Main.mouseItem != null && (Main.mouseItem.type == ItemID.StaffofRegrowth || Main.mouseItem.type == ItemID.AcornAxe))
                 {
                     Tile tile = Main.tile[Player.tileTargetX, Player.tileTargetY];
-                    if (tile.TileType == Common.GetModTile(ModConditions.afkpetsMod, "Plants"))
+                    if (tile.TileType == Common.GetModTile(CrossModSupport.AFKPets.Mod, "Plants"))
                         GetPlantDrops(tile);
                 }
             }
@@ -28,27 +28,27 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTileChanges
             switch (tile.TileFrameX / 18)
             {
                 case 1:
-                    DropItems(stage, Common.GetModItem(ModConditions.afkpetsMod, "Carrot"), Common.GetModItem(ModConditions.afkpetsMod, "CarrotSeedBag"));
+                    DropItems(stage, Common.GetModItem(CrossModSupport.AFKPets.Mod, "Carrot"), Common.GetModItem(CrossModSupport.AFKPets.Mod, "CarrotSeedBag"));
                     ResetTileFrame(tile);
                     break;
                 case 2:
-                    DropItems(stage, Common.GetModItem(ModConditions.afkpetsMod, "Potato"), Common.GetModItem(ModConditions.afkpetsMod, "SeedPotatoBag"));
+                    DropItems(stage, Common.GetModItem(CrossModSupport.AFKPets.Mod, "Potato"), Common.GetModItem(CrossModSupport.AFKPets.Mod, "SeedPotatoBag"));
                     ResetTileFrame(tile);
                     break;
                 case 3:
-                    DropItems(stage, Common.GetModItem(ModConditions.afkpetsMod, "GlowBerry"), Common.GetModItem(ModConditions.afkpetsMod, "GlowberrySeedBag"));
+                    DropItems(stage, Common.GetModItem(CrossModSupport.AFKPets.Mod, "GlowBerry"), Common.GetModItem(CrossModSupport.AFKPets.Mod, "GlowberrySeedBag"));
                     ResetTileFrame(tile);
                     break;
                 case 4:
-                    DropItems(stage, Common.GetModItem(ModConditions.afkpetsMod, "Flax"), Common.GetModItem(ModConditions.afkpetsMod, "FlaxSeedBag"));
+                    DropItems(stage, Common.GetModItem(CrossModSupport.AFKPets.Mod, "Flax"), Common.GetModItem(CrossModSupport.AFKPets.Mod, "FlaxSeedBag"));
                     ResetTileFrame(tile);
                     break;
                 case 5:
-                    DropItems(stage, Common.GetModItem(ModConditions.afkpetsMod, "Beet"), Common.GetModItem(ModConditions.afkpetsMod, "BeetSeedBag"));
+                    DropItems(stage, Common.GetModItem(CrossModSupport.AFKPets.Mod, "Beet"), Common.GetModItem(CrossModSupport.AFKPets.Mod, "BeetSeedBag"));
                     ResetTileFrame(tile);
                     break;
                 case 6:
-                    DropItems(stage, Common.GetModItem(ModConditions.afkpetsMod, "MiracleFruit"), Common.GetModItem(ModConditions.afkpetsMod, "MiracleFruitSeedBag"));
+                    DropItems(stage, Common.GetModItem(CrossModSupport.AFKPets.Mod, "MiracleFruit"), Common.GetModItem(CrossModSupport.AFKPets.Mod, "MiracleFruitSeedBag"));
                     ResetTileFrame(tile);
                     break;
             }
@@ -87,7 +87,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTileChanges
             {
                 if (Main.LocalPlayer.HeldItem.type == ItemID.StaffofRegrowth || Main.LocalPlayer.HeldItem.type == ItemID.AcornAxe || Main.mouseItem != null && (Main.mouseItem.type == ItemID.StaffofRegrowth || Main.mouseItem.type == ItemID.AcornAxe))
                 {
-                    if (type == Common.GetModTile(ModConditions.afkpetsMod, "Plants"))
+                    if (type == Common.GetModTile(CrossModSupport.AFKPets.Mod, "Plants"))
                         fail = true;
                 }
             }

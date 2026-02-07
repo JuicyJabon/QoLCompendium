@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Solutions.Calamity
 {
-    [JITWhenModsEnabled(ModConditions.calamityName)]
-    [ExtendsFromMod(ModConditions.calamityName)]
+    [JITWhenModsEnabled(CrossModSupport.Calamity.Name)]
+    [ExtendsFromMod(CrossModSupport.Calamity.Name)]
     public class EndlessAstralSolution : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<AstralSolution>();

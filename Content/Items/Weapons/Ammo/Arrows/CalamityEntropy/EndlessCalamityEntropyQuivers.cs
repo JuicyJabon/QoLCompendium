@@ -2,15 +2,15 @@
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Arrows.CalamityEntropy
 {
-    [JITWhenModsEnabled(ModConditions.calamityEntropyName)]
-    [ExtendsFromMod(ModConditions.calamityEntropyName)]
+    [JITWhenModsEnabled(CrossModSupport.CalamityEntropy.Name)]
+    [ExtendsFromMod(CrossModSupport.CalamityEntropy.Name)]
     public class EndlessAnnihilateQuiver : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<AnnihilateArrow>();
     }
 
-    [JITWhenModsEnabled(ModConditions.calamityEntropyName)]
-    [ExtendsFromMod(ModConditions.calamityEntropyName)]
+    [JITWhenModsEnabled(CrossModSupport.CalamityEntropy.Name)]
+    [ExtendsFromMod(CrossModSupport.CalamityEntropy.Name)]
     public class EndlessHiveQuiver : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<HiveArrow>();

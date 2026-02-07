@@ -1,12 +1,11 @@
-﻿using QoLCompendium.Core;
-using QoLCompendium.Core.Changes.PlayerChanges;
+﻿using QoLCompendium.Core.UI.Panels;
 using Terraria.GameInput;
 
 namespace QoLCompendium.Content.Projectiles.MobileStorages
 {
     public class PortableBankAI
     {
-        public static void BankAI(Projectile projectile, int itemType, int chestType, ref int playerBank, Player player, BankPlayer bankPlayer)
+        public static void BankAI(Projectile projectile, int itemType, int chestType, Player player)
         {
             if (Main.gamePaused && !Main.gameMenu || Main.SmartCursorIsUsed)
                 return;
@@ -20,10 +19,8 @@ namespace QoLCompendium.Content.Projectiles.MobileStorages
             int lastTileRangeX = player.lastTileRangeX;
             int lastTileRangeY = player.lastTileRangeY;
 
-            if ((playerCenterX < projectileCenterX - lastTileRangeX || playerCenterX > projectileCenterX + lastTileRangeX + 1 || playerCenterY < projectileCenterY - lastTileRangeY || playerCenterY > projectileCenterY + lastTileRangeY + 1) && playerBank == projectile.whoAmI)
+            if (playerCenterX < projectileCenterX - lastTileRangeX || playerCenterX > projectileCenterX + lastTileRangeX + 1 || playerCenterY < projectileCenterY - lastTileRangeY || playerCenterY > projectileCenterY + lastTileRangeY + 1)
             {
-                playerBank = -1;
-                bankPlayer.chests = false;
                 return;
             }
             else
@@ -94,16 +91,8 @@ namespace QoLCompendium.Content.Projectiles.MobileStorages
                         }
                     }
                 }
-                playerBank = projectile.whoAmI;
-                bankPlayer.chests = true;
-                player.chest = chestType;
-                player.chestX = projectileCenterX;
-                player.chestY = projectileCenterY;
-                player.SetTalkNPC(playerBank, false);
-                Main.oldNPCShop = 0;
-                Main.playerInventory = true;
-                SoundEngine.PlaySound(SoundID.MenuOpen, Main.LocalPlayer.position, null);
-                Recipe.FindRecipes(false);
+
+                AllInOneAccessUI.StorageClick(chestType, SoundID.MenuOpen);
             }
         }
     }

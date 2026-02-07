@@ -5,8 +5,8 @@ using ContinentOfJourney.Items.StrangePotions;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
-    [ExtendsFromMod(ModConditions.homewardJourneyName)]
+    [JITWhenModsEnabled(CrossModSupport.HomewardJourney.Name)]
+    [ExtendsFromMod(CrossModSupport.HomewardJourney.Name)]
     public static class HomewardJourneyBuffItems
     {
         public static NewBuffEffect[] HomewardJourneyEffects = [
@@ -22,6 +22,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             new NewBuffEffect(ModContent.BuffType<NerveFibreBuff>()),
             //flasks
             new NewBuffEffect(ModContent.BuffType<Flask_DivineFireBuff>(), (int)Common.EffectTypes.Flask),
+            new NewBuffEffect(ModContent.BuffType<Flask_ForceBreakBuff>(), (int)Common.EffectTypes.Flask),
             new NewBuffEffect(ModContent.BuffType<Flask_PlagueBuff>(), (int)Common.EffectTypes.Flask),
             new NewBuffEffect(ModContent.BuffType<Flask_SteelBuff>(), (int)Common.EffectTypes.Flask),
             //strange potions
@@ -70,6 +71,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 new NewBuffItem(ModContent.ItemType<YangPotion>(), ModContent.BuffType<YangPotionBuff>(), Common.AllEffects[ModContent.BuffType<YangPotionBuff>()], 30, "PermanentYang", "Permanent Yang"),
                 //flasks
                 new NewBuffItem(ModContent.ItemType<DivineFireFlask>(), ModContent.BuffType<Flask_DivineFireBuff>(), Common.AllEffects[ModContent.BuffType<Flask_DivineFireBuff>()], 30, "PermanentFlaskOfDivineFire", "Permanent Flask of Divine Fire"),
+                new NewBuffItem(ModContent.ItemType<ForceBreakFlask>(), ModContent.BuffType<Flask_ForceBreakBuff>(), Common.AllEffects[ModContent.BuffType<Flask_ForceBreakBuff>()], 30, "PermanentFlaskOfForceBreak", "Permanent Flask of Force Break"),
                 new NewBuffItem(ModContent.ItemType<PlagueFlask>(), ModContent.BuffType<Flask_PlagueBuff>(), Common.AllEffects[ModContent.BuffType<Flask_PlagueBuff>()], 30, "PermanentFlaskOfPlague", "Permanent Flask of Plague"),
                 new NewBuffItem(ModContent.ItemType<SteelFlask>(), ModContent.BuffType<Flask_SteelBuff>(), Common.AllEffects[ModContent.BuffType<Flask_SteelBuff>()], 30, "PermanentFlaskOfSteel", "Permanent Flask of Steel"),
                 //strange
@@ -122,6 +124,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             Dictionary<BuffEffect, int> PermanentHomewardJourneyFlasks = new()
             {
                 { Common.AllEffects[ModContent.BuffType<Flask_DivineFireBuff>()], ModContent.BuffType<Flask_DivineFireBuff>() },
+                { Common.AllEffects[ModContent.BuffType<Flask_ForceBreakBuff>()], ModContent.BuffType<Flask_ForceBreakBuff>() },
                 { Common.AllEffects[ModContent.BuffType<Flask_PlagueBuff>()], ModContent.BuffType<Flask_PlagueBuff>() },
                 { Common.AllEffects[ModContent.BuffType<Flask_SteelBuff>()], ModContent.BuffType<Flask_SteelBuff>() }
             };
@@ -156,6 +159,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<BushOfLifeBuff>()], ModContent.BuffType<BushOfLifeBuff>() },
                 { Common.AllEffects[ModContent.BuffType<LifeLanternBuff>()], ModContent.BuffType<LifeLanternBuff>() },
                 { Common.AllEffects[ModContent.BuffType<Flask_DivineFireBuff>()], ModContent.BuffType<Flask_DivineFireBuff>() },
+                { Common.AllEffects[ModContent.BuffType<Flask_ForceBreakBuff>()], ModContent.BuffType<Flask_ForceBreakBuff>() },
                 { Common.AllEffects[ModContent.BuffType<Flask_PlagueBuff>()], ModContent.BuffType<Flask_PlagueBuff>() },
                 { Common.AllEffects[ModContent.BuffType<Flask_SteelBuff>()], ModContent.BuffType<Flask_SteelBuff>() },
                 { Common.AllEffects[ModContent.BuffType<AntiEncirclementBuff>()], ModContent.BuffType<AntiEncirclementBuff>() },

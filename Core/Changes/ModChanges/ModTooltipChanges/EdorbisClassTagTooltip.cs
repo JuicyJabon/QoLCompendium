@@ -12,9 +12,12 @@
             if (Common.VoidDamageClasses.Contains(item.DamageType))
                 return;
 
+            int index = tooltips.FindIndex(tt => tt.Mod.Equals("Terraria") && tt.Name.Equals("ItemName"));
+            if (index == -1) return;
+
             //ENGINEER
-            if (ModConditions.edorbisLoaded && item.CountsAsClass(Common.GetModDamageClass(ModConditions.edorbisMod, "EngineerDamageClass")) && item.IsAWeapon())
-                tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.EngineerClass")));
+            if (CrossModSupport.Edorbis.Loaded && item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.Edorbis.Mod, "EngineerDamageClass")) && item.IsAWeapon())
+                tooltips.Insert(index + 1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.EngineerClass")));
         }
     }
 }

@@ -24,7 +24,7 @@ namespace QoLCompendium.Content.Tiles.Other
             TileObjectData.addTile(Type);
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
             AddMapEntry(new Color(47, 51, 58));
-            DustType = 54;
+            DustType = DustID.Wraith;
             AdjTiles = new int[] { TileID.Platforms };
         }
 

@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
 {
-    [JITWhenModsEnabled(ModConditions.spiritClassicName)]
-    [ExtendsFromMod(ModConditions.spiritClassicName)]
+    [JITWhenModsEnabled(CrossModSupport.SpiritClassic.Name)]
+    [ExtendsFromMod(CrossModSupport.SpiritClassic.Name)]
     public class SpiritClassicBossSummonFix : GlobalItem
     {
         public override bool IsLoadingEnabled(Mod mod) => QoLCompendium.crossModConfig.SpiritClassicBossSummonClassificationFix;

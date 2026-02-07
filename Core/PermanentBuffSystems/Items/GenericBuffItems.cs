@@ -6,7 +6,8 @@
         {
             for (int i = ItemID.Count; i < ItemLoader.ItemCount; i++)
             {
-                if (!ItemLoader.GetItem(i).Item.IsBuffItemFromSupportedMod() && ItemLoader.GetItem(i).Item.buffType > BuffID.Count && ItemLoader.GetItem(i).Item.buffTime > 0 && ItemLoader.GetItem(i).Item.damage == -1)
+                //!ItemLoader.GetItem(i).Item.IsBuffItemFromSupportedMod() && 
+                if (ItemLoader.GetItem(i).Item.buffType > BuffID.Count && ItemLoader.GetItem(i).Item.buffTime > 0 && ItemLoader.GetItem(i).Item.damage == -1)
                 {
                     int buffType = ItemLoader.GetItem(i).Item.buffType;
                     if (BuffID.Sets.BasicMountData[buffType] == null && !Main.vanityPet[buffType] && !Main.lightPet[buffType] && !Main.debuff[buffType])

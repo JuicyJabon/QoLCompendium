@@ -7,29 +7,29 @@ namespace QoLCompendium.Core.PermanentBuffSystems
         public static void LoadTasks()
         {
             VanillaBuffItems.LoadTasks();
-            if (ModConditions.calamityLoaded)
+            if (CrossModSupport.Calamity.Loaded)
                 CalamityBuffItems.LoadTasks();
-            if (ModConditions.clickerClassLoaded)
+            if (CrossModSupport.ClickerClass.Loaded)
                 ClickerClassBuffItems.LoadTasks();
-            if (ModConditions.consolariaLoaded)
+            if (CrossModSupport.Consolaria.Loaded)
                 ConsolariaBuffItems.LoadTasks();
-            if (ModConditions.homewardJourneyLoaded)
+            if (CrossModSupport.HomewardJourney.Loaded)
                 HomewardJourneyBuffItems.LoadTasks();
-            if (ModConditions.martainsOrderLoaded)
+            if (CrossModSupport.MartinsOrder.Loaded)
                 MartinsOrderBuffItems.LoadTasks();
-            if (ModConditions.redemptionLoaded)
+            if (CrossModSupport.Redemption.Loaded)
                 RedemptionBuffItems.LoadTasks();
-            if (ModConditions.secretsOfTheShadowsLoaded)
+            if (CrossModSupport.SecretsOfTheShadows.Loaded)
                 SOTSBuffItems.LoadTasks();
-            if (ModConditions.shadowsOfAbaddonLoaded)
+            if (CrossModSupport.ShadowsOfAbaddon.Loaded)
                 ShadowsOfAbaddonBuffItems.LoadTasks();
-            if (ModConditions.spiritClassicLoaded)
+            if (CrossModSupport.SpiritClassic.Loaded)
                 SpiritClassicBuffItems.LoadTasks();
-            if (ModConditions.spiritReforgedLoaded)
+            if (CrossModSupport.SpiritReforged.Loaded)
                 SpiritReforgedBuffItems.LoadTasks();
-            if (ModConditions.thoriumLoaded)
+            if (CrossModSupport.Thorium.Loaded)
                 ThoriumBuffItems.LoadTasks();
-            if (ModConditions.vitalityLoaded)
+            if (CrossModSupport.Vitality.Loaded)
                 VitalityBuffItems.LoadTasks();
 
             //Load generic items from mods that aren't directly supported (NOT WORKING)

@@ -38,14 +38,38 @@ CalamityEffigyRecipes: {
 	Tooltip: Toggles if recipes are added for the Crimson and Corruption Effigies
 }
 
+CalamityCrateDropRevert: {
+	Label: "[i:3981] Undo Calamity Crate Nerf"
+	Tooltip: Toggles if crates are reverted back to their pre-nerf state when using Calamity
+}
+
+MoreCrateDrops: {
+	Label: "[i:3979] More Crate Drops"
+	Tooltip: Toggles if more crate drops are added for various mods
+}
+
 RemoveThoriumExhaustion: {
-	Label: "[i:3119] Remove Thorium Exhaustion"
+	Label: "[i:509] Remove Thorium Exhaustion"
 	Tooltip: Toggles if Thorium thrower weapons have the exhaustion mechanic removed
 }
 
 RemoveThoriumExhaustionTooltip: {
-	Label: "[i:509] Remove Thorium Exhaustion Tooltip"
+	Label: "[i:279] Remove Thorium Exhaustion Tooltip"
 	Tooltip: Toggles if Thorium thrower weapons have the exhaustion tooltip removed
+}
+
+EndlessInspirationPotions: {
+	Label: "[i:189] Endless Inspiration Potions"
+	Tooltip:
+		'''
+		Toggles endless Inspiration Potions
+		'Inspiration Potions - Thorium' is a Thorium addon!
+		'''
+}
+
+EndlessInspirationPotionsAmount: {
+	Label: "[i:161] Endless Inspiration Potions Amount"
+	Tooltip: Change the amount of items needed for endless Inspiration Potions
 }
 
 CalamityEntropyArmorPrefixesHaveEnchantedEffects: {
@@ -58,13 +82,18 @@ ShimmerableAnglerCoins: {
 	Tooltip: Toggles if Gold Angler Coins can be shimmered into Silver Angler Coins
 }
 
+HomewardJourneyRarityFix: {
+	Label: "[i:509] Homeward Journey Rarity Fix"
+	Tooltip: Toggles if the Flinx Fur Hat is green rarity instead of lime
+}
+
 EndlessVoidConsumables: {
 	Label: "[i:5041] Endless Secrets of the Shadows Void Consumables"
 	Tooltip: Toggles endless void consumables
 }
 
 EndlessVoidConsumablesAmount: {
-	Label: "[i:3119] Endless Secrets of the Shadows Void Consumables Amount"
+	Label: "[i:161] Endless Secrets of the Shadows Void Consumables Amount"
 	Tooltip: Change the amount of items needed for endless void consumables
 }
 

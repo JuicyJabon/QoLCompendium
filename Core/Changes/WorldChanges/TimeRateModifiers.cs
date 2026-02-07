@@ -17,7 +17,7 @@ namespace QoLCompendium.Core.Changes.WorldChanges
 
         public override void PreUpdateTime()
         {
-            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().sunPedestal == true)
+            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().sunPedestal)
             {
                 if (!Main.dayTime)
                 {
@@ -26,7 +26,7 @@ namespace QoLCompendium.Core.Changes.WorldChanges
                 }
             }
 
-            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().moonPedestal == true)
+            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().moonPedestal)
             {
                 if (Main.dayTime)
                 {
@@ -35,12 +35,12 @@ namespace QoLCompendium.Core.Changes.WorldChanges
                 }
             }
 
-            if (!Main.dayTime && Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bloodMoonPedestal == true)
+            if (!Main.dayTime && Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bloodMoonPedestal)
             {
                 Main.bloodMoon = true;
             }
 
-            if (Main.dayTime && Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eclipsePedestal == true)
+            if (Main.dayTime && Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eclipsePedestal)
             {
                 Main.eclipse = true;
             }

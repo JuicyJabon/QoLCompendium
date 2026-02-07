@@ -95,16 +95,16 @@ namespace QoLCompendium.Core.Changes.TileChanges
             int stage = tile.TileFrameX / 18;
             HashSet<int> modHerbTiles =
             [
-                Common.GetModTile(ModConditions.depthsMod, "ShadowShrub"),
-                Common.GetModTile(ModConditions.redemptionMod, "NightshadeTile"),
-                Common.GetModTile(ModConditions.shadowsOfAbaddonMod, "Welkinbell"),
-                Common.GetModTile(ModConditions.shadowsOfAbaddonMod, "Illumifern"),
-                Common.GetModTile(ModConditions.shadowsOfAbaddonMod, "Enduflora"),
-                Common.GetModTile(ModConditions.spiritClassicMod, "Cloudstalk"),
-                Common.GetModTile(ModConditions.spiritClassicMod, "SoulBloomTile"),
-                Common.GetModTile(ModConditions.spiritReforgedMod, "CloudstalkTile"),
-                Common.GetModTile(ModConditions.thoriumMod, "MarineKelp"),
-                Common.GetModTile(ModConditions.thoriumMod, "MarineKelp2")
+                Common.GetModTile(CrossModSupport.Depths.Mod, "ShadowShrub"),
+                Common.GetModTile(CrossModSupport.Redemption.Mod, "NightshadeTile"),
+                Common.GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Welkinbell"),
+                Common.GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Illumifern"),
+                Common.GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Enduflora"),
+                Common.GetModTile(CrossModSupport.SpiritClassic.Mod, "Cloudstalk"),
+                Common.GetModTile(CrossModSupport.SpiritClassic.Mod, "SoulBloomTile"),
+                Common.GetModTile(CrossModSupport.SpiritReforged.Mod, "CloudstalkTile"),
+                Common.GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp"),
+                Common.GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp2")
             ];
 
             if (tile.TileType == TileID.BloomingHerbs || tile.TileType == TileID.MatureHerbs)

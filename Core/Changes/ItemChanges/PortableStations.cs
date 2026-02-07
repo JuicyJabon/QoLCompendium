@@ -58,6 +58,7 @@ namespace QoLCompendium.Core.Changes.ItemChanges
             }
 
         }
+
         private void AddPortableStations(ILContext il)
         {
             var c = new ILCursor(il);

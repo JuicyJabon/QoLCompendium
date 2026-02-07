@@ -27,32 +27,32 @@ namespace QoLCompendium.Core.Changes.ItemChanges.ReforgeSystems
             }
 
             //VOID MELEE
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidMelee")))
+            else if (item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidMelee")))
                 prefix = IteratePrefix(rand, Prefixes.VoidMeleeReforgeTiers, currentPrefix);
 
 
             //VOID RANGED
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidRanged")))
+            else if (item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidRanged")))
                 prefix = IteratePrefix(rand, Prefixes.VoidRangedReforgeTiers, currentPrefix);
 
 
             //VOID MAGIC
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidMagic")))
+            else if (item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidMagic")))
                 prefix = IteratePrefix(rand, Prefixes.VoidMagicReforgeTiers, currentPrefix);
 
 
             //VOID SUMMON
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidSummon")))
+            else if (item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidSummon")))
                 prefix = IteratePrefix(rand, Prefixes.VoidSummonReforgeTiers, currentPrefix);
 
 
             //VOID BARD
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidSymphonic")))
+            else if (item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "VoidSymphonic")))
                 prefix = IteratePrefix(rand, Prefixes.VoidBardReforgeTiers, currentPrefix);
 
 
             //VOID HEALER
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidRadiant")))
+            else if (item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "VoidRadiant")))
             {
                 if (item.ModItem.MeleePrefix() && item.ModItem.Mod.Name == "SOTSBardHealer")
                     prefix = IteratePrefix(rand, Prefixes.VoidMeleeHealerReforgeTiers, currentPrefix);
@@ -61,15 +61,15 @@ namespace QoLCompendium.Core.Changes.ItemChanges.ReforgeSystems
             }
 
             //VOID THROWER
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidThrowing")))
+            else if (item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "VoidThrowing")))
                 prefix = IteratePrefix(rand, Prefixes.VoidThrowerReforgeTiers, currentPrefix);
 
             //VOID ROGUE
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.infernalEclipseMod, "VoidRogue")))
+            else if (item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.InfernalEclipse.Mod, "VoidRogue")))
                 prefix = IteratePrefix(rand, Prefixes.VoidRogueReforgeTiers, currentPrefix);
 
             // MELEE (includes tools and whips)
-            else if ((item.CountsAsClass<MeleeDamageClass>() || item.CountsAsClass(Common.GetModDamageClass(ModConditions.calamityMod, "MeleeRangedHybridDamageClass")) || item.CountsAsClass<SummonMeleeSpeedDamageClass>()) && !item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidMelee")))
+            else if ((item.CountsAsClass<MeleeDamageClass>() || item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.Calamity.Mod, "MeleeRangedHybridDamageClass")) || item.CountsAsClass<SummonMeleeSpeedDamageClass>()) && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidMelee")))
             {
                 // Terrarian (has its own special "Legendary" for marketing reasons)
                 // Other items that want to use Legendary2 are also compatible
@@ -92,33 +92,33 @@ namespace QoLCompendium.Core.Changes.ItemChanges.ReforgeSystems
             }
 
             // RANGED
-            else if (item.CountsAsClass<RangedDamageClass>() && !item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidRanged")))
+            else if (item.CountsAsClass<RangedDamageClass>() && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidRanged")))
                 prefix = IteratePrefix(rand, Prefixes.RangedReforgeTiers, currentPrefix);
 
             // MAGIC
-            else if ((item.CountsAsClass<MagicDamageClass>() || item.CountsAsClass<MagicSummonHybridDamageClass>()) && !item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidMagic")))
+            else if ((item.CountsAsClass<MagicDamageClass>() || item.CountsAsClass<MagicSummonHybridDamageClass>()) && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidMagic")))
                 prefix = IteratePrefix(rand, Prefixes.MagicReforgeTiers, currentPrefix);
 
             // SUMMON (not whips)
-            else if (item.CountsAsClass<SummonDamageClass>() && !item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsMod, "VoidSummon")))
+            else if (item.CountsAsClass<SummonDamageClass>() && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidSummon")))
                 prefix = IteratePrefix(rand, Prefixes.SummonReforgeTiers, currentPrefix);
 
             // THROWER
-            else if (item.CountsAsClass<ThrowingDamageClass>() && !ModConditions.calamityLoaded && (!item.CountsAsClass(Common.GetModDamageClass(ModConditions.infernalEclipseMod, "VoidRogue")) || !item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidThrowing"))))
+            else if (item.CountsAsClass<ThrowingDamageClass>() && !CrossModSupport.Calamity.Loaded && (!item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.InfernalEclipse.Mod, "VoidRogue")) || !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "VoidThrowing"))))
                 prefix = IteratePrefix(rand, Prefixes.ThrowerReforgeTiers, currentPrefix);
 
             // ROGUE
-            else if (item.CountsAsClass<ThrowingDamageClass>() && ModConditions.calamityLoaded && (!item.CountsAsClass(Common.GetModDamageClass(ModConditions.infernalEclipseMod, "VoidRogue")) || !item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidThrowing"))))
+            else if (item.CountsAsClass<ThrowingDamageClass>() && CrossModSupport.Calamity.Loaded && (!item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.InfernalEclipse.Mod, "VoidRogue")) || !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "VoidThrowing"))))
                 prefix = IteratePrefix(rand, Prefixes.RogueReforgeTiers, currentPrefix);
-            
+
             //BARD
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.thoriumMod, "BardDamage")) && !item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidSymphonic")))
+            else if (item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.Thorium.Mod, "BardDamage")) && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "VoidSymphonic")))
                 prefix = IteratePrefix(rand, Prefixes.BardReforgeTiers, currentPrefix);
             
             //HEALER
-            else if ((item.CountsAsClass(Common.GetModDamageClass(ModConditions.thoriumMod, "HealerDamage")) || item.CountsAsClass(Common.GetModDamageClass(ModConditions.thoriumMod, "HealerToolDamageHybrid"))) && !item.CountsAsClass(Common.GetModDamageClass(ModConditions.secretsOfTheShadowsBardHealerMod, "VoidRadiant")))
+            else if ((item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.Thorium.Mod, "HealerDamage")) || item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.Thorium.Mod, "HealerToolDamageHybrid"))) && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "VoidRadiant")))
             {
-                if (item.ModItem.MeleePrefix() && item.ModItem.Mod.Name == "CalamityBardHealer" || item.ModItem.Mod.Name == "SOTSBardHealer" || item.ModItem.Mod.Name == "SpookyBardHealer" || item.ModItem.Mod.Name == "SpiritBardHealer" || item.ModItem.Mod.Name == "MacroBardHealer" || item.ModItem.Mod.Name == "RedemptionBardHealer" || item.ModItem.Mod.Name == ModConditions.thoriumBossReworkName)
+                if (item.ModItem.MeleePrefix() && item.ModItem.Mod.Name == "CalamityBardHealer" || item.ModItem.Mod.Name == "SOTSBardHealer" || item.ModItem.Mod.Name == "SpookyBardHealer" || item.ModItem.Mod.Name == "SpiritBardHealer" || item.ModItem.Mod.Name == "MacroBardHealer" || item.ModItem.Mod.Name == "RedemptionBardHealer" || item.ModItem.Mod.Name == CrossModSupport.ThoriumHelheim.Name)
                     prefix = IteratePrefix(rand, Prefixes.MeleeReforgeTiers, currentPrefix);
                 else if (item.mana > 0 || item.ModItem.MagicPrefix())
                     prefix = IteratePrefix(rand, Prefixes.MagicReforgeTiers, currentPrefix);
@@ -127,11 +127,11 @@ namespace QoLCompendium.Core.Changes.ItemChanges.ReforgeSystems
             }
 
             //BLOOD HUNTER
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.vitalityMod, "BloodHunterClass")))
+            else if (item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.Vitality.Mod, "BloodHunterClass")))
                 prefix = IteratePrefix(rand, Prefixes.BloodHunterReforgeTiers, currentPrefix);
             
             //CLICKER
-            else if (item.CountsAsClass(Common.GetModDamageClass(ModConditions.clickerClassMod, "ClickerDamage")))
+            else if (item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.ClickerClass.Mod, "ClickerDamage")))
                 prefix = IteratePrefix(rand, Prefixes.ClickerReforgeTiers, currentPrefix);
 
             return prefix;

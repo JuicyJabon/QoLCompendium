@@ -1,8 +1,8 @@
 displayName = Quality of Life Compendium
 author = Jabon
-version = 2.3.1
+version = 2.4.1
 hideCode = true
 hideResources = true
 buildIgnore = *.csproj, *.user, *.sln, *.gitignore, *.editorconfig, *.md, *.ase, obj\*, bin\*, .vs\*, .cache\*, *.dll
-weakReferences = Avalon@1.3.0.1, CalamityEntropy@1.632, CalamityLegacy@0.0.3.4, CalamityMod@2.0.4.3, CatalystMod@1.1.2.3, Clamity@1.0.3.7, ClickerClass@1.4.1.1, Consolaria@2.1.3.2, ContinentOfJourney@0.8.61.16, CrystalDragons@2.1.2, DraedonExpansion@1.0, ElementsAwoken@1.3.13.4, FargowiltasSouls@1.6.10.6, Macrocosm@0.1.0.12, MartainsOrder@0.7.0, MrPlagueRaces@0.3.8, RagnarokMod@1.4.3.2, Redemption@0.8.0.4076, SOTS@0.24.1.4, SacredTools@1.2.3, SpiritMod@1.5.0.38, SpiritReforged@0.1.2.3, TheDepths@1.0.2.3, ThoriumMod@1.7.1.6, ThoriumRework@1.0.0, VanillaQoL@1.0.0.39, VitalityMod@1.3.4.1
-sortAfter = Avalon, CalamityEntropy, CalamityLegacy, CalamityMod, CatalystMod, Clamity, ClickerClass, Consolaria, ContinentOfJourney, CrystalDragons, DraedonExpansion, ElementsAwoken, FargowiltasSouls, Macrocosm, MartainsOrder, MrPlagueRaces, RagnarokMod, Redemption, SacredTools, SOTS, SpiritMod, SpiritReforged, TheDepths, ThoriumMod, ThoriumRework, VanillaQoL, VitalityMod
+weakReferences = Avalon@1.3.0.1, CalamityEntropy@1.632, CalamityLegacy@0.0.3.4, CalamityMod@2.0.4.3, CalValEX@11.3.1, CatalystMod@1.1.2.3, Clamity@1.0.3.7, ClickerClass@1.4.1.1, Consolaria@2.1.3.2, ContinentOfJourney@0.8.61.16, CrystalDragons@2.1.2, DraedonExpansion@1.0, ElementsAwoken@1.3.13.4, FargowiltasSouls@1.6.10.6, InspirationPotions@0.1, Macrocosm@0.1.0.12, MartainsOrder@0.7.0, MrPlagueRaces@0.3.8, RagnarokMod@1.4.3.2, Redemption@0.8.0.4076, SOTS@0.24.1.4, SacredTools@1.2.3, SpiritMod@1.5.0.38, SpiritReforged@0.1.2.3, TheDepths@1.0.2.3, ThoriumMod@1.7.1.6, ThoriumRework@1.0.0, VanillaQoL@1.0.0.39, VitalityMod@1.3.4.1
+sortAfter = Avalon, CalamityEntropy, CalamityLegacy, CalamityMod, CalValEX, CatalystMod, Clamity, ClickerClass, Consolaria, ContinentOfJourney, CrystalDragons, DraedonExpansion, ElementsAwoken, FargowiltasSouls, InspirationPotions, Macrocosm, MartainsOrder, MrPlagueRaces, RagnarokMod, Redemption, SacredTools, SOTS, SpiritMod, SpiritReforged, TheDepths, ThoriumMod, ThoriumRework, VanillaQoL, VitalityMod

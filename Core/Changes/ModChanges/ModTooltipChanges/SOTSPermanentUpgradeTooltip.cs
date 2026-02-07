@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
 {
-    [ExtendsFromMod(ModConditions.secretsOfTheShadowsName)]
-    [JITWhenModsEnabled(ModConditions.secretsOfTheShadowsName)]
+    [ExtendsFromMod(CrossModSupport.SecretsOfTheShadows.Name)]
+    [JITWhenModsEnabled(CrossModSupport.SecretsOfTheShadows.Name)]
     public class SOTSPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -17,19 +17,19 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
             tooltipLine.OverrideColor = Color.LightGreen;
 
             VoidPlayer voidPlayer = VoidPlayer.ModPlayer(Main.LocalPlayer);
-            if (item.type == Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "ScarletStar") && voidPlayer.voidStar > 0)
+            if (item.type == Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "ScarletStar") && voidPlayer.voidStar > 0)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "VioletStar") && voidPlayer.voidStar > 0)
+            if (item.type == Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "VioletStar") && voidPlayer.voidStar > 0)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "SoulHeart") && voidPlayer.voidSoul > 0)
+            if (item.type == Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "SoulHeart") && voidPlayer.voidSoul > 0)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "VoidenAnkh"))
+            if (item.type == Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "VoidenAnkh"))
             {
                 tooltipLine.Text = Common.GetTooltipValue("UsedItemCountable", voidPlayer.voidAnkh, 5);
                 Common.AddLastTooltip(tooltips, tooltipLine);

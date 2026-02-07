@@ -1,4 +1,3 @@
-using QoLCompendium.Core;
 using QoLCompendium.Core.UI.Panels;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
@@ -41,11 +40,11 @@ namespace QoLCompendium.Content.NPCs
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
-            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
-            {
+            bestiaryEntry.Info.AddRange(
+            [
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
                 new FlavorTextBestiaryInfoElement("He hails from a far away land to sell items that are difficult to get, but how did he even obtain them...")
-            });
+            ]);
         }
 
         public override void SetDefaults()
@@ -54,38 +53,31 @@ namespace QoLCompendium.Content.NPCs
             NPC.friendly = true;
             NPC.width = 18;
             NPC.height = 48;
-            NPC.aiStyle = 7;
+            NPC.aiStyle = NPCAIStyleID.Passive;
             NPC.damage = 15;
             NPC.defense = 25;
             NPC.lifeMax = 500;
             NPC.HitSound = new SoundStyle?(SoundID.NPCHit1);
             NPC.DeathSound = new SoundStyle?(SoundID.NPCDeath1);
             NPC.knockBackResist = 0.5f;
-            AnimationType = 22;
+            AnimationType = NPCID.Guide;
         }
 
         public override bool CanTownNPCSpawn(int numTownNPCs)
         {
-            if (QoLCompendium.mainConfig.BlackMarketDealerCanSpawn)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return QoLCompendium.mainConfig.BlackMarketDealerCanSpawn;
         }
 
         public override List<string> SetNPCNameList()
         {
-            List<string> list = new()
-            {
+            List<string> list =
+            [
                 "Bon",
                 "Ned",
                 "Jay",
                 "Jack",
                 "Jabon"
-            };
+            ];
             return list;
         }
 
@@ -128,10 +120,10 @@ namespace QoLCompendium.Content.NPCs
         {
             string result = Main.rand.Next(4) switch
             {
-                0 => "Illegal items are my specialty",
-                1 => "Hand over some money, and I'll hook you up",
-                2 => "Don't ask where I got this stuff",
-                _ => "Hey kid, want some items?",
+                0 => Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.BMDealerNPC.Chat0"),
+                1 => Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.BMDealerNPC.Chat1"),
+                2 => Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.BMDealerNPC.Chat2"),
+                _ => Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.BMDealerNPC.ChatDefault"),
             };
             return result;
         }
@@ -140,80 +132,85 @@ namespace QoLCompendium.Content.NPCs
         {
             if (shopNum == 0)
             {
-                button = "Potions";
-                ShopName = "Potions";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.PotionShop");
+                ShopName = "PotionShop";
             }
             else if (shopNum == 1)
             {
-                button = "Flasks, Stations & Foods";
-                ShopName = "Flasks, Stations & Foods";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.StationsAndUpgradesShop");
+                ShopName = "StationsAndUpgradesShop";
             }
             else if (shopNum == 2)
             {
-                button = "Materials";
-                ShopName = "Materials";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.MaterialShop");
+                ShopName = "MaterialShop";
             }
             else if (shopNum == 3)
             {
-                button = "Movement Accessories";
-                ShopName = "Movement Accessories";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.MobilityAccessoryShop");
+                ShopName = "MobilityAccessoryShop";
             }
             else if (shopNum == 4)
             {
-                button = "Combat Accessories";
-                ShopName = "Combat Accessories";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.CombatAccessoryShop");
+                ShopName = "CombatAccessoryShop";
             }
             else if (shopNum == 5)
             {
-                button = "Informative/Building Gear";
-                ShopName = "Informative/Building Gear";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.ToolsAndInfoShop");
+                ShopName = "ToolsAndInfoShop";
             }
             else if (shopNum == 6)
             {
-                button = "Treasure Bags";
-                ShopName = "Treasure Bags";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.TreasureBagShop");
+                ShopName = "TreasureBagShop";
             }
             else if (shopNum == 7)
             {
-                button = "Crates & Grab Bags";
-                ShopName = "Crates & Grab Bags";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.CratesAndGrabBagsShop");
+                ShopName = "CratesAndGrabBagsShop";
             }
             else if (shopNum == 8)
             {
-                button = "Ores & Bars";
-                ShopName = "Ores & Bars";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.OresAndBarsShop");
+                ShopName = "OresAndBarsShop";
             }
             else if (shopNum == 9)
             {
-                button = "Natural Blocks";
-                ShopName = "Natural Blocks";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.NaturalBlockShop");
+                ShopName = "NaturalBlockShop";
             }
             else if (shopNum == 10)
             {
-                button = "Building Blocks";
-                ShopName = "Building Blocks";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.BuildingBlockShop");
+                ShopName = "BuildingBlockShop";
             }
             else if (shopNum == 11)
             {
-                button = "Herbs & Plants";
-                ShopName = "Herbs & Plants";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.HerbsAndPlantsShop");
+                ShopName = "HerbsAndPlantsShop";
             }
             else if (shopNum == 12)
             {
-                button = "Fish & Fishing Gear";
-                ShopName = "Fish & Fishing Gear";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.FishShop");
+                ShopName = "FishShop";
             }
             else if (shopNum == 13)
             {
-                button = "Mounts & Hooks";
-                ShopName = "Mounts & Hooks";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.CritterShop");
+                ShopName = "CritterShop";
             }
             else if (shopNum == 14)
             {
-                button = "Ammo";
-                ShopName = "Ammo";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.MountsAndHooksShop");
+                ShopName = "MountsAndHooksShop";
             }
-            button2 = "Shop Changer";
+            else if (shopNum == 15)
+            {
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.AmmoShop");
+                ShopName = "AmmoShop";
+            }
+            button2 = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.ShopChanger");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref string shop)
@@ -232,7 +229,7 @@ namespace QoLCompendium.Content.NPCs
 
         public override void AddShops()
         {
-            var potShop = new NPCShop(Type, "Potions")
+            var potShop = new NPCShop(Type, "PotionShop")
                     .Add(new Item(ItemID.AmmoReservationPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasBeenToJungle)
                     .Add(new Item(ItemID.Ale) { shopCustomPrice = Item.buyPrice(silver: 75) })
                     .Add(new Item(ItemID.ArcheryPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasBeenToPurity)
@@ -275,10 +272,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.TitanPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasBeenToDungeon)
                     .Add(new Item(ItemID.WarmthPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasBeenToSnow)
                     .Add(new Item(ItemID.WaterWalkingPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasBeenToOcean)
-                    .Add(new Item(ItemID.WrathPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasBeenToEvil);
-            potShop.Register();
-
-            var flaskShop = new NPCShop(Type, "Flasks, Stations & Foods")
+                    .Add(new Item(ItemID.WrathPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasBeenToEvil)
                     .Add(new Item(ItemID.FruitJuice) { shopCustomPrice = Item.buyPrice(silver: 75) })
                     .Add(new Item(ItemID.LobsterTail) { shopCustomPrice = Item.buyPrice(silver: 75) })
                     .Add(new Item(ItemID.GoldenDelight) { shopCustomPrice = Item.buyPrice(silver: 75) })
@@ -306,7 +300,10 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.PotionOfReturn) { shopCustomPrice = Item.buyPrice(silver: 75) }, Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
                     .Add(new Item(ItemID.RecallPotion) { shopCustomPrice = Item.buyPrice(silver: 75) })
                     .Add(new Item(ItemID.TeleportationPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, Condition.Hardmode, ModConditions.HasBeenToHallow)
-                    .Add(new Item(ItemID.WormholePotion) { shopCustomPrice = Item.buyPrice(silver: 75) })
+                    .Add(new Item(ItemID.WormholePotion) { shopCustomPrice = Item.buyPrice(silver: 75) });
+            potShop.Register();
+
+            var stationShop = new NPCShop(Type, "StationsAndUpgradesShop")
                     .Add(new Item(ItemID.Sunflower) { shopCustomPrice = Item.buyPrice(gold: 15) })
                     .Add(new Item(ItemID.Campfire) { shopCustomPrice = Item.buyPrice(gold: 15) })
                     .Add(new Item(ItemID.CrystalBall) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.Hardmode, ModConditions.HasBeenToHallow)
@@ -335,9 +332,9 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.ArtisanLoaf) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasTalkedToSkeletonMerchant)
                     .Add(new Item(ItemID.CombatBook) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.DownedBloodMoon)
                     .Add(new Item(ItemID.CombatBookVolumeTwo) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.Hardmode, ModConditions.HasBeenToAether);
-            flaskShop.Register();
+            stationShop.Register();
 
-            var matShop = new NPCShop(Type, "Materials")
+            var matShop = new NPCShop(Type, "MaterialShop")
                     .Add(new Item(ItemID.AncientCloth) { shopCustomPrice = Item.buyPrice(silver: 25) }, Condition.Hardmode, ModConditions.HasBeenToDesert)
                     .Add(new Item(ItemID.AntlionMandible) { shopCustomPrice = Item.buyPrice(silver: 25) }, ModConditions.HasBeenToDesert)
                     .Add(new Item(ItemID.BeetleHusk) { shopCustomPrice = Item.buyPrice(silver: 25) }, Condition.DownedGolem, ModConditions.HasBeenToTemple)
@@ -417,7 +414,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.WormTooth) { shopCustomPrice = Item.buyPrice(silver: 25) }, ModConditions.HasBeenToEvil);
             matShop.Register();
 
-            var moveAccsShop = new NPCShop(Type, "Movement Accessories")
+            var moveAccsShop = new NPCShop(Type, "MobilityAccessoryShop")
                    .Add(new Item(ItemID.Aglet) { shopCustomPrice = Item.buyPrice(gold: 2) })
                    .Add(new Item(ItemID.AnkletoftheWind) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
                    .Add(new Item(ItemID.BalloonPufferfish) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
@@ -450,7 +447,7 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.WaterWalkingBoots) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean);
             moveAccsShop.Register();
 
-            var combatAccsShop = new NPCShop(Type, "Combat Accessories")
+            var combatAccsShop = new NPCShop(Type, "CombatAccessoryShop")
                    .Add(new Item(ItemID.AdhesiveBandage) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode, ModConditions.HasBeenToJungle)
                    .Add(new Item(ItemID.ApprenticeScarf) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedOldOnesArmyAny)
                    .Add(new Item(ItemID.ArmorPolish) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode)
@@ -507,7 +504,7 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.YoYoGlove) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground);
             combatAccsShop.Register();
 
-            var infoShop = new NPCShop(Type, "Informative/Building Gear")
+            var infoShop = new NPCShop(Type, "ToolsAndInfoShop")
                    .Add(new Item(ItemID.Toolbelt) { shopCustomPrice = Item.buyPrice(gold: 2) })
                    .Add(new Item(ItemID.Toolbox) { shopCustomPrice = Item.buyPrice(gold: 2) })
                    .Add(new Item(ItemID.ArchitectGizmoPack) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.NotDownedSkeletron)
@@ -560,6 +557,20 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.HallowedKey) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedPlantera, ModConditions.HasBeenToHallow)
                    .Add(new Item(ItemID.JungleKey) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedPlantera, ModConditions.HasBeenToJungle)
                    .Add(new Item(ItemID.TempleKey) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedPlantera, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.AnglerTackleBag) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.NotDownedEowOrBoc, ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.LavaproofTackleBag) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedEowOrBoc, ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.FishingBobber) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.AnglerHat) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.AnglerVest) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.AnglerPants) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.ApprenticeBait) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean, Condition.AnglerQuestsFinishedOver(1))
+                   .Add(new Item(ItemID.JourneymanBait) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean, Condition.AnglerQuestsFinishedOver(1))
+                   .Add(new Item(ItemID.MasterBait) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean, Condition.AnglerQuestsFinishedOver(1))
+                   .Add(new Item(ItemID.BloodFishingRod) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.DownedBloodMoon, ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.HotlineFishingHook) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode, ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.GoldenFishingRod) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.AnglerQuestsFinishedOver(1), ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.GoldenBugNet) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.ChumBucket) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
                    .Add(new Item(ItemID.WaterBucket) { shopCustomPrice = Item.buyPrice(gold: 15) })
                    .Add(new Item(ItemID.LavaBucket) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToUnderworld)
                    .Add(new Item(ItemID.HoneyBucket) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.HasBeenToJungle)
@@ -581,7 +592,7 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.Clentaminator2) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMoonLord, ModConditions.HasBeenToAether);
             infoShop.Register();
 
-            var bossShop = new NPCShop(Type, "Treasure Bags")
+            var bossShop = new NPCShop(Type, "TreasureBagShop")
                     .Add(new Item(ItemID.KingSlimeBossBag) { shopCustomPrice = Item.buyPrice(gold: 25) }, Condition.DownedKingSlime, ModConditions.expertOrMaster)
                     .Add(new Item(ItemID.EyeOfCthulhuBossBag) { shopCustomPrice = Item.buyPrice(gold: 25) }, Condition.DownedEyeOfCthulhu, ModConditions.expertOrMaster)
                     .Add(new Item(ItemID.EaterOfWorldsBossBag) { shopCustomPrice = Item.buyPrice(gold: 25) }, Condition.DownedEowOrBoc, ModConditions.expertOrMaster)
@@ -603,7 +614,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.DefenderMedal) { shopCustomPrice = Item.buyPrice(gold: 1) }, Condition.DownedOldOnesArmyAny);
             bossShop.Register();
 
-            var crateShop = new NPCShop(Type, "Crates & Grab Bags")
+            var crateShop = new NPCShop(Type, "CratesAndGrabBagsShop")
                     .Add(new Item(ItemID.WoodenCrate) { shopCustomPrice = Item.buyPrice(gold: 5) }, ModConditions.HasBeenToOcean)
                     .Add(new Item(ItemID.IronCrate) { shopCustomPrice = Item.buyPrice(gold: 5) }, ModConditions.HasBeenToOcean)
                     .Add(new Item(ItemID.GoldenCrate) { shopCustomPrice = Item.buyPrice(gold: 5) }, ModConditions.HasBeenToOcean)
@@ -634,7 +645,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.Present) { shopCustomPrice = Item.buyPrice(gold: 5) });
             crateShop.Register();
 
-            var oreShop = new NPCShop(Type, "Ores & Bars")
+            var oreShop = new NPCShop(Type, "OresAndBarsShop")
                     .Add(new Item(ItemID.CopperOre) { shopCustomPrice = Item.buyPrice(silver: 25) }, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(new Item(ItemID.TinOre) { shopCustomPrice = Item.buyPrice(silver: 25) }, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(new Item(ItemID.IronOre) { shopCustomPrice = Item.buyPrice(silver: 25) }, ModConditions.HasBeenToCavernsOrUnderground)
@@ -698,7 +709,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.Geode) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground);
             oreShop.Register();
 
-            var naturalBlockShop = new NPCShop(Type, "Natural Blocks")
+            var naturalBlockShop = new NPCShop(Type, "NaturalBlockShop")
                     .Add(new Item(ItemID.Wood) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.BorealWood) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.PalmWood) { shopCustomPrice = Item.buyPrice(copper: 10) })
@@ -766,7 +777,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.SandcastleBucket) { shopCustomPrice = Item.buyPrice(gold: 5) });
             naturalBlockShop.Register();
 
-            var buildingBlockShop = new NPCShop(Type, "Building Blocks")
+            var buildingBlockShop = new NPCShop(Type, "BuildingBlockShop")
                     .Add(new Item(ItemID.GrayBrick) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.StoneSlab) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.AccentSlab) { shopCustomPrice = Item.buyPrice(copper: 10) })
@@ -863,7 +874,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.LivingUltrabrightFireBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode);
             buildingBlockShop.Register();
 
-            var plantShop = new NPCShop(Type, "Herbs & Plants")
+            var plantShop = new NPCShop(Type, "HerbsAndPlantsShop")
                     .Add(new Item(ItemID.HerbBag) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.Blinkroot) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.Daybloom) { shopCustomPrice = Item.buyPrice(copper: 10) })
@@ -919,18 +930,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.Fertilizer) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.DownedSkeletron);
             plantShop.Register();
 
-            var fishShop = new NPCShop(Type, "Fish & Fishing Gear")
-                   .Add(new Item(ItemID.AnglerTackleBag) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.NotDownedEowOrBoc, ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.LavaproofTackleBag) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedEowOrBoc, ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.FishingBobber) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.AnglerHat) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.AnglerVest) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.AnglerPants) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.BloodFishingRod) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.DownedBloodMoon, ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.HotlineFishingHook) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode, ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.GoldenFishingRod) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.AnglerQuestsFinishedOver(1), ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.GoldenBugNet) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.ChumBucket) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
+            var fishShop = new NPCShop(Type, "FishShop")
                    .Add(new Item(ItemID.ArmoredCavefish) { shopCustomPrice = Item.buyPrice(silver: 10) }, ModConditions.HasBeenToCavernsOrUnderground)
                    .Add(new Item(ItemID.AtlanticCod) { shopCustomPrice = Item.buyPrice(silver: 10) }, ModConditions.HasBeenToSnow)
                    .Add(new Item(ItemID.Bass) { shopCustomPrice = Item.buyPrice(silver: 10) })
@@ -957,56 +957,113 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.Stinkfish) { shopCustomPrice = Item.buyPrice(silver: 10) }, ModConditions.HasBeenToCavernsOrUnderground)
                    .Add(new Item(ItemID.Trout) { shopCustomPrice = Item.buyPrice(silver: 10) })
                    .Add(new Item(ItemID.Tuna) { shopCustomPrice = Item.buyPrice(silver: 10) })
-                   .Add(new Item(ItemID.VariegatedLardfish) { shopCustomPrice = Item.buyPrice(silver: 10) }, ModConditions.HasBeenToJungle)
-                   .Add(new Item(ItemID.ApprenticeBait) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.JourneymanBait) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.MasterBait) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
-                   .Add(new Item(ItemID.BlackDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.BlackScorpion) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.BlueDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.BlueJellyfish) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.Buggy) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.EnchantedNightcrawler) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.Firefly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.GlowingSnail) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.GoldButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.GoldDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.GoldGrasshopper) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.GoldLadyBug) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.GoldWaterStrider) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.GoldWorm) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.Grasshopper) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.GreenDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.GreenJellyfish) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.Grubby) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.HellButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedEowOrBoc)
-                   .Add(new Item(ItemID.JuliaButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.LadyBug) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.Lavafly) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedEowOrBoc)
-                   .Add(new Item(ItemID.LightningBug) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode)
-                   .Add(new Item(ItemID.Maggot) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.MagmaSnail) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedEowOrBoc)
-                   .Add(new Item(ItemID.MonarchButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.OrangeDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.PinkJellyfish) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.PurpleEmperorButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.RedAdmiralButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.RedDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.Scorpion) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.Sluggy) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.Snail) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.Stinkbug) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.SulphurButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.TreeNymphButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.TruffleWorm) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode)
-                   .Add(new Item(ItemID.UlyssesButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.WaterStrider) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.Worm) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.YellowDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
-                   .Add(new Item(ItemID.ZebraSwallowtailButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) });
+                   .Add(new Item(ItemID.VariegatedLardfish) { shopCustomPrice = Item.buyPrice(silver: 10) }, ModConditions.HasBeenToJungle);
             fishShop.Register();
 
-            var mountShop = new NPCShop(Type, "Mounts & Hooks")
+            var critterShop = new NPCShop(Type, "CritterShop")
+                    //birds
+                   .Add(new Item(ItemID.Bird) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.BlueJay) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.Cardinal) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.YellowCockatiel) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.GrayCockatiel) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.ScarletMacaw) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.BlueMacaw) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.Toucan) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.Duck) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.MallardDuck) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.Grebe) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToDesert)
+                   .Add(new Item(ItemID.Owl) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.Penguin) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToSnow)
+                   .Add(new Item(ItemID.Seagull) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.GoldBird) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   //bunnies
+                   .Add(new Item(ItemID.Bunny) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.ExplosiveBunny) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.GemBunnyAmethyst) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GemBunnyTopaz) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GemBunnySapphire) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GemBunnyEmerald) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GemBunnyRuby) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GemBunnyDiamond) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GemBunnyAmber) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GoldBunny) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   //squirrels
+                   .Add(new Item(ItemID.Squirrel) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.SquirrelRed) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.GemSquirrelAmethyst) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GemSquirrelTopaz) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GemSquirrelSapphire) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GemSquirrelEmerald) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GemSquirrelRuby) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GemSquirrelDiamond) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GemSquirrelAmber) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.SquirrelGold) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   //rats
+                   .Add(new Item(ItemID.Mouse) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.Rat) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   .Add(new Item(ItemID.GoldMouse) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
+                   //worms
+                   .Add(new Item(ItemID.Worm) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.EnchantedNightcrawler) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.GoldWorm) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   //flies
+                   .Add(new Item(ItemID.FairyCritterBlue) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.FairyCritterGreen) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.FairyCritterPink) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.Shimmerfly) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToAether)
+                   .Add(new Item(ItemID.Firefly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.Lavafly) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedEowOrBoc)
+                   .Add(new Item(ItemID.LightningBug) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode, ModConditions.HasBeenToHallow)
+                   //bugs
+                   .Add(new Item(ItemID.Buggy) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.Grubby) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.Sluggy) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.Stinkbug) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.Maggot) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.Scorpion) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToDesert)
+                   .Add(new Item(ItemID.BlackScorpion) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToDesert)
+                   .Add(new Item(ItemID.Snail) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.GlowingSnail) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.MagmaSnail) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedEowOrBoc)
+                   .Add(new Item(ItemID.WaterStrider) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.GoldWaterStrider) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.Grasshopper) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.GoldGrasshopper) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.LadyBug) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.GoldLadyBug) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   //butterflies
+                   .Add(new Item(ItemID.JuliaButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.MonarchButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.PurpleEmperorButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.RedAdmiralButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.SulphurButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.TreeNymphButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.UlyssesButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.ZebraSwallowtailButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.HellButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedEowOrBoc)
+                   .Add(new Item(ItemID.GoldButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.EmpressButterfly) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedPlantera, ModConditions.HasBeenToHallow)
+                   //dragonflies
+                   .Add(new Item(ItemID.BlackDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.BlueDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.GreenDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.OrangeDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.RedDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.YellowDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.GoldDragonfly) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   //other
+                   .Add(new Item(ItemID.Frog) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.GoldFrog) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
+                   .Add(new Item(ItemID.Pupfish) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToDesert)
+                   .Add(new Item(ItemID.Seahorse) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.GoldSeahorse) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
+                   .Add(new Item(ItemID.Goldfish) { shopCustomPrice = Item.buyPrice(gold: 2) })
+                   .Add(new Item(ItemID.GoldGoldfish) { shopCustomPrice = Item.buyPrice(gold: 2) });
+            critterShop.Register();
+
+            var mountShop = new NPCShop(Type, "MountsAndHooksShop")
+                    //Mounts
                     .Add(new Item(ItemID.SlimySaddle) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedKingSlime)
                     .Add(new Item(ItemID.HoneyedGoggles) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedQueenBee)
                     .Add(new Item(ItemID.HardySaddle) { shopCustomPrice = Item.buyPrice(gold: 2) })
@@ -1034,7 +1091,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.PirateShipMountItem) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedPirates, Condition.InMasterMode)
                     .Add(new Item(ItemID.SpookyWoodMountItem) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMourningWood, Condition.InMasterMode)
                     .Add(new Item(ItemID.SantankMountItem) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedSantaNK1, Condition.InMasterMode)
-
+                    //Hooks
                     .Add(new Item(ItemID.GrapplingHook) { shopCustomPrice = Item.buyPrice(gold: 2) })
                     .Add(new Item(ItemID.AmethystHook) { shopCustomPrice = Item.buyPrice(gold: 2) })
                     .Add(new Item(ItemID.TopazHook) { shopCustomPrice = Item.buyPrice(gold: 2) })
@@ -1065,7 +1122,8 @@ namespace QoLCompendium.Content.NPCs
             mountShop.Register();
 
 
-            var ammoShop = new NPCShop(Type, "Ammo")
+            var ammoShop = new NPCShop(Type, "AmmoShop")
+                    //Bullets
                     .Add(new Item(ItemID.MusketBall) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.SilverBullet) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.TungstenBullet) { shopCustomPrice = Item.buyPrice(copper: 1) })
@@ -1082,7 +1140,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.NanoBullet) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedPlantera)
                     .Add(new Item(ItemID.MoonlordBullet) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedMoonLord)
                     .Add(new Item(ItemID.EndlessMusketPouch) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.Hardmode)
-
+                    //Arrows
                     .Add(new Item(ItemID.WoodenArrow) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.FlamingArrow) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.FrostburnArrow) { shopCustomPrice = Item.buyPrice(copper: 1) })
@@ -1098,7 +1156,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.VenomArrow) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedPlantera)
                     .Add(new Item(ItemID.MoonlordArrow) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedMoonLord)
                     .Add(new Item(ItemID.EndlessQuiver) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.Hardmode)
-
+                    //Rockets
                     .Add(new Item(ItemID.RocketI) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedPlantera)
                     .Add(new Item(ItemID.RocketII) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedPlantera)
                     .Add(new Item(ItemID.RocketIII) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedPlantera)
@@ -1111,27 +1169,27 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.MiniNukeII) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedPlantera)
                     .Add(new Item(ItemID.ClusterRocketI) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedMartians)
                     .Add(new Item(ItemID.ClusterRocketII) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedMartians)
-
+                    //Darts
                     .Add(new Item(ItemID.Seed) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.PoisonDart) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.CursedDart) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.Hardmode)
                     .Add(new Item(ItemID.IchorDart) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.Hardmode)
                     .Add(new Item(ItemID.CrystalDart) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.Hardmode)
-
+                    //Flares
                     .Add(new Item(ItemID.Flare) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.BlueFlare) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.SpelunkerFlare) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.ShimmerFlare) { shopCustomPrice = Item.buyPrice(copper: 1) }, ModConditions.HasBeenToAether)
                     .Add(new Item(ItemID.CursedFlare) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.Hardmode)
                     .Add(new Item(ItemID.RainbowFlare) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.Hardmode)
-
+                    //Other
                     .Add(new Item(ItemID.Snowball) { shopCustomPrice = Item.buyPrice(copper: 1) })
                     .Add(new Item(ItemID.StyngerBolt) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedGolem)
                     .Add(new Item(ItemID.CandyCorn) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedPumpking)
                     .Add(new Item(ItemID.ExplosiveJackOLantern) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedPumpking)
                     .Add(new Item(ItemID.Stake) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedMourningWood)
                     .Add(new Item(ItemID.Nail) { shopCustomPrice = Item.buyPrice(copper: 1) }, ModConditions.DownedEclipse)
-
+                    //Solutions
                     .Add(new Item(ItemID.GreenSolution) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedMechBossAny)
                     .Add(new Item(ItemID.SandSolution) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedMechBossAny)
                     .Add(new Item(ItemID.SnowSolution) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedMechBossAny)

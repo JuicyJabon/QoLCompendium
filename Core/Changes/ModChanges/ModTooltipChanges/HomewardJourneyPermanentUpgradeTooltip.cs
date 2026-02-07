@@ -3,8 +3,8 @@ using ContinentOfJourney.Items.Accessories.PermanentUpgradesSystem;
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
 {
-    [ExtendsFromMod(ModConditions.homewardJourneyName)]
-    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
+    [ExtendsFromMod(CrossModSupport.HomewardJourney.Name)]
+    [JITWhenModsEnabled(CrossModSupport.HomewardJourney.Name)]
     public class HomewardJourneyPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -18,36 +18,36 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
             tooltipLine.OverrideColor = Color.LightGreen;
 
             #region Coffee
-            if (item.type == Common.GetModItem(ModConditions.homewardJourneyMod, "Americano") && Main.LocalPlayer.GetModPlayer<CoffeePlayer>().Americano > 0)
+            if (item.type == Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "Americano") && Main.LocalPlayer.GetModPlayer<CoffeePlayer>().Americano > 0)
                 Common.AddLastTooltip(tooltips, tooltipLine);
 
-            if (item.type == Common.GetModItem(ModConditions.homewardJourneyMod, "Latte") && Main.LocalPlayer.GetModPlayer<CoffeePlayer>().Latte > 0)
+            if (item.type == Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "Latte") && Main.LocalPlayer.GetModPlayer<CoffeePlayer>().Latte > 0)
                 Common.AddLastTooltip(tooltips, tooltipLine);
 
-            if (item.type == Common.GetModItem(ModConditions.homewardJourneyMod, "Mocha") && Main.LocalPlayer.GetModPlayer<CoffeePlayer>().Mocha > 0)
+            if (item.type == Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "Mocha") && Main.LocalPlayer.GetModPlayer<CoffeePlayer>().Mocha > 0)
                 Common.AddLastTooltip(tooltips, tooltipLine);
 
-            if (item.type == Common.GetModItem(ModConditions.homewardJourneyMod, "Cappuccino") && Main.LocalPlayer.GetModPlayer<CoffeePlayer>().Cappuccino > 0)
+            if (item.type == Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "Cappuccino") && Main.LocalPlayer.GetModPlayer<CoffeePlayer>().Cappuccino > 0)
                 Common.AddLastTooltip(tooltips, tooltipLine);
             #endregion
 
             #region Other Upgrades
-            if (item.type == Common.GetModItem(ModConditions.homewardJourneyMod, "AirHandcanon") && Main.LocalPlayer.GetModPlayer<OtherUpgradesPlayer>().AirHandcanon > 0)
+            if (item.type == Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "AirHandcanon") && Main.LocalPlayer.GetModPlayer<OtherUpgradesPlayer>().AirHandcanon > 0)
                 Common.AddLastTooltip(tooltips, tooltipLine);
 
-            if (item.type == Common.GetModItem(ModConditions.homewardJourneyMod, "HotCase") && Main.LocalPlayer.GetModPlayer<OtherUpgradesPlayer>().HotCase > 0)
+            if (item.type == Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "HotCase") && Main.LocalPlayer.GetModPlayer<OtherUpgradesPlayer>().HotCase > 0)
                 Common.AddLastTooltip(tooltips, tooltipLine);
 
-            if (item.type == Common.GetModItem(ModConditions.homewardJourneyMod, "GreatCrystal") && Main.LocalPlayer.GetModPlayer<OtherUpgradesPlayer>().GreatCrystal > 0)
+            if (item.type == Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "GreatCrystal") && Main.LocalPlayer.GetModPlayer<OtherUpgradesPlayer>().GreatCrystal > 0)
                 Common.AddLastTooltip(tooltips, tooltipLine);
 
-            if (item.type == Common.GetModItem(ModConditions.homewardJourneyMod, "WhimInABottle") && Main.LocalPlayer.GetModPlayer<OtherUpgradesPlayer>().WhimInABottle > 0)
+            if (item.type == Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "WhimInABottle") && Main.LocalPlayer.GetModPlayer<OtherUpgradesPlayer>().WhimInABottle > 0)
                 Common.AddLastTooltip(tooltips, tooltipLine);
             
-            if (item.type == Common.GetModItem(ModConditions.homewardJourneyMod, "SunsHeart") && Main.LocalPlayer.GetModPlayer<OtherUpgradesPlayer>().SunsHeart > 0)
+            if (item.type == Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "SunsHeart") && Main.LocalPlayer.GetModPlayer<OtherUpgradesPlayer>().SunsHeart > 0)
                 Common.AddLastTooltip(tooltips, tooltipLine);
 
-            if (item.type == Common.GetModItem(ModConditions.homewardJourneyMod, "TheSwitch") && Main.LocalPlayer.GetModPlayer<PermanentUpgradesPlayer>().PermanentUpgradesActivated[0] && Main.LocalPlayer.GetModPlayer<PermanentUpgradesPlayer>().PermanentUpgradesActivated[1])
+            if (item.type == Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "TheSwitch") && Main.LocalPlayer.GetModPlayer<PermanentUpgradesPlayer>().PermanentUpgradesActivated[0] && Main.LocalPlayer.GetModPlayer<PermanentUpgradesPlayer>().PermanentUpgradesActivated[1])
                 Common.AddLastTooltip(tooltips, tooltipLine);
             #endregion
         }

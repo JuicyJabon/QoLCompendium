@@ -1,0 +1,68 @@
+ConfigGlintID: {
+	Tooltip: ""
+
+	White: {
+		Label: White
+		Tooltip: ""
+	}
+
+	Red: {
+		Label: Red
+		Tooltip: ""
+	}
+
+	Orange: {
+		Label: Orange
+		Tooltip: ""
+	}
+
+	Yellow: {
+		Label: Yellow
+		Tooltip: ""
+	}
+
+	Green: {
+		Label: Green
+		Tooltip: ""
+	}
+
+	Lime: {
+		Label: Lime
+		Tooltip: ""
+	}
+
+	Blue: {
+		Label: Blue
+		Tooltip: ""
+	}
+
+	Cyan: {
+		Label: Cyan
+		Tooltip: ""
+	}
+
+	SkyBlue: {
+		Label: Sky Blue
+		Tooltip: ""
+	}
+
+	Purple: {
+		Label: Purple
+		Tooltip: ""
+	}
+
+	Magenta: {
+		Label: Magenta
+		Tooltip: ""
+	}
+
+	Pink: {
+		Label: Pink
+		Tooltip: ""
+	}
+
+	Rainbow: {
+		Label: Rainbow
+		Tooltip: ""
+	}
+}

@@ -4,8 +4,8 @@ using VitalityMod.Items.Potions;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(ModConditions.vitalityName)]
-    [ExtendsFromMod(ModConditions.vitalityName)]
+    [JITWhenModsEnabled(CrossModSupport.Vitality.Name)]
+    [ExtendsFromMod(CrossModSupport.Vitality.Name)]
     public static class VitalityBuffItems
     {
         public static NewBuffEffect[] VitalityEffects = [

@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
 {
-    [ExtendsFromMod(ModConditions.crystalDragonsName)]
-    [JITWhenModsEnabled(ModConditions.crystalDragonsName)]
+    [ExtendsFromMod(CrossModSupport.CrystalDragonsRace.Name)]
+    [JITWhenModsEnabled(CrossModSupport.CrystalDragonsRace.Name)]
     public class CrystalDragonsRaceRemovePrefixes : GlobalItem
     {
         private static int infiniteLoopHackFix;
@@ -15,31 +15,31 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
 
             HashSet<int> prefixes = new()
             {
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazHardened"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazWarding"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazBulwark"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazGenin"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazShinobi"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazIai"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazDiverse"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazBalanced"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazEqualized"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazMartial"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazStriking"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazEviscerating"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazViolent"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazDestructive"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazAnnihilating"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazFit"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazStrong"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazMighty"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazBrisk"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazFleet"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "TopazQuantum"),
-                Common.GetModPrefix(ModConditions.crystalDragonsMod, "L A K E")
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazHardened"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazWarding"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazBulwark"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazGenin"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazShinobi"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazIai"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazDiverse"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazBalanced"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazEqualized"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazMartial"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazStriking"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazEviscerating"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazViolent"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazDestructive"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazAnnihilating"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazFit"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazStrong"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazMighty"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazBrisk"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazFleet"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "TopazQuantum"),
+                Common.GetModPrefix(CrossModSupport.CrystalDragonsRace.Mod, "L A K E")
             };
 
-            if (!Main.gameMenu && Main.LocalPlayer.active && ModConditions.mrPlagueRacesLoaded && !Main.LocalPlayer.GetModPlayer<CrystalDragonPlayer>().topaz)
+            if (!Main.gameMenu && Main.LocalPlayer.active && CrossModSupport.MrPlagueRaces.Loaded && !Main.LocalPlayer.GetModPlayer<CrystalDragonPlayer>().topaz)
             {
                 if (prefixes.Contains(pre) && ++infiniteLoopHackFix < 30)
                     return false;

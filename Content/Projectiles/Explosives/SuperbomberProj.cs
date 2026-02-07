@@ -8,7 +8,7 @@
         {
             Projectile.width = 29;
             Projectile.height = 29;
-            Projectile.aiStyle = 16;
+            Projectile.aiStyle = ProjAIStyleID.Explosive;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 300;
@@ -38,7 +38,7 @@
             }
 
             Vector2 position = Projectile.Center;
-            int radius = 64;     //bigger = boomer
+            int radius = 64;
 
             for (int x = -radius; x <= radius; x++)
             {
@@ -57,7 +57,7 @@
                     if (!CheckDestruction.OkayToDestroyTile(tile, false) || CheckDestruction.TileIsLiterallyAir(tile))
                         continue;
 
-                    Destruction.ClearTileAndLiquid(xPosition, yPosition);
+                    Destruction.ClearEverything(xPosition, yPosition);
                 }
             }
             Main.refreshMap = true;

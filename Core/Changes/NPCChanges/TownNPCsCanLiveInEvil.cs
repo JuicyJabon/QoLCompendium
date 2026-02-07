@@ -8,7 +8,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
 
         public override void Load()
         {
-            if (ModConditions.vanillaQoLLoaded)
+            if (CrossModSupport.VanillaQoL.Loaded)
                 return;
 
             IL_WorldGen.ScoreRoom += LiveInCorrupt;

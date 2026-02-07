@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
 {
-    [ExtendsFromMod(ModConditions.clickerClassName)]
-    [JITWhenModsEnabled(ModConditions.clickerClassName)]
+    [ExtendsFromMod(CrossModSupport.ClickerClass.Name)]
+    [JITWhenModsEnabled(CrossModSupport.ClickerClass.Name)]
     public class ClickerPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -16,7 +16,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
             var tooltipLine = new TooltipLine(Mod, "UsedItem", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.UsedItem"));
             tooltipLine.OverrideColor = Color.LightGreen;
 
-            if (item.type == Common.GetModItem(ModConditions.clickerClassMod, "HeavenlyChip") && Main.LocalPlayer.GetModPlayer<ClickerPlayer>().consumedHeavenlyChip)
+            if (item.type == Common.GetModItem(CrossModSupport.ClickerClass.Mod, "HeavenlyChip") && Main.LocalPlayer.GetModPlayer<ClickerPlayer>().consumedHeavenlyChip)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }

@@ -31,6 +31,13 @@ namespace QoLCompendium.Core.Configs
         public bool RemoveThoriumExhaustionTooltip { get; set; }
 
         [DefaultValue(true)]
+        public bool EndlessInspirationPotions { get; set; }
+
+        [DefaultValue(30)]
+        [Range(1, 99999)]
+        public int EndlessInspirationPotionsAmount { get; set; }
+
+        [DefaultValue(true)]
         public bool CalamityEntropyArmorPrefixesHaveEnchantedEffects { get; set; }
 
         [DefaultValue(true)]
@@ -39,7 +46,17 @@ namespace QoLCompendium.Core.Configs
 
         [DefaultValue(true)]
         [ReloadRequired]
+        public bool HomewardJourneyRarityFix { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
         public bool CalamityEffigyRecipes { get; set; }
+
+        [DefaultValue(true)]
+        public bool CalamityCrateDropRevert { get; set; }
+
+        [DefaultValue(true)]
+        public bool MoreCrateDrops { get; set; }
 
         [DefaultValue(true)]
         public bool EndlessVoidConsumables { get; set; }

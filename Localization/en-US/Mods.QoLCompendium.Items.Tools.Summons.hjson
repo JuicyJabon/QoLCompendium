@@ -1,16 +1,19 @@
 ForgottenOneSummon: {
 	DisplayName: Marine Egg
-	Tooltip: Summons the Forgotten One
+	Tooltip:
+		'''
+		Summons the Forgotten One
+		Usable in the Aquatic Depths
+		'''
 }
 
 GiantClamSummon: {
 	DisplayName: Navy Clam Shell
-	Tooltip: Summons a Giant Clam
-}
-
-LeviathanAnahitaSummon: {
-	DisplayName: Enthralling Pearl
-	Tooltip: Summons Leviathan and Anahita
+	Tooltip:
+		'''
+		Summons a Giant Clam
+		Usable in the Sunken Sea
+		'''
 }
 
 OldDukeSummon: {
@@ -31,6 +34,11 @@ DukeFishronSummon: {
 EmpressOfLightSummon: {
 	DisplayName: Hallowed Crystal
 	Tooltip: Summons the Empress of Light
+}
+
+GolemSummon: {
+	DisplayName: Overgrown Power Cell
+	Tooltip: Summons Golem
 }
 
 PlanteraSummon: {
@@ -75,37 +83,65 @@ WorldsEndWhaleSummon: {
 
 CragmawMireSummon: {
 	DisplayName: Sulphuric Trap
-	Tooltip: Summons a Cragmaw Mire
+	Tooltip:
+		'''
+		Summons a Cragmaw Mire
+		Usable in the Sulphurous Sea
+		'''
 }
 
 EidolonWyrmSummon: {
 	DisplayName: Lumenyl Crystal
-	Tooltip: Summons an Eidolon Wyrm
+	Tooltip:
+		'''
+		Summons an Eidolon Wyrm
+		Usable in the fourth layer of the Abyss
+		'''
 }
 
 GiantSquidSummon: {
 	DisplayName: Baby Squid
-	Tooltip: Summons a Giant Squid
+	Tooltip:
+		'''
+		Summons a Giant Squid
+		Usable in the fourth layer of the Abyss
+		'''
 }
 
 MaulerSummon: {
 	DisplayName: Sulphuric Shark Fin
-	Tooltip: Summons a Mauler
+	Tooltip:
+		'''
+		Summons a Mauler
+		Usable in the Sulphurous Sea
+		'''
 }
 
 NuclearTerrorSummon: {
 	DisplayName: Nuclear Flame
-	Tooltip: Summons a Nuclear Terror
+	Tooltip:
+		'''
+		Summons a Nuclear Terror
+		Usable in the Sulphurous Sea
+		'''
 }
 
 PrimordialWyrmSummon: {
 	DisplayName: Primal Crystal
-	Tooltip: Summons the Primordial Wyrm
+	Tooltip:
+		'''
+		Summons the Primordial Wyrm
+		Usable in the fourth layer of the Abyss
+		'''
 }
 
 ReaperSharkSummon: {
 	DisplayName: Reaper Scale
-	Tooltip: Summons a Reaper Shark
+	Tooltip:
+		'''
+		Summons a Reaper Shark
+		Usable in the fourth layer of the Abyss
+		'''
 }
 
 SummoningRemote: {

@@ -41,6 +41,9 @@
     <Reference Include="CalamityMod">
       <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
     </Reference>
+    <Reference Include="CalValEX">
+      <HintPath>..\..\ModReader\CalValEX\CalValEX.dll</HintPath>
+    </Reference>
     <Reference Include="CatalystMod">
       <HintPath>..\..\ModReader\CatalystMod\CatalystMod.dll</HintPath>
     </Reference>
@@ -67,6 +70,9 @@
     </Reference>
     <Reference Include="FargowiltasSouls">
       <HintPath>..\..\ModReader\FargowiltasSouls\FargowiltasSouls.dll</HintPath>
+    </Reference>
+    <Reference Include="InspirationPotions">
+      <HintPath>..\..\ModReader\InspirationPotions\InspirationPotions.dll</HintPath>
     </Reference>
     <Reference Include="Macrocosm">
       <HintPath>..\..\ModReader\Macrocosm\Macrocosm.dll</HintPath>

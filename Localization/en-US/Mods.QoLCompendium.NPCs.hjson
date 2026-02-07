@@ -23,21 +23,23 @@ BMDealerNPC: {
 	}
 
 	ShopName: {
-		Potions: Black Market Dealer: Potions
-		"Flasks, Stations & Foods": Black Market Dealer: Flasks, Stations & Foods
-		Materials: Black Market Dealer: Materials
-		"Movement Accessories": Black Market Dealer: Movement Accessories
-		"Combat Accessories": Black Market Dealer: Combat Accessories
-		"Informative/Building Gear": Black Market Dealer: Informative/Building Gear
-		"Treasure Bags": Black Market Dealer: Treasure Bags
-		"Crates & Grab Bags": Black Market Dealer: Crates & Grab Bags
-		"Ores & Bars": Black Market Dealer: Ores & Bars
-		"Natural Blocks": Black Market Dealer: Natural Blocks
-		"Building Blocks": Black Market Dealer: Building Blocks
-		"Herbs & Plants": Black Market Dealer: Herbs & Plants
-		"Fish & Fishing Gear": Black Market Dealer: Fish & Fishing Gear
-		"Mounts & Hooks": Black Market Dealer: Mounts & Hooks
-		Ammo: Black Market Dealer: Ammo
+		PotionShop: Potions & Foods
+		StationsAndUpgradesShop: Stations & Upgrades
+		MaterialShop: Crafting Materials
+		MobilityAccessoryShop: Mobility Accessories
+		CombatAccessoryShop: Combat Accessories
+		ToolsAndInfoShop: Tools & Info Gear
+		TreasureBagShop: Treasure Bags
+		CratesAndGrabBagsShop: Crates & Grab Bags
+		OresAndBarsShop: Ores & Bars
+		NaturalBlockShop: Natural Blocks
+		BuildingBlockShop: Building Blocks
+		HerbsAndPlantsShop: Herbs & Plants
+		FishShop: Fish
+		CritterShop: Critters
+		MountsAndHooksShop: Mounts & Hooks
+		AmmoShop: Ammo
+		ShopChanger: Shop Changer
 	}
 }
 

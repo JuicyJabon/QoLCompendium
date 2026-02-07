@@ -3,8 +3,8 @@ using Terraria.ModLoader.Utilities;
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModNPCChanges
 {
-    [JITWhenModsEnabled(ModConditions.elementsAwokenName)]
-    [ExtendsFromMod(ModConditions.elementsAwokenName)]
+    [JITWhenModsEnabled(CrossModSupport.ElementsAwoken.Name)]
+    [ExtendsFromMod(CrossModSupport.ElementsAwoken.Name)]
     public class ElementsAwokenPuffSpawns : GlobalNPC
     {
         public override bool AppliesToEntity(NPC entity, bool lateInstantiation)

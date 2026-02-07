@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
 {
-    [ExtendsFromMod(ModConditions.calamityName)]
-    [JITWhenModsEnabled(ModConditions.calamityName)]
+    [ExtendsFromMod(CrossModSupport.Calamity.Name)]
+    [JITWhenModsEnabled(CrossModSupport.Calamity.Name)]
     public class CalamityPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -16,39 +16,39 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
             var tooltipLine = new TooltipLine(Mod, "UsedItem", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.UsedItem")) { OverrideColor = Color.LightGreen };
 
             //Mana
-            if (item.type == Common.GetModItem(ModConditions.calamityMod, "EnchantedStarfish"))
+            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "EnchantedStarfish"))
             {
                 tooltipLine.Text = Common.GetTooltipValue("UsedItemCountable", Main.LocalPlayer.ConsumedManaCrystals, 9);
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
             //Rage
-            if (item.type == Common.GetModItem(ModConditions.calamityMod, "MushroomPlasmaRoot") && Main.LocalPlayer.Calamity().rageBoostOne)
+            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "MushroomPlasmaRoot") && Main.LocalPlayer.Calamity().rageBoostOne)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.calamityMod, "InfernalBlood") && Main.LocalPlayer.Calamity().rageBoostTwo)
+            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "InfernalBlood") && Main.LocalPlayer.Calamity().rageBoostTwo)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.calamityMod, "RedLightningContainer") && Main.LocalPlayer.Calamity().rageBoostThree)
+            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "RedLightningContainer") && Main.LocalPlayer.Calamity().rageBoostThree)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
             //Adrenaline
-            if (item.type == Common.GetModItem(ModConditions.calamityMod, "ElectrolyteGelPack") && Main.LocalPlayer.Calamity().adrenalineBoostOne)
+            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "ElectrolyteGelPack") && Main.LocalPlayer.Calamity().adrenalineBoostOne)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.calamityMod, "StarlightFuelCell") && Main.LocalPlayer.Calamity().adrenalineBoostTwo)
+            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "StarlightFuelCell") && Main.LocalPlayer.Calamity().adrenalineBoostTwo)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.calamityMod, "Ectoheart") && Main.LocalPlayer.Calamity().adrenalineBoostThree)
+            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "Ectoheart") && Main.LocalPlayer.Calamity().adrenalineBoostThree)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
             //Accessory
-            if (item.type == Common.GetModItem(ModConditions.calamityMod, "CelestialOnion") && Main.LocalPlayer.Calamity().extraAccessoryML)
+            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "CelestialOnion") && Main.LocalPlayer.Calamity().extraAccessoryML)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }

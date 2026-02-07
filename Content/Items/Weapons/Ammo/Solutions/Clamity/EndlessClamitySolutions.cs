@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Solutions.Clamity
 {
-    [JITWhenModsEnabled(ModConditions.clamityAddonName)]
-    [ExtendsFromMod(ModConditions.clamityAddonName)]
+    [JITWhenModsEnabled(CrossModSupport.Clamity.Name)]
+    [ExtendsFromMod(CrossModSupport.Clamity.Name)]
     public class EndlessCyanSolution : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<CyanSolution>();

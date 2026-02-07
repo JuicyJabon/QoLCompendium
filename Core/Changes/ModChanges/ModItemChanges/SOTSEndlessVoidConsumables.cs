@@ -4,8 +4,8 @@ using System.Reflection;
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
 {
-    [JITWhenModsEnabled(ModConditions.secretsOfTheShadowsName)]
-    [ExtendsFromMod(ModConditions.secretsOfTheShadowsName)]
+    [JITWhenModsEnabled(CrossModSupport.SecretsOfTheShadows.Name)]
+    [ExtendsFromMod(CrossModSupport.SecretsOfTheShadows.Name)]
     public class SOTSEndlessVoidConsumables : GlobalItem
     {
         public delegate bool Orig_VoidConsumable(VoidConsumable self);

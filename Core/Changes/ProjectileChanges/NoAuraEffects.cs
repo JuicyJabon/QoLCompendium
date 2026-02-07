@@ -46,11 +46,11 @@ namespace QoLCompendium.Core.Changes.ProjectileChanges
                 else if (!QoLCompendium.mainClientConfig.NoAuraVisuals && OrigFlameRing != null && TextureAssets.FlameRing != OrigFlameRing)
                     TextureAssets.FlameRing = OrigFlameRing;
 
-                if (ModConditions.calamityLoaded)
+                if (CrossModSupport.Calamity.Loaded)
                 {
                     var AssetField = typeof(AssetRepository).GetField("_assets", BindingFlags.Instance | BindingFlags.NonPublic);
 
-                    Dictionary<string, IAsset> Assets = (Dictionary<string, IAsset>)AssetField.GetValue(ModConditions.calamityMod.Assets);
+                    Dictionary<string, IAsset> Assets = (Dictionary<string, IAsset>)AssetField.GetValue(CrossModSupport.Calamity.Mod.Assets);
 
                     if (AssetField != null && Assets != null && Assets.ContainsKey(TeslaTexturePath))
                     {

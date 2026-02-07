@@ -12,3 +12,8 @@ TreacherousMarbleWall: {
 	DisplayName: Treacherous Marble Wall
 	Tooltip: A dangerous slab of marble wall that will spawn monsters
 }
+
+RepairedLifeFruit: {
+	DisplayName: Repaired Life Fruit
+	Tooltip: A placeable Life Fruit
+}

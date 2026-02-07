@@ -24,8 +24,10 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             infoByItemType.Clear();
             infiniteStackedItems.Clear();
 
-            if (QoLCompendium.mainConfig.EndlessBuffs)
+            if (QoLCompendium.mainConfig.EndlessPotionBuffs || QoLCompendium.mainConfig.EndlessStationBuffs)
                 CheckInventory(Common.GetAllInventoryItemsList(Player).ToArray());
+
+            InfiniteBannerBuffs.CheckBannerTooltips(Common.GetAllInventoryItemsList(Player));
         }
 
         public override void PostUpdateBuffs()
@@ -90,24 +92,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                         hasLuckyGreater = true;
                 }
             }
-            if (item.type == ModContent.ItemType<BannerBox>())
-            {
-                Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
-                for (int i = 0; i < NPCLoader.NPCCount; i++)
-                {
-                    int bItem = ContentSamples.NpcsByNetId[i].BannerID();
-                    if (NPC.killCount[i] >= ItemID.Sets.KillsToBanner[Item.BannerToItem(bItem)])
-                    {
-                        Player.HasNPCBannerBuff(bItem);
-                        Player.AddBuff(BuffID.MonsterBanner, 2);
-                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.MonsterBanner);
-                        Main.buffNoTimeDisplay[BuffID.MonsterBanner] = true;
-                        Main.SceneMetrics.NPCBannerBuff[bItem] = true;
-                        Main.SceneMetrics.hasBanner = true;
-                    }
-                }
-            }
-            if (item.type == ItemID.RedPotion && Main.getGoodWorld)
+            if (item.type == ItemID.RedPotion && Main.getGoodWorld && QoLCompendium.mainConfig.EndlessPotionBuffs)
             {
                 Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
                 for (int i = 0; i < Common.RedPotionBuffs.Count; i++)
@@ -116,13 +101,13 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                     Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(Common.RedPotionBuffs.ElementAt(i));
                 }
             }
-            if (item.type == ItemID.HoneyBucket || item.type == ItemID.BottomlessHoneyBucket)
+            if (item.type == ItemID.HoneyBucket || item.type == ItemID.BottomlessHoneyBucket && QoLCompendium.mainConfig.EndlessStationBuffs)
             {
                 Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
                 Player.AddBuff(BuffID.Honey, 2, true, false);
                 Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Honey);
             }
-            if (item.type == ItemID.GardenGnome)
+            if (item.type == ItemID.GardenGnome && QoLCompendium.mainConfig.EndlessStationBuffs)
             {
                 Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
                 hasGardenGnome = true;
@@ -131,7 +116,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
         private void CheckPotion(Item item)
         {
-            if (CheckPotion_IsBuffPotion(item))
+            if (CheckPotion_IsBuffPotion(item) && QoLCompendium.mainConfig.EndlessPotionBuffs)
             {
                 if (!infoByItemType.ContainsKey(item.type))
                 {
@@ -157,7 +142,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
         private void CheckPotion_AddBuff(ItemInfo info)
         {
-            if (ModConditions.calamityLoaded && info.buffType == Common.GetModBuff(ModConditions.calamityMod, "TeslaBuff"))
+            if (CrossModSupport.Calamity.Loaded && info.buffType == Common.GetModBuff(CrossModSupport.Calamity.Mod, "TeslaBuff"))
                 Player.AddBuff(info.buffType, 10, true, false);
             else
                 Player.AddBuff(info.buffType, 2, true, false);
@@ -173,7 +158,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
         private void CheckEnvironment(Item item)
         {
-            if (CheckEnvironment_ItemIsValidPlaceableTile(item))
+            if (CheckEnvironment_ItemIsValidPlaceableTile(item) && QoLCompendium.mainConfig.EndlessStationBuffs)
             {
                 if (!infoByItemType.ContainsKey(item.type))
                 {
@@ -369,7 +354,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
         private void CheckStation(Item item)
         {
-            if (CheckEnvironment_ItemIsValidPlaceableTile(item))
+            if (CheckEnvironment_ItemIsValidPlaceableTile(item) && QoLCompendium.mainConfig.EndlessStationBuffs)
             {
                 if (!infoByItemType.TryGetValue(item.type, out List<ItemInfo> value))
                 {
@@ -425,12 +410,12 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             foreach (var moddedBuff in BuffSystem.ModdedPlaceableItemBuffs)
             {
                 Item electroDeterrent = new();
-                if (ModConditions.secretsOfTheShadowsLoaded)
-                    electroDeterrent.type = Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "ElectromagneticDeterrent");
+                if (CrossModSupport.SecretsOfTheShadows.Loaded)
+                    electroDeterrent.type = Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "ElectromagneticDeterrent");
 
                 if (info.type == moddedBuff.Key)
                 {
-                    if (ModConditions.secretsOfTheShadowsLoaded && info.type == electroDeterrent.type && Player.HasItem(electroDeterrent.type) && !Player.inventory[Common.GetSlotItemIsIn(electroDeterrent, Player.inventory)].favorited)
+                    if (CrossModSupport.SecretsOfTheShadows.Loaded && info.type == electroDeterrent.type && Player.HasItem(electroDeterrent.type) && !Player.inventory[Common.GetSlotItemIsIn(electroDeterrent, Player.inventory)].favorited)
                         return;
 
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
@@ -442,7 +427,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
         private void CheckHoney(Item item)
         {
-            if (item.type == ItemID.BottledHoney)
+            if (item.type == ItemID.BottledHoney && QoLCompendium.mainConfig.EndlessPotionBuffs)
             {
                 if (!infoByItemType.TryGetValue(item.type, out List<ItemInfo> value))
                 {
@@ -474,77 +459,152 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         public static void DoBuffIntegration()
         {
             //AFKPETS
-            AddBuffIntegration(ModConditions.afkpetsMod, "ChaosAmplifier", "ChaosAmplifier");
-            AddBuffIntegration(ModConditions.afkpetsMod, "PortableRocketLauncher", "Dispenser");
-            AddVanillaBuffIntegration(ModConditions.afkpetsMod, "DruidicArtifact", BuffID.DryadsWard);
-            AddBuffIntegration(ModConditions.afkpetsMod, "EchoFlower", "EchoFlower");
-            AddBuffIntegration(ModConditions.afkpetsMod, "FallenSoulContainer", "FallenSoul");
-            AddBuffIntegration(ModConditions.afkpetsMod, "SacrificialAltar", "SacrificialAltar");
+            if (CrossModSupport.AFKPets.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.AFKPets.Mod, "ChaosAmplifier", "ChaosAmplifier");
+                AddBuffIntegration(CrossModSupport.AFKPets.Mod, "PortableRocketLauncher", "Dispenser");
+                AddVanillaBuffIntegration(CrossModSupport.AFKPets.Mod, "DruidicArtifact", BuffID.DryadsWard);
+                AddBuffIntegration(CrossModSupport.AFKPets.Mod, "EchoFlower", "EchoFlower");
+                AddBuffIntegration(CrossModSupport.AFKPets.Mod, "FallenSoulContainer", "FallenSoul");
+                AddBuffIntegration(CrossModSupport.AFKPets.Mod, "SacrificialAltar", "SacrificialAltar");
+            }
+
             //BLOCKS THROWER
-            AddBuffIntegration(ModConditions.blocksThrowerMod, "ThrowingBoard", "DeadlyPrecision");
+            if (CrossModSupport.BlocksThrower.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.BlocksThrower.Mod, "ThrowingBoard", "DeadlyPrecision");
+            }
+            
             //CALAMITY
-            AddBuffIntegration(ModConditions.calamityMod, "WeightlessCandle", "BlueCandleBuff");
-            AddBuffIntegration(ModConditions.calamityMod, "VigorousCandle", "PinkCandleBuff");
-            AddBuffIntegration(ModConditions.calamityMod, "SpitefulCandle", "YellowCandleBuff");
-            AddBuffIntegration(ModConditions.calamityMod, "ResilientCandle", "PurpleCandleBuff");
-            AddBuffIntegration(ModConditions.calamityMod, "ChaosCandle", "ChaosCandleBuff");
-            AddBuffIntegration(ModConditions.calamityMod, "TranquilityCandle", "TranquilityCandleBuff");
-            AddBuffIntegration(ModConditions.calamityMod, "EffigyOfDecay", "EffigyOfDecayBuff");
-            AddBuffIntegration(ModConditions.calamityMod, "CrimsonEffigy", "CrimsonEffigyBuff");
-            AddBuffIntegration(ModConditions.calamityMod, "CorruptionEffigy", "CorruptionEffigyBuff");
+            if (CrossModSupport.Calamity.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.Calamity.Mod, "WeightlessCandle", "BlueCandleBuff");
+                AddBuffIntegration(CrossModSupport.Calamity.Mod, "VigorousCandle", "PinkCandleBuff");
+                AddBuffIntegration(CrossModSupport.Calamity.Mod, "SpitefulCandle", "YellowCandleBuff");
+                AddBuffIntegration(CrossModSupport.Calamity.Mod, "ResilientCandle", "PurpleCandleBuff");
+                AddBuffIntegration(CrossModSupport.Calamity.Mod, "ChaosCandle", "ChaosCandleBuff");
+                AddBuffIntegration(CrossModSupport.Calamity.Mod, "TranquilityCandle", "TranquilityCandleBuff");
+                AddBuffIntegration(CrossModSupport.Calamity.Mod, "EffigyOfDecay", "EffigyOfDecayBuff");
+                AddBuffIntegration(CrossModSupport.Calamity.Mod, "CrimsonEffigy", "CrimsonEffigyBuff");
+                AddBuffIntegration(CrossModSupport.Calamity.Mod, "CorruptionEffigy", "CorruptionEffigyBuff");
+            }
+
             //CALAMITY COMMUNITY REMIX
-            AddBuffIntegration(ModConditions.calamityCommunityRemixMod, "AstralEffigy", "AstralEffigyBuff");
-            AddBuffIntegration(ModConditions.calamityCommunityRemixMod, "HallowEffigy", "HallowEffigyBuff");
+            if (CrossModSupport.CalamityCommunityRemix.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.CalamityCommunityRemix.Mod, "AstralEffigy", "AstralEffigyBuff");
+                AddBuffIntegration(CrossModSupport.CalamityCommunityRemix.Mod, "HallowEffigy", "HallowEffigyBuff");
+            }
+
             //CALAMITY ENTROPY
-            AddBuffIntegration(ModConditions.calamityEntropyMod, "VoidCandle", "VoidCandleBuff");
+            if (CrossModSupport.CalamityEntropy.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.CalamityEntropy.Mod, "VoidCandle", "VoidCandleBuff");
+            }
+
             //CAPTURE DISCS CLASS
-            AddBuffIntegration(ModConditions.captureDiscsClassMod, "DiscCharger", "ChargedDisc");
+            if (CrossModSupport.CaptureDiscClass.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.CaptureDiscClass.Mod, "DiscCharger", "ChargedDisc");
+            }
+
             //CLICKER CLASS
-            AddBuffIntegration(ModConditions.clickerClassMod, "DesktopComputer", "DesktopComputerBuff");
-            //CLASSICAL
-            AddBuffIntegration(ModConditions.ruptureMod, "TrinketRack", "SleightOfHandBuff");
+            if (CrossModSupport.ClickerClass.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.ClickerClass.Mod, "DesktopComputer", "DesktopComputerBuff");
+            }
+
+            //DEMOLISHER CLASS
+            if (CrossModSupport.DemolisherClass.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.DemolisherClass.Mod, "BlastingSupplyBoxItem", "BlastingSupplyBoxBuff");
+            }
+
             //FARGOS
-            AddBuffIntegration(ModConditions.fargosMutantMod, "Semistation", "Semistation");
-            AddBuffIntegration(ModConditions.fargosMutantMod, "Omnistation", "Omnistation");
-            AddBuffIntegration(ModConditions.fargosMutantMod, "Omnistation2", "Omnistation");
+            if (CrossModSupport.Fargowiltas.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.Fargowiltas.Mod, "Semistation", "Semistation");
+                AddBuffIntegration(CrossModSupport.Fargowiltas.Mod, "Omnistation", "Omnistation");
+                AddBuffIntegration(CrossModSupport.Fargowiltas.Mod, "Omnistation2", "Omnistation");
+            }
+
             //HOMEWARD JOURNEY
-            AddBuffIntegration(ModConditions.homewardJourneyMod, "BushOfLife", "BushOfLifeBuff");
-            AddBuffIntegration(ModConditions.homewardJourneyMod, "LifeLantern", "LifeLanternBuff");
-            //MARTAIN'S ORDER
-            AddBuffIntegration(ModConditions.martainsOrderMod, "ArcheologyTable", "ReschBuff");
-            AddBuffIntegration(ModConditions.martainsOrderMod, "SporeFarm", "SporeSave");
+            if (CrossModSupport.HomewardJourney.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.HomewardJourney.Mod, "BushOfLife", "BushOfLifeBuff");
+                AddBuffIntegration(CrossModSupport.HomewardJourney.Mod, "LifeLantern", "LifeLanternBuff");
+            }
+
+            //MARTIN'S ORDER
+            if (CrossModSupport.MartinsOrder.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.MartinsOrder.Mod, "ArcheologyTable", "ReschBuff");
+                AddBuffIntegration(CrossModSupport.MartinsOrder.Mod, "SporeFarm", "SporeSave");
+            }
+
             //REDEMPTION
-            AddBuffIntegration(ModConditions.redemptionMod, "EnergyStation", "EnergyStationBuff");
-            AddBuffIntegration(ModConditions.redemptionMod, "MoonflareCandle", "MoonflareCandleBuff");
-            AddBuffIntegration(ModConditions.redemptionMod, "SoulCandle", "SoulboundBuff");
+            if (CrossModSupport.Redemption.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.Redemption.Mod, "EnergyStation", "EnergyStationBuff");
+                AddBuffIntegration(CrossModSupport.Redemption.Mod, "MoonflareCandle", "MoonflareCandleBuff");
+                AddBuffIntegration(CrossModSupport.Redemption.Mod, "SoulCandle", "SoulboundBuff");
+            }
+
+            //RUPTURE
+            if (CrossModSupport.Rupture.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.Rupture.Mod, "TrinketRack", "SleightOfHandBuff");
+            }
+
             //SECRETS OF THE SHADOWS
-            AddBuffIntegration(ModConditions.secretsOfTheShadowsMod, "DigitalDisplay", "CyberneticEnhancements");
-            AddBuffIntegration(ModConditions.secretsOfTheShadowsMod, "ElectromagneticDeterrent", "DEFEBuff");
+            if (CrossModSupport.SecretsOfTheShadows.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.SecretsOfTheShadows.Mod, "DigitalDisplay", "CyberneticEnhancements");
+                AddBuffIntegration(CrossModSupport.SecretsOfTheShadows.Mod, "ElectromagneticDeterrent", "DEFEBuff");
+            }
+
             //SHADOWS OF ABADDON
-            AddBuffIntegration(ModConditions.shadowsOfAbaddonMod, "FruitLantern", "FruitBuff");
+            if (CrossModSupport.ShadowsOfAbaddon.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.ShadowsOfAbaddon.Mod, "FruitLantern", "FruitBuff");
+            }
+
             //SPIRIT CLASSIC
-            AddBuffIntegration(ModConditions.spiritClassicMod, "SunPot", "SunPotBuff");
-            AddBuffIntegration(ModConditions.spiritClassicMod, "CoilEnergizerItem", "OverDrive");
-            AddBuffIntegration(ModConditions.spiritClassicMod, "TheCouch", "CouchPotato");
-            AddBuffIntegration(ModConditions.spiritClassicMod, "KoiTotem", "KoiTotemBuff");
+            if (CrossModSupport.SpiritClassic.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.SpiritClassic.Mod, "SunPot", "SunPotBuff");
+                AddBuffIntegration(CrossModSupport.SpiritClassic.Mod, "CoilEnergizerItem", "OverDrive");
+                AddBuffIntegration(CrossModSupport.SpiritClassic.Mod, "TheCouch", "CouchPotato");
+                AddBuffIntegration(CrossModSupport.SpiritClassic.Mod, "KoiTotem", "KoiTotemBuff");
+            }
+
             //SPIRIT REFORGED
-            AddBuffIntegration(ModConditions.spiritReforgedMod, "AncientKoiTotem", "KoiTotemBuff");
-            AddBuffIntegration(ModConditions.spiritReforgedMod, "KoiTotem", "KoiTotemBuff");
+            if (CrossModSupport.SpiritReforged.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.SpiritReforged.Mod, "AncientKoiTotem", "KoiTotemBuff");
+                AddBuffIntegration(CrossModSupport.SpiritReforged.Mod, "KoiTotem", "KoiTotemBuff");
+            }
+
             //THORIUM
-            AddBuffIntegration(ModConditions.thoriumMod, "Altar", "AltarBuff");
-            AddBuffIntegration(ModConditions.thoriumMod, "ConductorsStand", "ConductorsStandBuff");
-            AddBuffIntegration(ModConditions.thoriumMod, "Mistletoe", "MistletoeBuff");
-            AddBuffIntegration(ModConditions.thoriumMod, "NinjaRack", "NinjaBuff");
+            if (CrossModSupport.Thorium.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.Thorium.Mod, "Altar", "AltarBuff");
+                AddBuffIntegration(CrossModSupport.Thorium.Mod, "ConductorsStand", "ConductorsStandBuff");
+                AddBuffIntegration(CrossModSupport.Thorium.Mod, "Mistletoe", "MistletoeBuff");
+                AddBuffIntegration(CrossModSupport.Thorium.Mod, "NinjaRack", "NinjaBuff");
+            }
         }
 
         public static void AddBuffIntegration(Mod mod, string itemName, string buffName)
         {
-            ModdedPlaceableItemBuffs[Common.GetModItem(mod, itemName)] = Common.GetModBuff(mod, buffName);
+            if (mod != null)
+                ModdedPlaceableItemBuffs[Common.GetModItem(mod, itemName)] = Common.GetModBuff(mod, buffName);
         }
 
         public static void AddVanillaBuffIntegration(Mod mod, string itemName, int buffID)
         {
-            ModdedPlaceableItemBuffs[Common.GetModItem(mod, itemName)] = buffID;
+            if (mod != null)
+                ModdedPlaceableItemBuffs[Common.GetModItem(mod, itemName)] = buffID;
         }
     }
 

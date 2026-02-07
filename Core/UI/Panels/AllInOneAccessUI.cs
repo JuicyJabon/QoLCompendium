@@ -1,4 +1,5 @@
-﻿using QoLCompendium.Core.UI.Buttons;
+﻿using QoLCompendium.Core.Changes.PlayerChanges;
+using QoLCompendium.Core.UI.Buttons;
 
 namespace QoLCompendium.Core.UI.Panels
 {
@@ -70,10 +71,10 @@ namespace QoLCompendium.Core.UI.Panels
             StoragePanel.Append(closeButton);
         }
 
-        private void PiggyBankClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(-2, SoundID.Item59);
-        private void SafeClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(-3, SoundID.MenuOpen);
-        private void DefendersForgeClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(-4, SoundID.MenuOpen);
-        private void VoidVaultClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(-5, SoundID.Item130);
+        private void PiggyBankClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(BankRange.PiggyBank, SoundID.Item59);
+        private void SafeClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(BankRange.Safe, SoundID.MenuOpen);
+        private void DefendersForgeClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(BankRange.DefendersForge, SoundID.MenuOpen);
+        private void VoidVaultClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(BankRange.VoidVault, SoundID.Item130);
 
         private void CloseButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -84,21 +85,30 @@ namespace QoLCompendium.Core.UI.Panels
             }
         }
 
-        public static void StorageClick(int chest, SoundStyle sound)
+        public static void StorageClick(int bankID, SoundStyle sound)
         {
-            if (Main.GameUpdateCount - timeStart >= 10)
+            Player Player = Main.LocalPlayer;
+
+            if (Player.chest != bankID)
             {
                 Main.playerInventory = true;
-                Main.LocalPlayer.chest = chest;
-                QoLCompendium.LastOpenedBank = chest;
-                Point pos = Main.LocalPlayer.Center.ToTileCoordinates();
-                Main.LocalPlayer.chestX = pos.X;
-                Main.LocalPlayer.chestY = pos.Y;
-                Main.oldNPCShop = 0;
-                Main.LocalPlayer.SetTalkNPC(-1);
+
+                Player.chest = bankID;
+                BankRange.LastOpenedBank = bankID;
+
+                Point pos = Player.Center.ToTileCoordinates();
+                Player.chestX = pos.X;
+                Player.chestY = pos.Y;
+
+                Player.SetTalkNPC(-1);
                 Main.SetNPCShopIndex(0);
+
                 SoundEngine.PlaySound(sound, Main.LocalPlayer.position, null);
-                Recipe.FindRecipes(false);
+            }
+            else
+            {
+                Player.chest = -1;
+                BankRange.LastOpenedBank = null;
             }
         }
     }

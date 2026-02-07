@@ -28,7 +28,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         public override void AddRecipes()
         {
             Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.BannerBox, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-            r.AddIngredient(ItemID.Wood, 12);
+            r.AddRecipeGroup(RecipeGroupID.Wood, 12);
             r.AddIngredient(ItemID.Silk, 2);
             r.AddTile(TileID.Loom);
             r.Register();

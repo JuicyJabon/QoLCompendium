@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Content.Items.Tools.Summons.CrossMod.Thorium
 {
-    [JITWhenModsEnabled(ModConditions.thoriumName)]
-    [ExtendsFromMod(ModConditions.thoriumName)]
+    [JITWhenModsEnabled(CrossModSupport.Thorium.Name)]
+    [ExtendsFromMod(CrossModSupport.Thorium.Name)]
     public class ForgottenOneSummon : BaseSummon
     {
         public override int SortingPriority => 13;
@@ -12,15 +12,17 @@ namespace QoLCompendium.Content.Items.Tools.Summons.CrossMod.Thorium
 
         public override bool CanUseItem(Player player)
         {
-            return ModConditions.thoriumLoaded && NPC.downedPlantBoss && player.ZoneBeach && !NPC.AnyNPCs(ModContent.NPCType<ForgottenOne>());
+            if (CrossModSupport.Thorium.Loaded && CrossModSupport.Thorium.Mod.TryFind("DepthsBiome", out ModBiome DepthsBiome) && DepthsBiome != null && Main.LocalPlayer.InModBiome(DepthsBiome))
+                return NPC.downedPlantBoss && !NPC.AnyNPCs(ModContent.NPCType<ForgottenOne>());
+            return false;
         }
 
         public override void AddRecipes()
         {
             Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-            r.AddIngredient(Common.GetModItem(ModConditions.thoriumMod, "MarineBlock"), 12);
-            r.AddIngredient(Common.GetModItem(ModConditions.thoriumMod, "MossyMarineBlock"), 12);
-            r.AddIngredient(ItemID.Ectoplasm, 5);
+            r.AddIngredient(Common.GetModItem(CrossModSupport.Thorium.Mod, "MarineBlock"), 6);
+            r.AddIngredient(Common.GetModItem(CrossModSupport.Thorium.Mod, "MossyMarineBlock"), 6);
+            r.AddIngredient(ItemID.Ectoplasm, 2);
             r.AddTile(TileID.MythrilAnvil);
             r.Register();
         }

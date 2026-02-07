@@ -3,9 +3,12 @@ using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Tools.RegrowthStaves
 {
-    public class MossStaff : ModItem
+    public class MossStaff : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.RegrowthStaves;
+
+        public new string LocalizationCategory => "Items.Tools.RegrowthStaves";
+
 
         public int Mode = 0;
 

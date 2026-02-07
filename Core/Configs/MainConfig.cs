@@ -9,10 +9,16 @@ namespace QoLCompendium.Core.Configs
 
         [Header("$Mods.QoLCompendium.ConfigHeaders.Endless")]
         [DefaultValue(true)]
-        public bool EndlessBuffs { get; set; }
+        public bool EndlessPotionBuffs { get; set; }
+
+        [DefaultValue(true)]
+        public bool EndlessStationBuffs { get; set; }
 
         [DefaultValue(true)]
         public bool EndlessHealing { get; set; }
+
+        [DefaultValue(true)]
+        public bool EndlessBanners { get; set; }
 
         [DefaultValue(true)]
         public bool EndlessAmmo { get; set; }
@@ -42,6 +48,10 @@ namespace QoLCompendium.Core.Configs
         [Range(1, 99999)]
         public int EndlessHealingAmount { get; set; }
 
+        [DefaultValue(1)]
+        [Range(1, 99999)]
+        public int EndlessBannerAmount { get; set; }
+
         [DefaultValue(999)]
         [Range(1, 99999)]
         public int EndlessItemAmount { get; set; }
@@ -60,6 +70,9 @@ namespace QoLCompendium.Core.Configs
 
         [DefaultValue(false)]
         public bool ActiveBuffsHaveEnchantedEffects { get; set; }
+        
+        [DefaultValue(false)]
+        public bool ActiveBannersHaveEnchantedEffects { get; set; }
 
         [Header("$Mods.QoLCompendium.ConfigHeaders.Items2")]
         [DefaultValue(9999)]
@@ -202,6 +215,12 @@ namespace QoLCompendium.Core.Configs
         public bool LunarEnemiesDropFragments { get; set; }
 
         [DefaultValue(true)]
+        public bool JellyfishDropGel { get; set; }
+
+        [DefaultValue(true)]
+        public bool PinkJellyfishDropPinkGel { get; set; }
+
+        [DefaultValue(true)]
         public bool OneKillForBestiaryEntries { get; set; }
 
         [DefaultValue(true)]
@@ -323,6 +342,9 @@ namespace QoLCompendium.Core.Configs
 
         [DefaultValue(false)]
         public bool NoPylonTeleportRestrictions { get; set; }
+
+        [DefaultValue(false)]
+        public bool NoPylonPlacementRestrictions { get; set; }
 
         [DefaultValue(true)]
         public bool InstantRespawn { get; set; }

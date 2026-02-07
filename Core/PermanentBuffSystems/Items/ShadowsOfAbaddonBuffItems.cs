@@ -7,8 +7,8 @@ using SacredTools.Items.Placeable;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(ModConditions.shadowsOfAbaddonName)]
-    [ExtendsFromMod(ModConditions.shadowsOfAbaddonName)]
+    [JITWhenModsEnabled(CrossModSupport.ShadowsOfAbaddon.Name)]
+    [ExtendsFromMod(CrossModSupport.ShadowsOfAbaddon.Name)]
     public static class ShadowsOfAbaddonBuffItems
     {
         public static NewBuffEffect[] ShadowsOfAbaddonEffects = [

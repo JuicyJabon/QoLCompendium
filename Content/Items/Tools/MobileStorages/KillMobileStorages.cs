@@ -1,12 +1,10 @@
-﻿using QoLCompendium.Core;
-
-namespace QoLCompendium.Content.Items.Tools.MobileStorages
+﻿namespace QoLCompendium.Content.Items.Tools.MobileStorages
 {
     public class KillMobileStorages : GlobalItem
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return entity.type == ItemID.MoneyTrough || entity.type == ItemID.VoidLens || entity.type == ItemID.ClosedVoidBag || entity.type == ModContent.ItemType<FlyingSafe>() || entity.type == ModContent.ItemType<EtherianConstruct>();
+            return entity.type == ItemID.MoneyTrough || entity.type == ModContent.ItemType<FlyingSafe>() || entity.type == ModContent.ItemType<EtherianConstruct>();
         }
 
         public override bool CanRightClick(Item item) => true;

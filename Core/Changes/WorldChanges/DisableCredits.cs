@@ -7,7 +7,7 @@ namespace QoLCompendium.Core.Changes.WorldChanges
     {
         public override void Load()
         {
-            if (ModConditions.vanillaQoLLoaded)
+            if (CrossModSupport.VanillaQoL.Loaded)
                 return;
 
             if (!QoLCompendium.mainConfig.DisableCredits)

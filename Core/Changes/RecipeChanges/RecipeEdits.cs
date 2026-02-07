@@ -1,6 +1,9 @@
 ﻿using QoLCompendium.Content.Items.Accessories.Informational;
 using QoLCompendium.Content.Items.Placeables.CraftingStations;
-using QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod;
+using QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod.Calamity;
+using QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod.HomewardJourney;
+using QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod.MartinsOrder;
+using QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod.Thorium;
 using QoLCompendium.Content.Items.Tools.Mirrors;
 using QoLCompendium.Content.Items.Tools.Usables;
 using ThoriumRework;
@@ -9,7 +12,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
 {
     public class RecipeEdits : ModSystem
     {
-        [JITWhenModsEnabled(ModConditions.thoriumBossReworkName)]
+        [JITWhenModsEnabled(CrossModSupport.ThoriumHelheim.Name)]
         public static bool ThoriumReworkPotionsEnabled => ModContent.GetInstance<CompatConfig>().extraPotions;
 
         public override void PostAddRecipes()
@@ -35,16 +38,28 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 if ((recipe.HasIngredient(ModContent.ItemType<GoldenLockpick>()) || recipe.HasIngredient(ItemID.ShadowKey)) && QoLCompendium.mainConfig.NonConsumableKeys)
                     recipe.AddConsumeIngredientCallback(DontConsumeKeys);
 
-                if (ModConditions.calamityLoaded && ModConditions.catalystLoaded)
+                if (CrossModSupport.Calamity.Loaded && CrossModSupport.Catalyst.Loaded)
                 {
-                    if (recipe.HasResult(ModContent.ItemType<CalamityCraftingMonolith>()))
-                        recipe.AddIngredient(Common.GetModItem(ModConditions.catalystMod, "AstralTransmogrifier"));
+                    if (recipe.HasResult(ModContent.ItemType<HardmodeCalamityCraftingMonolith>()))
+                        recipe.AddIngredient(Common.GetModItem(CrossModSupport.Catalyst.Mod, "AstralTransmogrifier"));
                 }
 
-                if (ModConditions.calamityLoaded && ModConditions.calamityEntropyLoaded)
+                if (CrossModSupport.Calamity.Loaded && CrossModSupport.CalamityEntropy.Loaded)
                 {
                     if (recipe.HasResult(ModContent.ItemType<CalamityCraftingMonolith>()))
-                        recipe.AddIngredient(Common.GetModItem(ModConditions.calamityEntropyMod, "AbyssalAltar"));
+                    {
+                        recipe.AddIngredient(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "AbyssalAltar"));
+                        recipe.AddIngredient(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "VoidWell"));
+                    }
+                }
+
+                if (CrossModSupport.Calamity.Loaded && CrossModSupport.CalamityVanities.Loaded)
+                {
+                    if (recipe.HasResult(ModContent.ItemType<HardmodeCalamityCraftingMonolith>()))
+                        recipe.AddIngredient(Common.GetModItem(CrossModSupport.CalamityVanities.Mod, "StarstruckSynthesizer"));
+
+                    if (recipe.HasResult(ModContent.ItemType<CalamityCraftingMonolith>()))
+                        recipe.AddIngredient(Common.GetModItem(CrossModSupport.CalamityVanities.Mod, "AuricManufacturer"));
                 }
 
                 if (QoLCompendium.itemConfig.Mirrors && QoLCompendium.itemConfig.InformationAccessories)
@@ -81,78 +96,79 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     recipe.AddIngredient(ItemID.LuckPotionGreater, 10);
                 }
 
-                if (ModConditions.calamityLoaded)
+                if (CrossModSupport.Calamity.Loaded)
                 {
-                    if (ModConditions.calamityEntropyLoaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamity")))
+                    if (CrossModSupport.CalamityEntropy.Loaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamity")))
                     {
                         recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityEntropy"));
                     }
 
-                    if (ModConditions.calamityRekindledLoaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamity")))
+                    if (CrossModSupport.CalamityRekindled.Loaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamity")))
                     {
                         recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityRekindled"));
                     }
 
-                    if (ModConditions.catalystLoaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDamage")))
+                    if (CrossModSupport.Catalyst.Loaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDamage")))
                     {
                         recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentAstracola"));
                     }
 
-                    if (ModConditions.clamityAddonLoaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamity")))
+                    if (CrossModSupport.Clamity.Loaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamity")))
                     {
                         recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentClamity"));
                     }
 
-                    if (ModConditions.draedonExpansionLoaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityFlasks")))
+                    if (CrossModSupport.DraedonExpansion.Loaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityFlasks")))
                     {
                         recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfElectricity"));
                     }
                 }
 
-                if (ModConditions.martainsOrderLoaded)
+                if (CrossModSupport.MartinsOrder.Loaded)
                 {
                     if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentGourmetFlavor")))
                     {
-                        recipe.RemoveIngredient(Common.GetModItem(ModConditions.martainsOrderMod, "FastFood"));
+                        recipe.RemoveIngredient(Common.GetModItem(CrossModSupport.MartinsOrder.Mod, "FastFood"));
                         recipe.AddRecipeGroup("QoLCompendium:GourmetFlavor", 30);
                     }
                 }
 
-                if (ModConditions.spiritReforgedLoaded)
+                if (CrossModSupport.SpiritReforged.Loaded)
                 {
                     if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentSRKoiTotem")))
                     {
-                        recipe.RemoveIngredient(Common.GetModItem(ModConditions.spiritReforgedMod, "KoiTotem"));
+                        recipe.RemoveIngredient(Common.GetModItem(CrossModSupport.SpiritReforged.Mod, "KoiTotem"));
                         recipe.AddRecipeGroup("QoLCompendium:KoiTotem", 3);
                     }
                 }
 
-                if (ModConditions.thoriumLoaded && ModConditions.thoriumBossReworkLoaded)
+                if (CrossModSupport.Thorium.Loaded && CrossModSupport.ThoriumHelheim.Loaded)
                 {
                     if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumBard")) && ThoriumReworkPotionsEnabled)
                     {
-                        recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentDeathsinger"));
+                        if (!CrossModSupport.InfernalEclipse.Loaded)
+                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentDeathsinger"));
                         recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationRegeneration"));
                     }
                 }
 
                 #region Ultimate Crafting Monolith
-                if (ModConditions.calamityLoaded)
+                if (CrossModSupport.Calamity.Loaded)
                 {
                     if (recipe.HasResult(ModContent.ItemType<UltimateCraftingMonolith>()))
                         recipe.AddIngredient(ModContent.ItemType<CalamityCraftingMonolith>());
                 }
-                if (ModConditions.homewardJourneyLoaded)
+                if (CrossModSupport.HomewardJourney.Loaded)
                 {
                     if (recipe.HasResult(ModContent.ItemType<UltimateCraftingMonolith>()))
                         recipe.AddIngredient(ModContent.ItemType<HomewardJourneyCraftingMonolith>());
                 }
-                if (ModConditions.martainsOrderLoaded)
+                if (CrossModSupport.MartinsOrder.Loaded)
                 {
                     if (recipe.HasResult(ModContent.ItemType<UltimateCraftingMonolith>()))
                         recipe.AddIngredient(ModContent.ItemType<MartinsOrderCraftingMonolith>());
                 }
-                if (ModConditions.thoriumLoaded)
+                if (CrossModSupport.Thorium.Loaded)
                 {
                     if (recipe.HasResult(ModContent.ItemType<UltimateCraftingMonolith>()))
                         recipe.AddIngredient(ModContent.ItemType<ThoriumCraftingMonolith>());

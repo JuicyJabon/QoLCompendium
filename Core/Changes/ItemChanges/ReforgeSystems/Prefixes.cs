@@ -123,163 +123,161 @@
 
         public static void PostSetupTasks()
         {
-            if (ModConditions.calamityLoaded)
+            if (CrossModSupport.Calamity.Loaded)
             {
                 //ACCESSORIES
-                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.calamityMod, "Cloaked")], 1);
-                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.calamityMod, "Silent")], 3);
-                if (ModConditions.calamityEntropyLoaded)
-                    AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.calamityEntropyMod, "Enchanted")], 3);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Cloaked")], 1);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Silent")], 3);
+                if (CrossModSupport.CalamityEntropy.Loaded)
+                    AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.CalamityEntropy.Mod, "Enchanted")], 3);
 
                 //TIERS
                 RogueReforgeTiers =
                     [
-                    /* 0 */ [PrefixID.Keen, PrefixID.Nimble, PrefixID.Nasty, PrefixID.Forceful, PrefixID.Strong, Common.GetModPrefix(ModConditions.calamityMod, "Radical"), Common.GetModPrefix(ModConditions.calamityMod, "Pointy")],
-                    /* 1 */ [PrefixID.Hurtful, PrefixID.Ruthless, PrefixID.Zealous, PrefixID.Quick, Common.GetModPrefix(ModConditions.calamityMod, "Sharp"), Common.GetModPrefix(ModConditions.calamityMod, "Glorious")],
-                    /* 2 */ [PrefixID.Murderous, PrefixID.Agile, PrefixID.Unpleasant, Common.GetModPrefix(ModConditions.calamityMod, "Feathered"), Common.GetModPrefix(ModConditions.calamityMod, "Sleek"), Common.GetModPrefix(ModConditions.calamityMod, "Hefty")],
-                    /* 3 */ [PrefixID.Superior, PrefixID.Demonic, Common.GetModPrefix(ModConditions.calamityMod, "Mighty"), Common.GetModPrefix(ModConditions.calamityMod, "Serrated")],
-                    /* 4 */ [PrefixID.Godly, PrefixID.Deadly2, Common.GetModPrefix(ModConditions.calamityMod, "Vicious"), Common.GetModPrefix(ModConditions.calamityMod, "Lethal")],
-                    /* 5 */ [Common.GetModPrefix(ModConditions.calamityMod, "Flawless")]
+                    /* 0 */ [PrefixID.Keen, PrefixID.Nimble, PrefixID.Nasty, PrefixID.Forceful, PrefixID.Strong, Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Radical"), Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Pointy")],
+                    /* 1 */ [PrefixID.Hurtful, PrefixID.Ruthless, PrefixID.Zealous, PrefixID.Quick, Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Sharp"), Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Glorious")],
+                    /* 2 */ [PrefixID.Murderous, PrefixID.Agile, PrefixID.Unpleasant, Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Feathered"), Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Sleek"), Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Hefty")],
+                    /* 3 */ [PrefixID.Superior, PrefixID.Demonic, Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Mighty"), Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Serrated")],
+                    /* 4 */ [PrefixID.Godly, PrefixID.Deadly2, Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Vicious"), Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Lethal")],
+                    /* 5 */ [Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Flawless")]
                     ];
 
                 //VOID CLASSES
-                if (ModConditions.infernalEclipseLoaded && ModConditions.secretsOfTheShadowsLoaded)
+                if (CrossModSupport.InfernalEclipse.Loaded && CrossModSupport.SecretsOfTheShadows.Loaded)
                 {
                     Array.Resize(ref VoidRogueReforgeTiers, RogueReforgeTiers.Length);
                     VoidRogueReforgeTiers = (int[][])RogueReforgeTiers.Clone();
-                    AddPrefixesToArrays(VoidRogueReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Famished")], 0);
-                    AddPrefixesToArrays(VoidRogueReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Precarious")], 1);
-                    AddPrefixesToArrays(VoidRogueReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Potent")], 3);
-                    AddPrefixesToArrays(VoidRogueReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Chthonic")], 4);
-                    AddPrefixesToArrays(VoidRogueReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Omnipotent")], 5);
+                    AddPrefixesToArrays(VoidRogueReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Famished")], 0);
+                    AddPrefixesToArrays(VoidRogueReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Precarious")], 1);
+                    AddPrefixesToArrays(VoidRogueReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Potent")], 3);
+                    AddPrefixesToArrays(VoidRogueReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Chthonic")], 4);
+                    AddPrefixesToArrays(VoidRogueReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Omnipotent")], 5);
                 }
             }
 
-            if (ModConditions.clickerClassLoaded)
+            if (CrossModSupport.ClickerClass.Loaded)
             {
                 //ACCESSORIES
-                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.clickerClassMod, "ClickerRadius")], 3);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.ClickerClass.Mod, "ClickerRadius")], 3);
 
                 ClickerReforgeTiers =
                     [
-                    /* 0 */ [Common.GetModPrefix(ModConditions.clickerClassMod, "Disconnected"), Common.GetModPrefix(ModConditions.clickerClassMod, "Laggy")],
-                    /* 1 */ [Common.GetModPrefix(ModConditions.clickerClassMod, "Novice")],
-                    /* 2 */ [Common.GetModPrefix(ModConditions.clickerClassMod, "Amateur")],
-                    /* 3 */ [Common.GetModPrefix(ModConditions.clickerClassMod, "Pro")],
-                    /* 4 */ [Common.GetModPrefix(ModConditions.clickerClassMod, "Elite")]
+                    /* 0 */ [Common.GetModPrefix(CrossModSupport.ClickerClass.Mod, "Disconnected"), Common.GetModPrefix(CrossModSupport.ClickerClass.Mod, "Laggy")],
+                    /* 1 */ [Common.GetModPrefix(CrossModSupport.ClickerClass.Mod, "Novice")],
+                    /* 2 */ [Common.GetModPrefix(CrossModSupport.ClickerClass.Mod, "Amateur")],
+                    /* 3 */ [Common.GetModPrefix(CrossModSupport.ClickerClass.Mod, "Pro")],
+                    /* 4 */ [Common.GetModPrefix(CrossModSupport.ClickerClass.Mod, "Elite")]
                     ];
             }
 
-            if (ModConditions.secretsOfTheShadowsLoaded)
+            if (CrossModSupport.SecretsOfTheShadows.Loaded)
             {
                 //ACCESSORIES
-                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Awakened"), Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Chained")], 2);
-                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Omniscient"), Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Soulbound")], 3);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Awakened"), Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Chained")], 2);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Omniscient"), Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Soulbound")], 3);
 
 
                 //WEAPONS
                 Array.Resize(ref VoidMeleeReforgeTiers, MeleeReforgeTiers.Length);
                 VoidMeleeReforgeTiers = (int[][])MeleeReforgeTiers.Clone();
-                AddPrefixesToArrays(VoidMeleeReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Famished")], 0);
-                AddPrefixesToArrays(VoidMeleeReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Precarious")], 1);
-                AddPrefixesToArrays(VoidMeleeReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Potent")], 3);
-                AddPrefixesToArrays(VoidMeleeReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Chthonic")], 4);
-                AddPrefixesToArrays(VoidMeleeReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Omnipotent")], 5);
+                AddPrefixesToArrays(VoidMeleeReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Famished")], 0);
+                AddPrefixesToArrays(VoidMeleeReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Precarious")], 1);
+                AddPrefixesToArrays(VoidMeleeReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Potent")], 3);
+                AddPrefixesToArrays(VoidMeleeReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Chthonic")], 4);
+                AddPrefixesToArrays(VoidMeleeReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Omnipotent")], 5);
 
                 Array.Resize(ref VoidRangedReforgeTiers, RangedReforgeTiers.Length);
                 VoidRangedReforgeTiers = (int[][])RangedReforgeTiers.Clone();
-                AddPrefixesToArrays(VoidRangedReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Famished")], 0);
-                AddPrefixesToArrays(VoidRangedReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Precarious")], 1);
-                AddPrefixesToArrays(VoidRangedReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Potent")], 3);
-                AddPrefixesToArrays(VoidRangedReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Chthonic")], 4);
-                AddPrefixesToArrays(VoidRangedReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Omnipotent")], 5);
+                AddPrefixesToArrays(VoidRangedReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Famished")], 0);
+                AddPrefixesToArrays(VoidRangedReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Precarious")], 1);
+                AddPrefixesToArrays(VoidRangedReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Potent")], 3);
+                AddPrefixesToArrays(VoidRangedReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Chthonic")], 4);
+                AddPrefixesToArrays(VoidRangedReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Omnipotent")], 5);
 
                 Array.Resize(ref VoidMagicReforgeTiers, MagicReforgeTiers.Length);
                 VoidMagicReforgeTiers = (int[][])MagicReforgeTiers.Clone();
-                AddPrefixesToArrays(VoidMagicReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Famished")], 0);
-                AddPrefixesToArrays(VoidMagicReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Precarious")], 1);
-                AddPrefixesToArrays(VoidMagicReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Potent")], 3);
-                AddPrefixesToArrays(VoidMagicReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Chthonic")], 4);
-                AddPrefixesToArrays(VoidMagicReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Omnipotent")], 5);
+                AddPrefixesToArrays(VoidMagicReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Famished")], 0);
+                AddPrefixesToArrays(VoidMagicReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Precarious")], 1);
+                AddPrefixesToArrays(VoidMagicReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Potent")], 3);
+                AddPrefixesToArrays(VoidMagicReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Chthonic")], 4);
+                AddPrefixesToArrays(VoidMagicReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Omnipotent")], 5);
 
                 Array.Resize(ref VoidSummonReforgeTiers, SummonReforgeTiers.Length);
                 VoidSummonReforgeTiers = (int[][])SummonReforgeTiers.Clone();
-                AddPrefixesToArrays(VoidSummonReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Famished")], 0);
-                AddPrefixesToArrays(VoidSummonReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Precarious")], 1);
-                AddPrefixesToArrays(VoidSummonReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Potent")], 3);
-                AddPrefixesToArrays(VoidSummonReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Chthonic")], 4);
-                AddPrefixesToArrays(VoidSummonReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsMod, "Omnipotent")], 5);
+                AddPrefixesToArrays(VoidSummonReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Famished")], 0);
+                AddPrefixesToArrays(VoidSummonReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Precarious")], 1);
+                AddPrefixesToArrays(VoidSummonReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Potent")], 3);
+                AddPrefixesToArrays(VoidSummonReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Chthonic")], 4);
+                AddPrefixesToArrays(VoidSummonReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Omnipotent")], 5);
             }
 
-            if (ModConditions.thoriumLoaded)
+            if (CrossModSupport.Thorium.Loaded)
             {
                 //ACCESSORIES
-                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.thoriumMod, "Engrossing"), Common.GetModPrefix(ModConditions.thoriumMod, "Lucrative")], 2);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Engrossing"), Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Lucrative")], 2);
 
 
                 //TIERS
                 BardReforgeTiers = 
                     [
-                    /* 0 */ [Common.GetModPrefix(ModConditions.thoriumMod, "Muted"), Common.GetModPrefix(ModConditions.thoriumMod, "OffKey"),Common.GetModPrefix(ModConditions.thoriumMod, "Rambling")],
-                    /* 1 */ [Common.GetModPrefix(ModConditions.thoriumMod, "Buzzing"), Common.GetModPrefix(ModConditions.thoriumMod, "Refined"), Common.GetModPrefix(ModConditions.thoriumMod, "Loud")],
-                    /* 2 */ [Common.GetModPrefix(ModConditions.thoriumMod, "Supersonic"), Common.GetModPrefix(ModConditions.thoriumMod, "Vibrant"), Common.GetModPrefix(ModConditions.thoriumMod, "Euphonic"), Common.GetModPrefix(ModConditions.thoriumMod, "Inspiring")],
-                    /* 3 */ [Common.GetModPrefix(ModConditions.thoriumMod, "Melodic")],
-                    /* 4 */ [Common.GetModPrefix(ModConditions.thoriumMod, "Fabled")]
+                    /* 0 */ [Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Muted"), Common.GetModPrefix(CrossModSupport.Thorium.Mod, "OffKey"),Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Rambling")],
+                    /* 1 */ [Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Buzzing"), Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Refined"), Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Loud")],
+                    /* 2 */ [Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Supersonic"), Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Vibrant"), Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Euphonic"), Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Inspiring"), Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Melodic")],
+                    /* 3 */ [Common.GetModPrefix(CrossModSupport.Thorium.Mod, "Fabled")]
                     ];
 
 
                 //VOID CLASSES
-                if (ModConditions.secretsOfTheShadowsLoaded && ModConditions.secretsOfTheShadowsBardHealerLoaded)
+                if (CrossModSupport.SecretsOfTheShadows.Loaded && CrossModSupport.SecretsOfTheShadowsBardHealer.Loaded)
                 {
                     Array.Resize(ref VoidBardReforgeTiers, BardReforgeTiers.Length);
                     VoidBardReforgeTiers = (int[][])BardReforgeTiers.Clone();
-                    AddPrefixesToArrays(VoidBardReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Famished")], 0);
-                    AddPrefixesToArrays(VoidBardReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Precarious")], 1);
-                    AddPrefixesToArrays(VoidBardReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Potent")], 2);
-                    AddPrefixesToArrays(VoidBardReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Chthonic")], 3);
-                    AddPrefixesToArrays(VoidBardReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Omnipotent")], 4);
+                    AddPrefixesToArrays(VoidBardReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Famished")], 0);
+                    AddPrefixesToArrays(VoidBardReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Precarious")], 1);
+                    AddPrefixesToArrays(VoidBardReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Potent"), Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Chthonic")], 2);
+                    AddPrefixesToArrays(VoidBardReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Omnipotent")], 3);
 
                     Array.Resize(ref VoidHealerReforgeTiers, MagicReforgeTiers.Length);
                     VoidHealerReforgeTiers = (int[][])MagicReforgeTiers.Clone();
-                    AddPrefixesToArrays(VoidHealerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Famished")], 0);
-                    AddPrefixesToArrays(VoidHealerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Precarious")], 1);
-                    AddPrefixesToArrays(VoidHealerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Potent")], 3);
-                    AddPrefixesToArrays(VoidHealerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Chthonic")], 4);
-                    AddPrefixesToArrays(VoidHealerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Omnipotent")], 5);
+                    AddPrefixesToArrays(VoidHealerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Famished")], 0);
+                    AddPrefixesToArrays(VoidHealerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Precarious")], 1);
+                    AddPrefixesToArrays(VoidHealerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Potent")], 3);
+                    AddPrefixesToArrays(VoidHealerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Chthonic")], 4);
+                    AddPrefixesToArrays(VoidHealerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Omnipotent")], 5);
 
                     Array.Resize(ref VoidMeleeHealerReforgeTiers, MeleeReforgeTiers.Length);
                     VoidMeleeHealerReforgeTiers = (int[][])MeleeReforgeTiers.Clone();
-                    AddPrefixesToArrays(VoidMeleeHealerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Famished")], 0);
-                    AddPrefixesToArrays(VoidMeleeHealerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Precarious")], 1);
-                    AddPrefixesToArrays(VoidMeleeHealerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Potent")], 3);
-                    AddPrefixesToArrays(VoidMeleeHealerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Chthonic")], 4);
-                    AddPrefixesToArrays(VoidMeleeHealerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Omnipotent")], 5);
+                    AddPrefixesToArrays(VoidMeleeHealerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Famished")], 0);
+                    AddPrefixesToArrays(VoidMeleeHealerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Precarious")], 1);
+                    AddPrefixesToArrays(VoidMeleeHealerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Potent")], 3);
+                    AddPrefixesToArrays(VoidMeleeHealerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Chthonic")], 4);
+                    AddPrefixesToArrays(VoidMeleeHealerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Omnipotent")], 5);
 
                     Array.Resize(ref VoidThrowerReforgeTiers, ThrowerReforgeTiers.Length);
                     VoidThrowerReforgeTiers = (int[][])ThrowerReforgeTiers.Clone();
-                    AddPrefixesToArrays(VoidThrowerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Famished")], 0);
-                    AddPrefixesToArrays(VoidThrowerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Precarious")], 1);
-                    AddPrefixesToArrays(VoidThrowerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Potent")], 3);
-                    AddPrefixesToArrays(VoidThrowerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Chthonic")], 4);
-                    AddPrefixesToArrays(VoidThrowerReforgeTiers, [Common.GetModPrefix(ModConditions.secretsOfTheShadowsBardHealerMod, "Omnipotent")], 5);
+                    AddPrefixesToArrays(VoidThrowerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Famished")], 0);
+                    AddPrefixesToArrays(VoidThrowerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Precarious")], 1);
+                    AddPrefixesToArrays(VoidThrowerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Potent")], 3);
+                    AddPrefixesToArrays(VoidThrowerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Chthonic")], 4);
+                    AddPrefixesToArrays(VoidThrowerReforgeTiers, [Common.GetModPrefix(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "Omnipotent")], 5);
                 }
             }
 
-            if (ModConditions.vitalityLoaded)
+            if (CrossModSupport.Vitality.Loaded)
             {
                 //ACCESSORIES
-                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.vitalityMod, "CruelPrefix")], 0);
-                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.vitalityMod, "FiendishPrefix")], 1);
-                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.vitalityMod, "BrutalPrefix")], 2);
-                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(ModConditions.vitalityMod, "RelentlessPrefix")], 3);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.Vitality.Mod, "CruelPrefix")], 0);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.Vitality.Mod, "FiendishPrefix")], 1);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.Vitality.Mod, "BrutalPrefix")], 2);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.Vitality.Mod, "RelentlessPrefix")], 3);
 
                 BloodHunterReforgeTiers =
                     [
-                    /* 0 */ [PrefixID.Broken, PrefixID.Shoddy, Common.GetModPrefix(ModConditions.vitalityMod, "SpitefulPrefix"), Common.GetModPrefix(ModConditions.vitalityMod, "DeprecatingPrefix"),Common.GetModPrefix(ModConditions.vitalityMod, "CrudePrefix")],
-                    /* 1 */ [PrefixID.Damaged, PrefixID.Weak, Common.GetModPrefix(ModConditions.vitalityMod, "DishonestPrefix")],
-                    /* 2 */ [PrefixID.Keen, PrefixID.Ruthless, PrefixID.Zealous, PrefixID.Hurtful, PrefixID.Strong, PrefixID.Forceful, Common.GetModPrefix(ModConditions.vitalityMod, "DeceitfulPrefix"), Common.GetModPrefix(ModConditions.vitalityMod, "BarbedPrefix")],
-                    /* 3 */ [PrefixID.Unpleasant, PrefixID.Demonic, PrefixID.Superior, PrefixID.Godly, Common.GetModPrefix(ModConditions.vitalityMod, "ViciousPrefix"), Common.GetModPrefix(ModConditions.vitalityMod, "MaliciousPrefix"), Common.GetModPrefix(ModConditions.vitalityMod, "BloodthirstyPrefix"), Common.GetModPrefix(ModConditions.vitalityMod, "WoundingPrefix") ],
-                    /* 4 */ [Common.GetModPrefix(ModConditions.vitalityMod, "MalevolentPrefix")]
+                    /* 0 */ [PrefixID.Broken, PrefixID.Shoddy, Common.GetModPrefix(CrossModSupport.Vitality.Mod, "SpitefulPrefix"), Common.GetModPrefix(CrossModSupport.Vitality.Mod, "DeprecatingPrefix"),Common.GetModPrefix(CrossModSupport.Vitality.Mod, "CrudePrefix")],
+                    /* 1 */ [PrefixID.Damaged, PrefixID.Weak, Common.GetModPrefix(CrossModSupport.Vitality.Mod, "DishonestPrefix")],
+                    /* 2 */ [PrefixID.Keen, PrefixID.Ruthless, PrefixID.Zealous, PrefixID.Hurtful, PrefixID.Strong, PrefixID.Forceful, Common.GetModPrefix(CrossModSupport.Vitality.Mod, "DeceitfulPrefix"), Common.GetModPrefix(CrossModSupport.Vitality.Mod, "BarbedPrefix")],
+                    /* 3 */ [PrefixID.Unpleasant, PrefixID.Demonic, PrefixID.Superior, PrefixID.Godly, Common.GetModPrefix(CrossModSupport.Vitality.Mod, "ViciousPrefix"), Common.GetModPrefix(CrossModSupport.Vitality.Mod, "MaliciousPrefix"), Common.GetModPrefix(CrossModSupport.Vitality.Mod, "BloodthirstyPrefix"), Common.GetModPrefix(CrossModSupport.Vitality.Mod, "WoundingPrefix") ],
+                    /* 4 */ [Common.GetModPrefix(CrossModSupport.Vitality.Mod, "MalevolentPrefix")]
                     ];
             }
         }

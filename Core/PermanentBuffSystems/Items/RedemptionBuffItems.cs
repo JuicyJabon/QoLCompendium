@@ -4,8 +4,8 @@ using Redemption.Items.Usable.Potions;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(ModConditions.redemptionName)]
-    [ExtendsFromMod(ModConditions.redemptionName)]
+    [JITWhenModsEnabled(CrossModSupport.Redemption.Name)]
+    [ExtendsFromMod(CrossModSupport.Redemption.Name)]
     public static class RedemptionBuffItems
     {
         public static NewBuffEffect[] RedemptionEffects = [

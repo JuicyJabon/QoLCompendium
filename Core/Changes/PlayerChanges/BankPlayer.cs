@@ -1,43 +1,7 @@
-﻿using QoLCompendium.Content.Projectiles.MobileStorages;
-
-namespace QoLCompendium.Core.Changes.PlayerChanges
+﻿namespace QoLCompendium.Core.Changes.PlayerChanges
 {
     public class BankPlayer : ModPlayer
     {
-        internal bool chests;
-        internal int pig = -1;
-        internal int safe = -1;
-        internal int defenders = -1;
-        internal int vault = -1;
-
-        public override void SetControls()
-        {
-            if (Player.whoAmI == Main.myPlayer && chests)
-            {
-                Main.SmartCursorShowing = false;
-                Player.tileRangeX = 9999;
-                Player.tileRangeY = 5000;
-                if (Player.chest >= -1)
-                {
-                    pig = -1;
-                    safe = -1;
-                    defenders = -1;
-                    vault = -1;
-                    chests = false;
-                }
-                if (safe != -1 && Main.projectile[safe].type != ModContent.ProjectileType<FlyingSafeProjectile>())
-                {
-                    safe = -1;
-                    chests = false;
-                }
-                if (defenders != -1 && Main.projectile[defenders].type != ModContent.ProjectileType<EtherianConstructProjectile>())
-                {
-                    defenders = -1;
-                    chests = false;
-                }
-            }
-        }
-
         public override void UpdateEquips()
         {
             if (QoLCompendium.mainConfig.UtilityAccessoriesWorkInBanks)
@@ -50,9 +14,6 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
             {
                 if (Common.BankItems.Contains(item.type) && !item.IsAir)
                 {
-                    if (item.type == Common.GetModItem(ModConditions.secretsOfTheShadowsMod, "ElectromagneticDeterrent"))
-                        return;
-
                     Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
                     Player.ApplyEquipFunctional(item, true);
                     Player.RefreshInfoAccsFromItemType(item);
@@ -61,19 +22,47 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
                     if (item.type == ItemID.RoyalGel) //Royal Gel Compatibility
                     {
                         //Thorium Slimes
-                        Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "Clot")] = true;
-                        Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GelatinousCube")] = true;
-                        Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GelatinousSludge")] = true;
-                        Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GildedSlime")] = true;
-                        Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GildedSlimeling")] = true;
-                        Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "GraniteFusedSlime")] = true;
-                        Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "LivingHemorrhage")] = true;
-                        Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "SpaceSlime")] = true;
-                        Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "CrownofThorns")] = true;
-                        Player.npcTypeNoAggro[Common.GetModNPC(ModConditions.thoriumMod, "BloodDrop")] = true;
+                        Player.npcTypeNoAggro[Common.GetModNPC(CrossModSupport.Thorium.Mod, "Clot")] = true;
+                        Player.npcTypeNoAggro[Common.GetModNPC(CrossModSupport.Thorium.Mod, "GelatinousCube")] = true;
+                        Player.npcTypeNoAggro[Common.GetModNPC(CrossModSupport.Thorium.Mod, "GelatinousSludge")] = true;
+                        Player.npcTypeNoAggro[Common.GetModNPC(CrossModSupport.Thorium.Mod, "GildedSlime")] = true;
+                        Player.npcTypeNoAggro[Common.GetModNPC(CrossModSupport.Thorium.Mod, "GildedSlimeling")] = true;
+                        Player.npcTypeNoAggro[Common.GetModNPC(CrossModSupport.Thorium.Mod, "GraniteFusedSlime")] = true;
+                        Player.npcTypeNoAggro[Common.GetModNPC(CrossModSupport.Thorium.Mod, "LivingHemorrhage")] = true;
+                        Player.npcTypeNoAggro[Common.GetModNPC(CrossModSupport.Thorium.Mod, "SpaceSlime")] = true;
+                        Player.npcTypeNoAggro[Common.GetModNPC(CrossModSupport.Thorium.Mod, "CrownofThorns")] = true;
+                        Player.npcTypeNoAggro[Common.GetModNPC(CrossModSupport.Thorium.Mod, "BloodDrop")] = true;
                     }
                 }
             }
+        }
+    }
+
+    public class BankRange : ModSystem
+    {
+        public static int? LastOpenedBank;
+        
+        public const int PiggyBank = -2;
+        public const int Safe = -3;
+        public const int DefendersForge = -4;
+        public const int VoidVault = -5;
+
+        public override void Load()
+        {
+            On_Player.HandleBeingInChestRange += ChestRange;
+        }
+
+        public override void Unload()
+        {
+            On_Player.HandleBeingInChestRange -= ChestRange;
+        }
+
+        private static void ChestRange(On_Player.orig_HandleBeingInChestRange orig, Player player)
+        {
+            if (player.chest == LastOpenedBank) return;
+            if (LastOpenedBank != null) LastOpenedBank = null;
+
+            orig.Invoke(player);
         }
     }
 }

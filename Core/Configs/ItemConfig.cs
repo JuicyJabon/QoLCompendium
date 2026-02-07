@@ -96,6 +96,9 @@ namespace QoLCompendium.Core.Configs
         public bool RegrowthStaves { get; set; }
 
         [DefaultValue(true)]
+        public bool RepairedLifeFruit { get; set; }
+
+        [DefaultValue(true)]
         public bool RestockNotice { get; set; }
 
         [DefaultValue(true)]
@@ -117,13 +120,16 @@ namespace QoLCompendium.Core.Configs
         public bool UltimateChecklist { get; set; }
 
         [DefaultValue(true)]
+        public bool UnsafeWalls { get; set; }
+
+        [DefaultValue(true)]
         public bool WatchingEye { get; set; }
 
         [DefaultValue(true)]
         public bool DedicatedItems { get; set; }
 
-        //[DefaultValue(true)]
-        //public bool CrossModItems { get; set; }
+        [DefaultValue(true)]
+        public bool CrossModItems { get; set; }
 
         public List<ItemDefinition> CustomItems { get; set; }
 

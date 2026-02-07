@@ -21,6 +21,8 @@ namespace QoLCompendium.Core
         public bool bloodMoonPedestal = false;
         public bool eclipsePedestal = false;
         public bool pausePedestal = false;
+        //Cross Mod
+        public bool mysticMoonPedestal = false;
 
         //Spawns
         public bool increasedSpawns = false;
@@ -36,14 +38,13 @@ namespace QoLCompendium.Core
         public bool eventSpawn = false;
 
         //Items
-        public int flaskEffectMode = 0;
-        public int thoriumCoatingMode = 0;
         public bool sillySlapper = false;
         public bool warpMirror = false;
         public bool HasGoldenLockpick = false;
         public bool duplicationBobber = false;
         public List<int> activeItems = [];
         public List<int> activeBuffItems = [];
+        public List<int> activeBannerItems = [];
         public List<int> activeBuffs = [];
 
         //Biomes
@@ -65,8 +66,6 @@ namespace QoLCompendium.Core
 
         public override void SaveData(TagCompound tag)
         {
-            tag.Add("flaskEffectMode", flaskEffectMode);
-            tag.Add("thoriumCoatingMode", thoriumCoatingMode);
             tag.Add("SelectedBiome", selectedBiome);
             tag.Add("SelectedSpawnModifier", selectedSpawnModifier);
             tag.Add("bossToSpawn", bossToSpawn);
@@ -77,8 +76,6 @@ namespace QoLCompendium.Core
 
         public override void LoadData(TagCompound tag)
         {
-            flaskEffectMode = tag.GetInt("flaskEffectMode");
-            thoriumCoatingMode = tag.GetInt("thoriumCoatingMode");
             selectedBiome = tag.GetInt("SelectedBiome");
             selectedSpawnModifier = tag.GetInt("SelectedSpawnModifier");
             bossToSpawn = tag.GetInt("bossToSpawn");
@@ -90,9 +87,7 @@ namespace QoLCompendium.Core
         public override void PreUpdate()
         {
             if (spawnRateUpdateTimer > 0)
-            {
                 spawnRateUpdateTimer--;
-            }
         }
 
         public override void PostUpdateBuffs()
@@ -106,9 +101,9 @@ namespace QoLCompendium.Core
 
         public override void PostUpdate()
         {
-            if (ModConditions.reforgedLoaded && ModAccessorySlot.Player.equippedWings.social != true)
+            if (CrossModSupport.ReforgeOverhaul.Loaded && ModAccessorySlot.Player.equippedWings.social != true)
             {
-                ModConditions.reforgedMod.Call("PostUpdateModPlayer", Main.LocalPlayer.whoAmI, ModAccessorySlot.Player.equippedWings);
+                CrossModSupport.ReforgeOverhaul.Mod.Call("PostUpdateModPlayer", Main.LocalPlayer.whoAmI, ModAccessorySlot.Player.equippedWings);
             }
         }
 
@@ -117,40 +112,39 @@ namespace QoLCompendium.Core
             if (spawnRateUpdateTimer <= 0)
             {
                 spawnRateUpdateTimer = 60;
-
                 spawnRateFieldInfo = typeof(NPC).GetField("spawnRate", BindingFlags.Static | BindingFlags.NonPublic);
-
                 spawnRate = (int)spawnRateFieldInfo.GetValue(null);
             }
 
-            if (Player.whoAmI != Main.myPlayer || !Main.mapFullscreen || !Main.mouseLeft || !Main.mouseLeftRelease || !warpMirror)
-                return;
-            PlayerInput.SetZoom_Unscaled();
-            float scale = 16f / Main.mapFullscreenScale;
-            float minX = Main.mapFullscreenPos.X * 16f - 10f;
-            float minY = Main.mapFullscreenPos.Y * 16f - 21f;
-            float mouseX = Main.mouseX - Main.screenWidth / 2;
-            float mouseY = Main.mouseY - Main.screenHeight / 2;
-            float cursorOnMapX = minX + mouseX * scale;
-            float cursorOnMapY = minY + mouseY * scale;
-
-            //CLICKED NEAR TOWN NPC
-            for (int i = 0; i < Main.npc.Length; i++)
+            if (warpMirror && Player.whoAmI == Main.myPlayer  && Main.mapFullscreen && Main.mouseLeft && Main.mouseLeftRelease)
             {
-                NPC teleportNPC = Main.npc[i];
-                if (teleportNPC.active && teleportNPC.townNPC)
+                PlayerInput.SetZoom_Unscaled();
+                float scale = 16f / Main.mapFullscreenScale;
+                float minX = Main.mapFullscreenPos.X * 16f - 10f;
+                float minY = Main.mapFullscreenPos.Y * 16f - 21f;
+                float mouseX = Main.mouseX - Main.screenWidth / 2;
+                float mouseY = Main.mouseY - Main.screenHeight / 2;
+                float cursorOnMapX = minX + mouseX * scale;
+                float cursorOnMapY = minY + mouseY * scale;
+
+                //CLICKED NEAR TOWN NPC
+                for (int i = 0; i < Main.npc.Length; i++)
                 {
-                    float minClickX = teleportNPC.position.X - 14f * scale;
-                    float minClickY = teleportNPC.position.Y - 14f * scale;
-                    float maxClickX = teleportNPC.position.X + 14f * scale;
-                    float maxClickY = teleportNPC.position.Y + 14f * scale;
-                    if (cursorOnMapX >= minClickX && cursorOnMapX <= maxClickX && cursorOnMapY >= minClickY && cursorOnMapY <= maxClickY)
+                    NPC teleportNPC = Main.npc[i];
+                    if (teleportNPC.active && teleportNPC.townNPC)
                     {
-                        Main.mouseLeftRelease = false;
-                        Main.mapFullscreen = false;
-                        Player.Teleport(teleportNPC.position + new Vector2(0f, -6f));
-                        PlayerInput.SetZoom_Unscaled();
-                        return;
+                        float minClickX = teleportNPC.position.X - 14f * scale;
+                        float minClickY = teleportNPC.position.Y - 14f * scale;
+                        float maxClickX = teleportNPC.position.X + 14f * scale;
+                        float maxClickY = teleportNPC.position.Y + 14f * scale;
+                        if (cursorOnMapX >= minClickX && cursorOnMapX <= maxClickX && cursorOnMapY >= minClickY && cursorOnMapY <= maxClickY)
+                        {
+                            Main.mouseLeftRelease = false;
+                            Main.mapFullscreen = false;
+                            Player.Teleport(teleportNPC.position + new Vector2(0f, -6f));
+                            PlayerInput.SetZoom_Unscaled();
+                            return;
+                        }
                     }
                 }
             }
@@ -240,6 +234,7 @@ namespace QoLCompendium.Core
             bloodMoonPedestal = false;
             eclipsePedestal = false;
             pausePedestal = false;
+            mysticMoonPedestal = false;
             increasedSpawns = false;
             decreasedSpawns = false;
             noSpawns = false;
@@ -249,6 +244,7 @@ namespace QoLCompendium.Core
             duplicationBobber = false;
             activeItems.Clear();
             activeBuffItems.Clear();
+            activeBannerItems.Clear();
             activeBuffs.Clear();
             Common.Reset();
 

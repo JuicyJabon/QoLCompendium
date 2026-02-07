@@ -1,18 +1,3 @@
-BMPotionText: Potions
-BMStationText: Flasks, Stations & Foods
-BMMaterialText: Materials
-BMMovementAccessoryText: Movement Accessories
-BMCombatAccessoryText: Combat Accessories
-BMInformativeText: Informative/Building Gear
-BMBagText: Treasure Bags
-BMCrateText: Crates & Grab Bags
-BMOreText: Ores & Bars
-BMNaturalBlockText: Natural Blocks
-BMBuildingBlockText: Building Blocks
-BMHerbText: Herbs & Plants
-BMFishText: Fish & Fishing Gear
-BMMountText: Mounts & Hooks
-BMAmmoText: Ammo
 ECPotionText: Modded Potions
 ECStationText: Modded Flasks, Stations & Foods
 ECMaterialText: Modded Materials (Mods: A-M)
@@ -29,9 +14,9 @@ EventText: Events
 MinibossText: Minibosses
 IncreaseSpawnText: Increase Spawns
 DecreaseSpawnText: Decrease Spawns
-CancelSpawnText: No Spawns
-CancelEventText: No Events
-CancelSpawnAndEventText: No Spawns or Events
+CancelSpawnText: Disable Spawns
+CancelEventText: Disable Events
+CancelSpawnAndEventText: Disable Spawns and Events
 RevertText: Revert Changes
 FullMoonText: Full Moon
 WaningGibbousText: Waning Gibbous

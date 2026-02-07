@@ -1,5 +1,4 @@
-﻿using QoLCompendium.Core.Changes.PlayerChanges;
-using QoLCompendium.Core.UI.Panels;
+﻿using QoLCompendium.Core.UI.Panels;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
@@ -66,17 +65,8 @@ namespace QoLCompendium.Content.Items.Tools.MobileStorages
             Mode = tag.GetInt("AllInOneAccessMode");
         }
 
-        public override void HoldItem(Player player)
-        {
-            if (AllInOneAccessUI.visible)
-                player.GetModPlayer<BankPlayer>().chests = true;
-        }
-
         public override void UpdateInventory(Player player)
         {
-            if (AllInOneAccessUI.visible)
-                player.GetModPlayer<BankPlayer>().chests = true;
-
             if (Mode == 0)
             {
                 Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.AllInOneAccess.Open"));

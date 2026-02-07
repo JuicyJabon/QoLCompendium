@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
 {
-    [ExtendsFromMod(ModConditions.fargosSoulsName)]
-    [JITWhenModsEnabled(ModConditions.fargosSoulsName)]
+    [ExtendsFromMod(CrossModSupport.FargowiltasSouls.Name)]
+    [JITWhenModsEnabled(CrossModSupport.FargowiltasSouls.Name)]
     public class FargosPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -16,23 +16,23 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
             var tooltipLine = new TooltipLine(Mod, "UsedItem", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.UsedItem"));
             tooltipLine.OverrideColor = Color.LightGreen;
 
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "DeerSinew") && Main.LocalPlayer.FargoSouls().DeerSinew)
+            if (item.type == Common.GetModItem(CrossModSupport.FargowiltasSouls.Mod, "DeerSinew") && Main.LocalPlayer.FargoSouls().DeerSinew)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsCreditCard") && Main.LocalPlayer.FargoSouls().MutantsCreditCard)
+            if (item.type == Common.GetModItem(CrossModSupport.FargowiltasSouls.Mod, "MutantsCreditCard") && Main.LocalPlayer.FargoSouls().MutantsCreditCard)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsDiscountCard") && Main.LocalPlayer.FargoSouls().MutantsDiscountCard)
+            if (item.type == Common.GetModItem(CrossModSupport.FargowiltasSouls.Mod, "MutantsDiscountCard") && Main.LocalPlayer.FargoSouls().MutantsDiscountCard)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "MutantsPact") && Main.LocalPlayer.FargoSouls().MutantsPactSlot)
+            if (item.type == Common.GetModItem(CrossModSupport.FargowiltasSouls.Mod, "MutantsPact") && Main.LocalPlayer.FargoSouls().MutantsPactSlot)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
-            if (item.type == Common.GetModItem(ModConditions.fargosSoulsMod, "RabiesVaccine") && Main.LocalPlayer.FargoSouls().RabiesVaccine)
+            if (item.type == Common.GetModItem(CrossModSupport.FargowiltasSouls.Mod, "RabiesVaccine") && Main.LocalPlayer.FargoSouls().RabiesVaccine)
             {
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }

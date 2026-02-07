@@ -1,7 +1,7 @@
 ﻿namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
 {
-    [ExtendsFromMod(ModConditions.ragnarokName)]
-    [JITWhenModsEnabled(ModConditions.ragnarokName)]
+    [ExtendsFromMod(CrossModSupport.Ragnarok.Name)]
+    [JITWhenModsEnabled(CrossModSupport.Ragnarok.Name)]
     public class RagnarokPermanentUpgradeTooltip : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -16,9 +16,9 @@
                 OverrideColor = Color.LightGreen
             };
 
-            int bardResourceMax = (int)ModConditions.thoriumMod.Call("GetBardInspirationMax", Main.LocalPlayer);
+            int bardResourceMax = (int)CrossModSupport.Thorium.Mod.Call("GetBardInspirationMax", Main.LocalPlayer);
             int essenceMax = 40;
-            if (item.type == Common.GetModItem(ModConditions.ragnarokMod, "InspirationEssence"))
+            if (item.type == Common.GetModItem(CrossModSupport.Ragnarok.Mod, "InspirationEssence"))
             {
                 tooltipLine.Text = Common.GetTooltipValue("UsedItemCountable", Math.Clamp(Math.Max(bardResourceMax - essenceMax, 0), 0, 10), 10);
                 Common.AddLastTooltip(tooltips, tooltipLine);

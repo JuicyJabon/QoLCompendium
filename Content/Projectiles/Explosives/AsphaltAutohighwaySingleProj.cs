@@ -10,7 +10,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
         {
             Projectile.width = 37;
             Projectile.height = 26;
-            Projectile.aiStyle = 16;
+            Projectile.aiStyle = ProjAIStyleID.Explosive;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 1;

@@ -49,6 +49,16 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                 return true;
         }
 
+        public override void RightClick(Player player)
+        {
+            if (!DestinationGlobeUI.visible)
+                DestinationGlobeUI.timeStart = Main.GameUpdateCount;
+            DestinationGlobeUI.visible = !DestinationGlobeUI.visible;
+        }
+
+        public override bool CanRightClick() => true;
+        public override bool ConsumeItem(Player player) => false;
+
         public override void AddRecipes()
         {
             Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.DestinationGlobe, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");

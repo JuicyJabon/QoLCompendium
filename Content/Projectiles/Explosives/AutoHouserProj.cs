@@ -160,7 +160,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
                 {
                     if (inModdedBiome)
                     {
-                        if (side == -1 && modChairID == Common.GetModTile(ModConditions.calamityMod, "AcidwoodChairTile"))
+                        if (side == -1 && modChairID == Common.GetModTile(CrossModSupport.Calamity.Mod, "AcidwoodChairTile"))
                             xPosition += 1;
                         WorldGen.PlaceObject(xPosition, yPosition, modChairID, direction: side);
                         if (Main.netMode == NetmodeID.Server)
@@ -435,48 +435,48 @@ namespace QoLCompendium.Content.Projectiles.Explosives
 
         public static void GetModdedHouseStyle(Player player, ref int wallID, ref int tileID, ref int platformID, ref bool inModdedBiome)
         {
-            if (ModConditions.calamityLoaded)
+            if (CrossModSupport.Calamity.Loaded)
             {
-                if (ModConditions.calamityMod.TryFind("AstralInfectionBiome", out ModBiome AstralInfectionBiome) && Main.LocalPlayer.InModBiome(AstralInfectionBiome))
+                if (CrossModSupport.Calamity.Mod.TryFind("AstralInfectionBiome", out ModBiome AstralInfectionBiome) && Main.LocalPlayer.InModBiome(AstralInfectionBiome))
                 {
-                    wallID = Common.GetModWall(ModConditions.calamityMod, "AstralMonolithWall");
-                    tileID = Common.GetModTile(ModConditions.calamityMod, "AstralMonolith");
-                    platformID = Common.GetModTile(ModConditions.calamityMod, "MonolithPlatform");
+                    wallID = Common.GetModWall(CrossModSupport.Calamity.Mod, "AstralMonolithWall");
+                    tileID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AstralMonolith");
+                    platformID = Common.GetModTile(CrossModSupport.Calamity.Mod, "MonolithPlatform");
                     inModdedBiome = true;
                 }
 
-                if (ModConditions.calamityMod.TryFind("AbyssLayer1Biome", out ModBiome AbyssLayer1Biome) && Main.LocalPlayer.InModBiome(AbyssLayer1Biome)
-                    || ModConditions.calamityMod.TryFind("AbyssLayer2Biome", out ModBiome AbyssLayer2Biome) && Main.LocalPlayer.InModBiome(AbyssLayer2Biome)
-                    || ModConditions.calamityMod.TryFind("AbyssLayer3Biome", out ModBiome AbyssLayer3Biome) && Main.LocalPlayer.InModBiome(AbyssLayer3Biome)
-                    || ModConditions.calamityMod.TryFind("AbyssLayer4Biome", out ModBiome AbyssLayer4Biome) && Main.LocalPlayer.InModBiome(AbyssLayer4Biome))
+                if (CrossModSupport.Calamity.Mod.TryFind("AbyssLayer1Biome", out ModBiome AbyssLayer1Biome) && Main.LocalPlayer.InModBiome(AbyssLayer1Biome)
+                    || CrossModSupport.Calamity.Mod.TryFind("AbyssLayer2Biome", out ModBiome AbyssLayer2Biome) && Main.LocalPlayer.InModBiome(AbyssLayer2Biome)
+                    || CrossModSupport.Calamity.Mod.TryFind("AbyssLayer3Biome", out ModBiome AbyssLayer3Biome) && Main.LocalPlayer.InModBiome(AbyssLayer3Biome)
+                    || CrossModSupport.Calamity.Mod.TryFind("AbyssLayer4Biome", out ModBiome AbyssLayer4Biome) && Main.LocalPlayer.InModBiome(AbyssLayer4Biome))
                 {
-                    wallID = Common.GetModWall(ModConditions.calamityMod, "SmoothAbyssGravelWall");
-                    tileID = Common.GetModTile(ModConditions.calamityMod, "SmoothAbyssGravel");
-                    platformID = Common.GetModTile(ModConditions.calamityMod, "SmoothAbyssGravelPlatform");
+                    wallID = Common.GetModWall(CrossModSupport.Calamity.Mod, "SmoothAbyssGravelWall");
+                    tileID = Common.GetModTile(CrossModSupport.Calamity.Mod, "SmoothAbyssGravel");
+                    platformID = Common.GetModTile(CrossModSupport.Calamity.Mod, "SmoothAbyssGravelPlatform");
                     inModdedBiome = true;
                 }
 
-                if (ModConditions.calamityMod.TryFind("BrimstoneCragsBiome", out ModBiome BrimstoneCragsBiome) && Main.LocalPlayer.InModBiome(BrimstoneCragsBiome))
+                if (CrossModSupport.Calamity.Mod.TryFind("BrimstoneCragsBiome", out ModBiome BrimstoneCragsBiome) && Main.LocalPlayer.InModBiome(BrimstoneCragsBiome))
                 {
-                    wallID = Common.GetModWall(ModConditions.calamityMod, "SmoothBrimstoneSlagWall");
-                    tileID = Common.GetModTile(ModConditions.calamityMod, "SmoothBrimstoneSlag");
-                    platformID = Common.GetModTile(ModConditions.calamityMod, "AshenPlatform");
+                    wallID = Common.GetModWall(CrossModSupport.Calamity.Mod, "SmoothBrimstoneSlagWall");
+                    tileID = Common.GetModTile(CrossModSupport.Calamity.Mod, "SmoothBrimstoneSlag");
+                    platformID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AshenPlatform");
                     inModdedBiome = true;
                 }
 
-                if (ModConditions.calamityMod.TryFind("SulphurousSeaBiome", out ModBiome SulphurousSeaBiome) && Main.LocalPlayer.InModBiome(SulphurousSeaBiome))
+                if (CrossModSupport.Calamity.Mod.TryFind("SulphurousSeaBiome", out ModBiome SulphurousSeaBiome) && Main.LocalPlayer.InModBiome(SulphurousSeaBiome))
                 {
-                    wallID = Common.GetModWall(ModConditions.calamityMod, "AcidwoodWall");
-                    tileID = Common.GetModTile(ModConditions.calamityMod, "AcidwoodTile");
-                    platformID = Common.GetModTile(ModConditions.calamityMod, "AcidwoodPlatformTile");
+                    wallID = Common.GetModWall(CrossModSupport.Calamity.Mod, "AcidwoodWall");
+                    tileID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AcidwoodTile");
+                    platformID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AcidwoodPlatformTile");
                     inModdedBiome = true;
                 }
 
-                if (ModConditions.calamityMod.TryFind("SunkenSeaBiome", out ModBiome SunkenSeaBiome) && Main.LocalPlayer.InModBiome(SunkenSeaBiome))
+                if (CrossModSupport.Calamity.Mod.TryFind("SunkenSeaBiome", out ModBiome SunkenSeaBiome) && Main.LocalPlayer.InModBiome(SunkenSeaBiome))
                 {
-                    wallID = Common.GetModWall(ModConditions.calamityMod, "SmoothNavystoneWall");
-                    tileID = Common.GetModTile(ModConditions.calamityMod, "SmoothNavystone");
-                    platformID = Common.GetModTile(ModConditions.calamityMod, "EutrophicPlatform");
+                    wallID = Common.GetModWall(CrossModSupport.Calamity.Mod, "SmoothNavystoneWall");
+                    tileID = Common.GetModTile(CrossModSupport.Calamity.Mod, "SmoothNavystone");
+                    platformID = Common.GetModTile(CrossModSupport.Calamity.Mod, "EutrophicPlatform");
                     inModdedBiome = true;
                 }
             }
@@ -484,53 +484,53 @@ namespace QoLCompendium.Content.Projectiles.Explosives
 
         public static void GetModdedFurnitureStyle(Player player, ref int tableID, ref int chairID, ref int doorID, ref int torchID, ref bool inModdedBiome)
         {
-            if (ModConditions.calamityLoaded)
+            if (CrossModSupport.Calamity.Loaded)
             {
-                if (ModConditions.calamityMod.TryFind("AstralInfectionBiome", out ModBiome AstralInfectionBiome) && Main.LocalPlayer.InModBiome(AstralInfectionBiome))
+                if (CrossModSupport.Calamity.Mod.TryFind("AstralInfectionBiome", out ModBiome AstralInfectionBiome) && Main.LocalPlayer.InModBiome(AstralInfectionBiome))
                 {
-                    tableID = Common.GetModTile(ModConditions.calamityMod, "MonolithTable");
-                    chairID = Common.GetModTile(ModConditions.calamityMod, "MonolithChair");
-                    doorID = Common.GetModTile(ModConditions.calamityMod, "MonolithDoorClosed");
-                    torchID = Common.GetModTile(ModConditions.calamityMod, "AstralTorch");
+                    tableID = Common.GetModTile(CrossModSupport.Calamity.Mod, "MonolithTable");
+                    chairID = Common.GetModTile(CrossModSupport.Calamity.Mod, "MonolithChair");
+                    doorID = Common.GetModTile(CrossModSupport.Calamity.Mod, "MonolithDoorClosed");
+                    torchID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AstralTorch");
                     inModdedBiome = true;
                 }
 
-                if (ModConditions.calamityMod.TryFind("AbyssLayer1Biome", out ModBiome AbyssLayer1Biome) && Main.LocalPlayer.InModBiome(AbyssLayer1Biome)
-                    || ModConditions.calamityMod.TryFind("AbyssLayer2Biome", out ModBiome AbyssLayer2Biome) && Main.LocalPlayer.InModBiome(AbyssLayer2Biome)
-                    || ModConditions.calamityMod.TryFind("AbyssLayer3Biome", out ModBiome AbyssLayer3Biome) && Main.LocalPlayer.InModBiome(AbyssLayer3Biome)
-                    || ModConditions.calamityMod.TryFind("AbyssLayer4Biome", out ModBiome AbyssLayer4Biome) && Main.LocalPlayer.InModBiome(AbyssLayer4Biome))
+                if (CrossModSupport.Calamity.Mod.TryFind("AbyssLayer1Biome", out ModBiome AbyssLayer1Biome) && Main.LocalPlayer.InModBiome(AbyssLayer1Biome)
+                    || CrossModSupport.Calamity.Mod.TryFind("AbyssLayer2Biome", out ModBiome AbyssLayer2Biome) && Main.LocalPlayer.InModBiome(AbyssLayer2Biome)
+                    || CrossModSupport.Calamity.Mod.TryFind("AbyssLayer3Biome", out ModBiome AbyssLayer3Biome) && Main.LocalPlayer.InModBiome(AbyssLayer3Biome)
+                    || CrossModSupport.Calamity.Mod.TryFind("AbyssLayer4Biome", out ModBiome AbyssLayer4Biome) && Main.LocalPlayer.InModBiome(AbyssLayer4Biome))
                 {
-                    tableID = Common.GetModTile(ModConditions.calamityMod, "AbyssTable");
-                    chairID = Common.GetModTile(ModConditions.calamityMod, "AbyssChair");
-                    doorID = Common.GetModTile(ModConditions.calamityMod, "AbyssDoorClosed");
-                    torchID = Common.GetModTile(ModConditions.calamityMod, "AbyssTorch");
+                    tableID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AbyssTable");
+                    chairID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AbyssChair");
+                    doorID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AbyssDoorClosed");
+                    torchID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AbyssTorch");
                     inModdedBiome = true;
                 }
 
-                if (ModConditions.calamityMod.TryFind("BrimstoneCragsBiome", out ModBiome BrimstoneCragsBiome) && Main.LocalPlayer.InModBiome(BrimstoneCragsBiome))
+                if (CrossModSupport.Calamity.Mod.TryFind("BrimstoneCragsBiome", out ModBiome BrimstoneCragsBiome) && Main.LocalPlayer.InModBiome(BrimstoneCragsBiome))
                 {
-                    tableID = Common.GetModTile(ModConditions.calamityMod, "AshenTable");
-                    chairID = Common.GetModTile(ModConditions.calamityMod, "AshenChair");
-                    doorID = Common.GetModTile(ModConditions.calamityMod, "AshenDoorClosed");
-                    torchID = Common.GetModTile(ModConditions.calamityMod, "GloomTorch");
+                    tableID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AshenTable");
+                    chairID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AshenChair");
+                    doorID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AshenDoorClosed");
+                    torchID = Common.GetModTile(CrossModSupport.Calamity.Mod, "GloomTorch");
                     inModdedBiome = true;
                 }
 
-                if (ModConditions.calamityMod.TryFind("SulphurousSeaBiome", out ModBiome SulphurousSeaBiome) && Main.LocalPlayer.InModBiome(SulphurousSeaBiome))
+                if (CrossModSupport.Calamity.Mod.TryFind("SulphurousSeaBiome", out ModBiome SulphurousSeaBiome) && Main.LocalPlayer.InModBiome(SulphurousSeaBiome))
                 {
-                    tableID = Common.GetModTile(ModConditions.calamityMod, "AcidwoodTableTile");
-                    chairID = Common.GetModTile(ModConditions.calamityMod, "AcidwoodChairTile");
-                    doorID = Common.GetModTile(ModConditions.calamityMod, "AcidwoodDoorClosed");
-                    torchID = Common.GetModTile(ModConditions.calamityMod, "SulphurousTorch");
+                    tableID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AcidwoodTableTile");
+                    chairID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AcidwoodChairTile");
+                    doorID = Common.GetModTile(CrossModSupport.Calamity.Mod, "AcidwoodDoorClosed");
+                    torchID = Common.GetModTile(CrossModSupport.Calamity.Mod, "SulphurousTorch");
                     inModdedBiome = true;
                 }
 
-                if (ModConditions.calamityMod.TryFind("SunkenSeaBiome", out ModBiome SunkenSeaBiome) && Main.LocalPlayer.InModBiome(SunkenSeaBiome))
+                if (CrossModSupport.Calamity.Mod.TryFind("SunkenSeaBiome", out ModBiome SunkenSeaBiome) && Main.LocalPlayer.InModBiome(SunkenSeaBiome))
                 {
-                    tableID = Common.GetModTile(ModConditions.calamityMod, "EutrophicTable");
-                    chairID = Common.GetModTile(ModConditions.calamityMod, "EutrophicChair");
-                    doorID = Common.GetModTile(ModConditions.calamityMod, "EutrophicDoorClosed");
-                    torchID = Common.GetModTile(ModConditions.calamityMod, "NavyPrismTorch");
+                    tableID = Common.GetModTile(CrossModSupport.Calamity.Mod, "EutrophicTable");
+                    chairID = Common.GetModTile(CrossModSupport.Calamity.Mod, "EutrophicChair");
+                    doorID = Common.GetModTile(CrossModSupport.Calamity.Mod, "EutrophicDoorClosed");
+                    torchID = Common.GetModTile(CrossModSupport.Calamity.Mod, "NavyPrismTorch");
                     inModdedBiome = true;
                 }
             }

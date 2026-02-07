@@ -1,13 +1,13 @@
 ﻿namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
 {
-    [ExtendsFromMod(ModConditions.homewardJourneyName)]
-    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
+    [ExtendsFromMod(CrossModSupport.HomewardJourney.Name)]
+    [JITWhenModsEnabled(CrossModSupport.HomewardJourney.Name)]
     public class HomewardJourneyShimmerableAnglerCoins : GlobalItem
     {
         public override void SetStaticDefaults()
         {
             if (QoLCompendium.crossModConfig.ShimmerableAnglerCoins)
-                ItemID.Sets.ShimmerTransformToItem[Common.GetModItem(ModConditions.homewardJourneyMod, "AnglerGoldCoin")] = Common.GetModItem(ModConditions.homewardJourneyMod, "AnglerCoin");
+                ItemID.Sets.ShimmerTransformToItem[Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "AnglerGoldCoin")] = Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "AnglerCoin");
         }
     }
 }

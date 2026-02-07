@@ -15,7 +15,7 @@ namespace QoLCompendium.Core.UI.Panels
             ShopPanel.Left.Set(575f, 0f);
             ShopPanel.Top.Set(275f, 0f);
             ShopPanel.Width.Set(385f, 0f);
-            ShopPanel.Height.Set(460f, 0f);
+            ShopPanel.Height.Set(490f, 0f);
             ShopPanel.BackgroundColor = new Color(73, 94, 171);
 
             ShopPanel.OnLeftMouseDown += new MouseEvent(DragStart);
@@ -108,20 +108,27 @@ namespace QoLCompendium.Core.UI.Panels
             UIText fishText = new(UISystem.BMFishText);
             fishText.Left.Set(35f, 0f);
             fishText.Top.Set(370f, 0f);
-            fishText.Width.Set(60f, 0f);
+            fishText.Width.Set(30f, 0f);
             fishText.Height.Set(22f, 0f);
             ShopPanel.Append(fishText);
 
+            UIText critterText = new(UISystem.BMCritterText);
+            critterText.Left.Set(35f, 0f);
+            critterText.Top.Set(400f, 0f);
+            critterText.Width.Set(60f, 0f);
+            critterText.Height.Set(22f, 0f);
+            ShopPanel.Append(critterText);
+
             UIText mountText = new(UISystem.BMMountText);
             mountText.Left.Set(35f, 0f);
-            mountText.Top.Set(400f, 0f);
-            mountText.Width.Set(60f, 0f);
+            mountText.Top.Set(430f, 0f);
+            mountText.Width.Set(30f, 0f);
             mountText.Height.Set(22f, 0f);
             ShopPanel.Append(mountText);
 
             UIText ammoText = new(UISystem.BMAmmoText);
             ammoText.Left.Set(35f, 0f);
-            ammoText.Top.Set(430f, 0f);
+            ammoText.Top.Set(460f, 0f);
             ammoText.Width.Set(30f, 0f);
             ammoText.Height.Set(22f, 0f);
             ShopPanel.Append(ammoText);
@@ -285,13 +292,25 @@ namespace QoLCompendium.Core.UI.Panels
             fishButton.OnLeftClick += new MouseEvent(FishShopClicked);
             ShopPanel.Append(fishButton);
 
+            UIImageButton critterButton = new(buttonPlayTexture);
+            if (QoLCompendium.shopConfig.BMCritterShop == false)
+            {
+                critterButton = new(buttonDeleteTexture);
+            }
+            critterButton.Left.Set(10f, 0f);
+            critterButton.Top.Set(400f, 0f);
+            critterButton.Width.Set(22f, 0f);
+            critterButton.Height.Set(22f, 0f);
+            critterButton.OnLeftClick += new MouseEvent(CritterShopClicked);
+            ShopPanel.Append(critterButton);
+
             UIImageButton mountButton = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.BMMountShop == false)
+            if (QoLCompendium.shopConfig.BMAmmoShop == false)
             {
                 mountButton = new(buttonDeleteTexture);
             }
             mountButton.Left.Set(10f, 0f);
-            mountButton.Top.Set(400f, 0f);
+            mountButton.Top.Set(430f, 0f);
             mountButton.Width.Set(22f, 0f);
             mountButton.Height.Set(22f, 0f);
             mountButton.OnLeftClick += new MouseEvent(MountShopClicked);
@@ -303,7 +322,7 @@ namespace QoLCompendium.Core.UI.Panels
                 ammoButton = new(buttonDeleteTexture);
             }
             ammoButton.Left.Set(10f, 0f);
-            ammoButton.Top.Set(430f, 0f);
+            ammoButton.Top.Set(460f, 0f);
             ammoButton.Width.Set(22f, 0f);
             ammoButton.Height.Set(22f, 0f);
             ammoButton.OnLeftClick += new MouseEvent(AmmoShopClicked);
@@ -436,11 +455,20 @@ namespace QoLCompendium.Core.UI.Panels
             }
         }
 
+        private void CritterShopClicked(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMCritterShop)
+            {
+                BMDealerNPC.shopNum = 13;
+                visible = false;
+            }
+        }
+
         private void MountShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMMountShop)
             {
-                BMDealerNPC.shopNum = 13;
+                BMDealerNPC.shopNum = 14;
                 visible = false;
             }
         }
@@ -449,7 +477,7 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.BMAmmoShop)
             {
-                BMDealerNPC.shopNum = 14;
+                BMDealerNPC.shopNum = 15;
                 visible = false;
             }
         }

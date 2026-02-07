@@ -35,11 +35,22 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override bool? UseItem(Player player)
         {
-            if (!EntityManipulatorUI.visible) EntityManipulatorUI.timeStart = Main.GameUpdateCount;
+            if (!EntityManipulatorUI.visible) 
+                EntityManipulatorUI.timeStart = Main.GameUpdateCount;
             EntityManipulatorUI.visible = true;
 
             return base.UseItem(player);
         }
+
+        public override void RightClick(Player player)
+        {
+            if (!EntityManipulatorUI.visible)
+                EntityManipulatorUI.timeStart = Main.GameUpdateCount;
+            EntityManipulatorUI.visible = !EntityManipulatorUI.visible;
+        }
+
+        public override bool CanRightClick() => true;
+        public override bool ConsumeItem(Player player) => false;
 
         public override void AddRecipes()
         {

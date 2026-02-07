@@ -36,7 +36,7 @@ namespace QoLCompendium.Core.Changes.TileChanges
             orig.Invoke(self, sItem, out canHitWalls, x, y);
 
             if (x != treeX || y != treeY - 1) return; // only try to replant in the tree bottom.
-            if (tile.TileType != 0) return; // only if tile was removed.
+            if (tile.TileType != TileID.Dirt) return; // only if tile was removed.
 
             var player = GetPlayerForTile(x, y);
             var shouldReplantGemcorn = ShouldReplantGemcorn(cachedTileType, player);

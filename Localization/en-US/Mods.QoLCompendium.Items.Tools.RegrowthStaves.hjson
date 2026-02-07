@@ -35,10 +35,10 @@ Omnistaff: {
 
 MossStaff: {
 	DisplayName: Moss Staff
-	Tooltip: ""
+	Tooltip: Right Click to cycle moss type
 }
 
 GlowingMossStaff: {
 	DisplayName: Glowing Moss Staff
-	Tooltip: ""
+	Tooltip: Right Click to cycle moss type
 }

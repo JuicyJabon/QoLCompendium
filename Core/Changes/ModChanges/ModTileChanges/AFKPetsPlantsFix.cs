@@ -4,24 +4,24 @@
     {
         public override void SetStaticDefaults()
         {
-            if (!ModConditions.afkpetsLoaded)
+            if (!CrossModSupport.AFKPets.Loaded)
                 return;
 
             if (!QoLCompendium.crossModConfig.AFKPetsCropFix)
                 return;
 
-            Main.tileCut[Common.GetModTile(ModConditions.afkpetsMod, "Plants")] = false;
+            Main.tileCut[Common.GetModTile(CrossModSupport.AFKPets.Mod, "Plants")] = false;
         }
 
         public override void RandomUpdate(int i, int j, int type)
         {
-            if (!ModConditions.afkpetsLoaded)
+            if (!CrossModSupport.AFKPets.Loaded)
                 return;
 
             if (!QoLCompendium.crossModConfig.AFKPetsFasterCropGrowth)
                 return;
 
-            if (type == Common.GetModTile(ModConditions.afkpetsMod, "Plants"))
+            if (type == Common.GetModTile(CrossModSupport.AFKPets.Mod, "Plants"))
             {
                 Main.tile[i, j].TileFrameY = 18;
             }

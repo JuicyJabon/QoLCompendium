@@ -64,7 +64,6 @@ Superbomber: {
 	Tooltip:
 		'''
 		Destroys a large square area
-		Doesn't remove background walls
 		Will destroy everything above the impact
 		'''
 }

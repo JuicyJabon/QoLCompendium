@@ -4,7 +4,7 @@
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            if (Common.VanillaBossAndEventSummons.Contains(entity.type) && QoLCompendium.mainConfig.EndlessBossSummons && !ModConditions.calamityLoaded)
+            if (Common.VanillaBossAndEventSummons.Contains(entity.type) && QoLCompendium.mainConfig.EndlessBossSummons && !CrossModSupport.Calamity.Loaded)
                 return true;
             else if (Common.VanillaRightClickBossAndEventSummons.Contains(entity.type) && QoLCompendium.mainConfig.EndlessBossSummons)
                 return true;

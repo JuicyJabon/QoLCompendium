@@ -55,6 +55,7 @@ namespace QoLCompendium.Core.UI
         public static LocalizedText BMBuildingBlockText { get; private set; }
         public static LocalizedText BMHerbText { get; private set; }
         public static LocalizedText BMFishText { get; private set; }
+        public static LocalizedText BMCritterText { get; private set; }
         public static LocalizedText BMMountText { get; private set; }
         public static LocalizedText BMAmmoText { get; private set; }
 
@@ -126,21 +127,22 @@ namespace QoLCompendium.Core.UI
         {
             #region UI TEXT
             //BLACK MARKET DEALER
-            BMPotionText = Mod.GetLocalization($"UIText.BMPotionText");
-            BMStationText = Mod.GetLocalization($"UIText.BMStationText");
-            BMMaterialText = Mod.GetLocalization($"UIText.BMMaterialText");
-            BMMovementAccessoryText = Mod.GetLocalization($"UIText.BMMovementAccessoryText");
-            BMCombatAccessoryText = Mod.GetLocalization($"UIText.BMCombatAccessoryText");
-            BMInformativeText = Mod.GetLocalization($"UIText.BMInformativeText");
-            BMBagText = Mod.GetLocalization($"UIText.BMBagText");
-            BMCrateText = Mod.GetLocalization($"UIText.BMCrateText");
-            BMOreText = Mod.GetLocalization($"UIText.BMOreText");
-            BMNaturalBlockText = Mod.GetLocalization($"UIText.BMNaturalBlockText");
-            BMBuildingBlockText = Mod.GetLocalization($"UIText.BMBuildingBlockText");
-            BMHerbText = Mod.GetLocalization($"UIText.BMHerbText");
-            BMFishText = Mod.GetLocalization($"UIText.BMFishText");
-            BMMountText = Mod.GetLocalization($"UIText.BMMountText");
-            BMAmmoText = Mod.GetLocalization($"UIText.BMAmmoText");
+            BMPotionText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.PotionShop");
+            BMStationText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.StationsAndUpgradesShop");
+            BMMaterialText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.MaterialShop");
+            BMMovementAccessoryText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.MobilityAccessoryShop");
+            BMCombatAccessoryText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.CombatAccessoryShop");
+            BMInformativeText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.ToolsAndInfoShop");
+            BMBagText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.TreasureBagShop");
+            BMCrateText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.CratesAndGrabBagsShop");
+            BMOreText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.OresAndBarsShop");
+            BMNaturalBlockText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.NaturalBlockShop");
+            BMBuildingBlockText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.BuildingBlockShop");
+            BMHerbText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.HerbsAndPlantsShop");
+            BMFishText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.FishShop");
+            BMCritterText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.CritterShop");
+            BMMountText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.MountsAndHooksShop");
+            BMAmmoText ??= Mod.GetLocalization($"NPCs.BMDealerNPC.ShopName.AmmoShop");
 
             //ETHEREAL COLLECTOR
             ECPotionText = Mod.GetLocalization($"UIText.ECPotionText");

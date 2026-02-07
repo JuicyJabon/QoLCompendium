@@ -26,9 +26,13 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                     {
                         conditions.Remove(Condition.DownedEyeOfCthulhu);
                     }
-                    if (entry.Item.type == ItemID.CorruptPlanterBox || entry.Item.type == ItemID.CrimsonPlanterBox)
+                    if (entry.Item.type == ItemID.CorruptPlanterBox)
                     {
-                        conditions.Remove(Condition.DownedEowOrBoc);
+                        conditions.Remove(Condition.DownedEaterOfWorlds);
+                    }
+                    if (entry.Item.type == ItemID.CrimsonPlanterBox)
+                    {
+                        conditions.Remove(Condition.DownedBrainOfCthulhu);
                     }
                     if (entry.Item.type == ItemID.MoonglowPlanterBox)
                     {

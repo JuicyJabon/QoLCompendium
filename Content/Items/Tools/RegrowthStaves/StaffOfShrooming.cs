@@ -2,9 +2,12 @@
 
 namespace QoLCompendium.Content.Items.Tools.RegrowthStaves
 {
-    public class StaffOfShrooming : ModItem
+    public class StaffOfShrooming : ModItem, ILocalizedModType
     {
         public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.RegrowthStaves;
+
+        public new string LocalizationCategory => "Items.Tools.RegrowthStaves";
+
 
         public override void SetStaticDefaults()
         {

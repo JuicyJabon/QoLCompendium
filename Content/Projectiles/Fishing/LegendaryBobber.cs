@@ -8,7 +8,7 @@ namespace QoLCompendium.Content.Projectiles.Fishing
         {
             Projectile.width = 14;
             Projectile.height = 14;
-            Projectile.aiStyle = 61;
+            Projectile.aiStyle = ProjAIStyleID.Bobber;
             Projectile.bobber = true;
             Projectile.penetrate = -1;
             DrawOriginOffsetY = -8;

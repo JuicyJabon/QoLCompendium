@@ -54,7 +54,7 @@ namespace QoLCompendium.Core.Changes.ItemChanges
 
         public override bool ConsumeItem(Item item, Player player)
         {
-            if (ModConditions.secretsOfTheShadowsLoaded)
+            if (CrossModSupport.SecretsOfTheShadows.Loaded)
                 if (item.IsAVoidConsumable())
                     return base.ConsumeItem(item, player);
 
@@ -84,8 +84,8 @@ namespace QoLCompendium.Core.Changes.ItemChanges
         }
     }
 
-    [JITWhenModsEnabled(ModConditions.secretsOfTheShadowsName)]
-    [ExtendsFromMod(ModConditions.secretsOfTheShadowsName)]
+    [JITWhenModsEnabled(CrossModSupport.SecretsOfTheShadows.Name)]
+    [ExtendsFromMod(CrossModSupport.SecretsOfTheShadows.Name)]
     public static class IsVoidConsumable
     {
         public static bool IsAVoidConsumable(this Item item)

@@ -4,8 +4,8 @@ using MartainsOrder.Tiles.Void;
 
 namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod.AddonChanges
 {
-    [JITWhenModsEnabled(ModConditions.martainsOrderName)]
-    [ExtendsFromMod(ModConditions.martainsOrderName)]
+    [JITWhenModsEnabled(CrossModSupport.MartinsOrder.Name)]
+    [ExtendsFromMod(CrossModSupport.MartinsOrder.Name)]
     public class MartinsOrderMonolith : GlobalTile
     {
         public override int[] AdjTiles(int type)
@@ -14,7 +14,6 @@ namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod.AddonChanges
             if (type == ModContent.TileType<UltimateMonolithTile>())
             {
                 //Pre Hardmode
-                newAdjTiles.Add(TileID.FireflyinaBottle);
                 newAdjTiles.Add(ModContent.TileType<ArcheologyTable>());
                 newAdjTiles.Add(ModContent.TileType<SporeFarm>());
                 newAdjTiles.Add(ModContent.TileType<MartianBrewer>());

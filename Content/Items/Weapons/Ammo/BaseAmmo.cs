@@ -1,6 +1,4 @@
-﻿using Terraria.Enums;
-
-namespace QoLCompendium.Content.Items.Weapons.Ammo
+﻿namespace QoLCompendium.Content.Items.Weapons.Ammo
 {
     public abstract class BaseAmmo : ModItem, ILocalizedModType
     {
@@ -24,12 +22,39 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo
             Item.height = 26;
             Item.consumable = false;
             Item.maxStack = 1;
-            Item.SetShopValues(ItemRarityColor.Green2, Item.sellPrice(0, 1, 0, 0));
+            Item.value = Item.sellPrice(gold: 1);
+            if (Item.rare < ItemRarityID.Green)
+                Item.rare = ItemRarityID.Green;
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+
+            TooltipLine ammo = tooltips.Find(l => l.Name == "Ammo");
+            TooltipLine material = tooltips.Find(l => l.Name == "Material");
+            
+            if (AmmunitionItem < ItemID.Count)
+            {
+                for (int i = 0; i < Lang.GetTooltip(AmmunitionItem).Lines; i++)
+                {
+                    TooltipLine text = new(Mod, "AmmoDescription", Lang.GetTooltip(AmmunitionItem).GetLine(i));
+                    
+                    if (material != null && text.Text.Length > 0)
+                        tooltips.Insert(tooltips.IndexOf(material) + 1 + i, text);
+                    else if (ammo != null && text.Text.Length > 0)
+                        tooltips.Insert(tooltips.IndexOf(ammo) + 1 + i, text);
+                }
+            }
+            else
+            {
+                TooltipLine text = new(Mod, "AmmoDescription", ItemLoader.GetItem(AmmunitionItem).Tooltip.ToString());
+                
+                if (material != null && text.Text.Length > 0)
+                    tooltips.AddAfter(material, text);
+                else if (ammo != null && text.Text.Length > 0)
+                    tooltips.AddAfter(ammo, text);
+            }
         }
 
         public override void AddRecipes()

@@ -2,17 +2,17 @@
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Arrows.SpiritClassic
 {
-    [JITWhenModsEnabled(ModConditions.spiritClassicName)]
-    [ExtendsFromMod(ModConditions.spiritClassicName)]
+    [JITWhenModsEnabled(CrossModSupport.SpiritClassic.Name)]
+    [ExtendsFromMod(CrossModSupport.SpiritClassic.Name)]
     public class EndlessAccursedQuiver : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<SepulchreArrow>();
     }
 
-    [JITWhenModsEnabled(ModConditions.spiritClassicName)]
-    [ExtendsFromMod(ModConditions.spiritClassicName)]
+    [JITWhenModsEnabled(CrossModSupport.SpiritClassic.Name)]
+    [ExtendsFromMod(CrossModSupport.SpiritClassic.Name)]
     public class EndlessBeetleQuiver : BaseAmmo
     {
-        public override int AmmunitionItem => Common.GetModItem(ModConditions.spiritClassicMod, "BeetleArrow");
+        public override int AmmunitionItem => Common.GetModItem(CrossModSupport.SpiritClassic.Mod, "BeetleArrow");
     }
 }

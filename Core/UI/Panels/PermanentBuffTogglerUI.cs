@@ -1,8 +1,6 @@
 ﻿using QoLCompendium.Core.PermanentBuffSystems;
 using QoLCompendium.Core.UI.Buttons;
-using System.Linq;
 using Terraria.GameInput;
-using static FargowiltasSouls.FargoSoulsSets;
 
 namespace QoLCompendium.Core.UI.Panels
 {
@@ -21,7 +19,7 @@ namespace QoLCompendium.Core.UI.Panels
             MainPanel = new();
             MainPanel.HAlign = 0.5f;
             MainPanel.VAlign = 0.3f;
-            MainPanel.SetSize(450, 220);
+            MainPanel.SetSize(444f, 213f);
             MainPanel.BackgroundColor = new Color(73, 94, 171);
             Append(MainPanel);
 
@@ -32,22 +30,33 @@ namespace QoLCompendium.Core.UI.Panels
             nameInfo.Height.Set(32f, 0f);
             MainPanel.Append(nameInfo);
 
+            UIPanel bgPanel = new();
+            bgPanel.BackgroundColor = new(MainPanel.BackgroundColor.R - 30, MainPanel.BackgroundColor.G - 30, MainPanel.BackgroundColor.B - 30);
+            bgPanel.BorderColor = new(0, 0, 0, 255);
+            bgPanel.Width = StyleDimension.FromPixelsAndPercent(-18f, 1f);
+            bgPanel.Height = StyleDimension.FromPixelsAndPercent(-40f, 1f);
+            bgPanel.Top = StyleDimension.FromPixels(40f);
+            MainPanel.Append(bgPanel);
+
             BuffGrid = new UIGrid(11)
             {
                 Width = StyleDimension.FromPixelsAndPercent(-18f, 1f),
                 Height = StyleDimension.FromPixelsAndPercent(-40f, 1f),
                 Top = StyleDimension.FromPixels(40f),
+                PaddingLeft = 4f,
+                PaddingRight = 4f,
                 PaddingBottom = 4f,
                 PaddingTop = 4f,
                 ListPadding = 4f,
             };
+            BuffGrid._innerList.SetPadding(2f);
             BuffGrid.SetPadding(2f);
             MainPanel.Append(BuffGrid);
 
             Scrollbar = new()
             {
-                Left = { Pixels = -10f, Percent = 1f },
-                Width = { Pixels = 18f },
+                Left = { Pixels = -16f, Percent = 1f },
+                Width = { Pixels = 20f },
                 Top = { Pixels = 44f },
                 Height = { Pixels = -48f, Percent = 1f }
             };

@@ -6,8 +6,14 @@ FavoriteResearching: {
 }
 
 NoAuraVisuals: {
-	Label: "[i:2348] No Aura Visuals"
-	Tooltip: Toggles if the Inferno Aura is visible
+	Label: "[i:2348] Aura Visuals"
+	Tooltip:
+		'''
+		Toggles if certain aura effects are visible
+		Works with:
+		 - Inferno Aura
+		 - Tesla Aura (Calamity)
+		'''
 }
 
 CombatTextLimit: {

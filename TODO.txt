@@ -1,18 +1,20 @@
 1. Finish Endless Ammo Items
 COMPLETED AMMOS:
-Calamity
-Calamity Entropy
-Clamity
+ - Calamity
+ - Calamity Entropy
+ - Clamity
+ - Homeward Journey
+ - Martin's Order
 
-2. Loot Multiplier (Maybe)
+2. Loot Multiplier
 3. Shimmer Locator Item
 4. Temple Locator Item
 5. SOTS Worldgen tester thingy but for other structures
 6. Expert+ debuffs arent increased in time
-7. Infinite Pylon placement
-8. Always sell Pylons
+ (DONE) 7. Infinite Pylon placement
+8. Always sell all Pylons
 9. Shop condition removal (biome, happiness, etc.)
-10. Bombable hardmode ores (DONE)
+ (DONE) 10. Bombable hardmode ores
 11. Boom shuriken type item
 12. Glowing player
 13. Shell phone upgrade
@@ -24,9 +26,25 @@ Clamity
 19. Config Presets
 20. Statue enemies drop items
 21. Prevent voodoo demons accidentally spawning WoF
-22. LuiAFK Combo Rod
+22. LuiAFK Combo Rod (MAYBE)
 23. Accessory slot whitelist
 24. Eternia crystal wave speed increase with right click
 25. Time multipliers for beds/sundials
 26. Smart cursor herbs (TESTING)
-27. More permanent buff items
+27. More permanent buff items:
+ - AFKPets
+ - Exxo Avalon Origins
+ - Depths
+ - Edorbis
+ - Elements Awoken
+ - Enigma
+ - Polarities
+ - Rivals
+ - Storms Additions
+28. Mount & Pets in buff toggler
+29. Github Wiki
+ (DONE) 30. Fix All in One Access
+31. Pylon teleport from anywhere
+32. Auto Trash
+ (DONE) 33. Right click items to open UI from inventory (Entity Manipulator, etc.)
+34. Fix NetSend & Recieve

@@ -1,11 +1,12 @@
 ﻿using SOTS.Buffs;
+using SOTS.Items;
 using SOTS.Items.Planetarium.Furniture;
 using SOTS.Items.Potions;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(ModConditions.secretsOfTheShadowsName)]
-    [ExtendsFromMod(ModConditions.secretsOfTheShadowsName)]
+    [JITWhenModsEnabled(CrossModSupport.SecretsOfTheShadows.Name)]
+    [ExtendsFromMod(CrossModSupport.SecretsOfTheShadows.Name)]
     public static class SOTSBuffItems
     {
         public static NewBuffEffect[] SOTSEffects = [
@@ -22,7 +23,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             new NewBuffEffect(ModContent.BuffType<GoodVibes>()),
             new NewBuffEffect(ModContent.BuffType<Vigor>()),
             //stations
-            new NewBuffEffect(ModContent.BuffType<CyberneticEnhancements>(), (int)Common.EffectTypes.Station)
+            new NewBuffEffect(ModContent.BuffType<CyberneticEnhancements>(), (int)Common.EffectTypes.Station),
+            new NewBuffEffect(ModContent.BuffType<DEFEBuff>(), (int)Common.EffectTypes.Station)
         ];
 
         public static void LoadTasks()
@@ -54,7 +56,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 new NewBuffItem(ModContent.ItemType<VibePotion>(), ModContent.BuffType<GoodVibes>(), Common.AllEffects[ModContent.BuffType<GoodVibes>()], 30, "PermanentVibe", "Permanent Vibe"),
                 new NewBuffItem(ModContent.ItemType<VigorPotion>(), ModContent.BuffType<Vigor>(), Common.AllEffects[ModContent.BuffType<Vigor>()], 30, "PermanentVigor", "Permanent Vigor"),
                 //stations
-                new NewBuffItem(ModContent.ItemType<DigitalDisplay>(), ModContent.BuffType<CyberneticEnhancements>(), Common.AllEffects[ModContent.BuffType<CyberneticEnhancements>()], 3, "PermanentDigitalDisplay", "Permanent Digital Display")
+                new NewBuffItem(ModContent.ItemType<DigitalDisplay>(), ModContent.BuffType<CyberneticEnhancements>(), Common.AllEffects[ModContent.BuffType<CyberneticEnhancements>()], 3, "PermanentDigitalDisplay", "Permanent Digital Display"),
+                new NewBuffItem(ModContent.ItemType<ElectromagneticDeterrent>(), ModContent.BuffType<DEFEBuff>(), Common.AllEffects[ModContent.BuffType<DEFEBuff>()], 3, "PermanentElectromagneticDeterrent", "Permanent Electromagnetic Deterrent")
             ];
 
             foreach (var newBuffItem in BuffItems)
@@ -79,7 +82,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<SoulAccess>()], ModContent.BuffType<SoulAccess>() },
                 { Common.AllEffects[ModContent.BuffType<GoodVibes>()], ModContent.BuffType<GoodVibes>() },
                 { Common.AllEffects[ModContent.BuffType<Vigor>()], ModContent.BuffType<Vigor>() },
-                { Common.AllEffects[ModContent.BuffType<CyberneticEnhancements>()], ModContent.BuffType<CyberneticEnhancements>() }
+                { Common.AllEffects[ModContent.BuffType<CyberneticEnhancements>()], ModContent.BuffType<CyberneticEnhancements>() },
+                { Common.AllEffects[ModContent.BuffType<DEFEBuff>()], ModContent.BuffType<DEFEBuff>() }
             };
 
             NewCombinedBuffItem[] CombinedBuffItems = [

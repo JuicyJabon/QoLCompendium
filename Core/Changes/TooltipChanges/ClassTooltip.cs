@@ -28,7 +28,7 @@
             if (item.CountsAsClass(DamageClass.Summon) && item.IsAWeapon())
                 tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.SummonerClass")));
             //THROWER
-            if (item.CountsAsClass(DamageClass.Throwing) && item.IsAWeapon() && !ModConditions.thoriumLoaded && !item.CountsAsClass(Common.GetModDamageClass(ModConditions.calamityMod, "RogueDamageClass")) && !item.CountsAsClass(Common.GetModDamageClass(ModConditions.throwerUnificationMod, "UnitedModdedThrower")))
+            if (item.CountsAsClass(DamageClass.Throwing) && item.IsAWeapon() && !CrossModSupport.Thorium.Loaded && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.Calamity.Mod, "RogueDamageClass")) && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.ThrowerUnification.Mod, "UnitedModdedThrower")))
                 tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ThrowerClass")));
             //GENERIC
             if (item.CountsAsClass(DamageClass.Generic) && item.IsAWeapon())

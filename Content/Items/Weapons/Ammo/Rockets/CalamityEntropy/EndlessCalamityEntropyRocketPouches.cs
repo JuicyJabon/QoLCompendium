@@ -3,8 +3,8 @@ using CalamityEntropy.Content.Projectiles;
 
 namespace QoLCompendium.Content.Items.Weapons.Ammo.Rockets.CalamityEntropy
 {
-    [JITWhenModsEnabled(ModConditions.calamityEntropyName)]
-    [ExtendsFromMod(ModConditions.calamityEntropyName)]
+    [JITWhenModsEnabled(CrossModSupport.CalamityEntropy.Name)]
+    [ExtendsFromMod(CrossModSupport.CalamityEntropy.Name)]
     public class EndlessGodSlayerRocketPouch : RocketPouch
     {
         public override int AmmunitionItem => ModContent.ItemType<GodSlayerRocket>();
@@ -14,8 +14,8 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Rockets.CalamityEntropy
         public override int MineProjectile => ModContent.ProjectileType<GodSlayerRocketProjectile>();
     }
 
-    [JITWhenModsEnabled(ModConditions.calamityEntropyName)]
-    [ExtendsFromMod(ModConditions.calamityEntropyName)]
+    [JITWhenModsEnabled(CrossModSupport.CalamityEntropy.Name)]
+    [ExtendsFromMod(CrossModSupport.CalamityEntropy.Name)]
     public class EndlessRustyGrenadePouch : RocketPouch
     {
         public override int AmmunitionItem => ModContent.ItemType<RustyGrenade>();

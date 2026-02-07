@@ -1,0 +1,6 @@
+BMDealerNPC: {
+	ChatDefault: Hey, want some items?
+	Chat0: Illegal items are my specialty
+	Chat1: Hand over some money, and I'll hook you up
+	Chat2: Don't ask where I got all of my stock
+}

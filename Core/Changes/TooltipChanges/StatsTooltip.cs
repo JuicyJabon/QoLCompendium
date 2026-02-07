@@ -16,48 +16,48 @@ namespace QoLCompendium.Core.Changes.TooltipChanges
             if (wingsID != -1 && !item.social)
             {
                 //DO NOT DO VANILLA WINGS IF CALAMITY IS LOADED
-                if (ModConditions.calamityLoaded && item.type <= ItemID.Count)
+                if (CrossModSupport.Calamity.Loaded && item.type <= ItemID.Count)
                     return;
 
                 //SKIP CALAMITY STATS
-                if (ModConditions.calamityLoaded && item.type > ItemID.Count)
+                if (CrossModSupport.Calamity.Loaded && item.type > ItemID.Count)
                 {
-                    if (item.ModItem.Mod == ModConditions.calamityMod)
+                    if (item.ModItem.Mod == CrossModSupport.Calamity.Mod)
                         return;
                 }
 
                 //SKIP CALAMITY ENTROPY STATS
-                if (ModConditions.calamityEntropyLoaded && item.type > ItemID.Count)
+                if (CrossModSupport.CalamityEntropy.Loaded && item.type > ItemID.Count)
                 {
-                    if (item.ModItem.Mod == ModConditions.calamityEntropyMod)
+                    if (item.ModItem.Mod == CrossModSupport.CalamityEntropy.Mod)
                         return;
                 }
 
                 //SKIP CATALYST STATS
-                if (ModConditions.catalystLoaded && item.type > ItemID.Count)
+                if (CrossModSupport.Catalyst.Loaded && item.type > ItemID.Count)
                 {
-                    if (item.ModItem.Mod == ModConditions.catalystMod)
+                    if (item.ModItem.Mod == CrossModSupport.Catalyst.Mod)
                         return;
                 }
 
                 //SKIP FARGOS STATS
-                if (ModConditions.fargosSoulsLoaded && item.type > ItemID.Count)
+                if (CrossModSupport.FargowiltasSouls.Loaded && item.type > ItemID.Count)
                 {
-                    if (item.ModItem.Mod == ModConditions.fargosSoulsMod)
+                    if (item.ModItem.Mod == CrossModSupport.FargowiltasSouls.Mod)
                         return;
                 }
 
                 //SKIP HUNT OF THE OLD GOD STATS
-                if (ModConditions.huntOfTheOldGodLoaded && item.type > ItemID.Count)
+                if (CrossModSupport.HuntOfTheOldGod.Loaded && item.type > ItemID.Count)
                 {
-                    if (item.ModItem.Mod == ModConditions.huntOfTheOldGodMod)
+                    if (item.ModItem.Mod == CrossModSupport.HuntOfTheOldGod.Mod)
                         return;
                 }
 
                 //SKIP WRATH OF THE GODS STATS
-                if (ModConditions.wrathOfTheGodsLoaded && item.type > ItemID.Count)
+                if (CrossModSupport.WrathOfTheGods.Loaded && item.type > ItemID.Count)
                 {
-                    if (item.ModItem.Mod == ModConditions.wrathOfTheGodsMod)
+                    if (item.ModItem.Mod == CrossModSupport.WrathOfTheGods.Mod)
                         return;
                 }
 
@@ -78,7 +78,7 @@ namespace QoLCompendium.Core.Changes.TooltipChanges
         public void HookStatsTooltip(Item item, List<TooltipLine> tooltips)
         {
             //VANILLA HOOKS
-            if (!ModConditions.calamityLoaded)
+            if (!CrossModSupport.Calamity.Loaded)
             {
                 //PRE-HARDMODE
                 if (item.type == ItemID.GrapplingHook)
@@ -197,23 +197,23 @@ namespace QoLCompendium.Core.Changes.TooltipChanges
             float hookSpeed = 11;
 
             //SKIP CALAMITY STATS
-            if (ModConditions.calamityLoaded && item.type > ItemID.Count)
+            if (CrossModSupport.Calamity.Loaded && item.type > ItemID.Count)
             {
-                if (item.ModItem.Mod == ModConditions.calamityMod)
+                if (item.ModItem.Mod == CrossModSupport.Calamity.Mod)
                     return;
             }
 
             //SKIP CATALYST STATS
-            if (ModConditions.catalystLoaded && item.type > ItemID.Count)
+            if (CrossModSupport.Catalyst.Loaded && item.type > ItemID.Count)
             {
-                if (item.ModItem.Mod == ModConditions.catalystMod)
+                if (item.ModItem.Mod == CrossModSupport.Catalyst.Mod)
                     return;
             }
 
             //SKIP HUNT OF THE OLD GOD STATS
-            if (ModConditions.huntOfTheOldGodLoaded && item.type > ItemID.Count)
+            if (CrossModSupport.HuntOfTheOldGod.Loaded && item.type > ItemID.Count)
             {
-                if (item.ModItem.Mod == ModConditions.huntOfTheOldGodMod)
+                if (item.ModItem.Mod == CrossModSupport.HuntOfTheOldGod.Mod)
                     return;
             }
 

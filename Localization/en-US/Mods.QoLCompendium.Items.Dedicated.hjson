@@ -13,6 +13,11 @@ THEButton: {
 	Tooltip: Press for a permanent new world perspective!
 }
 
+THEotherButton: {
+	DisplayName: THE other Button
+	Tooltip: Permanently back by unpopular demand!
+}
+
 OwlNest: {
 	DisplayName: Owl Nest
 	Tooltip: Summons an Owl

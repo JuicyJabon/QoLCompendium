@@ -1,3 +1,66 @@
+v2.4.0
+1. Added Chlorophyte Ore & Bar to Jungle Crates after defeating all 3 mechs when using Calamity Crate Nerf Reversion
+2. Added Hallowed Ore & Bar to Hallowed Crates after defeating all 3 mechs when using Calamity Crate Nerf Reversion
+3. Fixed missing bar drops from most crates when using Calamity Crate Nerf Reversion
+4. Added Catalyst ores/bars/materials to Calamity crates
+5. Added Calamity Entropy ores/bars/materials to Calamity crates
+6. Removed Permanent Homeward Journey Strange Potions from Permanent Homeward Journey recipe
+ - Still fully obtainable just now it doesn't lock Permanent Everything behind a ton of annoying recipes
+ - Effects are still present in Permanent Everything
+7. Added Supercharged Super Cell (Calamity Cross-mod)
+8. Added Overgrown Power Cell
+9. Removed Firefly in a Bottle from Basic Martin's Order Crafting Monolith
+10. Removed Permanent Deathsinger from Permanent Thorium Bard when Infernal Eclipse of Ragnarok is loaded
+11. Fully reverted the Calamity crate nerf, now hardmode ores/bars can be progression skipped
+12. Added a new mode to the Mosaic Mirror for town NPC or party member teleportation
+13. Added Mystic Moon Pedestal (Spirit Classic Cross-mod)
+14. Added the ability to use the quick home keybind with the Wishing Glass (Thorium)
+15. Added the rest of the Homeward Journey endless ammos
+16. Destination Globe, Entity Manipulator, Phase Interrupter, and Summoning Remote can now be right clicked in the inventory to open their UI
+17. Added Black Market Dealer Critter Shop
+18. Temporarily removed:
+ - Calamity crate recipes
+ - Calamity fountain changes
+19. Removed:
+ - Calamity: Permanent Baguette
+ - Calamity: Permanent Tesla
+ - Clamity: Permanent Exo Baguette
+
+v2.3.3
+1. Fixed chests never closing when walking away from them
+2. Fixed Void Bard reforges not loading correctly
+
+v2.3.2
+1. Added a config for unsafe walls
+2. Fixed Bard reforges rarely never reaching max tier
+3. Added a config to remove placement restrictions for pylons
+4. Added Repaired Life Fruit
+5. Added Void Well (Calamity Entropy) to Calamity Crafting Monolith recipe and effects
+6. Made the Permanent Buff Toggler UI a little prettier
+7. Added a config to fix the rarity of the Flinx Fur Hat from Homeward Journey
+8. Fixed All in One Access, Etherian Construct, and Flying Safe lagging the game substantially when smart cursor was on and the bank was open
+
+v2.3.1
+1. Added a config to revert Calamity's crate nerf
+ - Affects weapon and progression based additions to crates
+ - Does not affect Hardmode ore skipping, as it was always their intention to fix that
+2. Added a config to allow Jellyfish to drop Gel
+3. Added a config to allow Pink Jellyfish to drop Pink Gel
+4. Made the Banner Box function better, and it now works with Permanent Buff Selector UI
+5. Fixed Regrowth Staves being incorrectly localized and therefore not getting their tooltips
+6. Added a config for Endless Station Buffs
+ - This is now seperate from the Endless Buffs config
+7. Renamed the "Endless Buffs" config to "Endless Potion Buffs"
+8. Added a config for Endless Banners
+ - Also works with Permanent Buff Selector UI
+9. Added a config for Endless Banner Amount
+ - If you for some reason want more than 1 to be required
+10. Added miscellaneous support for the following mods:
+ - Demolisher Class -> Endless Station Buffs
+ - Inspiration Potions - Thorium -> Endless Potions
+11. Fixed duplicate thrower class tooltips when using Thorium and Thrower Unification
+12. Fixed the void generic class tooltip appearing above every other class tooltip when using Secrets of the Shadows
+
 v2.3.0
 1. Entirely reworked Permanent Buff Items
  - New UI now affects both Permanent Buff Items and normal 30-stack buffs

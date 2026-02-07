@@ -63,6 +63,10 @@ namespace QoLCompendium.Core.Configs
 
         [DefaultValue(true)]
         [ReloadRequired]
+        public bool BMCritterShop { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
         public bool BMMountShop { get; set; }
 
         [DefaultValue(true)]
@@ -175,6 +179,11 @@ namespace QoLCompendium.Core.Configs
         [Increment(1)]
         [Range(1, 1000)]
         public int FishPriceMultiplier { get; set; }
+
+        [DefaultValue(1)]
+        [Increment(1)]
+        [Range(1, 1000)]
+        public int CritterPriceMultiplier { get; set; }
 
         [DefaultValue(1)]
         [Increment(1)]

@@ -242,6 +242,16 @@ namespace QoLCompendium.Content.Items.Tools.Summons.Vanilla
             }
         }
 
+        public override void RightClick(Player player)
+        {
+            if (!SummoningRemoteUI.visible)
+                SummoningRemoteUI.timeStart = Main.GameUpdateCount;
+            SummoningRemoteUI.visible = !SummoningRemoteUI.visible;
+        }
+
+        public override bool CanRightClick() => true;
+        public override bool ConsumeItem(Player player) => false;
+
         public override void UpdateInventory(Player player)
         {
             if (player.GetModPlayer<QoLCPlayer>().bossToSpawn > 0 && player.GetModPlayer<QoLCPlayer>().bossToSpawn != NPCID.Retinazer && player.GetModPlayer<QoLCPlayer>().bossToSpawn != NPCID.MoonLordCore && player.GetModPlayer<QoLCPlayer>().bossSpawn)

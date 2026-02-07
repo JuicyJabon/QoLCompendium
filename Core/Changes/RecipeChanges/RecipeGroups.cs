@@ -51,10 +51,10 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     plentySatisfiedItems.Add(item.type);
                 else if (item.buffType == BuffID.WellFed3)
                     exquisitelyStuffedItems.Add(item.type);
-                if (ModConditions.martainsOrderLoaded && item.buffType == Common.GetModBuff(ModConditions.martainsOrderMod, "Gourmet"))
+                if (CrossModSupport.MartinsOrder.Loaded && item.buffType == Common.GetModBuff(CrossModSupport.MartinsOrder.Mod, "Gourmet"))
                     gourmetFlavorItems.Add(item.type);
 
-                if (ModConditions.stramsSurvivalLoaded)
+                if (CrossModSupport.StramsSurvival.Loaded)
                 {
                     wellFedItems.Add(ItemID.FruitJuice);
                     plentySatisfiedItems.Add(ItemID.PumpkinPie);
@@ -77,68 +77,68 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
 
             #region Anvils
             int[] anvilItems = { ItemID.IronAnvil, ItemID.LeadAnvil };
-            if (ModConditions.exxoAvalonOriginsLoaded)
+            if (CrossModSupport.ExxoAvalonOrigins.Loaded)
             {
                 Array.Resize(ref anvilItems, anvilItems.Length + 1);
-                anvilItems[^1] = Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "NickelAnvil");
+                anvilItems[^1] = Common.GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "NickelAnvil");
             }
             #endregion
 
             #region Hardmode Anvils
             int[] hardmodeAnvilItems = { ItemID.MythrilAnvil, ItemID.OrichalcumAnvil };
-            if (ModConditions.exxoAvalonOriginsLoaded)
+            if (CrossModSupport.ExxoAvalonOrigins.Loaded)
             {
                 Array.Resize(ref hardmodeAnvilItems, hardmodeAnvilItems.Length + 1);
-                hardmodeAnvilItems[^1] = Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "NaquadahAnvil");
+                hardmodeAnvilItems[^1] = Common.GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "NaquadahAnvil");
             }
             #endregion
 
             #region Hardmode Forges
             int[] hardmodeForgeItems = { ItemID.AdamantiteForge, ItemID.TitaniumForge };
-            if (ModConditions.exxoAvalonOriginsLoaded)
+            if (CrossModSupport.ExxoAvalonOrigins.Loaded)
             {
                 Array.Resize(ref hardmodeForgeItems, hardmodeForgeItems.Length + 1);
-                hardmodeForgeItems[^1] = Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "TroxiniumForge");
+                hardmodeForgeItems[^1] = Common.GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "TroxiniumForge");
             }
             #endregion
 
             #region Demon/Crimson Altars
             int[] altarItems = { ModContent.ItemType<DemonAltar>(), ModContent.ItemType<CrimsonAltar>() };
-            if (ModConditions.exxoAvalonOriginsLoaded)
+            if (CrossModSupport.ExxoAvalonOrigins.Loaded)
             {
                 Array.Resize(ref altarItems, altarItems.Length + 3);
-                altarItems[^3] = Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "DemonAltar");
-                altarItems[^2] = Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "CrimsonAltar");
-                altarItems[^1] = Common.GetModItem(ModConditions.exxoAvalonOriginsMod, "IckyAltar");
+                altarItems[^3] = Common.GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "DemonAltar");
+                altarItems[^2] = Common.GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "CrimsonAltar");
+                altarItems[^1] = Common.GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "IckyAltar");
             }
-            if (ModConditions.fargosMutantLoaded)
+            if (CrossModSupport.Fargowiltas.Loaded)
             {
                 Array.Resize(ref altarItems, altarItems.Length + 2);
-                altarItems[^2] = Common.GetModItem(ModConditions.fargosMutantMod, "DemonAltar");
-                altarItems[^1] = Common.GetModItem(ModConditions.fargosMutantMod, "CrimsonAltar");
+                altarItems[^2] = Common.GetModItem(CrossModSupport.Fargowiltas.Mod, "DemonAltar");
+                altarItems[^1] = Common.GetModItem(CrossModSupport.Fargowiltas.Mod, "CrimsonAltar");
             }
-            if (ModConditions.luiAFKLoaded)
+            if (CrossModSupport.LuiAFK.Loaded)
             {
                 Array.Resize(ref altarItems, altarItems.Length + 2);
-                altarItems[^2] = Common.GetModItem(ModConditions.luiAFKMod, "CorruptionAltar");
-                altarItems[^1] = Common.GetModItem(ModConditions.luiAFKMod, "CrimsonAltar");
+                altarItems[^2] = Common.GetModItem(CrossModSupport.LuiAFK.Mod, "CorruptionAltar");
+                altarItems[^1] = Common.GetModItem(CrossModSupport.LuiAFK.Mod, "CrimsonAltar");
             }
-            if (ModConditions.magicStorageLoaded)
+            if (CrossModSupport.MagicStorage.Loaded)
             {
                 Array.Resize(ref altarItems, altarItems.Length + 2);
-                altarItems[^2] = Common.GetModItem(ModConditions.magicStorageMod, "DemonAltar");
-                altarItems[^1] = Common.GetModItem(ModConditions.magicStorageMod, "CrimsonAltar");
+                altarItems[^2] = Common.GetModItem(CrossModSupport.MagicStorage.Mod, "DemonAltar");
+                altarItems[^1] = Common.GetModItem(CrossModSupport.MagicStorage.Mod, "CrimsonAltar");
             }
-            if (ModConditions.martainsOrderLoaded)
+            if (CrossModSupport.MartinsOrder.Loaded)
             {
                 Array.Resize(ref altarItems, altarItems.Length + 1);
-                altarItems[^1] = Common.GetModItem(ModConditions.martainsOrderMod, "DemonAltar");
+                altarItems[^1] = Common.GetModItem(CrossModSupport.MartinsOrder.Mod, "DemonAltar");
             }
-            if (ModConditions.thoriumLoaded)
+            if (CrossModSupport.Thorium.Loaded)
             {
                 Array.Resize(ref altarItems, altarItems.Length + 2);
-                altarItems[^2] = Common.GetModItem(ModConditions.thoriumMod, "GrimPedestal");
-                altarItems[^1] = Common.GetModItem(ModConditions.thoriumMod, "GrimPedestalCrimson");
+                altarItems[^2] = Common.GetModItem(CrossModSupport.Thorium.Mod, "GrimPedestal");
+                altarItems[^1] = Common.GetModItem(CrossModSupport.Thorium.Mod, "GrimPedestalCrimson");
             }
             #endregion
 
@@ -401,16 +401,16 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             RecipeGroup.RegisterGroup("QoLCompendium:WellFed", new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.WellFed")}", wellFedItems.ToArray()));
             RecipeGroup.RegisterGroup("QoLCompendium:PlentySatisfied", new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.PlentySatisfied")}", plentySatisfiedItems.ToArray()));
             RecipeGroup.RegisterGroup("QoLCompendium:ExquisitelyStuffed", new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.ExquisitelyStuffed")}", exquisitelyStuffedItems.ToArray()));
-            if (ModConditions.martainsOrderLoaded && gourmetFlavorItems.Count > 0)
+            if (CrossModSupport.MartinsOrder.Loaded && gourmetFlavorItems.Count > 0)
                 RecipeGroup.RegisterGroup("QoLCompendium:GourmetFlavor", new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.GourmetFlavor")}", gourmetFlavorItems.ToArray()));
 
-            if (ModConditions.thoriumLoaded)
-                RecipeGroup.RegisterGroup("QoLCompendium:GrimPedestals", new(() => $"{any} {Lang.GetItemNameValue(Common.GetModItem(ModConditions.thoriumMod, "GrimPedestal"))}", Common.GetModItem(ModConditions.thoriumMod, "GrimPedestal"), Common.GetModItem(ModConditions.thoriumMod, "GrimPedestalCrimson")));
+            if (CrossModSupport.Thorium.Loaded)
+                RecipeGroup.RegisterGroup("QoLCompendium:GrimPedestals", new(() => $"{any} {Lang.GetItemNameValue(Common.GetModItem(CrossModSupport.Thorium.Mod, "GrimPedestal"))}", Common.GetModItem(CrossModSupport.Thorium.Mod, "GrimPedestal"), Common.GetModItem(CrossModSupport.Thorium.Mod, "GrimPedestalCrimson")));
 
             RecipeGroup.RegisterGroup("QoLCompendium:Ale", new(() => $"{any} {Lang.GetItemNameValue(ItemID.Ale)}", ItemID.Ale, ItemID.Sake));
 
-            if (ModConditions.spiritReforgedLoaded)
-                RecipeGroup.RegisterGroup("QoLCompendium:KoiTotem", new(() => $"{any} {Lang.GetItemNameValue(Common.GetModItem(ModConditions.spiritReforgedMod, "KoiTotem"))}", Common.GetModItem(ModConditions.spiritReforgedMod, "KoiTotem"), Common.GetModItem(ModConditions.spiritReforgedMod, "AncientKoiTotem")));
+            if (CrossModSupport.SpiritReforged.Loaded)
+                RecipeGroup.RegisterGroup("QoLCompendium:KoiTotem", new(() => $"{any} {Lang.GetItemNameValue(Common.GetModItem(CrossModSupport.SpiritReforged.Mod, "KoiTotem"))}", Common.GetModItem(CrossModSupport.SpiritReforged.Mod, "KoiTotem"), Common.GetModItem(CrossModSupport.SpiritReforged.Mod, "AncientKoiTotem")));
             #endregion
         }
 

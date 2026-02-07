@@ -12,9 +12,12 @@
             if (Common.VoidDamageClasses.Contains(item.DamageType))
                 return;
 
+            int index = tooltips.FindIndex(tt => tt.Mod.Equals("Terraria") && tt.Name.Equals("ItemName"));
+            if (index == -1) return;
+
             //UNITED THROWER
-            if (ModConditions.throwerUnificationLoaded && item.CountsAsClass(Common.GetModDamageClass(ModConditions.throwerUnificationMod, "UnitedModdedThrower")) && item.IsAWeapon())
-                tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ThrowerClass")));
+            if (CrossModSupport.ThrowerUnification.Loaded && item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.ThrowerUnification.Mod, "UnitedModdedThrower")) && item.IsAWeapon())
+                tooltips.Insert(index + 1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ThrowerClass")));
         }
     }
 }

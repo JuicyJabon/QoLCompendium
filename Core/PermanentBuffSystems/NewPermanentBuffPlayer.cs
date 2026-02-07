@@ -3,6 +3,7 @@ using CalamityMod.Projectiles.Typeless;
 using ContinentOfJourney.Buffs;
 using SOTS;
 using SOTS.Buffs;
+using SpiritMod.Items.Consumable.Potion;
 using SpiritReforged.Content.Forest.Misc;
 using SpiritReforged.Content.Snow.Frostbite;
 using Terraria.ModLoader.IO;
@@ -114,8 +115,9 @@ namespace QoLCompendium.Core.PermanentBuffSystems
         }
     }
 
-    [JITWhenModsEnabled(ModConditions.calamityName)]
-    [ExtendsFromMod(ModConditions.calamityName)]
+    /*
+    [JITWhenModsEnabled(CrossModSupport.Calamity.Name)]
+    [ExtendsFromMod(CrossModSupport.Calamity.Name)]
     public class CalamityTeslaEffect : ModPlayer
     {
         public override void PostUpdateBuffs()
@@ -134,9 +136,10 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             }
         }
     }
+    */
 
-    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
-    [ExtendsFromMod(ModConditions.homewardJourneyName)]
+    [JITWhenModsEnabled(CrossModSupport.HomewardJourney.Name)]
+    [ExtendsFromMod(CrossModSupport.HomewardJourney.Name)]
     public class HomewardJourneyFluorescentBerryEffect : GlobalWall
     {
         public override void ModifyLight(int i, int j, int type, ref float r, ref float g, ref float b)
@@ -154,8 +157,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems
         }
     }
 
-    [JITWhenModsEnabled(ModConditions.homewardJourneyName)]
-    [ExtendsFromMod(ModConditions.homewardJourneyName)]
+    [JITWhenModsEnabled(CrossModSupport.HomewardJourney.Name)]
+    [ExtendsFromMod(CrossModSupport.HomewardJourney.Name)]
     public class HomewardJourneyYinYangEffect : GlobalNPC
     {
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
@@ -182,8 +185,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems
         }
     }
 
-    [JITWhenModsEnabled(ModConditions.secretsOfTheShadowsName)]
-    [ExtendsFromMod(ModConditions.secretsOfTheShadowsName)]
+    [JITWhenModsEnabled(CrossModSupport.SecretsOfTheShadows.Name)]
+    [ExtendsFromMod(CrossModSupport.SecretsOfTheShadows.Name)]
     public class SOTSRippleEffect : ModPlayer
     {
         public override void PostUpdateBuffs()
@@ -202,8 +205,25 @@ namespace QoLCompendium.Core.PermanentBuffSystems
         }
     }
 
-    [JITWhenModsEnabled(ModConditions.spiritReforgedName)]
-    [ExtendsFromMod(ModConditions.spiritReforgedName)]
+    [JITWhenModsEnabled(CrossModSupport.SpiritClassic.Name)]
+    [ExtendsFromMod(CrossModSupport.SpiritClassic.Name)]
+    public class SpiritClassicEffects : ModPlayer
+    {
+        public override void PostUpdateBuffs()
+        {
+            if (Player.buffImmune[ModContent.BuffType<MirrorCoatBuff>()])
+                return;
+
+            string fullName = $"{BuffLoader.GetBuff(ModContent.BuffType<MirrorCoatBuff>()).Mod.Name}/{BuffLoader.GetBuff(ModContent.BuffType<MirrorCoatBuff>()).Name}";
+            if (QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Contains(ModContent.BuffType<MirrorCoatBuff>()) && !NewPermanentBuffPlayer.Get(Main.LocalPlayer).InfBuffDisabledMod.Contains(fullName))
+            {
+                Player.buffImmune[BuffID.Stoned] = true;
+            }
+        }
+    }
+
+    [JITWhenModsEnabled(CrossModSupport.SpiritReforged.Name)]
+    [ExtendsFromMod(CrossModSupport.SpiritReforged.Name)]
     public class SpiritReforgedEffects : ModPlayer
     {
         public override void PostUpdateBuffs()
@@ -224,11 +244,11 @@ namespace QoLCompendium.Core.PermanentBuffSystems
 
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Player.buffImmune[Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")])
+            if (Player.buffImmune[Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")])
                 return;
 
-            string fullName = $"{BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")).Mod.Name}/{BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")).Name}";
-            if (QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Contains(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")) && !NewPermanentBuffPlayer.Get(Main.LocalPlayer).InfBuffDisabledMod.Contains(fullName))
+            string fullName = $"{BuffLoader.GetBuff(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")).Mod.Name}/{BuffLoader.GetBuff(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")).Name}";
+            if (QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Contains(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")) && !NewPermanentBuffPlayer.Get(Main.LocalPlayer).InfBuffDisabledMod.Contains(fullName))
             {
                 if (item.CountsAsClass(DamageClass.Melee))
                     target.AddBuff(ModContent.BuffType<Frozen>(), 60 * Main.rand.Next(3, 7), false);
@@ -237,11 +257,11 @@ namespace QoLCompendium.Core.PermanentBuffSystems
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Player.buffImmune[Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")])
+            if (Player.buffImmune[Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")])
                 return;
 
-            string fullName = $"{BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")).Mod.Name}/{BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")).Name}";
-            if (QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Contains(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")) && !NewPermanentBuffPlayer.Get(Main.LocalPlayer).InfBuffDisabledMod.Contains(fullName))
+            string fullName = $"{BuffLoader.GetBuff(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")).Mod.Name}/{BuffLoader.GetBuff(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")).Name}";
+            if (QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Contains(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")) && !NewPermanentBuffPlayer.Get(Main.LocalPlayer).InfBuffDisabledMod.Contains(fullName))
             {
                 if ((proj.CountsAsClass(DamageClass.Melee) || ProjectileID.Sets.IsAWhip[proj.type]) && !proj.noEnchantments)
                     target.AddBuff(ModContent.BuffType<Frozen>(), 60 * Main.rand.Next(3, 7), false);
@@ -250,11 +270,11 @@ namespace QoLCompendium.Core.PermanentBuffSystems
 
         public override void MeleeEffects(Item item, Rectangle hitbox)
         {
-            if (Player.buffImmune[Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")])
+            if (Player.buffImmune[Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")])
                 return;
 
-            string fullName = $"{BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")).Mod.Name}/{BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")).Name}";
-            if (QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Contains(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")) && !NewPermanentBuffPlayer.Get(Main.LocalPlayer).InfBuffDisabledMod.Contains(fullName))
+            string fullName = $"{BuffLoader.GetBuff(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")).Mod.Name}/{BuffLoader.GetBuff(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")).Name}";
+            if (QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Contains(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")) && !NewPermanentBuffPlayer.Get(Main.LocalPlayer).InfBuffDisabledMod.Contains(fullName))
             {
                 if (item.DamageType.CountsAsClass(DamageClass.Melee) && !item.noMelee && !item.noUseGraphic && Utils.NextBool(Main.rand, 5))
                     Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.GemSapphire, 0f, 0f, 0, default, 1f).noGravity = true;
@@ -263,11 +283,11 @@ namespace QoLCompendium.Core.PermanentBuffSystems
 
         public override void EmitEnchantmentVisualsAt(Projectile projectile, Vector2 boxPosition, int boxWidth, int boxHeight)
         {
-            if (Player.buffImmune[Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")])
+            if (Player.buffImmune[Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")])
                 return;
 
-            string fullName = $"{BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")).Mod.Name}/{BuffLoader.GetBuff(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")).Name}";
-            if (QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Contains(Common.GetModBuff(ModConditions.spiritReforgedMod, "FlaskOfFrost_Buff")) && !NewPermanentBuffPlayer.Get(Main.LocalPlayer).InfBuffDisabledMod.Contains(fullName))
+            string fullName = $"{BuffLoader.GetBuff(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")).Mod.Name}/{BuffLoader.GetBuff(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")).Name}";
+            if (QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Contains(Common.GetModBuff(CrossModSupport.SpiritReforged.Mod, "FlaskOfFrost_Buff")) && !NewPermanentBuffPlayer.Get(Main.LocalPlayer).InfBuffDisabledMod.Contains(fullName))
             {
                 if ((projectile.DamageType.CountsAsClass<MeleeDamageClass>() || ProjectileID.Sets.IsAWhip[projectile.type]) && !projectile.noEnchantments && Utils.NextBool(Main.rand, 5))
                     Dust.NewDustDirect(boxPosition, boxWidth, boxHeight, DustID.GemSapphire, 0f, 0f, 0, default, 1f).noGravity = true;

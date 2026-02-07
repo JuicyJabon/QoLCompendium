@@ -2,8 +2,8 @@
 
 namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod.AddonChanges
 {
-    [JITWhenModsEnabled(ModConditions.thoriumName)]
-    [ExtendsFromMod(ModConditions.thoriumName)]
+    [JITWhenModsEnabled(CrossModSupport.Thorium.Name)]
+    [ExtendsFromMod(CrossModSupport.Thorium.Name)]
     public class ThoriumMonolith : GlobalTile
     {
         public override int[] AdjTiles(int type)
