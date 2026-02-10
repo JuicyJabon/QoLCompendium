@@ -42,8 +42,10 @@
             new NewBuffEffect(BuffID.Hunter),
             new NewBuffEffect(BuffID.Invisibility),
             new NewBuffEffect(BuffID.NightOwl),
+            new NewBuffEffect(BuffID.WellFed2),
             new NewBuffEffect(BuffID.Shine),
             new NewBuffEffect(BuffID.Spelunker),
+            new NewBuffEffect(BuffID.WellFed),
             //arena
             new NewBuffEffect(BuffID.CatBast, (int)Common.EffectTypes.Arena),
             new NewBuffEffect(BuffID.Campfire, (int)Common.EffectTypes.Arena),
@@ -88,29 +90,24 @@
             }
 
             NewBuffItem[] BuffItems = [
-                new NewBuffItem(ItemID.AmmoBox, BuffID.AmmoBox, Common.AllEffects[BuffID.AmmoBox], 3, "PermanentAmmoBox", "Permanent Ammo Box"),
+                //potions
                 new NewBuffItem(ItemID.AmmoReservationPotion, BuffID.AmmoReservation, Common.AllEffects[BuffID.AmmoReservation], 30, "PermanentAmmoReservation", "Permanent Ammo Reservation"),
                 new NewBuffItem(ItemID.ArcheryPotion, BuffID.Archery, Common.AllEffects[BuffID.Archery], 30, "PermanentArchery", "Permanent Archery"),
                 new NewBuffItem(ItemID.BattlePotion, BuffID.Battle, Common.AllEffects[BuffID.Battle], 30, "PermanentBattle", "Permanent Battle"),
-                new NewBuffItem(ItemID.BewitchingTable, BuffID.Bewitched, Common.AllEffects[BuffID.Bewitched], 3, "PermanentBewitchingTable", "Permanent Bewitching Table"),
                 new NewBuffItem(ItemID.BiomeSightPotion, BuffID.BiomeSight, Common.AllEffects[BuffID.BiomeSight], 30, "PermanentBiomeSight", "Permanent Biome Sight"),
                 new NewBuffItem(ItemID.BuilderPotion, BuffID.Builder, Common.AllEffects[BuffID.Builder], 30, "PermanentBuilder", "Permanent Builder"),
                 new NewBuffItem(ItemID.CalmingPotion, BuffID.Calm, Common.AllEffects[BuffID.Calm], 30, "PermanentCalm", "Permanent Calm"),
-                new NewBuffItem(ItemID.Campfire, BuffID.Campfire, Common.AllEffects[BuffID.Campfire], 3, "PermanentCampfire", "Permanent Campfire"),
-                new NewBuffItem(ItemID.CatBast, BuffID.CatBast, Common.AllEffects[BuffID.CatBast], 3, "PermanentBastStatue", "Permanent Bast Statue"),
-                new NewBuffItem(ItemID.CrystalBall, BuffID.Clairvoyance, Common.AllEffects[BuffID.Clairvoyance], 3, "PermanentCrystalBall", "Permanent Crystal Ball"),
                 new NewBuffItem(ItemID.CratePotion, BuffID.Crate, Common.AllEffects[BuffID.Crate], 30, "PermanentCrate", "Permanent Crate"),
                 new NewBuffItem(ItemID.TrapsightPotion, BuffID.Dangersense, Common.AllEffects[BuffID.Dangersense], 30, "PermanentDangersense", "Permanent Dangersense"),
                 new NewBuffItem(ItemID.EndurancePotion, BuffID.Endurance, Common.AllEffects[BuffID.Endurance], 30, "PermanentEndurance", "Permanent Endurance"),
+                new NewBuffItem(ItemID.GoldenDelight, BuffID.WellFed3, Common.AllEffects[BuffID.WellFed3], 30, "PermanentExquisitelyStuffed", "Permanent Exquisitely Stuffed"),
                 new NewBuffItem(ItemID.FeatherfallPotion, BuffID.Featherfall, Common.AllEffects[BuffID.Featherfall], 30, "PermanentFeatherfall", "Permanent Featherfall"),
                 new NewBuffItem(ItemID.FishingPotion, BuffID.Fishing, Common.AllEffects[BuffID.Fishing], 30, "PermanentFishing", "Permanent Fishing"),
                 new NewBuffItem(ItemID.FlipperPotion, BuffID.Flipper, Common.AllEffects[BuffID.Flipper], 30, "PermanentFlipper", "Permanent Flipper"),
                 new NewBuffItem(ItemID.GillsPotion, BuffID.Gills, Common.AllEffects[BuffID.Gills], 30, "PermanentGills", "Permanent Gills"),
                 new NewBuffItem(ItemID.GravitationPotion, BuffID.Gravitation, Common.AllEffects[BuffID.Gravitation], 30, "PermanentGravitation", "Permanent Gravitation"),
                 new NewBuffItem(ItemID.LuckPotionGreater, BuffID.Lucky, Common.AllEffects[BuffID.Lucky], 30, "PermanentLucky", "Permanent Lucky"),
-                new NewBuffItem(ItemID.HeartLantern, BuffID.HeartLamp, Common.AllEffects[BuffID.HeartLamp], 3, "PermanentHeartLantern", "Permanent Heart Lantern"),
                 new NewBuffItem(ItemID.HeartreachPotion, BuffID.Heartreach, Common.AllEffects[BuffID.Heartreach], 30, "PermanentHeartreach", "Permanent Heartreach"),
-                new NewBuffItem(ItemID.BottledHoney, BuffID.Honey, Common.AllEffects[BuffID.Honey], 30, "PermanentHoney", "Permanent Honey"),
                 new NewBuffItem(ItemID.HunterPotion, BuffID.Hunter, Common.AllEffects[BuffID.Hunter], 30, "PermanentHunter", "Permanent Hunter"),
                 new NewBuffItem(ItemID.InfernoPotion, BuffID.Inferno, Common.AllEffects[BuffID.Inferno], 30, "PermanentInferno", "Permanent Inferno"),
                 new NewBuffItem(ItemID.InvisibilityPotion, BuffID.Invisibility, Common.AllEffects[BuffID.Invisibility], 30, "PermanentInvisibility", "Permanent Invisibility"),
@@ -121,26 +118,39 @@
                 new NewBuffItem(ItemID.MiningPotion, BuffID.Mining, Common.AllEffects[BuffID.Mining], 30, "PermanentMining", "Permanent Mining"),
                 new NewBuffItem(ItemID.NightOwlPotion, BuffID.NightOwl, Common.AllEffects[BuffID.NightOwl], 30, "PermanentNightOwl", "Permanent Night Owl"),
                 new NewBuffItem(ItemID.ObsidianSkinPotion, BuffID.ObsidianSkin, Common.AllEffects[BuffID.ObsidianSkin], 30, "PermanentObsidianSkin", "Permanent Obsidian Skin"),
-                new NewBuffItem(ItemID.PeaceCandle, BuffID.PeaceCandle, Common.AllEffects[BuffID.PeaceCandle], 3, "PermanentPeaceCandle", "Permanent Peace Candle"),
+                new NewBuffItem(ItemID.LobsterTail, BuffID.WellFed2, Common.AllEffects[BuffID.WellFed2], 30, "PermanentPlentySatisfied", "Permanent Plenty Satisfied"),
                 new NewBuffItem(ItemID.RagePotion, BuffID.Rage, Common.AllEffects[BuffID.Rage], 30, "PermanentRage", "Permanent Rage"),
                 new NewBuffItem(ItemID.RegenerationPotion, BuffID.Regeneration, Common.AllEffects[BuffID.Regeneration], 30, "PermanentRegeneration", "Permanent Regeneration"),
-                new NewBuffItem(ItemID.ShadowCandle, BuffID.ShadowCandle, Common.AllEffects[BuffID.ShadowCandle], 3, "PermanentShadowCandle", "Permanent Shadow Candle"),
-                new NewBuffItem(ItemID.SharpeningStation, BuffID.Sharpened, Common.AllEffects[BuffID.Sharpened], 3, "PermanentSharpeningStation", "Permanent Sharpening Station"),
                 new NewBuffItem(ItemID.ShinePotion, BuffID.Shine, Common.AllEffects[BuffID.Shine], 30, "PermanentShine", "Permanent Shine"),
                 new NewBuffItem(ItemID.SonarPotion, BuffID.Sonar, Common.AllEffects[BuffID.Sonar], 30, "PermanentSonar", "Permanent Sonar"),
                 new NewBuffItem(ItemID.SpelunkerPotion, BuffID.Spelunker, Common.AllEffects[BuffID.Spelunker], 30, "PermanentSpelunker", "Permanent Spelunker"),
-                new NewBuffItem(ItemID.StarinaBottle, BuffID.StarInBottle, Common.AllEffects[BuffID.StarInBottle], 3, "PermanentStarInABottle", "Permanent Star in a Bottle"),
-                new NewBuffItem(ItemID.SliceOfCake, BuffID.SugarRush, Common.AllEffects[BuffID.SugarRush], 3, "PermanentSliceOfCake", "Permanent Slice of Cake"),
                 new NewBuffItem(ItemID.SummoningPotion, BuffID.Summoning, Common.AllEffects[BuffID.Summoning], 30, "PermanentSummoning", "Permanent Summoning"),
-                new NewBuffItem(ItemID.Sunflower, BuffID.Sunflower, Common.AllEffects[BuffID.Sunflower], 3, "PermanentSunflower", "Permanent Sunflower"),
                 new NewBuffItem(ItemID.SwiftnessPotion, BuffID.Swiftness, Common.AllEffects[BuffID.Swiftness], 30, "PermanentSwiftness", "Permanent Swiftness"),
                 new NewBuffItem(ItemID.ThornsPotion, BuffID.Thorns, Common.AllEffects[BuffID.Thorns], 30, "PermanentThorns", "Permanent Thorns"),
                 new NewBuffItem(ItemID.Sake, BuffID.Tipsy, Common.AllEffects[BuffID.Tipsy], 30, "PermanentTipsy", "Permanent Tipsy"),
                 new NewBuffItem(ItemID.TitanPotion, BuffID.Titan, Common.AllEffects[BuffID.Titan], 30, "PermanentTitan", "Permanent Titan"),
                 new NewBuffItem(ItemID.WarmthPotion, BuffID.Warmth, Common.AllEffects[BuffID.Warmth], 30, "PermanentWarmth", "Permanent Warmth"),
-                new NewBuffItem(ItemID.WarTable, BuffID.WarTable, Common.AllEffects[BuffID.WarTable], 3, "PermanentWarTable", "Permanent War Table"),
-                new NewBuffItem(ItemID.WaterCandle, BuffID.WaterCandle, Common.AllEffects[BuffID.WaterCandle], 3, "PermanentWaterCandle", "Permanent Water Candle"),
                 new NewBuffItem(ItemID.WaterWalkingPotion, BuffID.WaterWalking, Common.AllEffects[BuffID.WaterWalking], 30, "PermanentWaterWalking", "Permanent Water Walking"),
+                new NewBuffItem(ItemID.WrathPotion, BuffID.Wrath, Common.AllEffects[BuffID.Wrath], 30, "PermanentWrath", "Permanent Wrath"),
+                new NewBuffItem(ItemID.Apple, BuffID.WellFed, Common.AllEffects[BuffID.WellFed], 30, "PermanentWellFed", "Permanent Well Fed"),
+                //arena
+                new NewBuffItem(ItemID.Campfire, BuffID.Campfire, Common.AllEffects[BuffID.Campfire], 3, "PermanentCampfire", "Permanent Campfire"),
+                new NewBuffItem(ItemID.CatBast, BuffID.CatBast, Common.AllEffects[BuffID.CatBast], 3, "PermanentBastStatue", "Permanent Bast Statue"),
+                new NewBuffItem(ItemID.HeartLantern, BuffID.HeartLamp, Common.AllEffects[BuffID.HeartLamp], 3, "PermanentHeartLantern", "Permanent Heart Lantern"),
+                new NewBuffItem(ItemID.BottledHoney, BuffID.Honey, Common.AllEffects[BuffID.Honey], 30, "PermanentHoney", "Permanent Honey"),
+                new NewBuffItem(ItemID.PeaceCandle, BuffID.PeaceCandle, Common.AllEffects[BuffID.PeaceCandle], 3, "PermanentPeaceCandle", "Permanent Peace Candle"),
+                 new NewBuffItem(ItemID.ShadowCandle, BuffID.ShadowCandle, Common.AllEffects[BuffID.ShadowCandle], 3, "PermanentShadowCandle", "Permanent Shadow Candle"),
+                new NewBuffItem(ItemID.StarinaBottle, BuffID.StarInBottle, Common.AllEffects[BuffID.StarInBottle], 3, "PermanentStarInABottle", "Permanent Star in a Bottle"),
+                new NewBuffItem(ItemID.Sunflower, BuffID.Sunflower, Common.AllEffects[BuffID.Sunflower], 3, "PermanentSunflower", "Permanent Sunflower"),
+                new NewBuffItem(ItemID.WaterCandle, BuffID.WaterCandle, Common.AllEffects[BuffID.WaterCandle], 3, "PermanentWaterCandle", "Permanent Water Candle"),
+                //stations
+                new NewBuffItem(ItemID.AmmoBox, BuffID.AmmoBox, Common.AllEffects[BuffID.AmmoBox], 3, "PermanentAmmoBox", "Permanent Ammo Box"),
+                new NewBuffItem(ItemID.BewitchingTable, BuffID.Bewitched, Common.AllEffects[BuffID.Bewitched], 3, "PermanentBewitchingTable", "Permanent Bewitching Table"),
+                new NewBuffItem(ItemID.CrystalBall, BuffID.Clairvoyance, Common.AllEffects[BuffID.Clairvoyance], 3, "PermanentCrystalBall", "Permanent Crystal Ball"),
+                new NewBuffItem(ItemID.SharpeningStation, BuffID.Sharpened, Common.AllEffects[BuffID.Sharpened], 3, "PermanentSharpeningStation", "Permanent Sharpening Station"),
+                new NewBuffItem(ItemID.SliceOfCake, BuffID.SugarRush, Common.AllEffects[BuffID.SugarRush], 3, "PermanentSliceOfCake", "Permanent Slice of Cake"),
+                new NewBuffItem(ItemID.WarTable, BuffID.WarTable, Common.AllEffects[BuffID.WarTable], 3, "PermanentWarTable", "Permanent War Table"),
+                //flasks
                 new NewBuffItem(ItemID.FlaskofParty, BuffID.WeaponImbueConfetti, Common.AllEffects[BuffID.WeaponImbueConfetti], 30, "PermanentFlaskofParty", "Permanent Flask of Party"),
                 new NewBuffItem(ItemID.FlaskofCursedFlames, BuffID.WeaponImbueCursedFlames, Common.AllEffects[BuffID.WeaponImbueCursedFlames], 30, "PermanentFlaskofCursedFlames", "Permanent Flask of Cursed Flames"),
                 new NewBuffItem(ItemID.FlaskofFire, BuffID.WeaponImbueFire, Common.AllEffects[BuffID.WeaponImbueFire], 30, "PermanentFlaskofFire", "Permanent Flask of Fire"),
@@ -149,8 +159,6 @@
                 new NewBuffItem(ItemID.FlaskofNanites, BuffID.WeaponImbueNanites, Common.AllEffects[BuffID.WeaponImbueNanites], 30, "PermanentFlaskofNanites", "Permanent Flask of Nanites"),
                 new NewBuffItem(ItemID.FlaskofPoison, BuffID.WeaponImbuePoison, Common.AllEffects[BuffID.WeaponImbuePoison], 30, "PermanentFlaskofPoison", "Permanent Flask of Poison"),
                 new NewBuffItem(ItemID.FlaskofVenom, BuffID.WeaponImbueVenom, Common.AllEffects[BuffID.WeaponImbueVenom], 30, "PermanentFlaskofVenom", "Permanent Flask of Venom"),
-                new NewBuffItem(ItemID.GoldenDelight, BuffID.WellFed3, Common.AllEffects[BuffID.WellFed3], 30, "PermanentExquisitelyStuffed", "Permanent Exquisitely Stuffed"),
-                new NewBuffItem(ItemID.WrathPotion, BuffID.Wrath, Common.AllEffects[BuffID.Wrath], 30, "PermanentWrath", "Permanent Wrath")
             ];
 
             foreach (var newBuffItem in BuffItems)
@@ -200,9 +208,11 @@
                 { Common.AllEffects[BuffID.Ironskin], BuffID.Ironskin },
                 { Common.AllEffects[BuffID.Lifeforce], BuffID.Lifeforce },
                 { Common.AllEffects[BuffID.ObsidianSkin], BuffID.ObsidianSkin },
+                { Common.AllEffects[BuffID.WellFed2], BuffID.WellFed2 },
                 { Common.AllEffects[BuffID.Regeneration], BuffID.Regeneration },
                 { Common.AllEffects[BuffID.Thorns], BuffID.Thorns },
-                { Common.AllEffects[BuffID.Warmth], BuffID.Warmth }
+                { Common.AllEffects[BuffID.Warmth], BuffID.Warmth },
+                { Common.AllEffects[BuffID.WellFed], BuffID.WellFed }
             };
 
             Dictionary<BuffEffect, int> PermanentMovement = new()

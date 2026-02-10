@@ -1,8 +1,8 @@
 ConfigGlintID: {
 	Tooltip: ""
 
-	White: {
-		Label: White
+	Rainbow: {
+		Label: Rainbow
 		Tooltip: ""
 	}
 
@@ -31,8 +31,8 @@ ConfigGlintID: {
 		Tooltip: ""
 	}
 
-	Blue: {
-		Label: Blue
+	Teal: {
+		Label: Teal
 		Tooltip: ""
 	}
 
@@ -43,6 +43,11 @@ ConfigGlintID: {
 
 	SkyBlue: {
 		Label: Sky Blue
+		Tooltip: ""
+	}
+
+	Blue: {
+		Label: Blue
 		Tooltip: ""
 	}
 
@@ -61,8 +66,13 @@ ConfigGlintID: {
 		Tooltip: ""
 	}
 
-	Rainbow: {
-		Label: Rainbow
+	Black: {
+		Label: Black
+		Tooltip: ""
+	}
+
+	White: {
+		Label: White
 		Tooltip: ""
 	}
 }

@@ -29,7 +29,7 @@ namespace QoLCompendium.Core
         public static List<Hook> detours = [];
 
         #region Boss Summons
-        public static readonly HashSet<int> VanillaBossAndEventSummons = new()
+        public static readonly HashSet<int> VanillaBossSummons = new()
         {
             ItemID.SlimeCrown,
             ItemID.SuspiciousLookingEye,
@@ -42,20 +42,20 @@ namespace QoLCompendium.Core
             ItemID.MechanicalEye,
             ItemID.MechanicalSkull,
             ItemID.MechdusaSummon,
-            ItemID.CelestialSigil,
+            ItemID.LihzahrdPowerCell,
+            ItemID.CelestialSigil
+        };
+
+        public static readonly HashSet<int> VanillaEventSummons = new()
+        {
             ItemID.BloodMoonStarter,
             ItemID.GoblinBattleStandard,
+            ItemID.DD2ElderCrystal,
             ItemID.PirateMap,
             ItemID.SolarTablet,
             ItemID.SnowGlobe,
             ItemID.PumpkinMoonMedallion,
             ItemID.NaughtyPresent
-        };
-
-        public static readonly HashSet<int> VanillaRightClickBossAndEventSummons = new()
-        {
-            ItemID.LihzahrdPowerCell,
-            ItemID.DD2ElderCrystal
         };
 
         public static HashSet<int> ModdedBossAndEventSummons = new();
@@ -626,6 +626,8 @@ namespace QoLCompendium.Core
             StrangePotion
         };
 
+        public static HashSet<int> FoodBuffs = [BuffID.WellFed, BuffID.WellFed2, BuffID.WellFed3];
+
         #endregion
 
         public enum PlacedPlatformStyles
@@ -947,6 +949,7 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Calamity.Mod, "EnchantedPearl"),
                 GetModItem(CrossModSupport.Calamity.Mod, "SupremeBaitTackleBoxFishingStation"),
                 GetModItem(CrossModSupport.Calamity.Mod, "AncientFossil"),
+                GetModItem(CrossModSupport.Calamity.Mod, "ArchaicPowder"),
                 GetModItem(CrossModSupport.Calamity.Mod, "OceanCrest"),
                 GetModItem(CrossModSupport.Calamity.Mod, "SpelunkersAmulet"),
                 GetModItem(CrossModSupport.Clamity.Mod, "TheSubcommunity"),
@@ -1068,6 +1071,9 @@ namespace QoLCompendium.Core
                 //Blocks Core Boss
                 GetModItem(CrossModSupport.BlocksCoreBoss.Mod, "ChargedOrb"),
                 GetModItem(CrossModSupport.BlocksCoreBoss.Mod, "ChargedOrbCrim"),
+                //Calamity
+                GetModItem(CrossModSupport.Calamity.Mod, "CausticTear"),
+                GetModItem(CrossModSupport.Calamity.Mod, "MartianDistressRemote"),
                 //Consolaria
                 GetModItem(CrossModSupport.Consolaria.Mod, "SuspiciousLookingEgg"),
                 GetModItem(CrossModSupport.Consolaria.Mod, "CursedStuffing"),
@@ -1396,6 +1402,8 @@ namespace QoLCompendium.Core
             {
                 GetModPrefix(CrossModSupport.Calamity.Mod, "Flawless"),
                 GetModPrefix(CrossModSupport.Calamity.Mod, "Silent"),
+                GetModPrefix(CrossModSupport.Calamity.Mod, "Dauntless"),
+                GetModPrefix(CrossModSupport.Calamity.Mod, "Invigorating"),
                 GetModPrefix(CrossModSupport.CalamityEntropy.Mod, "Enchanted"),
                 GetModPrefix(CrossModSupport.ClickerClass.Mod, "Elite"),
                 GetModPrefix(CrossModSupport.ClickerClass.Mod, "ClickerRadius"),
@@ -1533,6 +1541,12 @@ namespace QoLCompendium.Core
             if (CrossModSupport.Remnants.Loaded)
                 TempIgnoredModsForExplosives.Add(CrossModSupport.Remnants.Mod);
             IgnoredModsForExplosives.UnionWith(TempIgnoredModsForExplosives);
+
+            HashSet<int> ModFoodBuffs = new()
+            {
+                GetModBuff(CrossModSupport.WrathOfTheGods.Mod, "StarstrikinglySatiated")
+            };
+            FoodBuffs.UnionWith(ModFoodBuffs);
 
             for (int i = BuffID.Count; i < BuffLoader.BuffCount; i++)
             {
@@ -2028,6 +2042,26 @@ namespace QoLCompendium.Core
                 case BuffID.WeaponImbueVenom:
                     player.meleeEnchant = 1;
                     HandleFlaskBuffs(player);
+                    break;
+                case BuffID.WellFed:
+                    player.wellFed = true;
+                    player.statDefense += 2;
+                    player.GetCritChance(DamageClass.Generic) += 2f;
+                    player.GetAttackSpeed(DamageClass.Melee) += 0.05f;
+                    player.GetDamage(DamageClass.Generic) += 0.05f;
+                    player.GetKnockback(DamageClass.Summon) += 0.5f;
+                    player.moveSpeed += 0.2f;
+                    player.pickSpeed -= 0.05f;
+                    break;
+                case BuffID.WellFed2:
+                    player.wellFed = true;
+                    player.statDefense += 3;
+                    player.GetCritChance(DamageClass.Generic) += 3f;
+                    player.GetAttackSpeed(DamageClass.Melee) += 0.075f;
+                    player.GetDamage(DamageClass.Generic) += 0.075f;
+                    player.GetKnockback(DamageClass.Summon) += 0.75f;
+                    player.moveSpeed += 0.3f;
+                    player.pickSpeed -= 0.1f;
                     break;
                 case BuffID.WellFed3:
                     player.wellFed = true;

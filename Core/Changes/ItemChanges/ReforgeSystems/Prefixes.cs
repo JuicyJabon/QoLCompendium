@@ -6,8 +6,8 @@
         [
             /* 0 */ [PrefixID.Hard, PrefixID.Jagged, PrefixID.Brisk, PrefixID.Wild],
             /* 1 */ [PrefixID.Guarding, PrefixID.Spiked, PrefixID.Precise, PrefixID.Fleeting, PrefixID.Rash],
-            /* 2 */ [PrefixID.Armored, PrefixID.Angry, PrefixID.Hasty2, PrefixID.Intrepid, PrefixID.Arcane],
-            /* 3 */ [PrefixID.Warding, PrefixID.Menacing, PrefixID.Lucky, PrefixID.Quick2, PrefixID.Violent],
+            /* 2 */ [PrefixID.Armored, PrefixID.Angry, PrefixID.Hasty2, PrefixID.Intrepid],
+            /* 3 */ [PrefixID.Warding, PrefixID.Menacing, PrefixID.Lucky, PrefixID.Quick2, PrefixID.Violent, PrefixID.Arcane]
         ];
 
         public static int[][] TerrarianReforgeTiers =
@@ -15,7 +15,7 @@
             /* 0 */ [PrefixID.Keen, PrefixID.Forceful, PrefixID.Strong],
             /* 1 */ [PrefixID.Hurtful, PrefixID.Ruthless, PrefixID.Zealous],
             /* 2 */ [PrefixID.Superior, PrefixID.Demonic, PrefixID.Godly],
-            /* 3 */ [PrefixID.Legendary2],
+            /* 3 */ [PrefixID.Legendary2]
         ];
 
         public static int[][] MeleeReforgeTiers =
@@ -126,8 +126,7 @@
             if (CrossModSupport.Calamity.Loaded)
             {
                 //ACCESSORIES
-                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Cloaked")], 1);
-                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Silent")], 3);
+                AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Silent"), Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Dauntless"), Common.GetModPrefix(CrossModSupport.Calamity.Mod, "Invigorating")], 3);
                 if (CrossModSupport.CalamityEntropy.Loaded)
                     AddPrefixesToArrays(AccessoryReforgeTiers, [Common.GetModPrefix(CrossModSupport.CalamityEntropy.Mod, "Enchanted")], 3);
 

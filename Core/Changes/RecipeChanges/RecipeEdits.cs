@@ -80,12 +80,22 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     recipe.AddRecipeGroup("QoLCompendium:AnyCampfire", 3);
                 }
 
+                if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentWellFed")))
+                {
+                    recipe.RemoveIngredient(ItemID.Apple);
+                    recipe.AddRecipeGroup("QoLCompendium:WellFed", 30);
+                }
+
+                if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentPlentySatisfied")))
+                {
+                    recipe.RemoveIngredient(ItemID.LobsterTail);
+                    recipe.AddRecipeGroup("QoLCompendium:PlentySatisfied", 30);
+                }
+
                 if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentExquisitelyStuffed")))
                 {
                     recipe.RemoveIngredient(ItemID.GoldenDelight);
-                    recipe.AddRecipeGroup("QoLCompendium:WellFed", 30);
-                    recipe.AddRecipeGroup("QoLCompendium:PlentySatisfied", 20);
-                    recipe.AddRecipeGroup("QoLCompendium:ExquisitelyStuffed", 10);
+                    recipe.AddRecipeGroup("QoLCompendium:ExquisitelyStuffed", 30);
                 }
 
                 if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentLucky")))
@@ -121,6 +131,11 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     if (CrossModSupport.DraedonExpansion.Loaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityFlasks")))
                     {
                         recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfElectricity"));
+                    }
+
+                    if (CrossModSupport.WrathOfTheGods.Loaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDefense")))
+                    {
+                        recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentStarstrikinglySatiated"));
                     }
                 }
 

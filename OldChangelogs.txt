@@ -1,3 +1,16 @@
+v2.4.1
+1. Re-added Calamity Crafting Monoliths
+2. Re-added Calamity fountains cause biomes
+3. Re-added Calamity fountains work from inventories
+4. Added Calamity Vanities crafting stations to Calamity Monoliths
+5. Removed Enthralling Pearl
+6. Clarified where boss summon items can be used
+7. Made endless ammo items the same rarity as their base ammo, unless the rarity is less than green (2)
+8. Moved permanent buff tooltips below the "Material" tooltip for consistency with every other item
+9. Endless ammos now receive their base ammo's tooltip
+10. Fixed Magic Storage recipe error
+11. Fixed Calamity Entropy load error
+
 v2.4.0
 1. Added Chlorophyte Ore & Bar to Jungle Crates after defeating all 3 mechs when using Calamity Crate Nerf Reversion
 2. Added Hallowed Ore & Bar to Hallowed Crates after defeating all 3 mechs when using Calamity Crate Nerf Reversion

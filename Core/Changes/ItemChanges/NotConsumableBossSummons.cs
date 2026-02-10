@@ -4,9 +4,9 @@
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            if (Common.VanillaBossAndEventSummons.Contains(entity.type) && QoLCompendium.mainConfig.EndlessBossSummons && !CrossModSupport.Calamity.Loaded)
+            if (Common.VanillaBossSummons.Contains(entity.type) && QoLCompendium.mainConfig.EndlessBossSummons && !CrossModSupport.Calamity.Loaded)
                 return true;
-            else if (Common.VanillaRightClickBossAndEventSummons.Contains(entity.type) && QoLCompendium.mainConfig.EndlessBossSummons)
+            else if (Common.VanillaEventSummons.Contains(entity.type) && QoLCompendium.mainConfig.EndlessBossSummons)
                 return true;
             else if (Common.ModdedBossAndEventSummons.Contains(entity.type) && QoLCompendium.mainConfig.EndlessBossSummons)
                 return true;
@@ -27,9 +27,8 @@
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            TooltipLine tip = tooltips.Find(l => l.Name == "Tooltip0");
             TooltipLine text = new(Mod, "NotConsumable", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.NotConsumable"));
-            tooltips.Insert(tooltips.IndexOf(tip), text);
+            Common.AddLastTooltip(tooltips, text);
         }
     }
 }

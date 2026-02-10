@@ -1,12 +1,16 @@
-v2.4.1
-1. Re-added Calamity Crafting Monoliths
-2. Re-added Calamity fountains cause biomes
-3. Re-added Calamity fountains work from inventories
-4. Added Calamity Vanities crafting stations to Calamity Monoliths
-5. Removed Enthralling Pearl
-6. Clarified where boss summon items can be used
-7. Made endless ammo items the same rarity as their base ammo, unless the rarity is less than green (2)
-8. Moved permanent buff tooltips below the "Material" tooltip for consistency with every other item
-9. Endless ammos now receive their base ammo's tooltip
-10. Fixed Magic Storage recipe error
-11. Fixed Calamity Entropy load error
+v2.4.2
+1. Made Vanilla and Calamity event summons not consumable when using Calamity
+2. Fixed Permanent Clamity recipe error
+3. Added Arcane (Vanilla), Dauntless (Calamity), and Invigorating (Calamity), to top-tier accessory reforges
+4. Added Teal and Black glint colors
+6. Reduced the brightness of all glint colors by 30%
+7. Added Permanent Starstrikingly Satiated (Wrath of the Gods)
+8. Split the well fed permanent buffs into 3 items
+9. Permanent food buffs can now only be toggled on if you don't have one of a higher tier already present
+ - Well Fed - Tier 1
+ - Plenty Satisfied - Tier 2
+ - Exquisitely Stuffed - Tier 3
+ - Starstrikingly Satiated (Wrath of the Gods) - Tier 4
+10. Reorganized Vanilla Permanent buff items to be in the UI sort order
+11. Multiple of the same buff should no longer appear in the Permanent Buff Toggler UI when more than 1 item is providing the same buff
+12. Re-added Permanent Baguette

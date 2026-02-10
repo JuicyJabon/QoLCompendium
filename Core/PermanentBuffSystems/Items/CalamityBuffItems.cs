@@ -9,12 +9,15 @@ using CalamityMod.Items.Fishing.BrimstoneCragCatches;
 using CalamityMod.Items.Placeables.Furniture;
 using CalamityMod.Items.Potions;
 using CalamityMod.Items.Potions.Alcohol;
+using CalamityMod.Items.Potions.Food;
 using CatalystMod.Buffs.StatBuffs;
 using CatalystMod.Items.Potions;
 using Clamity.Content.Bosses.Clamitas.Crafted;
 using Clamity.Content.Items.Potions.BuffPotions;
 using Clamity.Content.Items.Potions.Food;
 using DraedonExpansion.Content.Potions;
+using NoxusBoss.Content.Buffs;
+using NoxusBoss.Content.Items.Food;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
@@ -91,6 +94,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 ClamityBuffItems.LoadTasks();
             if (CrossModSupport.DraedonExpansion.Loaded)
                 DraedonExpansionBuffItems.LoadTasks();
+            if (CrossModSupport.WrathOfTheGods.Loaded)
+                WrathOfTheGodsBuffItems.LoadTasks();
             CombinedItems();
         }
 
@@ -141,6 +146,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
                 new NewBuffItem(ModContent.ItemType<AnechoicCoating>(), ModContent.BuffType<AnechoicCoatingBuff>(), Common.AllEffects[ModContent.BuffType<AnechoicCoatingBuff>()], 30, "PermanentAnechoicCoating", "Permanent Anechoic Coating"),
                 new NewBuffItem(ModContent.ItemType<AstralInjection>(), ModContent.BuffType<AstralInjectionBuff>(), Common.AllEffects[ModContent.BuffType<AstralInjectionBuff>()], 30, "PermanentAstralInjection", "Permanent Astral Injection"),
+                new NewBuffItem(ModContent.ItemType<Baguette>(), ModContent.BuffType<BaguetteBuff>(), Common.AllEffects[ModContent.BuffType<BaguetteBuff>()], 30, "PermanentBaguette", "Permanent Baguette"),
                 new NewBuffItem(ModContent.ItemType<Bloodfin>(), ModContent.BuffType<BloodfinBoost>(), Common.AllEffects[ModContent.BuffType<BloodfinBoost>()], 30, "PermanentBloodfin", "Permanent Bloodfin"),
                 new NewBuffItem(ModContent.ItemType<BoundingPotion>(), ModContent.BuffType<BoundingBuff>(), Common.AllEffects[ModContent.BuffType<BoundingBuff>()], 30, "PermanentBounding", "Permanent Bounding"),
                 new NewBuffItem(ModContent.ItemType<CalciumPotion>(), ModContent.BuffType<CalciumBuff>(), Common.AllEffects[ModContent.BuffType<CalciumBuff>()], 30, "PermanentCalcium", "Permanent Calcium"),
@@ -219,6 +225,11 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<BloodfinBoost>()], ModContent.BuffType<BloodfinBoost>() },
                 { Common.AllEffects[ModContent.BuffType<PhotosynthesisBuff>()], ModContent.BuffType<PhotosynthesisBuff>() },
             };
+
+            if (CrossModSupport.WrathOfTheGods.Loaded)
+            {
+                PermanentCalamityDefense.Add(Common.AllEffects[WrathOfTheGodsBuffItems.CinnamonRollynID], WrathOfTheGodsBuffItems.CinnamonRollynID);
+            }
 
             Dictionary<BuffEffect, int> PermanentCalamityFarming = new()
             {
@@ -349,6 +360,11 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             if (CrossModSupport.DraedonExpansion.Loaded)
             {
                 PermanentCalamity.Add(Common.AllEffects[DraedonExpansionBuffItems.FlaskOfElectricityID], DraedonExpansionBuffItems.FlaskOfElectricityID);
+            }
+
+            if (CrossModSupport.WrathOfTheGods.Loaded)
+            {
+                PermanentCalamity.Add(Common.AllEffects[WrathOfTheGodsBuffItems.CinnamonRollynID], WrathOfTheGodsBuffItems.CinnamonRollynID);
             }
 
             NewCombinedBuffItem[] CombinedBuffItems = [
@@ -577,16 +593,19 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
         public static int SupremeLuckID = -1;
         public static int TitanScaleID = -1;
+        //public static int ExoBaguetteID = -1;
 
         public static void LoadTasks()
         {
             SupremeLuckID = ModContent.BuffType<SupremeLucky>();
             TitanScaleID = ModContent.BuffType<TitanScalePotionBuff>();
+            //ExoBaguetteID = ModContent.BuffType<ExoBaguetteBuff>();
 
             ClamityEffects = [
                 //potions
                 new NewBuffEffect(ModContent.BuffType<SupremeLucky>()),
-                new NewBuffEffect(ModContent.BuffType<TitanScalePotionBuff>())
+                new NewBuffEffect(ModContent.BuffType<TitanScalePotionBuff>()),
+                //new NewBuffEffect(ModContent.BuffType<ExoBaguetteBuff>()),
             ];
 
             foreach (var newEffect in ClamityEffects)
@@ -598,7 +617,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
             NewBuffItem[] BuffItems = [
                 new NewBuffItem(ModContent.ItemType<SupremeLuckPotion>(), ModContent.BuffType<SupremeLucky>(), Common.AllEffects[ModContent.BuffType<SupremeLucky>()], 30, "PermanentSupremeLuck", "Permanent Supreme Luck"),
-                new NewBuffItem(ModContent.ItemType<Clamity.Content.Items.Potions.BuffPotions.TitanScalePotion>(), ModContent.BuffType<TitanScalePotionBuff>(), Common.AllEffects[ModContent.BuffType<TitanScalePotionBuff>()], 30, "PermanentTitanScale", "Permanent Titan Scale")
+                new NewBuffItem(ModContent.ItemType<Clamity.Content.Items.Potions.BuffPotions.TitanScalePotion>(), ModContent.BuffType<TitanScalePotionBuff>(), Common.AllEffects[ModContent.BuffType<TitanScalePotionBuff>()], 30, "PermanentTitanScale", "Permanent Titan Scale"),
+                //new NewBuffItem(ModContent.ItemType<ExoBaguette>(), ModContent.BuffType<ExoBaguetteBuff>(), Common.AllEffects[ModContent.BuffType<ExoBaguetteBuff>()], 30, "PermanentExoBaguette", "Permanent Exo Baguette")
             ];
 
             foreach (var newBuffItem in BuffItems)
@@ -610,7 +630,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             Dictionary<BuffEffect, int> PermanentClamity = new()
             {
                 { Common.AllEffects[ModContent.BuffType<SupremeLucky>()], ModContent.BuffType<SupremeLucky>() },
-                { Common.AllEffects[ModContent.BuffType<TitanScalePotionBuff>()], ModContent.BuffType<TitanScalePotionBuff>() }
+                { Common.AllEffects[ModContent.BuffType<TitanScalePotionBuff>()], ModContent.BuffType<TitanScalePotionBuff>() },
+                //{ Common.AllEffects[ModContent.BuffType<ExoBaguetteBuff>()], ModContent.BuffType<ExoBaguetteBuff>() }
             };
 
             NewCombinedBuffItem[] CombinedBuffItems = [
@@ -651,6 +672,42 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
             NewBuffItem[] BuffItems = [
                 new NewBuffItem(ModContent.ItemType<FlaskOfElectricity>(), ModContent.BuffType<FlaskOfElectricityBuff>(), Common.AllEffects[ModContent.BuffType<FlaskOfElectricityBuff>()], 30, "PermanentFlaskOfElectricity", "Permanent Flask of Electricity")
+            ];
+
+            foreach (var newBuffItem in BuffItems)
+            {
+                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName, newBuffItem.textureName);
+                QoLCompendium.Instance.AddContent(item);
+            }
+        }
+    }
+
+    [JITWhenModsEnabled(CrossModSupport.WrathOfTheGods.Name)]
+    [ExtendsFromMod(CrossModSupport.WrathOfTheGods.Name)]
+    public static class WrathOfTheGodsBuffItems
+    {
+        public static NewBuffEffect[] WrathOfTheGodsEffects = [];
+
+        public static int CinnamonRollynID = -1;
+
+        public static void LoadTasks()
+        {
+            CinnamonRollynID = ModContent.BuffType<StarstrikinglySatiated>();
+
+            WrathOfTheGodsEffects = [
+                //potions
+                new NewBuffEffect(ModContent.BuffType<StarstrikinglySatiated>()),
+            ];
+
+            foreach (var newEffect in WrathOfTheGodsEffects)
+            {
+                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
+                QoLCompendium.Instance.AddContent(effect);
+                Common.AllEffects.Add(newEffect.buffID, effect);
+            }
+
+            NewBuffItem[] BuffItems = [
+                new NewBuffItem(ModContent.ItemType<CinnamonRollyn>(), ModContent.BuffType<StarstrikinglySatiated>(), Common.AllEffects[ModContent.BuffType<StarstrikinglySatiated>()], 30, "PermanentStarstrikinglySatiated", "Permanent Starstrikingly Satiated")
             ];
 
             foreach (var newBuffItem in BuffItems)

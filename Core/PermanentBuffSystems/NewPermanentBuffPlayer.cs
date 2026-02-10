@@ -1,6 +1,4 @@
-﻿using CalamityMod.Buffs.Potions;
-using CalamityMod.Projectiles.Typeless;
-using ContinentOfJourney.Buffs;
+﻿using ContinentOfJourney.Buffs;
 using SOTS;
 using SOTS.Buffs;
 using SpiritMod.Items.Consumable.Potion;
@@ -58,6 +56,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems
             if (InfBuffDisabledVanilla.Contains(buffID))
                 return true;
 
+            if (CrossModSupport.WrathOfTheGods.Loaded && (buffID == BuffID.WellFed || buffID == BuffID.WellFed2 || buffID == BuffID.WellFed3) && QoLCPlayer.Get(Player).activeBuffs.Contains(Common.GetModBuff(CrossModSupport.WrathOfTheGods.Mod, "StarstrikinglySatiated")))
+                return true;
             if ((buffID == BuffID.WellFed || buffID == BuffID.WellFed2) && QoLCPlayer.Get(Player).activeBuffs.Contains(BuffID.WellFed3))
                 return true;
             if (buffID == BuffID.WellFed && (QoLCPlayer.Get(Player).activeBuffs.Contains(BuffID.WellFed2) || QoLCPlayer.Get(Player).activeBuffs.Contains(BuffID.WellFed3)))

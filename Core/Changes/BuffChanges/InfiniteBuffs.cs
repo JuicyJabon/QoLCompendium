@@ -83,7 +83,8 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                 for (int i = 0; i < potionCrate.BuffIDList.Count; i++)
                 {
                     Player.AddBuff(potionCrate.BuffIDList[i], 2, true, false);
-                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(potionCrate.BuffIDList[i]);
+                    if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(potionCrate.BuffIDList[i]))
+                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(potionCrate.BuffIDList[i]);
                     if (potionCrate.ItemIDList.Contains(ItemID.LuckPotionLesser))
                         hasLuckyLesser = true;
                     if (potionCrate.ItemIDList.Contains(ItemID.LuckPotion))
@@ -98,14 +99,16 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                 for (int i = 0; i < Common.RedPotionBuffs.Count; i++)
                 {
                     Player.AddBuff(Common.RedPotionBuffs.ElementAt(i), 2, true, false);
-                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(Common.RedPotionBuffs.ElementAt(i));
+                    if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(Common.RedPotionBuffs.ElementAt(i)))
+                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(Common.RedPotionBuffs.ElementAt(i));
                 }
             }
             if (item.type == ItemID.HoneyBucket || item.type == ItemID.BottomlessHoneyBucket && QoLCompendium.mainConfig.EndlessStationBuffs)
             {
                 Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
                 Player.AddBuff(BuffID.Honey, 2, true, false);
-                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Honey);
+                if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.Honey))
+                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Honey);
             }
             if (item.type == ItemID.GardenGnome && QoLCompendium.mainConfig.EndlessStationBuffs)
             {
@@ -142,11 +145,9 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
         private void CheckPotion_AddBuff(ItemInfo info)
         {
-            if (CrossModSupport.Calamity.Loaded && info.buffType == Common.GetModBuff(CrossModSupport.Calamity.Mod, "TeslaBuff"))
-                Player.AddBuff(info.buffType, 10, true, false);
-            else
-                Player.AddBuff(info.buffType, 2, true, false);
-            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(info.buffType);
+            Player.AddBuff(info.buffType, 2);
+            if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(info.buffType))
+                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(info.buffType);
 
             if (info.type == ItemID.LuckPotionLesser)
                 hasLuckyLesser = true;
@@ -294,7 +295,8 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         {
             Main.SceneMetrics.HasCampfire = true;
             Player.AddBuff(BuffID.Campfire, 2, false, false);
-            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Campfire);
+            if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.Campfire))
+                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Campfire);
         }
 
         private void CheckEnvironment_Sunflower()
@@ -303,7 +305,8 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             {
                 Main.SceneMetrics.HasSunflower = true;
                 Player.AddBuff(BuffID.Sunflower, 2, false, false);
-                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Sunflower);
+                if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.Sunflower))
+                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Sunflower);
             }
         }
 
@@ -311,21 +314,24 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         {
             Main.SceneMetrics.HasHeartLantern = true;
             Player.AddBuff(BuffID.HeartLamp, 2, false, false);
-            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.HeartLamp);
+            if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.HeartLamp))
+                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.HeartLamp);
         }
 
         private void CheckEnvironment_StarInABottle()
         {
             Main.SceneMetrics.HasStarInBottle = true;
             Player.AddBuff(BuffID.StarInBottle, 2, false, false);
-            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.StarInBottle);
+            if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.StarInBottle))
+                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.StarInBottle);
         }
 
         private void CheckEnvironment_WaterCandle(int count)
         {
             Main.SceneMetrics.WaterCandleCount += count;
             Player.AddBuff(BuffID.WaterCandle, 2, false, false);
-            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.WaterCandle);
+            if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.WaterCandle))
+                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.WaterCandle);
             Player.ZoneWaterCandle = true;
         }
 
@@ -333,7 +339,8 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         {
             Main.SceneMetrics.PeaceCandleCount += count;
             Player.AddBuff(BuffID.PeaceCandle, 2, false, false);
-            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.PeaceCandle);
+            if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.PeaceCandle))
+                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.PeaceCandle);
             Player.ZonePeaceCandle = true;
         }
 
@@ -341,7 +348,8 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         {
             Main.SceneMetrics.ShadowCandleCount += count;
             Player.AddBuff(BuffID.ShadowCandle, 2, false, false);
-            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.ShadowCandle);
+            if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.ShadowCandle))
+                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.ShadowCandle);
             Player.ZoneShadowCandle = true;
         }
 
@@ -349,7 +357,8 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         {
             Main.SceneMetrics.HasCatBast = true;
             Player.AddBuff(BuffID.CatBast, 2, false, false);
-            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.CatBast);
+            if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.CatBast))
+                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.CatBast);
         }
 
         private void CheckStation(Item item)
@@ -379,32 +388,38 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                 case TileID.AmmoBox:
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(BuffID.AmmoBox, 2, true, false);
-                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.AmmoBox);
+                    if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.AmmoBox))
+                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.AmmoBox);
                     return;
                 case TileID.BewitchingTable:
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(BuffID.Bewitched, 2, true, false);
-                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Bewitched);
+                    if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.Bewitched))
+                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Bewitched);
                     return;
                 case TileID.CrystalBall:
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(BuffID.Clairvoyance, 2, true, false);
-                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Clairvoyance);
+                    if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.Clairvoyance))
+                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Clairvoyance);
                     return;
                 case TileID.SharpeningStation:
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(BuffID.Sharpened, 2, true, false);
-                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Sharpened);
+                    if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.Sharpened))
+                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Sharpened);
                     return;
                 case TileID.SliceOfCake:
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(BuffID.SugarRush, 2, true, false);
-                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.SugarRush);
+                    if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.SugarRush))
+                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.SugarRush);
                     return;
                 case TileID.WarTable:
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(BuffID.WarTable, 2, true, false);
-                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.WarTable);
+                    if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.WarTable))
+                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.WarTable);
                     return;
             }
             foreach (var moddedBuff in BuffSystem.ModdedPlaceableItemBuffs)
@@ -420,7 +435,8 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(moddedBuff.Value, 2);
-                    Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(moddedBuff.Value);
+                    if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(moddedBuff.Value))
+                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(moddedBuff.Value);
                 }
             }
         }
@@ -448,7 +464,8 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         private void CheckHoney_AddBuff()
         {
             Player.AddBuff(BuffID.Honey, 2, true, false);
-            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Honey);
+            if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.Honey))
+                Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Honey);
         }
     }
 

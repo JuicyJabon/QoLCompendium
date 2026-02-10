@@ -76,9 +76,9 @@ namespace QoLCompendium.Core.UI.Panels
             BuffGrid.Clear();
             for (int i = 0; i < QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Count; i++)
             {
-                Common.AllEffects.TryGetValue(QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.ElementAt(i), out BuffEffect value);
-                if (value != null)
-                    BuffGrid.Add(new BuffButton(QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.ElementAt(i), value.EffectType));
+                Common.AllEffects.TryGetValue(QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.ElementAt(i), out BuffEffect effect);
+                if (effect != null)
+                    BuffGrid.Add(new BuffButton(QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.ElementAt(i), effect.EffectType));
                 else
                     BuffGrid.Add(new BuffButton(QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.ElementAt(i), 0));
             }

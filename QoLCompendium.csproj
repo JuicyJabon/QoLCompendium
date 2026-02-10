@@ -83,6 +83,9 @@
     <Reference Include="MrPlagueRaces">
       <HintPath>..\..\ModReader\MrPlagueRaces\MrPlagueRaces.dll</HintPath>
     </Reference>
+    <Reference Include="NoxusBoss">
+      <HintPath>..\..\ModReader\NoxusBoss\NoxusBoss.dll</HintPath>
+    </Reference>
     <Reference Include="Redemption">
       <HintPath>..\..\ModReader\Redemption\Redemption.dll</HintPath>
     </Reference>

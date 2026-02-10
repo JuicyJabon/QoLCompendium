@@ -28,19 +28,21 @@ namespace QoLCompendium.Core.Configs
 
         public enum ConfigGlintID
         {
-            White = 0,
-            Red = 1,
-            Orange = 2,
-            Yellow = 3,
-            Green = 4,
-            Lime = 5,
-            Blue = 6,
-            Cyan = 7,
-            SkyBlue = 8,
-            Purple = 9,
-            Magenta = 10,
-            Pink = 11,
-            Rainbow = 12
+            Rainbow,
+            Red,
+            Orange,
+            Yellow,
+            Green,
+            Lime,
+            Teal,
+            Cyan,
+            SkyBlue,
+            Blue,
+            Purple,
+            Magenta,
+            Pink,
+            Black,
+            White
         }
 
         public override void OnLoaded()
