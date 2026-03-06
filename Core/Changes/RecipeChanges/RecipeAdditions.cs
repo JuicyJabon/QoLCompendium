@@ -174,6 +174,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     Common.GetModItem(QoLCompendium.Instance, "PermanentEvergreenGin"), 
                     Common.GetModItem(QoLCompendium.Instance, "PermanentFireball"), 
                     Common.GetModItem(QoLCompendium.Instance, "PermanentGrapeBeer"), 
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentManhattan"), 
                     Common.GetModItem(QoLCompendium.Instance, "PermanentMargarita"), 
                     Common.GetModItem(QoLCompendium.Instance, "PermanentMoonshine"), 
                     Common.GetModItem(QoLCompendium.Instance, "PermanentMoscowMule"), 
@@ -239,6 +240,8 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfHolyFlames")],
                     Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityFlasks"));
 
+                //Entropy
+                /*
                 if (CrossModSupport.CalamityEntropy.Loaded)
                 {
                     Common.CombinedPermanentBuffRecipe([
@@ -247,7 +250,10 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                         Common.GetModItem(QoLCompendium.Instance, "PermanentVoidCandle")],
                         Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityEntropy"));
                 }
+                */
 
+                //Rekindled
+                /*
                 if (CrossModSupport.CalamityRekindled.Loaded)
                 {
                     Common.CombinedPermanentBuffRecipe([
@@ -264,14 +270,19 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                         Common.GetModItem(QoLCompendium.Instance, "PermanentCRYharimsStimulants")],
                         Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityRekindled"));
                 }
+                */
 
+                //Clamity
+                /*
                 if (CrossModSupport.Clamity.Loaded)
                 {
                     Common.CombinedPermanentBuffRecipe([
                         Common.GetModItem(QoLCompendium.Instance, "PermanentSupremeLuck"),
-                        Common.GetModItem(QoLCompendium.Instance, "PermanentTitanScale")],
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentTitanScale"),
+                        Common.GetModItem(QoLCompendium.Instance, "PermanentExoBaguette")],
                         Common.GetModItem(QoLCompendium.Instance, "PermanentClamity"));
                 }
+                */
 
                 Common.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityAlcohols"),
@@ -359,6 +370,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     Common.GetModItem(QoLCompendium.Instance, "PermanentEmpowerment"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentEvocation"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentHaste"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentPainter"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentShooter"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentSpellCaster"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentStarreach"),
@@ -375,8 +387,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     Common.GetModItem(QoLCompendium.Instance, "PermanentHealing"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentRockskin"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentShielding"),
-                    Common.GetModItem(QoLCompendium.Instance, "PermanentSoul"),
-                    Common.GetModItem(QoLCompendium.Instance, "PermanentZincPill")],
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSoul")],
                     Common.GetModItem(QoLCompendium.Instance, "PermanentMartinsOrderDefense"));
 
                 Common.CombinedPermanentBuffRecipe([
@@ -1060,12 +1071,17 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "MagmaLocket"), Common.GetModItem(CrossModSupport.Thorium.Mod, "ScarletCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "SinisterCrate"), 1);
                 Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "SpringHook"), Common.GetModItem(CrossModSupport.Thorium.Mod, "ScarletCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "SinisterCrate"), 1);
                 Common.CreateCrateRecipe(ItemID.LavaCharm, Common.GetModItem(CrossModSupport.Thorium.Mod, "ScarletCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "SinisterCrate"), 1);
+                Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "MoltenScale"), Common.GetModItem(CrossModSupport.Thorium.Mod, "ScarletCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "SinisterCrate"), 1);
 
                 //Strange Crates
                 Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "HightechSonarDevice"), Common.GetModItem(CrossModSupport.Thorium.Mod, "StrangeCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "WondrousCrate"), 1);
                 Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "DrownedDoubloon"), Common.GetModItem(CrossModSupport.Thorium.Mod, "StrangeCrate"), Common.GetModItem(CrossModSupport.Thorium.Mod, "WondrousCrate"), 1);
 
                 //Vanilla Crate Drops
+                Common.CreateCrateWithKeyRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "EternalNight"), ItemID.LavaCrate, ItemID.LavaCrateHard, 1, ItemID.ShadowKey);
+                Common.CreateCrateWithKeyRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "LightsLament"), ItemID.LavaCrate, ItemID.LavaCrateHard, 1, ItemID.ShadowKey);
+                Common.CreateCrateWithKeyRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "Nocturne"), ItemID.LavaCrate, ItemID.LavaCrateHard, 1, ItemID.ShadowKey);
+                Common.CreateCrateWithKeyRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "IncandescentAlacrity"), ItemID.LavaCrate, ItemID.LavaCrateHard, 1, ItemID.ShadowKey);
                 Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "FrozenTiara"), ItemID.FrozenCrate, ItemID.FrozenCrateHard, 1);
                 Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "ForestOcarina"), ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);
                 Common.CreateCrateRecipe(Common.GetModItem(CrossModSupport.Thorium.Mod, "TheDigester"), ItemID.JungleFishingCrate, ItemID.JungleFishingCrateHard, 1);

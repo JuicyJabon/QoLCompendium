@@ -15,6 +15,11 @@ AFKPetsRegrowthReplant: {
 	Tooltip: Toggles if AFKPets crops are able to be replanted when harvested by the Staff or Axe of Regrowth
 }
 
+DepthsHerbFix: {
+	Label: "[i:369] The Depths Shadow Shrub Tile Cut Fix"
+	Tooltip: Toggles if Shadow Shrubs are cut when using the Staff or Axe of Regrowth
+}
+
 CrystalDragonsTopazPrefixFix: {
 	Label: "[i:509] Crystal Dragons Topaz Prefix Fix"
 	Tooltip:
@@ -43,11 +48,6 @@ CalamityCrateDropRevert: {
 	Tooltip: Toggles if crates are reverted back to their pre-nerf state when using Calamity
 }
 
-MoreCrateDrops: {
-	Label: "[i:3979] More Crate Drops"
-	Tooltip: Toggles if more crate drops are added for various mods
-}
-
 RemoveThoriumExhaustion: {
 	Label: "[i:509] Remove Thorium Exhaustion"
 	Tooltip: Toggles if Thorium thrower weapons have the exhaustion mechanic removed
@@ -72,9 +72,9 @@ EndlessInspirationPotionsAmount: {
 	Tooltip: Change the amount of items needed for endless Inspiration Potions
 }
 
-CalamityEntropyArmorPrefixesHaveEnchantedEffects: {
-	Label: "[i:1067] Calamity Entropy Armor Prefixes Have Enchanted Effects"
-	Tooltip: Toggles if Calamity Entropy Armor Prefixes have an enchanted effect, like Minecraft
+ThoriumRarityFix: {
+	Label: "[i:161] Thorium Rarity Fix"
+	Tooltip: Toggles if the Heart of the Jungle is properly classified as an expert item
 }
 
 ShimmerableAnglerCoins: {

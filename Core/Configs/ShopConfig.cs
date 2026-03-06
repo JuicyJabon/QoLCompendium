@@ -10,109 +10,83 @@ namespace QoLCompendium.Core.Configs
         [Header("$Mods.QoLCompendium.ConfigHeaders.BMShop")]
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMPotionShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMStationShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMMaterialShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMMovementAccessoryShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMCombatAccessoryShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMInformationShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMBagShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMCrateShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMOreShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMNaturalBlockShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMBuildingBlockShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMHerbShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMFishShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMCritterShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMMountShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool BMAmmoShop { get; set; }
 
         [Header("$Mods.QoLCompendium.ConfigHeaders.ECShop")]
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool ECPotionShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool ECStationShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool ECMaterialShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool ECBagShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool ECCrateShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool ECOreShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool ECNaturalBlocksShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool ECBuildingBlocksShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool ECHerbShop { get; set; }
 
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool ECFishShop { get; set; }
 
         [Header("$Mods.QoLCompendium.ConfigHeaders.Prices")]

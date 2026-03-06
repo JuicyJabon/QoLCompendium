@@ -1,6 +1,6 @@
 ﻿using Terraria.Enums;
 
-namespace QoLCompendium.Content.Items.Tools.FavoriteEffect.CrossMod
+namespace QoLCompendium.Content.Items.Tools.FavoriteEffect.CrossMod.SpiritClassic
 {
     [JITWhenModsEnabled(CrossModSupport.SpiritClassic.Name)]
     [ExtendsFromMod(CrossModSupport.SpiritClassic.Name)]

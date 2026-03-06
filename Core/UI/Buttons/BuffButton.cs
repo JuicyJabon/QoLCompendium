@@ -32,7 +32,8 @@ namespace QoLCompendium.Core.UI.Buttons
             bool buffEnabled = !NewPermanentBuffPlayer.Get(Main.LocalPlayer).CheckImmune(BuffId);
 
             var drawPosition = GetDimensions().Position();
-            Asset<Texture2D> buffAsset = BuffId > BuffID.Count - 1 ? ModContent.Request<Texture2D>(BuffLoader.GetBuff(BuffId).Texture) : ModContent.Request<Texture2D>("Terraria/Images/Buff_" + BuffId);
+            
+            Asset<Texture2D> buffAsset = TextureAssets.Buff[BuffId];
             Texture2D texture = buffAsset.Value;
             float grayScale = buffEnabled ? 1f : .4f;
 

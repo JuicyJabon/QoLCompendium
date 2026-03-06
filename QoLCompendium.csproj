@@ -16,16 +16,6 @@
     <None Remove="Content\Projectiles\SkybridgerProj.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Bosses\" />
-    <Folder Include="Assets\Minibosses\" />
-    <Folder Include="Assets\InfoDisplayIcons\" />
-    <Folder Include="Assets\Backgrounds\" />
-    <Folder Include="Assets\Effects\" />
-    <Folder Include="Assets\Summons\" />
-    <Folder Include="Assets\Projectiles\" />
-    <Folder Include="Assets\SpawnModifiers\" />
-    <Folder Include="Assets\Slots\" />
-    <Folder Include="Assets\Storages\" />
     <Folder Include="Content\Projectiles\Fishing\" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +60,9 @@
     </Reference>
     <Reference Include="FargowiltasSouls">
       <HintPath>..\..\ModReader\FargowiltasSouls\FargowiltasSouls.dll</HintPath>
+    </Reference>
+    <Reference Include="InfernumMode">
+      <HintPath>..\..\ModReader\InfernumMode\InfernumMode.dll</HintPath>
     </Reference>
     <Reference Include="InspirationPotions">
       <HintPath>..\..\ModReader\InspirationPotions\InspirationPotions.dll</HintPath>

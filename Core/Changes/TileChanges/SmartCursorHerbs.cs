@@ -1,10 +1,14 @@
-﻿/*
+﻿using Terraria.ObjectData;
+
 namespace QoLCompendium.Core.Changes.TileChanges
 {
     public class SmartCursorHerbs : GlobalTile
     {
         public override bool AutoSelect(int i, int j, int type, Item item)
         {
+            if (!QoLCompendium.mainConfig.HerbSmartCursor)
+                return base.AutoSelect(i, j, type, item);
+
             Player player = Main.LocalPlayer;
             Tile tile = Framing.GetTileSafely(i, j);
             if (Common.IsTileWithinPlayerReach(player) && tile.IsHarvestableHerb())
@@ -23,13 +27,19 @@ namespace QoLCompendium.Core.Changes.TileChanges
     {
         public override bool PreItemCheck()
         {
-            if (Player.HeldItem.type == ItemID.StaffofRegrowth || Player.HeldItem.type == ItemID.AcornAxe)
+            if (!QoLCompendium.mainConfig.HerbSmartCursor)
+                return base.PreItemCheck();
+            
+            if ((Player.HeldItem.type == ItemID.StaffofRegrowth || Player.HeldItem.type == ItemID.AcornAxe) && !Player.CCed)
                 SmartCursor();
             return base.PreItemCheck();
         }
 
         public void SmartCursor()
         {
+            if (!QoLCompendium.mainConfig.HerbSmartCursor)
+                return;
+
             if (Player.whoAmI != Main.myPlayer || !Main.SmartCursorIsUsed)
                 return;
 
@@ -57,7 +67,7 @@ namespace QoLCompendium.Core.Changes.TileChanges
                 for (int yCheck = maxUp; yCheck <= maxDown; yCheck++)
                 {
                     Tile checkTile = Main.tile[xCheck, yCheck];
-                    if (checkTile.IsHarvestableHerb())
+                    if (checkTile.IsHarvestableHerb() && TileObjectData.GetTileStyle(checkTile) != -1)
                         potentialTargetTiles.Add(new Tuple<int, int>(xCheck, yCheck));
                 }
             }
@@ -93,27 +103,12 @@ namespace QoLCompendium.Core.Changes.TileChanges
         public static bool IsHarvestableHerb(this Tile tile)
         {
             int stage = tile.TileFrameX / 18;
-            HashSet<int> modHerbTiles =
-            [
-                Common.GetModTile(CrossModSupport.Depths.Mod, "ShadowShrub"),
-                Common.GetModTile(CrossModSupport.Redemption.Mod, "NightshadeTile"),
-                Common.GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Welkinbell"),
-                Common.GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Illumifern"),
-                Common.GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Enduflora"),
-                Common.GetModTile(CrossModSupport.SpiritClassic.Mod, "Cloudstalk"),
-                Common.GetModTile(CrossModSupport.SpiritClassic.Mod, "SoulBloomTile"),
-                Common.GetModTile(CrossModSupport.SpiritReforged.Mod, "CloudstalkTile"),
-                Common.GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp"),
-                Common.GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp2")
-            ];
+            if (Common.HerbTiles.Contains(tile.TileType) && tile.TileType <= TileID.Count)
+                return true;
+            if (Common.HerbTiles.Contains(tile.TileType) && tile.TileType > TileID.Count && stage > 0)
+                return true;
 
-            if (tile.TileType == TileID.BloomingHerbs || tile.TileType == TileID.MatureHerbs)
-                return true;
-            else if (modHerbTiles.Contains(tile.TileType) && stage > 0)
-                return true;
-            else
-                return false;
+            return false;
         }
     }
 }
-*/

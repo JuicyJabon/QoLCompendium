@@ -19,6 +19,9 @@ namespace QoLCompendium.Core.Configs
         public bool AFKPetsRegrowthReplant { get; set; }
 
         [DefaultValue(true)]
+        public bool DepthsHerbFix { get; set; }
+
+        [DefaultValue(true)]
         public bool CrystalDragonsTopazPrefixFix { get; set; }
 
         [DefaultValue(true)]
@@ -38,7 +41,8 @@ namespace QoLCompendium.Core.Configs
         public int EndlessInspirationPotionsAmount { get; set; }
 
         [DefaultValue(true)]
-        public bool CalamityEntropyArmorPrefixesHaveEnchantedEffects { get; set; }
+        [ReloadRequired]
+        public bool ThoriumRarityFix { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
@@ -54,9 +58,6 @@ namespace QoLCompendium.Core.Configs
 
         [DefaultValue(true)]
         public bool CalamityCrateDropRevert { get; set; }
-
-        [DefaultValue(true)]
-        public bool MoreCrateDrops { get; set; }
 
         [DefaultValue(true)]
         public bool EndlessVoidConsumables { get; set; }

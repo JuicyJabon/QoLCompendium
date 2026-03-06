@@ -68,12 +68,6 @@ namespace QoLCompendium.Core.Configs
         [Range(1, 99999)]
         public int EndlessBaitAmount { get; set; }
 
-        [DefaultValue(false)]
-        public bool ActiveBuffsHaveEnchantedEffects { get; set; }
-        
-        [DefaultValue(false)]
-        public bool ActiveBannersHaveEnchantedEffects { get; set; }
-
         [Header("$Mods.QoLCompendium.ConfigHeaders.Items2")]
         [DefaultValue(9999)]
         [Range(1, 99999)]
@@ -91,6 +85,9 @@ namespace QoLCompendium.Core.Configs
         [DefaultValue(true)]
         [ReloadRequired]
         public bool NonConsumableKeys { get; set; }
+
+        [DefaultValue(true)]
+        public bool MoreCrateDrops { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
@@ -136,9 +133,6 @@ namespace QoLCompendium.Core.Configs
         [DefaultValue(true)]
         [ReloadRequired]
         public bool AutoReuseUpgrades { get; set; }
-
-        [DefaultValue(false)]
-        public bool GoodPrefixesHaveEnchantedEffects { get; set; }
 
         [DefaultValue(true)]
         public bool ReworkReforging { get; set; }
@@ -379,6 +373,9 @@ namespace QoLCompendium.Core.Configs
 
         [DefaultValue(true)]
         public bool FastHerbGrowth { get; set; }
+
+        [DefaultValue(true)]
+        public bool HerbSmartCursor { get; set; }
 
         [DefaultValue(true)]
         public bool TreesDropMoreWhenShook { get; set; }

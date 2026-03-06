@@ -12,6 +12,7 @@
             NewCombinedBuffItem newItem = new NewCombinedBuffItem(PermanentEverything, "PermanentEverything", "Permanent Everything", "PermanentEverything");
             CombinedBuffItem item = new(newItem.itemName, newItem.effects, newItem.displayName, newItem.textureName);
             QoLCompendium.Instance.AddContent(item);
+            Common.AllCombinedBuffItems.Add(item.Type);
         }
     }
 }

@@ -139,6 +139,12 @@ namespace QoLCompendium.Core
         public static Condition HasBeenToAbyssLayer2 = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAbyssLayer2"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyssLayer2]);
         public static Condition HasBeenToAbyssLayer3 = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAbyssLayer3"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyssLayer3]);
         public static Condition HasBeenToAbyssLayer4 = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.beenToAbyssLayer4"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.CalamityAbyssLayer4]);
+        //DIFFICULTIES
+        public static bool revengeanceModeActive = false;
+        public static bool deathModeActive = false;
+        public static Condition InRevengeanceMode = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.RevengeanceMode"), () => revengeanceModeActive);
+        public static Condition InDeathMode = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DeathMode"), () => deathModeActive);
+        public static Condition InRevengeanceOrDeathMode = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.RevengeanceOrDeathMode"), () => revengeanceModeActive || deathModeActive);
         //POST SUPREME CALAMITAS SHIMMER
         public static Condition ShimmerableAfterMoonLordOrSupremeCalamitas = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.shimmerableAfterMoonLordOrSupremeCalamitas"), () => (CrossModSupport.Calamity.Loaded && ModConditions.DownedBoss[(int)ModConditions.Downed.SupremeCalamitas] && NPC.downedMoonlord) || (!CrossModSupport.Calamity.Loaded && NPC.downedMoonlord));
 
@@ -1589,6 +1595,11 @@ namespace QoLCompendium.Core
 
                 if (CrossModSupport.Calamity.Mod.TryFind("SunkenSeaBiome", out ModBiome SunkenSeaBiome) && Main.LocalPlayer.InModBiome(SunkenSeaBiome))
                     ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SunkenSea] = true;
+                #endregion
+
+                #region Difficulties
+                revengeanceModeActive = (bool)CrossModSupport.Calamity.Mod.Call("DifficultyActive", "revengeance");
+                deathModeActive = (bool)CrossModSupport.Calamity.Mod.Call("DifficultyActive", "death");
                 #endregion
             }
 

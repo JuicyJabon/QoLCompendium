@@ -1,16 +1,30 @@
-v2.4.2
-1. Made Vanilla and Calamity event summons not consumable when using Calamity
-2. Fixed Permanent Clamity recipe error
-3. Added Arcane (Vanilla), Dauntless (Calamity), and Invigorating (Calamity), to top-tier accessory reforges
-4. Added Teal and Black glint colors
-6. Reduced the brightness of all glint colors by 30%
-7. Added Permanent Starstrikingly Satiated (Wrath of the Gods)
-8. Split the well fed permanent buffs into 3 items
-9. Permanent food buffs can now only be toggled on if you don't have one of a higher tier already present
- - Well Fed - Tier 1
- - Plenty Satisfied - Tier 2
- - Exquisitely Stuffed - Tier 3
- - Starstrikingly Satiated (Wrath of the Gods) - Tier 4
-10. Reorganized Vanilla Permanent buff items to be in the UI sort order
-11. Multiple of the same buff should no longer appear in the Permanent Buff Toggler UI when more than 1 item is providing the same buff
-12. Re-added Permanent Baguette
+v2.4.3
+1. Re-added Permanent Exo Baguette (Clamity)
+2. Removed Permanent Calamity Entropy, and moved base buffs into base Calamity permanent buff items
+3. Removed Permanent Calamity Rekindled, and moved base buffs into base Calamity permanent buff items
+4. Removed Permanent Clamity, and moved base buffs into base Calamity permanent buff items
+5. Summoning Remote now spawns a Party Girl when summoning a party
+6. Added Permanent Manhattan (Calamity)
+7. Added Staff of Infecting (Calamity)
+8. Added a config to correctly classify the Heart of the Jungle (Thorium) as an expert item
+9. Localized bestiary text for Black Market Dealer & Ethereal Collector
+10. Localized shop names for Black Market Dealer & Ethereal Collector
+11. Localized display names for Black Market Dealer & Ethereal Collector
+12. Shop configs no longer require a reload
+13. Permanent Buff items can now use overridden textures for mods, such as the ones from the "Better Buffs Addon" mod
+14. Permanent Buff Toggler UI can also use overridden textures
+15. Seraph Tracers (Calamity) can now be put in the Boot Slot when wings are disabled
+16. Interstellar Stompers (Calamity) can now be put in the Boot Slot
+17. Zephyr Boots (Fargo's Souls) can now be put in the Boot Slot
+18. Fixed 2 relics dropping in Calamity's difficulties and Fargo's difficulties
+19. Flasks/Foods/Healing Potions have been moved to the Potion Shop for both Black Market Dealer and Ethereal Collector
+20. Updated shops for the following mods:
+ - AFKPets
+ - Calamity
+ - Homeward Journey
+ - Thorium
+21. Added a config for using smart cursor with herbs
+22. Added a config for the Depths mod for preventing the Shadow Shrub herb from being cut when using the Staff or Axe of Regrowth
+23. Fixed Martin's Order load error
+24. Removed Permanent Zinc Pill (Martin's Order)
+25. Added Permanent Painter (Martin's Order)

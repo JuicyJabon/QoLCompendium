@@ -6,6 +6,7 @@ StaffOfHallowingPlaceable: Creates hallowed grass on dirt
 StaffOfHemorrhagingPlaceable: Creates crimson grass on dirt or mud
 StaffOfOvergrowthPlaceable: Creates jungle grass on mud
 StaffOfShroomingPlaceable: Creates mushroom grass on mud
+StaffOfInfectingPlaceable: Creates astral grass on astral dirt
 OmnistaffPlaceable: Creates grasses on dirt, mud, or ash
 MossStaffPlaceable: Creates mosses on stone or gray brick
 GlowingMossStaffPlaceable: Creates glowing mosses on stone or gray brick

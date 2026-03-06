@@ -1,5 +1,4 @@
-﻿using CalamityMod;
-using Terraria.GameContent.ItemDropRules;
+﻿using Terraria.GameContent.ItemDropRules;
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
 {
@@ -13,7 +12,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
                 return;
 
             #region Astral Infection Crates
-            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "MonolithCrate"))
+            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "MonolithCrate") || item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralCrate"))
             {
                 itemLoot.Add(ItemID.FallenStar, 1, 5, 10);
                 itemLoot.Add(ItemID.Meteorite, 5, 10, 20);
@@ -24,27 +23,14 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
             {
                 LeadingConditionRule AstrumAureus = itemLoot.DefineConditionalDropSet(ModConditions.DownedAstrumAureus.IsMet);
                 LeadingConditionRule AstrumDeus = itemLoot.DefineConditionalDropSet(ModConditions.DownedAstrumDeus.IsMet);
-
-                itemLoot.Add(ItemID.FallenStar, 1, 5, 10);
-                itemLoot.Add(ItemID.Meteorite, 5, 10, 20);
-                itemLoot.Add(ItemID.MeteoriteBar, 10, 1, 3);
+                LeadingConditionRule LunarEvent = itemLoot.DefineConditionalDropSet(ModConditions.DownedLunarEvent.IsMet);
 
                 AstrumAureus.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "AureusCell"), 5, 2, 5);
-
                 AstrumDeus.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralOre"), 5, 10, 20);
                 AstrumDeus.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralBar"), 10, 1, 3);
-                AstrumDeus.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "MeldBlob"), 4, 5, 10);
+                LunarEvent.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "MeldBlob"), 4, 5, 10);
 
-                if (CrossModSupport.Catalyst.Loaded)
-                {
-                    LeadingConditionRule Astrageldon = itemLoot.DefineConditionalDropSet(ModConditions.DownedAstrageldon.IsMet);
-                    
-                    Astrageldon.Add(Common.GetModItem(CrossModSupport.Catalyst.Mod, "MetanovaOre"), 5, 10, 20);
-                    Astrageldon.Add(Common.GetModItem(CrossModSupport.Catalyst.Mod, "MetanovaBar"), 10, 1, 3);
-                    Astrageldon.Add(Common.GetModItem(CrossModSupport.Catalyst.Mod, "AstraJelly"), 10, 1, 5);
-                }
-
-                AstrumAureus.Add(new OneFromOptionsDropRule(10, 1,
+                AstrumAureus.Add(new OneFromOptionsDropRule(7, 1,
                 [
                     Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralScythe"),
                     Common.GetModItem(CrossModSupport.Calamity.Mod, "TitanArm"),
@@ -58,7 +44,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
             #endregion
 
             #region Brimstone Crags Crates
-            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "SlagCrate"))
+            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "SlagCrate") || item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "BrimstoneCrate"))
             {
                 itemLoot.Add(ItemID.InfernoPotion, 10, 1, 3);
                 itemLoot.Add(ItemID.Obsidian, 1, 2, 5);
@@ -67,9 +53,6 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
 
             if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "BrimstoneCrate"))
             {
-                itemLoot.Add(ItemID.InfernoPotion, 10, 1, 3);
-                itemLoot.Add(ItemID.Obsidian, 1, 2, 5);
-                itemLoot.Add(ItemID.Hellstone, 4, 2, 5);
                 itemLoot.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "EssenceofHavoc"), 10, 1, 3);
                 itemLoot.AddIf(ModConditions.DownedBrimstoneElemental.IsMet, Common.GetModItem(CrossModSupport.Calamity.Mod, "UnholyCore"), 10, 1, 3);
                 itemLoot.AddIf(ModConditions.DownedProvidence.IsMet, Common.GetModItem(CrossModSupport.Calamity.Mod, "Bloodstone"), 2, 1, 3);
@@ -77,7 +60,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
             #endregion
 
             #region Sulphur Sea Crates
-            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate"))
+            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousCrate") || item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "HydrothermalCrate"))
             {
                 LeadingConditionRule AbyssTier1 = itemLoot.DefineConditionalDropSet(() => ModConditions.DownedSlimeGod.IsMet() || Condition.Hardmode.IsMet());
                 LeadingConditionRule AcidRainTier1 = itemLoot.DefineConditionalDropSet(ModConditions.DownedAcidRain1.IsMet);
@@ -107,15 +90,9 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
                 LeadingConditionRule AbyssTier1 = itemLoot.DefineConditionalDropSet(() => ModConditions.DownedSlimeGod.IsMet() || Condition.Hardmode.IsMet());
                 LeadingConditionRule AbyssTier2 = itemLoot.DefineConditionalDropSet(ModConditions.DownedLeviathanAndAnahita.IsMet);
                 LeadingConditionRule Golem = itemLoot.DefineConditionalDropSet(Condition.DownedGolem.IsMet);
-                LeadingConditionRule AcidRainTier1 = itemLoot.DefineConditionalDropSet(ModConditions.DownedAcidRain1.IsMet);
                 LeadingConditionRule AcidRainTier2 = itemLoot.DefineConditionalDropSet(ModConditions.DownedAcidRain2.IsMet);
                 LeadingConditionRule AcidRainTier3 = itemLoot.DefineConditionalDropSet(() => ModConditions.DownedPolterghast.IsMet() && ModConditions.DownedOldDuke.IsMet());
 
-                itemLoot.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "AnechoicCoating"), 10, 1, 3);
-                itemLoot.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurskinPotion"), 10, 1, 3);
-                itemLoot.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "Acidwood"), 1, 15, 20);
-
-                AcidRainTier1.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphuricScale"), 10, 1, 3);
                 AcidRainTier2.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "CorrodedFossil"), 10, 1, 3);
 
                 AbyssTier2.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "DepthCells"), 5, 2, 5);
@@ -127,13 +104,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
 
                 AcidRainTier3.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "ReaperTooth"), 10, 1, 5);
 
-                if (CrossModSupport.CalamityEntropy.Loaded)
-                {
-                    LeadingConditionRule Wyrm = itemLoot.DefineConditionalDropSet(ModConditions.DownedPrimordialWyrm.IsMet);
-                    Wyrm.Add(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "WyrmTooth"), 10, 1, 5);
-                }
-
-                AcidRainTier2.Add(new OneFromOptionsDropRule(10, 1,
+                AcidRainTier2.Add(new OneFromOptionsDropRule(7, 1,
                 [
                 Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousGrabber"),
                 Common.GetModItem(CrossModSupport.Calamity.Mod, "FlakToxicannon"),
@@ -147,7 +118,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
             #endregion
 
             #region Sunken Sea Crates
-            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "EutrophicCrate"))
+            if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "EutrophicCrate") || item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"))
             {
                 LeadingConditionRule DesertScourge = itemLoot.DefineConditionalDropSet(ModConditions.DownedDesertScourge.IsMet);
                 LeadingConditionRule GiantClam = itemLoot.DefineConditionalDropSet(ModConditions.DownedGiantClam.IsMet);
@@ -155,7 +126,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
                 DesertScourge.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismShard"), 1, 5, 10);
                 DesertScourge.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "SeaPrism"), 5, 2, 5);
 
-                GiantClam.Add(new OneFromOptionsNotScaledWithLuckDropRule(7, 100,
+                GiantClam.Add(new OneFromOptionsNotScaledWithLuckDropRule(2, 100,
                     Common.GetModItem(CrossModSupport.Calamity.Mod, "GiantPearl"),
                     Common.GetModItem(CrossModSupport.Calamity.Mod, "AmidiasPendant")
                 ));
@@ -163,20 +134,14 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
 
             if (item.type == Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismCrate"))
             {
-                LeadingConditionRule DesertScourge = itemLoot.DefineConditionalDropSet(ModConditions.DownedDesertScourge.IsMet);
                 LeadingConditionRule GiantClam = itemLoot.DefineConditionalDropSet(() => ModConditions.DownedGiantClam.IsMet() && Condition.Hardmode.IsMet());
 
-                DesertScourge.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "PrismShard"), 1, 5, 10);
-                DesertScourge.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "SeaPrism"), 5, 2, 5);
-
                 GiantClam.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "MolluskHusk"), new Fraction(12, 100), 2, 5);
-                GiantClam.Add(new OneFromOptionsNotScaledWithLuckDropRule(7, 100,
+                GiantClam.Add(new OneFromOptionsNotScaledWithLuckDropRule(4, 100,
                     Common.GetModItem(CrossModSupport.Calamity.Mod, "ClamCrusher"),
                     Common.GetModItem(CrossModSupport.Calamity.Mod, "ClamorRifle"),
                     Common.GetModItem(CrossModSupport.Calamity.Mod, "Poseidon"),
-                    Common.GetModItem(CrossModSupport.Calamity.Mod, "ShellfishStaff"),
-                    Common.GetModItem(CrossModSupport.Calamity.Mod, "GiantPearl"),
-                    Common.GetModItem(CrossModSupport.Calamity.Mod, "AmidiasPendant")
+                    Common.GetModItem(CrossModSupport.Calamity.Mod, "ShellfishStaff")
                 ));
             }
             #endregion
@@ -220,7 +185,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
             #endregion
 
             #region Golden Crates
-            if (item.type == ItemID.GoldenCrate)
+            if (item.type == ItemID.GoldenCrate || item.type == ItemID.GoldenCrateHard)
             {
 
             }
@@ -238,15 +203,6 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
                 itemLoot.Add(ItemID.AdamantiteBar, new Fraction(3, 56), 2, 3);
                 itemLoot.Add(ItemID.TitaniumBar, new Fraction(3, 56), 2, 3);
 
-                if (CrossModSupport.CalamityEntropy.Loaded)
-                {
-                    LeadingConditionRule Cruiser = itemLoot.DefineConditionalDropSet(ModConditions.DownedCruiser.IsMet);
-
-                    Cruiser.Add(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "VoidOre"), 5, 10, 20);
-                    Cruiser.Add(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "VoidBar"), 10, 1, 3);
-                    Cruiser.Add(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "VoidScales"), 10, 1, 5);
-                }
-
                 LeadingConditionRule Yharon = itemLoot.DefineConditionalDropSet(ModConditions.DownedYharon.IsMet);
                 Yharon.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "AuricOre"), new Fraction(5, 100), 60, 60);
                 Yharon.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "AuricBar"), 10, 1, 3);
@@ -254,7 +210,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
             #endregion
 
             #region Sky Crates
-            if (item.type == ItemID.FloatingIslandFishingCrate)
+            if (item.type == ItemID.FloatingIslandFishingCrate || item.type == ItemID.FloatingIslandFishingCrateHard)
             {
                 LeadingConditionRule PerforatorsOrHiveMind = itemLoot.DefineConditionalDropSet(ModConditions.DownedPerforatorsOrHiveMind.IsMet);
                 PerforatorsOrHiveMind.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "AerialiteOre"), 5, 16, 28);
@@ -263,24 +219,19 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
 
             if (item.type == ItemID.FloatingIslandFishingCrateHard)
             {
-                LeadingConditionRule PerforatorsOrHiveMind = itemLoot.DefineConditionalDropSet(ModConditions.DownedPerforatorsOrHiveMind.IsMet);
-                PerforatorsOrHiveMind.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "AerialiteOre"), 5, 16, 28);
-                PerforatorsOrHiveMind.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "AerialiteBar"), 10, 1, 3);
-
                 itemLoot.AddIf(Condition.Hardmode.IsMet, Common.GetModItem(CrossModSupport.Calamity.Mod, "EssenceofSunlight"), 5, 2, 4);
                 itemLoot.AddIf(Condition.DownedMoonLord.IsMet, Common.GetModItem(CrossModSupport.Calamity.Mod, "ExodiumCluster"), 5, 16, 28);
             }
             #endregion
 
             #region Dungeon Crates
-            if (item.type == ItemID.DungeonFishingCrate)
+            if (item.type == ItemID.DungeonFishingCrate || item.type == ItemID.DungeonFishingCrateHard)
             {
 
             }
 
             if (item.type == ItemID.DungeonFishingCrateHard)
             {
-                itemLoot.AddIf(Condition.DownedPlantera.IsMet, ItemID.Ectoplasm, 10, 1, 5);
                 itemLoot.AddIf(ModConditions.DownedPolterghast.IsMet, Common.GetModItem(CrossModSupport.Calamity.Mod, "Necroplasm"), 10, 1, 5);
             }
             #endregion
@@ -293,7 +244,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
             #endregion
 
             #region Ice Crates
-            if (item.type == ItemID.FrozenCrate)
+            if (item.type == ItemID.FrozenCrate || item.type == ItemID.FrozenCrateHard)
             {
 
             }
@@ -309,33 +260,26 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
             #endregion
 
             #region Hallowed Crates
-            if (item.type == ItemID.HallowedFishingCrate)
+            if (item.type == ItemID.HallowedFishingCrate || item.type == ItemID.HallowedFishingCrateHard)
             {
 
             }
 
             if (item.type == ItemID.HallowedFishingCrateHard)
             {
-                LeadingConditionRule Mechs = itemLoot.DefineConditionalDropSet(Condition.DownedMechBossAll.IsMet);
-                LeadingConditionRule Providence = itemLoot.DefineConditionalDropSet(ModConditions.DownedProvidence.IsMet);
-                Mechs.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "HallowedOre"), 5, 16, 28);
-                Mechs.Add(ItemID.HallowedBar, 10, 1, 3);
-                Providence.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "UnholyEssence"), new Fraction(15, 100), 5, 10);
+                LeadingConditionRule Moonlord = itemLoot.DefineConditionalDropSet(Condition.DownedMoonLord.IsMet);
+                Moonlord.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "UnholyEssence"), new Fraction(15, 100), 5, 10);
             }
             #endregion
 
             #region Jungle Crates
-            if (item.type == ItemID.JungleFishingCrate)
+            if (item.type == ItemID.JungleFishingCrate || item.type == ItemID.JungleFishingCrateHard)
             {
 
             }
 
             if (item.type == ItemID.JungleFishingCrateHard)
             {
-                LeadingConditionRule Mechs = itemLoot.DefineConditionalDropSet(Condition.DownedMechBossAll.IsMet);
-                Mechs.Add(ItemID.ChlorophyteOre, 5, 16, 28);
-                Mechs.Add(ItemID.ChlorophyteBar, 10, 1, 3);
-
                 LeadingConditionRule Plantera = itemLoot.DefineConditionalDropSet(Condition.DownedPlantera.IsMet);
                 Plantera.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "PerennialOre"), 5, 16, 28);
                 Plantera.Add(Common.GetModItem(CrossModSupport.Calamity.Mod, "PerennialBar"), 10, 1, 3);

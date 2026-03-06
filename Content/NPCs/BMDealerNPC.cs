@@ -1,6 +1,7 @@
 using QoLCompendium.Core.UI.Panels;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
+using Terraria.Utilities;
 
 namespace QoLCompendium.Content.NPCs
 {
@@ -13,6 +14,26 @@ namespace QoLCompendium.Content.NPCs
         #pragma warning restore CA2211
 
         public override string Texture => "QoLCompendium/Content/NPCs/BMDealerNPC";
+
+        public enum ShopType
+        {
+            PotionShop,
+            StationsAndUpgradesShop,
+            MaterialShop,
+            MobilityAccessoryShop,
+            CombatAccessoryShop,
+            ToolsAndInfoShop,
+            TreasureBagShop,
+            CratesAndGrabBagsShop,
+            OresAndBarsShop,
+            NaturalBlockShop,
+            BuildingBlockShop,
+            HerbsAndPlantsShop,
+            FishShop,
+            CritterShop,
+            MountsAndHooksShop,
+            AmmoShop
+        }
 
         public override bool IsLoadingEnabled(Mod mod)
         {
@@ -29,21 +50,21 @@ namespace QoLCompendium.Content.NPCs
             NPCID.Sets.AttackTime[NPC.type] = 90;
             NPCID.Sets.AttackAverageChance[NPC.type] = 30;
             NPCID.Sets.HatOffsetY[NPC.type] = 4;
-            NPC.Happiness.SetBiomeAffection<SnowBiome>((AffectionLevel)100)
-                .SetBiomeAffection<OceanBiome>((AffectionLevel)50)
-                .SetBiomeAffection<DesertBiome>((AffectionLevel)(-50))
-                .SetNPCAffection(NPCID.DD2Bartender, (AffectionLevel)100)
-                .SetNPCAffection(NPCID.ArmsDealer, (AffectionLevel)50)
-                .SetNPCAffection(NPCID.PartyGirl, (AffectionLevel)(-50))
-                .SetNPCAffection(NPCID.TaxCollector, (AffectionLevel)(-100));
+            NPC.Happiness.SetBiomeAffection<SnowBiome>(AffectionLevel.Love)
+                .SetBiomeAffection<OceanBiome>(AffectionLevel.Like)
+                .SetBiomeAffection<DesertBiome>(AffectionLevel.Dislike)
+                .SetNPCAffection(NPCID.DD2Bartender, AffectionLevel.Love)
+                .SetNPCAffection(NPCID.ArmsDealer, AffectionLevel.Like)
+                .SetNPCAffection(NPCID.PartyGirl, AffectionLevel.Dislike)
+                .SetNPCAffection(NPCID.TaxCollector, AffectionLevel.Hate);
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(
             [
-                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-                new FlavorTextBestiaryInfoElement("He hails from a far away land to sell items that are difficult to get, but how did he even obtain them...")
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
+                new FlavorTextBestiaryInfoElement("Mods.QoLCompendium.NPCs.BMDealerNPC.Bestiary")
             ]);
         }
 
@@ -72,11 +93,11 @@ namespace QoLCompendium.Content.NPCs
         {
             List<string> list =
             [
-                "Bon",
-                "Ned",
-                "Jay",
-                "Jack",
-                "Jabon"
+                Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.Names.Name0"),
+                Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.Names.Name1"),
+                Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.Names.Name2"),
+                Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.Names.Name3"),
+                Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.Names.Name4")
             ];
             return list;
         }
@@ -118,94 +139,92 @@ namespace QoLCompendium.Content.NPCs
 
         public override string GetChat()
         {
-            string result = Main.rand.Next(4) switch
-            {
-                0 => Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.BMDealerNPC.Chat0"),
-                1 => Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.BMDealerNPC.Chat1"),
-                2 => Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.BMDealerNPC.Chat2"),
-                _ => Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.BMDealerNPC.ChatDefault"),
-            };
-            return result;
+            WeightedRandom<string> chat = new();
+            chat.Add(Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.BMDealerNPC.Chat0"));
+            chat.Add(Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.BMDealerNPC.Chat1"));
+            chat.Add(Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.BMDealerNPC.Chat2"));
+            chat.Add(Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.BMDealerNPC.Chat3"));
+            return chat;
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            if (shopNum == 0)
+            if (shopNum == (int)ShopType.PotionShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.PotionShop");
                 ShopName = "PotionShop";
             }
-            else if (shopNum == 1)
+            else if (shopNum == (int)ShopType.StationsAndUpgradesShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.StationsAndUpgradesShop");
                 ShopName = "StationsAndUpgradesShop";
             }
-            else if (shopNum == 2)
+            else if (shopNum == (int)ShopType.MaterialShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.MaterialShop");
                 ShopName = "MaterialShop";
             }
-            else if (shopNum == 3)
+            else if (shopNum == (int)ShopType.MobilityAccessoryShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.MobilityAccessoryShop");
                 ShopName = "MobilityAccessoryShop";
             }
-            else if (shopNum == 4)
+            else if (shopNum == (int)ShopType.CombatAccessoryShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.CombatAccessoryShop");
                 ShopName = "CombatAccessoryShop";
             }
-            else if (shopNum == 5)
+            else if (shopNum == (int)ShopType.ToolsAndInfoShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.ToolsAndInfoShop");
                 ShopName = "ToolsAndInfoShop";
             }
-            else if (shopNum == 6)
+            else if (shopNum == (int)ShopType.TreasureBagShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.TreasureBagShop");
                 ShopName = "TreasureBagShop";
             }
-            else if (shopNum == 7)
+            else if (shopNum == (int)ShopType.CratesAndGrabBagsShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.CratesAndGrabBagsShop");
                 ShopName = "CratesAndGrabBagsShop";
             }
-            else if (shopNum == 8)
+            else if (shopNum == (int)ShopType.OresAndBarsShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.OresAndBarsShop");
                 ShopName = "OresAndBarsShop";
             }
-            else if (shopNum == 9)
+            else if (shopNum == (int)ShopType.NaturalBlockShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.NaturalBlockShop");
                 ShopName = "NaturalBlockShop";
             }
-            else if (shopNum == 10)
+            else if (shopNum == (int)ShopType.BuildingBlockShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.BuildingBlockShop");
                 ShopName = "BuildingBlockShop";
             }
-            else if (shopNum == 11)
+            else if (shopNum == (int)ShopType.HerbsAndPlantsShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.HerbsAndPlantsShop");
                 ShopName = "HerbsAndPlantsShop";
             }
-            else if (shopNum == 12)
+            else if (shopNum == (int)ShopType.FishShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.FishShop");
                 ShopName = "FishShop";
             }
-            else if (shopNum == 13)
+            else if (shopNum == (int)ShopType.CritterShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.CritterShop");
                 ShopName = "CritterShop";
             }
-            else if (shopNum == 14)
+            else if (shopNum == (int)ShopType.MountsAndHooksShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.MountsAndHooksShop");
                 ShopName = "MountsAndHooksShop";
             }
-            else if (shopNum == 15)
+            else if (shopNum == (int)ShopType.AmmoShop)
             {
                 button = Language.GetTextValue("Mods.QoLCompendium.NPCs.BMDealerNPC.ShopName.AmmoShop");
                 ShopName = "AmmoShop";
@@ -229,6 +248,7 @@ namespace QoLCompendium.Content.NPCs
 
         public override void AddShops()
         {
+            #region PotionShop
             var potShop = new NPCShop(Type, "PotionShop")
                     .Add(new Item(ItemID.AmmoReservationPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, ModConditions.HasBeenToJungle)
                     .Add(new Item(ItemID.Ale) { shopCustomPrice = Item.buyPrice(silver: 75) })
@@ -302,7 +322,9 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.TeleportationPotion) { shopCustomPrice = Item.buyPrice(silver: 75) }, Condition.Hardmode, ModConditions.HasBeenToHallow)
                     .Add(new Item(ItemID.WormholePotion) { shopCustomPrice = Item.buyPrice(silver: 75) });
             potShop.Register();
+            #endregion
 
+            #region StationsAndUpgradesShop
             var stationShop = new NPCShop(Type, "StationsAndUpgradesShop")
                     .Add(new Item(ItemID.Sunflower) { shopCustomPrice = Item.buyPrice(gold: 15) })
                     .Add(new Item(ItemID.Campfire) { shopCustomPrice = Item.buyPrice(gold: 15) })
@@ -333,7 +355,9 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.CombatBook) { shopCustomPrice = Item.buyPrice(gold: 15) }, ModConditions.DownedBloodMoon)
                     .Add(new Item(ItemID.CombatBookVolumeTwo) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.Hardmode, ModConditions.HasBeenToAether);
             stationShop.Register();
+            #endregion
 
+            #region MaterialShop
             var matShop = new NPCShop(Type, "MaterialShop")
                     .Add(new Item(ItemID.AncientCloth) { shopCustomPrice = Item.buyPrice(silver: 25) }, Condition.Hardmode, ModConditions.HasBeenToDesert)
                     .Add(new Item(ItemID.AntlionMandible) { shopCustomPrice = Item.buyPrice(silver: 25) }, ModConditions.HasBeenToDesert)
@@ -413,7 +437,9 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.WhoopieCushion) { shopCustomPrice = Item.buyPrice(silver: 25) }, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(new Item(ItemID.WormTooth) { shopCustomPrice = Item.buyPrice(silver: 25) }, ModConditions.HasBeenToEvil);
             matShop.Register();
+            #endregion
 
+            #region MobilityAccessoryShop
             var moveAccsShop = new NPCShop(Type, "MobilityAccessoryShop")
                    .Add(new Item(ItemID.Aglet) { shopCustomPrice = Item.buyPrice(gold: 2) })
                    .Add(new Item(ItemID.AnkletoftheWind) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToJungle)
@@ -446,7 +472,9 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.TsunamiInABottle) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean)
                    .Add(new Item(ItemID.WaterWalkingBoots) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToOcean);
             moveAccsShop.Register();
+            #endregion
 
+            #region CombatAccessoryShop
             var combatAccsShop = new NPCShop(Type, "CombatAccessoryShop")
                    .Add(new Item(ItemID.AdhesiveBandage) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode, ModConditions.HasBeenToJungle)
                    .Add(new Item(ItemID.ApprenticeScarf) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedOldOnesArmyAny)
@@ -503,7 +531,9 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.WhiteString) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.HasBeenToCavernsOrUnderground)
                    .Add(new Item(ItemID.YoYoGlove) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground);
             combatAccsShop.Register();
+            #endregion
 
+            #region ToolsAndInfoShop
             var infoShop = new NPCShop(Type, "ToolsAndInfoShop")
                    .Add(new Item(ItemID.Toolbelt) { shopCustomPrice = Item.buyPrice(gold: 2) })
                    .Add(new Item(ItemID.Toolbox) { shopCustomPrice = Item.buyPrice(gold: 2) })
@@ -591,7 +621,9 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.Clentaminator) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.Hardmode, Condition.DownedMechBossAny, Condition.NotDownedMoonLord)
                    .Add(new Item(ItemID.Clentaminator2) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMoonLord, ModConditions.HasBeenToAether);
             infoShop.Register();
+            #endregion
 
+            #region TreasureBagShop
             var bossShop = new NPCShop(Type, "TreasureBagShop")
                     .Add(new Item(ItemID.KingSlimeBossBag) { shopCustomPrice = Item.buyPrice(gold: 25) }, Condition.DownedKingSlime, ModConditions.expertOrMaster)
                     .Add(new Item(ItemID.EyeOfCthulhuBossBag) { shopCustomPrice = Item.buyPrice(gold: 25) }, Condition.DownedEyeOfCthulhu, ModConditions.expertOrMaster)
@@ -613,7 +645,9 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.MoonLordBossBag) { shopCustomPrice = Item.buyPrice(gold: 25) }, Condition.DownedMoonLord, ModConditions.expertOrMaster)
                     .Add(new Item(ItemID.DefenderMedal) { shopCustomPrice = Item.buyPrice(gold: 1) }, Condition.DownedOldOnesArmyAny);
             bossShop.Register();
+            #endregion
 
+            #region CratesAndGrabBagsShop
             var crateShop = new NPCShop(Type, "CratesAndGrabBagsShop")
                     .Add(new Item(ItemID.WoodenCrate) { shopCustomPrice = Item.buyPrice(gold: 5) }, ModConditions.HasBeenToOcean)
                     .Add(new Item(ItemID.IronCrate) { shopCustomPrice = Item.buyPrice(gold: 5) }, ModConditions.HasBeenToOcean)
@@ -644,7 +678,9 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.GoodieBag) { shopCustomPrice = Item.buyPrice(gold: 5) })
                     .Add(new Item(ItemID.Present) { shopCustomPrice = Item.buyPrice(gold: 5) });
             crateShop.Register();
+            #endregion
 
+            #region OresAndBarsShop
             var oreShop = new NPCShop(Type, "OresAndBarsShop")
                     .Add(new Item(ItemID.CopperOre) { shopCustomPrice = Item.buyPrice(silver: 25) }, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(new Item(ItemID.TinOre) { shopCustomPrice = Item.buyPrice(silver: 25) }, ModConditions.HasBeenToCavernsOrUnderground)
@@ -708,7 +744,9 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.TopazStoneBlock) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground)
                     .Add(new Item(ItemID.Geode) { shopCustomPrice = Item.buyPrice(silver: 50) }, ModConditions.HasBeenToCavernsOrUnderground);
             oreShop.Register();
+            #endregion
 
+            #region NaturalBlockShop
             var naturalBlockShop = new NPCShop(Type, "NaturalBlockShop")
                     .Add(new Item(ItemID.Wood) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.BorealWood) { shopCustomPrice = Item.buyPrice(copper: 10) })
@@ -776,7 +814,9 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.RubblemakerSmall) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.Hardmode)
                     .Add(new Item(ItemID.SandcastleBucket) { shopCustomPrice = Item.buyPrice(gold: 5) });
             naturalBlockShop.Register();
+            #endregion
 
+            #region BuildingBlockShop
             var buildingBlockShop = new NPCShop(Type, "BuildingBlockShop")
                     .Add(new Item(ItemID.GrayBrick) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.StoneSlab) { shopCustomPrice = Item.buyPrice(copper: 10) })
@@ -873,7 +913,9 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.LivingIchorBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
                     .Add(new Item(ItemID.LivingUltrabrightFireBlock) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode);
             buildingBlockShop.Register();
+            #endregion
 
+            #region HerbsAndPlantsShop
             var plantShop = new NPCShop(Type, "HerbsAndPlantsShop")
                     .Add(new Item(ItemID.HerbBag) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.Blinkroot) { shopCustomPrice = Item.buyPrice(copper: 10) })
@@ -929,7 +971,9 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.Acorn) { shopCustomPrice = Item.buyPrice(copper: 10) })
                     .Add(new Item(ItemID.Fertilizer) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.DownedSkeletron);
             plantShop.Register();
+            #endregion
 
+            #region FishShop
             var fishShop = new NPCShop(Type, "FishShop")
                    .Add(new Item(ItemID.ArmoredCavefish) { shopCustomPrice = Item.buyPrice(silver: 10) }, ModConditions.HasBeenToCavernsOrUnderground)
                    .Add(new Item(ItemID.AtlanticCod) { shopCustomPrice = Item.buyPrice(silver: 10) }, ModConditions.HasBeenToSnow)
@@ -959,7 +1003,9 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.Tuna) { shopCustomPrice = Item.buyPrice(silver: 10) })
                    .Add(new Item(ItemID.VariegatedLardfish) { shopCustomPrice = Item.buyPrice(silver: 10) }, ModConditions.HasBeenToJungle);
             fishShop.Register();
+            #endregion
 
+            #region CritterShop
             var critterShop = new NPCShop(Type, "CritterShop")
                     //birds
                    .Add(new Item(ItemID.Bird) { shopCustomPrice = Item.buyPrice(gold: 2) })
@@ -1061,7 +1107,9 @@ namespace QoLCompendium.Content.NPCs
                    .Add(new Item(ItemID.Goldfish) { shopCustomPrice = Item.buyPrice(gold: 2) })
                    .Add(new Item(ItemID.GoldGoldfish) { shopCustomPrice = Item.buyPrice(gold: 2) });
             critterShop.Register();
+            #endregion
 
+            #region MountsAndHooksShop
             var mountShop = new NPCShop(Type, "MountsAndHooksShop")
                     //Mounts
                     .Add(new Item(ItemID.SlimySaddle) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedKingSlime)
@@ -1120,8 +1168,9 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.AntiGravityHook) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMartians)
                     .Add(new Item(ItemID.LunarHook) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedCultist);
             mountShop.Register();
+            #endregion
 
-
+            #region AmmoShop
             var ammoShop = new NPCShop(Type, "AmmoShop")
                     //Bullets
                     .Add(new Item(ItemID.MusketBall) { shopCustomPrice = Item.buyPrice(copper: 1) })
@@ -1199,6 +1248,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.DarkBlueSolution) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedMechBossAny)
                     .Add(new Item(ItemID.BlueSolution) { shopCustomPrice = Item.buyPrice(copper: 1) }, Condition.DownedMechBossAny);
             ammoShop.Register();
+            #endregion
         }
     }
 }

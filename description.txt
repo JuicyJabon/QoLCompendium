@@ -90,6 +90,3 @@ Current Features:
  - Active buff/item tooltips
  - Many items for easing the playing experience
  - 2 Town NPCs who sell almost everything needed
-
-Current Mod Support Document:
-https://docs.google.com/spreadsheets/d/1h_1eK3lDncGwz0KSwWPEkY9foDuFhYDvsteQuWzmVRA/edit?usp=sharing

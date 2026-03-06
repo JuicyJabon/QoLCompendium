@@ -141,6 +141,9 @@ namespace QoLCompendium.Content.Items.Tools.Summons.Vanilla
                     }
                     if (player.GetModPlayer<QoLCPlayer>().eventToSpawn == 4 && !BirthdayParty.PartyIsUp)
                     {
+                        if (!NPC.AnyNPCs(NPCID.PartyGirl))
+                            NPC.SpawnOnPlayer(player.whoAmI, NPCID.PartyGirl);
+
                         BirthdayParty.PartyDaysOnCooldown = 0;
 
                         if (Main.netMode != NetmodeID.MultiplayerClient)

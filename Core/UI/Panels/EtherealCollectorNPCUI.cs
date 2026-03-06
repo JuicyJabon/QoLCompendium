@@ -8,6 +8,24 @@ namespace QoLCompendium.Core.UI.Panels
         public static bool visible = false;
         public static uint timeStart;
 
+        public UIImageButton PotionButton;
+        public UIImageButton StationButton;
+        public UIImageButton MaterialButton;
+        public UIImageButton MaterialButton2;
+        public UIImageButton MobilityAccessoryButton;
+        public UIImageButton CombatAccessoryButton;
+        public UIImageButton ToolsAndInfoButton;
+        public UIImageButton TreasureBagButton;
+        public UIImageButton CratesAndGrabBagsButton;
+        public UIImageButton OresAndBarsButton;
+        public UIImageButton NaturalBlocksButton;
+        public UIImageButton BuildingBlocksButton;
+        public UIImageButton HerbsAndPlantsButton;
+        public UIImageButton FishButton;
+        public UIImageButton CritterButton;
+        public UIImageButton MountsAndHooksButton;
+        public UIImageButton AmmoButton;
+
         public override void OnInitialize()
         {
             ShopPanel = new UIPanel();
@@ -101,137 +119,93 @@ namespace QoLCompendium.Core.UI.Panels
             Asset<Texture2D> buttonPlayTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
             Asset<Texture2D> buttonDeleteTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
 
-            UIImageButton potionButton = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.ECPotionShop == false)
-            {
-                potionButton = new(buttonDeleteTexture);
-            }
-            potionButton.Left.Set(10, 0f);
-            potionButton.Top.Set(10, 0f);
-            potionButton.Width.Set(22, 0f);
-            potionButton.Height.Set(22, 0f);
-            potionButton.OnLeftClick += new MouseEvent(PotionShopClicked);
-            ShopPanel.Append(potionButton);
+            PotionButton = new(buttonPlayTexture);
+            PotionButton.Left.Set(10, 0f);
+            PotionButton.Top.Set(10, 0f);
+            PotionButton.Width.Set(22, 0f);
+            PotionButton.Height.Set(22, 0f);
+            PotionButton.OnLeftClick += new MouseEvent(PotionShopClicked);
+            ShopPanel.Append(PotionButton);
 
-            UIImageButton stationButton = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.ECStationShop == false)
-            {
-                stationButton = new(buttonDeleteTexture);
-            }
-            stationButton.Left.Set(10, 0f);
-            stationButton.Top.Set(40, 0f);
-            stationButton.Width.Set(22, 0f);
-            stationButton.Height.Set(22, 0f);
-            stationButton.OnLeftClick += new MouseEvent(StationShopClicked);
-            ShopPanel.Append(stationButton);
+            StationButton = new(buttonPlayTexture);
+            StationButton.Left.Set(10, 0f);
+            StationButton.Top.Set(40, 0f);
+            StationButton.Width.Set(22, 0f);
+            StationButton.Height.Set(22, 0f);
+            StationButton.OnLeftClick += new MouseEvent(StationShopClicked);
+            ShopPanel.Append(StationButton);
 
-            UIImageButton materialButton = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.ECMaterialShop == false)
-            {
-                materialButton = new(buttonDeleteTexture);
-            }
-            materialButton.Left.Set(10, 0f);
-            materialButton.Top.Set(70, 0f);
-            materialButton.Width.Set(22, 0f);
-            materialButton.Height.Set(22, 0f);
-            materialButton.OnLeftClick += new MouseEvent(MaterialShopClicked);
-            ShopPanel.Append(materialButton);
+            MaterialButton = new(buttonPlayTexture);
+            MaterialButton.Left.Set(10, 0f);
+            MaterialButton.Top.Set(70, 0f);
+            MaterialButton.Width.Set(22, 0f);
+            MaterialButton.Height.Set(22, 0f);
+            MaterialButton.OnLeftClick += new MouseEvent(MaterialShopClicked);
+            ShopPanel.Append(MaterialButton);
 
-            UIImageButton material2Button = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.ECMaterialShop == false)
-            {
-                material2Button = new(buttonDeleteTexture);
-            }
-            material2Button.Left.Set(10, 0f);
-            material2Button.Top.Set(100, 0f);
-            material2Button.Width.Set(22, 0f);
-            material2Button.Height.Set(22, 0f);
-            material2Button.OnLeftClick += new MouseEvent(Material2ShopClicked);
-            ShopPanel.Append(material2Button);
+            MaterialButton2 = new(buttonPlayTexture);
+            MaterialButton2.Left.Set(10, 0f);
+            MaterialButton2.Top.Set(100, 0f);
+            MaterialButton2.Width.Set(22, 0f);
+            MaterialButton2.Height.Set(22, 0f);
+            MaterialButton2.OnLeftClick += new MouseEvent(Material2ShopClicked);
+            ShopPanel.Append(MaterialButton2);
 
-            UIImageButton bagButton = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.ECBagShop == false)
-            {
-                bagButton = new(buttonDeleteTexture);
-            }
-            bagButton.Left.Set(10, 0f);
-            bagButton.Top.Set(130, 0f);
-            bagButton.Width.Set(22, 0f);
-            bagButton.Height.Set(22, 0f);
-            bagButton.OnLeftClick += new MouseEvent(BagShopClicked);
-            ShopPanel.Append(bagButton);
+            TreasureBagButton = new(buttonPlayTexture);
+            TreasureBagButton.Left.Set(10, 0f);
+            TreasureBagButton.Top.Set(130, 0f);
+            TreasureBagButton.Width.Set(22, 0f);
+            TreasureBagButton.Height.Set(22, 0f);
+            TreasureBagButton.OnLeftClick += new MouseEvent(BagShopClicked);
+            ShopPanel.Append(TreasureBagButton);
 
-            UIImageButton crateButton = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.ECCrateShop == false)
-            {
-                crateButton = new(buttonDeleteTexture);
-            }
-            crateButton.Left.Set(10, 0f);
-            crateButton.Top.Set(160, 0f);
-            crateButton.Width.Set(22, 0f);
-            crateButton.Height.Set(22, 0f);
-            crateButton.OnLeftClick += new MouseEvent(CrateShopClicked);
-            ShopPanel.Append(crateButton);
+            CratesAndGrabBagsButton = new(buttonPlayTexture);
+            CratesAndGrabBagsButton.Left.Set(10, 0f);
+            CratesAndGrabBagsButton.Top.Set(160, 0f);
+            CratesAndGrabBagsButton.Width.Set(22, 0f);
+            CratesAndGrabBagsButton.Height.Set(22, 0f);
+            CratesAndGrabBagsButton.OnLeftClick += new MouseEvent(CrateShopClicked);
+            ShopPanel.Append(CratesAndGrabBagsButton);
 
-            UIImageButton oreButton = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.ECOreShop == false)
-            {
-                oreButton = new(buttonDeleteTexture);
-            }
-            oreButton.Left.Set(10, 0f);
-            oreButton.Top.Set(190, 0f);
-            oreButton.Width.Set(22, 0f);
-            oreButton.Height.Set(22, 0f);
-            oreButton.OnLeftClick += new MouseEvent(OreShopClicked);
-            ShopPanel.Append(oreButton);
+            OresAndBarsButton = new(buttonPlayTexture);
+            OresAndBarsButton.Left.Set(10, 0f);
+            OresAndBarsButton.Top.Set(190, 0f);
+            OresAndBarsButton.Width.Set(22, 0f);
+            OresAndBarsButton.Height.Set(22, 0f);
+            OresAndBarsButton.OnLeftClick += new MouseEvent(OreShopClicked);
+            ShopPanel.Append(OresAndBarsButton);
 
-            UIImageButton naturalButton = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.ECNaturalBlocksShop == false)
-            {
-                naturalButton = new(buttonDeleteTexture);
-            }
-            naturalButton.Left.Set(10, 0f);
-            naturalButton.Top.Set(220, 0f);
-            naturalButton.Width.Set(22, 0f);
-            naturalButton.Height.Set(22, 0f);
-            naturalButton.OnLeftClick += new MouseEvent(NaturalShopClicked);
-            ShopPanel.Append(naturalButton);
+            NaturalBlocksButton = new(buttonPlayTexture);
+            NaturalBlocksButton.Left.Set(10, 0f);
+            NaturalBlocksButton.Top.Set(220, 0f);
+            NaturalBlocksButton.Width.Set(22, 0f);
+            NaturalBlocksButton.Height.Set(22, 0f);
+            NaturalBlocksButton.OnLeftClick += new MouseEvent(NaturalShopClicked);
+            ShopPanel.Append(NaturalBlocksButton);
 
-            UIImageButton buildingButton = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.ECBuildingBlocksShop == false)
-            {
-                buildingButton = new(buttonDeleteTexture);
-            }
-            buildingButton.Left.Set(10, 0f);
-            buildingButton.Top.Set(250, 0f);
-            buildingButton.Width.Set(22, 0f);
-            buildingButton.Height.Set(22, 0f);
-            buildingButton.OnLeftClick += new MouseEvent(BuildingShopClicked);
-            ShopPanel.Append(buildingButton);
+            BuildingBlocksButton = new(buttonPlayTexture);
+            BuildingBlocksButton.Left.Set(10, 0f);
+            BuildingBlocksButton.Top.Set(250, 0f);
+            BuildingBlocksButton.Width.Set(22, 0f);
+            BuildingBlocksButton.Height.Set(22, 0f);
+            BuildingBlocksButton.OnLeftClick += new MouseEvent(BuildingShopClicked);
+            ShopPanel.Append(BuildingBlocksButton);
 
-            UIImageButton herbButton = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.ECHerbShop == false)
-            {
-                herbButton = new(buttonDeleteTexture);
-            }
-            herbButton.Left.Set(10, 0f);
-            herbButton.Top.Set(280, 0f);
-            herbButton.Width.Set(22, 0f);
-            herbButton.Height.Set(22, 0f);
-            herbButton.OnLeftClick += new MouseEvent(HerbShopClicked);
-            ShopPanel.Append(herbButton);
+            HerbsAndPlantsButton = new(buttonPlayTexture);
+            HerbsAndPlantsButton.Left.Set(10, 0f);
+            HerbsAndPlantsButton.Top.Set(280, 0f);
+            HerbsAndPlantsButton.Width.Set(22, 0f);
+            HerbsAndPlantsButton.Height.Set(22, 0f);
+            HerbsAndPlantsButton.OnLeftClick += new MouseEvent(HerbShopClicked);
+            ShopPanel.Append(HerbsAndPlantsButton);
 
-            UIImageButton fishButton = new(buttonPlayTexture);
-            if (QoLCompendium.shopConfig.ECFishShop == false)
-            {
-                fishButton = new(buttonDeleteTexture);
-            }
-            fishButton.Left.Set(10, 0f);
-            fishButton.Top.Set(310, 0f);
-            fishButton.Width.Set(22, 0f);
-            fishButton.Height.Set(22, 0f);
-            fishButton.OnLeftClick += new MouseEvent(FishShopClicked);
-            ShopPanel.Append(fishButton);
+            FishButton = new(buttonPlayTexture);
+            FishButton.Left.Set(10, 0f);
+            FishButton.Top.Set(310, 0f);
+            FishButton.Width.Set(22, 0f);
+            FishButton.Height.Set(22, 0f);
+            FishButton.OnLeftClick += new MouseEvent(FishShopClicked);
+            ShopPanel.Append(FishButton);
 
             UIImageButton closeButton = new(buttonDeleteTexture);
             closeButton.Left.Set(350, 0f);
@@ -243,11 +217,41 @@ namespace QoLCompendium.Core.UI.Panels
             Append(ShopPanel);
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            if (visible)
+            {
+                Asset<Texture2D> buttonPlayTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonPlay");
+                Asset<Texture2D> buttonDeleteTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
+
+                PotionButton.SetImage(QoLCompendium.shopConfig.ECPotionShop ? buttonPlayTexture : buttonDeleteTexture);
+                StationButton.SetImage(QoLCompendium.shopConfig.ECStationShop ? buttonPlayTexture : buttonDeleteTexture);
+                MaterialButton.SetImage(QoLCompendium.shopConfig.ECMaterialShop ? buttonPlayTexture : buttonDeleteTexture);
+                MaterialButton2.SetImage(QoLCompendium.shopConfig.ECMaterialShop ? buttonPlayTexture : buttonDeleteTexture);
+
+                //MobilityAccessoryButton.SetImage(QoLCompendium.shopConfig.ECMovementAccessoryShop ? buttonPlayTexture : buttonDeleteTexture);
+                //CombatAccessoryButton.SetImage(QoLCompendium.shopConfig.ECCombatAccessoryShop ? buttonPlayTexture : buttonDeleteTexture);
+                //ToolsAndInfoButton.SetImage(QoLCompendium.shopConfig.ECInformationShop ? buttonPlayTexture : buttonDeleteTexture);
+
+                TreasureBagButton.SetImage(QoLCompendium.shopConfig.ECBagShop ? buttonPlayTexture : buttonDeleteTexture);
+                CratesAndGrabBagsButton.SetImage(QoLCompendium.shopConfig.ECCrateShop ? buttonPlayTexture : buttonDeleteTexture);
+                OresAndBarsButton.SetImage(QoLCompendium.shopConfig.ECOreShop ? buttonPlayTexture : buttonDeleteTexture);
+                NaturalBlocksButton.SetImage(QoLCompendium.shopConfig.ECNaturalBlocksShop ? buttonPlayTexture : buttonDeleteTexture);
+                BuildingBlocksButton.SetImage(QoLCompendium.shopConfig.ECBuildingBlocksShop ? buttonPlayTexture : buttonDeleteTexture);
+                HerbsAndPlantsButton.SetImage(QoLCompendium.shopConfig.ECHerbShop ? buttonPlayTexture : buttonDeleteTexture);
+                FishButton.SetImage(QoLCompendium.shopConfig.ECFishShop ? buttonPlayTexture : buttonDeleteTexture);
+                
+                //CritterButton.SetImage(QoLCompendium.shopConfig.ECCritterShop ? buttonPlayTexture : buttonDeleteTexture);
+                //MountsAndHooksButton.SetImage(QoLCompendium.shopConfig.ECMountShop ? buttonPlayTexture : buttonDeleteTexture);
+                //AmmoButton.SetImage(QoLCompendium.shopConfig.ECAmmoShop ? buttonPlayTexture : buttonDeleteTexture);
+            }
+        }
+
         private void PotionShopClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECPotionShop)
             {
-                EtherealCollectorNPC.shopNum = 0;
+                EtherealCollectorNPC.shopNum = (int)EtherealCollectorNPC.ShopType.ModdedPotionShop;
                 visible = false;
             }
         }
@@ -256,7 +260,7 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECStationShop)
             {
-                EtherealCollectorNPC.shopNum = 1;
+                EtherealCollectorNPC.shopNum = (int)EtherealCollectorNPC.ShopType.ModdedStationsAndUpgradesShop;
                 visible = false;
             }
         }
@@ -265,7 +269,7 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECMaterialShop)
             {
-                EtherealCollectorNPC.shopNum = 2;
+                EtherealCollectorNPC.shopNum = (int)EtherealCollectorNPC.ShopType.ModdedMaterialShop;
                 visible = false;
             }
         }
@@ -274,7 +278,7 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECMaterialShop)
             {
-                EtherealCollectorNPC.shopNum = 3;
+                EtherealCollectorNPC.shopNum = (int)EtherealCollectorNPC.ShopType.ModdedMaterialShop2;
                 visible = false;
             }
         }
@@ -283,7 +287,7 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECBagShop)
             {
-                EtherealCollectorNPC.shopNum = 4;
+                EtherealCollectorNPC.shopNum = (int)EtherealCollectorNPC.ShopType.ModdedTreasureBagShop;
                 visible = false;
             }
         }
@@ -292,7 +296,7 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECCrateShop)
             {
-                EtherealCollectorNPC.shopNum = 5;
+                EtherealCollectorNPC.shopNum = (int)EtherealCollectorNPC.ShopType.ModdedCratesAndGrabBagsShop;
                 visible = false;
             }
         }
@@ -301,7 +305,7 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECOreShop)
             {
-                EtherealCollectorNPC.shopNum = 6;
+                EtherealCollectorNPC.shopNum = (int)EtherealCollectorNPC.ShopType.ModdedOresAndBarsShop;
                 visible = false;
             }
         }
@@ -310,7 +314,7 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECNaturalBlocksShop)
             {
-                EtherealCollectorNPC.shopNum = 7;
+                EtherealCollectorNPC.shopNum = (int)EtherealCollectorNPC.ShopType.ModdedNaturalBlockShop;
                 visible = false;
             }
         }
@@ -319,7 +323,7 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECBuildingBlocksShop)
             {
-                EtherealCollectorNPC.shopNum = 8;
+                EtherealCollectorNPC.shopNum = (int)EtherealCollectorNPC.ShopType.ModdedBuildingBlockShop;
                 visible = false;
             }
         }
@@ -328,7 +332,7 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECHerbShop)
             {
-                EtherealCollectorNPC.shopNum = 9;
+                EtherealCollectorNPC.shopNum = (int)EtherealCollectorNPC.ShopType.ModdedHerbsAndPlantsShop;
                 visible = false;
             }
         }
@@ -337,7 +341,7 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10 && QoLCompendium.shopConfig.ECFishShop)
             {
-                EtherealCollectorNPC.shopNum = 10;
+                EtherealCollectorNPC.shopNum = (int)EtherealCollectorNPC.ShopType.ModdedFishShop;
                 visible = false;
             }
         }

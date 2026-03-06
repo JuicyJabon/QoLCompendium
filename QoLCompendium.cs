@@ -43,6 +43,10 @@ namespace QoLCompendium
             BuffSystem.DoBuffIntegration();
             Common.PostSetupTasks();
             Prefixes.PostSetupTasks();
+
+            //Permanent Buffs
+            if (!itemConfig.DisableModdedItems || itemConfig.PermanentBuffs)
+                PermanentBuffLoader.PostSetupTasks();
         }
 
         public override void Load()

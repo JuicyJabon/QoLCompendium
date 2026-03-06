@@ -1,8 +1,7 @@
-using QoLCompendium.Content.Items.Dedicated;
-using QoLCompendium.Core;
 using QoLCompendium.Core.UI.Panels;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
+using Terraria.Utilities;
 
 namespace QoLCompendium.Content.NPCs
 {
@@ -15,6 +14,27 @@ namespace QoLCompendium.Content.NPCs
         #pragma warning restore CA2211
 
         public override string Texture => "QoLCompendium/Content/NPCs/EtherealCollectorNPC";
+
+        public enum ShopType
+        {
+            ModdedPotionShop,
+            ModdedStationsAndUpgradesShop,
+            ModdedMaterialShop,
+            ModdedMaterialShop2,
+            ModdedMobilityAccessoryShop,
+            ModdedCombatAccessoryShop,
+            ModdedToolsAndInfoShop,
+            ModdedTreasureBagShop,
+            ModdedCratesAndGrabBagsShop,
+            ModdedOresAndBarsShop,
+            ModdedNaturalBlockShop,
+            ModdedBuildingBlockShop,
+            ModdedHerbsAndPlantsShop,
+            ModdedFishShop,
+            ModdedCritterShop,
+            ModdedMountsAndHooksShop,
+            ModdedAmmoShop
+        }
 
         public override bool IsLoadingEnabled(Mod mod)
         {
@@ -31,21 +51,21 @@ namespace QoLCompendium.Content.NPCs
             NPCID.Sets.AttackTime[NPC.type] = 90;
             NPCID.Sets.AttackAverageChance[NPC.type] = 30;
             NPCID.Sets.HatOffsetY[NPC.type] = 4;
-            NPC.Happiness.SetBiomeAffection<SnowBiome>((AffectionLevel)100)
-                .SetBiomeAffection<UndergroundBiome>((AffectionLevel)50)
-                .SetBiomeAffection<DesertBiome>((AffectionLevel)(-50))
-                .SetNPCAffection(NPCID.Dryad, (AffectionLevel)100)
-                .SetNPCAffection(NPCID.DD2Bartender, (AffectionLevel)50)
-                .SetNPCAffection(NPCID.Wizard, (AffectionLevel)(-50))
-                .SetNPCAffection(NPCID.TaxCollector, (AffectionLevel)(-100));
+            NPC.Happiness.SetBiomeAffection<SnowBiome>(AffectionLevel.Love)
+                .SetBiomeAffection<UndergroundBiome>(AffectionLevel.Like)
+                .SetBiomeAffection<DesertBiome>(AffectionLevel.Dislike)
+                .SetNPCAffection(NPCID.Dryad, AffectionLevel.Love)
+                .SetNPCAffection(NPCID.DD2Bartender, AffectionLevel.Like)
+                .SetNPCAffection(NPCID.Wizard, AffectionLevel.Dislike)
+                .SetNPCAffection(NPCID.TaxCollector, AffectionLevel.Hate);
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
             {
-                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-                new FlavorTextBestiaryInfoElement("He arrived to sell his wares, but where did he come from?")
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
+                new FlavorTextBestiaryInfoElement("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.Bestiary")
             });
         }
 
@@ -76,14 +96,14 @@ namespace QoLCompendium.Content.NPCs
 
         public override List<string> SetNPCNameList()
         {
-            List<string> list = new()
-            {
-                "Spiri",
-                "Lumen",
-                "Dexter",
-                "Geist",
-                "Sullivan"
-            };
+            List<string> list =
+            [
+                Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.Names.Name0"),
+                Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.Names.Name1"),
+                Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.Names.Name2"),
+                Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.Names.Name3"),
+                Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.Names.Name4")
+            ];
             return list;
         }
 
@@ -124,87 +144,102 @@ namespace QoLCompendium.Content.NPCs
 
         public override string GetChat()
         {
-            string result = Main.rand.Next(4) switch
-            {
-                0 => "I won't tell you where I'm from",
-                1 => "The more you progress, the more I materialize for you",
-                2 => "Why don't you try to farm your gear sometimes?",
-                _ => "If one of the townsfolk dies, I'll gladly sell their items!",
-            };
-
-            if (Main.LocalPlayer.HasItem(ItemID.SilverShortsword) && QoLCompendium.itemConfig.DedicatedItems)
-            {
-                result = "That Silver Shortsword is looking mighty fine! Take some burgers for showing me this beauty!";
-            }
-
-            return result;
+            WeightedRandom<string> chat = new();
+            chat.Add(Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.EtherealCollectorNPC.Chat0"));
+            chat.Add(Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.EtherealCollectorNPC.Chat1"));
+            chat.Add(Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.EtherealCollectorNPC.Chat2"));
+            chat.Add(Language.GetTextValue("Mods.QoLCompendium.NPCs.Quotes.EtherealCollectorNPC.Chat3"));
+            return chat;
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            if (shopNum == 0)
+            if (shopNum == (int)ShopType.ModdedPotionShop)
             {
-                button = "Modded Potions";
-                ShopName = "Modded Potions";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedPotionShop");
+                ShopName = "ModdedPotionShop";
             }
-            else if (shopNum == 1)
+            else if (shopNum == (int)ShopType.ModdedStationsAndUpgradesShop)
             {
-                button = "Modded Flasks, Stations & Foods";
-                ShopName = "Modded Flasks, Stations & Foods";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedStationsAndUpgradesShop");
+                ShopName = "ModdedStationsAndUpgradesShop";
             }
-            else if (shopNum == 2)
+            else if (shopNum == (int)ShopType.ModdedMaterialShop)
             {
-                button = "Modded Materials (Mods: A-M)";
-                ShopName = "Modded Materials";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedMaterialShop");
+                ShopName = "ModdedMaterialShop";
             }
-            else if (shopNum == 3)
+            else if (shopNum == (int)ShopType.ModdedMaterialShop2)
             {
-                button = "Modded Materials (Mods: N-Z)";
-                ShopName = "Modded Materials 2";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedMaterialShop2");
+                ShopName = "ModdedMaterialShop2";
             }
-            else if (shopNum == 4)
+            else if (shopNum == (int)ShopType.ModdedMobilityAccessoryShop)
             {
-                button = "Modded Treasure Bags";
-                ShopName = "Modded Treasure Bags";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedMobilityAccessoryShop");
+                ShopName = "ModdedMobilityAccessoryShop";
             }
-            else if (shopNum == 5)
+            else if (shopNum == (int)ShopType.ModdedCombatAccessoryShop)
             {
-                button = "Modded Crates & Grab Bags";
-                ShopName = "Modded Crates & Grab Bags";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedCombatAccessoryShop");
+                ShopName = "ModdedCombatAccessoryShop";
             }
-            else if (shopNum == 6)
+            else if (shopNum == (int)ShopType.ModdedToolsAndInfoShop)
             {
-                button = "Modded Ores & Bars";
-                ShopName = "Modded Ores & Bars";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedToolsAndInfoShop");
+                ShopName = "ModdedToolsAndInfoShop";
             }
-            else if (shopNum == 7)
+            else if (shopNum == (int)ShopType.ModdedTreasureBagShop)
             {
-                button = "Modded Natural Blocks";
-                ShopName = "Modded Natural Blocks";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedTreasureBagShop");
+                ShopName = "ModdedTreasureBagShop";
             }
-            else if (shopNum == 8)
+            else if (shopNum == (int)ShopType.ModdedCratesAndGrabBagsShop)
             {
-                button = "Modded Building Blocks";
-                ShopName = "Modded Building Blocks";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedCratesAndGrabBagsShop");
+                ShopName = "ModdedCratesAndGrabBagsShop";
             }
-            else if (shopNum == 9)
+            else if (shopNum == (int)ShopType.ModdedOresAndBarsShop)
             {
-                button = "Modded Herbs & Plants";
-                ShopName = "Modded Herbs & Plants";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedOresAndBarsShop");
+                ShopName = "ModdedOresAndBarsShop";
             }
-            else if (shopNum == 10)
+            else if (shopNum == (int)ShopType.ModdedNaturalBlockShop)
             {
-                button = "Modded Fish & Fishing Gear";
-                ShopName = "Modded Fish & Fishing Gear";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedNaturalBlockShop");
+                ShopName = "ModdedNaturalBlockShop";
             }
-            if (Main.LocalPlayer.HasItem(ItemID.SilverShortsword) && QoLCompendium.itemConfig.DedicatedItems)
+            else if (shopNum == (int)ShopType.ModdedBuildingBlockShop)
             {
-                button2 = "Get some burgers";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedBuildingBlockShop");
+                ShopName = "ModdedBuildingBlockShop";
             }
-            else
+            else if (shopNum == (int)ShopType.ModdedHerbsAndPlantsShop)
             {
-                button2 = "Shop Changer";
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedHerbsAndPlantsShop");
+                ShopName = "ModdedHerbsAndPlantsShop";
             }
+            else if (shopNum == (int)ShopType.ModdedFishShop)
+            {
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedFishShop");
+                ShopName = "ModdedFishShop";
+            }
+            else if (shopNum == (int)ShopType.ModdedCritterShop)
+            {
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedCritterShop");
+                ShopName = "ModdedCritterShop";
+            }
+            else if (shopNum == (int)ShopType.ModdedMountsAndHooksShop)
+            {
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedMountsAndHooksShop");
+                ShopName = "ModdedMountsAndHooksShop";
+            }
+            else if (shopNum == (int)ShopType.ModdedAmmoShop)
+            {
+                button = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ModdedAmmoShop");
+                ShopName = "ModdedAmmoShop";
+            }
+            button2 = Language.GetTextValue("Mods.QoLCompendium.NPCs.EtherealCollectorNPC.ShopName.ShopChanger");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref string shop)
@@ -223,7 +258,8 @@ namespace QoLCompendium.Content.NPCs
 
         public override void AddShops()
         {
-            var modPotionsShop = new NPCShop(Type, "Modded Potions")
+            #region ModdedPotionShop
+            var modPotionsShop = new NPCShop(Type, "ModdedPotionShop")
             //AFKPets
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "AstralwalkerPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToSky)
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "BarkSkinPotion", Item.buyPrice(silver: 75))
@@ -241,8 +277,14 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "RedBullPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToSky)
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "StarSealerPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToSky)
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "StinguardPotion", Item.buyPrice(silver: 75), Condition.DownedEverscream, ModConditions.HasBeenToSnow)
+                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "FlaskofBlood", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.DownedBloodMoon)
+                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "FlaskofNature", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedMechBossAll, ModConditions.HasBeenToJungle)
+                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "FlaskofShadowflames", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedGoblinArmy)
+                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "JellyfishJam", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToOcean)
+                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "OliveOilBottle", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
             //Assorted Crazy Things
                 .AddModItemToShop(CrossModSupport.AssortedCrazyThings.Mod, "EnhancedHunterPotion", Item.buyPrice(silver: 75), ModConditions.DownedSoulHarvester, ModConditions.HasBeenToDungeon)
+                .AddModItemToShop(CrossModSupport.AssortedCrazyThings.Mod, "EmpowermentFlask", Item.buyPrice(silver: 75), ModConditions.DownedSoulHarvester, ModConditions.HasBeenToDungeon)
             //Awful Garbage
                 .AddModItemToShop(CrossModSupport.AwfulGarbage.Mod, "Chirumiru", Item.buyPrice(silver: 75), ModConditions.HasBeenThroughNight)
                 .AddModItemToShop(CrossModSupport.AwfulGarbage.Mod, "ReachPotion", Item.buyPrice(silver: 75), ModConditions.DownedEyeOfTheStorm)
@@ -303,6 +345,36 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Buffaria.Mod, "WarfarePotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
                 .AddModItemToShop(CrossModSupport.Buffaria.Mod, "WayfarerPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron, Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.Buffaria.Mod, "WeightlessPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron, Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "BetsyPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedOldOnesArmyT3)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "BleedingPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedEowOrBoc)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "ConfusedPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedPlantera)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "CursedFlamesPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "DaybreakPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.DownedLunarPillarAny)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "ElectricityPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedPlantera)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "ExplosivePhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "FirePhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "FrostburnPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "GoldPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "IchorPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "PoisonPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "ShadowflamePhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "VenomPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedPlantera)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "LegendaryPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedCultist)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "LesserHoneyedHealingPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "HoneyedHealingPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "GreaterHoneyedHealingPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "SuperHoneyedHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedLunarEvent)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "LesserRestorationPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "GreaterRestorationPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "SuperRestorationPotion", Item.buyPrice(silver: 75), ModConditions.DownedLunarEvent)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "LesserScalingHealingPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "ScalingHealingPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "GreaterScalingHealingPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "SuperScalingHealingPotion", Item.buyPrice(silver: 75), Condition.DownedMoonLord)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "LesserScalingManaPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "ScalingManaPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "GreaterScalingManaPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera)
+                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "SuperScalingManaPotion", Item.buyPrice(silver: 75), Condition.DownedMoonLord)
             //Calamity
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "AnechoicCoating", Item.buyPrice(silver: 75), ModConditions.HasBeenToSulphurSea)
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "AstralInjection", Item.buyPrice(silver: 75), ModConditions.DownedAstrumAureus, ModConditions.HasBeenToAstral)
@@ -319,6 +391,15 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "TeslaPotion", Item.buyPrice(silver: 75), ModConditions.DownedPerforatorsOrHiveMind, ModConditions.HasBeenToSky)
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "ZenPotion", Item.buyPrice(silver: 75), ModConditions.DownedSlimeGod)
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "ZergPotion", Item.buyPrice(silver: 75), ModConditions.DownedSlimeGod)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "Baguette", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "HadalStew", Item.buyPrice(silver: 75), ModConditions.HasBeenToAbyss)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "FlaskOfBrimstone", Item.buyPrice(silver: 75), ModConditions.DownedCalamitasClone)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "FlaskOfCrumbling", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "FlaskOfHolyFlames", Item.buyPrice(silver: 75), Condition.DownedMoonLord, ModConditions.HasBeenToHallow)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "Bloodfin", Item.buyPrice(silver: 75), ModConditions.DownedProvidence, ModConditions.HasBeenToCrags)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "SupremeHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedProvidence)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "SupremeManaPotion", Item.buyPrice(silver: 75), Condition.DownedMoonLord)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "OmegaHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedDevourerOfGods)
             //Calamity Community Remix
                 .AddModItemToShop(CrossModSupport.CalamityCommunityRemix.Mod, "Meth", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToSunkenSea)
                 .AddModItemToShop(CrossModSupport.CalamityCommunityRemix.Mod, "CrabLeaves", Item.buyPrice(silver: 75), ModConditions.DownedCrabulon)
@@ -343,9 +424,15 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Cerebral.Mod, "VeilPotion", Item.buyPrice(silver: 75), Condition.DownedMoonLord)
                 .AddModItemToShop(CrossModSupport.Cerebral.Mod, "VortexPotion", Item.buyPrice(silver: 75), Condition.DownedMoonLord)
                 .AddModItemToShop(CrossModSupport.Cerebral.Mod, "WillPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToJungle)
+                .AddModItemToShop(CrossModSupport.Cerebral.Mod, "LesserPsychosisPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.Cerebral.Mod, "PsychosisPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToMushroom)
+                .AddModItemToShop(CrossModSupport.Cerebral.Mod, "GreaterPsychosisPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToHallow)
+                .AddModItemToShop(CrossModSupport.Cerebral.Mod, "SuperPsychosisPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera, ModConditions.HasBeenToDungeon)
             //Clamity
                 .AddModItemToShop(CrossModSupport.Clamity.Mod, "SupremeLuckPotion", Item.buyPrice(silver: 75), ModConditions.DownedClamitas)
                 .AddModItemToShop(CrossModSupport.Clamity.Mod, "TitanScalePotion", Item.buyPrice(silver: 75), Condition.DownedGolem)
+                .AddModItemToShop(CrossModSupport.Clamity.Mod, "SoulBaguette", Item.buyPrice(silver: 75), Condition.DownedMechBossAll)
+                .AddModItemToShop(CrossModSupport.Clamity.Mod, "ExoBaguette", Item.buyPrice(silver: 75), ModConditions.DownedExoMechs)
             //Classical
                 .AddModItemToShop(CrossModSupport.Rupture.Mod, "DeadshotPotion", Item.buyPrice(silver: 75), Condition.Hardmode, Condition.DownedGoblinArmy)
                 .AddModItemToShop(CrossModSupport.Rupture.Mod, "StrongArmPotion", Item.buyPrice(silver: 75))
@@ -356,22 +443,39 @@ namespace QoLCompendium.Content.NPCs
             //Depths
                 .AddModItemToShop(CrossModSupport.Depths.Mod, "CrystalSkinPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToDepthsOrUnderworld)
                 .AddModItemToShop(CrossModSupport.Depths.Mod, "SilverSpherePotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToDepthsOrUnderworld)
+                .AddModItemToShop(CrossModSupport.Depths.Mod, "FlaskofMercury", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToDepthsOrUnderworld)
             //Dragon Ball Terraria
                 .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "DisgustingGoop", Item.buyPrice(silver: 75), ModConditions.HasTalkedToSkeletonMerchant)
                 .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "MRE", Item.buyPrice(silver: 75), ModConditions.HasTalkedToTravelingMerchant)
                 .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "KiStimulant", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
+                .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "KiPotion1", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "KiPotion2", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
+                .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "KiPotion3", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "KiPotion4", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "KiPotion5", Item.buyPrice(silver: 75), Condition.DownedPlantera)
+            //Draedon Expansion
+                .AddModItemToShop(CrossModSupport.DraedonExpansion.Mod, "FlaskOfElectricity", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
             //Edorbis
                 .AddModItemToShop(CrossModSupport.Edorbis.Mod, "CapacityPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(CrossModSupport.Edorbis.Mod, "EnergyRegenerationPotion", Item.buyPrice(silver: 75), ModConditions.DownedGlaciation)
+                .AddModItemToShop(CrossModSupport.Edorbis.Mod, "LesserEnergyPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.Edorbis.Mod, "EnergyPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
+                .AddModItemToShop(CrossModSupport.Edorbis.Mod, "GreaterEnergyPotion", Item.buyPrice(silver: 75), Condition.DownedMechBossAny)
+                .AddModItemToShop(CrossModSupport.Edorbis.Mod, "SuperEnergyPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera)
             //Entropy
                 .AddModItemToShop(CrossModSupport.CalamityEntropy.Mod, "SoyMilk", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
                 .AddModItemToShop(CrossModSupport.CalamityEntropy.Mod, "YharimsStimulants", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
             //Everjade
                 .AddModItemToShop(CrossModSupport.Everjade.Mod, "HeartbeatPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(CrossModSupport.Everjade.Mod, "SpinePotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.Everjade.Mod, "JasmineTea", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.Everjade.Mod, "SpringWater", Item.buyPrice(silver: 75))
             //Excelsior
                 .AddModItemToShop(CrossModSupport.Excelsior.Mod, "SweetPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(CrossModSupport.Excelsior.Mod, "UncoagulatingPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
+                .AddModItemToShop(CrossModSupport.Excelsior.Mod, "FlaskofEnergy", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Excelsior.Mod, "FrostfireFlask", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.DownedNiflheim)
+                .AddModItemToShop(CrossModSupport.Excelsior.Mod, "MapleSyrup", Item.buyPrice(silver: 75))
             //Exxo Avalon Origins
                 .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "AuraPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
                 .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "BloodCastPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera)
@@ -452,6 +556,14 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "AdvWaterWalkingPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "AdvWisdomPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "AdvWrathPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                //other
+                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "FlaskOfPathogens", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToAvalonEvilBiomes)
+                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "InvincibilityPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "RejuvenationPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "LesserStaminaPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "StaminaPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "GreaterStaminaPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "SuperStaminaPotion", Item.buyPrice(silver: 75), Condition.DownedMechBossAll)
             //Fargos
                 .AddModItemToShop(CrossModSupport.FargowiltasSouls.Mod, "RabiesShot", Item.buyPrice(silver: 75), ModConditions.HasBeenToCavernsOrUnderground)
             //Fractures of Penumbra
@@ -472,13 +584,19 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "ForbiddenFruit", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow, ModConditions.HasBeenToJungle)
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "ForbiddenFruitCan", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow, ModConditions.HasBeenToJungle)
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "Iodine", Item.buyPrice(silver: 75), Condition.DownedPlantera, ModConditions.HasBeenToHomewardAbyss)
+                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "DivineFireFlask", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow)
+                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "ForceBreakFlask", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow)
+                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "PlagueFlask", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow)
+                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "SteelFlask", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow)
+                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "UltraHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow)
+                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "UltraManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow)
             //Martains Order
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "BlackHolePotion", Item.buyPrice(silver: 75), ModConditions.DownedVoidDigger)
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "DefenderPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "EmpowermentPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "SummonSpeedPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HastePotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "InvincibilityPotion", Item.buyPrice(silver: 75), Condition.DownedGolem)
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "InvincibilityPotion", Item.buyPrice(silver: 75), ModConditions.DownedVoidDigger)
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "ShieldingPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "ShooterPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "SoulPotion", Item.buyPrice(silver: 75), ModConditions.DownedVoidDigger)
@@ -502,6 +620,30 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "SlowPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "WeaknessPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "SlimeBucket", Item.buyPrice(silver: 75))
+                //other
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "Bisque", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "EnergyDrink", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "FastFood", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "FreshSalad", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "GlowingSalad", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HerbTea", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "MashedPotatoes", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "Noodles", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "Smoothie", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "WaterBottle", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "NaturePotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HyperHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedVoidDigger)
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HyperManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedVoidDigger)
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "LesserHurtPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "LesserMoilPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HurtPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "MoilPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "GreaterHurtPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "GreaterMoilPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "SuperHurtPotion", Item.buyPrice(silver: 75), Condition.DownedCultist)
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "SuperMoilPotion", Item.buyPrice(silver: 75), Condition.DownedCultist)
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HyperHurtPotion", Item.buyPrice(silver: 75), ModConditions.DownedVoidDigger)
+                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HyperMoilPotion", Item.buyPrice(silver: 75), ModConditions.DownedVoidDigger)
             //Medial Rift
                 .AddModItemToShop(CrossModSupport.MedialRift.Mod, "Abomnishrum", Item.buyPrice(silver: 75), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.MedialRift.Mod, "BackwardsPotion", Item.buyPrice(silver: 75), Condition.Hardmode, Condition.DownedQueenSlime)
@@ -527,6 +669,11 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Redemption.Mod, "SkirmishPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToWasteland)
                 .AddModItemToShop(CrossModSupport.Redemption.Mod, "VendettaPotion", Item.buyPrice(silver: 75), ModConditions.DownedThorn, ModConditions.HasBeenToDesert)
                 .AddModItemToShop(CrossModSupport.Redemption.Mod, "VigourousPotion", Item.buyPrice(silver: 75), ModConditions.DownedNebuleus)
+                .AddModItemToShop(CrossModSupport.Redemption.Mod, "EvilJelly", Item.buyPrice(silver: 75), ModConditions.DownedKeeper)
+                .AddModItemToShop(CrossModSupport.Redemption.Mod, "BileFlask", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToWasteland)
+                .AddModItemToShop(CrossModSupport.Redemption.Mod, "NitroglycerineFlask", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Redemption.Mod, "RevivalPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.Redemption.Mod, "CrystalSerum", Item.buyPrice(silver: 75), Condition.Hardmode)
             //SOTS
                 .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "AbyssalTonic", Item.buyPrice(silver: 75), ModConditions.DownedTidalSpirit, ModConditions.HasBeenToOcean)
                 .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "AssassinationPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToPlanetarium)
@@ -547,6 +694,15 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "StarlightTonic", Item.buyPrice(silver: 75), ModConditions.DownedAdvisor, ModConditions.HasBeenToPlanetarium)
                 .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "VibePotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "VigorPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "AlmondMilk", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "AvocadoSoup", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "Chocolate", Item.buyPrice(silver: 75), Condition.DownedPirates)
+                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "CoconutMilk", Item.buyPrice(silver: 75), ModConditions.HasBeenToOcean)
+                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "CookedMushroom", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "CursedCaviar", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc, ModConditions.HasBeenToPyramid)
+                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "DigitalCornSyrup", Item.buyPrice(silver: 75), ModConditions.HasBeenToPlanetarium)
+                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "FoulConcoction", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "StrawberryIcecream", Item.buyPrice(silver: 75), ModConditions.HasBeenToSnow)
             //Shadows of Abaddon
                 .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "SentryPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "DayStatsPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
@@ -570,9 +726,15 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "ExtraFishPotion", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
                 .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "JumpBoostPotion", Item.buyPrice(silver: 75), ModConditions.DownedJensenTheGrandHarpy)
                 .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "SandstormWindImmunityPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "MegaHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedAraghur)
+                .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "MegaManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedAraghur)
+                .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "AsthraltiteHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedErazor)
+                .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "AsthraltiteManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedErazor)
+                .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "AhristaHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedErazor)
+                .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "KrysteaManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedErazor)
             //Sloome
                 .AddModItemToShop(CrossModSupport.Sloome.Mod, "YharmStim", Item.buyPrice(silver: 75), ModConditions.DownedYharon)
-            //Spirit
+            //Spirit Classic
                 .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "PinkPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "MirrorCoat", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToHallow)
                 .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "RunePotion", Item.buyPrice(silver: 75), Condition.DownedMechBossAny, ModConditions.HasBeenToSpirit)
@@ -584,10 +746,22 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "TurtlePotion", Item.buyPrice(silver: 75), Condition.DownedMechBossAny, ModConditions.HasBeenToSpirit)
                 .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "BismitePotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToCavernsOrUnderground)
                 .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "DoubleJumpPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToSky)
+                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "Candy", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "ChocolateBar", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "HealthCandy", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "Lollipop", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "ManaCandy", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "MysteryCandy", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "Taffy", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "MoonJelly", Item.buyPrice(silver: 75), ModConditions.DownedJellyDeluge)
+                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "MoonJellyDonut", Item.buyPrice(silver: 75), ModConditions.DownedJellyDeluge, ModConditions.DownedMysticMoon)
             //Starlight River
                 .AddModItemToShop(CrossModSupport.StarlightRiver.Mod, "PotionForest", Item.buyPrice(silver: 75))
                 //.AddModItemToShop(CrossModSupport.StarlightRiver.Mod, "InoculationPotion", Item.buyPrice(silver: 75))
-                //Storms
+                .AddModItemToShop(CrossModSupport.StarlightRiver.Mod, "LesserBarrierPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.StarlightRiver.Mod, "RegularBarrierPotion", Item.buyPrice(silver: 75), ModConditions.DownedGlassweaver, ModConditions.HasBeenToVitricDesert)
+                .AddModItemToShop(CrossModSupport.StarlightRiver.Mod, "GreaterBarrierPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+            //Storms
                 .AddModItemToShop(CrossModSupport.StormsAdditions.Mod, "BeetlePotion", Item.buyPrice(silver: 75), Condition.DownedGolem, ModConditions.HasBeenToTemple)
                 .AddModItemToShop(CrossModSupport.StormsAdditions.Mod, "FruitHeartPotion", Item.buyPrice(silver: 75), Condition.DownedMechBossAny, ModConditions.HasBeenToJungle)
                 .AddModItemToShop(CrossModSupport.StormsAdditions.Mod, "GunPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToJungle)
@@ -632,6 +806,16 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Thorium.Mod, "SkeletonRepellent", Item.buyPrice(silver: 75), ModConditions.DownedBloodMoon, ModConditions.DownedPatchWerk)
                 .AddModItemToShop(CrossModSupport.Thorium.Mod, "WarmongerPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc, ModConditions.HasBeenToUnderworld)
                 .AddModItemToShop(CrossModSupport.Thorium.Mod, "ZombieRepellent", Item.buyPrice(silver: 75), ModConditions.DownedBloodMoon, ModConditions.DownedPatchWerk)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "DeepFreezeCoatingItem", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToSnow)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "ExplosiveCoatingItem", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "GorgonCoatingItem", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToCavernsOrUnderground)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "SporeCoatingItem", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToMushroom)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "ToxicCoatingItem", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToJungle)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "Jelly", Item.buyPrice(silver: 75), Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "LifeWater", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "MidnightOil", Item.buyPrice(silver: 75), Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "SpringWater", Item.buyPrice(silver: 75), ModConditions.HasBeenToAquaticDepths)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "WaterChestnut", Item.buyPrice(silver: 75), ModConditions.HasBeenToAquaticDepths)
             //Thorium Boss Rework
                 .AddModItemToShop(CrossModSupport.ThoriumHelheim.Mod, "DeathsingerPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToAquaticDepths)
                 .AddModItemToShop(CrossModSupport.ThoriumHelheim.Mod, "InspirationRegenerationPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
@@ -652,6 +836,7 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Vitality.Mod, "TranquillityPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToSky)
                 .AddModItemToShop(CrossModSupport.Vitality.Mod, "TravelsensePotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToOcean)
                 .AddModItemToShop(CrossModSupport.Vitality.Mod, "WarriorPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc, ModConditions.HasBeenToEvil)
+                .AddModItemToShop(CrossModSupport.Vitality.Mod, "LifeJuice", Item.buyPrice(silver: 75), Condition.DownedMechBossAll)
             //Zylon
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "BloodiedVial", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.DownedBloodMoon)
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "FeralChemicals", Item.buyPrice(silver: 75))
@@ -660,57 +845,25 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "HeavyHitterPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "ManareachPotion", Item.buyPrice(silver: 75))
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "NeutroninaBottle", Item.buyPrice(silver: 75), ModConditions.DownedLunarEvent)
-                .AddModItemToShop(CrossModSupport.Zylon.Mod, "StealthPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron);
+                .AddModItemToShop(CrossModSupport.Zylon.Mod, "StealthPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
+                .AddModItemToShop(CrossModSupport.Zylon.Mod, "LesserRestorationPotion", Item.buyPrice(silver: 75))
+                .AddModItemToShop(CrossModSupport.Zylon.Mod, "GreaterRestorationPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Zylon.Mod, "SuperRestorationPotion", Item.buyPrice(silver: 75), ModConditions.DownedLunarEvent);
             modPotionsShop.Register();
+            #endregion
 
-            var modFlasksShop = new NPCShop(Type, "Modded Flasks, Stations & Foods")
+            #region ModdedStationsAndUpgradesShop
+            var modFlasksShop = new NPCShop(Type, "ModdedStationsAndUpgradesShop")
             //AFKPets
-                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "FlaskofBlood", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.DownedBloodMoon)
-                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "FlaskofNature", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedMechBossAll, ModConditions.HasBeenToJungle)
-                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "FlaskofShadowflames", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedGoblinArmy)
-                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "JellyfishJam", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToOcean)
-                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "OliveOilBottle", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
-            //Assorted Crazy Things
-                .AddModItemToShop(CrossModSupport.AssortedCrazyThings.Mod, "EmpowermentFlask", Item.buyPrice(silver: 75), ModConditions.DownedSoulHarvester, ModConditions.HasBeenToDungeon)
+                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "ChaosAmplifier", Item.buyPrice(gold: 15), ModConditions.DownedDrFetus)
+                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "PortableRocketLauncher", Item.buyPrice(gold: 15), Condition.DownedEowOrBoc, ModConditions.DownedSATLA)
+                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "DruidicArtifact", Item.buyPrice(gold: 15), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "EchoFlower", Item.buyPrice(gold: 15), Condition.DownedPlantera)
+                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "FallenSoulContainer", Item.buyPrice(gold: 15), ModConditions.DownedNightmareAmplifierSlime)
+                .AddModItemToShop(CrossModSupport.AFKPets.Mod, "SacrificialAltar", Item.buyPrice(gold: 15), Condition.Hardmode)
             //Blocks Thrower
                 .AddModItemToShop(CrossModSupport.BlocksThrower.Mod, "ThrowingBoard", Item.buyPrice(gold: 15), Condition.Hardmode)
-            //Buffaria
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "BetsyPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedOldOnesArmyT3)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "BleedingPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedEowOrBoc)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "ConfusedPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedPlantera)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "CursedFlamesPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "DaybreakPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.DownedLunarPillarAny)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "ElectricityPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedPlantera)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "ExplosivePhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "FirePhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "FrostburnPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "GoldPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "IchorPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "PoisonPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "ShadowflamePhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "VenomPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedPlantera)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "LegendaryPhial", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.DownedCultist)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "LesserHoneyedHealingPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "HoneyedHealingPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "GreaterHoneyedHealingPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "SuperHoneyedHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedLunarEvent)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "LesserRestorationPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "GreaterRestorationPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "SuperRestorationPotion", Item.buyPrice(silver: 75), ModConditions.DownedLunarEvent)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "LesserScalingHealingPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "ScalingHealingPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "GreaterScalingHealingPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "SuperScalingHealingPotion", Item.buyPrice(silver: 75), Condition.DownedMoonLord)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "LesserScalingManaPotion", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "ScalingManaPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "GreaterScalingManaPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera)
-                .AddModItemToShop(CrossModSupport.Buffaria.Mod, "SuperScalingManaPotion", Item.buyPrice(silver: 75), Condition.DownedMoonLord)
             //Calamity
-                .AddModItemToShop(CrossModSupport.Calamity.Mod, "Baguette", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.Calamity.Mod, "HadalStew", Item.buyPrice(silver: 75), ModConditions.HasBeenToAbyss)
-                .AddModItemToShop(CrossModSupport.Calamity.Mod, "FlaskOfBrimstone", Item.buyPrice(silver: 75), ModConditions.DownedCalamitasClone)
-                .AddModItemToShop(CrossModSupport.Calamity.Mod, "FlaskOfCrumbling", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToCavernsOrUnderground)
-                .AddModItemToShop(CrossModSupport.Calamity.Mod, "FlaskOfHolyFlames", Item.buyPrice(silver: 75), Condition.DownedMoonLord, ModConditions.HasBeenToHallow)
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "CorruptionEffigy", Item.buyPrice(gold: 15), ModConditions.HasBeenToEvil)
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "CrimsonEffigy", Item.buyPrice(gold: 15), ModConditions.HasBeenToEvil)
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "EffigyOfDecay", Item.buyPrice(gold: 15), ModConditions.DownedAcidRain1, ModConditions.HasBeenToSulphurSea)
@@ -720,61 +873,36 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "SpitefulCandle", Item.buyPrice(gold: 15), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "WeightlessCandle", Item.buyPrice(gold: 15), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "VigorousCandle", Item.buyPrice(gold: 15), Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.Calamity.Mod, "Bloodfin", Item.buyPrice(silver: 75), ModConditions.DownedProvidence, ModConditions.HasBeenToCrags)
-                .AddModItemToShop(CrossModSupport.Calamity.Mod, "SupremeHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedProvidence)
-                .AddModItemToShop(CrossModSupport.Calamity.Mod, "SupremeManaPotion", Item.buyPrice(silver: 75), Condition.DownedMoonLord)
-                .AddModItemToShop(CrossModSupport.Calamity.Mod, "OmegaHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedDevourerOfGods)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "SanguineTangerine", Item.buyPrice(gold: 15), Condition.DownedMechBossAll)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "MiracleFruit", Item.buyPrice(gold: 15), Condition.DownedGolem)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "TaintedCloudberry", Item.buyPrice(gold: 15), ModConditions.DownedProvidence)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "SacredStrawberry", Item.buyPrice(gold: 15), ModConditions.DownedYharon)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "EnchantedStarfish", Item.buyPrice(gold: 15), ModConditions.HasBeenThroughNight)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "CometShard", Item.buyPrice(gold: 15), Condition.Hardmode, ModConditions.HasBeenToAstral)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "EtherealCore", Item.buyPrice(gold: 15), ModConditions.DownedAstrumDeus, ModConditions.HasBeenToAstral)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "PhantomHeart", Item.buyPrice(gold: 15), ModConditions.DownedPolterghast)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "MushroomPlasmaRoot", Item.buyPrice(gold: 15), ModConditions.DownedCrabulon, ModConditions.InRevengeanceOrDeathMode)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "InfernalBlood", Item.buyPrice(gold: 15), ModConditions.DownedRavager, ModConditions.InRevengeanceOrDeathMode)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "RedLightningContainer", Item.buyPrice(gold: 15), ModConditions.DownedDragonfolly, ModConditions.InRevengeanceOrDeathMode)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "ElectrolyteGelPack", Item.buyPrice(gold: 15), ModConditions.DownedSlimeGod, ModConditions.InRevengeanceOrDeathMode)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "StarlightFuelCell", Item.buyPrice(gold: 15), ModConditions.DownedAstrumAureus, ModConditions.InRevengeanceOrDeathMode)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "Ectoheart", Item.buyPrice(gold: 15), ModConditions.DownedPolterghast, ModConditions.InRevengeanceOrDeathMode)
+                .AddModItemToShop(CrossModSupport.Calamity.Mod, "CelestialOnion", Item.buyPrice(gold: 15), Condition.DownedMoonLord)
             //Calamity Community Remix
                 .AddModItemToShop(CrossModSupport.CalamityCommunityRemix.Mod, "AstralEffigy", Item.buyPrice(gold: 15), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.CalamityCommunityRemix.Mod, "HallowEffigy", Item.buyPrice(gold: 15), Condition.Hardmode)
             //Capture Discs Class
                 .AddModItemToShop(CrossModSupport.CaptureDiscClass.Mod, "DiscCharger", Item.buyPrice(gold: 15), Condition.DownedMechBossAny)
             //Cerebral
-                .AddModItemToShop(CrossModSupport.Cerebral.Mod, "LesserPsychosisPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.Cerebral.Mod, "PsychosisPotion", Item.buyPrice(silver: 75), ModConditions.HasBeenToMushroom)
-                .AddModItemToShop(CrossModSupport.Cerebral.Mod, "GreaterPsychosisPotion", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToHallow)
-                .AddModItemToShop(CrossModSupport.Cerebral.Mod, "SuperPsychosisPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera, ModConditions.HasBeenToDungeon)
                 .AddModItemToShop(CrossModSupport.Cerebral.Mod, "EngineerToolkit", Item.buyPrice(gold: 15), Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
-            //Clamity
-                .AddModItemToShop(CrossModSupport.Clamity.Mod, "SoulBaguette", Item.buyPrice(silver: 75), Condition.DownedMechBossAll)
-                .AddModItemToShop(CrossModSupport.Clamity.Mod, "ExoBaguette", Item.buyPrice(silver: 75), ModConditions.DownedExoMechs)
             //Classical
                 .AddModItemToShop(CrossModSupport.Rupture.Mod, "TrinketRack", Item.buyPrice(gold: 15))
             //Clicker Class
                 .AddModItemToShop(CrossModSupport.ClickerClass.Mod, "DesktopComputer", Item.buyPrice(gold: 15), Condition.DownedPlantera)
                 .AddModItemToShop(CrossModSupport.ClickerClass.Mod, "HeavenlyChip", Item.buyPrice(gold: 15), ModConditions.HasBeenToAether)
-            //Depths
-                .AddModItemToShop(CrossModSupport.Depths.Mod, "FlaskofMercury", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToDepthsOrUnderworld)
-            //Dragon Ball Terraria
-                .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "KiPotion1", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "KiPotion2", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc)
-                .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "KiPotion3", Item.buyPrice(silver: 75), Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "KiPotion4", Item.buyPrice(silver: 75), Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.DragonBallTerraria.Mod, "KiPotion5", Item.buyPrice(silver: 75), Condition.DownedPlantera)
-            //Draedon Expansion
-                .AddModItemToShop(CrossModSupport.DraedonExpansion.Mod, "FlaskOfElectricity", Item.buyPrice(silver: 75), Condition.DownedQueenBee)
-            //Edorbis
-                .AddModItemToShop(CrossModSupport.Edorbis.Mod, "LesserEnergyPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.Edorbis.Mod, "EnergyPotion", Item.buyPrice(silver: 75), Condition.DownedSkeletron)
-                .AddModItemToShop(CrossModSupport.Edorbis.Mod, "GreaterEnergyPotion", Item.buyPrice(silver: 75), Condition.DownedMechBossAny)
-                .AddModItemToShop(CrossModSupport.Edorbis.Mod, "SuperEnergyPotion", Item.buyPrice(silver: 75), Condition.DownedPlantera)
             //Entropy
                 .AddModItemToShop(CrossModSupport.CalamityEntropy.Mod, "VoidCandle", Item.buyPrice(silver: 75), ModConditions.DownedCruiser)
-            //Everjade
-                .AddModItemToShop(CrossModSupport.Everjade.Mod, "JasmineTea", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.Everjade.Mod, "SpringWater", Item.buyPrice(silver: 75))
-            //Excelsior
-                .AddModItemToShop(CrossModSupport.Excelsior.Mod, "FlaskofEnergy", Item.buyPrice(silver: 75), Condition.DownedQueenBee, Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.Excelsior.Mod, "FrostfireFlask", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.DownedNiflheim)
-                .AddModItemToShop(CrossModSupport.Excelsior.Mod, "MapleSyrup", Item.buyPrice(silver: 75))
             //Exxo Avalon Origins
-                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "FlaskOfPathogens", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToAvalonEvilBiomes)
-                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "InvincibilityPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "RejuvenationPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "LesserStaminaPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "StaminaPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "GreaterStaminaPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "SuperStaminaPotion", Item.buyPrice(silver: 75), Condition.DownedMechBossAll)
                 .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "StaminaCrystal", Item.buyPrice(gold: 15), ModConditions.HasBeenToCavernsOrUnderground)
                 .AddModItemToShop(CrossModSupport.ExxoAvalonOrigins.Mod, "EnergyCrystal", Item.buyPrice(gold: 15), ModConditions.HasBeenToAether)
             //Fargos
@@ -784,9 +912,6 @@ namespace QoLCompendium.Content.NPCs
             //Gerds Lab
                 .AddModItemToShop(CrossModSupport.GerdsLab.Mod, "Medkit", Item.buyPrice(silver: 75), Condition.DownedEyeOfCthulhu)
             //Homeward Journey
-                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "DivineFireFlask", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow)
-                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "PlagueFlask", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow)
-                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "SteelFlask", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow)
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "Americano", Item.buyPrice(gold: 15), ModConditions.DownedOverwatcher, ModConditions.DownedMaterealizer, ModConditions.DownedLifebringer)
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "Cappuccino", Item.buyPrice(gold: 15), ModConditions.DownedOverwatcher, ModConditions.DownedMaterealizer, ModConditions.DownedLifebringer)
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "Latte", Item.buyPrice(gold: 15), ModConditions.DownedOverwatcher, ModConditions.DownedMaterealizer, ModConditions.DownedLifebringer)
@@ -797,35 +922,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "WhimInABottle", Item.buyPrice(gold: 15), ModConditions.DownedOverwatcher, ModConditions.DownedMaterealizer, ModConditions.DownedLifebringer)
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "BushOfLife", Item.buyPrice(gold: 15), ModConditions.DownedLifebringer)
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "LifeLantern", Item.buyPrice(gold: 15), Condition.DownedPlantera)
-                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "UltraHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow)
-                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "UltraManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedWallOfShadow)
             //Martains Order
                 //.AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "Endopill", Item.buyPrice(silver: 75))
                 //.AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "Exopill", Item.buyPrice(silver: 75))
                 //.AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HerbInfusion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "Bisque", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "EnergyDrink", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "FastFood", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "FreshSalad", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "GlowingSalad", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HerbTea", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "MashedPotatoes", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "Noodles", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "Smoothie", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "WaterBottle", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "NaturePotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HyperHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedVoidDigger)
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HyperManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedVoidDigger)
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "LesserHurtPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "LesserMoilPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HurtPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "MoilPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "GreaterHurtPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "GreaterMoilPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "SuperHurtPotion", Item.buyPrice(silver: 75), Condition.DownedCultist)
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "SuperMoilPotion", Item.buyPrice(silver: 75), Condition.DownedCultist)
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HyperHurtPotion", Item.buyPrice(silver: 75), ModConditions.DownedVoidDigger)
-                .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "HyperMoilPotion", Item.buyPrice(silver: 75), ModConditions.DownedVoidDigger)
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "SporeFarm", Item.buyPrice(gold: 15), Condition.DownedEowOrBoc)
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "FirstAidTreatments", Item.buyPrice(gold: 15), Condition.DownedMechBossAny)
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "FishOfSpirit", Item.buyPrice(gold: 15), ModConditions.DownedHauntedRainforest)
@@ -833,80 +933,40 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "FishOfPurity", Item.buyPrice(gold: 15), ModConditions.DownedHauntedRainforest, ModConditions.DownedTriplets)
                 .AddModItemToShop(CrossModSupport.MartinsOrder.Mod, "ShimmerFish", Item.buyPrice(gold: 15), ModConditions.DownedHauntedRainforest)
             //Redemption
-                .AddModItemToShop(CrossModSupport.Redemption.Mod, "EvilJelly", Item.buyPrice(silver: 75), ModConditions.DownedKeeper)
-                .AddModItemToShop(CrossModSupport.Redemption.Mod, "BileFlask", Item.buyPrice(silver: 75), Condition.Hardmode, ModConditions.HasBeenToWasteland)
-                .AddModItemToShop(CrossModSupport.Redemption.Mod, "NitroglycerineFlask", Item.buyPrice(silver: 75), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.Redemption.Mod, "EnergyStation", Item.buyPrice(gold: 15), Condition.DownedMechBossAll, ModConditions.HasBeenToLab)
-                .AddModItemToShop(CrossModSupport.Redemption.Mod, "RevivalPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.Redemption.Mod, "CrystalSerum", Item.buyPrice(silver: 75), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.Redemption.Mod, "RadiationPill", Item.buyPrice(silver: 75), Condition.DownedMechBossAll)
                 .AddModItemToShop(CrossModSupport.Redemption.Mod, "MedicKit", Item.buyPrice(silver: 75), ModConditions.DownedPatientZero)
                 .AddModItemToShop(CrossModSupport.Redemption.Mod, "GalaxyHeart", Item.buyPrice(silver: 75), ModConditions.DownedNebuleus)
             //SOTS
-                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "AlmondMilk", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "AvocadoSoup", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "Chocolate", Item.buyPrice(silver: 75), Condition.DownedPirates)
-                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "CoconutMilk", Item.buyPrice(silver: 75), ModConditions.HasBeenToOcean)
-                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "CookedMushroom", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "CursedCaviar", Item.buyPrice(silver: 75), Condition.DownedEowOrBoc, ModConditions.HasBeenToPyramid)
-                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "DigitalCornSyrup", Item.buyPrice(silver: 75), ModConditions.HasBeenToPlanetarium)
-                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "FoulConcoction", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "StrawberryIcecream", Item.buyPrice(silver: 75), ModConditions.HasBeenToSnow)
                 .AddModItemToShop(CrossModSupport.SecretsOfTheShadows.Mod, "DigitalDisplay", Item.buyPrice(gold: 15), ModConditions.HasBeenToPlanetarium)
             //Shadows of Abaddon
-                .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "MegaHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedAraghur)
-                .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "MegaManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedAraghur)
-                .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "AsthraltiteHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedErazor)
-                .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "AsthraltiteManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedErazor)
-                .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "AhristaHealingPotion", Item.buyPrice(silver: 75), ModConditions.DownedErazor)
-                .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "KrysteaManaPotion", Item.buyPrice(silver: 75), ModConditions.DownedErazor)
                 .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "FruitLantern", Item.buyPrice(gold: 15), Condition.DownedPlantera)
                 .AddModItemToShop(CrossModSupport.ShadowsOfAbaddon.Mod, "ManaFruit", Item.buyPrice(gold: 15), Condition.DownedPlantera)
-            //Spirit
-                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "Candy", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "ChocolateBar", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "HealthCandy", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "Lollipop", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "ManaCandy", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "MysteryCandy", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "Taffy", Item.buyPrice(silver: 75))
+            //Spirit Classic
                 .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "CoilEnergizerItem", Item.buyPrice(gold: 15), Condition.DownedGoblinArmy)
                 .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "SunPot", Item.buyPrice(gold: 15))
                 .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "TheCouch", Item.buyPrice(gold: 15), Condition.DownedSkeletron)
-                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "MoonJelly", Item.buyPrice(silver: 75), ModConditions.DownedJellyDeluge)
-                .AddModItemToShop(CrossModSupport.SpiritClassic.Mod, "MoonJellyDonut", Item.buyPrice(silver: 75), ModConditions.DownedJellyDeluge, ModConditions.DownedMysticMoon)
-            //Starlight River
-                .AddModItemToShop(CrossModSupport.StarlightRiver.Mod, "LesserBarrierPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.StarlightRiver.Mod, "RegularBarrierPotion", Item.buyPrice(silver: 75), ModConditions.DownedGlassweaver, ModConditions.HasBeenToVitricDesert)
-                .AddModItemToShop(CrossModSupport.StarlightRiver.Mod, "GreaterBarrierPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
             //Thorium
-                .AddModItemToShop(CrossModSupport.Thorium.Mod, "DeepFreezeCoatingItem", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToSnow)
-                .AddModItemToShop(CrossModSupport.Thorium.Mod, "ExplosiveCoatingItem", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToUnderworld)
-                .AddModItemToShop(CrossModSupport.Thorium.Mod, "GorgonCoatingItem", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToCavernsOrUnderground)
-                .AddModItemToShop(CrossModSupport.Thorium.Mod, "SporeCoatingItem", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToMushroom)
-                .AddModItemToShop(CrossModSupport.Thorium.Mod, "ToxicCoatingItem", Item.buyPrice(silver: 75), Condition.DownedQueenBee, ModConditions.HasBeenToJungle)
                 .AddModItemToShop(CrossModSupport.Thorium.Mod, "Altar", Item.buyPrice(gold: 15), ModConditions.DownedBuriedChampion)
                 .AddModItemToShop(CrossModSupport.Thorium.Mod, "ArenaMastersBrazier", Item.buyPrice(gold: 15), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.Thorium.Mod, "ConductorsStand", Item.buyPrice(gold: 15), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.Thorium.Mod, "NinjaRack", Item.buyPrice(gold: 15), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.Thorium.Mod, "TrueArenaMastersBrazier", Item.buyPrice(gold: 15), Condition.Hardmode)
                 .AddModItemToShop(CrossModSupport.Thorium.Mod, "Mistletoe", Item.buyPrice(gold: 15))
-                .AddModItemToShop(CrossModSupport.Thorium.Mod, "Jelly", Item.buyPrice(silver: 75), Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
-                .AddModItemToShop(CrossModSupport.Thorium.Mod, "LifeWater", Item.buyPrice(silver: 75), Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.Thorium.Mod, "MidnightOil", Item.buyPrice(silver: 75), Condition.DownedSkeletron, ModConditions.HasBeenToDungeon)
-                .AddModItemToShop(CrossModSupport.Thorium.Mod, "SpringWater", Item.buyPrice(silver: 75), ModConditions.HasBeenToAquaticDepths)
-                .AddModItemToShop(CrossModSupport.Thorium.Mod, "WaterChestnut", Item.buyPrice(silver: 75), ModConditions.HasBeenToAquaticDepths)
-            //Vitality
-                .AddModItemToShop(CrossModSupport.Vitality.Mod, "LifeJuice", Item.buyPrice(silver: 75), Condition.DownedMechBossAll)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "InspirationFragment", Item.buyPrice(gold: 15))
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "InspirationShard", Item.buyPrice(gold: 15), Condition.Hardmode)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "InspirationCrystalNew", Item.buyPrice(gold: 15), Condition.DownedPlantera, ModConditions.HasBeenToTemple)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "InspirationGem", Item.buyPrice(gold: 15), ModConditions.HasBeenToAether)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "CrystalWave", Item.buyPrice(gold: 15), Condition.Hardmode, ModConditions.HasBeenToAquaticDepths)
+                .AddModItemToShop(CrossModSupport.Thorium.Mod, "AstralWave", Item.buyPrice(gold: 15), Condition.Hardmode, ModConditions.HasBeenToAquaticDepths, ModConditions.HasBeenToAether)
             //Zylon
-                .AddModItemToShop(CrossModSupport.Zylon.Mod, "LesserRestorationPotion", Item.buyPrice(silver: 75))
-                .AddModItemToShop(CrossModSupport.Zylon.Mod, "GreaterRestorationPotion", Item.buyPrice(silver: 75), Condition.Hardmode)
-                .AddModItemToShop(CrossModSupport.Zylon.Mod, "SuperRestorationPotion", Item.buyPrice(silver: 75), ModConditions.DownedLunarEvent)
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "Tent", Item.buyPrice(silver: 75))
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "Cabin", Item.buyPrice(silver: 75));
             modFlasksShop.Register();
+            #endregion
 
-            var modMaterialsShop = new NPCShop(Type, "Modded Materials")
+            #region ModdedMaterialShop
+            var modMaterialsShop = new NPCShop(Type, "ModdedMaterialShop")
             //AFKPets
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "Bakamite", Item.buyPrice(silver: 25), Condition.DownedIceQueen)
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "Bitcoin", Item.buyPrice(silver: 25), Condition.DownedMoonLord)
@@ -1375,7 +1435,9 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "EssenceofDeath", Item.buyPrice(silver: 25), ModConditions.DownedWorldsEndWhale)
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "FluorescentFibre", Item.buyPrice(silver: 25), Condition.DownedGolem, ModConditions.HasBeenToHomewardAbyss)
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "JungleDewdrop", Item.buyPrice(silver: 25), Condition.DownedPlantera)
+                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "KnifeBag", Item.buyPrice(silver: 25))
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "NetherStar", Item.buyPrice(silver: 25), Condition.Hardmode, ModConditions.HasBeenToUnderworld)
+                .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "NuclearPotential", Item.buyPrice(silver: 25), ModConditions.DownedWallOfShadow)
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "SolarFlareScoria", Item.buyPrice(silver: 25), ModConditions.DownedSunSlimeGod)
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "SoulofBlight", Item.buyPrice(silver: 25), ModConditions.DownedMotherbrain)
                 .AddModItemToShop(CrossModSupport.HomewardJourney.Mod, "SpiralTissue", Item.buyPrice(silver: 25), ModConditions.DownedWallOfShadow)
@@ -1504,8 +1566,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Metroid.Mod, "SerrisCoreX", Item.buyPrice(silver: 25), ModConditions.DownedSerris)
                 .AddModItemToShop(CrossModSupport.Metroid.Mod, "UnknownPlasmaBeam", Item.buyPrice(silver: 25), ModConditions.DownedKraid);
             modMaterialsShop.Register();
+            #endregion
 
-            var modMaterialsShop2 = new NPCShop(Type, "Modded Materials 2")
+            #region ModdedMaterialShop2
+            var modMaterialsShop2 = new NPCShop(Type, "ModdedMaterialShop2")
             //Polarities
                 .AddModItemToShop(CrossModSupport.Polarities.Mod, "AlkalineFluid", Item.buyPrice(silver: 25))
                 .AddModItemToShop(CrossModSupport.Polarities.Mod, "CongealedBrine", Item.buyPrice(silver: 25), Condition.Hardmode)
@@ -1886,8 +1950,28 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "WindEssence", Item.buyPrice(silver: 25))
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "WolfPelt", Item.buyPrice(silver: 25), Condition.Hardmode);
             modMaterialsShop2.Register();
+            #endregion
 
-            var modBossBagShop = new NPCShop(Type, "Modded Treasure Bags")
+            #region ModdedMobilityAccessoryShop
+            var ModdedMobilityAccessoryShop = new NPCShop(Type, "ModdedMobilityAccessoryShop")
+                .AddModItemToShop(QoLCompendium.Instance, "WIP", 0);
+            ModdedMobilityAccessoryShop.Register();
+            #endregion
+
+            #region ModdedCombatAccessoryShop
+            var ModdedCombatAccessoryShop = new NPCShop(Type, "ModdedCombatAccessoryShop")
+                .AddModItemToShop(QoLCompendium.Instance, "WIP", 0);
+            ModdedCombatAccessoryShop.Register();
+            #endregion
+
+            #region ModdedToolsAndInfoShop
+            var ModdedToolsAndInfoShop = new NPCShop(Type, "ModdedToolsAndInfoShop")
+                .AddModItemToShop(QoLCompendium.Instance, "WIP", 0);
+            ModdedToolsAndInfoShop.Register();
+            #endregion
+
+            #region ModdedTreasureBagShop
+            var modBossBagShop = new NPCShop(Type, "ModdedTreasureBagShop")
             //AFKPets
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "LeatherBag", Item.buyPrice(gold: 25), ModConditions.DownedSlayerOfEvil, ModConditions.expertOrMaster)
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "SATLA001TreasureBag", Item.buyPrice(gold: 25), ModConditions.DownedSATLA, ModConditions.expertOrMaster)
@@ -1955,6 +2039,9 @@ namespace QoLCompendium.Content.NPCs
             //Clamity
                 .AddModItemToShop(CrossModSupport.Clamity.Mod, "PyrogenBag", Item.buyPrice(gold: 25), ModConditions.DownedPyrogen, ModConditions.expertOrMaster)
                 .AddModItemToShop(CrossModSupport.Clamity.Mod, "WoBTreasureBag", Item.buyPrice(gold: 25), ModConditions.DownedWallOfBronze, ModConditions.expertOrMaster)
+            //Wrath of the Gods
+                .AddModItemToShop(CrossModSupport.WrathOfTheGods.Mod, "AvatarTreasureBag", Item.buyPrice(gold: 25), ModConditions.DownedAvatarOfEmptiness, ModConditions.expertOrMaster)
+                .AddModItemToShop(CrossModSupport.WrathOfTheGods.Mod, "NamelessDeityTreasureBag", Item.buyPrice(gold: 25), ModConditions.DownedNamelessDeityOfLight, ModConditions.expertOrMaster)
             //Consolaria
                 .AddModItemToShop(CrossModSupport.Consolaria.Mod, "LepusBag", Item.buyPrice(gold: 25), ModConditions.DownedLepus, ModConditions.expertOrMaster)
                 .AddModItemToShop(CrossModSupport.Consolaria.Mod, "TurkorBag", Item.buyPrice(gold: 25), ModConditions.DownedTurkor, ModConditions.expertOrMaster)
@@ -2256,8 +2343,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "JellyBag", Item.buyPrice(gold: 25), ModConditions.DownedEldritchJellyfish, ModConditions.expertOrMaster)
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "SaburBag", Item.buyPrice(gold: 25), ModConditions.DownedSaburRex, ModConditions.expertOrMaster);
             modBossBagShop.Register();
+            #endregion
 
-            var modCratesShop = new NPCShop(Type, "Modded Crates & Grab Bags")
+            #region ModdedCratesAndGrabBagsShop
+            var modCratesShop = new NPCShop(Type, "ModdedCratesAndGrabBagsShop")
             //Calamity
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "StarterBag", Item.buyPrice(gold: 5))
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "MonolithCrate", Item.buyPrice(gold: 5), ModConditions.HasBeenToAstral)
@@ -2346,8 +2435,10 @@ namespace QoLCompendium.Content.NPCs
             //Zylon
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "BagofFruits", Item.buyPrice(gold: 5), ModConditions.DownedDirtball);
             modCratesShop.Register();
+            #endregion
 
-            var modOreShop = new NPCShop(Type, "Modded Ores & Bars")
+            #region ModdedOresAndBarsShop
+            var modOreShop = new NPCShop(Type, "ModdedOresAndBarsShop")
             //AFKPets
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "NetheriteOre", Item.buyPrice(silver: 25), ModConditions.DownedLavalGolem)
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "NetheriteBar", Item.buyPrice(silver: 50), ModConditions.DownedLavalGolem)
@@ -2751,8 +2842,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "ZincBar", Item.buyPrice(silver: 50))
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "Jade", Item.buyPrice(silver: 25));
             modOreShop.Register();
+            #endregion
 
-            var modNaturalBlocksShop = new NPCShop(Type, "Modded Natural Blocks")
+            #region ModdedNaturalBlockShop
+            var modNaturalBlocksShop = new NPCShop(Type, "ModdedNaturalBlockShop")
             //Arbour
                 .AddModItemToShop(CrossModSupport.Arbour.Mod, "BirchWoodBlock", Item.buyPrice(copper: 10))
             //Calamity
@@ -3167,8 +3260,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Verdant.Mod, "VerdantWoodBlock", Item.buyPrice(copper: 10))
                 .AddModItemToShop(CrossModSupport.Verdant.Mod, "LivingLushWoodWand", Item.buyPrice(gold: 1), ModConditions.HasBeenToVerdant);
             modNaturalBlocksShop.Register();
+            #endregion
 
-            var modBuildingBlocksShop = new NPCShop(Type, "Modded Building Blocks")
+            #region ModdedBuildingBlockShop
+            var modBuildingBlocksShop = new NPCShop(Type, "ModdedBuildingBlockShop")
             //Calamity
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "AerialiteBrick", Item.buyPrice(copper: 10), ModConditions.DownedPerforatorsOrHiveMind)
                 .AddModItemToShop(CrossModSupport.Calamity.Mod, "AshenAccentSlab", Item.buyPrice(copper: 10), ModConditions.DownedBrimstoneElemental)
@@ -3652,8 +3747,10 @@ namespace QoLCompendium.Content.NPCs
                 .AddModItemToShop(CrossModSupport.Vitality.Mod, "BronzeBrick", Item.buyPrice(copper: 10))
                 .AddModItemToShop(CrossModSupport.Vitality.Mod, "GeraniumBrick", Item.buyPrice(copper: 10), Condition.DownedSkeletron);
             modBuildingBlocksShop.Register();
+            #endregion
 
-            var modPlantShop = new NPCShop(Type, "Modded Herbs & Plants")
+            #region ModdedHerbsAndPlantsShop
+            var modPlantShop = new NPCShop(Type, "ModdedHerbsAndPlantsShop")
             //Arbour
                 .AddModItemToShop(CrossModSupport.Arbour.Mod, "ArborGrassSeeds", Item.buyPrice(copper: 10))
                 .AddModItemToShop(CrossModSupport.Arbour.Mod, "MicrobirchAcorn", Item.buyPrice(copper: 10))
@@ -3767,8 +3864,10 @@ namespace QoLCompendium.Content.NPCs
             //Wayfair
                 .AddModItemToShop(CrossModSupport.WAYFAIRContentPack.Mod, "Dirtroot", Item.buyPrice(copper: 10));
             modPlantShop.Register();
+            #endregion
 
-            var modFishShop = new NPCShop(Type, "Modded Fish & Fishing Gear")
+            #region ModdedFishShop
+            var modFishShop = new NPCShop(Type, "ModdedFishShop")
             //AFKPets
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "FishermansPride", Item.buyPrice(gold: 2))
                 .AddModItemToShop(CrossModSupport.AFKPets.Mod, "PortableSonar", Item.buyPrice(gold: 2), Condition.DownedSkeletron)
@@ -3881,6 +3980,25 @@ namespace QoLCompendium.Content.NPCs
             //Zylon
                 .AddModItemToShop(CrossModSupport.Zylon.Mod, "PaintedGlassTetra", Item.buyPrice(silver: 10));
             modFishShop.Register();
+            #endregion
+
+            #region ModdedCritterShop
+            var ModdedCritterShop = new NPCShop(Type, "ModdedCritterShop")
+                .AddModItemToShop(QoLCompendium.Instance, "WIP", 0);
+            ModdedCritterShop.Register();
+            #endregion
+
+            #region ModdedMountsAndHooksShop
+            var ModdedMountsAndHooksShop = new NPCShop(Type, "ModdedMountsAndHooksShop")
+                .AddModItemToShop(QoLCompendium.Instance, "WIP", 0);
+            ModdedMountsAndHooksShop.Register();
+            #endregion
+
+            #region ModdedAmmoShop
+            var ModdedAmmoShop = new NPCShop(Type, "ModdedAmmoShop")
+                .AddModItemToShop(QoLCompendium.Instance, "WIP", 0);
+            ModdedAmmoShop.Register();
+            #endregion
         }
     }
 }

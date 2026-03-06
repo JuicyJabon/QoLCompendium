@@ -504,9 +504,12 @@ DownedRegaroth: After defeating Regaroth
 DownedScourgeFighter: After defeating the Scourge Fighter
 DownedInfernace: After defeating Infernace
 DownedWasteland: After defeating Wasteland
-downedRiftDenizen: Mods.QoLCompendium.ModConditions.downedRiftDenizen
-downedSelfsimilarSentinel: Mods.QoLCompendium.ModConditions.downedSelfsimilarSentinel
-downedEclipxie: Mods.QoLCompendium.ModConditions.downedEclipxie
-downedHemorrphage: Mods.QoLCompendium.ModConditions.downedHemorrphage
-downedPolarities: Mods.QoLCompendium.ModConditions.downedPolarities
-HasBeenToSavanna: Mods.QoLCompendium.ModConditions.HasBeenToSavanna
+downedRiftDenizen: After defeating the Rift Denizen
+downedSelfsimilarSentinel: After defeating the Selfsimilar Sentinel
+downedEclipxie: After defeating Eclipxie
+downedHemorrphage: After defeating Hemorrphage
+downedPolarities: After defeating the Polarities
+HasBeenToSavanna: Visited the Savanna
+RevengeanceMode: In Revengeance mode
+DeathMode: In Death mode
+RevengeanceOrDeathMode: In Revengeance or Death mode

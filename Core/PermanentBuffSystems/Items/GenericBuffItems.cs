@@ -20,8 +20,9 @@
 
                         //ITEM
                         NewBuffItem newBuffItem = new(ItemLoader.GetItem(i).Item.type, newEffect.buffID, effect, 30, "Permanent" + BuffLoader.GetBuff(newEffect.buffID).Name, Language.GetText("Mods.QoLCompendium.Items.PermanentBuffs.DefaultPermanent") + BuffLoader.GetBuff(newEffect.buffID).DisplayName.Value);
-                        BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName, newBuffItem.textureName);
+                        BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                         QoLCompendium.Instance.AddContent(item);
+                        Common.AllBuffItems.Add(item.Type);
                     }
                 }
             }

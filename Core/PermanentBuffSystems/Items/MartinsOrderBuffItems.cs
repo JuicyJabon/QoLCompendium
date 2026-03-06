@@ -24,6 +24,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             new NewBuffEffect(ModContent.BuffType<Gourmet>()),
             new NewBuffEffect(ModContent.BuffType<HasteBuff>()),
             new NewBuffEffect(ModContent.BuffType<Healing>()),
+            new NewBuffEffect(ModContent.BuffType<PainterBuff>()),
             new NewBuffEffect(ModContent.BuffType<RockskinBuff>()),
             new NewBuffEffect(ModContent.BuffType<Shielding>()),
             new NewBuffEffect(ModContent.BuffType<ShooterBuff>()),
@@ -33,7 +34,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             new NewBuffEffect(ModContent.BuffType<SweepBuff>()),
             new NewBuffEffect(ModContent.BuffType<ThrowerBuff>()),
             new NewBuffEffect(ModContent.BuffType<WhipperBuff>()),
-            new NewBuffEffect(ModContent.BuffType<ZincPillBuff>()),
+            //new NewBuffEffect(ModContent.BuffType<ZincPillBuff>()),
             //stations
             new NewBuffEffect(ModContent.BuffType<ReschBuff>(), (int)Common.EffectTypes.Station),
             new NewBuffEffect(ModContent.BuffType<SporeSave>(), (int)Common.EffectTypes.Station),
@@ -65,6 +66,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 new NewBuffItem(ModContent.ItemType<FastFood>(), ModContent.BuffType<Gourmet>(), Common.AllEffects[ModContent.BuffType<Gourmet>()], 30, "PermanentGourmetFlavor", "Permanent Gourmet Flavor"),
                 new NewBuffItem(ModContent.ItemType<HastePotion>(), ModContent.BuffType<HasteBuff>(), Common.AllEffects[ModContent.BuffType<HasteBuff>()], 30, "PermanentHaste", "Permanent Haste"),
                 new NewBuffItem(ModContent.ItemType<RedBerryJam>(), ModContent.BuffType<Healing>(), Common.AllEffects[ModContent.BuffType<Healing>()], 30, "PermanentHealing", "Permanent Healing"),
+                new NewBuffItem(ModContent.ItemType<PainterPotion>(), ModContent.BuffType<PainterBuff>(), Common.AllEffects[ModContent.BuffType<PainterBuff>()], 30, "PermanentPainter", "Permanent Painter"),
                 new NewBuffItem(ModContent.ItemType<RockskinPotion>(), ModContent.BuffType<RockskinBuff>(), Common.AllEffects[ModContent.BuffType<RockskinBuff>()], 30, "PermanentRockskin", "Permanent Rockskin"),
                 new NewBuffItem(ModContent.ItemType<ShieldingPotion>(), ModContent.BuffType<Shielding>(), Common.AllEffects[ModContent.BuffType<Shielding>()], 30, "PermanentShielding", "Permanent Shielding"),
                 new NewBuffItem(ModContent.ItemType<ShooterPotion>(), ModContent.BuffType<ShooterBuff>(), Common.AllEffects[ModContent.BuffType<ShooterBuff>()], 30, "PermanentShooter", "Permanent Shooter"),
@@ -74,7 +76,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 new NewBuffItem(ModContent.ItemType<SweepPotion>(), ModContent.BuffType<SweepBuff>(), Common.AllEffects[ModContent.BuffType<SweepBuff>()], 30, "PermanentSweeper", "Permanent Sweeper"),
                 new NewBuffItem(ModContent.ItemType<ThrowerPotion>(), ModContent.BuffType<ThrowerBuff>(), Common.AllEffects[ModContent.BuffType<ThrowerBuff>()], 30, "PermanentThrower", "Permanent Thrower"),
                 new NewBuffItem(ModContent.ItemType<WhipperPotion>(), ModContent.BuffType<WhipperBuff>(), Common.AllEffects[ModContent.BuffType<WhipperBuff>()], 30, "PermanentWhipper", "Permanent Whipper"),
-                new NewBuffItem(ModContent.ItemType<ZincPill>(), ModContent.BuffType<ZincPillBuff>(), Common.AllEffects[ModContent.BuffType<ZincPillBuff>()], 30, "PermanentZincPill", "Permanent Zinc Pill"),
+                //new NewBuffItem(ModContent.ItemType<ZincPills>(), ModContent.BuffType<ZincPillBuff>(), Common.AllEffects[ModContent.BuffType<ZincPillBuff>()], 30, "PermanentZincPill", "Permanent Zinc Pill"),
                 //stations
                 new NewBuffItem(ModContent.ItemType<ArcheologyTable>(), ModContent.BuffType<ReschBuff>(), Common.AllEffects[ModContent.BuffType<ReschBuff>()], 3, "PermanentArcheology", "Permanent Archeology"),
                 new NewBuffItem(ModContent.ItemType<SporeFarm>(), ModContent.BuffType<SporeSave>(), Common.AllEffects[ModContent.BuffType<SporeSave>()], 3, "PermanentSporeFarm", "Permanent Spore Farm"),
@@ -82,8 +84,9 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
             foreach (var newBuffItem in BuffItems)
             {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName, newBuffItem.textureName);
+                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
+                Common.AllBuffItems.Add(item.Type);
             }
         }
 
@@ -95,6 +98,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<EmpowermentBuff>()], ModContent.BuffType<EmpowermentBuff>() },
                 { Common.AllEffects[ModContent.BuffType<SummonSpeedBuff>()], ModContent.BuffType<SummonSpeedBuff>() },
                 { Common.AllEffects[ModContent.BuffType<HasteBuff>()], ModContent.BuffType<HasteBuff>() },
+                { Common.AllEffects[ModContent.BuffType<PainterBuff>()], ModContent.BuffType<PainterBuff>() },
                 { Common.AllEffects[ModContent.BuffType<ShooterBuff>()], ModContent.BuffType<ShooterBuff>() },
                 { Common.AllEffects[ModContent.BuffType<CasterBuff>()], ModContent.BuffType<CasterBuff>() },
                 { Common.AllEffects[ModContent.BuffType<Starreach>()], ModContent.BuffType<Starreach>() },
@@ -113,7 +117,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<RockskinBuff>()], ModContent.BuffType<RockskinBuff>() },
                 { Common.AllEffects[ModContent.BuffType<Shielding>()], ModContent.BuffType<Shielding>() },
                 { Common.AllEffects[ModContent.BuffType<SoulBuff>()], ModContent.BuffType<SoulBuff>() },
-                { Common.AllEffects[ModContent.BuffType<ZincPillBuff>()], ModContent.BuffType<ZincPillBuff>() }
+                //{ Common.AllEffects[ModContent.BuffType<ZincPillBuff>()], ModContent.BuffType<ZincPillBuff>() }
             };
 
             Dictionary<BuffEffect, int> PermanentMartinsOrderStations = new()
@@ -128,6 +132,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<EmpowermentBuff>()], ModContent.BuffType<EmpowermentBuff>() },
                 { Common.AllEffects[ModContent.BuffType<SummonSpeedBuff>()], ModContent.BuffType<SummonSpeedBuff>() },
                 { Common.AllEffects[ModContent.BuffType<HasteBuff>()], ModContent.BuffType<HasteBuff>() },
+                { Common.AllEffects[ModContent.BuffType<PainterBuff>()], ModContent.BuffType<PainterBuff>() },
                 { Common.AllEffects[ModContent.BuffType<ShooterBuff>()], ModContent.BuffType<ShooterBuff>() },
                 { Common.AllEffects[ModContent.BuffType<CasterBuff>()], ModContent.BuffType<CasterBuff>() },
                 { Common.AllEffects[ModContent.BuffType<Starreach>()], ModContent.BuffType<Starreach>() },
@@ -142,7 +147,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<RockskinBuff>()], ModContent.BuffType<RockskinBuff>() },
                 { Common.AllEffects[ModContent.BuffType<Shielding>()], ModContent.BuffType<Shielding>() },
                 { Common.AllEffects[ModContent.BuffType<SoulBuff>()], ModContent.BuffType<SoulBuff>() },
-                { Common.AllEffects[ModContent.BuffType<ZincPillBuff>()], ModContent.BuffType<ZincPillBuff>() },
+                //{ Common.AllEffects[ModContent.BuffType<ZincPillBuff>()], ModContent.BuffType<ZincPillBuff>() },
                 { Common.AllEffects[ModContent.BuffType<ReschBuff>()], ModContent.BuffType<ReschBuff>() },
                 { Common.AllEffects[ModContent.BuffType<SporeSave>()], ModContent.BuffType<SporeSave>() }
             };
@@ -158,6 +163,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
                 QoLCompendium.Instance.AddContent(item);
+                Common.AllCombinedBuffItems.Add(item.Type);
             }
         }
     }

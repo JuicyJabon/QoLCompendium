@@ -4,6 +4,14 @@ namespace QoLCompendium.Core.PermanentBuffSystems
 {
     public static class PermanentBuffLoader
     {
+        public static void PostSetupTasks()
+        {
+            for (int i = 0; i < Common.AllBuffItems.Count; i++)
+            {
+                ItemLoader.GetItem(Common.AllBuffItems.ElementAt(i)).Item.ReplaceBuffTexture();
+            }
+        }
+
         public static void LoadTasks()
         {
             VanillaBuffItems.LoadTasks();

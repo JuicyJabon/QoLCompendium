@@ -34,6 +34,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             new NewBuffEffect(ModContent.BuffType<EvergreenGinBuff>(), (int)Common.EffectTypes.Alcohol),
             new NewBuffEffect(ModContent.BuffType<FireballBuff>(), (int)Common.EffectTypes.Alcohol),
             new NewBuffEffect(ModContent.BuffType<GrapeBeerBuff>(), (int)Common.EffectTypes.Alcohol),
+            new NewBuffEffect(ModContent.BuffType<ManhattanBuff>(), (int)Common.EffectTypes.Alcohol),
             new NewBuffEffect(ModContent.BuffType<MargaritaBuff>(), (int)Common.EffectTypes.Alcohol),
             new NewBuffEffect(ModContent.BuffType<MoonshineBuff>(), (int)Common.EffectTypes.Alcohol),
             new NewBuffEffect(ModContent.BuffType<MoscowMuleBuff>(), (int)Common.EffectTypes.Alcohol),
@@ -116,6 +117,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 new NewBuffItem(ModContent.ItemType<EvergreenGin>(), ModContent.BuffType<EvergreenGinBuff>(), Common.AllEffects[ModContent.BuffType<EvergreenGinBuff>()], 30, "PermanentEvergreenGin", "Permanent Evergreen Gin"),
                 new NewBuffItem(ModContent.ItemType<Fireball>(), ModContent.BuffType<FireballBuff>(), Common.AllEffects[ModContent.BuffType<FireballBuff>()], 30, "PermanentFireball", "Permanent Fireball"),
                 new NewBuffItem(ModContent.ItemType<GrapeBeer>(), ModContent.BuffType<GrapeBeerBuff>(), Common.AllEffects[ModContent.BuffType<GrapeBeerBuff>()], 30, "PermanentGrapeBeer", "Permanent Grape Beer"),
+                new NewBuffItem(ModContent.ItemType<Manhattan>(), ModContent.BuffType<ManhattanBuff>(), Common.AllEffects[ModContent.BuffType<ManhattanBuff>()], 30, "PermanentManhattan", "Permanent Manhattan"),
                 new NewBuffItem(ModContent.ItemType<Margarita>(), ModContent.BuffType<MargaritaBuff>(), Common.AllEffects[ModContent.BuffType<MargaritaBuff>()], 30, "PermanentMargarita", "Permanent Margarita"),
                 new NewBuffItem(ModContent.ItemType<Moonshine>(), ModContent.BuffType<MoonshineBuff>(), Common.AllEffects[ModContent.BuffType<MoonshineBuff>()], 30, "PermanentMoonshine", "Permanent Moonshine"),
                 new NewBuffItem(ModContent.ItemType<MoscowMule>(), ModContent.BuffType<MoscowMuleBuff>(), Common.AllEffects[ModContent.BuffType<MoscowMuleBuff>()], 30, "PermanentMoscowMule", "Permanent Moscow Mule"),
@@ -168,8 +170,9 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
             foreach (var newBuffItem in BuffItems)
             {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName, newBuffItem.textureName);
+                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
+                Common.AllBuffItems.Add(item.Type);
             }
         }
 
@@ -184,6 +187,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<EvergreenGinBuff>()], ModContent.BuffType<EvergreenGinBuff>() },
                 { Common.AllEffects[ModContent.BuffType<FireballBuff>()], ModContent.BuffType<FireballBuff>() },
                 { Common.AllEffects[ModContent.BuffType<GrapeBeerBuff>()], ModContent.BuffType<GrapeBeerBuff>() },
+                { Common.AllEffects[ModContent.BuffType<ManhattanBuff>()], ModContent.BuffType<ManhattanBuff>() },
                 { Common.AllEffects[ModContent.BuffType<MargaritaBuff>()], ModContent.BuffType<MargaritaBuff>() },
                 { Common.AllEffects[ModContent.BuffType<MoonshineBuff>()], ModContent.BuffType<MoonshineBuff>() },
                 { Common.AllEffects[ModContent.BuffType<MoscowMuleBuff>()], ModContent.BuffType<MoscowMuleBuff>() },
@@ -214,9 +218,28 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<ShadowBuff>()], ModContent.BuffType<ShadowBuff>() }
             };
 
+            if (CrossModSupport.CalamityEntropy.Loaded)
+            {
+                PermanentCalamityDamage.Add(Common.AllEffects[CalamityEntropyBuffItems.SoyMilkID], CalamityEntropyBuffItems.SoyMilkID);
+            }
+
+            if (CrossModSupport.CalamityRekindled.Loaded)
+            {
+                PermanentCalamityDamage.Add(Common.AllEffects[CalamityRekindledBuffItems.BeetleJuiceID], CalamityRekindledBuffItems.BeetleJuiceID);
+                PermanentCalamityDamage.Add(Common.AllEffects[CalamityRekindledBuffItems.PenumbraID], CalamityRekindledBuffItems.PenumbraID);
+                PermanentCalamityDamage.Add(Common.AllEffects[CalamityRekindledBuffItems.ProfanedRageID], CalamityRekindledBuffItems.ProfanedRageID);
+                PermanentCalamityDamage.Add(Common.AllEffects[CalamityRekindledBuffItems.ProfanedWrathID], CalamityRekindledBuffItems.ProfanedWrathID);
+                PermanentCalamityDamage.Add(Common.AllEffects[CalamityRekindledBuffItems.ShatteringID], CalamityRekindledBuffItems.ShatteringID);
+            }
+
             if (CrossModSupport.Catalyst.Loaded)
             {
                 PermanentCalamityDamage.Add(Common.AllEffects[CatalystBuffItems.AstracolaID], CatalystBuffItems.AstracolaID);
+            }
+
+            if (CrossModSupport.Clamity.Loaded)
+            {
+                PermanentCalamityDamage.Add(Common.AllEffects[ClamityBuffItems.SupremeLuckID], ClamityBuffItems.SupremeLuckID);
             }
 
             Dictionary<BuffEffect, int> PermanentCalamityDefense = new()
@@ -225,6 +248,27 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<BloodfinBoost>()], ModContent.BuffType<BloodfinBoost>() },
                 { Common.AllEffects[ModContent.BuffType<PhotosynthesisBuff>()], ModContent.BuffType<PhotosynthesisBuff>() },
             };
+
+            if (CrossModSupport.CalamityEntropy.Loaded)
+            {
+                PermanentCalamityDefense.Add(Common.AllEffects[CalamityEntropyBuffItems.YharimsStimulantsID], CalamityEntropyBuffItems.YharimsStimulantsID);
+            }
+
+            if (CrossModSupport.CalamityRekindled.Loaded)
+            {
+                PermanentCalamityDefense.Add(Common.AllEffects[CalamityRekindledBuffItems.CadenceID], CalamityRekindledBuffItems.CadenceID);
+                PermanentCalamityDefense.Add(Common.AllEffects[CalamityRekindledBuffItems.DraconicElixirID], CalamityRekindledBuffItems.DraconicElixirID);
+                PermanentCalamityDefense.Add(Common.AllEffects[CalamityRekindledBuffItems.RevivifyID], CalamityRekindledBuffItems.RevivifyID);
+                PermanentCalamityDefense.Add(Common.AllEffects[CalamityRekindledBuffItems.TitanScaleID], CalamityRekindledBuffItems.TitanScaleID);
+                PermanentCalamityDefense.Add(Common.AllEffects[CalamityRekindledBuffItems.TriumphID], CalamityRekindledBuffItems.TriumphID);
+                PermanentCalamityDefense.Add(Common.AllEffects[CalamityRekindledBuffItems.YharimsStimulantsID], CalamityRekindledBuffItems.YharimsStimulantsID);
+            }
+
+            if (CrossModSupport.Clamity.Loaded)
+            {
+                PermanentCalamityDefense.Add(Common.AllEffects[ClamityBuffItems.TitanScaleID], ClamityBuffItems.TitanScaleID);
+                PermanentCalamityDefense.Add(Common.AllEffects[ClamityBuffItems.ExoBaguetteID], ClamityBuffItems.ExoBaguetteID);
+            }
 
             if (CrossModSupport.WrathOfTheGods.Loaded)
             {
@@ -259,6 +303,11 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<YellowCandleBuff>()], ModContent.BuffType<YellowCandleBuff>() }
             };
 
+            if (CrossModSupport.CalamityEntropy.Loaded)
+            {
+                PermanentCalamityArena.Add(Common.AllEffects[CalamityEntropyBuffItems.VoidCandleID], CalamityEntropyBuffItems.VoidCandleID);
+            }
+
             Dictionary<BuffEffect, int> PermanentCalamityFlasks = new()
             {
                 { Common.AllEffects[ModContent.BuffType<WeaponImbueBrimstone>()], ModContent.BuffType<WeaponImbueBrimstone>() },
@@ -280,6 +329,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 { Common.AllEffects[ModContent.BuffType<EvergreenGinBuff>()], ModContent.BuffType<EvergreenGinBuff>() },
                 { Common.AllEffects[ModContent.BuffType<FireballBuff>()], ModContent.BuffType<FireballBuff>() },
                 { Common.AllEffects[ModContent.BuffType<GrapeBeerBuff>()], ModContent.BuffType<GrapeBeerBuff>() },
+                { Common.AllEffects[ModContent.BuffType<ManhattanBuff>()], ModContent.BuffType<ManhattanBuff>() },
                 { Common.AllEffects[ModContent.BuffType<MargaritaBuff>()], ModContent.BuffType<MargaritaBuff>() },
                 { Common.AllEffects[ModContent.BuffType<MoonshineBuff>()], ModContent.BuffType<MoonshineBuff>() },
                 { Common.AllEffects[ModContent.BuffType<MoscowMuleBuff>()], ModContent.BuffType<MoscowMuleBuff>() },
@@ -355,6 +405,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 PermanentCalamity.Add(Common.AllEffects[ClamityBuffItems.SupremeLuckID], ClamityBuffItems.SupremeLuckID);
                 PermanentCalamity.Add(Common.AllEffects[ClamityBuffItems.TitanScaleID], ClamityBuffItems.TitanScaleID);
+                PermanentCalamity.Add(Common.AllEffects[ClamityBuffItems.ExoBaguetteID], ClamityBuffItems.ExoBaguetteID);
             }
 
             if (CrossModSupport.DraedonExpansion.Loaded)
@@ -383,6 +434,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
                 QoLCompendium.Instance.AddContent(item);
+                Common.AllCombinedBuffItems.Add(item.Type);
             }
         }
     }
@@ -425,10 +477,12 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
             foreach (var newBuffItem in BuffItems)
             {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName, newBuffItem.textureName);
+                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
+                Common.AllBuffItems.Add(item.Type);
             }
 
+            /*
             Dictionary<BuffEffect, int> PermanentCalamityEntropy = new()
             {
                 { Common.AllEffects[ModContent.BuffType<SoyMilkBuff>()], ModContent.BuffType<SoyMilkBuff>() },
@@ -445,6 +499,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
                 QoLCompendium.Instance.AddContent(item);
             }
+            */
         }
     }
 
@@ -518,10 +573,12 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
             foreach (var newBuffItem in BuffItems)
             {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName, newBuffItem.textureName);
+                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
+                Common.AllBuffItems.Add(item.Type);
             }
 
+            /*
             Dictionary<BuffEffect, int> PermanentCalamityRekindled = new()
             {
                 { Common.AllEffects[ModContent.BuffType<BeetleJuiceBuff>()], ModContent.BuffType<BeetleJuiceBuff>() },
@@ -546,6 +603,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
                 QoLCompendium.Instance.AddContent(item);
             }
+            */
         }
     }
 
@@ -579,8 +637,9 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
             foreach (var newBuffItem in BuffItems)
             {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName, newBuffItem.textureName);
+                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
+                Common.AllBuffItems.Add(item.Type);
             }
         }
     }
@@ -593,19 +652,19 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
         public static int SupremeLuckID = -1;
         public static int TitanScaleID = -1;
-        //public static int ExoBaguetteID = -1;
+        public static int ExoBaguetteID = -1;
 
         public static void LoadTasks()
         {
             SupremeLuckID = ModContent.BuffType<SupremeLucky>();
             TitanScaleID = ModContent.BuffType<TitanScalePotionBuff>();
-            //ExoBaguetteID = ModContent.BuffType<ExoBaguetteBuff>();
+            ExoBaguetteID = ModContent.BuffType<ExoBaguetteBuff>();
 
             ClamityEffects = [
                 //potions
                 new NewBuffEffect(ModContent.BuffType<SupremeLucky>()),
                 new NewBuffEffect(ModContent.BuffType<TitanScalePotionBuff>()),
-                //new NewBuffEffect(ModContent.BuffType<ExoBaguetteBuff>()),
+                new NewBuffEffect(ModContent.BuffType<ExoBaguetteBuff>()),
             ];
 
             foreach (var newEffect in ClamityEffects)
@@ -618,20 +677,22 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             NewBuffItem[] BuffItems = [
                 new NewBuffItem(ModContent.ItemType<SupremeLuckPotion>(), ModContent.BuffType<SupremeLucky>(), Common.AllEffects[ModContent.BuffType<SupremeLucky>()], 30, "PermanentSupremeLuck", "Permanent Supreme Luck"),
                 new NewBuffItem(ModContent.ItemType<Clamity.Content.Items.Potions.BuffPotions.TitanScalePotion>(), ModContent.BuffType<TitanScalePotionBuff>(), Common.AllEffects[ModContent.BuffType<TitanScalePotionBuff>()], 30, "PermanentTitanScale", "Permanent Titan Scale"),
-                //new NewBuffItem(ModContent.ItemType<ExoBaguette>(), ModContent.BuffType<ExoBaguetteBuff>(), Common.AllEffects[ModContent.BuffType<ExoBaguetteBuff>()], 30, "PermanentExoBaguette", "Permanent Exo Baguette")
+                new NewBuffItem(ModContent.ItemType<ExoBaguette>(), ModContent.BuffType<ExoBaguetteBuff>(), Common.AllEffects[ModContent.BuffType<ExoBaguetteBuff>()], 30, "PermanentExoBaguette", "Permanent Exo Baguette")
             ];
 
             foreach (var newBuffItem in BuffItems)
             {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName, newBuffItem.textureName);
+                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
+                Common.AllBuffItems.Add(item.Type);
             }
 
+            /*
             Dictionary<BuffEffect, int> PermanentClamity = new()
             {
                 { Common.AllEffects[ModContent.BuffType<SupremeLucky>()], ModContent.BuffType<SupremeLucky>() },
                 { Common.AllEffects[ModContent.BuffType<TitanScalePotionBuff>()], ModContent.BuffType<TitanScalePotionBuff>() },
-                //{ Common.AllEffects[ModContent.BuffType<ExoBaguetteBuff>()], ModContent.BuffType<ExoBaguetteBuff>() }
+                { Common.AllEffects[ModContent.BuffType<ExoBaguetteBuff>()], ModContent.BuffType<ExoBaguetteBuff>() }
             };
 
             NewCombinedBuffItem[] CombinedBuffItems = [
@@ -643,6 +704,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
                 QoLCompendium.Instance.AddContent(item);
             }
+            */
         }
     }
 
@@ -676,8 +738,9 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
             foreach (var newBuffItem in BuffItems)
             {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName, newBuffItem.textureName);
+                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
+                Common.AllBuffItems.Add(item.Type);
             }
         }
     }
@@ -712,8 +775,9 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
             foreach (var newBuffItem in BuffItems)
             {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName, newBuffItem.textureName);
+                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
+                Common.AllBuffItems.Add(item.Type);
             }
         }
     }

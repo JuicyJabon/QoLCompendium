@@ -1,20 +1,19 @@
 ﻿namespace QoLCompendium.Core.PermanentBuffSystems
 {
     [Autoload(false)]
-    class BuffItem(string name, int buffID, BuffEffect effect, int itemID, int ingredientCount, string displayName, string texturePath) : ModItem, ILocalizedModType
+    class BuffItem(string name, int buffID, BuffEffect effect, int itemID, int ingredientCount, string displayName) : ModItem, ILocalizedModType
     {
         private int buffID = buffID;
         private int itemID = itemID;
         private int ingredientCount = ingredientCount;
         public BuffEffect effect = effect;
         private string name = name;
-        private string displayName = displayName;
-        private string texturePath = texturePath;
+        private readonly string displayName = displayName;
 
         public int BuffType;
 
         protected override bool CloneNewInstances => true;
-        public override string Texture => texturePath;
+        public override string Texture => Common.BuffAsset(buffID);
         public override LocalizedText Tooltip => LocalizedText.Empty;
         public override string Name => name;
 

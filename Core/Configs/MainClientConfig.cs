@@ -22,6 +22,18 @@ namespace QoLCompendium.Core.Configs
         [ReloadRequired]
         public int CombatTextLimit { get; set; }
 
+        [DefaultValue(false)]
+        public bool ActiveBuffsHaveEnchantedEffects { get; set; }
+
+        [DefaultValue(false)]
+        public bool ActiveBannersHaveEnchantedEffects { get; set; }
+
+        [DefaultValue(false)]
+        public bool GoodPrefixesHaveEnchantedEffects { get; set; }
+
+        [DefaultValue(true)]
+        public bool CalamityEntropyArmorPrefixesHaveEnchantedEffects { get; set; }
+
         [DefaultValue(0)]
         [DrawTicks]
         public ConfigGlintID GlintColor { get; set; }

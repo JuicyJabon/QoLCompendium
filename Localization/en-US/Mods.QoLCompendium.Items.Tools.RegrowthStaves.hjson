@@ -28,6 +28,11 @@ StaffOfOvergrowth: {
 	Tooltip: ""
 }
 
+StaffOfInfecting: {
+	DisplayName: Staff of Infecting
+	Tooltip: ""
+}
+
 Omnistaff: {
 	DisplayName: Omnistaff
 	Tooltip: Right Click to cycle grass type

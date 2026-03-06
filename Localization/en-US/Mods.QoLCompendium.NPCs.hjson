@@ -3,6 +3,7 @@ SuperDummy.DisplayName: Super Dummy
 BMDealerNPC: {
 	DisplayName: Black Market Dealer
 	Census.SpawnCondition: No condition
+	Bestiary: He hails from a far away land to sell items that are difficult to get, but how did he even obtain them...
 
 	TownNPCMood: {
 		Content: This place is pretty alright.
@@ -41,11 +42,20 @@ BMDealerNPC: {
 		AmmoShop: Ammo
 		ShopChanger: Shop Changer
 	}
+
+	Names: {
+		Name0: Bon
+		Name1: Ned
+		Name2: Jay
+		Name3: Jack
+		Name4: Jabon
+	}
 }
 
 EtherealCollectorNPC: {
 	DisplayName: Ethereal Collector
 	Census.SpawnCondition: No condition
+	Bestiary: He arrived to sell his wares, but where did he come from?
 
 	TownNPCMood: {
 		Content: This place is pretty alright.
@@ -66,16 +76,31 @@ EtherealCollectorNPC: {
 	}
 
 	ShopName: {
-		"Modded Potions": Ethereal Collector: Modded Potions
-		"Modded Flasks, Stations & Foods": Ethereal Collector: Modded Flasks, Stations & Foods
-		"Modded Materials": Ethereal Collector: Modded Materials
-		"Modded Materials 2": Ethereal Collector: Modded Materials 2
-		"Modded Treasure Bags": Ethereal Collector: Modded Treasure Bags
-		"Modded Crates & Grab Bags": Ethereal Collector: Modded Crates & Grab Bags
-		"Modded Ores & Bars": Ethereal Collector: Modded Ores & Bars
-		"Modded Natural Blocks": Ethereal Collector: Modded Natural Blocks
-		"Modded Building Blocks": Ethereal Collector: Modded Building Blocks
-		"Modded Herbs & Plants": Ethereal Collector: Modded Herbs & Plants
-		"Modded Fish & Fishing Gear": Ethereal Collector: Modded Fish & Fishing Gear
+		ModdedPotionShop: Modded Potions & Foods
+		ModdedStationsAndUpgradesShop: Modded Stations & Upgrades
+		ModdedMaterialShop: Modded Crafting Materials (A-M)
+		ModdedMaterialShop2: Modded Crafting Materials (N-Z)
+		ModdedMobilityAccessoryShop: Modded Mobility Accessories
+		ModdedCombatAccessoryShop: Modded Combat Accessories
+		ModdedToolsAndInfoShop: Modded Tools & Info Gear
+		ModdedTreasureBagShop: Modded Treasure Bags
+		ModdedCratesAndGrabBagsShop: Modded Crates & Grab Bags
+		ModdedOresAndBarsShop: Modded Ores & Bars
+		ModdedNaturalBlockShop: Modded Natural Blocks
+		ModdedBuildingBlockShop: Modded Building Blocks
+		ModdedHerbsAndPlantsShop: Modded Herbs & Plants
+		ModdedFishShop: Modded Fish
+		ModdedCritterShop: Modded Critters
+		ModdedMountsAndHooksShop: Modded Mounts & Hooks
+		ModdedAmmoShop: Modded Ammo
+		ShopChanger: Shop Changer
+	}
+
+	Names: {
+		Name0: Spiri
+		Name1: Lumen
+		Name2: Dexter
+		Name3: Geist
+		Name4: Sullivan
 	}
 }

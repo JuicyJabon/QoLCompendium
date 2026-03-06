@@ -48,3 +48,5 @@ COMPLETED AMMOS:
 32. Auto Trash
  (DONE) 33. Right click items to open UI from inventory (Entity Manipulator, etc.)
 34. Fix NetSend & Recieve
+35. Obtaining tooltips
+36. Boss spawn blockers (Thorium)

@@ -26,6 +26,26 @@ DisableDashDoubleTap: {
 	Tooltip: Toggles if you can double tap dash
 }
 
+ActiveBuffsHaveEnchantedEffects: {
+	Label: "[i:1067] Active Buff Items Have Enchanted Effects"
+	Tooltip: Toggles if active buff items have an enchanted effect, like Minecraft
+}
+
+ActiveBannersHaveEnchantedEffects: {
+	Label: "[i:1067] Active Banners Have Enchanted Effects"
+	Tooltip: Toggles if active banners have an enchanted effect, like Minecraft
+}
+
+GoodPrefixesHaveEnchantedEffects: {
+	Label: "[i:1067] Good Prefixes Have Enchanted Effects"
+	Tooltip: Toggles if items with good prefixes have an enchanted effect, like Minecraft
+}
+
+CalamityEntropyArmorPrefixesHaveEnchantedEffects: {
+	Label: "[i:1067] Calamity Entropy Armor Prefixes Have Enchanted Effects"
+	Tooltip: Toggles if Calamity Entropy Armor Prefixes have an enchanted effect, like Minecraft
+}
+
 GlintColor: {
 	Tooltip: Changes the color of the glint effect on items
 	Label: "[i:1067] Glint Color"

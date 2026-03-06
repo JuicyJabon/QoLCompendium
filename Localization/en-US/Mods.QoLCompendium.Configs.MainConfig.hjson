@@ -124,16 +124,6 @@ EndlessBaitAmount: {
 	Label: "[i:161] Stack Requirement for Endless Fishing Bait"
 }
 
-ActiveBuffsHaveEnchantedEffects: {
-	Label: "[i:1067] Active Buff Items Have Enchanted Effects"
-	Tooltip: Toggles if active buff items have an enchanted effect, like Minecraft
-}
-
-ActiveBannersHaveEnchantedEffects: {
-	Label: "[i:1067] Active Banners Have Enchanted Effects"
-	Tooltip: Toggles if active banners have an enchanted effect, like Minecraft
-}
-
 IncreaseMaxStack: {
 	Label: "[i:2] Item Max Stack"
 	Tooltip:
@@ -171,6 +161,11 @@ StackableQuestItems: {
 NonConsumableKeys: {
 	Label: "[i:329] Non Consumable Keys"
 	Tooltip: Toggles if Shadow Keys/Golden Lockpicks are consumed when used as crafting ingredients
+}
+
+MoreCrateDrops: {
+	Label: "[i:3979] More Crate Drops"
+	Tooltip: Toggles if more crate drops are added to vanilla and modded crates
 }
 
 BossItemTransmutation: {
@@ -264,11 +259,6 @@ FurnitureRecipes: {
 AutoReuseUpgrades: {
 	Label: "[i:29] Auto-Reuse Permanent Upgrades"
 	Tooltip: Toggles if autofire works with multi-use permanent upgrades, such as Life Crystals
-}
-
-GoodPrefixesHaveEnchantedEffects: {
-	Label: "[i:1067] Good Prefixes Have Enchanted Effects"
-	Tooltip: Toggles if items with good prefixes have an enchanted effect, like Minecraft
 }
 
 ReworkReforging: {
@@ -671,6 +661,11 @@ FastTreeGrowth: {
 FastHerbGrowth: {
 	Label: "[i:313] Fast Herb Growth"
 	Tooltip: Toggles if herbs grow faster
+}
+
+HerbSmartCursor: {
+	Label: "[i:5295] Smart Cursor Works With Alchemy Herbs"
+	Tooltip: Toggles if smart cursor can be used with alchemy herbs
 }
 
 TreesDropMoreWhenShook: {

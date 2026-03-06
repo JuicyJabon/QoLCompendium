@@ -58,9 +58,15 @@ namespace QoLCompendium.Core
             ItemID.NaughtyPresent
         };
 
-        public static HashSet<int> ModdedBossAndEventSummons = new();
+        public static HashSet<int> ModdedBossSummons = new();
 
-        public static HashSet<int> FargosBossAndEventSummons = new();
+        public static HashSet<int> ModdedEventSummons = new();
+
+        public static HashSet<int> FargosBossSummons = new();
+        
+        public static HashSet<int> FargosEventSummons = new();
+        
+        public static HashSet<int> FargosEnemySummons = new();
         #endregion
 
         #region Tiles & Walls
@@ -198,6 +204,42 @@ namespace QoLCompendium.Core
         };
 
         public static HashSet<Mod> IgnoredModsForExplosives = new();
+
+        public static readonly HashSet<int> DungeonTiles = new()
+        {
+            TileID.BlueDungeonBrick,
+            TileID.GreenDungeonBrick,
+            TileID.PinkDungeonBrick
+        };
+
+        public static readonly HashSet<int> DungeonWalls = new()
+        {
+            WallID.BlueDungeonSlabUnsafe,
+            WallID.BlueDungeonTileUnsafe,
+            WallID.BlueDungeonUnsafe,
+            WallID.GreenDungeonSlabUnsafe,
+            WallID.GreenDungeonTileUnsafe,
+            WallID.GreenDungeonUnsafe,
+            WallID.PinkDungeonSlabUnsafe,
+            WallID.PinkDungeonTileUnsafe,
+            WallID.PinkDungeonUnsafe
+        };
+
+        public static readonly HashSet<int> HardmodeOres = new()
+        {
+             TileID.Cobalt,
+             TileID.Palladium,
+             TileID.Mythril,
+             TileID.Orichalcum,
+             TileID.Adamantite,
+             TileID.Titanium
+        };
+
+        public static HashSet<int> HerbTiles = new()
+        {
+            TileID.MatureHerbs,
+            TileID.BloomingHerbs
+        };
         #endregion
 
         #region Potions & Upgrades
@@ -611,6 +653,10 @@ namespace QoLCompendium.Core
 
         #region Buffs
 
+        public static HashSet<int> AllBuffItems = new();
+
+        public static HashSet<int> AllCombinedBuffItems = new();
+
         public static Dictionary<int, BuffEffect> AllEffects = new();
 
         public enum EffectTypes
@@ -897,6 +943,7 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Thorium.Mod, "GreatFlesh"),
                 GetModItem(CrossModSupport.Vitality.Mod, "BloodClot"),
             };
+            ModPowerUpItems.RemoveWhere(x => x == ItemID.None);
             PowerUpItems.UnionWith(ModPowerUpItems);
 
             HashSet<int> ModBankItems = new()
@@ -995,9 +1042,10 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Thorium.Mod, "GuidetoOvercomingGrief"),
                 GetModItem(CrossModSupport.Vitality.Mod, "ShimmerFishingHook")
             };
+            ModBankItems.RemoveWhere(x => x == ItemID.None);
             BankItems.UnionWith(ModBankItems);
 
-            HashSet<int> TempModdedBossAndEventSummons = new()
+            HashSet<int> TempModdedBossSummons = new()
             {
                 //QoLC Vanilla
                 ModContent.ItemType<CultistSummon>(),
@@ -1071,14 +1119,10 @@ namespace QoLCompendium.Core
                 //Blocks Core Boss
                 GetModItem(CrossModSupport.BlocksCoreBoss.Mod, "ChargedOrb"),
                 GetModItem(CrossModSupport.BlocksCoreBoss.Mod, "ChargedOrbCrim"),
-                //Calamity
-                GetModItem(CrossModSupport.Calamity.Mod, "CausticTear"),
-                GetModItem(CrossModSupport.Calamity.Mod, "MartianDistressRemote"),
                 //Consolaria
                 GetModItem(CrossModSupport.Consolaria.Mod, "SuspiciousLookingEgg"),
                 GetModItem(CrossModSupport.Consolaria.Mod, "CursedStuffing"),
                 GetModItem(CrossModSupport.Consolaria.Mod, "SuspiciousLookingSkull"),
-                GetModItem(CrossModSupport.Consolaria.Mod, "Wishbone"),
                 //Coralite
                 GetModItem(CrossModSupport.Coralite.Mod, "RedBerry"),
                 //Edorbis
@@ -1088,13 +1132,6 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Edorbis.Mod, "SlayerTrophy"),
                 GetModItem(CrossModSupport.Edorbis.Mod, "ThePrettiestFlower"),
                 GetModItem(CrossModSupport.Edorbis.Mod, "DyingEcosystem"),
-                //Enchanted Moons
-                GetModItem(CrossModSupport.EnchantedMoons.Mod, "BlueMedallion"),
-                GetModItem(CrossModSupport.EnchantedMoons.Mod, "CherryAmulet"),
-                GetModItem(CrossModSupport.EnchantedMoons.Mod, "HarvestLantern"),
-                GetModItem(CrossModSupport.EnchantedMoons.Mod, "MintRing"),
-                //Everjade
-                GetModItem(CrossModSupport.Everjade.Mod, "FestivalLantern"),
                 //Excelsior
                 GetModItem(CrossModSupport.Excelsior.Mod, "ReflectiveIceShard"),
                 GetModItem(CrossModSupport.Excelsior.Mod, "PlanetaryTrackingDevice"),
@@ -1102,9 +1139,9 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "BloodyAmulet"),
                 GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "InfestedCarcass"),
                 GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "DesertHorn"),
-                GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "GoblinRetreatOrder"),
-                GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "FalseTreasureMap"),
                 GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "OddFertilizer"),
+                GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "MechanicalWasp"),
+                GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "EctoplasmicBeacon"),
                 //Gensokyo
                 GetModItem(CrossModSupport.Gensokyo.Mod, "AliceMargatroidSpawner"),
                 GetModItem(CrossModSupport.Gensokyo.Mod, "CirnoSpawner"),
@@ -1141,7 +1178,7 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.HomewardJourney.Mod, "ScorpioMedal"),
                 GetModItem(CrossModSupport.HomewardJourney.Mod, "TaurusMedal"),
                 GetModItem(CrossModSupport.HomewardJourney.Mod, "VirgoMedal"),
-                //Martains Order
+                //Martin's Order
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "AntRubble"),
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "FrigidEgg"),
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "SuspiciousLookingCloud"),
@@ -1152,10 +1189,6 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "LuminiteEye"),
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "JunglesLastTreasure"),
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "TeslaRemote"),
-                GetModItem(CrossModSupport.MartinsOrder.Mod, "BloodyNight"),
-                GetModItem(CrossModSupport.MartinsOrder.Mod, "LucidDay"),
-                GetModItem(CrossModSupport.MartinsOrder.Mod, "LucidFestival"),
-                GetModItem(CrossModSupport.MartinsOrder.Mod, "LucidNight"),
                 //Medial Rift
                 GetModItem(CrossModSupport.MedialRift.Mod, "RemoteOfTheMetalHeads"),
                 //Metroid Mod
@@ -1183,7 +1216,6 @@ namespace QoLCompendium.Core
                 //Redemption
                 GetModItem(CrossModSupport.Redemption.Mod, "EaglecrestSpelltome"),
                 GetModItem(CrossModSupport.Redemption.Mod, "EggCrown"),
-                GetModItem(CrossModSupport.Redemption.Mod, "FowlWarHorn"),
                 //Secrets of the Shadows
                 GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "ElectromagneticLure"),
                 GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "SuspiciousLookingCandle"),
@@ -1196,19 +1228,13 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "SerpentSummon"),
                 GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "SoranEmblem"),
                 GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "HeirsAuthority"),
-                GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "PigmanBanner"),
-                GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "SandstormMedallion"),
                 //Spirit
-                GetModItem(CrossModSupport.SpiritClassic.Mod, "DistressJellyItem"),
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "GladeWreath"),
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "ReachBossSummon"),
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "JewelCrown"),
-                GetModItem(CrossModSupport.SpiritClassic.Mod, "BlackPearl"),
-                GetModItem(CrossModSupport.SpiritClassic.Mod, "BlueMoonSpawn"),
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "DuskCrown"),
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "CursedCloth"),
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "StoneSkin"),
-                GetModItem(CrossModSupport.SpiritClassic.Mod, "MartianTransmitter"),
                 //Spooky
                 GetModItem(CrossModSupport.Spooky.Mod, "Fertilizer"),
                 GetModItem(CrossModSupport.Spooky.Mod, "RottenSeed"),
@@ -1260,32 +1286,150 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Zylon.Mod, "ForgottenFlame"),
                 GetModItem(CrossModSupport.Zylon.Mod, "SlimyScepter")
             };
-            ModdedBossAndEventSummons.UnionWith(TempModdedBossAndEventSummons);
+            TempModdedBossSummons.RemoveWhere(x => x == ItemID.None);
+            ModdedBossSummons.UnionWith(TempModdedBossSummons);
 
-            HashSet<int> TempFargosBossAndEventSummons = new()
+            HashSet<int> TempModdedEventSummons = new()
+            {
+                //Calamity
+                GetModItem(CrossModSupport.Calamity.Mod, "CausticTear"),
+                GetModItem(CrossModSupport.Calamity.Mod, "MartianDistressRemote"),
+                //Consolaria
+                GetModItem(CrossModSupport.Consolaria.Mod, "Wishbone"),
+                //Enchanted Moons
+                GetModItem(CrossModSupport.EnchantedMoons.Mod, "BlueMedallion"),
+                GetModItem(CrossModSupport.EnchantedMoons.Mod, "CherryAmulet"),
+                GetModItem(CrossModSupport.EnchantedMoons.Mod, "HarvestLantern"),
+                GetModItem(CrossModSupport.EnchantedMoons.Mod, "MintRing"),
+                //Everjade
+                GetModItem(CrossModSupport.Everjade.Mod, "FestivalLantern"),
+                //Exxo Avalon Origins
+                GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "GoblinRetreatOrder"),
+                GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "FalseTreasureMap"),               
+                GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "MartianPeaceTreaty"),         
+                //Martin's Order
+                GetModItem(CrossModSupport.MartinsOrder.Mod, "BloodyNight"),
+                GetModItem(CrossModSupport.MartinsOrder.Mod, "LucidDay"),
+                GetModItem(CrossModSupport.MartinsOrder.Mod, "LucidFestival"),
+                GetModItem(CrossModSupport.MartinsOrder.Mod, "LucidNight"),
+                //Redemption
+                GetModItem(CrossModSupport.Redemption.Mod, "FowlWarHorn"),
+                //Shadows of Abaddon
+                GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "SandstormMedallion"),
+                GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "PigmanBanner"),
+                //Spirit
+                GetModItem(CrossModSupport.SpiritClassic.Mod, "BlackPearl"),
+                GetModItem(CrossModSupport.SpiritClassic.Mod, "BlueMoonSpawn"),
+                GetModItem(CrossModSupport.SpiritClassic.Mod, "DistressJellyItem"),
+                GetModItem(CrossModSupport.SpiritClassic.Mod, "MartianTransmitter"),
+            };
+            TempModdedEventSummons.RemoveWhere(x => x == ItemID.None);
+            ModdedEventSummons.UnionWith(TempModdedEventSummons);
+
+            HashSet<int> TempFargosBossSummons = new()
             {
                 //Fargos Mutant
-                    //ABOMINATIONN NPC ITEMS
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "Anemometer"),
+                //ABOMINATIONN NPC ITEMS
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "BatteredClub"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "BetsyEgg"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "FestiveOrnament"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "ForbiddenScarab"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "ForbiddenTome"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "HeadofMan"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "IceKingsRemains"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "MartianMemoryStick"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "MatsuriLantern"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "NaughtyList"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "SpookyBranch"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "SuspiciousLookingScythe"),
+                //MUTANT NPC ITEMS
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "Abeemination2"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "AncientSeal"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "CelestialSigil2"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "CultistSummon"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "DeathBringerFairy"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "DeerThing2"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "FleshyDoll"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "GoreySpine"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "JellyCrystal"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "LihzahrdPowerCell2"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "MechanicalAmalgam"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "MechEye"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "MechSkull"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "MechWorm"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "MutantVoodoo"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "PlanterasFruit"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "PrismaticPrimrose"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "SlimyCrown"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "SuspiciousEye"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "SuspiciousSkull"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "TruffleWorm2"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "WormyFood"),
+                //Fargos Souls
+                //MUTANT NPC ITEMS
+                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "AbomsCurse"),
+                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "ChampionySigil"),
+                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "CoffinSummon"),
+                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "DevisCurse"),
+                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "FragilePixieLamp"),
+                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "MechLure"),
+                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "MutantsCurse"),
+                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "SquirrelCoatofArms"),
+                //Fargos DLC
+                //MUTANT NPC ITEMS
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "ABombInMyNation"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "AstrumCor"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "BirbPheromones"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "BlightedEye"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "BloodyWorm"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "ChunkyStardust"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "ClamPearl"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "CryingKey"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "DefiledCore"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "DefiledShard"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "DragonEgg"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "EyeofExtinction"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "FriedDoll"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "HiveTumor"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "LetterofKos"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "MaulerSkull"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "MedallionoftheDesert"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "MurkySludge"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "NoisyWhistle"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "NuclearChunk"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "OphiocordycipitaceaeSprout"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "PolterplasmicBeacon"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "PortableCodebreaker"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "RedStainedWormFood"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "RiftofKos"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "SeeFood"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "SirensPearl"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "SomeKindofSpaceWorm"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "SulphurBearTrap"),
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "WormFoodofKos"),
+            };
+            TempFargosBossSummons.RemoveWhere(x => x == ItemID.None);
+            FargosBossSummons.UnionWith(TempFargosBossSummons);
+
+            HashSet<int> TempFargosEventSummons = new()
+            {
+                //Fargos Mutant
+                //ABOMINATIONN NPC ITEMS
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "Anemometer"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "ForbiddenScarab"),
+                GetModItem(CrossModSupport.Fargowiltas.Mod, "MatsuriLantern"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "PartyInvite"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "PillarSummon"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "RunawayProbe"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "SlimyBarometer"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "SpentLantern"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "SpookyBranch"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "SuspiciousLookingScythe"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "WeatherBalloon"),
-                    //DEVIANTT NPC ITEMS
+            };
+            TempFargosEventSummons.RemoveWhere(x => x == ItemID.None);
+            FargosEventSummons.UnionWith(TempFargosEventSummons);
+
+            HashSet<int> TempFargosEnemySummons = new()
+            {
+                //Fargos Mutant
+                //DEVIANTT NPC ITEMS
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "AmalgamatedSkull"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "AmalgamatedSpirit"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "AthenianIdol"),
@@ -1323,80 +1467,19 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "SuspiciousLookingChest"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "SuspiciousLookingLure"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "WormSnack"),
-                    //MUTANT NPC ITEMS
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "Abeemination2"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "AncientSeal"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "CelestialSigil2"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "CultistSummon"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "DeathBringerFairy"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "DeerThing2"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "FleshyDoll"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "GoreySpine"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "JellyCrystal"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "LihzahrdPowerCell2"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "MechanicalAmalgam"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "MechEye"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "MechSkull"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "MechWorm"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "MutantVoodoo"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "PlanterasFruit"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "PrismaticPrimrose"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "SlimyCrown"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "SuspiciousEye"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "SuspiciousSkull"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "TruffleWorm2"),
-                GetModItem(CrossModSupport.Fargowiltas.Mod, "WormyFood"),
-                //Fargos Souls
-                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "AbomsCurse"),
-                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "ChampionySigil"),
-                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "CoffinSummon"),
-                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "DevisCurse"),
-                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "FragilePixieLamp"),
-                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "MechLure"),
-                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "MutantsCurse"),
-                GetModItem(CrossModSupport.FargowiltasSouls.Mod, "SquirrelCoatofArms"),
+                //Fargos Extras
+                GetModItem(CrossModSupport.FargowiltasSoulsExtras.Mod, "PandorasBox"),
                 //Fargos DLC
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "AbandonedRemote"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "ABombInMyNation"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "AstrumCor"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "BirbPheromones"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "BlightedEye"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "BloodyWorm"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "ChunkyStardust"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "ClamPearl"),
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "ColossalTentacle"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "CryingKey"),
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "DeepseaProteinShake"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "DefiledCore"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "DefiledShard"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "DragonEgg"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "EyeofExtinction"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "FriedDoll"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "HiveTumor"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "LetterofKos"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "MaulerSkull"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "MedallionoftheDesert"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "MurkySludge"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "NoisyWhistle"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "NuclearChunk"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "OphiocordycipitaceaeSprout"),
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "PlaguedWalkieTalkie"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "PolterplasmicBeacon"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "PortableCodebreaker"),
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "QuakeIdol"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "RedStainedWormFood"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "RiftofKos"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "SeeFood"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "SirensPearl"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "SomeKindofSpaceWorm"),
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "StormIdol"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "SulphurBearTrap"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "WormFoodofKos"),
-                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "WyrmTablet"),
-                //Fargos Extras
-                GetModItem(CrossModSupport.FargowiltasSoulsExtras.Mod, "PandorasBox")
+                GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "WyrmTablet")
             };
-            FargosBossAndEventSummons.UnionWith(TempFargosBossAndEventSummons);
+            TempFargosEnemySummons.RemoveWhere(x => x == ItemID.None);
+            FargosEnemySummons.UnionWith(TempFargosEnemySummons);
 
             HashSet<int> ModPrefixes = new()
             {
@@ -1424,6 +1507,7 @@ namespace QoLCompendium.Core
                 GetModPrefix(CrossModSupport.Vitality.Mod, "MalevolentPrefix"),
                 GetModPrefix(CrossModSupport.Vitality.Mod, "RelentlessPrefix")
             };
+            ModPrefixes.RemoveWhere(x => x == -1);
             Prefixes.UnionWith(ModPrefixes);
 
             HashSet<int> ModPermanentUpgrades = new()
@@ -1467,6 +1551,7 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Thorium.Mod, "AstralWave"),
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationGem")
             };
+            ModPermanentUpgrades.RemoveWhere(x => x == ItemID.None);
             PermanentUpgrades.UnionWith(ModPermanentUpgrades);
 
             HashSet<int> ModPermanentMultiUseUpgrades = new()
@@ -1480,6 +1565,7 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationShard"),
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationCrystalNew")
             };
+            ModPermanentMultiUseUpgrades.RemoveWhere(x => x == ItemID.None);
             PermanentMultiUseUpgrades.UnionWith(ModPermanentMultiUseUpgrades);
 
             HashSet<int> ModEmblems = new()
@@ -1496,7 +1582,24 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Thorium.Mod, "ClericEmblem"),
                 GetModItem(CrossModSupport.Thorium.Mod, "NinjaEmblem"),
             };
+            ModEmblems.RemoveWhere(x => x == ItemID.None);
             Emblems.UnionWith(ModEmblems);
+
+            HashSet<int> ModHerbs = new()
+            {
+                GetModTile(CrossModSupport.Depths.Mod, "ShadowShrub"),
+                GetModTile(CrossModSupport.Redemption.Mod, "NightshadeTile"),
+                GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Welkinbell"),
+                GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Illumifern"),
+                GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Enduflora"),
+                GetModTile(CrossModSupport.SpiritClassic.Mod, "Cloudstalk"),
+                GetModTile(CrossModSupport.SpiritClassic.Mod, "SoulBloomTile"),
+                GetModTile(CrossModSupport.SpiritReforged.Mod, "CloudstalkTile"),
+                GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp"),
+                GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp2")
+            };
+            ModHerbs.RemoveWhere(x => x == -1);
+            HerbTiles.UnionWith(ModHerbs);
 
             HashSet<DamageClass> TempVoidClasses = new()
             {
@@ -1510,6 +1613,7 @@ namespace QoLCompendium.Core
                 GetModDamageClass(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "VoidThrowing"),
                 GetModDamageClass(CrossModSupport.InfernalEclipse.Mod, "VoidRogue")
             };
+            TempVoidClasses.RemoveWhere(x => x == DamageClass.Generic);
             VoidDamageClasses.UnionWith(TempVoidClasses);
 
             HashSet<int> ModIgnoredTiles = new()
@@ -1523,29 +1627,27 @@ namespace QoLCompendium.Core
                 GetModTile(CrossModSupport.Thorium.Mod, "Aquamarine"),
                 GetModTile(CrossModSupport.Thorium.Mod, "Opal"),
             };
+            ModIgnoredTiles.RemoveWhere(x => x == -1);
             IgnoredTilesForExplosives.UnionWith(ModIgnoredTiles);
 
-            HashSet<Mod> TempIgnoredModsForExplosives = new();
-            if (CrossModSupport.ConfectionRebaked.Loaded)
-                TempIgnoredModsForExplosives.Add(CrossModSupport.ConfectionRebaked.Mod);
-            if (CrossModSupport.Depths.Loaded)
-                TempIgnoredModsForExplosives.Add(CrossModSupport.Depths.Mod);
-            if (CrossModSupport.InfectedQualities.Loaded)
-                TempIgnoredModsForExplosives.Add(CrossModSupport.InfectedQualities.Mod);
-            if (CrossModSupport.LargeHerbs.Loaded)
-                TempIgnoredModsForExplosives.Add(CrossModSupport.LargeHerbs.Mod);
-            if (CrossModSupport.MartinsOrder.Loaded)
-                TempIgnoredModsForExplosives.Add(CrossModSupport.MartinsOrder.Mod);
-            if (CrossModSupport.Orchid.Loaded)
-                TempIgnoredModsForExplosives.Add(CrossModSupport.Orchid.Mod);
-            if (CrossModSupport.Remnants.Loaded)
-                TempIgnoredModsForExplosives.Add(CrossModSupport.Remnants.Mod);
+            HashSet<Mod> TempIgnoredModsForExplosives = new()
+            {
+                CrossModSupport.ConfectionRebaked.Mod,
+                CrossModSupport.Depths.Mod,
+                CrossModSupport.InfectedQualities.Mod,
+                CrossModSupport.LargeHerbs.Mod,
+                CrossModSupport.MartinsOrder.Mod,
+                CrossModSupport.Orchid.Mod,
+                CrossModSupport.Remnants.Mod
+            };
+            TempIgnoredModsForExplosives.RemoveWhere(x => x == null);
             IgnoredModsForExplosives.UnionWith(TempIgnoredModsForExplosives);
 
             HashSet<int> ModFoodBuffs = new()
             {
                 GetModBuff(CrossModSupport.WrathOfTheGods.Mod, "StarstrikinglySatiated")
             };
+            ModFoodBuffs.RemoveWhere(x => x == -1);
             FoodBuffs.UnionWith(ModFoodBuffs);
 
             for (int i = BuffID.Count; i < BuffLoader.BuffCount; i++)
@@ -1564,6 +1666,7 @@ namespace QoLCompendium.Core
                     GetModBuff(CrossModSupport.Thorium.Mod, "SporeCoatingBuff"),
                     GetModBuff(CrossModSupport.Thorium.Mod, "ToxicCoatingBuff"),
                 };
+                TempThoriumCoatings.RemoveWhere(x => x == -1);
                 ThoriumCoatings.UnionWith(TempThoriumCoatings);
             }
         }
@@ -1793,11 +1896,20 @@ namespace QoLCompendium.Core
             return count;
         }
 
-        public static string ModBuffAsset(Mod mod, int buffType)
+        public static string BuffAsset(int buffType)
         {
-            if (mod != null && BuffLoader.GetBuff(buffType) != null)
+            if (buffType > BuffID.Count && BuffLoader.GetBuff(buffType) != null)
                 return BuffLoader.GetBuff(buffType).Texture;
-            return "QoLCompendium/Assets/Items/PermanentBuff";
+            else
+                return "Terraria/Images/Buff_" + buffType;
+        }
+
+        public static void ReplaceBuffTexture(this Item item)
+        {
+            if (item.ModItem is BuffItem buffItem)
+            {
+                TextureAssets.Item[item.type] = TextureAssets.Buff[buffItem.BuffType];
+            }
         }
 
         public static void VanillaBuffHandler(int buff, Player player)
@@ -2289,13 +2401,13 @@ namespace QoLCompendium.Core
             if (Main.gameMenu || !Main.LocalPlayer.active)
                 return false;
 
-            if (QoLCompendium.mainConfig.ActiveBuffsHaveEnchantedEffects && !item.IsAir && QoLCPlayer.Get(Main.LocalPlayer).activeBuffItems.Contains(item.type))
+            if (QoLCompendium.mainClientConfig.ActiveBuffsHaveEnchantedEffects && !item.IsAir && QoLCPlayer.Get(Main.LocalPlayer).activeBuffItems.Contains(item.type))
                 return true;
-            if (QoLCompendium.mainConfig.ActiveBannersHaveEnchantedEffects && !item.IsAir && QoLCPlayer.Get(Main.LocalPlayer).activeBannerItems.Contains(item.type))
+            if (QoLCompendium.mainClientConfig.ActiveBannersHaveEnchantedEffects && !item.IsAir && QoLCPlayer.Get(Main.LocalPlayer).activeBannerItems.Contains(item.type))
                 return true;
-            else if (QoLCompendium.mainConfig.GoodPrefixesHaveEnchantedEffects && !item.IsAir && Prefixes.Contains(item.prefix))
+            else if (QoLCompendium.mainClientConfig.GoodPrefixesHaveEnchantedEffects && !item.IsAir && Prefixes.Contains(item.prefix))
                 return true;
-            else if (CrossModSupport.CalamityEntropy.Loaded && QoLCompendium.crossModConfig.CalamityEntropyArmorPrefixesHaveEnchantedEffects)
+            else if (CrossModSupport.CalamityEntropy.Loaded && QoLCompendium.mainClientConfig.CalamityEntropyArmorPrefixesHaveEnchantedEffects)
             {
                 if (!item.IsAir && CalamityEntropyArmorGlint.ArmorHasEntropyPrefix(item))
                     return true;

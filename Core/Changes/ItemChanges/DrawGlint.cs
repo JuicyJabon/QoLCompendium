@@ -2,8 +2,7 @@
 {
     public class DrawGlint : GlobalItem
     {
-        public override bool PreDrawInInventory(Item item, SpriteBatch sb, Vector2 position, Rectangle frame,
-        Color drawColor, Color itemColor, Vector2 origin, float scale)
+        public override bool PreDrawInInventory(Item item, SpriteBatch sb, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             if (Common.CheckToActivateGlintEffect(item) == false)
                 return true;
@@ -20,8 +19,7 @@
             return true;
         }
 
-        public override void PostDrawInInventory(Item item, SpriteBatch sb, Vector2 position, Rectangle frame,
-            Color drawColor, Color itemColor, Vector2 origin, float scale)
+        public override void PostDrawInInventory(Item item, SpriteBatch sb, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             if (Common.CheckToActivateGlintEffect(item) == false)
                 return;
@@ -30,8 +28,7 @@
             sb.Begin(SpriteSortMode.Deferred, sb.GraphicsDevice.BlendState, sb.GraphicsDevice.SamplerStates[0], sb.GraphicsDevice.DepthStencilState, sb.GraphicsDevice.RasterizerState, null, Main.UIScaleMatrix);
         }
 
-        public override bool PreDrawInWorld(Item item, SpriteBatch sb, Color lightColor, Color alphaColor,
-            ref float rotation, ref float scale, int whoAmI)
+        public override bool PreDrawInWorld(Item item, SpriteBatch sb, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             if (Common.CheckToActivateGlintEffect(item) == false)
                 return true;
@@ -48,8 +45,7 @@
             return true;
         }
 
-        public override void PostDrawInWorld(Item item, SpriteBatch sb, Color lightColor, Color alphaColor, float rotation,
-            float scale, int whoAmI)
+        public override void PostDrawInWorld(Item item, SpriteBatch sb, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             if (Common.CheckToActivateGlintEffect(item) == false)
                 return;
