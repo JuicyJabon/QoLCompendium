@@ -4,6 +4,18 @@ namespace QoLCompendium.Content.Tiles.CraftingStations
 {
     public class UltimateMonolithTile : ModTile
     {
+        public override void Load()
+        {
+            On_Recipe.PlayerMeetsEnvironmentConditions += On_PlayerMeetsEnvironmentConditions;
+            On_Recipe.PlayerMeetsTileRequirements += On_PlayerMeetsTileRequirements;
+        }
+
+        public override void Unload()
+        {
+            On_Recipe.PlayerMeetsEnvironmentConditions -= On_PlayerMeetsEnvironmentConditions;
+            On_Recipe.PlayerMeetsTileRequirements -= On_PlayerMeetsTileRequirements;
+        }
+
         public override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;
@@ -14,53 +26,28 @@ namespace QoLCompendium.Content.Tiles.CraftingStations
             LocalizedText name = CreateMapEntryName();
             AddMapEntry(new Color(200, 200, 200), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
-            //counts as
-            AdjTiles = new int[] {
-                TileID.WorkBenches,
-                TileID.HeavyWorkBench,
-                TileID.Furnaces,
-                TileID.Anvils,
-                TileID.Bottles,
-                TileID.Sawmill,
-                TileID.Loom,
-                TileID.Tables,
-                TileID.Chairs,
-                TileID.CookingPots,
-                TileID.Sinks,
-                TileID.Kegs,
-                TileID.BoneWelder,
-                TileID.GlassKiln,
-                TileID.HoneyDispenser,
-                TileID.IceMachine,
-                TileID.LivingLoom,
-                TileID.SkyMill,
-                TileID.Solidifier,
-                TileID.TeaKettle,
-                TileID.AlchemyTable,
-                TileID.TinkerersWorkbench,
-                TileID.ImbuingStation,
-                TileID.DyeVat,
-                TileID.Hellforge,
-                TileID.Tombstones,
-                TileID.MythrilAnvil,
-                TileID.AdamantiteForge,
-                TileID.Bookcases,
-                TileID.CrystalBall,
-                TileID.FleshCloningVat,
-                TileID.LesionStation,
-                TileID.SteampunkBoiler,
-                TileID.Blendomatic,
-                TileID.MeatGrinder,
-                TileID.LunarCraftingStation,
-                TileID.Autohammer,
-                TileID.LihzahrdFurnace,
-                TileID.DemonAltar,
-                ModContent.TileType<AetherAltarTile>()};
+            AdjTiles = [.. Enumerable.Range(0, TileLoader.TileCount)];
             TileID.Sets.CountsAsWaterSource[Type] = true;
             TileID.Sets.CountsAsLavaSource[Type] = true;
             TileID.Sets.CountsAsHoneySource[Type] = true;
             TileID.Sets.CountsAsShimmerSource[Type] = true;
             DustType = -1;
+        }
+
+        private bool On_PlayerMeetsEnvironmentConditions(On_Recipe.orig_PlayerMeetsEnvironmentConditions orig, Player player, Recipe tempRec)
+        {
+            if (player.adjTile[Type])
+                return true;
+
+            return orig(player, tempRec);
+        }
+
+        private bool On_PlayerMeetsTileRequirements(On_Recipe.orig_PlayerMeetsTileRequirements orig, Player player, Recipe tempRec)
+        {
+            if (player.adjTile[Type])
+                return true;
+
+            return orig(player, tempRec);
         }
     }
 }

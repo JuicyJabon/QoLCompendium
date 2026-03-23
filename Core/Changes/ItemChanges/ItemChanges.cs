@@ -14,11 +14,17 @@ namespace QoLCompendium.Core.Changes.ItemChanges
             };
         }
 
+        public override void SetStaticDefaults()
+        {
+            for (int i = 0; i < ItemLoader.ItemCount; i++)
+            {
+                if (QoLCompendium.mainConfig.NoDeveloperSetsFromBossBags && ItemID.Sets.BossBag[i])
+                    ItemID.Sets.PreHardmodeLikeBossBag[i] = true;
+            }
+        }
+
         public override void SetDefaults(Item item)
         {
-            if (QoLCompendium.mainConfig.NoDeveloperSetsFromBossBags && ItemID.Sets.BossBag[item.type])
-                ItemID.Sets.PreHardmodeLikeBossBag[item.type] = true;
-
             if (QoLCompendium.mainConfig.IncreaseMaxStack > 0 && item.maxStack > 10 && item.maxStack != 100 && !item.IsACoin())
                 item.maxStack = QoLCompendium.mainConfig.IncreaseMaxStack;
 

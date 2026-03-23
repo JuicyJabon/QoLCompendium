@@ -1917,89 +1917,12 @@ namespace QoLCompendium.Core
 
         public override void NetSend(BinaryWriter writer)
         {
-            //BOSSES
-            BitsByte downedBoss = new();
-            for (int i = 0; i < DownedBoss.Length; i++)
-            {
-                int bit = i % 8;
-
-                if (bit == 0 && i != 0)
-                {
-                    writer.Write(downedBoss);
-                    downedBoss = new BitsByte();
-                }
-
-                downedBoss[bit] = DownedBoss[i];
-            }
-            writer.Write(downedBoss);
-
-            //EVENTS
-            BitsByte downedEvent = new();
-            for (int i = 0; i < DownedEvents.Length; i++)
-            {
-                int bit = i % 8;
-
-                if (bit == 0 && i != 0)
-                {
-                    writer.Write(downedEvent);
-                    downedEvent = new BitsByte();
-                }
-
-                downedEvent[bit] = DownedEvents[i];
-            }
-            writer.Write(downedEvent);
-
-            //BIOMES
-            BitsByte vistedBiome = new();
-            for (int i = 0; i < VisitedBiomes.Length; i++)
-            {
-                int bit = i % 8;
-
-                if (bit == 0 && i != 0)
-                {
-                    writer.Write(vistedBiome);
-                    vistedBiome = new BitsByte();
-                }
-
-                vistedBiome[bit] = VisitedBiomes[i];
-            }
-            writer.Write(vistedBiome);
+            
         }
 
         public override void NetReceive(BinaryReader reader)
         {
-            //BOSSES
-            BitsByte downedBoss = reader.ReadByte();
-            for (int i = 0; i < DownedBoss.Length; i++)
-            {
-                int bits = i % 8;
-                if (bits == 0)
-                    downedBoss = reader.ReadByte();
-
-                DownedBoss[i] = downedBoss[bits];
-            }
-
-            //EVENTS
-            BitsByte downedEvent = reader.ReadByte();
-            for (int i = 0; i < DownedEvents.Length; i++)
-            {
-                int bits = i % 8;
-                if (bits == 0)
-                    downedEvent = reader.ReadByte();
-
-                DownedEvents[i] = downedEvent[bits];
-            }
-
-            //BIOMES
-            BitsByte vistedBiome = reader.ReadByte();
-            for (int i = 0; i < VisitedBiomes.Length; i++)
-            {
-                int bits = i % 8;
-                if (bits == 0)
-                    vistedBiome = reader.ReadByte();
-
-                VisitedBiomes[i] = vistedBiome[bits];
-            }
+            
         }
 
         public static void ResetDowned()

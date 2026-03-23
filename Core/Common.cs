@@ -5,6 +5,7 @@ using QoLCompendium.Content.Items.Accessories.Informational;
 using QoLCompendium.Content.Items.Tools.Mirrors;
 using QoLCompendium.Content.Items.Tools.Summons.CrossMod.Calamity;
 using QoLCompendium.Content.Items.Tools.Summons.CrossMod.HomewardJourney;
+using QoLCompendium.Content.Items.Tools.Summons.CrossMod.SpiritClassic;
 using QoLCompendium.Content.Items.Tools.Summons.CrossMod.Thorium;
 using QoLCompendium.Content.Items.Tools.Summons.Vanilla;
 using QoLCompendium.Content.Items.Tools.Usables.CrossMod;
@@ -1008,6 +1009,7 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.FargowiltasSouls.Mod, "BoxofGizmos"),
                 GetModItem(CrossModSupport.HomewardJourney.Mod, "GoblinVoodooDoll"),
                 GetModItem(CrossModSupport.HomewardJourney.Mod, "NerveFibre"),
+                GetModItem(CrossModSupport.HomewardJourney.Mod, "PrisonSearchlight"),
                 GetModItem(CrossModSupport.HomewardJourney.Mod, "Squidfood"),
                 GetModItem(CrossModSupport.LuiAFK.Mod, "FasterMining"),
                 GetModItem(CrossModSupport.LuiAFK.Mod, "SuperToolTime"),
@@ -1024,6 +1026,8 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "SentryCounter"),
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "SummonersTracker"),
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "SurvivalTracker"),
+                GetModItem(CrossModSupport.MartinsOrder.Mod, "DuckieBobber"),
+                GetModItem(CrossModSupport.MartinsOrder.Mod, "UltraGlowingBobber"),
                 //Common.GetModItem(CrossModSupport.MooMoosUltimateYoyoRevamp.Mod, "HitDisplay"),
                 //Common.GetModItem(CrossModSupport.MooMoosUltimateYoyoRevamp.Mod, "SpeedDisplay"),
                 GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "AnomalyLocator"),
@@ -1071,6 +1075,9 @@ namespace QoLCompendium.Core
                 ModContent.ItemType<OverwatcherSummon>(),
                 ModContent.ItemType<ScarabBeliefSummon>(),
                 ModContent.ItemType<WorldsEndWhaleSummon>(),
+                //QoLC Spirit Classic
+                ModContent.ItemType<HauntedTomeSummon>(),
+                ModContent.ItemType<OccultistSummon>(),
                 //QoLC Thorium
                 ModContent.ItemType<ForgottenOneSummon>(),
                 //AFKPETS

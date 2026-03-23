@@ -53,7 +53,7 @@ namespace QoLCompendium.Core.Changes.TileChanges
 
         private static void TryReplantingGemTree(Player player, int x, int y, int gemStyle = 0)
         {
-            // This is a copy from terraria code, I needed to use but it was privated.
+            // This is a copy from terraria code
             int type = TileID.GemSaplings;
             int style = gemStyle;
 
@@ -90,40 +90,32 @@ namespace QoLCompendium.Core.Changes.TileChanges
 
         private static int GetGemTreeStyleFromTile(int tileType)
         {
-            switch (tileType)
+            return tileType switch
             {
-                case TileID.TreeTopaz:
-                    return (int)GemTreeStyle.Topaz;
-                case TileID.TreeAmethyst:
-                    return (int)GemTreeStyle.Amethyst;
-                case TileID.TreeSapphire:
-                    return (int)GemTreeStyle.Sapphire;
-                case TileID.TreeEmerald:
-                    return (int)GemTreeStyle.Emerald;
-                case TileID.TreeRuby:
-                    return (int)GemTreeStyle.Ruby;
-                case TileID.TreeDiamond:
-                    return (int)GemTreeStyle.Diamond;
-                case TileID.TreeAmber:
-                    return (int)GemTreeStyle.Amber;
-                default:
-                    return -1;
-            }
+                TileID.TreeTopaz => (int)GemTreeStyle.Topaz,
+                TileID.TreeAmethyst => (int)GemTreeStyle.Amethyst,
+                TileID.TreeSapphire => (int)GemTreeStyle.Sapphire,
+                TileID.TreeEmerald => (int)GemTreeStyle.Emerald,
+                TileID.TreeRuby => (int)GemTreeStyle.Ruby,
+                TileID.TreeDiamond => (int)GemTreeStyle.Diamond,
+                TileID.TreeAmber => (int)GemTreeStyle.Amber,
+                _ => -1,
+            };
         }
 
         public static int GetSeedItemFromGemTile(int tileType)
         {
-            switch (tileType)
+            return tileType switch
             {
-                case TileID.TreeTopaz: return ItemID.GemTreeTopazSeed;
-                case TileID.TreeAmethyst: return ItemID.GemTreeAmethystSeed;
-                case TileID.TreeSapphire: return ItemID.GemTreeSapphireSeed;
-                case TileID.TreeEmerald: return ItemID.GemTreeEmeraldSeed;
-                case TileID.TreeRuby: return ItemID.GemTreeRubySeed;
-                case TileID.TreeDiamond: return ItemID.GemTreeDiamondSeed;
-                case TileID.TreeAmber: return ItemID.GemTreeAmberSeed;
-                default: return -1;
-            }
+                TileID.TreeTopaz => ItemID.GemTreeTopazSeed,
+                TileID.TreeAmethyst => ItemID.GemTreeAmethystSeed,
+                TileID.TreeSapphire => ItemID.GemTreeSapphireSeed,
+                TileID.TreeEmerald => ItemID.GemTreeEmeraldSeed,
+                TileID.TreeRuby => ItemID.GemTreeRubySeed,
+                TileID.TreeDiamond => ItemID.GemTreeDiamondSeed,
+                TileID.TreeAmber => ItemID.GemTreeAmberSeed,
+                _ => -1,
+            };
         }
     }
 }

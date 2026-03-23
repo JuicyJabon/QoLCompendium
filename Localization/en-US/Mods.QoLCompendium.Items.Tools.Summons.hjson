@@ -144,6 +144,24 @@ ReaperSharkSummon: {
 		'''
 }
 
+HauntedTomeSummon: {
+	DisplayName: Suspicious Book
+	Tooltip:
+		'''
+		Summons a Haunted Tome
+		Usable at night
+		'''
+}
+
+OccultistSummon: {
+	DisplayName: Tongue Gem
+	Tooltip:
+		'''
+		Summons an Occultist
+		Usable during a Blood Moon
+		'''
+}
+
 SummoningRemote: {
 	DisplayName: Summoning Remote
 	Tooltip:

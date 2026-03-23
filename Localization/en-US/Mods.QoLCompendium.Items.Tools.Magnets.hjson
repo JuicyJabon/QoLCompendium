@@ -1,24 +1,44 @@
 Magnet: {
 	DisplayName: Magnet
-	Tooltip: Favorite this item to increase grab range by 525 tiles
+	Tooltip:
+		'''
+		Enable this item to increase grab range by 525 tiles
+		Right click in inventory to toggle
+		'''
 }
 
 HellstoneMagnet: {
 	DisplayName: Hellstone Magnet
-	Tooltip: Favorite this item to increase grab range by 1050 tiles
+	Tooltip:
+		'''
+		Enable this item to increase grab range by 1050 tiles
+		Right click in inventory to toggle
+		'''
 }
 
 SoulMagnet: {
 	DisplayName: Soul Magnet
-	Tooltip: Favorite this item to increase grab range by 2100 tiles
+	Tooltip:
+		'''
+		Enable this item to increase grab range by 2100 tiles
+		Right click in inventory to toggle
+		'''
 }
 
 SpectreMagnet: {
 	DisplayName: Spectre Magnet
-	Tooltip: Favorite this item to increase grab range by 2100 tiles
+	Tooltip:
+		'''
+		Enable this item to increase grab range by 4200 tiles
+		Right click in inventory to toggle
+		'''
 }
 
 LunarMagnet: {
 	DisplayName: Lunar Magnet
-	Tooltip: Favorite this item to increase grab range by 16800 tiles
+	Tooltip:
+		'''
+		Enable this item to increase grab range by 16800 tiles
+		Right click in inventory to toggle
+		'''
 }

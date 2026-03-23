@@ -32,3 +32,12 @@ WoodenClub: {
 	DisplayName: Wooden Club
 	Tooltip: Pairs well with the Sea Scarf
 }
+
+GlassCannon: {
+	DisplayName: Glass Cannon
+	Tooltip:
+		'''
+		Changes your hurt sound
+		'I'm griefing'
+		'''
+}

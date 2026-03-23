@@ -1,30 +1,26 @@
 using Terraria.Enums;
+using Terraria.ModLoader.IO;
 
 namespace QoLCompendium.Content.Items.Tools.Magnets
 {
-    public class HellstoneMagnet : ModItem, ILocalizedModType
+    public class HellstoneMagnet : BaseMagnet, ILocalizedModType
     {
-        public override bool IsLoadingEnabled(Mod mod) => !QoLCompendium.itemConfig.DisableModdedItems || QoLCompendium.itemConfig.Magnets;
-
-        public new string LocalizationCategory => "Items.Tools.Magnets";
-
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
+        public override bool Enabled { get; set; }
 
         public override void SetDefaults()
         {
-            Item.width = 13;
-            Item.height = 13;
-            Item.maxStack = 1;
-
+            base.SetDefaults();
             Item.SetShopValues(ItemRarityColor.Orange3, Item.buyPrice(0, 2, 0, 0));
         }
 
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        public override void SaveData(TagCompound tag)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Magnets);
+            tag.Add("HellstoneMagnetEnabled", Enabled);
+        }
+
+        public override void LoadData(TagCompound tag)
+        {
+            Enabled = tag.GetBool("HellstoneMagnetEnabled");
         }
 
         public override void AddRecipes()
@@ -34,15 +30,6 @@ namespace QoLCompendium.Content.Items.Tools.Magnets
             r.AddIngredient(ItemID.HellstoneBar, 10);
             r.AddTile(TileID.Anvils);
             r.Register();
-        }
-
-        public override void UpdateInventory(Player player)
-        {
-            if (Item.favorited)
-            {
-                player.GetModPlayer<QoLCPlayer>().activeItems.Add(Item.type);
-                player.GetModPlayer<MagnetPlayer>().HellstoneMagnet = true;
-            }
         }
     }
 }

@@ -13,8 +13,8 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
             if (!QoLCompendium.crossModConfig.MrPlagueRacesPrefixFix)
                 return base.AllowPrefix(item, pre);
 
-            HashSet<int> prefixes = new()
-            {
+            HashSet<int> prefixes =
+            [
                 Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Accelerative"),
                 Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Bewitched"),
                 Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Bombarding"),
@@ -38,9 +38,9 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
                 Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Undying"),
                 Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Volatile"),
                 Common.GetModPrefix(CrossModSupport.MrPlagueRaces.Mod, "Warping")
-            };
+            ];
 
-            if (!Main.gameMenu && Main.LocalPlayer.active && CrossModSupport.MrPlagueRaces.Loaded && !MrPlagueRacesConfig.Instance.raceStats)
+            if (!Main.gameMenu && Main.LocalPlayer.active && CrossModSupport.MrPlagueRaces.Loaded && !ModContent.GetInstance<MrPlagueRacesConfig>().raceStats)
             {
                 if (prefixes.Contains(pre) && ++infiniteLoopHackFix < 30)
                     return false;

@@ -73,6 +73,10 @@ namespace QoLCompendium.Core.Configs
         [ReloadRequired]
         public bool SpiritClassicBossSummonClassificationFix { get; set; }
 
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool SpiritClassicYoyoClassificationFix { get; set; }
+
         public override void OnLoaded()
         {
             QoLCompendium.crossModConfig = this;

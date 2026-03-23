@@ -8,6 +8,7 @@ using System.Reflection;
 using Terraria.DataStructures;
 using Terraria.GameInput;
 using Terraria.ModLoader.IO;
+using Terraria.WorldBuilding;
 
 namespace QoLCompendium.Core
 {
@@ -38,7 +39,6 @@ namespace QoLCompendium.Core
         public bool eventSpawn = false;
 
         //Items
-        public bool sillySlapper = false;
         public bool warpMirror = false;
         public bool HasGoldenLockpick = false;
         public bool duplicationBobber = false;
@@ -49,6 +49,9 @@ namespace QoLCompendium.Core
 
         //Biomes
         public int selectedBiome = 0;
+
+        //dedicated
+        public bool glassCannon = false;
 
         public override void Load()
         {
@@ -191,10 +194,14 @@ namespace QoLCompendium.Core
                 fish.stack += 1;
         }
 
-        public override void OnHurt(Player.HurtInfo info)
+        public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
-            if (sillySlapper)
-                Player.KillMe(PlayerDeathReason.ByCustomReason(NetworkText.FromKey(Language.GetTextValue("Mods.QoLCompendium.Messages.SillySlapper").FormatWith(Player.name))), int.MaxValue, 0);
+            if (glassCannon)
+            {
+                modifiers.DisableSound();
+                SoundStyle sfx = new($"{nameof(QoLCompendium)}/Assets/Sounds/griefing");
+                SoundEngine.PlaySound(sfx, Player.Center);
+            }
         }
 
         public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
@@ -238,10 +245,10 @@ namespace QoLCompendium.Core
             increasedSpawns = false;
             decreasedSpawns = false;
             noSpawns = false;
-            sillySlapper = false;
             warpMirror = false;
             HasGoldenLockpick = false;
             duplicationBobber = false;
+            glassCannon = false;
             activeItems.Clear();
             activeBuffItems.Clear();
             activeBannerItems.Clear();

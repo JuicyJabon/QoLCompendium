@@ -108,6 +108,7 @@ namespace QoLCompendium.Core.Configs
         public bool PortableStations { get; set; }
 
         [DefaultValue(true)]
+        [ReloadRequired]
         public bool NoDeveloperSetsFromBossBags { get; set; }
 
         [Slider]

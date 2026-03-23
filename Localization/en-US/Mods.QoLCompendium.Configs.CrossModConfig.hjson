@@ -106,3 +106,8 @@ SpiritClassicBossSummonClassificationFix: {
 	Label: "[i:560] Spirit Classic Boss Summon Classification Fix"
 	Tooltip: Toggles if Spirit Classic boss summon items are correctly classified as boss summons
 }
+
+SpiritClassicYoyoClassificationFix: {
+	Label: "[i:3278] Spirit Classic Yoyo Classification Fix"
+	Tooltip: Toggles if Spirit Classic yoyos are correctly classified as yoyos
+}
