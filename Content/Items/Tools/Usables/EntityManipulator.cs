@@ -30,7 +30,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EntityManipulator);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EntityManipulator);
         }
 
         public override bool? UseItem(Player player)
@@ -54,7 +54,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EntityManipulator, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.EntityManipulator, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.BattlePotion, 10);
             r.AddIngredient(ItemID.WaterCandle, 3);
             r.AddIngredient(ItemID.CalmingPotion, 10);
@@ -81,12 +81,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                     player.GetModPlayer<QoLCPlayer>().noSpawns = true;
 
                 if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 4)
-                    Common.DisableEvents();
+                    NPCsUtils.DisableEvents();
 
                 if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 5)
                 {
                     player.GetModPlayer<QoLCPlayer>().noSpawns = true;
-                    Common.DisableEvents();
+                    NPCsUtils.DisableEvents();
                 }
             }
         }

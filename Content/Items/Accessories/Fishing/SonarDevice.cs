@@ -24,12 +24,12 @@ namespace QoLCompendium.Content.Items.Accessories.Fishing
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.FishingAccessories);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.FishingAccessories);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.FishingAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.FishingAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddRecipeGroup(RecipeGroupID.IronBar, 12);
             r.AddIngredient(ItemID.SonarPotion, 5);
             r.AddTile(TileID.Anvils);

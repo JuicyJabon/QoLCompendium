@@ -30,9 +30,9 @@ PotionCrateTooltip: Right click while holding a stack of {0} potions to deposit 
 ItemDisabled: (ITEM DISABLED)
 Disabled: (DISABLED)
 FromMod: From mod: {0}
-WarriorClass: "[c/fe7902:-Warrior Class-]"
+WarriorClass: "[c/fe7902:-Melee Class-]"
 RangerClass: "[c/22dd97:-Ranger Class-]"
-SorcererClass: "[c/fe7ee5:-Sorcerer Class-]"
+SorcererClass: "[c/fe7ee5:-Mage Class-]"
 SummonerClass: "[c/88e2ff:-Summoner Class-]"
 SummonerClassWhip: "[c/88e2ff:-Summoner Class- (Whip)]"
 ThrowerClass: "[c/a1724a:-Thrower Class-]"
@@ -46,9 +46,9 @@ DarkHealerClass: "[c/b266ff:-Healer Class-]"
 EngineerClass: "[c/6dd450:-Engineer Class-]"
 ArtistClass: "[c/ff7d8e:-Artist Class-]"
 RevenantClass: "[c/42305b:-Revenant Class-]"
-VoidWarriorClass: "[c/51257d:-Void Warrior Class-]"
+VoidWarriorClass: "[c/51257d:-Void Melee Class-]"
 VoidRangerClass: "[c/51257d:-Void Ranger Class-]"
-VoidSorcererClass: "[c/51257d:-Void Sorcerer Class-]"
+VoidSorcererClass: "[c/51257d:-Void Mage Class-]"
 VoidSummonerClass: "[c/51257d:-Void Summoner Class-]"
 VoidThrowerClass: "[c/51257d:-Void Thrower Class-]"
 VoidRogueClass: "[c/51257d:-Void Rogue Class-]"

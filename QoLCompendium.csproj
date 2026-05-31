@@ -16,7 +16,9 @@
     <None Remove="Content\Projectiles\SkybridgerProj.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\TooltipIcons\" />
     <Folder Include="Content\Projectiles\Fishing\" />
+    <Folder Include="Core\Changes\ModChanges\ModBuffChanges\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Avalon">
@@ -93,6 +95,12 @@
     </Reference>
     <Reference Include="SpiritReforged">
       <HintPath>..\..\ModReader\SpiritReforged\SpiritReforged.dll</HintPath>
+    </Reference>
+    <Reference Include="Split">
+      <HintPath>..\..\ModReader\Split\Split.dll</HintPath>
+    </Reference>
+    <Reference Include="TerrorbornMod">
+      <HintPath>..\..\ModReader\TerrorbornMod\TerrorbornMod.dll</HintPath>
     </Reference>
     <Reference Include="TheDepths">
       <HintPath>..\..\ModReader\TheDepths\TheDepths.dll</HintPath>

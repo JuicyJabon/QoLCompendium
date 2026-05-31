@@ -42,7 +42,7 @@ namespace QoLCompendium.Content.Items.Tools.RegrowthStaves.CrossMod.Calamity
             tooltips.Insert(tooltips.IndexOf(placeable), text);
             tooltips.RemoveAll((x) => x.Name == "Placeable" && x.Mod == "Terraria");
 
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
         }
 
         public override bool? UseItem(Player player)
@@ -65,7 +65,7 @@ namespace QoLCompendium.Content.Items.Tools.RegrowthStaves.CrossMod.Calamity
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.RegrowthStaves, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.RegrowthStaves, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralMonolith"), 12);
             r.AddIngredient(Common.GetModItem(CrossModSupport.Calamity.Mod, "StarblightSoot"), 3);
             r.AddIngredient(Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralGrassSeeds"), 1);

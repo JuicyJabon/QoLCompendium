@@ -15,12 +15,9 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other.Calamity
     [ExtendsFromMod(CrossModSupport.Calamity.Name)]
     public class EndlessWulfrumCogworkShard : BaseAmmo
     {
-        public override void SetStaticDefaults()
-        {
-            base.SetStaticDefaults();
-            IngredientStackCount = 396;
-        }
         public override int AmmunitionItem => ModContent.ItemType<WulfrumMetalScrap>();
+
+        public override int IngredientStackCount => 396;
     }
 
     [JITWhenModsEnabled(CrossModSupport.Calamity.Name)]

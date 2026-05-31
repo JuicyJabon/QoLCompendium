@@ -34,19 +34,19 @@ namespace QoLCompendium.Content.Projectiles.Other
                 var myHitbox = hitbox;
                 foreach (var npc in from n in Main.npc where n.active && myHitbox.Intersects(n.getRect()) select n)
                 {
-                    if (Common.NormalBunnies[npc.type])
+                    if (Constants.NormalBunnies[npc.type])
                     {
                         npc.Transform(NPCID.GoldBunny);
                     }
-                    if (Common.NormalSquirrels[npc.type])
+                    if (Constants.NormalSquirrels[npc.type])
                     {
                         npc.Transform(NPCID.SquirrelGold);
                     }
-                    if (Common.NormalButterflies[npc.type])
+                    if (Constants.NormalButterflies[npc.type])
                     {
                         npc.Transform(NPCID.GoldButterfly);
                     }
-                    if (Common.NormalBirds[npc.type])
+                    if (Constants.NormalBirds[npc.type])
                     {
                         npc.Transform(NPCID.GoldBird);
                     }

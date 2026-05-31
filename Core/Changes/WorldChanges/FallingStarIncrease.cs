@@ -2,6 +2,6 @@
 {
     public class FallingStarIncrease : ModSystem
     {
-        public override void PostUpdateWorld() => Star.starfallBoost = QoLCompendium.mainConfig.MoreFallenStars;
+        public override void PostUpdateWorld() => Star.starfallBoost = Math.Max(Star.starfallBoost, QoLCompendium.mainConfig.MoreFallenStars);
     }
 }

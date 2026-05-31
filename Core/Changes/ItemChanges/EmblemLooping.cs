@@ -23,7 +23,7 @@
         {
             if (!QoLCompendium.mainConfig.EmblemLooping)
                 return;
-            Common.CreateLoopingRecipe(Common.Emblems.ToArray(), TileID.DemonAltar);
+            RecipeUtils.CreateLoopingRecipe(Constants.Emblems.ToArray(), TileID.DemonAltar);
         }
     }
 }

@@ -50,34 +50,34 @@ namespace QoLCompendium.Content.Projectiles.MobileStorages
                 bool flag = false;
                 playerCenterX = player.SpawnX == -1 ? Main.spawnTileX : player.SpawnX;
                 playerCenterY = player.SpawnY == -1 ? Main.spawnTileY : player.SpawnY;
-                if (!Common.SolidTile(projectileCenterX, projectileCenterY))
+                if (!TileUtils.SolidTile(projectileCenterX, projectileCenterY))
                 {
                     for (int i = 0; i < 5000; i++)
                     {
                         for (int j = 0; j < 2000; j++)
                         {
-                            if (playerCenterX - i > 40 && playerCenterY + j < Main.maxTilesY - 40 && Common.SolidTile(playerCenterX - i, playerCenterY + j))
+                            if (playerCenterX - i > 40 && playerCenterY + j < Main.maxTilesY - 40 && TileUtils.SolidTile(playerCenterX - i, playerCenterY + j))
                             {
                                 projectileCenterX = playerCenterX - i;
                                 projectileCenterY = playerCenterY + j;
                                 flag = true;
                                 break;
                             }
-                            if (playerCenterX + i < Main.maxTilesX - 40 && playerCenterY + j < Main.maxTilesY - 40 && Common.SolidTile(playerCenterX + i, playerCenterY + j))
+                            if (playerCenterX + i < Main.maxTilesX - 40 && playerCenterY + j < Main.maxTilesY - 40 && TileUtils.SolidTile(playerCenterX + i, playerCenterY + j))
                             {
                                 projectileCenterX = playerCenterX + i;
                                 projectileCenterY = playerCenterY + j;
                                 flag = true;
                                 break;
                             }
-                            if (playerCenterX + i < Main.maxTilesX - 40 && playerCenterY - j > 40 && Common.SolidTile(playerCenterX + i, playerCenterY - j))
+                            if (playerCenterX + i < Main.maxTilesX - 40 && playerCenterY - j > 40 && TileUtils.SolidTile(playerCenterX + i, playerCenterY - j))
                             {
                                 projectileCenterX = playerCenterX + i;
                                 projectileCenterY = playerCenterY - j;
                                 flag = true;
                                 break;
                             }
-                            if (playerCenterX - i > 40 && playerCenterY - j > 40 && Common.SolidTile(playerCenterX - i, playerCenterY - j))
+                            if (playerCenterX - i > 40 && playerCenterY - j > 40 && TileUtils.SolidTile(playerCenterX - i, playerCenterY - j))
                             {
                                 projectileCenterX = playerCenterX - i;
                                 projectileCenterY = playerCenterY - j;

@@ -6,7 +6,7 @@
         {
             if (QoLCompendium.mainConfig.NoTownSlimes)
             {
-                if (npc.active && Common.TownSlimeIDs.Contains(npc.type))
+                if (npc.active && Constants.TownSlimeIDs.Contains(npc.type))
                 {
                     npc.timeLeft = 0;
                     npc.active = false;

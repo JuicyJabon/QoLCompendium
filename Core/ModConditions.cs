@@ -156,6 +156,8 @@ namespace QoLCompendium.Core
 
         //CALAMITY ENTROPY
         //BOSSES
+        public static Condition DownedAcropolisMachine = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedAcropolisMachine"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AcropolisMachine]);
+        public static Condition DownedApsychos = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedApsychos"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Apsychos]);
         public static Condition DownedLuminaris = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedLuminaris"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Luminaris]);
         public static Condition DownedProphet = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedProphet"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Prophet]);
         public static Condition DownedNihilityTwin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedNihilityTwin"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.NihilityTwin]);
@@ -632,8 +634,26 @@ namespace QoLCompendium.Core
 
 
         //SPIRIT REFORGED
+        //BOSSES
+        public static Condition DownedReforgedScarabeus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedReforgedScarabeus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ReforgedScarabeus]);
         //BIOMES
+        public static Condition HasBeenToSaltFlats = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.HasBeenToSaltFlats"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SaltFlats]);
         public static Condition HasBeenToSavanna = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.HasBeenToSavanna"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Savanna]);
+
+
+        //SPLIT
+        //BOSSES
+        public static Condition DownedSpirit = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedSpirit"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Spirit]);
+        public static Condition DownedOneShot = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedOneShot"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.OneShot]);
+        public static Condition DownedMenace = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedMenace"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Menace]);
+        public static Condition DownedParaffin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedParaffin"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Paraffin]);
+        public static Condition DownedMirage = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedMirage"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Mirage]);
+        public static Condition DownedInsurgent = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedInsurgent"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Insurgent]);
+        public static Condition DownedSeth = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedSeth"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Seth]);
+        public static Condition DownedUltimateSeth = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedUltimateSeth"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.UltimateSeth]);
+        //BIOMES
+        public static Condition HasBeenToStrandedShip = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.HasBeenToStrandedShip"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.StrandedShip]);
+        public static Condition HasBeenToUnderworldDomain = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.HasBeenToUnderworldDomain"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.UnderworldDomain]);
 
 
         //SPOOKY
@@ -744,6 +764,26 @@ namespace QoLCompendium.Core
         public static Condition DownedCosmicMenace = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedCosmicMenace"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.CosmicMenace]);
 
 
+        //ULTRANIUM
+        //BOSSES
+        public static Condition DownedZephyrSquid = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedZephyrSquid"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.ZephyrSquid]);
+        public static Condition DownedGlacieron = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedGlacieron"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Glacieron]);
+        public static Condition DownedDread = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedDread"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Dread]);
+        public static Condition DownedXenanis = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedXenanis"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Xenanis]);
+        public static Condition DownedUltrum = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedUltrum"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Ultrum]);
+        public static Condition DownedIgnodium = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedIgnodium"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Ignodium]);
+        public static Condition DownedAbsoluteDread = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedAbsoluteDread"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.AbsoluteDread]);
+        public static Condition DownedErebus = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedErebus"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Erebus]);
+        public static Condition DownedAldin = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedAldin"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.Aldin]);
+        //MINIBOSSES
+        public static Condition DownedMindFlayer = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedMindFlayer"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.MindFlayer]);
+        //EVENTS
+        public static Condition DownedAbyssalArmageddon = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.DownedAbyssalArmageddon"), () => ModConditions.DownedEvents[(int)ModConditions.DownedEvent.AbyssalArmageddon]);
+        //BIOMES
+        public static Condition HasBeenToShadowSurface = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.HasBeenToShadowSurface"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.ShadowSurface]);
+        public static Condition HasBeenToShadowDepths = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.HasBeenToShadowDepths"), () => ModConditions.VisitedBiomes[(int)ModConditions.Biomes.ShadowDepths]);
+
+
         //UNIVERSE OF SWORDS
         //BOSSES
         public static Condition DownedEvilFlyingBlade = new(Language.GetTextValue("Mods.QoLCompendium.ModConditions.downedEvilFlyingBlade"), () => ModConditions.DownedBoss[(int)ModConditions.Downed.EvilFlyingBlade]);
@@ -799,14 +839,6 @@ namespace QoLCompendium.Core
             //vanilla
             Dreadnautilus,
             MartianSaucer,
-            //Aequus
-            Crabson,
-            OmegaStarite,
-            DustDevil,
-            HyperStarite,
-            UltraStarite,
-            RedSprite,
-            SpaceSquid,
             //afkpets
             SlayerOfEvil,
             SATLA,
@@ -873,10 +905,14 @@ namespace QoLCompendium.Core
             //calamity community remix
             WulfrumExcavator,
             //calamity entropy
+            AcropolisMachine,
+            Apsychos,
             Luminaris,
             Prophet,
             NihilityTwin,
             Cruiser,
+            AbyssalWraith,
+            VoidPope,
             //catalyst
             Astrageldon,
             //clamity
@@ -1159,7 +1195,7 @@ namespace QoLCompendium.Core
             Nihilus,
             //sloome
             Exodygen,
-            //spirit
+            //spirit classic
             Scarabeus,
             MoonJellyWizard,
             VinewrathBane,
@@ -1168,6 +1204,19 @@ namespace QoLCompendium.Core
             Infernon,
             Dusking,
             Atlas,
+            //spirit reforged
+            ReforgedScarabeus,
+            //split
+            Spirit,
+            OneShot,
+            Menace,
+            Paraffin,
+            Mirage,
+            Insurgent,
+            Seth,
+            UltimateSeth,
+            Commando,
+            Breathtaker,
             //spooky
             SpookySpirit,
             RotGourd,
@@ -1228,6 +1277,17 @@ namespace QoLCompendium.Core
             Dredger,
             CharcoolSnowman,
             CosmicMenace,
+            //Ultranium
+            ZephyrSquid,
+            Glacieron,
+            Dread,
+            Xenanis,
+            Ultrum,
+            Ignodium,
+            AbsoluteDread,
+            Erebus,
+            Aldin,
+            MindFlayer,
             //universe of swords
             EvilFlyingBlade,
             //valhalla
@@ -1266,10 +1326,6 @@ namespace QoLCompendium.Core
             Eclipse,
             LunarTowers,
             Night,
-            //Aequus
-            DemonSiege,
-            Glimmer,
-            GaleStreams,
             //Calamity
             AcidRainAny,
             AcidRainTier1,
@@ -1294,7 +1350,9 @@ namespace QoLCompendium.Core
             MysticMoon,
             //Spooky
             EggIncursion,
-            PandorasBox
+            PandorasBox,
+            //Ultranium
+            AbyssalArmageddon
         };
 
         public static bool[] DownedEvents = new bool[Enum.GetValues(typeof(DownedEvent)).Length];
@@ -1318,8 +1376,6 @@ namespace QoLCompendium.Core
             Aether,
             Dungeon,
             Temple,
-            //Aequus
-            CrabCrevice,
             //Calamity
             BrimstoneCrags,
             AstralInfection,
@@ -1382,6 +1438,10 @@ namespace QoLCompendium.Core
             SpiritUnderground,
             //Spirit Reforged
             Savanna,
+            SaltFlats,
+            //Split
+            StrandedShip,
+            UnderworldDomain,
             //Spooky
             SpookyForest,
             SpookyUnderground,
@@ -1399,6 +1459,9 @@ namespace QoLCompendium.Core
             NeonVeil,
             //Thorium
             AquaticDepths,
+            //Ultranium
+            ShadowSurface,
+            ShadowDepths,
             //Verdant
             Verdant
         };
@@ -1419,7 +1482,7 @@ namespace QoLCompendium.Core
 
         public override void PreUpdatePlayers()
         {
-            if (Main.netMode == NetmodeID.MultiplayerClient || Main.netMode == NetmodeID.Server || QoLCompendium.mainConfig.RemoveBiomeShopRequirements)
+            if (Main.netMode == NetmodeID.MultiplayerClient || Main.netMode == NetmodeID.Server || QoLCompendium.mainConfig.RemoveBiomeVisitRequirements)
             {
                 for (int i = 0; i < VisitedBiomes.Length; i++)
                     VisitedBiomes[i] = true;
@@ -1780,6 +1843,30 @@ namespace QoLCompendium.Core
                 }
             }
 
+            if (CrossModSupport.SpiritReforged.Loaded)
+            {
+                if (CrossModSupport.SpiritReforged.Mod.TryFind("SaltBiome", out ModBiome SaltBiome) && Main.LocalPlayer.InModBiome(SaltBiome))
+                {
+                    ModConditions.VisitedBiomes[(int)ModConditions.Biomes.SaltFlats] = true;
+                }
+                if (CrossModSupport.SpiritReforged.Mod.TryFind("SavannaBiome", out ModBiome SavannaBiome) && Main.LocalPlayer.InModBiome(SavannaBiome))
+                {
+                    ModConditions.VisitedBiomes[(int)ModConditions.Biomes.Savanna] = true;
+                }
+            }
+
+            if (CrossModSupport.Split.Loaded)
+            {
+                if (CrossModSupport.Split.Mod.TryFind("StrandedShipBiome", out ModBiome StrandedShipBiome) && Main.LocalPlayer.InModBiome(StrandedShipBiome))
+                {
+                    ModConditions.VisitedBiomes[(int)ModConditions.Biomes.StrandedShip] = true;
+                }
+                if (CrossModSupport.Split.Mod.TryFind("UnderworldDomainBiome", out ModBiome UnderworldDomainBiome) && Main.LocalPlayer.InModBiome(UnderworldDomainBiome))
+                {
+                    ModConditions.VisitedBiomes[(int)ModConditions.Biomes.UnderworldDomain] = true;
+                }
+            }
+
             if (CrossModSupport.Spooky.Loaded)
             {
                 if (CrossModSupport.Spooky.Mod.TryFind("SpookyBiome", out ModBiome SpookyBiome) && Main.LocalPlayer.InModBiome(SpookyBiome))
@@ -1871,6 +1958,18 @@ namespace QoLCompendium.Core
                 #endregion
             }
 
+            if (CrossModSupport.Ultranium.Loaded)
+            {
+                if (CrossModSupport.Ultranium.Mod.TryFind("ShadowBiome", out ModBiome ShadowBiome) && Main.LocalPlayer.InModBiome(ShadowBiome))
+                {
+                    ModConditions.VisitedBiomes[(int)ModConditions.Biomes.ShadowSurface] = true;
+                }
+                if (CrossModSupport.Ultranium.Mod.TryFind("DepthsBiome", out ModBiome DepthsBiome) && Main.LocalPlayer.InModBiome(DepthsBiome))
+                {
+                    ModConditions.VisitedBiomes[(int)ModConditions.Biomes.ShadowDepths] = true;
+                }
+            }
+
             if (CrossModSupport.Verdant.Loaded)
             {
                 if (CrossModSupport.Verdant.Mod.TryFind("VerdantBiome", out ModBiome VerdantBiome) && Main.LocalPlayer.InModBiome(VerdantBiome))
@@ -1917,12 +2016,713 @@ namespace QoLCompendium.Core
 
         public override void NetSend(BinaryWriter writer)
         {
-            
+            #region Vanilla
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Dreadnautilus],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.MartianSaucer],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.DownedEvent.BloodMoon],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.DownedEvent.Eclipse],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.DownedEvent.LunarTowers]
+            });
+            #endregion
+
+            #region AFKPets
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.SlayerOfEvil],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.SATLA],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.DrFetus],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.SlimesHope],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.PoliticianSlime],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.AncientTrio],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.LavalGolem],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.Antony],
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.BunnyZeppelin],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Okiku],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.HarpyAirforce],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Isaac],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.AncientGuardian],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.HeroicSlime],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.HoloSlime],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.SecurityBot],
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.UndeadChef],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.NekoSlime],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.NightmareAmplifierSlime],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.GuardianOfFrost]
+            });
+            #endregion
+
+            #region Assorted Crazy Things
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.SoulHarvester]
+            });
+            #endregion
+
+            #region Awful Garbage
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.TreeToad],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.SeseKitsugai],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.EyeOfTheStorm],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Frigidius]
+            });
+            #endregion
+
+            #region Blocks Core Boss
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.CoreBoss]
+            });
+            #endregion
+
+            #region Calamity
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.DesertScourge],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Crabulon],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.HiveMind],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Perforators],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.SlimeGod],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.Cryogen],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.AquaticScourge],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.BrimstoneElemental]
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.CalamitasClone],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.LeviathanAndAnahita],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.AstrumAureus],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.PlaguebringerGoliath],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.Ravager],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.AstrumDeus],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.ProfanedGuardians],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.Dragonfolly]
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Providence],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.StormWeaver],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.CeaselessVoid],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Signus],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.Polterghast],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.OldDuke],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.DevourerOfGods],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.Yharon]
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.ExoMechs],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.SupremeCalamitas],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.GiantClam],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.CragmawMire],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.GreatSandShark],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.NuclearTerror],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.Mauler],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.PrimordialWyrm]
+            });
+            #endregion
+
+            #region Calamity Community Remix
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.WulfrumExcavator]
+            });
+            #endregion
+
+            #region Calamity Entropy
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.AcropolisMachine],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Apsychos],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.Luminaris],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Prophet],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.NihilityTwin],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.Cruiser],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.AbyssalWraith],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.VoidPope]
+            });
+            #endregion
+
+            #region Catalyst
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Astrageldon]
+            });
+            #endregion
+
+            #region Clamity
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Clamitas],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Pyrogen],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.WallOfBronze]
+            });
+            #endregion
+
+            #region Consolaria
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Lepus],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Turkor],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.Ocram]
+            });
+            #endregion
+
+            #region Coralite
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Rediancie],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.BabyIceDragon],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.SlimeEmperor],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Bloodiancie],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.ThunderveinDragon],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.NightmarePlantera]
+            });
+            #endregion
+
+            #region Depths
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Chasme]
+            });
+            #endregion
+
+            #region Dormant Dawn
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.LifeGuardian],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.ManaGuardian],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.MeteorExcavator],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.MeteorAnnihilator],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.HellfireSerpent],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.WitheredAcornSpirit],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.GoblinSorcererChieftain]
+            });
+            #endregion
+
+            #region Echoes of the Ancients
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Galahis],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Creation],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.Destruction]
+            });
+            #endregion
+
+            #region Edorbis
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.BlightKing],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Gardener],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.Glaciation],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.HandOfCthulhu],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.CursePreacher]
+            });
+            #endregion
+
+            #region Elements Awoken
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Wasteland],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Infernace],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.ScourgeFighter],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Regaroth],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.Permafrost],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.Obsidious],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.Aqueous],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.TheTempleKeepers]
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.TheGuardian],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Volcanox],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.VoidLeviathan],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Azana],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.TheAncients],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.CosmicObserver],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.ShadeWyrm],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.RadiantMaster]
+            });
+            #endregion
+
+            #region Exalt
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Effulgence],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.IceLich]
+            });
+            #endregion
+
+            #region Excelsior
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Niflheim],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.StellarStarship]
+            });
+            #endregion
+
+            #region Elements Awoken
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.BacteriumPrime],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.DesertBeak],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.KingSting],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Mechasting],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.Phantasm]
+            });
+            #endregion
+
+            #region Fargos Souls
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.TrojanSquirrel],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.CursedCoffin],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.Deviantt],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Lifelight],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.BanishedBaron],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.Eridanus],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.Abominationn],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.Mutant]
+            });
+            #endregion
+
+            #region Fractures of Penumbra
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.AlphaFrostjaw],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.SanguineElemental]
+            });
+            #endregion
+
+            #region GaMeTerraria
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Lad],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Hornlitz],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.SnowDon],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Stoffie]
+            });
+            #endregion
+
+            #region Gensokyo
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.LilyWhite],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Rumia],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.EternityLarva],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Nazrin],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.HinaKagiyama],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.Sekibanki],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.Seiran],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.NitoriKawashiro]
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.MedicineMelancholy],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Cirno],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.MinamitsuMurasa],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.AliceMargatroid],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.SakuyaIzayoi],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.SeijaKijin],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.MayumiJoutouguu],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.ToyosatomimiNoMiko]
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.KaguyaHouraisan],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.UtsuhoReiuji],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.TenshiHinanawi],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Kisume]
+            });
+            #endregion
+
+            #region Gerds Lab
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Trerios],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.MagmaEye],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.Jack],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Acheron]
+            });
+            #endregion
+
+            #region Homeward Journey
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.GoblinChariot],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.BigDipper],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.PuppetOpera],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.MarquisMoonsquid],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.PriestessRod],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.Diver],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.Motherbrain],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.WallOfShadow]
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.SunSlimeGod],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Overwatcher],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.Lifebringer],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Materealizer],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.ScarabBelief],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.WorldsEndWhale],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.Son],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.CaveOrdeal]
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.CorruptOrdeal],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.CrimsonOrdeal],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.DesertOrdeal],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.ForestOrdeal],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.HallowOrdeal],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.JungleOrdeal],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.SkyOrdeal],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.SnowOrdeal]
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.UnderworldOrdeal]
+            });
+            #endregion
+
+            #region Hunt of the Old God
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Goozma]
+            });
+            #endregion
+
+            #region Infernum
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.BereftVassal]
+            });
+            #endregion
+
+            #region Lunar Veil
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.StoneGuardian],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.CommanderGintzia],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.SunStalker],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.PumpkinJack],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.ForgottenPuppetDaedus],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.DreadMire],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.SingularityFragment],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.Verlia]
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Irradia],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Sylia],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.Fenix],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.BlazingSerpent],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.Cogwork],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.WaterCogwork],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.WaterJellyfish],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.Sparn]
+            });
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.PandorasFlamebox],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.STARBOMBER]
+            });
+            #endregion
+
+            #region Martins Order
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Britzz],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.CactusCat],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.TheAlchemist],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.CarnagePillar],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.VoidDigger],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.PrinceSlime],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.Triplets],
+                [7] = ModConditions.DownedBoss[(int)ModConditions.Downed.JungleDefenders]
+            });
+            #endregion
+
+            #region Mech Boss Rework
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.St4sys],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Terminator],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.Caretaker],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.SiegeEngine]
+            });
+            #endregion
+
+            #region Medial Rift
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.SuperVMS]
+            });
+            #endregion
+
+            #region Metroid
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Torizo],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Serris],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.Kraid],
+                [3] = ModConditions.DownedBoss[(int)ModConditions.Downed.Phantoon],
+                [4] = ModConditions.DownedBoss[(int)ModConditions.Downed.OmegaPirate],
+                [5] = ModConditions.DownedBoss[(int)ModConditions.Downed.Nightmare],
+                [6] = ModConditions.DownedBoss[(int)ModConditions.Downed.GoldenTorizo]
+            });
+            #endregion
+
+            #region Ophioid
+            writer.Write(new BitsByte
+            {
+                [0] = ModConditions.DownedBoss[(int)ModConditions.Downed.Ophiopede],
+                [1] = ModConditions.DownedBoss[(int)ModConditions.Downed.Ophiocoon],
+                [2] = ModConditions.DownedBoss[(int)ModConditions.Downed.Ophiofly]
+            });
+            #endregion
+
+
+            /*
+        {
+            //polarities
+            StormCloudfish,
+            StarConstruct,
+            Gigabat,
+            RiftDenizen,
+            SunPixie,
+            Esophage,
+            ConvectiveWanderer,
+            SelfsimilarSentinel,
+            Eclipxie,
+            Hemorrphage,
+            Polarities,
+            //project zero
+            ForestGuardian,
+            CryoGuardian,
+            PrimordialWorm,
+            TheGuardianOfHell,
+            Void,
+            Armagem,
+            //qwerty
+            PolarExterminator,
+            DivineLight,
+            AncientMachine,
+            Noehtnap,
+            Hydra,
+            Imperious,
+            RuneGhost,
+            InvaderBattleship,
+            InvaderNoehtnap,
+            OLORD,
+            GreatTyrannosaurus,
+            //redemption
+            Thorn,
+            Erhan,
+            Keeper,
+            SeedOfInfection,
+            KingSlayerIII,
+            OmegaCleaver,
+            OmegaGigapora,
+            OmegaObliterator,
+            PatientZero,
+            Akka,
+            Ukko,
+            AncientDeityDuo,
+            Nebuleus,
+            FowlEmperor,
+            Cockatrice,
+            Basan,
+            SkullDigger,
+            EaglecrestGolem,
+            Calavia,
+            TheJanitor,
+            IrradiatedBehemoth,
+            Blisterface,
+            ProtectorVolt,
+            MACEProject,
+            //secrets of the shadows
+            PutridPinky,
+            Glowmoth,
+            PharaohsCurse,
+            Excavator,
+            Advisor,
+            Polaris,
+            Lux,
+            SubspaceSerpent,
+            NatureConstruct,
+            EarthenConstruct,
+            PermafrostConstruct,
+            TidalConstruct,
+            OtherworldlyConstruct,
+            EvilConstruct,
+            InfernoConstruct,
+            ChaosConstruct,
+            NatureSpirit,
+            EarthenSpirit,
+            PermafrostSpirit,
+            TidalSpirit,
+            OtherworldlySpirit,
+            EvilSpirit,
+            InfernoSpirit,
+            ChaosSpirit,
+            //shadows of abaddon
+            Decree,
+            FlamingPumpkin,
+            ZombiePiglinBrute,
+            JensenTheGrandHarpy,
+            Araneas,
+            HarpyQueenRaynare,
+            Primordia,
+            Abaddon,
+            Araghur,
+            LostSiblings,
+            Erazor,
+            Nihilus,
+            //sloome
+            Exodygen,
+            //spirit classic
+            Scarabeus,
+            MoonJellyWizard,
+            VinewrathBane,
+            AncientAvian,
+            StarplateVoyager,
+            Infernon,
+            Dusking,
+            Atlas,
+            //spirit reforged
+            ReforgedScarabeus,
+            //split
+            Spirit,
+            OneShot,
+            Menace,
+            Paraffin,
+            Mirage,
+            Insurgent,
+            Seth,
+            UltimateSeth,
+            Commando,
+            Breathtaker,
+            //spooky
+            SpookySpirit,
+            RotGourd,
+            Moco,
+            Daffodil,
+            OrroBoro,
+            BigBone,
+            SpookFishron,
+            //starlight river
+            Auroracle,
+            Ceiros,
+            Glassweaver,
+            //stars above
+            VagrantofSpace,
+            Thespian,
+            Dioskouroi,
+            Nalhaun,
+            Starfarers,
+            Penthesilea,
+            Arbitration,
+            WarriorOfLight,
+            Tsukiyomi,
+            //storms additions
+            AncientHusk,
+            OverloadedScandrone,
+            Painbringer,
+            //supernova
+            HarbingerOfAnnihilation,
+            FlyingTerror,
+            StoneMantaRay,
+            Bloodweaver,
+            //terrorborn
+            InfectedIncarnate,
+            TidalTitan,
+            Dunestock,
+            HexedConstructor,
+            Shadowcrawler,
+            PrototypeI,
+            //thorium
+            GrandThunderBird,
+            QueenJellyfish,
+            Viscount,
+            GraniteEnergyStorm,
+            BuriedChampion,
+            StarScouter,
+            BoreanStrider,
+            FallenBeholder,
+            Lich,
+            ForgottenOne,
+            Primordials,
+            PatchWerk,
+            CorpseBloom,
+            Illusionist,
+            //trae
+            GraniteOvergrowth,
+            Beholder,
+            //uhtric
+            Dredger,
+            CharcoolSnowman,
+            CosmicMenace,
+            //Ultranium
+            ZephyrSquid,
+            Glacieron,
+            Dread,
+            Xenanis,
+            Ultrum,
+            Ignodium,
+            AbsoluteDread,
+            Erebus,
+            Aldin,
+            MindFlayer,
+            //universe of swords
+            EvilFlyingBlade,
+            //valhalla
+            ColossalCarnage,
+            Yurnero,
+            //vitality
+            StormCloud,
+            GrandAntlion,
+            GemstoneElemental,
+            MoonlightDragonfly,
+            Dreadnaught,
+            MosquitoMonarch,
+            AnarchulesBeetle,
+            Chaosbringer,
+            PaladinSpirit,
+            //wayfair
+            Manaflora,
+            //wrath of the gods
+            XG07Mars,
+            AvatarOfEmptiness,
+            NamelessDeityOfLight,
+            //zylon
+            Dirtball,
+            Metelord,
+            Adeneb,
+            EldritchJellyfish,
+            SaburRex
+        }
+            */
         }
 
         public override void NetReceive(BinaryReader reader)
         {
-            
+            //vanilla
+            BitsByte flags = reader.ReadByte();
+            ModConditions.DownedBoss[(int)ModConditions.Downed.Dreadnautilus] = flags[0];
+            ModConditions.DownedBoss[(int)ModConditions.Downed.MartianSaucer] = flags[1];
+            ModConditions.DownedBoss[(int)ModConditions.DownedEvent.BloodMoon] = flags[2];
+            ModConditions.DownedBoss[(int)ModConditions.DownedEvent.Eclipse] = flags[3];
+            ModConditions.DownedBoss[(int)ModConditions.DownedEvent.LunarTowers] = flags[4];
         }
 
         public static void ResetDowned()

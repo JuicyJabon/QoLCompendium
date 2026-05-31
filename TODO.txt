@@ -22,7 +22,7 @@ COMPLETED AMMOS:
 15. Auto-whitelist ores for veinminer
 16. Instant respawn to a slider
 17. Faster sleeping
-18. Bed requirements removal
+ (DONE) 18. Bed requirements removal
 19. Config Presets
 20. Statue enemies drop items
 21. Prevent voodoo demons accidentally spawning WoF
@@ -30,7 +30,7 @@ COMPLETED AMMOS:
 23. Accessory slot whitelist
 24. Eternia crystal wave speed increase with right click
 25. Time multipliers for beds/sundials
-26. Smart cursor herbs (TESTING)
+ (DONE) 26. Smart cursor herbs
 27. More permanent buff items:
  - AFKPets
  - Exxo Avalon Origins
@@ -40,7 +40,7 @@ COMPLETED AMMOS:
  - Enigma
  - Polarities
  - Rivals
- - Storms Additions
+ - Storm's Additions
 28. Mount & Pets in buff toggler
 29. Github Wiki
  (DONE) 30. Fix All in One Access

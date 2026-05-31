@@ -1,4 +1,5 @@
-﻿using Terraria.ObjectData;
+﻿using CalamityMod;
+using Terraria.ObjectData;
 
 namespace QoLCompendium.Core.Changes.TileChanges
 {
@@ -11,7 +12,7 @@ namespace QoLCompendium.Core.Changes.TileChanges
 
             Player player = Main.LocalPlayer;
             Tile tile = Framing.GetTileSafely(i, j);
-            if (Common.IsTileWithinPlayerReach(player) && tile.IsHarvestableHerb())
+            if (TileUtils.IsTileWithinPlayerReach(player) && tile.IsHarvestableHerb())
             {
                 if (item.type == ItemID.StaffofRegrowth || item.type == ItemID.AcornAxe)
                     return true;
@@ -49,7 +50,7 @@ namespace QoLCompendium.Core.Changes.TileChanges
             Tile targetTile = Main.tile[(int)playerTileTarget.X, (int)playerTileTarget.Y];
             bool disableCursor = TileID.Sets.DisableSmartCursor[targetTile.TileType];
 
-            if (!Common.IsTileWithinPlayerReach(Player) || disableCursor)
+            if (!TileUtils.IsTileWithinPlayerReach(Player) || disableCursor)
                 return;
 
             int maxLeft = (int)(Player.position.X / 16f) - Player.tileRangeX - item.tileBoost + 1;
@@ -67,7 +68,7 @@ namespace QoLCompendium.Core.Changes.TileChanges
                 for (int yCheck = maxUp; yCheck <= maxDown; yCheck++)
                 {
                     Tile checkTile = Main.tile[xCheck, yCheck];
-                    if (checkTile.IsHarvestableHerb() && TileObjectData.GetTileStyle(checkTile) != -1)
+                    if ((checkTile.IsHarvestableHerb() && TileObjectData.GetTileStyle(checkTile) != -1) || (Player.HeldItem.type == ItemID.AcornAxe && IsBottomOfTreeTrunkNoRoots(checkTile)))
                         potentialTargetTiles.Add(new Tuple<int, int>(xCheck, yCheck));
                 }
             }
@@ -96,16 +97,35 @@ namespace QoLCompendium.Core.Changes.TileChanges
 
             potentialTargetTiles.Clear();
         }
+
+        //Vanilla code (was private)
+        public static bool IsBottomOfTreeTrunkNoRoots(Tile tile)
+        {
+            if (!tile.HasTile)
+                return false;
+
+            if (!TileID.Sets.IsATreeTrunk[tile.TileType] && tile.TileType != TileID.PalmTree)
+                return false;
+
+            short frameX = tile.TileFrameX;
+            short frameY = tile.TileFrameY;
+            if (tile.TileType != TileID.PalmTree && frameY >= 132 && frameY <= 176 && (frameX == 22 || frameX == 44))
+                return false;
+
+            if (!TileUtils.IsTileWithinPlayerReach(Main.LocalPlayer))
+                return false;
+
+            return true;
+        }
     }
 
     public static class HarvestableHerb
     {
         public static bool IsHarvestableHerb(this Tile tile)
         {
-            int stage = tile.TileFrameX / 18;
-            if (Common.HerbTiles.Contains(tile.TileType) && tile.TileType <= TileID.Count)
+            if (Constants.HerbTiles.Contains(tile.TileType) && tile.TileType <= TileID.Count)
                 return true;
-            if (Common.HerbTiles.Contains(tile.TileType) && tile.TileType > TileID.Count && stage > 0)
+            if (Constants.HerbTiles.Contains(tile.TileType) && tile.TileType > TileID.Count && (tile.TileFrameX / 18) > 0)
                 return true;
 
             return false;

@@ -13,7 +13,7 @@
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.TruffleWorm);
             r.AddIngredient(ItemID.Bowl);
             r.AddTile(TileID.DemonAltar);

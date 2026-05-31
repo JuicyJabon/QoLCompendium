@@ -4,8 +4,8 @@
     {
         public override void PostUpdateMiscEffects()
         {
-            for (int i = 0; i < Common.CoinIDs.Count; i++)
-                ItemID.Sets.IgnoresEncumberingStone[Common.CoinIDs.ElementAt(i)] = QoLCompendium.mainConfig.EncumberingStoneAllowsCoins;
+            for (int i = 0; i < Constants.CoinIDs.Count; i++)
+                ItemID.Sets.IgnoresEncumberingStone[Constants.CoinIDs.ElementAt(i)] = QoLCompendium.mainConfig.EncumberingStoneAllowsCoins;
         }
     }
 }

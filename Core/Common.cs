@@ -1,5 +1,4 @@
-﻿using MonoMod.RuntimeDetour;
-using QoLCompendium.Content.Items.Accessories.Construction;
+﻿using QoLCompendium.Content.Items.Accessories.Construction;
 using QoLCompendium.Content.Items.Accessories.Fishing;
 using QoLCompendium.Content.Items.Accessories.Informational;
 using QoLCompendium.Content.Items.Tools.Mirrors;
@@ -9,933 +8,27 @@ using QoLCompendium.Content.Items.Tools.Summons.CrossMod.SpiritClassic;
 using QoLCompendium.Content.Items.Tools.Summons.CrossMod.Thorium;
 using QoLCompendium.Content.Items.Tools.Summons.Vanilla;
 using QoLCompendium.Content.Items.Tools.Usables.CrossMod;
-using QoLCompendium.Content.Projectiles.MobileStorages;
-using QoLCompendium.Content.Tiles.Other;
-using QoLCompendium.Core.Changes.ModChanges.ModItemChanges;
-using QoLCompendium.Core.PermanentBuffSystems;
 using System.Reflection;
-using Terraria.DataStructures;
-using Terraria.Enums;
-using Terraria.GameContent.Events;
 using Terraria.ModLoader.Config;
 
 namespace QoLCompendium.Core
 {
     public static class Common
     {
-#pragma warning disable CA2211, IDE0028, IDE0300
-
-        public static readonly BindingFlags UniversalBindingFlags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public;
-
-        public static List<Hook> detours = [];
-
-        #region Boss Summons
-        public static readonly HashSet<int> VanillaBossSummons = new()
-        {
-            ItemID.SlimeCrown,
-            ItemID.SuspiciousLookingEye,
-            ItemID.WormFood,
-            ItemID.BloodySpine,
-            ItemID.Abeemination,
-            ItemID.DeerThing,
-            ItemID.QueenSlimeCrystal,
-            ItemID.MechanicalWorm,
-            ItemID.MechanicalEye,
-            ItemID.MechanicalSkull,
-            ItemID.MechdusaSummon,
-            ItemID.LihzahrdPowerCell,
-            ItemID.CelestialSigil
-        };
-
-        public static readonly HashSet<int> VanillaEventSummons = new()
-        {
-            ItemID.BloodMoonStarter,
-            ItemID.GoblinBattleStandard,
-            ItemID.DD2ElderCrystal,
-            ItemID.PirateMap,
-            ItemID.SolarTablet,
-            ItemID.SnowGlobe,
-            ItemID.PumpkinMoonMedallion,
-            ItemID.NaughtyPresent
-        };
-
-        public static HashSet<int> ModdedBossSummons = new();
-
-        public static HashSet<int> ModdedEventSummons = new();
-
-        public static HashSet<int> FargosBossSummons = new();
-        
-        public static HashSet<int> FargosEventSummons = new();
-        
-        public static HashSet<int> FargosEnemySummons = new();
-        #endregion
-
-        #region Tiles & Walls
-        public static readonly ushort[] EvilWallIDs = new ushort[]
-        {
-            WallID.CorruptGrassEcho,
-            WallID.CorruptGrassUnsafe,
-            WallID.CrimsonGrassEcho,
-            WallID.CrimsonGrassUnsafe,
-            WallID.HallowedGrassEcho,
-            WallID.HallowedGrassUnsafe,
-            WallID.EbonstoneEcho,
-            WallID.EbonstoneUnsafe,
-            WallID.CrimstoneEcho,
-            WallID.CrimstoneUnsafe,
-            WallID.PearlstoneEcho,
-            WallID.CorruptHardenedSandEcho,
-            WallID.CorruptHardenedSand,
-            WallID.CrimsonHardenedSandEcho,
-            WallID.CrimsonHardenedSand,
-            WallID.HallowHardenedSandEcho,
-            WallID.HallowHardenedSand,
-            WallID.CorruptSandstoneEcho,
-            WallID.CorruptSandstone,
-            WallID.CrimsonSandstoneEcho,
-            WallID.CrimsonSandstone,
-            WallID.HallowSandstoneEcho,
-            WallID.HallowSandstone,
-            WallID.Corruption1Echo,
-            WallID.CorruptionUnsafe1,
-            WallID.Corruption2Echo,
-            WallID.CorruptionUnsafe2,
-            WallID.Corruption3Echo,
-            WallID.CorruptionUnsafe3,
-            WallID.Corruption4Echo,
-            WallID.CorruptionUnsafe4,
-            WallID.Crimson1Echo,
-            WallID.CrimsonUnsafe1,
-            WallID.Crimson2Echo,
-            WallID.CrimsonUnsafe2,
-            WallID.Crimson3Echo,
-            WallID.CrimsonUnsafe3,
-            WallID.Crimson4Echo,
-            WallID.CrimsonUnsafe4,
-            WallID.Hallow1Echo,
-            WallID.HallowUnsafe1,
-            WallID.Hallow2Echo,
-            WallID.HallowUnsafe2,
-            WallID.Hallow3Echo,
-            WallID.HallowUnsafe3,
-            WallID.Hallow4Echo,
-            WallID.HallowUnsafe4
-        };
-
-        public static readonly ushort[] PureWallIDs = new ushort[]
-        {
-            WallID.Grass,
-            WallID.GrassUnsafe,
-            WallID.Grass,
-            WallID.GrassUnsafe,
-            WallID.Grass,
-            WallID.GrassUnsafe,
-            WallID.Stone,
-            WallID.Stone,
-            WallID.Stone,
-            WallID.Stone,
-            WallID.Stone,
-            WallID.HardenedSandEcho,
-            WallID.HardenedSand,
-            WallID.HardenedSandEcho,
-            WallID.HardenedSand,
-            WallID.HardenedSandEcho,
-            WallID.HardenedSand,
-            WallID.SandstoneEcho,
-            WallID.Sandstone,
-            WallID.SandstoneEcho,
-            WallID.Sandstone,
-            WallID.SandstoneEcho,
-            WallID.Sandstone,
-            WallID.Dirt1Echo,
-            WallID.DirtUnsafe1,
-            WallID.Dirt2Echo,
-            WallID.DirtUnsafe2,
-            WallID.Dirt3Echo,
-            WallID.DirtUnsafe3,
-            WallID.Dirt4Echo,
-            WallID.DirtUnsafe4,
-            WallID.Dirt1Echo,
-            WallID.DirtUnsafe1,
-            WallID.Dirt2Echo,
-            WallID.DirtUnsafe2,
-            WallID.Dirt3Echo,
-            WallID.DirtUnsafe3,
-            WallID.Dirt4Echo,
-            WallID.DirtUnsafe4,
-            WallID.Dirt1Echo,
-            WallID.DirtUnsafe1,
-            WallID.Dirt2Echo,
-            WallID.DirtUnsafe2,
-            WallID.Dirt3Echo,
-            WallID.DirtUnsafe3,
-            WallID.Dirt4Echo,
-            WallID.DirtUnsafe4
-        };
-
-        public static readonly HashSet<int> FallingBlocks = new()
-        {
-            ProjectileID.SandBallFalling,
-            ProjectileID.EbonsandBallFalling,
-            ProjectileID.CrimsandBallFalling,
-            ProjectileID.PearlSandBallFalling,
-            ProjectileID.SiltBall,
-            ProjectileID.SlushBall
-        };
-
-        public static readonly HashSet<int> SnowBiomeBlocks = [ItemID.SnowBlock, ItemID.SnowBrick, ItemID.IceBlock, ItemID.PinkIceBlock, ItemID.PurpleIceBlock, ItemID.RedIceBlock];
-
-        public static readonly int[] VanillaFountains = new int[]
-{
-            ItemID.PureWaterFountain,
-            ItemID.CorruptWaterFountain,
-            ItemID.JungleWaterFountain,
-            ItemID.HallowedWaterFountain,
-            ItemID.IcyWaterFountain,
-            ItemID.DesertWaterFountain,
-            ItemID.OasisFountain,
-            ItemID.CrimsonWaterFountain
-};
-
-        public static readonly HashSet<int> GraveStones = [ItemID.Tombstone, ItemID.GraveMarker, ItemID.CrossGraveMarker, ItemID.Headstone, ItemID.Gravestone, ItemID.Obelisk, ItemID.RichGravestone1, ItemID.RichGravestone2, ItemID.RichGravestone3, ItemID.RichGravestone4, ItemID.RichGravestone5];
-
-        public static HashSet<int> IgnoredTilesForExplosives = new()
-        {
-            ModContent.TileType<AsphaltPlatformTile>()
-        };
-
-        public static HashSet<Mod> IgnoredModsForExplosives = new();
-
-        public static readonly HashSet<int> DungeonTiles = new()
-        {
-            TileID.BlueDungeonBrick,
-            TileID.GreenDungeonBrick,
-            TileID.PinkDungeonBrick
-        };
-
-        public static readonly HashSet<int> DungeonWalls = new()
-        {
-            WallID.BlueDungeonSlabUnsafe,
-            WallID.BlueDungeonTileUnsafe,
-            WallID.BlueDungeonUnsafe,
-            WallID.GreenDungeonSlabUnsafe,
-            WallID.GreenDungeonTileUnsafe,
-            WallID.GreenDungeonUnsafe,
-            WallID.PinkDungeonSlabUnsafe,
-            WallID.PinkDungeonTileUnsafe,
-            WallID.PinkDungeonUnsafe
-        };
-
-        public static readonly HashSet<int> HardmodeOres = new()
-        {
-             TileID.Cobalt,
-             TileID.Palladium,
-             TileID.Mythril,
-             TileID.Orichalcum,
-             TileID.Adamantite,
-             TileID.Titanium
-        };
-
-        public static HashSet<int> HerbTiles = new()
-        {
-            TileID.MatureHerbs,
-            TileID.BloomingHerbs
-        };
-        #endregion
-
-        #region Potions & Upgrades
-        public static readonly HashSet<int> RedPotionBuffs = new() {
-            BuffID.ObsidianSkin,
-            BuffID.Regeneration,
-            BuffID.Swiftness,
-            BuffID.Ironskin,
-            BuffID.ManaRegeneration,
-            BuffID.MagicPower,
-            BuffID.Featherfall,
-            BuffID.Spelunker,
-            BuffID.Archery,
-            BuffID.Heartreach,
-            BuffID.Hunter,
-            BuffID.Endurance,
-            BuffID.Lifeforce,
-            BuffID.Inferno,
-            BuffID.Mining,
-            BuffID.Rage,
-            BuffID.Wrath,
-            BuffID.Dangersense
-        };
-
-        public static HashSet<int> FlaskBuffs = new()
-        {
-            BuffID.WeaponImbueConfetti,
-            BuffID.WeaponImbueCursedFlames,
-            BuffID.WeaponImbueFire,
-            BuffID.WeaponImbueGold,
-            BuffID.WeaponImbueIchor,
-            BuffID.WeaponImbueNanites,
-            BuffID.WeaponImbuePoison,
-            BuffID.WeaponImbueVenom
-        };
-
-        public static HashSet<int> ThoriumCoatings = new();
-
-        public static HashSet<int> PermanentUpgrades = new()
-        {
-            ItemID.AegisCrystal,
-            ItemID.ArcaneCrystal,
-            ItemID.AegisFruit,
-            ItemID.Ambrosia,
-            ItemID.GummyWorm,
-            ItemID.GalaxyPearl,
-            ItemID.PeddlersSatchel,
-            ItemID.ArtisanLoaf,
-            ItemID.CombatBook,
-            ItemID.CombatBookVolumeTwo,
-            ItemID.TorchGodsFavor,
-            ItemID.MinecartPowerup
-        };
-
-        public static HashSet<int> PermanentMultiUseUpgrades = new()
-        {
-            ItemID.LifeCrystal,
-            ItemID.ManaCrystal,
-            ItemID.LifeFruit
-        };
-
-        public static HashSet<int> PowerUpItems = new()
-        {
-            ItemID.Heart,
-            ItemID.CandyApple,
-            ItemID.CandyCane,
-            ItemID.Star,
-            ItemID.SoulCake,
-            ItemID.SugarPlum,
-            ItemID.NebulaPickup1,
-            ItemID.NebulaPickup2,
-            ItemID.NebulaPickup3,
-        };
-        #endregion
-
-        #region Items
-        public static HashSet<int> Emblems = new()
-        {
-            ItemID.WarriorEmblem,
-            ItemID.RangerEmblem,
-            ItemID.SorcererEmblem,
-            ItemID.SummonerEmblem
-        };
-
-        public static readonly HashSet<int> MobileStorages = new()
-        {
-            ProjectileID.FlyingPiggyBank,
-            ProjectileID.VoidLens,
-            ModContent.ProjectileType<FlyingSafeProjectile>(),
-            ModContent.ProjectileType<EtherianConstructProjectile>()
-        };
-
-        public static HashSet<int> Prefixes = new()
-        {
-            PrefixID.Legendary,
-            PrefixID.Legendary2,
-            PrefixID.Godly,
-            PrefixID.Light,
-            PrefixID.Rapid,
-            PrefixID.Demonic,
-            PrefixID.Unreal,
-            PrefixID.Mythical,
-            PrefixID.Ruthless,
-            PrefixID.Warding,
-            PrefixID.Arcane,
-            PrefixID.Lucky,
-            PrefixID.Menacing,
-            PrefixID.Quick2,
-            PrefixID.Violent
-        };
-
-        public static HashSet<int> BankItems = new()
-        {
-            ItemID.DiscountCard,
-            ItemID.LuckyCoin,
-            ItemID.GoldRing,
-            ItemID.CoinRing,
-            ItemID.GreedyRing,
-            ItemID.MechanicalLens,
-            ItemID.LaserRuler,
-            ItemID.WireKite,
-            ItemID.PDA,
-            ItemID.CellPhone,
-            ItemID.ShellphoneDummy,
-            ItemID.Shellphone,
-            ItemID.ShellphoneSpawn,
-            ItemID.ShellphoneOcean,
-            ItemID.ShellphoneHell,
-            ItemID.GPS,
-            ItemID.REK,
-            ItemID.GoblinTech,
-            ItemID.FishFinder,
-            ItemID.CopperWatch,
-            ItemID.TinWatch,
-            ItemID.SilverWatch,
-            ItemID.TungstenWatch,
-            ItemID.GoldWatch,
-            ItemID.PlatinumWatch,
-            ItemID.DepthMeter,
-            ItemID.Compass,
-            ItemID.Radar,
-            ItemID.LifeformAnalyzer,
-            ItemID.TallyCounter,
-            ItemID.MetalDetector,
-            ItemID.Stopwatch,
-            ItemID.DPSMeter,
-            ItemID.FishermansGuide,
-            ItemID.WeatherRadio,
-            ItemID.Sextant,
-            ItemID.AncientChisel,
-            ItemID.Toolbelt,
-            ItemID.Toolbox,
-            ItemID.ExtendoGrip,
-            ItemID.PortableCementMixer,
-            ItemID.PaintSprayer,
-            ItemID.BrickLayer,
-            ItemID.ArchitectGizmoPack,
-            ItemID.HandOfCreation,
-            ItemID.ActuationAccessory,
-            ItemID.HighTestFishingLine,
-            ItemID.AnglerEarring,
-            ItemID.TackleBox,
-            ItemID.LavaFishingHook,
-            ItemID.AnglerTackleBag,
-            ItemID.LavaproofTackleBag,
-            ItemID.FishingBobber,
-            ItemID.FishingBobberGlowingStar,
-            ItemID.FishingBobberGlowingLava,
-            ItemID.FishingBobberGlowingKrypton,
-            ItemID.FishingBobberGlowingXenon,
-            ItemID.FishingBobberGlowingArgon,
-            ItemID.FishingBobberGlowingViolet,
-            ItemID.FishingBobberGlowingRainbow,
-            ItemID.TreasureMagnet,
-            ItemID.RoyalGel,
-            ItemID.SpectreGoggles,
-            ItemID.CordageGuide,
-            ItemID.DontHurtCrittersBook,
-            ItemID.DontHurtNatureBook,
-            ItemID.DontHurtComboBook,
-            ItemID.ShimmerCloak,
-            ItemID.DontStarveShaderItem,
-            ItemID.EncumberingStone,
-            ItemID.PortableStool
-        };
-
-        public static HashSet<DamageClass> VoidDamageClasses = new();
-        #endregion
-
-        #region Coins
-        public static readonly HashSet<int> CoinIDs = new() { ItemID.CopperCoin, ItemID.SilverCoin, ItemID.GoldCoin, ItemID.PlatinumCoin };
-        public static int PlatinumMaxStack = 9999;
-        public const ulong CopperValue = 1;
-        public const ulong SilverValue = 100;
-        public const ulong GoldValue = 100 * 100;
-        public const ulong PlatinumValue = 100 * 100 * 100;
-        #endregion
-
-        #region Boss Drops & IDs
-        public static readonly int[] BossIDs = new int[]
-        {
-            NPCID.KingSlime,
-            NPCID.EyeofCthulhu,
-            NPCID.EaterofWorldsHead,
-            NPCID.BrainofCthulhu,
-            NPCID.QueenBee,
-            NPCID.Deerclops,
-            NPCID.SkeletronHead,
-            NPCID.WallofFlesh,
-            NPCID.QueenSlimeBoss,
-            NPCID.Retinazer,
-            NPCID.Spazmatism,
-            NPCID.TheDestroyer,
-            NPCID.SkeletronPrime,
-            NPCID.Plantera,
-            NPCID.Golem,
-            NPCID.DukeFishron,
-            NPCID.HallowBoss,
-            NPCID.CultistBoss,
-            NPCID.MoonLordCore,
-        };
-
-        public static bool[] DownedVanillaBosses = new bool[]
-        {
-            NPC.downedSlimeKing,
-            NPC.downedBoss1,
-            NPC.downedBoss2,
-            NPC.downedQueenBee,
-            NPC.downedBoss3,
-            NPC.downedDeerclops,
-            Main.hardMode,
-            NPC.downedMechBoss1,
-            NPC.downedMechBoss2,
-            NPC.downedMechBoss3,
-            NPC.downedPlantBoss,
-            NPC.downedGolemBoss,
-            NPC.downedEmpressOfLight,
-            NPC.downedFishron,
-            NPC.downedAncientCultist,
-            NPC.downedMoonlord
-        };
-        
-        public static readonly HashSet<int> LunarPillarIDs = new() { NPCID.LunarTowerNebula, NPCID.LunarTowerSolar, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex };
-
-        public static readonly int[] kingSlimeDrops = {
-            ItemID.SlimySaddle,
-            ItemID.NinjaHood,
-            ItemID.NinjaShirt,
-            ItemID.NinjaPants,
-            ItemID.SlimeHook,
-            ItemID.SlimeGun
-        };
-
-        public static readonly int[] eyeOfCthulhuDrops = { ItemID.Binoculars };
-
-        public static readonly int[] eaterOfWorldsDrops = { ItemID.EatersBone };
-
-        public static readonly int[] brainOfCthulhuDrops = { ItemID.BoneRattle };
-
-        public static readonly int[] queenBeeDrops = {
-            ItemID.BeeGun,
-            ItemID.BeeKeeper,
-            ItemID.BeesKnees,
-            ItemID.HiveWand,
-            ItemID.BeeHat,
-            ItemID.BeeShirt,
-            ItemID.BeePants,
-            ItemID.HoneyComb,
-            ItemID.Nectar,
-            ItemID.HoneyedGoggles
-        };
-
-        public static readonly int[] deerclopsDrops = {
-            ItemID.ChesterPetItem,
-            ItemID.Eyebrella,
-            ItemID.DontStarveShaderItem,
-            ItemID.DizzyHat,
-            ItemID.PewMaticHorn,
-            ItemID.WeatherPain,
-            ItemID.HoundiusShootius,
-            ItemID.LucyTheAxe
-        };
-
-        public static readonly int[] skeletronDrops = {
-            ItemID.SkeletronHand,
-            ItemID.BookofSkulls,
-            ItemID.ChippysCouch
-        };
-
-        public static readonly int[] wallOfFleshDrops = {
-            ItemID.BreakerBlade,
-            ItemID.ClockworkAssaultRifle,
-            ItemID.LaserRifle,
-            ItemID.FireWhip,
-            ItemID.WarriorEmblem,
-            ItemID.RangerEmblem,
-            ItemID.SorcererEmblem,
-            ItemID.SummonerEmblem
-        };
-
-        public static readonly int[] queenSlimeDrops = {
-            ItemID.CrystalNinjaHelmet,
-            ItemID.CrystalNinjaChestplate,
-            ItemID.CrystalNinjaLeggings,
-            ItemID.Smolstar,
-            ItemID.QueenSlimeMountSaddle,
-            ItemID.QueenSlimeHook
-        };
-
-        public static readonly int[] planteraDrops = {
-            ItemID.GrenadeLauncher,
-            ItemID.VenusMagnum,
-            ItemID.NettleBurst,
-            ItemID.LeafBlower,
-            ItemID.FlowerPow,
-            ItemID.WaspGun,
-            ItemID.Seedler,
-            ItemID.PygmyStaff,
-            ItemID.ThornHook,
-            ItemID.TheAxe,
-            ItemID.Seedling
-        };
-
-        public static readonly int[] golemDrops = {
-            ItemID.Picksaw,
-            ItemID.Stynger,
-            ItemID.PossessedHatchet,
-            ItemID.SunStone,
-            ItemID.EyeoftheGolem,
-            ItemID.HeatRay,
-            ItemID.StaffofEarth,
-            ItemID.GolemFist
-        };
-
-        public static readonly int[] betsyDrops = {
-            ItemID.BetsyWings,
-            ItemID.DD2BetsyBow,
-            ItemID.MonkStaffT3,
-            ItemID.ApprenticeStaffT3,
-            ItemID.DD2SquireBetsySword
-        };
-
-        public static readonly int[] dukeFishronDrops = {
-            ItemID.FishronWings,
-            ItemID.BubbleGun,
-            ItemID.Flairon,
-            ItemID.RazorbladeTyphoon,
-            ItemID.TempestStaff,
-            ItemID.Tsunami
-        };
-
-        public static readonly int[] empressOfLightDrops = {
-            ItemID.FairyQueenMagicItem,
-            ItemID.PiercingStarlight,
-            ItemID.RainbowWhip,
-            ItemID.FairyQueenRangedItem,
-            ItemID.RainbowWings,
-            ItemID.SparkleGuitar,
-            ItemID.RainbowCursor
-        };
-
-        public static readonly int[] moonLordDrops = {
-            ItemID.Meowmere,
-            ItemID.Terrarian,
-            ItemID.StarWrath,
-            ItemID.SDMG,
-            ItemID.Celeb2,
-            ItemID.LastPrism,
-            ItemID.LunarFlareBook,
-            ItemID.RainbowCrystalStaff,
-            ItemID.MoonlordTurretStaff,
-            ItemID.MeowmereMinecart,
-        };
-        #endregion
-
-        #region Critters & Friendlies
-        public static readonly bool[] NormalBunnies = NPCID.Sets.Factory.CreateBoolSet(NPCID.Bunny, NPCID.GemBunnyTopaz, NPCID.GemBunnySapphire, NPCID.GemBunnyRuby, NPCID.GemBunnyEmerald, NPCID.GemBunnyDiamond, NPCID.GemBunnyAmethyst, NPCID.GemBunnyAmber, NPCID.ExplosiveBunny, NPCID.BunnySlimed, NPCID.BunnyXmas, NPCID.CorruptBunny, NPCID.CrimsonBunny, NPCID.PartyBunny);
-
-        public static readonly bool[] NormalSquirrels = NPCID.Sets.Factory.CreateBoolSet(NPCID.Squirrel, NPCID.SquirrelRed, NPCID.GemSquirrelTopaz, NPCID.GemSquirrelSapphire, NPCID.GemSquirrelRuby, NPCID.GemSquirrelEmerald, NPCID.GemSquirrelDiamond, NPCID.GemSquirrelAmethyst, NPCID.GemSquirrelAmber);
-
-        public static readonly bool[] NormalButterflies = NPCID.Sets.Factory.CreateBoolSet(NPCID.Butterfly, NPCID.HellButterfly, NPCID.EmpressButterfly);
-
-        public static readonly bool[] NormalBirds = NPCID.Sets.Factory.CreateBoolSet(NPCID.Bird, NPCID.BirdBlue, NPCID.BirdRed);
-
-        public static readonly HashSet<int> TownSlimeIDs = new(Enumerable.Range(678, 688 - 678)) { 670 };
-        #endregion
-
-        #region Banners
-        public static int AnyPirateBanner;
-
-        public static int AnyArmoredBonesBanner;
-
-        public static int AnySlimeBanner;
-
-        public static int AnyBatBanner;
-
-        public static int AnyHallowBanner;
-
-        public static int AnyCorruptionBanner;
-
-        public static int AnyCrimsonBanner;
-
-        public static int AnyJungleBanner;
-
-        public static int AnySnowBanner;
-
-        public static int AnyDesertBanner;
-
-        public static int AnyUnderworldBanner;
-        #endregion
-
-        #region Buffs
-
-        public static HashSet<int> AllBuffItems = new();
-
-        public static HashSet<int> AllCombinedBuffItems = new();
-
-        public static Dictionary<int, BuffEffect> AllEffects = new();
-
-        public enum EffectTypes
-        {
-            Potion,
-            Candy,
-            Repellent,
-            Arena,
-            Station,
-            Flask,
-            Coating,
-            Alcohol,
-            StrangePotion
-        };
-
-        public static HashSet<int> FoodBuffs = [BuffID.WellFed, BuffID.WellFed2, BuffID.WellFed3];
-
-        #endregion
-
-        public enum PlacedPlatformStyles
-        {
-            Wood,
-            Ebonwood,
-            RichMahogany,
-            Pearlwood,
-            Bone,
-            Shadewood,
-            BlueBrick,
-            PinkBrick,
-            GreenBrick,
-            MetalShelf,
-            BrassShelf,
-            WoodShelf,
-            DungeonShelf,
-            Obsidian,
-            Glass,
-            Pumpkin,
-            SpookyWood,
-            PalmWood,
-            Mushroom,
-            BorealWood,
-            Slime,
-            Steampunk,
-            Skyware,
-            LivingWood,
-            Honey,
-            Cactus,
-            Martian,
-            Meteorite,
-            Granite,
-            Marble,
-            Crystal,
-            Golden,
-            DynastyWood,
-            Lihzahrd,
-            Flesh,
-            Frozen,
-            Spider,
-            Lesion,
-            Solar,
-            Vortex,
-            Nebula,
-            Stardust,
-            Sandstone,
-            Stone,
-            Bamboo,
-            Reef,
-            Balloon,
-            AshWood,
-            Echo,
-        }
-
-        public enum PlacedTableStyles1
-        {
-            Wooden,
-            Ebonwood,
-            RichMahogany,
-            Pearlwood,
-            Bone,
-            Flesh,
-            LivingWood,
-            Skyware,
-            Shadewood,
-            Lihzahrd,
-            BlueDungeon,
-            GreenDungeon,
-            PinkDungeon,
-            Obsidian,
-            Gothic,
-            Glass,
-            Banquet,
-            Bar,
-            Golden,
-            Honey,
-            Steampunk,
-            Pumpkin,
-            Spooky,
-            Pine,
-            Frozen,
-            Dynasty,
-            PalmWood,
-            Mushroom,
-            BorealWood,
-            Slime,
-            Cactus,
-            Martian,
-            Meteorite,
-            Granite,
-            Marble
-        }
-
-        public enum PlacedTableStyles2
-        {
-            Crystal,
-            Spider,
-            Lesion,
-            Solar,
-            Vortex,
-            Nebula,
-            Stardust,
-            Sandstone,
-            Bamboo,
-            Reef,
-            Balloon,
-            AshWood
-        }
-
-        public enum PlacedChairStyles
-        {
-            Wooden,
-            Tiolet,
-            Ebonwood,
-            RichMahogany,
-            Pearlwood,
-            LivingWood,
-            Cactus,
-            Bone,
-            Flesh,
-            Mushroom,
-            Skyware,
-            Shadewood,
-            Lihzahrd,
-            BlueDungeon,
-            GreenDungeon,
-            PinkDungeon,
-            Obsidian,
-            Gothic,
-            Glass,
-            Golden,
-            GoldenToilet,
-            BarStool,
-            Honey,
-            Steampunk,
-            Pumpkin,
-            Spooky,
-            Pine,
-            Dynasty,
-            Frozen,
-            PalmWood,
-            BorealWood,
-            Slime,
-            Martian,
-            Meteorite,
-            Granite,
-            Marble,
-            Crystal,
-            Spider,
-            Lesion,
-            Solar,
-            Vortex,
-            Nebula,
-            Stardust,
-            Sandstone,
-            Bamboo
-        }
-
-        public enum PlacedDoorStyles
-        {
-            Wooden,
-            Ebonwood,
-            RichMahogany,
-            Pearlwood,
-            Cactus,
-            Flesh,
-            Mushroom,
-            LivingWood,
-            Bone,
-            Skyware,
-            Shadewood,
-            LockedLihzahrd,
-            Lihzahrd,
-            Dungeon,
-            Lead,
-            Iron,
-            BlueDungeon,
-            GreenDungeon,
-            PinkDungeon,
-            Obsidian,
-            Glass,
-            Golden,
-            Honey,
-            Steampunk,
-            Pumpkin,
-            Spooky,
-            Pine,
-            Frozen,
-            Dynasty,
-            PalmWood,
-            BorealWood,
-            Slime,
-            Martian,
-            Meteorite,
-            Granite,
-            Marble,
-            Crystal,
-            Spider,
-            Lesion,
-            Solar,
-            Vortex,
-            Nebula,
-            Stardust,
-            Sandstone,
-            Stone,
-            Bamboo
-        }
-
-        public enum PlacedTorchStyles
-        {
-            Torch,
-            BlueTorch,
-            RedTorch,
-            GreenTorch,
-            PurpleTorch,
-            WhiteTorch,
-            YellowTorch,
-            DemonTorch,
-            CursedTorch,
-            IceTorch,
-            OrangeTorch,
-            IchorTorch,
-            UltrabrightTorch,
-            BoneTorch,
-            RainbowTorch,
-            PinkTorch,
-            DesertTorch,
-            CoralTorch,
-            CorruptTorch,
-            CrimsonTorch,
-            HallowedTorch,
-            JungleTorch,
-            MushroomTorch,
-            AetherTorch
-        }
-
-        public enum AlchemyHerbStyles
-        {
-            Daybloom,
-            Moonglow,
-            Blinkroot,
-            Deathweed,
-            Waterleaf,
-            Fireblossom,
-            Shiverthorn
-        }
-
         public static void UnloadTasks()
         {
-            foreach (var hook in detours)
+            foreach (var hook in Constants.Detours)
                 hook.Undo();
         }
 
         public static void PostSetupTasks()
         {
-            HashSet<int> ModPowerUpItems = new()
-            {
+            HashSet<int> ModPowerUpItems =
+            [
                 GetModItem(CrossModSupport.Orchid.Mod, "Chip"),
                 GetModItem(CrossModSupport.Orchid.Mod, "Guard"),
                 GetModItem(CrossModSupport.Orchid.Mod, "Potency"),
+                GetModItem(CrossModSupport.Terrorborn.Mod, "DarkEnergy"),
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationNote"),
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationNoteStatue"),
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationNoteNoble"),
@@ -943,12 +36,13 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Thorium.Mod, "MeatSlab"),
                 GetModItem(CrossModSupport.Thorium.Mod, "GreatFlesh"),
                 GetModItem(CrossModSupport.Vitality.Mod, "BloodClot"),
-            };
+                GetModItem(CrossModSupport.Vitality.Mod, "HoneydropProj2")
+            ];
             ModPowerUpItems.RemoveWhere(x => x == ItemID.None);
-            PowerUpItems.UnionWith(ModPowerUpItems);
+            Constants.PowerUpItems.UnionWith(ModPowerUpItems);
 
-            HashSet<int> ModBankItems = new()
-            {
+            HashSet<int> ModBankItems =
+            [
                 ModContent.ItemType<BattalionLog>(),
                 ModContent.ItemType<HarmInducer>(),
                 ModContent.ItemType<HeadCounter>(),
@@ -1030,6 +124,7 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "UltraGlowingBobber"),
                 //Common.GetModItem(CrossModSupport.MooMoosUltimateYoyoRevamp.Mod, "HitDisplay"),
                 //Common.GetModItem(CrossModSupport.MooMoosUltimateYoyoRevamp.Mod, "SpeedDisplay"),
+                GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "AnomalyInterceptor"),
                 GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "AnomalyLocator"),
                 GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "ArchaeologistToolbelt"),
                 //GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "ElectromagneticDeterrent"),
@@ -1038,6 +133,13 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "FisheyeGem"),
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "MetalBand"),
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "MimicRepellent"),
+                GetModItem(CrossModSupport.SpiritReforged.Mod, "Ledger"),
+                GetModItem(CrossModSupport.SpiritReforged.Mod, "MysticalCodex"),
+                GetModItem(CrossModSupport.SpiritReforged.Mod, "ScryingLens"),
+                GetModItem(CrossModSupport.SpiritReforged.Mod, "OganessonBobber"),
+                GetModItem(CrossModSupport.SpiritReforged.Mod, "RadonBobber"),
+                GetModItem(CrossModSupport.SpiritReforged.Mod, "PearlString"),
+                GetModItem(CrossModSupport.Terrorborn.Mod, "AntlionClaw"),
                 GetModItem(CrossModSupport.Thorium.Mod, "HeartRateMonitor"),
                 GetModItem(CrossModSupport.Thorium.Mod, "HightechSonarDevice"),
                 GetModItem(CrossModSupport.Thorium.Mod, "GlitteringChalice"),
@@ -1045,12 +147,12 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Thorium.Mod, "LuckyRabbitsFoot"),
                 GetModItem(CrossModSupport.Thorium.Mod, "GuidetoOvercomingGrief"),
                 GetModItem(CrossModSupport.Vitality.Mod, "ShimmerFishingHook")
-            };
+            ];
             ModBankItems.RemoveWhere(x => x == ItemID.None);
-            BankItems.UnionWith(ModBankItems);
+            Constants.BankItems.UnionWith(ModBankItems);
 
-            HashSet<int> TempModdedBossSummons = new()
-            {
+            HashSet<int> TempModdedBossSummons =
+            [
                 //QoLC Vanilla
                 ModContent.ItemType<CultistSummon>(),
                 ModContent.ItemType<DukeFishronSummon>(),
@@ -1271,6 +373,12 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Uhtric.Mod, "RareGeode"),
                 GetModItem(CrossModSupport.Uhtric.Mod, "SnowyCharcoal"),
                 GetModItem(CrossModSupport.Uhtric.Mod, "CosmicLure"),
+                //Ultranium
+                GetModItem(CrossModSupport.Ultranium.Mod, "BloodMoonSummon"),
+                GetModItem(CrossModSupport.Ultranium.Mod, "DreadBeacon"),
+                GetModItem(CrossModSupport.Ultranium.Mod, "EtherealLantern"),
+                GetModItem(CrossModSupport.Ultranium.Mod, "IceFood"),
+                GetModItem(CrossModSupport.Ultranium.Mod, "MiniProbe"),
                 //Universe of Swords
                 GetModItem(CrossModSupport.UniverseOfSwords.Mod, "SwordBossSummon"),
                 //Valhalla
@@ -1292,12 +400,12 @@ namespace QoLCompendium.Core
                 //Zylon
                 GetModItem(CrossModSupport.Zylon.Mod, "ForgottenFlame"),
                 GetModItem(CrossModSupport.Zylon.Mod, "SlimyScepter")
-            };
+            ];
             TempModdedBossSummons.RemoveWhere(x => x == ItemID.None);
-            ModdedBossSummons.UnionWith(TempModdedBossSummons);
+            Constants.ModdedBossSummons.UnionWith(TempModdedBossSummons);
 
-            HashSet<int> TempModdedEventSummons = new()
-            {
+            HashSet<int> TempModdedEventSummons =
+            [
                 //Calamity
                 GetModItem(CrossModSupport.Calamity.Mod, "CausticTear"),
                 GetModItem(CrossModSupport.Calamity.Mod, "MartianDistressRemote"),
@@ -1329,12 +437,12 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "BlueMoonSpawn"),
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "DistressJellyItem"),
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "MartianTransmitter"),
-            };
+            ];
             TempModdedEventSummons.RemoveWhere(x => x == ItemID.None);
-            ModdedEventSummons.UnionWith(TempModdedEventSummons);
+            Constants.ModdedEventSummons.UnionWith(TempModdedEventSummons);
 
-            HashSet<int> TempFargosBossSummons = new()
-            {
+            HashSet<int> TempFargosBossSummons =
+            [
                 //Fargos Mutant
                 //ABOMINATIONN NPC ITEMS
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "BatteredClub"),
@@ -1412,12 +520,12 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "SomeKindofSpaceWorm"),
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "SulphurBearTrap"),
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "WormFoodofKos"),
-            };
+            ];
             TempFargosBossSummons.RemoveWhere(x => x == ItemID.None);
-            FargosBossSummons.UnionWith(TempFargosBossSummons);
+            Constants.FargosBossSummons.UnionWith(TempFargosBossSummons);
 
-            HashSet<int> TempFargosEventSummons = new()
-            {
+            HashSet<int> TempFargosEventSummons =
+            [
                 //Fargos Mutant
                 //ABOMINATIONN NPC ITEMS
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "Anemometer"),
@@ -1429,12 +537,12 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "SlimyBarometer"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "SpentLantern"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "WeatherBalloon"),
-            };
+            ];
             TempFargosEventSummons.RemoveWhere(x => x == ItemID.None);
-            FargosEventSummons.UnionWith(TempFargosEventSummons);
+            Constants.FargosEventSummons.UnionWith(TempFargosEventSummons);
 
-            HashSet<int> TempFargosEnemySummons = new()
-            {
+            HashSet<int> TempFargosEnemySummons =
+            [
                 //Fargos Mutant
                 //DEVIANTT NPC ITEMS
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "AmalgamatedSkull"),
@@ -1484,12 +592,12 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "QuakeIdol"),
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "StormIdol"),
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "WyrmTablet")
-            };
+            ];
             TempFargosEnemySummons.RemoveWhere(x => x == ItemID.None);
-            FargosEnemySummons.UnionWith(TempFargosEnemySummons);
+            Constants.FargosEnemySummons.UnionWith(TempFargosEnemySummons);
 
-            HashSet<int> ModPrefixes = new()
-            {
+            HashSet<int> ModPrefixes =
+            [
                 GetModPrefix(CrossModSupport.Calamity.Mod, "Flawless"),
                 GetModPrefix(CrossModSupport.Calamity.Mod, "Silent"),
                 GetModPrefix(CrossModSupport.Calamity.Mod, "Dauntless"),
@@ -1513,12 +621,12 @@ namespace QoLCompendium.Core
                 GetModPrefix(CrossModSupport.Thorium.Mod, "Lucrative"),
                 GetModPrefix(CrossModSupport.Vitality.Mod, "MalevolentPrefix"),
                 GetModPrefix(CrossModSupport.Vitality.Mod, "RelentlessPrefix")
-            };
+            ];
             ModPrefixes.RemoveWhere(x => x == -1);
-            Prefixes.UnionWith(ModPrefixes);
+            Constants.Prefixes.UnionWith(ModPrefixes);
 
-            HashSet<int> ModPermanentUpgrades = new()
-            {
+            HashSet<int> ModPermanentUpgrades =
+            [
                 GetModItem(CrossModSupport.Calamity.Mod, "MushroomPlasmaRoot"),
                 GetModItem(CrossModSupport.Calamity.Mod, "InfernalBlood"),
                 GetModItem(CrossModSupport.Calamity.Mod, "RedLightningContainer"),
@@ -1557,12 +665,12 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "SoulHeart"),
                 GetModItem(CrossModSupport.Thorium.Mod, "AstralWave"),
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationGem")
-            };
+            ];
             ModPermanentUpgrades.RemoveWhere(x => x == ItemID.None);
-            PermanentUpgrades.UnionWith(ModPermanentUpgrades);
+            Constants.PermanentUpgrades.UnionWith(ModPermanentUpgrades);
 
-            HashSet<int> ModPermanentMultiUseUpgrades = new()
-            {
+            HashSet<int> ModPermanentMultiUseUpgrades =
+            [
                 GetModItem(CrossModSupport.Calamity.Mod, "EnchantedStarfish"),
                 GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "StaminaCrystal"),
                 GetModItem(CrossModSupport.Ragnarok.Mod, "InspirationEssence"),
@@ -1571,12 +679,12 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationFragment"),
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationShard"),
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationCrystalNew")
-            };
+            ];
             ModPermanentMultiUseUpgrades.RemoveWhere(x => x == ItemID.None);
-            PermanentMultiUseUpgrades.UnionWith(ModPermanentMultiUseUpgrades);
+            Constants.PermanentMultiUseUpgrades.UnionWith(ModPermanentMultiUseUpgrades);
 
-            HashSet<int> ModEmblems = new()
-            {
+            HashSet<int> ModEmblems =
+            [
                 GetModItem(CrossModSupport.Calamity.Mod, "RogueEmblem"),
                 GetModItem(CrossModSupport.ClickerClass.Mod, "ClickerEmblem"),
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "ThrowerEmblem"),
@@ -1588,12 +696,12 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Thorium.Mod, "BardEmblem"),
                 GetModItem(CrossModSupport.Thorium.Mod, "ClericEmblem"),
                 GetModItem(CrossModSupport.Thorium.Mod, "NinjaEmblem"),
-            };
+            ];
             ModEmblems.RemoveWhere(x => x == ItemID.None);
-            Emblems.UnionWith(ModEmblems);
+            Constants.Emblems.UnionWith(ModEmblems);
 
-            HashSet<int> ModHerbs = new()
-            {
+            HashSet<int> ModHerbs =
+            [
                 GetModTile(CrossModSupport.Depths.Mod, "ShadowShrub"),
                 GetModTile(CrossModSupport.Redemption.Mod, "NightshadeTile"),
                 GetModTile(CrossModSupport.ShadowsOfAbaddon.Mod, "Welkinbell"),
@@ -1604,12 +712,25 @@ namespace QoLCompendium.Core
                 GetModTile(CrossModSupport.SpiritReforged.Mod, "CloudstalkTile"),
                 GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp"),
                 GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp2")
-            };
+            ];
             ModHerbs.RemoveWhere(x => x == -1);
-            HerbTiles.UnionWith(ModHerbs);
+            Constants.HerbTiles.UnionWith(ModHerbs);
 
-            HashSet<DamageClass> TempVoidClasses = new()
-            {
+            HashSet<int> ElementsAwokenBatteries =
+            [
+                GetModItem(CrossModSupport.ElementsAwoken.Mod, "AABattery"),
+                GetModItem(CrossModSupport.ElementsAwoken.Mod, "BioBattery"),
+                GetModItem(CrossModSupport.ElementsAwoken.Mod, "ChaoticEnergyCapacitor"),
+                GetModItem(CrossModSupport.ElementsAwoken.Mod, "DemonicPowerBank"),
+                GetModItem(CrossModSupport.ElementsAwoken.Mod, "HellstoneCapacitor"),
+                GetModItem(CrossModSupport.ElementsAwoken.Mod, "LunarEnergyHarnesser"),
+                GetModItem(CrossModSupport.ElementsAwoken.Mod, "WoodenAccumulator"),
+            ];
+            ElementsAwokenBatteries.RemoveWhere(x => x == -1);
+            Constants.ElementsAwokenBatteryItems.UnionWith(ElementsAwokenBatteries);
+
+            HashSet <DamageClass> TempVoidClasses =
+            [
                 GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidMelee"),
                 GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidRanged"),
                 GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidMagic"),
@@ -1619,12 +740,13 @@ namespace QoLCompendium.Core
                 GetModDamageClass(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "VoidRadiant"),
                 GetModDamageClass(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "VoidThrowing"),
                 GetModDamageClass(CrossModSupport.InfernalEclipse.Mod, "VoidRogue")
-            };
+            ];
             TempVoidClasses.RemoveWhere(x => x == DamageClass.Generic);
-            VoidDamageClasses.UnionWith(TempVoidClasses);
+            Constants.VoidDamageClasses.UnionWith(TempVoidClasses);
 
-            HashSet<int> ModIgnoredTiles = new()
-            {
+            HashSet<int> ModIgnoredTiles =
+            [
+                GetModTile(CrossModSupport.Split.Mod, "BatPot"),
                 GetModTile(CrossModSupport.Thorium.Mod, "IllumiteChunk"),
                 GetModTile(CrossModSupport.Thorium.Mod, "LifeQuartz"),
                 GetModTile(CrossModSupport.Thorium.Mod, "LodeStone"),
@@ -1633,12 +755,12 @@ namespace QoLCompendium.Core
                 GetModTile(CrossModSupport.Thorium.Mod, "ValadiumChunk"),
                 GetModTile(CrossModSupport.Thorium.Mod, "Aquamarine"),
                 GetModTile(CrossModSupport.Thorium.Mod, "Opal"),
-            };
+            ];
             ModIgnoredTiles.RemoveWhere(x => x == -1);
-            IgnoredTilesForExplosives.UnionWith(ModIgnoredTiles);
+            Constants.IgnoredTilesForExplosives.UnionWith(ModIgnoredTiles);
 
-            HashSet<Mod> TempIgnoredModsForExplosives = new()
-            {
+            HashSet<Mod> TempIgnoredModsForExplosives =
+            [
                 CrossModSupport.ConfectionRebaked.Mod,
                 CrossModSupport.Depths.Mod,
                 CrossModSupport.InfectedQualities.Mod,
@@ -1646,35 +768,35 @@ namespace QoLCompendium.Core
                 CrossModSupport.MartinsOrder.Mod,
                 CrossModSupport.Orchid.Mod,
                 CrossModSupport.Remnants.Mod
-            };
+            ];
             TempIgnoredModsForExplosives.RemoveWhere(x => x == null);
-            IgnoredModsForExplosives.UnionWith(TempIgnoredModsForExplosives);
+            Constants.IgnoredModsForExplosives.UnionWith(TempIgnoredModsForExplosives);
 
-            HashSet<int> ModFoodBuffs = new()
-            {
+            HashSet<int> ModFoodBuffs =
+            [
                 GetModBuff(CrossModSupport.WrathOfTheGods.Mod, "StarstrikinglySatiated")
-            };
+            ];
             ModFoodBuffs.RemoveWhere(x => x == -1);
-            FoodBuffs.UnionWith(ModFoodBuffs);
+            Constants.FoodBuffs.UnionWith(ModFoodBuffs);
 
             for (int i = BuffID.Count; i < BuffLoader.BuffCount; i++)
             {
-                if (BuffID.Sets.IsAFlaskBuff[BuffLoader.GetBuff(i).Type] && !FlaskBuffs.Contains(BuffLoader.GetBuff(i).Type))
-                    FlaskBuffs.Add(BuffLoader.GetBuff(i).Type);
+                if (BuffID.Sets.IsAFlaskBuff[BuffLoader.GetBuff(i).Type] && !Constants.FlaskBuffs.Contains(BuffLoader.GetBuff(i).Type))
+                    Constants.FlaskBuffs.Add(BuffLoader.GetBuff(i).Type);
             }
 
             if (CrossModSupport.Thorium.Loaded)
             {
-                HashSet<int> TempThoriumCoatings = new()
-                {
+                HashSet<int> TempThoriumCoatings =
+                [
                     GetModBuff(CrossModSupport.Thorium.Mod, "DeepFreezeCoatingBuff"),
                     GetModBuff(CrossModSupport.Thorium.Mod, "ExplosiveCoatingBuff"),
                     GetModBuff(CrossModSupport.Thorium.Mod, "GorgonCoatingBuff"),
                     GetModBuff(CrossModSupport.Thorium.Mod, "SporeCoatingBuff"),
                     GetModBuff(CrossModSupport.Thorium.Mod, "ToxicCoatingBuff"),
-                };
+                ];
                 TempThoriumCoatings.RemoveWhere(x => x == -1);
-                ThoriumCoatings.UnionWith(TempThoriumCoatings);
+                Constants.ThoriumCoatings.UnionWith(TempThoriumCoatings);
             }
         }
 
@@ -1683,117 +805,15 @@ namespace QoLCompendium.Core
 
         }
 
-        public static Condition ItemToggled(string displayText, Func<bool> toggle)
-        {
-            return new Condition(Language.GetTextValue(displayText), toggle);
-        }
-
-        public static Recipe GetItemRecipe(Func<bool> toggle, int itemType, int amount = 1, string displayText = "")
-        {
-            Recipe obj = Recipe.Create(itemType, amount);
-            obj.AddCondition(ItemToggled(displayText, toggle));
-            return obj;
-        }
-
         public static Color ColorSwap(Color firstColor, Color secondColor, float seconds)
         {
             float num = (float)((Math.Sin(Math.PI * 2.0 / (double)seconds * Main.GlobalTimeWrappedHourly) + 1.0) * 0.5);
             return Color.Lerp(firstColor, secondColor, num);
         }
 
-        public static ulong CalculateCoinValue(int type, uint stack)
-        {
-            return type switch
-            {
-                ItemID.CopperCoin => stack * CopperValue,
-                ItemID.SilverCoin => stack * SilverValue,
-                ItemID.GoldCoin => stack * GoldValue,
-                ItemID.PlatinumCoin => stack * PlatinumValue,
-                _ => 0,
-            };
-        }
-
-        public static List<Item> ConvertCopperValueToCoins(ulong value)
-        {
-            (ulong plat, ulong plat_rem) = Math.DivRem(value, PlatinumValue);
-            (ulong gold, ulong gold_rem) = Math.DivRem(plat_rem, GoldValue);
-            (ulong silver, ulong copper) = Math.DivRem(gold_rem, SilverValue);
-
-            var toReturn = new List<Item>();
-
-            while (plat > 0)
-            {
-                toReturn.Add(new Item(ItemID.PlatinumCoin, Math.Min((int)plat, PlatinumMaxStack)));
-                plat -= Math.Min(plat, (ulong)PlatinumMaxStack);
-            }
-
-            toReturn.Add(new Item(ItemID.GoldCoin, (int)gold));
-            toReturn.Add(new Item(ItemID.SilverCoin, (int)silver));
-            toReturn.Add(new Item(ItemID.CopperCoin, (int)copper));
-
-            return toReturn;
-        }
-
         public interface IRightClickOverrideWhenHeld
         {
             bool RightClickOverrideWhileHeld(ref Item heldItem, Item[] inv, int context, int slot, Player player, QoLCPlayer qPlayer);
-        }
-
-        public static bool IsACoin(this Item item)
-        {
-            return item.type is >= 71 and <= 74;
-        }
-
-        public static bool IsATool(this Item item)
-        {
-            return item.pick > 0 || item.axe > 0 || item.hammer > 0 || item.fishingPole > 0 || ((item.createTile > -1 || item.createWall > -1) && item.damage > -1);
-        }
-
-        public static bool IsArmor(this Item item)
-        {
-            if (item.headSlot != -1 || item.bodySlot != -1 || item.legSlot != -1)
-                return !item.vanity;
-            return false;
-        }
-
-        public static bool IsAnEquippable(this Item item)
-        {
-            /* 
-             * item.accessory
-             * item.IsArmor()
-             * item.vanity
-             * (item.buffType != 0 && Main.vanityPet[item.buffType])
-             * (item.buffType != 0 && Main.lightPet[item.buffType])
-             * item.mountType > -1
-             * (item.shoot != ProjectileID.None && Main.projHook[item.shoot])
-            */
-            if (item.accessory || item.IsArmor() || item.vanity || item.mountType > -1 || (item.buffType != 0 && Main.vanityPet[item.buffType]) || (item.buffType != 0 && Main.lightPet[item.buffType]) || (item.shoot != ProjectileID.None && Main.projHook[item.shoot]))
-                return true;
-            return false;
-        }
-
-        public static bool IsAWeapon(this Item item)
-        {
-            /*
-             * item.DamageType != null
-             * !item.IsAnEquippable()
-             * !item.IsATool()
-             * !item.IsCurrency
-            */
-            if (item.DamageType != null && !item.IsAnEquippable() && !item.IsATool() && !item.IsCurrency)
-                return true;
-            return false;
-        }
-
-        public static void ItemDisabledTooltip(Item item, List<TooltipLine> tooltips, bool configOn)
-        {
-            TooltipLine name = tooltips.Find(l => l.Name == "ItemName");
-            if (!configOn)
-            {
-                name.Text += " " + Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ItemDisabled");
-                name.OverrideColor = Color.Red;
-            }
-
         }
 
         public static int GetModItem(Mod mod, string itemName)
@@ -1892,6 +912,36 @@ namespace QoLCompendium.Core
             return DamageClass.Generic;
         }
 
+        public static StatModifier GetBestClassDamage(this Player player)
+        {
+            StatModifier ret = StatModifier.Default;
+            StatModifier classless = player.GetTotalDamage<GenericDamageClass>();
+
+            ret.Base = classless.Base;
+            ret *= classless.Multiplicative;
+            ret.Flat = classless.Flat;
+
+            float best = 1f;
+
+            float melee = player.GetTotalDamage<MeleeDamageClass>().Additive;
+            if (melee > best) best = melee;
+            float ranged = player.GetTotalDamage<RangedDamageClass>().Additive;
+            if (ranged > best) best = ranged;
+            float magic = player.GetTotalDamage<MagicDamageClass>().Additive;
+            if (magic > best) best = magic;
+            float summon = player.GetTotalDamage<SummonDamageClass>().Additive;
+            if (summon > best) best = summon;
+
+            for (int i = 0; i < DamageClassLoader.DamageClassCount; i++)
+            {
+                float dClass = player.GetTotalDamage(DamageClassLoader.GetDamageClass(i)).Additive;
+                if (dClass > best) best = dClass;
+            }
+
+            ret += best - 1f;
+            return ret;
+        }
+
         public static int GetBoolCount(bool[] arrayToCount)
         {
             int count = 0;
@@ -1903,462 +953,12 @@ namespace QoLCompendium.Core
             return count;
         }
 
-        public static string BuffAsset(int buffType)
-        {
-            if (buffType > BuffID.Count && BuffLoader.GetBuff(buffType) != null)
-                return BuffLoader.GetBuff(buffType).Texture;
-            else
-                return "Terraria/Images/Buff_" + buffType;
-        }
-
-        public static void ReplaceBuffTexture(this Item item)
-        {
-            if (item.ModItem is BuffItem buffItem)
-            {
-                TextureAssets.Item[item.type] = TextureAssets.Buff[buffItem.BuffType];
-            }
-        }
-
-        public static void VanillaBuffHandler(int buff, Player player)
-        {
-            if (player.HasBuff(buff))
-                return;
-
-            switch (buff)
-            {
-                case BuffID.AmmoBox:
-                    player.ammoBox = true;
-                    break;
-                case BuffID.AmmoReservation:
-                    player.ammoPotion = true;
-                    break;
-                case BuffID.Archery:
-                    player.archery = true;
-                    player.arrowDamage *= 1.1f;
-                    break;
-                case BuffID.Battle:
-                    player.enemySpawns = true;
-                    break;
-                case BuffID.Bewitched:
-                    player.maxMinions += 1;
-                    break;
-                case BuffID.BiomeSight:
-                    player.biomeSight = true;
-                    break;
-                case BuffID.Builder:
-                    player.tileSpeed += 0.25f;
-                    player.wallSpeed += 0.25f;
-                    player.blockRange++;
-                    break;
-                case BuffID.Calm:
-                    player.calmed = true;
-                    break;
-                case BuffID.Campfire:
-                    player.lifeRegen++;
-                    break;
-                case BuffID.CatBast:
-                    player.statDefense += 5;
-                    break;
-                case BuffID.Clairvoyance:
-                    player.GetDamage(DamageClass.Magic) += 0.05f;
-                    player.GetCritChance(DamageClass.Magic) += 2f;
-                    player.statManaMax2 += 20;
-                    player.manaCost -= 0.02f;
-                    break;
-                case BuffID.Crate:
-                    player.cratePotion = true;
-                    break;
-                case BuffID.Dangersense:
-                    player.dangerSense = true;
-                    break;
-                case BuffID.Endurance:
-                    player.endurance += 0.1f;
-                    break;
-                case BuffID.Featherfall:
-                    player.slowFall = true;
-                    break;
-                case BuffID.Fishing:
-                    player.fishingSkill += 15;
-                    break;
-                case BuffID.Flipper:
-                    player.ignoreWater = true;
-                    player.accFlipper = true;
-                    break;
-                case BuffID.Gills:
-                    player.gills = true;
-                    break;
-                case BuffID.Gravitation:
-                    player.gravControl = true;
-                    break;
-                case BuffID.Lucky:
-                    player.luckPotion = 3;
-                    break;
-                case BuffID.HeartLamp:
-                    player.lifeRegen += 2;
-                    break;
-                case BuffID.Heartreach:
-                    player.lifeMagnet = true;
-                    break;
-                case BuffID.Honey:
-                    player.lifeRegenTime += 2f;
-                    player.lifeRegen += 2;
-                    break;
-                case BuffID.Hunter:
-                    player.detectCreature = true;
-                    break;
-                case BuffID.Inferno:
-                    player.inferno = true;
-                    Lighting.AddLight((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f), 0.65f, 0.4f, 0.1f);
-                    int num2 = 323;
-                    float num3 = 200f;
-                    bool flag = player.infernoCounter % 60 == 0;
-                    int damage = 20;
-                    for (int k = 0; k < 200; k++)
-                    {
-                        NPC nPC = Main.npc[k];
-                        if (nPC.active && !nPC.friendly && nPC.damage > 0 && !nPC.dontTakeDamage && !nPC.buffImmune[num2] && player.CanNPCBeHitByPlayerOrPlayerProjectile(nPC) && Vector2.Distance(player.Center, nPC.Center) <= num3)
-                        {
-                            if (nPC.FindBuffIndex(num2) == -1)
-                                nPC.AddBuff(num2, 120);
-
-                            if (flag)
-                                player.ApplyDamageToNPC(nPC, damage, 0f, 0, crit: false);
-                        }
-                    }
-                    break;
-                case BuffID.Invisibility:
-                    player.invis = true;
-                    break;
-                case BuffID.Ironskin:
-                    player.statDefense += 8;
-                    break;
-                case BuffID.Lifeforce:
-                    player.lifeForce = true;
-                    player.statLifeMax2 += player.statLifeMax / 5 / 20 * 20;
-                    break;
-                case BuffID.MagicPower:
-                    player.GetDamage(DamageClass.Magic) += 0.2f;
-                    break;
-                case BuffID.ManaRegeneration:
-                    player.manaRegenBuff = true;
-                    break;
-                case BuffID.Mining:
-                    player.pickSpeed -= 0.25f;
-                    break;
-                case BuffID.NightOwl:
-                    player.nightVision = true;
-                    break;
-                case BuffID.ObsidianSkin:
-                    player.lavaImmune = true;
-                    player.fireWalk = true;
-                    player.buffImmune[BuffID.OnFire] = true;
-                    break;
-                case BuffID.PeaceCandle:
-                    player.ZonePeaceCandle = true;
-                    if (Main.myPlayer == player.whoAmI)
-                        Main.SceneMetrics.PeaceCandleCount = 0;
-                    break;
-                case BuffID.Rage:
-                    player.GetCritChance(DamageClass.Generic) += 10f;
-                    break;
-                case BuffID.Regeneration:
-                    player.lifeRegen += 4;
-                    break;
-                case BuffID.ShadowCandle:
-                    player.ZoneShadowCandle = true;
-                    if (Main.myPlayer == player.whoAmI)
-                        Main.SceneMetrics.ShadowCandleCount = 0;
-                    break;
-                case BuffID.Sharpened:
-                    player.GetArmorPenetration(DamageClass.Melee) += 12;
-                    break;
-                case BuffID.Shine:
-                    Lighting.AddLight((int)(player.position.X + player.width / 2) / 16, (int)(player.position.Y + player.height / 2) / 16, 0.8f, 0.95f, 1f);
-                    break;
-                case BuffID.Sonar:
-                    player.sonarPotion = true;
-                    break;
-                case BuffID.Spelunker:
-                    player.findTreasure = true;
-                    break;
-                case BuffID.StarInBottle:
-                    player.manaRegenDelayBonus += 0.5f;
-                    player.manaRegenBonus += 10;
-                    break;
-                case BuffID.SugarRush:
-                    player.pickSpeed -= 0.2f;
-                    player.moveSpeed += 0.2f;
-                    break;
-                case BuffID.Summoning:
-                    player.maxMinions += 1;
-                    break;
-                case BuffID.Sunflower:
-                    player.moveSpeed += 0.1f;
-                    player.moveSpeed *= 1.1f;
-                    player.sunflower = true;
-                    break;
-                case BuffID.Swiftness:
-                    player.moveSpeed += 0.25f;
-                    break;
-                case BuffID.Thorns:
-                    player.thorns = 1f;
-                    break;
-                case BuffID.Tipsy:
-                    if (player.HeldItem.DamageType == DamageClass.Melee)
-                    {
-                        player.tipsy = true;
-                        player.statDefense -= 4;
-                        player.GetCritChance(DamageClass.Melee) += 2f;
-                        player.GetDamage(DamageClass.Melee) += 0.1f;
-                        player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
-                    }
-                    break;
-                case BuffID.Titan:
-                    player.kbBuff = true;
-                    break;
-                case BuffID.Warmth:
-                    player.resistCold = true;
-                    break;
-                case BuffID.WarTable:
-                    player.maxTurrets += 1;
-                    break;
-                case BuffID.WaterCandle:
-                    player.ZoneWaterCandle = true;
-                    if (Main.myPlayer == player.whoAmI)
-                        Main.SceneMetrics.WaterCandleCount = 0;
-                    break;
-                case BuffID.WaterWalking:
-                    player.waterWalk = true;
-                    break;
-                case BuffID.WeaponImbueConfetti:
-                    player.meleeEnchant = 7;
-                    HandleFlaskBuffs(player);
-                    break;
-                case BuffID.WeaponImbueCursedFlames:
-                    player.meleeEnchant = 2;
-                    HandleFlaskBuffs(player);
-                    break;
-                case BuffID.WeaponImbueFire:
-                    player.meleeEnchant = 3;
-                    HandleFlaskBuffs(player);
-                    break;
-                case BuffID.WeaponImbueGold:
-                    player.meleeEnchant = 4;
-                    HandleFlaskBuffs(player);
-                    break;
-                case BuffID.WeaponImbueIchor:
-                    player.meleeEnchant = 5;
-                    HandleFlaskBuffs(player);
-                    break;
-                case BuffID.WeaponImbueNanites:
-                    player.meleeEnchant = 6;
-                    HandleFlaskBuffs(player);
-                    break;
-                case BuffID.WeaponImbuePoison:
-                    player.meleeEnchant = 8;
-                    HandleFlaskBuffs(player);
-                    break;
-                case BuffID.WeaponImbueVenom:
-                    player.meleeEnchant = 1;
-                    HandleFlaskBuffs(player);
-                    break;
-                case BuffID.WellFed:
-                    player.wellFed = true;
-                    player.statDefense += 2;
-                    player.GetCritChance(DamageClass.Generic) += 2f;
-                    player.GetAttackSpeed(DamageClass.Melee) += 0.05f;
-                    player.GetDamage(DamageClass.Generic) += 0.05f;
-                    player.GetKnockback(DamageClass.Summon) += 0.5f;
-                    player.moveSpeed += 0.2f;
-                    player.pickSpeed -= 0.05f;
-                    break;
-                case BuffID.WellFed2:
-                    player.wellFed = true;
-                    player.statDefense += 3;
-                    player.GetCritChance(DamageClass.Generic) += 3f;
-                    player.GetAttackSpeed(DamageClass.Melee) += 0.075f;
-                    player.GetDamage(DamageClass.Generic) += 0.075f;
-                    player.GetKnockback(DamageClass.Summon) += 0.75f;
-                    player.moveSpeed += 0.3f;
-                    player.pickSpeed -= 0.1f;
-                    break;
-                case BuffID.WellFed3:
-                    player.wellFed = true;
-                    player.statDefense += 4;
-                    player.GetCritChance(DamageClass.Generic) += 4f;
-                    player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
-                    player.GetDamage(DamageClass.Generic) += 0.1f;
-                    player.GetKnockback(DamageClass.Summon) += 1f;
-                    player.moveSpeed += 0.4f;
-                    player.pickSpeed -= 0.15f;
-                    break;
-                case BuffID.Wrath:
-                    player.GetDamage(DamageClass.Generic) += 0.1f;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        public static void CreateBagRecipe(int[] items, int bagID)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                CreateSimpleRecipe(bagID, items[i], TileID.WorkBenches, 1, 1, true, false, ItemToggled("Mods.QoLCompendium.ItemToggledConditions.BossBags", () => QoLCompendium.mainConfig.EasierRecipes));
-            }
-        }
-
-        public static void CreateCrateRecipe(int result, int crateID, int crateHardmodeID, int crateCount, params Condition[] conditions)
-        {
-            Recipe recipe = GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
-            recipe.AddIngredient(crateID, crateCount);
-            foreach (Condition condition in conditions)
-                recipe.AddCondition(condition);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.DisableDecraft();
-            recipe.Register();
-
-            recipe = GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
-            recipe.AddIngredient(crateHardmodeID, crateCount);
-            foreach (Condition condition in conditions)
-                recipe.AddCondition(condition);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.DisableDecraft();
-            recipe.Register();
-        }
-
-        public static void CreateCrateHardmodeRecipe(int result, int crateHardmodeID, int crateCount, params Condition[] conditions)
-        {
-            Recipe recipe = GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, result, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
-            recipe.AddIngredient(crateHardmodeID, crateCount);
-            foreach (Condition condition in conditions)
-                recipe.AddCondition(condition);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.DisableDecraft();
-            recipe.Register();
-        }
-
-        public static void CreateCrateWithKeyRecipe(int item, int crateID, int crateHardmodeID, int crateCount, int keyID, params Condition[] conditions)
-        {
-            Recipe recipe = GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
-            recipe.AddIngredient(crateID, crateCount);
-            recipe.AddIngredient(keyID);
-            foreach (Condition condition in conditions)
-                recipe.AddCondition(condition);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.DisableDecraft();
-            recipe.Register();
-
-            recipe = GetItemRecipe(() => QoLCompendium.mainConfig.EasierRecipes, item, 1, "Mods.QoLCompendium.ItemToggledConditions.Crates");
-            recipe.AddIngredient(crateHardmodeID, crateCount);
-            recipe.AddIngredient(keyID);
-            foreach (Condition condition in conditions)
-                recipe.AddCondition(condition);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.DisableDecraft();
-            recipe.Register();
-        }
-
-        public static void ConversionRecipe(int item1, int item2, int station)
-        {
-            //Item 1 -> Item 2
-            CreateSimpleRecipe(item1, item2, station, 1, 1, false, false, ItemToggled("Mods.QoLCompendium.ItemToggledConditions.ItemConversions", () => QoLCompendium.mainConfig.ItemConversions));
-
-            //Item 2 -> Item 1
-            CreateSimpleRecipe(item2, item1, station, 1, 1, false, false, ItemToggled("Mods.QoLCompendium.ItemToggledConditions.ItemConversions", () => QoLCompendium.mainConfig.ItemConversions));
-        }
-
-        public static void AddBannerGroupToItemRecipe(int recipeGroupID, int resultID, int resultAmount = 1, int groupAmount = 1, params Condition[] conditions)
-        {
-            CreateSimpleRecipe(recipeGroupID, resultID, TileID.WorkBenches, groupAmount, resultAmount, disableDecraft: true, usesRecipeGroup: true, conditions);
-        }
-
-        public static void AddBannerToItemRecipe(int bannerItemID, int resultID, int bannerAmount = 1, int resultAmount = 1, params Condition[] conditions)
-        {
-            CreateSimpleRecipe(bannerItemID, resultID, TileID.WorkBenches, bannerAmount, resultAmount, disableDecraft: true, usesRecipeGroup: false, conditions);
-        }
-
-        public static void AddBannerSetToItemRecipe(bool[] set, int resultID)
-        {
-            for (int i = 0; i < NPCID.Count; i++)
-            {
-                if (set[i])
-                {
-                    int num = Item.NPCtoBanner(i);
-                    if (num > 0)
-                        CreateSimpleRecipe(Item.BannerToItem(num), resultID, TileID.WorkBenches, 1, 1, true, false, ItemToggled("Mods.QoLCompendium.ItemToggledConditions.Banners", () => QoLCompendium.mainConfig.EasierRecipes));
-                }
-            }
-        }
-
-        public static void CreateLoopingRecipe(int[] items, int tileType)
-        {
-            List<int> newItems = [];
-            for (int j = 0; j < items.Length; j++)
-            {
-                if (items[j] != 0)
-                    newItems.Add(items[j]);
-            }
-
-            int firstID = GetFirstNonZeroValue(newItems.ToArray());
-            int lastID = GetLastNonZeroValue(newItems.ToArray());
-
-            for (int i = 0; i < newItems.Count; i++)
-            {
-                if (i >= newItems.Count - 1)
-                    CreateSimpleRecipe(lastID, firstID, tileType);
-                else
-                    CreateSimpleRecipe(newItems[i], newItems[i + 1], tileType);
-            }
-        }
-
-        public static void CreateSimpleRecipe(int ingredientID, int resultID, int tileID, int ingredientAmount = 1, int resultAmount = 1, bool disableDecraft = false, bool usesRecipeGroup = false, params Condition[] conditions)
-        {
-            Recipe recipe = Recipe.Create(resultID, resultAmount);
-            if (usesRecipeGroup)
-                recipe.AddRecipeGroup(ingredientID, ingredientAmount);
-            else
-                recipe.AddIngredient(ingredientID, ingredientAmount);
-            recipe.AddTile(tileID);
-            foreach (Condition condition in conditions)
-                recipe.AddCondition(condition);
-            if (disableDecraft)
-                recipe.DisableDecraft();
-            recipe.Register();
-        }
-
         public static Asset<Texture2D> GetAsset(string location, string filename, int fileNumber = -1)
         {
             if (fileNumber > -1)
                 return ModContent.Request<Texture2D>("QoLCompendium/Assets/" + location + "/" + filename + fileNumber);
             else
                 return ModContent.Request<Texture2D>("QoLCompendium/Assets/" + location + "/" + filename);
-        }
-
-        public static void TransmuteItems(int[] items)
-        {
-            List<int> newItems = [];
-            for (int j = 0; j < items.Length; j++)
-            {
-                if (items[j] != 0)
-                    newItems.Add(items[j]);
-            }
-
-            int firstID = GetFirstNonZeroValue(newItems.ToArray());
-            int lastID = GetLastNonZeroValue(newItems.ToArray());
-
-            for (int i = 0; i < newItems.Count; i++)
-            {
-                if (i >= newItems.Count - 1)
-                    ItemID.Sets.ShimmerTransformToItem[lastID] = firstID;
-                else
-                {
-                    if (newItems[i] != ItemID.None && newItems[i + 1] != ItemID.None)
-                    {
-                        ItemID.Sets.ShimmerTransformToItem[newItems[i]] = newItems[i + 1];
-                    }
-                }
-            }
         }
 
         public static int GetFirstNonZeroValue(int[] values)
@@ -2403,374 +1003,14 @@ namespace QoLCompendium.Core
             return lastID;
         }
 
-        public static bool CheckToActivateGlintEffect(Item item)
-        {
-            if (Main.gameMenu || !Main.LocalPlayer.active)
-                return false;
-
-            if (QoLCompendium.mainClientConfig.ActiveBuffsHaveEnchantedEffects && !item.IsAir && QoLCPlayer.Get(Main.LocalPlayer).activeBuffItems.Contains(item.type))
-                return true;
-            if (QoLCompendium.mainClientConfig.ActiveBannersHaveEnchantedEffects && !item.IsAir && QoLCPlayer.Get(Main.LocalPlayer).activeBannerItems.Contains(item.type))
-                return true;
-            else if (QoLCompendium.mainClientConfig.GoodPrefixesHaveEnchantedEffects && !item.IsAir && Prefixes.Contains(item.prefix))
-                return true;
-            else if (CrossModSupport.CalamityEntropy.Loaded && QoLCompendium.mainClientConfig.CalamityEntropyArmorPrefixesHaveEnchantedEffects)
-            {
-                if (!item.IsAir && CalamityEntropyArmorGlint.ArmorHasEntropyPrefix(item))
-                    return true;
-            }
-            
-            return false;
-        }
-
-        public static int GetSlotItemIsIn(Item lookForThis, Item[] inventory)
-        {
-            for (int i = 0; i < inventory.Length; i++)
-            {
-                if (inventory[i].type == lookForThis.type)
-                    return i;
-            }
-            return -1;
-        }
-
-        public static List<Item> GetAllInventoryItemsList(Player player, string ignores = "", int estimatedCapacity = 80)
-        {
-            ignores = ignores.Replace("portable", "inv piggy safe forge void", StringComparison.Ordinal);
-            var itemList = new List<Item>(estimatedCapacity);
-            var items = GetAllInventoryItems(player);
-            foreach ((string name, Item[] itemArray) in items)
-            {
-                if (ignores.Contains(name, StringComparison.Ordinal))
-                    continue;
-                itemList.AddRange(itemArray);
-            }
-
-            return itemList;
-        }
-
-        public static Dictionary<string, Item[]> GetAllInventoryItems(Player player)
-        {
-            var items = new Dictionary<string, Item[]>
-            {
-                {"inv", player.inventory},
-                {"piggy", player.bank.item},
-                {"safe", player.bank2.item},
-                {"forge", player.bank3.item},
-                {"void", player.bank4.item}
-            };
-
-            return items;
-        }
-
-        public static void SetDefaultsToPermanentBuff(Item item)
-        {
-            item.width = item.height = 16;
-            item.consumable = false;
-            item.maxStack = 1;
-            item.SetShopValues(ItemRarityColor.StrongRed10, 0);
-        }
-
-        public static void CombinedPermanentBuffRecipe(int[] ingredients, int result)
-        {
-            Recipe r = GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, result, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
-            foreach (int ingredient in ingredients)
-                r.AddIngredient(ingredient);
-            r.AddTile(TileID.CookingPots);
-            r.Register();
-        }
-
-        public static void HandleFlaskBuffs(Player player)
-        {
-            foreach (int buff in FlaskBuffs)
-                player.buffImmune[buff] = true;
-        }
-
-        public static void HandleCoatingBuffs(Player player)
-        {
-            foreach (int buff in ThoriumCoatings)
-                player.buffImmune[buff] = true;
-        }
-
-        public static StatModifier GetBestClassDamage(this Player player)
-        {
-            StatModifier ret = StatModifier.Default;
-            StatModifier classless = player.GetTotalDamage<GenericDamageClass>();
-
-            ret.Base = classless.Base;
-            ret *= classless.Multiplicative;
-            ret.Flat = classless.Flat;
-
-            float best = 1f;
-
-            float melee = player.GetTotalDamage<MeleeDamageClass>().Additive;
-            if (melee > best) best = melee;
-            float ranged = player.GetTotalDamage<RangedDamageClass>().Additive;
-            if (ranged > best) best = ranged;
-            float magic = player.GetTotalDamage<MagicDamageClass>().Additive;
-            if (magic > best) best = magic;
-            float summon = player.GetTotalDamage<SummonDamageClass>().Additive;
-            if (summon > best) best = summon;
-
-            for (int i = 0; i < DamageClassLoader.DamageClassCount; i++)
-            {
-                float dClass = player.GetTotalDamage(DamageClassLoader.GetDamageClass(i)).Additive;
-                if (dClass > best) best = dClass;
-            }
-
-            ret += best - 1f;
-            return ret;
-        }
-
-        public static void DisableEvents()
-        {
-            if (Main.invasionType != 0)
-                Main.invasionType = 0;
-            if (Main.pumpkinMoon)
-                Main.pumpkinMoon = false;
-            if (Main.snowMoon)
-                Main.snowMoon = false;
-            if (Main.eclipse)
-                Main.eclipse = false;
-            if (Main.bloodMoon)
-                Main.bloodMoon = false;
-            if (Main.WindyEnoughForKiteDrops)
-            {
-                Main.windSpeedTarget = 0f;
-                Main.windSpeedCurrent = 0f;
-            }
-            if (Main.slimeRain)
-            {
-                Main.StopSlimeRain(true);
-                Main.slimeWarningDelay = 1;
-                Main.slimeWarningTime = 1;
-            }
-            if (BirthdayParty.PartyIsUp)
-                BirthdayParty.CheckNight();
-            if (DD2Event.Ongoing && Main.netMode != NetmodeID.MultiplayerClient)
-                DD2Event.StopInvasion(false);
-            if (Sandstorm.Happening)
-            {
-                Sandstorm.Happening = false;
-                Sandstorm.TimeLeft = 0.0;
-                Sandstorm.IntendedSeverity = 0f;
-            }
-            if (NPC.downedTowers && (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0))
-            {
-                NPC.LunarApocalypseIsUp = false;
-                NPC.ShieldStrengthTowerNebula = 0;
-                NPC.ShieldStrengthTowerSolar = 0;
-                NPC.ShieldStrengthTowerStardust = 0;
-                NPC.ShieldStrengthTowerVortex = 0;
-                for (int i = 0; i < 200; i++)
-                {
-                    if (Main.npc[i].active && (Main.npc[i].type == NPCID.LunarTowerNebula || Main.npc[i].type == NPCID.LunarTowerSolar || Main.npc[i].type == NPCID.LunarTowerStardust || Main.npc[i].type == NPCID.LunarTowerVortex))
-                    {
-                        Main.npc[i].dontTakeDamage = false;
-                        Main.npc[i].StrikeInstantKill();
-                    }
-                }
-            }
-            if (Main.IsItRaining || Main.IsItStorming)
-            {
-                Main.StopRain();
-                Main.cloudAlpha = 0f;
-                if (Main.netMode == NetmodeID.Server)
-                    Main.SyncRain();
-            }
-        }
-
-        public static bool IsABoss(this NPC npc)
-        {
-            if (npc == null || !npc.active)
-                return false;
-
-            if (npc.boss && npc.type != NPCID.MartianSaucerCore)
-                return true;
-
-            if (npc.type == NPCID.EaterofWorldsBody || npc.type == NPCID.EaterofWorldsHead || npc.type == NPCID.EaterofWorldsTail)
-                return true;
-
-            return false;
-        }
-
-        public static bool IsTileWithinPlayerReach(Player player)
-        {
-            Item item = player.inventory[player.selectedItem];
-            int extraItemRange = 0;
-            int extraBlockRange = player.blockRange;
-            if (!item.IsAir)
-                extraItemRange = item.tileBoost;
-            Vector2 playerRange = new(Player.tileRangeX + extraBlockRange + extraItemRange, Player.tileRangeY + extraBlockRange + extraItemRange);
-            Vector2 playerPosX = new(player.position.X / 16f - playerRange.X, (player.position.X + player.width) / 16f + playerRange.X);
-            Vector2 playerPosY = new(player.position.Y / 16f - playerRange.Y, (player.position.Y + player.height) / 16f + playerRange.Y);
-
-            if (playerPosX.X <= Player.tileTargetX && playerPosX.Y >= Player.tileTargetX && playerPosY.X <= Player.tileTargetY && playerPosY.Y >= Player.tileTargetY)
-                return true;
-            return false;
-        }
-
         public static int ToFrames(float seconds, int extraUpdates = 0)
         {
             return (int)(seconds * 60 * (extraUpdates + 1));
         }
 
-        public static int ToPixels(float blocks)
-        {
-            return (int)(blocks * 16);
-        }
-
         public static float ToSeconds(float frames, int extraUpdates = 0)
         {
             return frames / (60 * (extraUpdates + 1));
-        }
-
-        public static float ToBlocks(float pixels)
-        {
-            return pixels / 16;
-        }
-
-        public static Point16 PlayerCenterTile(Player player)
-        {
-            return new Point16((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f));
-        }
-
-        public static int PlayerCenterTileX(Player player)
-        {
-            return (int)(player.Center.X / 16f);
-        }
-
-        public static int PlayerCenterTileY(Player player)
-        {
-            return (int)(player.Center.Y / 16f);
-        }
-
-        public static bool InGameWorldLeft(int x)
-        {
-            return x > 39;
-        }
-
-        public static bool InGameWorldRight(int x)
-        {
-            return x < Main.maxTilesX - 39;
-        }
-
-        public static bool InGameWorldTop(int y)
-        {
-            return y > 39;
-        }
-
-        public static bool InGameWorldBottom(int y)
-        {
-            return y < Main.maxTilesY - 39;
-        }
-
-        public static bool InGameWorld(int x, int y)
-        {
-            return x > 39 && x < Main.maxTilesX - 39 && y > 39 && y < Main.maxTilesY - 39;
-        }
-
-        public static bool InWorldLeft(int x)
-        {
-            return x >= 0;
-        }
-
-        public static bool InWorldRight(int x)
-        {
-            return x < Main.maxTilesX;
-        }
-
-        public static bool InWorldTop(int y)
-        {
-            return y >= 0;
-        }
-
-        public static bool InWorldBottom(int y)
-        {
-            return y < Main.maxTilesY;
-        }
-
-        public static bool InWorld(int x, int y)
-        {
-            return x >= 0 && x < Main.maxTilesX && y >= 0 && y < Main.maxTilesY;
-        }
-
-        public static int CoordsX(int x)
-        {
-            return x * 2 - Main.maxTilesX;
-        }
-
-        public static int CoordsY(int y)
-        {
-            return y * 2 - (int)Main.worldSurface * 2;
-        }
-
-        public static string CoordsString(int x, int y)
-        {
-            x = x * 2 - Main.maxTilesX;
-            y = y * 2 - (int)Main.worldSurface * 2;
-            string text = x < 0 ? " west, " : " east, ";
-            string text2 = y < 0 ? " surface." : " underground.";
-            x = x < 0 ? x * -1 : x;
-            y = y < 0 ? y * -1 : y;
-            return x.ToString() + text + y.ToString() + text2;
-        }
-
-        public static void TileSafe(int x, int y)
-        {
-            if (x < 0 || y < 0 || x > Main.ActiveWorldFileData.WorldSizeX || y > Main.ActiveWorldFileData.WorldSizeY)
-            {
-                return;
-            }
-            if (Main.tile[x, y] == null)
-            {
-                Main.tile[x, y].ResetToType(0);
-            }
-        }
-
-        public static bool TileNull(int x, int y)
-        {
-            return Main.tile[x, y] == null;
-        }
-
-        public static bool SolidTile(int x, int y)
-        {
-            Tile tile = Main.tile[x, y];
-            return !TileNull(x, y) && tile.HasTile && Main.tileSolid[tile.TileType] && !Main.tileSolidTop[tile.TileType] && !tile.IsHalfBlock && tile.Slope == SlopeType.Solid && !tile.IsActuated;
-        }
-
-        public static bool SearchBelow(Player player, Func<int, int, bool> toSearch, int gap)
-        {
-            int centerX = PlayerCenterTileX(player);
-            int centerY = PlayerCenterTileY(player);
-            int num3 = 0;
-            while (InGameWorldLeft(centerX - num3) || InGameWorldRight(centerX + num3))
-            {
-                int tempY = centerY;
-                while (InGameWorldBottom(tempY))
-                {
-                    int nX = centerX - num3;
-                    int pX = centerX + num3;
-                    if (InGameWorldLeft(nX))
-                    {
-                        TileSafe(nX, tempY);
-                        if (toSearch.Invoke(nX, tempY))
-                        {
-                            return true;
-                        }
-                    }
-                    if (InGameWorldRight(pX))
-                    {
-                        TileSafe(pX, tempY);
-                        if (toSearch.Invoke(pX, tempY))
-                        {
-                            return true;
-                        }
-                    }
-                    tempY += gap;
-                }
-                num3 += gap;
-            }
-            return false;
         }
 
         public static void AddAfter<T>(this List<T> list, T element, T item)

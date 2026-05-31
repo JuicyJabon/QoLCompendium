@@ -52,12 +52,12 @@ namespace QoLCompendium.Content.Items.Dedicated
             };
             tooltips.Add(dedicated);
 
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DedicatedItems);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DedicatedItems);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.DedicatedItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddRecipeGroup(RecipeGroupID.IronBar, 12);
             r.AddIngredient(ItemID.CyanHusk);
             r.AddTile(TileID.Anvils);

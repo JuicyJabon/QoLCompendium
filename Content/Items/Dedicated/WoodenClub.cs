@@ -42,7 +42,7 @@ namespace QoLCompendium.Content.Items.Dedicated
             };
             tooltips.Add(dedicated);
 
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DedicatedItems);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DedicatedItems);
         }
     }
 }

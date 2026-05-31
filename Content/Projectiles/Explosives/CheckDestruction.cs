@@ -7,8 +7,8 @@ namespace QoLCompendium.Content.Projectiles.Explosives
     {
         public static bool OkayToDestroyTile(Tile tile, bool ignoreModdedTiles = false, bool noDungeon = true, bool noHMOre = false, bool noChloro = false, bool noLihzahrd = true)
         {
-            bool tempNoDungeon = !NPC.downedBoss3 && (Common.DungeonTiles.Contains(tile.TileType) || Common.DungeonWalls.Contains(tile.WallType));
-            bool tempNoHMOre = Common.HardmodeOres.Contains(tile.TileType) && !NPC.downedMechBossAny;
+            bool tempNoDungeon = !NPC.downedBoss3 && (Constants.DungeonTiles.Contains(tile.TileType) || Constants.DungeonWalls.Contains(tile.WallType));
+            bool tempNoHMOre = Constants.HardmodeOres.Contains(tile.TileType) && !NPC.downedMechBossAny;
             bool tempNoChloro = tile.TileType == TileID.Chlorophyte && !(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3);
             bool tempNoLihzahrd = (tile.TileType == TileID.LihzahrdBrick || tile.WallType == WallID.LihzahrdBrickUnsafe) && !NPC.downedGolemBoss;
 
@@ -36,7 +36,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
         {
             if (tile.HasTile && tile.TileType > TileID.Count)
             {
-                if (Common.IgnoredTilesForExplosives.Contains(tile.TileType) || (Common.IgnoredModsForExplosives != null && Common.IgnoredModsForExplosives.Contains(TileLoader.GetTile(tile.TileType).Mod)))
+                if (Constants.IgnoredTilesForExplosives.Contains(tile.TileType) || (Constants.IgnoredModsForExplosives != null && Constants.IgnoredModsForExplosives.Contains(TileLoader.GetTile(tile.TileType).Mod)))
                     return false;
                 else
                     return true;

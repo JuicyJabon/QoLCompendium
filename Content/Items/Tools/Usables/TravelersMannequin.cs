@@ -31,12 +31,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.TravelersMannequin);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.TravelersMannequin);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.TravelersMannequin, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.TravelersMannequin, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Silk, 6);
             r.AddIngredient(ItemID.Ruby, 2);
             r.AddIngredient(ItemID.Feather);

@@ -71,12 +71,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             TooltipLine text = new(Mod, "PotionCrateTooltip", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.PotionCrateTooltip").FormatWith(QoLCompendium.mainConfig.EndlessBuffAmount));
             tooltips.Insert(tooltips.IndexOf(tip0), text);
 
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PotionCrate);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PotionCrate);
     }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PotionCrate, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.PotionCrate, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Wood, 12);
             r.AddRecipeGroup(RecipeGroupID.IronBar, 4);
             r.AddTile(TileID.Anvils);

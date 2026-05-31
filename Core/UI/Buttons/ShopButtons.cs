@@ -1,4 +1,4 @@
-﻿using QoLCompendium.Core.UI.Other;
+﻿using QoLCompendium.Core.Changes.NPCChanges;
 
 namespace QoLCompendium.Core.UI.Buttons
 {

@@ -8,7 +8,7 @@
 
         public abstract int AmmunitionItem { get; }
 
-        public int IngredientStackCount = 3996;
+        public virtual int IngredientStackCount { get; set; } = 3996;
 
         public override void SetStaticDefaults()
         {
@@ -29,7 +29,7 @@
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
 
             TooltipLine ammo = tooltips.Find(l => l.Name == "Ammo");
             TooltipLine material = tooltips.Find(l => l.Name == "Material");
@@ -59,7 +59,7 @@
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(AmmunitionItem, IngredientStackCount);
             r.AddTile(TileID.Solidifier);
             r.Register();

@@ -1,6 +1,7 @@
 global using Microsoft.Xna.Framework;
 global using Microsoft.Xna.Framework.Graphics;
 global using QoLCompendium.Core;
+global using QoLCompendium.Core.QoLCUtils;
 global using ReLogic.Content;
 global using System;
 global using System.Collections.Generic;

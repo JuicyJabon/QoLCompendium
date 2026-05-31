@@ -34,7 +34,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.GoldenPowder, Type, 10, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.GoldenPowder, Type, 10, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.PurificationPowder, 10);
             r.AddIngredient(ItemID.GoldCoin);
             r.AddTile(TileID.Bottles);

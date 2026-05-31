@@ -4,7 +4,7 @@
     {
         public override bool PreDrawInInventory(Item item, SpriteBatch sb, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            if (Common.CheckToActivateGlintEffect(item) == false)
+            if (ItemUtils.CheckToActivateGlintEffect(item) == false)
                 return true;
 
             var texture = Common.GetAsset("Effects", "Glint_", (int)QoLCompendium.mainClientConfig.GlintColor);
@@ -21,7 +21,7 @@
 
         public override void PostDrawInInventory(Item item, SpriteBatch sb, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            if (Common.CheckToActivateGlintEffect(item) == false)
+            if (ItemUtils.CheckToActivateGlintEffect(item) == false)
                 return;
 
             sb.End();
@@ -30,7 +30,7 @@
 
         public override bool PreDrawInWorld(Item item, SpriteBatch sb, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            if (Common.CheckToActivateGlintEffect(item) == false)
+            if (ItemUtils.CheckToActivateGlintEffect(item) == false)
                 return true;
 
             var texture = Common.GetAsset("Effects", "Glint_", (int)QoLCompendium.mainClientConfig.GlintColor);
@@ -47,7 +47,7 @@
 
         public override void PostDrawInWorld(Item item, SpriteBatch sb, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            if (Common.CheckToActivateGlintEffect(item) == false)
+            if (ItemUtils.CheckToActivateGlintEffect(item) == false)
                 return;
 
             sb.End();

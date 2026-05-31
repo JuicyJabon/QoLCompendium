@@ -158,7 +158,11 @@ namespace QoLCompendium.Core.Configs
         */
 
         [DefaultValue(false)]
-        public bool RemoveBiomeShopRequirements { get; set; }
+        public bool RemoveBiomeVisitRequirements { get; set; }
+
+        [DefaultValue(false)]
+        [ReloadRequired]
+        public bool RemoveShopConditions { get; set; }
 
         [DefaultValue(true)]
         public bool TownNPCsDontDie { get; set; }
@@ -347,6 +351,9 @@ namespace QoLCompendium.Core.Configs
         [DefaultValue(true)]
         public bool FullHealthRespawn { get; set; }
 
+        [DefaultValue(true)]
+        public bool NoBedRestrictions { get; set; }
+
         [DefaultValue(false)]
         public bool WingSlot { get; set; }
 
@@ -390,8 +397,8 @@ namespace QoLCompendium.Core.Configs
         [DefaultValue(true)]
         public bool BreakAllDungeonBricks { get; set; }
 
-        [DefaultValue(true)]
-        public bool BombableHardmodeOres { get; set; }
+        //[DefaultValue(true)]
+        //public bool BombableHardmodeOres { get; set; }
 
         [DefaultValue(2)]
         [Range(1, 500)]

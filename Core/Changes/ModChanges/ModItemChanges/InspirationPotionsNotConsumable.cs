@@ -13,7 +13,13 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
         {
             if (QoLCompendium.crossModConfig.EndlessInspirationPotions)
             {
-                HashSet<int> inspirationPotions = [Common.GetModItem(CrossModSupport.InspirationPotions.Mod, "LesserInspirationPotion"), Common.GetModItem(CrossModSupport.InspirationPotions.Mod, "InspirationPotion"), Common.GetModItem(CrossModSupport.InspirationPotions.Mod, "GreaterInspirationPotion"), Common.GetModItem(CrossModSupport.InspirationPotions.Mod, "SuperInspirationPotion")];
+                HashSet<int> inspirationPotions = 
+                [
+                    Common.GetModItem(CrossModSupport.InspirationPotions.Mod, "LesserInspirationPotion"), 
+                    Common.GetModItem(CrossModSupport.InspirationPotions.Mod, "InspirationPotion"), 
+                    Common.GetModItem(CrossModSupport.InspirationPotions.Mod, "GreaterInspirationPotion"), 
+                    Common.GetModItem(CrossModSupport.InspirationPotions.Mod, "SuperInspirationPotion")
+                ];
                 if (inspirationPotions.Contains(item.type) && item.stack >= QoLCompendium.crossModConfig.EndlessInspirationPotionsAmount)
                     return false;
             }
@@ -28,7 +34,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
     {
         public delegate bool Orig_InspirationFlower(InspirationFlower self, Player player);
 
-        private static readonly MethodInfo QuickInspirationMethod = typeof(InspirationFlower).GetMethod("QuickInspiration", Common.UniversalBindingFlags);
+        private static readonly MethodInfo QuickInspirationMethod = typeof(InspirationFlower).GetMethod("QuickInspiration", Constants.UniversalBindingFlags);
 
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
@@ -39,7 +45,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
         {
             Hook quickInspiration = new(QuickInspirationMethod, new Action<Player>(QuickInspiration_Detour));
             quickInspiration.Apply();
-            Common.detours.Add(quickInspiration);
+            Constants.Detours.Add(quickInspiration);
         }
 
         internal static void QuickInspiration_Detour(Player p)

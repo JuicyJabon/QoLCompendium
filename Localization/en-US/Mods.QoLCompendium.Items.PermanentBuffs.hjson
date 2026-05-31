@@ -182,7 +182,7 @@ PermanentCalamityAlcohols.DisplayName: Permanent Calamity Alcohols
 PermanentCalamityAbyss.DisplayName: Permanent Calamity Abyss
 PermanentCalamityDamage.DisplayName: Permanent Calamity Damage
 PermanentCalamityDefense.DisplayName: Permanent Calamity Defense
-PermanentCalamityFarming.DisplayName: Permanent Calamity Farming
+PermanentCalamityFarming.DisplayName: Permanent Calamity Utility
 PermanentCalamityMovement.DisplayName: Permanent Calamity Movement
 PermanentCalamityArena.DisplayName: Permanent Calamity Arena
 PermanentCalamityFlasks.DisplayName: Permanent Calamity Flasks
@@ -214,7 +214,7 @@ PermanentNuke.DisplayName: Permanent Nuke
 PermanentParasite.DisplayName: Permanent Parasite
 PermanentRightist.DisplayName: Permanent Rightist
 PermanentSignal.DisplayName: Permanent Signal
-PermanentHomewardJourneyFarming.DisplayName: Permanent Homeward Journey Farming
+PermanentHomewardJourneyFarming.DisplayName: Permanent Homeward Journey Utility
 PermanentHomewardJourneyMovement.DisplayName: Permanent Homeward Journey Movement
 PermanentHomewardJourneyArena.DisplayName: Permanent Homeward Journey Arena
 PermanentHomewardJourneyFlasks.DisplayName: Permanent Homeward Journey Flasks
@@ -307,7 +307,7 @@ PermanentShadowsOfAbaddonDamage.DisplayName: Permanent Shadows Of Abaddon Damage
 PermanentShadowsOfAbaddonDefense.DisplayName: Permanent Shadows Of Abaddon Defense
 PermanentShadowsOfAbaddonRevenant.DisplayName: Permanent Shadows Of Abaddon Revenant
 PermanentShadowsOfAbaddonMovement.DisplayName: Permanent Shadows Of Abaddon Movement
-PermanentShadowsOfAbaddonFarming.DisplayName: Permanent Shadows Of Abaddon Farming
+PermanentShadowsOfAbaddonFarming.DisplayName: Permanent Shadows Of Abaddon Utility
 PermanentShadowsOfAbaddon.DisplayName: Permanent Shadows Of Abaddon
 PermanentDeathsinger.DisplayName: Permanent Deathsinger
 PermanentInspirationRegeneration.DisplayName: Permanent Inspiration Regeneration
@@ -364,3 +364,11 @@ PermanentFlaskOfForceBreak.DisplayName: Permanent Flask of Force Break
 PermanentStarstrikinglySatiated.DisplayName: Permanent Starstrikingly Satiated
 PermanentManhattan.DisplayName: Permanent Manhattan
 PermanentPainter.DisplayName: Permanent Painter
+PermanentAnxiety.DisplayName: Permanent Anxiety
+PermanentAttraction.DisplayName: Permanent Attraction
+PermanentDiligence.DisplayName: Permanent Diligence
+PermanentGelidMana.DisplayName: Permanent Gelid Mana
+PermanentPurity.DisplayName: Permanent Purity
+PermanentKeystone.DisplayName: Permanent Keystone
+PermanentWarningSign.DisplayName: Permanent Warning Sign
+PermanentSplit.DisplayName: Permanent Split

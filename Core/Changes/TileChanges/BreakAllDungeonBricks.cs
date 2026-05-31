@@ -7,7 +7,7 @@ namespace QoLCompendium.Core.Changes.TileChanges
         public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
             var src = new EntitySource_TileBreak(i, j);
-            Vector2 projPos = new(Common.ToPixels(i) + 8, Common.ToPixels(j) + 8);
+            Vector2 projPos = new(TileUtils.ToPixels(i) + 8, TileUtils.ToPixels(j) + 8);
 
             if (!QoLCompendium.mainConfig.BreakAllDungeonBricks)
                 return;

@@ -113,6 +113,12 @@
             #endregion
 
             #region Calamity Entropy
+            if (npc.type == Common.GetModNPC(CrossModSupport.CalamityEntropy.Mod, "AcropolisMachine"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.AcropolisMachine], -1);
+            
+            if (npc.type == Common.GetModNPC(CrossModSupport.CalamityEntropy.Mod, "Apsychos"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Apsychos], -1);
+
             if (npc.type == Common.GetModNPC(CrossModSupport.CalamityEntropy.Mod, "Luminaris"))
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Luminaris], -1);
 
@@ -1043,8 +1049,8 @@
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.MACEProject], -1);
             }
             //EVENTS
-            List<int> raveyardNPCs = new()
-            {
+            List<int> raveyardNPCs =
+            [
                 Common.GetModNPC(CrossModSupport.Redemption.Mod, "CorpseWalkerPriest"),
                 Common.GetModNPC(CrossModSupport.Redemption.Mod, "DancingSkeleton"),
                 Common.GetModNPC(CrossModSupport.Redemption.Mod, "EpidotrianSkeleton"),
@@ -1056,7 +1062,7 @@
                 Common.GetModNPC(CrossModSupport.Redemption.Mod, "SkeletonNoble"),
                 Common.GetModNPC(CrossModSupport.Redemption.Mod, "SkeletonWanderer"),
                 Common.GetModNPC(CrossModSupport.Redemption.Mod, "SkeletonWarden"),
-            };
+            ];
             if (raveyardNPCs.Contains(npc.type))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.Raveyard], -1);
@@ -1222,7 +1228,7 @@
             }
             #endregion
 
-            #region Spirit
+            #region Spirit Classic
             if (npc.type == Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "Scarabeus"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Scarabeus], -1);
@@ -1244,7 +1250,7 @@
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.StarplateVoyager], -1);
             }
-            if (npc.type == Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "Infernon"))
+            if (npc.type == Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "Infernon") || npc.type == Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "InfernoSkull"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Infernon], -1);
             }
@@ -1257,12 +1263,12 @@
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Atlas], -1);
             }
             //EVENTS
-            List<int> jellyDelugeNPCs = new()
-                {
+            List<int> jellyDelugeNPCs =
+                [
                     Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "MoonlightPreserver"),
                     Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "ExplodingMoonjelly"),
                     Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "MoonjellyGiant")
-                };
+                ];
             if (jellyDelugeNPCs.Contains(npc.type))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.JellyDeluge], -1);
@@ -1271,18 +1277,64 @@
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.TheTide], -1);
             }
-            List<int> mysticMoonNPCs = new()
-                {
+            List<int> mysticMoonNPCs =
+                [
                     Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "Bloomshroom"),
                     Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "Glitterfly"),
                     Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "GlowToad"),
                     Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "Lumantis"),
                     Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "LunarSlime"),
                     Common.GetModNPC(CrossModSupport.SpiritClassic.Mod, "MadHatter")
-                };
+                ];
             if (mysticMoonNPCs.Contains(npc.type))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedEvents[(int)ModConditions.DownedEvent.MysticMoon], -1);
+            }
+            #endregion
+
+            #region Spirit Reforged
+            if (npc.type == Common.GetModNPC(CrossModSupport.SpiritReforged.Mod, "Scarabeus"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.ReforgedScarabeus], -1);
+            }
+            #endregion
+
+            #region Split
+            if (npc.type == Common.GetModNPC(CrossModSupport.Split.Mod, "TheSpirit"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Spirit], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Split.Mod, "OneShot"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.OneShot], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Split.Mod, "Menace"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Menace], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Split.Mod, "Paraffin"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Paraffin], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Split.Mod, "Mirage"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Mirage], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Split.Mod, "Insurgent"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Insurgent], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Split.Mod, "Seth"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Seth], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Split.Mod, "CommandoBoss"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Commando], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Split.Mod, "Breathtaker"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Breathtaker], -1);
             }
             #endregion
 
@@ -1438,6 +1490,51 @@
             if (npc.type == Common.GetModNPC(CrossModSupport.Uhtric.Mod, "CosmicMenace"))
             {
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.CosmicMenace], -1);
+            }
+            #endregion
+
+            #region Ultranium
+            if (npc.type == Common.GetModNPC(CrossModSupport.Ultranium.Mod, "ZephyrSquid"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.ZephyrSquid], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Ultranium.Mod, "IceDragon"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Glacieron], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Ultranium.Mod, "DreadBossP2"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Dread], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Ultranium.Mod, "Xenanis"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Xenanis], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Ultranium.Mod, "Ultrum"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Ultrum], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Ultranium.Mod, "Ignodium"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Ignodium], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Ultranium.Mod, "TrueDread"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.AbsoluteDread], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Ultranium.Mod, "ErebusHead"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Erebus], -1);
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.DownedEvent.AbyssalArmageddon], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Ultranium.Mod, "Aldin"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Aldin], -1);
+            }
+            if (npc.type == Common.GetModNPC(CrossModSupport.Ultranium.Mod, "MindFlayer"))
+            {
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.MindFlayer], -1);
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.DownedEvent.AbyssalArmageddon], -1);
             }
             #endregion
 

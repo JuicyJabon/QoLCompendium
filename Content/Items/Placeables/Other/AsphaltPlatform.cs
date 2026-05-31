@@ -22,16 +22,16 @@ namespace QoLCompendium.Content.Items.Placeables.Other
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.AsphaltPlatform);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.AsphaltPlatform);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, Type, 2, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, Type, 2, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.AsphaltBlock);
             r.Register();
 
-            r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, ItemID.AsphaltBlock, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.AsphaltPlatform, ItemID.AsphaltBlock, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<AsphaltPlatform>(), 2);
             r.Register();
         }

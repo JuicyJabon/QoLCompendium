@@ -10,6 +10,10 @@ namespace QoLCompendium.Core.Configs
         [Header("$Mods.QoLCompendium.ConfigHeaders.CrossMod")]
 
         [DefaultValue(true)]
+        [ReloadRequired]
+        public bool MagicStorageShadowDiamondDrops { get; set; }
+
+        [DefaultValue(true)]
         public bool AFKPetsCropFix { get; set; }
 
         [DefaultValue(true)]
@@ -68,6 +72,17 @@ namespace QoLCompendium.Core.Configs
 
         [DefaultValue(false)]
         public bool ElementsAwokenPuffSlimes { get; set; }
+
+        [DefaultValue(true)]
+        public bool ElementsAwokenBatteriesInBanks { get; set; }
+
+        //[DefaultValue(true)]
+        //[ReloadRequired]
+        //public bool ElementsAwokenEndlessFuel { get; set; }
+
+        //[DefaultValue(30)]
+        //[Range(1, 99999)]
+        //public int ElementsAwokenEndlessFuelAmount { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]

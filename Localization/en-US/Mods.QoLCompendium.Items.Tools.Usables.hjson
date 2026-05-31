@@ -131,9 +131,5 @@ WatchingEye: {
 
 SuperchargedSuperCell: {
 	DisplayName: Supercharged Super Cell
-	Tooltip:
-		'''
-		Keeps Draedon's Arsenal items at 100% charge
-		Works from any storage
-		'''
+	Tooltip: Keeps Draedon's Arsenal items at 100% charge
 }

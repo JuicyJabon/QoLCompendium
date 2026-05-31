@@ -25,9 +25,9 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             infiniteStackedItems.Clear();
 
             if (QoLCompendium.mainConfig.EndlessPotionBuffs || QoLCompendium.mainConfig.EndlessStationBuffs)
-                CheckInventory(Common.GetAllInventoryItemsList(Player).ToArray());
+                CheckInventory(ItemUtils.GetAllInventoryItemsList(Player).ToArray());
 
-            InfiniteBannerBuffs.CheckBannerTooltips(Common.GetAllInventoryItemsList(Player));
+            InfiniteBannerBuffs.CheckBannerTooltips(ItemUtils.GetAllInventoryItemsList(Player));
         }
 
         public override void PostUpdateBuffs()
@@ -96,11 +96,11 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             if (item.type == ItemID.RedPotion && Main.getGoodWorld && QoLCompendium.mainConfig.EndlessPotionBuffs)
             {
                 Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
-                for (int i = 0; i < Common.RedPotionBuffs.Count; i++)
+                for (int i = 0; i < Constants.RedPotionBuffs.Count; i++)
                 {
-                    Player.AddBuff(Common.RedPotionBuffs.ElementAt(i), 2, true, false);
-                    if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(Common.RedPotionBuffs.ElementAt(i)))
-                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(Common.RedPotionBuffs.ElementAt(i));
+                    Player.AddBuff(Constants.RedPotionBuffs.ElementAt(i), 2, true, false);
+                    if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(Constants.RedPotionBuffs.ElementAt(i)))
+                        Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(Constants.RedPotionBuffs.ElementAt(i));
                 }
             }
             if (item.type == ItemID.HoneyBucket || item.type == ItemID.BottomlessHoneyBucket && QoLCompendium.mainConfig.EndlessStationBuffs)
@@ -430,7 +430,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
                 if (info.type == moddedBuff.Key)
                 {
-                    if (CrossModSupport.SecretsOfTheShadows.Loaded && info.type == electroDeterrent.type && Player.HasItem(electroDeterrent.type) && !Player.inventory[Common.GetSlotItemIsIn(electroDeterrent, Player.inventory)].favorited)
+                    if (CrossModSupport.SecretsOfTheShadows.Loaded && info.type == electroDeterrent.type && Player.HasItem(electroDeterrent.type) && !Player.inventory[ItemUtils.GetSlotItemIsIn(electroDeterrent, Player.inventory)].favorited)
                         return;
 
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
@@ -537,6 +537,20 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                 AddBuffIntegration(CrossModSupport.DemolisherClass.Mod, "BlastingSupplyBoxItem", "BlastingSupplyBoxBuff");
             }
 
+            //ELEMENTS AWOKEN
+            if (CrossModSupport.ElementsAwoken.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.ElementsAwoken.Mod, "HavocBannerItem", "HavocBannerBuff");
+                AddBuffIntegration(CrossModSupport.ElementsAwoken.Mod, "ChaosBannerItem", "ChaosBannerBuff");
+                AddBuffIntegration(CrossModSupport.ElementsAwoken.Mod, "CalamityBannerItem", "CalamityBannerBuff");
+                AddBuffIntegration(CrossModSupport.ElementsAwoken.Mod, "AmadisBuffStatue", "StatueBuffAmadis");
+                AddBuffIntegration(CrossModSupport.ElementsAwoken.Mod, "BurstBuffStatue", "StatueBuffBurst");
+                AddBuffIntegration(CrossModSupport.ElementsAwoken.Mod, "GenihWatBuffStatue", "StatueBuffGenihWat");
+                AddBuffIntegration(CrossModSupport.ElementsAwoken.Mod, "OiniteBuffStatue", "StatueBuffOinite");
+                AddBuffIntegration(CrossModSupport.ElementsAwoken.Mod, "RaniplaBuffStatue", "StatueBuffRanipla");
+                AddBuffIntegration(CrossModSupport.ElementsAwoken.Mod, "ThatOneJuicyOrangeBuffStatue", "StatueBuffOrange");
+            }
+
             //FARGOS
             if (CrossModSupport.Fargowiltas.Loaded)
             {
@@ -600,6 +614,14 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             {
                 AddBuffIntegration(CrossModSupport.SpiritReforged.Mod, "AncientKoiTotem", "KoiTotemBuff");
                 AddBuffIntegration(CrossModSupport.SpiritReforged.Mod, "KoiTotem", "KoiTotemBuff");
+                AddVanillaBuffIntegration(CrossModSupport.SpiritReforged.Mod, "CalmingBellItem", BuffID.Calm);
+            }
+
+            //SPLIT
+            if (CrossModSupport.Split.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.Split.Mod, "Keystone", "StrategicAdvantage");
+                AddBuffIntegration(CrossModSupport.Split.Mod, "WarningSign", "HouseOfEvil");
             }
 
             //THORIUM

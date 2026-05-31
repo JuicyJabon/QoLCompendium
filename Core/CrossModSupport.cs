@@ -590,6 +590,13 @@
             public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
         }
 
+        public static class Split
+        {
+            public const string Name = "Split";
+            public static bool Loaded => ModLoader.HasMod(Name);
+            public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
+        }
+
         public static class Spooky
         {
             public const string Name = "Spooky";
@@ -646,6 +653,13 @@
             public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
         }
 
+        public static class TooltipIcons
+        {
+            public const string Name = "TooltipIcon";
+            public static bool Loaded => ModLoader.HasMod(Name);
+            public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
+        }
+
         public static class Thorium
         {
             public const string Name = "ThoriumMod";
@@ -677,6 +691,13 @@
         public static class Uhtric
         {
             public const string Name = "Uhtric";
+            public static bool Loaded => ModLoader.HasMod(Name);
+            public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
+        }
+
+        public static class Ultranium
+        {
+            public const string Name = "Ultranium";
             public static bool Loaded => ModLoader.HasMod(Name);
             public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
         }

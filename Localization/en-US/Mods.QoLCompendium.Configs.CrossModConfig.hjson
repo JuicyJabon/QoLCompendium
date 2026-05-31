@@ -1,5 +1,10 @@
 DisplayName: Cross Mod Config
 
+MagicStorageShadowDiamondDrops: {
+	Label: "[i:182] Magic Storage Shadow Diamond Drops"
+	Tooltip: Toggles if all modded bosses can drop Shadow Diamonds
+}
+
 AFKPetsCropFix: {
 	Label: "[i:369] AFKPets Crops No Tile Cut"
 	Tooltip: Toggles if AFKPets crops can be broken by projectiles or melee swings
@@ -100,6 +105,21 @@ EndlessVoidConsumablesAmount: {
 ElementsAwokenPuffSlimes: {
 	Label: "[i:440] Elements Awoken Puff Slimes"
 	Tooltip: Toggles if Puff Slimes from Elements Awoken can spawn naturally in the forest
+}
+
+ElementsAwokenBatteriesInBanks: {
+	Label: "[i:530] Elements Awoken Batteries in Banks"
+	Tooltip: Toggles if max energy increasing items work in banks
+}
+
+ElementsAwokenEndlessFuel: {
+	Label: "[i:2701] Elements Awoken Endless Generator Fuel"
+	Tooltip: Toggles endless generator fuel
+}
+
+ElementsAwokenEndlessFuelAmount: {
+	Label: "[i:161] Elements Awoken Endless Fuel Amount"
+	Tooltip: Change the amount of items needed for endless generator fuel
 }
 
 SpiritClassicBossSummonClassificationFix: {

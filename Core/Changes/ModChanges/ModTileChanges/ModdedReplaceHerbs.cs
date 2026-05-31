@@ -13,7 +13,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTileChanges
                 if (Player.HeldItem.type == ItemID.StaffofRegrowth || Player.HeldItem.type == ItemID.AcornAxe || Main.mouseItem != null && (Main.mouseItem.type == ItemID.StaffofRegrowth || Main.mouseItem.type == ItemID.AcornAxe))
                 {
                     Tile tile = Main.tile[Player.tileTargetX, Player.tileTargetY];
-                    if (Common.IsTileWithinPlayerReach(Player))
+                    if (TileUtils.IsTileWithinPlayerReach(Player))
                         GetHerbDrops(tile);
                 }
             }

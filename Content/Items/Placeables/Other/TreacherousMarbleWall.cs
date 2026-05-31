@@ -25,7 +25,7 @@ namespace QoLCompendium.Content.Items.Placeables.Other
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.UnsafeWalls);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.UnsafeWalls);
         }
     }
 }

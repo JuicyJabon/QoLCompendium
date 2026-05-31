@@ -13,7 +13,7 @@
         {
             foreach (Projectile proj in Main.projectile)
             {
-                if (Common.MobileStorages.Contains(proj.type) && player.ownedProjectileCounts[proj.type] > 0 && proj.owner == player.whoAmI)
+                if (Constants.MobileStorages.Contains(proj.type) && player.ownedProjectileCounts[proj.type] > 0 && proj.owner == player.whoAmI)
                 {
                     proj.active = false;
                 }

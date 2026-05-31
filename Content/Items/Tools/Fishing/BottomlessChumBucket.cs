@@ -25,7 +25,7 @@ namespace QoLCompendium.Content.Items.Tools.Fishing
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.BottomlessBuckets);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.BottomlessBuckets);
         }
     }
 }

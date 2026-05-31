@@ -29,12 +29,12 @@ namespace QoLCompendium.Content.Items.Tools.Usables.CrossMod
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.CrossModItems);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.CrossModItems);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.CrossModItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.CrossModItems, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(CrossModSupport.Calamity.Mod, "DraedonPowerCell"), 999);
             r.AddTile(Common.GetModTile(CrossModSupport.Calamity.Mod, "ChargingStation"));
             r.Register();
@@ -48,7 +48,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables.CrossMod
         public override void PostUpdateEquips()
         {
             if (Player.HasItemInAnyInventory(ModContent.ItemType<SuperchargedSuperCell>()))
-                ChargeItems(Common.GetAllInventoryItemsList(Player).ToArray());
+                ChargeItems(ItemUtils.GetAllInventoryItemsList(Player).ToArray());
         }
 
         public void ChargeItems(Item[] inventory)

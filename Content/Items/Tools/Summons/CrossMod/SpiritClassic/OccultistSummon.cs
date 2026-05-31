@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Items.Tools.Summons.CrossMod.SpiritClassic
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 3);
             r.AddIngredient(ModContent.ItemType<OldLeather>(), 2);
             r.AddTile(TileID.DemonAltar);

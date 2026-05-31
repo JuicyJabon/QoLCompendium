@@ -79,9 +79,9 @@ namespace QoLCompendium.Core.Changes.ItemChanges.ReforgeSystems
                 }
 
                 // Swords, Whips, Tools, other items that support the Legendary modifier
-                else if (PrefixLegacy.ItemSets.SwordsHammersAxesPicks[item.type] || (item.ModItem != null && item.ModItem.MeleePrefix()) || item.IsATool())
+                else if (item.IsATool() || PrefixLegacy.ItemSets.SwordsHammersAxesPicks[item.type] || (item.ModItem != null && item.ModItem.MeleePrefix()))
                 {
-                    var tierListToUse = item.pick > 0 || item.axe > 0 || item.hammer > 0 ? Prefixes.ToolReforgeTiers : Prefixes.MeleeReforgeTiers;
+                    var tierListToUse = item.IsATool() ? Prefixes.ToolReforgeTiers : Prefixes.MeleeReforgeTiers;
                     prefix = IteratePrefix(rand, tierListToUse, currentPrefix);
                 }
 

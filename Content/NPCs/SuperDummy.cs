@@ -17,6 +17,7 @@ namespace QoLCompendium.Content.NPCs
             NPC.npcSlots = 0;
             NPC.dontCountMe = true;
             NPC.noGravity = true;
+            NPC.knockBackResist = 0f;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
@@ -38,8 +39,8 @@ namespace QoLCompendium.Content.NPCs
             if (SpawnRateEdits.AnyBossAlive())
             {
                 NPC.life = 0;
-                NPC.HitEffect();
-                NPC.SimpleStrikeNPC(int.MaxValue, 0, false, 0, null, false, 0, true);
+                NPC.HitEffect(instantKill: true);
+                NPC.active = false;
             }
         }
 

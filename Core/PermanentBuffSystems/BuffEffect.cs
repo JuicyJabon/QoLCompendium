@@ -17,7 +17,7 @@
             if (buff > BuffID.Count - 1)
                 BuffLoader.GetBuff(buff).Update(player.Player, ref index);
             else
-                Common.VanillaBuffHandler(buff, player.Player);
+                BuffUtils.VanillaBuffHandler(buff, player.Player);
         }
 
         public void Load(Mod mod)

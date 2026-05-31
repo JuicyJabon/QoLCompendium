@@ -24,7 +24,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            if (Common.LunarPillarIDs.Contains(npc.type) && QoLCompendium.mainConfig.LunarPillarsDropMoreFragments)
+            if (Constants.LunarPillarIDs.Contains(npc.type) && QoLCompendium.mainConfig.LunarPillarsDropMoreFragments)
             {
                 foreach (IItemDropRule rule in npcLoot.Get())
                 {

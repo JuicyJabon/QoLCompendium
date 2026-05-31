@@ -24,12 +24,12 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod.Thori
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.CraftingStations);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.CraftingStations);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<BasicThoriumCraftingMonolith>());
             r.AddIngredient(Common.GetModItem(CrossModSupport.Thorium.Mod, "SoulForge"));
             r.AddIngredient(Common.GetModItem(CrossModSupport.Thorium.Mod, "GuidesFinalGift"));

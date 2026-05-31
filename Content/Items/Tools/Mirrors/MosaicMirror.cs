@@ -1,4 +1,4 @@
-﻿using QoLCompendium.Core.UI.Other;
+﻿using QoLCompendium.Core.UI.InfoDisplays;
 using Terraria.Enums;
 using Terraria.ModLoader.IO;
 
@@ -25,7 +25,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Mirrors);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Mirrors);
             if (!QoLCompendium.itemConfig.InformationAccessories)
             {
                 TooltipLine tip1 = tooltips.Find(l => l.Name == "Tooltip1");
@@ -227,7 +227,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<CursedMirror>());
             r.AddIngredient(ModContent.ItemType<MirrorOfReturn>());
             r.AddIngredient(ModContent.ItemType<TeleportationMirror>());

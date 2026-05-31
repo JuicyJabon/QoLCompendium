@@ -24,12 +24,12 @@ namespace QoLCompendium.Content.Items.Accessories.Construction
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.ConstructionAccessories);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.ConstructionAccessories);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.ConstructionAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.ConstructionAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.CopperBar, 5);
             r.AddIngredient(ItemID.TinBar, 5);
             r.AddIngredient(ItemID.IronBar, 5);

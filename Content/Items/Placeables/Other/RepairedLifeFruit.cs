@@ -22,12 +22,12 @@ namespace QoLCompendium.Content.Items.Placeables.Other
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RepairedLifeFruit);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RepairedLifeFruit);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.RepairedLifeFruit, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.RepairedLifeFruit, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.LifeFruit);
             r.AddTile(TileID.HeavyWorkBench);
             r.AddCondition(Condition.InGraveyard);

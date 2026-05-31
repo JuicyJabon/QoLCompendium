@@ -18,31 +18,31 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTileChanges
 
         public delegate bool Orig_SunkenSeaActive(SunkenSeaBiome self, Player player);
 
-        private static readonly MethodInfo AstralInfectionActiveMethod = typeof(AstralInfectionBiome).GetMethod("IsBiomeActive", Common.UniversalBindingFlags);
+        private static readonly MethodInfo AstralInfectionActiveMethod = typeof(AstralInfectionBiome).GetMethod("IsBiomeActive", Constants.UniversalBindingFlags);
 
-        private static readonly MethodInfo BrimstoneCragsActiveMethod = typeof(BrimstoneCragsBiome).GetMethod("IsBiomeActive", Common.UniversalBindingFlags);
+        private static readonly MethodInfo BrimstoneCragsActiveMethod = typeof(BrimstoneCragsBiome).GetMethod("IsBiomeActive", Constants.UniversalBindingFlags);
 
-        private static readonly MethodInfo SulphurousSeaActiveMethod = typeof(SulphurousSeaBiome).GetMethod("IsBiomeActive", Common.UniversalBindingFlags);
+        private static readonly MethodInfo SulphurousSeaActiveMethod = typeof(SulphurousSeaBiome).GetMethod("IsBiomeActive", Constants.UniversalBindingFlags);
 
-        private static readonly MethodInfo SunkenSeaActiveMethod = typeof(SunkenSeaBiome).GetMethod("IsBiomeActive", Common.UniversalBindingFlags);
+        private static readonly MethodInfo SunkenSeaActiveMethod = typeof(SunkenSeaBiome).GetMethod("IsBiomeActive", Constants.UniversalBindingFlags);
 
         public override void Load()
         {
             Hook astralInfection = new(AstralInfectionActiveMethod, new Func<Orig_AstralInfectionActive, AstralInfectionBiome, Player, bool>(AstralInfectionActive_Detour));
             astralInfection.Apply();
-            Common.detours.Add(astralInfection);
+            Constants.Detours.Add(astralInfection);
 
             Hook brimstoneCrags = new(BrimstoneCragsActiveMethod, new Func<Orig_BrimstoneCragsActive, BrimstoneCragsBiome, Player, bool>(BrimstoneCragsActive_Detour));
             brimstoneCrags.Apply();
-            Common.detours.Add(brimstoneCrags);
+            Constants.Detours.Add(brimstoneCrags);
 
             Hook sulphurousSea = new(SulphurousSeaActiveMethod, new Func<Orig_SulphurousSeaActive, SulphurousSeaBiome, Player, bool>(SulphurousSeaActive_Detour));
             sulphurousSea.Apply();
-            Common.detours.Add(sulphurousSea);
+            Constants.Detours.Add(sulphurousSea);
 
             Hook sunkenSea = new(SunkenSeaActiveMethod, new Func<Orig_SunkenSeaActive, SunkenSeaBiome, Player, bool>(SunkenSeaActive_Detour));
             sunkenSea.Apply();
-            Common.detours.Add(sunkenSea);
+            Constants.Detours.Add(sunkenSea);
         }
 
         internal static bool AstralInfectionActive_Detour(Orig_AstralInfectionActive orig, AstralInfectionBiome self, Player player)

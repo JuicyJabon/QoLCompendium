@@ -1,6 +1,4 @@
-﻿using QoLCompendium.Core;
-
-namespace QoLCompendium.Content.Projectiles.Explosives
+﻿namespace QoLCompendium.Content.Projectiles.Explosives
 {
     public class AutoHouserProj : ModProjectile
     {
@@ -26,7 +24,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
 
             int wallID = WallID.Wood;
             int tileID = TileID.WoodBlock;
-            int platformID = (int)Common.PlacedPlatformStyles.Wood;
+            int platformID = (int)Constants.PlacedPlatformStyles.Wood;
             GetHouseStyle(player, ref wallID, ref tileID, ref platformID);
 
             int modWallID = WallID.None;
@@ -125,10 +123,10 @@ namespace QoLCompendium.Content.Projectiles.Explosives
                 return;
 
             int tableTileType = 1;
-            int tableStyle = (int)Common.PlacedTableStyles1.Wooden;
-            int chairStyle = (int)Common.PlacedChairStyles.Wooden;
-            int doorStyle = (int)Common.PlacedDoorStyles.Wooden;
-            int torchStyle = (int)Common.PlacedTorchStyles.Torch;
+            int tableStyle = (int)Constants.PlacedTableStyles1.Wooden;
+            int chairStyle = (int)Constants.PlacedChairStyles.Wooden;
+            int doorStyle = (int)Constants.PlacedDoorStyles.Wooden;
+            int torchStyle = (int)Constants.PlacedTorchStyles.Torch;
             GetFurnitureStyle(player, ref tableStyle, ref chairStyle, ref doorStyle, ref torchStyle, ref tableTileType);
 
             int modTableID = -1;
@@ -300,61 +298,61 @@ namespace QoLCompendium.Content.Projectiles.Explosives
             {
                 wallID = WallID.SmoothSandstone;
                 tileID = TileID.SmoothSandstone;
-                platformID = (int)Common.PlacedPlatformStyles.Sandstone;
+                platformID = (int)Constants.PlacedPlatformStyles.Sandstone;
             }
             if (player.ZoneSnow)
             {
                 wallID = WallID.BorealWood;
                 tileID = TileID.BorealWood;
-                platformID = (int)Common.PlacedPlatformStyles.BorealWood;
+                platformID = (int)Constants.PlacedPlatformStyles.BorealWood;
             }
             if (player.ZoneJungle)
             {
                 wallID = WallID.RichMaogany;
                 tileID = TileID.RichMahogany;
-                platformID = (int)Common.PlacedPlatformStyles.RichMahogany;
+                platformID = (int)Constants.PlacedPlatformStyles.RichMahogany;
             }
             if (player.ZoneCorrupt)
             {
                 wallID = WallID.Ebonwood;
                 tileID = TileID.Ebonwood;
-                platformID = (int)Common.PlacedPlatformStyles.Ebonwood;
+                platformID = (int)Constants.PlacedPlatformStyles.Ebonwood;
             }
             if (player.ZoneCrimson)
             {
                 wallID = WallID.Shadewood;
                 tileID = TileID.Shadewood;
-                platformID = (int)Common.PlacedPlatformStyles.Shadewood;
+                platformID = (int)Constants.PlacedPlatformStyles.Shadewood;
             }
             if (player.ZoneBeach)
             {
                 wallID = WallID.PalmWood;
                 tileID = TileID.PalmWood;
-                platformID = (int)Common.PlacedPlatformStyles.PalmWood;
+                platformID = (int)Constants.PlacedPlatformStyles.PalmWood;
             }
             if (player.ZoneHallow)
             {
                 wallID = WallID.Pearlwood;
                 tileID = TileID.Pearlwood;
-                platformID = (int)Common.PlacedPlatformStyles.Pearlwood;
+                platformID = (int)Constants.PlacedPlatformStyles.Pearlwood;
             }
             if (player.ZoneGlowshroom)
             {
                 wallID = WallID.Mushroom;
                 tileID = TileID.MushroomBlock;
-                platformID = (int)Common.PlacedPlatformStyles.Mushroom;
+                platformID = (int)Constants.PlacedPlatformStyles.Mushroom;
             }
             if (player.ZoneSkyHeight)
             {
                 wallID = WallID.DiscWall;
                 tileID = TileID.Sunplate;
-                platformID = (int)Common.PlacedPlatformStyles.Skyware;
+                platformID = (int)Constants.PlacedPlatformStyles.Skyware;
             }
             if (player.ZoneUnderworldHeight)
             {
                 wallID = WallID.ObsidianBrick;
                 tileID = TileID.ObsidianBrick;
-                platformID = (int)Common.PlacedPlatformStyles.Obsidian;
+                platformID = (int)Constants.PlacedPlatformStyles.Obsidian;
             }
         }
 
@@ -363,73 +361,73 @@ namespace QoLCompendium.Content.Projectiles.Explosives
             if (player.ZoneDesert && !player.ZoneBeach)
             {
                 tableTile = 2;
-                tableID = (int)Common.PlacedTableStyles2.Sandstone;
-                chairID = (int)Common.PlacedChairStyles.Sandstone;
-                doorID = (int)Common.PlacedDoorStyles.Sandstone;
-                torchID = (int)Common.PlacedTorchStyles.DesertTorch;
+                tableID = (int)Constants.PlacedTableStyles2.Sandstone;
+                chairID = (int)Constants.PlacedChairStyles.Sandstone;
+                doorID = (int)Constants.PlacedDoorStyles.Sandstone;
+                torchID = (int)Constants.PlacedTorchStyles.DesertTorch;
             }
             if (player.ZoneSnow)
             {
-                tableID = (int)Common.PlacedTableStyles1.BorealWood;
-                chairID = (int)Common.PlacedChairStyles.BorealWood;
-                doorID = (int)Common.PlacedDoorStyles.BorealWood;
-                torchID = (int)Common.PlacedTorchStyles.IceTorch;
+                tableID = (int)Constants.PlacedTableStyles1.BorealWood;
+                chairID = (int)Constants.PlacedChairStyles.BorealWood;
+                doorID = (int)Constants.PlacedDoorStyles.BorealWood;
+                torchID = (int)Constants.PlacedTorchStyles.IceTorch;
             }
             if (player.ZoneJungle)
             {
-                tableID = (int)Common.PlacedTableStyles1.RichMahogany;
-                chairID = (int)Common.PlacedChairStyles.RichMahogany;
-                doorID = (int)Common.PlacedDoorStyles.RichMahogany;
-                torchID = (int)Common.PlacedTorchStyles.JungleTorch;
+                tableID = (int)Constants.PlacedTableStyles1.RichMahogany;
+                chairID = (int)Constants.PlacedChairStyles.RichMahogany;
+                doorID = (int)Constants.PlacedDoorStyles.RichMahogany;
+                torchID = (int)Constants.PlacedTorchStyles.JungleTorch;
             }
             if (player.ZoneCorrupt)
             {
-                tableID = (int)Common.PlacedTableStyles1.Ebonwood;
-                chairID = (int)Common.PlacedChairStyles.Ebonwood;
-                doorID = (int)Common.PlacedDoorStyles.Ebonwood;
-                torchID = (int)Common.PlacedTorchStyles.CorruptTorch;
+                tableID = (int)Constants.PlacedTableStyles1.Ebonwood;
+                chairID = (int)Constants.PlacedChairStyles.Ebonwood;
+                doorID = (int)Constants.PlacedDoorStyles.Ebonwood;
+                torchID = (int)Constants.PlacedTorchStyles.CorruptTorch;
             }
             if (player.ZoneCrimson)
             {
-                tableID = (int)Common.PlacedTableStyles1.Shadewood;
-                chairID = (int)Common.PlacedChairStyles.Shadewood;
-                doorID = (int)Common.PlacedDoorStyles.Shadewood;
-                torchID = (int)Common.PlacedTorchStyles.CrimsonTorch;
+                tableID = (int)Constants.PlacedTableStyles1.Shadewood;
+                chairID = (int)Constants.PlacedChairStyles.Shadewood;
+                doorID = (int)Constants.PlacedDoorStyles.Shadewood;
+                torchID = (int)Constants.PlacedTorchStyles.CrimsonTorch;
             }
             if (player.ZoneBeach)
             {
-                tableID = (int)Common.PlacedTableStyles1.PalmWood;
-                chairID = (int)Common.PlacedChairStyles.PalmWood;
-                doorID = (int)Common.PlacedDoorStyles.PalmWood;
-                torchID = (int)Common.PlacedTorchStyles.CoralTorch;
+                tableID = (int)Constants.PlacedTableStyles1.PalmWood;
+                chairID = (int)Constants.PlacedChairStyles.PalmWood;
+                doorID = (int)Constants.PlacedDoorStyles.PalmWood;
+                torchID = (int)Constants.PlacedTorchStyles.CoralTorch;
             }
             if (player.ZoneHallow)
             {
-                tableID = (int)Common.PlacedTableStyles1.Pearlwood;
-                chairID = (int)Common.PlacedChairStyles.Pearlwood;
-                doorID = (int)Common.PlacedDoorStyles.Pearlwood;
-                torchID = (int)Common.PlacedTorchStyles.HallowedTorch;
+                tableID = (int)Constants.PlacedTableStyles1.Pearlwood;
+                chairID = (int)Constants.PlacedChairStyles.Pearlwood;
+                doorID = (int)Constants.PlacedDoorStyles.Pearlwood;
+                torchID = (int)Constants.PlacedTorchStyles.HallowedTorch;
             }
             if (player.ZoneGlowshroom)
             {
-                tableID = (int)Common.PlacedTableStyles1.Mushroom;
-                chairID = (int)Common.PlacedChairStyles.Mushroom;
-                doorID = (int)Common.PlacedDoorStyles.Mushroom;
-                torchID = (int)Common.PlacedTorchStyles.MushroomTorch;
+                tableID = (int)Constants.PlacedTableStyles1.Mushroom;
+                chairID = (int)Constants.PlacedChairStyles.Mushroom;
+                doorID = (int)Constants.PlacedDoorStyles.Mushroom;
+                torchID = (int)Constants.PlacedTorchStyles.MushroomTorch;
             }
             if (player.ZoneSkyHeight)
             {
-                tableID = (int)Common.PlacedTableStyles1.Skyware;
-                chairID = (int)Common.PlacedChairStyles.Skyware;
-                doorID = (int)Common.PlacedDoorStyles.Skyware;
-                torchID = (int)Common.PlacedTorchStyles.YellowTorch;
+                tableID = (int)Constants.PlacedTableStyles1.Skyware;
+                chairID = (int)Constants.PlacedChairStyles.Skyware;
+                doorID = (int)Constants.PlacedDoorStyles.Skyware;
+                torchID = (int)Constants.PlacedTorchStyles.YellowTorch;
             }
             if (player.ZoneUnderworldHeight)
             {
-                tableID = (int)Common.PlacedTableStyles1.Obsidian;
-                chairID = (int)Common.PlacedChairStyles.Obsidian;
-                doorID = (int)Common.PlacedDoorStyles.Obsidian;
-                torchID = (int)Common.PlacedTorchStyles.DemonTorch;
+                tableID = (int)Constants.PlacedTableStyles1.Obsidian;
+                chairID = (int)Constants.PlacedChairStyles.Obsidian;
+                doorID = (int)Constants.PlacedDoorStyles.Obsidian;
+                torchID = (int)Constants.PlacedTorchStyles.DemonTorch;
             }
         }
 

@@ -21,7 +21,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Mirrors);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Mirrors);
         }
 
         public override bool CanUseItem(Player player) => false;
@@ -48,7 +48,7 @@ namespace QoLCompendium.Content.Items.Tools.Mirrors
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.Mirrors, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Glass, 10);
             r.AddRecipeGroup("QoLCompendium:GoldBars", 8);
             r.AddIngredient(ItemID.WormholePotion, 3);

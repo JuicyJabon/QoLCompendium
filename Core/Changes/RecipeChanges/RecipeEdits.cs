@@ -193,8 +193,10 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumBard")) && ThoriumReworkPotionsEnabled)
                     {
                         if (!CrossModSupport.InfernalEclipse.Loaded)
+                        {
                             recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentDeathsinger"));
-                        recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationRegeneration"));
+                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationRegeneration"));
+                        }
                     }
                 }
 

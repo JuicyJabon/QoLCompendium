@@ -22,7 +22,7 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.CraftingStations);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.CraftingStations);
         }
     }
 }

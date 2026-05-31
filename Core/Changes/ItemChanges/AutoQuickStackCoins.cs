@@ -32,11 +32,11 @@
             if (!item.IsACoin)
                 return false;
 
-            ulong totalMoney = Common.CalculateCoinValue(type, (uint)item.stack);
+            ulong totalMoney = ItemUtils.CalculateCoinValue(type, (uint)item.stack);
             totalMoney = player.bank.item.Aggregate(totalMoney,
-                (current, bItem) => current + Common.CalculateCoinValue(bItem.type, (uint)bItem.stack));
+                (current, bItem) => current + ItemUtils.CalculateCoinValue(bItem.type, (uint)bItem.stack));
 
-            List<Item> toPlace = Common.ConvertCopperValueToCoins(totalMoney);
+            List<Item> toPlace = ItemUtils.ConvertCopperValueToCoins(totalMoney);
             ReplaceOrPlaceIntoChest(player.bank, toPlace);
 
             toPlace.ForEach(coinLeft =>
@@ -103,7 +103,7 @@
             if (cooldown % 10 == 0)
                 DetectCoins();
             if (cooldown % 30 == 0)
-                Common.PlatinumMaxStack = new Item(ItemID.PlatinumCoin).maxStack;
+                Constants.PlatinumMaxStack = new Item(ItemID.PlatinumCoin).maxStack;
         }
 
         private void DetectCoins()

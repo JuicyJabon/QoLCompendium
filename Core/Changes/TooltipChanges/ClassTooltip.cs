@@ -9,7 +9,7 @@
 
         public static void ItemClassTooltip(Item item, List<TooltipLine> tooltips)
         {
-            if (Common.VoidDamageClasses.Contains(item.DamageType))
+            if (Constants.VoidDamageClasses.Contains(item.DamageType))
                 return;
 
             //TOOL
@@ -31,7 +31,7 @@
             if (item.CountsAsClass(DamageClass.Throwing) && item.IsAWeapon() && !CrossModSupport.Thorium.Loaded && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.Calamity.Mod, "RogueDamageClass")) && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.ThrowerUnification.Mod, "UnitedModdedThrower")))
                 tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ThrowerClass")));
             //GENERIC
-            if (item.CountsAsClass(DamageClass.Generic) && item.IsAWeapon())
+            if ((item.CountsAsClass(DamageClass.Generic) || (item.CountsAsClass(DamageClass.Default) && item.damage > 0)) && item.IsAWeapon())
                 tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.Classless")));
         }
     }

@@ -10,9 +10,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
     {
         public override bool IsLoadingEnabled(Mod mod) => QoLCompendium.crossModConfig.SpiritClassicYoyoClassificationFix;
 
-        public override bool InstancePerEntity => true;
-
-        public List<int> Yoyos =
+        public static List<int> Yoyos =
         [
             ModContent.ItemType<Handball>(), //Grasp
             ModContent.ItemType<Moonburst>(),

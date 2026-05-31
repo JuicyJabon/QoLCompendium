@@ -4,7 +4,7 @@
     {
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
-            return Common.FallingBlocks.Contains(entity.type);
+            return Constants.FallingBlocks.Contains(entity.type);
         }
 
         public override void SetDefaults(Projectile entity)

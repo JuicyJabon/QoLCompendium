@@ -1,4 +1,4 @@
-﻿using QoLCompendium.Core.UI.Other;
+﻿using QoLCompendium.Core.UI.InfoDisplays;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Accessories.Fishing
@@ -26,7 +26,7 @@ namespace QoLCompendium.Content.Items.Accessories.Fishing
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.FishingAccessories);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.FishingAccessories);
         }
 
         public override void UpdateInfoAccessory(Player player)

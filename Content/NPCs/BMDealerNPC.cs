@@ -1130,7 +1130,7 @@ namespace QoLCompendium.Content.NPCs
                     .Add(new Item(ItemID.QueenSlimeMountSaddle) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedQueenSlime)
                     .Add(new Item(ItemID.ReindeerBells) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedIceQueen)
                     .Add(new Item(ItemID.BrainScrambler) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMartians)
-                    .Add(new Item(ItemID.CosmicCarKey) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMartians)
+                    .Add(new Item(ItemID.CosmicCarKey) { shopCustomPrice = Item.buyPrice(gold: 2) }, ModConditions.DownedMartianSaucer)
                     .Add(new Item(ItemID.WitchBroom) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMourningWood, Condition.InExpertMode)
                     .Add(new Item(ItemID.ShrimpyTruffle) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedDukeFishron, Condition.InExpertMode)
                     .Add(new Item(ItemID.DrillContainmentUnit) { shopCustomPrice = Item.buyPrice(gold: 2) }, Condition.DownedMoonLord)

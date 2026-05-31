@@ -19,7 +19,7 @@ namespace QoLCompendium.Content.Items.Tools.Summons.CrossMod.Thorium
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(CrossModSupport.Thorium.Mod, "MarineBlock"), 6);
             r.AddIngredient(Common.GetModItem(CrossModSupport.Thorium.Mod, "MossyMarineBlock"), 6);
             r.AddIngredient(ItemID.Ectoplasm, 2);

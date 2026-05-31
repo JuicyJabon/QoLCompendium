@@ -12,7 +12,7 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
             {
                 for (int k = 0; k < Main.maxNPCs; k++)
                 {
-                    if (!Main.npc[k].friendly && Main.npc[k].active && !Common.LunarPillarIDs.Contains(Main.npc[k].type))
+                    if (!Main.npc[k].friendly && Main.npc[k].active && !Constants.LunarPillarIDs.Contains(Main.npc[k].type))
                         DespawnNPC(k);
                     Player.respawnTimer = 60;
                 }
@@ -28,14 +28,14 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
             }
         }
 
-        public override void OnRespawn()
+        public override void PostUpdateEquips()
         {
             if (QoLCompendium.mainConfig.FullHealthRespawn)
-            {
-                Player.statLife = Player.statLifeMax2;
-                Player.statMana = Player.statManaMax2;
-            }
+                Player.spawnMax = true;
+        }
 
+        public override void OnRespawn()
+        {
             if (QoLCompendium.mainConfig.KeepBuffsOnDeath)
             {
                 (int, int)[] array = buffCache;

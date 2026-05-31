@@ -13,7 +13,7 @@
         public int BuffType;
 
         protected override bool CloneNewInstances => true;
-        public override string Texture => Common.BuffAsset(buffID);
+        public override string Texture => BuffUtils.BuffAsset(buffID);
         public override LocalizedText Tooltip => LocalizedText.Empty;
         public override string Name => name;
 
@@ -26,13 +26,13 @@
 
         public override void SetDefaults()
         {
-            Common.SetDefaultsToPermanentBuff(Item);
+            ItemUtils.SetDefaultsToPermanentBuff(Item);
             BuffType = buffID;
         }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(itemID, ingredientCount);
             r.AddTile(TileID.CookingPots);
             r.Register();
@@ -43,23 +43,11 @@
             //if (!Item.IsBuffItemFromSupportedMod())
                 //Item.SetNameOverride(displayName);
 
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PermanentBuffs);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PermanentBuffs);
             TooltipLine material = tooltips.Find(l => l.Name == "Material");
-
-            if (buffID < BuffID.Count)
-            {
-                TooltipLine text = new(Mod, "BuffDescription", Lang.GetBuffDescription(buffID));
-                
-                if (material != null)
-                    tooltips.AddAfter(material, text);
-            }
-            else
-            {
-                TooltipLine text = new(Mod, "BuffDescription", BuffLoader.GetBuff(buffID).Description.ToString());
-                
-                if (material != null)
-                    tooltips.AddAfter(material, text);
-            }
+            TooltipLine text = new(Mod, "BuffDescription", Main.GetBuffTooltip(Main.LocalPlayer, buffID));
+            if (material != null)
+                tooltips.AddAfter(material, text);
         }
     }
 }

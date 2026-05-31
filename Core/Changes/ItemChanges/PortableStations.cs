@@ -33,9 +33,9 @@ namespace QoLCompendium.Core.Changes.ItemChanges
 
         static void CheckZoneItemFromPlayer(Player player)
         {
-            foreach (var item in Common.GetAllInventoryItemsList(player))
+            foreach (var item in ItemUtils.GetAllInventoryItemsList(player))
             {
-                if (Common.GraveStones.Contains(item.type))
+                if (Constants.Gravestones.Contains(item.type))
                 {
                     if (item.stack >= 5)
                     {
@@ -44,7 +44,7 @@ namespace QoLCompendium.Core.Changes.ItemChanges
                     }
 
                 }
-                else if (Common.SnowBiomeBlocks.Contains(item.type))
+                else if (Constants.SnowBiomeBlocks.Contains(item.type))
                 {
                     if (item.stack >= 1500)
                     {
@@ -74,7 +74,7 @@ namespace QoLCompendium.Core.Changes.ItemChanges
             });
         }
 
-        internal static void CheckStationsFromPlayer(Player inventorySource) => CheckStations(Common.GetAllInventoryItemsList(inventorySource));
+        internal static void CheckStationsFromPlayer(Player inventorySource) => CheckStations(ItemUtils.GetAllInventoryItemsList(inventorySource));
 
         internal static void CheckStations(IEnumerable<Item> items)
         {

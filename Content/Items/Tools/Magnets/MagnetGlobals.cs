@@ -13,7 +13,7 @@
             MagnetPlayer mPlayer = Main.LocalPlayer.GetModPlayer<MagnetPlayer>();
             if (item.active && Main.LocalPlayer.whoAmI == Main.myPlayer)
             {
-                if (Common.PowerUpItems.Contains(item.type))
+                if (Constants.PowerUpItems.Contains(item.type))
                     return;
 
                 if (item.noGrabDelay != 0 || item.playerIndexTheItemIsReservedFor != Main.LocalPlayer.whoAmI)
@@ -83,7 +83,7 @@
 
         public override void UpdateEquips()
         {
-            UpdateMagnets(Common.GetAllInventoryItemsList(Player).ToArray());
+            UpdateMagnets(ItemUtils.GetAllInventoryItemsList(Player).ToArray());
         }
 
         private void UpdateMagnets(Item[] items)

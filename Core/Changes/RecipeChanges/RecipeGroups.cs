@@ -231,13 +231,13 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 ItemID.PirateCorsairBanner,
                 ItemID.PirateCrossbowerBanner,
                 ItemID.PirateBanner);
-            Common.AnyPirateBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyPirateBanner", pirateBanners);
+            Constants.AnyPirateBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyPirateBanner", pirateBanners);
 
             RecipeGroup armoredBonesBanners = new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.AnyArmoredBonesBanner")}",
                 ItemID.BlueArmoredBonesBanner,
                 ItemID.HellArmoredBonesBanner,
                 ItemID.RustyArmoredBonesBanner);
-            Common.AnyArmoredBonesBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyArmoredBonesBanner", armoredBonesBanners);
+            Constants.AnyArmoredBonesBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyArmoredBonesBanner", armoredBonesBanners);
 
             RecipeGroup slimeBanners = new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.AnySlimeBanner")}",
                 ItemID.SlimeBanner,
@@ -260,7 +260,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 ItemID.GastropodBanner,
                 ItemID.IlluminantSlimeBanner,
                 ItemID.RainbowSlimeBanner);
-            Common.AnySlimeBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnySlimeBanner", slimeBanners);
+            Constants.AnySlimeBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnySlimeBanner", slimeBanners);
 
             RecipeGroup hallowBanners = new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.AnyHallowBanner")}",
                 ItemID.PixieBanner,
@@ -273,7 +273,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 ItemID.ChaosElementalBanner,
                 ItemID.EnchantedSwordBanner,
                 ItemID.BigMimicHallowBanner);
-            Common.AnyHallowBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyHallowBanner", hallowBanners);
+            Constants.AnyHallowBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyHallowBanner", hallowBanners);
 
             RecipeGroup corruptionBanners = new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.AnyCorruptionBanner")}",
                 ItemID.EaterofSoulsBanner,
@@ -286,7 +286,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 ItemID.CursedHammerBanner,
                 ItemID.ClingerBanner,
                 ItemID.BigMimicCorruptionBanner);
-            Common.AnyCorruptionBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyCorruptionBanner", corruptionBanners);
+            Constants.AnyCorruptionBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyCorruptionBanner", corruptionBanners);
 
             RecipeGroup crimsonBanners = new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.AnyCrimsonBanner")}",
                 ItemID.BloodCrawlerBanner,
@@ -301,7 +301,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 ItemID.IchorStickerBanner,
                 ItemID.FloatyGrossBanner,
                 ItemID.BigMimicCrimsonBanner);
-            Common.AnyCrimsonBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyCrimsonBanner", crimsonBanners);
+            Constants.AnyCrimsonBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyCrimsonBanner", crimsonBanners);
 
             RecipeGroup jungleBanners = new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.AnyJungleBanner")}",
                 ItemID.PiranhaBanner,
@@ -321,7 +321,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 ItemID.MothBanner,
                 ItemID.ManEaterBanner,
                 ItemID.MossHornetBanner);
-            Common.AnyJungleBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyJungleBanner", jungleBanners);
+            Constants.AnyJungleBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyJungleBanner", jungleBanners);
 
             RecipeGroup snowBanners = new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.AnySnowBanner")}",
                 ItemID.IceSlimeBanner,
@@ -337,7 +337,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 ItemID.IceTortoiseBanner,
                 ItemID.IcyMermanBanner,
                 ItemID.PigronBanner);
-            Common.AnySnowBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnySnowBanner", snowBanners);
+            Constants.AnySnowBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnySnowBanner", snowBanners);
 
             RecipeGroup desertBanners = new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.AnyDesertBanner")}",
                 ItemID.VultureBanner,
@@ -363,7 +363,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 ItemID.SandsharkCrimsonBanner,
                 ItemID.SandsharkHallowedBanner,
                 ItemID.TumbleweedBanner);
-            Common.AnyDesertBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyDesertBanner", desertBanners);
+            Constants.AnyDesertBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyDesertBanner", desertBanners);
 
             RecipeGroup underworldBanners = new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.AnyUnderworldBanner")}",
                 ItemID.HellbatBanner,
@@ -373,7 +373,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 ItemID.BoneSerpentBanner,
                 ItemID.LavaBatBanner,
                 ItemID.RedDevilBanner);
-            Common.AnyUnderworldBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyUnderworldBanner", underworldBanners);
+            Constants.AnyUnderworldBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyUnderworldBanner", underworldBanners);
 
             RecipeGroup batBanners = new(() => $"{any} {Language.GetTextValue("Mods.QoLCompendium.RecipeGroupNames.AnyBatBanner")}",
                 ItemID.BatBanner,
@@ -385,7 +385,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                 ItemID.HellbatBanner,
                 ItemID.LavaBatBanner,
                 ItemID.SporeBatBanner);
-            Common.AnyBatBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyBatBanner", batBanners);
+            Constants.AnyBatBanner = RecipeGroup.RegisterGroup("QoLCompendium:AnyBatBanner", batBanners);
 
             RecipeGroup fishingBobbers = new(() => $"{any} {Lang.GetItemNameValue(ItemID.FishingBobber)}",
                 ItemID.FishingBobber,

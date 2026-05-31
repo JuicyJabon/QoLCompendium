@@ -10,7 +10,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
     {
         public delegate bool Orig_VoidConsumable(VoidConsumable self);
 
-        private static readonly MethodInfo VoidConsumableConsumeMethod = typeof(VoidConsumable).GetMethod("ConsumeStack", Common.UniversalBindingFlags);
+        private static readonly MethodInfo VoidConsumableConsumeMethod = typeof(VoidConsumable).GetMethod("ConsumeStack", Constants.UniversalBindingFlags);
 
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
@@ -21,7 +21,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModItemChanges
         {
             Hook voidConsumable = new(VoidConsumableConsumeMethod, new Func<Orig_VoidConsumable, VoidConsumable, bool>(ConsumeStack_Detour));
             voidConsumable.Apply();
-            Common.detours.Add(voidConsumable);
+            Constants.Detours.Add(voidConsumable);
         }
 
         internal static bool ConsumeStack_Detour(Orig_VoidConsumable orig, VoidConsumable self)

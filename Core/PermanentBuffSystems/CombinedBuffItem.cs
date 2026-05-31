@@ -25,13 +25,13 @@
 
         public override void SetDefaults()
         {
-            Common.SetDefaultsToPermanentBuff(Item);
+            ItemUtils.SetDefaultsToPermanentBuff(Item);
             BuffTypes = buffs;
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PermanentBuffs);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PermanentBuffs);
         }
     }
 }

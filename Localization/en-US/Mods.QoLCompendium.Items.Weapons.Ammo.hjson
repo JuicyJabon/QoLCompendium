@@ -1,135 +1,135 @@
 EndlessBoneQuiver: {
-	DisplayName: Endless Bone Quiver
+	DisplayName: Endless Bone Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessChlorophyteQuiver: {
-	DisplayName: Endless Chlorophyte Quiver
+	DisplayName: Endless Chlorophyte Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessCursedQuiver: {
-	DisplayName: Endless Cursed Quiver
+	DisplayName: Endless Cursed Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessFlamingQuiver: {
-	DisplayName: Endless Flaming Quiver
+	DisplayName: Endless Flaming Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessFrostburnQuiver: {
-	DisplayName: Endless Frostburn Quiver
+	DisplayName: Endless Frostburn Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessHellfireQuiver: {
-	DisplayName: Endless Hellfire Quiver
+	DisplayName: Endless Hellfire Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessHolyQuiver: {
-	DisplayName: Endless Holy Quiver
+	DisplayName: Endless Holy Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessIchorQuiver: {
-	DisplayName: Endless Ichor Quiver
+	DisplayName: Endless Ichor Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessJestersQuiver: {
-	DisplayName: Endless Jester's Quiver
+	DisplayName: Endless Jester's Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessLuminiteQuiver: {
-	DisplayName: Endless Luminite Quiver
+	DisplayName: Endless Luminite Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessShimmerQuiver: {
-	DisplayName: Endless Shimmer Quiver
+	DisplayName: Endless Shimmer Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessUnholyQuiver: {
-	DisplayName: Endless Unholy Quiver
+	DisplayName: Endless Unholy Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessVenomQuiver: {
-	DisplayName: Endless Venom Quiver
+	DisplayName: Endless Venom Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessChlorophytePouch: {
-	DisplayName: Endless Chlorophyte Pouch
+	DisplayName: Endless Chlorophyte Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessCrystalPouch: {
-	DisplayName: Endless Crystal Pouch
+	DisplayName: Endless Crystal Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessCursedPouch: {
-	DisplayName: Endless Cursed Pouch
+	DisplayName: Endless Cursed Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessExplodingPouch: {
-	DisplayName: Endless Exploding Pouch
+	DisplayName: Endless Exploding Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessGoldenPouch: {
-	DisplayName: Endless Golden Pouch
+	DisplayName: Endless Golden Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessHighVelocityPouch: {
-	DisplayName: Endless High Velocity Pouch
+	DisplayName: Endless High Velocity Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessIchorPouch: {
-	DisplayName: Endless Ichor Pouch
+	DisplayName: Endless Ichor Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessLuminitePouch: {
-	DisplayName: Endless Luminite Pouch
+	DisplayName: Endless Luminite Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessMeteorPouch: {
-	DisplayName: Endless Meteor Pouch
+	DisplayName: Endless Meteor Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessNanoPouch: {
-	DisplayName: Endless Nano Pouch
+	DisplayName: Endless Nano Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessPartyPouch: {
-	DisplayName: Endless Party Pouch
+	DisplayName: Endless Party Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessSilverPouch: {
-	DisplayName: Endless Silver Pouch
+	DisplayName: Endless Silver Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessTungstenPouch: {
-	DisplayName: Endless Tungsten Pouch
+	DisplayName: Endless Tungsten Bullet Pouch
 	Tooltip: ""
 }
 
 EndlessVenomPouch: {
-	DisplayName: Endless Venom Pouch
+	DisplayName: Endless Venom Bullet Pouch
 	Tooltip: ""
 }
 
@@ -354,182 +354,182 @@ EndlessYellowSolution: {
 }
 
 EndlessScrapMetalQuiver: {
-	DisplayName: Endless Scrap Metal Quiver
+	DisplayName: Endless Scrap Metal Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessVibrantQuiver: {
-	DisplayName: Endless Vibrant Quiver
+	DisplayName: Endless Vibrant Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessWormholeQuiver: {
-	DisplayName: Endless Wormhole Quiver
+	DisplayName: Endless Wormhole Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessBouncyQuiver: {
-	DisplayName: Endless Bouncy Quiver
+	DisplayName: Endless Bouncy Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessGlowingQuiver: {
-	DisplayName: Endless Glowing Quiver
+	DisplayName: Endless Glowing Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessHyperQuiver: {
-	DisplayName: Endless Hyper Quiver
+	DisplayName: Endless Hyper Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessPoisonQuiver: {
-	DisplayName: Endless Poison Quiver
+	DisplayName: Endless Poison Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessSeaQuiver: {
-	DisplayName: Endless Sea Quiver
+	DisplayName: Endless Sea Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessShadowflameQuiver: {
-	DisplayName: Endless Shadowflame Quiver
+	DisplayName: Endless Shadowflame Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessStickyQuiver: {
-	DisplayName: Endless Sticky Quiver
+	DisplayName: Endless Sticky Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessTectonicQuiver: {
-	DisplayName: Endless Tectonic Quiver
+	DisplayName: Endless Tectonic Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessTrojanQuiver: {
-	DisplayName: Endless Trojan Quiver
+	DisplayName: Endless Trojan Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessUltraGlowingQuiver: {
-	DisplayName: Endless Ultra Glowing Quiver
+	DisplayName: Endless Ultra Glowing Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessZincQuiver: {
-	DisplayName: Endless Zinc Quiver
+	DisplayName: Endless Zinc Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessBloodfireQuiver: {
-	DisplayName: Endless Bloodfire Quiver
+	DisplayName: Endless Bloodfire Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessCinderQuiver: {
-	DisplayName: Endless Cinder Quiver
+	DisplayName: Endless Cinder Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessElysianQuiver: {
-	DisplayName: Endless Elysian Quiver
+	DisplayName: Endless Elysian Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessIcicleQuiver: {
-	DisplayName: Endless Icicle Quiver
+	DisplayName: Endless Icicle Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessSproutingQuiver: {
-	DisplayName: Endless Sprouting Quiver
+	DisplayName: Endless Sprouting Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessVanquisherQuiver: {
-	DisplayName: Endless Vanquisher Quiver
+	DisplayName: Endless Vanquisher Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessVeriumQuiver: {
-	DisplayName: Endless Verium Quiver
+	DisplayName: Endless Verium Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessAnnihilateQuiver: {
-	DisplayName: Endless Annihilate Quiver
+	DisplayName: Endless Annihilate Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessHiveQuiver: {
-	DisplayName: Endless Hive Quiver
+	DisplayName: Endless Hive Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessFrostfireQuiver: {
-	DisplayName: Endless Frostfire Quiver
+	DisplayName: Endless Frostfire Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessBewitchedQuiver: {
-	DisplayName: Endless Bewitched Quiver
+	DisplayName: Endless Bewitched Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessDivineFireQuiver: {
-	DisplayName: Endless Divine Fire Quiver
+	DisplayName: Endless Divine Fire Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessMartyrQuiver: {
-	DisplayName: Endless Martyr Quiver
+	DisplayName: Endless Martyr Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessPlagueQuiver: {
-	DisplayName: Endless Plague Quiver
+	DisplayName: Endless Plague Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessSteelQuiver: {
-	DisplayName: Endless Steel Quiver
+	DisplayName: Endless Steel Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessCrystalQuiver: {
-	DisplayName: Endless Crystal Quiver
+	DisplayName: Endless Crystal Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessDurasteelQuiver: {
-	DisplayName: Endless Durasteel Quiver
+	DisplayName: Endless Durasteel Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessGhostPulseQuiver: {
-	DisplayName: Endless Ghost Pulse Quiver
+	DisplayName: Endless Ghost Pulse Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessIcyQuiver: {
-	DisplayName: Endless Icy Quiver
+	DisplayName: Endless Icy Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessSpiritQuiver: {
-	DisplayName: Endless Spirit Quiver
+	DisplayName: Endless Spirit Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessTalonQuiver: {
-	DisplayName: Endless Talon Quiver
+	DisplayName: Endless Talon Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessThoriumSteelQuiver: {
-	DisplayName: Endless Thorium Steel Quiver
+	DisplayName: Endless Steel Arrow Quiver
 	Tooltip: ""
 }
 
@@ -610,42 +610,42 @@ EndlessAstralSolution: {
 
 EndlessOblivionQuiver: {
 	Tooltip: ""
-	DisplayName: Endless Oblivion Quiver
+	DisplayName: Endless Oblivion Arrow Quiver
 }
 
 EndlessLuminousQuiver: {
 	Tooltip: ""
-	DisplayName: Endless Luminous Quiver
+	DisplayName: Endless Luminous Arrow Quiver
 }
 
 EndlessFlariumQuiver: {
 	Tooltip: ""
-	DisplayName: Endless Flarium Quiver
+	DisplayName: Endless Flarium Arrow Quiver
 }
 
 EndlessAsthraltiteQuiver: {
 	Tooltip: ""
-	DisplayName: Endless Asthraltite Quiver
+	DisplayName: Endless Asthraltite Arrow Quiver
 }
 
 EndlessMoonflareQuiver: {
 	Tooltip: ""
-	DisplayName: Endless Moonflare Quiver
+	DisplayName: Endless Moonflare Arrow Quiver
 }
 
 EndlessBileQuiver: {
 	Tooltip: ""
-	DisplayName: Endless Bile Quiver
+	DisplayName: Endless Bile Arrow Quiver
 }
 
 EndlessAquaQuiver: {
 	Tooltip: ""
-	DisplayName: Endless Aqua Quiver
+	DisplayName: Endless Aqua Arrow Quiver
 }
 
 EndlessInvarQuiver: {
 	Tooltip: ""
-	DisplayName: Endless Invar Quiver
+	DisplayName: Endless Invar Arrow Quiver
 }
 
 EndlessCyanSolution: {
@@ -684,12 +684,12 @@ EndlessRockBulletPouch: {
 }
 
 EndlessAccursedQuiver: {
-	DisplayName: Endless Accursed Quiver
+	DisplayName: Endless Accursed Arrow Quiver
 	Tooltip: ""
 }
 
 EndlessBeetleQuiver: {
-	DisplayName: Endless Beetle Quiver
+	DisplayName: Endless Beetle Arrow Quiver
 	Tooltip: ""
 }
 
@@ -915,5 +915,35 @@ EndlessT3MissilePouch: {
 
 EndlessT4MissilePouch: {
 	DisplayName: Endless T.4 Missile Pouch
+	Tooltip: ""
+}
+
+EndlessBlackQuiver: {
+	DisplayName: Endless Black Arrow Quiver
+	Tooltip: ""
+}
+
+EndlessTracingQuiver: {
+	DisplayName: Endless Tracing Arrow Quiver
+	Tooltip: ""
+}
+
+EndlessPiercingBulletPouch: {
+	DisplayName: Endless Piercing Bullet Pouch
+	Tooltip: ""
+}
+
+EndlessPrismaticBulletPouch: {
+	DisplayName: Endless Prismatic Bullet Pouch
+	Tooltip: ""
+}
+
+EndlessLavaCreamTank: {
+	DisplayName: Endless Lava Cream Tank
+	Tooltip: ""
+}
+
+EndlessRedHotSolution: {
+	DisplayName: Endless Red Hot Solution
 	Tooltip: ""
 }

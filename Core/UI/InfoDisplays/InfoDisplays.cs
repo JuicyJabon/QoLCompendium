@@ -1,4 +1,4 @@
-namespace QoLCompendium.Core.UI.Other
+namespace QoLCompendium.Core.UI.InfoDisplays
 {
     public class RegenInfoDisplay : InfoDisplay
     {

@@ -46,7 +46,7 @@ namespace QoLCompendium.Content.Projectiles.Explosives
 
                 Tile tile = Main.tile[xPosition, yPosition];
 
-                if (Common.TileNull(xPosition, yPosition))
+                if (TileUtils.TileNull(xPosition, yPosition))
                     continue;
 
                 if (deletableTiles.Contains(tile.TileType))

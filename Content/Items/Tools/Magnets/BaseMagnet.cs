@@ -40,7 +40,7 @@
                 var tooltipActive = new TooltipLine(Mod, "Active", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.Active")) { OverrideColor = Common.ColorSwap(Color.Lime, Color.YellowGreen, 3) };
                 Common.AddLastTooltip(tooltips, tooltipActive);
             }
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Magnets);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.Magnets);
         }
     }
 }

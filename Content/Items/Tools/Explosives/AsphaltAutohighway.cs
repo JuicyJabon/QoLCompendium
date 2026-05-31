@@ -36,7 +36,7 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.AutoStructures && QoLCompendium.itemConfig.AsphaltPlatform);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.AutoStructures && QoLCompendium.itemConfig.AsphaltPlatform);
         }
 
         public override bool AltFunctionUse(Player player)
@@ -56,7 +56,7 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.AutoStructures && QoLCompendium.itemConfig.AsphaltPlatform, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.AutoStructures && QoLCompendium.itemConfig.AsphaltPlatform, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.AsphaltBlock, 25);
             r.AddIngredient(ItemID.Dynamite, 25);
             r.AddIngredient(ItemID.Diamond, 5);

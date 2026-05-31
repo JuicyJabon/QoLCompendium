@@ -3,7 +3,7 @@ using MonoMod.Cil;
 using QoLCompendium.Core.UI.Buttons;
 using System.Runtime.InteropServices;
 
-namespace QoLCompendium.Core.UI.Other
+namespace QoLCompendium.Core.Changes.NPCChanges
 {
     public class ShopExpander : ModSystem
     {
@@ -57,6 +57,7 @@ namespace QoLCompendium.Core.UI.Other
             var items = new List<Item>();
             if (NPCShopDatabase.TryGetNPCShop(shopName, out var shop))
             {
+                RemoveShopConditions.RemoveBiomeRequirements(shopName, shop, npc);
                 shop.FillShop(items, npc);
             }
 

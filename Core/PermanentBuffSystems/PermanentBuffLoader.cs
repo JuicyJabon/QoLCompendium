@@ -6,9 +6,9 @@ namespace QoLCompendium.Core.PermanentBuffSystems
     {
         public static void PostSetupTasks()
         {
-            for (int i = 0; i < Common.AllBuffItems.Count; i++)
+            for (int i = 0; i < Constants.AllBuffItems.Count; i++)
             {
-                ItemLoader.GetItem(Common.AllBuffItems.ElementAt(i)).Item.ReplaceBuffTexture();
+                ItemLoader.GetItem(Constants.AllBuffItems.ElementAt(i)).Item.ReplaceBuffTexture();
             }
         }
 
@@ -35,6 +35,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems
                 SpiritClassicBuffItems.LoadTasks();
             if (CrossModSupport.SpiritReforged.Loaded)
                 SpiritReforgedBuffItems.LoadTasks();
+            if (CrossModSupport.Split.Loaded)
+                SplitBuffItems.LoadTasks();
             if (CrossModSupport.Thorium.Loaded)
                 ThoriumBuffItems.LoadTasks();
             if (CrossModSupport.Vitality.Loaded)

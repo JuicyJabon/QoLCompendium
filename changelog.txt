@@ -1,7 +1,1 @@
-v2.4.5
-1. Added Suspicious Book (Spirit Classic Cross-Mod)
-2. Added Tongue Gem (Spirit Classic Cross-Mod)
-3. Added Glass Cannon (Dedicated: Yardis)
-4. Added a config to correctly classify Spirit Classic yoyos as yoyos
-5. Fixed Mr Plague's Races load error
-6. Ultimate Monolith now counts as every possible crafting station
+v2.4.7

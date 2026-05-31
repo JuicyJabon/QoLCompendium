@@ -1,6 +1,6 @@
-﻿using VitalityMod.Buffs;
-using VitalityMod.Items.MasterChef;
-using VitalityMod.Items.Potions;
+﻿using VitalityMod.Content.Buffs.Potions;
+using VitalityMod.Content.Items.Consumables.Food;
+using VitalityMod.Content.Items.Consumables.Potions;
 
 namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
@@ -30,24 +30,24 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
                 QoLCompendium.Instance.AddContent(effect);
-                Common.AllEffects.Add(newEffect.buffID, effect);
+                Constants.AllEffects.Add(newEffect.buffID, effect);
             }
 
             NewBuffItem[] BuffItems = [
                 //potions
-                new NewBuffItem(ModContent.ItemType<ArmorPiercingPotion>(), ModContent.BuffType<ArmorPiercingBuff>(), Common.AllEffects[ModContent.BuffType<ArmorPiercingBuff>()], 30, "PermanentArmorPiercing", "Permanent Armor Piercing"),
-                new NewBuffItem(ModContent.ItemType<SpriteCranberry>(), ModContent.BuffType<SpriteCranberryBuff>(), Common.AllEffects[ModContent.BuffType<SpriteCranberryBuff>()], 30, "PermanentCranberrySoda", "Permanent Cranberry Soda"),
-                new NewBuffItem(ModContent.ItemType<LeapingPotion>(), ModContent.BuffType<LeapingBuff>(), Common.AllEffects[ModContent.BuffType<LeapingBuff>()], 30, "PermanentLeaping", "Permanent Leaping"),
-                new NewBuffItem(ModContent.ItemType<TranquillityPotion>(), ModContent.BuffType<TranquillityBuff>(), Common.AllEffects[ModContent.BuffType<TranquillityBuff>()], 30, "PermanentTranquility", "Permanent Tranquility"),
-                new NewBuffItem(ModContent.ItemType<TravelsensePotion>(), ModContent.BuffType<TravelsenseBuff>(), Common.AllEffects[ModContent.BuffType<TravelsenseBuff>()], 30, "PermanentTravelsense", "Permanent Travelsense"),
-                new NewBuffItem(ModContent.ItemType<WarriorPotion>(), ModContent.BuffType<WarriorBuff>(), Common.AllEffects[ModContent.BuffType<WarriorBuff>()], 30, "PermanentWarrior", "Permanent Warrior")
+                new NewBuffItem(ModContent.ItemType<ArmorPiercingPotion>(), ModContent.BuffType<ArmorPiercingBuff>(), Constants.AllEffects[ModContent.BuffType<ArmorPiercingBuff>()], 30, "PermanentArmorPiercing", "Permanent Armor Piercing"),
+                new NewBuffItem(ModContent.ItemType<SpriteCranberry>(), ModContent.BuffType<SpriteCranberryBuff>(), Constants.AllEffects[ModContent.BuffType<SpriteCranberryBuff>()], 30, "PermanentCranberrySoda", "Permanent Cranberry Soda"),
+                new NewBuffItem(ModContent.ItemType<LeapingPotion>(), ModContent.BuffType<LeapingBuff>(), Constants.AllEffects[ModContent.BuffType<LeapingBuff>()], 30, "PermanentLeaping", "Permanent Leaping"),
+                new NewBuffItem(ModContent.ItemType<TranquillityPotion>(), ModContent.BuffType<TranquillityBuff>(), Constants.AllEffects[ModContent.BuffType<TranquillityBuff>()], 30, "PermanentTranquility", "Permanent Tranquility"),
+                new NewBuffItem(ModContent.ItemType<TravelsensePotion>(), ModContent.BuffType<TravelsenseBuff>(), Constants.AllEffects[ModContent.BuffType<TravelsenseBuff>()], 30, "PermanentTravelsense", "Permanent Travelsense"),
+                new NewBuffItem(ModContent.ItemType<WarriorPotion>(), ModContent.BuffType<WarriorBuff>(), Constants.AllEffects[ModContent.BuffType<WarriorBuff>()], 30, "PermanentWarrior", "Permanent Warrior")
             ];
 
             foreach (var newBuffItem in BuffItems)
             {
                 BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
-                Common.AllBuffItems.Add(item.Type);
+                Constants.AllBuffItems.Add(item.Type);
             }
         }
 
@@ -55,12 +55,12 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
         {
             Dictionary<BuffEffect, int> PermanentVitality = new()
             {
-                { Common.AllEffects[ModContent.BuffType<ArmorPiercingBuff>()], ModContent.BuffType<ArmorPiercingBuff>() },
-                { Common.AllEffects[ModContent.BuffType<SpriteCranberryBuff>()], ModContent.BuffType<SpriteCranberryBuff>() },
-                { Common.AllEffects[ModContent.BuffType<LeapingBuff>()], ModContent.BuffType<LeapingBuff>() },
-                { Common.AllEffects[ModContent.BuffType<TranquillityBuff>()], ModContent.BuffType<TranquillityBuff>() },
-                { Common.AllEffects[ModContent.BuffType<TravelsenseBuff>()], ModContent.BuffType<TravelsenseBuff>() },
-                { Common.AllEffects[ModContent.BuffType<WarriorBuff>()], ModContent.BuffType<WarriorBuff>() }
+                { Constants.AllEffects[ModContent.BuffType<ArmorPiercingBuff>()], ModContent.BuffType<ArmorPiercingBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<SpriteCranberryBuff>()], ModContent.BuffType<SpriteCranberryBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<LeapingBuff>()], ModContent.BuffType<LeapingBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<TranquillityBuff>()], ModContent.BuffType<TranquillityBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<TravelsenseBuff>()], ModContent.BuffType<TravelsenseBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<WarriorBuff>()], ModContent.BuffType<WarriorBuff>() }
             };
 
             NewCombinedBuffItem[] CombinedBuffItems = [
@@ -71,7 +71,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
                 QoLCompendium.Instance.AddContent(item);
-                Common.AllCombinedBuffItems.Add(item.Type);
+                Constants.AllCombinedBuffItems.Add(item.Type);
             }
         }
     }

@@ -39,6 +39,6 @@ namespace QoLCompendium.Content.Items.Tools.Summons
             return false;
         }
 
-        public override void ModifyTooltips(List<TooltipLine> tooltips) => Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.BossSummons);
+        public override void ModifyTooltips(List<TooltipLine> tooltips) => ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.BossSummons);
     }
 }

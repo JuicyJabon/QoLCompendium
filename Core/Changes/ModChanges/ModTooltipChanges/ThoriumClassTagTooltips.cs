@@ -16,7 +16,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
 
         public static void ItemClassTooltip(Item item, List<TooltipLine> tooltips)
         {
-            if (Common.VoidDamageClasses.Contains(item.DamageType))
+            if (Constants.VoidDamageClasses.Contains(item.DamageType))
                 return;
 
             int index = tooltips.FindIndex(tt => tt.Mod.Equals("Terraria") && tt.Name.Equals("ItemName"));
@@ -39,7 +39,7 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModTooltipChanges
 
         public static void ThrowerClassTooltip(Item item, List<TooltipLine> tooltips)
         {
-            if (Common.VoidDamageClasses.Contains(item.DamageType))
+            if (Constants.VoidDamageClasses.Contains(item.DamageType))
                 return;
 
             int index = tooltips.FindIndex(tt => tt.Mod.Equals("Terraria") && tt.Name.Equals("ItemName"));

@@ -68,7 +68,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
         public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
         {
             if (Main.netMode != NetmodeID.Server)
-                CheckBanners(Common.GetAllInventoryItemsList(Main.LocalPlayer));
+                CheckBanners(ItemUtils.GetAllInventoryItemsList(Main.LocalPlayer));
         }
 
         public static void CheckBanners(IEnumerable<Item> items)

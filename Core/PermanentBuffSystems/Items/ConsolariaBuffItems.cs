@@ -23,19 +23,19 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
                 QoLCompendium.Instance.AddContent(effect);
-                Common.AllEffects.Add(newEffect.buffID, effect);
+                Constants.AllEffects.Add(newEffect.buffID, effect);
             }
 
             NewBuffItem[] BuffItems = [
                 //potions
-                new NewBuffItem(ModContent.ItemType<Wiesnbrau>(), ModContent.BuffType<Drunk>(), Common.AllEffects[ModContent.BuffType<Drunk>()], 30, "PermanentWiesnbrau", "Permanent Wiesnbrau")
+                new NewBuffItem(ModContent.ItemType<Wiesnbrau>(), ModContent.BuffType<Drunk>(), Constants.AllEffects[ModContent.BuffType<Drunk>()], 30, "PermanentWiesnbrau", "Permanent Wiesnbrau")
             ];
 
             foreach (var newBuffItem in BuffItems)
             {
                 BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
-                Common.AllBuffItems.Add(item.Type);
+                Constants.AllBuffItems.Add(item.Type);
             }
         }
     }

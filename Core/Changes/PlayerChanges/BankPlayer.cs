@@ -5,19 +5,22 @@
         public override void UpdateEquips()
         {
             if (QoLCompendium.mainConfig.UtilityAccessoriesWorkInBanks)
-                CheckForBankItems(Common.GetAllInventoryItemsList(Player, "inv").ToArray());
+                CheckForBankItems(ItemUtils.GetAllInventoryItemsList(Player, "inv").ToArray());
         }
 
         public void CheckForBankItems(Item[] items)
         {
             foreach (Item item in items)
             {
-                if (Common.BankItems.Contains(item.type) && !item.IsAir)
+                if (Constants.BankItems.Contains(item.type) && !item.IsAir)
                 {
                     Player.GetModPlayer<QoLCPlayer>().activeItems.Add(item.type);
                     Player.ApplyEquipFunctional(item, true);
                     Player.RefreshInfoAccsFromItemType(item);
                     Player.RefreshMechanicalAccsFromItemType(item.type);
+                    if (item.type == Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "AnomalyInterceptor") || 
+                        item.type == Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "AnomalyLocator"))
+                        ItemLoader.GetItem(item.type).UpdateInventory(Player);
 
                     if (item.type == ItemID.RoyalGel) //Royal Gel Compatibility
                     {

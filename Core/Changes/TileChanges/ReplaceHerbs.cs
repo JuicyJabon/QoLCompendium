@@ -11,7 +11,7 @@ namespace QoLCompendium.Core.Changes.TileChanges
                 if (Player.HeldItem.type == ItemID.StaffofRegrowth || Player.HeldItem.type == ItemID.AcornAxe || (Main.mouseItem != null && (Main.mouseItem.type == ItemID.StaffofRegrowth || Main.mouseItem.type == ItemID.AcornAxe)))
                 {
                     Tile tile = Main.tile[Player.tileTargetX, Player.tileTargetY];
-                    if (Common.IsTileWithinPlayerReach(Player))
+                    if (TileUtils.IsTileWithinPlayerReach(Player))
                         GetHerbDrops(tile);
                 }
             }
@@ -26,43 +26,43 @@ namespace QoLCompendium.Core.Changes.TileChanges
             {
                 int herbStyle = tile.TileFrameX / 18;
 
-                if (herbStyle == (int)Common.AlchemyHerbStyles.Daybloom)
+                if (herbStyle == (int)Constants.AlchemyHerbStyles.Daybloom)
                 {
                     DropItems(tile, ItemID.Daybloom, ItemID.DaybloomSeeds);
                     ResetTileFrame(tile, herbStyle);
                 }
 
-                if (herbStyle == (int)Common.AlchemyHerbStyles.Moonglow)
+                if (herbStyle == (int)Constants.AlchemyHerbStyles.Moonglow)
                 {
                     DropItems(tile, ItemID.Moonglow, ItemID.MoonglowSeeds);
                     ResetTileFrame(tile, herbStyle);
                 }
 
-                if (herbStyle == (int)Common.AlchemyHerbStyles.Blinkroot)
+                if (herbStyle == (int)Constants.AlchemyHerbStyles.Blinkroot)
                 {
                     DropItems(tile, ItemID.Blinkroot, ItemID.BlinkrootSeeds);
                     ResetTileFrame(tile, herbStyle);
                 }
 
-                if (herbStyle == (int)Common.AlchemyHerbStyles.Deathweed)
+                if (herbStyle == (int)Constants.AlchemyHerbStyles.Deathweed)
                 {
                     DropItems(tile, ItemID.Deathweed, ItemID.DeathweedSeeds);
                     ResetTileFrame(tile, herbStyle);
                 }
 
-                if (herbStyle == (int)Common.AlchemyHerbStyles.Waterleaf)
+                if (herbStyle == (int)Constants.AlchemyHerbStyles.Waterleaf)
                 {
                     DropItems(tile, ItemID.Waterleaf, ItemID.WaterleafSeeds);
                     ResetTileFrame(tile, herbStyle);
                 }
 
-                if (herbStyle == (int)Common.AlchemyHerbStyles.Fireblossom)
+                if (herbStyle == (int)Constants.AlchemyHerbStyles.Fireblossom)
                 {
                     DropItems(tile, ItemID.Fireblossom, ItemID.FireblossomSeeds);
                     ResetTileFrame(tile, herbStyle);
                 }
 
-                if (herbStyle == (int)Common.AlchemyHerbStyles.Shiverthorn)
+                if (herbStyle == (int)Constants.AlchemyHerbStyles.Shiverthorn)
                 {
                     DropItems(tile, ItemID.Shiverthorn, ItemID.ShiverthornSeeds);
                     ResetTileFrame(tile, herbStyle);

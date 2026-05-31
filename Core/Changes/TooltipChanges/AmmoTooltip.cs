@@ -12,7 +12,15 @@
             if (item.useAmmo != AmmoID.None)
             {
                 Item displayItem = new(item.useAmmo);
-                var tooltipLine = new TooltipLine(Mod, "UseAmmo", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.UseAmmo")) { Text = Common.GetTooltipValue("UseAmmo", item.useAmmo, displayItem.Name) };
+                if (CrossModSupport.CalamityEntropy.Loaded)
+                {
+                    if (displayItem.type == ItemID.HoneyLantern && item.ModItem.Mod == CrossModSupport.CalamityEntropy.Mod)
+                    {
+                        displayItem = new(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "CharredMissile"));
+                    }
+                }
+
+                var tooltipLine = new TooltipLine(Mod, "UseAmmo", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.UseAmmo")) { Text = Common.GetTooltipValue("UseAmmo", displayItem.type, displayItem.Name) };
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
         }

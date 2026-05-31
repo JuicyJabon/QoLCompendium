@@ -291,13 +291,19 @@ EtherealCollectorCanSpawn: {
 	Tooltip: Toggles if the Ethereal Collector can move in
 }
 
-RemoveBiomeShopRequirements: {
-	Label: "[i:4766] Biome Visiting Requirements For Shops"
+RemoveBiomeVisitRequirements: {
+	Label: "[i:4766] Biome Visiting Requirements For QoLC NPCs"
 	Tooltip:
 		'''
 		Toggles if some shop items require visiting a specific biome to unlock
 		This is permanent when turned on for a world
+		Only affects the Black Market Dealer and Ethereal Collector!
 		'''
+}
+
+RemoveShopConditions: {
+	Label: "[i:4766] Remove Shop Conditions"
+	Tooltip: Removes most of the biome requirements for town NPC sales
 }
 
 TownNPCsDontDie: {
@@ -618,6 +624,11 @@ FullHealthRespawn: {
 	Tooltip: Toggles if you respawn with max health and mana
 }
 
+NoBedRestrictions: {
+	Label: "[i:224] No Bed Spawn Point Restrictions"
+	Tooltip: Toggles if bed spawn points can be set anywhere
+}
+
 WingSlot: {
 	Label: "[i:4978] Wing Slot"
 	Tooltip: Toggles an accessory slot used for wings
@@ -690,11 +701,7 @@ BreakAllDungeonBricks: {
 
 BombableHardmodeOres: {
 	Label: "[i:167] Bombable Hardmode Ores"
-	Tooltip:
-		'''
-		Toggles if Hardmode ores can be blown up after all mech bosses are defeated
-		Chlorophyte can be bombed after Plantera
-		'''
+	Tooltip: Toggles if Hardmode ores can be blown up
 }
 
 MoreFallenStars: {

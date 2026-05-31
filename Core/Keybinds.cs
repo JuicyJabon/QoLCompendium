@@ -2,6 +2,7 @@
 using QoLCompendium.Core.Changes.NPCChanges;
 using QoLCompendium.Core.Changes.PlayerChanges;
 using QoLCompendium.Core.UI.Panels;
+using Split.Content.Misc.Mirrors;
 using Terraria.GameInput;
 using Terraria.ModLoader.Config;
 using Terraria.ObjectData;
@@ -116,25 +117,34 @@ namespace QoLCompendium.Core
         public void AutoUseRod()
         {
             if (Player.HasItem(ItemID.RodOfHarmony))
-                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.RodOfHarmony), Player.inventory));
+                QuickUseItemAt(ItemUtils.GetSlotItemIsIn(new(ItemID.RodOfHarmony), Player.inventory));
             if (Player.HasItem(ItemID.RodofDiscord))
-                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.RodofDiscord), Player.inventory));
+                QuickUseItemAt(ItemUtils.GetSlotItemIsIn(new(ItemID.RodofDiscord), Player.inventory));
         }
 
         public void AutoUseMirror()
         {
             if (Player.HasItem(ItemID.PotionOfReturn))
-                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.PotionOfReturn), Player.inventory));
+                QuickUseItemAt(ItemUtils.GetSlotItemIsIn(new(ItemID.PotionOfReturn), Player.inventory));
             else if (Player.HasItem(ItemID.RecallPotion))
-                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.RecallPotion), Player.inventory));
+                QuickUseItemAt(ItemUtils.GetSlotItemIsIn(new(ItemID.RecallPotion), Player.inventory));
             else if (Player.HasItem(ItemID.MagicMirror))
-                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.MagicMirror), Player.inventory));
+                QuickUseItemAt(ItemUtils.GetSlotItemIsIn(new(ItemID.MagicMirror), Player.inventory));
             else if (Player.HasItem(ItemID.IceMirror))
-                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.IceMirror), Player.inventory));
+                QuickUseItemAt(ItemUtils.GetSlotItemIsIn(new(ItemID.IceMirror), Player.inventory));
             else if (Player.HasItem(ItemID.CellPhone))
-                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.CellPhone), Player.inventory));
+                QuickUseItemAt(ItemUtils.GetSlotItemIsIn(new(ItemID.CellPhone), Player.inventory));
             else if (Player.HasItem(ItemID.Shellphone))
-                QuickUseItemAt(Common.GetSlotItemIsIn(new(ItemID.Shellphone), Player.inventory));
+                QuickUseItemAt(ItemUtils.GetSlotItemIsIn(new(ItemID.Shellphone), Player.inventory));
+            else if (CrossModSupport.Split.Loaded)
+            {
+                if (SplitMirrorsAutoUse.HasRelayMirror(Player))
+                    QuickUseItemAt(SplitMirrorsAutoUse.RelayMirrorSlot(Player));
+                else if (SplitMirrorsAutoUse.HasUnityMirror(Player))
+                    QuickUseItemAt(SplitMirrorsAutoUse.UnityMirrorSlot(Player));
+                else if (SplitMirrorsAutoUse.HasSpaceCellPhone(Player))
+                    QuickUseItemAt(SplitMirrorsAutoUse.SpaceCellPhoneSlot(Player));
+            }
             else if (CrossModSupport.Thorium.Loaded)
             {
                 if (WishingGlassAutoUse.HasWishingGlass(Player) && WishingGlassAutoUse.CanUseWishingGlass(Player))
@@ -145,7 +155,7 @@ namespace QoLCompendium.Core
         public void AutoUseMosaicMirror()
         {
             if (Player.HasItem(ModContent.ItemType<MosaicMirror>()))
-                QuickUseItemAt(Common.GetSlotItemIsIn(new(ModContent.ItemType<MosaicMirror>()), Player.inventory));
+                QuickUseItemAt(ItemUtils.GetSlotItemIsIn(new(ModContent.ItemType<MosaicMirror>()), Player.inventory));
         }
 
         public void QuickUseItemAt(int index, bool use = true)
@@ -169,20 +179,21 @@ namespace QoLCompendium.Core
     [ExtendsFromMod(CrossModSupport.Thorium.Name)]
     public static class WishingGlassAutoUse
     {
-        public static bool HasWishingGlass(Player player)
-        {
-            return player.HasItem(ModContent.ItemType<WishingGlass>());
-        }
+        public static bool HasWishingGlass(Player player) => player.HasItem(ModContent.ItemType<WishingGlass>());
+        public static bool CanUseWishingGlass(Player player) => player.GetThoriumPlayer().itemWishingGlassChoice == ThoriumMod.UI.ResourceBars.WishingGlassChoice.Home;
+        public static int WishingGlassSlot(Player player) => ItemUtils.GetSlotItemIsIn(new(ModContent.ItemType<WishingGlass>()), player.inventory);
+    }
 
-        public static bool CanUseWishingGlass(Player player)
-        {
-            return player.GetThoriumPlayer().itemWishingGlassChoice == ThoriumMod.UI.ResourceBars.WishingGlassChoice.Home;
-        }
-
-        public static int WishingGlassSlot(Player player)
-        {
-            return Common.GetSlotItemIsIn(new(ModContent.ItemType<WishingGlass>()), player.inventory);
-        }
+    [JITWhenModsEnabled(CrossModSupport.Split.Name)]
+    [ExtendsFromMod(CrossModSupport.Split.Name)]
+    public static class SplitMirrorsAutoUse
+    {
+        public static bool HasRelayMirror(Player player) => player.HasItem(ModContent.ItemType<RelayMirror>());
+        public static bool HasUnityMirror(Player player) => player.HasItem(ModContent.ItemType<UnityMirror>());
+        public static bool HasSpaceCellPhone(Player player) => player.HasItem(ModContent.ItemType<SpaceCellPhone>());
+        public static int RelayMirrorSlot(Player player) => ItemUtils.GetSlotItemIsIn(new(ModContent.ItemType<RelayMirror>()), player.inventory);
+        public static int UnityMirrorSlot(Player player) => ItemUtils.GetSlotItemIsIn(new(ModContent.ItemType<UnityMirror>()), player.inventory);
+        public static int SpaceCellPhoneSlot(Player player) => ItemUtils.GetSlotItemIsIn(new(ModContent.ItemType<SpaceCellPhone>()), player.inventory);
     }
 
     public class KeybindSystem : ModSystem

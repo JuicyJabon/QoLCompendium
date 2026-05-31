@@ -8,7 +8,7 @@
         {
             if (QoLCompendium.mainConfig.ItemConversions)
             {
-                Common.TransmuteItems([Common.GetModItem(CrossModSupport.MartinsOrder.Mod, "AquaRock"), Common.GetModItem(CrossModSupport.MartinsOrder.Mod, "Charcoal"), Common.GetModItem(CrossModSupport.MartinsOrder.Mod, "MagmaRock")]);
+                RecipeUtils.TransmuteItems([Common.GetModItem(CrossModSupport.MartinsOrder.Mod, "AquaRock"), Common.GetModItem(CrossModSupport.MartinsOrder.Mod, "Charcoal"), Common.GetModItem(CrossModSupport.MartinsOrder.Mod, "MagmaRock")]);
             }
         }
     }

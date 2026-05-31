@@ -25,7 +25,7 @@ namespace QoLCompendium.Content.Items.Tools.Magnets
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.Magnets, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.Magnets, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<Magnet>());
             r.AddIngredient(ItemID.HellstoneBar, 10);
             r.AddTile(TileID.Anvils);

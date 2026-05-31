@@ -15,12 +15,8 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other.MartinsOrder
     [ExtendsFromMod(CrossModSupport.MartinsOrder.Name)]
     public class EndlessFishyumCoinBag : BaseAmmo
     {
-        public override void SetStaticDefaults()
-        {
-            base.SetStaticDefaults();
-            IngredientStackCount = 396;
-        }
         public override int AmmunitionItem => ModContent.ItemType<FishyumCoin>();
+        public override int IngredientStackCount => 396;
     }
 
     [JITWhenModsEnabled(CrossModSupport.MartinsOrder.Name)]

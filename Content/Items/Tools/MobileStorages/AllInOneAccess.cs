@@ -35,7 +35,7 @@ namespace QoLCompendium.Content.Items.Tools.MobileStorages
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.MobileStorages);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.MobileStorages);
         }
 
         public override void OnConsumeItem(Player player) => Item.stack++;
@@ -96,7 +96,7 @@ namespace QoLCompendium.Content.Items.Tools.MobileStorages
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.MobileStorages, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.MobileStorages, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.MoneyTrough);
             r.AddIngredient(ModContent.ItemType<EtherianConstruct>());
             r.AddIngredient(ModContent.ItemType<FlyingSafe>());

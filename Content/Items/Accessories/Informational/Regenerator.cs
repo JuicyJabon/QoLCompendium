@@ -1,4 +1,4 @@
-﻿using QoLCompendium.Core.UI.Other;
+﻿using QoLCompendium.Core.UI.InfoDisplays;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Accessories.Informational
@@ -25,12 +25,12 @@ namespace QoLCompendium.Content.Items.Accessories.Informational
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.InformationAccessories);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.InformationAccessories);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.InformationAccessories, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.LifeCrystal, 1);
             r.AddRecipeGroup(RecipeGroupID.IronBar, 8);
             r.AddIngredient(ItemID.Glass, 5);

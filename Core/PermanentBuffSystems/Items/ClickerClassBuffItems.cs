@@ -12,7 +12,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             //potions
             new NewBuffEffect(ModContent.BuffType<InfluenceBuff>()),
             //stations
-            new NewBuffEffect(ModContent.BuffType<DesktopComputerBuff>(), (int)Common.EffectTypes.Station)
+            new NewBuffEffect(ModContent.BuffType<DesktopComputerBuff>(), (int)Constants.EffectTypes.Station)
         ];
 
         public static void LoadTasks()
@@ -27,21 +27,21 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
                 QoLCompendium.Instance.AddContent(effect);
-                Common.AllEffects.Add(newEffect.buffID, effect);
+                Constants.AllEffects.Add(newEffect.buffID, effect);
             }
 
             NewBuffItem[] BuffItems = [
                 //potions
-                new NewBuffItem(ModContent.ItemType<InfluencePotion>(), ModContent.BuffType<InfluenceBuff>(), Common.AllEffects[ModContent.BuffType<InfluenceBuff>()], 30, "PermanentInfluence", "Permanent Influence"),
+                new NewBuffItem(ModContent.ItemType<InfluencePotion>(), ModContent.BuffType<InfluenceBuff>(), Constants.AllEffects[ModContent.BuffType<InfluenceBuff>()], 30, "PermanentInfluence", "Permanent Influence"),
                 //stations
-                new NewBuffItem(ModContent.ItemType<DesktopComputer>(), ModContent.BuffType<DesktopComputerBuff>(), Common.AllEffects[ModContent.BuffType<DesktopComputerBuff>()], 3, "PermanentDesktopComputer", "Permanent Desktop Computer")
+                new NewBuffItem(ModContent.ItemType<DesktopComputer>(), ModContent.BuffType<DesktopComputerBuff>(), Constants.AllEffects[ModContent.BuffType<DesktopComputerBuff>()], 3, "PermanentDesktopComputer", "Permanent Desktop Computer")
             ];
 
             foreach (var newBuffItem in BuffItems)
             {
                 BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
-                Common.AllBuffItems.Add(item.Type);
+                Constants.AllBuffItems.Add(item.Type);
             }
         }
 
@@ -49,8 +49,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
         {
             Dictionary<BuffEffect, int> PermanentClickerClass = new()
             {
-                { Common.AllEffects[ModContent.BuffType<InfluenceBuff>()], ModContent.BuffType<InfluenceBuff>() },
-                { Common.AllEffects[ModContent.BuffType<DesktopComputerBuff>()], ModContent.BuffType<DesktopComputerBuff>() }
+                { Constants.AllEffects[ModContent.BuffType<InfluenceBuff>()], ModContent.BuffType<InfluenceBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<DesktopComputerBuff>()], ModContent.BuffType<DesktopComputerBuff>() }
             };
 
             NewCombinedBuffItem[] CombinedBuffItems = [
@@ -61,7 +61,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
                 QoLCompendium.Instance.AddContent(item);
-                Common.AllCombinedBuffItems.Add(item.Type);
+                Constants.AllCombinedBuffItems.Add(item.Type);
             }
         }
     }

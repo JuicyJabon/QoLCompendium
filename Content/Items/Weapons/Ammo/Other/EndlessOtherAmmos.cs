@@ -4,11 +4,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 {
     public abstract class CoinBag : BaseAmmo
     {
-        public override void SetStaticDefaults()
-        {
-            base.SetStaticDefaults();
-            IngredientStackCount = 396;
-        }
+        public override int IngredientStackCount => 396;
 
         public override void SetDefaults()
         {
@@ -74,12 +70,12 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Gel, 396);
             r.AddTile(TileID.Solidifier);
             r.Register();
@@ -122,7 +118,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
         }
 
         public override bool CanUseItem(Player player)
@@ -132,7 +128,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.SandBlock, 3996);
             r.AddTile(TileID.Solidifier);
             r.Register();
@@ -165,7 +161,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
         }
 
         public override bool CanUseItem(Player player)
@@ -175,7 +171,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Snowball, 3996);
             r.AddTile(TileID.Solidifier);
             r.Register();
@@ -207,7 +203,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EndlessAmmo);
         }
 
         public override bool CanUseItem(Player player)
@@ -217,7 +213,7 @@ namespace QoLCompendium.Content.Items.Weapons.Ammo.Other
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.EndlessAmmo, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.FallenStar, 396);
             r.AddTile(TileID.Solidifier);
             r.Register();

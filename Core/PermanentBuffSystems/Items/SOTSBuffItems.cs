@@ -23,8 +23,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             new NewBuffEffect(ModContent.BuffType<GoodVibes>()),
             new NewBuffEffect(ModContent.BuffType<Vigor>()),
             //stations
-            new NewBuffEffect(ModContent.BuffType<CyberneticEnhancements>(), (int)Common.EffectTypes.Station),
-            new NewBuffEffect(ModContent.BuffType<DEFEBuff>(), (int)Common.EffectTypes.Station)
+            new NewBuffEffect(ModContent.BuffType<CyberneticEnhancements>(), (int)Constants.EffectTypes.Station),
+            new NewBuffEffect(ModContent.BuffType<DEFEBuff>(), (int)Constants.EffectTypes.Station)
         ];
 
         public static void LoadTasks()
@@ -39,32 +39,32 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
                 QoLCompendium.Instance.AddContent(effect);
-                Common.AllEffects.Add(newEffect.buffID, effect);
+                Constants.AllEffects.Add(newEffect.buffID, effect);
             }
 
             NewBuffItem[] BuffItems = [
                 //potions
-                new NewBuffItem(ModContent.ItemType<AssassinationPotion>(), ModContent.BuffType<Assassination>(), Common.AllEffects[ModContent.BuffType<Assassination>()], 30, "PermanentAssassination", "Permanent Assassination"),
-                new NewBuffItem(ModContent.ItemType<BluefirePotion>(), ModContent.BuffType<Bluefire>(), Common.AllEffects[ModContent.BuffType<Bluefire>()], 30, "PermanentBluefire", "Permanent Bluefire"),
-                new NewBuffItem(ModContent.ItemType<BrittlePotion>(), ModContent.BuffType<Brittle>(), Common.AllEffects[ModContent.BuffType<Brittle>()], 30, "PermanentBrittle", "Permanent Brittle"),
-                new NewBuffItem(ModContent.ItemType<DoubleVisionPotion>(), ModContent.BuffType<DoubleVision>(), Common.AllEffects[ModContent.BuffType<DoubleVision>()], 30, "PermanentDoubleVision", "Permanent Double Vision"),
-                new NewBuffItem(ModContent.ItemType<HarmonyPotion>(), ModContent.BuffType<Harmony>(), Common.AllEffects[ModContent.BuffType<Harmony>()], 30, "PermanentHarmony", "Permanent Harmony"),
-                new NewBuffItem(ModContent.ItemType<NightmarePotion>(), ModContent.BuffType<Nightmare>(), Common.AllEffects[ModContent.BuffType<Nightmare>()], 30, "PermanentNightmare", "Permanent Nightmare"),
-                new NewBuffItem(ModContent.ItemType<RipplePotion>(), ModContent.BuffType<RippleBuff>(), Common.AllEffects[ModContent.BuffType<RippleBuff>()], 30, "PermanentRipple", "Permanent Ripple"),
-                new NewBuffItem(ModContent.ItemType<RoughskinPotion>(), ModContent.BuffType<Roughskin>(), Common.AllEffects[ModContent.BuffType<Roughskin>()], 30, "PermanentRoughskin", "Permanent Roughskin"),
-                new NewBuffItem(ModContent.ItemType<SoulAccessPotion>(), ModContent.BuffType<SoulAccess>(), Common.AllEffects[ModContent.BuffType<SoulAccess>()], 30, "PermanentSoulAccess", "Permanent Soul Access"),
-                new NewBuffItem(ModContent.ItemType<VibePotion>(), ModContent.BuffType<GoodVibes>(), Common.AllEffects[ModContent.BuffType<GoodVibes>()], 30, "PermanentVibe", "Permanent Vibe"),
-                new NewBuffItem(ModContent.ItemType<VigorPotion>(), ModContent.BuffType<Vigor>(), Common.AllEffects[ModContent.BuffType<Vigor>()], 30, "PermanentVigor", "Permanent Vigor"),
+                new NewBuffItem(ModContent.ItemType<AssassinationPotion>(), ModContent.BuffType<Assassination>(), Constants.AllEffects[ModContent.BuffType<Assassination>()], 30, "PermanentAssassination", "Permanent Assassination"),
+                new NewBuffItem(ModContent.ItemType<BluefirePotion>(), ModContent.BuffType<Bluefire>(), Constants.AllEffects[ModContent.BuffType<Bluefire>()], 30, "PermanentBluefire", "Permanent Bluefire"),
+                new NewBuffItem(ModContent.ItemType<BrittlePotion>(), ModContent.BuffType<Brittle>(), Constants.AllEffects[ModContent.BuffType<Brittle>()], 30, "PermanentBrittle", "Permanent Brittle"),
+                new NewBuffItem(ModContent.ItemType<DoubleVisionPotion>(), ModContent.BuffType<DoubleVision>(), Constants.AllEffects[ModContent.BuffType<DoubleVision>()], 30, "PermanentDoubleVision", "Permanent Double Vision"),
+                new NewBuffItem(ModContent.ItemType<HarmonyPotion>(), ModContent.BuffType<Harmony>(), Constants.AllEffects[ModContent.BuffType<Harmony>()], 30, "PermanentHarmony", "Permanent Harmony"),
+                new NewBuffItem(ModContent.ItemType<NightmarePotion>(), ModContent.BuffType<Nightmare>(), Constants.AllEffects[ModContent.BuffType<Nightmare>()], 30, "PermanentNightmare", "Permanent Nightmare"),
+                new NewBuffItem(ModContent.ItemType<RipplePotion>(), ModContent.BuffType<RippleBuff>(), Constants.AllEffects[ModContent.BuffType<RippleBuff>()], 30, "PermanentRipple", "Permanent Ripple"),
+                new NewBuffItem(ModContent.ItemType<RoughskinPotion>(), ModContent.BuffType<Roughskin>(), Constants.AllEffects[ModContent.BuffType<Roughskin>()], 30, "PermanentRoughskin", "Permanent Roughskin"),
+                new NewBuffItem(ModContent.ItemType<SoulAccessPotion>(), ModContent.BuffType<SoulAccess>(), Constants.AllEffects[ModContent.BuffType<SoulAccess>()], 30, "PermanentSoulAccess", "Permanent Soul Access"),
+                new NewBuffItem(ModContent.ItemType<VibePotion>(), ModContent.BuffType<GoodVibes>(), Constants.AllEffects[ModContent.BuffType<GoodVibes>()], 30, "PermanentVibe", "Permanent Vibe"),
+                new NewBuffItem(ModContent.ItemType<VigorPotion>(), ModContent.BuffType<Vigor>(), Constants.AllEffects[ModContent.BuffType<Vigor>()], 30, "PermanentVigor", "Permanent Vigor"),
                 //stations
-                new NewBuffItem(ModContent.ItemType<DigitalDisplay>(), ModContent.BuffType<CyberneticEnhancements>(), Common.AllEffects[ModContent.BuffType<CyberneticEnhancements>()], 3, "PermanentDigitalDisplay", "Permanent Digital Display"),
-                new NewBuffItem(ModContent.ItemType<ElectromagneticDeterrent>(), ModContent.BuffType<DEFEBuff>(), Common.AllEffects[ModContent.BuffType<DEFEBuff>()], 3, "PermanentElectromagneticDeterrent", "Permanent Electromagnetic Deterrent")
+                new NewBuffItem(ModContent.ItemType<DigitalDisplay>(), ModContent.BuffType<CyberneticEnhancements>(), Constants.AllEffects[ModContent.BuffType<CyberneticEnhancements>()], 3, "PermanentDigitalDisplay", "Permanent Digital Display"),
+                new NewBuffItem(ModContent.ItemType<ElectromagneticDeterrent>(), ModContent.BuffType<DEFEBuff>(), Constants.AllEffects[ModContent.BuffType<DEFEBuff>()], 3, "PermanentElectromagneticDeterrent", "Permanent Electromagnetic Deterrent")
             ];
 
             foreach (var newBuffItem in BuffItems)
             {
                 BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
-                Common.AllBuffItems.Add(item.Type);
+                Constants.AllBuffItems.Add(item.Type);
             }
         }
 
@@ -72,19 +72,19 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
         {
             Dictionary<BuffEffect, int> PermanentSecretsOfTheShadows = new()
             {
-                { Common.AllEffects[ModContent.BuffType<Assassination>()], ModContent.BuffType<Assassination>() },
-                { Common.AllEffects[ModContent.BuffType<Bluefire>()], ModContent.BuffType<Bluefire>() },
-                { Common.AllEffects[ModContent.BuffType<Brittle>()], ModContent.BuffType<Brittle>() },
-                { Common.AllEffects[ModContent.BuffType<DoubleVision>()], ModContent.BuffType<DoubleVision>() },
-                { Common.AllEffects[ModContent.BuffType<Harmony>()], ModContent.BuffType<Harmony>() },
-                { Common.AllEffects[ModContent.BuffType<Nightmare>()], ModContent.BuffType<Nightmare>() },
-                { Common.AllEffects[ModContent.BuffType<RippleBuff>()], ModContent.BuffType<RippleBuff>() },
-                { Common.AllEffects[ModContent.BuffType<Roughskin>()], ModContent.BuffType<Roughskin>() },
-                { Common.AllEffects[ModContent.BuffType<SoulAccess>()], ModContent.BuffType<SoulAccess>() },
-                { Common.AllEffects[ModContent.BuffType<GoodVibes>()], ModContent.BuffType<GoodVibes>() },
-                { Common.AllEffects[ModContent.BuffType<Vigor>()], ModContent.BuffType<Vigor>() },
-                { Common.AllEffects[ModContent.BuffType<CyberneticEnhancements>()], ModContent.BuffType<CyberneticEnhancements>() },
-                { Common.AllEffects[ModContent.BuffType<DEFEBuff>()], ModContent.BuffType<DEFEBuff>() }
+                { Constants.AllEffects[ModContent.BuffType<Assassination>()], ModContent.BuffType<Assassination>() },
+                { Constants.AllEffects[ModContent.BuffType<Bluefire>()], ModContent.BuffType<Bluefire>() },
+                { Constants.AllEffects[ModContent.BuffType<Brittle>()], ModContent.BuffType<Brittle>() },
+                { Constants.AllEffects[ModContent.BuffType<DoubleVision>()], ModContent.BuffType<DoubleVision>() },
+                { Constants.AllEffects[ModContent.BuffType<Harmony>()], ModContent.BuffType<Harmony>() },
+                { Constants.AllEffects[ModContent.BuffType<Nightmare>()], ModContent.BuffType<Nightmare>() },
+                { Constants.AllEffects[ModContent.BuffType<RippleBuff>()], ModContent.BuffType<RippleBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<Roughskin>()], ModContent.BuffType<Roughskin>() },
+                { Constants.AllEffects[ModContent.BuffType<SoulAccess>()], ModContent.BuffType<SoulAccess>() },
+                { Constants.AllEffects[ModContent.BuffType<GoodVibes>()], ModContent.BuffType<GoodVibes>() },
+                { Constants.AllEffects[ModContent.BuffType<Vigor>()], ModContent.BuffType<Vigor>() },
+                { Constants.AllEffects[ModContent.BuffType<CyberneticEnhancements>()], ModContent.BuffType<CyberneticEnhancements>() },
+                { Constants.AllEffects[ModContent.BuffType<DEFEBuff>()], ModContent.BuffType<DEFEBuff>() }
             };
 
             NewCombinedBuffItem[] CombinedBuffItems = [
@@ -95,7 +95,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
                 QoLCompendium.Instance.AddContent(item);
-                Common.AllCombinedBuffItems.Add(item.Type);
+                Constants.AllCombinedBuffItems.Add(item.Type);
             }
         }
     }

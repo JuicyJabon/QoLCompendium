@@ -15,7 +15,7 @@
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "CubistBar"), 5);
             r.AddIngredient(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "EssenceofMatter"), 3);
             r.AddTile(Common.GetModTile(CrossModSupport.HomewardJourney.Mod, "FinalAnvil"));

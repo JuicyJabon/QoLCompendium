@@ -30,7 +30,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DestinationGlobe);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DestinationGlobe);
         }
 
         public override bool? UseItem(Player player)
@@ -61,7 +61,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.DestinationGlobe, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.DestinationGlobe, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ItemID.Glass, 15);
             r.AddIngredient(ItemID.DirtBlock, 5);
             r.AddIngredient(ItemID.GrassSeeds, 5);

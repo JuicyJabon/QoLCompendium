@@ -25,7 +25,7 @@ namespace QoLCompendium.Content.Items.Tools.Magnets
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.Magnets, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.Magnets, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<HellstoneMagnet>());
             r.AddIngredient(ItemID.SoulofNight, 5);
             r.AddIngredient(ItemID.SoulofLight, 5);

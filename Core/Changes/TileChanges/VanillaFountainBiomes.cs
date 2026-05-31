@@ -33,28 +33,28 @@
 
             if (QoLCompendium.mainConfig.FountainsWorkFromInventories)
             {
-                if (Player.HasItemInAnyInventory(Common.VanillaFountains[0]))
+                if (Player.HasItemInAnyInventory(Constants.VanillaFountains[0]))
                     Player.ZoneBeach = true;
 
-                if (Player.HasItemInAnyInventory(Common.VanillaFountains[1]))
+                if (Player.HasItemInAnyInventory(Constants.VanillaFountains[1]))
                     Player.ZoneCorrupt = true;
 
-                if (Player.HasItemInAnyInventory(Common.VanillaFountains[2]))
+                if (Player.HasItemInAnyInventory(Constants.VanillaFountains[2]))
                     Player.ZoneJungle = true;
 
-                if (Player.HasItemInAnyInventory(Common.VanillaFountains[3]) && Main.hardMode)
+                if (Player.HasItemInAnyInventory(Constants.VanillaFountains[3]) && Main.hardMode)
                     Player.ZoneHallow = true;
 
-                if (Player.HasItemInAnyInventory(Common.VanillaFountains[4]))
+                if (Player.HasItemInAnyInventory(Constants.VanillaFountains[4]))
                     Player.ZoneSnow = true;
 
-                if (Player.HasItemInAnyInventory(Common.VanillaFountains[5]) || Player.HasItemInAnyInventory(Common.VanillaFountains[6]))
+                if (Player.HasItemInAnyInventory(Constants.VanillaFountains[5]) || Player.HasItemInAnyInventory(Constants.VanillaFountains[6]))
                     Player.ZoneDesert = true;
 
-                if ((Player.HasItemInAnyInventory(Common.VanillaFountains[5]) || Player.HasItemInAnyInventory(Common.VanillaFountains[6])) && Player.Center.Y > 3200f)
+                if ((Player.HasItemInAnyInventory(Constants.VanillaFountains[5]) || Player.HasItemInAnyInventory(Constants.VanillaFountains[6])) && Player.Center.Y > 3200f)
                     Player.ZoneDesert = true;
 
-                if (Player.HasItemInAnyInventory(Common.VanillaFountains[7]))
+                if (Player.HasItemInAnyInventory(Constants.VanillaFountains[7]))
                     Player.ZoneCrimson = true;
             }
         }

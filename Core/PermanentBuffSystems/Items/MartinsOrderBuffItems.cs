@@ -36,8 +36,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             new NewBuffEffect(ModContent.BuffType<WhipperBuff>()),
             //new NewBuffEffect(ModContent.BuffType<ZincPillBuff>()),
             //stations
-            new NewBuffEffect(ModContent.BuffType<ReschBuff>(), (int)Common.EffectTypes.Station),
-            new NewBuffEffect(ModContent.BuffType<SporeSave>(), (int)Common.EffectTypes.Station),
+            new NewBuffEffect(ModContent.BuffType<ReschBuff>(), (int)Constants.EffectTypes.Station),
+            new NewBuffEffect(ModContent.BuffType<SporeSave>(), (int)Constants.EffectTypes.Station),
         ];
 
         public static void LoadTasks()
@@ -52,41 +52,41 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
                 QoLCompendium.Instance.AddContent(effect);
-                Common.AllEffects.Add(newEffect.buffID, effect);
+                Constants.AllEffects.Add(newEffect.buffID, effect);
             }
 
             NewBuffItem[] BuffItems = [
                 //potions
-                new NewBuffItem(ModContent.ItemType<BlackHolePotion>(), ModContent.BuffType<BlackHoleBuff>(), Common.AllEffects[ModContent.BuffType<BlackHoleBuff>()], 30, "PermanentBlackHole", "Permanent Black Hole"),
-                new NewBuffItem(ModContent.ItemType<BodyPotion>(), ModContent.BuffType<BodyBuff>(), Common.AllEffects[ModContent.BuffType<BodyBuff>()], 30, "PermanentBody", "Permanent Body"),
-                new NewBuffItem(ModContent.ItemType<BlueBerryJam>(), ModContent.BuffType<Charging>(), Common.AllEffects[ModContent.BuffType<Charging>()], 30, "PermanentCharging", "Permanent Charging"),
-                new NewBuffItem(ModContent.ItemType<DefenderPotion>(), ModContent.BuffType<TurretBuff>(), Common.AllEffects[ModContent.BuffType<TurretBuff>()], 30, "PermanentDefender", "Permanent Defender"),
-                new NewBuffItem(ModContent.ItemType<EmpowermentPotion>(), ModContent.BuffType<EmpowermentBuff>(), Common.AllEffects[ModContent.BuffType<EmpowermentBuff>()], 30, "PermanentEmpowerment", "Permanent Empowerment"),
-                new NewBuffItem(ModContent.ItemType<SummonSpeedPotion>(), ModContent.BuffType<SummonSpeedBuff>(), Common.AllEffects[ModContent.BuffType<SummonSpeedBuff>()], 30, "PermanentEvocation", "Permanent Evocation"),
-                new NewBuffItem(ModContent.ItemType<FastFood>(), ModContent.BuffType<Gourmet>(), Common.AllEffects[ModContent.BuffType<Gourmet>()], 30, "PermanentGourmetFlavor", "Permanent Gourmet Flavor"),
-                new NewBuffItem(ModContent.ItemType<HastePotion>(), ModContent.BuffType<HasteBuff>(), Common.AllEffects[ModContent.BuffType<HasteBuff>()], 30, "PermanentHaste", "Permanent Haste"),
-                new NewBuffItem(ModContent.ItemType<RedBerryJam>(), ModContent.BuffType<Healing>(), Common.AllEffects[ModContent.BuffType<Healing>()], 30, "PermanentHealing", "Permanent Healing"),
-                new NewBuffItem(ModContent.ItemType<PainterPotion>(), ModContent.BuffType<PainterBuff>(), Common.AllEffects[ModContent.BuffType<PainterBuff>()], 30, "PermanentPainter", "Permanent Painter"),
-                new NewBuffItem(ModContent.ItemType<RockskinPotion>(), ModContent.BuffType<RockskinBuff>(), Common.AllEffects[ModContent.BuffType<RockskinBuff>()], 30, "PermanentRockskin", "Permanent Rockskin"),
-                new NewBuffItem(ModContent.ItemType<ShieldingPotion>(), ModContent.BuffType<Shielding>(), Common.AllEffects[ModContent.BuffType<Shielding>()], 30, "PermanentShielding", "Permanent Shielding"),
-                new NewBuffItem(ModContent.ItemType<ShooterPotion>(), ModContent.BuffType<ShooterBuff>(), Common.AllEffects[ModContent.BuffType<ShooterBuff>()], 30, "PermanentShooter", "Permanent Shooter"),
-                new NewBuffItem(ModContent.ItemType<SoulPotion>(), ModContent.BuffType<SoulBuff>(), Common.AllEffects[ModContent.BuffType<SoulBuff>()], 30, "PermanentSoul", "Permanent Soul"),
-                new NewBuffItem(ModContent.ItemType<CasterPotion>(), ModContent.BuffType<CasterBuff>(), Common.AllEffects[ModContent.BuffType<CasterBuff>()], 30, "PermanentSpellCaster", "Permanent Spell Caster"),
-                new NewBuffItem(ModContent.ItemType<StarreachPotion>(), ModContent.BuffType<Starreach>(), Common.AllEffects[ModContent.BuffType<Starreach>()], 30, "PermanentStarreach", "Permanent Starreach"),
-                new NewBuffItem(ModContent.ItemType<SweepPotion>(), ModContent.BuffType<SweepBuff>(), Common.AllEffects[ModContent.BuffType<SweepBuff>()], 30, "PermanentSweeper", "Permanent Sweeper"),
-                new NewBuffItem(ModContent.ItemType<ThrowerPotion>(), ModContent.BuffType<ThrowerBuff>(), Common.AllEffects[ModContent.BuffType<ThrowerBuff>()], 30, "PermanentThrower", "Permanent Thrower"),
-                new NewBuffItem(ModContent.ItemType<WhipperPotion>(), ModContent.BuffType<WhipperBuff>(), Common.AllEffects[ModContent.BuffType<WhipperBuff>()], 30, "PermanentWhipper", "Permanent Whipper"),
-                //new NewBuffItem(ModContent.ItemType<ZincPills>(), ModContent.BuffType<ZincPillBuff>(), Common.AllEffects[ModContent.BuffType<ZincPillBuff>()], 30, "PermanentZincPill", "Permanent Zinc Pill"),
+                new NewBuffItem(ModContent.ItemType<BlackHolePotion>(), ModContent.BuffType<BlackHoleBuff>(), Constants.AllEffects[ModContent.BuffType<BlackHoleBuff>()], 30, "PermanentBlackHole", "Permanent Black Hole"),
+                new NewBuffItem(ModContent.ItemType<BodyPotion>(), ModContent.BuffType<BodyBuff>(), Constants.AllEffects[ModContent.BuffType<BodyBuff>()], 30, "PermanentBody", "Permanent Body"),
+                new NewBuffItem(ModContent.ItemType<BlueBerryJam>(), ModContent.BuffType<Charging>(), Constants.AllEffects[ModContent.BuffType<Charging>()], 30, "PermanentCharging", "Permanent Charging"),
+                new NewBuffItem(ModContent.ItemType<DefenderPotion>(), ModContent.BuffType<TurretBuff>(), Constants.AllEffects[ModContent.BuffType<TurretBuff>()], 30, "PermanentDefender", "Permanent Defender"),
+                new NewBuffItem(ModContent.ItemType<EmpowermentPotion>(), ModContent.BuffType<EmpowermentBuff>(), Constants.AllEffects[ModContent.BuffType<EmpowermentBuff>()], 30, "PermanentEmpowerment", "Permanent Empowerment"),
+                new NewBuffItem(ModContent.ItemType<SummonSpeedPotion>(), ModContent.BuffType<SummonSpeedBuff>(), Constants.AllEffects[ModContent.BuffType<SummonSpeedBuff>()], 30, "PermanentEvocation", "Permanent Evocation"),
+                new NewBuffItem(ModContent.ItemType<FastFood>(), ModContent.BuffType<Gourmet>(), Constants.AllEffects[ModContent.BuffType<Gourmet>()], 30, "PermanentGourmetFlavor", "Permanent Gourmet Flavor"),
+                new NewBuffItem(ModContent.ItemType<HastePotion>(), ModContent.BuffType<HasteBuff>(), Constants.AllEffects[ModContent.BuffType<HasteBuff>()], 30, "PermanentHaste", "Permanent Haste"),
+                new NewBuffItem(ModContent.ItemType<RedBerryJam>(), ModContent.BuffType<Healing>(), Constants.AllEffects[ModContent.BuffType<Healing>()], 30, "PermanentHealing", "Permanent Healing"),
+                new NewBuffItem(ModContent.ItemType<PainterPotion>(), ModContent.BuffType<PainterBuff>(), Constants.AllEffects[ModContent.BuffType<PainterBuff>()], 30, "PermanentPainter", "Permanent Painter"),
+                new NewBuffItem(ModContent.ItemType<RockskinPotion>(), ModContent.BuffType<RockskinBuff>(), Constants.AllEffects[ModContent.BuffType<RockskinBuff>()], 30, "PermanentRockskin", "Permanent Rockskin"),
+                new NewBuffItem(ModContent.ItemType<ShieldingPotion>(), ModContent.BuffType<Shielding>(), Constants.AllEffects[ModContent.BuffType<Shielding>()], 30, "PermanentShielding", "Permanent Shielding"),
+                new NewBuffItem(ModContent.ItemType<ShooterPotion>(), ModContent.BuffType<ShooterBuff>(), Constants.AllEffects[ModContent.BuffType<ShooterBuff>()], 30, "PermanentShooter", "Permanent Shooter"),
+                new NewBuffItem(ModContent.ItemType<SoulPotion>(), ModContent.BuffType<SoulBuff>(), Constants.AllEffects[ModContent.BuffType<SoulBuff>()], 30, "PermanentSoul", "Permanent Soul"),
+                new NewBuffItem(ModContent.ItemType<CasterPotion>(), ModContent.BuffType<CasterBuff>(), Constants.AllEffects[ModContent.BuffType<CasterBuff>()], 30, "PermanentSpellCaster", "Permanent Spell Caster"),
+                new NewBuffItem(ModContent.ItemType<StarreachPotion>(), ModContent.BuffType<Starreach>(), Constants.AllEffects[ModContent.BuffType<Starreach>()], 30, "PermanentStarreach", "Permanent Starreach"),
+                new NewBuffItem(ModContent.ItemType<SweepPotion>(), ModContent.BuffType<SweepBuff>(), Constants.AllEffects[ModContent.BuffType<SweepBuff>()], 30, "PermanentSweeper", "Permanent Sweeper"),
+                new NewBuffItem(ModContent.ItemType<ThrowerPotion>(), ModContent.BuffType<ThrowerBuff>(), Constants.AllEffects[ModContent.BuffType<ThrowerBuff>()], 30, "PermanentThrower", "Permanent Thrower"),
+                new NewBuffItem(ModContent.ItemType<WhipperPotion>(), ModContent.BuffType<WhipperBuff>(), Constants.AllEffects[ModContent.BuffType<WhipperBuff>()], 30, "PermanentWhipper", "Permanent Whipper"),
+                //new NewBuffItem(ModContent.ItemType<ZincPills>(), ModContent.BuffType<ZincPillBuff>(), Constants.AllEffects[ModContent.BuffType<ZincPillBuff>()], 30, "PermanentZincPill", "Permanent Zinc Pill"),
                 //stations
-                new NewBuffItem(ModContent.ItemType<ArcheologyTable>(), ModContent.BuffType<ReschBuff>(), Common.AllEffects[ModContent.BuffType<ReschBuff>()], 3, "PermanentArcheology", "Permanent Archeology"),
-                new NewBuffItem(ModContent.ItemType<SporeFarm>(), ModContent.BuffType<SporeSave>(), Common.AllEffects[ModContent.BuffType<SporeSave>()], 3, "PermanentSporeFarm", "Permanent Spore Farm"),
+                new NewBuffItem(ModContent.ItemType<ArcheologyTable>(), ModContent.BuffType<ReschBuff>(), Constants.AllEffects[ModContent.BuffType<ReschBuff>()], 3, "PermanentArcheology", "Permanent Archeology"),
+                new NewBuffItem(ModContent.ItemType<SporeFarm>(), ModContent.BuffType<SporeSave>(), Constants.AllEffects[ModContent.BuffType<SporeSave>()], 3, "PermanentSporeFarm", "Permanent Spore Farm"),
             ];
 
             foreach (var newBuffItem in BuffItems)
             {
                 BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
-                Common.AllBuffItems.Add(item.Type);
+                Constants.AllBuffItems.Add(item.Type);
             }
         }
 
@@ -94,62 +94,62 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
         {
             Dictionary<BuffEffect, int> PermanentMartinsOrderDamage = new()
             {
-                { Common.AllEffects[ModContent.BuffType<TurretBuff>()], ModContent.BuffType<TurretBuff>() },
-                { Common.AllEffects[ModContent.BuffType<EmpowermentBuff>()], ModContent.BuffType<EmpowermentBuff>() },
-                { Common.AllEffects[ModContent.BuffType<SummonSpeedBuff>()], ModContent.BuffType<SummonSpeedBuff>() },
-                { Common.AllEffects[ModContent.BuffType<HasteBuff>()], ModContent.BuffType<HasteBuff>() },
-                { Common.AllEffects[ModContent.BuffType<PainterBuff>()], ModContent.BuffType<PainterBuff>() },
-                { Common.AllEffects[ModContent.BuffType<ShooterBuff>()], ModContent.BuffType<ShooterBuff>() },
-                { Common.AllEffects[ModContent.BuffType<CasterBuff>()], ModContent.BuffType<CasterBuff>() },
-                { Common.AllEffects[ModContent.BuffType<Starreach>()], ModContent.BuffType<Starreach>() },
-                { Common.AllEffects[ModContent.BuffType<SweepBuff>()], ModContent.BuffType<SweepBuff>() },
-                { Common.AllEffects[ModContent.BuffType<ThrowerBuff>()], ModContent.BuffType<ThrowerBuff>() },
-                { Common.AllEffects[ModContent.BuffType<WhipperBuff>()], ModContent.BuffType<WhipperBuff>() }
+                { Constants.AllEffects[ModContent.BuffType<TurretBuff>()], ModContent.BuffType<TurretBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<EmpowermentBuff>()], ModContent.BuffType<EmpowermentBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<SummonSpeedBuff>()], ModContent.BuffType<SummonSpeedBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<HasteBuff>()], ModContent.BuffType<HasteBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<PainterBuff>()], ModContent.BuffType<PainterBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<ShooterBuff>()], ModContent.BuffType<ShooterBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<CasterBuff>()], ModContent.BuffType<CasterBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<Starreach>()], ModContent.BuffType<Starreach>() },
+                { Constants.AllEffects[ModContent.BuffType<SweepBuff>()], ModContent.BuffType<SweepBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<ThrowerBuff>()], ModContent.BuffType<ThrowerBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<WhipperBuff>()], ModContent.BuffType<WhipperBuff>() }
             };
 
             Dictionary<BuffEffect, int> PermanentMartinsOrderDefense = new()
             {
-                { Common.AllEffects[ModContent.BuffType<BlackHoleBuff>()], ModContent.BuffType<BlackHoleBuff>() },
-                { Common.AllEffects[ModContent.BuffType<BodyBuff>()], ModContent.BuffType<BodyBuff>() },
-                { Common.AllEffects[ModContent.BuffType<Charging>()], ModContent.BuffType<Charging>() },
-                { Common.AllEffects[ModContent.BuffType<Gourmet>()], ModContent.BuffType<Gourmet>() },
-                { Common.AllEffects[ModContent.BuffType<Healing>()], ModContent.BuffType<Healing>() },
-                { Common.AllEffects[ModContent.BuffType<RockskinBuff>()], ModContent.BuffType<RockskinBuff>() },
-                { Common.AllEffects[ModContent.BuffType<Shielding>()], ModContent.BuffType<Shielding>() },
-                { Common.AllEffects[ModContent.BuffType<SoulBuff>()], ModContent.BuffType<SoulBuff>() },
-                //{ Common.AllEffects[ModContent.BuffType<ZincPillBuff>()], ModContent.BuffType<ZincPillBuff>() }
+                { Constants.AllEffects[ModContent.BuffType<BlackHoleBuff>()], ModContent.BuffType<BlackHoleBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<BodyBuff>()], ModContent.BuffType<BodyBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<Charging>()], ModContent.BuffType<Charging>() },
+                { Constants.AllEffects[ModContent.BuffType<Gourmet>()], ModContent.BuffType<Gourmet>() },
+                { Constants.AllEffects[ModContent.BuffType<Healing>()], ModContent.BuffType<Healing>() },
+                { Constants.AllEffects[ModContent.BuffType<RockskinBuff>()], ModContent.BuffType<RockskinBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<Shielding>()], ModContent.BuffType<Shielding>() },
+                { Constants.AllEffects[ModContent.BuffType<SoulBuff>()], ModContent.BuffType<SoulBuff>() },
+                //{ Constants.AllEffects[ModContent.BuffType<ZincPillBuff>()], ModContent.BuffType<ZincPillBuff>() }
             };
 
             Dictionary<BuffEffect, int> PermanentMartinsOrderStations = new()
             {
-                { Common.AllEffects[ModContent.BuffType<ReschBuff>()], ModContent.BuffType<ReschBuff>() },
-                { Common.AllEffects[ModContent.BuffType<SporeSave>()], ModContent.BuffType<SporeSave>() }
+                { Constants.AllEffects[ModContent.BuffType<ReschBuff>()], ModContent.BuffType<ReschBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<SporeSave>()], ModContent.BuffType<SporeSave>() }
             };
 
             Dictionary<BuffEffect, int> PermanentMartinsOrder = new()
             {
-                { Common.AllEffects[ModContent.BuffType<TurretBuff>()], ModContent.BuffType<TurretBuff>() },
-                { Common.AllEffects[ModContent.BuffType<EmpowermentBuff>()], ModContent.BuffType<EmpowermentBuff>() },
-                { Common.AllEffects[ModContent.BuffType<SummonSpeedBuff>()], ModContent.BuffType<SummonSpeedBuff>() },
-                { Common.AllEffects[ModContent.BuffType<HasteBuff>()], ModContent.BuffType<HasteBuff>() },
-                { Common.AllEffects[ModContent.BuffType<PainterBuff>()], ModContent.BuffType<PainterBuff>() },
-                { Common.AllEffects[ModContent.BuffType<ShooterBuff>()], ModContent.BuffType<ShooterBuff>() },
-                { Common.AllEffects[ModContent.BuffType<CasterBuff>()], ModContent.BuffType<CasterBuff>() },
-                { Common.AllEffects[ModContent.BuffType<Starreach>()], ModContent.BuffType<Starreach>() },
-                { Common.AllEffects[ModContent.BuffType<SweepBuff>()], ModContent.BuffType<SweepBuff>() },
-                { Common.AllEffects[ModContent.BuffType<ThrowerBuff>()], ModContent.BuffType<ThrowerBuff>() },
-                { Common.AllEffects[ModContent.BuffType<WhipperBuff>()], ModContent.BuffType<WhipperBuff>() },
-                { Common.AllEffects[ModContent.BuffType<BlackHoleBuff>()], ModContent.BuffType<BlackHoleBuff>() },
-                { Common.AllEffects[ModContent.BuffType<BodyBuff>()], ModContent.BuffType<BodyBuff>() },
-                { Common.AllEffects[ModContent.BuffType<Charging>()], ModContent.BuffType<Charging>() },
-                { Common.AllEffects[ModContent.BuffType<Gourmet>()], ModContent.BuffType<Gourmet>() },
-                { Common.AllEffects[ModContent.BuffType<Healing>()], ModContent.BuffType<Healing>() },
-                { Common.AllEffects[ModContent.BuffType<RockskinBuff>()], ModContent.BuffType<RockskinBuff>() },
-                { Common.AllEffects[ModContent.BuffType<Shielding>()], ModContent.BuffType<Shielding>() },
-                { Common.AllEffects[ModContent.BuffType<SoulBuff>()], ModContent.BuffType<SoulBuff>() },
-                //{ Common.AllEffects[ModContent.BuffType<ZincPillBuff>()], ModContent.BuffType<ZincPillBuff>() },
-                { Common.AllEffects[ModContent.BuffType<ReschBuff>()], ModContent.BuffType<ReschBuff>() },
-                { Common.AllEffects[ModContent.BuffType<SporeSave>()], ModContent.BuffType<SporeSave>() }
+                { Constants.AllEffects[ModContent.BuffType<TurretBuff>()], ModContent.BuffType<TurretBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<EmpowermentBuff>()], ModContent.BuffType<EmpowermentBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<SummonSpeedBuff>()], ModContent.BuffType<SummonSpeedBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<HasteBuff>()], ModContent.BuffType<HasteBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<PainterBuff>()], ModContent.BuffType<PainterBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<ShooterBuff>()], ModContent.BuffType<ShooterBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<CasterBuff>()], ModContent.BuffType<CasterBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<Starreach>()], ModContent.BuffType<Starreach>() },
+                { Constants.AllEffects[ModContent.BuffType<SweepBuff>()], ModContent.BuffType<SweepBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<ThrowerBuff>()], ModContent.BuffType<ThrowerBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<WhipperBuff>()], ModContent.BuffType<WhipperBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<BlackHoleBuff>()], ModContent.BuffType<BlackHoleBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<BodyBuff>()], ModContent.BuffType<BodyBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<Charging>()], ModContent.BuffType<Charging>() },
+                { Constants.AllEffects[ModContent.BuffType<Gourmet>()], ModContent.BuffType<Gourmet>() },
+                { Constants.AllEffects[ModContent.BuffType<Healing>()], ModContent.BuffType<Healing>() },
+                { Constants.AllEffects[ModContent.BuffType<RockskinBuff>()], ModContent.BuffType<RockskinBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<Shielding>()], ModContent.BuffType<Shielding>() },
+                { Constants.AllEffects[ModContent.BuffType<SoulBuff>()], ModContent.BuffType<SoulBuff>() },
+                //{ Constants.AllEffects[ModContent.BuffType<ZincPillBuff>()], ModContent.BuffType<ZincPillBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<ReschBuff>()], ModContent.BuffType<ReschBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<SporeSave>()], ModContent.BuffType<SporeSave>() }
             };
 
             NewCombinedBuffItem[] CombinedBuffItems = [
@@ -163,7 +163,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
                 QoLCompendium.Instance.AddContent(item);
-                Common.AllCombinedBuffItems.Add(item.Type);
+                Constants.AllCombinedBuffItems.Add(item.Type);
             }
         }
     }

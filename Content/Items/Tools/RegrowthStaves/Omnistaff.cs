@@ -87,12 +87,12 @@ namespace QoLCompendium.Content.Items.Tools.RegrowthStaves
             tooltips.Insert(tooltips.IndexOf(placeable), text);
             tooltips.RemoveAll((x) => x.Name == "Placeable" && x.Mod == "Terraria");
 
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.RegrowthStaves);
         }
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.RegrowthStaves, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.RegrowthStaves, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(ModContent.ItemType<StaffOfAshing>());
             r.AddIngredient(ModContent.ItemType<StaffOfCysting>());
             r.AddIngredient(ModContent.ItemType<StaffOfHallowing>());

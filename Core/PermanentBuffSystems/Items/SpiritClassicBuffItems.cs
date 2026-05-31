@@ -32,17 +32,17 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             new NewBuffEffect(ModContent.BuffType<BismitePotionBuff>()),
             new NewBuffEffect(ModContent.BuffType<DoubleJumpPotionBuff>()),
             //candies
-            new NewBuffEffect(ModContent.BuffType<CandyBuff>(), (int) Common.EffectTypes.Candy),
-            new NewBuffEffect(ModContent.BuffType<ChocolateBuff>(), (int) Common.EffectTypes.Candy),
-            new NewBuffEffect(ModContent.BuffType<HealthBuffC>(), (int) Common.EffectTypes.Candy),
-            new NewBuffEffect(ModContent.BuffType<LollipopBuff>(), (int) Common.EffectTypes.Candy),
-            new NewBuffEffect(ModContent.BuffType<ManaBuffC>(), (int) Common.EffectTypes.Candy),
-            new NewBuffEffect(ModContent.BuffType<TaffyBuff>(), (int) Common.EffectTypes.Candy),
+            new NewBuffEffect(ModContent.BuffType<CandyBuff>(), (int) Constants.EffectTypes.Candy),
+            new NewBuffEffect(ModContent.BuffType<ChocolateBuff>(), (int) Constants.EffectTypes.Candy),
+            new NewBuffEffect(ModContent.BuffType<HealthBuffC>(), (int) Constants.EffectTypes.Candy),
+            new NewBuffEffect(ModContent.BuffType<LollipopBuff>(), (int) Constants.EffectTypes.Candy),
+            new NewBuffEffect(ModContent.BuffType<ManaBuffC>(), (int) Constants.EffectTypes.Candy),
+            new NewBuffEffect(ModContent.BuffType<TaffyBuff>(), (int) Constants.EffectTypes.Candy),
             //arena
-            new NewBuffEffect(ModContent.BuffType<OverDrive>(), (int) Common.EffectTypes.Arena),
-            new NewBuffEffect(ModContent.BuffType<KoiTotemBuff>(), (int) Common.EffectTypes.Arena),
-            new NewBuffEffect(ModContent.BuffType<SunPotBuff>(), (int) Common.EffectTypes.Arena),
-            new NewBuffEffect(ModContent.BuffType<CouchPotato>(), (int) Common.EffectTypes.Arena),
+            new NewBuffEffect(ModContent.BuffType<OverDrive>(), (int) Constants.EffectTypes.Arena),
+            new NewBuffEffect(ModContent.BuffType<KoiTotemBuff>(), (int) Constants.EffectTypes.Arena),
+            new NewBuffEffect(ModContent.BuffType<SunPotBuff>(), (int) Constants.EffectTypes.Arena),
+            new NewBuffEffect(ModContent.BuffType<CouchPotato>(), (int) Constants.EffectTypes.Arena),
         ];
 
         public static void LoadTasks()
@@ -57,43 +57,43 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
                 QoLCompendium.Instance.AddContent(effect);
-                Common.AllEffects.Add(newEffect.buffID, effect);
+                Constants.AllEffects.Add(newEffect.buffID, effect);
             }
 
             NewBuffItem[] BuffItems = [
                 //potions
-                new NewBuffItem(ModContent.ItemType<PinkPotion>(), ModContent.BuffType<PinkPotionBuff>(), Common.AllEffects[ModContent.BuffType<PinkPotionBuff>()], 30, "PermanentJump", "Permanent Jump"),
-                new NewBuffItem(ModContent.ItemType<MirrorCoat>(), ModContent.BuffType<MirrorCoatBuff>(), Common.AllEffects[ModContent.BuffType<MirrorCoatBuff>()], 30, "PermanentMirrorCoat", "Permanent Mirror Coat"),
-                new NewBuffItem(ModContent.ItemType<MoonJelly>(), ModContent.BuffType<MoonBlessing>(), Common.AllEffects[ModContent.BuffType<MoonBlessing>()], 30, "PermanentMoonJelly", "Permanent Moon Jelly"),
-                new NewBuffItem(ModContent.ItemType<OliveBranch>(), ModContent.BuffType<OliveBranchBuff>(), Common.AllEffects[ModContent.BuffType<OliveBranchBuff>()], 30, "PermanentOliveBranch", "Permanent Olive Branch"),
-                new NewBuffItem(ModContent.ItemType<RunePotion>(), ModContent.BuffType<RunePotionBuff>(), Common.AllEffects[ModContent.BuffType<RunePotionBuff>()], 30, "PermanentRunescribe", "Permanent Runescribe"),
-                new NewBuffItem(ModContent.ItemType<SoulPotion>(), ModContent.BuffType<SoulPotionBuff>(), Common.AllEffects[ModContent.BuffType<SoulPotionBuff>()], 30, "PermanentSoulguard", "Permanent Soulguard"),
-                new NewBuffItem(ModContent.ItemType<SpiritPotion>(), ModContent.BuffType<SpiritBuff>(), Common.AllEffects[ModContent.BuffType<SpiritBuff>()], 30, "PermanentSpirit", "Permanent Spirit"),
-                new NewBuffItem(ModContent.ItemType<FlightPotion>(), ModContent.BuffType<FlightPotionBuff>(), Common.AllEffects[ModContent.BuffType<FlightPotionBuff>()], 30, "PermanentSpiritSoaring", "Permanent Soaring"),
-                new NewBuffItem(ModContent.ItemType<MushroomPotion>(), ModContent.BuffType<MushroomPotionBuff>(), Common.AllEffects[ModContent.BuffType<MushroomPotionBuff>()], 30, "PermanentSporecoid", "Permanent Sporecoid"),
-                new NewBuffItem(ModContent.ItemType<StarPotion>(), ModContent.BuffType<StarPotionBuff>(), Common.AllEffects[ModContent.BuffType<StarPotionBuff>()], 30, "PermanentStarburn", "Permanent Starburn"),
-                new NewBuffItem(ModContent.ItemType<TurtlePotion>(), ModContent.BuffType<TurtlePotionBuff>(), Common.AllEffects[ModContent.BuffType<TurtlePotionBuff>()], 30, "PermanentSteadfast", "Permanent Steadfast"),
-                new NewBuffItem(ModContent.ItemType<BismitePotion>(), ModContent.BuffType<BismitePotionBuff>(), Common.AllEffects[ModContent.BuffType<BismitePotionBuff>()], 30, "PermanentToxin", "Permanent Toxin"),
-                new NewBuffItem(ModContent.ItemType<DoubleJumpPotion>(), ModContent.BuffType<DoubleJumpPotionBuff>(), Common.AllEffects[ModContent.BuffType<DoubleJumpPotionBuff>()], 30, "PermanentZephyr", "Permanent Zephyr"),
+                new NewBuffItem(ModContent.ItemType<PinkPotion>(), ModContent.BuffType<PinkPotionBuff>(), Constants.AllEffects[ModContent.BuffType<PinkPotionBuff>()], 30, "PermanentJump", "Permanent Jump"),
+                new NewBuffItem(ModContent.ItemType<MirrorCoat>(), ModContent.BuffType<MirrorCoatBuff>(), Constants.AllEffects[ModContent.BuffType<MirrorCoatBuff>()], 30, "PermanentMirrorCoat", "Permanent Mirror Coat"),
+                new NewBuffItem(ModContent.ItemType<MoonJelly>(), ModContent.BuffType<MoonBlessing>(), Constants.AllEffects[ModContent.BuffType<MoonBlessing>()], 30, "PermanentMoonJelly", "Permanent Moon Jelly"),
+                new NewBuffItem(ModContent.ItemType<OliveBranch>(), ModContent.BuffType<OliveBranchBuff>(), Constants.AllEffects[ModContent.BuffType<OliveBranchBuff>()], 30, "PermanentOliveBranch", "Permanent Olive Branch"),
+                new NewBuffItem(ModContent.ItemType<RunePotion>(), ModContent.BuffType<RunePotionBuff>(), Constants.AllEffects[ModContent.BuffType<RunePotionBuff>()], 30, "PermanentRunescribe", "Permanent Runescribe"),
+                new NewBuffItem(ModContent.ItemType<SoulPotion>(), ModContent.BuffType<SoulPotionBuff>(), Constants.AllEffects[ModContent.BuffType<SoulPotionBuff>()], 30, "PermanentSoulguard", "Permanent Soulguard"),
+                new NewBuffItem(ModContent.ItemType<SpiritPotion>(), ModContent.BuffType<SpiritBuff>(), Constants.AllEffects[ModContent.BuffType<SpiritBuff>()], 30, "PermanentSpirit", "Permanent Spirit"),
+                new NewBuffItem(ModContent.ItemType<FlightPotion>(), ModContent.BuffType<FlightPotionBuff>(), Constants.AllEffects[ModContent.BuffType<FlightPotionBuff>()], 30, "PermanentSpiritSoaring", "Permanent Soaring"),
+                new NewBuffItem(ModContent.ItemType<MushroomPotion>(), ModContent.BuffType<MushroomPotionBuff>(), Constants.AllEffects[ModContent.BuffType<MushroomPotionBuff>()], 30, "PermanentSporecoid", "Permanent Sporecoid"),
+                new NewBuffItem(ModContent.ItemType<StarPotion>(), ModContent.BuffType<StarPotionBuff>(), Constants.AllEffects[ModContent.BuffType<StarPotionBuff>()], 30, "PermanentStarburn", "Permanent Starburn"),
+                new NewBuffItem(ModContent.ItemType<TurtlePotion>(), ModContent.BuffType<TurtlePotionBuff>(), Constants.AllEffects[ModContent.BuffType<TurtlePotionBuff>()], 30, "PermanentSteadfast", "Permanent Steadfast"),
+                new NewBuffItem(ModContent.ItemType<BismitePotion>(), ModContent.BuffType<BismitePotionBuff>(), Constants.AllEffects[ModContent.BuffType<BismitePotionBuff>()], 30, "PermanentToxin", "Permanent Toxin"),
+                new NewBuffItem(ModContent.ItemType<DoubleJumpPotion>(), ModContent.BuffType<DoubleJumpPotionBuff>(), Constants.AllEffects[ModContent.BuffType<DoubleJumpPotionBuff>()], 30, "PermanentZephyr", "Permanent Zephyr"),
                 //candies
-                new NewBuffItem(ModContent.ItemType<Candy>(), ModContent.BuffType<CandyBuff>(), Common.AllEffects[ModContent.BuffType<CandyBuff>()], 30, "PermanentCandy", "Permanent Candy"),
-                new NewBuffItem(ModContent.ItemType<ChocolateBar>(), ModContent.BuffType<ChocolateBuff>(), Common.AllEffects[ModContent.BuffType<ChocolateBuff>()], 30, "PermanentChocolateBar", "Permanent Chocolate Bar"),
-                new NewBuffItem(ModContent.ItemType<HealthCandy>(), ModContent.BuffType<HealthBuffC>(), Common.AllEffects[ModContent.BuffType<HealthBuffC>()], 30, "PermanentHealthCandy", "Permanent Health Candy"),
-                new NewBuffItem(ModContent.ItemType<Lollipop>(), ModContent.BuffType<LollipopBuff>(), Common.AllEffects[ModContent.BuffType<LollipopBuff>()], 30, "PermanentLollipop", "Permanent Lollipop"),
-                new NewBuffItem(ModContent.ItemType<ManaCandy>(), ModContent.BuffType<ManaBuffC>(), Common.AllEffects[ModContent.BuffType<ManaBuffC>()], 30, "PermanentManaCandy", "Permanent Mana Candy"),
-                new NewBuffItem(ModContent.ItemType<Taffy>(), ModContent.BuffType<TaffyBuff>(), Common.AllEffects[ModContent.BuffType<TaffyBuff>()], 30, "PermanentTaffy", "Permanent Taffy"),
+                new NewBuffItem(ModContent.ItemType<Candy>(), ModContent.BuffType<CandyBuff>(), Constants.AllEffects[ModContent.BuffType<CandyBuff>()], 30, "PermanentCandy", "Permanent Candy"),
+                new NewBuffItem(ModContent.ItemType<ChocolateBar>(), ModContent.BuffType<ChocolateBuff>(), Constants.AllEffects[ModContent.BuffType<ChocolateBuff>()], 30, "PermanentChocolateBar", "Permanent Chocolate Bar"),
+                new NewBuffItem(ModContent.ItemType<HealthCandy>(), ModContent.BuffType<HealthBuffC>(), Constants.AllEffects[ModContent.BuffType<HealthBuffC>()], 30, "PermanentHealthCandy", "Permanent Health Candy"),
+                new NewBuffItem(ModContent.ItemType<Lollipop>(), ModContent.BuffType<LollipopBuff>(), Constants.AllEffects[ModContent.BuffType<LollipopBuff>()], 30, "PermanentLollipop", "Permanent Lollipop"),
+                new NewBuffItem(ModContent.ItemType<ManaCandy>(), ModContent.BuffType<ManaBuffC>(), Constants.AllEffects[ModContent.BuffType<ManaBuffC>()], 30, "PermanentManaCandy", "Permanent Mana Candy"),
+                new NewBuffItem(ModContent.ItemType<Taffy>(), ModContent.BuffType<TaffyBuff>(), Constants.AllEffects[ModContent.BuffType<TaffyBuff>()], 30, "PermanentTaffy", "Permanent Taffy"),
                 //arena
-                new NewBuffItem(ModContent.ItemType<CoilEnergizerItem>(), ModContent.BuffType<OverDrive>(), Common.AllEffects[ModContent.BuffType<OverDrive>()], 3, "PermanentCoiledEnergizer", "Permanent Coiled Energizer"),
-                new NewBuffItem(ModContent.ItemType<KoiTotem>(), ModContent.BuffType<KoiTotemBuff>(), Common.AllEffects[ModContent.BuffType<KoiTotemBuff>()], 3, "PermanentKoiTotem", "Permanent Koi Totem"),
-                new NewBuffItem(ModContent.ItemType<SunPot>(), ModContent.BuffType<SunPotBuff>(), Common.AllEffects[ModContent.BuffType<SunPotBuff>()], 3, "PermanentSunPot", "Permanent Sun Pot"),
-                new NewBuffItem(ModContent.ItemType<TheCouch>(), ModContent.BuffType<CouchPotato>(), Common.AllEffects[ModContent.BuffType<CouchPotato>()], 3, "PermanentCouchPotato", "Permanent Couch Potato"),
+                new NewBuffItem(ModContent.ItemType<CoilEnergizerItem>(), ModContent.BuffType<OverDrive>(), Constants.AllEffects[ModContent.BuffType<OverDrive>()], 3, "PermanentCoiledEnergizer", "Permanent Coiled Energizer"),
+                new NewBuffItem(ModContent.ItemType<KoiTotem>(), ModContent.BuffType<KoiTotemBuff>(), Constants.AllEffects[ModContent.BuffType<KoiTotemBuff>()], 3, "PermanentKoiTotem", "Permanent Koi Totem"),
+                new NewBuffItem(ModContent.ItemType<SunPot>(), ModContent.BuffType<SunPotBuff>(), Constants.AllEffects[ModContent.BuffType<SunPotBuff>()], 3, "PermanentSunPot", "Permanent Sun Pot"),
+                new NewBuffItem(ModContent.ItemType<TheCouch>(), ModContent.BuffType<CouchPotato>(), Constants.AllEffects[ModContent.BuffType<CouchPotato>()], 3, "PermanentCouchPotato", "Permanent Couch Potato"),
             ];
 
             foreach (var newBuffItem in BuffItems)
             {
                 BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                 QoLCompendium.Instance.AddContent(item);
-                Common.AllBuffItems.Add(item.Type);
+                Constants.AllBuffItems.Add(item.Type);
             }
         }
 
@@ -101,72 +101,72 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
         {
             Dictionary<BuffEffect, int> PermanentSpiritClassicDamage = new()
             {
-                { Common.AllEffects[ModContent.BuffType<RunePotionBuff>()], ModContent.BuffType<RunePotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<SoulPotionBuff>()], ModContent.BuffType<SoulPotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<SpiritBuff>()], ModContent.BuffType<SpiritBuff>() },
-                { Common.AllEffects[ModContent.BuffType<StarPotionBuff>()], ModContent.BuffType<StarPotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<BismitePotionBuff>()], ModContent.BuffType<BismitePotionBuff>() }
+                { Constants.AllEffects[ModContent.BuffType<RunePotionBuff>()], ModContent.BuffType<RunePotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<SoulPotionBuff>()], ModContent.BuffType<SoulPotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<SpiritBuff>()], ModContent.BuffType<SpiritBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<StarPotionBuff>()], ModContent.BuffType<StarPotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<BismitePotionBuff>()], ModContent.BuffType<BismitePotionBuff>() }
             };
 
             Dictionary<BuffEffect, int> PermanentSpiritClassicDefense = new()
             {
-                { Common.AllEffects[ModContent.BuffType<MirrorCoatBuff>()], ModContent.BuffType<MirrorCoatBuff>() },
-                { Common.AllEffects[ModContent.BuffType<MoonBlessing>()], ModContent.BuffType<MoonBlessing>() },
-                { Common.AllEffects[ModContent.BuffType<OliveBranchBuff>()], ModContent.BuffType<OliveBranchBuff>() },
-                { Common.AllEffects[ModContent.BuffType<MushroomPotionBuff>()], ModContent.BuffType<MushroomPotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<TurtlePotionBuff>()], ModContent.BuffType<TurtlePotionBuff>() }
+                { Constants.AllEffects[ModContent.BuffType<MirrorCoatBuff>()], ModContent.BuffType<MirrorCoatBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<MoonBlessing>()], ModContent.BuffType<MoonBlessing>() },
+                { Constants.AllEffects[ModContent.BuffType<OliveBranchBuff>()], ModContent.BuffType<OliveBranchBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<MushroomPotionBuff>()], ModContent.BuffType<MushroomPotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<TurtlePotionBuff>()], ModContent.BuffType<TurtlePotionBuff>() }
             };
 
             Dictionary<BuffEffect, int> PermanentSpiritClassicMovement = new()
             {
-                { Common.AllEffects[ModContent.BuffType<PinkPotionBuff>()], ModContent.BuffType<PinkPotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<FlightPotionBuff>()], ModContent.BuffType<FlightPotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<DoubleJumpPotionBuff>()], ModContent.BuffType<DoubleJumpPotionBuff>() }
+                { Constants.AllEffects[ModContent.BuffType<PinkPotionBuff>()], ModContent.BuffType<PinkPotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<FlightPotionBuff>()], ModContent.BuffType<FlightPotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<DoubleJumpPotionBuff>()], ModContent.BuffType<DoubleJumpPotionBuff>() }
             };
 
             Dictionary<BuffEffect, int> PermanentSpiritClassicCandies = new()
             {
-                { Common.AllEffects[ModContent.BuffType<CandyBuff>()], ModContent.BuffType<CandyBuff>() },
-                { Common.AllEffects[ModContent.BuffType<ChocolateBuff>()], ModContent.BuffType<ChocolateBuff>() },
-                { Common.AllEffects[ModContent.BuffType<HealthBuffC>()], ModContent.BuffType<HealthBuffC>() },
-                { Common.AllEffects[ModContent.BuffType<LollipopBuff>()], ModContent.BuffType<LollipopBuff>() },
-                { Common.AllEffects[ModContent.BuffType<ManaBuffC>()], ModContent.BuffType<ManaBuffC>() },
-                { Common.AllEffects[ModContent.BuffType<TaffyBuff>()], ModContent.BuffType<TaffyBuff>() }
+                { Constants.AllEffects[ModContent.BuffType<CandyBuff>()], ModContent.BuffType<CandyBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<ChocolateBuff>()], ModContent.BuffType<ChocolateBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<HealthBuffC>()], ModContent.BuffType<HealthBuffC>() },
+                { Constants.AllEffects[ModContent.BuffType<LollipopBuff>()], ModContent.BuffType<LollipopBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<ManaBuffC>()], ModContent.BuffType<ManaBuffC>() },
+                { Constants.AllEffects[ModContent.BuffType<TaffyBuff>()], ModContent.BuffType<TaffyBuff>() }
             };
 
             Dictionary<BuffEffect, int> PermanentSpiritClassicArena = new()
             {
-                { Common.AllEffects[ModContent.BuffType<OverDrive>()], ModContent.BuffType<OverDrive>() },
-                { Common.AllEffects[ModContent.BuffType<KoiTotemBuff>()], ModContent.BuffType<KoiTotemBuff>() },
-                { Common.AllEffects[ModContent.BuffType<SunPotBuff>()], ModContent.BuffType<SunPotBuff>() },
-                { Common.AllEffects[ModContent.BuffType<CouchPotato>()], ModContent.BuffType<CouchPotato>() }
+                { Constants.AllEffects[ModContent.BuffType<OverDrive>()], ModContent.BuffType<OverDrive>() },
+                { Constants.AllEffects[ModContent.BuffType<KoiTotemBuff>()], ModContent.BuffType<KoiTotemBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<SunPotBuff>()], ModContent.BuffType<SunPotBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<CouchPotato>()], ModContent.BuffType<CouchPotato>() }
             };
 
             Dictionary<BuffEffect, int> PermanentSpiritClassic = new()
             {
-                { Common.AllEffects[ModContent.BuffType<RunePotionBuff>()], ModContent.BuffType<RunePotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<SoulPotionBuff>()], ModContent.BuffType<SoulPotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<SpiritBuff>()], ModContent.BuffType<SpiritBuff>() },
-                { Common.AllEffects[ModContent.BuffType<StarPotionBuff>()], ModContent.BuffType<StarPotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<BismitePotionBuff>()], ModContent.BuffType<BismitePotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<MirrorCoatBuff>()], ModContent.BuffType<MirrorCoatBuff>() },
-                { Common.AllEffects[ModContent.BuffType<MoonBlessing>()], ModContent.BuffType<MoonBlessing>() },
-                { Common.AllEffects[ModContent.BuffType<OliveBranchBuff>()], ModContent.BuffType<OliveBranchBuff>() },
-                { Common.AllEffects[ModContent.BuffType<MushroomPotionBuff>()], ModContent.BuffType<MushroomPotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<TurtlePotionBuff>()], ModContent.BuffType<TurtlePotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<PinkPotionBuff>()], ModContent.BuffType<PinkPotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<FlightPotionBuff>()], ModContent.BuffType<FlightPotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<DoubleJumpPotionBuff>()], ModContent.BuffType<DoubleJumpPotionBuff>() },
-                { Common.AllEffects[ModContent.BuffType<CandyBuff>()], ModContent.BuffType<CandyBuff>() },
-                { Common.AllEffects[ModContent.BuffType<ChocolateBuff>()], ModContent.BuffType<ChocolateBuff>() },
-                { Common.AllEffects[ModContent.BuffType<HealthBuffC>()], ModContent.BuffType<HealthBuffC>() },
-                { Common.AllEffects[ModContent.BuffType<LollipopBuff>()], ModContent.BuffType<LollipopBuff>() },
-                { Common.AllEffects[ModContent.BuffType<ManaBuffC>()], ModContent.BuffType<ManaBuffC>() },
-                { Common.AllEffects[ModContent.BuffType<TaffyBuff>()], ModContent.BuffType<TaffyBuff>() },
-                { Common.AllEffects[ModContent.BuffType<OverDrive>()], ModContent.BuffType<OverDrive>() },
-                { Common.AllEffects[ModContent.BuffType<KoiTotemBuff>()], ModContent.BuffType<KoiTotemBuff>() },
-                { Common.AllEffects[ModContent.BuffType<SunPotBuff>()], ModContent.BuffType<SunPotBuff>() },
-                { Common.AllEffects[ModContent.BuffType<CouchPotato>()], ModContent.BuffType<CouchPotato>() }
+                { Constants.AllEffects[ModContent.BuffType<RunePotionBuff>()], ModContent.BuffType<RunePotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<SoulPotionBuff>()], ModContent.BuffType<SoulPotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<SpiritBuff>()], ModContent.BuffType<SpiritBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<StarPotionBuff>()], ModContent.BuffType<StarPotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<BismitePotionBuff>()], ModContent.BuffType<BismitePotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<MirrorCoatBuff>()], ModContent.BuffType<MirrorCoatBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<MoonBlessing>()], ModContent.BuffType<MoonBlessing>() },
+                { Constants.AllEffects[ModContent.BuffType<OliveBranchBuff>()], ModContent.BuffType<OliveBranchBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<MushroomPotionBuff>()], ModContent.BuffType<MushroomPotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<TurtlePotionBuff>()], ModContent.BuffType<TurtlePotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<PinkPotionBuff>()], ModContent.BuffType<PinkPotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<FlightPotionBuff>()], ModContent.BuffType<FlightPotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<DoubleJumpPotionBuff>()], ModContent.BuffType<DoubleJumpPotionBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<CandyBuff>()], ModContent.BuffType<CandyBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<ChocolateBuff>()], ModContent.BuffType<ChocolateBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<HealthBuffC>()], ModContent.BuffType<HealthBuffC>() },
+                { Constants.AllEffects[ModContent.BuffType<LollipopBuff>()], ModContent.BuffType<LollipopBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<ManaBuffC>()], ModContent.BuffType<ManaBuffC>() },
+                { Constants.AllEffects[ModContent.BuffType<TaffyBuff>()], ModContent.BuffType<TaffyBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<OverDrive>()], ModContent.BuffType<OverDrive>() },
+                { Constants.AllEffects[ModContent.BuffType<KoiTotemBuff>()], ModContent.BuffType<KoiTotemBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<SunPotBuff>()], ModContent.BuffType<SunPotBuff>() },
+                { Constants.AllEffects[ModContent.BuffType<CouchPotato>()], ModContent.BuffType<CouchPotato>() }
             };
 
             NewCombinedBuffItem[] CombinedBuffItems = [
@@ -182,7 +182,7 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
                 QoLCompendium.Instance.AddContent(item);
-                Common.AllCombinedBuffItems.Add(item.Type);
+                Constants.AllCombinedBuffItems.Add(item.Type);
             }
         }
     }

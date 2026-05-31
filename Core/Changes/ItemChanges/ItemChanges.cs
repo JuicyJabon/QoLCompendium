@@ -31,7 +31,7 @@ namespace QoLCompendium.Core.Changes.ItemChanges
             if (QoLCompendium.mainConfig.StackableQuestItems && item.questItem && QoLCompendium.mainConfig.IncreaseMaxStack > 0)
                 item.maxStack = QoLCompendium.mainConfig.IncreaseMaxStack;
 
-            if (QoLCompendium.mainConfig.AutoReuseUpgrades && Common.PermanentMultiUseUpgrades.Contains(item.type))
+            if (QoLCompendium.mainConfig.AutoReuseUpgrades && Constants.PermanentMultiUseUpgrades.Contains(item.type))
                 item.autoReuse = true;
         }
 

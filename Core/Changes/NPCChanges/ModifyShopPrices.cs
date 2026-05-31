@@ -76,10 +76,10 @@ namespace QoLCompendium.Core.Changes.NPCChanges
 
                         if (!QoLCompendium.shopConfig.BossScaling) continue;
 
-                        int countBossesDefeated = Common.GetBoolCount(Common.DownedVanillaBosses) + Common.GetBoolCount(ModConditions.DownedBoss);
+                        int countBossesDefeated = Common.GetBoolCount(Constants.DownedVanillaBosses) + Common.GetBoolCount(ModConditions.DownedBoss);
 
                         for (int i = 0; i < countBossesDefeated; i++)
-                            item.shopCustomPrice += (int)Common.GoldValue * 5;
+                            item.shopCustomPrice += (int)Constants.GoldValue * 5;
                     }
                 }
                 if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/CratesAndGrabBagsShop")
@@ -199,10 +199,10 @@ namespace QoLCompendium.Core.Changes.NPCChanges
 
                         if (!QoLCompendium.shopConfig.BossScaling) continue;
 
-                        int countBossesDefeated = Common.GetBoolCount(Common.DownedVanillaBosses) + Common.GetBoolCount(ModConditions.DownedBoss);
+                        int countBossesDefeated = Common.GetBoolCount(Constants.DownedVanillaBosses) + Common.GetBoolCount(ModConditions.DownedBoss);
 
                         for (int i = 0; i < countBossesDefeated; i++)
-                            item.shopCustomPrice += (int)Common.GoldValue * 5;
+                            item.shopCustomPrice += (int)Constants.GoldValue * 5;
                     }
                 }
                 if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Crates & Grab Bags")

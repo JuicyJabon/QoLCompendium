@@ -86,10 +86,7 @@ namespace QoLCompendium.Core
         public static bool FargoSoulsDifficultyEnabled()
         {
             if (CrossModSupport.FargowiltasSouls.Loaded)
-            {
-                bool emode = (bool)CrossModSupport.FargowiltasSouls.Mod.Call("EternityMode");
-                return emode;
-            }
+                return (bool)CrossModSupport.FargowiltasSouls.Mod.Call("EternityMode");
             return false;
         }
     }

@@ -28,7 +28,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PhaseInterrupter);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PhaseInterrupter);
         }
 
         public override void UpdateInventory(Player player)
@@ -56,7 +56,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.PhaseInterrupter, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.PhaseInterrupter, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddRecipeGroup(RecipeGroupID.IronBar, 7);
             r.AddIngredient(ItemID.Diamond, 3);
             r.AddIngredient(ItemID.BlackLens, 1);

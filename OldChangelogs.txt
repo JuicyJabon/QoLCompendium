@@ -1,3 +1,41 @@
+v2.4.6
+1. Tile-placing melee tools now can roll Light and Legendary prefixes with the Reforge Rework
+2. Added support for Tooltip Icons Mod for the following mods:
+ - Calamity
+ - Calamity Entropy
+ - Clicker Class
+ - Infernal Eclipse of Ragnarok
+ - Martin's Order
+ - Ragnarok
+ - Secrets of the Shadows + Bard/Healer/Thrower Addon
+ - Thrower Unification
+ - Thorium
+ - Vitality
+3. Added support for classless damage for Tooltip Icons
+4. Added a config to allow Shadow Diamonds (Magic Storage) to drop from all bosses once
+5. Added support for Split:
+ - NPC Sales (Only boss bags for now)
+ - Permanent Buffs
+ - Recall Hotkey
+ - Permanent Upgrade Tooltips
+ - Endless Ammos
+6. Added a config to remove house requirements for beds
+7. Added a config to allow Elements Awoken energy increasing items to work in banks
+8. Added support for Ultranium:
+ - NPC Sales (Only boss bags for now)
+9. Fixed Vitality Mod load errors
+10. Fixed Calamity Entropy Missile Launchers displaying Honey Lanterns as their ammo type
+11. Raised the volume of the Glass Cannon
+12. Fixed silent crash when using Smart Cursor Herbs
+
+wv2.4.5
+1. Added Suspicious Book (Spirit Classic Cross-Mod)
+2. Added Tongue Gem (Spirit Classic Cross-Mod)
+3. Added Glass Cannon (Dedicated: Yardis)
+4. Added a config to correctly classify Spirit Classic yoyos as yoyos
+5. Fixed Mr Plague's Races load error
+6. Ultimate Monolith now counts as every possible crafting station
+
 v2.4.4
 1. Fixed Spectre Magnet tooltip being incorrect
 2. Magnets can now be toggled with right click

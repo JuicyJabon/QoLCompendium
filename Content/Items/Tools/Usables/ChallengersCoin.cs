@@ -28,7 +28,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Common.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.ChallengersCoin);
+            ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.ChallengersCoin);
         }
 
         public override bool AltFunctionUse(Player player)
@@ -136,7 +136,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.ChallengersCoin, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.ChallengersCoin, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddRecipeGroup(RecipeGroupID.IronBar, 16);
             r.AddIngredient(ItemID.GoldCoin);
             r.AddTile(TileID.Anvils);

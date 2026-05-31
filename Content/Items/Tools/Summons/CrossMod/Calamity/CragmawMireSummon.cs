@@ -19,7 +19,7 @@ namespace QoLCompendium.Content.Items.Tools.Summons.CrossMod.Calamity
 
         public override void AddRecipes()
         {
-            Recipe r = Common.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.BossSummons, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(CrossModSupport.Calamity.Mod, "CorrodedFossil"), 3);
             r.AddIngredient(Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurousSand"), 5);
             r.AddTile(TileID.DemonAltar);

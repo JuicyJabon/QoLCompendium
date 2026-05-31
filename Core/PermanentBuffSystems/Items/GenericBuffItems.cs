@@ -16,13 +16,13 @@
                         NewBuffEffect newEffect = new(buffType);
                         BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
                         QoLCompendium.Instance.AddContent(effect);
-                        Common.AllEffects.Add(newEffect.buffID, effect);
+                        Constants.AllEffects.Add(newEffect.buffID, effect);
 
                         //ITEM
                         NewBuffItem newBuffItem = new(ItemLoader.GetItem(i).Item.type, newEffect.buffID, effect, 30, "Permanent" + BuffLoader.GetBuff(newEffect.buffID).Name, Language.GetText("Mods.QoLCompendium.Items.PermanentBuffs.DefaultPermanent") + BuffLoader.GetBuff(newEffect.buffID).DisplayName.Value);
                         BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
                         QoLCompendium.Instance.AddContent(item);
-                        Common.AllBuffItems.Add(item.Type);
+                        Constants.AllBuffItems.Add(item.Type);
                     }
                 }
             }
