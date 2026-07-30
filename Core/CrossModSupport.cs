@@ -16,6 +16,13 @@
             public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
         }
 
+        public static class AncientsAwakenedClassic
+        {
+            public const string Name = "AAModClassic";
+            public static bool Loaded => ModLoader.HasMod(Name);
+            public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
+        }
+
         public static class Arbour
         {
             public const string Name = "Arbour";
@@ -91,6 +98,37 @@
             public const string Name = "CalamityMod";
             public static bool Loaded => ModLoader.HasMod(Name);
             public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
+        }
+
+        public static class CalamityClassic
+        {
+            public static class OneZero
+            {
+                public const string Name = "CalamityModClassic1Point0";
+                public static bool Loaded => ModLoader.HasMod(Name);
+                public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
+            }
+
+            public static class OneOne
+            {
+                public const string Name = "CalamityModClassic1Point1";
+                public static bool Loaded => ModLoader.HasMod(Name);
+                public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
+            }
+
+            public static class OneTwo
+            {
+                public const string Name = "CalamityModClassic1Point2";
+                public static bool Loaded => ModLoader.HasMod(Name);
+                public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
+            }
+
+            public static class OneFour
+            {
+                public const string Name = "CalamityModClassicPreTrailer";
+                public static bool Loaded => ModLoader.HasMod(Name);
+                public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
+            }
         }
 
         public static class CalamityCommunityRemix
@@ -187,13 +225,6 @@
         public static class CrystalDragonsRace
         {
             public const string Name = "CrystalDragons";
-            public static bool Loaded => ModLoader.HasMod(Name);
-            public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
-        }
-
-        public static class DemolisherClass
-        {
-            public const string Name = "DemolisherClass";
             public static bool Loaded => ModLoader.HasMod(Name);
             public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
         }
@@ -527,13 +558,6 @@
             public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
         }
 
-        public static class ReforgeOverhaul
-        {
-            public const string Name = "ReforgeOverhaul";
-            public static bool Loaded => ModLoader.HasMod(Name);
-            public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
-        }
-
         public static class Remnants
         {
             public const string Name = "Remnants";
@@ -649,6 +673,13 @@
         public static class Terrorborn
         {
             public const string Name = "TerrorbornMod";
+            public static bool Loaded => ModLoader.HasMod(Name);
+            public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
+        }
+
+        public static class TNTerraria
+        {
+            public const string Name = "DemolisherClass";
             public static bool Loaded => ModLoader.HasMod(Name);
             public static Mod Mod => ModLoader.HasMod(Name) ? ModLoader.GetMod(Name) : null;
         }

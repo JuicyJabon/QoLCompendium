@@ -18,7 +18,7 @@ namespace QoLCompendium.Content.Tiles.CraftingStations.CrossMod.HomewardJourney
             AddMapEntry(new Color(200, 200, 200), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
             //counts as
-            AdjTiles = new int[] { TileID.BubbleMachine, ModContent.TileType<FishmenFreeMarketTradingSystem>() };
+            AdjTiles = new int[] { ModContent.TileType<FishmenFreeMarketTradingSystem>() };
             DustType = -1;
         }
     }

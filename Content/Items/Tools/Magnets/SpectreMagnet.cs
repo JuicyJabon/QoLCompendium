@@ -6,6 +6,7 @@ namespace QoLCompendium.Content.Items.Tools.Magnets
     public class SpectreMagnet : BaseMagnet, ILocalizedModType
     {
         public override bool Enabled { get; set; }
+        public override int Range => 67200;
 
         public override void SetDefaults()
         {

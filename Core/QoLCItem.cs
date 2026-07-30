@@ -1,13 +1,21 @@
-﻿namespace QoLCompendium.Core
+﻿using QoLCompendium.Core.ShopData;
+
+namespace QoLCompendium.Core
 {
     public class QoLCItem : GlobalItem
     {
-        /*
         public override void UpdateInventory(Item item, Player player)
         {
-            if (item.stack >= item.ResearchUnlockCount)
-                ModConditions.ItemHasBeenOwned[item.type] = true;
+            /*
+            if (item.type > ItemID.Count)
+            {
+                if (ShopCreation.AllShops.ContainsValue(item.ModItem.Mod.Name + ":" + item.ModItem.Name))
+                {
+                    QoLCPlayer.Get(player).ItemHasBeenOwned[item.type] = true;
+                    //if (item.stack >= item.ResearchUnlockCount)
+                }
+            }
+            */
         }
-        */
     }
 }

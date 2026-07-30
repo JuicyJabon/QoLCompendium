@@ -9,6 +9,7 @@
             TryRegisterCalamityIcons();
             TryRegisterCalamityEntropyIcons();
             TryRegisterClickerIcons();
+            TryRegisterDBTIcons();
             TryRegisterInfernalEclipseIcons();
             TryRegisterMartinsOrderIcons();
             TryRegisterThoriumIcons();
@@ -47,6 +48,14 @@
             TryAddDamageClassIcon(Common.GetModDamageClass(CrossModSupport.ClickerClass.Mod, "ClickerDamage"), "QoLCompendium/Assets/TooltipIcons/ClickDamage");
         }
 
+        public static void TryRegisterDBTIcons()
+        {
+            if (!CrossModSupport.DragonBallTerraria.Loaded)
+                return;
+
+            TryAddDamageClassIcon(Common.GetModDamageClass(CrossModSupport.DragonBallTerraria.Mod, "KiDamageType"), "QoLCompendium/Assets/TooltipIcons/KiDamage");
+        }
+
         public static void TryRegisterInfernalEclipseIcons()
         {
             if (!CrossModSupport.InfernalEclipse.Loaded)
@@ -58,6 +67,7 @@
             TryAddDamageClassIcon(Common.GetModDamageClass(CrossModSupport.InfernalEclipse.Mod, "LegendaryMelee"), "QoLCompendium/Assets/TooltipIcons/LegendaryMeleeDamage");
             TryAddDamageClassIcon(Common.GetModDamageClass(CrossModSupport.InfernalEclipse.Mod, "LegendaryRanged"), "QoLCompendium/Assets/TooltipIcons/LegendaryRangedDamage");
             TryAddDamageClassIcon(Common.GetModDamageClass(CrossModSupport.InfernalEclipse.Mod, "LegendaryMagic"), "QoLCompendium/Assets/TooltipIcons/LegendaryMagicDamage");
+            TryAddDamageClassIcon(Common.GetModDamageClass(CrossModSupport.InfernalEclipse.Mod, "LegendarySummonMeleeSpeed"), "QoLCompendium/Assets/TooltipIcons/LegendarySummonDamage");
             //Mythic Classes
             TryAddDamageClassIcon(Common.GetModDamageClass(CrossModSupport.InfernalEclipse.Mod, "MythicMelee"), "QoLCompendium/Assets/TooltipIcons/MythicMeleeDamage");
             TryAddDamageClassIcon(Common.GetModDamageClass(CrossModSupport.InfernalEclipse.Mod, "MythicRanged"), "QoLCompendium/Assets/TooltipIcons/MythicRangedDamage");

@@ -23,7 +23,7 @@ namespace QoLCompendium.Core
 
         public static void PostSetupTasks()
         {
-            HashSet<int> ModPowerUpItems =
+            List<int> ModPowerUpItems =
             [
                 GetModItem(CrossModSupport.Orchid.Mod, "Chip"),
                 GetModItem(CrossModSupport.Orchid.Mod, "Guard"),
@@ -38,10 +38,9 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Vitality.Mod, "BloodClot"),
                 GetModItem(CrossModSupport.Vitality.Mod, "HoneydropProj2")
             ];
-            ModPowerUpItems.RemoveWhere(x => x == ItemID.None);
-            Constants.PowerUpItems.UnionWith(ModPowerUpItems);
+            Constants.PowerUpItems.AddRangeNotZero(ModPowerUpItems);
 
-            HashSet<int> ModBankItems =
+            List<int> ModBankItems =
             [
                 ModContent.ItemType<BattalionLog>(),
                 ModContent.ItemType<HarmInducer>(),
@@ -148,10 +147,9 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Thorium.Mod, "GuidetoOvercomingGrief"),
                 GetModItem(CrossModSupport.Vitality.Mod, "ShimmerFishingHook")
             ];
-            ModBankItems.RemoveWhere(x => x == ItemID.None);
-            Constants.BankItems.UnionWith(ModBankItems);
+            Constants.BankItems.AddRangeNotZero(ModBankItems);
 
-            HashSet<int> TempModdedBossSummons =
+            List<int> TempModdedBossSummons =
             [
                 //QoLC Vanilla
                 ModContent.ItemType<CultistSummon>(),
@@ -222,6 +220,25 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.AFKPets.Mod, "TradeDeal"),
                 GetModItem(CrossModSupport.AFKPets.Mod, "UnstableRainbowCookie"),
                 GetModItem(CrossModSupport.AFKPets.Mod, "UntoldBurial"),
+                //Ancients Awakened Classic
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "IntimidatingLookingMushroom"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "ConfusingLookingMushroom"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "CuriousLookingClaw"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "InterestingLookingClaw"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "Toadstool"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "AncientBell"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "HydraChow"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "CursedSkull"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "SubzeroCrystal"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "DesertLamp"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "Lifescanner"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "CyberneticShroom"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "CyberneticClaw"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "ScrapHeap"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "CyberneticBell"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "JungleOrchid"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "GoldenCarrot"),
+                GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "PlatinumCarrot"),
                 //Awful Garbage
                 GetModItem(CrossModSupport.AwfulGarbage.Mod, "InsectOnAStick"),
                 GetModItem(CrossModSupport.AwfulGarbage.Mod, "PileOfFakeBones"),
@@ -401,10 +418,9 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Zylon.Mod, "ForgottenFlame"),
                 GetModItem(CrossModSupport.Zylon.Mod, "SlimyScepter")
             ];
-            TempModdedBossSummons.RemoveWhere(x => x == ItemID.None);
-            Constants.ModdedBossSummons.UnionWith(TempModdedBossSummons);
+            Constants.ModdedBossSummons.AddRangeNotZero(TempModdedBossSummons);
 
-            HashSet<int> TempModdedEventSummons =
+            List<int> TempModdedEventSummons =
             [
                 //Calamity
                 GetModItem(CrossModSupport.Calamity.Mod, "CausticTear"),
@@ -438,10 +454,9 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "DistressJellyItem"),
                 GetModItem(CrossModSupport.SpiritClassic.Mod, "MartianTransmitter"),
             ];
-            TempModdedEventSummons.RemoveWhere(x => x == ItemID.None);
-            Constants.ModdedEventSummons.UnionWith(TempModdedEventSummons);
+            Constants.ModdedEventSummons.AddRangeNotZero(TempModdedEventSummons);
 
-            HashSet<int> TempFargosBossSummons =
+            List<int> TempFargosBossSummons =
             [
                 //Fargos Mutant
                 //ABOMINATIONN NPC ITEMS
@@ -521,10 +536,9 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "SulphurBearTrap"),
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "WormFoodofKos"),
             ];
-            TempFargosBossSummons.RemoveWhere(x => x == ItemID.None);
-            Constants.FargosBossSummons.UnionWith(TempFargosBossSummons);
+            Constants.FargosBossSummons.AddRangeNotZero(TempFargosBossSummons);
 
-            HashSet<int> TempFargosEventSummons =
+            List<int> TempFargosEventSummons =
             [
                 //Fargos Mutant
                 //ABOMINATIONN NPC ITEMS
@@ -538,10 +552,9 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "SpentLantern"),
                 GetModItem(CrossModSupport.Fargowiltas.Mod, "WeatherBalloon"),
             ];
-            TempFargosEventSummons.RemoveWhere(x => x == ItemID.None);
-            Constants.FargosEventSummons.UnionWith(TempFargosEventSummons);
+            Constants.FargosEventSummons.AddRangeNotZero(TempFargosEventSummons);
 
-            HashSet<int> TempFargosEnemySummons =
+            List<int> TempFargosEnemySummons =
             [
                 //Fargos Mutant
                 //DEVIANTT NPC ITEMS
@@ -593,10 +606,9 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "StormIdol"),
                 GetModItem(CrossModSupport.FargowiltasCrossmod.Mod, "WyrmTablet")
             ];
-            TempFargosEnemySummons.RemoveWhere(x => x == ItemID.None);
-            Constants.FargosEnemySummons.UnionWith(TempFargosEnemySummons);
+            Constants.FargosEnemySummons.AddRangeNotZero(TempFargosEnemySummons);
 
-            HashSet<int> ModPrefixes =
+            List<int> ModPrefixes =
             [
                 GetModPrefix(CrossModSupport.Calamity.Mod, "Flawless"),
                 GetModPrefix(CrossModSupport.Calamity.Mod, "Silent"),
@@ -612,6 +624,7 @@ namespace QoLCompendium.Core
                 GetModPrefix(CrossModSupport.Orchid.Mod, "BrewingPrefix"),
                 GetModPrefix(CrossModSupport.Orchid.Mod, "LoadedPrefix"),
                 GetModPrefix(CrossModSupport.Orchid.Mod, "SpiritualPrefix"),
+                GetModPrefix(CrossModSupport.Rupture.Mod, "Marvelous"),
                 GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Omnipotent"),
                 GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Omniscient"),
                 GetModPrefix(CrossModSupport.SecretsOfTheShadows.Mod, "Soulbound"),
@@ -622,10 +635,9 @@ namespace QoLCompendium.Core
                 GetModPrefix(CrossModSupport.Vitality.Mod, "MalevolentPrefix"),
                 GetModPrefix(CrossModSupport.Vitality.Mod, "RelentlessPrefix")
             ];
-            ModPrefixes.RemoveWhere(x => x == -1);
-            Constants.Prefixes.UnionWith(ModPrefixes);
+            Constants.Prefixes.AddRangeNotZero(ModPrefixes);
 
-            HashSet<int> ModPermanentUpgrades =
+            List<int> ModPermanentUpgrades =
             [
                 GetModItem(CrossModSupport.Calamity.Mod, "MushroomPlasmaRoot"),
                 GetModItem(CrossModSupport.Calamity.Mod, "InfernalBlood"),
@@ -666,27 +678,32 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Thorium.Mod, "AstralWave"),
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationGem")
             ];
-            ModPermanentUpgrades.RemoveWhere(x => x == ItemID.None);
-            Constants.PermanentUpgrades.UnionWith(ModPermanentUpgrades);
+            Constants.PermanentUpgrades.AddRangeNotZero(ModPermanentUpgrades);
 
-            HashSet<int> ModPermanentMultiUseUpgrades =
+            List<int> ModPermanentMultiUseUpgrades =
             [
                 GetModItem(CrossModSupport.Calamity.Mod, "EnchantedStarfish"),
                 GetModItem(CrossModSupport.ExxoAvalonOrigins.Mod, "StaminaCrystal"),
                 GetModItem(CrossModSupport.Ragnarok.Mod, "InspirationEssence"),
+                GetModItem(CrossModSupport.Ragnarok.Mod, "InspirationSingularity"),
                 GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "VoidenAnkh"),
                 GetModItem(CrossModSupport.Thorium.Mod, "CrystalWave"),
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationFragment"),
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationShard"),
                 GetModItem(CrossModSupport.Thorium.Mod, "InspirationCrystalNew")
             ];
-            ModPermanentMultiUseUpgrades.RemoveWhere(x => x == ItemID.None);
-            Constants.PermanentMultiUseUpgrades.UnionWith(ModPermanentMultiUseUpgrades);
+            Constants.PermanentMultiUseUpgrades.AddRangeNotZero(ModPermanentMultiUseUpgrades);
 
-            HashSet<int> ModEmblems =
+            List<int> ModEmblems =
             [
                 GetModItem(CrossModSupport.Calamity.Mod, "RogueEmblem"),
+                GetModItem(CrossModSupport.Cerebral.Mod, "EsperEmblem"),
+                GetModItem(CrossModSupport.Cerebral.Mod, "MinstrelEmblem"),
+                GetModItem(CrossModSupport.Cerebral.Mod, "DefenderEmblem"),
+                GetModItem(CrossModSupport.Cerebral.Mod, "TricksterEmblem"),
+                GetModItem(CrossModSupport.Cerebral.Mod, "FactotumEmblem"),
                 GetModItem(CrossModSupport.ClickerClass.Mod, "ClickerEmblem"),
+                GetModItem(CrossModSupport.DragonBallTerraria.Mod, "SpiritualEmblem"),
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "ThrowerEmblem"),
                 GetModItem(CrossModSupport.MartinsOrder.Mod, "NeutralEmblem"),
                 //Common.GetModItem(CrossModSupport.Orchid.Mod, "AlchemistEmblem"),
@@ -696,11 +713,11 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.Thorium.Mod, "BardEmblem"),
                 GetModItem(CrossModSupport.Thorium.Mod, "ClericEmblem"),
                 GetModItem(CrossModSupport.Thorium.Mod, "NinjaEmblem"),
+                GetModItem(CrossModSupport.TNTerraria.Mod, "DemolisherEmblem"),
             ];
-            ModEmblems.RemoveWhere(x => x == ItemID.None);
-            Constants.Emblems.UnionWith(ModEmblems);
+            Constants.Emblems.AddRangeNotZero(ModEmblems);
 
-            HashSet<int> ModHerbs =
+            List<int> ModHerbs =
             [
                 GetModTile(CrossModSupport.Depths.Mod, "ShadowShrub"),
                 GetModTile(CrossModSupport.Redemption.Mod, "NightshadeTile"),
@@ -713,10 +730,9 @@ namespace QoLCompendium.Core
                 GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp"),
                 GetModTile(CrossModSupport.Thorium.Mod, "MarineKelp2")
             ];
-            ModHerbs.RemoveWhere(x => x == -1);
-            Constants.HerbTiles.UnionWith(ModHerbs);
+            Constants.HerbTiles.AddRangeNotZero(ModHerbs);
 
-            HashSet<int> ElementsAwokenBatteries =
+            List<int> ElementsAwokenBatteries =
             [
                 GetModItem(CrossModSupport.ElementsAwoken.Mod, "AABattery"),
                 GetModItem(CrossModSupport.ElementsAwoken.Mod, "BioBattery"),
@@ -726,10 +742,9 @@ namespace QoLCompendium.Core
                 GetModItem(CrossModSupport.ElementsAwoken.Mod, "LunarEnergyHarnesser"),
                 GetModItem(CrossModSupport.ElementsAwoken.Mod, "WoodenAccumulator"),
             ];
-            ElementsAwokenBatteries.RemoveWhere(x => x == -1);
-            Constants.ElementsAwokenBatteryItems.UnionWith(ElementsAwokenBatteries);
+            Constants.ElementsAwokenBatteryItems.AddRangeNotZero(ElementsAwokenBatteries);
 
-            HashSet <DamageClass> TempVoidClasses =
+            List<DamageClass> TempVoidClasses =
             [
                 GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidMelee"),
                 GetModDamageClass(CrossModSupport.SecretsOfTheShadows.Mod, "VoidRanged"),
@@ -741,10 +756,19 @@ namespace QoLCompendium.Core
                 GetModDamageClass(CrossModSupport.SecretsOfTheShadowsBardHealer.Mod, "VoidThrowing"),
                 GetModDamageClass(CrossModSupport.InfernalEclipse.Mod, "VoidRogue")
             ];
-            TempVoidClasses.RemoveWhere(x => x == DamageClass.Generic);
-            Constants.VoidDamageClasses.UnionWith(TempVoidClasses);
+            Constants.VoidDamageClasses.AddRangeNotGenericOrDefault(TempVoidClasses);
+            
+            List <DamageClass> TempDemolisherClasses =
+            [
+                GetModDamageClass(CrossModSupport.TNTerraria.Mod, "DemolisherDamage"),
+                GetModDamageClass(CrossModSupport.TNTerraria.Mod, "ExplosiveMeleeDamage"),
+                GetModDamageClass(CrossModSupport.TNTerraria.Mod, "ExplosiveRangedDamage"),
+                GetModDamageClass(CrossModSupport.TNTerraria.Mod, "ExplosiveMagicDamage"),
+                GetModDamageClass(CrossModSupport.TNTerraria.Mod, "ExplosiveSummonDamage")
+            ];
+            Constants.DemolisherDamageClasses.AddRangeNotGenericOrDefault(TempDemolisherClasses);
 
-            HashSet<int> ModIgnoredTiles =
+            List<int> ModIgnoredTiles =
             [
                 GetModTile(CrossModSupport.Split.Mod, "BatPot"),
                 GetModTile(CrossModSupport.Thorium.Mod, "IllumiteChunk"),
@@ -756,10 +780,9 @@ namespace QoLCompendium.Core
                 GetModTile(CrossModSupport.Thorium.Mod, "Aquamarine"),
                 GetModTile(CrossModSupport.Thorium.Mod, "Opal"),
             ];
-            ModIgnoredTiles.RemoveWhere(x => x == -1);
-            Constants.IgnoredTilesForExplosives.UnionWith(ModIgnoredTiles);
+            Constants.IgnoredTilesForExplosives.AddRangeNotZero(ModIgnoredTiles);
 
-            HashSet<Mod> TempIgnoredModsForExplosives =
+            List<Mod> TempIgnoredModsForExplosives =
             [
                 CrossModSupport.ConfectionRebaked.Mod,
                 CrossModSupport.Depths.Mod,
@@ -769,15 +792,13 @@ namespace QoLCompendium.Core
                 CrossModSupport.Orchid.Mod,
                 CrossModSupport.Remnants.Mod
             ];
-            TempIgnoredModsForExplosives.RemoveWhere(x => x == null);
-            Constants.IgnoredModsForExplosives.UnionWith(TempIgnoredModsForExplosives);
+            Constants.IgnoredModsForExplosives.AddRangeModActive(TempIgnoredModsForExplosives);
 
-            HashSet<int> ModFoodBuffs =
+            List<int> ModFoodBuffs =
             [
                 GetModBuff(CrossModSupport.WrathOfTheGods.Mod, "StarstrikinglySatiated")
             ];
-            ModFoodBuffs.RemoveWhere(x => x == -1);
-            Constants.FoodBuffs.UnionWith(ModFoodBuffs);
+            Constants.FoodBuffs.AddRangeNotZero(ModFoodBuffs);
 
             for (int i = BuffID.Count; i < BuffLoader.BuffCount; i++)
             {
@@ -795,8 +816,7 @@ namespace QoLCompendium.Core
                     GetModBuff(CrossModSupport.Thorium.Mod, "SporeCoatingBuff"),
                     GetModBuff(CrossModSupport.Thorium.Mod, "ToxicCoatingBuff"),
                 ];
-                TempThoriumCoatings.RemoveWhere(x => x == -1);
-                Constants.ThoriumCoatings.UnionWith(TempThoriumCoatings);
+                Constants.ThoriumCoatings.AddRangeNotZero(TempThoriumCoatings);
             }
         }
 
@@ -931,6 +951,8 @@ namespace QoLCompendium.Core
             if (magic > best) best = magic;
             float summon = player.GetTotalDamage<SummonDamageClass>().Additive;
             if (summon > best) best = summon;
+            float throwing = player.GetTotalDamage<ThrowingDamageClass>().Additive;
+            if (throwing > best) best = throwing;
 
             for (int i = 0; i < DamageClassLoader.DamageClassCount; i++)
             {

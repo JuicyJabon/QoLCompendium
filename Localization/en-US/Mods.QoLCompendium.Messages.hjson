@@ -1,6 +1,7 @@
 MeteorStopped: "[c/32FF82:A meteorite burned up in the atmosphere!]"
 MeteoriteGiven: "[c/FFF014:Collected {0} {$ItemName.Meteorite}] [i/s{0}:116]"
 TeleportNPCsHome: "[c/32FF82:Town NPCs have been teleported home!]"
+EventLanternNight: Scheduled a Lantern Night
 EventRain: The skies darken
 EventWind: The wind has been stirred
 EventSandstorm: The desert winds are howling
@@ -14,6 +15,7 @@ LockedBossWithTwoOptions: Defeat {0} or {1} to unlock
 LockedHardmode: Enter Hardmode to unlock
 LockedOneMech: Defeat 1 mechanical boss to unlock
 LockedThreeMechs: Defeat all 3 mechanical bosses to unlock
+Locked: Unlocked {0}
 WorldJourney: Difficulty changed to Journey Mode
 WorldNormal: Difficulty changed to Normal Mode
 WorldExpert: Difficulty changed to Expert Mode

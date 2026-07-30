@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core.PermanentBuffSystems;
+using QoLCompendium.Core.UI.Panels;
 using Terraria.ModLoader.UI;
 
 namespace QoLCompendium.Core.UI.Buttons
@@ -57,9 +58,9 @@ namespace QoLCompendium.Core.UI.Buttons
             string mouseText = $"{buffName}\n{buffTooltip}";
 
             if (buffEnabled)
-                mouseText += $"\n{UISystem.DisableText}";
+                mouseText += $"\n{PermanentBuffTogglerUI.GetUIText("DisableText")}";
             else
-                mouseText += $"\n{UISystem.EnableText}";
+                mouseText += $"\n{PermanentBuffTogglerUI.GetUIText("EnableText")}";
 
             UICommon.TooltipMouseText(mouseText);
         }

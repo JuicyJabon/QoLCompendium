@@ -74,8 +74,8 @@ namespace QoLCompendium.Core.Configs
         [DefaultValue(true)]
         public bool MobileStorages { get; set; }
 
-        [DefaultValue(true)]
-        public bool MoonPedestals { get; set; }
+        //[DefaultValue(true)]
+        //public bool MoonPedestals { get; set; }
 
         [DefaultValue(true)]
         public bool Paperweight { get; set; }
@@ -112,6 +112,9 @@ namespace QoLCompendium.Core.Configs
 
         [DefaultValue(true)]
         public bool SuperDummy { get; set; }
+
+        [DefaultValue(true)]
+        public bool TimeWrinkler { get; set; }
 
         [DefaultValue(true)]
         public bool TravelersMannequin { get; set; }

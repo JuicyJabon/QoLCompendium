@@ -1,4 +1,5 @@
-﻿using QoLCompendium.Content.NPCs;
+﻿using QoLCompendium.Content.NPCs.Town.BlackMarketDealer;
+using QoLCompendium.Content.NPCs.Town.EtherealCollector;
 
 namespace QoLCompendium.Core.Changes.NPCChanges
 {

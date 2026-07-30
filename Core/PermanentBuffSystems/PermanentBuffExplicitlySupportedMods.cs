@@ -2,10 +2,10 @@
 {
     public static class PermanentBuffExplicitlySupportedMods
     {
+        public static List<Mod> SupportedMods = [];
+
         public static bool IsBuffItemFromSupportedMod(this Item item)
         {
-            List<Mod> SupportedMods = [];
-
             //Calamity + Addons
             if (CrossModSupport.Calamity.Loaded)
                 SupportedMods.Add(CrossModSupport.Calamity.Mod);

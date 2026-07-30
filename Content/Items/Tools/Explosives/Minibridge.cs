@@ -71,11 +71,24 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
             bool goLeft = player.direction < 1;
             int min = goLeft ? -length : 0;
             int max = goLeft ? 1 : length;
-            for (int x = min; x < max; x++)
+            if (goLeft)
             {
-                Vector2 mouse = Main.MouseWorld;
-                mouse.X += x * 16;
-                Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse, Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
+                for (int x = min; x < max; x++)
+                {
+                    Vector2 mouse = Main.MouseWorld;
+                    mouse.X += x * 16;
+                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse, Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
+                }
+                return;
+            }
+            else
+            {
+                for (int x = min; x < max; x++)
+                {
+                    Vector2 mouse = Main.MouseWorld;
+                    mouse.X += x * 16;
+                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse, Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
+                }
             }
         }
     }

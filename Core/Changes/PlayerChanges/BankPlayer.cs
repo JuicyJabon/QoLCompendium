@@ -41,7 +41,7 @@
         }
     }
 
-    public class BankRange : ModSystem
+    public class BankSystem : ModSystem
     {
         public static int? LastOpenedBank;
         

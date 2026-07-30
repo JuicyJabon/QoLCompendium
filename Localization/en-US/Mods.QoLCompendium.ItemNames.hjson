@@ -33,32 +33,34 @@ GlowingMossStaff: {
 }
 
 DestinationGlobe: {
-	Biome0: Destination Globe (No Selection)
-	Biome1: Destination Globe (Desert)
-	Biome2: Destination Globe (Snow)
-	Biome3: Destination Globe (Jungle)
-	Biome4: Destination Globe (Glowing Mushroom)
-	Biome5: Destination Globe (Corruption)
-	Biome6: Destination Globe (Crimson)
-	Biome7: Destination Globe (Hallow)
-	Biome8: Destination Globe (Purity)
+	Biome0: Purity
+	Biome1: Desert
+	Biome2: Snow
+	Biome3: Jungle
+	Biome4: Glowing Mushroom
+	Biome5: Corruption
+	Biome6: Crimson
+	Biome7: Hallow
+	Biome8: No Selection
+	Selected: "Active Biomes: "
 }
 
 EntityManipulator: {
-	SpawnModifier0: Entity Manipulator (No Selection)
-	SpawnModifier1: Entity Manipulator (Increased Spawns)
-	SpawnModifier2: Entity Manipulator (Decreased Spawns)
-	SpawnModifier3: Entity Manipulator (Canceled Spawns)
-	SpawnModifier4: Entity Manipulator (Canceled Events)
-	SpawnModifier5: Entity Manipulator (Canceled Spawns & Events)
+	SpawnManipulator0: Increased Spawns
+	SpawnManipulator1: Decreased Spawns
+	SpawnManipulator2: Disabled Spawns
+	SpawnManipulator3: Disabled Events
+	SpawnManipulator4: No Selection
+	Selected: "Active Manipulators: "
 }
 
 SummoningRemote: {
 	Boss: Summoning Remote ({0})
 	BossTwins: Summoning Remote (The Twins)
 	BossMoonLord: Summoning Remote (Moon Lord)
+	EventLanternNight: Summoning Remote (Lantern Night)
 	EventRain: Summoning Remote (Rain)
-	EventWind: Summoning Remote (Wind)
+	EventWind: Summoning Remote (Windy Day)
 	EventSandstorm: Summoning Remote (Sandstorm)
 	EventParty: Summoning Remote (Party)
 	EventSlimeRain: Summoning Remote (Slime Rain)
@@ -66,14 +68,10 @@ SummoningRemote: {
 	EventGoblinArmy: Summoning Remote (Goblin Army)
 	EventSnowLegion: Summoning Remote (Frost Legion)
 	EventPirateInvasion: Summoning Remote (Pirate Invasion)
-	EventEclipse: Summoning Remote (Eclipse)
+	EventEclipse: Summoning Remote (Solar Eclipse)
 	EventPumpkinMoon: Summoning Remote (Pumpkin Moon)
 	EventFrostMoon: Summoning Remote (Frost Moon)
 	EventMartianMadness: Summoning Remote (Martian Madness)
-	EventNebulaPillar: Summoning Remote (Nebula Pillar)
-	EventSolarPillar: Summoning Remote (Solar Pillar)
-	EventStardustPillar: Summoning Remote (Stardust Pillar)
-	EventVortexPillar: Summoning Remote (Vortex Pillar)
 	EventLunar: Summoning Remote (Lunar Event)
 	NoModifier: Summoning Remote (No Selection)
 }
@@ -108,21 +106,12 @@ BottomlessLiquidBucket: {
 	Liquid3: Bottomless Liquid Bucket (Shimmer)
 }
 
-PermanentFlasks: {
-	FlaskOfCursedFlames: Permanent Flasks (Cursed Flames)
-	FlaskOfFire: Permanent Flasks (Fire)
-	FlaskOfGold: Permanent Flasks (Gold)
-	FlaskOfIchor: Permanent Flasks (Ichor)
-	FlaskOfNanites: Permanent Flasks (Nanites)
-	FlaskOfParty: Permanent Flasks (Party)
-	FlaskOfPoison: Permanent Flasks (Poison)
-	FlaskOfVenom: Permanent Flasks (Venom)
-}
-
-PermanentThoriumCoatings: {
-	DeepFreezeCoating: Permanent Thorium Coatings (Deep Freeze)
-	ExplosiveCoating: Permanent Thorium Coatings (Explosive)
-	GorgonCoating: Permanent Thorium Coatings (Gorgon)
-	SporeCoating: Permanent Thorium Coatings (Spore)
-	ToxicCoating: Permanent Thorium Coatings (Toxic)
+TimeWrinkler: {
+	Time0: Always Daytime
+	Time1: Always Nighttime
+	Time2: Always Blood Moon
+	Time3: Always Solar Eclipse
+	Time4: Time Paused
+	Time5: No Selection
+	Selected: "Active Manipulators: "
 }

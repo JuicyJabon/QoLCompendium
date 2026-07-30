@@ -70,7 +70,7 @@ namespace QoLCompendium.Core.UI.InfoDisplays
 
             if (spawnRateRaw == 0)
                 return Language.GetTextValue("Mods.QoLCompendium.InfoDisplayText.SpawnsDisabled");
-            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().noSpawns)
+            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedSpawnRateManipulators[(int)UIEnums.SpawnRateManipulators.NoSpawns])
                 return Language.GetTextValue("Mods.QoLCompendium.InfoDisplayText.SpawnsDisabled");
 
             float spawnRateAdapted = 60f / spawnRateRaw;

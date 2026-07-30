@@ -22,6 +22,7 @@
 
     public class EndlessSeedPouch : BaseAmmo
     {
+        public override int IngredientStackCount => 396;
         public override int AmmunitionItem => ItemID.Seed;
     }
 }

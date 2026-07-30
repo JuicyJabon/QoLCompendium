@@ -11,24 +11,24 @@ namespace QoLCompendium.Core.Changes.PlayerChanges
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (Main.LocalPlayer.controlLeft && !LeftLastPressed)
+            if (Player.controlLeft && !LeftLastPressed)
             {
                 latestXDirPressed = -1;
             }
-            if (Main.LocalPlayer.controlRight && !RightLastPressed)
+            if (Player.controlRight && !RightLastPressed)
             {
                 latestXDirPressed = 1;
             }
-            if (!Main.LocalPlayer.controlLeft && !Main.LocalPlayer.releaseLeft)
+            if (!Player.controlLeft && !Player.releaseLeft)
             {
                 latestXDirReleased = -1;
             }
-            if (!Main.LocalPlayer.controlRight && !Main.LocalPlayer.releaseRight)
+            if (!Player.controlRight && !Player.releaseRight)
             {
                 latestXDirReleased = 1;
             }
-            LeftLastPressed = Main.LocalPlayer.controlLeft;
-            RightLastPressed = Main.LocalPlayer.controlRight;
+            LeftLastPressed = Player.controlLeft;
+            RightLastPressed = Player.controlRight;
         }
     }
 }

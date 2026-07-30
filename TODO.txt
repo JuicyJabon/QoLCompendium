@@ -5,6 +5,7 @@ COMPLETED AMMOS:
  - Clamity
  - Homeward Journey
  - Martin's Order
+ - Split
 
 2. Loot Multiplier
 3. Shimmer Locator Item
@@ -13,8 +14,8 @@ COMPLETED AMMOS:
 6. Expert+ debuffs arent increased in time
  (DONE) 7. Infinite Pylon placement
 8. Always sell all Pylons
-9. Shop condition removal (biome, happiness, etc.)
- (DONE) 10. Bombable hardmode ores
+ (DONE) 9. Shop condition removal (biome, happiness, etc.)
+10. Bombable hardmode ores (BROKEN)
 11. Boom shuriken type item
 12. Glowing player
 13. Shell phone upgrade
@@ -27,7 +28,7 @@ COMPLETED AMMOS:
 20. Statue enemies drop items
 21. Prevent voodoo demons accidentally spawning WoF
 22. LuiAFK Combo Rod (MAYBE)
-23. Accessory slot whitelist
+23. Custom accessory slot whitelist (boot/wing/etc.)
 24. Eternia crystal wave speed increase with right click
 25. Time multipliers for beds/sundials
  (DONE) 26. Smart cursor herbs
@@ -39,7 +40,6 @@ COMPLETED AMMOS:
  - Elements Awoken
  - Enigma
  - Polarities
- - Rivals
  - Storm's Additions
 28. Mount & Pets in buff toggler
 29. Github Wiki
@@ -50,3 +50,5 @@ COMPLETED AMMOS:
 34. Fix NetSend & Recieve
 35. Obtaining tooltips
 36. Boss spawn blockers (Thorium)
+ (DONE) 37. Merge Pedestal Items
+38. Lessen the amount of weakrefs

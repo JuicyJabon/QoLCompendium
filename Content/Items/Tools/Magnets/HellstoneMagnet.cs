@@ -6,6 +6,7 @@ namespace QoLCompendium.Content.Items.Tools.Magnets
     public class HellstoneMagnet : BaseMagnet, ILocalizedModType
     {
         public override bool Enabled { get; set; }
+        public override int Range => 16800;
 
         public override void SetDefaults()
         {

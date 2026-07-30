@@ -7,6 +7,7 @@
         public new string LocalizationCategory => "Items.Tools.Magnets";
         
         public abstract bool Enabled { get; set; }
+        public abstract int Range { get; }
 
         public override void SetStaticDefaults()
         {
@@ -22,10 +23,7 @@
 
         public override void OnConsumeItem(Player player) => Item.stack++;
 
-        public override bool CanRightClick()
-        {
-            return true;
-        }
+        public override bool CanRightClick() => true;
 
         public override void RightClick(Player player)
         {

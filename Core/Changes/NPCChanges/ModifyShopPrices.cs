@@ -1,4 +1,5 @@
-﻿using QoLCompendium.Content.NPCs;
+﻿using QoLCompendium.Content.NPCs.Town.BlackMarketDealer;
+using QoLCompendium.Content.NPCs.Town.EtherealCollector;
 
 namespace QoLCompendium.Core.Changes.NPCChanges
 {
@@ -156,9 +157,10 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                 }
             }
 
+
             if (npc.type == ModContent.NPCType<EtherealCollectorNPC>() && player.active && player == Main.LocalPlayer)
             {
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Potions")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedPotionShop")
                 {
                     foreach (Item item in items)
                     {
@@ -166,7 +168,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.PotionPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Flasks, Stations & Foods")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedStationsAndUpgradesShop")
                 {
                     foreach (Item item in items)
                     {
@@ -181,7 +183,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         }
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Materials")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedMaterialShop" || shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedMaterialShop2")
                 {
                     foreach (Item item in items)
                     {
@@ -189,7 +191,31 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.MaterialPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Treasure Bags")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedMobilityAccessoryShop")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.AccessoryPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedCombatAccessoryShop")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.AccessoryPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedToolsAndInfoShop")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.AccessoryPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedTreasureBagShop")
                 {
                     foreach (Item item in items)
                     {
@@ -205,7 +231,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                             item.shopCustomPrice += (int)Constants.GoldValue * 5;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Crates & Grab Bags")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedCratesAndGrabBagsShop")
                 {
                     foreach (Item item in items)
                     {
@@ -213,7 +239,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.CratePriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Ores & Bars")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedOresAndBarsShop")
                 {
                     foreach (Item item in items)
                     {
@@ -221,7 +247,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.OrePriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Natural Blocks")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedNaturalBlockShop")
                 {
                     foreach (Item item in items)
                     {
@@ -229,7 +255,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.NaturalBlockPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Building Blocks")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedBuildingBlockShop")
                 {
                     foreach (Item item in items)
                     {
@@ -237,7 +263,7 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.BuildingBlockPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Herbs & Plants")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedHerbsAndPlantsShop")
                 {
                     foreach (Item item in items)
                     {
@@ -245,12 +271,36 @@ namespace QoLCompendium.Core.Changes.NPCChanges
                         item.shopCustomPrice *= QoLCompendium.shopConfig.HerbPriceMultiplier;
                     }
                 }
-                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/Modded Fish & Fishing Gear")
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedFishShop")
                 {
                     foreach (Item item in items)
                     {
                         if (item == null || item.type == ItemID.None) continue;
                         item.shopCustomPrice *= QoLCompendium.shopConfig.FishPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedCritterShop")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.CritterPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedMountsAndHooksShop")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.MountPriceMultiplier;
+                    }
+                }
+                if (shopName == NPCLoader.GetNPC(npc.type).FullName + "/ModdedAmmoShop")
+                {
+                    foreach (Item item in items)
+                    {
+                        if (item == null || item.type == ItemID.None) continue;
+                        item.shopCustomPrice *= QoLCompendium.shopConfig.AmmoPriceMultiplier;
                     }
                 }
             }

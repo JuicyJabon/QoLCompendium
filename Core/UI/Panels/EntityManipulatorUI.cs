@@ -4,98 +4,86 @@ namespace QoLCompendium.Core.UI.Panels
 {
     public class EntityManipulatorUI : UIState
     {
+        public UIPanel ManipulatorPanel;
         public static bool visible = false;
         public static uint timeStart;
+        public Color color = new(48, 107, 184);
+
+        internal static string GetUIText(string key, string category = "EntityManipulatorUI") => QoLCUISystem.GetUIText(category, key);
 
         public override void OnInitialize()
         {
-            UIPanel ManipulatorPanel = new();
-            ManipulatorPanel.SetPadding(0);
-            ManipulatorPanel.HAlign = 0.62f;
+            ManipulatorPanel = new();
+            ManipulatorPanel.SetPadding(6);
+            ManipulatorPanel.HAlign = 0.617f;
             ManipulatorPanel.VAlign = 0.53f;
-            ManipulatorPanel.Width.Set(280f, 0f);
-            ManipulatorPanel.Height.Set(40f, 0f);
+            ManipulatorPanel.Width.Set(216f, 0f);
+            ManipulatorPanel.Height.Set(46f, 0f);
             ManipulatorPanel.BackgroundColor *= 0f;
             ManipulatorPanel.BorderColor *= 0f;
             Append(ManipulatorPanel);
 
-            SpawnModifierButton.backgroundTexture = 0;
-            SpawnModifierButton increasedSpawnsButton = new(Common.GetAsset("SpawnModifiers", "Modifier_", SpawnModifierButton.modifierTexture = 0));
+            ImageButton increasedSpawnsButton = new(Common.GetAsset("SpawnModifiers", "Modifier_", (int)UIEnums.SpawnRateManipulators.IncreasedSpawns));
             increasedSpawnsButton.Left.Set(0f, 0f);
-            increasedSpawnsButton.Top.Set(0f, 0f);
-            increasedSpawnsButton.Width.Set(40f, 0f);
-            increasedSpawnsButton.Height.Set(40f, 0f);
+            increasedSpawnsButton.VAlign = 0.5f;
+            increasedSpawnsButton.Width.Set(34f, 0f);
+            increasedSpawnsButton.Height.Set(34f, 0f);
             increasedSpawnsButton.OnLeftClick += IncreasedSpawnsClicked;
-            increasedSpawnsButton.Tooltip = UISystem.IncreaseSpawnText;
+            increasedSpawnsButton.TooltipText = GetUIText("IncreaseSpawnsText");
             ManipulatorPanel.Append(increasedSpawnsButton);
 
-            SpawnModifierButton.backgroundTexture = 1;
-            SpawnModifierButton decreasedSpawnsButton = new(Common.GetAsset("SpawnModifiers", "Modifier_", SpawnModifierButton.modifierTexture = 1));
-            decreasedSpawnsButton.Left.Set(40f, 0f);
-            decreasedSpawnsButton.Top.Set(0f, 0f);
-            decreasedSpawnsButton.Width.Set(40f, 0f);
-            decreasedSpawnsButton.Height.Set(40f, 0f);
+            ImageButton decreasedSpawnsButton = new(Common.GetAsset("SpawnModifiers", "Modifier_", (int)UIEnums.SpawnRateManipulators.DecreasedSpawns));
+            decreasedSpawnsButton.Left.Set(34f, 0f);
+            decreasedSpawnsButton.VAlign = 0.5f;
+            decreasedSpawnsButton.Width.Set(34f, 0f);
+            decreasedSpawnsButton.Height.Set(34f, 0f);
             decreasedSpawnsButton.OnLeftClick += DecreasedSpawnsClicked;
-            decreasedSpawnsButton.Tooltip = UISystem.DecreaseSpawnText;
+            decreasedSpawnsButton.TooltipText = GetUIText("DecreaseSpawnsText");
             ManipulatorPanel.Append(decreasedSpawnsButton);
 
-            SpawnModifierButton.backgroundTexture = 1;
-            SpawnModifierButton noSpawnsButton = new(Common.GetAsset("SpawnModifiers", "Modifier_", SpawnModifierButton.modifierTexture = 2));
-            noSpawnsButton.Left.Set(80f, 0f);
-            noSpawnsButton.Top.Set(0f, 0f);
-            noSpawnsButton.Width.Set(40f, 0f);
-            noSpawnsButton.Height.Set(40f, 0f);
+            ImageButton noSpawnsButton = new(Common.GetAsset("SpawnModifiers", "Modifier_", (int)UIEnums.SpawnRateManipulators.NoSpawns));
+            noSpawnsButton.Left.Set(68f, 0f);
+            noSpawnsButton.VAlign = 0.5f;
+            noSpawnsButton.Width.Set(34f, 0f);
+            noSpawnsButton.Height.Set(34f, 0f);
             noSpawnsButton.OnLeftClick += NoSpawnsClicked;
-            noSpawnsButton.Tooltip = UISystem.CancelSpawnText;
+            noSpawnsButton.TooltipText = GetUIText("DisableSpawnsText");
             ManipulatorPanel.Append(noSpawnsButton);
 
-            SpawnModifierButton.backgroundTexture = 1;
-            SpawnModifierButton noEventsButton = new(Common.GetAsset("SpawnModifiers", "Modifier_", SpawnModifierButton.modifierTexture = 3));
-            noEventsButton.Left.Set(120f, 0f);
-            noEventsButton.Top.Set(0f, 0f);
-            noEventsButton.Width.Set(40f, 0f);
-            noEventsButton.Height.Set(40f, 0f);
+            ImageButton noEventsButton = new(Common.GetAsset("SpawnModifiers", "Modifier_", (int)UIEnums.SpawnRateManipulators.NoEvents));
+            noEventsButton.Left.Set(102f, 0f);
+            noEventsButton.VAlign = 0.5f;
+            noEventsButton.Width.Set(34f, 0f);
+            noEventsButton.Height.Set(34f, 0f);
             noEventsButton.OnLeftClick += NoEventsClicked;
-            noEventsButton.Tooltip = UISystem.CancelEventText;
+            noEventsButton.TooltipText = GetUIText("DisableEventsText");
             ManipulatorPanel.Append(noEventsButton);
 
-            SpawnModifierButton.backgroundTexture = 1;
-            SpawnModifierButton noSpawnsOrEventsButton = new(Common.GetAsset("SpawnModifiers", "Modifier_", SpawnModifierButton.modifierTexture = 4));
-            noSpawnsOrEventsButton.Left.Set(160f, 0f);
-            noSpawnsOrEventsButton.Top.Set(0f, 0f);
-            noSpawnsOrEventsButton.Width.Set(40f, 0f);
-            noSpawnsOrEventsButton.Height.Set(40f, 0f);
-            noSpawnsOrEventsButton.OnLeftClick += NoSpawnsOrEventsClicked;
-            noSpawnsOrEventsButton.Tooltip = UISystem.CancelSpawnAndEventText;
-            ManipulatorPanel.Append(noSpawnsOrEventsButton);
+            ImageButton resetButton = new(Common.GetAsset("SpawnModifiers", "Modifier_Reset"));
+            resetButton.Left.Set(136f, 0f);
+            resetButton.VAlign = 0.5f;
+            resetButton.Width.Set(34f, 0f);
+            resetButton.Height.Set(34f, 0f);
+            resetButton.OnLeftClick += RevertButtonClicked;
+            resetButton.TooltipText = GetUIText("ResetText");
+            ManipulatorPanel.Append(resetButton);
 
-            GenericUIButton.backgroundTexture = 1;
-            GenericUIButton revertButton = new(Common.GetAsset("Buttons", "Button_Small_", GenericUIButton.buttonTexture = 2));
-            revertButton.Left.Set(200f, 0f);
-            revertButton.Top.Set(0f, 0f);
-            revertButton.Width.Set(40f, 0f);
-            revertButton.Height.Set(40f, 0f);
-            revertButton.OnLeftClick += RevertButtonClicked;
-            revertButton.Tooltip = UISystem.ResetText;
-            ManipulatorPanel.Append(revertButton);
-
-            GenericUIButton.backgroundTexture = 2;
-            GenericUIButton closeButton = new(Common.GetAsset("Buttons", "Button_Small_", GenericUIButton.buttonTexture = 3));
-            closeButton.Left.Set(240f, 0f);
-            closeButton.Top.Set(0f, 0f);
-            closeButton.Width.Set(40f, 0f);
-            closeButton.Height.Set(40f, 0f);
+            ImageButton closeButton = new(Common.GetAsset("SpawnModifiers", "Modifier_Close"));
+            closeButton.Left.Set(170f, 0f);
+            closeButton.VAlign = 0.5f;
+            closeButton.Width.Set(34f, 0f);
+            closeButton.Height.Set(34f, 0f);
             closeButton.OnLeftClick += CloseButtonClicked;
-            closeButton.Tooltip = UISystem.CloseText;
+            closeButton.TooltipText = Language.GetTextValue("LegacyInterface.52");
             ManipulatorPanel.Append(closeButton);
         }
 
-        private void RevertButtonClicked(UIMouseEvent evt, UIElement listeningElement) => SpawnChangeClick(0);
-        private void IncreasedSpawnsClicked(UIMouseEvent evt, UIElement listeningElement) => SpawnChangeClick(1);
-        private void DecreasedSpawnsClicked(UIMouseEvent evt, UIElement listeningElement) => SpawnChangeClick(2);
-        private void NoSpawnsClicked(UIMouseEvent evt, UIElement listeningElement) => SpawnChangeClick(3);
-        private void NoEventsClicked(UIMouseEvent evt, UIElement listeningElement) => SpawnChangeClick(4);
-        private void NoSpawnsOrEventsClicked(UIMouseEvent evt, UIElement listeningElement) => SpawnChangeClick(5);
+        private void IncreasedSpawnsClicked(UIMouseEvent evt, UIElement listeningElement) => SpawnChangeClick((int)UIEnums.SpawnRateManipulators.IncreasedSpawns);
+        private void DecreasedSpawnsClicked(UIMouseEvent evt, UIElement listeningElement) => SpawnChangeClick((int)UIEnums.SpawnRateManipulators.DecreasedSpawns);
+        private void NoSpawnsClicked(UIMouseEvent evt, UIElement listeningElement) => SpawnChangeClick((int)UIEnums.SpawnRateManipulators.NoSpawns);
+        private void NoEventsClicked(UIMouseEvent evt, UIElement listeningElement) => SpawnChangeClick((int)UIEnums.SpawnRateManipulators.NoEvents);
+        private void RevertButtonClicked(UIMouseEvent evt, UIElement listeningElement) => SpawnChangeClick((int)UIEnums.SpawnRateManipulators.NoSelection);
+
 
         private void CloseButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -110,9 +98,39 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedSpawnModifier = modifier;
-                SoundEngine.PlaySound(SoundID.MenuTick);
+                SoundEngine.PlaySound(SoundID.MenuOpen);
+                QoLCPlayer player = QoLCPlayer.Get(Main.LocalPlayer);
+                switch (modifier)
+                {
+                    case 0:
+                        player.selectedSpawnRateManipulators[(int)UIEnums.SpawnRateManipulators.IncreasedSpawns] = true;
+                        break;
+                    case 1:
+                        player.selectedSpawnRateManipulators[(int)UIEnums.SpawnRateManipulators.DecreasedSpawns] = true;
+                        break;
+                    case 2:
+                        player.selectedSpawnRateManipulators[(int)UIEnums.SpawnRateManipulators.NoSpawns] = true;
+                        break;
+                    case 3:
+                        player.selectedSpawnRateManipulators[(int)UIEnums.SpawnRateManipulators.NoEvents] = true;
+                        break;
+                    case 4:
+                        for (int i = 0; i < player.selectedSpawnRateManipulators.Length; i++)
+                            player.selectedSpawnRateManipulators[i] = false;
+                        break;
+                    default:
+                        for (int i = 0; i < player.selectedSpawnRateManipulators.Length; i++)
+                            player.selectedSpawnRateManipulators[i] = false;
+                        break;
+                }
             }
+        }
+
+        protected override void DrawSelf(SpriteBatch spriteBatch)
+        {
+            Rectangle target = new((int)ManipulatorPanel.GetDimensions().X, (int)ManipulatorPanel.GetDimensions().Y, (int)ManipulatorPanel.GetDimensions().Width, (int)ManipulatorPanel.GetDimensions().Height);
+            BackgroundDrawing.DrawBackground(spriteBatch, target, color);
+            BackgroundDrawing.DrawBorder(spriteBatch, target, color);
         }
     }
 }

@@ -1,3 +1,4 @@
+ItemObtained: Sold when item is obtained at a stack of {0}
 beenThroughNight: Night has occurred at least once
 downedLunarEvent: Completed the Lunar Event
 downedEclipse: Completed a Solar Eclipse
@@ -464,7 +465,6 @@ downedCursedCoffin: After defeating the Cursed Coffin
 downedOrdealAny: After defeating any Ordeal
 downedNihilityTwin: After defeating the Nihility Twin
 downedProphet: After defeating the Prophet
-ItemObtained: Sold when item is obtained at a stack of {0}
 downedLuminaris: After defeating Luminaris
 downedExcavator: After defeating the Excavator
 downedHauntedRainforest: Completed the Haunted Rainforest
@@ -540,3 +540,53 @@ DownedMindFlayer: After defeating the Mind Flayer
 DownedAbyssalArmageddon: Completed the Abyssal Armageddon
 HasBeenToShadowSurface: Visited the Shadow Surface
 HasBeenToShadowDepths: Visited the Shadow Depths
+DownedAcidRainAny: Completed any Acid Rain
+HasBeenToSunkenShip: Visited the Sunken Ship
+HasBeenToParthenan: Visited the Parthenan
+HasBeenToLostKeep: Visited the Lost Keep
+HasBeenToAACVoid: Visited the Void
+HasBeenToTerrarium: Visited the Terrarium
+HasBeenToRedMushroom: Visited the Red Mushroom biome
+HasBeenToMire: Visited the Mire
+HasBeenToInferno: Visited the Inferno
+HasBeenToHoard: Visited the Hoard
+HasBeenToAcropolis: Visited the Acropolis
+DownedBiomiteCore: After defeating the Biomite Core
+DownedCthulhu: After defeating Cthulhu
+DownedSoulOfCthulhu: After defeating the Soul of Cthulhu
+DownedInfinityZero: After defeating Infinity Zero
+DownedShenDoragonAwakened: After defeating Shen Doragon Awakened
+DownedShenDoragon: After defeating Shen Doragon
+DownedRajahRabbitRevenge: After defeating Rajah Rabbit's Revenge
+DownedZeroProtocol: After defeating Zero Protocol
+DownedZero: After defeating Zero
+DownedYamataNoOrochi: After defeating Yamata No Orochi
+DownedYamata: After defeating Yamata
+DownedOniAkuma: After defeating Oni Akuma
+DownedAkuma: After defeating Akuma
+DownedSistersOfDiscord: After defeating the Sisters of Discord
+DownedEquinoxWorms: After defeating the Equinox Worms
+DownedWormKingGreed: After defeating Worm King Greed
+DownedOlympianAthena: After defeating Olympian Athena
+DownedForsakenAnubis: After defeating Forsaken Anubis
+DownedRajahRabbit: After defeating Rajah Rabbit
+DownedGreed: After defeating Greed
+DownedAthena: After defeating Athena
+DownedAnubis: After defeating Anubis
+DownedRaiderUltima: After defeating Raider Ultima
+DownedOrthrusX: After defeating Orthrus X
+DownedTheRetriever: After defeating the Retriever
+DownedTechnoTruffle: After defeating the Techno Truffle
+DownedSagittarius: After defeating Sagittarius
+DownedDesertDjinn: After defeating the Desert Djinn
+DownedSubzeroSerpent: After defeating the Subzero Serpent
+DownedAACHydra: After defeating the Hydra
+DownedBroodmother: After defeating the Broodmother
+DownedTruffleToad: After defeating the Truffle Toad
+DownedGripsOfChaos: After defeating the Grips of Chaos
+DownedFeudalFungus: After defeating the Feudal Fungus
+DownedMushroomMonarch: After defeating the Mushroom Monarch
+DownedSiegeUnitAny: After defeating any Siege Unit
+DownedEarlyAncientAny: After defeating Olympian Athena or Worm King Greed
+DownedLateAncientAny: After defeating Akuma, Yamata, or Zero
+DownedSuperAncientAny: After defeating Shen Doragon, Infinity Zero, or Soul of Cthulhu

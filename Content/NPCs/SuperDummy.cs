@@ -1,11 +1,15 @@
 ﻿using QoLCompendium.Core.Changes.NPCChanges;
 using Terraria.DataStructures;
-using Terraria.GameContent.Bestiary;
 
 namespace QoLCompendium.Content.NPCs
 {
     public class SuperDummy : ModNPC
     {
+        public override void SetStaticDefaults()
+        {
+            this.HideFromBestiary();
+        }
+
         public override void SetDefaults()
         {
             NPC.CloneDefaults(NPCID.TargetDummy);
@@ -27,14 +31,11 @@ namespace QoLCompendium.Content.NPCs
             NPC.life = NPC.lifeMax = int.MaxValue;
         }
 
-        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-        {
-            bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], true);
-        }
-
         public override void AI()
         {
             NPC.life = NPC.lifeMax = int.MaxValue;
+            
+            NPC.Center = new(NPC.ai[0], NPC.ai[1]);
 
             if (SpawnRateEdits.AnyBossAlive())
             {

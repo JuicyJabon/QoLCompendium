@@ -51,7 +51,7 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
 
         public void HandleShadow(Player player)
         {
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<BuildIndicatorProjectile>()] > 50)
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<BuildIndicatorProjectile>()] > 45)
                 return;
 
             if (player.direction < 0)
@@ -68,14 +68,17 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
                 }
                 return;
             }
-            for (int x = 0; x <= 9; x++)
+            else
             {
-                for (int y = -5; y <= 0; y++)
+                for (int x = 0; x <= 9; x++)
                 {
-                    Vector2 mouse = Main.MouseWorld;
-                    mouse.X += x * 16;
-                    mouse.Y += y * 16;
-                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(0, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
+                    for (int y = -5; y <= 0; y++)
+                    {
+                        Vector2 mouse = Main.MouseWorld;
+                        mouse.X += x * 16;
+                        mouse.Y += y * 16;
+                        Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(0, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
+                    }
                 }
             }
         }

@@ -6,8 +6,10 @@ namespace QoLCompendium.Core.Changes.NPCChanges
     {
         public override void SetBestiary(NPC npc, BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
-            if (QoLCompendium.mainConfig.OneKillForBestiaryEntries)
+            if (QoLCompendium.mainConfig.OneKillForBestiaryEntries && !npc.townNPC && !npc.friendly)
+            {
                 bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[npc.type], true);
+            }
         }
     }
 }

@@ -63,7 +63,7 @@ namespace QoLCompendium.Content.Items.Tools.Usables
                 else if (NPC.CountNPCS(ModContent.NPCType<NPCs.SuperDummy>()) < 100)
                 {
                     Vector2 pos = new((int)Main.MouseWorld.X, (int)Main.MouseWorld.Y);
-                    int dummy = NPC.NewNPC(NPC.GetBossSpawnSource(Main.myPlayer), (int)pos.X, (int)pos.Y, ModContent.NPCType<NPCs.SuperDummy>());
+                    int dummy = NPC.NewNPC(NPC.GetBossSpawnSource(Main.myPlayer), (int)pos.X, (int)pos.Y, ModContent.NPCType<NPCs.SuperDummy>(), ai0: pos.X, ai1: pos.Y);
                     if (dummy != Main.maxNPCs && Main.netMode == NetmodeID.Server)
                         NetMessage.SendData(MessageID.SyncNPC, number: dummy);
                 }

@@ -5,7 +5,7 @@
     {
         public int index = 44;
 
-        private int buff = buff;
+        public int buff = buff;
 
         public int EffectType = type;
 

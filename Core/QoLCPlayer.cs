@@ -1,14 +1,12 @@
-using Humanizer;
 using QoLCompendium.Content.Items.Accessories.Fishing;
 using QoLCompendium.Content.Items.Dedicated;
 using QoLCompendium.Content.Items.Tools.Fishing;
 using QoLCompendium.Content.Items.Tools.Usables;
-using QoLCompendium.Core.UI.Panels;
+using QoLCompendium.Core.UI;
 using System.Reflection;
 using Terraria.DataStructures;
 using Terraria.GameInput;
 using Terraria.ModLoader.IO;
-using Terraria.WorldBuilding;
 
 namespace QoLCompendium.Core
 {
@@ -16,26 +14,21 @@ namespace QoLCompendium.Core
     {
         public static QoLCPlayer Get(Player player) => player.GetModPlayer<QoLCPlayer>();
 
-        //Pedestals
-        public bool sunPedestal = false;
-        public bool moonPedestal = false;
-        public bool bloodMoonPedestal = false;
-        public bool eclipsePedestal = false;
-        public bool pausePedestal = false;
-        //Cross Mod
-        public bool mysticMoonPedestal = false;
+        //Spawn Manipulators
+        public bool[] selectedSpawnRateManipulators = new bool[5];
 
-        //Spawns
-        public bool increasedSpawns = false;
-        public bool decreasedSpawns = false;
-        public bool noSpawns = false;
-        public int selectedSpawnModifier = 0;
+        //Biomes
+        public bool[] selectedBiomes = new bool[9];
+
+        //Time Manipulators
+        public bool[] selectedTimeManipulators = new bool[6];
+
         public int spawnRate;
         public int spawnRateUpdateTimer;
         static FieldInfo spawnRateFieldInfo;
-        public int bossToSpawn = 0;
+        public int bossToSpawn = -1;
         public bool bossSpawn = false;
-        public int eventToSpawn = 0;
+        public int eventToSpawn = -1;
         public bool eventSpawn = false;
 
         //Items
@@ -47,11 +40,11 @@ namespace QoLCompendium.Core
         public List<int> activeBannerItems = [];
         public List<int> activeBuffs = [];
 
-        //Biomes
-        public int selectedBiome = 0;
-
         //dedicated
         public bool glassCannon = false;
+
+        //shops
+        public bool[] ItemHasBeenOwned;
 
         public override void Load()
         {
@@ -63,34 +56,96 @@ namespace QoLCompendium.Core
             On_ItemSlot.RightClick_ItemArray_int_int -= ItemSlot_RightClick;
         }
 
+        public override void Initialize()
+        {
+            ItemHasBeenOwned = ItemID.Sets.Factory.CreateBoolSet(false);
+        }
+
         public override void ResetEffects() { Reset(); }
 
         public override void UpdateDead() { Reset(); }
 
         public override void SaveData(TagCompound tag)
         {
-            tag.Add("SelectedBiome", selectedBiome);
-            tag.Add("SelectedSpawnModifier", selectedSpawnModifier);
-            tag.Add("bossToSpawn", bossToSpawn);
-            tag.Add("bossSpawn", bossSpawn);
-            tag.Add("eventToSpawn", eventToSpawn);
-            tag.Add("eventSpawn", eventSpawn);
+            //biomes
+            tag.Add("QoLCSelectedBiomes", selectedBiomes);
+
+            //spawns
+            tag.Add("QoLCSelectedSpawnRateManipulators", selectedSpawnRateManipulators);
+
+            //time
+            tag.Add("QoLCSelectedTimeManipulators", selectedTimeManipulators);
+
+            //bosses
+            tag.Add("QoLCBossToSpawn", bossToSpawn);
+            tag.Add("QoLCBossSpawn", bossSpawn);
+            tag.Add("QoLCEventToSpawn", eventToSpawn);
+            tag.Add("QoLCEventSpawn", eventSpawn);
+
+            List<string> ownedItemsData = [];
+            for (int i = 0; i < ItemHasBeenOwned.Length; i++)
+            {
+                if (ItemHasBeenOwned[i])
+                {
+                    if (i >= ItemID.Count) // modded item, add name instead
+                    {
+                        if (ItemLoader.GetItem(i) is ModItem modItem && modItem != null)
+                            ownedItemsData.Add($"{modItem.FullName}");
+                    }
+                    else // vanilla item
+                    {
+                        ownedItemsData.Add($"{i}");
+                    }
+                }
+            }
+            tag.Add("QoLCOwnedItems", ownedItemsData);
         }
 
         public override void LoadData(TagCompound tag)
         {
-            selectedBiome = tag.GetInt("SelectedBiome");
-            selectedSpawnModifier = tag.GetInt("SelectedSpawnModifier");
-            bossToSpawn = tag.GetInt("bossToSpawn");
-            bossSpawn = tag.GetBool("bossSpawn");
-            eventToSpawn = tag.GetInt("eventToSpawn");
-            eventSpawn = tag.GetBool("eventSpawn");
+            //biomes
+            selectedBiomes = tag.Get<bool[]>("QoLCSelectedBiomes");
+            if (selectedBiomes.Length < Enum.GetValues(typeof(UIEnums.BiomeTypes)).Length)
+                Array.Resize(ref selectedBiomes, Enum.GetValues(typeof(UIEnums.BiomeTypes)).Length);
+
+            //spawns
+            selectedSpawnRateManipulators = tag.Get<bool[]>("QoLCSelectedSpawnRateManipulators");
+            if (selectedSpawnRateManipulators.Length < Enum.GetValues(typeof(UIEnums.SpawnRateManipulators)).Length)
+                Array.Resize(ref selectedSpawnRateManipulators, Enum.GetValues(typeof(UIEnums.SpawnRateManipulators)).Length);
+
+            //time
+            selectedTimeManipulators = tag.Get<bool[]>("QoLCSelectedTimeManipulators");
+            if (selectedTimeManipulators.Length < Enum.GetValues(typeof(UIEnums.TimeManipulators)).Length)
+                Array.Resize(ref selectedTimeManipulators, Enum.GetValues(typeof(UIEnums.TimeManipulators)).Length);
+
+            //bosses
+            bossToSpawn = tag.GetInt("QoLCBossToSpawn");
+            bossSpawn = tag.GetBool("QoLCBossSpawn");
+            eventToSpawn = tag.GetInt("QoLCEventToSpawn");
+            eventSpawn = tag.GetBool("QoLCEventSpawn");
+
+            ItemHasBeenOwned = ItemID.Sets.Factory.CreateBoolSet(false);
+            var ownedItemsData = tag.GetList<string>("QoLCOwnedItems");
+            foreach (var entry in ownedItemsData)
+            {
+                if (int.TryParse(entry, out int type) && type < ItemID.Count)
+                {
+                    ItemHasBeenOwned[type] = true;
+                }
+                else
+                {
+                    if (ModContent.TryFind(entry, out ModItem item))
+                        ItemHasBeenOwned[item.Type] = true;
+                }
+            }
         }
 
         public override void PreUpdate()
         {
+            #region Info Displays
             if (spawnRateUpdateTimer > 0)
                 spawnRateUpdateTimer--;
+            #endregion
         }
 
         public override void PostUpdateBuffs()
@@ -102,23 +157,57 @@ namespace QoLCompendium.Core
             }
         }
 
-        public override void PostUpdate()
-        {
-            if (CrossModSupport.ReforgeOverhaul.Loaded && ModAccessorySlot.Player.equippedWings.social != true)
-            {
-                CrossModSupport.ReforgeOverhaul.Mod.Call("PostUpdateModPlayer", Main.LocalPlayer.whoAmI, ModAccessorySlot.Player.equippedWings);
-            }
-        }
-
         public override void PostUpdateMiscEffects()
         {
+            #region Spawn Rate Info
             if (spawnRateUpdateTimer <= 0)
             {
                 spawnRateUpdateTimer = 60;
                 spawnRateFieldInfo = typeof(NPC).GetField("spawnRate", BindingFlags.Static | BindingFlags.NonPublic);
                 spawnRate = (int)spawnRateFieldInfo.GetValue(null);
             }
+            #endregion
 
+            #region Entity Manipulator
+            if (selectedSpawnRateManipulators.Any(c => c == true))
+                activeItems.Add(ModContent.ItemType<EntityManipulator>());
+
+            if (selectedSpawnRateManipulators[(int)UIEnums.SpawnRateManipulators.NoEvents])
+                NPCsUtils.DisableEvents();
+            #endregion
+
+            #region Destination Globe
+            if (selectedBiomes.Any(c => c == true))
+                activeItems.Add(ModContent.ItemType<DestinationGlobe>());
+
+            if (selectedBiomes[(int)UIEnums.BiomeTypes.Purity])
+                Player.ZonePurity = true;
+            if (selectedBiomes[(int)UIEnums.BiomeTypes.Desert])
+            {
+                Player.ZoneDesert = true;
+                if (Player.ZoneDirtLayerHeight || Player.ZoneRockLayerHeight)
+                    Player.ZoneUndergroundDesert = true;
+            }
+            if (selectedBiomes[(int)UIEnums.BiomeTypes.Snow])
+                Player.ZoneSnow = true;
+            if (selectedBiomes[(int)UIEnums.BiomeTypes.Jungle])
+                Player.ZoneJungle = true;
+            if (selectedBiomes[(int)UIEnums.BiomeTypes.Glowshroom])
+                Player.ZoneGlowshroom = true;
+            if (selectedBiomes[(int)UIEnums.BiomeTypes.Corruption])
+                Player.ZoneCorrupt = true;
+            if (selectedBiomes[(int)UIEnums.BiomeTypes.Crimson])
+                Player.ZoneCrimson = true;
+            if (selectedBiomes[(int)UIEnums.BiomeTypes.Hallow] && Main.hardMode)
+                Player.ZoneHallow = true;
+            #endregion
+
+            #region Time Wrinkler
+            if (selectedTimeManipulators.Any(c => c == true))
+                activeItems.Add(ModContent.ItemType<TimeWrinkler>());
+            #endregion
+
+            #region Mirrors
             if (warpMirror && Player.whoAmI == Main.myPlayer  && Main.mapFullscreen && Main.mouseLeft && Main.mouseLeftRelease)
             {
                 PlayerInput.SetZoom_Unscaled();
@@ -151,6 +240,7 @@ namespace QoLCompendium.Core
                     }
                 }
             }
+            #endregion
         }
 
         public override void AnglerQuestReward(float rareMultiplier, List<Item> rewardItems)
@@ -160,16 +250,20 @@ namespace QoLCompendium.Core
 
             if (Player.anglerQuestsFinished == 1)
             {
-                Item item = new(ModContent.ItemType<AnglerRadar>());
-                item.stack = 1;
+                Item item = new(ModContent.ItemType<AnglerRadar>())
+                {
+                    stack = 1
+                };
                 rewardItems.Add(item);
             }
             else
             {
                 if (Player.anglerQuestsFinished >= 1 && Main.rand.NextBool(10))
                 {
-                    Item item = new(ModContent.ItemType<AnglerRadar>());
-                    item.stack = 1;
+                    Item item = new(ModContent.ItemType<AnglerRadar>())
+                    {
+                        stack = 1
+                    };
                     rewardItems.Add(item);
                 }
             }
@@ -199,7 +293,7 @@ namespace QoLCompendium.Core
             if (glassCannon)
             {
                 modifiers.DisableSound();
-                SoundStyle sfx = new($"{nameof(QoLCompendium)}/Assets/Sounds/griefing");
+                SoundStyle sfx = new($"{nameof(QoLCompendium)}/Assets/Sounds/Griefing");
                 SoundEngine.PlaySound(sfx, Player.Center);
             }
         }
@@ -236,15 +330,6 @@ namespace QoLCompendium.Core
 
         public void Reset()
         {
-            sunPedestal = false;
-            moonPedestal = false;
-            bloodMoonPedestal = false;
-            eclipsePedestal = false;
-            pausePedestal = false;
-            mysticMoonPedestal = false;
-            increasedSpawns = false;
-            decreasedSpawns = false;
-            noSpawns = false;
             warpMirror = false;
             HasGoldenLockpick = false;
             duplicationBobber = false;
@@ -254,22 +339,6 @@ namespace QoLCompendium.Core
             activeBannerItems.Clear();
             activeBuffs.Clear();
             Common.Reset();
-
-            if (Main.netMode != NetmodeID.Server)
-            {
-                if (Main.player[Main.myPlayer].talkNPC == -1)
-                {
-                    if (ModLoader.TryGetMod("terraguardians", out Mod terraguardians))
-                    {
-                        if (!(bool)terraguardians.Call("IsPC", Main.LocalPlayer))
-                        {
-                            return;
-                        }
-                    }
-                    BlackMarketDealerNPCUI.visible = false;
-                    EtherealCollectorNPCUI.visible = false;
-                }
-            }
         }
     }
 }

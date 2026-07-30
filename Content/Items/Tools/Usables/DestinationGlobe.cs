@@ -1,3 +1,4 @@
+using QoLCompendium.Core.UI;
 using QoLCompendium.Core.UI.Panels;
 using Terraria.Enums;
 
@@ -31,11 +32,32 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.DestinationGlobe);
+
+            for (int i = 0; i < Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedBiomes.Length; i++)
+            {
+                if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedBiomes[i])
+                {
+                    TooltipLine biome = new(Mod, "QolCBiomeSelected" + i, Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.Biome" + i));
+                    biome.OverrideColor = Common.ColorSwap(Color.DimGray, Color.Silver, 3);
+                    Common.AddLastTooltip(tooltips, biome);
+                }
+            }
+
+            TooltipLine noSelection = new(Mod, "QolCNoBiomeSelection", Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.Biome" + (int)UIEnums.BiomeTypes.NoSelection));
+            noSelection.OverrideColor = Color.Red;
+            TooltipLine selection = new(Mod, "QolCBiomeSelection", Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.Selected"));
+            selection.OverrideColor = Common.ColorSwap(Color.Lime, Color.YellowGreen, 3);
+
+            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedBiomes.All(c => c == false))
+                Common.AddLastTooltip(tooltips, noSelection);
+            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedBiomes.Any(c => c == true))
+                Common.AddLastTooltip(tooltips, selection);
         }
 
         public override bool? UseItem(Player player)
         {
-            if (!DestinationGlobeUI.visible) DestinationGlobeUI.timeStart = Main.GameUpdateCount;
+            if (!DestinationGlobeUI.visible) 
+                DestinationGlobeUI.timeStart = Main.GameUpdateCount;
             DestinationGlobeUI.visible = true;
 
             return base.UseItem(player);
@@ -68,40 +90,6 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             r.AddIngredient(ItemID.WaterBucket, 1);
             r.AddTile(TileID.Anvils);
             r.Register();
-        }
-
-        public override void UpdateInventory(Player player)
-        {
-            Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.DestinationGlobe.Biome" + player.GetModPlayer<QoLCPlayer>().selectedBiome.ToString()));
-
-            if (Item.favorited)
-            {
-                player.GetModPlayer<QoLCPlayer>().activeItems.Add(Item.type);
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 1)
-                    player.ZoneDesert = true;
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 2)
-                    player.ZoneSnow = true;
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 3)
-                    player.ZoneJungle = true;
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 4)
-                    player.ZoneGlowshroom = true;
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 5)
-                    player.ZoneCorrupt = true;
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 6)
-                    player.ZoneCrimson = true;
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 7 && Main.hardMode)
-                    player.ZoneHallow = true;
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedBiome == 8)
-                    player.ZonePurity = true;
-            }
         }
     }
 }

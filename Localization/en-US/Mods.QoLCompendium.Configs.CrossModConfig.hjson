@@ -5,6 +5,11 @@ MagicStorageShadowDiamondDrops: {
 	Tooltip: Toggles if all modded bosses can drop Shadow Diamonds
 }
 
+FargosCaughtNPCs: {
+	Label: "[i:267] QoLC Caught NPCs"
+	Tooltip: Toggles if the Black Market Dealer and Ethereal Collector are catchable with Fargo's Mutant enabled
+}
+
 AFKPetsCropFix: {
 	Label: "[i:369] AFKPets Crops No Tile Cut"
 	Tooltip: Toggles if AFKPets crops can be broken by projectiles or melee swings

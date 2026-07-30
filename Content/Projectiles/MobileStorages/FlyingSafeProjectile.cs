@@ -30,7 +30,7 @@ namespace QoLCompendium.Content.Projectiles.MobileStorages
             {
                 Player player = Main.player[Main.myPlayer];
                 BankPlayer modPlayer = player.GetModPlayer<BankPlayer>();
-                PortableBankAI.BankAI(Projectile, ModContent.ItemType<FlyingSafe>(), BankRange.Safe, player);
+                PortableBankAI.BankAI(Projectile, ModContent.ItemType<FlyingSafe>(), BankSystem.Safe, player);
             }
         }
 

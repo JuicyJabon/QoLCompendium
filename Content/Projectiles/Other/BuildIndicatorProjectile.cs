@@ -39,8 +39,7 @@ namespace QoLCompendium.Content.Projectiles.Other
             Player player = Main.player[Projectile.owner];
             Vector2 mouse = Main.MouseWorld;
             Vector2 delta = mouse - oldMouse;
-            Projectile projectile = Projectile;
-            projectile.position += delta;
+            Projectile.position += delta;
             oldMouse = mouse;
             if (previouslyLookingLeft && player.direction == 1)
             {
@@ -52,8 +51,7 @@ namespace QoLCompendium.Content.Projectiles.Other
                 Projectile.position.X += Projectile.position.X + oldMouse.X;
                 previouslyLookingLeft = true;
             }
-            Projectile projectile2 = Projectile;
-            projectile2.timeLeft++;
+            Projectile.timeLeft = 10;
             if (player.HeldItem.type != item.type)
             {
                 Projectile.Kill();

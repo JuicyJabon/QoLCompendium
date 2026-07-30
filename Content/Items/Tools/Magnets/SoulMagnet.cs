@@ -6,6 +6,7 @@ namespace QoLCompendium.Content.Items.Tools.Magnets
     public class SoulMagnet : BaseMagnet, ILocalizedModType
     {
         public override bool Enabled { get; set; }
+        public override int Range => 33600;
 
         public override void SetDefaults()
         {

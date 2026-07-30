@@ -1,2 +1,5 @@
 ExpertNotMaster: This is an Expert Mode drop rate
+ExpertOrMaster: This is a {0} Mode drop rate
+Expert: Expert
+Master: Master
 ShadowDiamond: Dropped on first kill of every boss

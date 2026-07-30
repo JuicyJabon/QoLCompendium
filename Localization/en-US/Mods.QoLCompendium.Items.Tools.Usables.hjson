@@ -31,7 +31,8 @@ DestinationGlobe: {
 	Tooltip:
 		'''
 		Use to select a biome to be in
-		Favorite this item to always be in the selected biome
+		Can be right clicked from the inventory to open the selection interface
+		Selected biomes are active regardless of item location
 		'''
 }
 
@@ -39,8 +40,9 @@ EntityManipulator: {
 	DisplayName: Entity Manipulator
 	Tooltip:
 		'''
-		Use to select a spawn rate modifier
-		Favorite this item to activate the selected spawn rate modifier
+		Use to select a spawn rate manipulator
+		Can be right clicked from the inventory to open the selection interface
+		Selected manipulators are active regardless of item location
 		'''
 }
 
@@ -66,7 +68,11 @@ MiniSundial: {
 
 PhaseInterrupter: {
 	DisplayName: Phase Interrupter
-	Tooltip: Use to select the Moon's phase
+	Tooltip:
+		'''
+		Use to select the Moon's phase
+		Can be right clicked from the inventory to open the selection interface
+		'''
 }
 
 PotionCrate: {
@@ -132,4 +138,13 @@ WatchingEye: {
 SuperchargedSuperCell: {
 	DisplayName: Supercharged Super Cell
 	Tooltip: Keeps Draedon's Arsenal items at 100% charge
+}
+
+TimeWrinkler: {
+	DisplayName: Time Wrinkler
+	Tooltip:
+		'''
+		Use to select a time modifier
+		Can be right clicked from the inventory to open the selection interface
+		'''
 }

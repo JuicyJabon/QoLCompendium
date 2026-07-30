@@ -1,4 +1,5 @@
-﻿using QoLCompendium.Core.UI.Panels;
+﻿using QoLCompendium.Core.UI;
+using QoLCompendium.Core.UI.Panels;
 using Terraria.Enums;
 
 namespace QoLCompendium.Content.Items.Tools.Usables
@@ -31,6 +32,26 @@ namespace QoLCompendium.Content.Items.Tools.Usables
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.EntityManipulator);
+
+            for (int i = 0; i < Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedSpawnRateManipulators.Length; i++)
+            {
+                if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedSpawnRateManipulators[i])
+                {
+                    TooltipLine manipulator = new(Mod, "QolCSpawnManipulatorSelected" + i, Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.SpawnManipulator" + i));
+                    manipulator.OverrideColor = Common.ColorSwap(Color.DimGray, Color.Silver, 3);
+                    Common.AddLastTooltip(tooltips, manipulator);
+                }
+            }
+
+            TooltipLine noSelection = new(Mod, "QolCNoSpawnSelection", Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.SpawnManipulator" + (int)UIEnums.SpawnRateManipulators.NoSelection));
+            noSelection.OverrideColor = Color.Red;
+            TooltipLine selection = new(Mod, "QolCSpawnSelection", Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.Selected"));
+            selection.OverrideColor = Common.ColorSwap(Color.Lime, Color.YellowGreen, 3);
+
+            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedSpawnRateManipulators.All(c => c == false))
+                Common.AddLastTooltip(tooltips, noSelection);
+            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedSpawnRateManipulators.Any(c => c == true))
+                Common.AddLastTooltip(tooltips, selection);
         }
 
         public override bool? UseItem(Player player)
@@ -61,34 +82,6 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             r.AddIngredient(ItemID.PeaceCandle, 3);
             r.AddTile(TileID.Anvils);
             r.Register();
-        }
-
-        public override void UpdateInventory(Player player)
-        {
-            Item.SetNameOverride(Language.GetTextValue("Mods.QoLCompendium.ItemNames.EntityManipulator.SpawnModifier" + player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier.ToString()));
-
-            if (Item.favorited)
-            {
-                player.GetModPlayer<QoLCPlayer>().activeItems.Add(Item.type);
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 1)
-                    player.GetModPlayer<QoLCPlayer>().increasedSpawns = true;
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 2)
-                    player.GetModPlayer<QoLCPlayer>().decreasedSpawns = true;
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 3)
-                    player.GetModPlayer<QoLCPlayer>().noSpawns = true;
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 4)
-                    NPCsUtils.DisableEvents();
-
-                if (player.GetModPlayer<QoLCPlayer>().selectedSpawnModifier == 5)
-                {
-                    player.GetModPlayer<QoLCPlayer>().noSpawns = true;
-                    NPCsUtils.DisableEvents();
-                }
-            }
         }
     }
 }

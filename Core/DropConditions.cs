@@ -1,4 +1,5 @@
-﻿using Terraria.GameContent.ItemDropRules;
+﻿using Humanizer;
+using Terraria.GameContent.ItemDropRules;
 
 namespace QoLCompendium.Core
 {
@@ -88,6 +89,36 @@ namespace QoLCompendium.Core
             if (CrossModSupport.FargowiltasSouls.Loaded)
                 return (bool)CrossModSupport.FargowiltasSouls.Mod.Call("EternityMode");
             return false;
+        }
+    }
+
+    public class ExpertOrMasterDropCondition : IItemDropRuleCondition, IProvideItemConditionDescription
+    {
+        public bool CanDrop(DropAttemptInfo info)
+        {
+            if (QoLCompendium.mainConfig.RelicsInExpert && !Main.masterMode)
+                return true;
+            else if (Main.masterMode)
+                return true;
+            return false;
+        }
+
+        public bool CanShowItemDropInUI()
+        {
+            if (QoLCompendium.mainConfig.RelicsInExpert && !Main.masterMode)
+                return true;
+            else if (Main.masterMode)
+                return true;
+            return false;
+        }
+
+        public string GetConditionDescription()
+        {
+            string expert = Language.GetTextValue("Mods.QoLCompendium.NPCDropConditions.Expert");
+            string master = Language.GetTextValue("Mods.QoLCompendium.NPCDropConditions.Master");
+            string difficulty = Main.masterMode ? master : expert;
+
+            return Language.GetTextValue("Mods.QoLCompendium.NPCDropConditions.ExpertOrMaster").FormatWith(difficulty);
         }
     }
 }

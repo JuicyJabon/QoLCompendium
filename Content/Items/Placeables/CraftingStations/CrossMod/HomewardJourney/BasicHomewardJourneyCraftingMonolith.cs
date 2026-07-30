@@ -32,7 +32,6 @@ namespace QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod.Homew
             Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.CraftingStations, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
             r.AddIngredient(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "FishmenFreeMarketTradingSystem"));
             r.AddIngredient(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "StrangeDripMachine"));
-            r.AddIngredient(ItemID.BubbleMachine);
             r.Register();
         }
     }

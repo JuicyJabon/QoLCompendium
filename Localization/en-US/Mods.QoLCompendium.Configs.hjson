@@ -76,3 +76,171 @@ ConfigGlintID: {
 		Tooltip: ""
 	}
 }
+
+ShopToggles: {
+	AmmoShop: {
+		Tooltip: ""
+		Label: Ammo Shop
+	}
+
+	MountsAndHooksShop: {
+		Tooltip: ""
+		Label: Mounts And Hooks Shop
+	}
+
+	CritterShop: {
+		Tooltip: ""
+		Label: Critter Shop
+	}
+
+	FishShop: {
+		Tooltip: ""
+		Label: Fish Shop
+	}
+
+	HerbsAndPlantsShop: {
+		Tooltip: ""
+		Label: Herbs And Plants Shop
+	}
+
+	BuildingBlockShop: {
+		Tooltip: ""
+		Label: Building Block Shop
+	}
+
+	NaturalBlockShop: {
+		Tooltip: ""
+		Label: Natural Block Shop
+	}
+
+	OresAndBarsShop: {
+		Tooltip: ""
+		Label: Ores And Bars Shop
+	}
+
+	CratesAndGrabBagsShop: {
+		Tooltip: ""
+		Label: Crates And Grab Bags Shop
+	}
+
+	TreasureBagShop: {
+		Tooltip: ""
+		Label: Treasure Bag Shop
+	}
+
+	ToolsAndInfoShop: {
+		Tooltip: ""
+		Label: Tools And Info Shop
+	}
+
+	CombatAccessoryShop: {
+		Tooltip: ""
+		Label: Combat Accessory Shop
+	}
+
+	MobilityAccessoryShop: {
+		Tooltip: ""
+		Label: Mobility Accessory Shop
+	}
+
+	MaterialShop: {
+		Tooltip: ""
+		Label: Material Shop
+	}
+
+	StationsAndUpgradesShop: {
+		Tooltip: ""
+		Label: Stations And Upgrades Shop
+	}
+
+	PotionShop: {
+		Tooltip: ""
+		Label: Potion Shop
+	}
+
+	Tooltip: ""
+}
+
+EtherealCollectorShopToggles: {
+	Tooltip: ""
+
+	PotionShop: {
+		Label: Potion Shop
+		Tooltip: ""
+	}
+
+	StationsAndUpgradesShop: {
+		Label: Stations And Upgrades Shop
+		Tooltip: ""
+	}
+
+	MaterialShop: {
+		Label: Material Shop
+		Tooltip: ""
+	}
+
+	MobilityAccessoryShop: {
+		Label: Mobility Accessory Shop
+		Tooltip: ""
+	}
+
+	CombatAccessoryShop: {
+		Label: Combat Accessory Shop
+		Tooltip: ""
+	}
+
+	ToolsAndInfoShop: {
+		Label: Tools And Info Shop
+		Tooltip: ""
+	}
+
+	TreasureBagShop: {
+		Label: Treasure Bag Shop
+		Tooltip: ""
+	}
+
+	CratesAndGrabBagsShop: {
+		Label: Crates And Grab Bags Shop
+		Tooltip: ""
+	}
+
+	OresAndBarsShop: {
+		Label: Ores And Bars Shop
+		Tooltip: ""
+	}
+
+	NaturalBlockShop: {
+		Label: Natural Block Shop
+		Tooltip: ""
+	}
+
+	BuildingBlockShop: {
+		Label: Building Block Shop
+		Tooltip: ""
+	}
+
+	HerbsAndPlantsShop: {
+		Label: Herbs And Plants Shop
+		Tooltip: ""
+	}
+
+	FishShop: {
+		Label: Fish Shop
+		Tooltip: ""
+	}
+
+	CritterShop: {
+		Label: Critter Shop
+		Tooltip: ""
+	}
+
+	MountsAndHooksShop: {
+		Label: Mounts And Hooks Shop
+		Tooltip: ""
+	}
+
+	AmmoShop: {
+		Label: Ammo Shop
+		Tooltip: ""
+	}
+}

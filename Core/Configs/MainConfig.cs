@@ -229,6 +229,9 @@ namespace QoLCompendium.Core.Configs
         public bool ExtraDefenderMedalDrops { get; set; }
 
         [DefaultValue(true)]
+        public bool EarlyOldOnesArmyRelics { get; set; }
+
+        [DefaultValue(true)]
         public bool RelicsInExpert { get; set; }
 
         [DefaultValue(true)]

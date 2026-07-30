@@ -18,9 +18,15 @@
 
             int bardResourceMax = (int)CrossModSupport.Thorium.Mod.Call("GetBardInspirationMax", Main.LocalPlayer);
             int essenceMax = 40;
+            int singularityMax = 50;
             if (item.type == Common.GetModItem(CrossModSupport.Ragnarok.Mod, "InspirationEssence"))
             {
                 tooltipLine.Text = Common.GetTooltipValue("UsedItemCountable", Math.Clamp(Math.Max(bardResourceMax - essenceMax, 0), 0, 10), 10);
+                Common.AddLastTooltip(tooltips, tooltipLine);
+            }
+            if (item.type == Common.GetModItem(CrossModSupport.Ragnarok.Mod, "InspirationSingularity"))
+            {
+                tooltipLine.Text = Common.GetTooltipValue("UsedItemCountable", Math.Clamp(Math.Max(bardResourceMax - singularityMax, 0), 0, 10), 10);
                 Common.AddLastTooltip(tooltips, tooltipLine);
             }
         }

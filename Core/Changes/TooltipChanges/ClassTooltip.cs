@@ -9,6 +9,8 @@
 
         public static void ItemClassTooltip(Item item, List<TooltipLine> tooltips)
         {
+            if (Constants.DemolisherDamageClasses.Contains(item.DamageType))
+                return;
             if (Constants.VoidDamageClasses.Contains(item.DamageType))
                 return;
 
@@ -25,11 +27,16 @@
             if (item.CountsAsClass(DamageClass.Magic) && item.IsAWeapon() && item.type != ItemID.Dynamite && item.damage > 0)
                 tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.SorcererClass")));
             //SUMMONER
-            if (item.CountsAsClass(DamageClass.Summon) && item.IsAWeapon())
+            if (item.CountsAsClass(DamageClass.Summon) && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.Cerebral.Mod, "SentryDamage")) && item.IsAWeapon())
                 tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.SummonerClass")));
+
             //THROWER
             if (item.CountsAsClass(DamageClass.Throwing) && item.IsAWeapon() && !CrossModSupport.Thorium.Loaded && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.Calamity.Mod, "RogueDamageClass")) && !item.CountsAsClass(Common.GetModDamageClass(CrossModSupport.ThrowerUnification.Mod, "UnitedModdedThrower")))
-                tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ThrowerClass")));
+            {
+                if (!CrossModSupport.Cerebral.Loaded || (CrossModSupport.Cerebral.Loaded && item.ModItem.Mod != CrossModSupport.Cerebral.Mod))
+                    tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.ThrowerClass")));
+            }
+                
             //GENERIC
             if ((item.CountsAsClass(DamageClass.Generic) || (item.CountsAsClass(DamageClass.Default) && item.damage > 0)) && item.IsAWeapon())
                 tooltips.Insert(1, new TooltipLine(QoLCompendium.instance, "DamageClassType", Language.GetTextValue("Mods.QoLCompendium.CommonItemTooltips.Classless")));

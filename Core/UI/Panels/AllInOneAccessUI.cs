@@ -5,76 +5,73 @@ namespace QoLCompendium.Core.UI.Panels
 {
     public class AllInOneAccessUI : UIState
     {
+        public UIPanel StoragePanel;
         public static bool visible = false;
         public static uint timeStart;
+        public Color color = new(63, 82, 151);
 
         public override void OnInitialize()
         {
-            UIPanel StoragePanel = new();
+            StoragePanel = new();
             StoragePanel.SetPadding(0);
             StoragePanel.HAlign = 0.615f;
             StoragePanel.VAlign = 0.53f;
             StoragePanel.Width.Set(200f, 0f);
-            StoragePanel.Height.Set(40f, 0f);
+            StoragePanel.Height.Set(46f, 0f);
             StoragePanel.BackgroundColor *= 0f;
             StoragePanel.BorderColor *= 0f;
             Append(StoragePanel);
 
-            AllInOneAccessButton.backgroundTexture = 0;
-            AllInOneAccessButton piggyBank = new(Common.GetAsset("Storages", "Storage_", AllInOneAccessButton.storageTexture = 0));
+            ImageButton piggyBank = new(ModContent.Request<Texture2D>("Terraria/Images/Item_" + ItemID.PiggyBank));
             piggyBank.Left.Set(0f, 0f);
-            piggyBank.Top.Set(0f, 0f);
+            piggyBank.VAlign = 0.5f;
             piggyBank.Width.Set(40f, 0f);
             piggyBank.Height.Set(40f, 0f);
             piggyBank.OnLeftClick += PiggyBankClicked;
-            piggyBank.Tooltip = UISystem.PiggyBankText;
+            piggyBank.TooltipText = QoLCUISystem.GetUIText("AllInOneAccessUI", "OpenStorage", Lang.GetItemName(ItemID.PiggyBank));
             StoragePanel.Append(piggyBank);
 
-            AllInOneAccessButton.backgroundTexture = 1;
-            AllInOneAccessButton safe = new(Common.GetAsset("Storages", "Storage_", AllInOneAccessButton.storageTexture = 1));
+            ImageButton safe = new(ModContent.Request<Texture2D>("Terraria/Images/Item_" + ItemID.Safe));
             safe.Left.Set(40f, 0f);
-            safe.Top.Set(0f, 0f);
+            safe.VAlign = 0.5f;
             safe.Width.Set(40f, 0f);
             safe.Height.Set(40f, 0f);
             safe.OnLeftClick += SafeClicked;
-            safe.Tooltip = UISystem.SafeText;
+            safe.TooltipText = QoLCUISystem.GetUIText("AllInOneAccessUI", "OpenStorage", Lang.GetItemName(ItemID.Safe));
             StoragePanel.Append(safe);
 
-            AllInOneAccessButton.backgroundTexture = 1;
-            AllInOneAccessButton defendersForge = new(Common.GetAsset("Storages", "Storage_", AllInOneAccessButton.storageTexture = 2));
+            ImageButton defendersForge = new(ModContent.Request<Texture2D>("Terraria/Images/Item_" + ItemID.DefendersForge));
             defendersForge.Left.Set(80f, 0f);
-            defendersForge.Top.Set(0f, 0f);
+            defendersForge.VAlign = 0.5f;
             defendersForge.Width.Set(40f, 0f);
             defendersForge.Height.Set(40f, 0f);
             defendersForge.OnLeftClick += DefendersForgeClicked;
-            defendersForge.Tooltip = UISystem.DefendersForgeText;
+            defendersForge.TooltipText = QoLCUISystem.GetUIText("AllInOneAccessUI", "OpenStorage", Lang.GetItemName(ItemID.DefendersForge));
             StoragePanel.Append(defendersForge);
 
-            AllInOneAccessButton.backgroundTexture = 1;
-            AllInOneAccessButton voidVault = new(Common.GetAsset("Storages", "Storage_", AllInOneAccessButton.storageTexture = 3));
+            ImageButton voidVault = new(ModContent.Request<Texture2D>("Terraria/Images/Item_" + ItemID.ClosedVoidBag));
             voidVault.Left.Set(120f, 0f);
-            voidVault.Top.Set(0f, 0f);
+            voidVault.VAlign = 0.5f;
             voidVault.Width.Set(40f, 0f);
             voidVault.Height.Set(40f, 0f);
             voidVault.OnLeftClick += VoidVaultClicked;
-            voidVault.Tooltip = UISystem.VoidVaultText;
+            voidVault.TooltipText = QoLCUISystem.GetUIText("AllInOneAccessUI", "OpenStorage", Lang.GetItemName(ItemID.VoidLens));
             StoragePanel.Append(voidVault);
 
-            GenericUIButton.backgroundTexture = 2;
-            GenericUIButton closeButton = new(Common.GetAsset("Buttons", "Button_Small_", GenericUIButton.buttonTexture = 3));
+            ImageButton closeButton = new(Common.GetAsset("Buttons", "Button_Small_", 3));
             closeButton.Left.Set(160f, 0f);
-            closeButton.Top.Set(0f, 0f);
+            closeButton.VAlign = 0.5f;
             closeButton.Width.Set(40f, 0f);
             closeButton.Height.Set(40f, 0f);
             closeButton.OnLeftClick += CloseButtonClicked;
-            closeButton.Tooltip = UISystem.CloseText;
+            closeButton.TooltipText = Language.GetTextValue("LegacyInterface.52");
             StoragePanel.Append(closeButton);
         }
 
-        private void PiggyBankClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(BankRange.PiggyBank, SoundID.Item59);
-        private void SafeClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(BankRange.Safe, SoundID.MenuOpen);
-        private void DefendersForgeClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(BankRange.DefendersForge, SoundID.MenuOpen);
-        private void VoidVaultClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(BankRange.VoidVault, SoundID.Item130);
+        private void PiggyBankClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(BankSystem.PiggyBank, SoundID.Item59);
+        private void SafeClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(BankSystem.Safe, SoundID.MenuOpen);
+        private void DefendersForgeClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(BankSystem.DefendersForge, SoundID.MenuOpen);
+        private void VoidVaultClicked(UIMouseEvent evt, UIElement listeningElement) => StorageClick(BankSystem.VoidVault, SoundID.Item130);
 
         private void CloseButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -94,7 +91,7 @@ namespace QoLCompendium.Core.UI.Panels
                 Main.playerInventory = true;
 
                 Player.chest = bankID;
-                BankRange.LastOpenedBank = bankID;
+                BankSystem.LastOpenedBank = bankID;
 
                 Point pos = Player.Center.ToTileCoordinates();
                 Player.chestX = pos.X;
@@ -108,8 +105,15 @@ namespace QoLCompendium.Core.UI.Panels
             else
             {
                 Player.chest = -1;
-                BankRange.LastOpenedBank = null;
+                BankSystem.LastOpenedBank = null;
             }
+        }
+
+        protected override void DrawSelf(SpriteBatch spriteBatch)
+        {
+            Rectangle target = new((int)StoragePanel.GetDimensions().X, (int)StoragePanel.GetDimensions().Y, (int)StoragePanel.GetDimensions().Width, (int)StoragePanel.GetDimensions().Height);
+            BackgroundDrawing.DrawBackground(spriteBatch, target, color);
+            BackgroundDrawing.DrawBorder(spriteBatch, target, color);
         }
     }
 }

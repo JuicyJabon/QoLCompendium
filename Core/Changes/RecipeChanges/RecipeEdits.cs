@@ -6,6 +6,7 @@ using QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod.MartinsOr
 using QoLCompendium.Content.Items.Placeables.CraftingStations.CrossMod.Thorium;
 using QoLCompendium.Content.Items.Tools.Mirrors;
 using QoLCompendium.Content.Items.Tools.Usables;
+using QoLCompendium.Core.PermanentBuffSystems.Items;
 using ThoriumRework;
 
 namespace QoLCompendium.Core.Changes.RecipeChanges
@@ -50,6 +51,14 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     {
                         recipe.AddIngredient(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "AbyssalAltar"));
                         recipe.AddIngredient(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "VoidWell"));
+                    }
+                }
+
+                if (CrossModSupport.Calamity.Loaded && CrossModSupport.CalamityRekindled.Loaded)
+                {
+                    if (recipe.HasResult(ModContent.ItemType<CalamityCraftingMonolith>()))
+                    {
+                        recipe.AddIngredient(Common.GetModItem(CrossModSupport.CalamityRekindled.Mod, "ParticleAcceleratorItem"));
                     }
                 }
 
@@ -136,9 +145,14 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                             recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentCadence"));
                             recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentDraconicElixir"));
                             recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentRevivify"));
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentCRTitanScale"));
+
+                            if (!CrossModSupport.Clamity.Loaded)
+                                recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentCRTitanScale"));
+                            
                             recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentTriumph"));
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentCRYharimsStimulants"));
+
+                            if (!CrossModSupport.CalamityEntropy.Loaded)
+                                recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentCRYharimsStimulants"));
                         }
                     }
 
@@ -196,6 +210,21 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                         {
                             recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentDeathsinger"));
                             recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationRegeneration"));
+                        }
+                        else
+                        {
+                            if (CrossModSupport.InfernalEclipse.Loaded)
+                            {
+                                if (ThoriumBossReworkBuffItems.ThoriumBalanceChanges)
+                                {
+                                    recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationRegeneration"));
+                                }
+                                else
+                                {
+                                    recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentDeathsinger"));
+                                    recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationRegeneration"));
+                                }
+                            }
                         }
                     }
                 }

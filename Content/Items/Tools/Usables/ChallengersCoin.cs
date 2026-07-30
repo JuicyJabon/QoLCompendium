@@ -31,16 +31,13 @@ namespace QoLCompendium.Content.Items.Tools.Usables
             ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.ChallengersCoin);
         }
 
-        public override bool AltFunctionUse(Player player)
-        {
-            return true;
-        }
+        public override bool AltFunctionUse(Player player) => true;
 
         public override bool CanUseItem(Player player)
         {
             for (int i = 0; i < Main.maxNPCs; i++)
             {
-                if (Main.npc[i].active && Main.npc[i].boss)
+                if (Main.npc[i].active && Main.npc[i].IsABoss())
                 {
                     return false;
                 }
@@ -120,14 +117,14 @@ namespace QoLCompendium.Content.Items.Tools.Usables
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Texture2D coin = (Texture2D)ModContent.Request<Texture2D>($"QoLCompendium/Assets/Items/ChallengersCoin_{Main.GameMode}", (AssetRequestMode)2);
+            Texture2D coin = (Texture2D)ModContent.Request<Texture2D>($"QoLCompendium/Assets/Items/ChallengersCoin/ChallengersCoin_{Main.GameMode}", (AssetRequestMode)2);
             spriteBatch.Draw(coin, position, frame, drawColor, 0f, origin, scale, SpriteEffects.None, 0f);
             return false;
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            Texture2D coin = (Texture2D)ModContent.Request<Texture2D>($"QoLCompendium/Assets/Items/ChallengersCoin_{Main.GameMode}", (AssetRequestMode)2);
+            Texture2D coin = (Texture2D)ModContent.Request<Texture2D>($"QoLCompendium/Assets/Items/ChallengersCoin/ChallengersCoin_{Main.GameMode}", (AssetRequestMode)2);
             Vector2 position = Item.position - Main.screenPosition + new Vector2(16f, 16f);
             Rectangle hitbox = new(0, 0, 32, 32);
             spriteBatch.Draw(coin, position, hitbox, lightColor, rotation, new Vector2(16f, 16f), scale, SpriteEffects.None, 0f);

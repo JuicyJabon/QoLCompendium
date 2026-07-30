@@ -166,7 +166,8 @@ SummoningRemote: {
 	DisplayName: Summoning Remote
 	Tooltip:
 		'''
-		Right click while holding to open the selector UI
+		Right click while holding to open the selector interface
+		Can be right clicked from the inventory to open the selection interface
 		Left click to summon the selected boss or event
 		Restrictions apply based on progression
 		'''

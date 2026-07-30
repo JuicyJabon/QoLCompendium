@@ -5,6 +5,11 @@ namespace QoLCompendium.Core.QoLCUtils
 {
     public static class ItemUtils
     {
+        public static Condition ItemObtained(string displayText, Func<bool> obtained)
+        {
+            return new Condition(Language.GetTextValue(displayText), obtained);
+        }
+
         public static ulong CalculateCoinValue(int type, uint stack)
         {
             return type switch

@@ -15,8 +15,9 @@ namespace QoLCompendium.Content.Items.Dedicated
 
         public override void SetDefaults()
         {
-            Item.damage = int.MaxValue / 2;
-            Item.DamageType = DamageClass.Generic;
+            Item.damage = int.MaxValue;
+            Item.DamageType = DamageClass.Default;
+            Item.crit = -4;
             Item.width = Item.height = 44;
             Item.useTime = 17;
             Item.useAnimation = 17;
@@ -29,9 +30,11 @@ namespace QoLCompendium.Content.Items.Dedicated
 
         public override bool CanReforge() => false;
 
+        public override void ModifyWeaponCrit(Player player, ref float crit) => crit = 0f;
+
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            SoundEngine.PlaySound(new SoundStyle($"{nameof(QoLCompendium)}/Assets/Sounds/bonk"), target.Center);
+            SoundEngine.PlaySound(new SoundStyle($"{nameof(QoLCompendium)}/Assets/Sounds/Bonk"), target.Center);
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)

@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Content.Items.Tools.Usables;
+using Redemption.Buffs.Cooldowns;
 using Terraria.DataStructures;
 
 namespace QoLCompendium.Core.Changes.BuffChanges
@@ -435,6 +436,14 @@ namespace QoLCompendium.Core.Changes.BuffChanges
 
                     Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(info.type);
                     Player.AddBuff(moddedBuff.Value, 2);
+
+                    if (info.type == Common.GetModItem(CrossModSupport.AncientsAwakenedClassic.Mod, "SharpeningLavaFish"))
+                    {
+                        Player.AddBuff(BuffID.Sharpened, 2);
+                        if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.Sharpened))
+                            Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Sharpened);
+                    }
+
                     if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(moddedBuff.Value))
                         Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(moddedBuff.Value);
                 }
@@ -486,6 +495,13 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                 AddBuffIntegration(CrossModSupport.AFKPets.Mod, "SacrificialAltar", "SacrificialAltar");
             }
 
+            //ANCIENTS AWAKENED CLASSIC
+            if (CrossModSupport.AncientsAwakenedClassic.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.AncientsAwakenedClassic.Mod, "ToxinMonkfish", "FlaskOfHydratoxin_Buff");
+                AddVanillaBuffIntegration(CrossModSupport.AncientsAwakenedClassic.Mod, "SharpeningLavaFish", BuffID.WeaponImbueFire);
+            }
+
             //BLOCKS THROWER
             if (CrossModSupport.BlocksThrower.Loaded)
             {
@@ -525,16 +541,22 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                 AddBuffIntegration(CrossModSupport.CaptureDiscClass.Mod, "DiscCharger", "ChargedDisc");
             }
 
+            //CEREBRAL
+            if (CrossModSupport.Cerebral.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.Cerebral.Mod, "EngineerToolkit", "EngineerToolkitBuff");
+            }
+
             //CLICKER CLASS
             if (CrossModSupport.ClickerClass.Loaded)
             {
                 AddBuffIntegration(CrossModSupport.ClickerClass.Mod, "DesktopComputer", "DesktopComputerBuff");
             }
 
-            //DEMOLISHER CLASS
-            if (CrossModSupport.DemolisherClass.Loaded)
+            //DRAGON BALL TERRARIA
+            if (CrossModSupport.DragonBallTerraria.Loaded)
             {
-                AddBuffIntegration(CrossModSupport.DemolisherClass.Mod, "BlastingSupplyBoxItem", "BlastingSupplyBoxBuff");
+                AddBuffIntegration(CrossModSupport.DragonBallTerraria.Mod, "KiLanternItem", "KiLanternBuff");
             }
 
             //ELEMENTS AWOKEN
@@ -622,6 +644,12 @@ namespace QoLCompendium.Core.Changes.BuffChanges
             {
                 AddBuffIntegration(CrossModSupport.Split.Mod, "Keystone", "StrategicAdvantage");
                 AddBuffIntegration(CrossModSupport.Split.Mod, "WarningSign", "HouseOfEvil");
+            }
+
+            //TNTERRARIA
+            if (CrossModSupport.TNTerraria.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.TNTerraria.Mod, "BlastingSupplyBoxItem", "BlastingSupplyBoxBuff");
             }
 
             //THORIUM

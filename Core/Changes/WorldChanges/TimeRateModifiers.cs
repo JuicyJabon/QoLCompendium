@@ -1,4 +1,5 @@
-﻿using Terraria.GameContent.Creative;
+﻿using QoLCompendium.Core.UI;
+using Terraria.GameContent.Creative;
 
 namespace QoLCompendium.Core.Changes.WorldChanges
 {
@@ -6,7 +7,7 @@ namespace QoLCompendium.Core.Changes.WorldChanges
     {
         public override void ModifyTimeRate(ref double timeRate, ref double tileUpdateRate, ref double eventUpdateRate)
         {
-            if (Main.LocalPlayer.TryGetModPlayer(out QoLCPlayer mPlayer) && mPlayer.pausePedestal && Main.LocalPlayer.active && !Main.dedServ && !Main.gameMenu)
+            if (Main.LocalPlayer.TryGetModPlayer(out QoLCPlayer mPlayer) && mPlayer.selectedTimeManipulators[(int)UIEnums.TimeManipulators.TimePaused] && Main.LocalPlayer.active && !Main.dedServ && !Main.gameMenu)
             {
                 if (CreativePowerManager.Instance.GetPower<CreativePowers.FreezeTime>().Enabled)
                     return;
@@ -17,7 +18,7 @@ namespace QoLCompendium.Core.Changes.WorldChanges
 
         public override void PreUpdateTime()
         {
-            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().sunPedestal)
+            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedTimeManipulators[(int)UIEnums.TimeManipulators.AlwaysDay])
             {
                 if (!Main.dayTime)
                 {
@@ -26,7 +27,7 @@ namespace QoLCompendium.Core.Changes.WorldChanges
                 }
             }
 
-            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().moonPedestal)
+            if (Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedTimeManipulators[(int)UIEnums.TimeManipulators.AlwaysNight])
             {
                 if (Main.dayTime)
                 {
@@ -35,12 +36,12 @@ namespace QoLCompendium.Core.Changes.WorldChanges
                 }
             }
 
-            if (!Main.dayTime && Main.LocalPlayer.GetModPlayer<QoLCPlayer>().bloodMoonPedestal)
+            if (!Main.dayTime && Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedTimeManipulators[(int)UIEnums.TimeManipulators.AlwaysBloodMoon])
             {
                 Main.bloodMoon = true;
             }
 
-            if (Main.dayTime && Main.LocalPlayer.GetModPlayer<QoLCPlayer>().eclipsePedestal)
+            if (Main.dayTime && Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedTimeManipulators[(int)UIEnums.TimeManipulators.AlwaysEclipse])
             {
                 Main.eclipse = true;
             }

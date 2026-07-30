@@ -1,3 +1,18 @@
+v2.4.7.1
+1. The Elixir from Calamity now works with endless potions
+2. The Super Dummy is now immovable
+3. The Super Dummy now spawns center mass on the cursor
+
+v2.4.7
+1. Added the Particle Accelerator from Calamity Rekindled to the Calamity Crafting Monolith
+2. Fixed Crafting Monoliths not receiving addon mod's effects
+3. Removed Bubble Machine from the Basic Homeward Journey Crafting Monolith
+4. Added priority to Calamity Entropy over Calamity Rekindled for Yharim's Stimulants to prevent duplicate permanent buffs
+5. Added priority to Clamity Addon over Calamity Rekindled for the Titan Scale Potion to prevent duplicate permanent buffs
+6. Added a config to allow early relic drops from tier 1 and 2 Old One's Army Dark Mages and Ogres
+7. Added Staff of Scorching (Calamity Cross-Mod)
+8. Fixed Calamity Entropy load error
+
 v2.4.6
 1. Tile-placing melee tools now can roll Light and Legendary prefixes with the Reforge Rework
 2. Added support for Tooltip Icons Mod for the following mods:

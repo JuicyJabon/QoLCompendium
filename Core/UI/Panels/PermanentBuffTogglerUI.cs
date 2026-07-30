@@ -9,10 +9,17 @@ namespace QoLCompendium.Core.UI.Panels
         public static bool visible = false;
         public static uint timeStart;
 
+        internal static string GetUIText(string key, string category = "PermanentBuffTogglerUI") => QoLCUISystem.GetUIText(category, key);
+
         internal UIPanel MainPanel;
+        internal UIPanel bgPanel;
+
         public UIGrid BuffGrid;
+        public UICustomSearchBar BuffSearchBar;
         public FixedUIScrollbar Scrollbar;
         private static int _oldBuffCount;
+
+        public Color color = new(73, 94, 171);
 
         public override void OnInitialize()
         {
@@ -20,23 +27,32 @@ namespace QoLCompendium.Core.UI.Panels
             MainPanel.HAlign = 0.5f;
             MainPanel.VAlign = 0.3f;
             MainPanel.SetSize(444f, 213f);
-            MainPanel.BackgroundColor = new Color(73, 94, 171);
+            MainPanel.BackgroundColor *= 0f;
+            MainPanel.BorderColor *= 0f;
             Append(MainPanel);
 
-            UIText nameInfo = new UIText(UISystem.BuffTogglerText);
-            nameInfo.Left.Set(8f, 0f);
-            nameInfo.Top.Set(8f, 0f);
-            nameInfo.Width.Set(64f, 0f);
-            nameInfo.Height.Set(32f, 0f);
-            MainPanel.Append(nameInfo);
-
-            UIPanel bgPanel = new();
-            bgPanel.BackgroundColor = new(MainPanel.BackgroundColor.R - 30, MainPanel.BackgroundColor.G - 30, MainPanel.BackgroundColor.B - 30);
-            bgPanel.BorderColor = new(0, 0, 0, 255);
+            bgPanel = new();
+            bgPanel.BackgroundColor *= 0f;
+            bgPanel.BorderColor *= 0f;
             bgPanel.Width = StyleDimension.FromPixelsAndPercent(-18f, 1f);
             bgPanel.Height = StyleDimension.FromPixelsAndPercent(-40f, 1f);
             bgPanel.Top = StyleDimension.FromPixels(40f);
             MainPanel.Append(bgPanel);
+
+            BuffSearchBar = new(GetUIText("BuffSearchEmptyText"));
+            BuffSearchBar.SetTextMaxLength(20);
+            BuffSearchBar.SetSize(200f, 28f);
+            BuffSearchBar.Top.Set(4f, 0f);
+            BuffSearchBar.Left.Set(225f, 0f);
+            BuffSearchBar.OnTextChanged += SetupBuffButtons;
+            MainPanel.Append(BuffSearchBar);
+
+            UIText titleText = new(GetUIText("BuffTogglerText"));
+            titleText.Left.Set(8f, 0f);
+            titleText.Top.Set(8f, 0f);
+            titleText.Width.Set(64f, 0f);
+            titleText.Height.Set(32f, 0f);
+            MainPanel.Append(titleText);
 
             BuffGrid = new UIGrid(11)
             {
@@ -74,15 +90,28 @@ namespace QoLCompendium.Core.UI.Panels
         public void SetupBuffButtons()
         {
             BuffGrid.Clear();
+
+            string search = BuffSearchBar.currentString.Trim().ToLower();
+
             for (int i = 0; i < QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Count; i++)
             {
                 Constants.AllEffects.TryGetValue(QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.ElementAt(i), out BuffEffect effect);
-                if (effect != null)
-                    BuffGrid.Add(new BuffButton(QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.ElementAt(i), effect.EffectType));
-                else
-                    BuffGrid.Add(new BuffButton(QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.ElementAt(i), 0));
+
+                if (string.IsNullOrEmpty(search) || Match(search, QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.ElementAt(i)))
+                {
+                    if (effect != null)
+                        BuffGrid.Add(new BuffButton(QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.ElementAt(i), effect.EffectType));
+                    else
+                        BuffGrid.Add(new BuffButton(QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.ElementAt(i), 0));
+                }
             }
             Recalculate();
+        }
+
+        private static bool Match(string searchString, int buffId)
+        {
+            string name = Lang.GetBuffName(buffId).ToLower();
+            return name.Contains(searchString);
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch)
@@ -95,12 +124,21 @@ namespace QoLCompendium.Core.UI.Panels
                 Main.LocalPlayer.mouseInterface = true;
             }
 
-            base.DrawSelf(spriteBatch);
+            Rectangle target = new((int)MainPanel.GetDimensions().X, (int)MainPanel.GetDimensions().Y, (int)MainPanel.GetDimensions().Width, (int)MainPanel.GetDimensions().Height);
+            BackgroundDrawing.DrawBackground(spriteBatch, target, color);
+            BackgroundDrawing.DrawBorder(spriteBatch, target, color);
+
+            Rectangle bgTarget = new((int)bgPanel.GetDimensions().X, (int)bgPanel.GetDimensions().Y, (int)bgPanel.GetDimensions().Width, (int)bgPanel.GetDimensions().Height);
+            BackgroundDrawing.DrawBackground(spriteBatch, bgTarget, new Color(color.R - 30, color.G - 30, color.B - 30), "SquareNoShading");
+            BackgroundDrawing.DrawBorder(spriteBatch, bgTarget, new Color(color.R - 30, color.G - 30, color.B - 30), "SquareNoShading");
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            BuffSearchBar.hintText = GetUIText("BuffSearchEmptyText");
+
             if (_oldBuffCount != QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Count)
             {
                 _oldBuffCount = QoLCPlayer.Get(Main.LocalPlayer).activeBuffs.Count;
@@ -123,7 +161,7 @@ namespace QoLCompendium.Core.UI.Panels
                 Vector2 drawCenter = panelDimensions.Center();
                 drawCenter.Y += 10f;
                 const float scale = 0.5f;
-                string text = UISystem.NoBuffText.Value;
+                string text = GetUIText("NoBuffText");
 
                 float textWidth = FontAssets.DeathText.Value.MeasureString(text).X * 0.5f;
                 Vector2 origin = new(textWidth, 0f);
@@ -138,7 +176,7 @@ namespace QoLCompendium.Core.UI.Panels
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
             UserInterface temp = UserInterface.ActiveInstance;
-            UserInterface.ActiveInstance = UISystem.permanentBuffTogglerInterface;
+            UserInterface.ActiveInstance = ModContent.GetInstance<QoLCUISystem>().permanentBuffTogglerInterface;
             base.DrawSelf(spriteBatch);
             UserInterface.ActiveInstance = temp;
         }
@@ -146,7 +184,7 @@ namespace QoLCompendium.Core.UI.Panels
         public override void LeftMouseDown(UIMouseEvent evt)
         {
             UserInterface temp = UserInterface.ActiveInstance;
-            UserInterface.ActiveInstance = UISystem.permanentBuffTogglerInterface;
+            UserInterface.ActiveInstance = ModContent.GetInstance<QoLCUISystem>().permanentBuffTogglerInterface;
             base.LeftMouseDown(evt);
             UserInterface.ActiveInstance = temp;
         }

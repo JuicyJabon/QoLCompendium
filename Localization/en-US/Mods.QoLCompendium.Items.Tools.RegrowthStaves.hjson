@@ -33,6 +33,11 @@ StaffOfInfecting: {
 	Tooltip: ""
 }
 
+StaffOfScorching: {
+	DisplayName: Staff of Scorching
+	Tooltip: ""
+}
+
 Omnistaff: {
 	DisplayName: Omnistaff
 	Tooltip: Right Click to cycle grass type

@@ -13,7 +13,7 @@ namespace QoLCompendium.Core
         public static List<Hook> Detours = [];
 
         #region Boss Summons
-        public static readonly HashSet<int> VanillaBossSummons = new()
+        public static readonly List<int> VanillaBossSummons = new()
         {
             ItemID.SlimeCrown,
             ItemID.SuspiciousLookingEye,
@@ -30,7 +30,7 @@ namespace QoLCompendium.Core
             ItemID.CelestialSigil
         };
 
-        public static readonly HashSet<int> VanillaEventSummons = new()
+        public static readonly List<int> VanillaEventSummons = new()
         {
             ItemID.BloodMoonStarter,
             ItemID.GoblinBattleStandard,
@@ -42,15 +42,15 @@ namespace QoLCompendium.Core
             ItemID.NaughtyPresent
         };
 
-        public static HashSet<int> ModdedBossSummons = new();
+        public static List<int> ModdedBossSummons = new();
 
-        public static HashSet<int> ModdedEventSummons = new();
+        public static List<int> ModdedEventSummons = new();
 
-        public static HashSet<int> FargosBossSummons = new();
+        public static List<int> FargosBossSummons = new();
 
-        public static HashSet<int> FargosEventSummons = new();
+        public static List<int> FargosEventSummons = new();
 
-        public static HashSet<int> FargosEnemySummons = new();
+        public static List<int> FargosEnemySummons = new();
         #endregion
 
         #region Tiles & Walls
@@ -188,7 +188,7 @@ namespace QoLCompendium.Core
             ItemID.CrimsonWaterFountain
 };
 
-        public static readonly HashSet<int> Gravestones =
+        public static readonly List<int> Gravestones =
         [
             ItemID.Tombstone,
             ItemID.GraveMarker,
@@ -203,21 +203,21 @@ namespace QoLCompendium.Core
             ItemID.RichGravestone5
         ];
 
-        public static HashSet<int> IgnoredTilesForExplosives = new()
+        public static List<int> IgnoredTilesForExplosives = new()
         {
             ModContent.TileType<AsphaltPlatformTile>()
         };
 
-        public static HashSet<Mod> IgnoredModsForExplosives = new();
+        public static List<Mod> IgnoredModsForExplosives = new();
 
-        public static readonly HashSet<int> DungeonTiles = new()
+        public static readonly List<int> DungeonTiles = new()
         {
             TileID.BlueDungeonBrick,
             TileID.GreenDungeonBrick,
             TileID.PinkDungeonBrick
         };
 
-        public static readonly HashSet<int> DungeonWalls = new()
+        public static readonly List<int> DungeonWalls = new()
         {
             WallID.BlueDungeonSlabUnsafe,
             WallID.BlueDungeonTileUnsafe,
@@ -230,7 +230,7 @@ namespace QoLCompendium.Core
             WallID.PinkDungeonUnsafe
         };
 
-        public static readonly HashSet<int> HardmodeOres = new()
+        public static readonly List<int> HardmodeOres = new()
         {
              TileID.Cobalt,
              TileID.Palladium,
@@ -240,7 +240,7 @@ namespace QoLCompendium.Core
              TileID.Titanium
         };
 
-        public static HashSet<int> HerbTiles = new()
+        public static List<int> HerbTiles = new()
         {
             TileID.MatureHerbs,
             TileID.BloomingHerbs
@@ -497,7 +497,7 @@ namespace QoLCompendium.Core
         #endregion
 
         #region Potions & Upgrades
-        public static readonly HashSet<int> RedPotionBuffs = new() {
+        public static readonly List<int> RedPotionBuffs = new() {
             BuffID.ObsidianSkin,
             BuffID.Regeneration,
             BuffID.Swiftness,
@@ -518,7 +518,7 @@ namespace QoLCompendium.Core
             BuffID.Dangersense
         };
 
-        public static HashSet<int> FlaskBuffs = new()
+        public static List<int> FlaskBuffs = new()
         {
             BuffID.WeaponImbueConfetti,
             BuffID.WeaponImbueCursedFlames,
@@ -530,9 +530,9 @@ namespace QoLCompendium.Core
             BuffID.WeaponImbueVenom
         };
 
-        public static HashSet<int> ThoriumCoatings = new();
+        public static List<int> ThoriumCoatings = new();
 
-        public static HashSet<int> PermanentUpgrades = new()
+        public static List<int> PermanentUpgrades = new()
         {
             ItemID.AegisCrystal,
             ItemID.ArcaneCrystal,
@@ -548,14 +548,14 @@ namespace QoLCompendium.Core
             ItemID.MinecartPowerup
         };
 
-        public static HashSet<int> PermanentMultiUseUpgrades = new()
+        public static List<int> PermanentMultiUseUpgrades = new()
         {
             ItemID.LifeCrystal,
             ItemID.ManaCrystal,
             ItemID.LifeFruit
         };
 
-        public static HashSet<int> PowerUpItems = new()
+        public static List<int> PowerUpItems = new()
         {
             ItemID.Heart,
             ItemID.CandyApple,
@@ -570,7 +570,7 @@ namespace QoLCompendium.Core
         #endregion
 
         #region Items
-        public static HashSet<int> Emblems = new()
+        public static List<int> Emblems = new()
         {
             ItemID.WarriorEmblem,
             ItemID.RangerEmblem,
@@ -578,7 +578,7 @@ namespace QoLCompendium.Core
             ItemID.SummonerEmblem
         };
 
-        public static readonly HashSet<int> MobileStorages = new()
+        public static readonly List<int> MobileStorages = new()
         {
             ProjectileID.FlyingPiggyBank,
             ProjectileID.VoidLens,
@@ -586,7 +586,7 @@ namespace QoLCompendium.Core
             ModContent.ProjectileType<EtherianConstructProjectile>()
         };
 
-        public static HashSet<int> Prefixes = new()
+        public static List<int> Prefixes = new()
         {
             PrefixID.Legendary,
             PrefixID.Legendary2,
@@ -605,7 +605,7 @@ namespace QoLCompendium.Core
             PrefixID.Violent
         };
 
-        public static HashSet<int> BankItems = new()
+        public static List<int> BankItems = new()
         {
             ItemID.DiscountCard,
             ItemID.LuckyCoin,
@@ -680,7 +680,7 @@ namespace QoLCompendium.Core
             ItemID.PortableStool
         };
 
-        public static HashSet<int> ElementsAwokenBatteryItems = [];
+        public static List<int> ElementsAwokenBatteryItems = [];
 
         public static readonly HashSet<int> CoinIDs = new() { ItemID.CopperCoin, ItemID.SilverCoin, ItemID.GoldCoin, ItemID.PlatinumCoin };
         public static int PlatinumMaxStack = Item.CommonMaxStack;
@@ -691,12 +691,13 @@ namespace QoLCompendium.Core
         #endregion
 
         #region Damage Types
-        public static HashSet<DamageClass> VoidDamageClasses = new();
+        public static List<DamageClass> VoidDamageClasses = new();
+        public static List<DamageClass> DemolisherDamageClasses = new();
         #endregion
 
         #region Boss Drops & IDs
-        public static readonly int[] BossIDs = new int[]
-        {
+        public static readonly int[] BossIDs =
+        [
             NPCID.KingSlime,
             NPCID.EyeofCthulhu,
             NPCID.EaterofWorldsHead,
@@ -716,10 +717,10 @@ namespace QoLCompendium.Core
             NPCID.HallowBoss,
             NPCID.CultistBoss,
             NPCID.MoonLordCore,
-        };
+        ];
 
-        public static bool[] DownedVanillaBosses = new bool[]
-        {
+        public static bool[] DownedVanillaBosses =
+        [
             NPC.downedSlimeKing,
             NPC.downedBoss1,
             NPC.downedBoss2,
@@ -736,9 +737,9 @@ namespace QoLCompendium.Core
             NPC.downedFishron,
             NPC.downedAncientCultist,
             NPC.downedMoonlord
-        };
+        ];
 
-        public static readonly HashSet<int> LunarPillarIDs = new() { NPCID.LunarTowerNebula, NPCID.LunarTowerSolar, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex };
+        public static readonly List<int> LunarPillarIDs = [NPCID.LunarTowerNebula, NPCID.LunarTowerSolar, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex];
 
         public static readonly int[] kingSlimeDrops = {
             ItemID.SlimySaddle,
@@ -928,7 +929,7 @@ namespace QoLCompendium.Core
             StrangePotion
         };
 
-        public static HashSet<int> FoodBuffs = [BuffID.WellFed, BuffID.WellFed2, BuffID.WellFed3];
+        public static List<int> FoodBuffs = [BuffID.WellFed, BuffID.WellFed2, BuffID.WellFed3];
 
         #endregion
 

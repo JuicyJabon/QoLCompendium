@@ -14,6 +14,10 @@ namespace QoLCompendium.Core.Configs
         public bool MagicStorageShadowDiamondDrops { get; set; }
 
         [DefaultValue(true)]
+        [ReloadRequired]
+        public bool FargosCaughtNPCs { get; set; }
+
+        [DefaultValue(true)]
         public bool AFKPetsCropFix { get; set; }
 
         [DefaultValue(true)]

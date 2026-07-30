@@ -1,4 +1,5 @@
-﻿using ThoriumMod.Buffs;
+﻿using InfernalEclipseAPI.Core.Configs;
+using ThoriumMod.Buffs;
 using ThoriumMod.Buffs.Bard;
 using ThoriumMod.Buffs.Healer;
 using ThoriumMod.Items.BardItems;
@@ -129,8 +130,23 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 if (ThoriumBossReworkBuffItems.ConfigOn)
                 {
-                    PermanentThoriumBard.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.DeathsingerID], ThoriumBossReworkBuffItems.DeathsingerID);
-                    PermanentThoriumBard.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
+                    if (CrossModSupport.InfernalEclipse.Loaded)
+                    {
+                        if (ThoriumBossReworkBuffItems.ThoriumBalanceChanges)
+                        {
+                            PermanentThoriumBard.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
+                        }
+                        else
+                        {
+                            PermanentThoriumBard.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.DeathsingerID], ThoriumBossReworkBuffItems.DeathsingerID);
+                            PermanentThoriumBard.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
+                        }
+                    }
+                    else
+                    {
+                        PermanentThoriumBard.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.DeathsingerID], ThoriumBossReworkBuffItems.DeathsingerID);
+                        PermanentThoriumBard.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
+                    }
                 }
             }
 
@@ -229,8 +245,23 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
             {
                 if (ThoriumBossReworkBuffItems.ConfigOn)
                 {
-                    PermanentThorium.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.DeathsingerID], ThoriumBossReworkBuffItems.DeathsingerID);
-                    PermanentThorium.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
+                    if (CrossModSupport.InfernalEclipse.Loaded)
+                    {
+                        if (ThoriumBossReworkBuffItems.ThoriumBalanceChanges)
+                        {
+                            PermanentThorium.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
+                        }
+                        else
+                        {
+                            PermanentThorium.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.DeathsingerID], ThoriumBossReworkBuffItems.DeathsingerID);
+                            PermanentThorium.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
+                        }
+                    }
+                    else
+                    {
+                        PermanentThorium.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.DeathsingerID], ThoriumBossReworkBuffItems.DeathsingerID);
+                        PermanentThorium.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
+                    }
                 }
             }
 
@@ -266,19 +297,42 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
         public static bool ConfigOn = ModContent.GetInstance<CompatConfig>().extraPotions;
 
+        [JITWhenModsEnabled(CrossModSupport.InfernalEclipse.Name)]
+        public static bool ThoriumBalanceChanges => InfernalConfig.Instance.ThoriumBalanceChangess;
+
         public static void LoadTasks()
         {
             if (!ConfigOn)
                 return;
 
-            DeathsingerID = ModContent.BuffType<Deathsinger>();
-            InspiredID = ModContent.BuffType<Inspired>();
+            if (CrossModSupport.InfernalEclipse.Loaded)
+            {
+                if (ThoriumBalanceChanges)
+                {
+                    Array.Resize(ref ThoriumBossReworkEffects, ThoriumBossReworkEffects.Length + 1);
+                    ThoriumBossReworkEffects[^1] = new NewBuffEffect(ModContent.BuffType<Inspired>());
 
-            ThoriumBossReworkEffects = [
-                //potions
-                new NewBuffEffect(ModContent.BuffType<Deathsinger>()),
-                new NewBuffEffect(ModContent.BuffType<Inspired>())
-            ];
+                    InspiredID = ModContent.BuffType<Inspired>();
+                }
+                else
+                {
+                    Array.Resize(ref ThoriumBossReworkEffects, ThoriumBossReworkEffects.Length + 2);
+                    ThoriumBossReworkEffects[^2] = new NewBuffEffect(ModContent.BuffType<Deathsinger>());
+                    ThoriumBossReworkEffects[^1] = new NewBuffEffect(ModContent.BuffType<Inspired>());
+
+                    DeathsingerID = ModContent.BuffType<Deathsinger>();
+                    InspiredID = ModContent.BuffType<Inspired>();
+                }
+            }
+            else
+            {
+                Array.Resize(ref ThoriumBossReworkEffects, ThoriumBossReworkEffects.Length + 2);
+                ThoriumBossReworkEffects[^2] = new NewBuffEffect(ModContent.BuffType<Deathsinger>());
+                ThoriumBossReworkEffects[^1] = new NewBuffEffect(ModContent.BuffType<Inspired>());
+
+                DeathsingerID = ModContent.BuffType<Deathsinger>();
+                InspiredID = ModContent.BuffType<Inspired>();
+            }
 
             foreach (var newEffect in ThoriumBossReworkEffects)
             {
@@ -287,10 +341,28 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
                 Constants.AllEffects.Add(newEffect.buffID, effect);
             }
 
-            NewBuffItem[] BuffItems = [
-                new NewBuffItem(ModContent.ItemType<DeathsingerPotion>(), ModContent.BuffType<Deathsinger>(), Constants.AllEffects[ModContent.BuffType<Deathsinger>()], 30, "PermanentDeathsinger", "Permanent Deathsinger"),
-                new NewBuffItem(ModContent.ItemType<InspirationRegenerationPotion>(), ModContent.BuffType<Inspired>(), Constants.AllEffects[ModContent.BuffType<Inspired>()], 30, "PermanentInspirationRegeneration", "Permanent Inspiration Regeneration")
-            ];
+            NewBuffItem[] BuffItems = [];
+
+            if (CrossModSupport.InfernalEclipse.Loaded)
+            {
+                if (ThoriumBalanceChanges)
+                {
+                    Array.Resize(ref BuffItems, BuffItems.Length + 1);
+                    BuffItems[^1] = new NewBuffItem(ModContent.ItemType<InspirationRegenerationPotion>(), ModContent.BuffType<Inspired>(), Constants.AllEffects[ModContent.BuffType<Inspired>()], 30, "PermanentInspirationRegeneration", "Permanent Inspiration Regeneration");
+                }
+                else
+                {
+                    Array.Resize(ref BuffItems, BuffItems.Length + 2);
+                    BuffItems[^2] = new NewBuffItem(ModContent.ItemType<DeathsingerPotion>(), ModContent.BuffType<Deathsinger>(), Constants.AllEffects[ModContent.BuffType<Deathsinger>()], 30, "PermanentDeathsinger", "Permanent Deathsinger");
+                    BuffItems[^1] = new NewBuffItem(ModContent.ItemType<InspirationRegenerationPotion>(), ModContent.BuffType<Inspired>(), Constants.AllEffects[ModContent.BuffType<Inspired>()], 30, "PermanentInspirationRegeneration", "Permanent Inspiration Regeneration");
+                }
+            }
+            else
+            {
+                Array.Resize(ref BuffItems, BuffItems.Length + 2);
+                BuffItems[^2] = new NewBuffItem(ModContent.ItemType<DeathsingerPotion>(), ModContent.BuffType<Deathsinger>(), Constants.AllEffects[ModContent.BuffType<Deathsinger>()], 30, "PermanentDeathsinger", "Permanent Deathsinger");
+                BuffItems[^1] = new NewBuffItem(ModContent.ItemType<InspirationRegenerationPotion>(), ModContent.BuffType<Inspired>(), Constants.AllEffects[ModContent.BuffType<Inspired>()], 30, "PermanentInspirationRegeneration", "Permanent Inspiration Regeneration");
+            }
 
             foreach (var newBuffItem in BuffItems)
             {

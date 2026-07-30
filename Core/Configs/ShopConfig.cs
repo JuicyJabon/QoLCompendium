@@ -7,55 +7,7 @@ namespace QoLCompendium.Core.Configs
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
-        [Header("$Mods.QoLCompendium.ConfigHeaders.BMShop")]
-
-        [DefaultValue(true)]
-        public bool BMPotionShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMStationShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMMaterialShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMMovementAccessoryShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMCombatAccessoryShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMInformationShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMBagShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMCrateShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMOreShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMNaturalBlockShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMBuildingBlockShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMHerbShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMFishShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMCritterShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMMountShop { get; set; }
-
-        [DefaultValue(true)]
-        public bool BMAmmoShop { get; set; }
+        //REMOVE \/\/\/\/
 
         [Header("$Mods.QoLCompendium.ConfigHeaders.ECShop")]
 

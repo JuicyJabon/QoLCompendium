@@ -16,9 +16,17 @@
     <None Remove="Content\Projectiles\SkybridgerProj.png" />
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Include="Core\ShopData\ShopDatabase.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Items\PermanentBuffs\" />
+    <Folder Include="Assets\Events\" />
+    <Folder Include="Assets\TimeManipulators\" />
+    <Folder Include="Assets\NPCs\" />
     <Folder Include="Assets\TooltipIcons\" />
     <Folder Include="Content\Projectiles\Fishing\" />
     <Folder Include="Core\Changes\ModChanges\ModBuffChanges\" />
+    <Folder Include="Core\Changes\ModChanges\ModPlayerChanges\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Avalon">
@@ -60,8 +68,14 @@
     <Reference Include="ElementsAwoken">
       <HintPath>..\..\ModReader\ElementsAwoken\ElementsAwoken.dll</HintPath>
     </Reference>
+    <Reference Include="Fargowiltas">
+      <HintPath>..\..\ModReader\Fargowiltas\Fargowiltas.dll</HintPath>
+    </Reference>
     <Reference Include="FargowiltasSouls">
       <HintPath>..\..\ModReader\FargowiltasSouls\FargowiltasSouls.dll</HintPath>
+    </Reference>
+    <Reference Include="InfernalEclipseAPI">
+      <HintPath>..\..\ModReader\InfernalEclipseAPI\InfernalEclipseAPI.dll</HintPath>
     </Reference>
     <Reference Include="InfernumMode">
       <HintPath>..\..\ModReader\InfernumMode\InfernumMode.dll</HintPath>

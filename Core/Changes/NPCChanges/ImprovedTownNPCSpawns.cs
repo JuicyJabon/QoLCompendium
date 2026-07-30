@@ -134,5 +134,4 @@ namespace QoLCompendium.Core.Changes.NPCChanges
             }
         }
     }
-
 }

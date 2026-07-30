@@ -417,6 +417,11 @@ ExtraDefenderMedalDrops: {
 	Label: "[i:3817] Extra Defender Medal Drops"
 }
 
+EarlyOldOnesArmyRelics: {
+	Tooltip: Toggles if the Dark Mage and Ogre minibosses can drop their relics on tier 1 and 2 invasions
+	Label: "[i:4946] Early Old One's Army Relics"
+}
+
 RelicsInExpert: {
 	Tooltip:
 		'''

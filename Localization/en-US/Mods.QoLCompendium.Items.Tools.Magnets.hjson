@@ -38,7 +38,7 @@ LunarMagnet: {
 	DisplayName: Lunar Magnet
 	Tooltip:
 		'''
-		Enable this item to increase grab range by 16800 tiles
+		Enable this item to increase grab range by 8400 tiles
 		Right click in inventory to toggle
 		'''
 }

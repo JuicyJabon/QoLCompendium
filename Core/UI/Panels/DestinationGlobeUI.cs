@@ -4,12 +4,16 @@ namespace QoLCompendium.Core.UI.Panels
 {
     public class DestinationGlobeUI : UIState
     {
+        public UIPanel GlobePanel;
         public static bool visible = false;
         public static uint timeStart;
+        public Color color = new(35, 130, 78);
+
+        internal static string GetUIText(string key, string category = "DestinationGlobeUI") => QoLCUISystem.GetUIText(category, key);
 
         public override void OnInitialize()
         {
-            UIPanel GlobePanel = new();
+            GlobePanel = new();
             GlobePanel.SetPadding(0);
             GlobePanel.HAlign = 0.628f;
             GlobePanel.VAlign = 0.53f;
@@ -19,118 +23,97 @@ namespace QoLCompendium.Core.UI.Panels
             GlobePanel.BorderColor *= 0f;
             Append(GlobePanel);
 
-            BiomeButton.backgroundTexture = 0;
-            BiomeButton desertSelect = new(Common.GetAsset("Biomes", "Biome_", BiomeButton.biomeTexture = 0));
+            ImageButton desertSelect = new(Common.GetAsset("Biomes", "Biome_", (int)UIEnums.BiomeTypes.Desert));
             desertSelect.Left.Set(0f, 0f);
-            desertSelect.Top.Set(0f, 0f);
+            desertSelect.VAlign = 0.5f;
             desertSelect.Width.Set(40F, 0f);
             desertSelect.Height.Set(40F, 0f);
             desertSelect.OnLeftClick += DesertClicked;
-            desertSelect.Tooltip = UISystem.DesertText;
+            desertSelect.TooltipText = GetUIText("DesertText");
             GlobePanel.Append(desertSelect);
 
-            BiomeButton.backgroundTexture = 1;
-            BiomeButton snowSelect = new(Common.GetAsset("Biomes", "Biome_", BiomeButton.biomeTexture = 1));
+            ImageButton snowSelect = new(Common.GetAsset("Biomes", "Biome_", (int)UIEnums.BiomeTypes.Snow));
             snowSelect.Left.Set(40f, 0f);
-            snowSelect.Top.Set(0f, 0f);
+            snowSelect.VAlign = 0.5f;
             snowSelect.Width.Set(40F, 0f);
             snowSelect.Height.Set(40F, 0f);
             snowSelect.OnLeftClick += SnowClicked;
-            snowSelect.Tooltip = UISystem.SnowText;
+            snowSelect.TooltipText = GetUIText("SnowText");
             GlobePanel.Append(snowSelect);
 
-            BiomeButton.backgroundTexture = 1;
-            BiomeButton jungleSelect = new(Common.GetAsset("Biomes", "Biome_", BiomeButton.biomeTexture = 2));
+            ImageButton jungleSelect = new(Common.GetAsset("Biomes", "Biome_", (int)UIEnums.BiomeTypes.Jungle));
             jungleSelect.Left.Set(80f, 0f);
-            jungleSelect.Top.Set(0f, 0f);
+            jungleSelect.VAlign = 0.5f;
             jungleSelect.Width.Set(40F, 0f);
             jungleSelect.Height.Set(40F, 0f);
             jungleSelect.OnLeftClick += JungleClicked;
-            jungleSelect.Tooltip = UISystem.JungleText;
+            jungleSelect.TooltipText = GetUIText("JungleText");
             GlobePanel.Append(jungleSelect);
 
-            BiomeButton.backgroundTexture = 1;
-            BiomeButton mushroomSelect = new(Common.GetAsset("Biomes", "Biome_", BiomeButton.biomeTexture = 3));
+            ImageButton mushroomSelect = new(Common.GetAsset("Biomes", "Biome_", (int)UIEnums.BiomeTypes.Glowshroom));
             mushroomSelect.Left.Set(120f, 0f);
-            mushroomSelect.Top.Set(0f, 0f);
+            mushroomSelect.VAlign = 0.5f;
             mushroomSelect.Width.Set(40F, 0f);
             mushroomSelect.Height.Set(40F, 0f);
             mushroomSelect.OnLeftClick += MushroomClicked;
-            mushroomSelect.Tooltip = UISystem.GlowingMushroomText;
+            mushroomSelect.TooltipText = GetUIText("GlowingMushroomText");
             GlobePanel.Append(mushroomSelect);
 
-            BiomeButton.backgroundTexture = 1;
-            BiomeButton corruptionSelect = new(Common.GetAsset("Biomes", "Biome_", BiomeButton.biomeTexture = 4));
+            ImageButton corruptionSelect = new(Common.GetAsset("Biomes", "Biome_", (int)UIEnums.BiomeTypes.Corruption));
             corruptionSelect.Left.Set(160f, 0f);
-            corruptionSelect.Top.Set(0f, 0f);
+            corruptionSelect.VAlign = 0.5f;
             corruptionSelect.Width.Set(40F, 0f);
             corruptionSelect.Height.Set(40F, 0f);
             corruptionSelect.OnLeftClick += CorruptionClicked;
-            corruptionSelect.Tooltip = UISystem.CorruptionText;
+            corruptionSelect.TooltipText = GetUIText("CorruptionText");
             GlobePanel.Append(corruptionSelect);
 
-            BiomeButton.backgroundTexture = 1;
-            BiomeButton crimsonSelect = new(Common.GetAsset("Biomes", "Biome_", BiomeButton.biomeTexture = 5));
+            ImageButton crimsonSelect = new(Common.GetAsset("Biomes", "Biome_", (int)UIEnums.BiomeTypes.Crimson));
             crimsonSelect.Left.Set(200f, 0f);
-            crimsonSelect.Top.Set(0f, 0f);
+            crimsonSelect.VAlign = 0.5f;
             crimsonSelect.Width.Set(40F, 0f);
             crimsonSelect.Height.Set(40F, 0f);
             crimsonSelect.OnLeftClick += CrimsonClicked;
-            crimsonSelect.Tooltip = UISystem.CrimsonText;
+            crimsonSelect.TooltipText = GetUIText("CrimsonText");
             GlobePanel.Append(crimsonSelect);
 
-            BiomeButton.backgroundTexture = 1;
-            BiomeButton hallowSelect = new(Common.GetAsset("Biomes", "Biome_", BiomeButton.biomeTexture = 6));
+            ImageButton hallowSelect = new(Common.GetAsset("Biomes", "Biome_", (int)UIEnums.BiomeTypes.Hallow));
             hallowSelect.Left.Set(240f, 0f);
-            hallowSelect.Top.Set(0f, 0f);
+            hallowSelect.VAlign = 0.5f;
             hallowSelect.Width.Set(40F, 0f);
             hallowSelect.Height.Set(40F, 0f);
             hallowSelect.OnLeftClick += HallowClicked;
-            hallowSelect.Tooltip = UISystem.HallowText;
+            hallowSelect.TooltipText = GetUIText("HallowText");
             GlobePanel.Append(hallowSelect);
 
-            /*
-            BiomeButton.backgroundTexture = 1;
-            BiomeButton forestSelect = new(Common.GetAsset("Biomes", "Biome_", BiomeButton.biomeTexture = 7));
-            forestSelect.Left.Set(260f, 0f);
-            forestSelect.Top.Set(0f, 0f);
-            forestSelect.Width.Set(40F, 0f);
-            forestSelect.Height.Set(40F, 0f);
-            forestSelect.OnLeftClick += ForestClicked;
-            forestSelect.Tooltip = "Forest";
-            GlobePanel.Append(forestSelect);
-            */
-
-            GenericUIButton.backgroundTexture = 1;
-            GenericUIButton resetBiome = new(Common.GetAsset("Buttons", "Button_Small_", GenericUIButton.buttonTexture = 2));
+            ImageButton resetBiome = new(Common.GetAsset("Buttons", "Button_Small_", 2));
             resetBiome.Left.Set(280f, 0f);
-            resetBiome.Top.Set(0f, 0f);
+            resetBiome.VAlign = 0.5f;
             resetBiome.Width.Set(40F, 0f);
             resetBiome.Height.Set(40F, 0f);
             resetBiome.OnLeftClick += ResetBiomeClicked;
-            resetBiome.Tooltip = UISystem.ResetText;
+            resetBiome.TooltipText = GetUIText("ResetText");
             GlobePanel.Append(resetBiome);
 
-            GenericUIButton.backgroundTexture = 2;
-            GenericUIButton closeButton = new(Common.GetAsset("Buttons", "Button_Small_", GenericUIButton.buttonTexture = 3));
+            ImageButton closeButton = new(Common.GetAsset("Buttons", "Button_Small_", 3));
             closeButton.Left.Set(320f, 0f);
-            closeButton.Top.Set(0f, 0f);
+            closeButton.VAlign = 0.5f;
             closeButton.Width.Set(40F, 0f);
             closeButton.Height.Set(40F, 0f);
             closeButton.OnLeftClick += CloseButtonClicked;
-            closeButton.Tooltip = UISystem.CloseText;
+            closeButton.TooltipText = Language.GetTextValue("LegacyInterface.52");
             GlobePanel.Append(closeButton);
         }
 
-        private void ResetBiomeClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick(0);
-        private void DesertClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick(1);
-        private void SnowClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick(2);
-        private void JungleClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick(3);
-        private void MushroomClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick(4);
-        private void CorruptionClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick(5);
-        private void CrimsonClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick(6);
-        private void HallowClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick(7);
-        private void ForestClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick(8);
+        private void PurityClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick((int)UIEnums.BiomeTypes.Purity);
+        private void DesertClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick((int)UIEnums.BiomeTypes.Desert);
+        private void SnowClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick((int)UIEnums.BiomeTypes.Snow);
+        private void JungleClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick((int)UIEnums.BiomeTypes.Jungle);
+        private void MushroomClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick((int)UIEnums.BiomeTypes.Glowshroom);
+        private void CorruptionClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick((int)UIEnums.BiomeTypes.Corruption);
+        private void CrimsonClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick((int)UIEnums.BiomeTypes.Crimson);
+        private void HallowClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick((int)UIEnums.BiomeTypes.Hallow);
+        private void ResetBiomeClicked(UIMouseEvent evt, UIElement listeningElement) => BiomeClick((int)UIEnums.BiomeTypes.NoSelection);
 
         private void CloseButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -145,9 +128,51 @@ namespace QoLCompendium.Core.UI.Panels
         {
             if (Main.GameUpdateCount - timeStart >= 10)
             {
-                Main.LocalPlayer.GetModPlayer<QoLCPlayer>().selectedBiome = biome;
+                QoLCPlayer player = QoLCPlayer.Get(Main.LocalPlayer);
+                switch (biome)
+                {
+                    case 0:
+                        player.selectedBiomes[(int)UIEnums.BiomeTypes.Purity] = true;
+                        break;
+                    case 1:
+                        player.selectedBiomes[(int)UIEnums.BiomeTypes.Desert] = true;
+                        break;
+                    case 2:
+                        player.selectedBiomes[(int)UIEnums.BiomeTypes.Snow] = true;
+                        break;
+                    case 3:
+                        player.selectedBiomes[(int)UIEnums.BiomeTypes.Jungle] = true;
+                        break;
+                    case 4:
+                        player.selectedBiomes[(int)UIEnums.BiomeTypes.Glowshroom] = true;
+                        break;
+                    case 5:
+                        player.selectedBiomes[(int)UIEnums.BiomeTypes.Corruption] = true;
+                        break;
+                    case 6:
+                        player.selectedBiomes[(int)UIEnums.BiomeTypes.Crimson] = true;
+                        break;
+                    case 7:
+                        player.selectedBiomes[(int)UIEnums.BiomeTypes.Hallow] = true;
+                        break;
+                    case 8:
+                        for (int i = 0; i < player.selectedBiomes.Length; i++)
+                            player.selectedBiomes[i] = false;
+                        break;
+                    default:
+                        for (int i = 0; i < player.selectedBiomes.Length; i++)
+                            player.selectedBiomes[i] = false;
+                        break;
+                }
                 SoundEngine.PlaySound(SoundID.MenuTick);
             }
+        }
+
+        protected override void DrawSelf(SpriteBatch spriteBatch)
+        {
+            Rectangle target = new((int)GlobePanel.GetDimensions().X, (int)GlobePanel.GetDimensions().Y, (int)GlobePanel.GetDimensions().Width, (int)GlobePanel.GetDimensions().Height);
+            BackgroundDrawing.DrawBackground(spriteBatch, target, color);
+            BackgroundDrawing.DrawBorder(spriteBatch, target, color);
         }
     }
 }

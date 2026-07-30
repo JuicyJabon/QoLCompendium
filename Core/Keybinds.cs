@@ -17,8 +17,6 @@ namespace QoLCompendium.Core
 
         public bool autoRevertSelectedItem;
 
-        public int dashTimeMod;
-
         public static byte timeout;
 
         public override void ProcessTriggers(TriggersSet triggersSet)

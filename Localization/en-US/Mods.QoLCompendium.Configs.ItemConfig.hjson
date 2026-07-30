@@ -204,7 +204,7 @@ FishingAccessories: {
 }
 
 CrossModItems: {
-	Label: "[i:QoLCompendium/ForgottenOneSummon] Cross Mod Items"
+	Label: "[i:QoLCompendium/SuperchargedSuperCell] Cross Mod Items"
 	Tooltip: Toggles cross mod items
 }
 
@@ -226,4 +226,9 @@ PermanentBuffs: {
 RepairedLifeFruit: {
 	Label: "[i:QoLCompendium/RepairedLifeFruit] Repaired Life Fruit"
 	Tooltip: Toggles the Repaired Life Fruit item
+}
+
+TimeWrinkler: {
+	Label: "[i:QoLCompendium/TimeWrinkler] Time Wrinkler"
+	Tooltip: Toggles the Time Wrinkler item
 }

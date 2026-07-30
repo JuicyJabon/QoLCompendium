@@ -209,3 +209,18 @@ BossScaling: {
 	Label: "[i:560] Boss Scaling"
 	Tooltip: Toggles if treasure bags will increase in price per defeated boss
 }
+
+BlackMarketDealerShops: {
+	Tooltip: ""
+	Label: Black Market Dealer Shops
+}
+
+EtherealCollectorDealerShops: {
+	Label: Ethereal Collector Dealer Shops
+	Tooltip: ""
+}
+
+AllShopToggles: {
+	Tooltip: ""
+	Label: All Shop Toggles
+}

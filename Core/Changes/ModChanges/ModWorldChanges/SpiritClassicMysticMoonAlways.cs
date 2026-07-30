@@ -1,7 +1,9 @@
-﻿using SpiritMod;
+﻿/*
+using SpiritMod;
 
 namespace QoLCompendium.Core.Changes.ModChanges.ModWorldChanges
 {
+    
     [JITWhenModsEnabled(CrossModSupport.SpiritClassic.Name)]
     [ExtendsFromMod(CrossModSupport.SpiritClassic.Name)]
     public class SpiritClassicMysticMoonAlways : ModSystem
@@ -15,3 +17,4 @@ namespace QoLCompendium.Core.Changes.ModChanges.ModWorldChanges
         }
     }
 }
+*/

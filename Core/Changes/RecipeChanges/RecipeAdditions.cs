@@ -167,6 +167,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
             if (CrossModSupport.Calamity.Loaded)
             {
                 RecipeUtils.CombinedPermanentBuffRecipe([
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBaconOil"), 
                     Common.GetModItem(QoLCompendium.Instance, "PermanentBloodyMary"), 
                     Common.GetModItem(QoLCompendium.Instance, "PermanentCaribbeanRum"), 
                     Common.GetModItem(QoLCompendium.Instance, "PermanentCinnamonRoll"), 
@@ -200,6 +201,7 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
 
                 RecipeUtils.CombinedPermanentBuffRecipe([
                     Common.GetModItem(QoLCompendium.Instance, "PermanentAstralInjection"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMalnourished"),
                     Common.GetModItem(QoLCompendium.Instance, "PermanentShadow")],
                     Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDamage"));
 

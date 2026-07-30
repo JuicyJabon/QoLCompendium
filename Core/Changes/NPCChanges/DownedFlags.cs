@@ -83,6 +83,119 @@
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.GuardianOfFrost], -1);
             #endregion
 
+            #region Ancients Awakened Classic
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "MushroomMonarch"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.MushroomMonarch], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "FeudalFungus"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.FeudalFungus], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "GripOfChaosInferno") && !NPC.AnyNPCs(Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "GripOfChaosMire")))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.GripsOfChaos], -1);
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "GripOfChaosMire") && !NPC.AnyNPCs(Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "GripOfChaosInferno")))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.GripsOfChaos], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "TruffleToad"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.TruffleToad], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "Broodmother"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Broodmother], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "HydraBody"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.AACHydra], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "SubzeroSerpent_Head"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.SubzeroSerpent], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "DesertDjinn"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.DesertDjinn], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "Sagittarius"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Sagittarius], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "TechnoTruffle"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.TechnoTruffle], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "Retriever"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.TheRetriever], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "OrthrusXBody"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.OrthrusX], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "RaiderUltima"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.RaiderUltima], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "Anubis") || npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "AnubisUnreleased"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Anubis], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "Athena"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Athena], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "GreedHead"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Greed], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "RajahRabbit"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.RajahRabbit], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "AnubisA"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.ForsakenAnubis], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "AthenaA"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.OlympianAthena], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "GreedAHead"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.WormKingGreed], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "DaybringerHead") && !NPC.AnyNPCs(Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "NightcrawlerHead")))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.EquinoxWorms], -1);
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "NightcrawlerHead") && !NPC.AnyNPCs(Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "DaybringerHead")))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.EquinoxWorms], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "Ashe") && !NPC.AnyNPCs(Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "Haruka")))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.SistersOfDiscord], -1);
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "Haruka") && !NPC.AnyNPCs(Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "Ashe")))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.SistersOfDiscord], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "AkumaHead"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Akuma], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "AkumaAHead"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.OniAkuma], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "YamataBody"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Yamata], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "YamataABody"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.YamataNoOrochi], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "Zero"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Zero], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "ZeroA"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.ZeroProtocol], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "RajahRabbitA"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.RajahRabbitRevenge], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "ShenDoragon"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.ShenDoragon], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "ShenDoragonA"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.ShenDoragonAwakened], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "InfinityZero"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.InfinityZero], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "SoulOfCthulhu"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.SoulOfCthulhu], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "Cthulhu"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.Cthulhu], -1);
+
+            if (npc.type == Common.GetModNPC(CrossModSupport.AncientsAwakenedClassic.Mod, "BiomiteCore"))
+                NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.BiomiteCore], -1);
+            #endregion
+
             #region Assorted Crazy Things
             if (npc.type == Common.GetModNPC(CrossModSupport.AssortedCrazyThings.Mod, "HarvesterBoss"))
                 NPC.SetEventFlagCleared(ref ModConditions.DownedBoss[(int)ModConditions.Downed.SoulHarvester], -1);
