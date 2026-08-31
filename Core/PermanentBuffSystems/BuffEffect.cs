@@ -3,10 +3,8 @@
     [Autoload(false)]
     public class BuffEffect(int buff, int type = 0) : ILoadable
     {
-        public int index = 44;
-
+        public int index = Player.MaxBuffs - 1;
         public int buff = buff;
-
         public int EffectType = type;
 
         public void ApplyEffect(NewPermanentBuffPlayer player)

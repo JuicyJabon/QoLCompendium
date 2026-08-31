@@ -133,6 +133,6 @@ SpiritClassicBossSummonClassificationFix: {
 }
 
 SpiritClassicYoyoClassificationFix: {
-	Label: "[i:3278] Spirit Classic Yoyo Classification Fix"
+	Label: "[i:3389] Spirit Classic Yoyo Classification Fix"
 	Tooltip: Toggles if Spirit Classic yoyos are correctly classified as yoyos
 }

@@ -1,92 +1,12 @@
-﻿using CalamityEntropy.Content.Buffs;
-using CalamityEntropy.Content.Items;
-using CalamityLegacy.Content.Buffs;
-using CalamityLegacy.Content.Items.Potions;
-using CalamityMod.Buffs.Alcohol;
-using CalamityMod.Buffs.Placeables;
-using CalamityMod.Buffs.Potions;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Items.Fishing.BrimstoneCragCatches;
-using CalamityMod.Items.Placeables.Furniture;
-using CalamityMod.Items.Potions;
-using CalamityMod.Items.Potions.Alcohol;
-using CalamityMod.Items.Potions.Food;
-using CatalystMod.Buffs.StatBuffs;
-using CatalystMod.Items.Potions;
-using Clamity.Content.Bosses.Clamitas.Crafted;
-using Clamity.Content.Items.Potions.BuffPotions;
-using Clamity.Content.Items.Potions.Food;
-using DraedonExpansion.Content.Potions;
-using NoxusBoss.Content.Buffs;
-using NoxusBoss.Content.Items.Food;
-
-namespace QoLCompendium.Core.PermanentBuffSystems.Items
+﻿namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(CrossModSupport.Calamity.Name)]
-    [ExtendsFromMod(CrossModSupport.Calamity.Name)]
     public static class CalamityBuffItems
     {
-        public static NewBuffEffect[] CalamityEffects = [
-            //Alcohols
-            new NewBuffEffect(ModContent.BuffType<BaconOilBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<BloodyMaryBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<CaribbeanRumBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<CinnamonRollBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<EverclearBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<EvergreenGinBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<FireballBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<GrapeBeerBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<ManhattanBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<MargaritaBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<MoonshineBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<MoscowMuleBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<OldFashionedBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<PurpleHazeBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<RedWineBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<RumBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<ScrewdriverBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<StarBeamRyeBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<TequilaBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<TequilaSunriseBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<Trippy>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<VodkaBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<WhiskeyBuff>(), (int)Constants.EffectTypes.Alcohol),
-            new NewBuffEffect(ModContent.BuffType<WhiteWineBuff>(), (int)Constants.EffectTypes.Alcohol),
-            //arena
-            new NewBuffEffect(ModContent.BuffType<ChaosCandleBuff>(), (int)Constants.EffectTypes.Arena),
-            new NewBuffEffect(ModContent.BuffType<CorruptionEffigyBuff>(), (int)Constants.EffectTypes.Arena),
-            new NewBuffEffect(ModContent.BuffType<CrimsonEffigyBuff>(), (int)Constants.EffectTypes.Arena),
-            new NewBuffEffect(ModContent.BuffType<EffigyOfDecayBuff>(), (int)Constants.EffectTypes.Arena),
-            new NewBuffEffect(ModContent.BuffType<PurpleCandleBuff>(), (int)Constants.EffectTypes.Arena),
-            new NewBuffEffect(ModContent.BuffType<YellowCandleBuff>(), (int)Constants.EffectTypes.Arena),
-            new NewBuffEffect(ModContent.BuffType<TranquilityCandleBuff>(), (int)Constants.EffectTypes.Arena),
-            new NewBuffEffect(ModContent.BuffType<PinkCandleBuff>(), (int)Constants.EffectTypes.Arena),
-            new NewBuffEffect(ModContent.BuffType<BlueCandleBuff>(), (int)Constants.EffectTypes.Arena),
-            //potions
-            new NewBuffEffect(ModContent.BuffType<AnechoicCoatingBuff>()),
-            new NewBuffEffect(ModContent.BuffType<AstralInjectionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<BaguetteBuff>()),
-            new NewBuffEffect(ModContent.BuffType<BloodfinBoost>()),
-            new NewBuffEffect(ModContent.BuffType<BoundingBuff>()),
-            new NewBuffEffect(ModContent.BuffType<CalciumBuff>()),
-            new NewBuffEffect(ModContent.BuffType<CeaselessHunger>()),
-            new NewBuffEffect(ModContent.BuffType<GravityNormalizerBuff>()),
-            new NewBuffEffect(ModContent.BuffType<Malnourished>()),
-            new NewBuffEffect(ModContent.BuffType<Omniscience>()),
-            new NewBuffEffect(ModContent.BuffType<PhotosynthesisBuff>()),
-            new NewBuffEffect(ModContent.BuffType<ShadowBuff>()),
-            new NewBuffEffect(ModContent.BuffType<Soaring>()),
-            new NewBuffEffect(ModContent.BuffType<SulphurskinBuff>()),
-            new NewBuffEffect(ModContent.BuffType<Zen>()),
-            new NewBuffEffect(ModContent.BuffType<Zerg>()),
-            //flasks
-            new NewBuffEffect(ModContent.BuffType<WeaponImbueBrimstone>(), (int)Constants.EffectTypes.Flask),
-            new NewBuffEffect(ModContent.BuffType<WeaponImbueCrumbling>(), (int)Constants.EffectTypes.Flask),
-            new NewBuffEffect(ModContent.BuffType<WeaponImbueHolyFlames>(), (int)Constants.EffectTypes.Flask),
-        ];
-
         public static void LoadTasks()
         {
+            if (!CrossModSupport.Calamity.Loaded)
+                return;
+
             BaseItems();
             if (CrossModSupport.CalamityEntropy.Loaded)
                 CalamityEntropyBuffItems.LoadTasks();
@@ -105,719 +25,575 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
         public static void BaseItems()
         {
+            NewBuffEffect[] CalamityEffects = [
+            //Alcohols
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "BaconOilBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "BloodyMaryBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "CaribbeanRumBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "CinnamonRollBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "EverclearBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "EvergreenGinBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "FireballBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "GrapeBeerBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "ManhattanBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "MargaritaBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "MoonshineBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "MoscowMuleBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "OldFashionedBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "PurpleHazeBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "RedWineBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "RumBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "ScrewdriverBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "StarBeamRyeBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "TequilaBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "TequilaSunriseBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "Trippy"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "VodkaBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "WhiskeyBuff"), (int)Constants.EffectTypes.Alcohol),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "WhiteWineBuff"), (int)Constants.EffectTypes.Alcohol),
+            //arena
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "ChaosCandleBuff"), (int)Constants.EffectTypes.Arena),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "CorruptionEffigyBuff"), (int)Constants.EffectTypes.Arena),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "CrimsonEffigyBuff"), (int)Constants.EffectTypes.Arena),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "EffigyOfDecayBuff"), (int)Constants.EffectTypes.Arena),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "PurpleCandleBuff"), (int)Constants.EffectTypes.Arena),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "YellowCandleBuff"), (int)Constants.EffectTypes.Arena),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "TranquilityCandleBuff"), (int)Constants.EffectTypes.Arena),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "PinkCandleBuff"), (int)Constants.EffectTypes.Arena),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "BlueCandleBuff"), (int)Constants.EffectTypes.Arena),
+            //potions
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "AnechoicCoatingBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "AstralInjectionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "BaguetteBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "BloodfinBoost")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "BoundingBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "CalciumBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "CeaselessHunger")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "GravityNormalizerBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "Malnourished")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "Omniscience")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "PhotosynthesisBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "ShadowBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "Soaring")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "SulphurskinBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "Zen")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "Zerg")),
+            //flasks
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "WeaponImbueBrimstone"), (int)Constants.EffectTypes.Flask),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "WeaponImbueCrumbling"), (int)Constants.EffectTypes.Flask),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Calamity.Mod, "WeaponImbueHolyFlames"), (int)Constants.EffectTypes.Flask),
+        ];
+
             foreach (var newEffect in CalamityEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
-                new NewBuffItem(ModContent.ItemType<BaconOil>(), ModContent.BuffType<BaconOilBuff>(), Constants.AllEffects[ModContent.BuffType<BaconOilBuff>()], 30, "PermanentBaconOil", "Permanent Bacon Oil"),
-                new NewBuffItem(ModContent.ItemType<BloodyMary>(), ModContent.BuffType<BloodyMaryBuff>(), Constants.AllEffects[ModContent.BuffType<BloodyMaryBuff>()], 30, "PermanentBloodyMary", "Permanent Bloody Mary"),
-                new NewBuffItem(ModContent.ItemType<CaribbeanRum>(), ModContent.BuffType<CaribbeanRumBuff>(), Constants.AllEffects[ModContent.BuffType<CaribbeanRumBuff>()], 30, "PermanentCaribbeanRum", "Permanent Caribbean Rum"),
-                new NewBuffItem(ModContent.ItemType<CinnamonRoll>(), ModContent.BuffType<CinnamonRollBuff>(), Constants.AllEffects[ModContent.BuffType<CinnamonRollBuff>()], 30, "PermanentCinnamonRoll", "Permanent Cinnamon Roll"),
-                new NewBuffItem(ModContent.ItemType<Everclear>(), ModContent.BuffType<EverclearBuff>(), Constants.AllEffects[ModContent.BuffType<EverclearBuff>()], 30, "PermanentEverclear", "Permanent Everclear"),
-                new NewBuffItem(ModContent.ItemType<EvergreenGin>(), ModContent.BuffType<EvergreenGinBuff>(), Constants.AllEffects[ModContent.BuffType<EvergreenGinBuff>()], 30, "PermanentEvergreenGin", "Permanent Evergreen Gin"),
-                new NewBuffItem(ModContent.ItemType<Fireball>(), ModContent.BuffType<FireballBuff>(), Constants.AllEffects[ModContent.BuffType<FireballBuff>()], 30, "PermanentFireball", "Permanent Fireball"),
-                new NewBuffItem(ModContent.ItemType<GrapeBeer>(), ModContent.BuffType<GrapeBeerBuff>(), Constants.AllEffects[ModContent.BuffType<GrapeBeerBuff>()], 30, "PermanentGrapeBeer", "Permanent Grape Beer"),
-                new NewBuffItem(ModContent.ItemType<Manhattan>(), ModContent.BuffType<ManhattanBuff>(), Constants.AllEffects[ModContent.BuffType<ManhattanBuff>()], 30, "PermanentManhattan", "Permanent Manhattan"),
-                new NewBuffItem(ModContent.ItemType<Margarita>(), ModContent.BuffType<MargaritaBuff>(), Constants.AllEffects[ModContent.BuffType<MargaritaBuff>()], 30, "PermanentMargarita", "Permanent Margarita"),
-                new NewBuffItem(ModContent.ItemType<Moonshine>(), ModContent.BuffType<MoonshineBuff>(), Constants.AllEffects[ModContent.BuffType<MoonshineBuff>()], 30, "PermanentMoonshine", "Permanent Moonshine"),
-                new NewBuffItem(ModContent.ItemType<MoscowMule>(), ModContent.BuffType<MoscowMuleBuff>(), Constants.AllEffects[ModContent.BuffType<MoscowMuleBuff>()], 30, "PermanentMoscowMule", "Permanent Moscow Mule"),
-                new NewBuffItem(ModContent.ItemType<OldFashioned>(), ModContent.BuffType<OldFashionedBuff>(), Constants.AllEffects[ModContent.BuffType<OldFashionedBuff>()], 30, "PermanentOldFashioned", "Permanent Old Fashioned"),
-                new NewBuffItem(ModContent.ItemType<PurpleHaze>(), ModContent.BuffType<PurpleHazeBuff>(), Constants.AllEffects[ModContent.BuffType<PurpleHazeBuff>()], 30, "PermanentPurpleHaze", "Permanent Purple Haze"),
-                new NewBuffItem(ModContent.ItemType<RedWine>(), ModContent.BuffType<RedWineBuff>(), Constants.AllEffects[ModContent.BuffType<RedWineBuff>()], 30, "PermanentRedWine", "Permanent Red Wine"),
-                new NewBuffItem(ModContent.ItemType<Rum>(), ModContent.BuffType<RumBuff>(), Constants.AllEffects[ModContent.BuffType<RumBuff>()], 30, "PermanentRum", "Permanent Rum"),
-                new NewBuffItem(ModContent.ItemType<Screwdriver>(), ModContent.BuffType<ScrewdriverBuff>(), Constants.AllEffects[ModContent.BuffType<ScrewdriverBuff>()], 30, "PermanentScrewdriver", "Permanent Screwdriver"),
-                new NewBuffItem(ModContent.ItemType<StarBeamRye>(), ModContent.BuffType<StarBeamRyeBuff>(), Constants.AllEffects[ModContent.BuffType<StarBeamRyeBuff>()], 30, "PermanentStarBeamRye", "Permanent Star Beam Rye"),
-                new NewBuffItem(ModContent.ItemType<Tequila>(), ModContent.BuffType<TequilaBuff>(), Constants.AllEffects[ModContent.BuffType<TequilaBuff>()], 30, "PermanentTequila", "Permanent Tequila"),
-                new NewBuffItem(ModContent.ItemType<TequilaSunrise>(), ModContent.BuffType<TequilaSunriseBuff>(), Constants.AllEffects[ModContent.BuffType<TequilaSunriseBuff>()], 30, "PermanentTequilaSunrise", "Permanent Tequila Sunrise"),
-                new NewBuffItem(ModContent.ItemType<OddMushroom>(), ModContent.BuffType<Trippy>(), Constants.AllEffects[ModContent.BuffType<Trippy>()], 30, "PermanentTrippy", "Permanent Trippy"),
-                new NewBuffItem(ModContent.ItemType<Vodka>(), ModContent.BuffType<VodkaBuff>(), Constants.AllEffects[ModContent.BuffType<VodkaBuff>()], 30, "PermanentVodka", "Permanent Vodka"),
-                new NewBuffItem(ModContent.ItemType<Whiskey>(), ModContent.BuffType<WhiskeyBuff>(), Constants.AllEffects[ModContent.BuffType<WhiskeyBuff>()], 30, "PermanentWhiskey", "Permanent Whiskey"),
-                new NewBuffItem(ModContent.ItemType<WhiteWine>(), ModContent.BuffType<WhiteWineBuff>(), Constants.AllEffects[ModContent.BuffType<WhiteWineBuff>()], 30, "PermanentWhiteWine", "Permanent White Wine"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "BaconOil"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "BaconOilBuff")], 30, "PermanentBaconOil"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "BloodyMary"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "BloodyMaryBuff")], 30, "PermanentBloodyMary"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "CaribbeanRum"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "CaribbeanRumBuff")], 30, "PermanentCaribbeanRum"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "CinnamonRoll"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "CinnamonRollBuff")], 30, "PermanentCinnamonRoll"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "Everclear"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "EverclearBuff")], 30, "PermanentEverclear"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "EvergreenGin"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "EvergreenGinBuff")], 30, "PermanentEvergreenGin"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "Fireball"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "FireballBuff")], 30, "PermanentFireball"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "GrapeBeer"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "GrapeBeerBuff")], 30, "PermanentGrapeBeer"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "Manhattan"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "ManhattanBuff")], 30, "PermanentManhattan"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "Margarita"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "MargaritaBuff")], 30, "PermanentMargarita"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "Moonshine"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "MoonshineBuff")], 30, "PermanentMoonshine"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "MoscowMule"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "MoscowMuleBuff")], 30, "PermanentMoscowMule"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "OldFashioned"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "OldFashionedBuff")], 30, "PermanentOldFashioned"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "PurpleHaze"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "PurpleHazeBuff")], 30, "PermanentPurpleHaze"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "RedWine"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "RedWineBuff")], 30, "PermanentRedWine"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "Rum"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "RumBuff")], 30, "PermanentRum"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "Screwdriver"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "ScrewdriverBuff")], 30, "PermanentScrewdriver"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "StarBeamRye"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "StarBeamRyeBuff")], 30, "PermanentStarBeamRye"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "Tequila"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "TequilaBuff")], 30, "PermanentTequila"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "TequilaSunrise"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "TequilaSunriseBuff")], 30, "PermanentTequilaSunrise"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "OddMushroom"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "Trippy")], 30, "PermanentTrippy"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "Vodka"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "VodkaBuff")], 30, "PermanentVodka"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "Whiskey"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "WhiskeyBuff")], 30, "PermanentWhiskey"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "WhiteWine"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "WhiteWineBuff")], 30, "PermanentWhiteWine"),
 
 
-                new NewBuffItem(ModContent.ItemType<ChaosCandle>(), ModContent.BuffType<ChaosCandleBuff>(), Constants.AllEffects[ModContent.BuffType<ChaosCandleBuff>()], 3, "PermanentChaosCandle", "Permanent Chaos Candle"),
-                new NewBuffItem(ModContent.ItemType<CorruptionEffigy>(), ModContent.BuffType<CorruptionEffigyBuff>(), Constants.AllEffects[ModContent.BuffType<CorruptionEffigyBuff>()], 3, "PermanentCorruptionEffigy", "Permanent Corruption Effigy"),
-                new NewBuffItem(ModContent.ItemType<CrimsonEffigy>(), ModContent.BuffType<CrimsonEffigyBuff>(), Constants.AllEffects[ModContent.BuffType<CrimsonEffigyBuff>()], 3, "PermanentCrimsonEffigy", "Permanent Crimson Effigy"),
-                new NewBuffItem(ModContent.ItemType<EffigyOfDecay>(), ModContent.BuffType<EffigyOfDecayBuff>(), Constants.AllEffects[ModContent.BuffType<EffigyOfDecayBuff>()], 3, "PermanentEffigyOfDecay", "Permanent Effigy of Decay"),
-                new NewBuffItem(ModContent.ItemType<ResilientCandle>(), ModContent.BuffType<PurpleCandleBuff>(), Constants.AllEffects[ModContent.BuffType<PurpleCandleBuff>()], 3, "PermanentResilientCandle", "Permanent Resilient Candle"),
-                new NewBuffItem(ModContent.ItemType<SpitefulCandle>(), ModContent.BuffType<YellowCandleBuff>(), Constants.AllEffects[ModContent.BuffType<YellowCandleBuff>()], 3, "PermanentSpitefulCandle", "Permanent Spiteful Candle"),
-                new NewBuffItem(ModContent.ItemType<TranquilityCandle>(), ModContent.BuffType<TranquilityCandleBuff>(), Constants.AllEffects[ModContent.BuffType<TranquilityCandleBuff>()], 3, "PermanentTranquilityCandle", "Permanent Tranquility Candle"),
-                new NewBuffItem(ModContent.ItemType<VigorousCandle>(), ModContent.BuffType<PinkCandleBuff>(), Constants.AllEffects[ModContent.BuffType<PinkCandleBuff>()], 3, "PermanentVigorousCandle", "Permanent Vigorous Candle"),
-                new NewBuffItem(ModContent.ItemType<WeightlessCandle>(), ModContent.BuffType<BlueCandleBuff>(), Constants.AllEffects[ModContent.BuffType<BlueCandleBuff>()], 3, "PermanentWeightlessCandle", "Permanent Weightless Candle"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "ChaosCandle"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "ChaosCandleBuff")], 3, "PermanentChaosCandle"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "CorruptionEffigy"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "CorruptionEffigyBuff")], 3, "PermanentCorruptionEffigy"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "CrimsonEffigy"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "CrimsonEffigyBuff")], 3, "PermanentCrimsonEffigy"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "EffigyOfDecay"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "EffigyOfDecayBuff")], 3, "PermanentEffigyOfDecay"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "ResilientCandle"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "PurpleCandleBuff")], 3, "PermanentResilientCandle"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "SpitefulCandle"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "YellowCandleBuff")], 3, "PermanentSpitefulCandle"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "TranquilityCandle"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "TranquilityCandleBuff")], 3, "PermanentTranquilityCandle"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "VigorousCandle"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "PinkCandleBuff")], 3, "PermanentVigorousCandle"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "WeightlessCandle"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "BlueCandleBuff")], 3, "PermanentWeightlessCandle"),
 
 
-                new NewBuffItem(ModContent.ItemType<AnechoicCoating>(), ModContent.BuffType<AnechoicCoatingBuff>(), Constants.AllEffects[ModContent.BuffType<AnechoicCoatingBuff>()], 30, "PermanentAnechoicCoating", "Permanent Anechoic Coating"),
-                new NewBuffItem(ModContent.ItemType<AstralInjection>(), ModContent.BuffType<AstralInjectionBuff>(), Constants.AllEffects[ModContent.BuffType<AstralInjectionBuff>()], 30, "PermanentAstralInjection", "Permanent Astral Injection"),
-                new NewBuffItem(ModContent.ItemType<Baguette>(), ModContent.BuffType<BaguetteBuff>(), Constants.AllEffects[ModContent.BuffType<BaguetteBuff>()], 30, "PermanentBaguette", "Permanent Baguette"),
-                new NewBuffItem(ModContent.ItemType<Bloodfin>(), ModContent.BuffType<BloodfinBoost>(), Constants.AllEffects[ModContent.BuffType<BloodfinBoost>()], 30, "PermanentBloodfin", "Permanent Bloodfin"),
-                new NewBuffItem(ModContent.ItemType<BoundingPotion>(), ModContent.BuffType<BoundingBuff>(), Constants.AllEffects[ModContent.BuffType<BoundingBuff>()], 30, "PermanentBounding", "Permanent Bounding"),
-                new NewBuffItem(ModContent.ItemType<CalciumPotion>(), ModContent.BuffType<CalciumBuff>(), Constants.AllEffects[ModContent.BuffType<CalciumBuff>()], 30, "PermanentCalcium", "Permanent Calcium"),
-                new NewBuffItem(ModContent.ItemType<CeaselessHungerPotion>(), ModContent.BuffType<CeaselessHunger>(), Constants.AllEffects[ModContent.BuffType<CeaselessHunger>()], 30, "PermanentCeaselessHunger", "Permanent Ceaseless Hunger"),
-                new NewBuffItem(ModContent.ItemType<GravityNormalizerPotion>(), ModContent.BuffType<GravityNormalizerBuff>(), Constants.AllEffects[ModContent.BuffType<GravityNormalizerBuff>()], 30, "PermanentGravityNormalizer", "Permanent Gravity Normalizer"),
-                new NewBuffItem(ModContent.ItemType<TheSandwich>(), ModContent.BuffType<Malnourished>(), Constants.AllEffects[ModContent.BuffType<Malnourished>()], 30, "PermanentMalnourished", "Permanent Malnourished"),
-                new NewBuffItem(ModContent.ItemType<PotionofOmniscience>(), ModContent.BuffType<Omniscience>(), Constants.AllEffects[ModContent.BuffType<Omniscience>()], 30, "PermanentOmniscience", "Permanent Omniscience"),
-                new NewBuffItem(ModContent.ItemType<PhotosynthesisPotion>(), ModContent.BuffType<PhotosynthesisBuff>(), Constants.AllEffects[ModContent.BuffType<PhotosynthesisBuff>()], 30, "PermanentPhotosynthesis", "Permanent Photosynthesis"),
-                new NewBuffItem(ModContent.ItemType<ShadowPotion>(), ModContent.BuffType<ShadowBuff>(), Constants.AllEffects[ModContent.BuffType<ShadowBuff>()], 30, "PermanentShadow", "Permanent Shadow"),
-                new NewBuffItem(ModContent.ItemType<SoaringPotion>(), ModContent.BuffType<Soaring>(), Constants.AllEffects[ModContent.BuffType<Soaring>()], 30, "PermanentSoaring", "Permanent Soaring"),
-                new NewBuffItem(ModContent.ItemType<SulphurskinPotion>(), ModContent.BuffType<SulphurskinBuff>(), Constants.AllEffects[ModContent.BuffType<SulphurskinBuff>()], 30, "PermanentSulphurskin", "Permanent Sulphurskin"),
-                new NewBuffItem(ModContent.ItemType<ZenPotion>(), ModContent.BuffType<Zen>(), Constants.AllEffects[ModContent.BuffType<Zen>()], 30, "PermanentZen", "Permanent Zen"),
-                new NewBuffItem(ModContent.ItemType<ZergPotion>(), ModContent.BuffType<Zerg>(), Constants.AllEffects[ModContent.BuffType<Zerg>()], 30, "PermanentZerg", "Permanent Zerg"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "AnechoicCoating"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "AnechoicCoatingBuff")], 30, "PermanentAnechoicCoating"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "AstralInjection"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "AstralInjectionBuff")], 30, "PermanentAstralInjection"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "Baguette"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "BaguetteBuff")], 30, "PermanentBaguette"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "Bloodfin"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "BloodfinBoost")], 30, "PermanentBloodfin"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "BoundingPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "BoundingBuff")], 30, "PermanentBounding"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "CalciumPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "CalciumBuff")], 30, "PermanentCalcium"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "CeaselessHungerPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "CeaselessHunger")], 30, "PermanentCeaselessHunger"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "GravityNormalizerPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "GravityNormalizerBuff")], 30, "PermanentGravityNormalizer"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "TheSandwich"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "Malnourished")], 30, "PermanentMalnourished"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "PotionofOmniscience"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "Omniscience")], 30, "PermanentOmniscience"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "PhotosynthesisPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "PhotosynthesisBuff")], 30, "PermanentPhotosynthesis"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "ShadowPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "ShadowBuff")], 30, "PermanentShadow"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "SoaringPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "Soaring")], 30, "PermanentSoaring"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "SulphurskinPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "SulphurskinBuff")], 30, "PermanentSulphurskin"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "ZenPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "Zen")], 30, "PermanentZen"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "ZergPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "Zerg")], 30, "PermanentZerg"),
 
 
-                new NewBuffItem(ModContent.ItemType<FlaskOfBrimstone>(), ModContent.BuffType<WeaponImbueBrimstone>(), Constants.AllEffects[ModContent.BuffType<WeaponImbueBrimstone>()], 30, "PermanentFlaskOfBrimstone", "Permanent Flask of Brimstone"),
-                new NewBuffItem(ModContent.ItemType<FlaskOfCrumbling>(), ModContent.BuffType<WeaponImbueCrumbling>(), Constants.AllEffects[ModContent.BuffType<WeaponImbueCrumbling>()], 30, "PermanentFlaskOfCrumbling", "Permanent Flask of Crumbling"),
-                new NewBuffItem(ModContent.ItemType<FlaskOfHolyFlames>(), ModContent.BuffType<WeaponImbueHolyFlames>(), Constants.AllEffects[ModContent.BuffType<WeaponImbueHolyFlames>()], 30, "PermanentFlaskOfHolyFlames", "Permanent Flask of Holy Flames"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "FlaskOfBrimstone"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "WeaponImbueBrimstone")], 30, "PermanentFlaskOfBrimstone"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "FlaskOfCrumbling"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "WeaponImbueCrumbling")], 30, "PermanentFlaskOfCrumbling"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Calamity.Mod, "FlaskOfHolyFlames"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "WeaponImbueHolyFlames")], 30, "PermanentFlaskOfHolyFlames"),
             ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
 
         public static void CombinedItems()
         {
-            Dictionary<BuffEffect, int> PermanentCalamityAlcohols = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<BaconOilBuff>()], ModContent.BuffType<BaconOilBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BloodyMaryBuff>()], ModContent.BuffType<BloodyMaryBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CaribbeanRumBuff>()], ModContent.BuffType<CaribbeanRumBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CinnamonRollBuff>()], ModContent.BuffType<CinnamonRollBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<EverclearBuff>()], ModContent.BuffType<EverclearBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<EvergreenGinBuff>()], ModContent.BuffType<EvergreenGinBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FireballBuff>()], ModContent.BuffType<FireballBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<GrapeBeerBuff>()], ModContent.BuffType<GrapeBeerBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ManhattanBuff>()], ModContent.BuffType<ManhattanBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<MargaritaBuff>()], ModContent.BuffType<MargaritaBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<MoonshineBuff>()], ModContent.BuffType<MoonshineBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<MoscowMuleBuff>()], ModContent.BuffType<MoscowMuleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<OldFashionedBuff>()], ModContent.BuffType<OldFashionedBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<PurpleHazeBuff>()], ModContent.BuffType<PurpleHazeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<RedWineBuff>()], ModContent.BuffType<RedWineBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<RumBuff>()], ModContent.BuffType<RumBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ScrewdriverBuff>()], ModContent.BuffType<ScrewdriverBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<StarBeamRyeBuff>()], ModContent.BuffType<StarBeamRyeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<TequilaBuff>()], ModContent.BuffType<TequilaBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<TequilaSunriseBuff>()], ModContent.BuffType<TequilaSunriseBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Trippy>()], ModContent.BuffType<Trippy>() },
-                { Constants.AllEffects[ModContent.BuffType<VodkaBuff>()], ModContent.BuffType<VodkaBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<WhiskeyBuff>()], ModContent.BuffType<WhiskeyBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<WhiteWineBuff>()], ModContent.BuffType<WhiteWineBuff>() }
-            };
+            List<BuffEffect> PermanentCalamityAlcohols =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "BaconOilBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "BloodyMaryBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "CaribbeanRumBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "CinnamonRollBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "EverclearBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "EvergreenGinBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "FireballBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "GrapeBeerBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "ManhattanBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "MargaritaBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "MoonshineBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "MoscowMuleBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "OldFashionedBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "PurpleHazeBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "RedWineBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "RumBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "ScrewdriverBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "StarBeamRyeBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "TequilaBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "TequilaSunriseBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "Trippy")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "VodkaBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "WhiskeyBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "WhiteWineBuff")]
+            ];
+            List<int> PermanentCalamityAlcoholsIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBaconOil"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBloodyMary"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCaribbeanRum"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCinnamonRoll"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEverclear"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEvergreenGin"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFireball"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentGrapeBeer"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentManhattan"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMargarita"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMoonshine"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMoscowMule"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentOldFashioned"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentPurpleHaze"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRedWine"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRum"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentScrewdriver"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentStarBeamRye"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTequila"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTequilaSunrise"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTrippy"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentVodka"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentWhiskey"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentWhiteWine")];
 
-            Dictionary<BuffEffect, int> PermanentCalamityAbyss = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<AnechoicCoatingBuff>()], ModContent.BuffType<AnechoicCoatingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Omniscience>()], ModContent.BuffType<Omniscience>() },
-                { Constants.AllEffects[ModContent.BuffType<SulphurskinBuff>()], ModContent.BuffType<SulphurskinBuff>() }
-            };
+            List<BuffEffect> PermanentCalamityAbyss =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "AnechoicCoatingBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "Omniscience")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "SulphurskinBuff")]
+            ];
+            List<int> PermanentCalamityAbyssIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAnechoicCoating"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentOmniscience"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSulphurskin")];
 
-            Dictionary<BuffEffect, int> PermanentCalamityDamage = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<AstralInjectionBuff>()], ModContent.BuffType<AstralInjectionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Malnourished>()], ModContent.BuffType<Malnourished>() },
-                { Constants.AllEffects[ModContent.BuffType<ShadowBuff>()], ModContent.BuffType<ShadowBuff>() }
-            };
-
+            List<BuffEffect> PermanentCalamityDamage =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "AstralInjectionBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "Malnourished")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "ShadowBuff")]
+            ];
+            List<int> PermanentCalamityDamageIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAstralInjection"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMalnourished"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadow")];
             if (CrossModSupport.CalamityEntropy.Loaded)
             {
-                PermanentCalamityDamage.Add(Constants.AllEffects[CalamityEntropyBuffItems.SoyMilkID], CalamityEntropyBuffItems.SoyMilkID);
+                PermanentCalamityDamage.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityEntropy.Mod, "SoyMilkBuff")]);
+                PermanentCalamityDamageIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentSoyMilk"));
             }
-
             if (CrossModSupport.CalamityRekindled.Loaded)
             {
-                PermanentCalamityDamage.Add(Constants.AllEffects[CalamityRekindledBuffItems.BeetleJuiceID], CalamityRekindledBuffItems.BeetleJuiceID);
-                PermanentCalamityDamage.Add(Constants.AllEffects[CalamityRekindledBuffItems.PenumbraID], CalamityRekindledBuffItems.PenumbraID);
-                PermanentCalamityDamage.Add(Constants.AllEffects[CalamityRekindledBuffItems.ProfanedRageID], CalamityRekindledBuffItems.ProfanedRageID);
-                PermanentCalamityDamage.Add(Constants.AllEffects[CalamityRekindledBuffItems.ProfanedWrathID], CalamityRekindledBuffItems.ProfanedWrathID);
-                PermanentCalamityDamage.Add(Constants.AllEffects[CalamityRekindledBuffItems.ShatteringID], CalamityRekindledBuffItems.ShatteringID);
+                PermanentCalamityDamage.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "BeetleJuiceBuff")]);
+                PermanentCalamityDamage.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "Penumbra")]);
+                PermanentCalamityDamage.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "ProfanedRageBuff")]);
+                PermanentCalamityDamage.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "ProfanedWrathBuff")]);
+                PermanentCalamityDamage.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "ArmorShattering")]);
+                PermanentCalamityDamageIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentBeetleJuice"));
+                PermanentCalamityDamageIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentPenumbra"));
+                PermanentCalamityDamageIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "ProfanedRagePotion"));
+                PermanentCalamityDamageIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "ProfanedWrathBuff"));
+                PermanentCalamityDamageIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentShattering"));
             }
-
             if (CrossModSupport.Catalyst.Loaded)
             {
-                PermanentCalamityDamage.Add(Constants.AllEffects[CatalystBuffItems.AstracolaID], CatalystBuffItems.AstracolaID);
+                PermanentCalamityDamage.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.Catalyst.Mod, "AstralJellyBuff")]);
+                PermanentCalamityDamageIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentAstracola"));
             }
-
             if (CrossModSupport.Clamity.Loaded)
             {
-                PermanentCalamityDamage.Add(Constants.AllEffects[ClamityBuffItems.SupremeLuckID], ClamityBuffItems.SupremeLuckID);
+                PermanentCalamityDamage.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.Clamity.Mod, "SupremeLucky")]);
+                PermanentCalamityDamageIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentSupremeLuck"));
             }
 
-            Dictionary<BuffEffect, int> PermanentCalamityDefense = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<BaguetteBuff>()], ModContent.BuffType<BaguetteBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BloodfinBoost>()], ModContent.BuffType<BloodfinBoost>() },
-                { Constants.AllEffects[ModContent.BuffType<PhotosynthesisBuff>()], ModContent.BuffType<PhotosynthesisBuff>() },
-            };
-
+            List<BuffEffect> PermanentCalamityDefense =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "BaguetteBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "BloodfinBoost")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "CalciumBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "PhotosynthesisBuff")]
+            ];
+            List<int> PermanentCalamityDefenseIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBaguette"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBloodfin"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalcium"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentPhotosynthesis")];
             if (CrossModSupport.CalamityEntropy.Loaded)
             {
-                PermanentCalamityDefense.Add(Constants.AllEffects[CalamityEntropyBuffItems.YharimsStimulantsID], CalamityEntropyBuffItems.YharimsStimulantsID);
+                PermanentCalamityDefense.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityEntropy.Mod, "YharimPower")]);
+                PermanentCalamityDefenseIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentYharimsStimulants"));
             }
-
             if (CrossModSupport.CalamityRekindled.Loaded)
             {
-                PermanentCalamityDefense.Add(Constants.AllEffects[CalamityRekindledBuffItems.CadenceID], CalamityRekindledBuffItems.CadenceID);
-                PermanentCalamityDefense.Add(Constants.AllEffects[CalamityRekindledBuffItems.DraconicElixirID], CalamityRekindledBuffItems.DraconicElixirID);
-                PermanentCalamityDefense.Add(Constants.AllEffects[CalamityRekindledBuffItems.RevivifyID], CalamityRekindledBuffItems.RevivifyID);
-                PermanentCalamityDefense.Add(Constants.AllEffects[CalamityRekindledBuffItems.TriumphID], CalamityRekindledBuffItems.TriumphID);
+                PermanentCalamityDefense.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "Cadence")]);
+                PermanentCalamityDefense.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "DraconicSurgeBuff")]);
+                PermanentCalamityDefense.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "Revivify")]);
+                PermanentCalamityDefense.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "TriumphBuff")]);
+                PermanentCalamityDefenseIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentCadence"));
+                PermanentCalamityDefenseIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentDraconicElixir"));
+                PermanentCalamityDefenseIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentRevivify"));
+                PermanentCalamityDefenseIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentTriumph"));
 
                 if (!CrossModSupport.Clamity.Loaded)
-                    PermanentCalamityDefense.Add(Constants.AllEffects[CalamityRekindledBuffItems.TitanScaleID], CalamityRekindledBuffItems.TitanScaleID);
-                if (!CrossModSupport.CalamityEntropy.Loaded)
-                    PermanentCalamityDefense.Add(Constants.AllEffects[CalamityRekindledBuffItems.YharimsStimulantsID], CalamityRekindledBuffItems.YharimsStimulantsID);
-            }
+                {
+                    PermanentCalamityDefense.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "TitanScale")]);
+                    PermanentCalamityDefenseIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentCRTitanScale"));
+                }
 
+                if (!CrossModSupport.CalamityEntropy.Loaded)
+                {
+                    PermanentCalamityDefense.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "YharimPower")]);
+                    PermanentCalamityDefenseIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentCRYharimsStimulants"));
+                }
+            }
             if (CrossModSupport.Clamity.Loaded)
             {
-                PermanentCalamityDefense.Add(Constants.AllEffects[ClamityBuffItems.TitanScaleID], ClamityBuffItems.TitanScaleID);
-                PermanentCalamityDefense.Add(Constants.AllEffects[ClamityBuffItems.ExoBaguetteID], ClamityBuffItems.ExoBaguetteID);
+                PermanentCalamityDefense.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.Clamity.Mod, "TitanScalePotionBuff")]);
+                PermanentCalamityDefenseIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentTitanScale"));
             }
-
             if (CrossModSupport.WrathOfTheGods.Loaded)
             {
-                PermanentCalamityDefense.Add(Constants.AllEffects[WrathOfTheGodsBuffItems.CinnamonRollynID], WrathOfTheGodsBuffItems.CinnamonRollynID);
+                PermanentCalamityDefense.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.WrathOfTheGods.Mod, "StarstrikinglySatiated")]);
+                PermanentCalamityDefenseIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentStarstrikinglySatiated"));
             }
 
-            Dictionary<BuffEffect, int> PermanentCalamityFarming = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<CeaselessHunger>()], ModContent.BuffType<CeaselessHunger>() },
-                { Constants.AllEffects[ModContent.BuffType<Zen>()], ModContent.BuffType<Zen>() },
-                { Constants.AllEffects[ModContent.BuffType<Zerg>()], ModContent.BuffType<Zerg>() }
-            };
+            List<BuffEffect> PermanentCalamityFarming =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "CeaselessHunger")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "Zen")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "Zerg")]
+            ];
+            List<int> PermanentCalamityFarmingIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentZen"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentZerg"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCeaselessHunger")];
 
-            Dictionary<BuffEffect, int> PermanentCalamityMovement = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<BoundingBuff>()], ModContent.BuffType<BoundingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CalciumBuff>()], ModContent.BuffType<CalciumBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<GravityNormalizerBuff>()], ModContent.BuffType<GravityNormalizerBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Soaring>()], ModContent.BuffType<Soaring>() }
-            };
+            List<BuffEffect> PermanentCalamityMovement =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "BoundingBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "GravityNormalizerBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "Soaring")]
+            ];
+            List<int> PermanentCalamityMovementIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBounding"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentGravityNormalizer"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSoaring")];
 
-            Dictionary<BuffEffect, int> PermanentCalamityArena = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<CorruptionEffigyBuff>()], ModContent.BuffType<CorruptionEffigyBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CrimsonEffigyBuff>()], ModContent.BuffType<CrimsonEffigyBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<EffigyOfDecayBuff>()], ModContent.BuffType<EffigyOfDecayBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ChaosCandleBuff>()], ModContent.BuffType<ChaosCandleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<TranquilityCandleBuff>()], ModContent.BuffType<TranquilityCandleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BlueCandleBuff>()], ModContent.BuffType<BlueCandleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<PinkCandleBuff>()], ModContent.BuffType<PinkCandleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<PurpleCandleBuff>()], ModContent.BuffType<PurpleCandleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<YellowCandleBuff>()], ModContent.BuffType<YellowCandleBuff>() }
-            };
-
+            List<BuffEffect> PermanentCalamityArena =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "CorruptionEffigyBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "CrimsonEffigyBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "EffigyOfDecayBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "ChaosCandleBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "TranquilityCandleBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "BlueCandleBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "PinkCandleBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "YellowCandleBuff")]
+            ];
+            List<int> PermanentCalamityArenaIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCorruptionEffigy"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCrimsonEffigy"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEffigyOfDecay"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentChaosCandle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTranquilityCandle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentResilientCandle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSpitefulCandle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentVigorousCandle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentWeightlessCandle")];
             if (CrossModSupport.CalamityEntropy.Loaded)
             {
-                PermanentCalamityArena.Add(Constants.AllEffects[CalamityEntropyBuffItems.VoidCandleID], CalamityEntropyBuffItems.VoidCandleID);
+                PermanentCalamityArena.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityEntropy.Mod, "VoidCandleBuff")]);
+                PermanentCalamityArenaIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentVoidCandle"));
             }
 
-            Dictionary<BuffEffect, int> PermanentCalamityFlasks = new()
+            List<BuffEffect> PermanentCalamityFlasks = new()
             {
-                { Constants.AllEffects[ModContent.BuffType<WeaponImbueBrimstone>()], ModContent.BuffType<WeaponImbueBrimstone>() },
-                { Constants.AllEffects[ModContent.BuffType<WeaponImbueCrumbling>()], ModContent.BuffType<WeaponImbueCrumbling>() },
-                { Constants.AllEffects[ModContent.BuffType<WeaponImbueHolyFlames>()], ModContent.BuffType<WeaponImbueHolyFlames>() }
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "WeaponImbueBrimstone")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "WeaponImbueCrumbling")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.Calamity.Mod, "WeaponImbueHolyFlames")]
             };
-
+            List<int> PermanentCalamityFlasksIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfBrimstone"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfCrumbling"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfHolyFlames")];
             if (CrossModSupport.DraedonExpansion.Loaded)
             {
-                PermanentCalamityFlasks.Add(Constants.AllEffects[DraedonExpansionBuffItems.FlaskOfElectricityID], DraedonExpansionBuffItems.FlaskOfElectricityID);
+                PermanentCalamityFlasks.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.DraedonExpansion.Mod, "FlaskOfElectricityBuff")]);
+                PermanentCalamityFlasksIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfElectricity"));
             }
 
-            Dictionary<BuffEffect, int> PermanentCalamity = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<BaconOilBuff>()], ModContent.BuffType<BaconOilBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BloodyMaryBuff>()], ModContent.BuffType<BloodyMaryBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CaribbeanRumBuff>()], ModContent.BuffType<CaribbeanRumBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CinnamonRollBuff>()], ModContent.BuffType<CinnamonRollBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<EverclearBuff>()], ModContent.BuffType<EverclearBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<EvergreenGinBuff>()], ModContent.BuffType<EvergreenGinBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FireballBuff>()], ModContent.BuffType<FireballBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<GrapeBeerBuff>()], ModContent.BuffType<GrapeBeerBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ManhattanBuff>()], ModContent.BuffType<ManhattanBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<MargaritaBuff>()], ModContent.BuffType<MargaritaBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<MoonshineBuff>()], ModContent.BuffType<MoonshineBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<MoscowMuleBuff>()], ModContent.BuffType<MoscowMuleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<OldFashionedBuff>()], ModContent.BuffType<OldFashionedBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<PurpleHazeBuff>()], ModContent.BuffType<PurpleHazeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<RedWineBuff>()], ModContent.BuffType<RedWineBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<RumBuff>()], ModContent.BuffType<RumBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ScrewdriverBuff>()], ModContent.BuffType<ScrewdriverBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<StarBeamRyeBuff>()], ModContent.BuffType<StarBeamRyeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<TequilaBuff>()], ModContent.BuffType<TequilaBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<TequilaSunriseBuff>()], ModContent.BuffType<TequilaSunriseBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Trippy>()], ModContent.BuffType<Trippy>() },
-                { Constants.AllEffects[ModContent.BuffType<VodkaBuff>()], ModContent.BuffType<VodkaBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<WhiskeyBuff>()], ModContent.BuffType<WhiskeyBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<WhiteWineBuff>()], ModContent.BuffType<WhiteWineBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<AnechoicCoatingBuff>()], ModContent.BuffType<AnechoicCoatingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Omniscience>()], ModContent.BuffType<Omniscience>() },
-                { Constants.AllEffects[ModContent.BuffType<SulphurskinBuff>()], ModContent.BuffType<SulphurskinBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<AstralInjectionBuff>()], ModContent.BuffType<AstralInjectionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Malnourished>()], ModContent.BuffType<Malnourished>() },
-                { Constants.AllEffects[ModContent.BuffType<ShadowBuff>()], ModContent.BuffType<ShadowBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BaguetteBuff>()], ModContent.BuffType<BaguetteBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BloodfinBoost>()], ModContent.BuffType<BloodfinBoost>() },
-                { Constants.AllEffects[ModContent.BuffType<PhotosynthesisBuff>()], ModContent.BuffType<PhotosynthesisBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CeaselessHunger>()], ModContent.BuffType<CeaselessHunger>() },
-                { Constants.AllEffects[ModContent.BuffType<Zen>()], ModContent.BuffType<Zen>() },
-                { Constants.AllEffects[ModContent.BuffType<Zerg>()], ModContent.BuffType<Zerg>() },
-                { Constants.AllEffects[ModContent.BuffType<BoundingBuff>()], ModContent.BuffType<BoundingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CalciumBuff>()], ModContent.BuffType<CalciumBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<GravityNormalizerBuff>()], ModContent.BuffType<GravityNormalizerBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Soaring>()], ModContent.BuffType<Soaring>() },
-                { Constants.AllEffects[ModContent.BuffType<CorruptionEffigyBuff>()], ModContent.BuffType<CorruptionEffigyBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CrimsonEffigyBuff>()], ModContent.BuffType<CrimsonEffigyBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<EffigyOfDecayBuff>()], ModContent.BuffType<EffigyOfDecayBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ChaosCandleBuff>()], ModContent.BuffType<ChaosCandleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<TranquilityCandleBuff>()], ModContent.BuffType<TranquilityCandleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BlueCandleBuff>()], ModContent.BuffType<BlueCandleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<PinkCandleBuff>()], ModContent.BuffType<PinkCandleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<PurpleCandleBuff>()], ModContent.BuffType<PurpleCandleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<YellowCandleBuff>()], ModContent.BuffType<YellowCandleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<WeaponImbueBrimstone>()], ModContent.BuffType<WeaponImbueBrimstone>() },
-                { Constants.AllEffects[ModContent.BuffType<WeaponImbueCrumbling>()], ModContent.BuffType<WeaponImbueCrumbling>() },
-                { Constants.AllEffects[ModContent.BuffType<WeaponImbueHolyFlames>()], ModContent.BuffType<WeaponImbueHolyFlames>() }
-            };
-
-            if (CrossModSupport.CalamityEntropy.Loaded)
-            {
-                PermanentCalamity.Add(Constants.AllEffects[CalamityEntropyBuffItems.SoyMilkID], CalamityEntropyBuffItems.SoyMilkID);
-                PermanentCalamity.Add(Constants.AllEffects[CalamityEntropyBuffItems.YharimsStimulantsID], CalamityEntropyBuffItems.YharimsStimulantsID);
-                PermanentCalamity.Add(Constants.AllEffects[CalamityEntropyBuffItems.VoidCandleID], CalamityEntropyBuffItems.VoidCandleID);
-            }
-
-            if (CrossModSupport.CalamityRekindled.Loaded)
-            {
-                PermanentCalamity.Add(Constants.AllEffects[CalamityRekindledBuffItems.BeetleJuiceID], CalamityRekindledBuffItems.BeetleJuiceID);
-                PermanentCalamity.Add(Constants.AllEffects[CalamityRekindledBuffItems.CadenceID], CalamityRekindledBuffItems.CadenceID);
-                PermanentCalamity.Add(Constants.AllEffects[CalamityRekindledBuffItems.DraconicElixirID], CalamityRekindledBuffItems.DraconicElixirID);
-                PermanentCalamity.Add(Constants.AllEffects[CalamityRekindledBuffItems.PenumbraID], CalamityRekindledBuffItems.PenumbraID);
-                PermanentCalamity.Add(Constants.AllEffects[CalamityRekindledBuffItems.ProfanedRageID], CalamityRekindledBuffItems.ProfanedRageID);
-                PermanentCalamity.Add(Constants.AllEffects[CalamityRekindledBuffItems.ProfanedWrathID], CalamityRekindledBuffItems.ProfanedWrathID);
-                PermanentCalamity.Add(Constants.AllEffects[CalamityRekindledBuffItems.RevivifyID], CalamityRekindledBuffItems.RevivifyID);
-                PermanentCalamity.Add(Constants.AllEffects[CalamityRekindledBuffItems.ShatteringID], CalamityRekindledBuffItems.ShatteringID);
-                PermanentCalamity.Add(Constants.AllEffects[CalamityRekindledBuffItems.TriumphID], CalamityRekindledBuffItems.TriumphID);
-
-                if (!CrossModSupport.Clamity.Loaded)
-                    PermanentCalamity.Add(Constants.AllEffects[CalamityRekindledBuffItems.TitanScaleID], CalamityRekindledBuffItems.TitanScaleID);
-                if (!CrossModSupport.CalamityEntropy.Loaded)
-                    PermanentCalamity.Add(Constants.AllEffects[CalamityRekindledBuffItems.YharimsStimulantsID], CalamityRekindledBuffItems.YharimsStimulantsID);
-            }
-
-            if (CrossModSupport.Catalyst.Loaded)
-            {
-                PermanentCalamity.Add(Constants.AllEffects[CatalystBuffItems.AstracolaID], CatalystBuffItems.AstracolaID);
-            }
-
-            if (CrossModSupport.Clamity.Loaded)
-            {
-                PermanentCalamity.Add(Constants.AllEffects[ClamityBuffItems.SupremeLuckID], ClamityBuffItems.SupremeLuckID);
-                PermanentCalamity.Add(Constants.AllEffects[ClamityBuffItems.TitanScaleID], ClamityBuffItems.TitanScaleID);
-                PermanentCalamity.Add(Constants.AllEffects[ClamityBuffItems.ExoBaguetteID], ClamityBuffItems.ExoBaguetteID);
-            }
-
-            if (CrossModSupport.DraedonExpansion.Loaded)
-            {
-                PermanentCalamity.Add(Constants.AllEffects[DraedonExpansionBuffItems.FlaskOfElectricityID], DraedonExpansionBuffItems.FlaskOfElectricityID);
-            }
-
-            if (CrossModSupport.WrathOfTheGods.Loaded)
-            {
-                PermanentCalamity.Add(Constants.AllEffects[WrathOfTheGodsBuffItems.CinnamonRollynID], WrathOfTheGodsBuffItems.CinnamonRollynID);
-            }
+            List<BuffEffect> PermanentCalamity = [];
+            PermanentCalamity.AddRange(PermanentCalamityAlcohols);
+            PermanentCalamity.AddRange(PermanentCalamityAbyss);
+            PermanentCalamity.AddRange(PermanentCalamityDamage);
+            PermanentCalamity.AddRange(PermanentCalamityDefense);
+            PermanentCalamity.AddRange(PermanentCalamityFarming);
+            PermanentCalamity.AddRange(PermanentCalamityMovement);
+            PermanentCalamity.AddRange(PermanentCalamityArena);
+            PermanentCalamity.AddRange(PermanentCalamityFlasks);
 
             NewCombinedBuffItem[] CombinedBuffItems = [
-                new NewCombinedBuffItem(PermanentCalamityAlcohols, "PermanentCalamityAlcohols", "Permanent Calamity Alcohols", "PermanentCalamityAlcohols"),
-                new NewCombinedBuffItem(PermanentCalamityAbyss, "PermanentCalamityAbyss", "Permanent Calamity Abyss", "PermanentCalamityAbyss"),
-                new NewCombinedBuffItem(PermanentCalamityDamage, "PermanentCalamityDamage", "Permanent Calamity Damage", "PermanentCalamityDamage"),
-                new NewCombinedBuffItem(PermanentCalamityDefense, "PermanentCalamityDefense", "Permanent Calamity Defense", "PermanentCalamityDefense"),
-                new NewCombinedBuffItem(PermanentCalamityFarming, "PermanentCalamityFarming", "Permanent Calamity Farming", "PermanentCalamityFarming"),
-                new NewCombinedBuffItem(PermanentCalamityMovement, "PermanentCalamityMovement", "Permanent Calamity Movement", "PermanentCalamityMovement"),
-                new NewCombinedBuffItem(PermanentCalamityArena, "PermanentCalamityArena", "Permanent Calamity Arena", "PermanentCalamityArena"),
-                new NewCombinedBuffItem(PermanentCalamityFlasks, "PermanentCalamityFlasks", "Permanent Calamity Flasks", "PermanentCalamityFlasks"),
-                new NewCombinedBuffItem(PermanentCalamity, "PermanentCalamity", "Permanent Calamity", "PermanentCalamity"),
+                new NewCombinedBuffItem("PermanentCalamityAlcohols", PermanentCalamityAlcohols, PermanentCalamityAlcoholsIngredients),
+                new NewCombinedBuffItem("PermanentCalamityAbyss", PermanentCalamityAbyss, PermanentCalamityAbyssIngredients),
+                new NewCombinedBuffItem("PermanentCalamityDamage", PermanentCalamityDamage, PermanentCalamityDamageIngredients),
+                new NewCombinedBuffItem("PermanentCalamityDefense", PermanentCalamityDefense, PermanentCalamityDefenseIngredients),
+                new NewCombinedBuffItem("PermanentCalamityFarming", PermanentCalamityFarming, PermanentCalamityFarmingIngredients),
+                new NewCombinedBuffItem("PermanentCalamityMovement", PermanentCalamityMovement, PermanentCalamityMovementIngredients),
+                new NewCombinedBuffItem("PermanentCalamityArena", PermanentCalamityArena, PermanentCalamityArenaIngredients),
+                new NewCombinedBuffItem("PermanentCalamityFlasks", PermanentCalamityFlasks, PermanentCalamityFlasksIngredients)
             ];
 
             foreach (var newCombinedBuffItem in CombinedBuffItems)
-            {
-                CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllCombinedBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreateUpgradedPermanentBuffItem(newCombinedBuffItem);
+
+            List<int> PermanentCalamityIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityAlcohols"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityAbyss"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDamage"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDefense"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityFarming"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityMovement"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityArena"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityFlasks")];
+
+            NewCombinedBuffItem permanentCalamityItem = new("PermanentCalamity", PermanentCalamity, PermanentCalamityIngredients);
+            CombinedBuffItem newPermanentCalamity = new(permanentCalamityItem.itemName, permanentCalamityItem.textureName, permanentCalamityItem.effects, permanentCalamityItem.ingredients);
+            QoLCompendium.Instance.AddContent(newPermanentCalamity);
+            Constants.AllCombinedBuffItems.Add(newPermanentCalamity.Type);
         }
     }
 
-    [JITWhenModsEnabled(CrossModSupport.CalamityEntropy.Name)]
-    [ExtendsFromMod(CrossModSupport.CalamityEntropy.Name)]
     public static class CalamityEntropyBuffItems
     {
-        public static NewBuffEffect[] CalamityEntropyEffects = [];
-
-        public static int SoyMilkID = -1;
-        public static int YharimsStimulantsID = -1;
-        public static int VoidCandleID = -1;
-
         public static void LoadTasks()
         {
-            SoyMilkID = ModContent.BuffType<SoyMilkBuff>();
-            YharimsStimulantsID = ModContent.BuffType<CalamityEntropy.Content.Buffs.YharimPower>();
-            VoidCandleID = ModContent.BuffType<VoidCandleBuff>();
+            if (!CrossModSupport.CalamityEntropy.Loaded)
+                return;
 
-            CalamityEntropyEffects = [
+            NewBuffEffect[] CalamityEntropyEffects = [
                 //potions
-                new NewBuffEffect(ModContent.BuffType<SoyMilkBuff>()),
-                new NewBuffEffect(ModContent.BuffType<CalamityEntropy.Content.Buffs.YharimPower>()),
-                new NewBuffEffect(ModContent.BuffType<VoidCandleBuff>(), (int)Constants.EffectTypes.Arena)
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityEntropy.Mod, "SoyMilkBuff")),
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityEntropy.Mod, "YharimPower")),
+                //arena
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityEntropy.Mod, "VoidCandleBuff"), (int)Constants.EffectTypes.Arena)
             ];
 
             foreach (var newEffect in CalamityEntropyEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
-                new NewBuffItem(ModContent.ItemType<SoyMilk>(), ModContent.BuffType<SoyMilkBuff>(), Constants.AllEffects[ModContent.BuffType<SoyMilkBuff>()], 30, "PermanentSoyMilk", "Permanent Soy Milk"),
-                new NewBuffItem(ModContent.ItemType<CalamityEntropy.Content.Items.YharimsStimulants>(), ModContent.BuffType<CalamityEntropy.Content.Buffs.YharimPower>(), Constants.AllEffects[ModContent.BuffType<CalamityEntropy.Content.Buffs.YharimPower>()], 30, "PermanentYharimsStimulants", "Permanent Yharim's Stimulants"),
-                new NewBuffItem(ModContent.ItemType<VoidCandle>(), ModContent.BuffType<VoidCandleBuff>(), Constants.AllEffects[ModContent.BuffType<VoidCandleBuff>()], 3, "PermanentVoidCandle", "Permanent Void Candle")
+                //potions
+                new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "SoyMilk"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityEntropy.Mod, "SoyMilkBuff")], 30, "PermanentSoyMilk"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "YharimsStimulants"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityEntropy.Mod, "YharimPower")], 30, "PermanentYharimsStimulants"),
+                //arena
+                new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityEntropy.Mod, "VoidCandle"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityEntropy.Mod, "VoidCandleBuff")], 3, "PermanentVoidCandle")
             ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
-
-            /*
-            Dictionary<BuffEffect, int> PermanentCalamityEntropy = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<SoyMilkBuff>()], ModContent.BuffType<SoyMilkBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CalamityEntropy.Content.Buffs.YharimPower>()], ModContent.BuffType<CalamityEntropy.Content.Buffs.YharimPower>() },
-                { Constants.AllEffects[ModContent.BuffType<VoidCandleBuff>()], ModContent.BuffType<VoidCandleBuff>() }
-            };
-
-            NewCombinedBuffItem[] CombinedBuffItems = [
-                new NewCombinedBuffItem(PermanentCalamityEntropy, "PermanentCalamityEntropy", "Permanent Calamity Entropy", "PermanentCalamityEntropy"),
-            ];
-
-            foreach (var newCombinedBuffItem in CombinedBuffItems)
-            {
-                CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
-                QoLCompendium.Instance.AddContent(item);
-            }
-            */
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
     }
 
-    [JITWhenModsEnabled(CrossModSupport.CalamityRekindled.Name)]
-    [ExtendsFromMod(CrossModSupport.CalamityRekindled.Name)]
     public static class CalamityRekindledBuffItems
     {
-        public static NewBuffEffect[] CalamityRekindledEffects = [];
-
-        public static int BeetleJuiceID = -1;
-        public static int CadenceID = -1;
-        public static int DraconicElixirID = -1;
-        public static int PenumbraID = -1;
-        public static int ProfanedRageID = -1;
-        public static int ProfanedWrathID = -1;
-        public static int RevivifyID = -1;
-        public static int ShatteringID = -1;
-        public static int TriumphID = -1;
-
-        public static int TitanScaleID = -1;
-        public static int YharimsStimulantsID = -1;
-
         public static void LoadTasks()
         {
-            BeetleJuiceID = ModContent.BuffType<BeetleJuiceBuff>();
-            CadenceID = ModContent.BuffType<Cadence>();
-            DraconicElixirID = ModContent.BuffType<DraconicSurgeBuff>();
-            PenumbraID = ModContent.BuffType<Penumbra>();
-            ProfanedRageID = ModContent.BuffType<ProfanedRageBuff>();
-            ProfanedWrathID = ModContent.BuffType<ProfanedWrathBuff>();
-            RevivifyID = ModContent.BuffType<Revivify>();
-            ShatteringID = ModContent.BuffType<ArmorShattering>();
-            TriumphID = ModContent.BuffType<TriumphBuff>();
+            if (!CrossModSupport.CalamityRekindled.Loaded)
+                return;
 
-            if (!CrossModSupport.Clamity.Loaded)
-                TitanScaleID = ModContent.BuffType<TitanScale>();
-            if (!CrossModSupport.CalamityEntropy.Loaded)
-                YharimsStimulantsID = ModContent.BuffType<CalamityLegacy.Content.Buffs.YharimPower>();
-
-            CalamityRekindledEffects = [
+            NewBuffEffect[] CalamityRekindledEffects = [
                 //potions
-                new NewBuffEffect(ModContent.BuffType<BeetleJuiceBuff>()),
-                new NewBuffEffect(ModContent.BuffType<Cadence>()),
-                new NewBuffEffect(ModContent.BuffType<DraconicSurgeBuff>()),
-                new NewBuffEffect(ModContent.BuffType<Penumbra>()),
-                new NewBuffEffect(ModContent.BuffType<ProfanedRageBuff>()),
-                new NewBuffEffect(ModContent.BuffType<ProfanedWrathBuff>()),
-                new NewBuffEffect(ModContent.BuffType<Revivify>()),
-                new NewBuffEffect(ModContent.BuffType<ArmorShattering>()),
-                new NewBuffEffect(ModContent.BuffType<TriumphBuff>())
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "BeetleJuiceBuff")),
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "Cadence")),
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "DraconicSurgeBuff")),
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "Penumbra")),
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "ProfanedRageBuff")),
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "ProfanedWrathBuff")),
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "Revivify")),
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "ArmorShattering")),
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "TriumphBuff"))
             ];
 
             if (!CrossModSupport.Clamity.Loaded)
             {
                 Array.Resize(ref CalamityRekindledEffects, CalamityRekindledEffects.Length + 1);
-                CalamityRekindledEffects[^1] = new NewBuffEffect(ModContent.BuffType<TitanScale>());
+                CalamityRekindledEffects[^1] = new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "TitanScale"));
             }
 
             if (!CrossModSupport.CalamityEntropy.Loaded)
             {
                 Array.Resize(ref CalamityRekindledEffects, CalamityRekindledEffects.Length + 1);
-                CalamityRekindledEffects[^1] = new NewBuffEffect(ModContent.BuffType<CalamityLegacy.Content.Buffs.YharimPower>());
+                CalamityRekindledEffects[^1] = new NewBuffEffect(Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "YharimPower"));
             }
 
             foreach (var newEffect in CalamityRekindledEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
-                new NewBuffItem(ModContent.ItemType<BeetleJuice>(), ModContent.BuffType<BeetleJuiceBuff>(), Constants.AllEffects[ModContent.BuffType<BeetleJuiceBuff>()], 30, "PermanentBeetleJuice", "Permanent Beetle Juice"),
-                new NewBuffItem(ModContent.ItemType<CadencePotion>(), ModContent.BuffType<Cadence>(), Constants.AllEffects[ModContent.BuffType<Cadence>()], 30, "PermanentCadence", "Permanent Cadence"),
-                new NewBuffItem(ModContent.ItemType<DraconicElixir>(), ModContent.BuffType<DraconicSurgeBuff>(), Constants.AllEffects[ModContent.BuffType<DraconicSurgeBuff>()], 30, "PermanentDraconicElixir", "Permanent Draconic Elixir"),
-                new NewBuffItem(ModContent.ItemType<PenumbraPotion>(), ModContent.BuffType<Penumbra>(), Constants.AllEffects[ModContent.BuffType<Penumbra>()], 30, "PermanentPenumbra", "Permanent Penumbra"),
-                new NewBuffItem(ModContent.ItemType<ProfanedRagePotion>(), ModContent.BuffType<ProfanedRageBuff>(), Constants.AllEffects[ModContent.BuffType<ProfanedRageBuff>()], 30, "PermanentProfanedRage", "Permanent Profaned Rage"),
-                new NewBuffItem(ModContent.ItemType<ProfanedWrathPotion>(), ModContent.BuffType<ProfanedWrathBuff>(), Constants.AllEffects[ModContent.BuffType<ProfanedWrathBuff>()], 30, "PermanentProfanedWrath", "Permanent Profaned Wrath"),
-                new NewBuffItem(ModContent.ItemType<RevivifyPotion>(), ModContent.BuffType<Revivify>(), Constants.AllEffects[ModContent.BuffType<Revivify>()], 30, "PermanentRevivify", "Permanent Revivify"),
-                new NewBuffItem(ModContent.ItemType<ShatteringPotion>(), ModContent.BuffType<ArmorShattering>(), Constants.AllEffects[ModContent.BuffType<ArmorShattering>()], 30, "PermanentShattering", "Permanent Shattering"),
-                new NewBuffItem(ModContent.ItemType<TriumphPotion>(), ModContent.BuffType<TriumphBuff>(), Constants.AllEffects[ModContent.BuffType<TriumphBuff>()], 30, "PermanentTriumph", "Permanent Triumph")
+                new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityRekindled.Mod, "BeetleJuice"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "BeetleJuiceBuff")], 30, "PermanentBeetleJuice"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityRekindled.Mod, "CadencePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "Cadence")], 30, "PermanentCadence"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityRekindled.Mod, "DraconicElixir"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "DraconicSurgeBuff")], 30, "PermanentDraconicElixir"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityRekindled.Mod, "PenumbraPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "Penumbra")], 30, "PermanentPenumbra"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityRekindled.Mod, "ProfanedRagePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "ProfanedRageBuff")], 30, "PermanentProfanedRage"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityRekindled.Mod, "ProfanedWrathPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "ProfanedWrathBuff")], 30, "PermanentProfanedWrath"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityRekindled.Mod, "RevivifyPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "Revivify")], 30, "PermanentRevivify"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityRekindled.Mod, "ShatteringPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "ArmorShattering")], 30, "PermanentShattering"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityRekindled.Mod, "TriumphPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "TriumphBuff")], 30, "PermanentTriumph")
             ];
 
             if (!CrossModSupport.Clamity.Loaded)
             {
                 Array.Resize(ref BuffItems, BuffItems.Length + 1);
-                BuffItems[^1] = new NewBuffItem(ModContent.ItemType<CalamityLegacy.Content.Items.Potions.TitanScalePotion>(), ModContent.BuffType<TitanScale>(), Constants.AllEffects[ModContent.BuffType<TitanScale>()], 30, "PermanentCRTitanScale", "Permanent Titan Scale");
+                BuffItems[^1] = new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityRekindled.Mod, "TitanScalePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "TitanScale")], 30, "PermanentCRTitanScale");
             }
 
             if (!CrossModSupport.CalamityEntropy.Loaded)
             {
                 Array.Resize(ref BuffItems, BuffItems.Length + 1);
-                BuffItems[^1] = new NewBuffItem(ModContent.ItemType<CalamityLegacy.Content.Items.Potions.YharimsStimulants>(), ModContent.BuffType<CalamityLegacy.Content.Buffs.YharimPower>(), Constants.AllEffects[ModContent.BuffType<CalamityLegacy.Content.Buffs.YharimPower>()], 30, "PermanentCRYharimsStimulants", "Permanent Yharim's Stimulants");
+                BuffItems[^1] = new NewBuffItem(Common.GetModItem(CrossModSupport.CalamityRekindled.Mod, "YharimsStimulants"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.CalamityRekindled.Mod, "YharimPower")], 30, "PermanentCRYharimsStimulants");
             }
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
-
-            /*
-            Dictionary<BuffEffect, int> PermanentCalamityRekindled = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<BeetleJuiceBuff>()], ModContent.BuffType<BeetleJuiceBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Cadence>()], ModContent.BuffType<Cadence>() },
-                { Constants.AllEffects[ModContent.BuffType<DraconicSurgeBuff>()], ModContent.BuffType<DraconicSurgeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Penumbra>()], ModContent.BuffType<Penumbra>() },
-                { Constants.AllEffects[ModContent.BuffType<ProfanedRageBuff>()], ModContent.BuffType<ProfanedRageBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ProfanedWrathBuff>()], ModContent.BuffType<ProfanedWrathBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Revivify>()], ModContent.BuffType<Revivify>() },
-                { Constants.AllEffects[ModContent.BuffType<ArmorShattering>()], ModContent.BuffType<ArmorShattering>() },
-                { Constants.AllEffects[ModContent.BuffType<TitanScale>()], ModContent.BuffType<TitanScale>() },
-                { Constants.AllEffects[ModContent.BuffType<TriumphBuff>()], ModContent.BuffType<TriumphBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CalamityLegacy.Content.Buffs.YharimPower>()], ModContent.BuffType<CalamityLegacy.Content.Buffs.YharimPower>() }
-            };
-
-            NewCombinedBuffItem[] CombinedBuffItems = [
-                new NewCombinedBuffItem(PermanentCalamityRekindled, "PermanentCalamityRekindled", "Permanent Calamity Rekindled", "PermanentCalamityRekindled"),
-            ];
-
-            foreach (var newCombinedBuffItem in CombinedBuffItems)
-            {
-                CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
-                QoLCompendium.Instance.AddContent(item);
-            }
-            */
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
     }
 
-    [JITWhenModsEnabled(CrossModSupport.Catalyst.Name)]
-    [ExtendsFromMod(CrossModSupport.Catalyst.Name)]
     public static class CatalystBuffItems
     {
-        public static NewBuffEffect[] CatalystEffects = [];
-
-        public static int AstracolaID = -1;
-
         public static void LoadTasks()
         {
-            AstracolaID = ModContent.BuffType<AstralJellyBuff>();
+            if (!CrossModSupport.Catalyst.Loaded)
+                return;
 
-            CatalystEffects = [
-                //potions
-                new NewBuffEffect(ModContent.BuffType<AstralJellyBuff>()),
-            ];
+            NewBuffEffect[] CatalystEffects = [new NewBuffEffect(Common.GetModBuff(CrossModSupport.Catalyst.Mod, "AstralJellyBuff"))];
 
             foreach (var newEffect in CatalystEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
-                new NewBuffItem(ModContent.ItemType<Lean>(), ModContent.BuffType<AstralJellyBuff>(), Constants.AllEffects[ModContent.BuffType<AstralJellyBuff>()], 30, "PermanentAstracola", "Permanent Astracola")
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Catalyst.Mod, "Lean"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Catalyst.Mod, "AstralJellyBuff")], 30, "PermanentAstracola")
             ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
     }
 
-    [JITWhenModsEnabled(CrossModSupport.Clamity.Name)]
-    [ExtendsFromMod(CrossModSupport.Clamity.Name)]
     public static class ClamityBuffItems
     {
-        public static NewBuffEffect[] ClamityEffects = [];
-
-        public static int SupremeLuckID = -1;
-        public static int TitanScaleID = -1;
-        public static int ExoBaguetteID = -1;
-
         public static void LoadTasks()
         {
-            SupremeLuckID = ModContent.BuffType<SupremeLucky>();
-            TitanScaleID = ModContent.BuffType<TitanScalePotionBuff>();
-            ExoBaguetteID = ModContent.BuffType<ExoBaguetteBuff>();
+            if (!CrossModSupport.Clamity.Loaded)
+                return;
 
-            ClamityEffects = [
-                //potions
-                new NewBuffEffect(ModContent.BuffType<SupremeLucky>()),
-                new NewBuffEffect(ModContent.BuffType<TitanScalePotionBuff>()),
-                new NewBuffEffect(ModContent.BuffType<ExoBaguetteBuff>()),
-            ];
+            NewBuffEffect[] ClamityEffects = [
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.Clamity.Mod, "SupremeLucky")),
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.Clamity.Mod, "TitanScalePotionBuff"))
+                ];
 
             foreach (var newEffect in ClamityEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
-                new NewBuffItem(ModContent.ItemType<SupremeLuckPotion>(), ModContent.BuffType<SupremeLucky>(), Constants.AllEffects[ModContent.BuffType<SupremeLucky>()], 30, "PermanentSupremeLuck", "Permanent Supreme Luck"),
-                new NewBuffItem(ModContent.ItemType<Clamity.Content.Items.Potions.BuffPotions.TitanScalePotion>(), ModContent.BuffType<TitanScalePotionBuff>(), Constants.AllEffects[ModContent.BuffType<TitanScalePotionBuff>()], 30, "PermanentTitanScale", "Permanent Titan Scale"),
-                new NewBuffItem(ModContent.ItemType<ExoBaguette>(), ModContent.BuffType<ExoBaguetteBuff>(), Constants.AllEffects[ModContent.BuffType<ExoBaguetteBuff>()], 30, "PermanentExoBaguette", "Permanent Exo Baguette")
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Clamity.Mod, "SupremeLuckPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Clamity.Mod, "SupremeLucky")], 30, "PermanentSupremeLuck"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Clamity.Mod, "TitanScalePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Clamity.Mod, "TitanScalePotionBuff")], 30, "PermanentTitanScale")
             ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
-
-            /*
-            Dictionary<BuffEffect, int> PermanentClamity = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<SupremeLucky>()], ModContent.BuffType<SupremeLucky>() },
-                { Constants.AllEffects[ModContent.BuffType<TitanScalePotionBuff>()], ModContent.BuffType<TitanScalePotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ExoBaguetteBuff>()], ModContent.BuffType<ExoBaguetteBuff>() }
-            };
-
-            NewCombinedBuffItem[] CombinedBuffItems = [
-                new NewCombinedBuffItem(PermanentClamity, "PermanentClamity", "Permanent Clamity", "PermanentClamity"),
-            ];
-
-            foreach (var newCombinedBuffItem in CombinedBuffItems)
-            {
-                CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
-                QoLCompendium.Instance.AddContent(item);
-            }
-            */
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
     }
 
-    [JITWhenModsEnabled(CrossModSupport.DraedonExpansion.Name)]
-    [ExtendsFromMod(CrossModSupport.DraedonExpansion.Name)]
     public static class DraedonExpansionBuffItems
     {
-        public static NewBuffEffect[] DraedonExpansionEffects = [];
-
-        public static int FlaskOfElectricityID = -1;
-
         public static void LoadTasks()
         {
-            FlaskOfElectricityID = ModContent.BuffType<FlaskOfElectricityBuff>();
+            if (!CrossModSupport.DraedonExpansion.Loaded)
+                return;
 
-            DraedonExpansionEffects = [
-                //flasks
-                new NewBuffEffect(ModContent.BuffType<FlaskOfElectricityBuff>(), (int)Constants.EffectTypes.Flask),
-            ];
+            NewBuffEffect[] DraedonExpansionEffects = [new NewBuffEffect(Common.GetModBuff(CrossModSupport.DraedonExpansion.Mod, "FlaskOfElectricityBuff"), (int)Constants.EffectTypes.Flask)];
 
             foreach (var newEffect in DraedonExpansionEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
-                new NewBuffItem(ModContent.ItemType<FlaskOfElectricity>(), ModContent.BuffType<FlaskOfElectricityBuff>(), Constants.AllEffects[ModContent.BuffType<FlaskOfElectricityBuff>()], 30, "PermanentFlaskOfElectricity", "Permanent Flask of Electricity")
+                new NewBuffItem(Common.GetModItem(CrossModSupport.DraedonExpansion.Mod, "FlaskOfElectricity"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.DraedonExpansion.Mod, "FlaskOfElectricityBuff")], 30, "PermanentFlaskOfElectricity")
             ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
     }
 
-    [JITWhenModsEnabled(CrossModSupport.WrathOfTheGods.Name)]
-    [ExtendsFromMod(CrossModSupport.WrathOfTheGods.Name)]
     public static class WrathOfTheGodsBuffItems
     {
-        public static NewBuffEffect[] WrathOfTheGodsEffects = [];
-
-        public static int CinnamonRollynID = -1;
-
         public static void LoadTasks()
         {
-            CinnamonRollynID = ModContent.BuffType<StarstrikinglySatiated>();
+            if (!CrossModSupport.WrathOfTheGods.Loaded)
+                return;
 
-            WrathOfTheGodsEffects = [
-                //potions
-                new NewBuffEffect(ModContent.BuffType<StarstrikinglySatiated>()),
-            ];
+            NewBuffEffect[] WrathOfTheGodsEffects = [new NewBuffEffect(Common.GetModBuff(CrossModSupport.WrathOfTheGods.Mod, "StarstrikinglySatiated"))];
 
             foreach (var newEffect in WrathOfTheGodsEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
-                new NewBuffItem(ModContent.ItemType<CinnamonRollyn>(), ModContent.BuffType<StarstrikinglySatiated>(), Constants.AllEffects[ModContent.BuffType<StarstrikinglySatiated>()], 30, "PermanentStarstrikinglySatiated", "Permanent Starstrikingly Satiated")
+                new NewBuffItem(Common.GetModItem(CrossModSupport.WrathOfTheGods.Mod, "CinnamonRollyn"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.WrathOfTheGods.Mod, "StarstrikinglySatiated")], 30, "PermanentStarstrikinglySatiated")
             ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
     }
 }

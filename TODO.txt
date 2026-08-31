@@ -52,3 +52,4 @@ COMPLETED AMMOS:
 36. Boss spawn blockers (Thorium)
  (DONE) 37. Merge Pedestal Items
 38. Lessen the amount of weakrefs
+39. jack button remembrance

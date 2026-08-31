@@ -62,34 +62,20 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
 
         public void HandleShadow(Player player)
         {
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<BuildIndicatorProjectile>()] > 400)
-            {
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<BuildIndicatorProjectile>()] > 350)
                 return;
-            }
-            if (player.direction < 0)
+
+            Vector2 offset = new(48, 16);
+            for (int x = -6; x <= 0; x++)
             {
-                for (int x = -6; x <= 0; x++)
+                for (int y = 0; y <= 50; y++)
                 {
-                    for (int y = 0; y <= 100; y++)
-                    {
-                        Vector2 mouse = Main.MouseWorld;
-                        mouse.X += x * 16;
-                        mouse.Y += y * 16;
-                        Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(48, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
-                    }
-                }
-            }
-            else
-            {
-                for (int x = 0; x <= 6; x++)
-                {
-                    for (int y = 0; y <= 100; y++)
-                    {
-                        Vector2 mouse = Main.MouseWorld;
-                        mouse.X += x * 16;
-                        mouse.Y += y * 16;
-                        Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(-48, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
-                    }
+                    Vector2 mouse = Main.MouseWorld;
+                    mouse.X += x * 16;
+                    mouse.Y += y * 16;
+                    Vector2 position = mouse + offset;
+
+                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), position, Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI, ai0: 0);
                 }
             }
         }

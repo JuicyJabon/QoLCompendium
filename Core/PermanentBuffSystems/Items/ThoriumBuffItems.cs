@@ -1,65 +1,12 @@
-﻿using InfernalEclipseAPI.Core.Configs;
-using ThoriumMod.Buffs;
-using ThoriumMod.Buffs.Bard;
-using ThoriumMod.Buffs.Healer;
-using ThoriumMod.Items.BardItems;
-using ThoriumMod.Items.Consumable;
-using ThoriumMod.Items.Depths;
-using ThoriumMod.Items.Donate;
-using ThoriumMod.Items.NPCItems;
-using ThoriumMod.Items.Placeable;
-using ThoriumMod.Items.ThrownItems;
-using ThoriumRework;
-using ThoriumRework.Buffs;
-using ThoriumRework.Items;
-
-namespace QoLCompendium.Core.PermanentBuffSystems.Items
+﻿namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(CrossModSupport.Thorium.Name)]
-    [ExtendsFromMod(CrossModSupport.Thorium.Name)]
     public static class ThoriumBuffItems
     {
-        public static NewBuffEffect[] ThoriumEffects = [
-            //potions
-            new NewBuffEffect(ModContent.BuffType<AquaAffinity>()),
-            new NewBuffEffect(ModContent.BuffType<ArcanePotionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<ArtilleryBuff>()),
-            new NewBuffEffect(ModContent.BuffType<AssassinPotionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<BloodRush>()),
-            new NewBuffEffect(ModContent.BuffType<BouncingFlamePotionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<CactusFruitBuff>()),
-            new NewBuffEffect(ModContent.BuffType<ConflagrationPotionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<CreativityPotionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<EarwormPotionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<FrenzyPotionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<GlowingPotionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<HolyPotionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<HydrationBuff>()),
-            new NewBuffEffect(ModContent.BuffType<InspirationReachPotionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<KineticPotionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<WarmongerBuff>()),
-            //repellents
-            new NewBuffEffect(ModContent.BuffType<BatRepellentBuff>(), (int) Constants.EffectTypes.Repellent),
-            new NewBuffEffect(ModContent.BuffType<FishRepellentBuff>(), (int) Constants.EffectTypes.Repellent),
-            new NewBuffEffect(ModContent.BuffType<InsectRepellentBuff>(), (int) Constants.EffectTypes.Repellent),
-            new NewBuffEffect(ModContent.BuffType<SkeletonRepellentBuff>(), (int) Constants.EffectTypes.Repellent),
-            new NewBuffEffect(ModContent.BuffType<ZombieRepellentBuff>(), (int) Constants.EffectTypes.Repellent),
-            //arena
-            new NewBuffEffect(ModContent.BuffType<MistletoeBuff>(), (int) Constants.EffectTypes.Arena),
-            //stations
-            new NewBuffEffect(ModContent.BuffType<AltarBuff>(), (int) Constants.EffectTypes.Station),
-            new NewBuffEffect(ModContent.BuffType<ConductorsStandBuff>(), (int) Constants.EffectTypes.Station),
-            new NewBuffEffect(ModContent.BuffType<NinjaBuff>(), (int) Constants.EffectTypes.Station),
-            //coatings
-            new NewBuffEffect(ModContent.BuffType<DeepFreezeCoatingBuff>(), (int) Constants.EffectTypes.Coating),
-            new NewBuffEffect(ModContent.BuffType<ExplosiveCoatingBuff>(), (int) Constants.EffectTypes.Coating),
-            new NewBuffEffect(ModContent.BuffType<GorgonCoatingBuff>(), (int) Constants.EffectTypes.Coating),
-            new NewBuffEffect(ModContent.BuffType<SporeCoatingBuff>(), (int) Constants.EffectTypes.Coating),
-            new NewBuffEffect(ModContent.BuffType<ToxicCoatingBuff>(), (int) Constants.EffectTypes.Coating)
-        ];
-
         public static void LoadTasks()
         {
+            if (!CrossModSupport.Thorium.Loaded)
+                return;
+
             BaseItems();
             if (CrossModSupport.ThoriumHelheim.Loaded)
                 ThoriumBossReworkBuffItems.LoadTasks();
@@ -68,308 +15,259 @@ namespace QoLCompendium.Core.PermanentBuffSystems.Items
 
         public static void BaseItems()
         {
+            NewBuffEffect[] ThoriumEffects = [
+            //potions
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "AquaAffinity")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "ArcanePotionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "ArtilleryBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "AssassinPotionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "BloodRush")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "BouncingFlamePotionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "CactusFruitBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "ConflagrationPotionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "CreativityPotionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "EarwormPotionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "FrenzyPotionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "GlowingPotionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "HolyPotionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "HydrationBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "InspirationReachPotionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "KineticPotionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "WarmongerBuff")),
+            //repellents
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "BatRepellentBuff"), (int) Constants.EffectTypes.Repellent),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "FishRepellentBuff"), (int) Constants.EffectTypes.Repellent),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "InsectRepellentBuff"), (int) Constants.EffectTypes.Repellent),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "SkeletonRepellentBuff"), (int) Constants.EffectTypes.Repellent),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "ZombieRepellentBuff"), (int) Constants.EffectTypes.Repellent),
+            //arena
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "MistletoeBuff"), (int) Constants.EffectTypes.Arena),
+            //stations
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "AltarBuff"), (int) Constants.EffectTypes.Station),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "ConductorsStandBuff"), (int) Constants.EffectTypes.Station),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "NinjaBuff"), (int) Constants.EffectTypes.Station),
+            //coatings
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "DeepFreezeCoatingBuff"), (int) Constants.EffectTypes.Coating),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "ExplosiveCoatingBuff"), (int) Constants.EffectTypes.Coating),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "GorgonCoatingBuff"), (int) Constants.EffectTypes.Coating),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "SporeCoatingBuff"), (int) Constants.EffectTypes.Coating),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Thorium.Mod, "ToxicCoatingBuff"), (int) Constants.EffectTypes.Coating)
+            ];
+
             foreach (var newEffect in ThoriumEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
-                new NewBuffItem(ModContent.ItemType<Mistletoe>(), ModContent.BuffType<MistletoeBuff>(), Constants.AllEffects[ModContent.BuffType<MistletoeBuff>()], 3, "PermanentMistletoe", "Permanent Mistletoe"),
-                new NewBuffItem(ModContent.ItemType<DeepFreezeCoatingItem>(), ModContent.BuffType<DeepFreezeCoatingBuff>(), Constants.AllEffects[ModContent.BuffType<DeepFreezeCoatingBuff>()], 30, "PermanentDeepFreezeCoating", "Permanent Deep Freeze Coating"),
-                new NewBuffItem(ModContent.ItemType<ExplosiveCoatingItem>(), ModContent.BuffType<ExplosiveCoatingBuff>(), Constants.AllEffects[ModContent.BuffType<ExplosiveCoatingBuff>()], 30, "PermanentExplosiveCoating", "Permanent Explosive Coating"),
-                new NewBuffItem(ModContent.ItemType<GorgonCoatingItem>(), ModContent.BuffType<GorgonCoatingBuff>(), Constants.AllEffects[ModContent.BuffType<GorgonCoatingBuff>()], 30, "PermanentGorgonCoating", "Permanent Gorgon Coating"),
-                new NewBuffItem(ModContent.ItemType<SporeCoatingItem>(), ModContent.BuffType<SporeCoatingBuff>(), Constants.AllEffects[ModContent.BuffType<SporeCoatingBuff>()], 30, "PermanentSporeCoating", "Permanent Spore Coating"),
-                new NewBuffItem(ModContent.ItemType<ToxicCoatingItem>(), ModContent.BuffType<ToxicCoatingBuff>(), Constants.AllEffects[ModContent.BuffType<ToxicCoatingBuff>()], 30, "PermanentToxicCoating", "Permanent Toxic Coating"),
-                new NewBuffItem(ModContent.ItemType<AquaPotion>(), ModContent.BuffType<AquaAffinity>(), Constants.AllEffects[ModContent.BuffType<AquaAffinity>()], 30, "PermanentAquaAffinity", "Permanent Aqua Affinity"),
-                new NewBuffItem(ModContent.ItemType<ArcanePotion>(), ModContent.BuffType<ArcanePotionBuff>(), Constants.AllEffects[ModContent.BuffType<ArcanePotionBuff>()], 30, "PermanentArcane", "Permanent Arcane"),
-                new NewBuffItem(ModContent.ItemType<ArtilleryPotion>(), ModContent.BuffType<ArtilleryBuff>(), Constants.AllEffects[ModContent.BuffType<ArtilleryBuff>()], 30, "PermanentArtillery", "Permanent Artillery"),
-                new NewBuffItem(ModContent.ItemType<AssassinPotion>(), ModContent.BuffType<AssassinPotionBuff>(), Constants.AllEffects[ModContent.BuffType<AssassinPotionBuff>()], 30, "PermanentAssassin", "Permanent Assassin"),
-                new NewBuffItem(ModContent.ItemType<BatRepellent>(), ModContent.BuffType<BatRepellentBuff>(), Constants.AllEffects[ModContent.BuffType<BatRepellentBuff>()], 30, "PermanentBatRepellent", "Permanent Bat Repellent"),
-                new NewBuffItem(ModContent.ItemType<BloodPotion>(), ModContent.BuffType<BloodRush>(), Constants.AllEffects[ModContent.BuffType<BloodRush>()], 30, "PermanentBloodRush", "Permanent Blood Rush"),
-                new NewBuffItem(ModContent.ItemType<BouncingFlamePotion>(), ModContent.BuffType<BouncingFlamePotionBuff>(), Constants.AllEffects[ModContent.BuffType<BouncingFlamePotionBuff>()], 30, "PermanentBouncingFlames", "Permanent Bouncing Flames"),
-                new NewBuffItem(ModContent.ItemType<CactusFruit>(), ModContent.BuffType<CactusFruitBuff>(), Constants.AllEffects[ModContent.BuffType<CactusFruitBuff>()], 30, "PermanentCactusFruit", "Permanent Cactus Fruit"),
-                new NewBuffItem(ModContent.ItemType<ConflagrationPotion>(), ModContent.BuffType<ConflagrationPotionBuff>(), Constants.AllEffects[ModContent.BuffType<ConflagrationPotionBuff>()], 30, "PermanentConflagration", "Permanent Conflagration"),
-                new NewBuffItem(ModContent.ItemType<CreativityPotion>(), ModContent.BuffType<CreativityPotionBuff>(), Constants.AllEffects[ModContent.BuffType<CreativityPotionBuff>()], 30, "PermanentCreativity", "Permanent Creativity"),
-                new NewBuffItem(ModContent.ItemType<EarwormPotion>(), ModContent.BuffType<EarwormPotionBuff>(), Constants.AllEffects[ModContent.BuffType<EarwormPotionBuff>()], 30, "PermanentEarworm", "Permanent Earworm"),
-                new NewBuffItem(ModContent.ItemType<FishRepellent>(), ModContent.BuffType<FishRepellentBuff>(), Constants.AllEffects[ModContent.BuffType<FishRepellentBuff>()], 30, "PermanentFishRepellent", "Permanent Fish Repellent"),
-                new NewBuffItem(ModContent.ItemType<FrenzyPotion>(), ModContent.BuffType<FrenzyPotionBuff>(), Constants.AllEffects[ModContent.BuffType<FrenzyPotionBuff>()], 30, "PermanentFrenzy", "Permanent Frenzy"),
-                new NewBuffItem(ModContent.ItemType<GlowingPotion>(), ModContent.BuffType<GlowingPotionBuff>(), Constants.AllEffects[ModContent.BuffType<GlowingPotionBuff>()], 30, "PermanentGlowing", "Permanent Glowing"),
-                new NewBuffItem(ModContent.ItemType<HolyPotion>(), ModContent.BuffType<HolyPotionBuff>(), Constants.AllEffects[ModContent.BuffType<HolyPotionBuff>()], 30, "PermanentHoly", "Permanent Holy"),
-                new NewBuffItem(ModContent.ItemType<HydrationPotion>(), ModContent.BuffType<HydrationBuff>(), Constants.AllEffects[ModContent.BuffType<HydrationBuff>()], 30, "PermanentHydration", "Permanent Hydration"),
-                new NewBuffItem(ModContent.ItemType<InsectRepellent>(), ModContent.BuffType<InsectRepellentBuff>(), Constants.AllEffects[ModContent.BuffType<InsectRepellentBuff>()], 30, "PermanentInsectRepellent", "Permanent Insect Repellent"),
-                new NewBuffItem(ModContent.ItemType<InspirationReachPotion>(), ModContent.BuffType<InspirationReachPotionBuff>(), Constants.AllEffects[ModContent.BuffType<InspirationReachPotionBuff>()], 30, "PermanentInspirationalReach", "Permanent Inspirational Reach"),
-                new NewBuffItem(ModContent.ItemType<KineticPotion>(), ModContent.BuffType<KineticPotionBuff>(), Constants.AllEffects[ModContent.BuffType<KineticPotionBuff>()], 30, "PermanentKinetic", "Permanent Kinetic"),
-                new NewBuffItem(ModContent.ItemType<SkeletonRepellent>(), ModContent.BuffType<SkeletonRepellentBuff>(), Constants.AllEffects[ModContent.BuffType<SkeletonRepellentBuff>()], 30, "PermanentSkeletonRepellent", "Permanent Skeleton Repellent"),
-                new NewBuffItem(ModContent.ItemType<WarmongerPotion>(), ModContent.BuffType<WarmongerBuff>(), Constants.AllEffects[ModContent.BuffType<WarmongerBuff>()], 30, "PermanentWarmonger", "Permanent Warmonger"),
-                new NewBuffItem(ModContent.ItemType<ZombieRepellent>(), ModContent.BuffType<ZombieRepellentBuff>(), Constants.AllEffects[ModContent.BuffType<ZombieRepellentBuff>()], 30, "PermanentZombieRepellent", "Permanent Zombie Repellent"),
-                new NewBuffItem(ModContent.ItemType<Altar>(), ModContent.BuffType<AltarBuff>(), Constants.AllEffects[ModContent.BuffType<AltarBuff>()], 3, "PermanentAltar", "Permanent Altar"),
-                new NewBuffItem(ModContent.ItemType<ConductorsStand>(), ModContent.BuffType<ConductorsStandBuff>(), Constants.AllEffects[ModContent.BuffType<ConductorsStandBuff>()], 3, "PermanentConductorsStand", "Permanent Conductor's Stand"),
-                new NewBuffItem(ModContent.ItemType<NinjaRack>(), ModContent.BuffType<NinjaBuff>(), Constants.AllEffects[ModContent.BuffType<NinjaBuff>()], 3, "PermanentNinjaRack", "Permanent Ninja Rack")
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "Mistletoe"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "MistletoeBuff")], 3, "PermanentMistletoe"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "DeepFreezeCoatingItem"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "DeepFreezeCoatingBuff")], 30, "PermanentDeepFreezeCoating"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "ExplosiveCoatingItem"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ExplosiveCoatingBuff")], 30, "PermanentExplosiveCoating"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "GorgonCoatingItem"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "GorgonCoatingBuff")], 30, "PermanentGorgonCoating"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "SporeCoatingItem"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "SporeCoatingBuff")], 30, "PermanentSporeCoating"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "ToxicCoatingItem"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ToxicCoatingBuff")], 30, "PermanentToxicCoating"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "AquaPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "AquaAffinity")], 30, "PermanentAquaAffinity"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "ArcanePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ArcanePotionBuff")], 30, "PermanentArcane"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "ArtilleryPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ArtilleryBuff")], 30, "PermanentArtillery"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "AssassinPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "AssassinPotionBuff")], 30, "PermanentAssassin"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "BatRepellent"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "BatRepellentBuff")], 3, "PermanentBatRepellent"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "BloodPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "BloodRush")], 30, "PermanentBloodRush"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "BouncingFlamePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "BouncingFlamePotionBuff")], 30, "PermanentBouncingFlames"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "CactusFruit"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "CactusFruitBuff")], 30, "PermanentCactusFruit"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "ConflagrationPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ConflagrationPotionBuff")], 30, "PermanentConflagration"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "CreativityPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "CreativityPotionBuff")], 30, "PermanentCreativity"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "EarwormPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "EarwormPotionBuff")], 30, "PermanentEarworm"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "FishRepellent"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "FishRepellentBuff")], 3, "PermanentFishRepellent"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "FrenzyPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "FrenzyPotionBuff")], 30, "PermanentFrenzy"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "GlowingPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "GlowingPotionBuff")], 30, "PermanentGlowing"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "HolyPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "HolyPotionBuff")], 30, "PermanentHoly"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "HydrationPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "HydrationBuff")], 30, "PermanentHydration"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "InsectRepellent"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "InsectRepellentBuff")], 3, "PermanentInsectRepellent"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "InspirationReachPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "InspirationReachPotionBuff")], 30, "PermanentInspirationalReach"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "KineticPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "KineticPotionBuff")], 30, "PermanentKinetic"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "SkeletonRepellent"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "SkeletonRepellentBuff")], 3, "PermanentSkeletonRepellent"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "WarmongerPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "WarmongerBuff")], 30, "PermanentWarmonger"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "ZombieRepellent"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ZombieRepellentBuff")], 3, "PermanentZombieRepellent"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "Altar"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "AltarBuff")], 3, "PermanentAltar"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "ConductorsStand"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ConductorsStandBuff")], 3, "PermanentConductorsStand"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Thorium.Mod, "NinjaRack"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "NinjaBuff")], 3, "PermanentNinjaRack")
             ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
 
         public static void CombinedItems()
         {
-            Dictionary<BuffEffect, int> PermanentThoriumBard = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<CreativityPotionBuff>()], ModContent.BuffType<CreativityPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<EarwormPotionBuff>()], ModContent.BuffType<EarwormPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<InspirationReachPotionBuff>()], ModContent.BuffType<InspirationReachPotionBuff>() }
-            };
-
+            List<BuffEffect> PermanentThoriumBard =
+            [
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "CreativityPotionBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "EarwormPotionBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "InspirationReachPotionBuff")]
+            ];
+            List<int> PermanentThoriumBardIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCreativity"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEarworm"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationalReach")];
             if (CrossModSupport.ThoriumHelheim.Loaded)
             {
-                if (ThoriumBossReworkBuffItems.ConfigOn)
-                {
-                    if (CrossModSupport.InfernalEclipse.Loaded)
-                    {
-                        if (ThoriumBossReworkBuffItems.ThoriumBalanceChanges)
-                        {
-                            PermanentThoriumBard.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
-                        }
-                        else
-                        {
-                            PermanentThoriumBard.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.DeathsingerID], ThoriumBossReworkBuffItems.DeathsingerID);
-                            PermanentThoriumBard.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
-                        }
-                    }
-                    else
-                    {
-                        PermanentThoriumBard.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.DeathsingerID], ThoriumBossReworkBuffItems.DeathsingerID);
-                        PermanentThoriumBard.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
-                    }
-                }
+                PermanentThoriumBard.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.ThoriumHelheim.Mod, "Deathsinger")]);
+                PermanentThoriumBard.Add(Constants.AllEffects[Common.GetModBuff(CrossModSupport.ThoriumHelheim.Mod, "Inspired")]);
+                PermanentThoriumBardIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentDeathsinger"));
+                PermanentThoriumBardIngredients.Add(Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationRegeneration"));
             }
 
-            Dictionary<BuffEffect, int> PermanentThoriumHealer = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<ArcanePotionBuff>()], ModContent.BuffType<ArcanePotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<GlowingPotionBuff>()], ModContent.BuffType<GlowingPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<HolyPotionBuff>()], ModContent.BuffType<HolyPotionBuff>() }
-            };
+            List<BuffEffect> PermanentThoriumHealer =
+            [
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ArcanePotionBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "GlowingPotionBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "HolyPotionBuff")]
+            ];
+            List<int> PermanentThoriumHealerIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentArcane"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentGlowing"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHoly")];
 
-            Dictionary<BuffEffect, int> PermanentThoriumThrower = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<AssassinPotionBuff>()], ModContent.BuffType<AssassinPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<HydrationBuff>()], ModContent.BuffType<HydrationBuff>() }
-            };
+            List<BuffEffect> PermanentThoriumThrower =
+            [
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "AssassinPotionBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "HydrationBuff")]
+            ];
+            List<int> PermanentThoriumThrowerIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAssassin"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHydration")];
 
-            Dictionary<BuffEffect, int> PermanentThoriumDamage = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<ArtilleryBuff>()], ModContent.BuffType<ArtilleryBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BouncingFlamePotionBuff>()], ModContent.BuffType<BouncingFlamePotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CactusFruitBuff>()], ModContent.BuffType<CactusFruitBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ConflagrationPotionBuff>()], ModContent.BuffType<ConflagrationPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FrenzyPotionBuff>()], ModContent.BuffType<FrenzyPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<WarmongerBuff>()], ModContent.BuffType<WarmongerBuff>() }
-            };
+            List<BuffEffect> PermanentThoriumDamage =
+            [
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ArtilleryBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "BouncingFlamePotionBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "CactusFruitBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ConflagrationPotionBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "FrenzyPotionBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "WarmongerBuff")]
+            ];
+            List<int> PermanentThoriumDamageIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentArtillery"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBouncingFlames"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCactusFruit"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentConflagration"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFrenzy"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentWarmonger")];
 
-            Dictionary<BuffEffect, int> PermanentThoriumMovement = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<AquaAffinity>()], ModContent.BuffType<AquaAffinity>() },
-                { Constants.AllEffects[ModContent.BuffType<BloodRush>()], ModContent.BuffType<BloodRush>() },
-                { Constants.AllEffects[ModContent.BuffType<KineticPotionBuff>()], ModContent.BuffType<KineticPotionBuff>() }
-            };
+            List<BuffEffect> PermanentThoriumMovement =
+            [
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "AquaAffinity")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "BloodRush")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "KineticPotionBuff")]
+            ];
+            List<int> PermanentThoriumMovementIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAquaAffinity"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBloodRush"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentKinetic")];
 
-            Dictionary<BuffEffect, int> PermanentThoriumRepellent = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<BatRepellentBuff>()], ModContent.BuffType<BatRepellentBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FishRepellentBuff>()], ModContent.BuffType<FishRepellentBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<InsectRepellentBuff>()], ModContent.BuffType<InsectRepellentBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SkeletonRepellentBuff>()], ModContent.BuffType<SkeletonRepellentBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ZombieRepellentBuff>()], ModContent.BuffType<ZombieRepellentBuff>() }
-            };
+            List<BuffEffect> PermanentThoriumRepellent =
+            [
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "BatRepellentBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "FishRepellentBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "InsectRepellentBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "SkeletonRepellentBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ZombieRepellentBuff")]
+            ];
+            List<int> PermanentThoriumRepellentIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBatRepellent"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFishRepellent"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentInsectRepellent"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSkeletonRepellent"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentZombieRepellent")];
 
-            Dictionary<BuffEffect, int> PermanentThoriumStations = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<MistletoeBuff>()], ModContent.BuffType<MistletoeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<AltarBuff>()], ModContent.BuffType<AltarBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ConductorsStandBuff>()], ModContent.BuffType<ConductorsStandBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NinjaBuff>()], ModContent.BuffType<NinjaBuff>() }
-            };
+            List<BuffEffect> PermanentThoriumStations =
+            [
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "MistletoeBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "AltarBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ConductorsStandBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "NinjaBuff")]
+            ];
+            List<int> PermanentThoriumStationsIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMistletoe"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAltar"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentConductorsStand"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentNinjaRack")];
 
-            Dictionary<BuffEffect, int> PermanentThoriumCoatings = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<DeepFreezeCoatingBuff>()], ModContent.BuffType<DeepFreezeCoatingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ExplosiveCoatingBuff>()], ModContent.BuffType<ExplosiveCoatingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<GorgonCoatingBuff>()], ModContent.BuffType<GorgonCoatingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SporeCoatingBuff>()], ModContent.BuffType<SporeCoatingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ToxicCoatingBuff>()], ModContent.BuffType<ToxicCoatingBuff>() }
-            };
+            List<BuffEffect> PermanentThoriumCoatings =
+            [
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "DeepFreezeCoatingBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ExplosiveCoatingBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "GorgonCoatingBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "SporeCoatingBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Thorium.Mod, "ToxicCoatingBuff")]
+            ];
+            List<int> PermanentThoriumCoatingsIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDeepFreezeCoating"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentExplosiveCoating"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentGorgonCoating"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSporeCoating"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentToxicCoating")];
 
-            Dictionary<BuffEffect, int> PermanentThorium = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<CreativityPotionBuff>()], ModContent.BuffType<CreativityPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<EarwormPotionBuff>()], ModContent.BuffType<EarwormPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<InspirationReachPotionBuff>()], ModContent.BuffType<InspirationReachPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ArcanePotionBuff>()], ModContent.BuffType<ArcanePotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<GlowingPotionBuff>()], ModContent.BuffType<GlowingPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<HolyPotionBuff>()], ModContent.BuffType<HolyPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<AssassinPotionBuff>()], ModContent.BuffType<AssassinPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<HydrationBuff>()], ModContent.BuffType<HydrationBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ArtilleryBuff>()], ModContent.BuffType<ArtilleryBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BouncingFlamePotionBuff>()], ModContent.BuffType<BouncingFlamePotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<CactusFruitBuff>()], ModContent.BuffType<CactusFruitBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ConflagrationPotionBuff>()], ModContent.BuffType<ConflagrationPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FrenzyPotionBuff>()], ModContent.BuffType<FrenzyPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<WarmongerBuff>()], ModContent.BuffType<WarmongerBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<AquaAffinity>()], ModContent.BuffType<AquaAffinity>() },
-                { Constants.AllEffects[ModContent.BuffType<BloodRush>()], ModContent.BuffType<BloodRush>() },
-                { Constants.AllEffects[ModContent.BuffType<KineticPotionBuff>()], ModContent.BuffType<KineticPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BatRepellentBuff>()], ModContent.BuffType<BatRepellentBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FishRepellentBuff>()], ModContent.BuffType<FishRepellentBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<InsectRepellentBuff>()], ModContent.BuffType<InsectRepellentBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SkeletonRepellentBuff>()], ModContent.BuffType<SkeletonRepellentBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ZombieRepellentBuff>()], ModContent.BuffType<ZombieRepellentBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<MistletoeBuff>()], ModContent.BuffType<MistletoeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<AltarBuff>()], ModContent.BuffType<AltarBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ConductorsStandBuff>()], ModContent.BuffType<ConductorsStandBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NinjaBuff>()], ModContent.BuffType<NinjaBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<DeepFreezeCoatingBuff>()], ModContent.BuffType<DeepFreezeCoatingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ExplosiveCoatingBuff>()], ModContent.BuffType<ExplosiveCoatingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<GorgonCoatingBuff>()], ModContent.BuffType<GorgonCoatingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SporeCoatingBuff>()], ModContent.BuffType<SporeCoatingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ToxicCoatingBuff>()], ModContent.BuffType<ToxicCoatingBuff>() }
-            };
-
-            if (CrossModSupport.ThoriumHelheim.Loaded)
-            {
-                if (ThoriumBossReworkBuffItems.ConfigOn)
-                {
-                    if (CrossModSupport.InfernalEclipse.Loaded)
-                    {
-                        if (ThoriumBossReworkBuffItems.ThoriumBalanceChanges)
-                        {
-                            PermanentThorium.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
-                        }
-                        else
-                        {
-                            PermanentThorium.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.DeathsingerID], ThoriumBossReworkBuffItems.DeathsingerID);
-                            PermanentThorium.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
-                        }
-                    }
-                    else
-                    {
-                        PermanentThorium.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.DeathsingerID], ThoriumBossReworkBuffItems.DeathsingerID);
-                        PermanentThorium.Add(Constants.AllEffects[ThoriumBossReworkBuffItems.InspiredID], ThoriumBossReworkBuffItems.InspiredID);
-                    }
-                }
-            }
+            List<BuffEffect> PermanentThorium = [];
+            PermanentThorium.AddRange(PermanentThoriumBard);
+            PermanentThorium.AddRange(PermanentThoriumHealer);
+            PermanentThorium.AddRange(PermanentThoriumThrower);
+            PermanentThorium.AddRange(PermanentThoriumDamage);
+            PermanentThorium.AddRange(PermanentThoriumMovement);
+            PermanentThorium.AddRange(PermanentThoriumRepellent);
+            PermanentThorium.AddRange(PermanentThoriumStations);
+            PermanentThorium.AddRange(PermanentThoriumCoatings);
 
             NewCombinedBuffItem[] CombinedBuffItems = [
-                new NewCombinedBuffItem(PermanentThoriumBard, "PermanentThoriumBard", "Permanent Thorium Bard", "PermanentThoriumBard"),
-                new NewCombinedBuffItem(PermanentThoriumHealer, "PermanentThoriumHealer", "Permanent Thorium Healer", "PermanentThoriumHealer"),
-                new NewCombinedBuffItem(PermanentThoriumThrower, "PermanentThoriumThrower", "Permanent Thorium Thrower", "PermanentThoriumThrower"),
-                new NewCombinedBuffItem(PermanentThoriumDamage, "PermanentThoriumDamage", "Permanent Thorium Damage", "PermanentThoriumDamage"),
-                new NewCombinedBuffItem(PermanentThoriumMovement, "PermanentThoriumMovement", "Permanent Thorium Movement", "PermanentThoriumMovement"),
-                new NewCombinedBuffItem(PermanentThoriumRepellent, "PermanentThoriumRepellent", "Permanent Thorium Repellent", "PermanentThoriumRepellent"),
-                new NewCombinedBuffItem(PermanentThoriumStations, "PermanentThoriumStations", "Permanent Thorium Stations", "PermanentThoriumStations"),
-                new NewCombinedBuffItem(PermanentThoriumCoatings, "PermanentThoriumCoatings", "Permanent Thorium Coatings", "PermanentThoriumCoatings"),
-                new NewCombinedBuffItem(PermanentThorium, "PermanentThorium", "Permanent Thorium", "PermanentThorium")
+                new NewCombinedBuffItem("PermanentThoriumBard", PermanentThoriumBard, PermanentThoriumBardIngredients),
+                new NewCombinedBuffItem("PermanentThoriumHealer", PermanentThoriumHealer, PermanentThoriumHealerIngredients),
+                new NewCombinedBuffItem("PermanentThoriumThrower", PermanentThoriumThrower, PermanentThoriumThrowerIngredients),
+                new NewCombinedBuffItem("PermanentThoriumDamage", PermanentThoriumDamage, PermanentThoriumDamageIngredients),
+                new NewCombinedBuffItem("PermanentThoriumMovement", PermanentThoriumMovement, PermanentThoriumMovementIngredients),
+                new NewCombinedBuffItem("PermanentThoriumRepellent", PermanentThoriumRepellent, PermanentThoriumRepellentIngredients),
+                new NewCombinedBuffItem("PermanentThoriumStations", PermanentThoriumStations, PermanentThoriumStationsIngredients),
+                new NewCombinedBuffItem("PermanentThoriumCoatings", PermanentThoriumCoatings, PermanentThoriumCoatingsIngredients)
             ];
 
             foreach (var newCombinedBuffItem in CombinedBuffItems)
-            {
-                CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllCombinedBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreateUpgradedPermanentBuffItem(newCombinedBuffItem);
+
+            List<int> PermanentThoriumIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumBard"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumHealer"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumThrower"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumDamage"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumMovement"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumRepellent"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumStations"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumCoatings")];
+
+            NewCombinedBuffItem permanentThoriumItem = new("PermanentThorium", PermanentThorium, PermanentThoriumIngredients);
+            CombinedBuffItem newPermanentThorium = new(permanentThoriumItem.itemName, permanentThoriumItem.textureName, permanentThoriumItem.effects, permanentThoriumItem.ingredients);
+            QoLCompendium.Instance.AddContent(newPermanentThorium);
+            Constants.AllCombinedBuffItems.Add(newPermanentThorium.Type);
         }
     }
-
-    [JITWhenModsEnabled(CrossModSupport.ThoriumHelheim.Name)]
-    [ExtendsFromMod(CrossModSupport.ThoriumHelheim.Name)]
     public static class ThoriumBossReworkBuffItems
     {
-        public static NewBuffEffect[] ThoriumBossReworkEffects = [];
-
-        public static int DeathsingerID = -1;
-        public static int InspiredID = -1;
-
-        public static bool ConfigOn = ModContent.GetInstance<CompatConfig>().extraPotions;
-
-        [JITWhenModsEnabled(CrossModSupport.InfernalEclipse.Name)]
-        public static bool ThoriumBalanceChanges => InfernalConfig.Instance.ThoriumBalanceChangess;
-
         public static void LoadTasks()
         {
-            if (!ConfigOn)
+            if (!CrossModSupport.ThoriumHelheim.Loaded)
                 return;
-
-            if (CrossModSupport.InfernalEclipse.Loaded)
-            {
-                if (ThoriumBalanceChanges)
-                {
-                    Array.Resize(ref ThoriumBossReworkEffects, ThoriumBossReworkEffects.Length + 1);
-                    ThoriumBossReworkEffects[^1] = new NewBuffEffect(ModContent.BuffType<Inspired>());
-
-                    InspiredID = ModContent.BuffType<Inspired>();
-                }
-                else
-                {
-                    Array.Resize(ref ThoriumBossReworkEffects, ThoriumBossReworkEffects.Length + 2);
-                    ThoriumBossReworkEffects[^2] = new NewBuffEffect(ModContent.BuffType<Deathsinger>());
-                    ThoriumBossReworkEffects[^1] = new NewBuffEffect(ModContent.BuffType<Inspired>());
-
-                    DeathsingerID = ModContent.BuffType<Deathsinger>();
-                    InspiredID = ModContent.BuffType<Inspired>();
-                }
-            }
-            else
-            {
-                Array.Resize(ref ThoriumBossReworkEffects, ThoriumBossReworkEffects.Length + 2);
-                ThoriumBossReworkEffects[^2] = new NewBuffEffect(ModContent.BuffType<Deathsinger>());
-                ThoriumBossReworkEffects[^1] = new NewBuffEffect(ModContent.BuffType<Inspired>());
-
-                DeathsingerID = ModContent.BuffType<Deathsinger>();
-                InspiredID = ModContent.BuffType<Inspired>();
-            }
+            
+            NewBuffEffect[] ThoriumBossReworkEffects = [
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.ThoriumHelheim.Mod, "Deathsinger")),
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.ThoriumHelheim.Mod, "Inspired"))
+            ];
 
             foreach (var newEffect in ThoriumBossReworkEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
-            NewBuffItem[] BuffItems = [];
-
-            if (CrossModSupport.InfernalEclipse.Loaded)
-            {
-                if (ThoriumBalanceChanges)
-                {
-                    Array.Resize(ref BuffItems, BuffItems.Length + 1);
-                    BuffItems[^1] = new NewBuffItem(ModContent.ItemType<InspirationRegenerationPotion>(), ModContent.BuffType<Inspired>(), Constants.AllEffects[ModContent.BuffType<Inspired>()], 30, "PermanentInspirationRegeneration", "Permanent Inspiration Regeneration");
-                }
-                else
-                {
-                    Array.Resize(ref BuffItems, BuffItems.Length + 2);
-                    BuffItems[^2] = new NewBuffItem(ModContent.ItemType<DeathsingerPotion>(), ModContent.BuffType<Deathsinger>(), Constants.AllEffects[ModContent.BuffType<Deathsinger>()], 30, "PermanentDeathsinger", "Permanent Deathsinger");
-                    BuffItems[^1] = new NewBuffItem(ModContent.ItemType<InspirationRegenerationPotion>(), ModContent.BuffType<Inspired>(), Constants.AllEffects[ModContent.BuffType<Inspired>()], 30, "PermanentInspirationRegeneration", "Permanent Inspiration Regeneration");
-                }
-            }
-            else
-            {
-                Array.Resize(ref BuffItems, BuffItems.Length + 2);
-                BuffItems[^2] = new NewBuffItem(ModContent.ItemType<DeathsingerPotion>(), ModContent.BuffType<Deathsinger>(), Constants.AllEffects[ModContent.BuffType<Deathsinger>()], 30, "PermanentDeathsinger", "Permanent Deathsinger");
-                BuffItems[^1] = new NewBuffItem(ModContent.ItemType<InspirationRegenerationPotion>(), ModContent.BuffType<Inspired>(), Constants.AllEffects[ModContent.BuffType<Inspired>()], 30, "PermanentInspirationRegeneration", "Permanent Inspiration Regeneration");
-            }
+            NewBuffItem[] BuffItems = [
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ThoriumHelheim.Mod, "DeathsingerPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ThoriumHelheim.Mod, "Deathsinger")], 30, "PermanentDeathsinger"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ThoriumHelheim.Mod, "InspirationRegenerationPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ThoriumHelheim.Mod, "Inspired")], 30, "PermanentInspirationRegeneration"),
+            ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
     }
 }

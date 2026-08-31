@@ -1,186 +1,187 @@
-﻿using SacredTools.Buffs;
-using SacredTools.Content.Buffs.Potions;
-using SacredTools.Content.Buffs.Potions.Neil;
-using SacredTools.Content.Items.Potions;
-using SacredTools.Content.Items.Potions.Neil;
-using SacredTools.Items.Placeable;
-
-namespace QoLCompendium.Core.PermanentBuffSystems.Items
+﻿namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(CrossModSupport.ShadowsOfAbaddon.Name)]
-    [ExtendsFromMod(CrossModSupport.ShadowsOfAbaddon.Name)]
     public static class ShadowsOfAbaddonBuffItems
     {
-        public static NewBuffEffect[] ShadowsOfAbaddonEffects = [
-            //potions
-            new NewBuffEffect(ModContent.BuffType<SentryBuff>()),
-            new NewBuffEffect(ModContent.BuffType<DayStatsBuff>()),
-            new NewBuffEffect(ModContent.BuffType<NightStatsBuff>()),
-            new NewBuffEffect(ModContent.BuffType<ExtraEnduranceBuff>()),
-            new NewBuffEffect(ModContent.BuffType<ComboBuff>()),
-            new NewBuffEffect(ModContent.BuffType<FlariumInfernoImmunityBuff>()),
-            new NewBuffEffect(ModContent.BuffType<NeilShineBuff>()),
-            new NewBuffEffect(ModContent.BuffType<NeilCritDamageBuff>()),
-            new NewBuffEffect(ModContent.BuffType<NeilBossDamageBuff>()),
-            new NewBuffEffect(ModContent.BuffType<FastFallBuff>()),
-            new NewBuffEffect(ModContent.BuffType<HolyShineBuff>()),
-            new NewBuffEffect(ModContent.BuffType<SkeletonMinionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<MoonlightBuff>()),
-            new NewBuffEffect(ModContent.BuffType<NightmareBuff>()),
-            new NewBuffEffect(ModContent.BuffType<ThrownBuff>()),
-            new NewBuffEffect(ModContent.BuffType<NeilPolarizeBuff>()),
-            new NewBuffEffect(ModContent.BuffType<ThrownSpeedBuff>()),
-            new NewBuffEffect(ModContent.BuffType<FewerSpawnsBuff>()),
-            new NewBuffEffect(ModContent.BuffType<NeilSpeedBuff>()),
-            new NewBuffEffect(ModContent.BuffType<ExtraFishBuff>()),
-            new NewBuffEffect(ModContent.BuffType<SuppressionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<JumpBoostBuff>()),
-            new NewBuffEffect(ModContent.BuffType<SandstormWindImmunityBuff>()),
-            //arena
-            new NewBuffEffect(ModContent.BuffType<FruitBuff>(), (int)Constants.EffectTypes.Arena),
-        ];
-
         public static void LoadTasks()
         {
+            if (!CrossModSupport.ShadowsOfAbaddon.Loaded)
+                return;
+
             BaseItems();
             CombinedItems();
         }
 
         public static void BaseItems()
         {
+            NewBuffEffect[] ShadowsOfAbaddonEffects = [
+            //potions
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "SentryBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "DayStatsBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NightStatsBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ExtraEnduranceBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ComboBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "FlariumInfernoImmunityBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilShineBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilCritDamageBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilBossDamageBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "FastFallBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "HolyShineBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "SkeletonMinionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "MoonlightBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NightmareBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ThrownBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilPolarizeBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ThrownSpeedBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "FewerSpawnsBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilSpeedBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ExtraFishBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "SuppressionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "JumpBoostBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "SandstormWindImmunityBuff")),
+            //arena
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "FruitBuff"), (int)Constants.EffectTypes.Arena),
+            ];
+
             foreach (var newEffect in ShadowsOfAbaddonEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
                 //potions
-                new NewBuffItem(ModContent.ItemType<SentryPotion>(), ModContent.BuffType<SentryBuff>(), Constants.AllEffects[ModContent.BuffType<SentryBuff>()], 30, "PermanentCommanding", "Permanent Commanding"),
-                new NewBuffItem(ModContent.ItemType<DayStatsPotion>(), ModContent.BuffType<DayStatsBuff>(), Constants.AllEffects[ModContent.BuffType<DayStatsBuff>()], 30, "PermanentDawn", "Permanent Dawn"),
-                new NewBuffItem(ModContent.ItemType<NightStatsPotion>(), ModContent.BuffType<NightStatsBuff>(), Constants.AllEffects[ModContent.BuffType<NightStatsBuff>()], 30, "PermanentDusk", "Permanent Dusk"),
-                new NewBuffItem(ModContent.ItemType<ExtraEndurancePotion>(), ModContent.BuffType<ExtraEnduranceBuff>(), Constants.AllEffects[ModContent.BuffType<ExtraEnduranceBuff>()], 30, "PermanentDraconiumSkin", "Permanent Draconium Skin"),
-                new NewBuffItem(ModContent.ItemType<ComboPotion>(), ModContent.BuffType<ComboBuff>(), Constants.AllEffects[ModContent.BuffType<ComboBuff>()], 30, "PermanentEssenceOfFury", "Permanent Essence of Fury"),
-                new NewBuffItem(ModContent.ItemType<FlariumInfernoImmunityPotion>(), ModContent.BuffType<FlariumInfernoImmunityBuff>(), Constants.AllEffects[ModContent.BuffType<FlariumInfernoImmunityBuff>()], 30, "PermanentFlareElixir", "Permanent Flare Elixir"),
-                new NewBuffItem(ModContent.ItemType<NeilShinePotion>(), ModContent.BuffType<NeilShineBuff>(), Constants.AllEffects[ModContent.BuffType<NeilShineBuff>()], 30, "PermanentFlariumFlurry", "Permanent Flarium Flurry"),
-                new NewBuffItem(ModContent.ItemType<NeilCritDamagePotion>(), ModContent.BuffType<NeilCritDamageBuff>(), Constants.AllEffects[ModContent.BuffType<NeilCritDamageBuff>()], 30, "PermanentFrenziedAnimosity", "Permanent Frenzied Animosity"),
-                new NewBuffItem(ModContent.ItemType<NeilBossDamagePotion>(), ModContent.BuffType<NeilBossDamageBuff>(), Constants.AllEffects[ModContent.BuffType<NeilBossDamageBuff>()], 30, "PermanentH", "Permanent h"),
-                new NewBuffItem(ModContent.ItemType<FastFallPotion>(), ModContent.BuffType<FastFallBuff>(), Constants.AllEffects[ModContent.BuffType<FastFallBuff>()], 30, "PermanentHeavyFall", "Permanent Heavy Fall"),
-                new NewBuffItem(ModContent.ItemType<HolyShinePotion>(), ModContent.BuffType<HolyShineBuff>(), Constants.AllEffects[ModContent.BuffType<HolyShineBuff>()], 30, "PermanentHolyLight", "Permanent Holy Light"),
-                new NewBuffItem(ModContent.ItemType<SkeletonMinionPotion>(), ModContent.BuffType<SkeletonMinionBuff>(), Constants.AllEffects[ModContent.BuffType<SkeletonMinionBuff>()], 30, "PermanentMilk", "Permanent Milk"),
-                new NewBuffItem(ModContent.ItemType<MoonlightPotion>(), ModContent.BuffType<MoonlightBuff>(), Constants.AllEffects[ModContent.BuffType<MoonlightBuff>()], 30, "PermanentMoonlight", "Permanent Moonlight"),
-                new NewBuffItem(ModContent.ItemType<NightmarePotion>(), ModContent.BuffType<NightmareBuff>(), Constants.AllEffects[ModContent.BuffType<NightmareBuff>()], 30, "PermanentNightmareFuel", "Permanent Nightmare Fuel"),
-                new NewBuffItem(ModContent.ItemType<ThrownPotion>(), ModContent.BuffType<ThrownBuff>(), Constants.AllEffects[ModContent.BuffType<ThrownBuff>()], 30, "PermanentNinjaFocus", "Permanent Ninja Focus"),
-                new NewBuffItem(ModContent.ItemType<NeilPolarizePotion>(), ModContent.BuffType<NeilPolarizeBuff>(), Constants.AllEffects[ModContent.BuffType<NeilPolarizeBuff>()], 30, "PermanentNumberOne", "Permanent Number One"),
-                new NewBuffItem(ModContent.ItemType<ThrownSpeedPotion>(), ModContent.BuffType<ThrownSpeedBuff>(), Constants.AllEffects[ModContent.BuffType<ThrownSpeedBuff>()], 30, "PermanentRobustMuscle", "Permanent Robust Muscle"),
-                new NewBuffItem(ModContent.ItemType<FewerSpawnsPotion>(), ModContent.BuffType<FewerSpawnsBuff>(), Constants.AllEffects[ModContent.BuffType<FewerSpawnsBuff>()], 30, "PermanentSerene", "Permanent Serene"),
-                new NewBuffItem(ModContent.ItemType<NeilSpeedPotion>(), ModContent.BuffType<NeilSpeedBuff>(), Constants.AllEffects[ModContent.BuffType<NeilSpeedBuff>()], 30, "PermanentSeriousSyrusianSyrup", "Permanent Serious Syrusian Syrup"),
-                new NewBuffItem(ModContent.ItemType<ExtraFishPotion>(), ModContent.BuffType<ExtraFishBuff>(), Constants.AllEffects[ModContent.BuffType<ExtraFishBuff>()], 30, "PermanentShoalFishing", "Permanent Shoal Fishing"),
-                new NewBuffItem(ModContent.ItemType<SuppressionPotion>(), ModContent.BuffType<SuppressionBuff>(), Constants.AllEffects[ModContent.BuffType<SuppressionBuff>()], 30, "PermanentSuppression", "Permanent Suppression"),
-                new NewBuffItem(ModContent.ItemType<JumpBoostPotion>(), ModContent.BuffType<JumpBoostBuff>(), Constants.AllEffects[ModContent.BuffType<JumpBoostBuff>()], 30, "PermanentTowerSurmount", "Permanent Tower Surmount"),
-                new NewBuffItem(ModContent.ItemType<SandstormWindImmunityPotion>(), ModContent.BuffType<SandstormWindImmunityBuff>(), Constants.AllEffects[ModContent.BuffType<SandstormWindImmunityBuff>()], 30, "PermanentWindResistance", "Permanent Wind Resistance"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "SentryPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "SentryBuff")], 30, "PermanentCommanding"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "DayStatsPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "DayStatsBuff")], 30, "PermanentDawn"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "NightStatsPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NightStatsBuff")], 30, "PermanentDusk"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "ExtraEndurancePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ExtraEnduranceBuff")], 30, "PermanentDraconiumSkin"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "ComboPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ComboBuff")], 30, "PermanentEssenceOfFury"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "FlariumInfernoImmunityPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "FlariumInfernoImmunityBuff")], 30, "PermanentFlareElixir"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilShinePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilShineBuff")], 30, "PermanentFlariumFlurry"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilCritDamagePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilCritDamageBuff")], 30, "PermanentFrenziedAnimosity"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilBossDamagePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilBossDamageBuff")], 30, "PermanentH"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "FastFallPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "FastFallBuff")], 30, "PermanentHeavyFall"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "HolyShinePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "HolyShineBuff")], 30, "PermanentHolyLight"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "SkeletonMinionPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "SkeletonMinionBuff")], 30, "PermanentMilk"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "MoonlightPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "MoonlightBuff")], 30, "PermanentMoonlight"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "NightmarePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NightmareBuff")], 30, "PermanentNightmareFuel"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "ThrownPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ThrownBuff")], 30, "PermanentNinjaFocus"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilPolarizePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilPolarizeBuff")], 30, "PermanentNumberOne"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "ThrownSpeedPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ThrownSpeedBuff")], 30, "PermanentRobustMuscle"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "FewerSpawnsPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "FewerSpawnsBuff")], 30, "PermanentSerene"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilSpeedPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilSpeedBuff")], 30, "PermanentSeriousSyrusianSyrup"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "ExtraFishPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ExtraFishBuff")], 30, "PermanentShoalFishing"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "SuppressionPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "SuppressionBuff")], 30, "PermanentSuppression"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "JumpBoostPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "JumpBoostBuff")], 30, "PermanentTowerSurmount"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "SandstormWindImmunityPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "SandstormWindImmunityBuff")], 30, "PermanentWindResistance"),
                 //arena
-                new NewBuffItem(ModContent.ItemType<FruitLantern>(), ModContent.BuffType<FruitBuff>(), Constants.AllEffects[ModContent.BuffType<FruitBuff>()], 3, "PermanentLifeFruitLantern", "Permanent Life Fruit Lantern"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ShadowsOfAbaddon.Mod, "FruitLantern"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "FruitBuff")], 3, "PermanentLifeFruitLantern"),
             ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
 
         public static void CombinedItems()
         {
-            Dictionary<BuffEffect, int> PermanentShadowsOfAbaddonDamage = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<SentryBuff>()], ModContent.BuffType<SentryBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<DayStatsBuff>()], ModContent.BuffType<DayStatsBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NightStatsBuff>()], ModContent.BuffType<NightStatsBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NeilCritDamageBuff>()], ModContent.BuffType<NeilCritDamageBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NeilBossDamageBuff>()], ModContent.BuffType<NeilBossDamageBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SkeletonMinionBuff>()], ModContent.BuffType<SkeletonMinionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<MoonlightBuff>()], ModContent.BuffType<MoonlightBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NightmareBuff>()], ModContent.BuffType<NightmareBuff>() }
-            };
+            List<BuffEffect> PermanentShadowsOfAbaddonDamage =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "SentryBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "DayStatsBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NightStatsBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilCritDamageBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilBossDamageBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "SkeletonMinionBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "MoonlightBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NightmareBuff")]
+            ];
+            List<int> PermanentShadowsOfAbaddonDamageIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCommanding"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDawn"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDusk"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFrenziedAnimosity"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentH"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMilk"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMoonlight"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentNightmareFuel")];
 
-            Dictionary<BuffEffect, int> PermanentShadowsOfAbaddonDefense = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<ExtraEnduranceBuff>()], ModContent.BuffType<ExtraEnduranceBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ComboBuff>()], ModContent.BuffType<ComboBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FlariumInfernoImmunityBuff>()], ModContent.BuffType<FlariumInfernoImmunityBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NeilPolarizeBuff>()], ModContent.BuffType<NeilPolarizeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SuppressionBuff>()], ModContent.BuffType<SuppressionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FruitBuff>()], ModContent.BuffType<FruitBuff>() }
-            };
+            List<BuffEffect> PermanentShadowsOfAbaddonDefense =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ExtraEnduranceBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ComboBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "FlariumInfernoImmunityBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilPolarizeBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "SuppressionBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "FruitBuff")]
+            ];
+            List<int> PermanentShadowsOfAbaddonDefenseIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDraconiumSkin"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentEssenceOfFury"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlareElixir"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentNumberOne"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSuppression"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentLifeFruitLantern")];
 
-            Dictionary<BuffEffect, int> PermanentShadowsOfAbaddonRevenant = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<ThrownBuff>()], ModContent.BuffType<ThrownBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ThrownSpeedBuff>()], ModContent.BuffType<ThrownSpeedBuff>() }
-            };
+            List<BuffEffect> PermanentShadowsOfAbaddonRevenant =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ThrownBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ThrownSpeedBuff")]
+            ];
+            List<int> PermanentShadowsOfAbaddonRevenantIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentNinjaFocus"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRobustMuscle")];
 
-            Dictionary<BuffEffect, int> PermanentShadowsOfAbaddonMovement = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<FastFallBuff>()], ModContent.BuffType<FastFallBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NeilSpeedBuff>()], ModContent.BuffType<NeilSpeedBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<JumpBoostBuff>()], ModContent.BuffType<JumpBoostBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SandstormWindImmunityBuff>()], ModContent.BuffType<SandstormWindImmunityBuff>() }
-            };
+            List<BuffEffect> PermanentShadowsOfAbaddonMovement =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "FastFallBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilSpeedBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "JumpBoostBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "SandstormWindImmunityBuff")]
+            ];
+            List<int> PermanentShadowsOfAbaddonMovementIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHeavyFall"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSeriousSyrusianSyrup"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTowerSurmount"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentWindResistance")];
 
-            Dictionary<BuffEffect, int> PermanentShadowsOfAbaddonFarming = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<NeilShineBuff>()], ModContent.BuffType<NeilShineBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<HolyShineBuff>()], ModContent.BuffType<HolyShineBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FewerSpawnsBuff>()], ModContent.BuffType<FewerSpawnsBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ExtraFishBuff>()], ModContent.BuffType<ExtraFishBuff>() }
-            };
+            List<BuffEffect> PermanentShadowsOfAbaddonFarming =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "NeilShineBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "HolyShineBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "FewerSpawnsBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ShadowsOfAbaddon.Mod, "ExtraFishBuff")]
+            ];
+            List<int> PermanentShadowsOfAbaddonFarmingIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlariumFlurry"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHolyLight"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSerene"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShoalFishing")];
 
-            Dictionary<BuffEffect, int> PermanentShadowsOfAbaddon = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<SentryBuff>()], ModContent.BuffType<SentryBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<DayStatsBuff>()], ModContent.BuffType<DayStatsBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NightStatsBuff>()], ModContent.BuffType<NightStatsBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NeilCritDamageBuff>()], ModContent.BuffType<NeilCritDamageBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NeilBossDamageBuff>()], ModContent.BuffType<NeilBossDamageBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SkeletonMinionBuff>()], ModContent.BuffType<SkeletonMinionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<MoonlightBuff>()], ModContent.BuffType<MoonlightBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NightmareBuff>()], ModContent.BuffType<NightmareBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ExtraEnduranceBuff>()], ModContent.BuffType<ExtraEnduranceBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ComboBuff>()], ModContent.BuffType<ComboBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FlariumInfernoImmunityBuff>()], ModContent.BuffType<FlariumInfernoImmunityBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NeilPolarizeBuff>()], ModContent.BuffType<NeilPolarizeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SuppressionBuff>()], ModContent.BuffType<SuppressionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FruitBuff>()], ModContent.BuffType<FruitBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ThrownBuff>()], ModContent.BuffType<ThrownBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ThrownSpeedBuff>()], ModContent.BuffType<ThrownSpeedBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FastFallBuff>()], ModContent.BuffType<FastFallBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NeilSpeedBuff>()], ModContent.BuffType<NeilSpeedBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<JumpBoostBuff>()], ModContent.BuffType<JumpBoostBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SandstormWindImmunityBuff>()], ModContent.BuffType<SandstormWindImmunityBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NeilShineBuff>()], ModContent.BuffType<NeilShineBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<HolyShineBuff>()], ModContent.BuffType<HolyShineBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FewerSpawnsBuff>()], ModContent.BuffType<FewerSpawnsBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ExtraFishBuff>()], ModContent.BuffType<ExtraFishBuff>() }
-            };
+            List<BuffEffect> PermanentShadowsOfAbaddon = [];
+            PermanentShadowsOfAbaddon.AddRange(PermanentShadowsOfAbaddonDamage);
+            PermanentShadowsOfAbaddon.AddRange(PermanentShadowsOfAbaddonDefense);
+            PermanentShadowsOfAbaddon.AddRange(PermanentShadowsOfAbaddonRevenant);
+            PermanentShadowsOfAbaddon.AddRange(PermanentShadowsOfAbaddonMovement);
+            PermanentShadowsOfAbaddon.AddRange(PermanentShadowsOfAbaddonFarming);
 
             NewCombinedBuffItem[] CombinedBuffItems = [
-                new NewCombinedBuffItem(PermanentShadowsOfAbaddonDamage, "PermanentShadowsOfAbaddonDamage", "Permanent Shadows of Abaddon Damage", "PermanentShadowsOfAbaddonDamage"),
-                new NewCombinedBuffItem(PermanentShadowsOfAbaddonDefense, "PermanentShadowsOfAbaddonDefense", "Permanent Shadows of Abaddon Defense", "PermanentShadowsOfAbaddonDefense"),
-                new NewCombinedBuffItem(PermanentShadowsOfAbaddonRevenant, "PermanentShadowsOfAbaddonRevenant", "Permanent Shadows of Abaddon Revenant", "PermanentShadowsOfAbaddonRevenant"),
-                new NewCombinedBuffItem(PermanentShadowsOfAbaddonMovement, "PermanentShadowsOfAbaddonMovement", "Permanent Shadows of Abaddon Movement", "PermanentShadowsOfAbaddonMovement"),
-                new NewCombinedBuffItem(PermanentShadowsOfAbaddonFarming, "PermanentShadowsOfAbaddonFarming", "Permanent Shadows of Abaddon Farming", "PermanentShadowsOfAbaddonFarming"),
-                new NewCombinedBuffItem(PermanentShadowsOfAbaddon, "PermanentShadowsOfAbaddon", "Permanent Shadows of Abaddon", "PermanentShadowsOfAbaddon"),
+                new NewCombinedBuffItem("PermanentShadowsOfAbaddonDamage", PermanentShadowsOfAbaddonDamage, PermanentShadowsOfAbaddonDamageIngredients),
+                new NewCombinedBuffItem("PermanentShadowsOfAbaddonDefense", PermanentShadowsOfAbaddonDefense, PermanentShadowsOfAbaddonDefenseIngredients),
+                new NewCombinedBuffItem("PermanentShadowsOfAbaddonRevenant", PermanentShadowsOfAbaddonRevenant, PermanentShadowsOfAbaddonRevenantIngredients),
+                new NewCombinedBuffItem("PermanentShadowsOfAbaddonMovement", PermanentShadowsOfAbaddonMovement, PermanentShadowsOfAbaddonMovementIngredients),
+                new NewCombinedBuffItem("PermanentShadowsOfAbaddonFarming", PermanentShadowsOfAbaddonFarming, PermanentShadowsOfAbaddonFarmingIngredients),
             ];
 
             foreach (var newCombinedBuffItem in CombinedBuffItems)
-            {
-                CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllCombinedBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreateUpgradedPermanentBuffItem(newCombinedBuffItem);
+
+            List<int> PermanentShadowsOfAbaddonIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonDamage"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonDefense"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonRevenant"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonMovement"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentShadowsOfAbaddonFarming")];
+
+            NewCombinedBuffItem permanentShadowsOfAbaddonItem = new("PermanentShadowsOfAbaddon", PermanentShadowsOfAbaddon, PermanentShadowsOfAbaddonIngredients);
+            CombinedBuffItem newPermanentShadowsOfAbaddon = new(permanentShadowsOfAbaddonItem.itemName, permanentShadowsOfAbaddonItem.textureName, permanentShadowsOfAbaddonItem.effects, permanentShadowsOfAbaddonItem.ingredients);
+            QoLCompendium.Instance.AddContent(newPermanentShadowsOfAbaddon);
+            Constants.AllCombinedBuffItems.Add(newPermanentShadowsOfAbaddon.Type);
         }
     }
 }

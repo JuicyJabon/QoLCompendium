@@ -29,8 +29,8 @@ namespace QoLCompendium.Core.PermanentBuffSystems
                 RedemptionBuffItems.LoadTasks();
             if (CrossModSupport.SecretsOfTheShadows.Loaded)
                 SOTSBuffItems.LoadTasks();
-            if (CrossModSupport.ShadowsOfAbaddon.Loaded)
-                ShadowsOfAbaddonBuffItems.LoadTasks();
+            //if (CrossModSupport.ShadowsOfAbaddon.Loaded)
+                //ShadowsOfAbaddonBuffItems.LoadTasks();
             if (CrossModSupport.SpiritClassic.Loaded)
                 SpiritClassicBuffItems.LoadTasks();
             if (CrossModSupport.SpiritReforged.Loaded)
@@ -41,9 +41,6 @@ namespace QoLCompendium.Core.PermanentBuffSystems
                 ThoriumBuffItems.LoadTasks();
             if (CrossModSupport.Vitality.Loaded)
                 VitalityBuffItems.LoadTasks();
-
-            //Load generic items from mods that aren't directly supported (NOT WORKING)
-            //GenericBuffItems.LoadTasks();
 
             //Every buff from previously loaded buffs 
             EverythingBuffItem.LoadTasks();

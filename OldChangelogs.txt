@@ -1,3 +1,40 @@
+v2.4.9.2
+1. THE Button should be entirely removed now
+
+v2.4.9.1
+1. Fixed a couple issues with the Permanent Buff items
+ - Upgraded buffs should have recipes again
+ - Permanent Everything should have all its components in it's recipe again
+ - Temporarily disabled Shadows of Abaddon Permanent Buffs
+
+v2.4.9
+1. Fixed some rare bugs with the build indicators for explosives
+2. Red Potion is now affected by the Endless Buff Stack config
+3. Honey Buckets and Garden Gnomes are now affected by the Endless Buff Station Stack config
+4. THE Button has been slaughtered. It should no longer cause immense distress
+
+v2.4.8
+1. Added buff station support for the following mods:
+ - Cerebral Mod
+ - Dragon Ball Terraria
+2. Added class tag support for the following mods:
+ - Cerebral Mod
+ - Dragon Ball Terraria
+ - TNTerraria
+3. Updated every UI element in the mod
+4. Endless Wulfrum Cogwork Shard now works with the Wulfrum Scaffold Kit and the Wulfrum Armor set bonus
+5. Fixed Town NPCs never unlocking in the Bestiary
+6. Super Dummy is now hidden from the Bestiary
+7. Magnets now avoid picking up items that are being shimmered
+8. Magnets now avoid picking up items when the player has no inventory space
+9. Halved Lunar Magnet range
+10. Removed all Pedestal items
+11. Added Time Wrinkler (Pedestals Replacement)
+12. Added support for Ancients Awakened:
+ - NPC Sales
+ - Non-Consumable Summons
+ - Buff Stations
+
 v2.4.7.1
 1. The Elixir from Calamity now works with endless potions
 2. The Super Dummy is now immovable

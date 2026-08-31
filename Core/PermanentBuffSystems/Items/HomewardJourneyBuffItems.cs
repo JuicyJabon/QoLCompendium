@@ -1,200 +1,201 @@
-﻿using ContinentOfJourney.Buffs;
-using ContinentOfJourney.Items;
-using ContinentOfJourney.Items.Placables;
-using ContinentOfJourney.Items.StrangePotions;
-
-namespace QoLCompendium.Core.PermanentBuffSystems.Items
+﻿namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(CrossModSupport.HomewardJourney.Name)]
-    [ExtendsFromMod(CrossModSupport.HomewardJourney.Name)]
     public static class HomewardJourneyBuffItems
     {
-        public static NewBuffEffect[] HomewardJourneyEffects = [
-            //arena
-            new NewBuffEffect(ModContent.BuffType<BushOfLifeBuff>(), (int)Constants.EffectTypes.Arena),
-            new NewBuffEffect(ModContent.BuffType<LifeLanternBuff>(), (int)Constants.EffectTypes.Arena),
-            //potions
-            new NewBuffEffect(ModContent.BuffType<FlightBuff>()),
-            new NewBuffEffect(ModContent.BuffType<FluorescentBerryBuff>()),
-            new NewBuffEffect(ModContent.BuffType<HasteBuff>()),
-            new NewBuffEffect(ModContent.BuffType<ReanimationBuff>()),
-            new NewBuffEffect(ModContent.BuffType<YangPotionBuff>()),
-            new NewBuffEffect(ModContent.BuffType<NerveFibreBuff>()),
-            //flasks
-            new NewBuffEffect(ModContent.BuffType<Flask_DivineFireBuff>(), (int)Constants.EffectTypes.Flask),
-            new NewBuffEffect(ModContent.BuffType<Flask_ForceBreakBuff>(), (int)Constants.EffectTypes.Flask),
-            new NewBuffEffect(ModContent.BuffType<Flask_PlagueBuff>(), (int)Constants.EffectTypes.Flask),
-            new NewBuffEffect(ModContent.BuffType<Flask_SteelBuff>(), (int)Constants.EffectTypes.Flask),
-            //strange potions
-            new NewBuffEffect(ModContent.BuffType<AntiEncirclementBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<AttractBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<BraveBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<FlappyBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<GreedBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<HighwayBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<HyperopiaBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<KiwiBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<LeapBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<LeftistBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<MermaidBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<NukeBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<ParasiteBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<RightistBuff>(), (int)Constants.EffectTypes.StrangePotion),
-            new NewBuffEffect(ModContent.BuffType<SignalBuff>(), (int)Constants.EffectTypes.StrangePotion)
-        ];
-
         public static void LoadTasks()
         {
+            if (!CrossModSupport.HomewardJourney.Loaded)
+                return;
+
             BaseItems();
             CombinedItems();
         }
 
         public static void BaseItems()
         {
+            NewBuffEffect[] HomewardJourneyEffects = [
+            //arena
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "BushOfLifeBuff"), (int)Constants.EffectTypes.Arena),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "LifeLanternBuff"), (int)Constants.EffectTypes.Arena),
+            //potions
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "FlightBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "FluorescentBerryBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "HasteBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "ReanimationBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "YangPotionBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "NerveFibreBuff")),
+            //flasks
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "Flask_DivineFireBuff"), (int)Constants.EffectTypes.Flask),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "Flask_ForceBreakBuff"), (int)Constants.EffectTypes.Flask),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "Flask_PlagueBuff"), (int)Constants.EffectTypes.Flask),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "Flask_SteelBuff"), (int)Constants.EffectTypes.Flask),
+            //strange potions
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "AntiEncirclementBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "AttractBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "BraveBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "FlappyBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "GreedBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "HighwayBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "HyperopiaBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "KiwiBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "LeapBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "LeftistBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "MermaidBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "NukeBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "ParasiteBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "RightistBuff"), (int)Constants.EffectTypes.StrangePotion),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "SignalBuff"), (int)Constants.EffectTypes.StrangePotion)];
+
             foreach (var newEffect in HomewardJourneyEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
                 //arena
-                new NewBuffItem(ModContent.ItemType<BushOfLife>(), ModContent.BuffType<BushOfLifeBuff>(), Constants.AllEffects[ModContent.BuffType<BushOfLifeBuff>()], 3, "PermanentBushOfLife", "Permanent Bush of Life"),
-                new NewBuffItem(ModContent.ItemType<LifeLantern>(), ModContent.BuffType<LifeLanternBuff>(), Constants.AllEffects[ModContent.BuffType<LifeLanternBuff>()], 3, "PermanentLifeLantern", "Permanent Life Lantern"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "BushOfLife"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "BushOfLifeBuff")], 3, "PermanentBushOfLife"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "LifeLantern"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "LifeLanternBuff")], 3, "PermanentLifeLantern"),
                 //potions
-                new NewBuffItem(ModContent.ItemType<FlightPotion>(), ModContent.BuffType<FlightBuff>(), Constants.AllEffects[ModContent.BuffType<FlightBuff>()], 30, "PermanentFlight", "Permanent Flight"),
-                new NewBuffItem(ModContent.ItemType<FluorescentBerryCan>(), ModContent.BuffType<FluorescentBerryBuff>(), Constants.AllEffects[ModContent.BuffType<FluorescentBerryBuff>()], 30, "PermanentFluorescentBerry", "Permanent Fluorescent Berry"),
-                new NewBuffItem(ModContent.ItemType<HastePotion>(), ModContent.BuffType<HasteBuff>(), Constants.AllEffects[ModContent.BuffType<HasteBuff>()], 30, "PermanentHJHaste", "Permanent Haste"),
-                new NewBuffItem(ModContent.ItemType<ReanimationPotion>(), ModContent.BuffType<ReanimationBuff>(), Constants.AllEffects[ModContent.BuffType<ReanimationBuff>()], 30, "PermanentReanimation", "Permanent Reanimation"),
-                new NewBuffItem(ModContent.ItemType<YinPotion>(), ModContent.BuffType<NerveFibreBuff>(), Constants.AllEffects[ModContent.BuffType<NerveFibreBuff>()], 30, "PermanentYin", "Permanent Yin"),
-                new NewBuffItem(ModContent.ItemType<YangPotion>(), ModContent.BuffType<YangPotionBuff>(), Constants.AllEffects[ModContent.BuffType<YangPotionBuff>()], 30, "PermanentYang", "Permanent Yang"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "FlightPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "FlightBuff")], 30, "PermanentFlight"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "FluorescentBerryCan"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "FluorescentBerryBuff")], 30, "PermanentFluorescentBerry"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "HastePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "HasteBuff")], 30, "PermanentHJHaste"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "ReanimationPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "ReanimationBuff")], 30, "PermanentReanimation"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "YinPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "NerveFibreBuff")], 30, "PermanentYin"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "YangPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "YangPotionBuff")], 30, "PermanentYang"),
                 //flasks
-                new NewBuffItem(ModContent.ItemType<DivineFireFlask>(), ModContent.BuffType<Flask_DivineFireBuff>(), Constants.AllEffects[ModContent.BuffType<Flask_DivineFireBuff>()], 30, "PermanentFlaskOfDivineFire", "Permanent Flask of Divine Fire"),
-                new NewBuffItem(ModContent.ItemType<ForceBreakFlask>(), ModContent.BuffType<Flask_ForceBreakBuff>(), Constants.AllEffects[ModContent.BuffType<Flask_ForceBreakBuff>()], 30, "PermanentFlaskOfForceBreak", "Permanent Flask of Force Break"),
-                new NewBuffItem(ModContent.ItemType<PlagueFlask>(), ModContent.BuffType<Flask_PlagueBuff>(), Constants.AllEffects[ModContent.BuffType<Flask_PlagueBuff>()], 30, "PermanentFlaskOfPlague", "Permanent Flask of Plague"),
-                new NewBuffItem(ModContent.ItemType<SteelFlask>(), ModContent.BuffType<Flask_SteelBuff>(), Constants.AllEffects[ModContent.BuffType<Flask_SteelBuff>()], 30, "PermanentFlaskOfSteel", "Permanent Flask of Steel"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "DivineFireFlask"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "Flask_DivineFireBuff")], 30, "PermanentFlaskOfDivineFire"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "ForceBreakFlask"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "Flask_ForceBreakBuff")], 30, "PermanentFlaskOfForceBreak"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "PlagueFlask"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "Flask_PlagueBuff")], 30, "PermanentFlaskOfPlague"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "SteelFlask"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "Flask_SteelBuff")], 30, "PermanentFlaskOfSteel"),
                 //strange
-                new NewBuffItem(ModContent.ItemType<AntiEncirclementPotion>(), ModContent.BuffType<AntiEncirclementBuff>(), Constants.AllEffects[ModContent.BuffType<AntiEncirclementBuff>()], 30, "PermanentAntiEncirclement", "Permanent Anti Encirclement"),
-                new NewBuffItem(ModContent.ItemType<AttractPotion>(), ModContent.BuffType<AttractBuff>(), Constants.AllEffects[ModContent.BuffType<AttractBuff>()], 30, "PermanentAttract", "Permanent Attract"),
-                new NewBuffItem(ModContent.ItemType<BravePotion>(), ModContent.BuffType<BraveBuff>(), Constants.AllEffects[ModContent.BuffType<BraveBuff>()], 30, "PermanentBrave", "Permanent Brave"),
-                new NewBuffItem(ModContent.ItemType<FlappyPotion>(), ModContent.BuffType<FlappyBuff>(), Constants.AllEffects[ModContent.BuffType<FlappyBuff>()], 30, "PermanentFlappy", "Permanent Flappy"),
-                new NewBuffItem(ModContent.ItemType<GreedPotion>(), ModContent.BuffType<GreedBuff>(), Constants.AllEffects[ModContent.BuffType<GreedBuff>()], 30, "PermanentGreed", "Permanent Greed"),
-                new NewBuffItem(ModContent.ItemType<HighwayPotion>(), ModContent.BuffType<HighwayBuff>(), Constants.AllEffects[ModContent.BuffType<HighwayBuff>()], 30, "PermanentHighway", "Permanent Highway"),
-                new NewBuffItem(ModContent.ItemType<HyperopiaPotion>(), ModContent.BuffType<HyperopiaBuff>(), Constants.AllEffects[ModContent.BuffType<HyperopiaBuff>()], 30, "PermanentHyperopia", "Permanent Hyperopia"),
-                new NewBuffItem(ModContent.ItemType<KiwiPotion>(), ModContent.BuffType<KiwiBuff>(), Constants.AllEffects[ModContent.BuffType<KiwiBuff>()], 30, "PermanentKiwi", "Permanent Kiwi"),
-                new NewBuffItem(ModContent.ItemType<LeapPotion>(), ModContent.BuffType<LeapBuff>(), Constants.AllEffects[ModContent.BuffType<LeapBuff>()], 30, "PermanentLeap", "Permanent Leap"),
-                new NewBuffItem(ModContent.ItemType<LeftistPotion>(), ModContent.BuffType<LeftistBuff>(), Constants.AllEffects[ModContent.BuffType<LeftistBuff>()], 30, "PermanentLeftist", "Permanent Leftist"),
-                new NewBuffItem(ModContent.ItemType<MermaidPotion>(), ModContent.BuffType<MermaidBuff>(), Constants.AllEffects[ModContent.BuffType<MermaidBuff>()], 30, "PermanentMermaid", "Permanent Mermaid"),
-                new NewBuffItem(ModContent.ItemType<NukePotion>(), ModContent.BuffType<NukeBuff>(), Constants.AllEffects[ModContent.BuffType<NukeBuff>()], 30, "PermanentNuke", "Permanent Nuke"),
-                new NewBuffItem(ModContent.ItemType<ParasitePotion>(), ModContent.BuffType<ParasiteBuff>(), Constants.AllEffects[ModContent.BuffType<ParasiteBuff>()], 30, "PermanentParasite", "Permanent Parasite"),
-                new NewBuffItem(ModContent.ItemType<RightistPotion>(), ModContent.BuffType<RightistBuff>(), Constants.AllEffects[ModContent.BuffType<RightistBuff>()], 30, "PermanentRightist", "Permanent Rightist"),
-                new NewBuffItem(ModContent.ItemType<SignalPotion>(), ModContent.BuffType<SignalBuff>(), Constants.AllEffects[ModContent.BuffType<SignalBuff>()], 30, "PermanentSignal", "Permanent Signal")
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "AntiEncirclementPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "AntiEncirclementBuff")], 30, "PermanentAntiEncirclement"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "AttractPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "AttractBuff")], 30, "PermanentAttract"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "BravePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "BraveBuff")], 30, "PermanentBrave"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "FlappyPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "FlappyBuff")], 30, "PermanentFlappy"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "GreedPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "GreedBuff")], 30, "PermanentGreed"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "HighwayPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "HighwayBuff")], 30, "PermanentHighway"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "HyperopiaPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "HyperopiaBuff")], 30, "PermanentHyperopia"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "KiwiPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "KiwiBuff")], 30, "PermanentKiwi"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "LeapPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "LeapBuff")], 30, "PermanentLeap"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "LeftistPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "LeftistBuff")], 30, "PermanentLeftist"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "MermaidPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "MermaidBuff")], 30, "PermanentMermaid"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "NukePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "NukeBuff")], 30, "PermanentNuke"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "ParasitePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "ParasiteBuff")], 30, "PermanentParasite"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "RightistPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "RightistBuff")], 30, "PermanentRightist"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.HomewardJourney.Mod, "SignalPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "SignalBuff")], 30, "PermanentSignal")
             ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
 
         public static void CombinedItems()
         {
-            Dictionary<BuffEffect, int> PermanentHomewardJourneyFarming = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<FluorescentBerryBuff>()], ModContent.BuffType<FluorescentBerryBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ReanimationBuff>()], ModContent.BuffType<ReanimationBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NerveFibreBuff>()], ModContent.BuffType<NerveFibreBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<YangPotionBuff>()], ModContent.BuffType<YangPotionBuff>() }
-            };
+            List<BuffEffect> PermanentHomewardJourneyFarming =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "FluorescentBerryBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "ReanimationBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "NerveFibreBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "YangPotionBuff")]
+            ];
+            List<int> PermanentHomewardJourneyFarmingIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFluorescentBerry"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentReanimation"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentYin"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentYang")];
 
-            Dictionary<BuffEffect, int> PermanentHomewardJourneyMovement = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<FlightBuff>()], ModContent.BuffType<FlightBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<HasteBuff>()], ModContent.BuffType<HasteBuff>() }
-            };
+            List<BuffEffect> PermanentHomewardJourneyMovement =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "FlightBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "HasteBuff")]
+            ];
+            List<int> PermanentHomewardJourneyMovementIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlight"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHJHaste")];
 
-            Dictionary<BuffEffect, int> PermanentHomewardJourneyArena = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<BushOfLifeBuff>()], ModContent.BuffType<BushOfLifeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<LifeLanternBuff>()], ModContent.BuffType<LifeLanternBuff>() }
-            };
+            List<BuffEffect> PermanentHomewardJourneyArena =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "BushOfLifeBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "LifeLanternBuff")]
+            ];
+            List<int> PermanentHomewardJourneyArenaIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBushOfLife"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentLifeLantern")];
 
-            Dictionary<BuffEffect, int> PermanentHomewardJourneyFlasks = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<Flask_DivineFireBuff>()], ModContent.BuffType<Flask_DivineFireBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Flask_ForceBreakBuff>()], ModContent.BuffType<Flask_ForceBreakBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Flask_PlagueBuff>()], ModContent.BuffType<Flask_PlagueBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Flask_SteelBuff>()], ModContent.BuffType<Flask_SteelBuff>() }
-            };
+            List<BuffEffect> PermanentHomewardJourneyFlasks =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "Flask_DivineFireBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "Flask_ForceBreakBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "Flask_PlagueBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "Flask_SteelBuff")]
+            ];
+            List<int> PermanentHomewardJourneyFlasksIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfDivineFire"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfForceBreak"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfPlague"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfSteel")];
 
-            Dictionary<BuffEffect, int> PermanentHomewardJourneyStrangePotions = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<AntiEncirclementBuff>()], ModContent.BuffType<AntiEncirclementBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<AttractBuff>()], ModContent.BuffType<AttractBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BraveBuff>()], ModContent.BuffType<BraveBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FlappyBuff>()], ModContent.BuffType<FlappyBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<GreedBuff>()], ModContent.BuffType<GreedBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<HighwayBuff>()], ModContent.BuffType<HighwayBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<HyperopiaBuff>()], ModContent.BuffType<HyperopiaBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<KiwiBuff>()], ModContent.BuffType<KiwiBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<LeapBuff>()], ModContent.BuffType<LeapBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<LeftistBuff>()], ModContent.BuffType<LeftistBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<MermaidBuff>()], ModContent.BuffType<MermaidBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NukeBuff>()], ModContent.BuffType<NukeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ParasiteBuff>()], ModContent.BuffType<ParasiteBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<RightistBuff>()], ModContent.BuffType<RightistBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SignalBuff>()], ModContent.BuffType<SignalBuff>() }
-            };
+            List<BuffEffect> PermanentHomewardJourneyStrangePotions =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "AntiEncirclementBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "AttractBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "BraveBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "FlappyBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "GreedBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "HighwayBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "HyperopiaBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "KiwiBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "LeapBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "LeftistBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "MermaidBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "NukeBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "ParasiteBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "RightistBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.HomewardJourney.Mod, "SignalBuff")]
+            ];
+            List<int> PermanentHomewardJourneyStrangePotionsIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAntiEncirclement"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAttract"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBrave"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentFlappy"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentGreed"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHighway"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHyperopia"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentKiwi"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentLeap"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentLeftist"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentMermaid"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentNuke"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentParasite"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRightist"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSignal")];
 
-            Dictionary<BuffEffect, int> PermanentHomewardJourney = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<FluorescentBerryBuff>()], ModContent.BuffType<FluorescentBerryBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ReanimationBuff>()], ModContent.BuffType<ReanimationBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NerveFibreBuff>()], ModContent.BuffType<NerveFibreBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<YangPotionBuff>()], ModContent.BuffType<YangPotionBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FlightBuff>()], ModContent.BuffType<FlightBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<HasteBuff>()], ModContent.BuffType<HasteBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BushOfLifeBuff>()], ModContent.BuffType<BushOfLifeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<LifeLanternBuff>()], ModContent.BuffType<LifeLanternBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Flask_DivineFireBuff>()], ModContent.BuffType<Flask_DivineFireBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Flask_ForceBreakBuff>()], ModContent.BuffType<Flask_ForceBreakBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Flask_PlagueBuff>()], ModContent.BuffType<Flask_PlagueBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Flask_SteelBuff>()], ModContent.BuffType<Flask_SteelBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<AntiEncirclementBuff>()], ModContent.BuffType<AntiEncirclementBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<AttractBuff>()], ModContent.BuffType<AttractBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<BraveBuff>()], ModContent.BuffType<BraveBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<FlappyBuff>()], ModContent.BuffType<FlappyBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<GreedBuff>()], ModContent.BuffType<GreedBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<HighwayBuff>()], ModContent.BuffType<HighwayBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<HyperopiaBuff>()], ModContent.BuffType<HyperopiaBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<KiwiBuff>()], ModContent.BuffType<KiwiBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<LeapBuff>()], ModContent.BuffType<LeapBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<LeftistBuff>()], ModContent.BuffType<LeftistBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<MermaidBuff>()], ModContent.BuffType<MermaidBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<NukeBuff>()], ModContent.BuffType<NukeBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<ParasiteBuff>()], ModContent.BuffType<ParasiteBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<RightistBuff>()], ModContent.BuffType<RightistBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SignalBuff>()], ModContent.BuffType<SignalBuff>() }
-            };
+            List<BuffEffect> PermanentHomewardJourney = [];
+            PermanentHomewardJourney.AddRange(PermanentHomewardJourneyFarming);
+            PermanentHomewardJourney.AddRange(PermanentHomewardJourneyMovement);
+            PermanentHomewardJourney.AddRange(PermanentHomewardJourneyArena);
+            PermanentHomewardJourney.AddRange(PermanentHomewardJourneyFlasks);
+            PermanentHomewardJourney.AddRange(PermanentHomewardJourneyStrangePotions);
 
             NewCombinedBuffItem[] CombinedBuffItems = [
-                new NewCombinedBuffItem(PermanentHomewardJourneyFarming, "PermanentHomewardJourneyFarming", "Permanent Homeward Journey Farming", "PermanentHomewardJourneyFarming"),
-                new NewCombinedBuffItem(PermanentHomewardJourneyMovement, "PermanentHomewardJourneyMovement", "Permanent Homeward Journey Movement", "PermanentHomewardJourneyMovement"),
-                new NewCombinedBuffItem(PermanentHomewardJourneyArena, "PermanentHomewardJourneyArena", "Permanent Homeward Journey Arena", "PermanentHomewardJourneyArena"),
-                new NewCombinedBuffItem(PermanentHomewardJourneyFlasks, "PermanentHomewardJourneyFlasks", "Permanent Homeward Journey Flasks", "PermanentHomewardJourneyFlasks"),
-                new NewCombinedBuffItem(PermanentHomewardJourneyStrangePotions, "PermanentHomewardJourneyStrangePotions", "Permanent Homeward Journey Strange Potions", "PermanentHomewardJourneyStrangePotions"),
-                new NewCombinedBuffItem(PermanentHomewardJourney, "PermanentHomewardJourney", "Permanent Homeward Journey", "PermanentHomewardJourney")
+                new NewCombinedBuffItem("PermanentHomewardJourneyFarming", PermanentHomewardJourneyFarming, PermanentHomewardJourneyFarmingIngredients),
+                new NewCombinedBuffItem("PermanentHomewardJourneyMovement", PermanentHomewardJourneyMovement, PermanentHomewardJourneyMovementIngredients),
+                new NewCombinedBuffItem("PermanentHomewardJourneyArena", PermanentHomewardJourneyArena, PermanentHomewardJourneyArenaIngredients),
+                new NewCombinedBuffItem("PermanentHomewardJourneyFlasks", PermanentHomewardJourneyFlasks, PermanentHomewardJourneyFlasksIngredients),
+                new NewCombinedBuffItem("PermanentHomewardJourneyStrangePotions", PermanentHomewardJourneyStrangePotions, PermanentHomewardJourneyStrangePotionsIngredients)
             ];
 
             foreach (var newCombinedBuffItem in CombinedBuffItems)
-            {
-                CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllCombinedBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreateUpgradedPermanentBuffItem(newCombinedBuffItem);
+
+            List<int> PermanentHomewardJourneyIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyFarming"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyMovement"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyArena"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHomewardJourneyFlasks")];
+
+            NewCombinedBuffItem permanentHomewardJourneyItem = new("PermanentHomewardJourney", PermanentHomewardJourney, PermanentHomewardJourneyIngredients);
+            CombinedBuffItem newPermanentHomewardJourney = new(permanentHomewardJourneyItem.itemName, permanentHomewardJourneyItem.textureName, permanentHomewardJourneyItem.effects, permanentHomewardJourneyItem.ingredients);
+            QoLCompendium.Instance.AddContent(newPermanentHomewardJourney);
+            Constants.AllCombinedBuffItems.Add(newPermanentHomewardJourney.Type);
         }
     }
 }

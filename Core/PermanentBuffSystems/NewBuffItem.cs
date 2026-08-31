@@ -1,12 +1,10 @@
 ﻿namespace QoLCompendium.Core.PermanentBuffSystems
 {
-    public class NewBuffItem(int buffItem, int buffID, BuffEffect effect, int ingredientCount, string itemName, string displayName)
+    public class NewBuffItem(int baseItem, BuffEffect effect, int ingredientCount, string itemName)
     {
-        public int buffItem = buffItem;
-        public int buffID = buffID;
-        public int ingredientCount = ingredientCount;
-        public string displayName = displayName;
-        public string itemName = itemName;
+        public int baseItem = baseItem;
         public BuffEffect effect = effect;
+        public int ingredientCount = ingredientCount;
+        public string itemName = itemName;
     }
 }

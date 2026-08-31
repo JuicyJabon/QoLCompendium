@@ -171,21 +171,46 @@ namespace QoLCompendium.Content.NPCs.Town.EtherealCollector
             var potionShop = new NPCShop(Type, "ModdedPotionShop");
             if (!ShopCreation.FileNotFound)
             {
-                foreach (var item in ShopCreation.Potions)
+                for (int i = 0; i < ShopCreation.Potions.Count; i++)
                 {
-                    string modName = item.Value.Split(":").ElementAtOrDefault(0);
-                    string itemName = item.Value.Split(":").ElementAtOrDefault(1);
-
+                    string modName = ShopCreation.Potions.ElementAt(i).Key;
                     if (!ModLoader.HasMod(modName))
                         continue;
 
                     Mod mod = ModLoader.GetMod(modName);
-                    int type = Common.GetModItem(mod, itemName);
 
-                    potionShop.AddModItemToShop(mod, itemName, Item.buyPrice(silver: 25), ItemUtils.ItemObtained("Mods.QoLCompendium.ModConditions.ItemObtained", () => QoLCPlayer.Get(Main.LocalPlayer).ItemHasBeenOwned[type]));
+                    for (int j = 0; j < ShopCreation.Potions.ElementAt(i).Value.Count; j++)
+                    {
+                        string itemName = ShopCreation.Potions.ElementAt(i).Value.ElementAt(j);
+                        int type = Common.GetModItem(mod, itemName);
+
+                        potionShop.AddModItemToShop(mod, itemName, Item.buyPrice(silver: 25), ItemUtils.ItemObtained("Mods.QoLCompendium.ModConditions.ItemObtained", () => QoLCPlayer.Get(Main.LocalPlayer).ItemHasBeenOwned[type]));
+                    }
                 }
             }
             potionShop.Register();
+
+            var stationShop = new NPCShop(Type, "ModdedStationsAndUpgradesShop");
+            if (!ShopCreation.FileNotFound)
+            {
+                for (int i = 0; i < ShopCreation.StationsAndUpgrades.Count; i++)
+                {
+                    string modName = ShopCreation.StationsAndUpgrades.ElementAt(i).Key;
+                    if (!ModLoader.HasMod(modName))
+                        continue;
+
+                    Mod mod = ModLoader.GetMod(modName);
+
+                    for (int j = 0; j < ShopCreation.StationsAndUpgrades.ElementAt(i).Value.Count; j++)
+                    {
+                        string itemName = ShopCreation.StationsAndUpgrades.ElementAt(i).Value.ElementAt(j);
+                        int type = Common.GetModItem(mod, itemName);
+
+                        stationShop.AddModItemToShop(mod, itemName, Item.buyPrice(gold: 15), ItemUtils.ItemObtained("Mods.QoLCompendium.ModConditions.ItemObtained", () => QoLCPlayer.Get(Main.LocalPlayer).ItemHasBeenOwned[type]));
+                    }
+                }
+            }
+            stationShop.Register();
             */
 
             #region ModdedPotionShop

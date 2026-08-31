@@ -1,7 +1,4 @@
-﻿using QoLCompendium.Content.Items.Dedicated;
-using QoLCompendium.Core.ShopData;
-
-namespace QoLCompendium.Core
+﻿namespace QoLCompendium.Core
 {
     public class DisplayDownedBosses : ModCommand
     {
@@ -18,6 +15,7 @@ namespace QoLCompendium.Core
         }
     }
 
+    /*
     public class DisplayShopData : ModCommand
     {
         public override CommandType Type => CommandType.Chat;
@@ -32,7 +30,9 @@ namespace QoLCompendium.Core
                 Main.NewText(ShopCreation.AllShops.ElementAt(i).Key + " - " + ShopCreation.AllShops.ElementAt(i).Value);
         }
     }
+    */
 
+    /*
     public class TheConsequences : ModCommand
     {
         public override CommandType Type => CommandType.Chat;
@@ -44,7 +44,7 @@ namespace QoLCompendium.Core
         public override void Action(CommandCaller caller, string input, string[] args)
         {
             THEButton.used = false;
-            THEotherButton.used = false;
         }
     }
+    */
 }

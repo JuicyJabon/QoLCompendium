@@ -115,75 +115,6 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     recipe.AddIngredient(ItemID.LuckPotionGreater, 10);
                 }
 
-                if (CrossModSupport.Calamity.Loaded)
-                {
-                    if (CrossModSupport.CalamityEntropy.Loaded)
-                    {
-                        if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDamage")))
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentSoyMilk"));
-
-                        if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDefense")))
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentYharimsStimulants"));
-
-                        if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityArena")))
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentVoidCandle"));
-                    }
-
-                    if (CrossModSupport.CalamityRekindled.Loaded)
-                    {
-                        if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDamage")))
-                        {
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentBeetleJuice"));
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentPenumbra"));
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentProfanedRage"));
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentProfanedWrath"));
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentShattering"));
-                        }
-
-                        if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDefense")))
-                        {
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentCadence"));
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentDraconicElixir"));
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentRevivify"));
-
-                            if (!CrossModSupport.Clamity.Loaded)
-                                recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentCRTitanScale"));
-                            
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentTriumph"));
-
-                            if (!CrossModSupport.CalamityEntropy.Loaded)
-                                recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentCRYharimsStimulants"));
-                        }
-                    }
-
-                    if (CrossModSupport.Catalyst.Loaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDamage")))
-                    {
-                        recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentAstracola"));
-                    }
-
-                    if (CrossModSupport.Clamity.Loaded)
-                    {
-                        if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDamage")))
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentSupremeLuck"));
-
-                        if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDefense")))
-                        {
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentTitanScale"));
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentExoBaguette"));
-                        }
-                    }
-
-                    if (CrossModSupport.DraedonExpansion.Loaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityFlasks")))
-                    {
-                        recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentFlaskOfElectricity"));
-                    }
-
-                    if (CrossModSupport.WrathOfTheGods.Loaded && recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentCalamityDefense")))
-                    {
-                        recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentStarstrikinglySatiated"));
-                    }
-                }
-
                 if (CrossModSupport.MartinsOrder.Loaded)
                 {
                     if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentGourmetFlavor")))
@@ -199,33 +130,6 @@ namespace QoLCompendium.Core.Changes.RecipeChanges
                     {
                         recipe.RemoveIngredient(Common.GetModItem(CrossModSupport.SpiritReforged.Mod, "KoiTotem"));
                         recipe.AddRecipeGroup("QoLCompendium:KoiTotem", 3);
-                    }
-                }
-
-                if (CrossModSupport.Thorium.Loaded && CrossModSupport.ThoriumHelheim.Loaded)
-                {
-                    if (recipe.HasResult(Common.GetModItem(QoLCompendium.Instance, "PermanentThoriumBard")) && ThoriumReworkPotionsEnabled)
-                    {
-                        if (!CrossModSupport.InfernalEclipse.Loaded)
-                        {
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentDeathsinger"));
-                            recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationRegeneration"));
-                        }
-                        else
-                        {
-                            if (CrossModSupport.InfernalEclipse.Loaded)
-                            {
-                                if (ThoriumBossReworkBuffItems.ThoriumBalanceChanges)
-                                {
-                                    recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationRegeneration"));
-                                }
-                                else
-                                {
-                                    recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentDeathsinger"));
-                                    recipe.AddIngredient(Common.GetModItem(QoLCompendium.Instance, "PermanentInspirationRegeneration"));
-                                }
-                            }
-                        }
                     }
                 }
 

@@ -4,23 +4,23 @@ namespace QoLCompendium.Core.ShopData
 {
     public static class ShopCreation
     {
-        public static Dictionary<string, string> AllShops = [];
-        public static Dictionary<string, string> Potions = [];
-        public static Dictionary<string, string> StationsAndUpgrades = [];
-        public static Dictionary<string, string> Materials = [];
-        public static Dictionary<string, string> MobilityAccessories = [];
-        public static Dictionary<string, string> CombatAccessories = [];
-        public static Dictionary<string, string> ToolsAndInfo = [];
-        public static Dictionary<string, string> TreasureBags = [];
-        public static Dictionary<string, string> CratesAndGrabBags = [];
-        public static Dictionary<string, string> OresAndBars = [];
-        public static Dictionary<string, string> NaturalBlocks = [];
-        public static Dictionary<string, string> BuildingBlocks = [];
-        public static Dictionary<string, string> HerbsAndPlants = [];
-        public static Dictionary<string, string> Fish = [];
-        public static Dictionary<string, string> Critters = [];
-        public static Dictionary<string, string> MountsAndHooks = [];
-        public static Dictionary<string, string> Ammo = [];
+        public static Dictionary<string, Dictionary<string, List<string>>> AllShops = [];
+        public static Dictionary<string, List<string>> Potions = [];
+        public static Dictionary<string, List<string>> StationsAndUpgrades = [];
+        public static Dictionary<string, List<string>> Materials = [];
+        public static Dictionary<string, List<string>> MobilityAccessories = [];
+        public static Dictionary<string, List<string>> CombatAccessories = [];
+        public static Dictionary<string, List<string>> ToolsAndInfo = [];
+        public static Dictionary<string, List<string>> TreasureBags = [];
+        public static Dictionary<string, List<string>> CratesAndGrabBags = [];
+        public static Dictionary<string, List<string>> OresAndBars = [];
+        public static Dictionary<string, List<string>> NaturalBlocks = [];
+        public static Dictionary<string, List<string>> BuildingBlocks = [];
+        public static Dictionary<string, List<string>> HerbsAndPlants = [];
+        public static Dictionary<string, List<string>> Fish = [];
+        public static Dictionary<string, List<string>> Critters = [];
+        public static Dictionary<string, List<string>> MountsAndHooks = [];
+        public static Dictionary<string, List<string>> Ammo = [];
 
         public static bool FileNotFound = false;
 
@@ -34,17 +34,21 @@ namespace QoLCompendium.Core.ShopData
                 return;
             }
 
+            var serializer = new JsonSerializer();
+
             using Stream stream = QoLCompendium.Instance.GetFileStream(shopFilePath);
             using StreamReader r = new(stream);
-            var readAllShops = JsonConvert.DeserializeObject<Dictionary<string, string>>(r.ReadToEnd());
 
-            foreach (var entry in readAllShops)
+            using var jsonReader = new JsonTextReader(r);
+
+            Dictionary<string, Dictionary<string, List<string>>> shops = serializer.Deserialize<Dictionary<string, Dictionary<string, List<string>>>>(jsonReader)!;
+
+            Potions = shops["PotionShop"];
+            StationsAndUpgrades = shops["StationsAndUpgradesShop"];
+
+            foreach (var shop in shops)
             {
-                AllShops.Add(entry.Key, entry.Value);
-                if (entry.Key.Contains("Potion"))
-                {
-                    Potions.Add(entry.Key, entry.Value);
-                }
+                AllShops.Add(shop.Key, shop.Value);
             }
         }
 

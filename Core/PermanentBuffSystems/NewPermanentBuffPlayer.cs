@@ -32,19 +32,19 @@ namespace QoLCompendium.Core.PermanentBuffSystems
                 if (!item.IsAir && item.ModItem is BuffItem buffItem)
                 {
                     if (!CheckImmune(buffItem.BuffType))
-                        buffItem.effect.ApplyEffect(this);
+                        buffItem.Effect.ApplyEffect(this);
                     if (!QoLCPlayer.Get(Player).activeBuffs.Contains(buffItem.BuffType))
                         QoLCPlayer.Get(Player).activeBuffs.Add(buffItem.BuffType);
                 }
 
                 if (!item.IsAir && item.ModItem is CombinedBuffItem combinedBuffItem)
                 {
-                    foreach (KeyValuePair<BuffEffect, int> effect in combinedBuffItem.BuffTypes)
+                    foreach (var effect in combinedBuffItem.BuffTypes)
                     {
-                        if (!CheckImmune(effect.Value))
-                            effect.Key.ApplyEffect(this);
-                        if (!QoLCPlayer.Get(Player).activeBuffs.Contains(effect.Value))
-                            QoLCPlayer.Get(Player).activeBuffs.Add(effect.Value);
+                        if (!CheckImmune(effect.buff))
+                            effect.ApplyEffect(this);
+                        if (!QoLCPlayer.Get(Player).activeBuffs.Contains(effect.buff))
+                            QoLCPlayer.Get(Player).activeBuffs.Add(effect.buff);
                     }
                 }
             }

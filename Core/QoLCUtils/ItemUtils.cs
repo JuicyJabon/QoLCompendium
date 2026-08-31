@@ -1,4 +1,5 @@
 ﻿using QoLCompendium.Core.Changes.ModChanges.ModItemChanges;
+using QoLCompendium.Core.PermanentBuffSystems;
 using Terraria.Enums;
 
 namespace QoLCompendium.Core.QoLCUtils
@@ -95,6 +96,33 @@ namespace QoLCompendium.Core.QoLCUtils
             item.consumable = false;
             item.maxStack = 1;
             item.SetShopValues(ItemRarityColor.StrongRed10, 0);
+        }
+
+        public static void CreatePermanentBuffEffect(NewBuffEffect newEffect)
+        {
+            if (newEffect.buffID != -1)
+            {
+                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
+                QoLCompendium.Instance.AddContent(effect);
+                Constants.AllEffects.Add(newEffect.buffID, effect);
+            }
+        }
+
+        public static void CreatePermanentBuffItem(NewBuffItem newBuffItem)
+        {
+            if (newBuffItem.effect != null && newBuffItem.effect.buff != -1)
+            {
+                BuffItem item = new(newBuffItem.itemName, newBuffItem.effect, newBuffItem.baseItem, newBuffItem.ingredientCount);
+                QoLCompendium.Instance.AddContent(item);
+                Constants.AllBuffItems.Add(item.Type);
+            }
+        }
+
+        public static void CreateUpgradedPermanentBuffItem(NewCombinedBuffItem newCombinedBuffItem)
+        {
+            CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.textureName, newCombinedBuffItem.effects, newCombinedBuffItem.ingredients);
+            QoLCompendium.Instance.AddContent(item);
+            Constants.AllCombinedBuffItems.Add(item.Type);
         }
 
         public static void ItemDisabledTooltip(Item item, List<TooltipLine> tooltips, bool configOn)

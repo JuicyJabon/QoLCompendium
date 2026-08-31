@@ -1,21 +1,2 @@
-v2.4.8
-1. Added buff station support for the following mods:
- - Cerebral Mod
- - Dragon Ball Terraria
-2. Added class tag support for the following mods:
- - Cerebral Mod
- - Dragon Ball Terraria
- - TNTerraria
-3. Updated every UI element in the mod
-4. Endless Wulfrum Cogwork Shard now works with the Wulfrum Scaffold Kit and the Wulfrum Armor set bonus
-5. Fixed Town NPCs never unlocking in the Bestiary
-6. Super Dummy is now hidden from the Bestiary
-7. Magnets now avoid picking up items that are being shimmered
-8. Magnets now avoid picking up items when the player has no inventory space
-9. Halved Lunar Magnet range
-10. Removed all Pedestal items
-11. Added Time Wrinkler (Pedestals Replacement)
-12. Added support for Ancients Awakened:
- - NPC Sales
- - Non-Consumable Summons
- - Buff Stations
+v2.4.9.3
+1. Removed Permanent Exo Baguette

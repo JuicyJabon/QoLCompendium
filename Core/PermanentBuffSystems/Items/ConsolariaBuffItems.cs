@@ -1,42 +1,21 @@
-﻿using Consolaria.Content.Buffs;
-using Consolaria.Content.Items.Consumables;
-
-namespace QoLCompendium.Core.PermanentBuffSystems.Items
+﻿namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(CrossModSupport.Consolaria.Name)]
-    [ExtendsFromMod(CrossModSupport.Consolaria.Name)]
     public static class ConsolariaBuffItems
     {
-        public static NewBuffEffect[] ConsolariaEffects = [
-            //potions
-            new NewBuffEffect(ModContent.BuffType<Drunk>()),
-        ];
-
         public static void LoadTasks()
         {
-            BaseItems();
-        }
+            if (!CrossModSupport.Consolaria.Loaded)
+                return;
 
-        public static void BaseItems()
-        {
+            NewBuffEffect[] ConsolariaEffects = [new NewBuffEffect(Common.GetModBuff(CrossModSupport.Consolaria.Mod, "Drunk"))];
+
             foreach (var newEffect in ConsolariaEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
-            NewBuffItem[] BuffItems = [
-                //potions
-                new NewBuffItem(ModContent.ItemType<Wiesnbrau>(), ModContent.BuffType<Drunk>(), Constants.AllEffects[ModContent.BuffType<Drunk>()], 30, "PermanentWiesnbrau", "Permanent Wiesnbrau")
-            ];
+            NewBuffItem[] BuffItems = [new NewBuffItem(Common.GetModItem(CrossModSupport.Consolaria.Mod, "Wiesnbrau"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Consolaria.Mod, "Drunk")], 30, "PermanentWiesnbrau")];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
     }
 }

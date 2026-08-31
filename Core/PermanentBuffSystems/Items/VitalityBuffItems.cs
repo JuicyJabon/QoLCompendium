@@ -1,78 +1,68 @@
-﻿using VitalityMod.Content.Buffs.Potions;
-using VitalityMod.Content.Items.Consumables.Food;
-using VitalityMod.Content.Items.Consumables.Potions;
-
-namespace QoLCompendium.Core.PermanentBuffSystems.Items
+﻿namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(CrossModSupport.Vitality.Name)]
-    [ExtendsFromMod(CrossModSupport.Vitality.Name)]
     public static class VitalityBuffItems
     {
-        public static NewBuffEffect[] VitalityEffects = [
-            //potions
-            new NewBuffEffect(ModContent.BuffType<ArmorPiercingBuff>()),
-            new NewBuffEffect(ModContent.BuffType<SpriteCranberryBuff>()),
-            new NewBuffEffect(ModContent.BuffType<LeapingBuff>()),
-            new NewBuffEffect(ModContent.BuffType<TranquillityBuff>()),
-            new NewBuffEffect(ModContent.BuffType<TravelsenseBuff>()),
-            new NewBuffEffect(ModContent.BuffType<WarriorBuff>())
-        ];
-
         public static void LoadTasks()
         {
+            if (!CrossModSupport.Vitality.Loaded)
+                return;
+
             BaseItems();
             CombinedItems();
         }
 
         public static void BaseItems()
         {
+            NewBuffEffect[] VitalityEffects = [
+            //potions
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Vitality.Mod, "ArmorPiercingBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Vitality.Mod, "SpriteCranberryBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Vitality.Mod, "LeapingBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Vitality.Mod, "TranquillityBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Vitality.Mod, "TravelsenseBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.Vitality.Mod, "WarriorBuff"))
+            ];
+
             foreach (var newEffect in VitalityEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
                 //potions
-                new NewBuffItem(ModContent.ItemType<ArmorPiercingPotion>(), ModContent.BuffType<ArmorPiercingBuff>(), Constants.AllEffects[ModContent.BuffType<ArmorPiercingBuff>()], 30, "PermanentArmorPiercing", "Permanent Armor Piercing"),
-                new NewBuffItem(ModContent.ItemType<SpriteCranberry>(), ModContent.BuffType<SpriteCranberryBuff>(), Constants.AllEffects[ModContent.BuffType<SpriteCranberryBuff>()], 30, "PermanentCranberrySoda", "Permanent Cranberry Soda"),
-                new NewBuffItem(ModContent.ItemType<LeapingPotion>(), ModContent.BuffType<LeapingBuff>(), Constants.AllEffects[ModContent.BuffType<LeapingBuff>()], 30, "PermanentLeaping", "Permanent Leaping"),
-                new NewBuffItem(ModContent.ItemType<TranquillityPotion>(), ModContent.BuffType<TranquillityBuff>(), Constants.AllEffects[ModContent.BuffType<TranquillityBuff>()], 30, "PermanentTranquility", "Permanent Tranquility"),
-                new NewBuffItem(ModContent.ItemType<TravelsensePotion>(), ModContent.BuffType<TravelsenseBuff>(), Constants.AllEffects[ModContent.BuffType<TravelsenseBuff>()], 30, "PermanentTravelsense", "Permanent Travelsense"),
-                new NewBuffItem(ModContent.ItemType<WarriorPotion>(), ModContent.BuffType<WarriorBuff>(), Constants.AllEffects[ModContent.BuffType<WarriorBuff>()], 30, "PermanentWarrior", "Permanent Warrior")
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Vitality.Mod, "ArmorPiercingPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Vitality.Mod, "ArmorPiercingBuff")], 30, "PermanentArmorPiercing"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Vitality.Mod, "SpriteCranberry"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Vitality.Mod, "SpriteCranberryBuff")], 30, "PermanentCranberrySoda"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Vitality.Mod, "LeapingPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Vitality.Mod, "LeapingBuff")], 30, "PermanentLeaping"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Vitality.Mod, "TranquillityPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Vitality.Mod, "TranquillityBuff")], 30, "PermanentTranquility"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Vitality.Mod, "TravelsensePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Vitality.Mod, "TravelsenseBuff")], 30, "PermanentTravelsense"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.Vitality.Mod, "WarriorPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.Vitality.Mod, "WarriorBuff")], 30, "PermanentWarrior")
             ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
 
         public static void CombinedItems()
         {
-            Dictionary<BuffEffect, int> PermanentVitality = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<ArmorPiercingBuff>()], ModContent.BuffType<ArmorPiercingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<SpriteCranberryBuff>()], ModContent.BuffType<SpriteCranberryBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<LeapingBuff>()], ModContent.BuffType<LeapingBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<TranquillityBuff>()], ModContent.BuffType<TranquillityBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<TravelsenseBuff>()], ModContent.BuffType<TravelsenseBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<WarriorBuff>()], ModContent.BuffType<WarriorBuff>() }
-            };
-
-            NewCombinedBuffItem[] CombinedBuffItems = [
-                new NewCombinedBuffItem(PermanentVitality, "PermanentVitality", "Permanent Vitality", "PermanentVitality")
+            List<BuffEffect> PermanentVitality =
+            [
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Vitality.Mod, "ArmorPiercingBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Vitality.Mod, "SpriteCranberryBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Vitality.Mod, "LeapingBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Vitality.Mod, "TranquillityBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Vitality.Mod, "TravelsenseBuff")],
+               Constants.AllEffects[Common.GetModBuff(CrossModSupport.Vitality.Mod, "WarriorBuff")]
             ];
+            List<int> PermanentVitalityIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentArmorPiercing"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentCranberrySoda"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentLeaping"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTranquility"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentTravelsense"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentWarrior")];
+
+            NewCombinedBuffItem[] CombinedBuffItems = [new NewCombinedBuffItem("PermanentVitality", PermanentVitality, PermanentVitalityIngredients)];
 
             foreach (var newCombinedBuffItem in CombinedBuffItems)
-            {
-                CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllCombinedBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreateUpgradedPermanentBuffItem(newCombinedBuffItem);
         }
     }
 }

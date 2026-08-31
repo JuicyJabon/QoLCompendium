@@ -1,19 +1,12 @@
 ﻿namespace QoLCompendium.Core.PermanentBuffSystems
 {
     [Autoload(false)]
-    class BuffItem(string name, int buffID, BuffEffect effect, int itemID, int ingredientCount, string displayName) : ModItem, ILocalizedModType
+    class BuffItem(string name, BuffEffect effect, int itemID, int ingredientCount) : ModItem, ILocalizedModType
     {
-        private int buffID = buffID;
-        private int itemID = itemID;
-        private int ingredientCount = ingredientCount;
-        public BuffEffect effect = effect;
-        private string name = name;
-        private readonly string displayName = displayName;
-
         public int BuffType;
-
+        public BuffEffect Effect => effect;
         protected override bool CloneNewInstances => true;
-        public override string Texture => BuffUtils.BuffAsset(buffID);
+        public override string Texture => BuffUtils.BuffAsset(effect.buff);
         public override LocalizedText Tooltip => LocalizedText.Empty;
         public override string Name => name;
 
@@ -27,7 +20,7 @@
         public override void SetDefaults()
         {
             ItemUtils.SetDefaultsToPermanentBuff(Item);
-            BuffType = buffID;
+            BuffType = effect.buff;
         }
 
         public override void AddRecipes()
@@ -45,7 +38,7 @@
 
             ItemUtils.ItemDisabledTooltip(Item, tooltips, QoLCompendium.itemConfig.PermanentBuffs);
             TooltipLine material = tooltips.Find(l => l.Name == "Material");
-            TooltipLine text = new(Mod, "BuffDescription", Main.GetBuffTooltip(Main.LocalPlayer, buffID));
+            TooltipLine text = new(Mod, "BuffDescription", Main.GetBuffTooltip(Main.LocalPlayer, effect.buff));
             if (material != null)
                 tooltips.AddAfter(material, text);
         }

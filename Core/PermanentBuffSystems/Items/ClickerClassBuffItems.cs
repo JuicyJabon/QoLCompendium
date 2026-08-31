@@ -1,68 +1,55 @@
-﻿using ClickerClass.Buffs;
-using ClickerClass.Items.Consumables;
-using ClickerClass.Items.Placeable;
-
-namespace QoLCompendium.Core.PermanentBuffSystems.Items
+﻿namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(CrossModSupport.ClickerClass.Name)]
-    [ExtendsFromMod(CrossModSupport.ClickerClass.Name)]
     public static class ClickerClassBuffItems
     {
-        public static NewBuffEffect[] ClickerClassEffects = [
-            //potions
-            new NewBuffEffect(ModContent.BuffType<InfluenceBuff>()),
-            //stations
-            new NewBuffEffect(ModContent.BuffType<DesktopComputerBuff>(), (int)Constants.EffectTypes.Station)
-        ];
-
         public static void LoadTasks()
         {
+            if (!CrossModSupport.ClickerClass.Loaded)
+                return;
+
             BaseItems();
             CombinedItems();
         }
 
         public static void BaseItems()
         {
+            NewBuffEffect[] ClickerClassEffects = [
+                //potions
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.ClickerClass.Mod, "InfluenceBuff")),
+                //stations
+                new NewBuffEffect(Common.GetModBuff(CrossModSupport.ClickerClass.Mod, "DesktopComputerBuff"), (int)Constants.EffectTypes.Station)
+            ];
+
             foreach (var newEffect in ClickerClassEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
                 //potions
-                new NewBuffItem(ModContent.ItemType<InfluencePotion>(), ModContent.BuffType<InfluenceBuff>(), Constants.AllEffects[ModContent.BuffType<InfluenceBuff>()], 30, "PermanentInfluence", "Permanent Influence"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ClickerClass.Mod, "InfluencePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ClickerClass.Mod, "InfluenceBuff")], 30, "PermanentInfluence"),
                 //stations
-                new NewBuffItem(ModContent.ItemType<DesktopComputer>(), ModContent.BuffType<DesktopComputerBuff>(), Constants.AllEffects[ModContent.BuffType<DesktopComputerBuff>()], 3, "PermanentDesktopComputer", "Permanent Desktop Computer")
+                new NewBuffItem(Common.GetModItem(CrossModSupport.ClickerClass.Mod, "DesktopComputer"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.ClickerClass.Mod, "DesktopComputerBuff")], 3, "PermanentDesktopComputer")
             ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
 
         public static void CombinedItems()
         {
-            Dictionary<BuffEffect, int> PermanentClickerClass = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<InfluenceBuff>()], ModContent.BuffType<InfluenceBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<DesktopComputerBuff>()], ModContent.BuffType<DesktopComputerBuff>() }
-            };
-
-            NewCombinedBuffItem[] CombinedBuffItems = [
-                new NewCombinedBuffItem(PermanentClickerClass, "PermanentClickerClass", "Permanent Clicker Class", "PermanentClickerClass")
+            List<BuffEffect> PermanentClickerClass =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ClickerClass.Mod, "InfluenceBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.ClickerClass.Mod, "DesktopComputerBuff")]
             ];
 
-            foreach (var newCombinedBuffItem in CombinedBuffItems)
-            {
-                CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllCombinedBuffItems.Add(item.Type);
-            }
+            List<int> PermanentClickerClassIngredients =
+            [
+                Common.GetModItem(QoLCompendium.Instance, "PermanentInfluence"),
+                Common.GetModItem(QoLCompendium.Instance, "PermanentDesktopComputer")
+            ];
+
+            NewCombinedBuffItem newCombinedBuffItem = new("PermanentClickerClass", PermanentClickerClass, PermanentClickerClassIngredients);
+            ItemUtils.CreateUpgradedPermanentBuffItem(newCombinedBuffItem);
         }
     }
 }

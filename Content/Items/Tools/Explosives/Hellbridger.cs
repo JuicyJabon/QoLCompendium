@@ -79,14 +79,14 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
             {
                 Vector2 mouse = Main.MouseWorld;
                 mouse.X += i * 16;
-                Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse, Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
+                Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse, Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI, ai0: 0);
             }
 
             for (int i = -100; i <= 100; i++)
             {
                 Vector2 mouse = Main.MouseWorld;
                 mouse.X += i * 16;
-                Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse - new Vector2(0, 320), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
+                Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse - new Vector2(0, 320), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI, ai0: 0);
             }
         }
     }

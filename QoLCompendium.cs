@@ -45,7 +45,7 @@ namespace QoLCompendium
             BuffSystem.DoBuffIntegration();
             Common.PostSetupTasks();
             Prefixes.PostSetupTasks();
-            //ShopCreation.PostSetupTasks();
+            ShopCreation.PostSetupTasks();
 
             //Permanent Buffs
             if (!itemConfig.DisableModdedItems || itemConfig.PermanentBuffs)
@@ -74,7 +74,7 @@ namespace QoLCompendium
             crossModConfig = null;
             veinminerConfig = null;
             Common.UnloadTasks();
-            //ShopCreation.UnloadTasks();
+            ShopCreation.UnloadTasks();
         }
 
         public override void HandlePacket(BinaryReader reader, int whoAmI)

@@ -27,6 +27,7 @@
     <Folder Include="Content\Projectiles\Fishing\" />
     <Folder Include="Core\Changes\ModChanges\ModBuffChanges\" />
     <Folder Include="Core\Changes\ModChanges\ModPlayerChanges\" />
+    <Folder Include="Core\Changes\ModChanges\ModProjectileChanges\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Avalon">

@@ -54,31 +54,23 @@ namespace QoLCompendium.Content.Items.Tools.Explosives
             if (player.ownedProjectileCounts[ModContent.ProjectileType<BuildIndicatorProjectile>()] > 45)
                 return;
 
-            if (player.direction < 0)
+            Vector2 offset = new(0, 16);
+            for (int x = 0; x <= 9; x++)
             {
-                for (int x = -9; x <= 0; x++)
+                for (int y = -5; y <= 0; y++)
                 {
-                    for (int y = -5; y <= 0; y++)
-                    {
-                        Vector2 mouse = Main.MouseWorld;
+                    Vector2 mouse = Main.MouseWorld;
+                    bool left = player.direction == -1;
+
+                    if (left)
+                        mouse.X -= x * 16;
+                    else
                         mouse.X += x * 16;
-                        mouse.Y += y * 16;
-                        Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(0, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
-                    }
-                }
-                return;
-            }
-            else
-            {
-                for (int x = 0; x <= 9; x++)
-                {
-                    for (int y = -5; y <= 0; y++)
-                    {
-                        Vector2 mouse = Main.MouseWorld;
-                        mouse.X += x * 16;
-                        mouse.Y += y * 16;
-                        Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse + new Vector2(0, 16), Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI);
-                    }
+
+                    mouse.Y += y * 16;
+                    Vector2 position = mouse + offset;
+
+                    Projectile.NewProjectile(player.GetSource_ItemUse(Item), position, Vector2.Zero, ModContent.ProjectileType<BuildIndicatorProjectile>(), 0, 0f, player.whoAmI, ai0: 1f);
                 }
             }
         }

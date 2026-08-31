@@ -1,5 +1,4 @@
 using QoLCompendium.Content.Items.Accessories.Fishing;
-using QoLCompendium.Content.Items.Dedicated;
 using QoLCompendium.Content.Items.Tools.Fishing;
 using QoLCompendium.Content.Items.Tools.Usables;
 using QoLCompendium.Core.UI;
@@ -59,6 +58,12 @@ namespace QoLCompendium.Core
         public override void Initialize()
         {
             ItemHasBeenOwned = ItemID.Sets.Factory.CreateBoolSet(false);
+        }
+
+        public override void OnEnterWorld()
+        {
+            Player.forcedGravity = 0;
+            Player.gravDir = 1f;
         }
 
         public override void ResetEffects() { Reset(); }
@@ -146,15 +151,6 @@ namespace QoLCompendium.Core
             if (spawnRateUpdateTimer > 0)
                 spawnRateUpdateTimer--;
             #endregion
-        }
-
-        public override void PostUpdateBuffs()
-        {
-            if (THEButton.used)
-            {
-                Player.forcedGravity = 1;
-                Player.gravDir = -1f;
-            }
         }
 
         public override void PostUpdateMiscEffects()

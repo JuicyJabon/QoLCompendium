@@ -1,21 +1,13 @@
 ﻿namespace QoLCompendium.Core.PermanentBuffSystems
 {
     [Autoload(false)]
-    class CombinedBuffItem(string name, Dictionary<BuffEffect, int> buffs, string displayName, string texturePath) : ModItem, ILocalizedModType
+    class CombinedBuffItem(string name, string texturePath, List<BuffEffect> buffs, List<int> ingredients) : ModItem, ILocalizedModType
     {
-        public Dictionary<BuffEffect, int> buffs = buffs;
-        private string name = name;
-        private string displayName = displayName;
-        private string texturePath = texturePath;
-
-        public Dictionary<BuffEffect, int> BuffTypes;
-
+        public List<BuffEffect> BuffTypes;
         protected override bool CloneNewInstances => true;
         public override string Texture => texturePath;
         public override LocalizedText Tooltip => LocalizedText.Empty;
-
         public override string Name => name;
-
         public new string LocalizationCategory => "Items.PermanentBuffs";
 
         public override void SetStaticDefaults()
@@ -27,6 +19,16 @@
         {
             ItemUtils.SetDefaultsToPermanentBuff(Item);
             BuffTypes = buffs;
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe r = RecipeUtils.GetItemRecipe(() => QoLCompendium.itemConfig.PermanentBuffs, Type, 1, "Mods.QoLCompendium.ItemToggledConditions.ItemEnabled");
+            foreach (var item in ingredients)
+                if (item > ItemID.None)
+                    r.AddIngredient(item, 1);
+            r.AddTile(TileID.CookingPots);
+            r.Register();
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)

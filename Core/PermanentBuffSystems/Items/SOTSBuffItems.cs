@@ -1,102 +1,98 @@
-﻿using SOTS.Buffs;
-using SOTS.Items;
-using SOTS.Items.Planetarium.Furniture;
-using SOTS.Items.Potions;
-
-namespace QoLCompendium.Core.PermanentBuffSystems.Items
+﻿namespace QoLCompendium.Core.PermanentBuffSystems.Items
 {
-    [JITWhenModsEnabled(CrossModSupport.SecretsOfTheShadows.Name)]
-    [ExtendsFromMod(CrossModSupport.SecretsOfTheShadows.Name)]
     public static class SOTSBuffItems
     {
-        public static NewBuffEffect[] SOTSEffects = [
-            //potions
-            new NewBuffEffect(ModContent.BuffType<Assassination>()),
-            new NewBuffEffect(ModContent.BuffType<Bluefire>()),
-            new NewBuffEffect(ModContent.BuffType<Brittle>()),
-            new NewBuffEffect(ModContent.BuffType<DoubleVision>()),
-            new NewBuffEffect(ModContent.BuffType<Harmony>()),
-            new NewBuffEffect(ModContent.BuffType<Nightmare>()),
-            new NewBuffEffect(ModContent.BuffType<RippleBuff>()),
-            new NewBuffEffect(ModContent.BuffType<Roughskin>()),
-            new NewBuffEffect(ModContent.BuffType<SoulAccess>()),
-            new NewBuffEffect(ModContent.BuffType<GoodVibes>()),
-            new NewBuffEffect(ModContent.BuffType<Vigor>()),
-            //stations
-            new NewBuffEffect(ModContent.BuffType<CyberneticEnhancements>(), (int)Constants.EffectTypes.Station),
-            new NewBuffEffect(ModContent.BuffType<DEFEBuff>(), (int)Constants.EffectTypes.Station)
-        ];
-
         public static void LoadTasks()
         {
+            if (!CrossModSupport.SecretsOfTheShadows.Loaded)
+                return;
+
             BaseItems();
             CombinedItems();
         }
 
         public static void BaseItems()
         {
+            NewBuffEffect[] SOTSEffects = [
+            //potions
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Assassination")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Bluefire")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Brittle")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "DoubleVision")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Harmony")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Nightmare")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "RippleBuff")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Roughskin")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "SoulAccess")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "GoodVibes")),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Vigor")),
+            //stations
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "CyberneticEnhancements"), (int)Constants.EffectTypes.Station),
+            new NewBuffEffect(Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "DEFEBuff"), (int)Constants.EffectTypes.Station)
+            ];
+
             foreach (var newEffect in SOTSEffects)
-            {
-                BuffEffect effect = new(newEffect.buffID, newEffect.effectType);
-                QoLCompendium.Instance.AddContent(effect);
-                Constants.AllEffects.Add(newEffect.buffID, effect);
-            }
+                ItemUtils.CreatePermanentBuffEffect(newEffect);
 
             NewBuffItem[] BuffItems = [
                 //potions
-                new NewBuffItem(ModContent.ItemType<AssassinationPotion>(), ModContent.BuffType<Assassination>(), Constants.AllEffects[ModContent.BuffType<Assassination>()], 30, "PermanentAssassination", "Permanent Assassination"),
-                new NewBuffItem(ModContent.ItemType<BluefirePotion>(), ModContent.BuffType<Bluefire>(), Constants.AllEffects[ModContent.BuffType<Bluefire>()], 30, "PermanentBluefire", "Permanent Bluefire"),
-                new NewBuffItem(ModContent.ItemType<BrittlePotion>(), ModContent.BuffType<Brittle>(), Constants.AllEffects[ModContent.BuffType<Brittle>()], 30, "PermanentBrittle", "Permanent Brittle"),
-                new NewBuffItem(ModContent.ItemType<DoubleVisionPotion>(), ModContent.BuffType<DoubleVision>(), Constants.AllEffects[ModContent.BuffType<DoubleVision>()], 30, "PermanentDoubleVision", "Permanent Double Vision"),
-                new NewBuffItem(ModContent.ItemType<HarmonyPotion>(), ModContent.BuffType<Harmony>(), Constants.AllEffects[ModContent.BuffType<Harmony>()], 30, "PermanentHarmony", "Permanent Harmony"),
-                new NewBuffItem(ModContent.ItemType<NightmarePotion>(), ModContent.BuffType<Nightmare>(), Constants.AllEffects[ModContent.BuffType<Nightmare>()], 30, "PermanentNightmare", "Permanent Nightmare"),
-                new NewBuffItem(ModContent.ItemType<RipplePotion>(), ModContent.BuffType<RippleBuff>(), Constants.AllEffects[ModContent.BuffType<RippleBuff>()], 30, "PermanentRipple", "Permanent Ripple"),
-                new NewBuffItem(ModContent.ItemType<RoughskinPotion>(), ModContent.BuffType<Roughskin>(), Constants.AllEffects[ModContent.BuffType<Roughskin>()], 30, "PermanentRoughskin", "Permanent Roughskin"),
-                new NewBuffItem(ModContent.ItemType<SoulAccessPotion>(), ModContent.BuffType<SoulAccess>(), Constants.AllEffects[ModContent.BuffType<SoulAccess>()], 30, "PermanentSoulAccess", "Permanent Soul Access"),
-                new NewBuffItem(ModContent.ItemType<VibePotion>(), ModContent.BuffType<GoodVibes>(), Constants.AllEffects[ModContent.BuffType<GoodVibes>()], 30, "PermanentVibe", "Permanent Vibe"),
-                new NewBuffItem(ModContent.ItemType<VigorPotion>(), ModContent.BuffType<Vigor>(), Constants.AllEffects[ModContent.BuffType<Vigor>()], 30, "PermanentVigor", "Permanent Vigor"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "AssassinationPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Assassination")], 30, "PermanentAssassination"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "BluefirePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Bluefire")], 30, "PermanentBluefire"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "BrittlePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Brittle")], 30, "PermanentBrittle"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "DoubleVisionPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "DoubleVision")], 30, "PermanentDoubleVision"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "HarmonyPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Harmony")], 30, "PermanentHarmony"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "NightmarePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Nightmare")], 30, "PermanentNightmare"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "RipplePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "RippleBuff")], 30, "PermanentRipple"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "RoughskinPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Roughskin")], 30, "PermanentRoughskin"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "SoulAccessPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "SoulAccess")], 30, "PermanentSoulAccess"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "VibePotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "GoodVibes")], 30, "PermanentVibe"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "VigorPotion"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Vigor")], 30, "PermanentVigor"),
                 //stations
-                new NewBuffItem(ModContent.ItemType<DigitalDisplay>(), ModContent.BuffType<CyberneticEnhancements>(), Constants.AllEffects[ModContent.BuffType<CyberneticEnhancements>()], 3, "PermanentDigitalDisplay", "Permanent Digital Display"),
-                new NewBuffItem(ModContent.ItemType<ElectromagneticDeterrent>(), ModContent.BuffType<DEFEBuff>(), Constants.AllEffects[ModContent.BuffType<DEFEBuff>()], 3, "PermanentElectromagneticDeterrent", "Permanent Electromagnetic Deterrent")
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "DigitalDisplay"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "CyberneticEnhancements")], 3, "PermanentDigitalDisplay"),
+                new NewBuffItem(Common.GetModItem(CrossModSupport.SecretsOfTheShadows.Mod, "ElectromagneticDeterrent"), Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "DEFEBuff")], 3, "PermanentElectromagneticDeterrent")
             ];
 
             foreach (var newBuffItem in BuffItems)
-            {
-                BuffItem item = new(newBuffItem.itemName, newBuffItem.buffID, newBuffItem.effect, newBuffItem.buffItem, newBuffItem.ingredientCount, newBuffItem.displayName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreatePermanentBuffItem(newBuffItem);
         }
 
         public static void CombinedItems()
         {
-            Dictionary<BuffEffect, int> PermanentSecretsOfTheShadows = new()
-            {
-                { Constants.AllEffects[ModContent.BuffType<Assassination>()], ModContent.BuffType<Assassination>() },
-                { Constants.AllEffects[ModContent.BuffType<Bluefire>()], ModContent.BuffType<Bluefire>() },
-                { Constants.AllEffects[ModContent.BuffType<Brittle>()], ModContent.BuffType<Brittle>() },
-                { Constants.AllEffects[ModContent.BuffType<DoubleVision>()], ModContent.BuffType<DoubleVision>() },
-                { Constants.AllEffects[ModContent.BuffType<Harmony>()], ModContent.BuffType<Harmony>() },
-                { Constants.AllEffects[ModContent.BuffType<Nightmare>()], ModContent.BuffType<Nightmare>() },
-                { Constants.AllEffects[ModContent.BuffType<RippleBuff>()], ModContent.BuffType<RippleBuff>() },
-                { Constants.AllEffects[ModContent.BuffType<Roughskin>()], ModContent.BuffType<Roughskin>() },
-                { Constants.AllEffects[ModContent.BuffType<SoulAccess>()], ModContent.BuffType<SoulAccess>() },
-                { Constants.AllEffects[ModContent.BuffType<GoodVibes>()], ModContent.BuffType<GoodVibes>() },
-                { Constants.AllEffects[ModContent.BuffType<Vigor>()], ModContent.BuffType<Vigor>() },
-                { Constants.AllEffects[ModContent.BuffType<CyberneticEnhancements>()], ModContent.BuffType<CyberneticEnhancements>() },
-                { Constants.AllEffects[ModContent.BuffType<DEFEBuff>()], ModContent.BuffType<DEFEBuff>() }
-            };
-
-            NewCombinedBuffItem[] CombinedBuffItems = [
-                new NewCombinedBuffItem(PermanentSecretsOfTheShadows, "PermanentSecretsOfTheShadows", "Permanent Secrets of the Shadows", "PermanentSecretsOfTheShadows")
+            List<BuffEffect> PermanentSecretsOfTheShadows =
+            [
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Assassination")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Bluefire")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Brittle")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "DoubleVision")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Harmony")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Nightmare")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "RippleBuff")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Roughskin")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "SoulAccess")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "GoodVibes")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "Vigor")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "CyberneticEnhancements")],
+                Constants.AllEffects[Common.GetModBuff(CrossModSupport.SecretsOfTheShadows.Mod, "DEFEBuff")]
             ];
+            List<int> PermanentSecretsOfTheShadowsIngredients = [
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentAssassination"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBluefire"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentBrittle"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDoubleVision"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentHarmony"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentNightmare"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRipple"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentRoughskin"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentSoulAccess"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentVibe"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentVigor"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentDigitalDisplay"),
+                    Common.GetModItem(QoLCompendium.Instance, "PermanentElectromagneticDeterrent")];
+
+            NewCombinedBuffItem[] CombinedBuffItems = [new NewCombinedBuffItem("PermanentSecretsOfTheShadows", PermanentSecretsOfTheShadows, PermanentSecretsOfTheShadowsIngredients)];
 
             foreach (var newCombinedBuffItem in CombinedBuffItems)
-            {
-                CombinedBuffItem item = new(newCombinedBuffItem.itemName, newCombinedBuffItem.effects, newCombinedBuffItem.displayName, newCombinedBuffItem.textureName);
-                QoLCompendium.Instance.AddContent(item);
-                Constants.AllCombinedBuffItems.Add(item.Type);
-            }
+                ItemUtils.CreateUpgradedPermanentBuffItem(newCombinedBuffItem);
         }
     }
 }

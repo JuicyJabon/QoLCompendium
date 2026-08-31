@@ -94,7 +94,7 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                         hasLuckyGreater = true;
                 }
             }
-            if (item.type == ItemID.RedPotion && Main.getGoodWorld && QoLCompendium.mainConfig.EndlessPotionBuffs)
+            if (item.type == ItemID.RedPotion && Main.getGoodWorld && QoLCompendium.mainConfig.EndlessPotionBuffs && QoLCompendium.mainConfig.EndlessBuffAmount > 0 && item.stack >= QoLCompendium.mainConfig.EndlessBuffAmount)
             {
                 Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
                 for (int i = 0; i < Constants.RedPotionBuffs.Count; i++)
@@ -104,14 +104,14 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                         Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(Constants.RedPotionBuffs.ElementAt(i));
                 }
             }
-            if (item.type == ItemID.HoneyBucket || item.type == ItemID.BottomlessHoneyBucket && QoLCompendium.mainConfig.EndlessStationBuffs)
+            if (item.type == ItemID.HoneyBucket || item.type == ItemID.BottomlessHoneyBucket && QoLCompendium.mainConfig.EndlessStationBuffs && QoLCompendium.mainConfig.EndlessStationAmount > 0 && item.stack >= QoLCompendium.mainConfig.EndlessStationAmount)
             {
                 Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
                 Player.AddBuff(BuffID.Honey, 2, true, false);
                 if (!Player.GetModPlayer<QoLCPlayer>().activeBuffs.Contains(BuffID.Honey))
                     Player.GetModPlayer<QoLCPlayer>().activeBuffs.Add(BuffID.Honey);
             }
-            if (item.type == ItemID.GardenGnome && QoLCompendium.mainConfig.EndlessStationBuffs)
+            if (item.type == ItemID.GardenGnome && QoLCompendium.mainConfig.EndlessStationBuffs && QoLCompendium.mainConfig.EndlessStationAmount > 0 && item.stack >= QoLCompendium.mainConfig.EndlessStationAmount)
             {
                 Player.GetModPlayer<QoLCPlayer>().activeBuffItems.Add(item.type);
                 hasGardenGnome = true;
@@ -520,6 +520,19 @@ namespace QoLCompendium.Core.Changes.BuffChanges
                 AddBuffIntegration(CrossModSupport.Calamity.Mod, "EffigyOfDecay", "EffigyOfDecayBuff");
                 AddBuffIntegration(CrossModSupport.Calamity.Mod, "CrimsonEffigy", "CrimsonEffigyBuff");
                 AddBuffIntegration(CrossModSupport.Calamity.Mod, "CorruptionEffigy", "CorruptionEffigyBuff");
+            }
+
+            //CALAMITY CLASSIC 1.4
+            if (CrossModSupport.CalamityClassic.OneFour.Loaded)
+            {
+                AddBuffIntegration(CrossModSupport.CalamityClassic.OneFour.Mod, "CorruptionEffigy", "CorruptionEffigyBuff");
+                AddBuffIntegration(CrossModSupport.CalamityClassic.OneFour.Mod, "CrimsonEffigy", "CrimsonEffigyBuff");
+                AddBuffIntegration(CrossModSupport.CalamityClassic.OneFour.Mod, "BlueCandle", "BlueSpeedCandle");
+                AddBuffIntegration(CrossModSupport.CalamityClassic.OneFour.Mod, "PinkCandle", "PinkHealthCandle");
+                AddBuffIntegration(CrossModSupport.CalamityClassic.OneFour.Mod, "PurpleCandle", "PurpleDefenseCandle");
+                AddBuffIntegration(CrossModSupport.CalamityClassic.OneFour.Mod, "YellowCandle", "YellowDamageCandle");
+                AddBuffIntegration(CrossModSupport.CalamityClassic.OneFour.Mod, "ChaosCandle", "ChaosCandle");
+                AddBuffIntegration(CrossModSupport.CalamityClassic.OneFour.Mod, "TranquilityCandle", "TranquilityCandle");
             }
 
             //CALAMITY COMMUNITY REMIX
